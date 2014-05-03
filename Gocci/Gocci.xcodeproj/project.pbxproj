@@ -21,6 +21,7 @@
 		FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
 		FF54F00C19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54F00A19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
+		FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		FF54F00919149A1800025DC8 /* GocciTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GocciTests-Info.plist"; sourceTree = "<group>"; };
 		FF54F00B19149A1800025DC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF54F00D19149A1800025DC8 /* GocciTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GocciTests.m; sourceTree = "<group>"; };
+		FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				FF54EFF819149A1800025DC8 /* ViewController.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
+				FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */,
+				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
@@ -456,6 +462,7 @@
 				FF54F01319149A1900025DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF54F01419149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +471,7 @@
 				FF54F01619149A1900025DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
