@@ -22,6 +22,8 @@
 		FF54F00C19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54F00A19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
 		FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */; };
+		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
+		FF54F01F1914B41500025DC8 /* restaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		FF54F00D19149A1800025DC8 /* GocciTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GocciTests.m; sourceTree = "<group>"; };
 		FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
+		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
+		FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = restaurantTableViewController.h; sourceTree = "<group>"; };
+		FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = restaurantTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,10 @@
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 				FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */,
 				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
+				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
+				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
+				FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */,
+				FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -254,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF54F01F1914B41500025DC8 /* restaurantTableViewController.m in Sources */,
+				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
