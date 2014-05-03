@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0C23471914D8F00090455C /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0C23461914D8F00090455C /* SearchTableViewController.m */; };
+		FF0C234A1914D8FC0090455C /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0C23491914D8FC0090455C /* RestaurantTableViewController.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF0C23451914D8F00090455C /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		FF0C23461914D8F00090455C /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		FF0C23481914D8FC0090455C /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		FF0C23491914D8FC0090455C /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +130,10 @@
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 				FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */,
 				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
+				FF0C23451914D8F00090455C /* SearchTableViewController.h */,
+				FF0C23461914D8F00090455C /* SearchTableViewController.m */,
+				FF0C23481914D8FC0090455C /* RestaurantTableViewController.h */,
+				FF0C23491914D8FC0090455C /* RestaurantTableViewController.m */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -254,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0C234A1914D8FC0090455C /* RestaurantTableViewController.m in Sources */,
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
+				FF0C23471914D8F00090455C /* SearchTableViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
