@@ -7,12 +7,17 @@
 //
 
 #import "SearchTableViewController.h"
+#import "CustomAnnotation.h"
 
-@interface SearchTableViewController ()
+@interface SearchTableViewController ()<UISearchBarDelegate,MKMapViewDelegate>
+
+@property (nonatomic, retain) MKMapView *mapView;
 
 @end
 
 @implementation SearchTableViewController
+
+@synthesize mapView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,6 +37,30 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.tintColor = [UIColor darkGrayColor];
+    searchBar.placeholder = @"キーワードを入力して下さい";
+    searchBar.keyboardType = UIKeyboardTypeDefault;
+    searchBar.delegate = self;
+    
+    // UINavigationBar上に、UISearchBarを追加
+    self.navigationItem.titleView = searchBar;
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+    
+    // 初期フォーカスを設定
+    [searchBar becomeFirstResponder];
+
+
+     [self mapCreate];
+}
+
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+{
+    // UISearchBar からフォーカスを外します。
+    [searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,53 +92,111 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) mapCreate
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    /* 本当はここを動的に変更できるようにするといいと思う */
+    // 緯度経度
+    float now_latitude = 35.7100721; // 経度
+    float now_longitude = 139.809471; // 緯度
+    // タイトル/サブタイトル
+    NSString *title = @"たいとる";
+    NSString *subTitle = @"さぶさぶさぶ";
+    /* 本当はここを動的に変更できるようにするといいと思う */
+    
+    // 経度緯度設定
+    CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(now_latitude, now_longitude);
+    
+    // マップ生成
+    mapView = [[MKMapView alloc] init];
+    mapView.delegate = self;
+    mapView.showsUserLocation = YES;  // ユーザの現在地を表示するように設定
+    [mapView setCenterCoordinate:locationCoordinate animated:NO];
+    
+    // CustomAnnotationクラスの初期化
+    CustomAnnotation *customAnnotation = [[CustomAnnotation alloc] initWithCoordinates:locationCoordinate newTitle:title newSubTitle:subTitle];
+    
+    // annotationをマップに追加
+    [mapView addAnnotation:customAnnotation];
+    
+    // マップを表示
+    [self.view addSubview:self.mapView];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+#pragma - mapkit delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    MKAnnotationView *annotationView;
+    
+    // 再利用可能なannotationがあるかどうかを判断するための識別子を定義
+    NSString *identifier = @"Pin";
+    
+    // "Pin"という識別子のついたannotationを使いまわせるかチェック
+    annotationView = (MKAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    // 使い回しができるannotationがない場合、annotationの初期化
+    if(annotationView == nil) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+    }
+    
+    // 画像をannotationに設定
+    annotationView.image = [UIImage imageNamed:@"pin.png"];
+    annotationView.canShowCallout = YES;  // この設定で吹き出しが出る
+    annotationView.annotation = annotation;
+    
+    //ボタンの種類を指定(ここがないとタッチできない)
+    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    annotationView.rightCalloutAccessoryView = detailButton;
+    
+    return annotationView;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    NSLog(@"ピンの吹き出しが押された");
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Safariで開きますか?" message:@"どうすんの?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"はい", @"いいえ", nil];
+    [alert show];
 }
-*/
 
-/*
-#pragma mark - Navigation
+#pragma - alertview delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    
+    /* 本当はここを動的に変更できるようにするといいと思う */
+    float now_latitude = 35.7100721; // 経度
+    float now_longitude = 139.809471; // 緯度
+    /* 本当はここを動的に変更できるようにするといいと思う */
+    
+    
+    // マップAPIへ投げるURLの準備
+    NSString *apiUrl = @"http://maps.google.co.jp/maps?q=";
+    
+    // マップAPIへ投げるURLにパラメタを設定(文字列連結)
+    NSString *url = [NSString stringWithFormat:@"%@%f,%f(here!)&hl=ja", apiUrl, now_latitude, now_longitude];
+    
+    NSLog(@"マップAPIに投げるURL = %@", url);
+    
+    switch (buttonIndex)
+    {
+        case 0:
+            //1番目のボタンが押されたときの処理を記述する
+            NSLog(@"safariに飛ばすよ");
+            // safariに飛ばす
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+            
+            break;
+        case 1:
+            //2番目のボタンが押されたときの処理を記述する
+            NSLog(@"キャンセルされたよ");
+            break;
+    }
 }
-*/
+
+
+
+
 
 @end

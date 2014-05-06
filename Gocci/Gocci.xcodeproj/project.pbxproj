@@ -24,6 +24,10 @@
 		FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
 		FF54F01F1914B41500025DC8 /* restaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */; };
+		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
+		FF8D84F819194F8B00939312 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
+		FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D8500191955F700939312 /* CustomAnnotation.m */; };
+		FF8D850519195B4D00939312 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8D850419195B4D00939312 /* pin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,11 @@
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = restaurantTableViewController.h; sourceTree = "<group>"; };
 		FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = restaurantTableViewController.m; sourceTree = "<group>"; };
+		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FF8D84FF191955F700939312 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		FF8D8500191955F700939312 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		FF8D850419195B4D00939312 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = ../../../../.Trash/pin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8D84F819194F8B00939312 /* CoreLocation.framework in Frameworks */,
+				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
@@ -110,6 +121,8 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF8D84F719194F8B00939312 /* CoreLocation.framework */,
+				FF8D84F519194F8200939312 /* MapKit.framework */,
 				FF54EFE219149A1800025DC8 /* Foundation.framework */,
 				FF54EFE419149A1800025DC8 /* CoreGraphics.framework */,
 				FF54EFE619149A1800025DC8 /* UIKit.framework */,
@@ -132,6 +145,7 @@
 				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
+				FF8D850419195B4D00939312 /* pin.png */,
 				FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */,
 				FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */,
 			);
@@ -145,6 +159,8 @@
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
 				FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */,
+				FF8D84FF191955F700939312 /* CustomAnnotation.h */,
+				FF8D8500191955F700939312 /* CustomAnnotation.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -244,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
+				FF8D850519195B4D00939312 /* pin.png in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF54EFF619149A1800025DC8 /* Main.storyboard in Resources */,
 			);
@@ -269,6 +286,7 @@
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
+				FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
