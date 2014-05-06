@@ -97,11 +97,11 @@
 {
     /* 本当はここを動的に変更できるようにするといいと思う */
     // 緯度経度
-    float now_latitude = 35.7100721; // 経度
-    float now_longitude = 139.809471; // 緯度
+    float now_latitude = 35.7100721; // 経度　※本番はここを変数にするか
+    float now_longitude = 139.809471; // 緯度　※本番はここを変数にするか
     // タイトル/サブタイトル
-    NSString *title = @"たいとる";
-    NSString *subTitle = @"さぶさぶさぶ";
+    NSString *title = @"タイトル";
+    NSString *subTitle = @"サブタイトル";
     /* 本当はここを動的に変更できるようにするといいと思う */
     
     // 経度緯度設定
@@ -123,7 +123,6 @@
     [self.view addSubview:self.mapView];
 }
 
-#pragma - mapkit delegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -151,52 +150,6 @@
     
     return annotationView;
 }
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    
-    NSLog(@"ピンの吹き出しが押された");
-    
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Safariで開きますか?" message:@"どうすんの?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"はい", @"いいえ", nil];
-    [alert show];
-}
-
-#pragma - alertview delegate
-
--(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    
-    /* 本当はここを動的に変更できるようにするといいと思う */
-    float now_latitude = 35.7100721; // 経度
-    float now_longitude = 139.809471; // 緯度
-    /* 本当はここを動的に変更できるようにするといいと思う */
-    
-    
-    // マップAPIへ投げるURLの準備
-    NSString *apiUrl = @"http://maps.google.co.jp/maps?q=";
-    
-    // マップAPIへ投げるURLにパラメタを設定(文字列連結)
-    NSString *url = [NSString stringWithFormat:@"%@%f,%f(here!)&hl=ja", apiUrl, now_latitude, now_longitude];
-    
-    NSLog(@"マップAPIに投げるURL = %@", url);
-    
-    switch (buttonIndex)
-    {
-        case 0:
-            //1番目のボタンが押されたときの処理を記述する
-            NSLog(@"safariに飛ばすよ");
-            // safariに飛ばす
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-            
-            break;
-        case 1:
-            //2番目のボタンが押されたときの処理を記述する
-            NSLog(@"キャンセルされたよ");
-            break;
-    }
-}
-
-
-
 
 
 @end
