@@ -139,10 +139,6 @@
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
     }
     
-    // 画像をannotationに設定
-    annotationView.image = [UIImage imageNamed:@"pin.png"];
-    annotationView.canShowCallout = YES;  // この設定で吹き出しが出る
-    annotationView.annotation = annotation;
     
     //ボタンの種類を指定(ここがないとタッチできない)
     UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

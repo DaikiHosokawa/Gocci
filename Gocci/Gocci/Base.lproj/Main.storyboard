@@ -167,6 +167,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="メニュー" id="6tO-2Z-lNY"/>
+                    <connections>
+                        <outlet property="backgroundColor" destination="6tO-2Z-lNY" id="c8G-2d-XJt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgF-wu-cUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
