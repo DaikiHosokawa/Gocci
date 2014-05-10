@@ -59,12 +59,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Gocci." id="CMw-GA-8Go">
-                        <barButtonItem key="leftBarButtonItem" title="メニュー" id="qCw-60-h05">
+                        <barButtonItem key="leftBarButtonItem" title="menu" id="qCw-60-h05">
                             <connections>
                                 <segue destination="7bd-c3-F7f" kind="push" id="hhg-ms-zdw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="検索" id="x8r-pg-0JT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="x8r-pg-0JT">
                             <connections>
                                 <segue destination="2HP-Jr-PlJ" kind="push" id="yhH-et-SGU"/>
                             </connections>
@@ -134,7 +134,9 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="" id="1FF-15-D8g"/>
+                    <navigationItem key="navigationItem" prompt="" id="1FF-15-D8g">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="94U-Ph-GNA"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrb-Iy-dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

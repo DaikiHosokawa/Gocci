@@ -36,6 +36,11 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
+
 }
 
 - (void)didReceiveMemoryWarning

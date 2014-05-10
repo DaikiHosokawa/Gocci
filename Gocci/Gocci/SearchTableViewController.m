@@ -57,6 +57,11 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
+
 }
 
 //セルの透過処理
@@ -114,7 +119,7 @@
     NSString *subTitle = @"サブタイトル";
     /* 本当はここを動的に変更できるようにするといいと思う */
     
-    // 経度緯度設定
+    // 経度緯度設定(変数now_を使用)
     CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(now_latitude, now_longitude);
     
     // マップ生成
