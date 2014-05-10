@@ -46,7 +46,7 @@
     
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = searchBar;
-    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 0, 0);
     
     // 初期フォーカスを設定
     [searchBar becomeFirstResponder];
@@ -67,7 +67,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.7];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.65];
 }
 
 
@@ -125,7 +125,8 @@
     // マップ生成
     mapView = [[MKMapView alloc] init];
     mapView.delegate = self;
-    mapView.showsUserLocation = YES;  // ユーザの現在地を表示するように設定
+    // ユーザの現在地を表示するように設定
+    mapView.showsUserLocation = YES;
     [mapView setCenterCoordinate:locationCoordinate animated:NO];
     
     // CustomAnnotationクラスの初期化

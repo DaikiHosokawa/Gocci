@@ -10,6 +10,8 @@
 
 @interface RestaurantTableViewController ()
 
+- (IBAction)actionSocial:(UIBarButtonItem *)sender;
+
 @end
 
 @implementation RestaurantTableViewController
@@ -46,7 +48,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.7];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.65];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,6 +79,39 @@
     // Configure the cell...
     
     return cell;
+}
+
+
+//ソーシャルシェアボタンの実装
+- (IBAction)actionSocial:(UIBarButtonItem *)sender{
+    NSString *textObject = @"コメントを入力してください";
+    NSString *urlString = [NSString stringWithFormat:@""];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSArray *activityItems = [NSArray arrayWithObjects:textObject, url,  nil];
+    
+    //-- initialising the activity view controller
+    UIActivityViewController *avc = [[UIActivityViewController alloc]
+                                     initWithActivityItems:activityItems
+                                     applicationActivities:nil];
+    
+    
+    avc.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard ];
+    
+    
+    //-- define the activity view completion handler
+    avc.completionHandler = ^(NSString *activityType, BOOL completed){
+        if (completed) {
+            // NSLog(@"Selected activity was performed.");
+        } else {
+            if (activityType == NULL) {
+                //   NSLog(@"User dismissed the view controller without making a selection.");
+            } else {
+                //  NSLog(@"Activity was not performed.");
+            }
+        }
+    };
 }
 
 /*

@@ -23,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eNe-5a-Fw9" kind="push" id="10b-ET-HM2"/>
+                                    <segue destination="eNe-5a-Fw9" kind="push" id="1DA-UV-dLi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,7 +33,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1530" y="-1365"/>
+            <point key="canvasLocation" x="-1536" y="-1409"/>
         </scene>
         <!--Timeline Table View Controller - Gocci.-->
         <scene sceneID="PSw-dL-fah">
@@ -98,13 +98,19 @@
                             <outlet property="delegate" destination="Eno-oJ-MRz" id="MI2-HU-dKK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="BSc-n5-Fxn"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="BSc-n5-Fxn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="9Or-RE-oe6">
+                            <connections>
+                                <action selector="actionSocial:" destination="Eno-oJ-MRz" id="fMz-m4-sNU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3V-PD-C2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="-930"/>
+            <point key="canvasLocation" x="547" y="-946"/>
         </scene>
-        <!--Search Table View Controller-->
+        <!--Search Table View Controller - Gocci.-->
         <scene sceneID="LWD-fw-OLT">
             <objects>
                 <tableViewController id="2HP-Jr-PlJ" customClass="SearchTableViewController" sceneMemberID="viewController">
@@ -134,11 +140,20 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="" id="1FF-15-D8g">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="94U-Ph-GNA"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Gocci." id="HX7-Ga-t3w"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrb-Iy-dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="snb-IM-elg">
+                    <connections>
+                        <outlet property="delegate" destination="2HP-Jr-PlJ" id="hqJ-QQ-uua"/>
+                        <outlet property="searchContentsController" destination="2HP-Jr-PlJ" id="USD-Kc-Jnq"/>
+                        <outlet property="searchResultsDataSource" destination="2HP-Jr-PlJ" id="FEE-Fz-17F"/>
+                        <outlet property="searchResultsDelegate" destination="2HP-Jr-PlJ" id="cRO-65-TBn"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-448" y="-946"/>
         </scene>
@@ -201,7 +216,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-it-yzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="-1778"/>
+            <point key="canvasLocation" x="111" y="-1934"/>
+        </scene>
+        <!--Camaera View Controller-->
+        <scene sceneID="TVs-b9-W4X">
+            <objects>
+                <viewController id="3H1-41-IX9" customClass="CamaeraViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ErQ-xH-UIu"/>
+                        <viewControllerLayoutGuide type="bottom" id="xi9-5o-7oV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I29-my-nvG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wc3-ws-9bj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="-1675"/>
         </scene>
         <!--Restaurant Table View Controller - Gocci.-->
         <scene sceneID="ohC-at-e4x">
@@ -218,6 +252,18 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jld-kR-5Mx">
+                                            <rect key="frame" x="136" y="7" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="3H1-41-IX9" kind="push" id="BNM-JC-8xi"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="Eno-oJ-MRz" kind="push" id="N4y-bP-qQq"/>
@@ -229,7 +275,13 @@
                             <outlet property="delegate" destination="7Ul-L7-bNU" id="0Gy-aH-1oY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="xMf-ns-bYZ"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="xMf-ns-bYZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99">
+                            <connections>
+                                <action selector="actionSocial:" destination="7Ul-L7-bNU" id="vr4-RL-uEK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcc-dt-OWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,12 +296,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="jex-hu-iS6"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="wad-kk-zvv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzN-fj-amB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2070" y="-1387"/>
+            <point key="canvasLocation" x="-2090" y="-1409"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

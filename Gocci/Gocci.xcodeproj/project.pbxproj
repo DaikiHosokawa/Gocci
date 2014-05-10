@@ -12,6 +12,7 @@
 		FF15E560191E05F6007C34F7 /* LifelogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */; };
 		FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E562191E0731007C34F7 /* everyTableViewController.m */; };
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
+		FF15E56F191E78FC007C34F7 /* CamaeraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -54,6 +55,8 @@
 		FF15E562191E0731007C34F7 /* everyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewController.m; sourceTree = "<group>"; };
 		FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
+		FF15E56D191E78FC007C34F7 /* CamaeraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamaeraViewController.h; sourceTree = "<group>"; };
+		FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CamaeraViewController.m; sourceTree = "<group>"; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -165,6 +168,8 @@
 				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
 				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
+				FF15E56D191E78FC007C34F7 /* CamaeraViewController.h */,
+				FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */,
 				FF15E55C191E0221007C34F7 /* background.png */,
 			);
 			path = Gocci;
@@ -308,6 +313,7 @@
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
 				FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */,
+				FF15E56F191E78FC007C34F7 /* CamaeraViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FF15E55B191DF377007C34F7 /* MyNavigation.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
