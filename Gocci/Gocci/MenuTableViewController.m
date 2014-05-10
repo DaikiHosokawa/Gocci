@@ -33,6 +33,17 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //背景にイメージを追加したい
+    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+
+
+}
+
+//セルの透過処理
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,13 +57,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return 20;
 }
 
 //#define MenuTableViewCellIdentifier @"menuTableViewCell"

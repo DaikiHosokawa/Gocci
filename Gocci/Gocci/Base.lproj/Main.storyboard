@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Gocci.-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -29,13 +29,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mcq-RT-uiD"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="mcq-RT-uiD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1530" y="-1365"/>
         </scene>
-        <!--Table View Controller - タイムライン-->
+        <!--Table View Controller - Gocci.-->
         <scene sceneID="PSw-dL-fah">
             <objects>
                 <tableViewController id="eNe-5a-Fw9" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                             <outlet property="delegate" destination="eNe-5a-Fw9" id="V6v-oK-L5T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="タイムライン" id="CMw-GA-8Go">
+                    <navigationItem key="navigationItem" title="Gocci." id="CMw-GA-8Go">
                         <barButtonItem key="leftBarButtonItem" title="メニュー" id="qCw-60-h05">
                             <connections>
                                 <segue destination="7bd-c3-F7f" kind="push" id="hhg-ms-zdw"/>
@@ -75,16 +75,16 @@
             </objects>
             <point key="canvasLocation" x="-941" y="-1393"/>
         </scene>
-        <!--Table View Controller - 投稿ごとの画面-->
+        <!--Every Table View Controller - Gocci.-->
         <scene sceneID="ieA-e9-QAF">
             <objects>
-                <tableViewController id="Eno-oJ-MRz" sceneMemberID="viewController">
+                <tableViewController id="Eno-oJ-MRz" customClass="everyTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NVP-vG-N6u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Mj6-O2-0oB">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="everyTableViewCell" id="Mj6-O2-0oB">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mj6-O2-0oB" id="ZHj-PT-6Qp">
@@ -98,13 +98,13 @@
                             <outlet property="delegate" destination="Eno-oJ-MRz" id="MI2-HU-dKK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="投稿ごとの画面" id="BSc-n5-Fxn"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="BSc-n5-Fxn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3V-PD-C2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="345" y="-930"/>
         </scene>
-        <!--Search Table View Controller - 検索-->
+        <!--Search Table View Controller-->
         <scene sceneID="LWD-fw-OLT">
             <objects>
                 <tableViewController id="2HP-Jr-PlJ" customClass="SearchTableViewController" sceneMemberID="viewController">
@@ -134,13 +134,13 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="検索" id="1FF-15-D8g"/>
+                    <navigationItem key="navigationItem" prompt="" id="1FF-15-D8g"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qrb-Iy-dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-448" y="-946"/>
         </scene>
-        <!--Menu Table View Controller - メニュー-->
+        <!--Menu Table View Controller - Gocci.-->
         <scene sceneID="ApE-RA-pi2">
             <objects>
                 <tableViewController id="7bd-c3-F7f" customClass="MenuTableViewController" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                             <outlet property="delegate" destination="7bd-c3-F7f" id="vHX-bn-R8b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="メニュー" id="6tO-2Z-lNY"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="6tO-2Z-lNY"/>
                     <connections>
                         <outlet property="backgroundColor" destination="6tO-2Z-lNY" id="c8G-2d-XJt"/>
                     </connections>
@@ -175,16 +175,16 @@
             </objects>
             <point key="canvasLocation" x="-431" y="-1667"/>
         </scene>
-        <!--Table View Controller - ライフログ-->
+        <!--Lifelog Table View Controller - Gocci.-->
         <scene sceneID="XQe-p7-wpS">
             <objects>
-                <tableViewController id="16n-Tf-sWW" sceneMemberID="viewController">
+                <tableViewController id="16n-Tf-sWW" customClass="LifelogTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hG2-dE-MRk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cor-MV-1tY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LifelogTableViewCell" id="cor-MV-1tY">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cor-MV-1tY" id="eQ4-EC-A7U">
@@ -198,13 +198,13 @@
                             <outlet property="delegate" destination="16n-Tf-sWW" id="UMb-i8-VdZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ライフログ" id="Psg-jy-Iid"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="Psg-jy-Iid"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-it-yzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="51" y="-1778"/>
         </scene>
-        <!--Restaurant Table View Controller - 店舗画面-->
+        <!--Restaurant Table View Controller - Gocci.-->
         <scene sceneID="ohC-at-e4x">
             <objects>
                 <tableViewController id="7Ul-L7-bNU" customClass="RestaurantTableViewController" sceneMemberID="viewController">
@@ -230,7 +230,7 @@
                             <outlet property="delegate" destination="7Ul-L7-bNU" id="0Gy-aH-1oY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="店舗画面" id="xMf-ns-bYZ"/>
+                    <navigationItem key="navigationItem" title="Gocci." id="xMf-ns-bYZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcc-dt-OWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
