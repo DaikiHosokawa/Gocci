@@ -1,18 +1,18 @@
 //
-//  RestaurantTableViewController.m
+//  TimelineTableViewController.m
 //  Gocci
 //
-//  Created by Daiki Hosokawa on 2014/05/03.
+//  Created by Daiki Hosokawa on 2014/05/10.
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
-#import "RestaurantTableViewController.h"
+#import "TimelineTableViewController.h"
 
-@interface RestaurantTableViewController ()
+@interface TimelineTableViewController ()
 
 @end
 
-@implementation RestaurantTableViewController
+@implementation TimelineTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,16 +32,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-}
-
-//セルの透過処理
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.7];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,25 +44,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 20;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 20;
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.
