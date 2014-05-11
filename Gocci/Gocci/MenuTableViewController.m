@@ -10,6 +10,7 @@
 
 @interface MenuTableViewController ()
 
+
 @end
 
 @implementation MenuTableViewController
@@ -36,7 +37,6 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-
 
 }
 
@@ -77,6 +77,7 @@
     
     return cell;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
