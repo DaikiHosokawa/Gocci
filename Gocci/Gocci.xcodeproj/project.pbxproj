@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FF15E55B191DF377007C34F7 /* MyNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E55A191DF377007C34F7 /* MyNavigation.m */; };
-		FF15E55D191E0221007C34F7 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = FF15E55C191E0221007C34F7 /* background.png */; };
 		FF15E560191E05F6007C34F7 /* LifelogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */; };
 		FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E562191E0731007C34F7 /* everyTableViewController.m */; };
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
@@ -19,7 +18,6 @@
 		FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFEB19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54EFEF19149A1800025DC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFEE19149A1800025DC8 /* main.m */; };
 		FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF219149A1800025DC8 /* AppDelegate.m */; };
-		FF54EFF619149A1800025DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFF419149A1800025DC8 /* Main.storyboard */; };
 		FF54EFF919149A1800025DC8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF819149A1800025DC8 /* ViewController.m */; };
 		FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFFA19149A1800025DC8 /* Images.xcassets */; };
 		FF54F00219149A1800025DC8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54F00119149A1800025DC8 /* XCTest.framework */; };
@@ -48,7 +46,6 @@
 /* Begin PBXFileReference section */
 		FF15E559191DF377007C34F7 /* MyNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigation.h; sourceTree = "<group>"; };
 		FF15E55A191DF377007C34F7 /* MyNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigation.m; sourceTree = "<group>"; };
-		FF15E55C191E0221007C34F7 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = "../../../モック/検索画面/画像素材/background.png"; sourceTree = "<group>"; };
 		FF15E55E191E05F6007C34F7 /* LifelogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogTableViewController.h; sourceTree = "<group>"; };
 		FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogTableViewController.m; sourceTree = "<group>"; };
 		FF15E561191E0731007C34F7 /* everyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewController.h; sourceTree = "<group>"; };
@@ -170,7 +167,6 @@
 				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
 				FF15E56D191E78FC007C34F7 /* CamaeraViewController.h */,
 				FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */,
-				FF15E55C191E0221007C34F7 /* background.png */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -285,9 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
-				FF15E55D191E0221007C34F7 /* background.png in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
-				FF54EFF619149A1800025DC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +439,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
 				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -458,6 +453,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
 				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
