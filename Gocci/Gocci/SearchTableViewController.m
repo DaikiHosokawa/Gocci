@@ -39,14 +39,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.tintColor = [UIColor darkGrayColor];
+    searchBar.tintColor = [UIColor blackColor];
     searchBar.placeholder = @"キーワードを入力して下さい";
     searchBar.keyboardType = UIKeyboardTypeDefault;
     searchBar.delegate = self;
+    searchBar.showsSearchResultsButton = YES;
+    searchBar.searchBarStyle = UISearchBarStyleProminent;
     
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = searchBar;
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 0, 0);
+    [self.view addSubview: searchBar];
     
     // 初期フォーカスを設定
     [searchBar becomeFirstResponder];
@@ -108,6 +111,7 @@
 }
 
 
+
 - (void) mapCreate
 {
     /* 本当はここを動的に変更できるようにするといいと思う */
@@ -125,11 +129,12 @@
     // マップ生成
     mapView = [[MKMapView alloc] init];
     mapView.delegate = self;
+    
     // ユーザの現在地を表示するように設定
     mapView.showsUserLocation = YES;
     [mapView setCenterCoordinate:locationCoordinate animated:NO];
     
-    // CustomAnnotationクラスの初期化
+    //CustomAnnotationクラスの初期化
     CustomAnnotation *customAnnotation = [[CustomAnnotation alloc] initWithCoordinates:locationCoordinate newTitle:title newSubTitle:subTitle];
     
     // annotationをマップに追加
@@ -137,7 +142,14 @@
     
     // マップを表示
     [self.view addSubview:self.mapView];
+
+    // 円形オーバーレイ
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(35.703056, 139.58);
+    MKCircle *circleOverlay = [MKCircle circleWithCenterCoordinate:location radius:100];
+    
+    [mapView addOverlays:[NSArray arrayWithObjects: circleOverlay, nil]];
 }
+
 
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation

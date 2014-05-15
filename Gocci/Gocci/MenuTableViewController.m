@@ -10,6 +10,7 @@
 
 @interface MenuTableViewController ()
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *movie;
 
 @end
 
@@ -37,7 +38,23 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-
+    
+    //URLを指定してNSURLオブジェクトを生成
+    NSString *str = @"http://www.wings.msn.to/image/wings.jpg";
+    NSURL *url = [NSURL URLWithString:str];
+    
+    //HTTPリクエストオブジェクトを生成
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //HTTP同期通信を実行
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    //取得したデータ
+    if (data) {
+        
+            }
 }
 
 //セルの透過処理

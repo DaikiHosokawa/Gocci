@@ -83,35 +83,25 @@
 
 //ソーシャルシェアボタンの実装
 - (IBAction)actionSocial:(UIBarButtonItem *)sender{
+    //送信する内容
     NSString *textObject = @"コメントを入力してください";
     NSString *urlString = [NSString stringWithFormat:@""];
-    
     NSURL *url = [NSURL URLWithString:urlString];
-    
     NSArray *activityItems = [NSArray arrayWithObjects:textObject, url,  nil];
     
-    //-- initialising the activity view controller
+    //初期化
     UIActivityViewController *avc = [[UIActivityViewController alloc]
                                      initWithActivityItems:activityItems
                                      applicationActivities:nil];
     
     
-    avc.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard ];
+    //除外するアクティビティタイプ
+    NSArray *excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll ];
+    avc.excludedActivityTypes  = excludedActivityTypes;
     
     
-    //-- define the activity view completion handler
-    avc.completionHandler = ^(NSString *activityType, BOOL completed){
-        if (completed) {
-            // NSLog(@"Selected activity was performed.");
-        } else {
-            if (activityType == NULL) {
-                //   NSLog(@"User dismissed the view controller without making a selection.");
-            } else {
-                //  NSLog(@"Activity was not performed.");
-            }
-        }
-    };
-}
+    //UIActivityViewControllerを表示
+    [self presentViewController:avc animated:YES completion:nil];}
 
 
 /*
