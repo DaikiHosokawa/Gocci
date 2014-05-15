@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Gocci.-->
+        <!--View Controller - スプラッシュ-->
         <scene sceneID="Dyv-9Z-Gfk">
             <objects>
                 <viewController id="FXD-YY-YhB" sceneMemberID="viewController">
@@ -22,20 +22,20 @@
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="s2J-hg-79Q" kind="push" id="JIa-je-G2v"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gocci." id="Hh6-Wb-AFG"/>
+                    <navigationItem key="navigationItem" title="スプラッシュ" id="Hh6-Wb-AFG"/>
+                    <connections>
+                        <segue destination="s2J-hg-79Q" kind="push" id="mZT-da-1dg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zr9-3C-eAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1973" y="-1451"/>
+            <point key="canvasLocation" x="-2029" y="-1465"/>
         </scene>
-        <!--Login View Controller - Gocci-->
+        <!--Login View Controller - ログイン画面-->
         <scene sceneID="saE-e0-xWL">
             <objects>
                 <viewController id="s2J-hg-79Q" customClass="LoginViewController" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-xN-p7a">
-                                <rect key="frame" x="79" y="395" width="68" height="30"/>
+                                <rect key="frame" x="75" y="395" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-1K-Plj">
-                                <rect key="frame" x="202" y="395" width="43" height="30"/>
+                                <rect key="frame" x="194" y="395" width="43" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,13 +72,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gocci" id="yJ1-Q1-Lso"/>
+                    <navigationItem key="navigationItem" title="ログイン画面" id="yJ1-Q1-Lso"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usY-yu-mea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1469" y="-1443"/>
+            <point key="canvasLocation" x="-1481" y="-1451"/>
         </scene>
-        <!--Timeline Table View Controller - Gocci.-->
+        <!--Timeline Table View Controller - タイムライン-->
         <scene sceneID="PSw-dL-fah">
             <objects>
                 <tableViewController id="eNe-5a-Fw9" customClass="TimelineTableViewController" sceneMemberID="viewController">
@@ -101,7 +101,7 @@
                             <outlet property="delegate" destination="eNe-5a-Fw9" id="V6v-oK-L5T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="CMw-GA-8Go">
+                    <navigationItem key="navigationItem" title="タイムライン" id="CMw-GA-8Go">
                         <barButtonItem key="leftBarButtonItem" title="menu" id="qCw-60-h05">
                             <connections>
                                 <segue destination="7bd-c3-F7f" kind="push" id="hhg-ms-zdw"/>
@@ -116,44 +116,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gua-Dq-9Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-931" y="-1437"/>
+            <point key="canvasLocation" x="-919" y="-1437"/>
         </scene>
-        <!--Every Table View Controller - Gocci.-->
-        <scene sceneID="ieA-e9-QAF">
-            <objects>
-                <tableViewController id="Eno-oJ-MRz" customClass="everyTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NVP-vG-N6u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="everyTableViewCell" id="Mj6-O2-0oB">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mj6-O2-0oB" id="ZHj-PT-6Qp">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Eno-oJ-MRz" id="HTS-gS-a7m"/>
-                            <outlet property="delegate" destination="Eno-oJ-MRz" id="MI2-HU-dKK"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="BSc-n5-Fxn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="9Or-RE-oe6">
-                            <connections>
-                                <action selector="actionSocial:" destination="Eno-oJ-MRz" id="fMz-m4-sNU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i3V-PD-C2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="547" y="-946"/>
-        </scene>
-        <!--Search Table View Controller - Gocci.-->
+        <!--Search Table View Controller - 検索-->
         <scene sceneID="LWD-fw-OLT">
             <objects>
                 <tableViewController id="2HP-Jr-PlJ" customClass="SearchTableViewController" sceneMemberID="viewController">
@@ -183,7 +148,7 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="HX7-Ga-t3w"/>
+                    <navigationItem key="navigationItem" title="検索" id="HX7-Ga-t3w"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
                     </connections>
@@ -200,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="-448" y="-946"/>
         </scene>
-        <!--Menu Table View Controller - Gocci.-->
+        <!--Menu Table View Controller - メニュー-->
         <scene sceneID="ApE-RA-pi2">
             <objects>
                 <tableViewController id="7bd-c3-F7f" customClass="MenuTableViewController" sceneMemberID="viewController">
@@ -226,13 +191,13 @@
                             <outlet property="delegate" destination="7bd-c3-F7f" id="vHX-bn-R8b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="6tO-2Z-lNY"/>
+                    <navigationItem key="navigationItem" title="メニュー" id="6tO-2Z-lNY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgF-wu-cUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-431" y="-1667"/>
+            <point key="canvasLocation" x="-387" y="-1737"/>
         </scene>
-        <!--Lifelog Table View Controller - Gocci.-->
+        <!--Lifelog Table View Controller - ライフログ-->
         <scene sceneID="XQe-p7-wpS">
             <objects>
                 <tableViewController id="16n-Tf-sWW" customClass="LifelogTableViewController" sceneMemberID="viewController">
@@ -255,16 +220,16 @@
                             <outlet property="delegate" destination="16n-Tf-sWW" id="UMb-i8-VdZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="Psg-jy-Iid"/>
+                    <navigationItem key="navigationItem" title="ライフログ" id="Psg-jy-Iid"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-it-yzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111" y="-1934"/>
+            <point key="canvasLocation" x="105" y="-1750"/>
         </scene>
-        <!--Camaera View Controller-->
+        <!--Submit View Controller - SNS投稿-->
         <scene sceneID="TVs-b9-W4X">
             <objects>
-                <viewController id="3H1-41-IX9" customClass="CamaeraViewController" sceneMemberID="viewController">
+                <viewController id="3H1-41-IX9" customClass="submitViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ErQ-xH-UIu"/>
                         <viewControllerLayoutGuide type="bottom" id="xi9-5o-7oV"/>
@@ -272,44 +237,60 @@
                     <view key="view" contentMode="scaleToFill" id="I29-my-nvG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-0Y-csX">
+                                <rect key="frame" x="106" y="427" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="facebookで共有">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postFacebook:" destination="3H1-41-IX9" eventType="touchUpInside" id="alg-zL-FqT"/>
+                                    <action selector="submitFacebook:" destination="3H1-41-IX9" eventType="touchUpInside" id="Yh0-SH-HJF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPl-oK-SoY">
+                                <rect key="frame" x="116" y="473" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="twitterで共有">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postTwitter:" destination="3H1-41-IX9" eventType="touchUpInside" id="f4A-fy-tjd"/>
+                                    <action selector="submitTwitter:" destination="3H1-41-IX9" eventType="touchUpInside" id="yC4-9w-fK0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wc3-ws-9bj"/>
+                    <navigationItem key="navigationItem" title="SNS投稿" id="wc3-ws-9bj"/>
+                    <connections>
+                        <outlet property="_facebookBtn" destination="8fM-0Y-csX" id="Oez-sR-v69"/>
+                        <outlet property="_twitterBtn" destination="ZPl-oK-SoY" id="WoQ-Xw-TmG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="-1675"/>
+            <point key="canvasLocation" x="1009" y="-946"/>
         </scene>
-        <!--Restaurant Table View Controller - Gocci.-->
+        <!--Restaurant Table View Controller - 店舗-->
         <scene sceneID="ohC-at-e4x">
             <objects>
                 <tableViewController id="7Ul-L7-bNU" customClass="RestaurantTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9d0-cW-eFL">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="22" sectionFooterHeight="22" id="9d0-cW-eFL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="restaurantTableViewCell" id="Gl6-iD-fGT">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="restaurantTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="restaurantTableViewCell" rowHeight="46" id="Gl6-iD-fGT">
+                                <rect key="frame" x="0.0" y="86" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jld-kR-5Mx">
-                                            <rect key="frame" x="84" y="7" width="143" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="カメラボタン(テスト)">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="3H1-41-IX9" kind="push" id="BNM-JC-8xi"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Eno-oJ-MRz" kind="push" id="N4y-bP-qQq"/>
+                                    <segue destination="Pt3-mZ-dDb" kind="push" id="bDu-sS-h27"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -318,32 +299,74 @@
                             <outlet property="delegate" destination="7Ul-L7-bNU" id="0Gy-aH-1oY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gocci." id="xMf-ns-bYZ">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="店舗" id="xMf-ns-bYZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99">
                             <connections>
                                 <action selector="actionSocial:" destination="7Ul-L7-bNU" id="vr4-RL-uEK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcc-dt-OWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="-946"/>
+            <point key="canvasLocation" x="57" y="-946"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vEU-Ru-6VC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rzN-fj-amB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="lPN-FR-v9J" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QPE-cU-1c4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="FXD-YY-YhB" kind="relationship" relationship="rootViewController" id="IV0-Zv-b1t"/>
+                        <segue destination="FXD-YY-YhB" kind="relationship" relationship="rootViewController" id="LOd-Gv-oP6"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzN-fj-amB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2738" y="-1451"/>
+            <point key="canvasLocation" x="-2562" y="-1465"/>
+        </scene>
+        <!--Every Table View Controller - 投稿ごと-->
+        <scene sceneID="1xX-vo-VZ6">
+            <objects>
+                <tableViewController id="Pt3-mZ-dDb" customClass="everyTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="22" sectionFooterHeight="22" id="4QO-Iu-On3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="everyTableViewCell" rowHeight="46" id="m96-gN-BSX">
+                                <rect key="frame" x="0.0" y="86" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3H1-41-IX9" kind="push" id="taF-3O-zPF"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Pt3-mZ-dDb" id="Re7-pj-onn"/>
+                            <outlet property="delegate" destination="Pt3-mZ-dDb" id="RMb-t8-rwl"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="投稿ごと" id="cal-vI-YT3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="nyT-l9-JhM">
+                            <connections>
+                                <action selector="actionSocial:" destination="Pt3-mZ-dDb" id="RgL-S4-ceQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXB-YT-ZEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="-946"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

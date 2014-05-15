@@ -83,7 +83,7 @@
                 // リクエスト送信
                 [request performRequestWithHandler:
                  ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                     NSLog(@"status code : %d", [urlResponse statusCode]);
+                     NSLog(@"status code : %ld", (long)[urlResponse statusCode]);
                  }];
             }
         }

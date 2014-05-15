@@ -26,11 +26,12 @@
 		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
 		FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
-		FF54F01F1914B41500025DC8 /* restaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */; };
+		FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
 		FF8D84F819194F8B00939312 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
 		FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D8500191955F700939312 /* CustomAnnotation.m */; };
 		FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C432192470AE0025DD6A /* LoginViewController.m */; };
+		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,14 +76,16 @@
 		FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
-		FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = restaurantTableViewController.h; sourceTree = "<group>"; };
-		FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = restaurantTableViewController.m; sourceTree = "<group>"; };
+		FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FF8D84FF191955F700939312 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		FF8D8500191955F700939312 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		FF97C431192470AE0025DD6A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FF97C432192470AE0025DD6A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FF97C43419247FD20025DD6A /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
+		FF97C43519247FD20025DD6A /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				FF54EFF119149A1800025DC8 /* AppDelegate.h */,
 				FF54EFF219149A1800025DC8 /* AppDelegate.m */,
 				FF54EFF419149A1800025DC8 /* Main.storyboard */,
+				FF97C43419247FD20025DD6A /* submitViewController.h */,
+				FF97C43519247FD20025DD6A /* submitViewController.m */,
 				FF54EFF719149A1800025DC8 /* ViewController.h */,
 				FF54EFF819149A1800025DC8 /* ViewController.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
@@ -157,8 +162,8 @@
 				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
-				FF54F01D1914B41500025DC8 /* restaurantTableViewController.h */,
-				FF54F01E1914B41500025DC8 /* restaurantTableViewController.m */,
+				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
+				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
 				FF15E55E191E05F6007C34F7 /* LifelogTableViewController.h */,
@@ -300,7 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF54F01F1914B41500025DC8 /* restaurantTableViewController.m in Sources */,
+				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
+				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,

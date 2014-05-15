@@ -87,7 +87,7 @@
     
     if ([videoConnection isVideoOrientationSupported]) {
         [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
-        NSLog(@"orientation:%d", [[UIDevice currentDevice] orientation]);
+        NSLog(@"orientation:%ld", [[UIDevice currentDevice] orientation]);
     } else {
         NSLog(@"オリエンテーションできません");
     }
@@ -150,8 +150,7 @@
         NSLog(@"recording");
         if( writer.status != AVAssetWriterStatusWriting  ) {
             [writer startWriting];
-            
-            //----- 解説-3 -----
+           
             [writer startSessionAtSourceTime:kCMTimeZero];
         }
         
@@ -162,8 +161,7 @@
             CFRelease(sampleBuffer);
             CFRelease(newSampleBuffer);
         }
-        
-        //----- 解説-4 -----
+       
         writeFrames++;
         
     } else {
@@ -198,7 +196,7 @@
     }
 }
 
-//----- 解説-5 -----
+
 - (CMSampleBufferRef)offsetTimmingWithSampleBufferForVideo:(CMSampleBufferRef)sampleBuffer
 {
     CMSampleBufferRef newSampleBuffer;

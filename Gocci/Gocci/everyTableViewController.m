@@ -80,7 +80,6 @@
     
     return cell;
 }
-
 //ソーシャルシェアボタンの実装
 - (IBAction)actionSocial:(UIBarButtonItem *)sender{
     //送信する内容
