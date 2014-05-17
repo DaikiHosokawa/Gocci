@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="x1a-eI-W4a">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -19,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-2418" y="-1479"/>
         </scene>
-        <!--View Controller - スタート画面-->
+        <!--View Controller - Start-->
         <scene sceneID="Dyv-9Z-Gfk">
             <objects>
                 <viewController id="FXD-YY-YhB" sceneMemberID="viewController">
@@ -44,13 +45,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="スタート画面" id="Hh6-Wb-AFG"/>
+                    <navigationItem key="navigationItem" title="Start" id="Hh6-Wb-AFG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zr9-3C-eAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1899" y="-1463"/>
         </scene>
-        <!--Login View Controller - ログイン画面-->
+        <!--Login View Controller - Login-->
         <scene sceneID="saE-e0-xWL">
             <objects>
                 <viewController id="s2J-hg-79Q" customClass="LoginViewController" sceneMemberID="viewController">
@@ -87,13 +88,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ログイン画面" id="yJ1-Q1-Lso"/>
+                    <navigationItem key="navigationItem" title="Login" id="yJ1-Q1-Lso"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usY-yu-mea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1481" y="-1451"/>
         </scene>
-        <!--Timeline Table View Controller - タイムライン-->
+        <!--Timeline Table View Controller - Timeline-->
         <scene sceneID="PSw-dL-fah">
             <objects>
                 <tableViewController id="eNe-5a-Fw9" customClass="TimelineTableViewController" sceneMemberID="viewController">
@@ -116,7 +117,7 @@
                             <outlet property="delegate" destination="eNe-5a-Fw9" id="V6v-oK-L5T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="タイムライン" id="CMw-GA-8Go">
+                    <navigationItem key="navigationItem" title="Timeline" id="CMw-GA-8Go">
                         <barButtonItem key="leftBarButtonItem" title="menu" id="qCw-60-h05">
                             <connections>
                                 <segue destination="7bd-c3-F7f" kind="push" id="hhg-ms-zdw"/>
@@ -133,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="-919" y="-1437"/>
         </scene>
-        <!--Search Table View Controller - 検索-->
+        <!--Search Table View Controller - Search-->
         <scene sceneID="LWD-fw-OLT">
             <objects>
                 <tableViewController id="2HP-Jr-PlJ" customClass="SearchTableViewController" sceneMemberID="viewController">
@@ -163,7 +164,7 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="検索" id="HX7-Ga-t3w"/>
+                    <navigationItem key="navigationItem" title="Search" id="HX7-Ga-t3w"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
                     </connections>
@@ -180,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="-448" y="-946"/>
         </scene>
-        <!--Menu Table View Controller - メニュー-->
+        <!--Menu Table View Controller - Menu-->
         <scene sceneID="ApE-RA-pi2">
             <objects>
                 <tableViewController id="7bd-c3-F7f" customClass="MenuTableViewController" sceneMemberID="viewController">
@@ -206,13 +207,13 @@
                             <outlet property="delegate" destination="7bd-c3-F7f" id="vHX-bn-R8b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="メニュー" id="6tO-2Z-lNY"/>
+                    <navigationItem key="navigationItem" title="Menu" id="6tO-2Z-lNY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgF-wu-cUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-387" y="-1737"/>
         </scene>
-        <!--Lifelog Table View Controller - ライフログ-->
+        <!--Lifelog Table View Controller - Lifelog-->
         <scene sceneID="XQe-p7-wpS">
             <objects>
                 <tableViewController id="16n-Tf-sWW" customClass="LifelogTableViewController" sceneMemberID="viewController">
@@ -235,13 +236,13 @@
                             <outlet property="delegate" destination="16n-Tf-sWW" id="UMb-i8-VdZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ライフログ" id="Psg-jy-Iid"/>
+                    <navigationItem key="navigationItem" title="Lifelog" id="Psg-jy-Iid"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-it-yzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="105" y="-1750"/>
         </scene>
-        <!--Submit View Controller - SNS投稿-->
+        <!--Submit View Controller - SNS-Submit-->
         <scene sceneID="TVs-b9-W4X">
             <objects>
                 <viewController id="3H1-41-IX9" customClass="submitViewController" sceneMemberID="viewController">
@@ -276,7 +277,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SNS投稿" id="wc3-ws-9bj"/>
+                    <navigationItem key="navigationItem" title="SNS-Submit" id="wc3-ws-9bj"/>
                     <connections>
                         <outlet property="_facebookBtn" destination="8fM-0Y-csX" id="Oez-sR-v69"/>
                         <outlet property="_twitterBtn" destination="ZPl-oK-SoY" id="WoQ-Xw-TmG"/>
@@ -286,7 +287,7 @@
             </objects>
             <point key="canvasLocation" x="1009" y="-946"/>
         </scene>
-        <!--Restaurant Table View Controller - 店舗-->
+        <!--Restaurant Table View Controller - Restaurant-->
         <scene sceneID="ohC-at-e4x">
             <objects>
                 <tableViewController id="7Ul-L7-bNU" customClass="RestaurantTableViewController" sceneMemberID="viewController">
@@ -313,7 +314,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="店舗" id="xMf-ns-bYZ">
+                    <navigationItem key="navigationItem" title="Restaurant" id="xMf-ns-bYZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99">
                             <connections>
                                 <action selector="actionSocial:" destination="7Ul-L7-bNU" id="vr4-RL-uEK"/>
@@ -325,7 +326,7 @@
             </objects>
             <point key="canvasLocation" x="57" y="-946"/>
         </scene>
-        <!--Every Table View Controller - 投稿ごと-->
+        <!--Every Table View Controller - Every-->
         <scene sceneID="1xX-vo-VZ6">
             <objects>
                 <tableViewController id="Pt3-mZ-dDb" customClass="everyTableViewController" sceneMemberID="viewController">
@@ -352,7 +353,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="投稿ごと" id="cal-vI-YT3">
+                    <navigationItem key="navigationItem" title="Every" id="cal-vI-YT3">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="nyT-l9-JhM">
                             <connections>
                                 <action selector="actionSocial:" destination="Pt3-mZ-dDb" id="RgL-S4-ceQ"/>
