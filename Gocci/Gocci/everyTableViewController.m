@@ -54,7 +54,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.65];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.4];
 }
 
 
@@ -72,6 +72,7 @@
     return 20;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"everyTableViewCell" forIndexPath:indexPath];
@@ -80,6 +81,9 @@
     
     return cell;
 }
+
+
+
 //ソーシャルシェアボタンの実装
 - (IBAction)actionSocial:(UIBarButtonItem *)sender{
     //送信する内容
@@ -100,7 +104,8 @@
     
     
     //UIActivityViewControllerを表示
-    [self presentViewController:avc animated:YES completion:nil];}
+    [self presentViewController:avc
+    animated:YES completion:nil];}
 
 
 /*

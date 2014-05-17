@@ -17,6 +17,4 @@ IBOutlet UIButton *_twitterBtn;
 IBOutlet UIButton *_facebookBtn;
 }
 
-- (IBAction)postTwitter:(id)sender;
-- (IBAction)postFacebook:(id)sender;
 @end

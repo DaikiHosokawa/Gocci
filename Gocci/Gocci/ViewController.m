@@ -20,7 +20,6 @@
 {
     [super viewDidLoad];
    NSLog(@"%@", @"ログです");
-   
 }
 
 - (void)didReceiveMemoryWarning

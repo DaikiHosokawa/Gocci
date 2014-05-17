@@ -49,11 +49,11 @@
 }
 */
 
-- (IBAction)postTwitter:(id)sender {
+- (IBAction)submitTwitter:(UIButton*)sender {
         [self postMedia:SLServiceTypeTwitter];
     }
 
-- (IBAction)postFacebook:(id)sender {
+- (IBAction)submitFacebook:(UIButton *)sender {
         [self postMedia:SLServiceTypeFacebook];
     }
     
