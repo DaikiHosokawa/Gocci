@@ -46,6 +46,7 @@
     [previewLayer addSublayer:captureVideoPreviewLayer];
 }
 
+
 - (void)makeSession
 {
     session = [[AVCaptureSession alloc] init];
@@ -85,12 +86,6 @@
         }
     }
     
-    if ([videoConnection isVideoOrientationSupported]) {
-        [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
-        NSLog(@"orientation:%ld", [[UIDevice currentDevice] orientation]);
-    } else {
-        NSLog(@"オリエンテーションできません");
-    }
     
     [session startRunning];
 }
@@ -135,7 +130,6 @@
 }
 
 
-//----- 解説-2 -----
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     if ((isPause) && (isRecording)) { return; }

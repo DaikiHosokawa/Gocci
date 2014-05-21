@@ -4,25 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Gocci 2.xcscheme</key>
+		<key>test.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Gocci.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>FF54EFDE19149A1800025DC8</key>
+		<key>FFB17AF2192A25930020A430</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF54EFFF19149A1800025DC8</key>
+		<key>FFB17B13192A25940020A430</key>
 		<dict>
 			<key>primary</key>
 			<true/>
