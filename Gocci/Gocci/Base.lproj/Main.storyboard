@@ -13,43 +13,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="FXD-YY-YhB" kind="relationship" relationship="rootViewController" id="kXA-KZ-zCG"/>
+                        <segue destination="s2J-hg-79Q" kind="relationship" relationship="rootViewController" id="Kz1-Fw-x6V"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Km3-RH-rdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2418" y="-1479"/>
-        </scene>
-        <!--View Controller - Start-->
-        <scene sceneID="Dyv-9Z-Gfk">
-            <objects>
-                <viewController id="FXD-YY-YhB" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a7G-1S-RIk"/>
-                        <viewControllerLayoutGuide type="bottom" id="31E-fk-dMr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fa0-9w-hb8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-zP-uPm">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="s2J-hg-79Q" kind="push" id="mfc-XR-Tu5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Start" id="Hh6-Wb-AFG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zr9-3C-eAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1899" y="-1463"/>
         </scene>
         <!--Login View Controller - Login-->
         <scene sceneID="saE-e0-xWL">
@@ -103,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usY-yu-mea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1467" y="-1485"/>
+            <point key="canvasLocation" x="-1703" y="-1485"/>
         </scene>
         <!--Timeline Table View Controller - Timeline-->
         <scene sceneID="PSw-dL-fah">

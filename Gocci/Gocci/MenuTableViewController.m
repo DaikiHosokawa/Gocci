@@ -10,7 +10,6 @@
 
 @interface MenuTableViewController ()
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *movie;
 
 @end
 
@@ -29,32 +28,10 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //背景にイメージを追加したい
+    //背景にイメージを追加する
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    
-    //URLを指定してNSURLオブジェクトを生成
-    NSString *str = @"http://www.wings.msn.to/image/wings.jpg";
-    NSURL *url = [NSURL URLWithString:str];
-    
-    //HTTPリクエストオブジェクトを生成
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    //HTTP同期通信を実行
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    //取得したデータ
-    if (data) {
-        
-            }
+
 }
 
 //セルの透過処理
@@ -67,7 +44,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -84,7 +60,7 @@
     return 20;
 }
 
-//#define MenuTableViewCellIdentifier @"menuTableViewCell"
+//@"menuTableViewCell"を定義する
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -95,15 +71,6 @@
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 /*
 // Override to support editing the table view.
