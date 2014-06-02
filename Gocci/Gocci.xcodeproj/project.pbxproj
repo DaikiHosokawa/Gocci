@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0BE406193C3FC0001A0053 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE405193C3FC0001A0053 /* TimelineCell.xib */; };
+		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
+		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
 		FF15E560191E05F6007C34F7 /* LifelogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */; };
 		FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E562191E0731007C34F7 /* everyTableViewController.m */; };
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
-		FF15E56F191E78FC007C34F7 /* CamaeraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -47,14 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF0BE405193C3FC0001A0053 /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
+		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
+		FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
+		FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleTableViewCell.xib; sourceTree = "<group>"; };
 		FF15E55E191E05F6007C34F7 /* LifelogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogTableViewController.h; sourceTree = "<group>"; };
 		FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogTableViewController.m; sourceTree = "<group>"; };
 		FF15E561191E0731007C34F7 /* everyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewController.h; sourceTree = "<group>"; };
 		FF15E562191E0731007C34F7 /* everyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewController.m; sourceTree = "<group>"; };
 		FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
-		FF15E56D191E78FC007C34F7 /* CamaeraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamaeraViewController.h; sourceTree = "<group>"; };
-		FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CamaeraViewController.m; sourceTree = "<group>"; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +170,9 @@
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
+				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
+				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
+				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
 				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
 				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
@@ -176,8 +183,7 @@
 				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
 				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
-				FF15E56D191E78FC007C34F7 /* CamaeraViewController.h */,
-				FF15E56E191E78FC007C34F7 /* CamaeraViewController.m */,
+				FF0BE405193C3FC0001A0053 /* TimelineCell.xib */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -293,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFCB3335192722F30096C38A /* Main.storyboard in Resources */,
+				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */,
+				FF0BE406193C3FC0001A0053 /* TimelineCell.xib in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 			);
@@ -318,11 +326,11 @@
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
+				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
 				FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */,
-				FF15E56F191E78FC007C34F7 /* CamaeraViewController.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,

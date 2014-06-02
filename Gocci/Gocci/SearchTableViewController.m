@@ -8,6 +8,7 @@
 
 #import "SearchTableViewController.h"
 #import "CustomAnnotation.h"
+#import "SampleTableViewCell.h"
 
 @interface SearchTableViewController ()<UISearchBarDelegate,MKMapViewDelegate>
 
@@ -31,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+    UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -67,10 +71,15 @@
 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
+}
+
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
 }
 
 
@@ -102,14 +111,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
+    SampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        //さらにcellのinitでLoadNibしxibを指定する必要がある
+        cell = [[SampleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+    reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
-    
     return cell;
+    
 }
-
-
 
 - (void) mapCreate
 {
