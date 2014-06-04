@@ -7,10 +7,12 @@
 //
 
 #import "SearchTableViewController.h"
-#import "CustomAnnotation.h"
-#import "SampleTableViewCell.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface SearchTableViewController ()<UISearchBarDelegate,MKMapViewDelegate>
+
+@interface SearchTableViewController ()<UISearchBarDelegate,MKMapViewDelegate>{
+    GMSMapView *mapView_;
+}
 
 @property (nonatomic, retain) MKMapView *mapView;
 
@@ -18,7 +20,20 @@
 
 @implementation SearchTableViewController
 
-@synthesize mapView;
+- (void)loadView {
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.658599
+                                                            longitude:139.745443
+                                                                 zoom:15];
+    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_.myLocationEnabled = YES;
+    self.view = mapView_;
+    
+    GMSMarkerOptions *options = [[GMSMarkerOptions alloc] init];
+    options.position = CLLocationCoordinate2DMake(35.658599, 139.745443);
+    options.title = @"東京タワー";
+    options.snippet = @"Tokyo Tower";
+    [mapView_ addMarkerWithOptions:options];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,12 +44,19 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
    
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,11 +77,6 @@
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 0, 0);
     [self.view addSubview: searchBar];
     
-    // 初期フォーカスを設定
-    [searchBar becomeFirstResponder];
-
-
-     [self mapCreate];
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
@@ -75,6 +92,8 @@
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80.0;
 }
+
+
 
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,15 +128,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 20;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (SampleTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    SampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell" forIndexPath:indexPath];
     
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある
         cell = [[SampleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-    reuseIdentifier:CellIdentifier];
+    reuseIdentifier:@"searchTableViewCell"];
     }
     
     // Configure the cell...
@@ -125,68 +144,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void) mapCreate
-{
-    /* 本当はここを動的に変更できるようにするといいと思う */
-    // 緯度経度
-    float now_latitude = 35.7100721; // 経度　※本番はここを変数にするか
-    float now_longitude = 139.809471; // 緯度　※本番はここを変数にするか
-    // タイトル/サブタイトル
-    NSString *title = @"タイトル";
-    NSString *subTitle = @"サブタイトル";
-    /* 本当はここを動的に変更できるようにするといいと思う */
-    
-    // 経度緯度設定(変数now_を使用)
-    CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(now_latitude, now_longitude);
-    
-    // マップ生成
-    mapView = [[MKMapView alloc] init];
-    mapView.delegate = self;
-    
-    // ユーザの現在地を表示するように設定
-    mapView.showsUserLocation = YES;
-    [mapView setCenterCoordinate:locationCoordinate animated:NO];
-    
-    //CustomAnnotationクラスの初期化
-    CustomAnnotation *customAnnotation = [[CustomAnnotation alloc] initWithCoordinates:locationCoordinate newTitle:title newSubTitle:subTitle];
-    
-    // annotationをマップに追加
-    [mapView addAnnotation:customAnnotation];
-    
-    // マップを表示
-    [self.view addSubview:self.mapView];
-
-    // 円形オーバーレイ
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(35.703056, 139.58);
-    MKCircle *circleOverlay = [MKCircle circleWithCenterCoordinate:location radius:100];
-    
-    [mapView addOverlays:[NSArray arrayWithObjects: circleOverlay, nil]];
-}
 
 
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
-    MKAnnotationView *annotationView;
-    
-    // 再利用可能なannotationがあるかどうかを判断するための識別子を定義
-    NSString *identifier = @"Pin";
-    
-    // "Pin"という識別子のついたannotationを使いまわせるかチェック
-    annotationView = (MKAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-    
-    // 使い回しができるannotationがない場合、annotationの初期化
-    if(annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-    }
-    
-    
-    //ボタンの種類を指定(ここがないとタッチできない)
-    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    annotationView.rightCalloutAccessoryView = detailButton;
-    
-    return annotationView;
-}
 
 
 @end

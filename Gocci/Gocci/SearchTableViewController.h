@@ -7,6 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SampleTableViewCell.h"
+#import "CustomAnnotation.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchTableViewController : UITableViewController
+@interface SearchTableViewController : UITableViewController<CLLocationManagerDelegate>
+
+
+
 @end
+
+
+
+

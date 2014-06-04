@@ -26,6 +26,14 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

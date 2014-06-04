@@ -30,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,8 +51,36 @@
 */
 
 - (IBAction)pushFacebook:(UIButton *)sender {
-    
-}
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+        ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"673123156062598", ACFacebookAppIdKey,
+                                 [NSArray arrayWithObjects:@"public_actions", @"publish_stream", @"offline_access", nil], ACFacebookPermissionsKey,
+                                 ACFacebookAudienceOnlyMe, ACFacebookAudienceKey,
+                                 nil];
+        [accountStore
+         requestAccessToAccountsWithType:accountType
+         options:options
+         completion:^(BOOL granted, NSError *error) {
+             NSArray *accountArray = [accountStore accountsWithAccountType:accountType];
+             for (ACAccount *account in accountArray) {
+                 
+                 NSString *urlString = [NSString stringWithFormat:@"https://graph.facebook.com/%@/feed", [[account valueForKey:@"properties"] valueForKey:@"uid"]] ;
+                 NSURL *url = [NSURL URLWithString:urlString];
+                 NSDictionary *params = [NSDictionary dictionaryWithObject:@"SLRequest post test." forKey:@"message"];
+                 SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                                         requestMethod:SLRequestMethodPOST
+                                                                   URL:url
+                                                            parameters:params];
+                 [request setAccount:account];
+                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                     NSLog(@"responseData=%@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
+                 }];
+             }
+         }];
+    }}
+
 
 
 - (IBAction)pushTwitter:(UIButton *)sender {

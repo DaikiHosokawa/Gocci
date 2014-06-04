@@ -24,12 +24,20 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+}
+
 
 - (void)viewDidLoad
 {
     
      [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
+    
+      // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -38,8 +46,8 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    }
-
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,11 +55,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
 }
+
 
 
 #pragma mark - Table view data source
@@ -76,6 +88,12 @@
     
     return cell;
 }
+
+
+
+
+
+
 
 
 /*
