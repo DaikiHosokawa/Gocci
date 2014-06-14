@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<FBLoginViewDelegate>
 
 @property (nonatomic) ACAccountStore *accountStore;
 

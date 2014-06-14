@@ -7,17 +7,24 @@
 //
 
 #import "AppDelegate.h"
-
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
+
 @synthesize window = _window;
+
+
+//facebook認証のcalbackメソッド
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication
+            fallbackHandler:^(FBAppCall *call) {
+                NSLog(@"In fallback handler");
+            }];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [GMSServices provideAPIKey:@"AIzaSyCdg9WQF1sxLW7Arc2VBfJDfAkV60iOTp8"];
-    
-    return YES;
-       
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
     
@@ -26,6 +33,7 @@
     
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
     
     return YES;
 }

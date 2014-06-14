@@ -43,6 +43,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    
+    UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"RestaurantTableViewCell"];
+    
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
@@ -56,7 +60,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,15 +86,6 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
 
 //ソーシャルシェアボタンの実装
 - (IBAction)actionSocial:(UIBarButtonItem *)sender{
@@ -114,6 +109,31 @@
     
     //UIActivityViewControllerを表示
     [self presentViewController:avc animated:YES completion:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 324.0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //storyboardで指定したIdentifierを指定する
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantTableViewCell"];
+    
+    if (!cell) {
+        //さらにcellのinitでLoadNibしxibを指定する必要がある
+        cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                           reuseIdentifier:@"RestaurantTableViewCell"];
+    }
+    // Configure the cell...
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //セグエで画面遷移させる
+    [self performSegueWithIdentifier:@"showDetail3" sender:self.tableView];
 }
 
 /*

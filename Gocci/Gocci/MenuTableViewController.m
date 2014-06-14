@@ -10,7 +10,6 @@
 
 @interface MenuTableViewController ()
 
-
 @end
 
 @implementation MenuTableViewController
@@ -24,6 +23,8 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,8 +32,10 @@
     //背景にイメージを追加する
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-
+    
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示

@@ -41,6 +41,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
+    
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];

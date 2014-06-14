@@ -8,9 +8,10 @@
 
 #import "SearchTableViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-
-@interface SearchTableViewController ()<UISearchBarDelegate,MKMapViewDelegate>{
+@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>{
     GMSMapView *mapView_;
 }
 
@@ -20,20 +21,8 @@
 
 @implementation SearchTableViewController
 
-- (void)loadView {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.658599
-                                                            longitude:139.745443
-                                                                 zoom:15];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
-    
-    GMSMarkerOptions *options = [[GMSMarkerOptions alloc] init];
-    options.position = CLLocationCoordinate2DMake(35.658599, 139.745443);
-    options.title = @"東京タワー";
-    options.snippet = @"Tokyo Tower";
-    [mapView_ addMarkerWithOptions:options];
-}
+CLLocationManager *_locationManager;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,10 +40,29 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+    
+    //通常はビューをロードしたときに設定を追加する
+    //GMSCameraPositionクラスを作成
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86 longitude:151.20 zoom:15];
+    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_.myLocationEnabled = YES;
+   // self.mapView = mapView_;
+    _locationManager = [[CLLocationManager alloc] init];
+    
+    
+    
+    //地図の中心にマーカーを作成する
+    GMSMarker *marker = [[GMSMarker alloc]init];
+    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
+    marker.title = @"現在地";
+    marker.snippet = @"オーストラリア";
+    marker.map = mapView_;
+    
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
     
@@ -85,12 +93,22 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
+ 
+    }
 
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0;
+    return 65.0;
 }
 
 
@@ -108,12 +126,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [searchBar resignFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -129,19 +141,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-- (SampleTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell" forIndexPath:indexPath];
+    //storyboardで指定したIdentifierを指定する
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
     
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある
         cell = [[SampleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
     reuseIdentifier:@"searchTableViewCell"];
     }
-    
     // Configure the cell...
     return cell;
-    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //セグエで画面遷移させる
+    [self performSegueWithIdentifier:@"showDetail" sender:self.tableView];
 }
 
 

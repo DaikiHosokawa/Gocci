@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
+#import "Sample3TableViewCell.h"
 
 @interface RestaurantTableViewController : UITableViewController
 

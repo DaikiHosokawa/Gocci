@@ -37,6 +37,9 @@
     
      [super viewDidLoad];
     
+    UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
+    
       // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -61,7 +64,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
 }
 
 
@@ -80,13 +83,32 @@
     return 20;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 350.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell" forIndexPath:indexPath];
+    //storyboardで指定したIdentifierを指定する
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell" ];
     
+    if (!cell) {
+        //さらにcellのinitでLoadNibしxibを指定する必要がある
+        cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"TimelineTableViewCell"];
+    }
     // Configure the cell...
-    
     return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+
+    //セグエで画面遷移させる
+    [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
+    
 }
 
 

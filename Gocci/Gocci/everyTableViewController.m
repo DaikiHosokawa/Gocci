@@ -36,6 +36,10 @@
 {
     [super viewDidLoad];
     
+    
+    UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -51,6 +55,12 @@
     self.navigationItem.backBarButtonItem = backButton;
 
 }
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 505.0;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -70,25 +80,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 20;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 20;
+    return 1;
 }
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"everyTableViewCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
 
 
 //ソーシャルシェアボタンの実装
@@ -113,6 +112,26 @@
     //UIActivityViewControllerを表示
     [self presentViewController:avc
     animated:YES completion:nil];}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //storyboardで指定したIdentifierを指定する
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EveryTableViewCell"];
+    
+    if (!cell) {
+        //さらにcellのinitでLoadNibしxibを指定する必要がある
+        cell = [[Sample4TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"EveryTableViewCell"];
+    }
+    // Configure the cell...
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //セグエで画面遷移させる
+    [self performSegueWithIdentifier:@"showDetail4" sender:self.tableView];
+}
 
 
 /*

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sample2TableViewCell.h"
+
 
 
 @interface TimelineTableViewController : UITableViewController
