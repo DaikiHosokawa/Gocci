@@ -61,6 +61,9 @@
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
+		FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B8F19515EA7002FC793 /* CalendarViewController.m */; };
+		FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9219515FBA002FC793 /* CalendarDayCell.m */; };
+		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
 		FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +161,11 @@
 		FF97C43519247FD20025DD6A /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		FFF16B8E19515EA7002FC793 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		FFF16B8F19515EA7002FC793 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		FFF16B9119515FBA002FC793 /* CalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
+		FFF16B9219515FBA002FC793 /* CalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
+		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +188,7 @@
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
 				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
 				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
+				FFF16B9519528286002FC793 /* Parse.framework in Frameworks */,
 				FF0BE44C193ED59E001A0053 /* AVFoundation.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
@@ -231,6 +240,7 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFF16B9419528286002FC793 /* Parse.framework */,
 				FF4BF521194847B90099B01D /* MediaPlayer.framework */,
 				FF7917051943153300D351B6 /* GoogleMaps.framework */,
 				FFE130D81943040500806B02 /* FacebookSDK.framework */,
@@ -288,6 +298,10 @@
 				FF79172D194833C500D351B6 /* AppendableVideoMaker.m */,
 				FF15E55E191E05F6007C34F7 /* LifelogTableViewController.h */,
 				FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */,
+				FFF16B8E19515EA7002FC793 /* CalendarViewController.h */,
+				FFF16B8F19515EA7002FC793 /* CalendarViewController.m */,
+				FFF16B9119515FBA002FC793 /* CalendarDayCell.h */,
+				FFF16B9219515FBA002FC793 /* CalendarDayCell.m */,
 				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
 				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
@@ -459,11 +473,13 @@
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
+				FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */,
 				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
 				FF7917201946DF9D00D351B6 /* RDVCalendarDayCell.m in Sources */,
+				FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */,
 				FF7917211946DF9D00D351B6 /* RDVCalendarView.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,

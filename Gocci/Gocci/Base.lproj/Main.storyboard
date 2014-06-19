@@ -177,7 +177,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="16n-Tf-sWW" kind="push" id="e7o-Er-zgo"/>
+                                    <segue destination="eZ8-HY-EJL" kind="push" id="ZcX-ZT-kXg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -192,64 +192,35 @@
             </objects>
             <point key="canvasLocation" x="-355" y="-1738"/>
         </scene>
-        <!--Lifelog Table View Controller - Gocci-->
-        <scene sceneID="XQe-p7-wpS">
+        <!--Calendar View Controller - Gocci-->
+        <scene sceneID="3UX-3k-oPh">
             <objects>
-                <tableViewController storyboardIdentifier="LifelogTableViewController" id="16n-Tf-sWW" customClass="LifelogTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hG2-dE-MRk">
+                <viewController id="eZ8-HY-EJL" customClass="CalendarViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A9j-I4-SEF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="LifelogTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LifelogTableViewCell" id="cor-MV-1tY">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cor-MV-1tY" id="eQ4-EC-A7U">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="16n-Tf-sWW" id="fMZ-At-Mdd"/>
-                            <outlet property="delegate" destination="16n-Tf-sWW" id="UMb-i8-VdZ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Gocci" id="Psg-jy-Iid"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-it-yzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Gocci" id="119-Yr-3sG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eia-lI-xep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95" y="-1750"/>
+            <point key="canvasLocation" x="149" y="-1801"/>
         </scene>
         <!--Camera View Controller-->
-        <scene sceneID="eR1-0a-oUS">
+        <scene sceneID="CPR-ER-LdO">
             <objects>
-                <viewController id="8gi-g0-0Ac" customClass="CameraViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ji6-PO-ngS">
+                <viewController id="XHP-jT-6O0" customClass="CameraViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Sq-92-lpa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7Mr-a9-VCL"/>
+                    <navigationItem key="navigationItem" id="4nP-YS-Rnv"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QoC-Pz-fP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yAv-lr-B7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="647" y="-1772"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="AC7-M8-AXl">
-            <objects>
-                <viewController id="oty-OQ-UKH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ciU-S5-Y11">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="5nd-V9-FVn"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GQv-GJ-cEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1087" y="-1785"/>
+            <point key="canvasLocation" x="628" y="-1801"/>
         </scene>
         <!--Submit View Controller - SNS-Submit-->
         <scene sceneID="TVs-b9-W4X">
@@ -340,7 +311,7 @@
                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <segue destination="8gi-g0-0Ac" kind="modal" id="Lr3-Zg-gTE"/>
+                                        <segue destination="XHP-jT-6O0" kind="push" id="iNi-GT-TEL"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128チップ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hqs-A3-3Bb">
@@ -368,6 +339,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="ToEvery" id="WOY-73-hQY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -399,7 +373,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SampleTableViewCell" id="m96-gN-BSX" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
@@ -443,7 +417,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bqr-yA-xSr"/>
         <segue reference="WFd-4p-HTm"/>
+        <segue reference="bqr-yA-xSr"/>
     </inferredMetricsTieBreakers>
 </document>

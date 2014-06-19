@@ -124,16 +124,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある
         cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                           reuseIdentifier:@"RestaurantTableViewCell"];
+                                          reuseIdentifier:@"RestaurantTableViewCell"];
     }
     // Configure the cell...
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"showDetail3" sender:self.tableView];
+    [self performSegueWithIdentifier:@"ToEvery" sender:self.tableView];
 }
 
 /*
