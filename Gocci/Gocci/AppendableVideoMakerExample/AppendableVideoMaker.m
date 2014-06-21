@@ -21,7 +21,6 @@
         if (deviceSupportsVideoRecording)
         {
             // Setup the variables
-            
             videoURLs = [[NSMutableArray alloc] init];
             videoLength = maxVideoLength = 0.0;
             quality = HIGH_QUALITY;
@@ -30,7 +29,6 @@
             videoURLsLocked = NO;
             
             // Setup the actual camera controller itself, hiding all normal components
-            
             self.sourceType = UIImagePickerControllerSourceTypeCamera;
             self.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
             self.showsCameraControls = NO;

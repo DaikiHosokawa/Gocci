@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Sample2TableViewCell.h"
+#import "RNFrostedSidebar.h"
 
 
 

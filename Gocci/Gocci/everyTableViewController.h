@@ -10,7 +10,11 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "Sample4TableViewCell.h"
+#import <Foundation/Foundation.h>
+
 
 @interface everyTableViewController : UITableViewController
+
+-(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 
 @end

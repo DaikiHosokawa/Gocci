@@ -7,9 +7,11 @@
 //
 
 #import "TimelineTableViewController.h"
+#import "LifelogTableViewController.h"
 
-@interface TimelineTableViewController ()
+@interface TimelineTableViewController ()<RNFrostedSidebarDelegate>
 
+@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 
 @end
 
@@ -37,6 +39,8 @@
     
      [super viewDidLoad];
     
+    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
+    
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
@@ -49,7 +53,7 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    
+ 
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +63,47 @@
 }
 
 
+- (IBAction)onBurger:(id)sender {
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"]
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    
+    
+    // RNFrostedSidebarインスタンスの作成
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
+    callout.delegate = self;
+    // RNFrostedSidebarインスタンスの表示
+    [callout show];
+}
+
+
+//メニューをタップした時の動作
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    if (index == 3) {
+       LifelogTableViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Lifelog"];
+        [self presentViewController:mycontroller animated:YES completion:nil];
+    }
+}
+
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
+    if (itemEnabled) {
+        [self.optionIndices addIndex:index];
+    }
+    else {
+        [self.optionIndices removeIndex:index];
+    }
+}
 
 
 //セルの透過処理

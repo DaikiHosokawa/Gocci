@@ -64,6 +64,8 @@
 		FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B8F19515EA7002FC793 /* CalendarViewController.m */; };
 		FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9219515FBA002FC793 /* CalendarDayCell.m */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
+		FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */; };
+		FFF16B9A19554D37002FC793 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9919554D37002FC793 /* Accelerate.framework */; };
 		FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +168,9 @@
 		FFF16B9119515FBA002FC793 /* CalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
 		FFF16B9219515FBA002FC793 /* CalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
+		FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
+		FFF16B9919554D37002FC793 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,9 +179,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF16B9A19554D37002FC793 /* Accelerate.framework in Frameworks */,
+				FF0BE424193CAB31001A0053 /* QuartzCore.framework in Frameworks */,
 				FF4BF522194847B90099B01D /* MediaPlayer.framework in Frameworks */,
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
-				FF0BE424193CAB31001A0053 /* QuartzCore.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
@@ -240,6 +246,7 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFF16B9919554D37002FC793 /* Accelerate.framework */,
 				FFF16B9419528286002FC793 /* Parse.framework */,
 				FF4BF521194847B90099B01D /* MediaPlayer.framework */,
 				FF7917051943153300D351B6 /* GoogleMaps.framework */,
@@ -298,6 +305,8 @@
 				FF79172D194833C500D351B6 /* AppendableVideoMaker.m */,
 				FF15E55E191E05F6007C34F7 /* LifelogTableViewController.h */,
 				FF15E55F191E05F6007C34F7 /* LifelogTableViewController.m */,
+				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
+				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
 				FFF16B8E19515EA7002FC793 /* CalendarViewController.h */,
 				FFF16B8F19515EA7002FC793 /* CalendarViewController.m */,
 				FFF16B9119515FBA002FC793 /* CalendarDayCell.h */,
@@ -482,6 +491,7 @@
 				FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */,
 				FF7917211946DF9D00D351B6 /* RDVCalendarView.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
+				FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
 				FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */,

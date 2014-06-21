@@ -10,7 +10,10 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "Sample3TableViewCell.h"
+#import <Foundation/Foundation.h>
 
 @interface RestaurantTableViewController : UITableViewController
+
+-(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 
 @end

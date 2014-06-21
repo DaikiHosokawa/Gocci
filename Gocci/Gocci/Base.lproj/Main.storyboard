@@ -97,9 +97,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Gocci" id="CMw-GA-8Go">
-                        <barButtonItem key="leftBarButtonItem" tag="1" title="menu" id="qCw-60-h05">
+                        <barButtonItem key="leftBarButtonItem" tag="1" image="burger" id="qCw-60-h05">
                             <connections>
-                                <segue destination="7bd-c3-F7f" kind="push" identifier="gotoMenu" id="d4z-JX-ENh"/>
+                                <action selector="onBurger:" destination="eNe-5a-Fw9" id="q6P-EC-jh3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="x8r-pg-0JT">
@@ -170,14 +170,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="menuTableViewCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuTableViewCell" id="8wu-R1-tku">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8wu-R1-tku" id="m9U-hc-M90">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="eZ8-HY-EJL" kind="push" id="ZcX-ZT-kXg"/>
+                                    <segue destination="OG7-sh-lzL" kind="push" id="Ouf-ae-84f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -193,19 +193,19 @@
             <point key="canvasLocation" x="-355" y="-1738"/>
         </scene>
         <!--Calendar View Controller - Gocci-->
-        <scene sceneID="3UX-3k-oPh">
+        <scene sceneID="9lp-ak-8do">
             <objects>
-                <viewController id="eZ8-HY-EJL" customClass="CalendarViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="A9j-I4-SEF">
+                <viewController storyboardIdentifier="Lifelog" id="OG7-sh-lzL" customClass="CalendarViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="giu-53-Roh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gocci" id="119-Yr-3sG"/>
+                    <navigationItem key="navigationItem" title="Gocci" id="q48-0a-XEh"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eia-lI-xep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8kf-3y-LIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="-1801"/>
+            <point key="canvasLocation" x="70" y="-1807"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="CPR-ER-LdO">
@@ -353,7 +353,7 @@
                     <navigationItem key="navigationItem" title="Gocci" id="xMf-ns-bYZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99">
                             <connections>
-                                <action selector="actionSocial:" destination="7Ul-L7-bNU" id="vr4-RL-uEK"/>
+                                <action selector="share:" destination="7Ul-L7-bNU" id="0IQ-76-DVM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -393,7 +393,7 @@
                     <navigationItem key="navigationItem" title="Gocci" id="cal-vI-YT3">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="nyT-l9-JhM">
                             <connections>
-                                <action selector="actionSocial:" destination="Pt3-mZ-dDb" id="RgL-S4-ceQ"/>
+                                <action selector="share:" destination="Pt3-mZ-dDb" id="KiX-4t-eaR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -405,6 +405,7 @@
     </scenes>
     <resources>
         <image name="background" width="1200" height="800"/>
+        <image name="burger" width="19" height="17"/>
         <image name="facebook" width="167" height="72"/>
         <image name="gradation" width="640" height="225"/>
         <image name="login" width="230" height="359"/>
@@ -417,7 +418,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="WOY-73-hQY"/>
         <segue reference="bqr-yA-xSr"/>
-        <segue reference="QDo-Mm-jHL"/>
     </inferredMetricsTieBreakers>
 </document>

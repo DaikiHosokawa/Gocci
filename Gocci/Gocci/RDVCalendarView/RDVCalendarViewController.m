@@ -36,6 +36,7 @@
     [_calendarView setBackgroundColor:[UIColor whiteColor]];
     [_calendarView setDelegate:self];
     self.view = _calendarView;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

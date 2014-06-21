@@ -10,11 +10,25 @@
 
 @interface everyTableViewController ()
 
-- (IBAction)actionSocial:(UIBarButtonItem *)sender;
 
 @end
 
+
 @implementation everyTableViewController
+
+{
+    NSString *_text, *_hashTag;
+}
+
+-(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
+{
+    self = [super init];
+    if (self) {
+        _text = text;
+        _hashTag = hashTag;
+    }
+    return self;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,6 +70,30 @@
 
 }
 
+#pragma mark - UIActivityItemSource
+
+-(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
+{
+    // Twitterの時だけハッシュタグをつける
+    if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
+        return [NSString stringWithFormat:@"%@ #%@", _text, _hashTag];
+    }
+    return _text;
+}
+
+-(id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
+{
+    return _text;
+}
+
+- (IBAction)share:(id)sender
+{
+    everyTableViewController *text = [[everyTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 505.0;
@@ -89,29 +127,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 1;
 }
 
-
-//ソーシャルシェアボタンの実装
-- (IBAction)actionSocial:(UIBarButtonItem *)sender{
-    //送信する内容
-    NSString *textObject = @"コメントを入力してください";
-    NSString *urlString = [NSString stringWithFormat:@""];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSArray *activityItems = [NSArray arrayWithObjects:textObject, url,  nil];
-    
-    //初期化
-    UIActivityViewController *avc = [[UIActivityViewController alloc]
-                                     initWithActivityItems:activityItems
-                                     applicationActivities:nil];
-    
-    
-    //除外するアクティビティタイプ
-    NSArray *excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll ];
-    avc.excludedActivityTypes  = excludedActivityTypes;
-    
-    
-    //UIActivityViewControllerを表示
-    [self presentViewController:avc
-    animated:YES completion:nil];}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
