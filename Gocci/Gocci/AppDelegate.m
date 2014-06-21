@@ -11,6 +11,7 @@
 #import "CalendarViewController.h"
 #import <Parse/Parse.h>
 
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -18,11 +19,10 @@
 
 //facebook認証のcalbackメソッド
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication
-            fallbackHandler:^(FBAppCall *call) {
-                NSLog(@"In fallback handler");
-            }];
-}
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+            withSession:[PFFacebookUtils session]];
+            };
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,6 +35,14 @@
     
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
+    // Facebook
+    [PFFacebookUtils initializeFacebook];
+    
+    // Twitter
+    [PFTwitterUtils initializeWithConsumerKey:@"rJga5dCArIAzXZp7pc8lSbx19"
+                               consumerSecret:@"Ve6T4hXTrBPh6LWyjGyfchA16gDmLqI8rOpB1fdey5SX8fPEBV"];
+    
+    
     [GMSServices provideAPIKey:@"AIzaSyCdg9WQF1sxLW7Arc2VBfJDfAkV60iOTp8"];
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
@@ -45,10 +53,28 @@
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
-    
     return YES;
 }
-							
+
+/*
+ // リンクさせる場合
+ if (![PFFacebookUtils isLinkedWithUser:user]) {
+ [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
+ if (succeeded) {
+ NSLog(@"Facebook にリンク成功!");
+ }
+ }];
+ }
+ 
+ // リンクを解除する場合
+ [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
+ if (succeeded) {
+ NSLog(@"Facebook のリンク解除完了!");
+ }
+ }];
+*/
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -68,7 +94,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Facebook
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

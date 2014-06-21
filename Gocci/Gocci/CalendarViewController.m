@@ -9,9 +9,11 @@
 #import "CalendarViewController.h"
 #import "CalendarDayCell.h"
 
-@interface CalendarViewController ()
+@interface CalendarViewController ()<RDVCalendarViewDelegate>
 
 @end
+
+
 
 @implementation CalendarViewController
 
@@ -28,6 +30,7 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
@@ -44,9 +47,8 @@
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:[self calendarView]
                                                                    action:@selector(showCurrentMonth)];
-    
     [self.navigationItem setRightBarButtonItem:todayButton];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view
 }
 /*
 - (void)calendarView:(RDVCalendarView *)calendarView configureDayCell:(RDVCalendarDayCell *)dayCell

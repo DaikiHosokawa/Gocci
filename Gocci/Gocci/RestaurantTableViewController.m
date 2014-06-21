@@ -45,8 +45,8 @@
 
     
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"RestaurantTableViewCell"];
-    
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
+   
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
@@ -54,7 +54,6 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-
 }
 
 //セルの透過処理
@@ -81,8 +80,6 @@
 {
     // Return the number of rows in the section.
     return 20;
-
-    
 }
 
 
@@ -119,20 +116,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //storyboardで指定したIdentifierを指定する
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantTableViewCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
     
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある
         cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"RestaurantTableViewCell"];
+    
+                                    reuseIdentifier:@"restaurantTableViewCell"];
     }
     // Configure the cell...
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"ToEvery" sender:self.tableView];
+
+    NSLog(@"didSelectRowAtIndex");
+    //セグエで画面遷移する
+    [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
 }
 
 /*

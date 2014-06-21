@@ -54,8 +54,6 @@ CLLocationManager *_locationManager;
    // self.mapView = mapView_;
     _locationManager = [[CLLocationManager alloc] init];
     
-    
-    
     //地図の中心にマーカーを作成する
     GMSMarker *marker = [[GMSMarker alloc]init];
     marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);

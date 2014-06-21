@@ -128,10 +128,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"showDetail4" sender:self.tableView];
-}
+
 
 
 /*

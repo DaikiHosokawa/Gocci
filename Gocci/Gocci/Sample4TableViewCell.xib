@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="EveryTableViewCell" rowHeight="423" id="kbr-jw-oiL" userLabel="Sample4 Table View Cell - TimelineTableViewCell" customClass="Sample4TableViewCell">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="EveryTableViewCell" rowHeight="423" id="kbr-jw-oiL" userLabel="Sample4 Table View Cell - TimelineTableViewCell" customClass="Sample4TableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="314" height="504"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kbr-jw-oiL" id="Ssg-Ji-GzA">

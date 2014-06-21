@@ -87,7 +87,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="7bd-c3-F7f" kind="push" identifier="showDetail2" id="WFd-4p-HTm"/>
+                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="QDo-Mm-jHL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -261,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="-946"/>
+            <point key="canvasLocation" x="993" y="-1768"/>
         </scene>
         <!--Restaurant Table View Controller - Gocci-->
         <scene sceneID="ohC-at-e4x">
@@ -340,7 +340,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="ToEvery" id="WOY-73-hQY"/>
+                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="WOY-73-hQY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -379,9 +379,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="3H1-41-IX9" kind="push" id="m5h-LH-2A9"/>
-                                </connections>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -417,7 +417,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WFd-4p-HTm"/>
         <segue reference="bqr-yA-xSr"/>
+        <segue reference="QDo-Mm-jHL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
 - (IBAction)pushFacebook:(UIButton *)sender;
@@ -25,6 +26,9 @@
     return self;
 }
 
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,9 +40,12 @@
     [self.view addSubview:loginview];
     
     // Do any additional setup after loading the view.
-
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
+
+    
 }
+
+
 
 
 - (void)didReceiveMemoryWarning
@@ -59,71 +66,39 @@
 */
 
 - (IBAction)pushFacebook:(UIButton *)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-        ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"673123156062598", ACFacebookAppIdKey,
-                                 [NSArray arrayWithObjects:@"public_actions", @"publish_stream", @"offline_access", nil], ACFacebookPermissionsKey,
-                                 ACFacebookAudienceOnlyMe, ACFacebookAudienceKey,
-                                 nil];
-        [accountStore
-         requestAccessToAccountsWithType:accountType
-         options:options
-         completion:^(BOOL granted, NSError *error) {
-             NSArray *accountArray = [accountStore accountsWithAccountType:accountType];
-             for (ACAccount *account in accountArray) {
-                 
-                 NSString *urlString = [NSString stringWithFormat:@"https://graph.facebook.com/%@/feed", [[account valueForKey:@"properties"] valueForKey:@"uid"]] ;
-                 NSURL *url = [NSURL URLWithString:urlString];
-                 NSDictionary *params = [NSDictionary dictionaryWithObject:@"SLRequest post test." forKey:@"message"];
-                 SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                                         requestMethod:SLRequestMethodPOST
-                                                                   URL:url
-                                                            parameters:params];
-                 [request setAccount:account];
-                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                     NSLog(@"responseData=%@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
-                 }];
-             }
-         }];
-    }}
+    // パーミッション
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    // Facebook アカウントを使ってログイン
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            if (!error) {
+                NSLog(@"Facebook ログインをユーザーがキャンセル");
+            } else {
+                NSLog(@"Facebook ログイン中にエラーが発生: %@", error);
+            }
+        } else if (user.isNew) {
+            NSLog(@"Facebook サインアップ & ログイン完了!");
+        } else {
+            NSLog(@"Facebook ログイン完了!");
+        }
+    }];
+
+}
 
 
 
 - (IBAction)pushTwitter:(UIButton *)sender {
-    NSString *accountTypeIdentifier = ACAccountTypeIdentifierTwitter;   // Twitter
-    
-    // ソーシャルメディアのアカウント情報を管理するクラス
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:accountTypeIdentifier];
-    
-    // アカウントが設定されているかチェック
-    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-        if (granted) {
-            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-            if ([accounts count] > 0) {
-                // Twitterアカウントは複数設定できるがとりあえず最初のを使用する
-                ACAccount *account = accounts[0];
-                
-                // TwitterのWeb API
-                NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"];
-                
-                // パラメータを設定
-                NSDictionary *params = @{@"status" : @"アプリからの投稿"};
-                
-                // リクエストを組み立てる
-                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:url parameters:params];
-                
-                // アカウントの設定
-                request.account = account;
-                
-                // リクエスト送信
-                [request performRequestWithHandler:
-                 ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                     NSLog(@"status code : %ld", (long)[urlResponse statusCode]);
-                 }];
+    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (!user) {
+            if (!error) {
+                NSLog(@"Twitter ログインをユーザーがキャンセル");
+            } else {
+                NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
             }
+        } else if (user.isNew) {
+            NSLog(@"Twitter サインアップ & ログイン完了!");
+        } else {
+            NSLog(@"Twitter ログイン完了!");
         }
     }];
 }
