@@ -37,6 +37,7 @@
     if (self) {
         _reuseIdentifier = [reuseIdentifier copy];
         _selectionStyle = RDVCalendarDayCellSelectionStyleDefault;
+
         
         _backgroundView = [[UIView alloc] init];
         [_backgroundView setBackgroundColor:[UIColor whiteColor]];

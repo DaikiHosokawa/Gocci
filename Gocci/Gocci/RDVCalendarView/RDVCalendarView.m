@@ -63,35 +63,38 @@
         
         // Setup defaults
         
-        _currentDayColor = [UIColor colorWithRed:80/255.0 green:200/255.0 blue:240/255.0 alpha:1.0];
-        _selectedDayColor = [UIColor grayColor];
-        _separatorColor = [UIColor lightGrayColor];
+        
+        _selectedDayColor = [UIColor orangeColor];
+        _separatorColor = [UIColor orangeColor];
         
         _separatorEdgeInsets = UIEdgeInsetsZero;
         _dayCellEdgeInsets = UIEdgeInsetsZero;
         
         _dayCellClass = [RDVCalendarDayCell class];
         
-        _weekDayHeight = 30.0f;
+        _weekDayHeight = 20.0f;
         
+        _dayCellHeight = 50.0f;
+        
+        _currentDayColor = [UIColor orangeColor];
         // Setup header view
         
         _monthLabel = [[UILabel alloc] init];
-        [_monthLabel setFont:[UIFont systemFontOfSize:22]];
-        [_monthLabel setTextColor:[UIColor blackColor]];
+        [_monthLabel setFont:[UIFont systemFontOfSize:18]];
+        [_monthLabel setTextColor:[UIColor orangeColor]];
         [_monthLabel setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:_monthLabel];
         
         _backButton = [[UIButton alloc] init];
-        [_backButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [_backButton setTitle:@"Prev" forState:UIControlStateNormal];
+        [_backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_backButton setTitle:@"前" forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(showPreviousMonth)
               forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_backButton];
         
         _forwardButton = [[UIButton alloc] init];
-        [_forwardButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [_forwardButton setTitle:@"Next" forState:UIControlStateNormal];
+        [_forwardButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_forwardButton setTitle:@"次" forState:UIControlStateNormal];
         [_forwardButton addTarget:self action:@selector(showNextMonth)
                  forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_forwardButton];

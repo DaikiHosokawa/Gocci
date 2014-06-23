@@ -33,12 +33,7 @@
 {
     [super viewDidLoad];
  
-    //ログインボタンを生成する
-    FBLoginView *loginview = [[FBLoginView alloc]init];
-    loginview.frame = CGRectOffset(loginview.frame, 5, 30);
-    loginview.delegate = self;
-    [self.view addSubview:loginview];
-    
+     
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
 

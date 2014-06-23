@@ -7,7 +7,7 @@
 //
 
 #import "TimelineTableViewController.h"
-#import "LifelogTableViewController.h"
+#import "CalendarViewController.h"
 
 @interface TimelineTableViewController ()<RNFrostedSidebarDelegate>
 
@@ -70,6 +70,7 @@
                         [UIImage imageNamed:@"profile"],
                         [UIImage imageNamed:@"star"]
                         ];
+   
     NSArray *colors = @[
                         [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
                         [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
@@ -89,8 +90,8 @@
 //メニューをタップした時の動作
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
-    if (index == 3) {
-       LifelogTableViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Lifelog"];
+    if (index == 0) {
+       CalendarViewController  *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Lifelog"];
         [self presentViewController:mycontroller animated:YES completion:nil];
     }
 }
@@ -119,13 +120,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 20;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 20;
+    return 5;
 }
 
 

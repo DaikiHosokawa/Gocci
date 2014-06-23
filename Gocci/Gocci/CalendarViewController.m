@@ -29,8 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [[self.navigationController navigationBar] setTranslucent:NO];
     
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];

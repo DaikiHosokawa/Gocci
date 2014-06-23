@@ -29,6 +29,8 @@
 
 - (void)loadView {
     CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     _calendarView = [[RDVCalendarView alloc] initWithFrame:applicationFrame];
     [_calendarView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];

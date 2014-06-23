@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import "CameraViewController.h"
+#import "CalendarViewController.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) CameraViewController *viewController;
 
 @end

@@ -10,6 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "CalendarViewController.h"
 #import <Parse/Parse.h>
+#import "CalendarViewController.h"
 
 
 @implementation AppDelegate
@@ -26,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
     //Parseの初期設定
     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
     

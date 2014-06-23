@@ -46,21 +46,8 @@ CLLocationManager *_locationManager;
 {
     [super viewDidLoad];
     
-    //通常はビューをロードしたときに設定を追加する
-    //GMSCameraPositionクラスを作成
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86 longitude:151.20 zoom:15];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-   // self.mapView = mapView_;
-    _locationManager = [[CLLocationManager alloc] init];
     
-    //地図の中心にマーカーを作成する
-    GMSMarker *marker = [[GMSMarker alloc]init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"現在地";
-    marker.snippet = @"オーストラリア";
-    marker.map = mapView_;
-    
+    //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
     
@@ -70,6 +57,7 @@ CLLocationManager *_locationManager;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    //サーチバーの作成
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     searchBar.tintColor = [UIColor blackColor];
     searchBar.placeholder = @"キーワードを入力して下さい";
@@ -129,13 +117,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 20;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 20;
+    return 5;
 }
 
 
