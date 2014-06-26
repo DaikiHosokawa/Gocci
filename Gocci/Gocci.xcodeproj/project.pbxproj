@@ -36,7 +36,6 @@
 		FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
 		FF54F00C19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54F00A19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
-		FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
 		FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */; };
 		FF7917061943153300D351B6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7917051943153300D351B6 /* GoogleMaps.framework */; };
@@ -51,7 +50,6 @@
 		FF7917201946DF9D00D351B6 /* RDVCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171B1946DF9D00D351B6 /* RDVCalendarDayCell.m */; };
 		FF7917211946DF9D00D351B6 /* RDVCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171D1946DF9D00D351B6 /* RDVCalendarView.m */; };
 		FF7917221946DF9D00D351B6 /* RDVCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171F1946DF9D00D351B6 /* RDVCalendarViewController.m */; };
-		FF79173D194833C500D351B6 /* AppendableVideoMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79172D194833C500D351B6 /* AppendableVideoMaker.m */; };
 		FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE926195824F8000FE68B /* AVCamRecorder.m */; };
 		FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE928195824F8000FE68B /* AVCamUtilities.m */; };
 		FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92A195824F8000FE68B /* CaptureManager.m */; };
@@ -125,8 +123,6 @@
 		FF54F00919149A1800025DC8 /* GocciTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GocciTests-Info.plist"; sourceTree = "<group>"; };
 		FF54F00B19149A1800025DC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF54F00D19149A1800025DC8 /* GocciTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GocciTests.m; sourceTree = "<group>"; };
-		FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
-		FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
@@ -148,8 +144,6 @@
 		FF79171D1946DF9D00D351B6 /* RDVCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarView.m; sourceTree = "<group>"; };
 		FF79171E1946DF9D00D351B6 /* RDVCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarViewController.h; sourceTree = "<group>"; };
 		FF79171F1946DF9D00D351B6 /* RDVCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarViewController.m; sourceTree = "<group>"; };
-		FF79172C194833C500D351B6 /* AppendableVideoMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppendableVideoMaker.h; path = AppendableVideoMakerExample/AppendableVideoMaker.h; sourceTree = "<group>"; };
-		FF79172D194833C500D351B6 /* AppendableVideoMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppendableVideoMaker.m; path = AppendableVideoMakerExample/AppendableVideoMaker.m; sourceTree = "<group>"; };
 		FF8CE925195824F8000FE68B /* AVCamRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamRecorder.h; sourceTree = "<group>"; };
 		FF8CE926195824F8000FE68B /* AVCamRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamRecorder.m; sourceTree = "<group>"; };
 		FF8CE927195824F8000FE68B /* AVCamUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamUtilities.h; sourceTree = "<group>"; };
@@ -289,8 +283,6 @@
 				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
-				FF54F0171914AF8C00025DC8 /* MenuTableViewController.h */,
-				FF54F0181914AF8C00025DC8 /* MenuTableViewController.m */,
 				FF8CE93119582664000FE68B /* RecorderViewController.h */,
 				FF8CE93219582664000FE68B /* RecorderViewController.m */,
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
@@ -307,8 +299,6 @@
 				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
-				FF79172C194833C500D351B6 /* AppendableVideoMaker.h */,
-				FF79172D194833C500D351B6 /* AppendableVideoMaker.m */,
 				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
 				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
 				FFF16B8E19515EA7002FC793 /* CalendarViewController.h */,
@@ -511,7 +501,6 @@
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
 				FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */,
 				FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */,
-				FF54F0191914AF8C00025DC8 /* MenuTableViewController.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
@@ -530,7 +519,6 @@
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
-				FF79173D194833C500D351B6 /* AppendableVideoMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -334,7 +334,7 @@
         self.exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition
                                                                           presetName:AVAssetExportPresetHighestQuality];
         self.exportSession.outputURL = url;
-        self.exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+        self.exportSession.outputFileType = AVFileTypeMPEG4;
         self.exportSession.shouldOptimizeForNetworkUse = YES;
         self.exportSession.videoComposition = videoComposition;
         

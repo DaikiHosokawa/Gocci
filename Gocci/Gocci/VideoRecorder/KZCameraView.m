@@ -68,6 +68,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 @end
 
 @interface KZCameraView (CaptureManagerDelegate) <CaptureManagerDelegate>
+
 @end
 
 @implementation KZCameraView
@@ -176,7 +177,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 self.deleteLastBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 self.deleteLastBtn.bounds = CGRectMake(0.0, 0.0, 100.0, 30.0);
                 self.deleteLastBtn.center = CGPointMake(60.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
-                [self.deleteLastBtn setTitle:@"Delete" forState:UIControlStateNormal];
+                [self.deleteLastBtn setTitle:@"Retry" forState:UIControlStateNormal];
                 [self.deleteLastBtn addTarget:self.captureManager action:@selector(deleteLastAsset) forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:self.deleteLastBtn];
             }

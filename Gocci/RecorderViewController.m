@@ -32,14 +32,18 @@
     [super viewDidLoad];
     
     //Create CameraView
-	self.cam = [[KZCameraView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 64.0) withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
+
+    self.cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
+    [self.view addSubview:self.cam];
     self.cam.maxDuration = 6.0;
-    self.cam.showCameraSwitch = YES; //Say YES to button to switch between front and back cameras
+    self.cam.showCameraSwitch = YES;
+    
+    //Say YES to button to switch between front and back cameras
     //Create "save" button
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
-    
-    [self.view addSubview:self.cam];
+
+     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 
 -(IBAction)saveVideo:(id)sender
@@ -51,6 +55,13 @@
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
         }
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 
 

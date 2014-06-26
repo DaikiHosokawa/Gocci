@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="-355" y="-1738"/>
         </scene>
-        <!--Calendar View Controller - Gocci-->
+        <!--View Controller - Gocci-->
         <scene sceneID="9lp-ak-8do">
             <objects>
-                <viewController storyboardIdentifier="Lifelog" id="OG7-sh-lzL" customClass="CalendarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Lifelog" id="OG7-sh-lzL" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7UW-Qi-4So"/>
                         <viewControllerLayoutGuide type="bottom" id="PBx-sk-N6O"/>
@@ -217,25 +217,23 @@
             <point key="canvasLocation" x="70" y="-1807"/>
         </scene>
         <!--Recorder View Controller - Gocci-->
-        <scene sceneID="tlq-Uy-72Q">
+        <scene sceneID="K5f-iI-Ubr">
             <objects>
-                <viewController id="hjb-OD-g78" customClass="RecorderViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="h9t-CD-qB2"/>
-                        <viewControllerLayoutGuide type="bottom" id="ehw-9j-OC8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DRx-81-6YC">
+                <viewController id="0Fg-hc-FSn" customClass="RecorderViewController" sceneMemberID="viewController">
+                    <navigationBar key="view" contentMode="scaleToFill" id="Y2k-Rk-Ded">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Gocci" id="FL9-2z-E0J"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    </navigationBar>
+                    <navigationItem key="navigationItem" title="Gocci" id="Y9i-8F-723"/>
+                    <connections>
+                        <segue destination="3H1-41-IX9" kind="push" id="KUH-kh-ZOt"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0hb-RV-Ehk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sju-cF-jMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="-1631"/>
+            <point key="canvasLocation" x="604" y="-1601"/>
         </scene>
-        <!--Submit View Controller - SNS-Submit-->
+        <!--Submit View Controller - Gocci-->
         <scene sceneID="TVs-b9-W4X">
             <objects>
                 <viewController id="3H1-41-IX9" customClass="submitViewController" sceneMemberID="viewController">
@@ -270,7 +268,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SNS-Submit" id="wc3-ws-9bj"/>
+                    <navigationItem key="navigationItem" title="Gocci" id="wc3-ws-9bj"/>
                     <connections>
                         <outlet property="_facebookBtn" destination="8fM-0Y-csX" id="Oez-sR-v69"/>
                         <outlet property="_twitterBtn" destination="ZPl-oK-SoY" id="WoQ-Xw-TmG"/>
@@ -278,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="-1768"/>
+            <point key="canvasLocation" x="1095" y="-1754"/>
         </scene>
         <!--Restaurant Table View Controller - Gocci-->
         <scene sceneID="ohC-at-e4x">
@@ -328,7 +326,7 @@
                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <segue destination="hjb-OD-g78" kind="push" id="odm-zg-WX2"/>
+                                        <segue destination="0Fg-hc-FSn" kind="push" id="bdT-GQ-5el"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="128チップ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-A3-3Bb">
@@ -417,7 +415,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXB-YT-ZEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="-930"/>
+            <point key="canvasLocation" x="993" y="-1024"/>
         </scene>
     </scenes>
     <resources>

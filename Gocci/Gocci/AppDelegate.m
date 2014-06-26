@@ -28,7 +28,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
     //Parseの初期設定
     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
     
@@ -47,6 +46,9 @@
     
     
     [GMSServices provideAPIKey:@"AIzaSyCdg9WQF1sxLW7Arc2VBfJDfAkV60iOTp8"];
+    
+    
+    
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
     
@@ -59,23 +61,8 @@
     return YES;
 }
 
-/*
- // リンクさせる場合
- if (![PFFacebookUtils isLinkedWithUser:user]) {
- [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
- if (succeeded) {
- NSLog(@"Facebook にリンク成功!");
- }
- }];
- }
- 
- // リンクを解除する場合
- [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
- if (succeeded) {
- NSLog(@"Facebook のリンク解除完了!");
- }
- }];
-*/
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application
