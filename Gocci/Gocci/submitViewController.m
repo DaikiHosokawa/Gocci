@@ -57,10 +57,12 @@
 }
 */
 
+//Twitterの投稿
 - (IBAction)submitTwitter:(UIButton*)sender {
         [self postMedia:SLServiceTypeTwitter];
     }
 
+//Facebookの投稿
 - (IBAction)submitFacebook:(UIButton *)sender {
         [self postMedia:SLServiceTypeFacebook];
     }

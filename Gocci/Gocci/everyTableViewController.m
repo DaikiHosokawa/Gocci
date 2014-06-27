@@ -72,6 +72,8 @@
 
 #pragma mark - UIActivityItemSource
 
+
+//Twitterのアクティビティ動作
 -(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
 {
     // Twitterの時だけハッシュタグをつける
@@ -86,6 +88,8 @@
     return _text;
 }
 
+
+//アクションボタンを押した時の動作
 - (IBAction)share:(id)sender
 {
     everyTableViewController *text = [[everyTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];

@@ -44,7 +44,7 @@
     [PFTwitterUtils initializeWithConsumerKey:@"rJga5dCArIAzXZp7pc8lSbx19"
                                consumerSecret:@"Ve6T4hXTrBPh6LWyjGyfchA16gDmLqI8rOpB1fdey5SX8fPEBV"];
     
-    
+    //GoogleMapSDKのAPIキー
     [GMSServices provideAPIKey:@"AIzaSyCdg9WQF1sxLW7Arc2VBfJDfAkV60iOTp8"];
     
     

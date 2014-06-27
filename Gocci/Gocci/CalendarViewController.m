@@ -44,6 +44,8 @@
     
     [[self calendarView] registerDayCellClass:[CalendarDayCell class]];
     
+    
+    //ナビゲーションバー右の"today"ボタン
     UIBarButtonItem *todayButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Today", nil)
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:[self calendarView]

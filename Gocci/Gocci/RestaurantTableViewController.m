@@ -99,6 +99,8 @@
 
 #pragma mark - UIActivityItemSource
 
+
+//Twitterのアクティビティ投稿の基準
 -(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
 {
     // Twitterの時だけハッシュタグをつける
@@ -113,6 +115,8 @@
     return _text;
 }
 
+
+//ナビゲーションのアクションボタンを押した時の動作
 - (IBAction)share:(id)sender
 {
     RestaurantTableViewController *text = [[RestaurantTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
@@ -123,7 +127,7 @@
 }
 
 
-
+//1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 324.0;

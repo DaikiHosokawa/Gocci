@@ -8,6 +8,7 @@
 
 #import "TimelineTableViewController.h"
 #import "CalendarViewController.h"
+#import "RecorderViewController.h"
 
 @interface TimelineTableViewController ()<RNFrostedSidebarDelegate>
 
@@ -30,9 +31,16 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 -(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+- (void)didReceiveMemoryWarning
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
 
 - (void)viewDidLoad
 {
@@ -56,11 +64,6 @@
  
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 - (IBAction)onBurger:(id)sender {
@@ -79,10 +82,10 @@
                         ];
     
     
-    // RNFrostedSidebarインスタンスの作成
+    // メニューインスタンスの作成
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
     callout.delegate = self;
-    // RNFrostedSidebarインスタンスの表示
+    // メニューインスタンスの表示
     [callout show];
 }
 
@@ -91,7 +94,7 @@
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
     if (index == 0) {
-       CalendarViewController  *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Lifelog"];
+        RecorderViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Recorder"];
         [self presentViewController:mycontroller animated:YES completion:nil];
     }
 }
@@ -129,7 +132,7 @@
     return 5;
 }
 
-
+//セルの高さを調整
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 350.0;
@@ -156,11 +159,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
     
 }
-
-
-
-
-
 
 
 

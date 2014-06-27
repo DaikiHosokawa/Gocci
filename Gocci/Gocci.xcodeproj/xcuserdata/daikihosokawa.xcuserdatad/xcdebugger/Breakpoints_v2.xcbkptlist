@@ -221,8 +221,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "-sidebar:didTapItemAtIndex:"
-            landmarkType = "5">
+            landmarkName = "@implementation TimelineTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

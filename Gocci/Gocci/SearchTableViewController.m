@@ -11,11 +11,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>{
-    GMSMapView *mapView_;
-}
+@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
 
-@property (nonatomic, retain) MKMapView *mapView;
+@property (nonatomic, retain) GMSMapView *mapView;
+
+@property (nonatomic, retain) MKMapView *mapView_;
 
 @end
 
@@ -45,7 +45,6 @@ CLLocationManager *_locationManager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
@@ -92,6 +91,7 @@ CLLocationManager *_locationManager;
 }
 
 
+//テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 65.0;

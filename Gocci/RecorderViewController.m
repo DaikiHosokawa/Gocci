@@ -31,8 +31,7 @@
 {
     [super viewDidLoad];
     
-    //Create CameraView
-
+    //カメラのスペース確保
     self.cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
     [self.view addSubview:self.cam];
     self.cam.maxDuration = 6.0;
@@ -41,11 +40,14 @@
     //Say YES to button to switch between front and back cameras
     //Create "save" button
     
+    
+    //Saveボタンの設置
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
 
      [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 
+//ナビゲーションバーのSavaボタンを押した時の動作
 -(IBAction)saveVideo:(id)sender
 {
     [self.cam saveVideoWithCompletionBlock:^(BOOL success) {
@@ -60,15 +62,17 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
-
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 
 /*
