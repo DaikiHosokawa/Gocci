@@ -38,6 +38,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //背景にイメージを追加したい
+    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,7 +90,6 @@
             }
         };
         [self presentViewController:viewController animated:YES completion:nil];
-        //}
         
     }
 

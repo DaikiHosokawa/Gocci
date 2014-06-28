@@ -96,6 +96,7 @@
     if (index == 0) {
         RecorderViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Recorder"];
         [self presentViewController:mycontroller animated:YES completion:nil];
+        
     }
 }
 

@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-xN-p7a">
-                                <rect key="frame" x="65" y="391" width="212" height="44"/>
+                                <rect key="frame" x="75" y="374" width="192" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-1K-Plj">
-                                <rect key="frame" x="89" y="438" width="165" height="44"/>
+                                <rect key="frame" x="75" y="417" width="192" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,7 +231,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Gocci" id="Y9i-8F-723"/>
                     <connections>
-                        <segue destination="3H1-41-IX9" kind="push" id="KUH-kh-ZOt"/>
+                        <segue destination="3H1-41-IX9" kind="push" identifier="SavedVideoPush" id="KUH-kh-ZOt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sju-cF-jMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -426,11 +426,11 @@
     <resources>
         <image name="background" width="1200" height="800"/>
         <image name="burger" width="19" height="17"/>
-        <image name="facebook" width="167" height="72"/>
+        <image name="facebook" width="430" height="82"/>
         <image name="gradation" width="640" height="225"/>
         <image name="login" width="230" height="359"/>
         <image name="logo" width="70" height="70"/>
-        <image name="twitter" width="167" height="72"/>
+        <image name="twitter" width="438" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
