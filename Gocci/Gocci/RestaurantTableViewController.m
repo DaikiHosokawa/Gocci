@@ -57,7 +57,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    
+    //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
    

@@ -10,6 +10,9 @@
 #import "CalendarViewController.h"
 #import "RecorderViewController.h"
 
+
+@protocol MovieViewDelegate;
+
 @interface TimelineTableViewController ()<RNFrostedSidebarDelegate>
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
@@ -92,7 +95,7 @@
 
 //メニューをタップした時の動作
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
+    NSLog(@"Tapped item at index %lu",(unsigned long)index);
     if (index == 0) {
         RecorderViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Recorder"];
         [self presentViewController:mycontroller animated:YES completion:nil];

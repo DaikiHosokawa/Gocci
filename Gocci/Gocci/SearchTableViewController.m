@@ -83,7 +83,6 @@ CLLocationManager *_locationManager;
 
 
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -120,6 +119,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 5;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
@@ -137,6 +137,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[SampleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
     reuseIdentifier:@"searchTableViewCell"];
     }
+    
     // Configure the cell...
     return cell;
 }

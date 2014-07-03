@@ -38,12 +38,9 @@
     self.cam.maxDuration = 6.0;
     self.cam.showCameraSwitch = YES;
     
-    //Say YES to button to switch between front and back cameras
-    //Create "save" button
-    
     
     //Saveボタンの設置
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
 }
 
 //ナビゲーションバーのSavaボタンを押した時の動作
@@ -54,14 +51,17 @@
         {
             NSLog(@"WILL PUSH NEW CONTROLLER HERE");
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
+
+            
             NSString *samplePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp4"];
             NSData *sampleData = [NSData dataWithContentsOfFile:samplePath];
             
             //送信先URL
-            NSURL *url = [NSURL URLWithString:@"送信先URL"];
+            NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/sample.php"];
             
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
+            NSLog(@"ポスト成功");
             
             //multipart/form-dataのバウンダリ文字列生成
             CFUUIDRef uuid = CFUUIDCreate(nil);
@@ -93,30 +93,61 @@
             [request addValue:header forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:postBody];
             
+            
             [NSURLConnection connectionWithRequest:request delegate:self];
         }
+
+        
     }];
 }
+
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 	if(httpResponse.statusCode == 200) {
-		NSLog(@"Success");
+        
+		NSLog(@"Success ٩꒰๑ ´∇`๑꒱۶✧");
+        // アラートビューを作成
+        // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
+        UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"タイトル"
+                                  message:@"成功"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"Button1", @"Button2", nil];
+        // アラートビューを表示
+        [alert show];
+        
 	} else {
-		NSLog(@"Failed");
-              }
+		
+		NSLog(@"Failed (´;ω;`)");
+        // アラートビューを作成
+        // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"タイトル"
+                              message:@"失敗"
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"Button1", @"Button2", nil];
+        // アラートビューを表示
+        [alert show];
     }
+    
+}
               
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
                   
-    NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSLog(@"%@", jsonObject);
-}
+                  NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                  NSLog(@"%@", jsonObject);
+              }
               
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    NSLog(@"%@", error);
-}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+                  
+                  NSLog(@"%@", error);
+              }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示

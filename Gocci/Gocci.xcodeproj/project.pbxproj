@@ -60,6 +60,7 @@
 		FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C432192470AE0025DD6A /* LoginViewController.m */; };
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
+		FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C85E19653ABB009E4F5A /* sample.mp4 */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B8F19515EA7002FC793 /* CalendarViewController.m */; };
 		FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9219515FBA002FC793 /* CalendarDayCell.m */; };
@@ -163,6 +164,7 @@
 		FF97C43419247FD20025DD6A /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
 		FF97C43519247FD20025DD6A /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFD5C85E19653ABB009E4F5A /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF16B8E19515EA7002FC793 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		FFF16B8F19515EA7002FC793 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0BE44C193ED59E001A0053 /* AVFoundation.framework in Frameworks */,
 				FFF16B9A19554D37002FC793 /* Accelerate.framework in Frameworks */,
 				FF0BE424193CAB31001A0053 /* QuartzCore.framework in Frameworks */,
 				FF4BF522194847B90099B01D /* MediaPlayer.framework in Frameworks */,
@@ -196,7 +199,6 @@
 				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
 				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
 				FFF16B9519528286002FC793 /* Parse.framework in Frameworks */,
-				FF0BE44C193ED59E001A0053 /* AVFoundation.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
@@ -284,9 +286,10 @@
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 				FF8CE93119582664000FE68B /* RecorderViewController.h */,
+				FFD5C85E19653ABB009E4F5A /* sample.mp4 */,
 				FF8CE93219582664000FE68B /* RecorderViewController.m */,
-				FF97C43519247FD20025DD6A /* submitViewController.m */,
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
+				FF97C43519247FD20025DD6A /* submitViewController.m */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
 				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
@@ -476,6 +479,7 @@
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
+				FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

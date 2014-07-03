@@ -327,7 +327,7 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *path =  [documentsDirectory stringByAppendingPathComponent:
-                                 [NSString stringWithFormat:@"mergeVideo-%d.mov",arc4random() % 1000]];
+                                 [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000]];
         NSURL *url = [NSURL fileURLWithPath:path];
 
         // 5 - Create exporter
@@ -505,7 +505,7 @@
 
 - (NSURL *) tempFileURL
 {
-    return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"]];
+    return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mp4"]];
 }
 
 - (void) removeFile:(NSURL *)fileURL
@@ -527,7 +527,7 @@
 	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
-	NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mov", [dateFormatter stringFromDate:[NSDate date]]];
+	NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mp4", [dateFormatter stringFromDate:[NSDate date]]];
     
 	NSError	*error;
 	if (![[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:destinationPath] error:&error]) {
