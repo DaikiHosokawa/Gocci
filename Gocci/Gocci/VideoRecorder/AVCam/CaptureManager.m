@@ -317,7 +317,6 @@
 
         [vLayerInstruction setTransform:videoTrack.preferredTransform atTime:kCMTimeZero];
         vtemp.layerInstructions = @[vLayerInstruction];
-        
         AVMutableVideoComposition *videoComposition = [AVMutableVideoComposition videoComposition];
         videoComposition.renderSize = size;
         videoComposition.frameDuration = CMTimeMake(1,30);

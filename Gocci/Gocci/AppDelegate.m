@@ -10,7 +10,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "CalendarViewController.h"
 #import <Parse/Parse.h>
-#import "CalendarViewController.h"
 
 
 @implementation AppDelegate

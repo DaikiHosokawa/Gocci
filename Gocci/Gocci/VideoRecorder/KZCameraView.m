@@ -334,6 +334,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
     }];
 }
 
+
 -(void)refresh
 {
     self.progressView.hidden = YES;
