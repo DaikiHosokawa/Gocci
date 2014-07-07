@@ -83,12 +83,6 @@
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
 		FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
 		FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleTableViewCell.xib; sourceTree = "<group>"; };
-		FF0BE413193C5C8E001A0053 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../../icon/appicon.png; sourceTree = "<group>"; };
-		FF0BE414193C5CCD001A0053 /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon@2x.png"; path = "../../icon/appicon@2x.png"; sourceTree = "<group>"; };
-		FF0BE415193C5D09001A0053 /* appicon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-60@2x.png"; path = "../../icon/appicon-60@2x.png"; sourceTree = "<group>"; };
-		FF0BE416193C5D51001A0053 /* appicon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-Small.png"; path = "../../icon/appicon-Small.png"; sourceTree = "<group>"; };
-		FF0BE417193C5D78001A0053 /* appicon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-Small@2x.png"; path = "../../icon/appicon-Small@2x.png"; sourceTree = "<group>"; };
-		FF0BE418193C5DB3001A0053 /* appicon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-Small-40@2x.png"; path = "../../icon/appicon-Small-40@2x.png"; sourceTree = "<group>"; };
 		FF0BE423193CAB31001A0053 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FF0BE44B193ED59E001A0053 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF0BE44D193ED5A7001A0053 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -228,12 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				FF79170719431A8500D351B6 /* GoogleMaps.bundle */,
-				FF0BE418193C5DB3001A0053 /* appicon-Small-40@2x.png */,
-				FF0BE417193C5D78001A0053 /* appicon-Small@2x.png */,
-				FF0BE416193C5D51001A0053 /* appicon-Small.png */,
-				FF0BE415193C5D09001A0053 /* appicon-60@2x.png */,
-				FF0BE414193C5CCD001A0053 /* appicon@2x.png */,
-				FF0BE413193C5C8E001A0053 /* appicon.png */,
 				FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54F00719149A1800025DC8 /* GocciTests */,
