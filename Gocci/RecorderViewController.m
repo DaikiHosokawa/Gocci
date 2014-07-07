@@ -8,15 +8,22 @@
 
 #import "RecorderViewController.h"
 #import "KZCameraView.h"
-
+#import "CaptureManager.h"
 
 @interface RecorderViewController ()
+
 
 @property (nonatomic, strong) KZCameraView *cam;
 
 @end
 
 @implementation RecorderViewController
+
+- (id)init
+{
+    assetsLibrary_ = [[ALAssetsLibrary alloc] init];
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,9 +48,12 @@
     
     //Saveボタンの設置
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
+
 }
 
-//ナビゲーションバーのSavaボタンを押した時の動作
+
+
+//ナビゲーションバーのSaveボタンを押した時の動作
 -(IBAction)saveVideo:(id)sender
 {
     [self.cam saveVideoWithCompletionBlock:^(BOOL success) {
@@ -51,8 +61,8 @@
         {
             NSLog(@"WILL PUSH NEW CONTROLLER HERE");
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
-
             
+    
             NSString *samplePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp4"];
             NSData *sampleData = [NSData dataWithContentsOfFile:samplePath];
             

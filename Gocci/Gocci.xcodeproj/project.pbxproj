@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
-		FF0BE424193CAB31001A0053 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE423193CAB31001A0053 /* QuartzCore.framework */; };
-		FF0BE44C193ED59E001A0053 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44B193ED59E001A0053 /* AVFoundation.framework */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
 		FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44F193ED5C5001A0053 /* CoreText.framework */; };
 		FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE451193ED5CD001A0053 /* GLKit.framework */; };
@@ -22,7 +20,6 @@
 		FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE45D193ED63E001A0053 /* SystemConfiguration.framework */; };
 		FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E562191E0731007C34F7 /* everyTableViewController.m */; };
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
-		FF4BF522194847B90099B01D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4BF521194847B90099B01D /* MediaPlayer.framework */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -61,12 +58,14 @@
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
 		FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C85E19653ABB009E4F5A /* sample.mp4 */; };
+		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
+		FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */; };
+		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B8F19515EA7002FC793 /* CalendarViewController.m */; };
 		FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9219515FBA002FC793 /* CalendarDayCell.m */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
 		FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */; };
-		FFF16B9A19554D37002FC793 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9919554D37002FC793 /* Accelerate.framework */; };
 		FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +164,15 @@
 		FF97C43519247FD20025DD6A /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFD5C85E19653ABB009E4F5A /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
+		FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FFD5C867196A6A87009E4F5A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FFD5C86C196A7CC8009E4F5A /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF16B8E19515EA7002FC793 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		FFF16B8F19515EA7002FC793 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
@@ -182,10 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF0BE44C193ED59E001A0053 /* AVFoundation.framework in Frameworks */,
-				FFF16B9A19554D37002FC793 /* Accelerate.framework in Frameworks */,
-				FF0BE424193CAB31001A0053 /* QuartzCore.framework in Frameworks */,
-				FF4BF522194847B90099B01D /* MediaPlayer.framework in Frameworks */,
+				FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */,
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
@@ -249,6 +254,11 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */,
+				FFD5C867196A6A87009E4F5A /* CoreVideo.framework */,
+				FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */,
+				FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */,
+				FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */,
 				FFF16B9919554D37002FC793 /* Accelerate.framework */,
 				FFF16B9419528286002FC793 /* Parse.framework */,
 				FF4BF521194847B90099B01D /* MediaPlayer.framework */,
@@ -318,6 +328,7 @@
 				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
 				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
 				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
+				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF8CE923195824F8000FE68B /* VideoRecorder */,
 				FF7917191946DF9D00D351B6 /* RDVCalendarView */,
 			);
@@ -389,6 +400,17 @@
 				FF8CE92A195824F8000FE68B /* CaptureManager.m */,
 			);
 			path = AVCam;
+			sourceTree = "<group>";
+		};
+		FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FFD5C86C196A7CC8009E4F5A /* SVProgressHUD-Prefix.pch */,
+				FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */,
+				FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */,
+				FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +502,7 @@
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */,
+				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +530,7 @@
 				FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */,
+				FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
 				FF7917201946DF9D00D351B6 /* RDVCalendarDayCell.m in Sources */,

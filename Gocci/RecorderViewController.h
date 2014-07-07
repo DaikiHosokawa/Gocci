@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CaptureManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 @interface RecorderViewController : UIViewController
+{
+    ALAssetsLibrary *assetsLibrary_;
+}
 
 @end

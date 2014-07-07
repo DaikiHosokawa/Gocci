@@ -237,7 +237,7 @@
             
             newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error: nil] ;
             
-            // beginConfiguration ensures that pending changes are not applied immediately
+            // beginConfiguration ensures that pending changes are not applied/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci.xcodeproj immediately
             [self.session beginConfiguration] ;
             
             [self.session removeInput :input] ;
@@ -538,6 +538,12 @@
     //add asset into the array or pieces
     AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:destinationPath]];
     [self.assets addObject:asset];
+}
+
+- (void)takePhoto:(id)sender
+{
+    AudioServicesPlaySystemSound(1108);
+    
 }
 
 @end
