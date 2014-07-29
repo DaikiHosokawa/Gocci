@@ -391,6 +391,7 @@
 }
 
 
+
 #pragma mark Device Counts
 - (NSUInteger) cameraCount
 {
@@ -539,6 +540,7 @@
     AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:destinationPath]];
     [self.assets addObject:asset];
 }
+
 
 - (void)takePhoto:(id)sender
 {

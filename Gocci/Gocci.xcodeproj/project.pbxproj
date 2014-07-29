@@ -44,9 +44,6 @@
 		FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */; };
 		FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */; };
 		FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */; };
-		FF7917201946DF9D00D351B6 /* RDVCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171B1946DF9D00D351B6 /* RDVCalendarDayCell.m */; };
-		FF7917211946DF9D00D351B6 /* RDVCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171D1946DF9D00D351B6 /* RDVCalendarView.m */; };
-		FF7917221946DF9D00D351B6 /* RDVCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171F1946DF9D00D351B6 /* RDVCalendarViewController.m */; };
 		FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE926195824F8000FE68B /* AVCamRecorder.m */; };
 		FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE928195824F8000FE68B /* AVCamUtilities.m */; };
 		FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92A195824F8000FE68B /* CaptureManager.m */; };
@@ -56,14 +53,13 @@
 		FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D8500191955F700939312 /* CustomAnnotation.m */; };
 		FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C432192470AE0025DD6A /* LoginViewController.m */; };
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
+		FFA94F9F198729A300F0D5D2 /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA94F9E198729A300F0D5D2 /* R9HTTPRequest.m */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
-		FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C85E19653ABB009E4F5A /* sample.mp4 */; };
+		FFD5C85F19653ABB009E4F5A /* tester.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C85E19653ABB009E4F5A /* tester.mp4 */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
 		FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */; };
 		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
-		FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B8F19515EA7002FC793 /* CalendarViewController.m */; };
-		FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9219515FBA002FC793 /* CalendarDayCell.m */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
 		FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */; };
 		FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */; };
@@ -132,12 +128,6 @@
 		FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4TableViewCell.h; sourceTree = "<group>"; };
 		FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4TableViewCell.m; sourceTree = "<group>"; };
 		FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample4TableViewCell.xib; sourceTree = "<group>"; };
-		FF79171A1946DF9D00D351B6 /* RDVCalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarDayCell.h; sourceTree = "<group>"; };
-		FF79171B1946DF9D00D351B6 /* RDVCalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarDayCell.m; sourceTree = "<group>"; };
-		FF79171C1946DF9D00D351B6 /* RDVCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarView.h; sourceTree = "<group>"; };
-		FF79171D1946DF9D00D351B6 /* RDVCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarView.m; sourceTree = "<group>"; };
-		FF79171E1946DF9D00D351B6 /* RDVCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVCalendarViewController.h; sourceTree = "<group>"; };
-		FF79171F1946DF9D00D351B6 /* RDVCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVCalendarViewController.m; sourceTree = "<group>"; };
 		FF8CE925195824F8000FE68B /* AVCamRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamRecorder.h; sourceTree = "<group>"; };
 		FF8CE926195824F8000FE68B /* AVCamRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamRecorder.m; sourceTree = "<group>"; };
 		FF8CE927195824F8000FE68B /* AVCamUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamUtilities.h; sourceTree = "<group>"; };
@@ -156,8 +146,10 @@
 		FF97C432192470AE0025DD6A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FF97C43419247FD20025DD6A /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
 		FF97C43519247FD20025DD6A /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
+		FFA94F9D198729A300F0D5D2 /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequest.h; sourceTree = "<group>"; };
+		FFA94F9E198729A300F0D5D2 /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequest.m; sourceTree = "<group>"; };
 		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFD5C85E19653ABB009E4F5A /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
+		FFD5C85E19653ABB009E4F5A /* tester.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tester.mp4; sourceTree = "<group>"; };
 		FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -168,10 +160,6 @@
 		FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		FFF16B8E19515EA7002FC793 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		FFF16B8F19515EA7002FC793 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
-		FFF16B9119515FBA002FC793 /* CalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
-		FFF16B9219515FBA002FC793 /* CalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
 		FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
@@ -283,7 +271,9 @@
 				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
-				FFD5C85E19653ABB009E4F5A /* sample.mp4 */,
+				FFD5C85E19653ABB009E4F5A /* tester.mp4 */,
+				FFA94F9D198729A300F0D5D2 /* R9HTTPRequest.h */,
+				FFA94F9E198729A300F0D5D2 /* R9HTTPRequest.m */,
 				FF8CE93119582664000FE68B /* RecorderViewController.h */,
 				FF8CE93219582664000FE68B /* RecorderViewController.m */,
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
@@ -302,10 +292,6 @@
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
 				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
 				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
-				FFF16B8E19515EA7002FC793 /* CalendarViewController.h */,
-				FFF16B8F19515EA7002FC793 /* CalendarViewController.m */,
-				FFF16B9119515FBA002FC793 /* CalendarDayCell.h */,
-				FFF16B9219515FBA002FC793 /* CalendarDayCell.m */,
 				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
 				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
@@ -318,7 +304,6 @@
 				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
 				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF8CE923195824F8000FE68B /* VideoRecorder */,
-				FF7917191946DF9D00D351B6 /* RDVCalendarView */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -352,19 +337,6 @@
 				FF54F00A19149A1800025DC8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FF7917191946DF9D00D351B6 /* RDVCalendarView */ = {
-			isa = PBXGroup;
-			children = (
-				FF79171A1946DF9D00D351B6 /* RDVCalendarDayCell.h */,
-				FF79171B1946DF9D00D351B6 /* RDVCalendarDayCell.m */,
-				FF79171C1946DF9D00D351B6 /* RDVCalendarView.h */,
-				FF79171D1946DF9D00D351B6 /* RDVCalendarView.m */,
-				FF79171E1946DF9D00D351B6 /* RDVCalendarViewController.h */,
-				FF79171F1946DF9D00D351B6 /* RDVCalendarViewController.m */,
-			);
-			path = RDVCalendarView;
 			sourceTree = "<group>";
 		};
 		FF8CE923195824F8000FE68B /* VideoRecorder */ = {
@@ -489,7 +461,7 @@
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
-				FFD5C85F19653ABB009E4F5A /* sample.mp4 in Resources */,
+				FFD5C85F19653ABB009E4F5A /* tester.mp4 in Resources */,
 				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,23 +482,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
-				FF7917221946DF9D00D351B6 /* RDVCalendarViewController.m in Sources */,
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
-				FFF16B9319515FBA002FC793 /* CalendarDayCell.m in Sources */,
 				FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */,
 				FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
-				FF7917201946DF9D00D351B6 /* RDVCalendarDayCell.m in Sources */,
-				FFF16B9019515EA7002FC793 /* CalendarViewController.m in Sources */,
-				FF7917211946DF9D00D351B6 /* RDVCalendarView.m in Sources */,
 				FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */,
 				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */,
+				FFA94F9F198729A300F0D5D2 /* R9HTTPRequest.m in Sources */,
 				FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */,
 				FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,

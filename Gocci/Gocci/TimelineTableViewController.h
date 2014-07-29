@@ -11,7 +11,6 @@
 #import "RNFrostedSidebar.h"
 
 
-
 @interface TimelineTableViewController : UITableViewController
 
 

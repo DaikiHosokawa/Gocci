@@ -9,6 +9,8 @@
 #import "RecorderViewController.h"
 #import "KZCameraView.h"
 #import "CaptureManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "R9HTTPRequest.h"
 
 @interface RecorderViewController ()
 
@@ -62,49 +64,29 @@
             NSLog(@"WILL PUSH NEW CONTROLLER HERE");
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
             
-    
-            NSString *samplePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp4"];
-            NSData *sampleData = [NSData dataWithContentsOfFile:samplePath];
-            
-            //送信先URL
-            NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/sample.php"];
-            
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            NSURL *URL = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/uploader.php"];
+            R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:URL];
             [request setHTTPMethod:@"POST"];
-            NSLog(@"ポスト成功");
+            [request addBody:@"test" forKey:@"TestKey"];
+            // create image
+            UIImage *image = [UIImage imageNamed:@"logo.png"];
+            //NSData *pngData = [[NSData alloc] initWithData:UIImagePNGRepresentation(image)];
             
-            //multipart/form-dataのバウンダリ文字列生成
-            CFUUIDRef uuid = CFUUIDCreate(nil);
-            CFStringRef uuidString = CFUUIDCreateString(nil, uuid);
-            CFRelease(uuid);
-            NSString *boundary = [NSString stringWithFormat:@"0xKhTmLbOuNdArY-%@",uuidString];
+            // Movie
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"tester" ofType:@"mp4"];
+            NSData *data = [NSData dataWithContentsOfFile:filePath];
             
-            //アップロードする際のパラメーター名
-            NSString *parameter = @"movie";
-            
-            //アップロードするファイルの名前
-            NSString *fileName = [[samplePath componentsSeparatedByString:@"/"] lastObject];
-            
-            //アップロードするファイルの種類
-            NSString *contentType = @"video/mp4";
-            
-            NSMutableData *postBody = [NSMutableData data];
-            
-            //HTTPBody
-            [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",parameter,fileName] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postBody appendData:sampleData];
-            [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            //リクエストヘッダー
-            NSString *header = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-            
-            [request addValue:header forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:postBody];
-            
-            
-            [NSURLConnection connectionWithRequest:request delegate:self];
+            // set image data
+            [request setData:data withFileName:@"tester.mp4" andContentType:@"video/mp4" forKey:@"file"];
+            [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+                NSLog(@"%@", responseString);
+            }];
+            // Progress
+            [request setUploadProgressHandler:^(float newProgress){
+                NSLog(@"%g", newProgress);
+            }];
+            [request startRequest];
+            // Do any additional setup after loading the view, typically from a nib.
         }
 
         
@@ -117,7 +99,7 @@
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 	if(httpResponse.statusCode == 200) {
         
-		NSLog(@"Success ٩꒰๑ ´∇`๑꒱۶✧");
+		NSLog(@"Success");
         // アラートビューを作成
         // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
         UIAlertView *alert = [[UIAlertView alloc]
@@ -131,7 +113,7 @@
         
 	} else {
 		
-		NSLog(@"Failed (´;ω;`)");
+		NSLog(@"Failed");
         // アラートビューを作成
         // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
         UIAlertView *alert = [[UIAlertView alloc]

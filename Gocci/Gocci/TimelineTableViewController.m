@@ -7,7 +7,6 @@
 //
 
 #import "TimelineTableViewController.h"
-#import "CalendarViewController.h"
 #import "RecorderViewController.h"
 
 
@@ -50,12 +49,13 @@
     
      [super viewDidLoad];
     
+    
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
-      // Uncomment the following line to preserve selection between presentations.
+    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -63,8 +63,7 @@
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
- 
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage]; 
 }
 
 
