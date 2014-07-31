@@ -58,6 +58,7 @@
 #define MAX_DURATION 0.25
 
 @interface CaptureManager (RecorderDelegate) <AVCamRecorderDelegate>
+
 @end
 
 
@@ -75,6 +76,7 @@
 
 #pragma mark -
 @implementation CaptureManager
+
 
 - (id) init
 {
@@ -325,9 +327,9 @@
         // 4 - Get path
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *path =  [documentsDirectory stringByAppendingPathComponent:
+        _path =  [documentsDirectory stringByAppendingPathComponent:
                                  [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000]];
-        NSURL *url = [NSURL fileURLWithPath:path];
+        NSURL *url = [NSURL fileURLWithPath:_path];
 
         // 5 - Create exporter
         self.exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition
@@ -340,30 +342,43 @@
         self.exportProgressBarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self.delegate selector:@selector(updateProgress) userInfo:nil repeats:YES];
         
         __block id weakSelf = self;
+
+        //ここでは、pathの先のファイルが存在していない
+        
         
         [self.exportSession exportAsynchronouslyWithCompletionHandler:^{
             NSLog (@"i is in your block, exportin. status is %ld",(long)self.exportSession.status);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf exportDidFinish:self.exportSession withCompletionBlock:completion];
+            
+                
             });
         }];
+        
+        //以下、pathの先のファイルは存在している
+    
+       
     }
 }
 
 -(void)exportDidFinish:(AVAssetExportSession*)session withCompletionBlock:(void(^)(BOOL success))completion {
+    
     self.exportSession = nil;
     
     __block id weakSelf = self;
+    
     //delete stored pieces
     [self.assets enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(AVAsset *asset, NSUInteger idx, BOOL *stop) {
         
         NSURL *fileURL = nil;
+        
         if ([asset isKindOfClass:AVURLAsset.class])
         {
             AVURLAsset *urlAsset = (AVURLAsset*)asset;
             fileURL = urlAsset.URL;
+            
         }
-        
+
         if (fileURL)
             [weakSelf removeFile:fileURL];
     }];
@@ -373,12 +388,64 @@
     
     if (session.status == AVAssetExportSessionStatusCompleted) {
         NSURL *outputURL = session.outputURL;
+        
+        NSData *sampleData = [NSData dataWithContentsOfFile:_path];
+        // ファイルマネージャを作成
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        // ファイルが存在するか?
+        if ([fileManager fileExistsAtPath:_path]) { // yes
+            NSLog(@"%@は既に存在しています", _path);
+        } else {
+            NSLog(@"%@は存在していません", _path);
+        }
+        
+        
+        //送信先URL
+        NSURL *serverurl = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/sample.php"];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serverurl];
+        [request setHTTPMethod:@"POST"];
+        
+        //multipart/form-dataのバウンダリ文字列生成
+        CFUUIDRef uuid = CFUUIDCreate(nil);
+        CFStringRef uuidString = CFUUIDCreateString(nil, uuid);
+        CFRelease(uuid);
+        NSString *boundary = [NSString stringWithFormat:@"0xKhTmLbOuNdArY-%@",uuidString];
+        
+        //アップロードする際のパラメーター名
+        NSString *parameter = @"movie";
+        
+        //アップロードするファイルの名前
+        NSString *fileName = [[_path componentsSeparatedByString:@"/"] lastObject];
+        
+        //アップロードするファイルの種類
+        NSString *contentType = @"video/mp4";
+        
+        NSMutableData *postBody = [NSMutableData data];
+        
+        //HTTPBody
+        [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",parameter,fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:sampleData];
+        [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        //リクエストヘッダー
+        NSString *header = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        
+        [request addValue:header forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postBody];
+        
+        [NSURLConnection connectionWithRequest:request delegate:self];
+        
+        NSLog(@"リクエストは送信されました");
+        
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:outputURL]) {
             [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
                 //delete file from documents after saving to camera roll
                 [weakSelf removeFile:outputURL];
-                
                 if (error) {
                     completion (NO);
                 } else {
@@ -510,11 +577,11 @@
 
 - (void) removeFile:(NSURL *)fileURL
 {
-    NSString *filePath = [fileURL path];
+    NSString *assetURL = [fileURL path];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:filePath]) {
+    if ([fileManager fileExistsAtPath:assetURL]) {
         NSError *error;
-        if ([fileManager removeItemAtPath:filePath error:&error] == NO) {
+        if ([fileManager removeItemAtPath:assetURL error:&error] == NO) {
             if ([[self delegate] respondsToSelector:@selector(captureManager:didFailWithError:)]) {
                 [[self delegate] captureManager:self didFailWithError:error];
             }            
@@ -527,17 +594,19 @@
 	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
-	NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mp4", [dateFormatter stringFromDate:[NSDate date]]];
+    NSString *formattedDateString = [dateFormatter stringFromDate:[NSDate date]];
+	_destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mp4", [dateFormatter stringFromDate:[NSDate date]]];
     
 	NSError	*error;
-	if (![[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:destinationPath] error:&error]) {
+	if (![[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:_destinationPath] error:&error]) {
 		if ([[self delegate] respondsToSelector:@selector(captureManager:didFailWithError:)]) {
 			[[self delegate] captureManager:self didFailWithError:error];
 		}
 	}
     
     //add asset into the array or pieces
-    AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:destinationPath]];
+    AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:_destinationPath]];
+    NSLog(@"destination:%@",_destinationPath);
     [self.assets addObject:asset];
 }
 
@@ -569,10 +638,16 @@
     if ([[UIDevice currentDevice] isMultitaskingSupported]) {
         [[UIApplication sharedApplication] endBackgroundTask:[self backgroundRecordingID]];
     }
-    
-    if ([[self delegate] respondsToSelector:@selector(captureManagerRecordingFinished:)]) {
+      if ([[self delegate] respondsToSelector:@selector(captureManagerRecordingFinished:)]) {
         [[self delegate] captureManagerRecordingFinished:self];
     }
 }
+
+-(NSString *)getPath2{
+    NSLog(@"path2:%@",_path);
+    return _path;
+}
+
+
 
 @end

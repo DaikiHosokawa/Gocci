@@ -13,9 +13,7 @@
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
 
-@property (nonatomic, retain) GMSMapView *mapView;
-
-@property (nonatomic, retain) MKMapView *mapView_;
+@property (nonatomic, retain) MKMapView *mapView;
 
 @end
 
@@ -46,15 +44,23 @@ CLLocationManager *_locationManager;
 {
     [super viewDidLoad];
     
+    // 地図の表示
+    _mapView = [[MKMapView alloc] init];
+    
+    _mapView.frame = CGRectMake(0, 0, 320, 200);
+    _mapView.mapType = MKMapTypeStandard;
+    _mapView.showsUserLocation = YES;
+    [self.view addSubview:_mapView];
+    [_mapView.userLocation addObserver:self
+                            forKeyPath:@"location"
+                               options:0
+                               context:NULL];
+    
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     //サーチバーの作成
     UISearchBar *searchBar = [[UISearchBar alloc] init];
@@ -72,7 +78,7 @@ CLLocationManager *_locationManager;
     
     
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -81,7 +87,20 @@ CLLocationManager *_locationManager;
  
     }
 
-
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    
+    // 地図の中心座標に現在地を設定
+    _mapView.centerCoordinate = _mapView.userLocation.location.coordinate;
+    
+    // 表示倍率の設定
+    MKCoordinateRegion theRegion = _mapView.region;
+    theRegion.span.longitudeDelta /= 500;
+    theRegion.span.latitudeDelta /= 500;
+    [_mapView setRegion:theRegion animated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -101,7 +120,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
 }
 
 
@@ -123,7 +142,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return 1;
 }
 
 

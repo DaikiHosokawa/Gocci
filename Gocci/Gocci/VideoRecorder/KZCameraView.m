@@ -38,7 +38,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (nonatomic, strong) UILabel *focusModeLabel;
 
-@property (nonatomic, strong) UIImageView *recordBtn;
+@property (nonatomic, strong) UIImageView *start;
 
 //Exporting progress
 @property (nonatomic,strong) UIView *progressView;
@@ -73,6 +73,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 
 @implementation KZCameraView
 
+
 - (id)initWithFrame:(CGRect)frame withVideoPreviewFrame:(CGRect)videoFrame
 {
     self = [super initWithFrame:frame];
@@ -80,7 +81,6 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
         if ([self captureManager] == nil) {
             CaptureManager *manager = [[CaptureManager alloc] init];
             [self setCaptureManager:manager];
-            
             [[self captureManager] setDelegate:self];
             
             if ([[self captureManager] setupSession]) {
@@ -88,7 +88,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:[[self captureManager] session]];
                 
                 self.videoPreviewView = [[UIView alloc]init];
-                self.videoPreviewView.frame =  CGRectMake(0.0, 0.0, videoFrame.size.width, videoFrame.size.width);
+                self.videoPreviewView.frame =  CGRectMake(0.0, 0.0, videoFrame.size.width, videoFrame.size.width+50);
                 CALayer *viewLayer = self.videoPreviewView.layer;
                 [viewLayer setMasksToBounds:YES];
                 [self addSubview:self.videoPreviewView];
@@ -112,19 +112,23 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 });
                 
                 //set record button image. Replace with any image
-                UIImage *recordImage = [UIImage imageNamed:@"recordBtn"];
-                self.recordBtn = [[UIImageView alloc]initWithImage:recordImage];
-                self.recordBtn.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height);
-                self.recordBtn.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
-                self.recordBtn.userInteractionEnabled = YES;
-                [self addSubview:self.recordBtn];
+                UIImage *recordImage = [UIImage imageNamed:@"start"];
+                self.start = [[UIImageView alloc]initWithImage:recordImage];
+                self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height);
+                self.start.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2-30);
+                self.start.userInteractionEnabled = YES;
+                [self addSubview:self.start];
                 
                 //Record Long Press Gesture on the record button
                 UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(startRecording:)];
                 [longPress setDelegate:self];
-                [self.recordBtn addGestureRecognizer:longPress];
+                [self.start addGestureRecognizer:longPress];
+            
+                self.durationProgressBar = [[UIProgressView alloc]initWithFrame:CGRectMake(0.0, videoFrame.origin.y + videoFrame.size.height+62, videoFrame.size.width, 10.0)];
+                self.durationProgressBar.transform = CGAffineTransformMakeScale(1.0, 15.0);//縦に15倍に引き伸ばす
+                self.durationProgressBar.progressTintColor = [ UIColor redColor];
+            
                 
-                self.durationProgressBar = [[UIProgressView alloc]initWithFrame:CGRectMake(0.0, videoFrame.origin.y + videoFrame.size.height, videoFrame.size.width, 10.0)];
                 [self addSubview:self.durationProgressBar];
                 
                 // Create the focus mode UI overlay
@@ -176,13 +180,15 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 
                 self.deleteLastBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 self.deleteLastBtn.bounds = CGRectMake(0.0, 0.0, 100.0, 30.0);
-                self.deleteLastBtn.center = CGPointMake(60.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
+                self.deleteLastBtn.center = CGPointMake(60.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2+60);
                 [self.deleteLastBtn setTitle:@"Retry" forState:UIControlStateNormal];
                 [self.deleteLastBtn addTarget:self.captureManager action:@selector(deleteLastAsset) forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:self.deleteLastBtn];
+                
             }
         }
     }
+    
     return self;
 }
 
@@ -196,7 +202,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
             self.camerasSwitchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.camerasSwitchBtn setImage:btnImg forState:UIControlStateNormal];
             self.camerasSwitchBtn.bounds = CGRectMake(0.0, 0.0, btnImg.size.width, btnImg.size.height);
-            self.camerasSwitchBtn.center = CGPointMake(self.frame.size.width - btnImg.size.width/2 - 10.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
+            self.camerasSwitchBtn.center = CGPointMake(self.frame.size.width - btnImg.size.width/2 - 10.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2+60);
             [self.camerasSwitchBtn addTarget:self action:@selector(switchCamera) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.camerasSwitchBtn];
         }
@@ -262,6 +268,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
             NSLog(@"START");
             if (![[[self captureManager] recorder] isRecording])
             {
+               
                 if (self.duration < self.maxDuration)
                 {
                     [[self captureManager] startRecording];
@@ -273,6 +280,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
         {
             if ([[[self captureManager] recorder] isRecording])
             {
+                
                 [self.durationTimer invalidate];
                 [[self captureManager] stopRecording];
                 self.videoPreviewView.layer.borderColor = [UIColor clearColor].CGColor;
@@ -289,7 +297,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 {
     if ([[[self captureManager] recorder] isRecording])
     {
-        self.duration = self.duration + 0.1;
+         self.duration = self.duration + 0.1;
         self.durationProgressBar.progress = self.duration/self.maxDuration;
         NSLog(@"self.duration %f, self.progressBar %f", self.duration, self.durationProgressBar.progress);
         if (self.durationProgressBar.progress > .99) {
@@ -300,6 +308,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
     }
     else
     {
+        
         [self.durationTimer invalidate];
         self.durationTimer = nil;
     }
@@ -319,8 +328,10 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
         
         if (completion)
         {
+            
             self.progressLabel.text = @"Saved To Photo Album";
             [weakSelf performSelector:@selector(refresh) withObject:nil afterDelay:0.5];
+            
             
         }
         else
@@ -483,11 +494,23 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 
 - (void)captureManagerRecordingFinished:(CaptureManager *)captureManager
 {
+   //Do something
 }
 
 - (void)captureManagerDeviceConfigurationChanged:(CaptureManager *)captureManager
 {
     //Do something
+}
+
+-(NSString*)getPath{
+    NSLog(@"destinationPath:%@",_destinationPath);
+    return _destinationPath;
+}
+
+-(NSString*)getPath2{
+    NSLog(@"path3:%@",_path);
+    _path = [self.captureManager getPath2];
+    return _path;
 }
 
 @end

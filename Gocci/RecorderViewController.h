@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "KZCameraView.h"
 
 @interface RecorderViewController : UIViewController
 {
     ALAssetsLibrary *assetsLibrary_;
+    KZCameraView *_cam;
 }
+@property (nonatomic, strong) KZCameraView *cam;
 
 @end

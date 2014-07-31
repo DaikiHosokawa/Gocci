@@ -7,25 +7,17 @@
 //
 
 #import "RecorderViewController.h"
-#import "KZCameraView.h"
 #import "CaptureManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "R9HTTPRequest.h"
 
 @interface RecorderViewController ()
 
-
-@property (nonatomic, strong) KZCameraView *cam;
+@property (weak, nonatomic) IBOutlet UIView *subView;
 
 @end
 
 @implementation RecorderViewController
 
-- (id)init
-{
-    assetsLibrary_ = [[ALAssetsLibrary alloc] init];
-    return self;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,100 +34,44 @@
     [super viewDidLoad];
     
     //カメラのスペース確保
-    self.cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
-    [self.view addSubview:self.cam];
-    self.cam.maxDuration = 6.0;
-    self.cam.showCameraSwitch = YES;
+    _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
+    [self.view addSubview:_cam];
+    _cam.maxDuration = 6.0;
+    _cam.showCameraSwitch = YES;
     
+    //背景にイメージを追加したい
+    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    self.subView.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+
     
     //Saveボタンの設置
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
 
 }
 
-
-
-//ナビゲーションバーのSaveボタンを押した時の動作
+//ナビゲーションバーのSavaボタンを押した時の動作
 -(IBAction)saveVideo:(id)sender
 {
-    [self.cam saveVideoWithCompletionBlock:^(BOOL success) {
+    [_cam saveVideoWithCompletionBlock:^(BOOL success) {
         if (success)
         {
             NSLog(@"WILL PUSH NEW CONTROLLER HERE");
+        
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
             
-            NSURL *URL = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/uploader.php"];
-            R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:URL];
-            [request setHTTPMethod:@"POST"];
-            [request addBody:@"test" forKey:@"TestKey"];
-            // create image
-            UIImage *image = [UIImage imageNamed:@"logo.png"];
-            //NSData *pngData = [[NSData alloc] initWithData:UIImagePNGRepresentation(image)];
-            
-            // Movie
-            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"tester" ofType:@"mp4"];
-            NSData *data = [NSData dataWithContentsOfFile:filePath];
-            
-            // set image data
-            [request setData:data withFileName:@"tester.mp4" andContentType:@"video/mp4" forKey:@"file"];
-            [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-                NSLog(@"%@", responseString);
-            }];
-            // Progress
-            [request setUploadProgressHandler:^(float newProgress){
-                NSLog(@"%g", newProgress);
-            }];
-            [request startRequest];
-            // Do any additional setup after loading the view, typically from a nib.
         }
-
-        
     }];
 }
 
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    
-	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-	if(httpResponse.statusCode == 200) {
-        
-		NSLog(@"Success");
-        // アラートビューを作成
-        // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
-        UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle:@"タイトル"
-                                  message:@"成功"
-                                  delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:@"Button1", @"Button2", nil];
-        // アラートビューを表示
-        [alert show];
-        
-	} else {
-		
-		NSLog(@"Failed");
-        // アラートビューを作成
-        // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"タイトル"
-                              message:@"失敗"
-                              delegate:self
-                              cancelButtonTitle:@"Cancel"
-                              otherButtonTitles:@"Button1", @"Button2", nil];
-        // アラートビューを表示
-        [alert show];
-    }
-    
-}
               
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-                  
                   NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                   NSLog(@"%@", jsonObject);
               }
               
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-                  
                   NSLog(@"%@", error);
               }
 

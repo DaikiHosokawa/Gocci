@@ -62,10 +62,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage]; 
+    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    
 }
 
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    [moviePlayer play];
+}
 
 
 - (IBAction)onBurger:(id)sender {
@@ -116,7 +120,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
 }
 
 
@@ -126,25 +130,45 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return 40;
 }
 
 //セルの高さを調整
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 350.0;
+    return 458.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
+    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    CGRect frame = CGRectMake(0, 70, 320, 320);
+    
+    [moviePlayer.view setFrame:frame];
+    
+    [cell.contentView addSubview: moviePlayer.view];
+    [cell.contentView bringSubviewToFront:moviePlayer.view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:moviePlayer];
+    
+    [moviePlayer prepareToPlay];
+    [moviePlayer play];
+    
+	// Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell" ];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell" ];
     
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある

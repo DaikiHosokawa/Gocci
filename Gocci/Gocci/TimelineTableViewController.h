@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Sample2TableViewCell.h"
 #import "RNFrostedSidebar.h"
+#import <MediaPlayer/MediaPlayer.h>
+
+@interface TimelineTableViewController : UITableViewController{
+    MPMoviePlayerController *moviePlayer;
+    UITableViewCell *cell;
+}
 
 
-@interface TimelineTableViewController : UITableViewController
+
 
 
 @end

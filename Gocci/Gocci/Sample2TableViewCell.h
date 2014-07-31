@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface Sample2TableViewCell : UITableViewCell{
-    MPMoviePlayerController *moviePlayer;
-}
-@property (weak, nonatomic) IBOutlet UIView *Spots;
+@interface Sample2TableViewCell : UITableViewCell
 
 @end
