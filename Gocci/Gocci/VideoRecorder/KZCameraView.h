@@ -29,12 +29,10 @@
 @class CaptureManager, AVCamPreviewView, AVCaptureVideoPreviewLayer;
 
 @interface KZCameraView : UIView <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
-    NSString *_destinationPath;
     NSString *_path;
 }
 
 @property (nonatomic,strong,getter = getPath2)NSString *path;
-@property (nonatomic,strong,getter = getPath)NSString *destinationPath;
 @property (nonatomic, assign) float maxDuration;
 @property (nonatomic,assign) BOOL showCameraSwitch;
 

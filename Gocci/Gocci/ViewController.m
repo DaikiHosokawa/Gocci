@@ -21,7 +21,7 @@
     // coordinate -33.86,151.20 at zoom level 6.
     
     [super viewDidLoad];
-   NSLog(@"%@", @"ログです");
+
 
 }
 

@@ -87,13 +87,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return 40;
 }
 
 
@@ -130,13 +130,32 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 324.0;
+    return 458.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
+    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    CGRect frame = CGRectMake(0, 65, 320, 280);
+    
+    [moviePlayer.view setFrame:frame];
+    
+    [cell.contentView addSubview: moviePlayer.view];
+    [cell.contentView bringSubviewToFront:moviePlayer.view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:moviePlayer];
+    
+    [moviePlayer prepareToPlay];
+    [moviePlayer play];
+    
     //storyboardで指定したIdentifierを指定する
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
     
     if (!cell) {
         //さらにcellのinitでLoadNibしxibを指定する必要がある
@@ -154,6 +173,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //セグエで画面遷移する
     [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
 }
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    [moviePlayer play];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

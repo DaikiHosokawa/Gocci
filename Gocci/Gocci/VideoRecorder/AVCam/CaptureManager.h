@@ -55,12 +55,10 @@
 @protocol CaptureManagerDelegate;
 
 @interface CaptureManager : NSObject {
-    NSString *_destinationPath;
     NSString *_path;
 }
 
-@property (nonatomic,strong,getter = getPath2)NSString *path;
-@property (nonatomic,strong,getter = getPath)NSString *destinationPath;
+@property (nonatomic,strong,getter = getPath)NSString *path;
 @property (nonatomic,strong) AVCaptureSession *session;
 @property (nonatomic,assign) AVCaptureVideoOrientation orientation;
 @property (nonatomic,strong) AVCaptureDeviceInput *videoInput;

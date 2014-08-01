@@ -50,7 +50,6 @@
 		FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92C195824F8000FE68B /* KZCameraView.m */; };
 		FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE93219582664000FE68B /* RecorderViewController.m */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
-		FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8D8500191955F700939312 /* CustomAnnotation.m */; };
 		FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C432192470AE0025DD6A /* LoginViewController.m */; };
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
@@ -139,8 +138,6 @@
 		FF8CE93219582664000FE68B /* RecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecorderViewController.m; path = ../RecorderViewController.m; sourceTree = "<group>"; };
 		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FF8D84FF191955F700939312 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
-		FF8D8500191955F700939312 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		FF97C431192470AE0025DD6A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FF97C432192470AE0025DD6A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FF97C43419247FD20025DD6A /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
@@ -282,12 +279,12 @@
 				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
 				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
 				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
-				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
 				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
 				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
 				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
+				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
 				FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */,
 				FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */,
@@ -309,8 +306,6 @@
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
 				FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */,
-				FF8D84FF191955F700939312 /* CustomAnnotation.h */,
-				FF8D8500191955F700939312 /* CustomAnnotation.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -494,7 +489,6 @@
 				FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */,
 				FF54EFF319149A1800025DC8 /* AppDelegate.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
-				FF8D8501191955F700939312 /* CustomAnnotation.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
@@ -626,7 +620,7 @@
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
@@ -648,7 +642,7 @@
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";

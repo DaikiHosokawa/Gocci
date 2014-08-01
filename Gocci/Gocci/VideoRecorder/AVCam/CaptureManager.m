@@ -595,18 +595,17 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
     NSString *formattedDateString = [dateFormatter stringFromDate:[NSDate date]];
-	_destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mp4", [dateFormatter stringFromDate:[NSDate date]]];
+	NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/output_%@.mp4", [dateFormatter stringFromDate:[NSDate date]]];
     
 	NSError	*error;
-	if (![[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:_destinationPath] error:&error]) {
+	if (![[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:destinationPath] error:&error]) {
 		if ([[self delegate] respondsToSelector:@selector(captureManager:didFailWithError:)]) {
 			[[self delegate] captureManager:self didFailWithError:error];
 		}
 	}
     
     //add asset into the array or pieces
-    AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:_destinationPath]];
-    NSLog(@"destination:%@",_destinationPath);
+    AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:destinationPath]];
     [self.assets addObject:asset];
 }
 
@@ -643,8 +642,8 @@
     }
 }
 
--(NSString *)getPath2{
-    NSLog(@"path2:%@",_path);
+-(NSString *)getPath{
+    NSLog(@"path:%@",_path);
     return _path;
 }
 

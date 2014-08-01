@@ -11,8 +11,13 @@
 #import <Accounts/Accounts.h>
 #import "Sample3TableViewCell.h"
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface RestaurantTableViewController : UITableViewController
+@interface RestaurantTableViewController : UITableViewController{
+    MPMoviePlayerController *moviePlayer;
+    UITableViewCell *cell;
+}
+
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 

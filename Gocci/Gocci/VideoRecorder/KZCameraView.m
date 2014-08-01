@@ -502,14 +502,10 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
     //Do something
 }
 
--(NSString*)getPath{
-    NSLog(@"destinationPath:%@",_destinationPath);
-    return _destinationPath;
-}
 
 -(NSString*)getPath2{
     NSLog(@"path3:%@",_path);
-    _path = [self.captureManager getPath2];
+    _path = [self.captureManager getPath];
     return _path;
 }
 

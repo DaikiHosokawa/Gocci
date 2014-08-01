@@ -50,13 +50,13 @@
 
 }
 
-//ナビゲーションバーのSavaボタンを押した時の動作
+//ナビゲーションバーのSaveボタンを押した時の動作
 -(IBAction)saveVideo:(id)sender
 {
     [_cam saveVideoWithCompletionBlock:^(BOOL success) {
         if (success)
         {
-            NSLog(@"WILL PUSH NEW CONTROLLER HERE");
+            NSLog(@"共有画面へ移動");
         
             [self performSegueWithIdentifier:@"SavedVideoPush" sender:sender];
             
