@@ -263,12 +263,14 @@
 				FF54EFF819149A1800025DC8 /* ViewController.m */,
 				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
-				FF54EFE919149A1800025DC8 /* Supporting Files */,
 				FFD5C85E19653ABB009E4F5A /* tester.mp4 */,
-				FF8CE93119582664000FE68B /* RecorderViewController.h */,
-				FF8CE93219582664000FE68B /* RecorderViewController.m */,
-				FF97C43419247FD20025DD6A /* submitViewController.h */,
-				FF97C43519247FD20025DD6A /* submitViewController.m */,
+				FF97C431192470AE0025DD6A /* LoginViewController.h */,
+				FF97C432192470AE0025DD6A /* LoginViewController.m */,
+				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
+				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
+				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
+				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
+				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
 				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
@@ -279,22 +281,16 @@
 				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
 				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
 				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
-				FF97C431192470AE0025DD6A /* LoginViewController.h */,
-				FF97C432192470AE0025DD6A /* LoginViewController.m */,
-				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
-				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
 				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
 				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
 				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
 				FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */,
 				FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */,
-				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
-				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
-				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
-				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
-				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
-				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
-				FF8CE923195824F8000FE68B /* VideoRecorder */,
+				FF8CE93119582664000FE68B /* RecorderViewController.h */,
+				FF8CE93219582664000FE68B /* RecorderViewController.m */,
+				FF97C43419247FD20025DD6A /* submitViewController.h */,
+				FF97C43519247FD20025DD6A /* submitViewController.m */,
+				FF54EFE919149A1800025DC8 /* Supporting Files */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -302,6 +298,9 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC8908198E2A0D008DC584 /* Sidebar */,
+				FF8CE923195824F8000FE68B /* VideoRecorder */,
+				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
@@ -362,6 +361,15 @@
 				FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		FFFC8908198E2A0D008DC584 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
+				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
+			);
+			name = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
