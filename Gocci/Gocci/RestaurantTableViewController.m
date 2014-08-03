@@ -62,7 +62,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
    
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -73,7 +73,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.8];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,6 +139,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    moviePlayer.useApplicationAudioSession = NO;
     CGRect frame = CGRectMake(0, 65, 320, 280);
     
     [moviePlayer.view setFrame:frame];

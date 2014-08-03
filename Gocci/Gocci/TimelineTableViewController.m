@@ -145,12 +145,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 458.0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    _path =  [documentsDirectory stringByAppendingPathComponent:
+              [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000]];
+    NSLog(@"pathは%@",_path);
+    NSString *s1 = @"http://codecamp1353.lesson2.codecamp.jp/movies";
+    NSString *trueurl = [NSString stringWithFormat:@"%@ %@",s1,_path];
+    NSURL *url = [NSURL URLWithString:trueurl];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    moviePlayer.useApplicationAudioSession = NO;
     CGRect frame = CGRectMake(0, 65, 320, 280);
     
     [moviePlayer.view setFrame:frame];

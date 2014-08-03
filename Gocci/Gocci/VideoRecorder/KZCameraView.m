@@ -503,10 +503,4 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 }
 
 
--(NSString*)getPath2{
-    NSLog(@"path3:%@",_path);
-    _path = [self.captureManager getPath];
-    return _path;
-}
-
 @end

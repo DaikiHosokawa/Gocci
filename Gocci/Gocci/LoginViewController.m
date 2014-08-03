@@ -73,6 +73,21 @@
         } else {
             NSLog(@"Facebook ログイン完了!");
         }
+        // リンクさせる場合
+        if (![PFFacebookUtils isLinkedWithUser:user]) {
+            [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"Facebook にリンク成功!");
+                }
+            }];
+        }
+        
+        // リンクを解除する場合
+        [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"Facebook のリンク解除完了!");
+            }
+        }];
     }];
 
 }
@@ -92,6 +107,21 @@
         } else {
             NSLog(@"Twitter ログイン完了!");
         }
+        // リンクさせる場合
+        if (![PFTwitterUtils isLinkedWithUser:user]) {
+            [PFTwitterUtils linkUser:user block:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"Facebook にリンク成功!");
+                }
+            }];
+        }
+        
+        // リンクを解除する場合
+        [PFTwitterUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"Facebook のリンク解除完了!");
+            }
+        }];
     }];
 }
 

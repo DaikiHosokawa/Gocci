@@ -8,7 +8,6 @@
 
 #import "SearchTableViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
@@ -18,8 +17,7 @@
 @end
 
 @implementation SearchTableViewController
-
-CLLocationManager *_locationManager;
+@synthesize locationManager;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -56,6 +54,7 @@ CLLocationManager *_locationManager;
                                options:0
                                context:NULL];
     
+    
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
@@ -73,7 +72,7 @@ CLLocationManager *_locationManager;
     
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = searchBar;
-    self.navigationItem.titleView.frame = CGRectMake(0, 0, 0, 0);
+    self.navigationItem.titleView.frame = CGRectMake(0, 0   , 0, 0);
     [self.view addSubview: searchBar];
     
     
@@ -84,8 +83,62 @@ CLLocationManager *_locationManager;
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
- 
+    
+    locationManager = [[CLLocationManager alloc] init];
+    
+    // 位置情報サービスが利用できるかどうかをチェック
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager.delegate = self; // ……【1】
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+    } else {
+        NSLog(@"Location services not available.");
     }
+    
+}
+
+// 位置情報更新時
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    
+    //緯度・経度を出力
+    NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
+          [newLocation coordinate].latitude,
+          [newLocation coordinate].longitude);
+
+  }
+
+// 測位失敗時や、5位置情報の利用をユーザーが「不許可」とした場合などに呼ばれる
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    NSLog(@"didFailWithError");
+}
+
+-(void) onResume {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager startUpdatingLocation]; //測位再開
+}
+
+-(void) onPause {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager stopUpdatingLocation]; //測位停止
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"applicationWillResignActive");
+    [self onPause];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    [self onResume];
+}
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
@@ -99,7 +152,7 @@ CLLocationManager *_locationManager;
     MKCoordinateRegion theRegion = _mapView.region;
     theRegion.span.longitudeDelta /= 500;
     theRegion.span.latitudeDelta /= 500;
-    [_mapView setRegion:theRegion animated:YES];
+    [_mapView setRegion:theRegion animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,7 +188,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 30;
 }
 
 

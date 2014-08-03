@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "SampleTableViewCell.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 
-@interface SearchTableViewController : UITableViewController
+@interface SearchTableViewController : UITableViewController{
+    CLLocationManager *locationManager;
+}
 
+-(void) onResume;
+-(void) onPause;
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
 @end
 
 

@@ -14,6 +14,7 @@
 @interface TimelineTableViewController : UITableViewController{
     MPMoviePlayerController *moviePlayer;
     UITableViewCell *cell;
+    NSString *_path;
 }
 
 

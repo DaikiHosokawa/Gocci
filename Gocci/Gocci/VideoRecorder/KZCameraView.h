@@ -32,7 +32,6 @@
     NSString *_path;
 }
 
-@property (nonatomic,strong,getter = getPath2)NSString *path;
 @property (nonatomic, assign) float maxDuration;
 @property (nonatomic,assign) BOOL showCameraSwitch;
 
