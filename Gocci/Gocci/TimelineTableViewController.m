@@ -8,8 +8,6 @@
 
 #import "TimelineTableViewController.h"
 #import "RecorderViewController.h"
-#import "AFNetworking.h"
-
 
 
 @protocol MovieViewDelegate;
@@ -50,16 +48,17 @@
 {
     
      [super viewDidLoad];
-    
-    
+
+    //AFNetworkingのテスト
+    // AFHTTPSessionManagerを利用して、http://codecamp1353.lesson2.codecamp.jp/からJSONデータを取得する
     AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://codecamp1353.lesson2.codecamp.jp/東京青梅市300rest.json"
+    [manager GET:@"http://codecamp1353.lesson2.codecamp.jp/300rest.json"
       parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
           NSLog(@"response: %@", responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
           NSLog(@"Error: %@", error);
       }];
-    
+
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
@@ -156,15 +155,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    _path =  [documentsDirectory stringByAppendingPathComponent:
-              [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000]];
-    NSLog(@"pathは%@",_path);
-    NSString *s1 = @"http://codecamp1353.lesson2.codecamp.jp/movies";
-    NSString *trueurl = [NSString stringWithFormat:@"%@ %@",s1,_path];
-    NSURL *url = [NSURL URLWithString:trueurl];
+
+    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
@@ -183,6 +175,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [moviePlayer prepareToPlay];
     [moviePlayer play];
+
     
 	// Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する

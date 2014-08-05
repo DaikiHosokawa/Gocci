@@ -10,6 +10,7 @@
 #import "Sample2TableViewCell.h"
 #import "RNFrostedSidebar.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "AFNetworking.h"
 
 @interface TimelineTableViewController : UITableViewController{
     MPMoviePlayerController *moviePlayer;
