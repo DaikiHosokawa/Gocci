@@ -8,6 +8,8 @@
 
 #import "TimelineTableViewController.h"
 #import "RecorderViewController.h"
+#import "AFNetworking.h"
+
 
 
 @protocol MovieViewDelegate;
@@ -49,6 +51,14 @@
     
      [super viewDidLoad];
     
+    
+    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://codecamp1353.lesson2.codecamp.jp/東京青梅市300rest.json"
+      parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"response: %@", responseObject);
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Error: %@", error);
+      }];
     
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     
