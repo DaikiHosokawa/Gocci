@@ -12,17 +12,17 @@
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6DBC1A6282C440E0946C10E8</key>
+		<key>4C783AB7CD5B4E5B9B99CE28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED8A571B28C8494299A8607F</key>
+		<key>F04543FF32384F31B6770B66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
