@@ -82,7 +82,7 @@
          UIImage* img = [[UIImage alloc] initWithData:data];
          [viewController addImage:img];
        */
-         [viewController setInitialText:@"アプリからの投稿"];
+         [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
         [viewController addURL:url]; //URLのセット
     
         viewController.completionHandler = ^(SLComposeViewControllerResult res) {
