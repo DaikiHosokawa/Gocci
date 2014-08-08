@@ -49,16 +49,7 @@
     
      [super viewDidLoad];
 
-    //AFNetworkingのテスト
-    // AFHTTPSessionManagerを利用して、http://codecamp1353.lesson2.codecamp.jp/からJSONデータを取得する
-    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://codecamp1353.lesson2.codecamp.jp/300rest.json"
-      parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSLog(@"response: %@", responseObject);
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"Error: %@", error);
-      }];
-
+   
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];

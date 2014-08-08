@@ -42,6 +42,19 @@
 {
     [super viewDidLoad];
     
+    
+     //AFNetworkingのテスト
+     // AFHTTPSessionManagerを利用して、http://codecamp1353.lesson2.codecamp.jp/からJSONデータを取得する
+     AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+     [manager GET:@"http://codecamp1353.lesson2.codecamp.jp/300rest.json"
+     parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     NSLog(@"response: %@", responseObject);
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog(@"Error: %@", error);
+     }];
+     
+
+    
     // 地図の表示
     _mapView = [[MKMapView alloc] init];
     
@@ -201,15 +214,22 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //storyboardで指定したIdentifierを指定する
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
+    SampleTableViewCell* cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
+    if (cell == nil) {
+        UINib* nib = [UINib nibWithNibName:@"searchTableViewCell" bundle:nil];
+        NSArray* array = [nib instantiateWithOwner:nil options:nil];
+        cell = [array objectAtIndex:0];
+     }
     
-    if (!cell) {
-        //さらにcellのinitでLoadNibしxibを指定する必要がある
-        cell = [[SampleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-    reuseIdentifier:@"searchTableViewCell"];
-    }
-    
+    // Configure the cell.
+    int r = rand();
+    cell.restaurantName.text = [NSString stringWithFormat:@"NAME-%d", r];
+    cell.restaurantAddress.text = [[NSDate dateWithTimeIntervalSince1970:r] description];
+    cell.meter.text = @"mを表示";
+    cell.logo.image = [UIImage imageNamed:
+                            [NSString stringWithFormat:@"image%02ds.jpg", (r%8)+1]];
+    NSLog(@"%@", [NSString stringWithFormat:@"image%02ds.jpg", (r%8)+1]);
+    return cell;
     // Configure the cell...
     return cell;
 }

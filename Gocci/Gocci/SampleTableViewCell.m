@@ -9,6 +9,18 @@
 #import "SampleTableViewCell.h"
 
 @implementation SampleTableViewCell
+@synthesize restaurantAddress;
+@synthesize restaurantName;
+@synthesize meter;
+@synthesize logo;
+
+- (void)dealloc
+{
+self.restaurantName = nil;
+self.restaurantAddress = nil;
+self.meter = nil;
+self.logo = nil;
+};
 
 - (void)awakeFromNib
 {

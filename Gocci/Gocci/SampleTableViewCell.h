@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SampleTableViewCell : UITableViewCell
+@interface SampleTableViewCell : UITableViewCell{
+    NSMutableArray *venues_;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantAddress;
-@property (weak, nonatomic) IBOutlet UIImageView *pin;
 @property (weak, nonatomic) IBOutlet UILabel *meter;
 
 

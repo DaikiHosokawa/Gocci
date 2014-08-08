@@ -74,8 +74,17 @@
         
         SLComposeViewController *viewController = [SLComposeViewController
                                                    composeViewControllerForServiceType:serviceType];
-        [viewController setInitialText:@"アプリからの投稿"];
-        
+    
+        NSString* path = @"http://codecamp1353.lesson2.codecamp.jp/movies/mergeVideo-866.mp4";
+        NSURL* url = [NSURL URLWithString:path];
+        /*
+        NSData* data = [NSData dataWithContentsOfURL:url];
+         UIImage* img = [[UIImage alloc] initWithData:data];
+         [viewController addImage:img];
+       */
+         [viewController setInitialText:@"アプリからの投稿"];
+        [viewController addURL:url]; //URLのセット
+    
         viewController.completionHandler = ^(SLComposeViewControllerResult res) {
             if (res == SLComposeViewControllerResultCancelled) {
                 NSLog(@"cancel");

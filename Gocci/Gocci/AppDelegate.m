@@ -39,9 +39,10 @@
     [PFFacebookUtils initializeFacebook];
     
     // Twitter
-    [PFTwitterUtils initializeWithConsumerKey:@"rJga5dCArIAzXZp7pc8lSbx19"
-                               consumerSecret:@"Ve6T4hXTrBPh6LWyjGyfchA16gDmLqI8rOpB1fdey5SX8fPEBV"];
-/*
+    [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
+                               consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
+    
+    /*
     //GoogleMapSDKのAPIキー
     [GMSServices provideAPIKey:@"AIzaSyCdg9WQF1sxLW7Arc2VBfJDfAkV60iOTp8"];
 */
