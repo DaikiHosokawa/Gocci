@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "KZCameraView.h"
+#import "submitViewController.h"
 
 @interface RecorderViewController : UIViewController
 {

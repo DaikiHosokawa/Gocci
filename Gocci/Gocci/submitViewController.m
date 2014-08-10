@@ -17,6 +17,7 @@
 
 @implementation submitViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,6 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +51,6 @@
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
@@ -97,5 +98,6 @@
         [self presentViewController:viewController animated:YES completion:nil];
         
     }
+
 
 @end

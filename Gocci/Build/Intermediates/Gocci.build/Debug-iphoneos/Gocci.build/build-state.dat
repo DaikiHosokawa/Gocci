@@ -115,30 +115,120 @@ c00000000533B9F82000000000000019E
 t1396416386
 s414
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c00000000533B9F820000000000632990
+t1396416386
+s6498704
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
+c00000000533B9F8200000000000D6100
+t1396416386
+s876800
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Accelerate
+c00000000533B9F820000000000011540
+t1396416386
+s70976
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/vImage
+c00000000533B9F820000000000617550
+t1396416386
+s6387024
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libBLAS.dylib
+c00000000533B9F82000000000029B8F0
+t1396416386
+s2734320
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libLAPACK.dylib
+c00000000533B9F83000000000095C3C0
+t1396416387
+s9814976
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvDSP.dylib
+c00000000533B9F8200000000001570A0
+t1396416386
+s1405088
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvMisc.dylib
+c00000000533B9F820000000000065CE0
+t1396416386
+s416992
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/vecLib
+c00000000533B9F820000000000011540
+t1396416386
+s70976
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accounts.framework/Accounts
+c00000000533B9F8200000000000CD7C0
+t1396416386
+s841664
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
 c00000000533B9F820000000000075BA0
 t1396416386
 s482208
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c00000000533B9F830000000000CF7800
+t1396416387
+s13596672
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c00000000533B9F83000000000063A500
+t1396416387
+s6530304
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework/CoreAudio
+c00000000533B9F8300000000001A2540
+t1396416387
+s1713472
 
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreData.framework/CoreData
 c00000000533B9F8300000000008F30A0
 t1396416387
 s9384096
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+c00000000533B9F83000000000079C660
+t1396416387
+s7980640
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
 c00000000533B9F8300000000004D7BC0
 t1396416387
 s5077952
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreImage.framework/CoreImage
+c00000000533B9F830000000000433410
+t1396416387
+s4404240
 
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
 c00000000533B9F830000000000152370
 t1396416387
 s1385328
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
+c00000000533B9F83000000000011EB10
+t1396416387
+s1174288
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
+c00000000533B9F8300000000002CB700
+t1396416387
+s2930432
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreText.framework/CoreText
 c00000000533B9F840000000000306EF0
 t1396416388
 s3174128
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreVideo.framework/CoreVideo
+c00000000533B9F84000000000006DCD0
+t1396416388
+s449744
 
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
 c00000000533B9F840000000000A90C10
@@ -160,6 +250,16 @@ c00000000533B9F8500000000003C0F90
 t1396416389
 s3936144
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c00000000533B9F850000000000ABDE50
+t1396416389
+s11263568
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
+c00000000533B9F850000000000D06500
+t1396416389
+s13657344
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
 c00000000533B9F850000000000210E90
 t1396416389
@@ -170,10 +270,25 @@ c00000000533B9F8500000000000417E0
 t1396416389
 s268256
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c00000000533B9F860000000000649DB0
+t1396416390
+s6593968
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework/Security
 c00000000533B9F860000000000186D60
 t1396416390
 s1600864
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Social.framework/Social
+c00000000533B9F8600000000002C0C30
+t1396416390
+s2886704
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/StoreKit.framework/StoreKit
+c00000000533B9F860000000000099D80
+t1396416390
+s630144
 
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
 c00000000533B9F8600000000001A2B00
@@ -185,6 +300,16 @@ c00000000533B9F880000000002759920
 t1396416392
 s41261344
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+c00000000533B9F8C0000000000385D50
+t1396416396
+s3693904
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libSystem.dylib
+c00000000533B9F92000000000001E300
+t1396416402
+s123648
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libc++.dylib
 c00000000533B9F9200000000001FDBD0
 t1396416402
@@ -195,18 +320,168 @@ c00000000533B9F93000000000062BD50
 t1396416403
 s6470992
 
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libobjc.dylib
+c00000000533B9F92000000000055EFE0
+t1396416402
+s5631968
+
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libz.dylib
 c00000000533B9F9300000000000466D0
 t1396416403
 s288464
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcache.dylib
+c00000000533B9F93000000000002A880
+t1396416403
+s174208
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcommonCrypto.dylib
+c00000000533B9F9300000000000458C0
+t1396416403
+s284864
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcompiler_rt.dylib
+c00000000533B9F93000000000003E3E0
+t1396416403
+s254944
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcopyfile.dylib
+c00000000533B9F93000000000002B130
+t1396416403
+s176432
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcorecrypto.dylib
+c00000000533B9F9300000000000E1FD0
+t1396416403
+s925648
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libdispatch.dylib
+c00000000533B9F9300000000000A2A70
+t1396416403
+s666224
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libdyld.dylib
+c00000000533B9F93000000000001E8A0
+t1396416403
+s125088
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libkeymgr.dylib
+c00000000533B9F93000000000000BF00
+t1396416403
+s48896
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/liblaunch.dylib
+c00000000533B9F930000000000034380
+t1396416403
+s213888
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libmacho.dylib
+c00000000533B9F930000000000022F30
+t1396416403
+s143152
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libremovefile.dylib
+c00000000533B9F93000000000001E2A0
+t1396416403
+s123552
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_asl.dylib
+c00000000533B9F930000000000052520
+t1396416403
+s337184
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_blocks.dylib
+c00000000533B9F930000000000015F20
+t1396416403
+s89888
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_c.dylib
+c00000000533B9F9300000000001B90D0
+t1396416403
+s1806544
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_configuration.dylib
+c00000000533B9F93000000000001F170
+t1396416403
+s127344
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_dnssd.dylib
+c00000000533B9F93000000000002FCF0
+t1396416403
+s195824
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_info.dylib
+c00000000533B9F93000000000008A150
+t1396416403
+s565584
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_kernel.dylib
+c00000000533B9F9300000000000B60E0
+t1396416403
+s745696
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_m.dylib
+c00000000533B9F930000000000078720
+t1396416403
+s493344
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_malloc.dylib
+c00000000533B9F9300000000000621F0
+t1396416403
+s401904
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_network.dylib
+c00000000533B9F9300000000000BDAE0
+t1396416403
+s776928
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_notify.dylib
+c00000000533B9F930000000000039080
+t1396416403
+s233600
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_platform.dylib
+c00000000533B9F93000000000003CBC0
+t1396416403
+s248768
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_pthread.dylib
+c00000000533B9F93000000000002CFE0
+t1396416403
+s184288
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_sandbox.dylib
+c00000000533B9F93000000000001EB50
+t1396416403
+s125776
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_stats.dylib
+c00000000533B9F93000000000001EED0
+t1396416403
+s126672
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libunwind.dylib
+c00000000533B9F9300000000000236B0
+t1396416403
+s145072
+
+N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libxpc.dylib
+c00000000533B9F9300000000000AC500
+t1396416403
+s705792
 
 N/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
 c00000000533B6DFC0000000000000ADC
 t1396403708
 s2780
 
+N/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
+c00000000533B9F79000000000000514C
+t1396416377
+s20812
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent
-t1407480801
+t1407552093
 s485
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AVCamRecorder.o
@@ -226,8 +501,8 @@ t1407480787
 s134552
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci
-t1407480789
-s9363412
+t1407552091
+s9364092
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci.LinkFileList
 c0000000053E473CF0000000000000BB4
@@ -247,8 +522,8 @@ t1407480787
 s176176
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o
-t1407480787
-s58216
+t1407551421
+s58400
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RestaurantTableViewController.o
 t1407480786
@@ -295,8 +570,8 @@ t1407480786
 s112748
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o
-t1407480786
-s54584
+t1407552090
+s63348
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/AVCamRecorder.o
 t1407480784
@@ -315,8 +590,8 @@ t1407480785
 s122220
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci
-t1407480789
-s8276628
+t1407552091
+s8277240
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci.LinkFileList
 c0000000053E473CF0000000000000BB4
@@ -336,8 +611,8 @@ t1407480785
 s169244
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o
-t1407480785
-s56140
+t1407551421
+s56320
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RestaurantTableViewController.o
 t1407480784
@@ -384,8 +659,8 @@ t1407480784
 s103024
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o
-t1407480784
-s53860
+t1407552090
+s62604
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/AVCamRecorder.o
 t1407480786
@@ -404,8 +679,8 @@ t1407480786
 s122220
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci
-t1407480789
-s8260036
+t1407552091
+s8260652
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci.LinkFileList
 c0000000053E473D00000000000000BC8
@@ -425,8 +700,8 @@ t1407480786
 s169020
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o
-t1407480786
-s56140
+t1407551421
+s56320
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RestaurantTableViewController.o
 t1407480785
@@ -473,8 +748,8 @@ t1407480786
 s103016
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o
-t1407480785
-s53860
+t1407552090
+s62604
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh
 c0000000053E473CF000000000000002F
@@ -507,12 +782,12 @@ t1407480784
 s118956
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app
-t1407480801
-s1632
+t1407552091
+s1666
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM
-t2
-s0
+t1407551688
+s102
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Base.lproj/Main.storyboardc
 t1407480799
@@ -523,8 +798,8 @@ t1407480797
 s7014
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci
-t1407480789
-s25944020
+t1407552091
+s25944700
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/GoogleMaps.bundle
 t1407480796
@@ -589,6 +864,221 @@ c0000000053E056140000000000D0959C
 t1407211028
 s13669788
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBAccessTokenData.h
+c0000000053E056140000000000001443
+t1407211028
+s5187
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBAppCall.h
+c0000000053E0561400000000000023C5
+t1407211028
+s9157
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBAppEvents.h
+c0000000053E056140000000000004B12
+t1407211028
+s19218
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBAppLinkData.h
+c0000000053E0561400000000000006DA
+t1407211028
+s1754
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBCacheDescriptor.h
+c0000000053E05614000000000000055C
+t1407211028
+s1372
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBDialogs.h
+c0000000053E05614000000000000C245
+t1407211028
+s49733
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBDialogsData.h
+c0000000053E056140000000000000538
+t1407211028
+s1336
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBDialogsParams.h
+c0000000053E056140000000000000341
+t1407211028
+s833
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBError.h
+c0000000053E05614000000000000395C
+t1407211028
+s14684
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBErrorUtility.h
+c0000000053E0561400000000000009B9
+t1407211028
+s2489
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBFrictionlessRecipientCache.h
+c0000000053E056140000000000000B3D
+t1407211028
+s2877
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBFriendPickerViewController.h
+c0000000053E0561400000000000024AF
+t1407211028
+s9391
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBGraphLocation.h
+c0000000053E05614000000000000075F
+t1407211028
+s1887
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBGraphObject.h
+c0000000053E056140000000000002B41
+t1407211028
+s11073
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBGraphPlace.h
+c0000000053E05614000000000000076E
+t1407211028
+s1902
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBGraphUser.h
+c0000000053E0561400000000000009C6
+t1407211028
+s2502
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBInsights.h
+c0000000053E056140000000000000A9F
+t1407211028
+s2719
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBLikeControl.h
+c0000000053E0561400000000000010A2
+t1407211028
+s4258
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBLinkShareParams.h
+c0000000053E056140000000000000CF0
+t1407211028
+s3312
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBLoginView.h
+c0000000053E056140000000000001C61
+t1407211028
+s7265
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBNativeDialogs.h
+c0000000053E056140000000000000F98
+t1407211028
+s3992
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBOpenGraphAction.h
+c0000000053E056140000000000000DA0
+t1407211028
+s3488
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBOpenGraphActionParams.h
+c0000000053E05614000000000000083E
+t1407211028
+s2110
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBOpenGraphActionShareDialogParams.h
+c0000000053E05614000000000000037D
+t1407211028
+s893
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBOpenGraphObject.h
+c0000000053E056140000000000000B63
+t1407211028
+s2915
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBPhotoParams.h
+c0000000053E05614000000000000070C
+t1407211028
+s1804
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBPlacePickerViewController.h
+c0000000053E056140000000000002125
+t1407211028
+s8485
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBProfilePictureView.h
+c0000000053E0561400000000000009A7
+t1407211028
+s2471
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBRequest.h
+c0000000053E0561400000000000064F3
+t1407211028
+s25843
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBRequestConnection.h
+c0000000053E0561400000000000065C4
+t1407211028
+s26052
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBSDKMacros.h
+c0000000053E056140000000000000353
+t1407211028
+s851
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBSession.h
+c0000000053E05614000000000000963B
+t1407211028
+s38459
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBSessionTokenCachingStrategy.h
+c0000000053E056140000000000001A7C
+t1407211028
+s6780
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBSettings.h
+c0000000053E0561400000000000029BC
+t1407211028
+s10684
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBShareDialogParams.h
+c0000000053E05614000000000000034D
+t1407211028
+s845
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h
+c0000000053E05614000000000000034A
+t1407211028
+s842
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBTooltipView.h
+c0000000053E05614000000000000106C
+t1407211028
+s4204
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBUserSettingsViewController.h
+c0000000053E056140000000000001006
+t1407211028
+s4102
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBViewController.h
+c0000000053E056140000000000000F64
+t1407211028
+s3940
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FBWebDialogs.h
+c0000000053E0561400000000000023AA
+t1407211028
+s9130
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/FacebookSDK.h
+c0000000053E0561400000000000016BC
+t1407211028
+s5820
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h
+c0000000053E05614000000000000091D
+t1407211028
+s2333
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/AppDelegate.h
+c0000000053E056140000000000000152
+t1407211028
+s338
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/AppDelegate.m
 c0000000053E352590000000000000DAB
 t1407406681
@@ -614,15 +1104,30 @@ c0000000053E0561400000000000003B8
 t1407211028
 s952
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/LoginViewController.h
+c0000000053E05614000000000000018A
+t1407211028
+s394
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/LoginViewController.m
 c0000000053E351570000000000000CAD
 t1407406423
 s3245
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/RNFrostedSidebar.h
+c0000000053E056140000000000000B58
+t1407211028
+s2904
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/RNFrostedSidebar.m
 c0000000053E0561400000000000066A0
 t1407211028
 s26272
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/RestaurantTableViewController.h
+c0000000053E056140000000000000226
+t1407211028
+s550
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/RestaurantTableViewController.m
 c0000000053E056140000000000001C57
@@ -634,10 +1139,20 @@ c0000000053E0561400000000000000AA
 t1407211028
 s170
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h
+c0000000053E056140000000000000A7E
+t1407211028
+s2686
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.m
 c0000000053E056140000000000008D7C
 t1407211028
 s36220
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample2TableViewCell.h
+c0000000053E056140000000000000109
+t1407211028
+s265
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample2TableViewCell.m
 c0000000053E056140000000000000207
@@ -649,6 +1164,11 @@ c0000000053E056140000000000001A62
 t1407211028
 s6754
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample3TableViewCell.h
+c0000000053E0561400000000000000E5
+t1407211028
+s229
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample3TableViewCell.m
 c0000000053E0561400000000000001BA
 t1407211028
@@ -658,6 +1178,11 @@ N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample3TableViewCell.xib
 c0000000053E056140000000000001989
 t1407211028
 s6537
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample4TableViewCell.h
+c0000000053E0561400000000000000E5
+t1407211028
+s229
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/Sample4TableViewCell.m
 c0000000053E0561400000000000001BC
@@ -669,6 +1194,11 @@ c0000000053E056140000000000001FEC
 t1407211028
 s8172
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/SampleTableViewCell.h
+c0000000053E1F2AB00000000000001F1
+t1407316651
+s497
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/SampleTableViewCell.m
 c0000000053E1F2AB000000000000028D
 t1407316651
@@ -679,30 +1209,65 @@ c0000000053E1F601000000000000157F
 t1407317505
 s5503
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/SearchTableViewController.h
+c0000000053E1F84200000000000001EB
+t1407318082
+s491
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/TimelineTableViewController.h
+c0000000053E0FDF900000000000001D5
+t1407254009
+s469
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/TimelineTableViewController.m
 c0000000053E1F8420000000000002061
 t1407318082
 s8289
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/AVCamRecorder.h
+c0000000053E056140000000000000E56
+t1407211028
+s3670
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/AVCamRecorder.m
 c0000000053E05614000000000000156C
 t1407211028
 s5484
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/AVCamUtilities.h
+c0000000053E056140000000000000AE7
+t1407211028
+s2791
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/AVCamUtilities.m
 c0000000053E056140000000000000BBC
 t1407211028
 s3004
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
+c0000000053E05614000000000000124C
+t1407211028
+s4684
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.m
 c0000000053E056140000000000006661
 t1407211028
 s26209
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/KZCameraView.h
+c0000000053E05614000000000000067F
+t1407211028
+s1663
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/KZCameraView.m
 c0000000053E056140000000000005669
 t1407211028
 s22121
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/ViewController.h
+c0000000053E0561400000000000000DA
+t1407211028
+s218
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/ViewController.m
 c0000000053E056140000000000000227
@@ -713,6 +1278,11 @@ N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/en.lproj/InfoPlist.strin
 c0000000053E05614000000000000002D
 t1407211028
 s45
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/everyTableViewController.h
+c0000000053E0561400000000000001B0
+t1407211028
+s432
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/everyTableViewController.m
 c0000000053E056140000000000001813
@@ -729,10 +1299,15 @@ c0000000053E1F8420000000000001E11
 t1407318082
 s7697
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.h
+c0000000053E58A5900000000000001DB
+t1407552089
+s475
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m
-c0000000053E3490E0000000000000BC2
-t1407404302
-s3010
+c0000000053E58A590000000000000C6B
+t1407552089
+s3179
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/tester.mp4
 c0000000053E0561400000000007EC176
@@ -749,15 +1324,355 @@ c0000000053E0561400000000032F87FC
 t1407211028
 s53446652
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSAddress.h
+c0000000053E05614000000000000070A
+t1407211028
+s1802
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSCALayer.h
+c0000000053E0561400000000000001FB
+t1407211028
+s507
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSCameraPosition.h
+c0000000053E0561400000000000011DA
+t1407211028
+s4570
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSCameraUpdate.h
+c0000000053E056140000000000000CC7
+t1407211028
+s3271
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSCircle.h
+c0000000053E056140000000000000587
+t1407211028
+s1415
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSCoordinateBounds.h
+c0000000053E056140000000000000B6B
+t1407211028
+s2923
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSGeocoder.h
+c0000000053E0561400000000000006A0
+t1407211028
+s1696
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSGeometryUtils.h
+c0000000053E056140000000000002158
+t1407211028
+s8536
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSGroundOverlay.h
+c0000000053E056140000000000000994
+t1407211028
+s2452
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSIndoorBuilding.h
+c0000000053E056140000000000000336
+t1407211028
+s822
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSIndoorDisplay.h
+c0000000053E056140000000000000753
+t1407211028
+s1875
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSIndoorLevel.h
+c0000000053E0561400000000000002CC
+t1407211028
+s716
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMapLayer.h
+c0000000053E056140000000000000E53
+t1407211028
+s3667
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMapView+Animation.h
+c0000000053E056140000000000000735
+t1407211028
+s1845
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMapView.h
+c0000000053E0561400000000000030D5
+t1407211028
+s12501
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMarker.h
+c0000000053E056140000000000001466
+t1407211028
+s5222
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMarkerLayer.h
+c0000000053E056140000000000000514
+t1407211028
+s1300
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSMutablePath.h
+c0000000053E0561400000000000006F9
+t1407211028
+s1785
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSOrientation.h
+c0000000053E0561400000000000003FC
+t1407211028
+s1020
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSOverlay.h
+c0000000053E056140000000000000748
+t1407211028
+s1864
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanorama.h
+c0000000053E056140000000000000374
+t1407211028
+s884
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaCamera.h
+c0000000053E0561400000000000009A2
+t1407211028
+s2466
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaCameraUpdate.h
+c0000000053E05614000000000000032E
+t1407211028
+s814
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaLayer.h
+c0000000053E0561400000000000004B9
+t1407211028
+s1209
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaLink.h
+c0000000053E056140000000000000260
+t1407211028
+s608
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaService.h
+c0000000053E0561400000000000006C9
+t1407211028
+s1737
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaView.h
+c0000000053E0561400000000000021C7
+t1407211028
+s8647
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPath.h
+c0000000053E056140000000000000DFC
+t1407211028
+s3580
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPolygon.h
+c0000000053E056140000000000000519
+t1407211028
+s1305
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSPolyline.h
+c0000000053E056140000000000000BFC
+t1407211028
+s3068
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSProjection.h
+c0000000053E056140000000000000A6D
+t1407211028
+s2669
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSServices.h
+c0000000053E05614000000000000070E
+t1407211028
+s1806
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSSyncTileLayer.h
+c0000000053E05614000000000000034C
+t1407211028
+s844
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSTileLayer.h
+c0000000053E056140000000000000DFB
+t1407211028
+s3579
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSUISettings.h
+c0000000053E056140000000000000CDC
+t1407211028
+s3292
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GMSURLTileLayer.h
+c0000000053E056140000000000000611
+t1407211028
+s1553
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/GoogleMaps.framework/Headers/GoogleMaps.h
+c0000000053E05614000000000000068D
+t1407211028
+s1677
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFACL.h
+c0000000053E0561400000000000019F8
+t1407211028
+s6648
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFAnalytics.h
+c0000000053E056140000000000000ABC
+t1407211028
+s2748
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFAnonymousUtils.h
+c0000000053E05614000000000000094B
+t1407211028
+s2379
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFCloud.h
+c0000000053E056140000000000000847
+t1407211028
+s2119
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFConstants.h
+c0000000053E056140000000000001EE5
+t1407211028
+s7909
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFFacebookUtils.h
+c0000000053E056140000000000002BF1
+t1407211028
+s11249
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFFile.h
+c0000000053E056140000000000001F8D
+t1407211028
+s8077
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFGeoPoint.h
+c0000000053E056140000000000000A3E
+t1407211028
+s2622
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFImageView.h
+c0000000053E056140000000000000366
+t1407211028
+s870
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFInstallation.h
+c0000000053E056140000000000000B43
+t1407211028
+s2883
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFLogInView.h
+c0000000053E056140000000000000B75
+t1407211028
+s2933
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFLogInViewController.h
+c0000000053E056140000000000000E55
+t1407211028
+s3669
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFObject.h
+c0000000053E05614000000000000545E
+t1407211028
+s21598
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFProduct.h
+c0000000053E05614000000000000068E
+t1407211028
+s1678
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFProductTableViewController.h
+c0000000053E05614000000000000023A
+t1407211028
+s570
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFPurchase.h
+c0000000053E056140000000000000A6A
+t1407211028
+s2666
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFPush.h
+c0000000053E056140000000000004591
+t1407211028
+s17809
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFQuery.h
+c0000000053E05614000000000000526A
+t1407211028
+s21098
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFQueryTableViewController.h
+c0000000053E05614000000000000153A
+t1407211028
+s5434
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFRelation.h
+c0000000053E0561400000000000003A0
+t1407211028
+s928
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFRole.h
+c0000000053E056140000000000000AE4
+t1407211028
+s2788
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFSignUpView.h
+c0000000053E0561400000000000008C6
+t1407211028
+s2246
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFSignUpViewController.h
+c0000000053E056140000000000000B96
+t1407211028
+s2966
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFSubclassing.h
+c0000000053E0561400000000000007EE
+t1407211028
+s2030
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFTableViewCell.h
+c0000000053E056140000000000000299
+t1407211028
+s665
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFTwitterUtils.h
+c0000000053E056140000000000001FBC
+t1407211028
+s8124
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PFUser.h
+c0000000053E056140000000000003354
+t1407211028
+s13140
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PF_EGORefreshTableHeaderView.h
+c0000000053E0561400000000000008B0
+t1407211028
+s2224
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/PF_Twitter.h
+c0000000053E0561400000000000005E1
+t1407211028
+s1505
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Headers/Parse.h
+c0000000053E05614000000000000081A
+t1407211028
+s2074
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Parse.framework/Parse
 c0000000053E056140000000001D95EEC
 t1407211028
 s31022828
 
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m
-c0000000053E056140000000000000C94
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.h
+c0000000053E05614000000000000019D
 t1407211028
-s3220
+s413
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m
+c0000000053E587BD0000000000000CA4
+t1407551421
+s3236
 
 N/Users/daikihosokawa/Library/MobileDevice/Provisioning Profiles/7AB8E0D5-CB24-4060-8503-F5E03AD87567.mobileprovision
 c0000000053DB036A0000000000003ACE
@@ -826,16 +1741,16 @@ r0
 
 CCheck dependencies
 r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies4850b84fab94b941^14770050ab94b941^---0#1#1#--18"Check dependencies36"FF9394AB-338B-4735-AFC7-EA377EE290A2-
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies9aedbed9c195b941^48e1fed9c195b941^---0#1#1#--18"Check dependencies36"9DCDD640-AC89-4958-B1FB-2FFA415BD45D-
 
 CCodeSign /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app
-s429173601.341232
-e429173601.949664
+s429244893.665948
+e429244894.492247
 r1
 xCodeSign
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"CodeSign Build/Products/Debug-iphoneos/Gocci.app48"CodeSign Build/Products/Debug-iphoneos/Gocci.app14785761ab94b941^4b1ef361ab94b941^---0#0#1#-19%DVTDocumentLocation2@98"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/0000000000000000^1048"CodeSign Build/Products/Debug-iphoneos/Gocci.app    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export CODESIGN_ALLOCATE=/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    Using code signing identity "iPhone Developer: Daiki Hosokawa (MDWKF44977)" and provisioning profile "iOS Team Provisioning Profile: *" (7AB8E0D5-CB24-4060-8503-F5E03AD87567)    /usr/bin/codesign --force --sign 77BDEBDB3BE7A7FCAC334FD9288A590EFE73E723 --resource-rules=/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/ResourceRules.plist --entitlements /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app36"7782B0B2-20B2-42D7-9900-04BC0C5D9BE7-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"CodeSign Build/Products/Debug-iphoneos/Gocci.app48"CodeSign Build/Products/Debug-iphoneos/Gocci.appa392aaddc195b941^e2047edec195b941^---0#0#1#-19%DVTDocumentLocation2@98"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/0000000000000000^1048"CodeSign Build/Products/Debug-iphoneos/Gocci.app    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export CODESIGN_ALLOCATE=/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    Using code signing identity "iPhone Developer: Daiki Hosokawa (MDWKF44977)" and provisioning profile "iOS Team Provisioning Profile: *" (7AB8E0D5-CB24-4060-8503-F5E03AD87567)    /usr/bin/codesign --force --sign 77BDEBDB3BE7A7FCAC334FD9288A590EFE73E723 --resource-rules=/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/ResourceRules.plist --entitlements /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app36"BCF67CAB-41C6-4C7F-A344-8363A641E305-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CCompileAssetCatalog /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Images.xcassets
 s429173597.449489
@@ -1246,8 +2161,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173587.132322
-e429173587.282692
+s429244221.676782
+e429244221.933579
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o
@@ -1260,8 +2175,8 @@ d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/KZCameraView.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m207"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o RecorderViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler71032253ab94b941^185f4853ab94b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o RecorderViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/arm64 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-gwknikxzhclhqafkmgsmhwzpbqxn/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o36"819CC121-B178-4A32-9430-91E8B4548070-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m207"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o RecorderViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compilercaa9ad3dbf95b941^0001ef3dbf95b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o RecorderViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/arm64 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-gwknikxzhclhqafkmgsmhwzpbqxn/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o36"FB1744C9-FB73-4587-8E46-CAEEF4A59437-
+b3F650F7B-0D77-452B-95A9-49412F63BA5F
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RestaurantTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RestaurantTableViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s429173586.626739
@@ -1556,8 +2471,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173586.706133
-e429173586.825528
+s429244890.035774
+e429244890.185327
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o
@@ -1568,8 +2483,13 @@ xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o Gocci/submitViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler3eedb452ab94b941^d866d352ab94b941^---0#0#1#-19%DVTDocumentLocation2@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o Gocci/submitViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/arm64 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-gwknikxzhclhqafkmgsmhwzpbqxn/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o36"099862D9-B37D-4724-A1A3-A6F9255BD212-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]
+o    return _path;
+o           ^~~~~
+o1 warning generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o Gocci/submitViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compilera94c09dac195b941^297b2fdac195b941^-284"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]    return _path;           ^~~~~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@101"Incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *'-429244890#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#11#3164#0#14"Semantic Issue1(3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#16#3164#0#-0#0#1#-19%DVTDocumentLocation4@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o Gocci/submitViewController.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/arm64 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-gwknikxzhclhqafkmgsmhwzpbqxn/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o36"722165EE-31F9-43D3-BAE6-6B57F52BC893-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/AVCamRecorder.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/AVCam/AVCamRecorder.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s429173584.860147
@@ -1874,8 +2794,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173585.126056
-e429173585.353098
+s429244221.403514
+e429244221.699747
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o
@@ -1888,8 +2808,8 @@ d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/KZCameraView.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m207"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o RecorderViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler0e692051ab94b941^c3645a51ab94b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o RecorderViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-emmqwbvxeuzynwawdlpnpidcgpmi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o36"BDD312CD-5785-4B89-B7DB-8E59AF8AF408-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m207"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o RecorderViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerd66e673dbf95b941^d122b33dbf95b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o RecorderViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-emmqwbvxeuzynwawdlpnpidcgpmi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RecorderViewController.o36"AF1F19A1-4355-4129-B597-7936BB69216D-
+b3F650F7B-0D77-452B-95A9-49412F63BA5F
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/RestaurantTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RestaurantTableViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s429173584.447439
@@ -2184,8 +3104,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173584.448329
-e429173584.802849
+s429244890.023029
+e429244890.174804
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o
@@ -2196,8 +3116,13 @@ xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o Gocci/submitViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler52f27250ab94b941^44a5cd50ab94b941^---0#0#1#-19%DVTDocumentLocation2@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o Gocci/submitViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-emmqwbvxeuzynwawdlpnpidcgpmi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o36"25A73DAE-9A2F-488E-951A-D74E71D21C3C-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]
+o    return _path;
+o           ^~~~~
+o1 warning generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o Gocci/submitViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler450d06dac195b941^a1bf2cdac195b941^-284"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]    return _path;           ^~~~~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@101"Incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *'-429244890#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#11#3164#0#14"Semantic Issue1(3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#16#3164#0#-0#0#1#-19%DVTDocumentLocation4@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3924"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o Gocci/submitViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-emmqwbvxeuzynwawdlpnpidcgpmi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/submitViewController.o36"E7FAB961-6160-480F-B424-0D205F8077B5-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/AVCamRecorder.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/AVCam/AVCamRecorder.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s429173585.943915
@@ -2502,8 +3427,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173586.205117
-e429173586.352309
+s429244221.413476
+e429244221.700514
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o
@@ -2516,8 +3441,8 @@ d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/KZCameraView.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o RecorderViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler0cce3452ab94b941^51315a52ab94b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3931"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o RecorderViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7s -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-aumrasnzyzzdulfgldawzgmafcgi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o36"C2A916CD-FE1F-4671-A065-B7E046E5986D-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/RecorderViewController.m209"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o RecorderViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compilere7fb693dbf95b941^9b55b33dbf95b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/RecorderViewController.m0000000000000000^3931"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o RecorderViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7s -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-aumrasnzyzzdulfgldawzgmafcgi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/RecorderViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RecorderViewController.o36"FB3410BF-64A4-439F-8ED8-9BF69C047494-
+b3F650F7B-0D77-452B-95A9-49412F63BA5F
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/RestaurantTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RestaurantTableViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s429173585.630030
@@ -2812,8 +3737,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173585.764309
-e429173585.885944
+s429244890.030197
+e429244890.185182
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o
@@ -2824,8 +3749,13 @@ xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m211"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o Gocci/submitViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler74cec351ab94b941^3ed0e251ab94b941^---0#0#1#-19%DVTDocumentLocation2@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3931"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o Gocci/submitViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7s -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-aumrasnzyzzdulfgldawzgmafcgi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o36"D9C6E545-8304-4D7A-BA82-D6693212FB94-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]
+o    return _path;
+o           ^~~~~
+o1 warning generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m211"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o Gocci/submitViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler09df07dac195b941^d3672fdac195b941^-284"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci/submitViewController.m:106:12: warning: incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *' [-Wincompatible-pointer-types]    return _path;           ^~~~~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@101"Incompatible pointer types returning 'CaptureManager *' from a function with result type 'NSString *'-429244890#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#11#3164#0#14"Semantic Issue1(3@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^105#11#105#16#3164#0#-0#0#1#-19%DVTDocumentLocation4@86"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/submitViewController.m0000000000000000^3931"CompileC Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o Gocci/submitViewController.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=6.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources/armv7s -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Headers/AFNetworking -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-aumrasnzyzzdulfgldawzgmafcgi/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/submitViewController.o36"7E9A589C-9A9D-4414-BDEF-C76C5FC917CE-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CCompileStoryboard /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Base.lproj/Main.storyboard
 s429173589.864190
@@ -2937,29 +3867,29 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Copy Bu
 b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
 
 CCreateUniversalBinary /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci normal armv7\ armv7s\ arm64
-s429173589.599205
-e429173589.863383
+s429244891.257857
+e429244891.498050
 r1
 xCreateUniversalBinary
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci
 xnormal
 xarmv7 armv7s arm64
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Create universal binary /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci95"CreateUniversalBinary Build/Products/Debug-iphoneos/Gocci.app/Gocci normal armv7\ armv7s\ arm6410779955ab94b941^2909dd55ab94b941^---0#0#1#-19%DVTDocumentLocation2@103"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci0034547cdeffdf42^968"CreateUniversalBinary Build/Products/Debug-iphoneos/Gocci.app/Gocci normal armv7\ armv7s\ arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo -create /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci -output /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci36"A84D0365-EDD0-4AE5-90EE-A802F49EF041-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Create universal binary /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci95"CreateUniversalBinary Build/Products/Debug-iphoneos/Gocci.app/Gocci normal armv7\ armv7s\ arm64da1d42dbc195b941^1f817fdbc195b941^---0#0#1#-19%DVTDocumentLocation2@103"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci0000000000000000^968"CreateUniversalBinary Build/Products/Debug-iphoneos/Gocci.app/Gocci normal armv7\ armv7s\ arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo -create /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci -output /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci36"4A3190EE-AEF8-4366-90E2-A5E0FAABEC9D-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CGenerateDSYMFile /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci
-s429173599.465515
-e429173600.644698
+s429244891.502695
+e429244892.290501
 r1
 xGenerateDSYMFile
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Generate /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM107"GenerateDSYMFile Build/Products/Debug-iphoneos/Gocci.app.dSYM Build/Products/Debug-iphoneos/Gocci.app/Gocci583a775fab94b941^520ba560ab94b941^---0#0#1#-19%DVTDocumentLocation2@102"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM0034547cdeffdf42^657"GenerateDSYMFile Build/Products/Debug-iphoneos/Gocci.app.dSYM Build/Products/Debug-iphoneos/Gocci.app/Gocci    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM36"9C4B2944-51E9-470B-979F-0BF6EE53E6E0-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Generate /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM107"GenerateDSYMFile Build/Products/Debug-iphoneos/Gocci.app.dSYM Build/Products/Debug-iphoneos/Gocci.app/Gocci94c280dbc195b941^dd5e4adcc195b941^---0#0#1#-19%DVTDocumentLocation2@103"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM/0000000000000000^657"GenerateDSYMFile Build/Products/Debug-iphoneos/Gocci.app.dSYM Build/Products/Debug-iphoneos/Gocci.app/Gocci    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Gocci -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app.dSYM36"EC8242F7-EE8F-464A-B18C-A3E0E3290692-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CLd /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci normal arm64
-s429173587.693115
-e429173589.526812
+s429244890.190171
+e429244891.146992
 r1
 xLd
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci
@@ -3011,8 +3941,8 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libSystem.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework/CoreAudio
@@ -3054,19 +3984,19 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_stats.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libunwind.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/vImage
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/vecLib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvDSP.dylib
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libLAPACK.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libBLAS.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvMisc.dylib
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci101"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci normal arm64878ab153ab94b941^cedd8655ab94b941^---0#0#1#--1800"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci normal arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch arm64 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci36"7AA5F6D3-A2A2-4E02-A575-52EBA70A3E86-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci101"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci normal arm646ccb30dac195b941^cba125dbc195b941^---0#0#1#--1800"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci normal arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch arm64 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Gocci36"CF63E176-9F9D-4579-ADBC-CE9BC62C0027-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CLd /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci normal armv7
-s429173587.689982
-e429173589.551949
+s429244890.187652
+e429244891.169332
 r1
 xLd
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci
@@ -3118,8 +4048,8 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libSystem.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework/CoreAudio
@@ -3133,7 +4063,6 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accounts.framework/Accounts
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcache.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcommonCrypto.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcompiler_rt.dylib
@@ -3162,6 +4091,7 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_stats.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libunwind.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/vImage
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/vecLib
@@ -3170,12 +4100,12 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libBLAS.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvMisc.dylib
 old: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci101"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci normal armv753cdb053ab94b941^f14b8d55ab94b941^-379"ld: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o1(21%IDEActivityLogMessage2@365"Instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o-429173589#0#379#-1#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#27"Apple Mach-O Linker Warning--0#0#1#--1800"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci normal armv7    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch armv7 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci36"F40B8920-629E-4355-A0F3-96139C0D4413-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci101"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci normal armv7d92730dac195b941^47592bdbc195b941^-379"ld: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o1(21%IDEActivityLogMessage2@365"Instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/CaptureManager.o-429244890#0#379#-1#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#27"Apple Mach-O Linker Warning--0#0#1#--1800"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci normal armv7    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch armv7 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7/Gocci36"856AFD5B-6B96-4910-9BB6-50121BADBC50-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CLd /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci normal armv7s
-s429173587.691373
-e429173589.598024
+s429244890.188720
+e429244891.256383
 r1
 xLd
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci
@@ -3227,8 +4157,8 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libSystem.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaToolbox.framework/MediaToolbox
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework/CoreAudio
@@ -3242,7 +4172,6 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accounts.framework/Accounts
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcache.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcommonCrypto.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libcompiler_rt.dylib
@@ -3271,6 +4200,7 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libsystem_stats.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libunwind.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/vImage
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/vecLib
@@ -3279,22 +4209,22 @@ d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Devel
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libBLAS.dylib
 d/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvMisc.dylib
 old: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection140"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci103"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci normal armv7see21b153ab94b941^40179955ab94b941^-381"ld: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o1(21%IDEActivityLogMessage2@367"Instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o-429173589#0#381#-1#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#27"Apple Mach-O Linker Warning--0#0#1#--1806"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci normal armv7s    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch armv7s -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci36"BDCDE52E-B956-4045-B9E4-5344C9764640-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection140"Link /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci103"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci normal armv7sd26e30dac195b941^40a241dbc195b941^-381"ld: warning: instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o1(21%IDEActivityLogMessage2@367"Instance method 'getPath' in category from /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o overrides method from class in /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/CaptureManager.o-429244890#0#381#-1#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#27"Apple Mach-O Linker Warning--0#0#1#--1806"Ld Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci normal armv7s    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch armv7s -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci.LinkFileList -dead_strip -ObjC -fobjc-arc -fobjc-link-runtime -miphoneos-version-min=6.0 -framework SystemConfiguration -framework MobileCoreServices -framework Security -framework AssetsLibrary -framework CoreLocation -framework OpenGLES -lz -licucore -framework GoogleMaps -lc++ -framework ImageIO -framework FacebookSDK -framework GLKit -framework CoreText -framework CoreData -framework Parse -framework MapKit -framework CoreGraphics -framework UIKit -framework Foundation -lPods -Xlinker -dependency_info -Xlinker /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci_dependency_info.dat -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/armv7s/Gocci36"0F2408E6-131F-46B2-A28A-1FD0FAEAC5C4-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CPhaseScriptExecution Check\ Pods\ Manifest.lock /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh
-s429173584.007618
-e429173584.043572
+s429244889.992908
+e429244890.018630
 r1
 xPhaseScriptExecution
 xCheck Pods Manifest.lock
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection50"Run custom shell script 'Check Pods Manifest.lock'141"PhaseScriptExecution Check\ Pods\ Manifest.lock Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh87890250ab94b941^a2290b50ab94b941^---0#0#1#--363"PhaseScriptExecution Check\ Pods\ Manifest.lock Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    /bin/sh -c \"/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh\"36"70195D59-063A-44A4-A510-5B011B29C079-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection50"Run custom shell script 'Check Pods Manifest.lock'141"PhaseScriptExecution Check\ Pods\ Manifest.lock Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh8482fed9c195b941^97c504dac195b941^---0#0#1#--363"PhaseScriptExecution Check\ Pods\ Manifest.lock Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    /bin/sh -c \"/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-AF70B1FC35D7485BA19EC6B7.sh\"36"179D3CB1-CDA7-4F0C-B7DA-C1DF044FA1F0-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CPhaseScriptExecution Copy\ Pods\ Resources /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh
-s429173600.646002
-e429173601.326974
+s429244892.292716
+e429244893.662475
 r1
 xPhaseScriptExecution
 xCopy Pods Resources
@@ -3329,8 +4259,8 @@ o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/twitter.png
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/user-icon.png
 o
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Run custom shell script 'Copy Pods Resources'136"PhaseScriptExecution Copy\ Pods\ Resources Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh98c0a560ab94b941^13b65361ab94b941^-2593"building file list ... donesent 29 bytes  received 20 bytes  98.00 bytes/sectotal size is 0  speedup is 0.00/* com.apple.actool.compilation-results *//Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/background.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger-1.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/comment-button.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/facebook.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gear.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/globe.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gradation.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon2.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon3.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/login.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/logo.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/movie.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/pin.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/profile.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn@2x.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/star.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/start.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera@2x.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/tip-button.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/twitter.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/user-icon.png28(21%IDEActivityLogMessage2@28"building file list ... done-429173600#0#28#-0#-----2@50"sent 29 bytes  received 20 bytes  98.00 bytes/sec-429173600#29#50#-0#-----2@33"total size is 0  speedup is 0.00-429173600#79#33#-0#-----2@43"/* com.apple.actool.compilation-results */-429173601#112#43#-0#-----2@104"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/background.png-429173601#155#104#-0#-----2@102"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger-1.png-429173601#259#102#-0#-----2@100"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger.png-429173601#361#100#-0#-----2@108"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/comment-button.png-429173601#461#108#-0#-----2@102"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/facebook.png-429173601#569#102#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gear.png-429173601#671#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/globe.png-429173601#769#99#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gradation.png-429173601#868#103#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon2.png-429173601#971#99#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon3.png-429173601#1070#99#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/login.png-429173601#1169#99#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/logo.png-429173601#1268#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/movie.png-429173601#1366#99#-0#-----2@97"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/pin.png-429173601#1465#97#-0#-----2@101"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/profile.png-429173601#1562#101#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn.png-429173601#1663#103#-0#-----2@106"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn@2x.png-429173601#1766#106#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/star.png-429173601#1872#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/start.png-429173601#1970#99#-0#-----2@106"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera.png-429173601#2069#106#-0#-----2@109"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera@2x.png-429173601#2175#109#-0#-----2@104"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/tip-button.png-429173601#2284#104#-0#-----2@101"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/twitter.png-429173601#2388#101#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/user-icon.png-429173601#2489#103#-0#-----0#0#1#--358"PhaseScriptExecution Copy\ Pods\ Resources Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    /bin/sh -c \"/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh\"36"BF9F9E28-CBBF-45AA-9D2B-16493FA9D7ED-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Run custom shell script 'Copy Pods Resources'136"PhaseScriptExecution Copy\ Pods\ Resources Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh9fad4bdcc195b941^fe99a9ddc195b941^-2593"building file list ... donesent 29 bytes  received 20 bytes  98.00 bytes/sectotal size is 0  speedup is 0.00/* com.apple.actool.compilation-results *//Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/background.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger-1.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/comment-button.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/facebook.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gear.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/globe.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gradation.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon2.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon3.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/login.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/logo.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/movie.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/pin.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/profile.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn@2x.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/star.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/start.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera@2x.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/tip-button.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/twitter.png/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/user-icon.png28(21%IDEActivityLogMessage2@28"building file list ... done-429244892#0#28#-0#-----2@50"sent 29 bytes  received 20 bytes  98.00 bytes/sec-429244892#29#50#-0#-----2@33"total size is 0  speedup is 0.00-429244892#79#33#-0#-----2@43"/* com.apple.actool.compilation-results */-429244893#112#43#-0#-----2@104"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/background.png-429244893#155#104#-0#-----2@102"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger-1.png-429244893#259#102#-0#-----2@100"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/burger.png-429244893#361#100#-0#-----2@108"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/comment-button.png-429244893#461#108#-0#-----2@102"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/facebook.png-429244893#569#102#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gear.png-429244893#671#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/globe.png-429244893#769#99#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/gradation.png-429244893#868#103#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon2.png-429244893#971#99#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/icon3.png-429244893#1070#99#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/login.png-429244893#1169#99#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/logo.png-429244893#1268#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/movie.png-429244893#1366#99#-0#-----2@97"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/pin.png-429244893#1465#97#-0#-----2@101"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/profile.png-429244893#1562#101#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn.png-429244893#1663#103#-0#-----2@106"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/recordBtn@2x.png-429244893#1766#106#-0#-----2@98"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/star.png-429244893#1872#98#-0#-----2@99"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/start.png-429244893#1970#99#-0#-----2@106"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera.png-429244893#2069#106#-0#-----2@109"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/switchCamera@2x.png-429244893#2175#109#-0#-----2@104"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/tip-button.png-429244893#2284#104#-0#-----2@101"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/twitter.png-429244893#2388#101#-0#-----2@103"/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/user-icon.png-429244893#2489#103#-0#-----0#0#1#--358"PhaseScriptExecution Copy\ Pods\ Resources Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    /bin/sh -c \"/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Script-49552820A3B14F2191CE8746.sh\"36"9BCAA906-2D73-4D26-8D79-F6DCE786CD25-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CProcessInfoPlistFile /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/Info.plist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Gocci-Info.plist
 s429173599.461216
@@ -3397,14 +4327,14 @@ CProcessPCH /Users/daikihosokawa/Library/Developer/Xcode/DerivedData/Gocci-gikkt
 r0
 
 CProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent
-s429173601.332994
-e429173601.340599
+s429244893.663881
+e429244893.665473
 r1
 xProcessProductPackaging
 x/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist
 x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection218"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent218"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent9c4f5561ab94b941^a4345761ab94b941^---0#0#1#-19%DVTDocumentLocation2@128"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent0034547cdeffdf42^781"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist -entitlements -format xml -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent36"AA9ED52B-0288-4FAE-920E-D900C165F2D3-
-b2251ADE9-BA07-4F0B-B12C-71BC9925EDA4
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection218"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent218"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent4a08aaddc195b941^6c5daaddc195b941^---0#0#1#-19%DVTDocumentLocation2@128"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent0000000000000000^781"ProcessProductPackaging /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Entitlements.plist -entitlements -format xml -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Gocci.xcent36"5AB71992-340B-4B5A-B65F-793143269F35-
+b65C394AB-2EB1-4327-9CE4-1086EE198086
 
 CProcessProductPackaging /Users/daikihosokawa/Library/MobileDevice/Provisioning\ Profiles/7AB8E0D5-CB24-4060-8503-F5E03AD87567.mobileprovision /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/Gocci.app/embedded.mobileprovision
 s429173601.327534
