@@ -1,186 +1,0 @@
-TPods
-v6
-r1
-cCheck dependencies
-cCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a normal armv7
-cLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a normal armv7s
-cLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a normal arm64
-cCreateUniversalBinary /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/libPods.a normal armv7\ armv7s\ arm64
-
-N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk
-c0000000053119F860000000000000132
-t1393663878
-s306
-
-N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/SDKSettings.plist
-c00000000533B9F80000000000000036B
-t1396416384
-s875
-
-N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/CoreServices/SystemVersion.plist
-c00000000533B9F82000000000000019E
-t1396416386
-s414
-
-N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c00000000533B9F840000000000A90C10
-t1396416388
-s11078672
-
-N/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
-c00000000533B6DFC0000000000000ADC
-t1396403708
-s2780
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o
-t1407480583
-s3932
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods.LinkFileList
-c0000000053E47306000000000000008C
-t1407480582
-s140
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a
-t1407480583
-s1541568
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o
-t1407480583
-s3460
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods.LinkFileList
-c0000000053E47306000000000000008C
-t1407480582
-s140
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a
-t1407480583
-s1451528
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o
-t1407480583
-s3460
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods.LinkFileList
-c0000000053E47306000000000000008D
-t1407480582
-s141
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a
-t1407480583
-s1451512
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/libPods-AFNetworking.a
-c0000000053E47306000000000043A5B4
-t1407480582
-s4433332
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/libPods.a
-t2
-s0
-
-N/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-c0000000053E46A520000000000000070
-t1407478354
-s112
-
-CBuild AST from /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies53758f86aa94b941^3c669086aa94b941^---0#1#1#--18"Check dependencies36"1E13E14D-8AB6-42EE-85E2-0555DE83B18A-
-
-CCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173383.126123
-e429173383.584108
-r1
-xCompileC
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-xnormal
-xarm64
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m231"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o Pods-dummy.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compilerc3622087aa94b941^a0889587aa94b941^---0#0#1#-19%DVTDocumentLocation2@75"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Pods/Pods-dummy.m0000000000000000^3583"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o Pods-dummy.m normal arm64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources/arm64 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods-dummy.o36"EA0FB7D9-99D4-4337-9C8C-EB3C4E14F444-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173382.564634
-e429173383.125816
-r1
-xCompileC
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m231"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o Pods-dummy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compilerbcad9086aa94b941^e1402087aa94b941^---0#0#1#-19%DVTDocumentLocation2@75"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Pods/Pods-dummy.m0000000000000000^3583"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o Pods-dummy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources/armv7 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods-dummy.o36"7D908786-C9EB-41E1-A25E-671A990217EC-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CCompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s429173382.564832
-e429173383.125784
-r1
-xCompileC
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-xnormal
-xarmv7s
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods/Pods-dummy.m233"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler5ab89086aa94b941^e3342087aa94b941^---0#0#1#-19%DVTDocumentLocation2@75"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Pods/Pods-dummy.m0000000000000000^3590"CompileC /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=7.0 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources/armv7s -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers -isystem /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods/Headers/AFNetworking -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Pods/Pods-dummy.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o36"E874580E-9724-4343-8766-A2F8620C43AA-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CCreateUniversalBinary /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/libPods.a normal armv7\ armv7s\ arm64
-s429173383.703980
-e429173383.856620
-r1
-xCreateUniversalBinary
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/libPods.a
-xnormal
-xarmv7 armv7s arm64
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Create universal binary /Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Products/Debug-iphoneos/libPods.a139"CreateUniversalBinary /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/libPods.a normal armv7\ armv7s\ arm64b955b487aa94b941^e44cdb87aa94b941^---0#0#1#-19%DVTDocumentLocation2@97"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Build/Products/Debug-iphoneos/libPods.a0034547cdeffdf42^1015"CreateUniversalBinary /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/libPods.a normal armv7\ armv7s\ arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos/libPods.a36"F1EA8CE5-1D82-4EB0-A5F6-AB3C32499382-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a normal arm64
-s429173383.656892
-e429173383.703088
-r1
-xLibtool
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a
-xnormal
-xarm64
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection158"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a normal arm64158"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a normal arm644948a887aa94b941^04ffb387aa94b941^---0#0#1#--1123"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a normal arm64    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export IPHONEOS_DEPLOYMENT_TARGET=7.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only arm64 -syslibroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/Pods.LinkFileList -framework Foundation -lPods-AFNetworking -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/arm64/libPods.a36"C42D5C31-771A-4750-9027-2D43E4829C95-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a normal armv7
-s429173383.585168
-e429173383.661056
-r1
-xLibtool
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a
-xnormal
-xarmv7
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection158"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a normal armv7158"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a normal armv711df9587aa94b941^8a3ca987aa94b941^---0#0#1#--1123"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a normal armv7    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export IPHONEOS_DEPLOYMENT_TARGET=7.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7 -syslibroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/Pods.LinkFileList -framework Foundation -lPods-AFNetworking -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7/libPods.a36"19B0D945-ECAA-4D9F-BF56-35AD04EEF1A9-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
-CLibtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a normal armv7s
-s429173383.585539
-e429173383.656573
-r1
-xLibtool
-x/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a
-xnormal
-xarmv7s
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection160"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a normal armv7s160"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a normal armv7s05fd9587aa94b941^6a16a887aa94b941^---0#0#1#--1128"Libtool /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a normal armv7s    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Pods"    export IPHONEOS_DEPLOYMENT_TARGET=7.0    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7s -syslibroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk -L/Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphoneos -filelist /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods.LinkFileList -framework Foundation -lPods-AFNetworking -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/libPods.a36"01A0B281-A04F-4640-ACF8-D8028647330A-
-bF5EAD925-A79D-475F-BC17-50B84CCBFDF3
-
