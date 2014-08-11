@@ -76,7 +76,7 @@
 
 #pragma mark -
 @implementation CaptureManager
-
+@synthesize path;
 
 - (id) init
 {

@@ -7,12 +7,12 @@
 //
 
 #import "submitViewController.h"
+#import "CaptureManager.h"
 
 @interface submitViewController ()
 
 - (IBAction)submitFacebook:(UIButton *)sender;
 - (IBAction)submitTwitter:(UIButton *)sender;
-
 @end
 
 @implementation submitViewController
