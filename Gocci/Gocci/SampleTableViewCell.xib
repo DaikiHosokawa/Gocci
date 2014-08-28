@@ -14,21 +14,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="327" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bOg-Bb-xg2">
-                        <rect key="frame" x="12" y="3" width="56" height="53"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="住所" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veC-38-qJx">
-                        <rect key="frame" x="81" y="35" width="188" height="21"/>
+                        <rect key="frame" x="31" y="36" width="188" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="店舗名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vv-xz-xBf">
-                        <rect key="frame" x="81" y="15" width="188" height="21"/>
+                        <rect key="frame" x="31" y="14" width="188" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="1" green="0.1071277217" blue="0.1139895106" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,7 +42,6 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="logo" destination="bOg-Bb-xg2" id="Zpl-hf-slq"/>
                 <outlet property="meter" destination="Ba8-Cr-cTM" id="7GS-mp-YH3"/>
                 <outlet property="restaurantAddress" destination="veC-38-qJx" id="c2l-ZI-Ibl"/>
                 <outlet property="restaurantName" destination="0Vv-xz-xBf" id="YWg-hD-abO"/>
@@ -54,7 +49,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="logo" width="70" height="70"/>
         <image name="pin" width="20" height="30"/>
     </resources>
 </document>

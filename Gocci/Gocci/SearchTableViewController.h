@@ -15,6 +15,8 @@
 
 @interface SearchTableViewController : UITableViewController{
     CLLocationManager *locationManager;
+    double latitude, longitude; // 取得した緯度経度
+
 }
 
 -(void) onResume;

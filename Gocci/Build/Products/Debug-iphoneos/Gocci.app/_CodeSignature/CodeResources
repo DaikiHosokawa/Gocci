@@ -4,25 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>AppIcon-229x29.png</key>
-		<data>
-		zckb4z/8XRhAB/aI+Hb0BLPHOMc=
-		</data>
-		<key>AppIcon-229x29@2x.png</key>
-		<data>
-		PtkkT2QR1zCfJPD8rS95/vgrSrA=
-		</data>
 		<key>AppIcon-240x40@2x.png</key>
 		<data>
-		2yfpOtyjLq9loNG/BeBTrPMlCYY=
-		</data>
-		<key>AppIcon-257x57.png</key>
-		<data>
-		GwhY8cofPv+VTJt4iMkmMqHK9WI=
-		</data>
-		<key>AppIcon-257x57@2x.png</key>
-		<data>
-		FXSNyUJVEFLHw2mK6eem/qkuHAE=
+		QWMPiUggsgUziFDbMfWmL0lnBnY=
 		</data>
 		<key>AppIcon-260x60@2x.png</key>
 		<data>
@@ -30,131 +14,131 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib/objects.nib</key>
 		<data>
-		B06TaIBjBWDXh9jVLMaQjNYz6Vw=
+		GsYxOv67HmQeZU1kcncbN18MbaM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib/runtime.nib</key>
 		<data>
-		w5TsCwQjxdAV6eC3vgvDNPEaoCc=
+		Z80KRaMCxuC0yTM4YN/xDrmH1V4=
 		</data>
 		<key>Base.lproj/Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib/objects.nib</key>
 		<data>
-		H3pnmLixN1kwzhtPRUG5zOMWpzY=
+		MDts/cJ3iEDwlimWR1+GJnv4YMI=
 		</data>
 		<key>Base.lproj/Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib/runtime.nib</key>
 		<data>
-		WEYy+ZBTizwBBknPNA7QClY6uKk=
+		eKyNPiZoj7HV8/902GAj33ljMak=
 		</data>
 		<key>Base.lproj/Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib/objects.nib</key>
 		<data>
-		kn18hPH0lg76+cKnmj6GZQxm1hE=
+		CqCcivgh5QNLOEsD2LhaNUtwJKU=
 		</data>
 		<key>Base.lproj/Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib/runtime.nib</key>
 		<data>
-		S5sLrkeLlg6+XO1fhFY1/GMLXYE=
+		MAmRsgqIDchf8PlWFx7cz+9gJwo=
 		</data>
 		<key>Base.lproj/Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib/objects.nib</key>
 		<data>
-		/Lrly3O8Q9gQxxzKHxQ4BB7B6yc=
+		BKD7HF07baSuh6CDNPxJRieGbiM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib/runtime.nib</key>
 		<data>
-		pMjAjSm5A48pVVcJXeDPo2/I4zw=
+		FVYKGhPpY7X0XNV5nAQ84D5wyiw=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Lifelog.nib/objects.nib</key>
 		<data>
-		8aIaREo/bII02vwPL5fCEPHTN/A=
+		Sxr1ePaBL04w2vP4xGpWr7E05+0=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Lifelog.nib/runtime.nib</key>
 		<data>
-		auWho4xyT65xUnpv5SGncHswQUo=
+		S3X6fcWcRtJ2lIFwTs+ouX3nlGs=
 		</data>
 		<key>Base.lproj/Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib/objects.nib</key>
 		<data>
-		q0UBTioxMgVsMfx8ViCVpYirqFw=
+		gmDXIy/7JeHroZshg4E3WGjZUTI=
 		</data>
 		<key>Base.lproj/Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib/runtime.nib</key>
 		<data>
-		LTRD94WK/AJtBaocvRo+BCbHoa0=
+		jHl/bm78drKW+agUY/UwiEsw3PQ=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib/objects.nib</key>
 		<data>
-		n4bkwSWcCcP3Y39cFz0iviJB52g=
+		SnpjZOTGNnT7MheS6KqOoYGjKTE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib/runtime.nib</key>
 		<data>
-		ZVM5jcrKkf3CssfK+SvLmAoQiTE=
+		QJCwuBGxMgg3D+tdoEhukOu4Gbg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Recorder.nib/objects.nib</key>
 		<data>
-		gVhgZNaE52rdkdsPw8VMEjrr+og=
+		4I6ZZEYPFe83xxzgB6WjOH4KZVY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Recorder.nib/runtime.nib</key>
 		<data>
-		ztgPsAFE1cvDMeT3BBBUpAzfTDM=
+		NDYwxGSiniwqvRnDiYEENOmmEUo=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib/objects.nib</key>
 		<data>
-		cwuQWFEwV/800zNF44uEbtXJEWM=
+		kdeH/Y2d9fUCZVzXziwOPS5YkX8=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib/runtime.nib</key>
 		<data>
-		18l+TCUXaSy2Zz7cYECBpq/LfRs=
+		jvR/fWb2KXn/WeQp/3pKsTVlges=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3H1-41-IX9.nib/objects.nib</key>
 		<data>
-		KvigrTJCgSl8yHnr28nIfqWO8Bg=
+		yYii9Ah22t7Qy11zTVRGrTybARc=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3H1-41-IX9.nib/runtime.nib</key>
 		<data>
-		dejTH0iMfMtbmmKyRLxw9h5wV4I=
+		A+imJ6Dtd/B+Qqwx1ogaz8QenMk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-7Ul-L7-bNU.nib/objects.nib</key>
 		<data>
-		KJtMeCFY5sD85RBF64o7e0vQsRs=
+		hiB/SNII+bqyR9ZHVWSHUnMNxXA=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-7Ul-L7-bNU.nib/runtime.nib</key>
 		<data>
-		SC3Lba7akL7OXaYbc8Bmwu2U4gU=
+		g/Vc3HyU6K9J2x6TsgEM64Ci+A8=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-Pt3-mZ-dDb.nib/objects.nib</key>
 		<data>
-		P5ZJQW5CBuq3YygdbNRrUwZIf+c=
+		mhU99tl2dAzPOGgGhvyWjl8vbho=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-Pt3-mZ-dDb.nib/runtime.nib</key>
 		<data>
-		X8lmxTmY4UsTVDgM9iE8Ke72dDo=
+		/AngGW4MtCdeb2GATU8Gth8KUJY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-eNe-5a-Fw9.nib/objects.nib</key>
 		<data>
-		C1ZMxl90+5pOsZLAHDHvLuGdJxc=
+		U68eFCisyqnIqMX6eir4HeAUqbk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-eNe-5a-Fw9.nib/runtime.nib</key>
 		<data>
-		N7btugLVzPbZqI2lnaWvzX6T6JM=
+		QAiW8v63a01g4GoWWKWtrH1F0PU=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-x1a-eI-W4a.nib/objects.nib</key>
 		<data>
-		VcQZ4HNBNF3Kgy6vDi1BPCRnIRY=
+		p+QEtqxyOG8BG5HkCgIiJJQPXjk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-x1a-eI-W4a.nib/runtime.nib</key>
 		<data>
-		3wIN1H0T3PWDeHTZg/hrqGn9yhc=
+		494CQPZhUBbu6bzbaPGGdy+GWgY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib/objects.nib</key>
 		<data>
-		KYPdr9SlAL+844p2jD47K3PpbXw=
+		iO8FEVOd++IZROM2gK9arstMjCE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib/runtime.nib</key>
 		<data>
-		38g+QK09Hv9WqT0G9CpQwGPq56I=
+		8lbwnHIvJxWjuwURGlzQTW8Ev8I=
 		</data>
 		<key>Base.lproj/Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib/objects.nib</key>
 		<data>
-		NHLyOFN6mrPr8s4Ow36kKmZ1Ho0=
+		KEcLafYgbil7eI1V2XGGSakwsNY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib/runtime.nib</key>
 		<data>
-		GVm39dq+q+w7zfWAFYAFyUBG2q4=
+		mibZnXmRKbSoToYmEHdv5va56ho=
 		</data>
 		<key>Default-568h@2x.png</key>
 		<data>
@@ -514,35 +498,39 @@
 		</data>
 		<key>Sample2TableViewCell.nib/objects.nib</key>
 		<data>
-		XnhIcH5v26/Kc/FseH2QsGqObk4=
+		nh3O5V23BjAiw3Ue480EKlERzls=
 		</data>
 		<key>Sample2TableViewCell.nib/runtime.nib</key>
 		<data>
-		aDI/yuHwaIg2Sx5h9uMj8UckcFU=
+		I7JsRwWP61ZdV4tRUL/0fdtOJ/Y=
 		</data>
 		<key>Sample3TableViewCell.nib/objects.nib</key>
 		<data>
-		SiEx5XzEhTF+kCcKSlL5LP2CtuY=
+		PN6ZkjFhypwKazEi0lByff6dD/8=
 		</data>
 		<key>Sample3TableViewCell.nib/runtime.nib</key>
 		<data>
-		C/kMUvJjdJ0UAirQ0DQqijmeKfw=
+		nSu9Ixzd7PD1WhzqKXVBRPjsQhk=
 		</data>
 		<key>Sample4TableViewCell.nib/objects.nib</key>
 		<data>
-		UEKDuPDjE7XMN8PR3aVf4GrLGa0=
+		Ewpohtw/z2jiAqPwDGaGvXVBo94=
 		</data>
 		<key>Sample4TableViewCell.nib/runtime.nib</key>
 		<data>
-		7zHqrjc0jmSPbFPzOxmX0KhQ2uI=
+		Rf3BVgAMhbYrROVV4vpe8DgnetI=
 		</data>
 		<key>SampleTableViewCell.nib/objects.nib</key>
 		<data>
-		jQ4tNdKeD4OscWb5No+3/NEIHYA=
+		bdc9GlGcFv2fImnV4bPiIkGSAhI=
 		</data>
 		<key>SampleTableViewCell.nib/runtime.nib</key>
 		<data>
-		eIu5fdWKsMeIqnIbf/dO0B+Acsk=
+		wEKhV/wXU+aywFeF1qMU2e1TPYE=
+		</data>
+		<key>arrow.png</key>
+		<data>
+		8yzHcMbzFAX9Lri6ks9Z5neXVPU=
 		</data>
 		<key>burger-1.png</key>
 		<data>
@@ -595,6 +583,10 @@
 		<key>logo.png</key>
 		<data>
 		UZfnRcWizMSUZmTES6QFBM0uNS8=
+		</data>
+		<key>logo_invert.png</key>
+		<data>
+		R3aUO/lvxRWw4CdnIySKMvOMdb4=
 		</data>
 		<key>movie.png</key>
 		<data>
@@ -651,25 +643,9 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>AppIcon-229x29.png</key>
-		<data>
-		zckb4z/8XRhAB/aI+Hb0BLPHOMc=
-		</data>
-		<key>AppIcon-229x29@2x.png</key>
-		<data>
-		PtkkT2QR1zCfJPD8rS95/vgrSrA=
-		</data>
 		<key>AppIcon-240x40@2x.png</key>
 		<data>
-		2yfpOtyjLq9loNG/BeBTrPMlCYY=
-		</data>
-		<key>AppIcon-257x57.png</key>
-		<data>
-		GwhY8cofPv+VTJt4iMkmMqHK9WI=
-		</data>
-		<key>AppIcon-257x57@2x.png</key>
-		<data>
-		FXSNyUJVEFLHw2mK6eem/qkuHAE=
+		QWMPiUggsgUziFDbMfWmL0lnBnY=
 		</data>
 		<key>AppIcon-260x60@2x.png</key>
 		<data>
@@ -677,131 +653,131 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib/objects.nib</key>
 		<data>
-		B06TaIBjBWDXh9jVLMaQjNYz6Vw=
+		GsYxOv67HmQeZU1kcncbN18MbaM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib/runtime.nib</key>
 		<data>
-		w5TsCwQjxdAV6eC3vgvDNPEaoCc=
+		Z80KRaMCxuC0yTM4YN/xDrmH1V4=
 		</data>
 		<key>Base.lproj/Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib/objects.nib</key>
 		<data>
-		H3pnmLixN1kwzhtPRUG5zOMWpzY=
+		MDts/cJ3iEDwlimWR1+GJnv4YMI=
 		</data>
 		<key>Base.lproj/Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib/runtime.nib</key>
 		<data>
-		WEYy+ZBTizwBBknPNA7QClY6uKk=
+		eKyNPiZoj7HV8/902GAj33ljMak=
 		</data>
 		<key>Base.lproj/Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib/objects.nib</key>
 		<data>
-		kn18hPH0lg76+cKnmj6GZQxm1hE=
+		CqCcivgh5QNLOEsD2LhaNUtwJKU=
 		</data>
 		<key>Base.lproj/Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib/runtime.nib</key>
 		<data>
-		S5sLrkeLlg6+XO1fhFY1/GMLXYE=
+		MAmRsgqIDchf8PlWFx7cz+9gJwo=
 		</data>
 		<key>Base.lproj/Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib/objects.nib</key>
 		<data>
-		/Lrly3O8Q9gQxxzKHxQ4BB7B6yc=
+		BKD7HF07baSuh6CDNPxJRieGbiM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib/runtime.nib</key>
 		<data>
-		pMjAjSm5A48pVVcJXeDPo2/I4zw=
+		FVYKGhPpY7X0XNV5nAQ84D5wyiw=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Lifelog.nib/objects.nib</key>
 		<data>
-		8aIaREo/bII02vwPL5fCEPHTN/A=
+		Sxr1ePaBL04w2vP4xGpWr7E05+0=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Lifelog.nib/runtime.nib</key>
 		<data>
-		auWho4xyT65xUnpv5SGncHswQUo=
+		S3X6fcWcRtJ2lIFwTs+ouX3nlGs=
 		</data>
 		<key>Base.lproj/Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib/objects.nib</key>
 		<data>
-		q0UBTioxMgVsMfx8ViCVpYirqFw=
+		gmDXIy/7JeHroZshg4E3WGjZUTI=
 		</data>
 		<key>Base.lproj/Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib/runtime.nib</key>
 		<data>
-		LTRD94WK/AJtBaocvRo+BCbHoa0=
+		jHl/bm78drKW+agUY/UwiEsw3PQ=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib/objects.nib</key>
 		<data>
-		n4bkwSWcCcP3Y39cFz0iviJB52g=
+		SnpjZOTGNnT7MheS6KqOoYGjKTE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib/runtime.nib</key>
 		<data>
-		ZVM5jcrKkf3CssfK+SvLmAoQiTE=
+		QJCwuBGxMgg3D+tdoEhukOu4Gbg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Recorder.nib/objects.nib</key>
 		<data>
-		gVhgZNaE52rdkdsPw8VMEjrr+og=
+		4I6ZZEYPFe83xxzgB6WjOH4KZVY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Recorder.nib/runtime.nib</key>
 		<data>
-		ztgPsAFE1cvDMeT3BBBUpAzfTDM=
+		NDYwxGSiniwqvRnDiYEENOmmEUo=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib/objects.nib</key>
 		<data>
-		cwuQWFEwV/800zNF44uEbtXJEWM=
+		kdeH/Y2d9fUCZVzXziwOPS5YkX8=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib/runtime.nib</key>
 		<data>
-		18l+TCUXaSy2Zz7cYECBpq/LfRs=
+		jvR/fWb2KXn/WeQp/3pKsTVlges=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3H1-41-IX9.nib/objects.nib</key>
 		<data>
-		KvigrTJCgSl8yHnr28nIfqWO8Bg=
+		yYii9Ah22t7Qy11zTVRGrTybARc=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3H1-41-IX9.nib/runtime.nib</key>
 		<data>
-		dejTH0iMfMtbmmKyRLxw9h5wV4I=
+		A+imJ6Dtd/B+Qqwx1ogaz8QenMk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-7Ul-L7-bNU.nib/objects.nib</key>
 		<data>
-		KJtMeCFY5sD85RBF64o7e0vQsRs=
+		hiB/SNII+bqyR9ZHVWSHUnMNxXA=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-7Ul-L7-bNU.nib/runtime.nib</key>
 		<data>
-		SC3Lba7akL7OXaYbc8Bmwu2U4gU=
+		g/Vc3HyU6K9J2x6TsgEM64Ci+A8=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-Pt3-mZ-dDb.nib/objects.nib</key>
 		<data>
-		P5ZJQW5CBuq3YygdbNRrUwZIf+c=
+		mhU99tl2dAzPOGgGhvyWjl8vbho=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-Pt3-mZ-dDb.nib/runtime.nib</key>
 		<data>
-		X8lmxTmY4UsTVDgM9iE8Ke72dDo=
+		/AngGW4MtCdeb2GATU8Gth8KUJY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-eNe-5a-Fw9.nib/objects.nib</key>
 		<data>
-		C1ZMxl90+5pOsZLAHDHvLuGdJxc=
+		U68eFCisyqnIqMX6eir4HeAUqbk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-eNe-5a-Fw9.nib/runtime.nib</key>
 		<data>
-		N7btugLVzPbZqI2lnaWvzX6T6JM=
+		QAiW8v63a01g4GoWWKWtrH1F0PU=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-x1a-eI-W4a.nib/objects.nib</key>
 		<data>
-		VcQZ4HNBNF3Kgy6vDi1BPCRnIRY=
+		p+QEtqxyOG8BG5HkCgIiJJQPXjk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-x1a-eI-W4a.nib/runtime.nib</key>
 		<data>
-		3wIN1H0T3PWDeHTZg/hrqGn9yhc=
+		494CQPZhUBbu6bzbaPGGdy+GWgY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib/objects.nib</key>
 		<data>
-		KYPdr9SlAL+844p2jD47K3PpbXw=
+		iO8FEVOd++IZROM2gK9arstMjCE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib/runtime.nib</key>
 		<data>
-		38g+QK09Hv9WqT0G9CpQwGPq56I=
+		8lbwnHIvJxWjuwURGlzQTW8Ev8I=
 		</data>
 		<key>Base.lproj/Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib/objects.nib</key>
 		<data>
-		NHLyOFN6mrPr8s4Ow36kKmZ1Ho0=
+		KEcLafYgbil7eI1V2XGGSakwsNY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib/runtime.nib</key>
 		<data>
-		GVm39dq+q+w7zfWAFYAFyUBG2q4=
+		mibZnXmRKbSoToYmEHdv5va56ho=
 		</data>
 		<key>Default-568h@2x.png</key>
 		<data>
@@ -1161,35 +1137,39 @@
 		</data>
 		<key>Sample2TableViewCell.nib/objects.nib</key>
 		<data>
-		XnhIcH5v26/Kc/FseH2QsGqObk4=
+		nh3O5V23BjAiw3Ue480EKlERzls=
 		</data>
 		<key>Sample2TableViewCell.nib/runtime.nib</key>
 		<data>
-		aDI/yuHwaIg2Sx5h9uMj8UckcFU=
+		I7JsRwWP61ZdV4tRUL/0fdtOJ/Y=
 		</data>
 		<key>Sample3TableViewCell.nib/objects.nib</key>
 		<data>
-		SiEx5XzEhTF+kCcKSlL5LP2CtuY=
+		PN6ZkjFhypwKazEi0lByff6dD/8=
 		</data>
 		<key>Sample3TableViewCell.nib/runtime.nib</key>
 		<data>
-		C/kMUvJjdJ0UAirQ0DQqijmeKfw=
+		nSu9Ixzd7PD1WhzqKXVBRPjsQhk=
 		</data>
 		<key>Sample4TableViewCell.nib/objects.nib</key>
 		<data>
-		UEKDuPDjE7XMN8PR3aVf4GrLGa0=
+		Ewpohtw/z2jiAqPwDGaGvXVBo94=
 		</data>
 		<key>Sample4TableViewCell.nib/runtime.nib</key>
 		<data>
-		7zHqrjc0jmSPbFPzOxmX0KhQ2uI=
+		Rf3BVgAMhbYrROVV4vpe8DgnetI=
 		</data>
 		<key>SampleTableViewCell.nib/objects.nib</key>
 		<data>
-		jQ4tNdKeD4OscWb5No+3/NEIHYA=
+		bdc9GlGcFv2fImnV4bPiIkGSAhI=
 		</data>
 		<key>SampleTableViewCell.nib/runtime.nib</key>
 		<data>
-		eIu5fdWKsMeIqnIbf/dO0B+Acsk=
+		wEKhV/wXU+aywFeF1qMU2e1TPYE=
+		</data>
+		<key>arrow.png</key>
+		<data>
+		8yzHcMbzFAX9Lri6ks9Z5neXVPU=
 		</data>
 		<key>burger-1.png</key>
 		<data>
@@ -1242,6 +1222,10 @@
 		<key>logo.png</key>
 		<data>
 		UZfnRcWizMSUZmTES6QFBM0uNS8=
+		</data>
+		<key>logo_invert.png</key>
+		<data>
+		R3aUO/lvxRWw4CdnIySKMvOMdb4=
 		</data>
 		<key>movie.png</key>
 		<data>

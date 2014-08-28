@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 
+
 @end
 
 @implementation TimelineTableViewController
@@ -60,6 +61,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
@@ -120,7 +122,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 
@@ -142,17 +144,17 @@
 //セルの高さを調整
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 458.0;
+    return 510.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+ 
     NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     moviePlayer.useApplicationAudioSession = NO;
-    CGRect frame = CGRectMake(0, 65, 320, 280);
+    CGRect frame = CGRectMake(0, 80, 320, 320);
     
     [moviePlayer.view setFrame:frame];
     
@@ -163,10 +165,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-    
+    [moviePlayer setShouldAutoplay:NO];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
-
     
 	// Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する

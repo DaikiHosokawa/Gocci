@@ -345,13 +345,11 @@
 
         //ここでは、pathの先のファイルが存在していない
         
-        
         [self.exportSession exportAsynchronouslyWithCompletionHandler:^{
             NSLog (@"i is in your block, exportin. status is %ld",(long)self.exportSession.status);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf exportDidFinish:self.exportSession withCompletionBlock:completion];
-            
-                
+         
             });
         }];
         
@@ -362,6 +360,7 @@
 }
 
 -(void)exportDidFinish:(AVAssetExportSession*)session withCompletionBlock:(void(^)(BOOL success))completion {
+    
     
     self.exportSession = nil;
     
@@ -440,7 +439,7 @@
         [NSURLConnection connectionWithRequest:request delegate:self];
         
         NSLog(@"リクエストは送信されました");
-        
+     /*
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:outputURL]) {
             [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
@@ -450,13 +449,14 @@
                     completion (NO);
                 } else {
                     completion (YES);
-                }
+          }
             }];
         }
     }
+     */
+    }
     [self.assets removeAllObjects];
 }
-
 
 
 #pragma mark Device Counts

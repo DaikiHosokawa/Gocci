@@ -16,7 +16,7 @@
 @synthesize window = _window;
 
 
-//facebook認証のcalbackメソッド
+//facebook認証のcallbackメソッド
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication

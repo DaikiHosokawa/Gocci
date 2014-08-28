@@ -11,6 +11,8 @@
 #import "RNFrostedSidebar.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface TimelineTableViewController : UITableViewController{
     MPMoviePlayerController *moviePlayer;

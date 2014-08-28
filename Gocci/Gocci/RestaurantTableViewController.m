@@ -68,12 +68,14 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
+    self.tableView.separatorColor = [UIColor clearColor ];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.6];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,7 +132,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 458.0;
+    return 510.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,7 +142,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     moviePlayer.useApplicationAudioSession = NO;
-    CGRect frame = CGRectMake(0, 65, 320, 280);
+    CGRect frame = CGRectMake(0, 75, 320,320);
     
     [moviePlayer.view setFrame:frame];
     

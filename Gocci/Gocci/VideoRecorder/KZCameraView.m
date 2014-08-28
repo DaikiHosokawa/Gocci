@@ -114,8 +114,8 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 //set record button image. Replace with any image
                 UIImage *recordImage = [UIImage imageNamed:@"start"];
                 self.start = [[UIImageView alloc]initWithImage:recordImage];
-                self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height);
-                self.start.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2-30);
+                self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height-20);
+                self.start.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
                 self.start.userInteractionEnabled = YES;
                 [self addSubview:self.start];
                 
@@ -136,7 +136,9 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 [newFocusModeLabel setBackgroundColor:[UIColor clearColor]];
                 [newFocusModeLabel setTextColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.50]];
                 AVCaptureFocusMode initialFocusMode = [[[self.captureManager videoInput] device] focusMode];
+                /*
                 [newFocusModeLabel setText:[NSString stringWithFormat:@"focus: %@", [self stringForFocusMode:initialFocusMode]]];
+                 */
                 [self.videoPreviewView addSubview:newFocusModeLabel];
                 [self addObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode" options:NSKeyValueObservingOptionNew context:AVCamFocusModeObserverContext];
                 [self setFocusModeLabel:newFocusModeLabel];
@@ -177,21 +179,21 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 [self.progressView addSubview:self.progressBar];
                 [self.progressView addSubview:self.progressLabel];
                 [self.progressView addSubview:self.activityView];
-                
+                /*
                 self.deleteLastBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 self.deleteLastBtn.bounds = CGRectMake(0.0, 0.0, 100.0, 30.0);
                 self.deleteLastBtn.center = CGPointMake(60.0, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2+60);
                 [self.deleteLastBtn setTitle:@"Retry" forState:UIControlStateNormal];
                 [self.deleteLastBtn addTarget:self.captureManager action:@selector(deleteLastAsset) forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:self.deleteLastBtn];
-                
+                */
             }
         }
     }
     
     return self;
 }
-
+/*
 -(void)setShowCameraSwitch:(BOOL)showCameraSwitch
 {
     if (showCameraSwitch)
@@ -240,22 +242,25 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 	
 	return focusString;
 }
+ */
 
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode"];
 }
 
-
+/*
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == AVCamFocusModeObserverContext) {
         // Update the focus UI overlay string when the focus mode changes
-		[self.focusModeLabel setText:[NSString stringWithFormat:@"focus: %@", [self stringForFocusMode:(AVCaptureFocusMode)[[change objectForKey:NSKeyValueChangeNewKey] integerValue]]]];
+		[self.focusModeLabel setText:[NSString stringWithFormat:@"focus: %@", [self stringForFocusMode:(AVCaptureFocusMode)
+         [[change objectForKey:NSKeyValueChangeNewKey] integerValue]]]];
 	} else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
+ */
 
 #pragma mark
 
@@ -344,7 +349,6 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
         completion (success);
     }];
 }
-
 
 -(void)refresh
 {

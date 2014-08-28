@@ -13,7 +13,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPRequestOperationManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLSessionManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPSessionManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/UIKit+AFNetworking/UIImageView+AFNetworking.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/../RecorderViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/KZCameraView.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.h
