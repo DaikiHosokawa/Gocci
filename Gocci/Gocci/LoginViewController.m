@@ -59,7 +59,7 @@
 
 - (IBAction)pushFacebook:(UIButton *)sender {
     // パーミッション
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
     // Facebook アカウントを使ってログイン
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         if (!user) {
@@ -81,6 +81,7 @@
                 }
             }];
         }
+        
         
         // リンクを解除する場合
         [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {

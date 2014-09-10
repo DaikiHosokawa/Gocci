@@ -9,16 +9,19 @@
 #import "SearchTableViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <MapKit/MapKit.h>
+#import "CustomAnnotation.h"
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
 
 
 
 @property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *restname_;
-@property (nonatomic, retain) NSMutableArray *restaddress_;
+@property (nonatomic, retain) NSMutableArray *category_;
 @property (nonatomic, retain) NSMutableArray *meter_;
+@property (nonatomic, copy) NSMutableArray *jsonlat_;
+@property (nonatomic, copy) NSMutableArray *jsonlon_;
+@property (nonatomic, retain) NSMutableArray *restaddress_;
 @property (nonatomic, retain) NSString *nowlat_;
 @property (nonatomic, retain) NSString *nowlon_;
 
@@ -28,7 +31,8 @@
 @implementation SearchTableViewController
 
 @synthesize locationManager;
-
+@synthesize lat;
+@synthesize lon;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,36 +45,18 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    /*
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=35.8012&lon=139.183&limit=1"];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSArray *venues = [[jsonDic objectForKey:@"response"] objectForKey:@"restname"];
-    */
+  
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager stopUpdatingLocation]; //測位停止
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    /*
-     //AFNetworkingのテスト
-     // AFHTTPSessionManagerを利用して、http://codecamp1353.lesson2.codecamp.jp/からJSONデータを取得する
-     AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-     [manager GET:@"https://codelecture.com/gocci/?lat=35.8012&lon=139.183&limit=10"
-     parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-     NSLog(@"response: %@", responseObject);
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-     NSLog(@"Error: %@", error);
-     }];
-    */
    
     
     // 地図の表示
@@ -130,35 +116,49 @@
         NSLog(@"Location services not available.");
     }
     
-    // APIから返ってくるデータと仮定
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",_nowlat_,_nowlon_];
+    
+    //JSONをパース
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",lat,lon];
+    NSLog(@"urlStringatnoulon:%@",urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    
+    // 飲食店名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
-   
-    // APIから返ってくるデータと仮定
-    NSString *urlString2 = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",_nowlat_,_nowlon_];
-    NSURL *url2 = [NSURL URLWithString:urlString2];
-    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
-    NSArray *restaddress = [jsonDic2 valueForKey:@"locality"];
-    _restaddress_ = [restaddress mutableCopy];
-   
-    /*
-    // APIから返ってくるデータと仮定
-    NSString *urlString3 = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",_nowlat_,_nowlon_];
-    NSURL *url3 = [NSURL URLWithString:urlString3];
-    NSString *response3 = [NSString stringWithContentsOfURL:url3 encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData3 = [response3 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *jsonDic3 = [NSJSONSerialization JSONObjectWithData:jsonData3 options:0 error:nil];
-    NSArray *meter = [jsonDic3 valueForKey:@"distance"];
+    // 店舗カテゴリー
+    NSArray *category = [jsonDic valueForKey:@"category"];
+    _category_ = [category mutableCopy];
+    // 距離
+    NSArray *meter = [jsonDic valueForKey:@"distance"];
     _meter_ = [meter mutableCopy];
-    */
-     }
+    // 店舗住所
+    NSArray *restaddress = [jsonDic valueForKey:@"locality"];
+    _restaddress_ = [restaddress mutableCopy];
+
+    //緯度
+    NSArray *jsonlat = [jsonDic valueForKey:@"lat"];
+    _jsonlat_ = [jsonlat mutableCopy];
+    //経度
+    NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
+    _jsonlon_ = [jsonlon mutableCopy];
+    
+    //30本のピンを立てる
+    for (int i=0; i<30; i++) {
+        NSString *ni = _restname_[i];
+        NSString *ai = _category_[i];
+        double loi = [_jsonlon_[i]doubleValue];
+        NSLog(@"lo:%f ",loi);
+        double lai = [_jsonlat_[i]doubleValue];
+        NSLog(@"la:%f",lai);
+        [_mapView addAnnotation:
+         [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
+                                                       title:(@"%@",ni)
+                                                    subtitle:(@"%@",ai)]];
+    }
+   }
 
 // 位置情報更新時
 - (void)locationManager:(CLLocationManager *)manager
@@ -176,6 +176,7 @@
     NSLog(@"nowlon:%@",_nowlat_);
   }
 
+ 
 // 測位失敗時や、5位置情報の利用をユーザーが「不許可」とした場合などに呼ばれる
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error{
@@ -207,15 +208,12 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    
-    // 地図の中心座標に現在地を設定
-    _mapView.centerCoordinate = _mapView.userLocation.location.coordinate;
-    
     // 表示倍率の設定
-    MKCoordinateRegion theRegion = _mapView.region;
-    theRegion.span.longitudeDelta /= 500;
-    theRegion.span.latitudeDelta /= 500;
-    [_mapView setRegion:theRegion animated:NO];
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
+    MKCoordinateRegion region = MKCoordinateRegionMake(_mapView.userLocation.coordinate, span);
+    [_mapView setRegion:region animated:NO];
+    //一度しか現在地に移動しないなら removeObserver する
+    [_mapView.userLocation removeObserver:self forKeyPath:@"location"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -228,7 +226,7 @@
 //テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 65.0;
+    return 79.0;
 }
 
 
@@ -265,30 +263,22 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SampleTableViewCell* cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
-    if (cell == nil) {
-        UINib* nib = [UINib nibWithNibName:@"searchTableViewCell" bundle:nil];
-        NSArray* array = [nib instantiateWithOwner:nil options:nil];
-        cell = [array objectAtIndex:0];
-     }
+SampleTableViewCell* cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
 
     // Configure the cell.
-    int r = rand();
-    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];;
+    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
-    cell.meter.text = [_meter_ objectAtIndex:indexPath.row];
-    cell.logo.image = [UIImage imageNamed:
-                            [NSString stringWithFormat:@"image%02ds.jpg", (r%8)+1]];
-    NSLog(@"%@", [NSString stringWithFormat:@"image%02ds.jpg", (r%8)+1]);
+    cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
      // Configure the cell...
     return cell;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //セグエで画面遷移させる
     [self performSegueWithIdentifier:@"showDetail" sender:self.tableView];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
-
 
 
 

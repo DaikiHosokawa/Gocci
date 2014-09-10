@@ -8,13 +8,25 @@
 
 #import "TimelineTableViewController.h"
 #import "RecorderViewController.h"
+#import "searchTableViewController.h"
+#import <Parse/Parse.h>
+#import "Sample2TableViewCell.h"
 
 
 @protocol MovieViewDelegate;
 
-@interface TimelineTableViewController ()<RNFrostedSidebarDelegate>
+@interface TimelineTableViewController ()<RNFrostedSidebarDelegate,CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
+@property (nonatomic, retain) NSString *lat;
+@property (nonatomic, retain) NSString *lon;
+@property (nonatomic, retain) NSMutableArray *restname_;
+@property (nonatomic, retain) NSMutableArray *goodnum_;
+@property (nonatomic, retain) NSMutableArray *user_name_;
+@property (nonatomic, copy) NSMutableArray *picture_;
+@property (nonatomic, copy) NSMutableArray *movie_;
+@property (nonatomic, copy) NSMutableArray *review_;
+@property (nonatomic, copy) Sample2TableViewCell *cell;
 
 
 @end
@@ -30,8 +42,47 @@
     return self;
 }
 
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    
+    //JSONをパース
+    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+    NSLog(@"Timeline Api:%@",timelineString);
+    NSURL *url = [NSURL URLWithString:timelineString];
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+
+    // ユーザー名
+    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+    _user_name_ = [user_name mutableCopy];
+    // プロフ画像
+    NSArray *picture = [jsonDic valueForKey:@"picture"];
+    _picture_ = [picture mutableCopy];
+    // 動画URL
+    NSArray *movie = [jsonDic valueForKey:@"movie"];
+    _movie_ = [movie mutableCopy];
+    NSLog(@"movie:%@",_movie_);
+    //コメント
+    NSArray *review = [jsonDic valueForKey:@"review"];
+    _review_ = [review mutableCopy];
+    //いいね数
+    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    _goodnum_ = [goodnum mutableCopy];
+    //レストラン名
+    NSArray *restname = [jsonDic valueForKey:@"restname"];
+    _restname_ = [restname mutableCopy];
+    //動画URL
+    NSArray *movieurl = [jsonDic valueForKey:@"movie"];
+    _movie_ = [movieurl mutableCopy];
+    //画像URL
+    NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
+    _picture_ = [pictureurl mutableCopy];
+    
+    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+    [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
@@ -51,78 +102,62 @@
      [super viewDidLoad];
 
    
-    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
+    //self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];*メニューのメソッド
     
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    self.tableView.bounces = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    locationManager = [[CLLocationManager alloc] init];
+    
+    // 位置情報サービスが利用できるかどうかをチェック
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+    } else {
+        NSLog(@"Location services not available.");
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    
+    
+    CLLocation *newLocation = [locations lastObject];
+    // 位置情報を取り出す
+    //緯度
+    latitude = newLocation.coordinate.latitude;
+    //経度
+    longitude = newLocation.coordinate.longitude;
+    _lat = [NSString stringWithFormat:@"%f", latitude];
+    _lon = [NSString stringWithFormat:@"%f", longitude];
+    NSLog(@"lat:%@",_lat);
+    NSLog(@"lon:%@",_lon);
     
 }
+
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
 }
 
-
-- (IBAction)onBurger:(id)sender {
-    NSArray *images = @[
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"]
-                        ];
-   
-    NSArray *colors = @[
-                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
-                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
-                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
-                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        ];
-    
-    
-    // メニューインスタンスの作成
-    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
-    callout.delegate = self;
-    // メニューインスタンスの表示
-    [callout show];
-}
-
-
-//メニューをタップした時の動作
-- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %lu",(unsigned long)index);
-    if (index == 0) {
-        RecorderViewController *mycontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"Recorder"];
-        [self presentViewController:mycontroller animated:YES completion:nil];
-        
-    }
-}
-
-
-- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
-    if (itemEnabled) {
-        [self.optionIndices addIndex:index];
-    }
-    else {
-        [self.optionIndices removeIndex:index];
-    }
-}
-
-
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 
@@ -138,58 +173,89 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 40;
+    return [_movie_ count];
 }
+
 
 //セルの高さを調整
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 510.0;
+    return 500.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
- 
-    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
+
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSLog(@"movietext:%@",text);
+    NSURL *url = [NSURL URLWithString:text];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    moviePlayer.useApplicationAudioSession = NO;
-    CGRect frame = CGRectMake(0, 80, 320, 320);
-    
+    moviePlayer.useApplicationAudioSession = YES;
+    //_cell.movieView = moviePlayer.view;
+    CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
-    
-    [cell.contentView addSubview: moviePlayer.view];
-    [cell.contentView bringSubviewToFront:moviePlayer.view];
+    [_cell.movieView addSubview: moviePlayer.view];
+    [_cell.movieView bringSubviewToFront:moviePlayer.view];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-    [moviePlayer setShouldAutoplay:NO];
+    //[NSThread sleepForTimeInterval:1.0f];
+    [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
+
+    
 	// Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
-    cell = [tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell" ];
     
-    if (!cell) {
-        //さらにcellのinitでLoadNibしxibを指定する必要がある
-        cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"TimelineTableViewCell"];
-    }
+    _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
+    
+    // Configure the cell.
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    _cell.Review.textAlignment = UITextAlignmentLeft;
+    _cell.Review.numberOfLines = 2;
+    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    
+    //文字を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
+    
     // Configure the cell...
-    return cell;
-    
+     return _cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-
     //セグエで画面遷移させる
     [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"searchSegue"]){
+        SearchTableViewController *seaVC = [segue destinationViewController];
+        seaVC.lon = _lon;
+        seaVC.lat = _lat;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //一番下までスクロールしたかどうか
+    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
+    {
+        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
+    }
+}
 
 
 /*

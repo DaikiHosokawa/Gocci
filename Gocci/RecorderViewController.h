@@ -18,4 +18,9 @@
 }
 @property (nonatomic, strong) KZCameraView *cam;
 
+typedef void (^IsMicAccessEnableWithIsShowAlertBlock)(BOOL isMicAccessEnable);
+
++ (void)isMicAccessEnableWithIsShowAlert:(BOOL)_isShowAlert
+                              completion:(IsMicAccessEnableWithIsShowAlertBlock)_completion;
+
 @end

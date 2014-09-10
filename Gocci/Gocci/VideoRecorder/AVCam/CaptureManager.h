@@ -100,4 +100,5 @@
 - (void) captureManagerRecordingFinished:(CaptureManager *)captureManager;
 - (void) captureManagerStillImageCaptured:(CaptureManager *)captureManager;
 - (void) captureManagerDeviceConfigurationChanged:(CaptureManager *)captureManager;
+
 @end

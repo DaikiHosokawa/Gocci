@@ -42,4 +42,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBSettings.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBUserSettingsViewController.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/Crittercism.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/CrittercismDelegate.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/CRFilter.h

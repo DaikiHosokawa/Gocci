@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "Crittercism.h"
+
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>

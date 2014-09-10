@@ -16,12 +16,16 @@
 @interface SearchTableViewController : UITableViewController{
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
-
+    CLLocationCoordinate2D coordinate;
+    NSString *annotationTitle;
+    NSString *annotationSubtitle;
 }
 
 -(void) onResume;
 -(void) onPause;
 
+@property (nonatomic, retain) NSString *lat;
+@property (nonatomic, retain) NSString *lon;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @end
 

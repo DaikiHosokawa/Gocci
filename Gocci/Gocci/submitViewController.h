@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 
-@interface submitViewController : UIViewController
+@interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate>
 
 {
+    
 IBOutlet UIButton *_twitterBtn;
 IBOutlet UIButton *_facebookBtn;
+__weak IBOutlet UITextView *textView;
 }
+
+- (IBAction)pushComplete:(id)sender;
+
 
 @end

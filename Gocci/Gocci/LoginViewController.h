@@ -13,6 +13,6 @@
 
 @interface LoginViewController : UIViewController<FBLoginViewDelegate>
 
-@property (nonatomic) ACAccountStore *accountStore;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

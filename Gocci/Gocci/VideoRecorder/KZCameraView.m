@@ -114,7 +114,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 //set record button image. Replace with any image
                 UIImage *recordImage = [UIImage imageNamed:@"start"];
                 self.start = [[UIImageView alloc]initWithImage:recordImage];
-                self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height-20);
+                self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width, recordImage.size.height);
                 self.start.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/2);
                 self.start.userInteractionEnabled = YES;
                 [self addSubview:self.start];
@@ -125,7 +125,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 [self.start addGestureRecognizer:longPress];
             
                 self.durationProgressBar = [[UIProgressView alloc]initWithFrame:CGRectMake(0.0, videoFrame.origin.y + videoFrame.size.height+62, videoFrame.size.width, 10.0)];
-                self.durationProgressBar.transform = CGAffineTransformMakeScale(1.0, 15.0);//縦に15倍に引き伸ばす
+                self.durationProgressBar.transform = CGAffineTransformMakeScale(1.0, 20.0);//縦に15倍に引き伸ばす
                 self.durationProgressBar.progressTintColor = [ UIColor redColor];
             
                 

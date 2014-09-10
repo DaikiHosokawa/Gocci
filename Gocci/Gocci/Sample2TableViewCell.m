@@ -8,19 +8,39 @@
 
 #import "Sample2TableViewCell.h"
 
-@interface Sample2TableViewCell()
-
-@end
-
 @implementation Sample2TableViewCell
+@synthesize UsersName;
+@synthesize UsersPicture;
+@synthesize RestaurantName;
+@synthesize Goodnum;
+@synthesize Review;
+
+- (void)dealloc
+{
+    self.RestaurantName = nil;
+    self.UsersPicture = nil;
+    self.UsersName = nil;
+    self.Goodnum = nil;
+    self.Review = nil;
+    self.contentViewFront = nil;
+};
+
+
 
 - (void)viewDidLoad
 {
     
 
 }
-
-
+/*
+-(IBAction)disp:(id)sender{
+    int count;
+    count = Goodnum;
+    count++;
+    NSString *add = [NSString stringWithFormat : @"%d",count];
+    _cell.Goodnum.text = add;
+}
+*/
 
 - (void)awakeFromNib
 {

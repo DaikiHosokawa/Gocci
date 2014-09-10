@@ -51,11 +51,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
@@ -70,6 +65,7 @@
     self.navigationItem.backBarButtonItem = backButton;
     self.tableView.separatorColor = [UIColor clearColor ];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.bounces = NO;
 }
 
 //セルの透過処理
@@ -129,21 +125,22 @@
 }
 
 
+
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 510.0;
+    return 400.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     moviePlayer.useApplicationAudioSession = NO;
-    CGRect frame = CGRectMake(0, 75, 320,320);
-    
+    CGRect frame = CGRectMake(30, 30, 262, 200);
     [moviePlayer.view setFrame:frame];
     
     [cell.contentView addSubview: moviePlayer.view];
@@ -175,10 +172,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"didSelectRowAtIndex");
     //セグエで画面遷移する
     [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
 }
+
+
 
 
 /*

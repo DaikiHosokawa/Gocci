@@ -254,6 +254,7 @@
 
 - (void) startRecording
 {
+    
     if ([[UIDevice currentDevice] isMultitaskingSupported]) {
         // Setup background task. This is needed because the captureOutput:didFinishRecordingToOutputFileAtURL: callback is not received until AVCam returns
 		// to the foreground unless you request background execution time. This also ensures that there will be time to write the file to the assets library
@@ -275,6 +276,7 @@
 {
     if ([self.assets count] != 0) {
 
+        
         // 1 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
         AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
         // 2 - Video track
@@ -292,8 +294,8 @@
             AVAssetTrack *videoAssetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
             [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration)
                            ofTrack:videoAssetTrack atTime:time error:nil];
-            
-            [audioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration)
+            //ここに問題が⇒マイクをオンにしてくださいの処理をかく
+                        [audioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration)
                                 ofTrack:[[asset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:time error:nil];
             if(idx == 0)
             {//Square
@@ -359,6 +361,11 @@
     }
 }
 
++(BOOL)isOver7 {
+    const float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    return version >= 7.0;
+}
+
 -(void)exportDidFinish:(AVAssetExportSession*)session withCompletionBlock:(void(^)(BOOL success))completion {
     
     
@@ -401,7 +408,7 @@
         
         
         //送信先URL
-        NSURL *serverurl = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/sample.php"];
+        NSURL *serverurl = [NSURL URLWithString:@"https://codelecture.com/gocci/movie.php"];
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serverurl];
         [request setHTTPMethod:@"POST"];
@@ -439,7 +446,6 @@
         [NSURLConnection connectionWithRequest:request delegate:self];
         
         NSLog(@"リクエストは送信されました");
-     /*
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:outputURL]) {
             [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
@@ -452,8 +458,6 @@
           }
             }];
         }
-    }
-     */
     }
     [self.assets removeAllObjects];
 }
@@ -641,6 +645,8 @@
         [[self delegate] captureManagerRecordingFinished:self];
     }
 }
+
+
 
 -(NSString *)getPath{
     NSLog(@"path:%@",_path);

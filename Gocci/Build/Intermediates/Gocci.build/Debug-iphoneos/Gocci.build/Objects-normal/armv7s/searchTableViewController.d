@@ -48,4 +48,5 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSServices.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSSyncTileLayer.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSTileLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSURLTileLayer.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSURLTileLayer.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/objc/CustomAnnotation.h
