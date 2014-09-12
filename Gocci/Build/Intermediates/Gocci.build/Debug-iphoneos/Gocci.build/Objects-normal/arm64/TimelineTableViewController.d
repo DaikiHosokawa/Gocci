@@ -2,7 +2,6 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/TimelineTableViewController.m \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/TimelineTableViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample2TableViewCell.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RNFrostedSidebar.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFNetworking.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLRequestSerialization.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLResponseSerialization.h \
@@ -89,4 +88,6 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBUserSettingsViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/everyTableViewController.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample4TableViewCell.h

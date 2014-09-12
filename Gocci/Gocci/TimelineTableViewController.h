@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Sample2TableViewCell.h"
-#import "RNFrostedSidebar.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"

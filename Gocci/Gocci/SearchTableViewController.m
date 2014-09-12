@@ -79,7 +79,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
     
     
-
+   /*
     //サーチバーの作成
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     searchBar.tintColor = [UIColor blackColor];
@@ -93,7 +93,7 @@
     self.navigationItem.titleView = searchBar;
     self.navigationItem.titleView.frame = CGRectMake(0, 0   , 0, 0);
     [self.view addSubview: searchBar];
-    
+    */
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
@@ -275,6 +275,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
     // イベントを付ける
     [_cell.selectBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+    
      // Configure the cell...
     return _cell;
 }

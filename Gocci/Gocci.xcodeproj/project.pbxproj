@@ -83,7 +83,6 @@
 		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
-		FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */; };
 		FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */; };
 		FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF219149A1800025DC8 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
@@ -240,8 +239,6 @@
 		FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
-		FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
 		FFF16B9919554D37002FC793 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -420,7 +417,6 @@
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
 				FFA0E2C919AEC0DF006269B4 /* UIKit+AFNetworking */,
 				FFB92EC21997A06B008E024A /* AFNetworking */,
-				FFFC8908198E2A0D008DC584 /* Sidebar */,
 				FF8CE923195824F8000FE68B /* VideoRecorder */,
 				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
@@ -543,15 +539,6 @@
 				FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */,
 			);
 			path = objc;
-			sourceTree = "<group>";
-		};
-		FFFC8908198E2A0D008DC584 /* Sidebar */ = {
-			isa = PBXGroup;
-			children = (
-				FFF16B9619554CED002FC793 /* RNFrostedSidebar.h */,
-				FFF16B9719554D05002FC793 /* RNFrostedSidebar.m */,
-			);
-			name = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,7 +682,6 @@
 				FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
-				FFF16B9819554D05002FC793 /* RNFrostedSidebar.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,

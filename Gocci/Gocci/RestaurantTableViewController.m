@@ -206,7 +206,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
-    
     //Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
     

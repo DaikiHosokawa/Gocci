@@ -11,11 +11,12 @@
 #import "searchTableViewController.h"
 #import <Parse/Parse.h>
 #import "Sample2TableViewCell.h"
+#import "everyTableViewController.h"
 
 
 @protocol MovieViewDelegate;
 
-@interface TimelineTableViewController ()<RNFrostedSidebarDelegate,CLLocationManagerDelegate>
+@interface TimelineTableViewController ()<CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (nonatomic, retain) NSString *lat;
@@ -99,6 +100,9 @@
 {
      [super viewDidLoad];
 
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
    
     //self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];*メニューのメソッド
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
@@ -182,20 +186,43 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
-   // [self updateVisibleCells];
+    //コメントボタンのイベント
+    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+    //言い値ボタンのイベント
+    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+     
     // Configure the cell...
-     return _cell;
+     return _cell ;
 
 }
 
-/*
+- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+    //このSegueに付けたIdentifierから遷移を呼び出すことができます
+    /*
+    everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
+    [self presentViewController:eveVC animated:YES completion:nil];
+   */
+     [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"commentBtn is touched");
+}
+
+- (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
+    //このSegueに付けたIdentifierから遷移を呼び出すことができます
+    /*
+     everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
+     [self presentViewController:eveVC animated:YES completion:nil];
+     */
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"goodBtn is touched");
+}
+
+
 // 画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
     for (UITableViewCell *cell in [self.tableView visibleCells]){
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
- */
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Update Cells

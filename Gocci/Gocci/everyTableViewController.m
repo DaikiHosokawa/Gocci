@@ -49,8 +49,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
 
