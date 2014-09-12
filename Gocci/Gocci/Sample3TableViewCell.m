@@ -9,6 +9,21 @@
 #import "Sample3TableViewCell.h"
 
 @implementation Sample3TableViewCell
+@synthesize UsersName;
+@synthesize UsersPicture;
+@synthesize RestaurantName;
+@synthesize Goodnum;
+@synthesize Review;
+
+- (void)dealloc
+{
+    self.RestaurantName = nil;
+    self.UsersPicture = nil;
+    self.UsersName = nil;
+    self.Goodnum = nil;
+    self.Review = nil;
+    self.contentViewFront = nil;
+};
 
 - (void)awakeFromNib
 {

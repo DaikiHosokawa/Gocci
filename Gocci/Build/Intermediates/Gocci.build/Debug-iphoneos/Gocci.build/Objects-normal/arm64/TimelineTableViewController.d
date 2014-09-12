@@ -18,7 +18,6 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/KZCameraView.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/searchTableViewController.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SampleTableViewCell.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/Parse.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFACL.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFAnalytics.h \

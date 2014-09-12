@@ -16,9 +16,9 @@
 @interface RestaurantTableViewController : UITableViewController{
     MPMoviePlayerController *moviePlayer;
     UITableViewCell *cell;
+    NSString *_postRestName;
 }
-
-
+@property (nonatomic) NSString *postRestName;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 
 @end

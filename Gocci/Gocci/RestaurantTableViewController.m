@@ -7,17 +7,29 @@
 //
 
 #import "RestaurantTableViewController.h"
+#import "searchTableViewController.h"
+#import "Sample3TableViewCell.h"
+
+@protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()
 
+@property (nonatomic, retain) NSMutableArray *restname_;
+@property (nonatomic, retain) NSMutableArray *goodnum_;
+@property (nonatomic, retain) NSMutableArray *user_name_;
+@property (nonatomic, copy) NSMutableArray *picture_;
+@property (nonatomic, copy) NSMutableArray *movie_;
+@property (nonatomic, copy) NSMutableArray *review_;
+@property (nonatomic, copy) Sample3TableViewCell *cell;
 
 @end
 
-@implementation RestaurantTableViewController
 
+@implementation RestaurantTableViewController
 {
     NSString *_text, *_hashTag;
 }
+@synthesize postRestName = _postRestName;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -28,7 +40,6 @@
     }
     return self;
 }
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,24 +52,64 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    
+    //JSONをパース
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/restpage.php?restname=%@",_postRestName];
+    NSLog(@"urlStringatnoulon:%@",urlString);
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+    NSLog(@"url:%@",url);
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"response:%@",response);
+    NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
+    NSError *error=nil;
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:NSJSONReadingMutableLeaves error:&error];
+    NSLog(@"jsonDic:%@", jsonDic);
+    
+    // ユーザー名
+    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+    _user_name_ = [user_name mutableCopy];
+    // プロフ画像
+    NSArray *picture = [jsonDic valueForKey:@"picture"];
+    _picture_ = [picture mutableCopy];
+    // 動画URL
+    NSArray *movie = [jsonDic valueForKey:@"movie"];
+    _movie_ = [movie mutableCopy];
+    NSLog(@"movie:%@",_movie_);
+    /*
+    //コメント
+    NSArray *review = [jsonDic valueForKey:@"review"];
+    _review_ = [review mutableCopy];
+    */
+    /*
+     //いいね数
+    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    _goodnum_ = [goodnum mutableCopy];
+     */
+    //レストラン名
+    NSArray *restname = [jsonDic valueForKey:@"restname"];
+    _restname_ = [restname mutableCopy];
+    //画像URL
+    NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
+    _picture_ = [pictureurl mutableCopy];
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
 }
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
    
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+     //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -91,7 +142,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 40;
+    return [_movie_ count];
 }
 
 
@@ -129,42 +180,55 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 400.0;
+    return 500.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSURL *url = [NSURL URLWithString:@"http://codecamp1353.lesson2.codecamp.jp/dst/hoge.mp4"];
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSLog(@"movietext:%@",text);
+    NSURL *url = [NSURL URLWithString:text];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     moviePlayer.useApplicationAudioSession = NO;
     CGRect frame = CGRectMake(30, 30, 262, 200);
     [moviePlayer.view setFrame:frame];
-    
-    [cell.contentView addSubview: moviePlayer.view];
-    [cell.contentView bringSubviewToFront:moviePlayer.view];
+    [_cell.movieView addSubview: moviePlayer.view];
+    [_cell.movieView bringSubviewToFront:moviePlayer.view];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
     
+    [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
+    
+    //Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
-    cell = [tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
     
-    if (!cell) {
-        //さらにcellのinitでLoadNibしxibを指定する必要がある
-        cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+    _cell = (Sample3TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
     
-                                    reuseIdentifier:@"restaurantTableViewCell"];
-    }
-    // Configure the cell...
-    return cell;
+    // Configure the cell.
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    //_cell.Review.textAlignment = UITextAlignmentLeft;
+    //_cell.Review.numberOfLines = 2;
+    //_cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    
+    //文字を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
+   
+ // Configure the cell...
+    return _cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

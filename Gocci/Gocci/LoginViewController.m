@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface LoginViewController ()
 - (IBAction)pushFacebook:(UIButton *)sender;
@@ -31,10 +32,19 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
+    
+    //ログインボタンを生成する
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 5);
+    loginView.delegate = self;
+    [self.view addSubview:loginView];
      
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
+
+  
 }
 
 

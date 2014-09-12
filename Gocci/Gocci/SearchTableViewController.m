@@ -10,9 +10,10 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <MapKit/MapKit.h>
 #import "CustomAnnotation.h"
+#import "SampleTableViewCell.h"
+#import "RestaurantTableViewController.h"
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
-
 
 
 @property (nonatomic, retain) MKMapView *mapView;
@@ -24,7 +25,7 @@
 @property (nonatomic, retain) NSMutableArray *restaddress_;
 @property (nonatomic, retain) NSString *nowlat_;
 @property (nonatomic, retain) NSString *nowlon_;
-
+@property (nonatomic, copy) SampleTableViewCell *cell;
 
 @end
 
@@ -33,6 +34,7 @@
 @synthesize locationManager;
 @synthesize lat;
 @synthesize lon;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -96,6 +98,7 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    self.tableView.bounces = NO;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -123,7 +126,9 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@",jsonDic);
     
     // 飲食店名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
@@ -234,7 +239,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 
@@ -263,16 +268,46 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-SampleTableViewCell* cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
-
+    _cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
     // Configure the cell.
-    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
-    cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
+    _cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
+    _cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
+    // イベントを付ける
+    [_cell.selectBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
      // Configure the cell...
-    return cell;
+    return _cell;
 }
 
+#pragma mark - handleTouchEvent
+- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %d was tapped.",indexPath.row);
+    _postRestName = [_restname_ objectAtIndex:indexPath.row];
+    NSLog(@"postRestName:%@",_postRestName);
+    //ViewControllerからViewControllerへ関連付けたSegueにはIdentifierが設定できます。
+    //このSegueに付けたIdentifierから遷移を呼び出すことができます。
+    RestaurantTableViewController* restVC;
+    restVC.postRestName = _postRestName;
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //2つ目の画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        //ここでパラメータを渡す
+        RestaurantTableViewController *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestName;
+    }
+}
+
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    return indexPath;
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //セグエで画面遷移させる

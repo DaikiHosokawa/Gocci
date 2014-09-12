@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantAddress;
 @property (weak, nonatomic) IBOutlet UILabel *meter;
+@property (weak, nonatomic) SampleTableViewCell *cell;
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @end

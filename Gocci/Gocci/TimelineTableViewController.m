@@ -63,7 +63,6 @@
     // 動画URL
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
-    NSLog(@"movie:%@",_movie_);
     //コメント
     NSArray *review = [jsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
@@ -98,15 +97,12 @@
 
 - (void)viewDidLoad
 {
-    
      [super viewDidLoad];
 
    
     //self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];*メニューのメソッド
-    
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
-    
     
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
@@ -134,8 +130,6 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    
-    
     CLLocation *newLocation = [locations lastObject];
     // 位置情報を取り出す
     //緯度
@@ -184,9 +178,29 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
+    // Update Cell
+    [self updateCell:cell atIndexPath:indexPath];
+   // [self updateVisibleCells];
+    // Configure the cell...
+     return _cell;
 
+}
+
+/*
+// 画面上に見えているセルの表示更新
+- (void)updateVisibleCells {
+    for (UITableViewCell *cell in [self.tableView visibleCells]){
+        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    }
+}
+ */
+
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Update Cells
+    
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
-    NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -207,12 +221,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
-
+    
     
 	// Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
     
-    _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
@@ -228,11 +241,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData *data = [NSData dataWithContentsOfURL:doturl];
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
-    
-    // Configure the cell...
-     return _cell;
-
 }
+
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     //セグエで画面遷移させる

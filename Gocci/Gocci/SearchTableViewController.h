@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SampleTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
 
 
 
 @interface SearchTableViewController : UITableViewController{
+    NSString *_postRestName;
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     CLLocationCoordinate2D coordinate;
@@ -24,6 +24,7 @@
 -(void) onResume;
 -(void) onPause;
 
+@property (nonatomic) NSString *postRestName;
 @property (nonatomic, retain) NSString *lat;
 @property (nonatomic, retain) NSString *lon;
 @property (nonatomic, retain) CLLocationManager *locationManager;

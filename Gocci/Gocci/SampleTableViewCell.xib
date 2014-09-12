@@ -50,6 +50,13 @@
                                 <color key="textColor" red="1" green="0.1071277217" blue="0.1139895106" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUs-yC-8Uy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -71,6 +78,7 @@
                 <outlet property="meter" destination="Ba8-Cr-cTM" id="7GS-mp-YH3"/>
                 <outlet property="restaurantAddress" destination="veC-38-qJx" id="c2l-ZI-Ibl"/>
                 <outlet property="restaurantName" destination="0Vv-xz-xBf" id="YWg-hD-abO"/>
+                <outlet property="selectBtn" destination="bUs-yC-8Uy" id="c78-hq-8n8"/>
             </connections>
         </tableViewCell>
     </objects>
