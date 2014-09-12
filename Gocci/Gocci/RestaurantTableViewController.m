@@ -192,7 +192,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     moviePlayer.useApplicationAudioSession = NO;
-    CGRect frame = CGRectMake(30, 30, 262, 200);
+    CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
     [_cell.movieView bringSubviewToFront:moviePlayer.view];

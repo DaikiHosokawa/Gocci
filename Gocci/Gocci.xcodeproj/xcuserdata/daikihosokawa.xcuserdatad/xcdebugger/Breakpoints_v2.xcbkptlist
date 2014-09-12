@@ -423,8 +423,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "@implementation RestaurantTableViewController"
-            landmarkType = "3">
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -612,9 +612,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "@interface TimelineTableViewController()"
-            landmarkType = "2">
+            endingLineNumber = "18">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -975,8 +973,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "271"
             endingLineNumber = "271"
-            landmarkName = "@implementation TimelineTableViewController"
-            landmarkType = "3">
+            landmarkName = "-updateCell:atIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1149,7 +1147,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "-viewWillAppear:"
+            landmarkName = "-initWithStyle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
