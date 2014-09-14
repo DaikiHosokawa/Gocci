@@ -330,7 +330,7 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         _path =  [documentsDirectory stringByAppendingPathComponent:
-                                 [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000]];
+                                 [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000000000]];
         NSURL *url = [NSURL fileURLWithPath:_path];
 
         // 5 - Create exporter

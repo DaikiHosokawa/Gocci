@@ -15,7 +15,8 @@
 
 
 
-@interface TimelineTableViewController : UITableViewController{
+@interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
+{
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     MPMoviePlayerController *moviePlayer;

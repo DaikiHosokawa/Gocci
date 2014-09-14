@@ -34,6 +34,7 @@
 
 @implementation TimelineTableViewController
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -129,6 +130,35 @@
         NSLog(@"Location services not available.");
     }
 }
+
+- (void)endScroll {
+	// TODO: スクロール後の処理を書く
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	// フリック操作によるスクロール終了
+	[self endScroll];
+    NSLog(@"scroll is stoped");
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if(!decelerate) {
+		// ドラッグ終了 かつ 加速無し
+		[self endScroll];
+        NSLog(@"scroll is stoped");
+	}
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+	// setContentOffset: 等によるスクロール終了
+	[self endScroll];
+    NSLog(@"scroll is stoped");
+    
+}
+
 
 
 - (void)locationManager:(CLLocationManager *)manager

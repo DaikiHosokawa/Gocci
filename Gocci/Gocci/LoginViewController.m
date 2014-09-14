@@ -15,10 +15,12 @@
 - (IBAction)pushFacebook:(UIButton *)sender;
 - (IBAction)pushTwitter:(UIButton *)sender;
 @property ACAccount *facebookAccount;
+@property ACAccount *twitterAccounts;
 
 @end
 
 @implementation LoginViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +30,6 @@
     }
     return self;
 }
-
 
 
 
@@ -46,7 +47,6 @@
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
 
-  
 }
 
 
@@ -70,78 +70,107 @@
 */
 
 - (IBAction)pushFacebook:(UIButton *)sender {
-    if (self.accountStore == nil) {
-        self.accountStore = [ACAccountStore new];
-    }
     
-    ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];  //  Facebookを指定
+    _accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
+    if (accounts.count == 0) {
+        NSLog(@"Facebookアカウントが登録されていません");
+        //アラート出す
+        return;
+    }
     NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
                                ACFacebookAudienceKey : ACFacebookAudienceOnlyMe,
                                ACFacebookPermissionsKey : @[@"email"] };
-    [self.accountStore
-     requestAccessToAccountsWithType:accountType
-     options:options
-     completion:^(BOOL granted, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (granted) {
-                 // ユーザーがFacebookアカウントへのアクセスを許可した
-                 NSArray *facebookAccounts = [self.accountStore accountsWithAccountType:accountType];
-                 if (facebookAccounts.count > 0) {
-                     ACAccount *facebookAccount = [facebookAccounts lastObject];
-                     
-                     // メールアドレスを取得する
-                     NSString *email = [[facebookAccount valueForKey:@"properties"] objectForKey:@"ACUIDisplayUsername"];
-                     
-                     // アクセストークンを取得する
-                     ACAccountCredential *facebookCredential = [facebookAccount credential];
-                     NSString *accessToken = [facebookCredential oauthToken];
-                     NSLog(@"email:%@, token:%@", email, accessToken);
+    [_accountStore requestAccessToAccountsWithType:accountType
+                                           options:options
+                                        completion:^(BOOL granted, NSError *error) {
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                if (granted) {
+                                                    [self authenticatePermissions];
+                                                    _facebookAccount = [accounts objectAtIndex:0];
+                                                    NSLog(@"facebookAccount:%@",_facebookAccount);
+                                                    // _facebookAccount(ACAccountオブジェクト)
+                                                    NSString *email = [[_facebookAccount valueForKey:@"properties"]  objectForKey:@"ACUIDisplayUsername"];
+                                                    NSString *fullname = [[_facebookAccount valueForKey:@"properties"]  objectForKey:@"ACPropertyFullName"];
+                                                    NSLog(@"fullname:%@",fullname);
+                                                    NSString *uid = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
+                                                    NSLog(@"uid:%@",uid);
+                                                    NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
+                                                    NSLog(@"%@", pictureURL); // プロフィール写真
+                                                } else {
+                                                    NSLog(@"User denied to access facebook account.");
+                                                }
+                                            });
+                                        }];
+    
+}
 
-                     
-                     //名前を取得する
-                     NSString *fullname = [[facebookAccount valueForKey:@"properties"] objectForKey:@"fullname"];
-                     NSLog(@"fullname:", fullname);
-                     
-                     //uidを取得する
-                     NSString *uid = [[facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
-                     NSLog(@"uid:", uid);
-                     
-                     //プロフィール画像を取得する
-                     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
-                     NSLog(@"%@", pictureURL); // プロフィール写真のURL
-                     
-                     //  ここでログイン処理などをする
-                 }
-             } else {
-                 if([error code]== ACErrorAccountNotFound){
-                     //  iOSに登録されているFacebookアカウントがありません。
-                     NSLog(@"iOSにFacebookアカウントが登録されていません。設定→FacebookからFacebookアカウントを追加してください。");
-                 } else {
-                     // ユーザーが許可しない
-                     // 設定→Facebook→アカウントの使用許可するApp→YOUR_APPをオンにする必要がある
-                     NSLog(@"Facebookが有効になっていません。");
-                 }
-             }
-         });
-     }];
+- (void)authenticatePermissions
+{
+    NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
+                               ACFacebookAudienceKey : ACFacebookAudienceOnlyMe,
+                               // 本来指定したいpublish_streamパーミッションを指定。これで投稿可能になる。
+                               ACFacebookPermissionsKey : /*@[@"publish_stream"]*/@[@"friends_birthday"]};
+    ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    [_accountStore requestAccessToAccountsWithType:accountType
+                                           options:options
+                                        completion:^(BOOL granted, NSError *error) {
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                if (granted) {
+                                                    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
+                                                    if (accounts.count > 0) {
+                                                        _facebookAccount = [accounts objectAtIndex:0];
+                                                        NSString *email = _facebookAccount.username;
+                                                        NSLog(@"email:%@",email);
+                                                        NSString *fullname = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"fullname"];
+                                                        NSLog(@"fullname:%@",fullname);
+                                                        NSString *uid = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
+                                                        NSLog(@"uid:%@",uid);
+                                                        NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
+                                                        NSLog(@"%@", pictureURL); // プロフィール写真
+                                                        
+                                                    } else {
+                                                        NSLog(@"Not found user.");
+                                                    }
+                                                } else {
+                                                    NSLog(@"User denied to access facebook account.");
+                                                }
+                                            });
+                                        }];
 }
 
 
-- (IBAction)pushTwitter:(UIButton *)sender {
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!user) {
-            if (!error) {
-                NSLog(@"Twitter ログインをユーザーがキャンセル");
-            } else {
-                NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
+//Twitterアカウント取得処理
+- (IBAction)pushTwitter:(UIButton *)sender// Create an account store object.
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:
+                                  ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType options:nil
+                                  completion:^(BOOL granted, NSError *error)
+    {
+        if (granted == YES)
+        {
+            NSArray *arrayOfAccounts = [account
+                                        accountsWithAccountType:accountType];
+            
+            if ([arrayOfAccounts count] > 0)
+            {
+                ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                NSLog(@"twitterAccount:%@",twitterAccount);
+                NSString *twitterusername = [twitterAccount valueForKey:@"username"];
+                NSLog(@"fullname:%@",twitterusername);
+                NSString *twitteruid = [[twitterAccount valueForKey:@"properties"] objectForKey:@"user_id"];
+                NSLog(@"uid:%@",twitteruid);
+                NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", twitterusername];
+                NSLog(@"%@",pictureURL);
             }
-        } else if (user.isNew) {
-            NSLog(@"Twitter サインアップ & ログイン完了!");
-        } else {
-            NSLog(@"Twitter ログイン完了!");
         }
     }];
 }
+     
 
 
 @end
