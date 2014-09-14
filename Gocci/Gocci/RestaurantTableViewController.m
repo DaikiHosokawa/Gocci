@@ -20,6 +20,7 @@
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
 @property (nonatomic, copy) NSMutableArray *review_;
+@property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) Sample3TableViewCell *cell;
 
 @end
@@ -30,6 +31,7 @@
     NSString *_text, *_hashTag;
 }
 @synthesize postRestName = _postRestName;
+@synthesize headerLocality = _headerLocality;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -77,6 +79,9 @@
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
     NSLog(@"movie:%@",_movie_);
+    // 住所
+    NSArray *locality = [jsonDic valueForKey:@"locality"];
+    _locality_ = [locality mutableCopy];
     /*
     //コメント
     NSArray *review = [jsonDic valueForKey:@"review"];
@@ -93,6 +98,9 @@
     //画像URL
     NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
     _picture_ = [pictureurl mutableCopy];
+    self.restname.text = _postRestName;
+    self.locality.text = _headerLocality;
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -183,8 +191,56 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 500.0;
 }
 
+- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+    //このSegueに付けたIdentifierから遷移を呼び出すことができます
+    /*
+     everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
+     [self presentViewController:eveVC animated:YES completion:nil];
+     */
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"commentBtn is touched");
+}
+
+- (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
+    //このSegueに付けたIdentifierから遷移を呼び出すことができます
+    /*
+     everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
+     [self presentViewController:eveVC animated:YES completion:nil];
+     */
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"goodBtn is touched");
+}
+
+// 画面上に見えているセルの表示更新
+- (void)updateVisibleCells {
+    for (UITableViewCell *cell in [self.tableView visibleCells]){
+        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    //Do any additional setup after loading the view, typically from a nib.
+    //storyboardで指定したIdentifierを指定する
+    
+    _cell = (Sample3TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
+    // Update Cell
+    [self updateCell:cell atIndexPath:indexPath];
+    
+    //コメントボタンのイベント
+    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+    //言い値ボタンのイベント
+    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+   
+ // Configure the cell...
+    return _cell;
+}
+
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Update Cells
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
@@ -206,11 +262,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
-    //Do any additional setup after loading the view, typically from a nib.
-    //storyboardで指定したIdentifierを指定する
-    
-    _cell = (Sample3TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
-    
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
@@ -225,9 +276,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData *data = [NSData dataWithContentsOfURL:doturl];
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
-   
- // Configure the cell...
-    return _cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

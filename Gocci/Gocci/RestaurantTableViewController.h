@@ -17,8 +17,13 @@
     MPMoviePlayerController *moviePlayer;
     UITableViewCell *cell;
     NSString *_postRestName;
+    NSString *_headerLocality;
 }
 @property (nonatomic) NSString *postRestName;
+@property (nonatomic) NSString *headerLocality;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
+@property (weak, nonatomic) IBOutlet UILabel *restname;
+@property (weak, nonatomic) IBOutlet UILabel *locality;
+@property (weak, nonatomic) IBOutlet UIView *restview;
 
 @end

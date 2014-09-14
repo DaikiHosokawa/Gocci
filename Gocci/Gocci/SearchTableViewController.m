@@ -47,7 +47,50 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-  
+    
+    //JSONをパース
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",lat,lon];
+    NSLog(@"urlStringatnoulon:%@",urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@",jsonDic);
+    
+    // 飲食店名
+    NSArray *restname = [jsonDic valueForKey:@"restname"];
+    _restname_ = [restname mutableCopy];
+    // 店舗カテゴリー
+    NSArray *category = [jsonDic valueForKey:@"category"];
+    _category_ = [category mutableCopy];
+    // 距離
+    NSArray *meter = [jsonDic valueForKey:@"distance"];
+    _meter_ = [meter mutableCopy];
+    // 店舗住所
+    NSArray *restaddress = [jsonDic valueForKey:@"locality"];
+    _restaddress_ = [restaddress mutableCopy];
+    
+    //緯度
+    NSArray *jsonlat = [jsonDic valueForKey:@"lat"];
+    _jsonlat_ = [jsonlat mutableCopy];
+    //経度
+    NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
+    _jsonlon_ = [jsonlon mutableCopy];
+    
+    //30本のピンを立てる
+    for (int i=0; i<30; i++) {
+        NSString *ni = _restname_[i];
+        NSString *ai = _category_[i];
+        double loi = [_jsonlon_[i]doubleValue];
+        NSLog(@"lo:%f ",loi);
+        double lai = [_jsonlat_[i]doubleValue];
+        NSLog(@"la:%f",lai);
+        [_mapView addAnnotation:
+         [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
+                                                       title:(@"%@",ni)
+                                                    subtitle:(@"%@",ai)]];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -98,6 +141,7 @@
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -118,52 +162,7 @@
     } else {
         NSLog(@"Location services not available.");
     }
-    
-    
-    //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",lat,lon];
-    NSLog(@"urlStringatnoulon:%@",urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    
-    // 飲食店名
-    NSArray *restname = [jsonDic valueForKey:@"restname"];
-    _restname_ = [restname mutableCopy];
-    // 店舗カテゴリー
-    NSArray *category = [jsonDic valueForKey:@"category"];
-    _category_ = [category mutableCopy];
-    // 距離
-    NSArray *meter = [jsonDic valueForKey:@"distance"];
-    _meter_ = [meter mutableCopy];
-    // 店舗住所
-    NSArray *restaddress = [jsonDic valueForKey:@"locality"];
-    _restaddress_ = [restaddress mutableCopy];
-
-    //緯度
-    NSArray *jsonlat = [jsonDic valueForKey:@"lat"];
-    _jsonlat_ = [jsonlat mutableCopy];
-    //経度
-    NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
-    _jsonlon_ = [jsonlon mutableCopy];
-    
-    //30本のピンを立てる
-    for (int i=0; i<30; i++) {
-        NSString *ni = _restname_[i];
-        NSString *ai = _category_[i];
-        double loi = [_jsonlon_[i]doubleValue];
-        NSLog(@"lo:%f ",loi);
-        double lai = [_jsonlat_[i]doubleValue];
-        NSLog(@"la:%f",lai);
-        [_mapView addAnnotation:
-         [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
-                                                       title:(@"%@",ni)
-                                                    subtitle:(@"%@",ai)]];
-    }
-   }
+}
 
 // 位置情報更新時
 - (void)locationManager:(CLLocationManager *)manager
@@ -285,11 +284,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %d was tapped.",indexPath.row);
     _postRestName = [_restname_ objectAtIndex:indexPath.row];
+    _headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
     NSLog(@"postRestName:%@",_postRestName);
     //ViewControllerからViewControllerへ関連付けたSegueにはIdentifierが設定できます。
     //このSegueに付けたIdentifierから遷移を呼び出すことができます。
-    RestaurantTableViewController* restVC;
-    restVC.postRestName = _postRestName;
     [self performSegueWithIdentifier:@"showDetail" sender:self];
 }
 
@@ -299,6 +297,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         //ここでパラメータを渡す
         RestaurantTableViewController *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestName;
+        restVC.headerLocality = _headerLocality;
+        
     }
 }
 

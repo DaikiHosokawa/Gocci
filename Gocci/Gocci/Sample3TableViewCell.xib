@@ -71,6 +71,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8a-d4-Dlu">
+                                <rect key="frame" x="23" y="410" width="113" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="comment-button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQb-Yh-mFu">
+                                <rect key="frame" x="155" y="414" width="113" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="tip-button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -95,12 +109,16 @@
                 <outlet property="Review" destination="JHV-sO-aNN" id="qbI-oi-LqH"/>
                 <outlet property="UsersName" destination="Rdf-xJ-fvv" id="r0q-gG-Tb4"/>
                 <outlet property="UsersPicture" destination="JnH-gF-rJB" id="ANf-Xx-Cva"/>
+                <outlet property="commentBtn" destination="E8a-d4-Dlu" id="3Ei-gy-x21"/>
                 <outlet property="contentViewFront" destination="AH0-pM-xpX" id="kwp-vq-htG"/>
+                <outlet property="goodBtn" destination="nQb-Yh-mFu" id="WPg-kI-cbQ"/>
                 <outlet property="movieView" destination="gY8-Qf-aIt" id="6GM-pk-KWl"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="comment-button" width="113" height="29"/>
+        <image name="tip-button" width="113" height="30"/>
         <image name="user-icon" width="79" height="80"/>
     </resources>
 </document>

@@ -14,6 +14,7 @@
 
 @interface SearchTableViewController : UITableViewController{
     NSString *_postRestName;
+    NSString *_headerLocality;
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     CLLocationCoordinate2D coordinate;
@@ -24,6 +25,7 @@
 -(void) onResume;
 -(void) onPause;
 
+@property (nonatomic) NSString *headerLocality;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic, retain) NSString *lat;
 @property (nonatomic, retain) NSString *lon;

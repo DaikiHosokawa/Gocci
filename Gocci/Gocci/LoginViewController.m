@@ -10,9 +10,11 @@
 #import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+
 @interface LoginViewController ()
 - (IBAction)pushFacebook:(UIButton *)sender;
 - (IBAction)pushTwitter:(UIButton *)sender;
+@property ACAccount *facebookAccount;
 
 @end
 
@@ -68,39 +70,60 @@
 */
 
 - (IBAction)pushFacebook:(UIButton *)sender {
-    // パーミッション
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
-    // Facebook アカウントを使ってログイン
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            if (!error) {
-                NSLog(@"Facebook ログインをユーザーがキャンセル");
-            } else {
-                NSLog(@"Facebook ログイン中にエラーが発生: %@", error);
-            }
-        } else if (user.isNew) {
-            NSLog(@"Facebook サインアップ & ログイン完了!");
-        } else {
-            NSLog(@"Facebook ログイン完了!");
-        }
-        // リンクさせる場合
-        if (![PFFacebookUtils isLinkedWithUser:user]) {
-            [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    NSLog(@"Facebook にリンク成功!");
-                }
-            }];
-        }
-        
-        
-        // リンクを解除する場合
-        [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"Facebook のリンク解除完了!");
-            }
-        }];
-    }];
+    if (self.accountStore == nil) {
+        self.accountStore = [ACAccountStore new];
+    }
+    
+    ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];  //  Facebookを指定
+    NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
+                               ACFacebookAudienceKey : ACFacebookAudienceOnlyMe,
+                               ACFacebookPermissionsKey : @[@"email"] };
+    [self.accountStore
+     requestAccessToAccountsWithType:accountType
+     options:options
+     completion:^(BOOL granted, NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (granted) {
+                 // ユーザーがFacebookアカウントへのアクセスを許可した
+                 NSArray *facebookAccounts = [self.accountStore accountsWithAccountType:accountType];
+                 if (facebookAccounts.count > 0) {
+                     ACAccount *facebookAccount = [facebookAccounts lastObject];
+                     
+                     // メールアドレスを取得する
+                     NSString *email = [[facebookAccount valueForKey:@"properties"] objectForKey:@"ACUIDisplayUsername"];
+                     
+                     // アクセストークンを取得する
+                     ACAccountCredential *facebookCredential = [facebookAccount credential];
+                     NSString *accessToken = [facebookCredential oauthToken];
+                     NSLog(@"email:%@, token:%@", email, accessToken);
 
+                     
+                     //名前を取得する
+                     NSString *fullname = [[facebookAccount valueForKey:@"properties"] objectForKey:@"fullname"];
+                     NSLog(@"fullname:", fullname);
+                     
+                     //uidを取得する
+                     NSString *uid = [[facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
+                     NSLog(@"uid:", uid);
+                     
+                     //プロフィール画像を取得する
+                     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
+                     NSLog(@"%@", pictureURL); // プロフィール写真のURL
+                     
+                     //  ここでログイン処理などをする
+                 }
+             } else {
+                 if([error code]== ACErrorAccountNotFound){
+                     //  iOSに登録されているFacebookアカウントがありません。
+                     NSLog(@"iOSにFacebookアカウントが登録されていません。設定→FacebookからFacebookアカウントを追加してください。");
+                 } else {
+                     // ユーザーが許可しない
+                     // 設定→Facebook→アカウントの使用許可するApp→YOUR_APPをオンにする必要がある
+                     NSLog(@"Facebookが有効になっていません。");
+                 }
+             }
+         });
+     }];
 }
 
 

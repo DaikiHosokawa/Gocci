@@ -11,8 +11,9 @@
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+
 @interface LoginViewController : UIViewController<FBLoginViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) ACAccountStore *accountStore;
 
 @end
