@@ -10,6 +10,7 @@
 
 @interface Sample3TableViewCell : UITableViewCell
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
 @property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
@@ -20,5 +21,4 @@
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
-
 @end

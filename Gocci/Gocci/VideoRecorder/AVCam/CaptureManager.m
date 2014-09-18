@@ -54,6 +54,8 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <ImageIO/CGImageProperties.h>
+#import "RestaurantTableViewController.h"
+#import "AppDelegate.h"
 
 #define MAX_DURATION 0.25
 
@@ -406,6 +408,18 @@
             NSLog(@"%@は存在していません", _path);
         }
         
+        //デリゲートの値を取得するときは、このメソッドを使用する。
+        AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+        NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/post_restname.php"];
+        NSString *content = [NSString stringWithFormat:@"restname=%@",appDelegete.gText];
+        NSLog(@"content:%@",appDelegete.gText);
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]]; NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
         
         //送信先URL
         NSURL *serverurl = [NSURL URLWithString:@"https://codelecture.com/gocci/movie.php"];
@@ -435,6 +449,7 @@
         [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",parameter,fileName] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:sampleData];
+
         [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
         //リクエストヘッダー
@@ -444,7 +459,20 @@
         [request setHTTPBody:postBody];
         
         [NSURLConnection connectionWithRequest:request delegate:self];
-        
+        /*
+        //デリゲートの値を取得するときは、このメソッドを使用する。
+        AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+        NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/post_restname.php"];
+        NSString *content = [NSString stringWithFormat:@"restname=%@",appDelegete.gText];
+        NSLog(@"content:%@",appDelegete.gText);
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [request setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        */
         NSLog(@"リクエストは送信されました");
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:outputURL]) {

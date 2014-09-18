@@ -11,9 +11,10 @@
 #import <Accounts/Accounts.h>
 #import "Sample4TableViewCell.h"
 #import <Foundation/Foundation.h>
+#import "Sample4TableViewCell.h"
 
 
-@interface everyTableViewController : UITableViewController
+@interface everyTableViewController : UITableViewController<UITextViewDelegate>
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 

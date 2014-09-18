@@ -272,6 +272,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
     _cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
+    _cell.meter.textAlignment = NSTextAlignmentRight;
     // イベントを付ける
     [_cell.selectBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     

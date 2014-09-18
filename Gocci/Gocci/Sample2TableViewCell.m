@@ -14,6 +14,7 @@
 @synthesize RestaurantName;
 @synthesize Goodnum;
 @synthesize Review;
+@synthesize movieView;
 
 - (void)dealloc
 {
@@ -23,6 +24,7 @@
     self.Goodnum = nil;
     self.Review = nil;
     self.contentViewFront = nil;
+    self.movieView = nil;
 };
 
 

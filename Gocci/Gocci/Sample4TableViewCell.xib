@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="史上最高のラーメンだった！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-9l-NZP">
-                        <rect key="frame" x="56" y="29" width="144" height="21"/>
+                        <rect key="frame" x="62" y="32" width="144" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="highlightedColor"/>
@@ -40,6 +40,11 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="Comment" destination="zrS-9l-NZP" id="x2l-hX-t5t"/>
+                <outlet property="UsersName" destination="A6J-vt-wtZ" id="rBG-ep-4En"/>
+                <outlet property="UsersPicture" destination="Th0-cx-bvT" id="EFC-0A-LZQ"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

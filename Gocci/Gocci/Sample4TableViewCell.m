@@ -10,6 +10,14 @@
 
 @implementation Sample4TableViewCell
 
+- (void)dealloc
+{
+    self.UsersPicture = nil;
+    self.UsersName = nil;
+    self.Comment = nil;
+};
+
+
 - (void)awakeFromNib
 {
     // Initialization code

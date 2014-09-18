@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "TimelineTableViewController.h"
 
 
 @interface LoginViewController ()
@@ -38,12 +39,6 @@
     
     [super viewDidLoad];
     
-    //ログインボタンを生成する
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 5);
-    loginView.delegate = self;
-    [self.view addSubview:loginView];
-     
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
 
@@ -69,6 +64,7 @@
 }
 */
 
+//Facebookアカウント取得処理
 - (IBAction)pushFacebook:(UIButton *)sender {
     
     _accountStore = [[ACAccountStore alloc] init];
@@ -77,6 +73,11 @@
     if (accounts.count == 0) {
         NSLog(@"Facebookアカウントが登録されていません");
         //アラート出す
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Facebookアカウントが登録されていません"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+
         return;
     }
     NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
@@ -97,9 +98,26 @@
                                                     NSString *uid = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
                                                     NSLog(@"uid:%@",uid);
                                                     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
-                                                    NSLog(@"%@", pictureURL); // プロフィール写真
+                                                    NSLog(@"pictureURL%@", pictureURL); // プロフィール写真
+                                                    
+                                                    NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
+                                                    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                                                    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+                                                    [urlRequest setHTTPMethod:@"POST"];
+                                                    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+                                                    NSURLResponse* response;
+                                                    NSError* error = nil;
+                                                    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                                                           returningResponse:&response
+                                                                                                       error:&error];
+                                                    [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                                                    NSLog(@"FacebookLogin is completed");
                                                 } else {
                                                     NSLog(@"User denied to access facebook account.");
+                                                    UIAlertView *alert =
+                                                    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ログインが失敗しました"
+                                                                              delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+                                                    [alert show];
                                                 }
                                             });
                                         }];
@@ -122,14 +140,9 @@
                                                     if (accounts.count > 0) {
                                                         _facebookAccount = [accounts objectAtIndex:0];
                                                         NSString *email = _facebookAccount.username;
-                                                        NSLog(@"email:%@",email);
                                                         NSString *fullname = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"fullname"];
-                                                        NSLog(@"fullname:%@",fullname);
                                                         NSString *uid = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
-                                                        NSLog(@"uid:%@",uid);
                                                         NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
-                                                        NSLog(@"%@", pictureURL); // プロフィール写真
-                                                        
                                                     } else {
                                                         NSLog(@"Not found user.");
                                                     }
@@ -144,16 +157,25 @@
 //Twitterアカウント取得処理
 - (IBAction)pushTwitter:(UIButton *)sender// Create an account store object.
 {
-    ACAccountStore *account = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:
-                                  ACAccountTypeIdentifierTwitter];
+    _accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
+    if (accounts.count == 0) {
+    NSLog(@"Twitterアカウントが登録されていません");
+    //アラート出す
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Twitterアカウントが登録されていません"
+                              delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+    [alert show];
     
-    [account requestAccessToAccountsWithType:accountType options:nil
-                                  completion:^(BOOL granted, NSError *error)
-    {
+    return;
+    }
+    [_accountStore requestAccessToAccountsWithType:accountType options:nil
+                                   completion:^(BOOL granted, NSError *error)
+      {
         if (granted == YES)
         {
-            NSArray *arrayOfAccounts = [account
+            NSArray *arrayOfAccounts = [_accountStore
                                         accountsWithAccountType:accountType];
             
             if ([arrayOfAccounts count] > 0)
@@ -166,11 +188,33 @@
                 NSLog(@"uid:%@",twitteruid);
                 NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", twitterusername];
                 NSLog(@"%@",pictureURL);
+                NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
+                NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+                [urlRequest setHTTPMethod:@"POST"];
+                [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+                NSURLResponse* response;
+                NSError* error = nil;
+                NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                       returningResponse:&response
+                                                                   error:&error];
+                [self performSegueWithIdentifier:@"goTimeline2" sender:self];
+                NSLog(@"TwitterLogin is completed");
             }
+            else
+            {
+                NSLog(@"No Twitter Access Error");
+                //アラート出す
+                UIAlertView *alert =
+                [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ログインが失敗しました"
+                                          delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+                [alert show];
+            }
+            
         }
     }];
 }
-     
+
 
 
 @end

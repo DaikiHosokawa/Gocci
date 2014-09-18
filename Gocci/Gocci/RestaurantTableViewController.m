@@ -9,6 +9,7 @@
 #import "RestaurantTableViewController.h"
 #import "searchTableViewController.h"
 #import "Sample3TableViewCell.h"
+#import "AppDelegate.h"
 
 @protocol MovieViewDelegate;
 
@@ -100,6 +101,9 @@
     _picture_ = [pictureurl mutableCopy];
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
+    // グローバル変数に保存
+    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+    delegate.gText = _postRestName;
     
 }
 
@@ -266,7 +270,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    //_cell.Review.textAlignment = UITextAlignmentLeft;
+    //_cell.Review.textAlignment =  NSTextAlignmentLeft;
     //_cell.Review.numberOfLines = 2;
     //_cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     

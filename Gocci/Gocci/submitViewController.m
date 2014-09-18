@@ -39,14 +39,16 @@
     return YES;
 }
 
+/*
 
-//
 -(BOOL)textViewShouldEndEditing:
 (UITextView*)textView{
     _text = _textView.text;
     NSLog(@"text:%@",_text);
     return YES;
 }
+ */
+ 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -193,6 +195,16 @@
     [task resume];
     */
     // NSString *content = [NSString stringWithFormat:@"str=%@",_text];
+    
+    if (_textView.text.length == 0) {
+        //アラート出す
+        NSLog(@"textlength:%d",_textView.text.length);
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"レビューを入力してください"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+    }else{
+     _text = _textView.text;
     NSString *content = [NSString stringWithFormat:@"val=%@",_text];
 	NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/submit.php"];
 	NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -203,14 +215,12 @@
 	NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 										   returningResponse:&response
 													   error:&error];
-	if(error)NSLog(@"error = %@", error);
-	
-	NSString* resultString
-	= [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
-	NSLog(@"result:%@", resultString);
-
-}
-
     
+    
+        
+        [self performSegueWithIdentifier:@"gobackTimeline" sender:self];
+        NSLog(@"Go back to Timeline");
+    }
+}
 
 @end

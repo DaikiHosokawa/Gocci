@@ -9,9 +9,10 @@
 #import "TimelineTableViewController.h"
 #import "RecorderViewController.h"
 #import "searchTableViewController.h"
-#import <Parse/Parse.h>
 #import "Sample2TableViewCell.h"
 #import "everyTableViewController.h"
+#import <Parse/Parse.h>
+
 
 
 @protocol MovieViewDelegate;
@@ -26,7 +27,7 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
-@property (nonatomic, copy) NSMutableArray *review_;
+//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 
 
@@ -65,9 +66,11 @@
     // 動画URL
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
+   /*
     //コメント
     NSArray *review = [jsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
+    */
     //いいね数
     NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
     _goodnum_ = [goodnum mutableCopy];
@@ -256,14 +259,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Update Cells
-    
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    moviePlayer.useApplicationAudioSession = YES;
-    //_cell.movieView = moviePlayer.view;
+    moviePlayer.useApplicationAudioSession = NO;
     CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
@@ -273,24 +275,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-    //[NSThread sleepForTimeInterval:1.0f];
+    
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
     
-    
-    
-	// Do any additional setup after loading the view, typically from a nib.
-    //storyboardで指定したIdentifierを指定する
-    
-    
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Review.textAlignment = UITextAlignmentLeft;
-    _cell.Review.numberOfLines = 2;
-    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
+    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    //_cell.Review.textAlignment =  NSTextAlignmentLeft;
+    //_cell.Review.numberOfLines = 2;
+    //_cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     
     //文字を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];

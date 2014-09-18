@@ -9,12 +9,17 @@
 #import "everyTableViewController.h"
 
 @interface everyTableViewController ()
-
-
+@property (nonatomic, retain) NSMutableArray *picture_;
+@property (nonatomic, retain) NSMutableArray *comment_;
+@property (nonatomic, retain) NSMutableArray *user_name_;
+@property (nonatomic, retain) Sample4TableViewCell *cell;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (nonatomic, retain) NSString *dottext;
 @end
 
 
 @implementation everyTableViewController
+
 
 {
     NSString *_text, *_hashTag;
@@ -30,20 +35,55 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    //JSONをパース
+    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/comment.php"];
+    NSLog(@"Timeline Api:%@",timelineString);
+    NSURL *url = [NSURL URLWithString:timelineString];
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    
+    // ユーザー名
+    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+    _user_name_ = [user_name mutableCopy];
+    // プロフ画像
+    NSArray *picture = [jsonDic valueForKey:@"picture_url"];
+    _picture_ = [picture mutableCopy];
+    // 動画URL
+    NSArray *comment = [jsonDic valueForKey:@"comment"];
+    _comment_ = [comment mutableCopy];
+    // キーボードの表示・非表示はNotificationCenterから通知されますよっと
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
+- (IBAction)pushSendBtn:(id)sender {
+    _dottext = _textField.text;
+    NSLog(@"コメント内容:%@",_dottext);
+    NSLog(@"sendBtn is touched");;
+    //キーボードを隠す
+    [_textField resignFirstResponder];
+    
 }
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-}
+    
+    // キーボードの表示・非表示はNotificationCenterから通知されますよっと
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    // 通知の受け取りを解除する
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self
+                             name:UIKeyboardWillShowNotification
+                           object:nil];
+    [defaultCenter removeObserver:self
+                             name:UIKeyboardWillHideNotification
+                           object:nil];
+    }
 
 
 - (void)viewDidLoad
@@ -53,16 +93,49 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
 
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+   // UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+   // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     self.tableView.bounces = NO;
      self.tableView.allowsSelection = NO;
+    
+   }
 
+// キーボードが表示される時に呼び出されますー
+- (void)keyboardWillShow:(NSNotification *)notification {
+    // キーボードのサイズ
+    CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    // キーボード表示アニメーションのduration
+    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    // viewのアニメーション
+    [UIView animateWithDuration:duration animations:^{
+        // ここをframeわざわざ計算してる人おおいですねー
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+140);
+        self.view.transform = transform;
+    } completion:NULL];
 }
+
+// キーボードが非表示になる時に呼び出されますー
+- (void)keyboardWillHide:(NSNotification *)notification {
+    // キーボード表示アニメーションのduration
+    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    __weak typeof(self) _self = self;
+    [UIView animateWithDuration:duration animations:^{
+        // tranformで動かしておけば、戻すときはこれだけ!
+        _self.view.transform = CGAffineTransformIdentity;
+    } completion:NULL];
+}
+
+
+//[textField resignFirstResponder];
+
+
 
 #pragma mark - UIActivityItemSource
 
@@ -128,86 +201,34 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 30;
+    return [_comment_ count];
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //storyboardで指定したIdentifierを指定する
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EveryTableViewCell"];
+    _cell = (Sample4TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"EveryTableViewCell"];
     
-    if (!cell) {
-        //さらにcellのinitでLoadNibしxibを指定する必要がある
-        cell = [[Sample4TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"EveryTableViewCell"];
-    }
-    // Configure the cell...
-    return cell;
-}
-
-
-
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.Comment.text= [_comment_ objectAtIndex:indexPath.row];
+    _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
+    _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
+    _cell.Comment.textAlignment = UITextAlignmentLeft;
+    _cell.Comment.numberOfLines = 2;
     
-    // Configure the cell...
+    //文字を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
+
     
-    return cell;
+    return _cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

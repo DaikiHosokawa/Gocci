@@ -12,8 +12,15 @@
 
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>{
+    // グローバル変数
+    NSString *gText;
+}
+@property (nonatomic, retain) NSString *gText;
 
 @property (strong, nonatomic) UIWindow *window;
+
+
+
 
 @end
