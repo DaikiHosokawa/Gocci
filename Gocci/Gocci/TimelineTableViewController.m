@@ -12,6 +12,7 @@
 #import "Sample2TableViewCell.h"
 #import "everyTableViewController.h"
 #import <Parse/Parse.h>
+#import "SVProgressHUD.h"
 
 
 
@@ -29,7 +30,7 @@
 @property (nonatomic, copy) NSMutableArray *movie_;
 //@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
-
+@property (nonatomic, copy) UIImageView *thumbnailView;
 
 @end
 
@@ -51,11 +52,13 @@
     
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
-    NSLog(@"Timeline Api:%@",timelineString);
     NSURL *url = [NSURL URLWithString:timelineString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+
+    NSLog(@"jsonDic:%@", jsonDic);
+    
 
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
@@ -71,22 +74,18 @@
     NSArray *review = [jsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
     */
+
     //いいね数
     NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
     _goodnum_ = [goodnum mutableCopy];
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
-    //動画URL
-    NSArray *movieurl = [jsonDic valueForKey:@"movie"];
-    _movie_ = [movieurl mutableCopy];
-    //画像URL
-    NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
-    _picture_ = [pictureurl mutableCopy];
     
-    [self.tableView reloadData];
-    [super viewWillAppear:animated];
+    //[self.tableView reloadData];
+    //[super viewWillAppear:animated];
     [self.navigationItem setHidesBackButton:YES animated:NO];
+     [SVProgressHUD dismiss];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
@@ -113,8 +112,8 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -182,6 +181,8 @@
 
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
+
+    _thumbnailView.hidden = YES;
     [moviePlayer play];
 }
 
@@ -208,6 +209,8 @@
 }
 
 
+
+
 //セルの高さを調整
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -219,9 +222,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
-    //コメントボタンのイベント
+     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
-    //言い値ボタンのイベント
+    //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
      
     // Configure the cell...
@@ -235,6 +238,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
     [self presentViewController:eveVC animated:YES completion:nil];
    */
+    [SVProgressHUD show];
      [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
@@ -245,6 +249,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
      [self presentViewController:eveVC animated:YES completion:nil];
      */
+    [SVProgressHUD show];
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"goodBtn is touched");
 }
@@ -258,10 +263,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
     // Update Cells
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
+    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
+     CGRect frame2 = _cell.thumbnailView.frame;
+    [_thumbnailView setFrame:frame2];
+    [_cell.thumbnailView addSubview:_thumbnailView];
+    [_cell.movieView bringSubviewToFront:_thumbnailView];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
@@ -269,8 +282,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
-    [_cell.movieView bringSubviewToFront:moviePlayer.view];
-    
+    [_cell.contentView bringSubviewToFront:moviePlayer.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
@@ -279,7 +291,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
-    
+
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];

@@ -101,6 +101,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4e-05-ckf">
+                                <rect key="frame" x="4" y="6" width="276" height="288"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -134,6 +138,7 @@
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="QjG-4Q-EaJ"/>
                 <outlet property="movieView" destination="gzb-vT-NKm" id="UhF-q5-km2"/>
+                <outlet property="thumbnailView" destination="g4e-05-ckf" id="sm1-KM-rf2"/>
             </connections>
         </tableViewCell>
     </objects>

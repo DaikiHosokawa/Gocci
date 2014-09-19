@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
 @property (weak, nonatomic) Sample2TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 
 @end

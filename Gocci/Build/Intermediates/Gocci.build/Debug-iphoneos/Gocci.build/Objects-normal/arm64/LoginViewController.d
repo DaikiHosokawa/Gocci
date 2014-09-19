@@ -85,4 +85,5 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPRequestOperationManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLSessionManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPSessionManager.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/UIKit+AFNetworking/UIImageView+AFNetworking.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/UIKit+AFNetworking/UIImageView+AFNetworking.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h

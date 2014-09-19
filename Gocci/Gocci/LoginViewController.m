@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "TimelineTableViewController.h"
+#import "SVProgressHUD.h"
 
 
 @interface LoginViewController ()
@@ -31,6 +32,7 @@
     }
     return self;
 }
+
 
 
 
@@ -66,12 +68,14 @@
 
 //Facebookアカウント取得処理
 - (IBAction)pushFacebook:(UIButton *)sender {
-    
+     [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
     if (accounts.count == 0) {
         NSLog(@"Facebookアカウントが登録されていません");
+         [SVProgressHUD dismiss];
         //アラート出す
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Facebookアカウントが登録されていません"
@@ -88,6 +92,7 @@
                                         completion:^(BOOL granted, NSError *error) {
                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                 if (granted) {
+                                                    [SVProgressHUD show];
                                                     [self authenticatePermissions];
                                                     _facebookAccount = [accounts objectAtIndex:0];
                                                     NSLog(@"facebookAccount:%@",_facebookAccount);
@@ -110,6 +115,7 @@
                                                     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                            returningResponse:&response
                                                                                                        error:&error];
+                                                
                                                     [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                     NSLog(@"FacebookLogin is completed");
                                                 } else {
@@ -157,11 +163,14 @@
 //Twitterアカウント取得処理
 - (IBAction)pushTwitter:(UIButton *)sender// Create an account store object.
 {
+    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
     if (accounts.count == 0) {
     NSLog(@"Twitterアカウントが登録されていません");
+        [SVProgressHUD dismiss];
     //アラート出す
     UIAlertView *alert =
     [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Twitterアカウントが登録されていません"

@@ -15,6 +15,7 @@
 @synthesize Goodnum;
 @synthesize Review;
 @synthesize movieView;
+@synthesize thumbnailView;
 
 - (void)dealloc
 {
@@ -25,6 +26,7 @@
     self.Review = nil;
     self.contentViewFront = nil;
     self.movieView = nil;
+    self.thumbnailView = nil;
 };
 
 

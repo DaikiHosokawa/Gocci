@@ -363,6 +363,8 @@
     }
 }
 
+
+
 +(BOOL)isOver7 {
     const float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     return version >= 7.0;
@@ -489,6 +491,7 @@
     }
     [self.assets removeAllObjects];
 }
+
 
 
 #pragma mark Device Counts

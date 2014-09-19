@@ -40,7 +40,6 @@
 		FF649E1D19C02418007183D4 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF649E1C19C02418007183D4 /* UserDetailsViewController.m */; };
 		FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */; };
 		FF7917061943153300D351B6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7917051943153300D351B6 /* GoogleMaps.framework */; };
-		FF79170819431A8500D351B6 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FF79170719431A8500D351B6 /* GoogleMaps.bundle */; };
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
 		FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */; };
 		FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */; };
@@ -155,10 +154,9 @@
 		FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		FF649E1B19C02410007183D4 /* UserDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
 		FF649E1C19C02418007183D4 /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
-		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
-		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
+		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
 		FF7917051943153300D351B6 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		FF79170719431A8500D351B6 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample2TableViewCell.h; sourceTree = "<group>"; };
 		FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample2TableViewCell.m; sourceTree = "<group>"; };
 		FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample2TableViewCell.xib; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				FFB92EE519A4DB55008E024A /* appicon.png */,
 				FFB92EE419A4DB36008E024A /* appicon@2x.png */,
 				FFB92EE319A4DAFE008E024A /* appicon-60@2x.png */,
-				FF79170719431A8500D351B6 /* GoogleMaps.bundle */,
 				FFFB7535192DF7B800F32B8B /* Default-568h@2x.png */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
@@ -379,9 +376,10 @@
 				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FFD5C85E19653ABB009E4F5A /* tester.mp4 */,
-				FFF7597F19A89A14001F8C53 /* objc */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
+				FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */,
+				FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */,
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
 				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
 				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
@@ -537,15 +535,6 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
-		FFF7597F19A89A14001F8C53 /* objc */ = {
-			isa = PBXGroup;
-			children = (
-				FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */,
-				FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */,
-			);
-			path = objc;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,7 +617,6 @@
 				FFCB3335192722F30096C38A /* Main.storyboard in Resources */,
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
-				FF79170819431A8500D351B6 /* GoogleMaps.bundle in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FFFB7536192DF7B800F32B8B /* Default-568h@2x.png in Resources */,
 				FFB92EE219A4D86A008E024A /* Images-2.xcassets in Resources */,
@@ -839,7 +827,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C18B603D-4329-447A-AFC8-B5B4B21507F9";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
@@ -866,7 +854,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C18B603D-4329-447A-AFC8-B5B4B21507F9";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};

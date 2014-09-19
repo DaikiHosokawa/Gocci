@@ -90,4 +90,5 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/FBUserSettingsViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h
