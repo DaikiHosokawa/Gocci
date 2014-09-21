@@ -93,7 +93,7 @@
                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                 if (granted) {
                                                     [SVProgressHUD show];
-                                                    [self authenticatePermissions];
+                                                  //  [self authenticatePermissions];
                                                     _facebookAccount = [accounts objectAtIndex:0];
                                                     NSLog(@"facebookAccount:%@",_facebookAccount);
                                                     // _facebookAccount(ACAccountオブジェクト)

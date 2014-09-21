@@ -14,8 +14,11 @@
 #import "Sample4TableViewCell.h"
 
 
-@interface everyTableViewController : UITableViewController<UITextViewDelegate>
+@interface everyTableViewController : UITableViewController<UITextViewDelegate>{
+     NSString *_postID;
+}
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
+@property (nonatomic) NSString *postID;
 
 @end

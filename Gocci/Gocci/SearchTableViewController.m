@@ -12,6 +12,7 @@
 #import "CustomAnnotation.h"
 #import "SampleTableViewCell.h"
 #import "RestaurantTableViewController.h"
+#import "SVProgressHUD.h"
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
 
@@ -90,6 +91,7 @@
          [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
                                                        title:(@"%@",ni)
                                                     subtitle:(@"%@",ai)]];
+        [SVProgressHUD dismiss];
     }
 }
 

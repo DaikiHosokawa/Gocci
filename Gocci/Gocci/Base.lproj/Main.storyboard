@@ -107,9 +107,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="QDo-Mm-jHL"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -124,6 +121,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="tK9-zW-yJ4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gua-Dq-9Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -399,9 +399,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="WOY-73-hQY"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -422,6 +419,7 @@
                         <outlet property="locality" destination="o7g-eC-FaU" id="Sae-n9-u4l"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>
+                        <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="7nL-qp-VeJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcc-dt-OWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,6 +502,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="gg6-6i-ecx"/>
-        <segue reference="WOY-73-hQY"/>
+        <segue reference="tK9-zW-yJ4"/>
     </inferredMetricsTieBreakers>
 </document>

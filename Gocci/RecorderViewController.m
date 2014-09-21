@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    NSError *activationError = nil;
+    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
     
     //カメラのスペース確保
     _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];

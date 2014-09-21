@@ -7,6 +7,9 @@
 //
 
 #import "everyTableViewController.h"
+#import "TimelineTableViewController.h"
+#import "SVProgressHUD.h"
+#import "AppDelegate.h"
 
 @interface everyTableViewController ()
 @property (nonatomic, retain) NSMutableArray *picture_;
@@ -15,6 +18,7 @@
 @property (nonatomic, retain) Sample4TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, retain) NSString *dottext;
+@property (nonatomic, retain) NSString *postIDtext;
 @end
 
 
@@ -24,6 +28,7 @@
 {
     NSString *_text, *_hashTag;
 }
+@synthesize postID = _postID;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -37,8 +42,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    
+    [SVProgressHUD dismiss];
+    _postIDtext = _postID;
+    NSLog(@"postIDtext:%@",_postIDtext);
     //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/comment.php"];
+    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/comment_json.php?post_id=%@",_postIDtext];
     NSLog(@"Timeline Api:%@",timelineString);
     NSURL *url = [NSURL URLWithString:timelineString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -48,23 +57,45 @@
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
     _user_name_ = [user_name mutableCopy];
+    NSLog(@"user_name:%@",_user_name_);
     // プロフ画像
-    NSArray *picture = [jsonDic valueForKey:@"picture_url"];
+    NSArray *picture = [jsonDic valueForKey:@"picture"];
     _picture_ = [picture mutableCopy];
-    // 動画URL
+    //コメント内容
     NSArray *comment = [jsonDic valueForKey:@"comment"];
     _comment_ = [comment mutableCopy];
     // キーボードの表示・非表示はNotificationCenterから通知されますよっと
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
     }
 - (IBAction)pushSendBtn:(id)sender {
     _dottext = _textField.text;
+    if (_textField.text.length == 0) {
+        //アラート出す
+        NSLog(@"textlength:%d",_textField.text.length);
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+    }else{
     NSLog(@"コメント内容:%@",_dottext);
     NSLog(@"sendBtn is touched");;
+    NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/comment.php"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    }
+    [self.tableView reloadData];
     //キーボードを隠す
     [_textField resignFirstResponder];
-    
 }
 
 
@@ -115,7 +146,7 @@
     // viewのアニメーション
     [UIView animateWithDuration:duration animations:^{
         // ここをframeわざわざ計算してる人おおいですねー
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+140);
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height-50);
         self.view.transform = transform;
     } completion:NULL];
 }
@@ -200,8 +231,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if([_comment_ count] >0){
     // Return the number of rows in the section.
-    return [_comment_ count];
+        return [_comment_ count];}
+    else{
+        return 7;}
 }
 
 

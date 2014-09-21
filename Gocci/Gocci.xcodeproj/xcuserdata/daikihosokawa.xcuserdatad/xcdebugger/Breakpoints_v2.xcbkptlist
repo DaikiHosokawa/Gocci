@@ -391,8 +391,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "@implementation submitViewController"
-            landmarkType = "3">
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -453,8 +453,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "locationManager"
-            landmarkType = "19">
+            landmarkName = "@implementation SearchTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -469,8 +469,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "@implementation SearchTableViewController"
-            landmarkType = "3">
+            landmarkName = "-initWithStyle:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -485,7 +485,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-endScroll"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -500,9 +500,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "@protocol MovieViewDelegate"
-            landmarkType = "2">
+            endingLineNumber = "18">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1007,7 +1005,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
             endingLineNumber = "146"
-            landmarkName = "-endScroll"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,6 +10,7 @@
 #import "searchTableViewController.h"
 #import "Sample3TableViewCell.h"
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 @protocol MovieViewDelegate;
 
@@ -109,6 +110,11 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    NSError *activationError = nil;
+    BOOL success = [[AVAudioSession sharedInstance] setActive: NO error:
+                    &activationError];
+    if (!success) { /* activationErrorに示されているエラーを処理する */ }
+    
 }
 
 - (void)viewDidLoad
@@ -251,7 +257,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    moviePlayer.useApplicationAudioSession = NO;
     CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
@@ -269,6 +274,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
     //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     //_cell.Review.textAlignment =  NSTextAlignmentLeft;
     //_cell.Review.numberOfLines = 2;
@@ -280,6 +286,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData *data = [NSData dataWithContentsOfURL:doturl];
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
+    NSError *activationError = nil;
+    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

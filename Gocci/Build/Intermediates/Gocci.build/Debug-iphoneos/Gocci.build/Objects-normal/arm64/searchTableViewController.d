@@ -51,4 +51,5 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/objc/CustomAnnotation.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SampleTableViewCell.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RestaurantTableViewController.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample3TableViewCell.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample3TableViewCell.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h

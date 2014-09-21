@@ -17,6 +17,7 @@
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 {
+    NSString *_postID;
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     MPMoviePlayerController *moviePlayer;
@@ -27,7 +28,7 @@
 }
 -(void) onResume;
 -(void) onPause;
-
+@property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 

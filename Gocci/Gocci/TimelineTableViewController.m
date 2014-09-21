@@ -13,6 +13,7 @@
 #import "everyTableViewController.h"
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 
@@ -28,6 +29,7 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
+@property (nonatomic, copy) NSMutableArray *postid_;
 //@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
@@ -82,10 +84,23 @@
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
     
+    
+    NSString *postidString = [NSString stringWithFormat:@"https://codelecture.com/gocci/postid.php"];
+    NSURL *postidurl = [NSURL URLWithString:postidString];
+    NSString *postidresponse = [NSString stringWithContentsOfURL:postidurl encoding:NSUTF8StringEncoding error:nil];
+    NSData *postidjsonData = [postidresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *postidjsonDic = [NSJSONSerialization JSONObjectWithData:postidjsonData options:0 error:nil];
+    // 動画URL
+    NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
+    NSLog(@"postid:%@", postid);
+    _postid_ = [postid mutableCopy];
+
+    
     //[self.tableView reloadData];
     //[super viewWillAppear:animated];
     [self.navigationItem setHidesBackButton:YES animated:NO];
      [SVProgressHUD dismiss];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
@@ -181,9 +196,7 @@
 
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
-
-    _thumbnailView.hidden = YES;
-    [moviePlayer play];
+      [moviePlayer play];
 }
 
 //セルの透過処理
@@ -239,8 +252,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self presentViewController:eveVC animated:YES completion:nil];
    */
     [SVProgressHUD show];
-     [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %d was tapped.",indexPath.row);
+    _postID = [_postid_ objectAtIndex:indexPath.row];
+    NSLog(@"postid:%@",_postID);
+
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
+}
+
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    return indexPath;
 }
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
@@ -253,6 +279,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"goodBtn is touched");
 }
+
 
 
 // 画面上に見えているセルの表示更新
@@ -268,17 +295,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
-     CGRect frame2 = _cell.thumbnailView.frame;
-    [_thumbnailView setFrame:frame2];
-    [_cell.thumbnailView addSubview:_thumbnailView];
-    [_cell.movieView bringSubviewToFront:_thumbnailView];
+    //MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    //UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+    //_thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
+    //CGRect frame2 = _cell.thumbnailView.frame;
+    //[_thumbnailView setFrame:frame2];
+    //[_cell.thumbnailView addSubview:_thumbnailView];
+    //[_cell.movieView bringSubviewToFront:_thumbnailView];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    moviePlayer.useApplicationAudioSession = NO;
+
     CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
@@ -307,6 +334,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData *data = [NSData dataWithContentsOfURL:doturl];
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
+    NSError *activationError = nil;
+    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
+
 }
 
 
@@ -318,11 +348,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+   
     if ([[segue identifier] isEqualToString:@"searchSegue"]){
         SearchTableViewController *seaVC = [segue destinationViewController];
         seaVC.lon = _lon;
         seaVC.lat = _lat;
+        
+        [SVProgressHUD show];
+        [SVProgressHUD showWithStatus:@"移動中です" maskType:SVProgressHUDMaskTypeGradient];
+
     }
+    //2つ目の画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"showDetail2"]) {
+        //ここでパラメータを渡す
+        everyTableViewController *eveVC = segue.destinationViewController;
+        eveVC.postID = _postID;
+    }
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -77,7 +77,6 @@
 		FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED51997A06B008E024A /* AFURLSessionManager.m */; };
 		FFB92EE219A4D86A008E024A /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB92EE119A4D86A008E024A /* Images-2.xcassets */; };
 		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
-		FFD5C85F19653ABB009E4F5A /* tester.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C85E19653ABB009E4F5A /* tester.mp4 */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
 		FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */; };
 		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
@@ -228,7 +227,6 @@
 		FFB92EE719A4DB93008E024A /* appicon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-Small@2x.png"; sourceTree = "<group>"; };
 		FFB92EE819A4DBAA008E024A /* appicon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-Small-40@2x.png"; sourceTree = "<group>"; };
 		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFD5C85E19653ABB009E4F5A /* tester.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tester.mp4; sourceTree = "<group>"; };
 		FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -375,7 +373,6 @@
 				FF54EFF819149A1800025DC8 /* ViewController.m */,
 				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
-				FFD5C85E19653ABB009E4F5A /* tester.mp4 */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
 				FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */,
@@ -623,7 +620,6 @@
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
-				FFD5C85F19653ABB009E4F5A /* tester.mp4 in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
 				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
 			);
