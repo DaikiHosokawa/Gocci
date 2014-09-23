@@ -30,7 +30,7 @@
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
 @property (nonatomic, copy) NSMutableArray *postid_;
-//@property (nonatomic, copy) NSMutableArray *review_;
+@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
 
@@ -48,7 +48,7 @@
     return self;
 }
 
-
+//////////////////////////JSONパース処理//////////////////////////
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     
@@ -58,10 +58,8 @@
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-
     NSLog(@"jsonDic:%@", jsonDic);
     
-
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
     _user_name_ = [user_name mutableCopy];
@@ -71,29 +69,34 @@
     // 動画URL
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
-   /*
-    //コメント
-    NSArray *review = [jsonDic valueForKey:@"review"];
-    _review_ = [review mutableCopy];
-    */
-
     //いいね数
     NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
     _goodnum_ = [goodnum mutableCopy];
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
-    
-    
+
+    //JSONをパース
     NSString *postidString = [NSString stringWithFormat:@"https://codelecture.com/gocci/postid.php"];
     NSURL *postidurl = [NSURL URLWithString:postidString];
     NSString *postidresponse = [NSString stringWithContentsOfURL:postidurl encoding:NSUTF8StringEncoding error:nil];
     NSData *postidjsonData = [postidresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *postidjsonDic = [NSJSONSerialization JSONObjectWithData:postidjsonData options:0 error:nil];
-    // 動画URL
+    // 動画post_id
     NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
     NSLog(@"postid:%@", postid);
     _postid_ = [postid mutableCopy];
+    
+    //JSONをパース
+    NSString *reviewString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/submit.php"];
+    NSURL *reviewurl = [NSURL URLWithString:reviewString];
+    NSString *reviewresponse = [NSString stringWithContentsOfURL:reviewurl encoding:NSUTF8StringEncoding error:nil];
+    NSData *reviewjsonData = [reviewresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *reviewjsonDic = [NSJSONSerialization JSONObjectWithData:reviewjsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@", reviewjsonDic);
+    //レビュー
+    NSArray *review = [reviewjsonDic valueForKey:@"review"];
+    _review_ = [review mutableCopy];
 
     
     //[self.tableView reloadData];
@@ -102,6 +105,13 @@
      [SVProgressHUD dismiss];
     
 }
+
+//////////////////////////セルの透過処理//////////////////////////
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
@@ -122,13 +132,9 @@
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
    
-    //self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];*メニューのメソッド
     UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
-    //背景にイメージを追加したい
-    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -148,8 +154,34 @@
     }
 }
 
+//////////////////////////リピート処理//////////////////////////
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    [moviePlayer play];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *newLocation = [locations lastObject];
+    // 位置情報を取り出す
+    //緯度
+    latitude = newLocation.coordinate.latitude;
+    //経度
+    longitude = newLocation.coordinate.longitude;
+    _lat = [NSString stringWithFormat:@"%f", latitude];
+    _lon = [NSString stringWithFormat:@"%f", longitude];
+    NSLog(@"lat:%@",_lat);
+    NSLog(@"lon:%@",_lon);
+    
+}
+
+//////////////////////////スクロール処理//////////////////////////
 - (void)endScroll {
 	// TODO: スクロール後の処理を書く
+    _thumbnailView.hidden = YES;
+    [moviePlayer play];
+    
 }
 
 #pragma mark -
@@ -177,36 +209,6 @@
 }
 
 
-
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *newLocation = [locations lastObject];
-    // 位置情報を取り出す
-    //緯度
-    latitude = newLocation.coordinate.latitude;
-    //経度
-    longitude = newLocation.coordinate.longitude;
-    _lat = [NSString stringWithFormat:@"%f", latitude];
-    _lon = [NSString stringWithFormat:@"%f", longitude];
-    NSLog(@"lat:%@",_lat);
-    NSLog(@"lon:%@",_lon);
-    
-}
-
-
-- (void) moviePlayBackDidFinish:(NSNotification*)notification {
-      [moviePlayer play];
-}
-
-//セルの透過処理
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
-}
-
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -224,17 +226,28 @@
 
 
 
-//セルの高さを調整
+////////////////////////////セルの高さを調整//////////////////////////
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 500.0;
 }
 
+//////////////////////////セルが読み込まれた時の処理//////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
+   //テスト
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSURL *url = [NSURL URLWithString:text];
+    player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    UIImage *thumbnail =[player thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
+    CGRect frame2 = _cell.thumbnailView.frame;
+    [_thumbnailView setFrame:frame2];
+    [_cell.thumbnailView addSubview:_thumbnailView];
+    [_cell.movieView bringSubviewToFront:_thumbnailView];
      //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     //いいねボタンのイベント
@@ -245,12 +258,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
+//////////////////////////コメントボタンの時の処理//////////////////////////
+
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-    //このSegueに付けたIdentifierから遷移を呼び出すことができます
-    /*
-    everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
-    [self presentViewController:eveVC animated:YES completion:nil];
-   */
     [SVProgressHUD show];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %d was tapped.",indexPath.row);
@@ -269,12 +279,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return indexPath;
 }
 
+
+//////////////////////////Goodボタンの時の処理//////////////////////////
+
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //このSegueに付けたIdentifierから遷移を呼び出すことができます
-    /*
-     everyTableViewController *eveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"evTable"];
-     [self presentViewController:eveVC animated:YES completion:nil];
-     */
     [SVProgressHUD show];
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"goodBtn is touched");
@@ -282,26 +291,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
-// 画面上に見えているセルの表示更新
-- (void)updateVisibleCells {
-    for (UITableViewCell *cell in [self.tableView visibleCells]){
-        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
-    }
-}
+//////////////////////////画面上に見えているセルの表示更新//////////////////////////
+//- (void)updateVisibleCells {
+  //  for (_cell in [self.tableView visibleCells]){
+     //   [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+   // }
+//}
+
+//////////////////////////updateした時の処理//////////////////////////
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     // Update Cells
+   
+
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
-    //MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    //UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-    //_thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
-    //CGRect frame2 = _cell.thumbnailView.frame;
-    //[_thumbnailView setFrame:frame2];
-    //[_cell.thumbnailView addSubview:_thumbnailView];
-    //[_cell.movieView bringSubviewToFront:_thumbnailView];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
@@ -314,18 +320,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-    
-    [moviePlayer setShouldAutoplay:YES];
-    [moviePlayer prepareToPlay];
-    [moviePlayer play];
-
+     
+     [moviePlayer setShouldAutoplay:YES];
+   
     // Configure the cell.
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
-    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    //_cell.Review.textAlignment =  NSTextAlignmentLeft;
-    //_cell.Review.numberOfLines = 2;
+    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    _cell.Review.textAlignment =  NSTextAlignmentLeft;
+    _cell.Review.numberOfLines = 2;
     //_cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     
     //文字を取得

@@ -13,7 +13,7 @@
 
 @interface everyTableViewController ()
 @property (nonatomic, retain) NSMutableArray *picture_;
-@property (nonatomic, retain) NSMutableArray *comment_;
+@property (nonatomic, readwrite) NSMutableArray *comment_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, retain) Sample4TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -92,8 +92,12 @@
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
+    _textField.text.length == 0;
+    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
     }
     [self.tableView reloadData];
+    
     //キーボードを隠す
     [_textField resignFirstResponder];
 }
@@ -146,7 +150,7 @@
     // viewのアニメーション
     [UIView animateWithDuration:duration animations:^{
         // ここをframeわざわざ計算してる人おおいですねー
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height-50);
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+10);
         self.view.transform = transform;
     } completion:NULL];
 }
@@ -231,11 +235,105 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if([_comment_ count] >0){
-    // Return the number of rows in the section.
-        return [_comment_ count];}
-    else{
+    NSInteger test = [_comment_ count];
+    NSLog(@"test:%ld",(long)test);
+    if([_comment_ count] == 0){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+    return 7;}
+    if([_comment_ count] == 1){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
         return 7;}
+    if([_comment_ count] == 2){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        return 7;}
+    if([_comment_ count] == 3){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        return 7;}
+    if([_comment_ count] == 4){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        return 7;}
+    if([_comment_ count] == 5){
+        [_comment_ addObject:@""];
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        [_picture_ addObject:@""];
+        return 7;}
+
+    else{
+        return [_comment_ count];
+    }
 }
 
 

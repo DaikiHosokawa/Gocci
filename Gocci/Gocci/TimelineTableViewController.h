@@ -21,6 +21,7 @@
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     MPMoviePlayerController *moviePlayer;
+    MPMoviePlayerController *player;
     UITableViewCell *cell;
     NSString *_path;
     NSString *lat;
