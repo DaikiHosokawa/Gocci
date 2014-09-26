@@ -14,6 +14,8 @@
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AFNetworking/AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 
 
@@ -47,10 +49,15 @@
     }
     return self;
 }
+///////////////////////////JSON非同期////////////////////////////
+
+
 
 //////////////////////////JSONパース処理//////////////////////////
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    
+    
     
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
@@ -58,7 +65,6 @@
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@", jsonDic);
     
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
@@ -84,7 +90,6 @@
     NSDictionary *postidjsonDic = [NSJSONSerialization JSONObjectWithData:postidjsonData options:0 error:nil];
     // 動画post_id
     NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
-    NSLog(@"postid:%@", postid);
     _postid_ = [postid mutableCopy];
     
     //JSONをパース
@@ -93,7 +98,6 @@
     NSString *reviewresponse = [NSString stringWithContentsOfURL:reviewurl encoding:NSUTF8StringEncoding error:nil];
     NSData *reviewjsonData = [reviewresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *reviewjsonDic = [NSJSONSerialization JSONObjectWithData:reviewjsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@", reviewjsonDic);
     //レビュー
     NSArray *review = [reviewjsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
@@ -101,6 +105,8 @@
     
     //[self.tableView reloadData];
     //[super viewWillAppear:animated];
+    // update visible cells
+    [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
      [SVProgressHUD dismiss];
     
@@ -114,6 +120,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    if(moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        [moviePlayer pause];
+    }
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -127,6 +137,8 @@
 - (void)viewDidLoad
 {
      [super viewDidLoad];
+    
+    
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -181,7 +193,6 @@
 	// TODO: スクロール後の処理を書く
     _thumbnailView.hidden = YES;
     [moviePlayer play];
-    
 }
 
 #pragma mark -
@@ -232,13 +243,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 500.0;
 }
 
+
 //////////////////////////セルが読み込まれた時の処理//////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    //_thumbnailView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    //[_thumbnailView setImageWithURL:[NSURL URLWithString:@"http://cdn1.www.st-hatena.com/users/hi/himaratsu/profile.gif?1366977727"]];
+    //CGRect frame2 = _cell.thumbnailView.frame;
+    //[_thumbnailView setFrame:frame2];
+    //[_cell.thumbnailView addSubview:_thumbnailView];
+    //[_cell.movieView bringSubviewToFront:_thumbnailView];
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
-   //テスト
+    /*
+    //テスト
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
     player = [[MPMoviePlayerController alloc] initWithContentURL:url];
@@ -248,11 +266,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_thumbnailView setFrame:frame2];
     [_cell.thumbnailView addSubview:_thumbnailView];
     [_cell.movieView bringSubviewToFront:_thumbnailView];
+     */
      //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
-     
+    
     // Configure the cell...
      return _cell ;
 
@@ -263,7 +282,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     [SVProgressHUD show];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %d was tapped.",indexPath.row);
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
 
@@ -292,11 +311,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 //////////////////////////画面上に見えているセルの表示更新//////////////////////////
-//- (void)updateVisibleCells {
-  //  for (_cell in [self.tableView visibleCells]){
-     //   [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
-   // }
-//}
+- (void)updateVisibleCells {
+   for (_cell in [self.tableView visibleCells]){
+      [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    }
+}
 
 //////////////////////////updateした時の処理//////////////////////////
 
@@ -306,7 +325,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
    
 
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
-    NSLog(@"movietext:%@",text);
     NSURL *url = [NSURL URLWithString:text];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -330,7 +348,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Review.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.numberOfLines = 2;
-    //_cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     
     //文字を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -347,7 +365,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     //セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
+  //  [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 

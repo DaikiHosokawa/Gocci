@@ -72,4 +72,18 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFPush.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFTwitterUtils.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PF_Twitter.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Parse.framework/Headers/PFFacebookUtils.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/TimelineTableViewController.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample2TableViewCell.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFNetworking.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLRequestSerialization.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLResponseSerialization.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFSecurityPolicy.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFNetworkReachabilityManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLConnectionOperation.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPRequestOperation.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPRequestOperationManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLSessionManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPSessionManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/UIKit+AFNetworking/UIImageView+AFNetworking.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h

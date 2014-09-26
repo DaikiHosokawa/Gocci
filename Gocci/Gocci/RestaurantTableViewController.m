@@ -111,10 +111,10 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
     NSError *activationError = nil;
-    BOOL success = [[AVAudioSession sharedInstance] setActive: NO error:
-                    &activationError];
-    if (!success) { /* activationErrorに示されているエラーを処理する */ }
-    
+    if(moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        [moviePlayer pause];
+    }
 }
 
 - (void)viewDidLoad

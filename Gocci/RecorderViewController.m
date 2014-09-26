@@ -102,7 +102,7 @@
                          UIAlertView *alertView = [[UIAlertView alloc]
                                                    initWithTitle:@"エラー"
                                                    message:@"マイクへのアクセスが許可されていません。\n設定 > プライバシー > マイクで許可してください。"
-                                                   delegate:nil
+                                                   delegate:self
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
                          [alertView show];
@@ -118,7 +118,7 @@
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"エラー"
                                           message:@"マイクへのアクセスが許可されていません。\n設定 > 一般 > 機能制限で許可してください。"
-                                          delegate:nil
+                                          delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
                 [alertView show];
@@ -132,9 +132,10 @@
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"エラー"
                                           message:@"マイクへのアクセスが許可されていません。\n設定 > プライバシー > マイクで許可してください。"
-                                          delegate:nil
+                                          delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
+    
                 
                        [alertView show];
                 
@@ -146,6 +147,18 @@
         default:
             break;
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView == alertView){
+        switch (buttonIndex) {
+            case 0:
+            NSLog(@"Cancel");
+            case 1:
+                NSLog(@"Cancel");
+            break;
+        }}
 }
 
 //ナビゲーションバーのSaveボタンを押した時の動作

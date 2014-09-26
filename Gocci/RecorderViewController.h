@@ -15,6 +15,8 @@
 {
     ALAssetsLibrary *assetsLibrary_;
     KZCameraView *_cam;
+    UIAlertView *firstAlert;
+
 }
 @property (nonatomic, strong) KZCameraView *cam;
 

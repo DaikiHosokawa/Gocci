@@ -37,7 +37,6 @@
 		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
 		FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */; };
-		FF649E1D19C02418007183D4 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF649E1C19C02418007183D4 /* UserDetailsViewController.m */; };
 		FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */; };
 		FF7917061943153300D351B6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7917051943153300D351B6 /* GoogleMaps.framework */; };
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
@@ -151,8 +150,6 @@
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
 		FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
-		FF649E1B19C02410007183D4 /* UserDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
-		FF649E1C19C02418007183D4 /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
 		FF7917051943153300D351B6 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -401,8 +398,6 @@
 				FF8CE93219582664000FE68B /* RecorderViewController.m */,
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
-				FF649E1B19C02410007183D4 /* UserDetailsViewController.h */,
-				FF649E1C19C02418007183D4 /* UserDetailsViewController.m */,
 				FFB92EE119A4D86A008E024A /* Images-2.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 			);
@@ -645,7 +640,6 @@
 				FFB92EDB1997A06B008E024A /* AFURLConnectionOperation.m in Sources */,
 				FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */,
 				FF162BD219C95DC400DB0B6A /* DAKeyboardControl.m in Sources */,
-				FF649E1D19C02418007183D4 /* UserDetailsViewController.m in Sources */,
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
 				FFA0E2DE19AEC0DF006269B4 /* UIButton+AFNetworking.m in Sources */,

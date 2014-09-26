@@ -78,7 +78,9 @@
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
+        
     }else{
+        
     NSLog(@"コメント内容:%@",_dottext);
     NSLog(@"sendBtn is touched");;
     NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
@@ -92,15 +94,26 @@
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
-    _textField.text.length == 0;
-    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
+        NSLog(@"result:%@",result);
+   
+    //アラート出す
+    UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+    
     }
-    [self.tableView reloadData];
+    //セルの表示更新を行う
+   [self viewWillAppear:YES];
+   [self.tableView reloadData];
+   //テキストビューの表示更新
+    _textField.text = NULL;
+    
     
     //キーボードを隠す
     [_textField resignFirstResponder];
 }
+
 
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -136,6 +149,7 @@
     self.navigationItem.backBarButtonItem = backButton;
     self.tableView.bounces = NO;
      self.tableView.allowsSelection = NO;
+    _textField.placeholder = @"ここにコメントを入力してください。";
     
    }
 
@@ -330,7 +344,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         [_picture_ addObject:@""];
         [_picture_ addObject:@""];
         return 7;}
-
+    if([_comment_ count] == 6){
+        [_comment_ addObject:@""];
+        [_user_name_ addObject:@""];
+        [_picture_ addObject:@""];
+        return 7;}
     else{
         return [_comment_ count];
     }
@@ -346,7 +364,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Comment.text= [_comment_ objectAtIndex:indexPath.row];
     _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
     _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
-    _cell.Comment.textAlignment = UITextAlignmentLeft;
+    _cell.Comment.textAlignment = NSTextAlignmentLeft;
     _cell.Comment.numberOfLines = 2;
     
     //文字を取得
@@ -356,7 +374,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
 
-    
     return _cell;
 }
 
