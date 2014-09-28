@@ -41,7 +41,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+  [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+  
     
     [SVProgressHUD dismiss];
     _postIDtext = _postID;
@@ -64,6 +65,7 @@
     //コメント内容
     NSArray *comment = [jsonDic valueForKey:@"comment"];
     _comment_ = [comment mutableCopy];
+        
     // キーボードの表示・非表示はNotificationCenterから通知されますよっと
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -358,7 +360,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     _cell = (Sample4TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"EveryTableViewCell"];
+    
     
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.Comment.text= [_comment_ objectAtIndex:indexPath.row];
@@ -373,7 +377,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData *data = [NSData dataWithContentsOfURL:doturl];
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
-
+    
     return _cell;
 }
 

@@ -72,7 +72,6 @@
     [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
     NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
                                ACFacebookAudienceKey : ACFacebookAudienceFriends,
                                ACFacebookPermissionsKey : @[@"email"] };
@@ -124,6 +123,7 @@
                                                             NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                    returningResponse:&response
                                                                                                                error:&error];
+                                                            NSLog(@"result:%@",result);
                                                             
                                                             [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                             NSLog(@"FacebookLogin is completed");
@@ -134,6 +134,7 @@
                                                         NSLog(@"facebookAccount:%@",account);
                                                         
                                                         NSString *email = [[account valueForKey:@"properties"]  objectForKey:@"ACUIDisplayUsername"];
+                                                        NSLog(@"email:%@",email);
                                                         NSString *fullname = [[account valueForKey:@"properties"]  objectForKey:@"ACPropertyFullName"];
                                                         NSLog(@"fullname:%@",fullname);
                                                         NSString *uid = [[account valueForKey:@"properties"] objectForKey:@"uid"];
@@ -151,6 +152,7 @@
                                                         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                returningResponse:&response
                                                                                                            error:&error];
+                                                        NSLog(@"result:%@",result);
                                                         
                                                         [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                         NSLog(@"FacebookLogin is completed");
@@ -169,65 +171,6 @@
                                             });
                                         }];
     
-    
-    
-    /*
-    if (accounts.count == 0) {
-        NSLog(@"Facebookアカウントが登録されていません");
-         [SVProgressHUD dismiss];
-        //アラート出す
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Facebookアカウントが登録されていません。設定→Facebook→アカウントの使用許可する→Gocciをオンにする必要があります。"
-                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-        [alert show];
-
-        return;
-    }
-    NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
-                               ACFacebookAudienceKey : ACFacebookAudienceOnlyMe,
-                               ACFacebookPermissionsKey : @[@"email"] };
-    [_accountStore requestAccessToAccountsWithType:accountType
-                                           options:options
-                                        completion:^(BOOL granted, NSError *error) {
-                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                if (granted) {
-                                                    [SVProgressHUD show];
-                                                  //  [self authenticatePermissions];
-                                                    _facebookAccount = [accounts objectAtIndex:0];
-                                                    NSLog(@"facebookAccount:%@",_facebookAccount);
-                                                    // _facebookAccount(ACAccountオブジェクト)
-                                                    NSString *email = [[_facebookAccount valueForKey:@"properties"]  objectForKey:@"ACUIDisplayUsername"];
-                                                    NSString *fullname = [[_facebookAccount valueForKey:@"properties"]  objectForKey:@"ACPropertyFullName"];
-                                                    NSLog(@"fullname:%@",fullname);
-                                                    NSString *uid = [[_facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
-                                                    NSLog(@"uid:%@",uid);
-                                                    NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
-                                                    NSLog(@"pictureURL%@", pictureURL); // プロフィール写真
-                                                    
-                                                    NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
-                                                    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
-                                                    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-                                                    [urlRequest setHTTPMethod:@"POST"];
-                                                    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-                                                    NSURLResponse* response;
-                                                    NSError* error = nil;
-                                                    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                                                           returningResponse:&response
-                                                                                                       error:&error];
-                                                
-                                                    [self performSegueWithIdentifier:@"goTimeline" sender:self];
-                                                    NSLog(@"FacebookLogin is completed");
-                                                } else {
-                                                    NSLog(@"User denied to access facebook account.");
-                                                    UIAlertView *alert =
-                                                    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ログインが失敗しました"
-                                                                              delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-                                                    [alert show];
-                                                }
-                                            });
-                                        }];
-     */
-    
 }
 
 
@@ -238,7 +181,6 @@
     [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-   // NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
     
     [_accountStore requestAccessToAccountsWithType:accountType
                                           options:NULL
@@ -284,6 +226,7 @@
                                                            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                   returningResponse:&response
                                                                                                               error:&error];
+                                                           NSLog(@"result:%@",result);
                                                            [self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                            NSLog(@"TwitterLogin is completed");
                                 
@@ -308,6 +251,7 @@
                                                        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                               returningResponse:&response
                                                                                                           error:&error];
+                                                       NSLog(@"result:%@",result);
                                                        [self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                        NSLog(@"TwitterLogin is completed");
 
@@ -325,62 +269,6 @@
                                                }
                                            });
                                        }];
-    /*
-    if (accounts.count == 0) {
-    NSLog(@"Twitterアカウントが登録されていません");
-        [SVProgressHUD dismiss];
-    //アラート出す
-    UIAlertView *alert =
-    [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"Twitterアカウントが登録されていません"
-                              delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-    [alert show];
-    
-    return;
-    }
-    [_accountStore requestAccessToAccountsWithType:accountType options:nil
-                                   completion:^(BOOL granted, NSError *error)
-      {
-        if (granted == YES)
-        {
-            NSArray *arrayOfAccounts = [_accountStore
-                                        accountsWithAccountType:accountType];
-            
-            if ([arrayOfAccounts count] > 0)
-            {
-                ACAccount *twitterAccount = [arrayOfAccounts lastObject];
-                NSLog(@"twitterAccount:%@",twitterAccount);
-                NSString *twitterusername = [twitterAccount valueForKey:@"username"];
-                NSLog(@"fullname:%@",twitterusername);
-                NSString *twitteruid = [[twitterAccount valueForKey:@"properties"] objectForKey:@"user_id"];
-                NSLog(@"uid:%@",twitteruid);
-                NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", twitterusername];
-                NSLog(@"%@",pictureURL);
-                NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
-                NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
-                NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-                [urlRequest setHTTPMethod:@"POST"];
-                [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-                NSURLResponse* response;
-                NSError* error = nil;
-                NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                       returningResponse:&response
-                                                                   error:&error];
-                [self performSegueWithIdentifier:@"goTimeline2" sender:self];
-                NSLog(@"TwitterLogin is completed");
-            }
-            else
-            {
-                NSLog(@"No Twitter Access Error");
-                //アラート出す
-                UIAlertView *alert =
-                [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ログインが失敗しました"
-                                          delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-                [alert show];
-            }
-            
-        }
-    }];
-     */
 }
 
 

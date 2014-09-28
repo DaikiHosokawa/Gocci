@@ -11,7 +11,6 @@
 #import "searchTableViewController.h"
 #import "Sample2TableViewCell.h"
 #import "everyTableViewController.h"
-#import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AFNetworking/AFNetworking.h"
@@ -35,6 +34,8 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
+@property (nonatomic, copy) NSMutableArray *imageList;
+@property (nonatomic, copy) UIImageView *makethumbnail;
 
 @end
 
@@ -56,9 +57,7 @@
 //////////////////////////JSONパース処理//////////////////////////
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    
-    
-    
+
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
     NSURL *url = [NSURL URLWithString:timelineString];
@@ -66,6 +65,9 @@
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
     _user_name_ = [user_name mutableCopy];
@@ -76,32 +78,51 @@
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
     //いいね数
-    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-    _goodnum_ = [goodnum mutableCopy];
+   // NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    //_goodnum_ = [goodnum mutableCopy];
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
+        dispatch_async(q_main, ^{
+        });
+    });
 
+        
     //JSONをパース
     NSString *postidString = [NSString stringWithFormat:@"https://codelecture.com/gocci/postid.php"];
     NSURL *postidurl = [NSURL URLWithString:postidString];
     NSString *postidresponse = [NSString stringWithContentsOfURL:postidurl encoding:NSUTF8StringEncoding error:nil];
     NSData *postidjsonData = [postidresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *postidjsonDic = [NSJSONSerialization JSONObjectWithData:postidjsonData options:0 error:nil];
+    
+    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q1_main = dispatch_get_main_queue();
+    dispatch_async(q1_global, ^{
     // 動画post_id
     NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
     _postid_ = [postid mutableCopy];
-    
+        dispatch_async(q1_main, ^{
+        });
+    });
+
+        
     //JSONをパース
     NSString *reviewString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/submit.php"];
     NSURL *reviewurl = [NSURL URLWithString:reviewString];
     NSString *reviewresponse = [NSString stringWithContentsOfURL:reviewurl encoding:NSUTF8StringEncoding error:nil];
     NSData *reviewjsonData = [reviewresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *reviewjsonDic = [NSJSONSerialization JSONObjectWithData:reviewjsonData options:0 error:nil];
+    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q2_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
     //レビュー
     NSArray *review = [reviewjsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
-
+        dispatch_async(q2_main, ^{
+        });
+    });
+    
+    
     
     //[self.tableView reloadData];
     //[super viewWillAppear:animated];
@@ -120,14 +141,16 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    if(moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
-    {
-        [moviePlayer pause];
-    }
+
+        [moviePlayer stop];
+        [player stop];
+
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [moviePlayer stop];
+    [player stop];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -149,6 +172,7 @@
     
     self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     
     locationManager = [[CLLocationManager alloc] init];
     
@@ -246,32 +270,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 //////////////////////////セルが読み込まれた時の処理//////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //_thumbnailView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    //[_thumbnailView setImageWithURL:[NSURL URLWithString:@"http://cdn1.www.st-hatena.com/users/hi/himaratsu/profile.gif?1366977727"]];
-    //CGRect frame2 = _cell.thumbnailView.frame;
-    //[_thumbnailView setFrame:frame2];
-    //[_cell.thumbnailView addSubview:_thumbnailView];
-    //[_cell.movieView bringSubviewToFront:_thumbnailView];
+   
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
     // Update Cell
     [self updateCell:cell atIndexPath:indexPath];
-    /*
-    //テスト
-    NSString *text = [_movie_ objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:text];
-    player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    UIImage *thumbnail =[player thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnail];
-    CGRect frame2 = _cell.thumbnailView.frame;
-    [_thumbnailView setFrame:frame2];
-    [_cell.thumbnailView addSubview:_thumbnailView];
-    [_cell.movieView bringSubviewToFront:_thumbnailView];
-     */
-     //コメントボタンのイベント
+    //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
-    
+  
     // Configure the cell...
      return _cell ;
 
@@ -281,6 +288,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
@@ -321,16 +329,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
     // Update Cells
-   
-
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
+        dispatch_async(q_main, ^{
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleNone;
+        moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-
-    CGRect frame = _cell.movieView.frame;
+    
+        CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
     [_cell.contentView bringSubviewToFront:moviePlayer.view];
@@ -338,19 +348,33 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-     
+    });
+    });
+    
+    
      [moviePlayer setShouldAutoplay:YES];
    
+    
+    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_queue_t q2_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
     // Configure the cell.
+    dispatch_async(q2_main, ^{
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Review.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.numberOfLines = 2;
-    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    
+   // _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+        });
+    });
+
+    dispatch_queue_t q3_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_queue_t q3_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
     //文字を取得
+    dispatch_async(q3_main, ^{
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     NSURL *doturl = [NSURL URLWithString:dottext];
     NSData *data = [NSData dataWithContentsOfURL:doturl];
@@ -358,6 +382,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.UsersPicture.image = dotimage;
     NSError *activationError = nil;
     [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
+    });
+    });
+
+    
+    
 
 }
 

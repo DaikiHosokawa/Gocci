@@ -11,7 +11,11 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RestaurantTableViewController.h"
 
-@interface RecorderViewController ()
+static const NSInteger firstAlertTag = 1;
+static const NSInteger secondAlertTag = 2;
+static const NSInteger thirdAlertTag = 3;
+
+@interface RecorderViewController ()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *subView;
 
@@ -40,7 +44,7 @@
     //カメラのスペース確保
     _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
     [self.view addSubview:_cam];
-    _cam.maxDuration = 5.0;
+    _cam.maxDuration = 10.0;
     _cam.showCameraSwitch = YES;
     
     [RecorderViewController    isMicAccessEnableWithIsShowAlert:YES
@@ -99,13 +103,15 @@
                          //許可されなかった
                          completion(NO);
                          
-                         UIAlertView *alertView = [[UIAlertView alloc]
+                        UIAlertView *firstAlert = [[UIAlertView alloc]
                                                    initWithTitle:@"エラー"
                                                    message:@"マイクへのアクセスが許可されていません。\n設定 > プライバシー > マイクで許可してください。"
                                                    delegate:self
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
-                         [alertView show];
+                         firstAlert.tag = firstAlertTag;
+                         [firstAlert show];
+                         
                      }
                  });
              }];
@@ -115,13 +121,14 @@
         case AVAuthorizationStatusRestricted: // 設定 > 一般 > 機能制限で利用が制限されている
         {
             if (_isShowAlert) {
-                UIAlertView *alertView = [[UIAlertView alloc]
+               UIAlertView *secondAlert = [[UIAlertView alloc]
                                           initWithTitle:@"エラー"
                                           message:@"マイクへのアクセスが許可されていません。\n設定 > 一般 > 機能制限で許可してください。"
                                           delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
-                [alertView show];
+                secondAlert.tag = secondAlertTag;
+                [secondAlert show];
             }
             completion(NO);
         }
@@ -129,15 +136,16 @@
         case AVAuthorizationStatusDenied: // 設定 > プライバシー > で利用が制限されている
         {
             if (_isShowAlert) {
-                UIAlertView *alertView = [[UIAlertView alloc]
+             UIAlertView  *thirdAlert = [[UIAlertView alloc]
                                           initWithTitle:@"エラー"
                                           message:@"マイクへのアクセスが許可されていません。\n設定 > プライバシー > マイクで許可してください。"
                                           delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
+                thirdAlert.tag = thirdAlertTag;
     
                 
-                       [alertView show];
+                       [thirdAlert show];
                 
             }
             completion(NO);
@@ -149,16 +157,16 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(alertView == alertView){
-        switch (buttonIndex) {
-            case 0:
-            NSLog(@"Cancel");
-            case 1:
-                NSLog(@"Cancel");
-            break;
-        }}
+//アラートのボタンが押されたときに呼ばれるデリゲーションメソッド
+- (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //タグをチェック
+    if (alertView.tag == firstAlertTag)  {
+         NSLog(@"test");
+    }else if (alertView.tag == secondAlertTag)  {
+        NSLog(@"test2");
+    }else if (alertView.tag == thirdAlertTag)  {
+        NSLog(@"test3");
+    }
 }
 
 //ナビゲーションバーのSaveボタンを押した時の動作

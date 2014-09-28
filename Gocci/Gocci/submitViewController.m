@@ -198,7 +198,7 @@
     
     if (_textView.text.length == 0) {
         //アラート出す
-        NSLog(@"textlength:%d",_textView.text.length);
+        NSLog(@"textlength:%lu",(unsigned long)_textView.text.length);
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"レビューを入力してください"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];

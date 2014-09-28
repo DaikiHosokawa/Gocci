@@ -59,6 +59,9 @@
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSLog(@"jsonDic:%@",jsonDic);
     
+    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q2_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
     // 飲食店名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
@@ -78,7 +81,11 @@
     //経度
     NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
     _jsonlon_ = [jsonlon mutableCopy];
+        dispatch_async(q2_main, ^{
+        });
+    });
     
+
     //30本のピンを立てる
     for (int i=0; i<30; i++) {
         NSString *ni = _restname_[i];
@@ -91,8 +98,10 @@
          [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
                                                        title:(@"%@",ni)
                                                     subtitle:(@"%@",ai)]];
+        
         [SVProgressHUD dismiss];
     }
+       
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -285,7 +294,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - handleTouchEvent
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %d was tapped.",indexPath.row);
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postRestName = [_restname_ objectAtIndex:indexPath.row];
     _headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
     NSLog(@"postRestName:%@",_postRestName);

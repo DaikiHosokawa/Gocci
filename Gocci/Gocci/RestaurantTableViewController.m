@@ -110,11 +110,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-    NSError *activationError = nil;
-    if(moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
-    {
-        [moviePlayer pause];
-    }
+        [moviePlayer stop];
+
 }
 
 - (void)viewDidLoad
