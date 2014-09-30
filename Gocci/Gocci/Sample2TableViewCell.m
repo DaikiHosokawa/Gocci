@@ -36,15 +36,6 @@
     
 
 }
-/*
--(IBAction)disp:(id)sender{
-    int count;
-    count = Goodnum;
-    count++;
-    NSString *add = [NSString stringWithFormat : @"%d",count];
-    _cell.Goodnum.text = add;
-}
-*/
 
 - (void)awakeFromNib
 {

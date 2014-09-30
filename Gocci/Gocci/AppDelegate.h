@@ -15,8 +15,11 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>{
     // グローバル変数
     NSString *gText;
+    //グローバル変数
+    NSString *pID;
 }
 @property (nonatomic, retain) NSString *gText;
+@property (nonatomic, retain) NSString *pID;
 
 @property (strong, nonatomic) UIWindow *window;
 

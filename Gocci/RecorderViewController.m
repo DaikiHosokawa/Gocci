@@ -44,7 +44,7 @@ static const NSInteger thirdAlertTag = 3;
     //カメラのスペース確保
     _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
     [self.view addSubview:_cam];
-    _cam.maxDuration = 10.0;
+    _cam.maxDuration = 6.0;
     _cam.showCameraSwitch = YES;
     
     [RecorderViewController    isMicAccessEnableWithIsShowAlert:YES

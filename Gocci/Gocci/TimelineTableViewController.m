@@ -34,8 +34,7 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
-@property (nonatomic, copy) NSMutableArray *imageList;
-@property (nonatomic, copy) UIImageView *makethumbnail;
+@property (nonatomic, retain) NSIndexPath *nowindexPath;
 
 @end
 
@@ -50,6 +49,10 @@
     }
     return self;
 }
+
+
+//メモリ解放
+
 ///////////////////////////JSON非同期////////////////////////////
 
 
@@ -78,8 +81,8 @@
     NSArray *movie = [jsonDic valueForKey:@"movie"];
     _movie_ = [movie mutableCopy];
     //いいね数
-   // NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-    //_goodnum_ = [goodnum mutableCopy];
+    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    _goodnum_ = [goodnum mutableCopy];
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
@@ -123,10 +126,6 @@
     });
     
     
-    
-    //[self.tableView reloadData];
-    //[super viewWillAppear:animated];
-    // update visible cells
     [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
      [SVProgressHUD dismiss];
@@ -136,7 +135,7 @@
 //////////////////////////セルの透過処理//////////////////////////
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+   // _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -171,11 +170,21 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
     self.tableView.bounces = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
     locationManager = [[CLLocationManager alloc] init];
     
+ // iOS8の対応
+   // if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        // iOS バージョンが 8 以上で、requestAlwaysAuthorization メソッドが
+        // 利用できる場合
+        
+        // 位置情報測位の許可を求めるメッセージを表示する
+       // [self.locationManager requestAlwaysAuthorization];
+        //      [self.locationManager requestWhenInUseAuthorization];
+    //}
+
     // 位置情報サービスが利用できるかどうかをチェック
     if ([CLLocationManager locationServicesEnabled]) {
         locationManager.delegate = self;
@@ -209,14 +218,52 @@
     _lon = [NSString stringWithFormat:@"%f", longitude];
     NSLog(@"lat:%@",_lat);
     NSLog(@"lon:%@",_lon);
-    
+    [self.locationManager stopUpdatingLocation];
 }
 
-//////////////////////////スクロール処理//////////////////////////
+//////////////////////////スクロール終了後//////////////////////////
 - (void)endScroll {
-	// TODO: スクロール後の処理を書く
+    // 表示しているtableVIewの現状のオフセットを取得する。
+    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+    CGPoint offset =  self.tableView.contentOffset;
+    
+    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
+    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
+    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    
+    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
+    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    NSLog(@"%ld", (long)_nowindexPath.row);
+    
+   [self updateVisibleCells];
+    
     _thumbnailView.hidden = YES;
     [moviePlayer play];
+}
+
+//////////////////////////スクロール開始後//////////////////////////
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 表示しているtableVIewの現状のオフセットを取得する。
+    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+    CGPoint offset =  self.tableView.contentOffset;
+    
+    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
+    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
+    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    
+    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
+    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    NSLog(@"%ld", (long)_nowindexPath.row);
+    
+    [moviePlayer stop];
+    //一番下までスクロールしたかどうか
+    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
+    {
+        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
+    }
 }
 
 #pragma mark -
@@ -264,7 +311,7 @@
 ////////////////////////////セルの高さを調整//////////////////////////
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 500.0;
+    return 520.0;
 }
 
 
@@ -278,6 +325,26 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+   
+    // Configure the cell.
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
+    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    _cell.Review.textAlignment =  NSTextAlignmentLeft;
+    _cell.Review.numberOfLines = 2;
+    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    _cell.Goodnum.textAlignment = NSTextAlignmentRight;
+
+    
+    //文字を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
+    NSError *activationError = nil;
+    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
   
     // Configure the cell...
      return _cell ;
@@ -311,8 +378,54 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //このSegueに付けたIdentifierから遷移を呼び出すことができます
-    [SVProgressHUD show];
-    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postID = [_postid_ objectAtIndex:indexPath.row];
+    NSLog(@"postid:%@",_postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/goodinsert.php"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+    
+                                                       error:&error];
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+    //JSONをパース
+    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+    NSURL *url2 = [NSURL URLWithString:timelineString];
+    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
+   
+    //いいね数
+    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    _goodnum_ = [goodnum mutableCopy];
+    //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
+        dispatch_async(q_main, ^{
+            [self.tableView reloadData];
+                    });
+    });
+    
+    /*
+    //JSONをパース
+    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+    NSURL *url2 = [NSURL URLWithString:timelineString];
+    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    
+   //いいね数
+    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+    _goodnum_ = [goodnum mutableCopy];
+     _cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath.row];
+    */
     NSLog(@"goodBtn is touched");
 }
 
@@ -328,19 +441,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //////////////////////////updateした時の処理//////////////////////////
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
+
     // Update Cells
-    NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
     NSURL *url = [NSURL URLWithString:text];
-        dispatch_async(q_main, ^{
-    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        moviePlayer.controlStyle = MPMovieControlStyleNone;
+ 
+        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     
-        CGRect frame = _cell.movieView.frame;
+    CGRect frame = _cell.movieView.frame;
     [moviePlayer.view setFrame:frame];
     [_cell.movieView addSubview: moviePlayer.view];
     [_cell.contentView bringSubviewToFront:moviePlayer.view];
@@ -348,53 +458,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
-    });
-    });
-    
-    
-     [moviePlayer setShouldAutoplay:YES];
-   
-    
-    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_queue_t q2_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
-    // Configure the cell.
-    dispatch_async(q2_main, ^{
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Review.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.numberOfLines = 2;
-   // _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-        });
-    });
-
-    dispatch_queue_t q3_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_queue_t q3_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
-    //文字を取得
-    dispatch_async(q3_main, ^{
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
-    NSError *activationError = nil;
-    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
-    });
-    });
-
-    
-    
-
+    [moviePlayer setShouldAutoplay:YES];
 }
 
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     //セグエで画面遷移させる
-  //  [self performSegueWithIdentifier:@"showDetail2" sender:self.tableView];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 
@@ -418,74 +488,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{//iOS8対応
+    //if (status == kCLAuthorizationStatusAuthorizedAlways ||
+     //status == kCLAuthorizationStatusAuthorizedWhenInUse)
 {
-    //一番下までスクロールしたかどうか
-    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
-    {
-        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
-    }
+    // 位置情報測位の許可状態が「常に許可」または「使用中のみ」の場合、
+    // 測位を開始する(iOS バージョンが 8 以上の場合のみ該当する)
+    // ※iOS8 以上の場合、位置情報測位が許可されていない状態で
+    //  startUpdatingLocation メソッドを呼び出しても、何も行われない。
+    [self.locationManager startUpdatingLocation];
+}
 }
 
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

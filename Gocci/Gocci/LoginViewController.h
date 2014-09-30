@@ -16,6 +16,6 @@
 
 @property (nonatomic) ACAccountStore *accountStore;
 @property (weak, nonatomic) IBOutlet UIButton *twitterBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
+
 @end

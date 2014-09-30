@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <AVFoundation/AVFoundation.h>
 

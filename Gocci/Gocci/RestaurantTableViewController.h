@@ -13,12 +13,17 @@
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface RestaurantTableViewController : UITableViewController{
+@interface RestaurantTableViewController : UITableViewController
+
+{
     MPMoviePlayerController *moviePlayer;
     UITableViewCell *cell;
     NSString *_postRestName;
     NSString *_headerLocality;
+    NSString *_postID;
 }
+
+@property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *headerLocality;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;

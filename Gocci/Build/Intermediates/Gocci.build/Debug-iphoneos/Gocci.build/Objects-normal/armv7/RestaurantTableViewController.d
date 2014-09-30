@@ -58,4 +58,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/FacebookSDK.framework/Headers/NSError+FBError.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/Crittercism.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/CrittercismDelegate.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/CRFilter.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/CrittercismSDK/CRFilter.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SVProgressHUD/SVProgressHUD.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/everyTableViewController.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Sample4TableViewCell.h

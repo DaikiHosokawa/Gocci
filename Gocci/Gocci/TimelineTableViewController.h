@@ -16,6 +16,7 @@
 
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
+
 {
     NSString *_postID;
     CLLocationManager *locationManager;
@@ -27,13 +28,10 @@
     NSString *lat;
     NSString *lon;
 }
+
 -(void) onResume;
 -(void) onPause;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-
-
-
-
 
 @end

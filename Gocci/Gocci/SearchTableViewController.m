@@ -7,7 +7,6 @@
 //
 
 #import "SearchTableViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import <MapKit/MapKit.h>
 #import "CustomAnnotation.h"
 #import "SampleTableViewCell.h"
@@ -241,7 +240,7 @@
 //テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 79.0;
+    return 81.0;
 }
 
 
