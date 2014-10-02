@@ -14,6 +14,7 @@
 @synthesize RestaurantName;
 @synthesize Goodnum;
 @synthesize Review;
+@synthesize Commentnum;
 
 - (void)dealloc
 {
@@ -23,6 +24,7 @@
     self.Goodnum = nil;
     self.Review = nil;
     self.contentViewFront = nil;
+    self.Commentnum = nil;
 };
 
 - (void)awakeFromNib

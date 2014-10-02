@@ -83,6 +83,8 @@
         
     }else{
         
+    
+        
     NSLog(@"コメント内容:%@",_dottext);
     NSLog(@"sendBtn is touched");;
     NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];

@@ -24,7 +24,6 @@
 //テキストビューの文字数宣言
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    int maxInputLength = 20;
     
     // 入力済みのテキストを取得
     _str = [_textView.text mutableCopy];
@@ -33,9 +32,7 @@
     [_str replaceCharactersInRange:range withString:text];
     NSLog(@"%@",_str);
     
-    if ([_str length] > maxInputLength) {
-        return NO;
-}
+   
     if ([text isEqualToString:@"\n"]) {
         [_textView resignFirstResponder];
         return NO;

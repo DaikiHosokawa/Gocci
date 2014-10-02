@@ -32,6 +32,7 @@
 @property (nonatomic, copy) NSMutableArray *movie_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *review_;
+@property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
@@ -86,6 +87,11 @@
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
+    //コメント数
+    NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
+    _commentnum_ = [commentnum mutableCopy];
+        NSLog(@"commentnum:%@",commentnum);
+        
         dispatch_async(q_main, ^{
         });
     });
@@ -126,6 +132,9 @@
     });
     
     
+   [self.tableView reloadData];
+
+    
     [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
      [SVProgressHUD dismiss];
@@ -143,6 +152,7 @@
 
         [moviePlayer stop];
         [player stop];
+        [moviePlayer.view removeFromSuperview];
 
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -176,14 +186,14 @@
     locationManager = [[CLLocationManager alloc] init];
     
  // iOS8の対応
-   // if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+  if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         // iOS バージョンが 8 以上で、requestAlwaysAuthorization メソッドが
         // 利用できる場合
         
         // 位置情報測位の許可を求めるメッセージを表示する
-       // [self.locationManager requestAlwaysAuthorization];
-        //      [self.locationManager requestWhenInUseAuthorization];
-    //}
+      [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager requestWhenInUseAuthorization];
+   }
 
     // 位置情報サービスが利用できるかどうかをチェック
     if ([CLLocationManager locationServicesEnabled]) {
@@ -238,7 +248,7 @@
     
    [self updateVisibleCells];
     
-    _thumbnailView.hidden = YES;
+    //_thumbnailView.hidden = YES;
     [moviePlayer play];
 }
 
@@ -258,7 +268,7 @@
     
     NSLog(@"%ld", (long)_nowindexPath.row);
     
-    [moviePlayer stop];
+   // [moviePlayer stop];
     //一番下までスクロールしたかどうか
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
@@ -334,8 +344,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.numberOfLines = 2;
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.textAlignment = NSTextAlignmentRight;
-
+    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
+    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
     
     //文字を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -360,7 +371,25 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
-
+    /*
+    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q1_main = dispatch_get_main_queue();
+    dispatch_async(q1_global, ^{
+        //JSONをパース
+        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+        NSURL *url2 = [NSURL URLWithString:timelineString];
+        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
+        //いいね数
+        NSArray *goodnum = [jsonDic valueForKey:@"comment_num"];
+        _goodnum_ = [goodnum mutableCopy];
+        //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
+        dispatch_async(q1_main, ^{
+            [self.tableView reloadData];
+        });
+    });
+     */
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
@@ -374,7 +403,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-//////////////////////////Goodボタンの時の処理//////////////////////////
+//////////////////////////いいねボタンの時の処理//////////////////////////
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //このSegueに付けたIdentifierから遷移を呼び出すことができます
@@ -392,40 +421,25 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSError* error = nil;
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
-    
                                                        error:&error];
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-    //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
-    NSURL *url2 = [NSURL URLWithString:timelineString];
-    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
-   
-    //いいね数
-    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-    _goodnum_ = [goodnum mutableCopy];
-    //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
-        dispatch_async(q_main, ^{
+    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q1_main = dispatch_get_main_queue();
+    dispatch_async(q1_global, ^{
+        //JSONをパース
+        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+        NSURL *url2 = [NSURL URLWithString:timelineString];
+        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
+        //いいね数
+        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+        _goodnum_ = [goodnum mutableCopy];
+        //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
+        dispatch_async(q1_main, ^{
             [self.tableView reloadData];
-                    });
+        });
     });
     
-    /*
-    //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
-    NSURL *url2 = [NSURL URLWithString:timelineString];
-    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    
-   //いいね数
-    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-    _goodnum_ = [goodnum mutableCopy];
-     _cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath.row];
-    */
     NSLog(@"goodBtn is touched");
 }
 
@@ -459,6 +473,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
     [moviePlayer setShouldAutoplay:YES];
+    [moviePlayer prepareToPlay];
 }
 
 
@@ -491,8 +506,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)locationManager:(CLLocationManager *)manager
 didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {//iOS8対応
-    //if (status == kCLAuthorizationStatusAuthorizedAlways ||
-     //status == kCLAuthorizationStatusAuthorizedWhenInUse)
+   if (status == kCLAuthorizationStatusAuthorizedAlways ||
+   status == kCLAuthorizationStatusAuthorizedWhenInUse)
 {
     // 位置情報測位の許可状態が「常に許可」または「使用中のみ」の場合、
     // 測位を開始する(iOS バージョンが 8 以上の場合のみ該当する)

@@ -27,6 +27,7 @@
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) Sample3TableViewCell *cell;
+@property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 
 
@@ -105,6 +106,10 @@
     // 動画post_id
     NSArray *postid = [jsonDic valueForKey:@"post_id"];
     _postid_ = [postid mutableCopy];
+        //コメント数
+        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
+        _commentnum_ = [commentnum mutableCopy];
+        NSLog(@"commentnum:%@",commentnum);
 
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
@@ -143,10 +148,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     
-    //投稿が0の時の画面表示
-    if([_movie_ count] == 0){
-        
-    }
 }
 
 //セルの透過処理
@@ -171,6 +172,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //投稿が0の時の画面表示
+    if([_movie_ count] == 0){
+        
+        NSLog(@"投稿がありません。");
+        
+        // UIImageViewの初期化
+        CGRect rect = CGRectMake(30, 150, 250, 250);
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+        
+        // 画像の読み込み
+        imageView.image = [UIImage imageNamed:@"lion huki iro.png"];
+        
+        // UIImageViewのインスタンスをビューに追加
+        [self.view addSubview:imageView];
+        
+    }
+
     // Return the number of rows in the section.
     return [_movie_ count];
 }
@@ -213,7 +231,7 @@
     
     // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
     // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    CGPoint p = CGPointMake(183.0, 284.0 + offset.y + 40);
     
     // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
@@ -296,6 +314,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
+
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -380,7 +399,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.numberOfLines = 2;
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.textAlignment = NSTextAlignmentRight;
+    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
+    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
     
     
     //文字を取得
@@ -402,6 +423,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Update Cells
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
+    NSLog(@"text:%@",text);
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];

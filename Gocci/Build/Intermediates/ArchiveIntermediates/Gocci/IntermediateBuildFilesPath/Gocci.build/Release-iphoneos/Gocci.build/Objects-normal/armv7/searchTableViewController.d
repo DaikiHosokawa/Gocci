@@ -11,43 +11,6 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPRequestOperationManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFURLSessionManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/AFNetworking/AFHTTPSessionManager.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GoogleMaps.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSAddress.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMapView.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMapLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSCALayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSUISettings.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSCameraPosition.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSCameraUpdate.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSCircle.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSOverlay.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSCoordinateBounds.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSProjection.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSGeocoder.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSGeometryUtils.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPath.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSGroundOverlay.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSIndoorBuilding.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSIndoorDisplay.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSIndoorLevel.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMapView+Animation.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMarker.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMarkerLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSMutablePath.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSOrientation.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanorama.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaCamera.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaCameraUpdate.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaLink.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaService.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPanoramaView.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPolygon.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSPolyline.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSServices.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSSyncTileLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSTileLayer.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/GoogleMaps.framework/Headers/GMSURLTileLayer.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/objc/CustomAnnotation.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/SampleTableViewCell.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/RestaurantTableViewController.h \

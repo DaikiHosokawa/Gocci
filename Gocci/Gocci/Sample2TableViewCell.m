@@ -16,6 +16,7 @@
 @synthesize Review;
 @synthesize movieView;
 @synthesize thumbnailView;
+@synthesize Commentnum;
 
 - (void)dealloc
 {
@@ -27,6 +28,8 @@
     self.contentViewFront = nil;
     self.movieView = nil;
     self.thumbnailView = nil;
+    self.Commentnum = nil;
+    
 };
 
 

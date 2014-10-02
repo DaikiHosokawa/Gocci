@@ -93,7 +93,6 @@
 		FF5DE25519DA46E300D758A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF5DE25619DA46E300D758A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
 		FF5DE25719DA46E300D758A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
-		FF5DE25919DA46E300D758A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
 		FF5DE25D19DA46E300D758A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFFA19149A1800025DC8 /* Images.xcassets */; };
 		FF5DE25F19DA46E300D758A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFEB19149A1800025DC8 /* InfoPlist.strings */; };
 		FF5DE26019DA46E300D758A4 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
@@ -138,10 +137,11 @@
 		FFB92EDC1997A06B008E024A /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED11997A06B008E024A /* AFURLRequestSerialization.m */; };
 		FFB92EDD1997A06B008E024A /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED31997A06B008E024A /* AFURLResponseSerialization.m */; };
 		FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED51997A06B008E024A /* AFURLSessionManager.m */; };
-		FFCB3335192722F30096C38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB3333192722F30096C38A /* Main.storyboard */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
 		FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */; };
 		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
+		FFDCE8C819DCCE0B00AA5294 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDCE8C719DCCE0B00AA5294 /* Main.storyboard */; };
+		FFDCE8C919DCCE0B00AA5294 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDCE8C719DCCE0B00AA5294 /* Main.storyboard */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
 		FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF219149A1800025DC8 /* AppDelegate.m */; };
@@ -276,7 +276,6 @@
 		FFB92ED31997A06B008E024A /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		FFB92ED41997A06B008E024A /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		FFB92ED51997A06B008E024A /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		FFCB3334192722F30096C38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -286,6 +285,7 @@
 		FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		FFDCE8C719DCCE0B00AA5294 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FFF16B9919554D37002FC793 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -432,11 +432,11 @@
 		FF54EFE819149A1800025DC8 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
+				FFDCE8C719DCCE0B00AA5294 /* Main.storyboard */,
 				FF54EFF119149A1800025DC8 /* AppDelegate.h */,
 				FF54EFF219149A1800025DC8 /* AppDelegate.m */,
 				FF54EFF719149A1800025DC8 /* ViewController.h */,
 				FF54EFF819149A1800025DC8 /* ViewController.m */,
-				FFCB3333192722F30096C38A /* Main.storyboard */,
 				FF97C431192470AE0025DD6A /* LoginViewController.h */,
 				FF97C432192470AE0025DD6A /* LoginViewController.m */,
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
@@ -700,13 +700,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFCB3335192722F30096C38A /* Main.storyboard in Resources */,
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
+				FFDCE8C819DCCE0B00AA5294 /* Main.storyboard in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
 				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
 			);
@@ -724,13 +724,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5DE25919DA46E300D758A4 /* Main.storyboard in Resources */,
 				FF5DE26F19DA46E600D758A4 /* Sample2TableViewCell.xib in Resources */,
 				FF5DE25D19DA46E300D758A4 /* Images.xcassets in Resources */,
 				FF5DE25F19DA46E300D758A4 /* InfoPlist.strings in Resources */,
 				FF5DE26019DA46E300D758A4 /* dsym_upload.sh in Resources */,
 				FF5DE26C19DA46E600D758A4 /* Sample4TableViewCell.xib in Resources */,
 				FF5DE26E19DA46E600D758A4 /* SampleTableViewCell.xib in Resources */,
+				FFDCE8C919DCCE0B00AA5294 /* Main.storyboard in Resources */,
 				FF5DE26D19DA46E600D758A4 /* Sample3TableViewCell.xib in Resources */,
 				FF5DE26119DA46E300D758A4 /* SVProgressHUD.bundle in Resources */,
 			);
@@ -862,14 +862,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		FFCB3333192722F30096C38A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFCB3334192722F30096C38A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -890,6 +882,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -930,6 +923,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -953,7 +947,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -981,7 +975,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (MDWKF44977)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -1069,8 +1069,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "367"
             endingLineNumber = "367"
-            landmarkName = "@implementation TimelineTableViewController"
-            landmarkType = "3">
+            landmarkName = "-handleTouchButton:event:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1080,43 +1080,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gocci/TimelineTableViewController.m"
-            timestampString = "433755365.554633"
+            timestampString = "433928701.535833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "-handleTouchButton2:event:"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
+            landmarkName = "-updateCell:atIndexPath:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[TimelineTableViewController handleTouchButton2:event:]_block_invoke"
-                  moduleName = "Gocci"
-                  urlString = "file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/TimelineTableViewController.m"
-                  timestampString = "433755669.73743"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "411"
-                  endingLineNumber = "411"
-                  offsetFromSymbolStart = "584">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[TimelineTableViewController handleTouchButton2:event:]_block_invoke_2"
-                  moduleName = "Gocci"
-                  urlString = "file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci/Gocci/TimelineTableViewController.m"
-                  timestampString = "433755669.737897"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "412"
-                  endingLineNumber = "412"
-                  offsetFromSymbolStart = "6">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -53,11 +53,13 @@ static const NSInteger thirdAlertTag = 3;
          // アクセス許可がある場合はisMicAccessEnableがYES
      }];
     
+    /*
     //背景にイメージを追加したい
     UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    self.view.contentMode = UIViewContentModeScaleAspectFill;
     self.subView.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.9];
-
+    */
     
     //Saveボタンの設置
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(saveVideo:)];
