@@ -51,14 +51,6 @@
     return self;
 }
 
-
-//メモリ解放
-
-///////////////////////////JSON非同期////////////////////////////
-
-
-
-//////////////////////////JSONパース処理//////////////////////////
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 
@@ -94,7 +86,7 @@
         
         dispatch_async(q_main, ^{
         });
-    });
+　　　});
 
         
     //JSONをパース
@@ -141,11 +133,6 @@
     
 }
 
-//////////////////////////セルの透過処理//////////////////////////
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-   // _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
-}
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
@@ -169,8 +156,6 @@
 - (void)viewDidLoad
 {
      [super viewDidLoad];
-    
-    
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -182,19 +167,9 @@
     self.tableView.bounces = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    
     locationManager = [[CLLocationManager alloc] init];
     
- // iOS8の対応
-  if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        // iOS バージョンが 8 以上で、requestAlwaysAuthorization メソッドが
-        // 利用できる場合
-        
-        // 位置情報測位の許可を求めるメッセージを表示する
-      [self.locationManager requestAlwaysAuthorization];
-    [self.locationManager requestWhenInUseAuthorization];
-   }
-
+  /*
     // 位置情報サービスが利用できるかどうかをチェック
     if ([CLLocationManager locationServicesEnabled]) {
         locationManager.delegate = self;
@@ -207,8 +182,36 @@
     } else {
         NSLog(@"Location services not available.");
     }
-}
+   */
+    
+ // iOS8の対応
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
 
+        // 位置情報測位の許可を求めるメッセージを表示する
+        [_locationManager requestAlwaysAuthorization]; // 常に許可
+       // [_locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
+        
+    } else { // iOS7以前
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+
+        // 位置測位スタート
+        [_locationManager startUpdatingLocation];
+        
+    }
+}
 //////////////////////////リピート処理//////////////////////////
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
@@ -231,48 +234,32 @@
     [self.locationManager stopUpdatingLocation];
 }
 
-//////////////////////////スクロール終了後//////////////////////////
+
 - (void)endScroll {
-    // 表示しているtableVIewの現状のオフセットを取得する。
-    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+　　//スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    
-    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
-    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
     CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    
-    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     NSLog(@"%ld", (long)_nowindexPath.row);
-    
    [self updateVisibleCells];
-    
     //_thumbnailView.hidden = YES;
     [moviePlayer play];
 }
 
-//////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 表示しているtableVIewの現状のオフセットを取得する。
-    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+   // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
     
-    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
-    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
     CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
     
-    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     
     NSLog(@"%ld", (long)_nowindexPath.row);
     
-   // [moviePlayer stop];
-    //一番下までスクロールしたかどうか
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
-        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
+ 
     }
 }
 
@@ -325,71 +312,49 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-//////////////////////////セルが読み込まれた時の処理//////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
    
     _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
-    // Update Cell
-    [self updateCell:cell atIndexPath:indexPath];
-    //コメントボタンのイベント
-    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
-    //いいねボタンのイベント
-    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
-   
-    // Configure the cell.
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Review.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.numberOfLines = 2;
-    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
-    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
+ 
+        // セルの更新
+        [self updateCell:cell atIndexPath:indexPath];
+        //コメントボタンのイベント
+        [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+        //いいねボタンのイベント
+        [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //文字を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
-    NSError *activationError = nil;
-    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
-  
-    // Configure the cell...
-     return _cell ;
+       //ユーザーの画像を取得
+        NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+        NSURL *doturl = [NSURL URLWithString:dottext];
+        NSData *data = [NSData dataWithContentsOfURL:doturl];
+        UIImage *dotimage = [[UIImage alloc] initWithData:data];
+        _cell.UsersPicture.image = dotimage;
+        NSError *activationError = nil;
+    
+        [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
+        [_cell layoutSubviews];
+        // Configure the cell...
+    return _cell ;
 
 }
 
-//////////////////////////コメントボタンの時の処理//////////////////////////
+//画面上に見えているセルの表示更新
+- (void)updateVisibleCells {
+    for (_cell in [self.tableView visibleCells]){
+        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    }
+}
+
 
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+//コメントボタンの時の処理
     [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
-    /*
-    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q1_main = dispatch_get_main_queue();
-    dispatch_async(q1_global, ^{
-        //JSONをパース
-        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
-        NSURL *url2 = [NSURL URLWithString:timelineString];
-        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"comment_num"];
-        _goodnum_ = [goodnum mutableCopy];
-        //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
-        dispatch_async(q1_main, ^{
-            [self.tableView reloadData];
-        });
-    });
-     */
+    
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
@@ -403,10 +368,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-//////////////////////////いいねボタンの時の処理//////////////////////////
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
-    //このSegueに付けたIdentifierから遷移を呼び出すことができます
+    //いいねボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
@@ -445,22 +409,29 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
-//////////////////////////画面上に見えているセルの表示更新//////////////////////////
-- (void)updateVisibleCells {
-   for (_cell in [self.tableView visibleCells]){
-      [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
-    }
-}
 
-//////////////////////////updateした時の処理//////////////////////////
+
+
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-
-    // Update Cells
+    //updateした時の処理
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
+    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    _cell.Review.textAlignment =  NSTextAlignmentLeft;
+    _cell.Review.numberOfLines = 2;
+    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
+    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
+    
+    
+    //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
     NSURL *url = [NSURL URLWithString:text];
  
-        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     
@@ -506,15 +477,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)locationManager:(CLLocationManager *)manager
 didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {//iOS8対応
-   if (status == kCLAuthorizationStatusAuthorizedAlways ||
-   status == kCLAuthorizationStatusAuthorizedWhenInUse)
-{
-    // 位置情報測位の許可状態が「常に許可」または「使用中のみ」の場合、
-    // 測位を開始する(iOS バージョンが 8 以上の場合のみ該当する)
-    // ※iOS8 以上の場合、位置情報測位が許可されていない状態で
-    //  startUpdatingLocation メソッドを呼び出しても、何も行われない。
-    [self.locationManager startUpdatingLocation];
-}
+    if (status == kCLAuthorizationStatusAuthorizedAlways ||
+        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        // 位置測位スタート
+        [_locationManager startUpdatingLocation];
+        
+        if (status == kCLAuthorizationStatusNotDetermined) {
+            // ユーザが位置情報の使用を許可していない
+            [_locationManager requestAlwaysAuthorization]; // 常に許可
+        }
+
+    }
 }
 
 

@@ -469,8 +469,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "@implementation SearchTableViewController"
-            landmarkType = "3">
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1053,8 +1053,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
-            landmarkName = "@implementation AppDelegate"
-            landmarkType = "3">
+            landmarkName = "window"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1069,7 +1069,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "367"
             endingLineNumber = "367"
-            landmarkName = "-handleTouchButton:event:"
+            landmarkName = "-indexPathForControlEvent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1085,7 +1085,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "459"
             endingLineNumber = "459"
-            landmarkName = "-updateCell:atIndexPath:"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -46,9 +46,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Always</string>
+	<string>常に許可</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>When in use</string>
+	<string>アプリ使用中のみ許可</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>Main-iPad</string>
 	<key>UIMainStoryboardFile</key>
