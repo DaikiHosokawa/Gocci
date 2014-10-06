@@ -18,6 +18,7 @@
 @synthesize movieView;
 @synthesize thumbnailView;
 @synthesize Commentnum;
+@synthesize indicator;
 
 - (void)dealloc
 {
@@ -30,6 +31,7 @@
     self.movieView = nil;
     self.thumbnailView = nil;
     self.Commentnum = nil;
+    self.indicator = nil;
     
 };
 

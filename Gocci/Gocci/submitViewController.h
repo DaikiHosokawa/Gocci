@@ -10,7 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
-
+@protocol submitViewControllerDelegate;
 
 
 @interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate>

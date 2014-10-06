@@ -333,12 +333,14 @@
         NSString *documentsDirectory = [paths objectAtIndex:0];
         _path =  [documentsDirectory stringByAppendingPathComponent:
                                  [NSString stringWithFormat:@"mergeVideo-%d.mp4",arc4random() % 1000000000]];
-        NSURL *url = [NSURL fileURLWithPath:_path];
+        _movieurl = [NSURL fileURLWithPath:_path];
+        AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+        delegate.postMovieURL = _movieurl;
 
         // 5 - Create exporter
         self.exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition
                                                                           presetName:AVAssetExportPresetHighestQuality];
-        self.exportSession.outputURL = url;
+        self.exportSession.outputURL = _movieurl;
         self.exportSession.outputFileType = AVFileTypeMPEG4;
         self.exportSession.shouldOptimizeForNetworkUse = YES;
         self.exportSession.videoComposition = videoComposition;

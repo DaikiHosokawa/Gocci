@@ -17,9 +17,12 @@
     NSString *gText;
     //グローバル変数
     NSString *pID;
+    //グローバル変数
+    NSURL *postMovieURL;
 }
 @property (nonatomic, retain) NSString *gText;
 @property (nonatomic, retain) NSString *pID;
+@property (nonatomic, retain) NSURL *postMovieURL;
 
 @property (strong, nonatomic) UIWindow *window;
 

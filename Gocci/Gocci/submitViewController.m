@@ -8,6 +8,7 @@
 
 #import "submitViewController.h"
 #import "CaptureManager.h"
+#import "AppDelegate.h"
 
 @interface submitViewController ()<UITextViewDelegate>
 
@@ -119,22 +120,22 @@
     
 -(void) postMedia:(NSString*)type
 {
+    
         NSString *serviceType = type;
         //if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
         
         SLComposeViewController *viewController = [SLComposeViewController
                                                    composeViewControllerForServiceType:serviceType];
     
-        NSString* path = @"http://codecamp1353.lesson2.codecamp.jp/movies/mergeVideo-866.mp4";
-        NSURL* url = [NSURL URLWithString:path];
-        /*
-        NSData* data = [NSData dataWithContentsOfURL:url];
-         UIImage* img = [[UIImage alloc] initWithData:data];
-         [viewController addImage:img];
-       */
-         [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
-        [viewController addURL:url]; //URLのセット
-    
+      //デリゲートの値を取得するときは、このメソッドを使用する。
+      AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
+       NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
+       NSString* stringA = @"https://codelecture.com/gocci/movies/";
+       NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,filename];
+        NSURL *holeurl = [NSURL URLWithString:entitystring];
+       NSLog(@"holeurl:%@",holeurl);
+        [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
+        [viewController addURL:holeurl]; //URLのセット
         viewController.completionHandler = ^(SLComposeViewControllerResult res) {
             if (res == SLComposeViewControllerResultCancelled) {
                 NSLog(@"cancel");

@@ -266,7 +266,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
-    
+    [moviePlayer pause];
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
  
@@ -437,6 +437,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
     
+    /*
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD show];
+     */
+    
+
     
     //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
@@ -452,8 +459,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(movieLoadStateDidChange:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+
+    
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
+}
+
+
+-(void)movieLoadStateDidChange:(id)sender{
+    NSLog(@"STATE CHANGED");
+   
 }
 
 

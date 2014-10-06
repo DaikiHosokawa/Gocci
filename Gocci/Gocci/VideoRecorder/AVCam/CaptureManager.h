@@ -56,8 +56,10 @@
 
 @interface CaptureManager : NSObject {
     NSString *_path;
+    NSURL *movieurl;
 }
 
+@property (nonatomic) NSURL *movieurl;
 @property (nonatomic,strong,getter = getPath)NSString *path;
 @property (nonatomic,strong) AVCaptureSession *session;
 @property (nonatomic,assign) AVCaptureVideoOrientation orientation;
