@@ -1,0 +1,1 @@
+/Users/daikihosokawa/Desktop/Gocci project/Gocci/Build/Intermediates/ArchiveIntermediates/Gocci/InstallationBuildProductsLocation/Applications/Gocci.app
