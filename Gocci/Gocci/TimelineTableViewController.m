@@ -17,7 +17,6 @@
 #import "UIImageView+AFNetworking.h"
 
 
-
 @protocol MovieViewDelegate;
 
 @interface TimelineTableViewController ()<CLLocationManagerDelegate>
@@ -86,7 +85,7 @@
         
         dispatch_async(q_main, ^{
         });
-　　　});
+    });
 
         
     //JSONをパース
@@ -123,10 +122,9 @@
         });
     });
     
-    
    [self.tableView reloadData];
 
-    
+    // update visible cells
     [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
      [SVProgressHUD dismiss];
@@ -135,19 +133,19 @@
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-
+        [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
         [moviePlayer stop];
         [player stop];
         [moviePlayer.view removeFromSuperview];
-
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     [moviePlayer stop];
     [player stop];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
@@ -167,56 +165,36 @@
     self.tableView.bounces = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    locationManager = [[CLLocationManager alloc] init];
-    
-  /*
-    // 位置情報サービスが利用できるかどうかをチェック
-    if ([CLLocationManager locationServicesEnabled]) {
-        locationManager.delegate = self;
-        // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
-        // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 測位開始
-        [locationManager startUpdatingLocation];
-    } else {
-        NSLog(@"Location services not available.");
-    }
-   */
+    self.locationManager = [[CLLocationManager alloc] init];
     
  // iOS8の対応
     if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
-        locationManager.delegate = self;
+        self.locationManager.delegate = self;
         // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
+        self.locationManager.distanceFilter = 20;
         // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         // 測位開始
-        [locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingLocation];
 
         // 位置情報測位の許可を求めるメッセージを表示する
-        [_locationManager requestAlwaysAuthorization]; // 常に許可
-       // [_locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
+        [self.locationManager requestAlwaysAuthorization]; // 常に許可
+       // [self.locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
         
     } else { // iOS7以前
-        locationManager.delegate = self;
+        
+        self.locationManager.delegate = self;
         // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
+        self.locationManager.distanceFilter = 20;
         // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         // 測位開始
-        [locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingLocation];
 
         // 位置測位スタート
-        [_locationManager startUpdatingLocation];
-        
+        [self.locationManager startUpdatingLocation];
     }
 }
-//////////////////////////リピート処理//////////////////////////
-- (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    [moviePlayer play];
-}
-
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
@@ -235,26 +213,58 @@
 }
 
 
-- (void)endScroll {
-　　//スクロール終了
-    CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"%ld", (long)_nowindexPath.row);
-   [self updateVisibleCells];
-    //_thumbnailView.hidden = YES;
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{//iOS8対応
+    if (status == kCLAuthorizationStatusAuthorizedAlways ||
+        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        // 位置測位スタート
+        [self.locationManager startUpdatingLocation];
+        
+        if (status == kCLAuthorizationStatusNotDetermined) {
+            // ユーザが位置情報の使用を許可していない
+            [self.locationManager requestAlwaysAuthorization]; // 常に許可
+        }
+        
+    }
+}
+
+
+-(void) onResume {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager startUpdatingLocation]; //測位再開
+}
+
+-(void) onPause {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager stopUpdatingLocation]; //測位停止
+}
+
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
 }
+
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"applicationWillResignActive");
+    [self onPause];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    [self onResume];
+}
+
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
    // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
-    
     CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     NSLog(@"%ld", (long)_nowindexPath.row);
     
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
@@ -263,8 +273,6 @@
     }
 }
 
-#pragma mark -
-#pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	// フリック操作によるスクロール終了
@@ -275,8 +283,8 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	if(!decelerate) {
 		// ドラッグ終了 かつ 加速無し
-		[self endScroll];
-        NSLog(@"scroll is stoped");
+    [self endScroll];
+    NSLog(@"scroll is stoped");
 	}
 }
 
@@ -284,8 +292,27 @@
 	// setContentOffset: 等によるスクロール終了
 	[self endScroll];
     NSLog(@"scroll is stoped");
-    
 }
+
+- (void)endScroll {
+    //スクロール終了
+    CGPoint offset =  self.tableView.contentOffset;
+    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
+    NSLog(@"%ld", (long)_nowindexPath.row);
+    [self updateVisibleCells];
+    //_thumbnailView.hidden = YES;
+    [moviePlayer play];
+}
+
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    return indexPath;
+}
+
 
 
 #pragma mark - Table view data source
@@ -304,8 +331,6 @@
 
 
 
-
-////////////////////////////セルの高さを調整//////////////////////////
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 520.0;
@@ -314,40 +339,25 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
+  //  _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
  
-        // セルの更新
-        [self updateCell:cell atIndexPath:indexPath];
-        //コメントボタンのイベント
-        [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
-        //いいねボタンのイベント
-        [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-       //ユーザーの画像を取得
-        NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-        NSURL *doturl = [NSURL URLWithString:dottext];
-        NSData *data = [NSData dataWithContentsOfURL:doturl];
-        UIImage *dotimage = [[UIImage alloc] initWithData:data];
-        _cell.UsersPicture.image = dotimage;
-        NSError *activationError = nil;
-    
-        [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
-        [_cell layoutSubviews];
-        // Configure the cell...
-    return _cell ;
-
-}
-
-//画面上に見えているセルの表示更新
-- (void)updateVisibleCells {
-    for (_cell in [self.tableView visibleCells]){
-        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    NSString *cellIdentifier = @"TimelineTableViewCell";
+    _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!_cell){
+        _cell = [[Sample2TableViewCell alloc]
+                initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+        // セルの更新
+        [self updateCell:_cell atIndexPath:indexPath];
+        // Configure the cell...
+    
+        return _cell ;
 }
 
 
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-//コメントボタンの時の処理
+    //コメントボタンの時の処理
     [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
@@ -358,15 +368,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
-
-// UIControlEventからタッチ位置のindexPathを取得する
-- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint p = [touch locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    return indexPath;
-}
-
 
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
@@ -407,24 +408,34 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"goodBtn is touched");
 }
 
-
-
-
-
-
+//画面上に見えているセルの表示更新
+- (void)updateVisibleCells {
+    for (_cell in [self.tableView visibleCells]){
+        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
+    }
+}
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Review.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.numberOfLines = 2;
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
+    
+    
+    //コメントボタンのイベント
+    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+
+    //いいねボタンのイベント
+    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+
+    //ユーザーの画像を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
     
     
     //動画再生
@@ -434,11 +445,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    
-    CGRect frame = _cell.movieView.frame;
-    [moviePlayer.view setFrame:frame];
+
+    [moviePlayer.view setFrame:_cell.movieView.frame];
     [_cell.movieView addSubview: moviePlayer.view];
-    [_cell.contentView bringSubviewToFront:moviePlayer.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
@@ -446,7 +455,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
 }
-
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -460,10 +468,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         SearchTableViewController *seaVC = [segue destinationViewController];
         seaVC.lon = _lon;
         seaVC.lat = _lat;
-        
-        [SVProgressHUD show];
-        [SVProgressHUD showWithStatus:@"移動中です" maskType:SVProgressHUDMaskTypeGradient];
-
     }
     //2つ目の画面にパラメータを渡して遷移する
     if ([segue.identifier isEqualToString:@"showDetail2"]) {
@@ -473,24 +477,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
 }
-
-- (void)locationManager:(CLLocationManager *)manager
-didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{//iOS8対応
-    if (status == kCLAuthorizationStatusAuthorizedAlways ||
-        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        // 位置測位スタート
-        [_locationManager startUpdatingLocation];
-        
-        if (status == kCLAuthorizationStatusNotDetermined) {
-            // ユーザが位置情報の使用を許可していない
-            [_locationManager requestAlwaysAuthorization]; // 常に許可
-        }
-
-    }
-}
-
 
 
 @end

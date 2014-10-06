@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+@class Timeline;
 
 @interface Sample2TableViewCell : UITableViewCell
+@property (nonatomic, strong)Timeline *comment;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;

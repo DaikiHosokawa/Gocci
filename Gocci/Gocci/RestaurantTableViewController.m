@@ -223,23 +223,13 @@
     
 }
 
-//////////////////////////スクロール終了後//////////////////////////
 - (void)endScroll {
-    // 表示しているtableVIewの現状のオフセットを取得する。
-    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+    //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    
-    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
-    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y + 40);
-    
-    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
+    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     NSLog(@"%ld", (long)_nowindexPath.row);
-    
     [self updateVisibleCells];
-    
     //_thumbnailView.hidden = YES;
     [moviePlayer play];
 }
@@ -382,63 +372,59 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
     
-    _cell = (Sample3TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"restaurantTableViewCell"];
-    // Update Cell
-    [self updateCell:cell atIndexPath:indexPath];
-    
-    //コメントボタンのイベント
-    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
-    //言い値ボタンのイベント
-    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Configure the cell.
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.UsersName.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Review.textAlignment =  NSTextAlignmentLeft;
-    _cell.Review.numberOfLines = 2;
-    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.textAlignment = NSTextAlignmentLeft;
-    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    _cell.Commentnum.textAlignment = NSTextAlignmentLeft;
-    
-    
-    //文字を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
-    NSError *activationError = nil;
-    [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
-
-    
-    
+      NSString *cellIdentifier = @"restaurantTableViewCell";
+    _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!_cell){
+        _cell = [[Sample3TableViewCell alloc]
+                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    // セルの更新
+    [self updateCell:_cell atIndexPath:indexPath];
+    // Configure the cell...
    
  // Configure the cell...
     return _cell;
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    // Update Cells
+    //updateした時の処理
+    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    
+    
+    //コメントボタンのイベント
+    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //いいねボタンのイベント
+    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //ユーザーの画像を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    NSURL *doturl = [NSURL URLWithString:dottext];
+    NSData *data = [NSData dataWithContentsOfURL:doturl];
+    UIImage *dotimage = [[UIImage alloc] initWithData:data];
+    _cell.UsersPicture.image = dotimage;
+    
+    
+    //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
-    NSLog(@"text:%@",text);
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     
-    CGRect frame = _cell.movieView.frame;
-    [moviePlayer.view setFrame:frame];
+    [moviePlayer.view setFrame:_cell.movieView.frame];
     [_cell.movieView addSubview: moviePlayer.view];
-    [_cell.contentView bringSubviewToFront:moviePlayer.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
     [moviePlayer setShouldAutoplay:YES];
+    [moviePlayer prepareToPlay];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
