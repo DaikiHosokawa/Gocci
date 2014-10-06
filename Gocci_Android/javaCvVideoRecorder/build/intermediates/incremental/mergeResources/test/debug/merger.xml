@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="20.0.0" >
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/res" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res" >
+            <file
+                name="vertical_textview"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/anim/vertical_textview.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="btn_dialog_normal"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/btn_dialog_normal.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="btn_shutter_normal"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/btn_shutter_normal.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="btn_shutter_pressed"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/btn_shutter_pressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="button"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/button.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="camera_switch"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/camera_switch.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="cameraflash"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/cameraflash.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="cameraflashoff"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/cameraflashoff.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="camerasettings"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/camerasettings.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="dialog_title_bar"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/dialog_title_bar.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_recordbtn"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_recordbtn.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_switchcamera"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_switchcamera.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="record_icon"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/record_icon.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="semi_transparent"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-hdpi-v4/semi_transparent.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="btn_dialog_normal"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/btn_dialog_normal.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="confirmation_dialog"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/layout/confirmation_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="dialog_resolution_selector"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/layout/dialog_resolution_selector.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ffmpeg_recorder"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/layout/ffmpeg_recorder.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="select_resolution"
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/layout/select_resolution.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/intermediates/bundles/debug/res/values/values.xml"
+                qualifiers="" >
+                <string name="hello_world" >Hello world!
+                </string>
+
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+
+                <string name="wait" >Wait
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="app_name" >VideoCreator
+                </string>
+                <string name="txt_continue" >続ける
+                </string>
+                <string name="finalizing" >保存しています。
+                </string>
+                <string name="resolutionMedium" >Medium Resolution
+                </string>
+                <string name="press" >Press
+                </string>
+                <string name="start" >Start
+                </string>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+
+                <string name="stop" >編集
+                </string>
+
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+
+                <string name="discard" >捨てる
+                </string>
+                <string name="errVideoTime" >Recording time cannot be less than 5 seconds
+                </string>
+                <string name="resolutionLow" >Low Resolution
+                </string>
+                <string name="resolutionHigh" >High Resolution
+                </string>
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+            </file>
+        </source>
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/src/androidTest/res" />
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/generated/res/rs/test/debug" />
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/build/generated/res/generated/test/debug" />
+    </dataSet>
+
+</merger>

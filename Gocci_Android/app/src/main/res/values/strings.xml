@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gocci</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_search__map">Search</string>
+    <string name="title_activity_tenpo">Tenpo</string>
+    <string name="title_activity_toukou">Toukou</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="facebook_appId">facebook</string>
+    <string name="map_key">AIzaSyAGSbxYvWNh136FcFzELekR_OLTOA5Oglk</string>
+    <string name="app_id">566579750128624</string>
+    <string name="user_id">ユーザーID</string>
+    <string name="user_name">ユーザー名</string>
+    <string name="picture">写真URL</string>
+    <string name="movie">動画URL</string>
+    <string name="goodnum">いいね数</string>
+    <string name="restname">店舗名</string>
+    <string name="tell">電話番号</string>
+    <string name="category">カテゴリー</string>
+    <string name="lat">経度</string>
+    <string name="lon">緯度</string>
+    <string name="locality">住所</string>
+    <string name="distance">距離</string>
+    <string name="post_id">投稿ID</string>
+    <string name="twitter_consumer_key">co9pGQdqavnWr1lgzBwfvIG6W</string>
+    <string name="twitter_consumer_key_secret"> lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg</string>
+    <string name="twitter_callback_url">http://hosokawadev.hatenablog.com/</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_timeline">タイムライン</string>
+    <string name="title_search">検索</string>
+    <string name="title_lifelog">ライフログ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_search_map2">Search_map2</string>
+    <string name="title_activity_main_tab">MainTab</string>
+    <string name="title_activity_pager_tab_strip">PagerTabStripActivity</string>
+    <string name="button_auth_text">auth</string>
+    <string name="button_send_pin_text">send</string>
+    <string name="edittext_pin_hint">PIN</string>
+    <string name="toast_oauth_complete_text">Authorized</string>
+    <string name="toast_oauth_failed_text">Auth failed</string>
+    <string name="dialog_title_text">Wait</string>
+    <string name="dialog_message_text">preparing\.\.\.</string>
+    <!-- Shared preferences -->
+    <string name="shared_pref_name">twitter_auth_sample</string>
+    <string name="shared_pref_key_twitter_access_token">twitter_access_token</string>
+    <string name="shared_pref_key_twitter_access_token_secret">twitter_access_token_secret</string>
+
+</resources>

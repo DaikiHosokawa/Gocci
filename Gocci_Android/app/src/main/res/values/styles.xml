@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="@android:windowBackground">@drawable/window_bg</item>
+        <item name="@android:colorBackground">@color/window_bg</item>
+
+    </style>
+
+    <style name="actionBar" parent="Widget.AppCompat.ActionBar">
+        <!-- タイトルバーの背景色 -->
+        <item name="android:background">@drawable/ab_gradation</item>
+        <item name="android:titleTextStyle">@style/titleTextStyle</item>
+    </style>
+
+    <style name="titleTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+        <item name="android:icon">@drawable/ic_logo</item>
+    </style>
+
+</resources>

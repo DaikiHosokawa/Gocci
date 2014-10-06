@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 色を定義-->
+    <color name="window_bg">#ebedf0</color>
+    <drawable name="window_bg">@color/window_bg</drawable>
+    <color name="main_color_light">#EB9152</color>
+    <color name="main_color_dark">#E2694A</color>
+    <color name="selector_transparent1">#22000000</color>
+    <color name="selector_transparent2">#11000000</color>
+</resources>

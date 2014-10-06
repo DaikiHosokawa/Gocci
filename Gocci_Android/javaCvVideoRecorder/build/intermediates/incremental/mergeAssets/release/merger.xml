@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/src/main/assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/kinagafuji/Documents/workspace/git/Project_Gocci/Gocci/javaCvVideoRecorder/src/release/assets" />
+    </dataSet>
+
+</merger>

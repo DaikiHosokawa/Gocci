@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tell"
+        android:id="@+id/tell"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff8ad2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restname"
+        android:id="@+id/restname"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff8ad2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        android:id="@+id/category"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff8ad2" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/locality"
+        android:id="@+id/locality"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff8ad2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/distance"
+        android:id="@+id/distance"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff8ad2" />
+
+    <!-- 影部分のView -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/list_shadow"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffff8ad2" />
+
+</LinearLayout>

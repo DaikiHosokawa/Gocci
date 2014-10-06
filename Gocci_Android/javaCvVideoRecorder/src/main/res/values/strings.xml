@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VideoCreator</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="txt_continue">続ける</string>
+	<string name="discard">捨てる</string>
+	<string name="resolutionHigh">High Resolution</string>
+	<string name="resolutionMedium">Medium Resolution</string>
+	<string name="resolutionLow">Low Resolution</string>
+	<string name="start">Start</string>
+	<string name="press">Press</string>
+	<string name="stop">編集</string>
+	<string name="wait">Wait</string>
+		<string name="errVideoTime">Recording time cannot be less than 5 seconds</string>
+		<string name="finalizing">保存しています。</string>
+		
+</resources>

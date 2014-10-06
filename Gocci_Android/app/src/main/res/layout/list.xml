@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:gravity="center|top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:id="@+id/user_name"
+        android:textColor="#ffff5361"
+        android:textSize="16sp" />
+
+    <VideoView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/movie"
+        android:layout_marginTop="5dp"
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/picture"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/picture" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/restname"
+        android:singleLine="false"
+        android:textSize="16sp"
+        android:text="@string/restname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/locality"
+        android:singleLine="false"
+        android:textSize="16sp"
+        android:text="@string/locality" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/list_shadow"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
