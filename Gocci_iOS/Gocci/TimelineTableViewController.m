@@ -15,6 +15,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
+#import "SDWebImage/UIImageView+WebCache.h"
 
 
 @protocol MovieViewDelegate;
@@ -32,6 +33,7 @@
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
+@property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
@@ -83,6 +85,10 @@
     _commentnum_ = [commentnum mutableCopy];
         NSLog(@"commentnum:%@",commentnum);
         
+    //コメント数
+    NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
+    _thumbnail_ = [thumbnail mutableCopy];
+        NSLog(@"thumbnail:%@",_thumbnail_);
         dispatch_async(q_main, ^{
         });
     });
@@ -301,7 +307,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [self updateVisibleCells];
-    //_thumbnailView.hidden = YES;
+   
     [moviePlayer play];
 }
 
@@ -348,6 +354,27 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+
+    
+    /*
+    // Configure the cell...
+    [_cell.thumbnailView setImageWithURL:[NSURL URLWithString:[_thumbnail_ objectAtIndex:indexPath.row]]
+                   placeholderImage:[UIImage imageNamed:@"character.png"]];
+     */
+    
+    
+    //サムネイル画像の追加
+    NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
+    NSURL *thumbnailurl = [NSURL URLWithString:URLString];
+
+    NSData *thumbnaildata = [NSData dataWithContentsOfURL:thumbnailurl];
+    UIImage *thumbnailimage = [[UIImage alloc] initWithData:thumbnaildata];
+    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnailimage];
+    CGRect frame2 = _cell.thumbnailView.frame;
+    [_thumbnailView setFrame:frame2];
+    [_cell.thumbnailView addSubview:_thumbnailView];
+    [_cell.movieView bringSubviewToFront:_thumbnailView];
+     
         // セルの更新
         [self updateCell:_cell atIndexPath:indexPath];
         // Configure the cell...
@@ -416,6 +443,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
@@ -437,13 +466,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIImage *dotimage = [[UIImage alloc] initWithData:data];
     _cell.UsersPicture.image = dotimage;
     
+   
+    
+    
     /*
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD show];
      */
-    
-
     
     //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
@@ -467,12 +497,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
+
 }
 
 
 -(void)movieLoadStateDidChange:(id)sender{
-    NSLog(@"STATE CHANGED");
-   
+    if(MPMovieLoadStatePlaythroughOK ) {
+        NSLog(@"STATE CHANGED");
+        _thumbnailView.hidden = YES;
+    }
 }
 
 

@@ -12,20 +12,24 @@
 	<dict>
 		<key>5A55F0568AC03706EC4B2CFBC3D80DB08B84C078</key>
 		<string>https://bitbucket.org/gocciproject/gocci.git</string>
+		<key>E92B8DE2F8C389AA387FAF662819B4A223FC2750</key>
+		<string>https://bitbucket.org/gocciproject/inase.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Gocci/Gocci.xcodeproj</string>
+	<string>Gocci_iOS/Gocci.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5A55F0568AC03706EC4B2CFBC3D80DB08B84C078</key>
+		<string>../../../../Gocci%20project</string>
+		<key>E92B8DE2F8C389AA387FAF662819B4A223FC2750</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/gocciproject/gocci.git</string>
+	<string>https://bitbucket.org/gocciproject/inase.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5A55F0568AC03706EC4B2CFBC3D80DB08B84C078</string>
+	<string>E92B8DE2F8C389AA387FAF662819B4A223FC2750</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>5A55F0568AC03706EC4B2CFBC3D80DB08B84C078</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Gocci%20project</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E92B8DE2F8C389AA387FAF662819B4A223FC2750</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Native</string>
 		</dict>
 	</array>
 </dict>
