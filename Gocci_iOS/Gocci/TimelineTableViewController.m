@@ -34,6 +34,7 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
+@property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, copy) Sample2TableViewCell *cell;
 @property (nonatomic, copy) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
@@ -84,8 +85,12 @@
     NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
     _commentnum_ = [commentnum mutableCopy];
         NSLog(@"commentnum:%@",commentnum);
+    //スターの数
+    NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+    _starnum_ = [starnum mutableCopy];
+    NSLog(@"commentnum:%@",starnum);
         
-    //コメント数
+    //サムネイル
     NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
     _thumbnail_ = [thumbnail mutableCopy];
         NSLog(@"thumbnail:%@",_thumbnail_);
@@ -485,6 +490,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.Starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
     
     //コメントボタンのイベント

@@ -22,6 +22,9 @@
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
 		FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CB719E60F0200AEB06E /* NullSafe.m */; };
 		FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBB19E62D1200AEB06E /* EDStarRating.m */; };
+		FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBE19E6571D00AEB06E /* usersTableViewController.m */; };
+		FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */; };
+		FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -131,6 +134,11 @@
 		FF217CB719E60F0200AEB06E /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		FF217CBA19E62D1200AEB06E /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
 		FF217CBB19E62D1200AEB06E /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
+		FF217CBD19E6571D00AEB06E /* usersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController.h; sourceTree = "<group>"; };
+		FF217CBE19E6571D00AEB06E /* usersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController.m; sourceTree = "<group>"; };
+		FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell.h; sourceTree = "<group>"; };
+		FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell.m; sourceTree = "<group>"; };
+		FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell.xib; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -436,6 +444,11 @@
 				FF8CE93219582664000FE68B /* RecorderViewController.m */,
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
+				FF217CBD19E6571D00AEB06E /* usersTableViewController.h */,
+				FF217CBE19E6571D00AEB06E /* usersTableViewController.m */,
+				FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */,
+				FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */,
+				FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
@@ -701,6 +714,7 @@
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
+				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FFDCE8C819DCCE0B00AA5294 /* Main.storyboard in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
@@ -726,6 +740,7 @@
 				FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */,
 				FFB92EDC1997A06B008E024A /* AFURLRequestSerialization.m in Sources */,
 				FFB92EDB1997A06B008E024A /* AFURLConnectionOperation.m in Sources */,
+				FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */,
 				FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */,
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
 				FF5DDF7D19E3D3C2000F2ABD /* UIImage+GIF.m in Sources */,
@@ -744,6 +759,7 @@
 				FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FFA0E2E219AEC0DF006269B4 /* UIWebView+AFNetworking.m in Sources */,
+				FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */,
 				FFA0E2DD19AEC0DF006269B4 /* UIAlertView+AFNetworking.m in Sources */,
 				FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */,
 				FF5DDF7619E3D3C2000F2ABD /* SDWebImageCompat.m in Sources */,

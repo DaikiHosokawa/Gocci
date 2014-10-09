@@ -90,71 +90,71 @@
 		</data>
 		<key>Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib</key>
 		<data>
-		C300raIOzPStEH6t9SSYhORnIuo=
+		ryHaaHQN/r3Jb4XEhsO1F/ZHzQU=
 		</data>
 		<key>Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib</key>
 		<data>
-		rBXiOxXk7UndzpU43t4x3vyGshQ=
+		hCpZdpREpNnNIp4P918tSoUYFDA=
 		</data>
 		<key>Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib</key>
 		<data>
-		es2JnZ1iosCRZ9H84mhmEpomkIE=
+		cBA6xZlMLCpEeB9FhD83wFo82io=
 		</data>
 		<key>Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib</key>
 		<data>
-		aEjVuVCVPKS1zTfTQo4Hz/jJjVw=
+		NS2IgTi4YG2sHFCLPeoqhvj7GS0=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
-		iqCpqgxy5aL/3mUNOTdVh2y6SDA=
+		z9qb5BufD1yDV+Lady59iF63674=
 		</data>
 		<key>Main.storyboardc/Lifelog.nib</key>
 		<data>
-		a3tu1V5TLesNn8oab29K+7SCvuw=
+		J5PG6C4Ev16qostz+2I07U9Otg8=
 		</data>
 		<key>Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib</key>
 		<data>
-		J2UfYa51aCKP3Hwx5HVzGEPI6iw=
+		mVJDm+CwHhNKXzYoOzGE6V81MoQ=
 		</data>
 		<key>Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib</key>
 		<data>
-		YTdFTxCnxU4FJocprn2gyB8l408=
+		JPl57qtP6UxScwZE9Ih1aFh7wjM=
 		</data>
 		<key>Main.storyboardc/Recorder.nib</key>
 		<data>
-		V0kEGwpeb6vghvw2IO2Df2sTf0I=
+		l/bqMU1A9QFkJXn0z9fj+GVbi3k=
 		</data>
 		<key>Main.storyboardc/RestaurantTV.nib</key>
 		<data>
-		TEyNrAsVMHjsUCXU93E1AbK13EU=
+		4kKs318RA0m+F9oSBTuuCjIF9K8=
 		</data>
 		<key>Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib</key>
 		<data>
-		WgblDj2W3pMw6RV9BnXo35gf0nU=
+		gZ+TfscfEYta3itvwZSR9V6q1ws=
 		</data>
 		<key>Main.storyboardc/UIViewController-eNe-5a-Fw9.nib</key>
 		<data>
-		x+XebXBq6JEmwPckZ+6R4gOgI4c=
+		sp01MY2ub4yHvSOSD4nggk1DwIs=
 		</data>
 		<key>Main.storyboardc/UIViewController-x1a-eI-W4a.nib</key>
 		<data>
-		Ob5/YuN2wqRk8Qph4qv5okOrOdA=
+		Aa98Yk8/dgu6GCY29nfVfSaxju8=
 		</data>
 		<key>Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib</key>
 		<data>
-		jR+IrxbPb+P2sX5esS4AJmNCSyE=
+		11eFEe7kFw/Xuw5q8I/M5ChssN4=
 		</data>
 		<key>Main.storyboardc/evTable.nib</key>
 		<data>
-		fm314XGNEslS6exQLsHHuLi7Q2s=
+		LZgLUfg9hgg/G1q89OSoyfIuhpU=
 		</data>
 		<key>Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib</key>
 		<data>
-		BE1bNJyxGtlCxxGQFA86VvvAT4M=
+		Kz30aJlbNj9C2rgXlk1c6Tv5YXg=
 		</data>
 		<key>Main.storyboardc/submitViewController.nib</key>
 		<data>
-		qcB4sve+L5QBitVCZPeumVDmaNI=
+		sYjQEdvgtCRz+k+sE/ZobosA4E4=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -174,19 +174,23 @@
 		</data>
 		<key>Sample2TableViewCell.nib</key>
 		<data>
-		E8Ku/ilnLAq2Qf/ItPpQsyaKrSA=
+		czwYM3fst/4dGxb9LoL+v96Tj84=
 		</data>
 		<key>Sample3TableViewCell.nib</key>
 		<data>
-		O4799rCBv+SnH0n5F1/T40OBmGg=
+		8z/Lqm0OHNgI86/GOEUW/7btLT4=
 		</data>
 		<key>Sample4TableViewCell.nib</key>
 		<data>
 		pLbgRoPX17grgousUJsRAC51ZO0=
 		</data>
+		<key>Sample5TableViewCell.nib</key>
+		<data>
+		P9xGIbxRYeHiClOebH15ASLQsnE=
+		</data>
 		<key>SampleTableViewCell.nib</key>
 		<data>
-		WnypHpwNQegF4vwBOdqEvccvCKQ=
+		TWRHP1Q4jyc7qB1ElOFlcavoWQs=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>
@@ -289,71 +293,71 @@
 		</data>
 		<key>Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib</key>
 		<data>
-		C300raIOzPStEH6t9SSYhORnIuo=
+		ryHaaHQN/r3Jb4XEhsO1F/ZHzQU=
 		</data>
 		<key>Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib</key>
 		<data>
-		rBXiOxXk7UndzpU43t4x3vyGshQ=
+		hCpZdpREpNnNIp4P918tSoUYFDA=
 		</data>
 		<key>Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib</key>
 		<data>
-		es2JnZ1iosCRZ9H84mhmEpomkIE=
+		cBA6xZlMLCpEeB9FhD83wFo82io=
 		</data>
 		<key>Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib</key>
 		<data>
-		aEjVuVCVPKS1zTfTQo4Hz/jJjVw=
+		NS2IgTi4YG2sHFCLPeoqhvj7GS0=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
-		iqCpqgxy5aL/3mUNOTdVh2y6SDA=
+		z9qb5BufD1yDV+Lady59iF63674=
 		</data>
 		<key>Main.storyboardc/Lifelog.nib</key>
 		<data>
-		a3tu1V5TLesNn8oab29K+7SCvuw=
+		J5PG6C4Ev16qostz+2I07U9Otg8=
 		</data>
 		<key>Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib</key>
 		<data>
-		J2UfYa51aCKP3Hwx5HVzGEPI6iw=
+		mVJDm+CwHhNKXzYoOzGE6V81MoQ=
 		</data>
 		<key>Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib</key>
 		<data>
-		YTdFTxCnxU4FJocprn2gyB8l408=
+		JPl57qtP6UxScwZE9Ih1aFh7wjM=
 		</data>
 		<key>Main.storyboardc/Recorder.nib</key>
 		<data>
-		V0kEGwpeb6vghvw2IO2Df2sTf0I=
+		l/bqMU1A9QFkJXn0z9fj+GVbi3k=
 		</data>
 		<key>Main.storyboardc/RestaurantTV.nib</key>
 		<data>
-		TEyNrAsVMHjsUCXU93E1AbK13EU=
+		4kKs318RA0m+F9oSBTuuCjIF9K8=
 		</data>
 		<key>Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib</key>
 		<data>
-		WgblDj2W3pMw6RV9BnXo35gf0nU=
+		gZ+TfscfEYta3itvwZSR9V6q1ws=
 		</data>
 		<key>Main.storyboardc/UIViewController-eNe-5a-Fw9.nib</key>
 		<data>
-		x+XebXBq6JEmwPckZ+6R4gOgI4c=
+		sp01MY2ub4yHvSOSD4nggk1DwIs=
 		</data>
 		<key>Main.storyboardc/UIViewController-x1a-eI-W4a.nib</key>
 		<data>
-		Ob5/YuN2wqRk8Qph4qv5okOrOdA=
+		Aa98Yk8/dgu6GCY29nfVfSaxju8=
 		</data>
 		<key>Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib</key>
 		<data>
-		jR+IrxbPb+P2sX5esS4AJmNCSyE=
+		11eFEe7kFw/Xuw5q8I/M5ChssN4=
 		</data>
 		<key>Main.storyboardc/evTable.nib</key>
 		<data>
-		fm314XGNEslS6exQLsHHuLi7Q2s=
+		LZgLUfg9hgg/G1q89OSoyfIuhpU=
 		</data>
 		<key>Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib</key>
 		<data>
-		BE1bNJyxGtlCxxGQFA86VvvAT4M=
+		Kz30aJlbNj9C2rgXlk1c6Tv5YXg=
 		</data>
 		<key>Main.storyboardc/submitViewController.nib</key>
 		<data>
-		qcB4sve+L5QBitVCZPeumVDmaNI=
+		sYjQEdvgtCRz+k+sE/ZobosA4E4=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -373,19 +377,23 @@
 		</data>
 		<key>Sample2TableViewCell.nib</key>
 		<data>
-		E8Ku/ilnLAq2Qf/ItPpQsyaKrSA=
+		czwYM3fst/4dGxb9LoL+v96Tj84=
 		</data>
 		<key>Sample3TableViewCell.nib</key>
 		<data>
-		O4799rCBv+SnH0n5F1/T40OBmGg=
+		8z/Lqm0OHNgI86/GOEUW/7btLT4=
 		</data>
 		<key>Sample4TableViewCell.nib</key>
 		<data>
 		pLbgRoPX17grgousUJsRAC51ZO0=
 		</data>
+		<key>Sample5TableViewCell.nib</key>
+		<data>
+		P9xGIbxRYeHiClOebH15ASLQsnE=
+		</data>
 		<key>SampleTableViewCell.nib</key>
 		<data>
-		WnypHpwNQegF4vwBOdqEvccvCKQ=
+		TWRHP1Q4jyc7qB1ElOFlcavoWQs=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>

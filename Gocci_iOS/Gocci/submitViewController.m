@@ -20,6 +20,7 @@
 @property NSString *text;
 @property UITextView *textView;
 @property NSMutableString *str;
+@property NSString *ratingString;
 
 
 @end
@@ -112,14 +113,9 @@
 
 -(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating
 {
-    NSString *ratingString = [NSString stringWithFormat:@"Rating: %.1f", rating];
-    /*
-    if( [control isEqual:_starRating] )
-        _starRatingLabel.text = ratingString;
-    else
-        _starRatingImageLabel.text = ratingString;
-    */
-    NSLog(@"ratingString:%@",ratingString);
+    _ratingString = [NSString stringWithFormat:@"Rating:%.1f", rating];
+
+    NSLog(@"ratingString:%@",_ratingString);
 }
 
 - (void)viewDidUnload
@@ -205,9 +201,15 @@
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"レビューを入力してください"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
-    }else{
+    }
+    else{
      _text = _textView.text;
-    NSString *content = [NSString stringWithFormat:@"val=%@",_text];
+    // 文字列を数値型へ変換する。
+    NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
+    NSLog(@"substr2:%@",substr2);
+    NSInteger i = substr2.integerValue;
+    NSString *content = [NSString stringWithFormat:@"val=%@&star_evaluation=%ld",_text,(long)i];
+    NSLog(@"content:%@",content);
 	NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/submit.php"];
 	NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
 	[urlRequest setHTTPMethod:@"POST"];

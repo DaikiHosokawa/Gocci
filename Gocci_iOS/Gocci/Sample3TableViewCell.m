@@ -15,6 +15,7 @@
 @synthesize Goodnum;
 @synthesize Review;
 @synthesize Commentnum;
+@synthesize Starnum;
 
 - (void)dealloc
 {
@@ -25,6 +26,7 @@
     self.Review = nil;
     self.contentViewFront = nil;
     self.Commentnum = nil;
+    self.Starnum = nil;
 };
 
 - (void)awakeFromNib

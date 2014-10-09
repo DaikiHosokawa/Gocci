@@ -20,6 +20,7 @@
 @synthesize Commentnum;
 @synthesize indicator;
 @synthesize deleteBtn;
+@synthesize Starnum;
 
 - (void)dealloc
 {
@@ -34,6 +35,7 @@
     self.Commentnum = nil;
     self.indicator = nil;
     self.deleteBtn = nil;
+    self.Starnum = nil;
 };
 
 

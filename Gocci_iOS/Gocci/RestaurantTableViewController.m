@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
+@property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, copy) Sample3TableViewCell *cell;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
@@ -106,6 +107,9 @@
     // 動画post_id
     NSArray *postid = [jsonDic valueForKey:@"post_id"];
     _postid_ = [postid mutableCopy];
+    // 動画post_id
+    NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+    _starnum_ = [starnum mutableCopy];
         //コメント数
         NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
         _commentnum_ = [commentnum mutableCopy];
@@ -393,6 +397,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.Starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
     
     //コメントボタンのイベント
