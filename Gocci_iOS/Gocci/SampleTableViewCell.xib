@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="character2" translatesAutoresizingMaskIntoConstraints="NO" id="zTD-gk-ETk">
-                                <rect key="frame" x="246" y="0.0" width="48" height="48"/>
+                                <rect key="frame" x="244" y="4" width="48" height="48"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="距離" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba8-Cr-cTM">
                                 <rect key="frame" x="193" y="48" width="77" height="21"/>

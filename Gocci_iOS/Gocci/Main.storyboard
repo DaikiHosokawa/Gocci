@@ -275,7 +275,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-0Y-csX">
-                                <rect key="frame" x="34" y="351" width="252" height="33"/>
+                                <rect key="frame" x="34" y="355" width="252" height="33"/>
                                 <state key="normal" title="facebookで共有" image="fb_share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -284,7 +284,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPl-oK-SoY">
-                                <rect key="frame" x="34" y="301" width="252" height="33"/>
+                                <rect key="frame" x="34" y="314" width="252" height="33"/>
                                 <state key="normal" title="Twitterで共有" image="tw_share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -293,13 +293,13 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-KM-a5P">
-                                <rect key="frame" x="28" y="64" width="264" height="155"/>
+                                <rect key="frame" x="28" y="89" width="264" height="155"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mls-RG-o6C">
-                                <rect key="frame" x="34" y="469" width="252" height="30"/>
+                                <rect key="frame" x="28" y="467" width="252" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.21511841230000001" blue="0.25791172369999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.96984080632797054" green="1" blue="0.9539011325302571" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="完了！！">
@@ -310,10 +310,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="character3" translatesAutoresizingMaskIntoConstraints="NO" id="2zX-l8-dyd">
-                                <rect key="frame" x="192" y="398" width="100" height="101"/>
+                                <rect key="frame" x="186" y="396" width="100" height="101"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMD-bh-uat" customClass="EDStarRating">
-                                <rect key="frame" x="34" y="234" width="252" height="49"/>
+                                <rect key="frame" x="34" y="252" width="252" height="49"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
