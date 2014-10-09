@@ -19,6 +19,7 @@
 @synthesize thumbnailView;
 @synthesize Commentnum;
 @synthesize indicator;
+@synthesize deleteBtn;
 
 - (void)dealloc
 {
@@ -32,7 +33,7 @@
     self.thumbnailView = nil;
     self.Commentnum = nil;
     self.indicator = nil;
-    
+    self.deleteBtn = nil;
 };
 
 

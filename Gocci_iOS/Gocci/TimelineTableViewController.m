@@ -366,7 +366,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //サムネイル画像の追加
     NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
     NSURL *thumbnailurl = [NSURL URLWithString:URLString];
-
     NSData *thumbnaildata = [NSData dataWithContentsOfURL:thumbnailurl];
     UIImage *thumbnailimage = [[UIImage alloc] initWithData:thumbnaildata];
     _thumbnailView = [[UIImageView alloc] initWithImage:thumbnailimage];
@@ -435,6 +434,41 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"goodBtn is touched");
 }
 
+- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
+   
+    //削除ボタンの時の処理
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postID = [_postid_ objectAtIndex:indexPath.row];
+    NSLog(@"postid:%@",_postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/delete.php"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q1_main = dispatch_get_main_queue();
+    dispatch_async(q1_global, ^{
+        //JSONをパース
+        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+        NSURL *url2 = [NSURL URLWithString:timelineString];
+        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
+        dispatch_async(q1_main, ^{
+            [self.tableView reloadData];
+        });
+    });
+    
+    NSLog(@"goodBtn is touched");
+}
+
 //画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
     for (_cell in [self.tableView visibleCells]){
@@ -458,6 +492,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //コメントボタンのイベント
+    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
 
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -467,14 +504,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.UsersPicture.image = dotimage;
     
    
-    
-    
-    /*
-    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
-    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
-    [SVProgressHUD show];
-     */
-    
     //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
     NSURL *url = [NSURL URLWithString:text];

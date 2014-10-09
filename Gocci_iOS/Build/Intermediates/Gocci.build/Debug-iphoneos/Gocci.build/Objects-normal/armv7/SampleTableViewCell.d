@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/daikihosokawa/Desktop/Native/Gocci_iOS/Gocci/SampleTableViewCell.m \
-  /Users/daikihosokawa/Desktop/Native/Gocci_iOS/Gocci/SampleTableViewCell.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SampleTableViewCell.m \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SampleTableViewCell.h

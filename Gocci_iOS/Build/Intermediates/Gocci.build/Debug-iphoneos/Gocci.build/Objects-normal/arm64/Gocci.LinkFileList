@@ -1,54 +1,55 @@
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/CustomAnnotation.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLRequestSerialization.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLConnectionOperation.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AppDelegate.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RestaurantTableViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+GIF.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDownloaderOperation.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIButton+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLSessionManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/TimelineImageLoader.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/searchTableViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/NSData+ImageContentType.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIActivityIndicatorView+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample3TableViewCell.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/KZCameraView.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIView+WebCacheOperation.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFSecurityPolicy.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPRequestOperation.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SampleTableViewCell.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIWebView+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIAlertView+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageCompat.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+MultiFormat.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AVCamRecorder.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SVProgressHUD.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+WebP.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDImageCache.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/everyTableViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImagePrefetcher.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample2TableViewCell.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/MKAnnotationView+WebCache.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPSessionManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/ViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDecoder.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIProgressView+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+HighlightedWebCache.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AVCamUtilities.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/CaptureManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIButton+WebCache.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIRefreshControl+AFNetworking.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+WebCache.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPRequestOperationManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDownloader.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample4TableViewCell.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/LoginViewController.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/main.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFNetworkActivityIndicatorManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFNetworkReachabilityManager.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLResponseSerialization.o
-/Users/daikihosokawa/Desktop/Native/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/TimelineTableViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/CustomAnnotation.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLRequestSerialization.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLConnectionOperation.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AppDelegate.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RestaurantTableViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+GIF.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/submitViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDownloaderOperation.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIButton+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLSessionManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/TimelineImageLoader.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/searchTableViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/NSData+ImageContentType.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIActivityIndicatorView+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample3TableViewCell.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/KZCameraView.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIView+WebCacheOperation.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFSecurityPolicy.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPRequestOperation.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SampleTableViewCell.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIWebView+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIAlertView+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/NullSafe.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageCompat.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+MultiFormat.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AVCamRecorder.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SVProgressHUD.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImage+WebP.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDImageCache.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/everyTableViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImagePrefetcher.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample2TableViewCell.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/RecorderViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/MKAnnotationView+WebCache.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPSessionManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/ViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDecoder.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIProgressView+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+HighlightedWebCache.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AVCamUtilities.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/CaptureManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIButton+WebCache.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIRefreshControl+AFNetworking.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/UIImageView+WebCache.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFHTTPRequestOperationManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/SDWebImageDownloader.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/Sample4TableViewCell.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/LoginViewController.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/main.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFNetworkActivityIndicatorManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFNetworkReachabilityManager.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/AFURLResponseSerialization.o
+/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphoneos/Gocci.build/Objects-normal/arm64/TimelineTableViewController.o

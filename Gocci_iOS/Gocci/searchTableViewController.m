@@ -13,7 +13,7 @@
 #import "RestaurantTableViewController.h"
 #import "SVProgressHUD.h"
 
-@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate>
+@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate,UISearchBarDelegate>
 
 
 @property (nonatomic, retain) MKMapView *mapView;
@@ -149,14 +149,27 @@
     */
     
     //背景にイメージを追加したい
-    UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+   //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+   // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.tintColor = [UIColor darkGrayColor];
+    searchBar.placeholder = @"検索";
+    searchBar.keyboardType = UIKeyboardTypeDefault;
+    searchBar.delegate = self;
+    
+    // UINavigationBar上に、UISearchBarを追加
+    self.navigationItem.titleView = searchBar;
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+    
+    // 初期フォーカスを設定
+    //[searchBar becomeFirstResponder];
     
     locationManager = [[CLLocationManager alloc] init];
     
@@ -172,6 +185,49 @@
     } else {
         NSLog(@"Location services not available.");
     }
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [_restaddress_ removeAllObjects];
+    [_restname_ removeAllObjects];
+    [_meter_ removeAllObjects];
+    [searchBar resignFirstResponder];
+    NSString *searchText = searchBar.text;
+    //JSONをパース
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@",searchText];
+    NSLog(@"urlStringatnoulon:%@",urlString);
+    NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:encodeString];
+    NSLog(@"url:%@",url);
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"response:%@",response);
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@",jsonDic);
+    
+    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q2_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
+         // 飲食店名
+        NSArray *restname = [jsonDic valueForKey:@"restname"];
+        _restname_ = [restname mutableCopy];
+        // 店舗カテゴリー
+        NSArray *category = [jsonDic valueForKey:@"category"];
+        _category_ = [category mutableCopy];
+        // 距離
+        NSArray *meter = [jsonDic valueForKey:@"distance"];
+        _meter_ = [meter mutableCopy];
+        // 店舗住所
+        NSArray *restaddress = [jsonDic valueForKey:@"locality"];
+        _restaddress_ = [restaddress mutableCopy];
+                dispatch_async(q2_main, ^{
+        [self.tableView reloadData];//テーブルの更新
+        });
+    });
+
 }
 
 // 位置情報更新時
@@ -252,11 +308,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
-{
-    // UISearchBar からフォーカスを外します。
-    [searchBar resignFirstResponder];
-}
+
 
 #pragma mark - Table view data source
 
@@ -271,7 +323,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 30;
+    return [_restname_ count];
 }
 
 
