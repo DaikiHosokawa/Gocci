@@ -10,10 +10,12 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
+#import "EDStarRating.h"
 @protocol submitViewControllerDelegate;
 
 
-@interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate>
+@interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate,EDStarRatingProtocol
+>
 
 {
     

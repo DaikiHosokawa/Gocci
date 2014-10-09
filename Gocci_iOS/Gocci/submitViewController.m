@@ -9,18 +9,23 @@
 #import "submitViewController.h"
 #import "CaptureManager.h"
 #import "AppDelegate.h"
+#import "EDStarRating.h"
 
 @interface submitViewController ()<UITextViewDelegate>
 
 - (IBAction)submitFacebook:(UIButton *)sender;
 - (IBAction)submitTwitter:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet EDStarRating *starRatingImage;
 @property NSString *text;
 @property UITextView *textView;
 @property NSMutableString *str;
 
+
 @end
 
 @implementation submitViewController
+@synthesize starRatingImage = _starRatingImage;
 
 //テキストビューの文字数宣言
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -83,7 +88,47 @@
     _textView.clipsToBounds = YES;
     _textView.layer.cornerRadius = 10.0f;
     
+    // Setup control using image
+    //_starRatingImage.backgroundImage=[UIImage imageNamed:@"starsbackground iOS.png"];
+    _starRatingImage.starImage = [UIImage imageNamed:@"star.png"];
+    _starRatingImage.starHighlightedImage = [UIImage imageNamed:@"starhighlighted.png"];
+    _starRatingImage.maxRating = 5.0;
+    _starRatingImage.delegate = self;
+    _starRatingImage.horizontalMargin = 12;
+    _starRatingImage.editable=YES;
+    _starRatingImage.rating= 2.5;
+    _starRatingImage.displayMode=EDStarRatingDisplayAccurate;
+    [self starsSelectionChanged:_starRatingImage rating:2.5];
+    // This one will use the returnBlock instead of the delegate
+    _starRatingImage.returnBlock = ^(float rating )
+    {
+        NSLog(@"ReturnBlock: Star rating changed to %.1f", rating);
+        // For the sample, Just reuse the other control's delegate method and call it
+        [self starsSelectionChanged:_starRatingImage rating:rating];
+    };
+
+    
 }
+
+-(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating
+{
+    NSString *ratingString = [NSString stringWithFormat:@"Rating: %.1f", rating];
+    /*
+    if( [control isEqual:_starRating] )
+        _starRatingLabel.text = ratingString;
+    else
+        _starRatingImageLabel.text = ratingString;
+    */
+    NSLog(@"ratingString:%@",ratingString);
+}
+
+- (void)viewDidUnload
+{
+    [self setStarRatingImage:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

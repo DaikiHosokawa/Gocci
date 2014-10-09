@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *meter;
 @property (weak, nonatomic) SampleTableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+@property (weak, nonatomic) IBOutlet UILabel *categoryname;
 
 @end

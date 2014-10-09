@@ -1,6 +1,7 @@
 dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.m \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/EDStarRating/EDStarRating.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/VideoRecorder/AVCam/CaptureManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AppDelegate.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/FacebookSDK.framework/Headers/FacebookSDK.h \

@@ -21,6 +21,7 @@
 		FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E562191E0731007C34F7 /* everyTableViewController.m */; };
 		FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */; };
 		FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CB719E60F0200AEB06E /* NullSafe.m */; };
+		FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBB19E62D1200AEB06E /* EDStarRating.m */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -128,6 +129,8 @@
 		FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		FF217CB719E60F0200AEB06E /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		FF217CBA19E62D1200AEB06E /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
+		FF217CBB19E62D1200AEB06E /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -318,6 +321,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF217CB919E62D1200AEB06E /* EDStarRating */ = {
+			isa = PBXGroup;
+			children = (
+				FF217CBA19E62D1200AEB06E /* EDStarRating.h */,
+				FF217CBB19E62D1200AEB06E /* EDStarRating.m */,
+			);
+			path = EDStarRating;
+			sourceTree = "<group>";
+		};
 		FF41DF4019BAF42100F3DD7B /* CrittercismSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +446,7 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF217CB919E62D1200AEB06E /* EDStarRating */,
 				FF5DDF5119E3D3C2000F2ABD /* SDWebImage */,
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
 				FFA0E2C919AEC0DF006269B4 /* UIKit+AFNetworking */,
@@ -751,6 +764,7 @@
 				FF5DDF7719E3D3C2000F2ABD /* SDWebImageDecoder.m in Sources */,
 				FFA0E2E019AEC0DF006269B4 /* UIProgressView+AFNetworking.m in Sources */,
 				FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */,
+				FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */,
 				FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */,
 				FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */,
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,

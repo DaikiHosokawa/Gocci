@@ -163,6 +163,7 @@
     searchBar.placeholder = @"検索";
     searchBar.keyboardType = UIKeyboardTypeDefault;
     searchBar.delegate = self;
+
     
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = searchBar;
@@ -296,7 +297,7 @@
 //テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 81.0;
+    return 85.0;
 }
 
 
@@ -335,6 +336,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
     _cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
     _cell.meter.textAlignment = NSTextAlignmentRight;
+    _cell.categoryname.text = [_category_ objectAtIndex:indexPath.row];
     // イベントを付ける
     [_cell.selectBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     

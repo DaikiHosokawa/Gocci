@@ -16,6 +16,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/RecorderViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/VideoRecorder/KZCameraView.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/EDStarRating/EDStarRating.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/searchTableViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/everyTableViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample4TableViewCell.h \

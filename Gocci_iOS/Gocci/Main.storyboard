@@ -293,7 +293,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-KM-a5P">
-                                <rect key="frame" x="28" y="102" width="264" height="155"/>
+                                <rect key="frame" x="28" y="64" width="264" height="155"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -312,6 +312,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="character3" translatesAutoresizingMaskIntoConstraints="NO" id="2zX-l8-dyd">
                                 <rect key="frame" x="192" y="398" width="100" height="101"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMD-bh-uat" customClass="EDStarRating">
+                                <rect key="frame" x="34" y="234" width="252" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -320,6 +324,7 @@
                     <connections>
                         <outlet property="_facebookBtn" destination="8fM-0Y-csX" id="Oez-sR-v69"/>
                         <outlet property="_twitterBtn" destination="ZPl-oK-SoY" id="WoQ-Xw-TmG"/>
+                        <outlet property="starRatingImage" destination="rMD-bh-uat" id="aXy-l3-Lye"/>
                         <outlet property="textView" destination="pZ5-KM-a5P" id="7OB-hs-u6Y"/>
                         <segue destination="eNe-5a-Fw9" kind="push" identifier="gobackTimeline" id="1zK-cZ-5jM"/>
                     </connections>
@@ -340,7 +345,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-WF-A89">
+                                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_login kirinuki" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-WF-A89">
                                     <rect key="frame" x="0.0" y="0.0" width="328" height="93"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lc-MB-8WW">
@@ -366,6 +371,15 @@
                                     </state>
                                     <connections>
                                         <segue destination="0Fg-hc-FSn" kind="push" id="bdT-GQ-5el"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAQ-TD-xRQ">
+                                    <rect key="frame" x="20" y="0.0" width="46" height="30"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <segue destination="3H1-41-IX9" kind="push" id="rqZ-Du-fwf"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -478,6 +492,7 @@
         <image name="facebook kirinuki" width="1155" height="232"/>
         <image name="fb_share" width="400" height="50"/>
         <image name="gradation" width="640" height="225"/>
+        <image name="ic_login kirinuki" width="328" height="93"/>
         <image name="login" width="230" height="359"/>
         <image name="logo-1" width="894" height="208"/>
         <image name="toukou" width="512" height="512"/>
@@ -490,8 +505,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7nL-qp-VeJ"/>
+        <segue reference="1zK-cZ-5jM"/>
+        <segue reference="rqZ-Du-fwf"/>
         <segue reference="f3u-aJ-P1h"/>
-        <segue reference="ogp-a2-6SY"/>
+        <segue reference="7nL-qp-VeJ"/>
     </inferredMetricsTieBreakers>
 </document>

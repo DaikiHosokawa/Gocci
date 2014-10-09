@@ -12,6 +12,7 @@
 @synthesize restaurantAddress;
 @synthesize restaurantName;
 @synthesize meter;
+@synthesize categoryname;
 
 - (void)dealloc
 {
