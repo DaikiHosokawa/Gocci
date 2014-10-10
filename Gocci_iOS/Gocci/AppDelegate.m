@@ -59,19 +59,96 @@
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
     
+    // CLLocationManagerのインスタンスを作成
+    locationManager = [[CLLocationManager alloc] init];
+    // iOS8の対応
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+        
+        // 位置情報測位の許可を求めるメッセージを表示する
+        [locationManager requestAlwaysAuthorization]; // 常に許可
+        // [self.locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
+        
+    } else { // iOS7以前
+        
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 20;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+        
+        // 位置測位スタート
+        [locationManager startUpdatingLocation];
+    }
+    
 
     return YES;
 }
 
-
-
-
-
-- (void)applicationWillResignActive:(UIApplication *)application
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    CLLocation *newLocation = [locations lastObject];
+    // 位置情報を取り出す
+    //緯度
+    latitude = newLocation.coordinate.latitude;
+    //経度
+    longitude = newLocation.coordinate.longitude;
+    _lat = [NSString stringWithFormat:@"%f", latitude];
+    _lon = [NSString stringWithFormat:@"%f", longitude];
+    NSLog(@"lat:%@",_lat);
+    NSLog(@"lon:%@",_lon);
+    [locationManager stopUpdatingLocation];
 }
+
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{//iOS8対応
+    if (status == kCLAuthorizationStatusAuthorizedAlways ||
+        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        // 位置測位スタート
+        [locationManager startUpdatingLocation];
+        
+        if (status == kCLAuthorizationStatusNotDetermined) {
+            // ユーザが位置情報の使用を許可していない
+            [locationManager requestAlwaysAuthorization]; // 常に許可
+        }
+        
+    }
+}
+
+-(void) onResume {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager startUpdatingLocation]; //測位再開
+}
+
+-(void) onPause {
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager stopUpdatingLocation]; //測位停止
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"applicationWillResignActive");
+    [self onPause];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    [self onResume];
+    // Facebook
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
+}
+
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -84,11 +161,6 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Facebook
-    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

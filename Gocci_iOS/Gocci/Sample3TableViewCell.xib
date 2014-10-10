@@ -69,6 +69,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptb-Xc-96Y">
+                                <rect key="frame" x="72" y="117" width="145" height="234"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQb-Yh-mFu">
                                 <rect key="frame" x="219" y="424" width="46" height="38"/>
                                 <state key="normal" image="icon heart inv">
@@ -128,6 +131,7 @@
                 <outlet property="contentViewFront" destination="AH0-pM-xpX" id="kwp-vq-htG"/>
                 <outlet property="goodBtn" destination="nQb-Yh-mFu" id="WPg-kI-cbQ"/>
                 <outlet property="movieView" destination="gY8-Qf-aIt" id="6GM-pk-KWl"/>
+                <outlet property="thumbnailView" destination="ptb-Xc-96Y" id="8Cx-km-SA3"/>
             </connections>
             <point key="canvasLocation" x="140" y="148"/>
         </tableViewCell>

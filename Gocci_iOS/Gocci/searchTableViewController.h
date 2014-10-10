@@ -16,7 +16,6 @@
     NSString *_postRestName;
     NSString *_headerLocality;
     CLLocationManager *locationManager;
-    double latitude, longitude; // 取得した緯度経度
     CLLocationCoordinate2D coordinate;
     NSString *annotationTitle;
     NSString *annotationSubtitle;
@@ -27,8 +26,6 @@
 
 @property (nonatomic) NSString *headerLocality;
 @property (nonatomic) NSString *postRestName;
-@property (nonatomic, retain) NSString *lat;
-@property (nonatomic, retain) NSString *lon;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @end
 

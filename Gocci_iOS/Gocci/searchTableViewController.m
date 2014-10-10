@@ -12,6 +12,7 @@
 #import "SampleTableViewCell.h"
 #import "RestaurantTableViewController.h"
 #import "SVProgressHUD.h"
+#import "AppDelegate.h"
 
 @interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate,UISearchBarDelegate>
 
@@ -26,15 +27,13 @@
 @property (nonatomic, retain) NSString *nowlat_;
 @property (nonatomic, retain) NSString *nowlon_;
 @property (nonatomic, copy) SampleTableViewCell *cell;
+@property (nonatomic, copy) UISearchBar *searchBar;
 
 @end
 
 @implementation SearchTableViewController
 
 @synthesize locationManager;
-@synthesize lat;
-@synthesize lon;
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,9 +46,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    
+    _searchBar.text = NULL;
+    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",lat,lon];
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -81,6 +81,7 @@
     NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
     _jsonlon_ = [jsonlon mutableCopy];
         dispatch_async(q2_main, ^{
+            [self.tableView reloadData];
         });
     });
     
@@ -105,8 +106,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager stopUpdatingLocation]; //測位停止
 }
 
 - (void)viewDidLoad
@@ -130,24 +129,7 @@
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
-    
-    
-   /*
-    //サーチバーの作成
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.tintColor = [UIColor blackColor];
-    searchBar.placeholder = @"キーワードを入力して下さい";
-    searchBar.keyboardType = UIKeyboardTypeDefault;
-    searchBar.delegate = self;
-    searchBar.showsSearchResultsButton = YES;
-    searchBar.searchBarStyle = UISearchBarStyleProminent;
-    
-    // UINavigationBar上に、UISearchBarを追加
-    self.navigationItem.titleView = searchBar;
-    self.navigationItem.titleView.frame = CGRectMake(0, 0   , 0, 0);
-    [self.view addSubview: searchBar];
-    */
-    
+
     //背景にイメージを追加したい
    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
    // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
@@ -158,15 +140,15 @@
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.tintColor = [UIColor darkGrayColor];
-    searchBar.placeholder = @"検索";
-    searchBar.keyboardType = UIKeyboardTypeDefault;
-    searchBar.delegate = self;
+    _searchBar = [[UISearchBar alloc] init];
+    _searchBar.tintColor = [UIColor darkGrayColor];
+    _searchBar.placeholder = @"検索";
+    _searchBar.keyboardType = UIKeyboardTypeDefault;
+    _searchBar.delegate = self;
 
     
     // UINavigationBar上に、UISearchBarを追加
-    self.navigationItem.titleView = searchBar;
+    self.navigationItem.titleView = _searchBar;
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
     
     // 初期フォーカスを設定
@@ -174,18 +156,6 @@
     
     locationManager = [[CLLocationManager alloc] init];
     
-    // 位置情報サービスが利用できるかどうかをチェック
-    if ([CLLocationManager locationServicesEnabled]) {
-        locationManager.delegate = self; // ……【1】
-        // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
-        // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 測位開始
-        [locationManager startUpdatingLocation];
-    } else {
-        NSLog(@"Location services not available.");
-    }
 }
 
 
@@ -194,8 +164,9 @@
     [_restaddress_ removeAllObjects];
     [_restname_ removeAllObjects];
     [_meter_ removeAllObjects];
-    [searchBar resignFirstResponder];
-    NSString *searchText = searchBar.text;
+    [_category_ removeAllObjects];
+    [_searchBar resignFirstResponder];
+    NSString *searchText = _searchBar.text;
     //JSONをパース
     NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@",searchText];
     NSLog(@"urlStringatnoulon:%@",urlString);
@@ -229,49 +200,6 @@
         });
     });
 
-}
-
-// 位置情報更新時
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-    
-    // 位置情報を取り出す
-    longitude = newLocation.coordinate.longitude;
-    // doubleを文字列に変換
-    _nowlon_ = [NSString stringWithFormat:@"%f", longitude];
-    NSLog(@"nowlon:%@",_nowlon_);
-    latitude = newLocation.coordinate.latitude;
-    // doubleを文字列に変換
-    _nowlat_ = [NSString stringWithFormat:@"%f", latitude];
-    NSLog(@"nowlon:%@",_nowlat_);
-  }
-
- 
-// 測位失敗時や、5位置情報の利用をユーザーが「不許可」とした場合などに呼ばれる
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error{
-    NSLog(@"didFailWithError");
-}
-
--(void) onResume {
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
-}
-
--(void) onPause {
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager stopUpdatingLocation]; //測位停止
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"applicationWillResignActive");
-    [self onPause];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"applicationDidBecomeActive");
-    [self onResume];
 }
 
 

@@ -23,8 +23,6 @@
 @interface TimelineTableViewController ()<CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
-@property (nonatomic, retain) NSString *lat;
-@property (nonatomic, retain) NSString *lon;
 @property (nonatomic, retain) NSMutableArray *restname_;
 @property (nonatomic, retain) NSMutableArray *goodnum_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
@@ -176,98 +174,8 @@
     self.tableView.bounces = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    self.locationManager = [[CLLocationManager alloc] init];
     
- // iOS8の対応
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
-        self.locationManager.delegate = self;
-        // 更新頻度(メートル)
-        self.locationManager.distanceFilter = 20;
-        // 取得精度
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 測位開始
-        [self.locationManager startUpdatingLocation];
-
-        // 位置情報測位の許可を求めるメッセージを表示する
-        [self.locationManager requestAlwaysAuthorization]; // 常に許可
-       // [self.locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
-        
-    } else { // iOS7以前
-        
-        self.locationManager.delegate = self;
-        // 更新頻度(メートル)
-        self.locationManager.distanceFilter = 20;
-        // 取得精度
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 測位開始
-        [self.locationManager startUpdatingLocation];
-
-        // 位置測位スタート
-        [self.locationManager startUpdatingLocation];
-    }
 }
-
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *newLocation = [locations lastObject];
-    // 位置情報を取り出す
-    //緯度
-    latitude = newLocation.coordinate.latitude;
-    //経度
-    longitude = newLocation.coordinate.longitude;
-    _lat = [NSString stringWithFormat:@"%f", latitude];
-    _lon = [NSString stringWithFormat:@"%f", longitude];
-    NSLog(@"lat:%@",_lat);
-    NSLog(@"lon:%@",_lon);
-    [self.locationManager stopUpdatingLocation];
-}
-
-
-- (void)locationManager:(CLLocationManager *)manager
-didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{//iOS8対応
-    if (status == kCLAuthorizationStatusAuthorizedAlways ||
-        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        // 位置測位スタート
-        [self.locationManager startUpdatingLocation];
-        
-        if (status == kCLAuthorizationStatusNotDetermined) {
-            // ユーザが位置情報の使用を許可していない
-            [self.locationManager requestAlwaysAuthorization]; // 常に許可
-        }
-        
-    }
-}
-
-
--(void) onResume {
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
-}
-
--(void) onPause {
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager stopUpdatingLocation]; //測位停止
-}
-
-
-- (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    [moviePlayer play];
-}
-
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"applicationWillResignActive");
-    [self onPause];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"applicationDidBecomeActive");
-    [self onResume];
-}
-
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -359,14 +267,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-
-    
-    /*
-    // Configure the cell...
-    [_cell.thumbnailView setImageWithURL:[NSURL URLWithString:[_thumbnail_ objectAtIndex:indexPath.row]]
-                   placeholderImage:[UIImage imageNamed:@"character.png"]];
-     */
-    
     
     //サムネイル画像の追加
     NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
@@ -440,7 +340,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-   
+    [_user_name_ removeAllObjects];
+    [_restname_ removeAllObjects];
+    [_picture_ removeAllObjects];
+    [_goodnum_ removeAllObjects];
+    [_starnum_ removeAllObjects];
+    [_commentnum_ removeAllObjects];
+    [_thumbnail_ removeAllObjects];
+    [_movie_ removeAllObjects];
+    [_review_ removeAllObjects];
     //削除ボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
@@ -466,6 +374,35 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
         NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
+        // ユーザー名
+        NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+        _user_name_ = [user_name mutableCopy];
+        // プロフ画像
+        NSArray *picture = [jsonDic valueForKey:@"picture"];
+        _picture_ = [picture mutableCopy];
+        // 動画URL
+        NSArray *movie = [jsonDic valueForKey:@"movie"];
+        _movie_ = [movie mutableCopy];
+        //いいね数
+        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+        _goodnum_ = [goodnum mutableCopy];
+        //レストラン名
+        NSArray *restname = [jsonDic valueForKey:@"restname"];
+        _restname_ = [restname mutableCopy];
+        //コメント数
+        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
+        _commentnum_ = [commentnum mutableCopy];
+        NSLog(@"commentnum:%@",commentnum);
+        //スターの数
+        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+        _starnum_ = [starnum mutableCopy];
+        NSLog(@"commentnum:%@",starnum);
+        
+        //サムネイル
+        NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
+        _thumbnail_ = [thumbnail mutableCopy];
+        NSLog(@"thumbnail:%@",thumbnail);
+        
         dispatch_async(q1_main, ^{
             [self.tableView reloadData];
         });
@@ -550,19 +487,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-   
-    if ([[segue identifier] isEqualToString:@"searchSegue"]){
-        SearchTableViewController *seaVC = [segue destinationViewController];
-        seaVC.lon = _lon;
-        seaVC.lat = _lat;
-    }
-    //2つ目の画面にパラメータを渡して遷移する
+     //2つ目の画面にパラメータを渡して遷移する
     if ([segue.identifier isEqualToString:@"showDetail2"]) {
         //ここでパラメータを渡す
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = _postID;
     }
     
+}
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    [moviePlayer play];
 }
 
 

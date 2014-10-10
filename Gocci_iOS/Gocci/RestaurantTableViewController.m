@@ -110,6 +110,10 @@
     // 動画post_id
     NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
     _starnum_ = [starnum mutableCopy];
+    //サムネイル
+    NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
+    _starnum_ = [thumbnail mutableCopy];
+
         //コメント数
         NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
         _commentnum_ = [commentnum mutableCopy];
