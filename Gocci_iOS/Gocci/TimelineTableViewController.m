@@ -15,7 +15,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 
 @protocol MovieViewDelegate;
@@ -220,7 +220,7 @@
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [self updateVisibleCells];
-   
+    _thumbnailView.hidden = YES;
     [moviePlayer play];
 }
 
@@ -268,6 +268,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+    /*
     //サムネイル画像の追加
     NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
     NSURL *thumbnailurl = [NSURL URLWithString:URLString];
@@ -278,6 +279,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_thumbnailView setFrame:frame2];
     [_cell.thumbnailView addSubview:_thumbnailView];
     [_cell.movieView bringSubviewToFront:_thumbnailView];
+     */
      
         // セルの更新
         [self updateCell:_cell atIndexPath:indexPath];
@@ -441,10 +443,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                   placeholderImage:[UIImage imageNamed:@"user-icon.png"]];
     
    
     //動画再生
@@ -476,7 +477,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
-        _thumbnailView.hidden = YES;
     }
 }
 
