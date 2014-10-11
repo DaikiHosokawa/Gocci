@@ -131,6 +131,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+    /*
     //投稿が0の時の画面表示
     if([_movie_ count] == 0){
         
@@ -147,6 +148,7 @@
         [self.view addSubview:imageView];
         
     }
+     */
     
     // Return the number of rows in the section.
     return [_movie_ count];

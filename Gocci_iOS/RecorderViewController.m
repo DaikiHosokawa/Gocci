@@ -42,7 +42,7 @@ static const NSInteger thirdAlertTag = 3;
     [[AVAudioSession sharedInstance] setActive: NO error:&activationError];
     
     //カメラのスペース確保
-    _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
+    _cam = [[KZCameraView alloc]initWithFrame:self.view.frame withVideoPreviewFrame:CGRectMake(50.0, 0.0, 320.0, 320.0)];
     [self.view addSubview:_cam];
     _cam.maxDuration = 6.0;
     _cam.showCameraSwitch = YES;

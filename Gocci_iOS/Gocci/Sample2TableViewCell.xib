@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2v-AI-3pz">
-                        <rect key="frame" x="15" y="20" width="289" height="468"/>
+                        <rect key="frame" x="15" y="21" width="289" height="468"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user-icon" translatesAutoresizingMaskIntoConstraints="NO" id="PIe-Le-KZz">
                                 <rect key="frame" x="15" y="311" width="44" height="44"/>
@@ -108,17 +108,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvF-eR-Lrl">
-                                <rect key="frame" x="245" y="311" width="35" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="×">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="starhighlighted" translatesAutoresizingMaskIntoConstraints="NO" id="1g3-Vs-XmZ">
-                                <rect key="frame" x="172" y="385" width="24" height="30"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEa-6s-h8K">
                                 <rect key="frame" x="204" y="385" width="31" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -128,6 +117,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value="NSTextAlignmentLeft" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hosi23" translatesAutoresizingMaskIntoConstraints="NO" id="1g3-Vs-XmZ">
+                                <rect key="frame" x="175" y="385" width="27" height="30"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -157,19 +149,18 @@
                 <outlet property="UsersPicture" destination="PIe-Le-KZz" id="OaQ-2D-FVd"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
-                <outlet property="deleteBtn" destination="VvF-eR-Lrl" id="g4u-O9-lJ7"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="QjG-4Q-EaJ"/>
                 <outlet property="movieView" destination="gzb-vT-NKm" id="UhF-q5-km2"/>
                 <outlet property="thumbnailView" destination="g4e-05-ckf" id="sm1-KM-rf2"/>
             </connections>
-            <point key="canvasLocation" x="449" y="230"/>
+            <point key="canvasLocation" x="449" y="228"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="character" width="1024" height="1024"/>
+        <image name="hosi23" width="23" height="22"/>
         <image name="hukidasi" width="512" height="512"/>
         <image name="icon heart inv" width="512" height="512"/>
-        <image name="starhighlighted" width="16" height="16"/>
         <image name="user-icon" width="79" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -245,7 +245,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_movie_ count];
+    return [_restname_ count];
 }
 
 
@@ -340,7 +340,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"goodBtn is touched");
 }
-
+/*
 - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
     [_user_name_ removeAllObjects];
     [_restname_ removeAllObjects];
@@ -412,6 +412,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"goodBtn is touched");
 }
+ */
 
 //画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
@@ -439,13 +440,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //コメントボタンのイベント
-    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+   // [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
 
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                   placeholderImage:[UIImage imageNamed:@"user-icon.png"]];
+                   placeholderImage:[UIImage imageNamed:@"default.png"]];
     
    
     //動画再生

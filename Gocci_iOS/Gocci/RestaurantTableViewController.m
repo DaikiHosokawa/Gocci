@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
+@property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, copy) Sample3TableViewCell *cell;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
@@ -112,7 +113,7 @@
     _starnum_ = [starnum mutableCopy];
     //サムネイル
     NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
-    _starnum_ = [thumbnail mutableCopy];
+    _thumbnail_ = [thumbnail mutableCopy];
 
         //コメント数
         NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
@@ -186,7 +187,7 @@
         NSLog(@"投稿がありません。");
         
         // UIImageViewの初期化
-        CGRect rect = CGRectMake(30, 150, 250, 250);
+        CGRect rect = CGRectMake(30, 150, 250, 285);
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
         
         // 画像の読み込み

@@ -39,6 +39,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 @property (nonatomic, strong) UILabel *focusModeLabel;
 
 @property (nonatomic, strong) UIImageView *start;
+@property (nonatomic, strong) UIImageView *start2;
 
 //Exporting progress
 @property (nonatomic,strong) UIView *progressView;
@@ -112,7 +113,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 });
                 
                 //set record button image. Replace with any image
-                UIImage *recordImage = [UIImage imageNamed:@"rec ver last 10"];
+                UIImage *recordImage = [UIImage imageNamed:@"rokuga button350"];
                 self.start = [[UIImageView alloc]initWithImage:recordImage];
                 self.start.bounds = CGRectMake(0.0, 0.0, recordImage.size.width/2.5, recordImage.size.height/2.5);
                 self.start.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/1.8);
@@ -125,6 +126,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 [self.start addGestureRecognizer:longPress];
             
                 self.durationProgressBar = [[UIProgressView alloc]initWithFrame:CGRectMake(0.0, videoFrame.origin.y + videoFrame.size.height+62, videoFrame.size.width, 10.0)];
+                //高さを帰る
                 self.durationProgressBar.transform = CGAffineTransformMakeScale(1.0, 10.0);//縦に15倍に引き伸ばす
                 self.durationProgressBar.progressTintColor = [ UIColor redColor];
             
@@ -266,6 +268,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 
 - (IBAction)startRecording:(UILongPressGestureRecognizer*)recognizer
 {
+
     switch (recognizer.state)
     {
         case UIGestureRecognizerStateBegan:
@@ -302,6 +305,8 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 {
     if ([[[self captureManager] recorder] isRecording])
     {
+    
+        
          self.duration = self.duration + 0.1;
         self.durationProgressBar.progress = self.duration/self.maxDuration;
         NSLog(@"self.duration %f, self.progressBar %f", self.duration, self.durationProgressBar.progress);
@@ -309,6 +314,8 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
             [self.durationTimer invalidate];
             self.durationTimer = nil;
             [[self captureManager] stopRecording];
+          
+         
         }
     }
     else
@@ -491,6 +498,12 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 
 - (void)captureManagerRecordingBegan:(CaptureManager *)captureManager
 {
+    UIImage *recordImage = [UIImage imageNamed:@"rokuga button aka350"];
+    self.start2 = [[UIImageView alloc]initWithImage:recordImage];
+    self.start2.bounds = CGRectMake(0.0, 0.0, recordImage.size.width/2.5, recordImage.size.height/2.5);
+    self.start2.center = CGPointMake(self.frame.size.width/2, self.videoPreviewView.frame.size.height + (self.frame.size.height - self.videoPreviewView.frame.size.height)/1.8);
+    self.start2.userInteractionEnabled = YES;
+    [self addSubview:self.start2];
     self.videoPreviewView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.videoPreviewView.layer.borderWidth = 2.0;
     self.durationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateDuration) userInfo:nil repeats:YES];
@@ -499,6 +512,8 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 - (void)captureManagerRecordingFinished:(CaptureManager *)captureManager
 {
    //Do something
+    [self.start2 removeFromSuperview];
+
 }
 
 - (void)captureManagerDeviceConfigurationChanged:(CaptureManager *)captureManager

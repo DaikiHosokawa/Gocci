@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSString *nowlon_;
 @property (nonatomic, copy) SampleTableViewCell *cell;
 @property (nonatomic, copy) UISearchBar *searchBar;
+@property (nonatomic, copy) UILabel *dontexist;
 
 @end
 
@@ -166,6 +167,7 @@
     [_meter_ removeAllObjects];
     [_category_ removeAllObjects];
     [_searchBar resignFirstResponder];
+    _dontexist.text = NULL;
     NSString *searchText = _searchBar.text;
     //JSONをパース
     NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@",searchText];
@@ -197,6 +199,21 @@
         _restaddress_ = [restaddress mutableCopy];
                 dispatch_async(q2_main, ^{
         [self.tableView reloadData];//テーブルの更新
+                    //投稿が0の時の画面表示
+                    if([_restname_ count] == 0){
+                        
+                        NSLog(@"投稿がありません。");
+                        
+                        // UIImageViewの初期化
+                        _dontexist = [[UILabel alloc] init];
+                        _dontexist.frame = CGRectMake(30, 200, 250, 280);
+                        [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
+                        _dontexist.numberOfLines = 3;
+                        _dontexist.textAlignment = NSTextAlignmentLeft;
+                        [self.view addSubview:_dontexist];
+                        
+                        
+                    }
         });
     });
 
@@ -253,6 +270,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     // Return the number of rows in the section.
     return [_restname_ count];
+    
 }
 
 

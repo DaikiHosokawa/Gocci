@@ -91,8 +91,8 @@
     
     // Setup control using image
     //_starRatingImage.backgroundImage=[UIImage imageNamed:@"starsbackground iOS.png"];
-    _starRatingImage.starImage = [UIImage imageNamed:@"star.png"];
-    _starRatingImage.starHighlightedImage = [UIImage imageNamed:@"starhighlighted.png"];
+    _starRatingImage.starImage = [UIImage imageNamed:@"hosi nasi23.png"];
+    _starRatingImage.starHighlightedImage = [UIImage imageNamed:@"hosi23.png"];
     _starRatingImage.maxRating = 5.0;
     _starRatingImage.delegate = self;
     _starRatingImage.horizontalMargin = 12;
