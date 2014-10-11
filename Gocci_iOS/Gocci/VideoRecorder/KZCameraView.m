@@ -122,6 +122,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                 
                 //Record Long Press Gesture on the record button
                 UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(startRecording:)];
+                longPress.minimumPressDuration = 0.0;
                 [longPress setDelegate:self];
                 [self.start addGestureRecognizer:longPress];
             

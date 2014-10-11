@@ -11,7 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "TimelineTableViewController.h"
 #import "SVProgressHUD.h"
-
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 - (IBAction)pushFacebook:(UIButton *)sender;
@@ -136,6 +136,8 @@
                                                         NSString *email = [[account valueForKey:@"properties"]  objectForKey:@"ACUIDisplayUsername"];
                                                         NSLog(@"email:%@",email);
                                                         NSString *fullname = [[account valueForKey:@"properties"]  objectForKey:@"ACPropertyFullName"];
+                                                        AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+                                                        logindelegate.username = fullname;
                                                         NSLog(@"fullname:%@",fullname);
                                                         NSString *uid = [[account valueForKey:@"properties"] objectForKey:@"uid"];
                                                         NSLog(@"uid:%@",uid);

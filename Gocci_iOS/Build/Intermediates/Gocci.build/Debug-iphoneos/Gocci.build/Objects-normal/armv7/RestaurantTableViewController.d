@@ -61,4 +61,10 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/everyTableViewController.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample4TableViewCell.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample4TableViewCell.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageCompat.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageOperation.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloader.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.h

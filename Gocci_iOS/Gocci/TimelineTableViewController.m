@@ -88,6 +88,11 @@
     _starnum_ = [starnum mutableCopy];
     NSLog(@"commentnum:%@",starnum);
         
+        // 動画post_id
+        NSArray *postid = [jsonDic valueForKey:@"post_id"];
+        _postid_ = [postid mutableCopy];
+        NSLog(@"postid:%@",_postid_);
+        
     //サムネイル
     NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
     _thumbnail_ = [thumbnail mutableCopy];
@@ -96,7 +101,7 @@
         });
     });
 
-        
+     /*
     //JSONをパース
     NSString *postidString = [NSString stringWithFormat:@"https://codelecture.com/gocci/postid.php"];
     NSURL *postidurl = [NSURL URLWithString:postidString];
@@ -110,10 +115,11 @@
     // 動画post_id
     NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
     _postid_ = [postid mutableCopy];
+    NSLog(@"postid:%@",_postid_);
         dispatch_async(q1_main, ^{
         });
     });
-
+  */
         
     //JSONをパース
     NSString *reviewString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/submit.php"];

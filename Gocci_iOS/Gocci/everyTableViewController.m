@@ -10,6 +10,7 @@
 #import "TimelineTableViewController.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
+#import "UIImageView+WebCache.h"
 
 @interface everyTableViewController ()
 @property (nonatomic, retain) NSMutableArray *picture_;
@@ -373,12 +374,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Comment.textAlignment = NSTextAlignmentLeft;
     _cell.Comment.numberOfLines = 2;
     
-    //文字を取得
+    if([_picture_ objectAtIndex:indexPath.row] != nil){
+    //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
+    }
     
     return _cell;
 }

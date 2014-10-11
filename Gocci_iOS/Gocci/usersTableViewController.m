@@ -10,6 +10,8 @@
 #import "Sample5TableViewCell.h"
 #import "SVProgressHUD.h"
 #import "everyTableViewController.h"
+#import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
 
 @interface usersTableViewController ()
 
@@ -31,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
@@ -65,7 +68,6 @@
     NSError *error=nil;
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableLeaves error:&error];
-    NSLog(@"jsonDic:%@", jsonDic);
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -78,14 +80,10 @@
         // 動画URL
         NSArray *movie = [jsonDic valueForKey:@"movie"];
         _movie_ = [movie mutableCopy];
-        NSLog(@"movie:%@",_movie_);
         // 住所
         NSArray *locality = [jsonDic valueForKey:@"locality"];
         _locality_ = [locality mutableCopy];
-        //レビュー
-        NSArray *review = [jsonDic valueForKey:@"review"];
-        _review_ = [review mutableCopy];
-        
+      
         //いいね数
         NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
         _goodnum_ = [goodnum mutableCopy];
@@ -102,11 +100,28 @@
         //コメント数
         NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
         _commentnum_ = [commentnum mutableCopy];
-        NSLog(@"commentnum:%@",commentnum);
         
         dispatch_async(q_main, ^{
         });
     });
+    
+    AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
+    
+    //JSONをパース
+    NSString *urlString2 = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/user_review.php?user_name=%@",logindelegate2.username];
+    NSLog(@"restpage:%@",urlString2);
+    NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error2=nil;
+    NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
+                                                            options:NSJSONReadingMutableLeaves error:&error2];
+    NSLog(@"jsonDic:%@", jsonDic2);
+    //レビュー
+    NSArray *review = [jsonDic2 valueForKey:@"review"];
+    _review_ = [review mutableCopy];
+    
+    
     [self updateVisibleCells];
     [SVProgressHUD dismiss];
 }
@@ -334,11 +349,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
-    
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];

@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SVProgressHUD.h"
 #import "everyTableViewController.h"
+#import "UIImageView+WebCache.h"
 
 @protocol MovieViewDelegate;
 
@@ -292,8 +293,6 @@
 }
 
 
-
-
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -413,10 +412,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    NSURL *doturl = [NSURL URLWithString:dottext];
-    NSData *data = [NSData dataWithContentsOfURL:doturl];
-    UIImage *dotimage = [[UIImage alloc] initWithData:data];
-    _cell.UsersPicture.image = dotimage;
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     
     //動画再生
