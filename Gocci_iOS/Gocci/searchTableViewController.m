@@ -169,8 +169,9 @@
     [_searchBar resignFirstResponder];
     _dontexist.text = NULL;
     NSString *searchText = _searchBar.text;
+    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@",searchText];
+    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
     NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:encodeString];
