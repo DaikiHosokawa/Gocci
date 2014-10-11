@@ -16,6 +16,7 @@ cCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Obje
 cCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/UIButton+AFNetworking.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/VideoRecorder/UIKit+AFNetworking/UIButton+AFNetworking.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AFURLSessionManager.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AFNetworking/AFURLSessionManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/TimelineImageLoader.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/TimelineImageLoader.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/searchTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 
 N/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
 c0000000053119F8A0000000000000198
@@ -1581,134 +1582,674 @@ t1412139685
 s8456
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AFURLConnectionOperation.o
-t1412600919
-s198440
+t1412952461
+s199892
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AFURLRequestSerialization.o
-t1412600919
-s228832
+t1412952461
+s234196
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AFURLSessionManager.o
-t1412600920
-s220716
+t1412952462
+s224396
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o
-t1412600919
-s73836
+t2
+s0
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/CustomAnnotation.o
-t1412600919
-s14252
+t1412952461
+s14184
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o
-t1412600919
-s135740
+t1412952462
+s138960
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/SDWebImageDownloaderOperation.o
-t2
-s0
+t1412952461
+s83508
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/Sample5TableViewCell.o
-t2
-s0
+t1412952460
+s61048
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/TimelineImageLoader.o
-t1412600920
-s13812
+t1412952462
+s9984
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/UIButton+AFNetworking.o
-t1412600920
-s83180
+t1412952461
+s76720
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/UIImage+GIF.o
-t2
-s0
+t1412952461
+s21492
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o
 t1412600920
 s130888
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o
-t1412600919
-s84012
+t1412952462
+s94864
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch.pch
 t1412952460
 s117944
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-dfbpjaaeixukvsclrofqbvfsmpjo/Gocci-Prefix.pch.pch
-t2
-s0
+t1412952460
+s118704
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAccessTokenData.h
+c0000000053E056140000000000001443
+t1407211028
+s5187
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppCall.h
+c0000000053E0561400000000000023C5
+t1407211028
+s9157
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppEvents.h
+c0000000053E056140000000000004B12
+t1407211028
+s19218
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppLinkData.h
+c0000000053E0561400000000000006DA
+t1407211028
+s1754
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBCacheDescriptor.h
+c0000000053E05614000000000000055C
+t1407211028
+s1372
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h
+c0000000053E05614000000000000C245
+t1407211028
+s49733
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogsData.h
+c0000000053E056140000000000000538
+t1407211028
+s1336
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogsParams.h
+c0000000053E056140000000000000341
+t1407211028
+s833
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBError.h
+c0000000053E05614000000000000395C
+t1407211028
+s14684
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBErrorUtility.h
+c0000000053E0561400000000000009B9
+t1407211028
+s2489
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBFrictionlessRecipientCache.h
+c0000000053E056140000000000000B3D
+t1407211028
+s2877
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBFriendPickerViewController.h
+c0000000053E0561400000000000024AF
+t1407211028
+s9391
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphLocation.h
+c0000000053E05614000000000000075F
+t1407211028
+s1887
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphObject.h
+c0000000053E056140000000000002B41
+t1407211028
+s11073
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphPlace.h
+c0000000053E05614000000000000076E
+t1407211028
+s1902
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphUser.h
+c0000000053E0561400000000000009C6
+t1407211028
+s2502
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBInsights.h
+c0000000053E056140000000000000A9F
+t1407211028
+s2719
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLikeControl.h
+c0000000053E0561400000000000010A2
+t1407211028
+s4258
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLinkShareParams.h
+c0000000053E056140000000000000CF0
+t1407211028
+s3312
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLoginView.h
+c0000000053E056140000000000001C61
+t1407211028
+s7265
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBNativeDialogs.h
+c0000000053E056140000000000000F98
+t1407211028
+s3992
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphAction.h
+c0000000053E056140000000000000DA0
+t1407211028
+s3488
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphActionParams.h
+c0000000053E05614000000000000083E
+t1407211028
+s2110
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphActionShareDialogParams.h
+c0000000053E05614000000000000037D
+t1407211028
+s893
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphObject.h
+c0000000053E056140000000000000B63
+t1407211028
+s2915
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBPhotoParams.h
+c0000000053E05614000000000000070C
+t1407211028
+s1804
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBPlacePickerViewController.h
+c0000000053E056140000000000002125
+t1407211028
+s8485
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBProfilePictureView.h
+c0000000053E0561400000000000009A7
+t1407211028
+s2471
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBRequest.h
+c0000000053E0561400000000000064F3
+t1407211028
+s25843
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBRequestConnection.h
+c0000000053E0561400000000000065C4
+t1407211028
+s26052
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSDKMacros.h
+c0000000053E056140000000000000353
+t1407211028
+s851
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSession.h
+c0000000053E05614000000000000963B
+t1407211028
+s38459
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSessionTokenCachingStrategy.h
+c0000000053E056140000000000001A7C
+t1407211028
+s6780
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSettings.h
+c0000000053E0561400000000000029BC
+t1407211028
+s10684
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBShareDialogParams.h
+c0000000053E05614000000000000034D
+t1407211028
+s845
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h
+c0000000053E05614000000000000034A
+t1407211028
+s842
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBTooltipView.h
+c0000000053E05614000000000000106C
+t1407211028
+s4204
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBUserSettingsViewController.h
+c0000000053E056140000000000001006
+t1407211028
+s4102
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBViewController.h
+c0000000053E056140000000000000F64
+t1407211028
+s3940
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBWebDialogs.h
+c0000000053E0561400000000000023AA
+t1407211028
+s9130
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FacebookSDK.h
+c0000000053E0561400000000000016BC
+t1407211028
+s5820
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/NSError+FBError.h
+c0000000053E05614000000000000091D
+t1407211028
+s2333
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPRequestOperation.h
+c0000000053E02EDE0000000000001170
+t1407200990
+s4464
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPRequestOperationManager.h
+c0000000053E02EDE0000000000004AA2
+t1407200990
+s19106
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPSessionManager.h
+c0000000053E02EDE000000000000389B
+t1407200990
+s14491
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFNetworkReachabilityManager.h
+c0000000053E02EDE0000000000001E75
+t1407200990
+s7797
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFNetworking.h
+c0000000053E02EDE000000000000074A
+t1407200990
+s1866
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFSecurityPolicy.h
+c0000000053E02EDE0000000000001420
+t1407200990
+s5152
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLConnectionOperation.h
+c0000000053E02EDE0000000000004273
+t1407200990
+s17011
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLConnectionOperation.m
 c0000000053E02EDE0000000000006C07
 t1407200990
 s27655
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLRequestSerialization.h
+c0000000053E02EDE0000000000005322
+t1407200990
+s21282
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLRequestSerialization.m
 c0000000053E02EDE000000000000C06D
 t1407200990
 s49261
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLResponseSerialization.h
+c0000000053E02EDE0000000000002C15
+t1407200990
+s11285
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLSessionManager.h
+c0000000053E02EDE00000000000074AE
+t1407200990
+s29870
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLSessionManager.m
 c0000000053E02EDE000000000000AD47
 t1407200990
 s44359
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h
+c00000000543897AD000000000000041C
+t1412994989
+s1052
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m
-c00000000543748EE0000000000001702
-t1412909294
+c000000005438A28C0000000000001702
+t1412997772
 s5890
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h
+c0000000053F67BB200000000000011FA
+t1408662450
+s4602
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h
+c0000000053F67BB200000000000017FB
+t1408662450
+s6139
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h
+c0000000053F67BB20000000000000163
+t1408662450
+s355
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/EDStarRating/EDStarRating.h
+c0000000052D4AC1C0000000000000685
+t1389669404
+s1669
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Gocci-Prefix.pch
 c0000000053E0FCE600000000000001C7
 t1407253734
 s455
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.h
+c00000000542A41FB00000000000003AF
+t1412055547
+s943
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m
-c0000000054379D970000000000004305
-t1412930967
-s17157
+c00000000543897AD0000000000004337
+t1412994989
+s17207
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.h
+c00000000541F96260000000000001D59
+t1411356198
+s7513
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageCompat.h
+c00000000541F962600000000000006C3
+t1411356198
+s1731
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDecoder.h
+c00000000541F962600000000000001C5
+t1411356198
+s453
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloader.h
+c00000000541F96260000000000001793
+t1411356198
+s6035
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloaderOperation.h
+c00000000541F9626000000000000092B
+t1411356198
+s2347
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloaderOperation.m
 c00000000541F96260000000000003DE4
 t1411356198
 s15844
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageManager.h
+c00000000541F96260000000000002A0E
+t1411356198
+s10766
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageOperation.h
+c00000000541F96260000000000000149
+t1411356198
+s329
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImage+GIF.h
+c00000000541F9626000000000000017E
+t1411356198
+s382
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImage+GIF.m
 c00000000541F962600000000000012F5
 t1411356198
 s4853
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImage+MultiFormat.h
+c00000000541F96260000000000000107
+t1411356198
+s263
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h
+c0000000053E056140000000000000A7E
+t1407211028
+s2686
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample3TableViewCell.h
+c000000005436650B00000000000003DE
+t1412850955
+s990
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample4TableViewCell.h
+c0000000054168EF50000000000000195
+t1410764533
+s405
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample5TableViewCell.h
+c0000000054362937000000000000035F
+t1412835639
+s863
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample5TableViewCell.m
 c00000000543620CA000000000000031D
 t1412833482
 s797
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/TimelineImageLoader.h
+c000000005430730A0000000000000104
+t1412461322
+s260
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/TimelineImageLoader.m
 c00000000543074830000000000000213
 t1412461699
 s531
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/VideoRecorder/AVCam/CaptureManager.h
+c0000000054324CCF0000000000001289
+t1412582607
+s4745
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/VideoRecorder/UIKit+AFNetworking/UIButton+AFNetworking.h
+c0000000053E02EDE0000000000001F9A
+t1407200990
+s8090
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/VideoRecorder/UIKit+AFNetworking/UIButton+AFNetworking.m
 c0000000053E02EDE0000000000001D60
 t1407200990
 s7520
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/everyTableViewController.h
+c00000000541E256F0000000000000228
+t1411261807
+s552
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/objc/CustomAnnotation.h
+c0000000054056F7F000000000000030C
+t1409642367
+s780
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/objc/CustomAnnotation.m
 c000000005405726B00000000000002DA
 t1409643115
 s730
 
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.h
+c000000005437455800000000000002CD
+t1412908376
+s717
+
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m
-c0000000054379B3A0000000000003090
-t1412930362
-s12432
+c000000005438D2870000000000003114
+t1413010055
+s12564
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.h
+c000000005436421C0000000000000259
+t1412842012
+s601
 
 N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m
 c0000000054377F5E0000000000001CAA
 t1412923230
 s7338
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFACL.h
+c0000000053E0561400000000000019F8
+t1407211028
+s6648
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFAnalytics.h
+c0000000053E056140000000000000ABC
+t1407211028
+s2748
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFAnonymousUtils.h
+c0000000053E05614000000000000094B
+t1407211028
+s2379
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFCloud.h
+c0000000053E056140000000000000847
+t1407211028
+s2119
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFConstants.h
+c0000000053E056140000000000001EE5
+t1407211028
+s7909
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFFacebookUtils.h
+c0000000053E056140000000000002BF1
+t1407211028
+s11249
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFFile.h
+c0000000053E056140000000000001F8D
+t1407211028
+s8077
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFGeoPoint.h
+c0000000053E056140000000000000A3E
+t1407211028
+s2622
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFImageView.h
+c0000000053E056140000000000000366
+t1407211028
+s870
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFInstallation.h
+c0000000053E056140000000000000B43
+t1407211028
+s2883
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFLogInView.h
+c0000000053E056140000000000000B75
+t1407211028
+s2933
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFLogInViewController.h
+c0000000053E056140000000000000E55
+t1407211028
+s3669
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFObject.h
+c0000000053E05614000000000000545E
+t1407211028
+s21598
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFProduct.h
+c0000000053E05614000000000000068E
+t1407211028
+s1678
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFProductTableViewController.h
+c0000000053E05614000000000000023A
+t1407211028
+s570
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFPurchase.h
+c0000000053E056140000000000000A6A
+t1407211028
+s2666
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFPush.h
+c0000000053E056140000000000004591
+t1407211028
+s17809
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFQuery.h
+c0000000053E05614000000000000526A
+t1407211028
+s21098
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFQueryTableViewController.h
+c0000000053E05614000000000000153A
+t1407211028
+s5434
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFRelation.h
+c0000000053E0561400000000000003A0
+t1407211028
+s928
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFRole.h
+c0000000053E056140000000000000AE4
+t1407211028
+s2788
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFSignUpView.h
+c0000000053E0561400000000000008C6
+t1407211028
+s2246
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFSignUpViewController.h
+c0000000053E056140000000000000B96
+t1407211028
+s2966
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFSubclassing.h
+c0000000053E0561400000000000007EE
+t1407211028
+s2030
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFTableViewCell.h
+c0000000053E056140000000000000299
+t1407211028
+s665
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFTwitterUtils.h
+c0000000053E056140000000000001FBC
+t1407211028
+s8124
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PFUser.h
+c0000000053E056140000000000003354
+t1407211028
+s13140
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PF_EGORefreshTableHeaderView.h
+c0000000053E0561400000000000008B0
+t1407211028
+s2224
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/PF_Twitter.h
+c0000000053E0561400000000000005E1
+t1407211028
+s1505
+
+N/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Parse.framework/Headers/Parse.h
+c0000000053E05614000000000000081A
+t1407211028
+s2074
 
 N/usr/lib/libSystem.B.dylib
 c000000005386B4D0000000000000E6D0
@@ -2141,7 +2682,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies1762910929e8b941^116e360a29e8b941^---0#1#1#--18"Check dependencies36"8D158707-166E-4C6E-B080-823035FADEE3-
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciesb476f39147e9b941^6402769247e9b941^---0#1#1#--18"Check dependencies36"D71FE319-E99E-40CD-B53A-D5DB035E7D67-
 
 CCompileAssetCatalog /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Build/Products/Debug-iphonesimulator/Gocci.app /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/Images.xcassets
 s433861476.469414
@@ -2606,8 +3147,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile
 b57E6F606-5CB1-411B-A4FB-75A0E93F4A7E
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s434645260.974363
-e434645262.312326
+s434718610.469751
+e434718611.279682
 r0
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o
@@ -2697,7 +3238,7 @@ o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: 
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:27:41: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:29:41: note: property declared here
 o@property (nonatomic, retain) NSString *gText;
 o                                        ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:17:15: note: instance variable is declared here
@@ -2707,7 +3248,7 @@ o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: 
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:28:41: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:41: note: property declared here
 o@property (nonatomic, retain) NSString *pID;
 o                                        ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:19:15: note: instance variable is declared here
@@ -2717,50 +3258,60 @@ o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: 
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:29:38: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:31:38: note: property declared here
 o@property (nonatomic, retain) NSURL *postMovieURL;
 o                                     ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:21:12: note: instance variable is declared here
 o    NSURL *postMovieURL;
 o           ^
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'username' will use synthesized instance variable '_username', not existing instance variable 'username' [-Wobjc-autosynthesis-property-ivar-name-match]
+o@implementation AppDelegate
+o^
+oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:32:41: note: property declared here
+o@property (nonatomic, retain) NSString *username;
+o                                        ^
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:15: note: instance variable is declared here
+o    NSString *username;
+o              ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'latitude' will use synthesized instance variable '_latitude', not existing instance variable 'latitude' [-Wobjc-autosynthesis-property-ivar-name-match]
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:30: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:33:30: note: property declared here
 o@property (nonatomic) double latitude,longitude;
 o                             ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:12: note: instance variable is declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:12: note: instance variable is declared here
 o    double latitude, longitude; // 取得した緯度経度
 o           ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'longitude' will use synthesized instance variable '_longitude', not existing instance variable 'longitude' [-Wobjc-autosynthesis-property-ivar-name-match]
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:39: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:33:39: note: property declared here
 o@property (nonatomic) double latitude,longitude;
 o                                      ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:22: note: instance variable is declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:22: note: instance variable is declared here
 o    double latitude, longitude; // 取得した緯度経度
 o                     ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lat' will use synthesized instance variable '_lat', not existing instance variable 'lat' [-Wobjc-autosynthesis-property-ivar-name-match]
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:31:33: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:34:33: note: property declared here
 o@property (nonatomic) NSString *lat;
 o                                ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:24:15: note: instance variable is declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:26:15: note: instance variable is declared here
 o    NSString *lat;
 o              ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lon' will use synthesized instance variable '_lon', not existing instance variable 'lon' [-Wobjc-autosynthesis-property-ivar-name-match]
 o@implementation AppDelegate
 o^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:32:33: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:35:33: note: property declared here
 o@property (nonatomic) NSString *lon;
 o                                ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:15: note: instance variable is declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:27:15: note: instance variable is declared here
 o    NSString *lon;
 o              ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:61:46: warning: undeclared selector 'requestAlwaysAuthorization' [-Wundeclared-selector]
@@ -2788,9 +3339,9 @@ o    ^
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:119:30: error: no visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'
 o            [locationManager requestAlwaysAuthorization]; // 常に許可
 o             ~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
-o8 warnings and 4 errors generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m196"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o Gocci/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler1894f90c29e8b941^cbd94f0e29e8b941^-7938"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'gText' will use synthesized instance variable '_gText', not existing instance variable 'gText' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:27:41: note: property declared here@property (nonatomic, retain) NSString *gText;                                        ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:17:15: note: instance variable is declared here    NSString *gText;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'pID' will use synthesized instance variable '_pID', not existing instance variable 'pID' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:28:41: note: property declared here@property (nonatomic, retain) NSString *pID;                                        ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:19:15: note: instance variable is declared here    NSString *pID;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'postMovieURL' will use synthesized instance variable '_postMovieURL', not existing instance variable 'postMovieURL' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:29:38: note: property declared here@property (nonatomic, retain) NSURL *postMovieURL;                                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:21:12: note: instance variable is declared here    NSURL *postMovieURL;           ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'latitude' will use synthesized instance variable '_latitude', not existing instance variable 'latitude' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:30: note: property declared here@property (nonatomic) double latitude,longitude;                             ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:12: note: instance variable is declared here    double latitude, longitude; // 取得した緯度経度           ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'longitude' will use synthesized instance variable '_longitude', not existing instance variable 'longitude' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:39: note: property declared here@property (nonatomic) double latitude,longitude;                                      ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:22: note: instance variable is declared here    double latitude, longitude; // 取得した緯度経度                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lat' will use synthesized instance variable '_lat', not existing instance variable 'lat' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:31:33: note: property declared here@property (nonatomic) NSString *lat;                                ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:24:15: note: instance variable is declared here    NSString *lat;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lon' will use synthesized instance variable '_lon', not existing instance variable 'lon' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:32:33: note: property declared here@property (nonatomic) NSString *lon;                                ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:15: note: instance variable is declared here    NSString *lon;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:61:46: warning: undeclared selector 'requestAlwaysAuthorization' [-Wundeclared-selector]    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降                                             ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:71:26: error: no visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'        [locationManager requestAlwaysAuthorization]; // 常に許可         ~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:111:19: error: use of undeclared identifier 'kCLAuthorizationStatusAuthorizedAlways'; did you mean 'kCLAuthorizationStatusAuthorized'?    if (status == kCLAuthorizationStatusAuthorizedAlways ||                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  kCLAuthorizationStatusAuthorizedIn module 'CoreLocation' imported from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h:17:/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h:46:5: note: 'kCLAuthorizationStatusAuthorized' declared here    kCLAuthorizationStatusAuthorized         // User has authorized this application to use location services    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:112:19: error: use of undeclared identifier 'kCLAuthorizationStatusAuthorizedWhenInUse'; did you mean 'kCLAuthorizationStatusAuthorized'?        status == kCLAuthorizationStatusAuthorizedWhenInUse) {                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  kCLAuthorizationStatusAuthorizedIn module 'CoreLocation' imported from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h:17:/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h:46:5: note: 'kCLAuthorizationStatusAuthorized' declared here    kCLAuthorizationStatusAuthorized         // User has authorized this application to use location services    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:119:30: error: no visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'            [locationManager requestAlwaysAuthorization]; // 常に許可             ~~~~~~~~~~~~~~~ ^~~~~~~~~~12(36%IDEClangDiagnosticActivityLogMessage2@120"Autosynthesized property 'gText' will use synthesized instance variable '_gText', not existing instance variable 'gText'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^26#40#26#40#665#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^16#14#16#14#378#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'pID' will use synthesized instance variable '_pID', not existing instance variable 'pID'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^27#40#27#40#712#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^18#14#18#14#427#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@141"Autosynthesized property 'postMovieURL' will use synthesized instance variable '_postMovieURL', not existing instance variable 'postMovieURL'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^28#37#28#37#754#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^20#11#20#11#471#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@129"Autosynthesized property 'latitude' will use synthesized instance variable '_latitude', not existing instance variable 'latitude'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^29#29#29#29#797#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^22#11#22#11#536#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@132"Autosynthesized property 'longitude' will use synthesized instance variable '_longitude', not existing instance variable 'longitude'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^29#38#29#38#806#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^22#21#22#21#546#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'lat' will use synthesized instance variable '_lat', not existing instance variable 'lat'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^30#32#30#32#849#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^23#14#23#14#599#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'lon' will use synthesized instance variable '_lon', not existing instance variable 'lon'-434645262#18446744073709551615#0#2(2@22"Property declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^31#32#31#32#886#0#14"Semantic Issue--2@34"Instance variable is declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^24#14#24#14#618#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@48"Undeclared selector 'requestAlwaysAuthorization'-434645262#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^60#45#60#45#2186#0#14"Semantic Issue--2@96"No visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'-434645262#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#25#70#25#2644#0#18"ARC Semantic Issue2(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#9#70#24#2628#0#3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#25#70#51#2644#0#-2@119"Use of undeclared identifier 'kCLAuthorizationStatusAuthorizedAlways'; did you mean 'kCLAuthorizationStatusAuthorized'?-434645262#18446744073709551615#0#1(2@48"'kCLAuthorizationStatusAuthorized' declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@202"file:///Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h0000000000000000^45#4#45#4#1486#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^110#18#110#18#3908#0#14"Semantic Issue1(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^110#18#110#56#3908#38#-2@122"Use of undeclared identifier 'kCLAuthorizationStatusAuthorizedWhenInUse'; did you mean 'kCLAuthorizationStatusAuthorized'?-434645262#18446744073709551615#0#1(2@48"'kCLAuthorizationStatusAuthorized' declared here-434645262#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@202"file:///Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h0000000000000000^45#4#45#4#1486#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^111#18#111#18#3968#0#14"Semantic Issue1(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^111#18#111#59#3968#41#-2@96"No visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'-434645262#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#29#118#29#4279#0#18"ARC Semantic Issue2(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#13#118#28#4263#0#3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#29#118#55#4279#0#-0#0#1#-19%DVTDocumentLocation4@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^3885"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o Gocci/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AppDelegate.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o36"536EB81B-E635-4B14-9C6F-2F9E79A8A77C-
-b3D0C34DB-145A-44B7-9210-B406551E90D7
+o9 warnings and 4 errors generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m196"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o Gocci/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerb7d5789247e9b941^e36f479347e9b941^-8694"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'gText' will use synthesized instance variable '_gText', not existing instance variable 'gText' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:29:41: note: property declared here@property (nonatomic, retain) NSString *gText;                                        ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:17:15: note: instance variable is declared here    NSString *gText;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'pID' will use synthesized instance variable '_pID', not existing instance variable 'pID' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:30:41: note: property declared here@property (nonatomic, retain) NSString *pID;                                        ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:19:15: note: instance variable is declared here    NSString *pID;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'postMovieURL' will use synthesized instance variable '_postMovieURL', not existing instance variable 'postMovieURL' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:31:38: note: property declared here@property (nonatomic, retain) NSURL *postMovieURL;                                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:21:12: note: instance variable is declared here    NSURL *postMovieURL;           ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'username' will use synthesized instance variable '_username', not existing instance variable 'username' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:32:41: note: property declared here@property (nonatomic, retain) NSString *username;                                        ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:23:15: note: instance variable is declared here    NSString *username;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'latitude' will use synthesized instance variable '_latitude', not existing instance variable 'latitude' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:33:30: note: property declared here@property (nonatomic) double latitude,longitude;                             ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:12: note: instance variable is declared here    double latitude, longitude; // 取得した緯度経度           ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'longitude' will use synthesized instance variable '_longitude', not existing instance variable 'longitude' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:33:39: note: property declared here@property (nonatomic) double latitude,longitude;                                      ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:25:22: note: instance variable is declared here    double latitude, longitude; // 取得した緯度経度                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lat' will use synthesized instance variable '_lat', not existing instance variable 'lat' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:34:33: note: property declared here@property (nonatomic) NSString *lat;                                ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:26:15: note: instance variable is declared here    NSString *lat;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:14:1: warning: autosynthesized property 'lon' will use synthesized instance variable '_lon', not existing instance variable 'lon' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation AppDelegate^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:35:33: note: property declared here@property (nonatomic) NSString *lon;                                ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h:27:15: note: instance variable is declared here    NSString *lon;              ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:61:46: warning: undeclared selector 'requestAlwaysAuthorization' [-Wundeclared-selector]    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降                                             ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:71:26: error: no visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'        [locationManager requestAlwaysAuthorization]; // 常に許可         ~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:111:19: error: use of undeclared identifier 'kCLAuthorizationStatusAuthorizedAlways'; did you mean 'kCLAuthorizationStatusAuthorized'?    if (status == kCLAuthorizationStatusAuthorizedAlways ||                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  kCLAuthorizationStatusAuthorizedIn module 'CoreLocation' imported from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h:17:/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h:46:5: note: 'kCLAuthorizationStatusAuthorized' declared here    kCLAuthorizationStatusAuthorized         // User has authorized this application to use location services    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:112:19: error: use of undeclared identifier 'kCLAuthorizationStatusAuthorizedWhenInUse'; did you mean 'kCLAuthorizationStatusAuthorized'?        status == kCLAuthorizationStatusAuthorizedWhenInUse) {                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  kCLAuthorizationStatusAuthorizedIn module 'CoreLocation' imported from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h:17:/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h:46:5: note: 'kCLAuthorizationStatusAuthorized' declared here    kCLAuthorizationStatusAuthorized         // User has authorized this application to use location services    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.m:119:30: error: no visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'            [locationManager requestAlwaysAuthorization]; // 常に許可             ~~~~~~~~~~~~~~~ ^~~~~~~~~~13(36%IDEClangDiagnosticActivityLogMessage2@120"Autosynthesized property 'gText' will use synthesized instance variable '_gText', not existing instance variable 'gText'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^28#40#28#40#717#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^16#14#16#14#378#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'pID' will use synthesized instance variable '_pID', not existing instance variable 'pID'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^29#40#29#40#764#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^18#14#18#14#427#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@141"Autosynthesized property 'postMovieURL' will use synthesized instance variable '_postMovieURL', not existing instance variable 'postMovieURL'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^30#37#30#37#806#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^20#11#20#11#471#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@129"Autosynthesized property 'username' will use synthesized instance variable '_username', not existing instance variable 'username'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^31#40#31#40#860#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^22#14#22#14#527#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@129"Autosynthesized property 'latitude' will use synthesized instance variable '_latitude', not existing instance variable 'latitude'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^32#29#32#29#899#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^24#11#24#11#588#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@132"Autosynthesized property 'longitude' will use synthesized instance variable '_longitude', not existing instance variable 'longitude'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^32#38#32#38#908#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^24#21#24#21#598#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'lat' will use synthesized instance variable '_lat', not existing instance variable 'lat'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^33#32#33#32#951#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^25#14#25#14#651#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@114"Autosynthesized property 'lon' will use synthesized instance variable '_lon', not existing instance variable 'lon'-434718611#18446744073709551615#0#2(2@22"Property declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^34#32#34#32#988#0#14"Semantic Issue--2@34"Instance variable is declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.h0000000000000000^26#14#26#14#670#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^13#0#13#0#227#0#14"Semantic Issue--2@48"Undeclared selector 'requestAlwaysAuthorization'-434718611#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^60#45#60#45#2186#0#14"Semantic Issue--2@96"No visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'-434718611#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#25#70#25#2644#0#18"ARC Semantic Issue2(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#9#70#24#2628#0#3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^70#25#70#51#2644#0#-2@119"Use of undeclared identifier 'kCLAuthorizationStatusAuthorizedAlways'; did you mean 'kCLAuthorizationStatusAuthorized'?-434718611#18446744073709551615#0#1(2@48"'kCLAuthorizationStatusAuthorized' declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@202"file:///Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h0000000000000000^45#4#45#4#1486#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^110#18#110#18#3908#0#14"Semantic Issue1(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^110#18#110#56#3908#38#-2@122"Use of undeclared identifier 'kCLAuthorizationStatusAuthorizedWhenInUse'; did you mean 'kCLAuthorizationStatusAuthorized'?-434718611#18446744073709551615#0#1(2@48"'kCLAuthorizationStatusAuthorized' declared here-434718611#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@202"file:///Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CLLocationManager.h0000000000000000^45#4#45#4#1486#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^111#18#111#18#3968#0#14"Semantic Issue1(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^111#18#111#59#3968#41#-2@96"No visible @interface for 'CLLocationManager' declares the selector 'requestAlwaysAuthorization'-434718611#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#29#118#29#4279#0#18"ARC Semantic Issue2(3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#13#118#28#4263#0#3@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^118#29#118#55#4279#0#-0#0#1#-19%DVTDocumentLocation4@81"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/AppDelegate.m0000000000000000^3885"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o Gocci/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AppDelegate.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/AppDelegate.o36"052ED0F2-767A-4551-9780-3E5F004FAEEB-
+b4399C943-5453-4E22-A206-183E5E419A47
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/CaptureManager.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/VideoRecorder/AVCam/CaptureManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s433861462.298433
@@ -3174,8 +3725,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile
 b004C8980-C284-45EA-90D1-77E2C4CAAA9B
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/RestaurantTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s434645261.080091
-e434645262.412808
+s434718610.470164
+e434718611.581445
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o
@@ -3247,31 +3798,44 @@ d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/CRFil
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/everyTableViewController.h
 d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample4TableViewCell.h
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:39:1: warning: autosynthesized property 'cell' will use synthesized instance variable '_cell', not existing instance variable 'cell' [-Wobjc-autosynthesis-property-ivar-name-match]
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageCompat.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageManager.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageOperation.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloader.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.h
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:40:1: warning: autosynthesized property 'cell' will use synthesized instance variable '_cell', not existing instance variable 'cell' [-Wobjc-autosynthesis-property-ivar-name-match]
 o@implementation RestaurantTableViewController
 o^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:31:51: note: property declared here
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:32:51: note: property declared here
 o@property (nonatomic, copy) Sample3TableViewCell *cell;
 o                                                  ^
 oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:9:
 o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.h:20:22: note: instance variable is declared here
 o    UITableViewCell *cell;
 o                     ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:126:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:127:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'
 o    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
 o                 ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:165:5: warning: local declaration of 'cell' hides instance variable [-Wshadow-ivar]
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:166:5: warning: local declaration of 'cell' hides instance variable [-Wshadow-ivar]
 o    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 o    ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:341:13: warning: unused variable 'result' [-Wunused-variable]
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:340:13: warning: unused variable 'result' [-Wunused-variable]
 o    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 o            ^
-o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:373:27: warning: unused variable 'cell' [-Wunused-variable]
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:372:27: warning: unused variable 'cell' [-Wunused-variable]
 o    for (UITableViewCell *cell in [self.tableView visibleCells]){
 o                          ^
-o5 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m232"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o Gocci/RestaurantTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilera5f8140d29e8b941^f9f7690e29e8b941^-1995"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:39:1: warning: autosynthesized property 'cell' will use synthesized instance variable '_cell', not existing instance variable 'cell' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation RestaurantTableViewController^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:31:51: note: property declared here@property (nonatomic, copy) Sample3TableViewCell *cell;                                                  ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.h:20:22: note: instance variable is declared here    UITableViewCell *cell;                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:126:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];                 ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:165:5: warning: local declaration of 'cell' hides instance variable [-Wshadow-ivar]    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:341:13: warning: unused variable 'result' [-Wunused-variable]    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest            ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:373:27: warning: unused variable 'cell' [-Wunused-variable]    for (UITableViewCell *cell in [self.tableView visibleCells]){                          ^5 warnings generated.-0#0#1#-19%DVTDocumentLocation2@99"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/RestaurantTableViewController.m0000000000000000^3993"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o Gocci/RestaurantTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/RestaurantTableViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o36"39E90CA3-532C-4AB0-A887-9DFE5C78247B-
-b3D0C34DB-145A-44B7-9210-B406551E90D7
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:416:25: warning: 'setImageWithURL:placeholderImage:' is deprecated: Method deprecated. Use `sd_setImageWithURL:placeholderImage:` [-Wdeprecated-declarations]
+o    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+o                        ^
+oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:16:
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h:187:1: note: method 'setImageWithURL:placeholderImage:' declared here
+o- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:`");
+o^
+o6 warnings generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m232"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o Gocci/RestaurantTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler72dd789247e9b941^4fea9b9347e9b941^-2782"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:40:1: warning: autosynthesized property 'cell' will use synthesized instance variable '_cell', not existing instance variable 'cell' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation RestaurantTableViewController^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:32:51: note: property declared here@property (nonatomic, copy) Sample3TableViewCell *cell;                                                  ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.h:20:22: note: instance variable is declared here    UITableViewCell *cell;                     ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:127:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];                 ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:166:5: warning: local declaration of 'cell' hides instance variable [-Wshadow-ivar]    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];    ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:340:13: warning: unused variable 'result' [-Wunused-variable]    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest            ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:372:27: warning: unused variable 'cell' [-Wunused-variable]    for (UITableViewCell *cell in [self.tableView visibleCells]){                          ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:416:25: warning: 'setImageWithURL:placeholderImage:' is deprecated: Method deprecated. Use `sd_setImageWithURL:placeholderImage:` [-Wdeprecated-declarations]    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]                        ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.m:16:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h:187:1: note: method 'setImageWithURL:placeholderImage:' declared here- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:`");^6 warnings generated.-0#0#1#-19%DVTDocumentLocation2@99"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/RestaurantTableViewController.m0000000000000000^3993"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o Gocci/RestaurantTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/RestaurantTableViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/RestaurantTableViewController.o36"37D1049C-D421-44DB-BD7D-D2B6FEAF5971-
+b4399C943-5453-4E22-A206-183E5E419A47
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/SDImageCache.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
@@ -4031,7 +4595,108 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile
 b9C1E4870-7B7B-4BFF-B507-CD8121E21018
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/searchTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
+s434718610.473535
+e434718611.481373
+r1
+xCompileC
+xBuild/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o
+x/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SearchTableViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFNetworking.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLRequestSerialization.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLResponseSerialization.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFSecurityPolicy.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFNetworkReachabilityManager.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLConnectionOperation.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPRequestOperation.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPRequestOperationManager.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFURLSessionManager.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AFNetworking/AFHTTPSessionManager.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/objc/CustomAnnotation.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SampleTableViewCell.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/RestaurantTableViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/Sample3TableViewCell.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/AppDelegate.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FacebookSDK.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAccessTokenData.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSession.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSDKMacros.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppCall.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppLinkData.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogsData.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBAppEvents.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBCacheDescriptor.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogs.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLinkShareParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBDialogsParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphActionParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphAction.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphObject.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBPhotoParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBError.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBErrorUtility.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBFrictionlessRecipientCache.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBRequest.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphObject.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBRequestConnection.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBWebDialogs.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBFriendPickerViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphUser.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphPlace.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBGraphLocation.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBInsights.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLikeControl.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBLoginView.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBTooltipView.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBNativeDialogs.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBOpenGraphActionShareDialogParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBShareDialogParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBPlacePickerViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBProfilePictureView.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSessionTokenCachingStrategy.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBSettings.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBShareDialogPhotoParams.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/FBUserSettingsViewController.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/FacebookSDK.framework/Headers/NSError+FBError.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h
+d/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:51:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'
+o    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+o                 ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:100:63: warning: expression result unused [-Wunused-value]
+o                                                       title:(@"%@",ni)
+o                                                              ^~~~~
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:101:63: warning: expression result unused [-Wunused-value]
+o                                                    subtitle:(@"%@",ai)]];
+o                                                              ^~~~~
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:172:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'
+o    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+o                 ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:35:17: warning: method definition for 'onResume' not found [-Wincomplete-implementation]
+o@implementation SearchTableViewController
+o                ^
+oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:9:
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SearchTableViewController.h:24:1: note: method 'onResume' declared here
+o-(void) onResume;
+o^
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:35:17: warning: method definition for 'onPause' not found [-Wincomplete-implementation]
+o@implementation SearchTableViewController
+o                ^
+oIn file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:9:
+o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SearchTableViewController.h:25:1: note: method 'onPause' declared here
+o-(void) onPause;
+o^
+o6 warnings generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m224"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o Gocci/searchTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerb551799247e9b941^b0e79b9347e9b941^-2315"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:51:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];                 ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:100:63: warning: expression result unused [-Wunused-value]                                                       title:(@"%@",ni)                                                              ^~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:101:63: warning: expression result unused [-Wunused-value]                                                    subtitle:(@"%@",ai)]];                                                              ^~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:172:18: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];                 ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:35:17: warning: method definition for 'onResume' not found [-Wincomplete-implementation]@implementation SearchTableViewController                ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SearchTableViewController.h:24:1: note: method 'onResume' declared here-(void) onResume;^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:35:17: warning: method definition for 'onPause' not found [-Wincomplete-implementation]@implementation SearchTableViewController                ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/searchTableViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/SearchTableViewController.h:25:1: note: method 'onPause' declared here-(void) onPause;^6 warnings generated.-0#0#1#-19%DVTDocumentLocation2@95"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/searchTableViewController.m0000000000000000^3969"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o Gocci/searchTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/searchTableViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/searchTableViewController.o36"8AC9C29F-FDEF-44BA-9298-023D66677892-
+b4399C943-5453-4E22-A206-183E5E419A47
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci/Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s433937275.766327
@@ -4065,8 +4730,8 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile
 b004C8980-C284-45EA-90D1-77E2C4CAAA9B
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s434645261.389331
-e434645262.815206
+s434718610.471002
+e434718611.481469
 r1
 xCompileC
 xBuild/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o
@@ -4142,8 +4807,8 @@ o/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController
 o        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 o                ^
 o3 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m214"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerb3d3630d29e8b941^e318d50e29e8b941^-1416"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:28:1: warning: autosynthesized property 'textView' will use synthesized instance variable '_textView', not existing instance variable 'textView' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation submitViewController^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:21:23: note: property declared here@property UITextView *textView;                      ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.h:24:29: note: instance variable is declared here__weak IBOutlet UITextView *textView;                            ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:172:20: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'      AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];                   ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:219:10: warning: unused variable 'result' [-Wunused-variable]        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest                ^3 warnings generated.-0#0#1#-19%DVTDocumentLocation2@90"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/submitViewController.m0000000000000000^3939"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o36"30345514-7540-48FC-AD51-39EF56915E4F-
-b3D0C34DB-145A-44B7-9210-B406551E90D7
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m214"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler5ad7789247e9b941^11e59b9347e9b941^-1416"/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:28:1: warning: autosynthesized property 'textView' will use synthesized instance variable '_textView', not existing instance variable 'textView' [-Wobjc-autosynthesis-property-ivar-name-match]@implementation submitViewController^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:21:23: note: property declared here@property UITextView *textView;                      ^In file included from /Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:9:/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.h:24:29: note: instance variable is declared here__weak IBOutlet UITextView *textView;                            ^/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:172:20: warning: initializing 'AppDelegate *__strong' with an expression of incompatible type 'id<UIApplicationDelegate>'      AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];                   ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS/Gocci/submitViewController.m:219:10: warning: unused variable 'result' [-Wunused-variable]        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest                ^3 warnings generated.-0#0#1#-19%DVTDocumentLocation2@90"file:///Users/daikihosokawa/Desktop/Gocci%20project/Gocci_iOS/Gocci/submitViewController.m0000000000000000^3939"CompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o Gocci/submitViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/daikihosokawa/Desktop/Gocci project/Gocci_iOS"    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode5.1.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/daikihosokawa/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode5.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-generated-files.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-own-target-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-all-target-headers.hmap -iquote /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Gocci-project-headers.hmap -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources/i386 -I/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/DerivedSources -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Products/Debug-iphonesimulator -F/Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS -include /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/PrecompiledHeaders/Gocci-Prefix-buqnhuvcuxexhedkqwnbnhzpzxup/Gocci-Prefix.pch -MMD -MT dependencies -MF /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.d --serialize-diagnostics /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.dia -c /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/submitViewController.m -o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/submitViewController.o36"13321477-4B07-41F7-8E16-E06E4CA9902F-
+b4399C943-5453-4E22-A206-183E5E419A47
 
 CCompileC Build/Intermediates/Gocci.build/Debug-iphonesimulator/Gocci.build/Objects-normal/i386/usersTableViewController.o /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/usersTableViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0

@@ -418,7 +418,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     //動画再生
-    NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];

@@ -33,8 +33,8 @@
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
-@property (nonatomic, copy) Sample2TableViewCell *cell;
-@property (nonatomic, copy) UIImageView *thumbnailView;
+@property (nonatomic, retain) Sample2TableViewCell *cell;
+@property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 
 @end
@@ -226,7 +226,6 @@
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [self updateVisibleCells];
-    _thumbnailView.hidden = YES;
     [moviePlayer play];
 }
 
@@ -274,19 +273,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    /*
-    //サムネイル画像の追加
-    NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
-    NSURL *thumbnailurl = [NSURL URLWithString:URLString];
-    NSData *thumbnaildata = [NSData dataWithContentsOfURL:thumbnailurl];
-    UIImage *thumbnailimage = [[UIImage alloc] initWithData:thumbnaildata];
-    _thumbnailView = [[UIImageView alloc] initWithImage:thumbnailimage];
-    CGRect frame2 = _cell.thumbnailView.frame;
-    [_thumbnailView setFrame:frame2];
-    [_cell.thumbnailView addSubview:_thumbnailView];
-    [_cell.movieView bringSubviewToFront:_thumbnailView];
-     */
-     
         // セルの更新
         [self updateCell:_cell atIndexPath:indexPath];
         // Configure the cell...
@@ -447,16 +433,37 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //コメントボタンのイベント
    // [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
-
+   
+    
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                    placeholderImage:[UIImage imageNamed:@"default.png"]];
+
+    /*
+     //サムネイル画像の追加
+     NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
+     NSURL *thumbnailurl = [NSURL URLWithString:URLString];
+     NSData *thumbnaildata = [NSData dataWithContentsOfURL:thumbnailurl];
+     UIImage *thumbnailimage = [[UIImage alloc] initWithData:thumbnaildata];
+     _thumbnailView = [[UIImageView alloc] initWithImage:thumbnailimage];
+     CGRect frame2 = _cell.thumbnailView.frame;
+     [_thumbnailView setFrame:frame2];
+     [_cell.thumbnailView addSubview:_thumbnailView];
+     [_cell.movieView bringSubviewToFront:_thumbnailView];
+    */
+
     
+    //ユーザーの画像を取得
+    NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.thumbnailView setImageWithURL:[NSURL URLWithString:dottext2]
+                       placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
+    _cell.thumbnailView.hidden = NO;
    
     //動画再生
-    NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
  
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
@@ -484,6 +491,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
+       
     }
 }
 
