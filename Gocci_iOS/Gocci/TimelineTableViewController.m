@@ -16,6 +16,7 @@
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
 
 
 @protocol MovieViewDelegate;
@@ -454,14 +455,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      [_cell.movieView bringSubviewToFront:_thumbnailView];
     */
 
-    
+    /*
     //ユーザーの画像を取得
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.thumbnailView setImageWithURL:[NSURL URLWithString:dottext2]
                        placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-    _cell.thumbnailView.hidden = NO;
-   
+    */
+    
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -491,6 +492,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
+        
        
     }
 }

@@ -265,8 +265,8 @@
 #pragma mark Mouse/Touch Interaction
 -(float) starsForPoint:(CGPoint)point
 {
-    float stars=0;
-    for( NSInteger i=0; i<maxRating; i++ )
+    float stars=1;
+    for( NSInteger i=1; i<maxRating; i++ )
     {
         CGPoint p =[self pointOfStarAtPosition:i highlighted:NO];
         if( point.x > p.x )
