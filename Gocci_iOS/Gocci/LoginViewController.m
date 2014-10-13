@@ -108,11 +108,14 @@
                                                             NSString *email = [[fbAccount valueForKey:@"properties"]  objectForKey:@"ACUIDisplayUsername"];
                                                             NSString *fullname = [[fbAccount valueForKey:@"properties"]  objectForKey:@"ACPropertyFullName"];
                                                             NSLog(@"fullname:%@",fullname);
+                                                            AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+                                                            logindelegate.username = fullname;
                                                             NSString *uid = [[fbAccount valueForKey:@"properties"] objectForKey:@"uid"];
                                                             NSLog(@"uid:%@",uid);
                                                             NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
                                                             NSLog(@"pictureURL%@", pictureURL); // プロフィール写真
-                                                            
+                                                            AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
+                                                            picturedelegate.userpicture = pictureURL;
                                                             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
                                                             NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
                                                             NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -143,7 +146,8 @@
                                                         NSLog(@"uid:%@",uid);
                                                         NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture", uid];
                                                         NSLog(@"pictureURL%@", pictureURL); // プロフィール写真
-                                                        
+                                                        AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
+                                                        picturedelegate.userpicture = pictureURL;
                                                         NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
                                                         NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
                                                         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -214,9 +218,13 @@
                                                           NSLog(@"twitterAccount:%@",twAccount);
                                                            NSString *twitterusername = [twAccount valueForKey:@"username"];
                                                            NSLog(@"fullname:%@",twitterusername);
+                                                           AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+                                                           logindelegate.username = twitterusername;
                                                            NSString *twitteruid = [[twAccount valueForKey:@"properties"] objectForKey:@"user_id"];
                                                            NSLog(@"uid:%@",twitteruid);
                                                            NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", twitterusername];
+                                                           AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
+                                                           picturedelegate.userpicture = pictureURL;
                                                            NSLog(@"%@",pictureURL);
                                                            NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
                                                            NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
@@ -239,10 +247,14 @@
                                                        NSLog(@"twitterAccount:%@",account);
                                                        NSString *twitterusername = [account valueForKey:@"username"];
                                                        NSLog(@"fullname:%@",twitterusername);
+                                                       AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+                                                       logindelegate.username = twitterusername;
                                                        NSString *twitteruid = [[account valueForKey:@"properties"] objectForKey:@"user_id"];
                                                        NSLog(@"uid:%@",twitteruid);
                                                        NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", twitterusername];
                                                        NSLog(@"%@",pictureURL);
+                                                       AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
+                                                       picturedelegate.userpicture = pictureURL;
                                                        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
                                                        NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
                                                        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];

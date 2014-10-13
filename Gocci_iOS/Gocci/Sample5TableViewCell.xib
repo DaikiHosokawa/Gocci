@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AH0-pM-xpX">
-                        <rect key="frame" x="15" y="17" width="289" height="468"/>
+                        <rect key="frame" x="15" y="20" width="289" height="468"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user-icon" translatesAutoresizingMaskIntoConstraints="NO" id="JnH-gF-rJB">
                                 <rect key="frame" x="15" y="312" width="44" height="44"/>
@@ -87,6 +87,21 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value="NSTextAlignmentLeft" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hosi23" translatesAutoresizingMaskIntoConstraints="NO" id="lQ5-z5-COf">
+                                <rect key="frame" x="182" y="302" width="28" height="28"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="×" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-Rf-wL4">
+                                <rect key="frame" x="209" y="302" width="9" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-7R-2aH">
+                                <rect key="frame" x="221" y="299" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -116,12 +131,14 @@
                 <outlet property="contentViewFront" destination="AH0-pM-xpX" id="kwp-vq-htG"/>
                 <outlet property="goodBtn" destination="nQb-Yh-mFu" id="WPg-kI-cbQ"/>
                 <outlet property="movieView" destination="gY8-Qf-aIt" id="6GM-pk-KWl"/>
+                <outlet property="starnum" destination="uxv-7R-2aH" id="rum-ok-svc"/>
             </connections>
-            <point key="canvasLocation" x="139" y="152"/>
+            <point key="canvasLocation" x="139" y="146"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="character" width="1024" height="1024"/>
+        <image name="hosi23" width="23" height="22"/>
         <image name="hukidasi" width="512" height="512"/>
         <image name="icon heart inv" width="512" height="512"/>
         <image name="user-icon" width="79" height="80"/>

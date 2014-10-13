@@ -33,9 +33,8 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
+@property (nonatomic, copy) UIImageView *thumbPic;
 @property (nonatomic, copy) NSMutableArray *starnum_;
-@property (nonatomic, retain) Sample2TableViewCell *cell;
-@property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 
 @end
@@ -189,7 +188,7 @@
 {
    // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    CGPoint p = CGPointMake(183.0, 485.0 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [moviePlayer pause];
@@ -263,9 +262,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-  //  _cell = (Sample2TableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TimelineTableViewCell"];
- 
+
     
     NSString *cellIdentifier = @"TimelineTableViewCell";
     _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -432,7 +429,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //コメントボタンのイベント
+    //削除ボタンのイベント
    // [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
    
     
@@ -442,29 +439,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                    placeholderImage:[UIImage imageNamed:@"default.png"]];
 
-    /*
-     //サムネイル画像の追加
-     NSString *URLString = [_thumbnail_ objectAtIndex:indexPath.row];
-     NSURL *thumbnailurl = [NSURL URLWithString:URLString];
-     NSData *thumbnaildata = [NSData dataWithContentsOfURL:thumbnailurl];
-     UIImage *thumbnailimage = [[UIImage alloc] initWithData:thumbnaildata];
-     _thumbnailView = [[UIImageView alloc] initWithImage:thumbnailimage];
-     CGRect frame2 = _cell.thumbnailView.frame;
-     [_thumbnailView setFrame:frame2];
-     [_cell.thumbnailView addSubview:_thumbnailView];
-     [_cell.movieView bringSubviewToFront:_thumbnailView];
-    */
 
-    /*
     //ユーザーの画像を取得
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.thumbnailView setImageWithURL:[NSURL URLWithString:dottext2]
+    [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
                        placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-    */
-    
+      
     //動画再生
-    NSString *text = [_movie_ objectAtIndex:indexPath.row];
+    NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
     NSURL *url = [NSURL URLWithString:text];
  
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
@@ -492,8 +475,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
-        
-       
+        _cell.thumbnailView.hidden = YES;
     }
 }
 
@@ -514,7 +496,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    [moviePlayer play];
+      [moviePlayer play];
 }
 
 

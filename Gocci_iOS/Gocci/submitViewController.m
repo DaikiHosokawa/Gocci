@@ -97,9 +97,9 @@
     _starRatingImage.delegate = self;
     _starRatingImage.horizontalMargin = 12;
     _starRatingImage.editable=YES;
-    _starRatingImage.rating= 2.5;
+    _starRatingImage.rating= 3;
     _starRatingImage.displayMode=EDStarRatingDisplayAccurate;
-    [self starsSelectionChanged:_starRatingImage rating:2.5];
+    [self starsSelectionChanged:_starRatingImage rating:3];
     // This one will use the returnBlock instead of the delegate
     _starRatingImage.returnBlock = ^(float rating )
     {

@@ -23,9 +23,13 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
+@property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, copy) Sample5TableViewCell *cell;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
+@property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
+@property (weak, nonatomic) IBOutlet UILabel *profilename;
+
 
 @end
 
@@ -54,6 +58,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
+    self.profilename.text = profiledelegate.username;
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -100,6 +108,10 @@
         //コメント数
         NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
         _commentnum_ = [commentnum mutableCopy];
+        //スターの数
+        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+        _starnum_ = [starnum mutableCopy];
+        NSLog(@"commentnum:%@",starnum);
         
         dispatch_async(q_main, ^{
         });
@@ -145,15 +157,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    /*
+    
+    
     //投稿が0の時の画面表示
     if([_movie_ count] == 0){
         
         NSLog(@"投稿がありません。");
         
         // UIImageViewの初期化
-        CGRect rect = CGRectMake(30, 150, 250, 250);
+        CGRect rect = CGRectMake(30, 150, 250, 285);
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
         
         // 画像の読み込み
@@ -161,10 +173,7 @@
         
         // UIImageViewのインスタンスをビューに追加
         [self.view addSubview:imageView];
-        
     }
-     */
-    
     // Return the number of rows in the section.
     return [_movie_ count];
 }
@@ -172,7 +181,7 @@
 - (void)endScroll {
     //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
+    CGPoint p = CGPointMake(183.0, 380.0 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [self updateVisibleCells];
@@ -339,6 +348,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    _cell.starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
     
     //コメントボタンのイベント

@@ -31,7 +31,7 @@
     self.Review = nil;
     self.contentViewFront = nil;
     self.movieView = nil;
-    self.thumbnailView = nil;
+    //self.thumbnailView = nil;
     self.Commentnum = nil;
     self.indicator = nil;
     //self.deleteBtn = nil;

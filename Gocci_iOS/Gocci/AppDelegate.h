@@ -21,6 +21,8 @@
     NSURL *postMovieURL;
     //グローバル変数
     NSString *username;
+    //グローバル変数
+    NSString *userpicture;
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     NSString *lat;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) NSString *pID;
 @property (nonatomic, retain) NSURL *postMovieURL;
 @property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *userpicture;
 @property (nonatomic) double latitude,longitude;
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
