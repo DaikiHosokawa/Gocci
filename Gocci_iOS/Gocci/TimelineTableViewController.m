@@ -101,25 +101,6 @@
         });
     });
 
-     /*
-    //JSONをパース
-    NSString *postidString = [NSString stringWithFormat:@"https://codelecture.com/gocci/postid.php"];
-    NSURL *postidurl = [NSURL URLWithString:postidString];
-    NSString *postidresponse = [NSString stringWithContentsOfURL:postidurl encoding:NSUTF8StringEncoding error:nil];
-    NSData *postidjsonData = [postidresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *postidjsonDic = [NSJSONSerialization JSONObjectWithData:postidjsonData options:0 error:nil];
-    
-    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q1_main = dispatch_get_main_queue();
-    dispatch_async(q1_global, ^{
-    // 動画post_id
-    NSArray *postid = [postidjsonDic valueForKey:@"post_id"];
-    _postid_ = [postid mutableCopy];
-    NSLog(@"postid:%@",_postid_);
-        dispatch_async(q1_main, ^{
-        });
-    });
-  */
         
     //JSONをパース
     NSString *reviewString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/submit.php"];
@@ -254,7 +235,6 @@
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 520.0;
@@ -271,15 +251,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-        // セルの更新
+        // セルの更新メソッド
         [self updateCell:_cell atIndexPath:indexPath];
-        // Configure the cell...
     
         return _cell ;
 }
 
 
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+    
     //コメントボタンの時の処理
     [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
@@ -310,6 +290,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
+    
     dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q1_main = dispatch_get_main_queue();
     dispatch_async(q1_global, ^{
@@ -329,6 +310,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     });
     
     NSLog(@"goodBtn is touched");
+
 }
 /*
 - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
@@ -404,16 +386,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
  */
 
-//画面上に見えているセルの表示更新
+
 - (void)updateVisibleCells {
+    //画面上に見えているセルの表示更新
     for (_cell in [self.tableView visibleCells]){
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
@@ -440,7 +421,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                    placeholderImage:[UIImage imageNamed:@"default.png"]];
 
 
-    //ユーザーの画像を取得
+    //動画サムネイル画像の表示
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
@@ -475,6 +456,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
+        //動画サムネイル画像のhidden
         _cell.thumbnailView.hidden = YES;
     }
 }
@@ -496,7 +478,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
-      [moviePlayer play];
+    //繰り返し
+    [moviePlayer play];
 }
 
 
