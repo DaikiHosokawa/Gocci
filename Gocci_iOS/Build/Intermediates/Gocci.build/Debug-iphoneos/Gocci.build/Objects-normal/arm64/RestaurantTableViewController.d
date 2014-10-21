@@ -59,6 +59,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample2TableViewCell.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/everyTableViewController.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample4TableViewCell.h \

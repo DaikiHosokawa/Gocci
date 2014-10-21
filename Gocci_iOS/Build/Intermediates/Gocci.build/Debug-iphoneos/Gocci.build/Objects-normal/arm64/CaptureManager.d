@@ -50,4 +50,5 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/FacebookSDK.framework/Headers/NSError+FBError.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample2TableViewCell.h

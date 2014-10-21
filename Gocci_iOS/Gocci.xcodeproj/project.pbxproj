@@ -202,10 +202,6 @@
 		FF5DE1CC19DA44BA00D758A4 /* Gocci copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy-Info.plist"; sourceTree = "<absolute>"; };
 		FF5DE21819DA44D800D758A4 /* Gocci copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy2-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy2-Info.plist"; sourceTree = "<absolute>"; };
 		FF5DE26719DA46E400D758A4 /* Gocci copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy3-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy3-Info.plist"; sourceTree = "<absolute>"; };
-		FF5DE26819DA46E600D758A4 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Sample4TableViewCell.xib; path = "Resources-iPad/Gocci/Sample4TableViewCell.xib"; sourceTree = "<group>"; };
-		FF5DE26919DA46E600D758A4 /* Sample3TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Sample3TableViewCell.xib; path = "Resources-iPad/Gocci/Sample3TableViewCell.xib"; sourceTree = "<group>"; };
-		FF5DE26A19DA46E600D758A4 /* SampleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SampleTableViewCell.xib; path = "Resources-iPad/Gocci/SampleTableViewCell.xib"; sourceTree = "<group>"; };
-		FF5DE26B19DA46E600D758A4 /* Sample2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Sample2TableViewCell.xib; path = "Resources-iPad/Gocci/Sample2TableViewCell.xib"; sourceTree = "<group>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
 		FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample2TableViewCell.h; sourceTree = "<group>"; };
@@ -353,7 +349,6 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
-				FF5DE26619DA46E300D758A4 /* Resources-iPad */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
@@ -531,17 +526,6 @@
 				FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		FF5DE26619DA46E300D758A4 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				FF5DE26819DA46E600D758A4 /* Sample4TableViewCell.xib */,
-				FF5DE26919DA46E600D758A4 /* Sample3TableViewCell.xib */,
-				FF5DE26A19DA46E600D758A4 /* SampleTableViewCell.xib */,
-				FF5DE26B19DA46E600D758A4 /* Sample2TableViewCell.xib */,
-			);
-			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 		FF8CE923195824F8000FE68B /* VideoRecorder */ = {

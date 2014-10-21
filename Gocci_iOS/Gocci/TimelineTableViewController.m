@@ -17,6 +17,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
+#import "usersTableViewController.h"
+#import "QuartzCore/QuartzCore.h"
+
 
 
 @protocol MovieViewDelegate;
@@ -140,11 +143,24 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     [moviePlayer stop];
     [player stop];
+    
+    _cell.thumbnailView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+}
+- (IBAction)pushUserTimeline:(id)sender {
+
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.4;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;//pushのトランジション
+    transition.subtype = kCATransitionFromRight;//右から左へ
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    usersTableViewController *userTimeline = [[usersTableViewController alloc]init];
+    [self.navigationController pushViewController:userTimeline animated:YES];
 }
 
 - (void)viewDidLoad
@@ -207,6 +223,7 @@
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"%ld", (long)_nowindexPath.row);
     [self updateVisibleCells];
+
     [moviePlayer play];
 }
 
@@ -250,6 +267,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+
+    NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
+                         placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
+    
     
         // セルの更新メソッド
         [self updateCell:_cell atIndexPath:indexPath];
@@ -421,12 +445,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                    placeholderImage:[UIImage imageNamed:@"default.png"]];
 
 
-    //動画サムネイル画像の表示
-    NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
-                       placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-      
     //動画再生
     NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -456,6 +474,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
+        
         //動画サムネイル画像のhidden
         _cell.thumbnailView.hidden = YES;
     }

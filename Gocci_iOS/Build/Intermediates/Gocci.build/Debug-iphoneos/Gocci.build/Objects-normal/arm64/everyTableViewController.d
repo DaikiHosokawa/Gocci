@@ -15,6 +15,12 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AFNetworking/AFURLSessionManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AFNetworking/AFHTTPSessionManager.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/VideoRecorder/UIKit+AFNetworking/UIImageView+AFNetworking.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageCompat.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageManager.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageOperation.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloader.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SVProgressHUD/SVProgressHUD.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/AppDelegate.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/FacebookSDK.framework/Headers/FacebookSDK.h \
@@ -61,10 +67,4 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/FacebookSDK.framework/Headers/NSError+FBError.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/UIImageView+WebCache.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageCompat.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageManager.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageOperation.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDWebImageDownloader.h \
-  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SDWebImage/SDImageCache.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h

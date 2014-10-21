@@ -206,7 +206,8 @@
                     <navigationItem key="navigationItem" title="Gocci" id="CMw-GA-8Go">
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="O3c-M8-tc9">
                             <connections>
-                                <segue destination="JWG-MP-T7g" kind="push" identifier="goUsers" id="t7G-Gg-tVc"/>
+                                <action selector="pushUserTimeline:" destination="eNe-5a-Fw9" id="LxT-bE-8r5"/>
+                                <segue destination="JWG-MP-T7g" kind="push" identifier="goUserTimeline" id="BFm-CQ-6fi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="x8r-pg-0JT">
@@ -596,7 +597,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="gg6-6i-ecx"/>
+        <segue reference="tK9-zW-yJ4"/>
         <segue reference="upz-Ke-AzS"/>
-        <segue reference="7nL-qp-VeJ"/>
     </inferredMetricsTieBreakers>
 </document>

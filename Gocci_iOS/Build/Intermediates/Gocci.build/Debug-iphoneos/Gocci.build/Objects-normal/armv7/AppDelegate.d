@@ -46,6 +46,7 @@ dependencies: \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/Crittercism.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CrittercismDelegate.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/CrittercismSDK/CRFilter.h \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/Sample2TableViewCell.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Parse.framework/Headers/Parse.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Parse.framework/Headers/PFACL.h \
   /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Parse.framework/Headers/PFAnalytics.h \

@@ -23,9 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *Review;
 @property (weak, nonatomic) IBOutlet UILabel *Goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) Sample2TableViewCell *cell;
+@property (retain, nonatomic) Sample2TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
-@property (nonatomic, strong) IBOutlet UIImageView *thumbnailView;
+@property (retain, nonatomic) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 //@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;

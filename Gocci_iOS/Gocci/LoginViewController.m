@@ -122,6 +122,7 @@
                                                             [urlRequest setHTTPMethod:@"POST"];
                                                             [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
                                                             NSURLResponse* response;
+                                                            NSLog(@"response:%@",response);
                                                             NSError* error = nil;
                                                             NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                    returningResponse:&response
@@ -154,11 +155,12 @@
                                                         [urlRequest setHTTPMethod:@"POST"];
                                                         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
                                                         NSURLResponse* response;
+                                                        NSLog(@"response:%@",response);
                                                         NSError* error = nil;
                                                         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                returningResponse:&response
                                                                                                            error:&error];
-                                                        NSLog(@"result:%@",result);
+                                                       
                                                         
                                                         [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                         NSLog(@"FacebookLogin is completed");
