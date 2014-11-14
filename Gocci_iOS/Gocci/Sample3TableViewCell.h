@@ -24,4 +24,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *Starnum;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *starImage;
 @end

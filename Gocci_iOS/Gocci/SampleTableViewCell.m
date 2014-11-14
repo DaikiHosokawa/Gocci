@@ -19,6 +19,7 @@
 self.restaurantName = nil;
 self.restaurantAddress = nil;
 self.meter = nil;
+self.categoryname = nil;
 };
 
 - (void)awakeFromNib

@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UIImageView+WebCache.h"
+
 
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
@@ -21,6 +21,7 @@
     NSString *_postID;
     MPMoviePlayerController *moviePlayer;
     MPMoviePlayerController *player;
+    //UITableViewCell *cell;
     NSString *_path;
     Sample2TableViewCell  *cell;
     UIImageView *thumbnailView;

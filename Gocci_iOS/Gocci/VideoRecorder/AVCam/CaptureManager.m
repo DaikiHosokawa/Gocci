@@ -414,7 +414,7 @@
         
         //デリゲートの値を取得するときは、このメソッドを使用する。
         AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
-        NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/post_restname.php"];
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/post_restname/"];
         NSString *content = [NSString stringWithFormat:@"restname=%@",appDelegete.gText];
         NSLog(@"content:%@",appDelegete.gText);
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -426,7 +426,7 @@
                                                            error:&error];
         
         //送信先URL
-        NSURL *serverurl = [NSURL URLWithString:@"https://codelecture.com/gocci/movie.php"];
+        NSURL *serverurl = [NSURL URLWithString:@"http://api-gocci.jp/api/public/movie/"];
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serverurl];
         [request setHTTPMethod:@"POST"];
@@ -463,6 +463,7 @@
         [request setHTTPBody:postBody];
         
         [NSURLConnection connectionWithRequest:request delegate:self];
+        
         /*
         //デリゲートの値を取得するときは、このメソッドを使用する。
         AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];

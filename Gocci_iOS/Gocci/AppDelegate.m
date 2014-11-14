@@ -9,11 +9,21 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <AVFoundation/AVFoundation.h>
+#import "SCFilterGroup.h"
+#import "SCVideoPlayerView.h"
 
+void uncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+    // Internal error reporting
+}
 
 @implementation AppDelegate
 
+
 @synthesize window = _window;
+
+
 
 
 //facebook認証のcallbackメソッド
@@ -57,34 +67,24 @@
     
     // CLLocationManagerのインスタンスを作成
     locationManager = [[CLLocationManager alloc] init];
+    // デリゲートを設定
+    locationManager.delegate = self;
+    // 更新頻度(メートル)
+    locationManager.distanceFilter = 200;
+    // 取得精度
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // iOS8の対応
     if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
-        locationManager.delegate = self;
-        // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
-        // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 測位開始
-        [locationManager startUpdatingLocation];
-        
         // 位置情報測位の許可を求めるメッセージを表示する
         [locationManager requestAlwaysAuthorization]; // 常に許可
-        // [self.locationManager requestWhenInUseAuthorization]; // 使用中のみ許可
         
     } else { // iOS7以前
-        
-        locationManager.delegate = self;
-        // 更新頻度(メートル)
-        locationManager.distanceFilter = 20;
-        // 取得精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         // 測位開始
-        [locationManager startUpdatingLocation];
-        
-        // 位置測位スタート
         [locationManager startUpdatingLocation];
     }
     
+    NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
+    // Override point for customization after application launch.
 
     return YES;
 }
@@ -92,8 +92,11 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
+    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q2_main = dispatch_get_main_queue();
+    dispatch_async(q2_global, ^{
+
     CLLocation *newLocation = [locations lastObject];
-    // 位置情報を取り出す
     //緯度
     latitude = newLocation.coordinate.latitude;
     //経度
@@ -102,8 +105,27 @@
     _lon = [NSString stringWithFormat:@"%f", longitude];
     NSLog(@"lat:%@",_lat);
     NSLog(@"lon:%@",_lon);
+
+    //現在地から近い店取得しておく
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",_lat,_lon];
+    NSLog(@"urlStringatnoulon:%@",urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@",jsonDic);
+    
     [locationManager stopUpdatingLocation];
+
+    NSLog(@"update成功");
+        dispatch_async(q2_main, ^{
+        });
+    });
 }
+
+
 
 - (void)locationManager:(CLLocationManager *)manager
 didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -114,6 +136,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
         // 位置測位スタート
         [locationManager startUpdatingLocation];
         
+        
         if (status == kCLAuthorizationStatusNotDetermined) {
             // ユーザが位置情報の使用を許可していない
             [locationManager requestAlwaysAuthorization]; // 常に許可
@@ -122,24 +145,18 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     }
 }
 
--(void) onResume {
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
-}
 
--(void) onPause {
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"applicationWillResignActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
         [locationManager stopUpdatingLocation]; //測位停止
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"applicationWillResignActive");
-    [self onPause];
-}
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"applicationDidBecomeActive");
-    [self onResume];
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+        [locationManager startUpdatingLocation]; //測位再開
     // Facebook
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 

@@ -171,7 +171,7 @@
       //デリゲートの値を取得するときは、このメソッドを使用する。
       AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
        NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
-       NSString* stringA = @"https://codelecture.com/gocci/movies/";
+       NSString* stringA = @"http://api-gocci.jp/api/public/movies/";
        NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,filename];
         NSURL *holeurl = [NSURL URLWithString:entitystring];
        NSLog(@"holeurl:%@",holeurl);
@@ -210,7 +210,7 @@
     NSInteger i = substr2.integerValue;
     NSString *content = [NSString stringWithFormat:@"val=%@&star_evaluation=%ld",_text,(long)i];
     NSLog(@"content:%@",content);
-	NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/submit/submit.php"];
+	NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/submit/"];
 	NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
 	[urlRequest setHTTPMethod:@"POST"];
 	[urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];

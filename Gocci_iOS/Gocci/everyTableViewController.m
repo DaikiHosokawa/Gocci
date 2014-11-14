@@ -49,7 +49,7 @@
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
     //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/comment_json.php?post_id=%@",_postIDtext];
+    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/comment_json/?post_id=%@",_postIDtext];
     NSLog(@"Timeline Api:%@",timelineString);
     NSURL *url = [NSURL URLWithString:timelineString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -90,7 +90,7 @@
     NSLog(@"sendBtn is touched");;
     NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/comment.php"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/comment/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];

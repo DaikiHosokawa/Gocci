@@ -19,6 +19,7 @@
 @synthesize thumbnailView;
 @synthesize Commentnum;
 @synthesize indicator;
+@synthesize starImage;
 //@synthesize deleteBtn;
 @synthesize Starnum;
 
@@ -31,11 +32,12 @@
     self.Review = nil;
     self.contentViewFront = nil;
     self.movieView = nil;
-    //self.thumbnailView = nil;
+    self.thumbnailView = nil;
     self.Commentnum = nil;
     self.indicator = nil;
     //self.deleteBtn = nil;
     self.Starnum = nil;
+    self.starImage = nil;
 };
 
 

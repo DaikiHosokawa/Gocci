@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "Crittercism.h"
-#import "Sample2TableViewCell.h"
 
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>
-{
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>{
     // グローバル変数
     NSString *gText;
     //グローバル変数
@@ -25,14 +23,13 @@
     NSString *username;
     //グローバル変数
     NSString *userpicture;
-    //グローバル変数
-    Sample2TableViewCell *cell;
-    
     CLLocationManager *locationManager;
     double latitude, longitude; // 取得した緯度経度
     NSString *lat;
     NSString *lon;
-    NSString *thumbnailurl;
+    NSDictionary *jsonDic;
+    NSDictionary *reviewJsondic;
+    CLLocation *numa;
 }
 @property (nonatomic, retain) NSString *gText;
 @property (nonatomic, retain) NSString *pID;
@@ -40,11 +37,15 @@
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *userpicture;
 @property (nonatomic) double latitude,longitude;
-@property (nonatomic, retain) NSString *thumbnailurl;
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
-@property (nonatomic) Sample2TableViewCell *cell;
+@property (nonatomic, retain) NSDictionary *jsonDic;
+@property (nonatomic, retain) NSDictionary *reviewJsondic;
+@property (nonatomic, retain) CLLocation *numa;
 
 @property (strong, nonatomic) UIWindow *window;
+
+
+
 
 @end

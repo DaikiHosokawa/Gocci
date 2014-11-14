@@ -78,7 +78,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		6I34G4zyhqXdFfEedyHbD78zddo=
+		89xdTBsjjda2gEAJmH68UuN1Hng=
+		</data>
+		<key>Info.plist</key>
+		<data>
+		720IBWMh3vPQPq0TocB7FH4fHT8=
 		</data>
 		<key>LaunchImage-2-568h@2x.png</key>
 		<data>
@@ -90,83 +94,111 @@
 		</data>
 		<key>Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib</key>
 		<data>
-		thwJBfxKFikrSzsxrzL4H8mQbkU=
+		zWKepPUGJFqjGmRSwfQPjQvN4sw=
+		</data>
+		<key>Main.storyboardc/2-view-3.nib</key>
+		<data>
+		4s+mOT6EIp5CEYI49+RFezT6/RU=
 		</data>
 		<key>Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib</key>
 		<data>
-		mcuS7Y2vhDtVbaywq3KPipEpRjs=
+		ejBXab+4glhr8x4C/V5NXrXowkw=
 		</data>
 		<key>Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib</key>
 		<data>
-		zdf5lwcaywFbj4i3d7nIb19jEMk=
+		w0fHtxhYo5c4ez8atfW/V7QvVe0=
 		</data>
 		<key>Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib</key>
 		<data>
-		j7BpbR05Nq41MCkExmSScxFLxP4=
+		WY8rZyrt0cLm+XbpfNSdMTYtQQk=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
-		qIjF8zzlc+ZNcRqO0ToTNtSMZZU=
+		ZFXygZ5WuUSTNAOrzyYRh8nksuY=
 		</data>
 		<key>Main.storyboardc/JWG-MP-T7g-view-6yc-K1-zfR.nib</key>
 		<data>
-		E9QX8yJfCCSF7NG1I8E0iTY78nM=
+		n1hZmWIV5ZAYficXdZFztMEoqOo=
 		</data>
 		<key>Main.storyboardc/Lifelog.nib</key>
 		<data>
-		dOAcoUgMW0IJ8k3V1Sid1VxlxH4=
+		bnQyKpzs5up/2xgwOTLOpjDTLcY=
 		</data>
 		<key>Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib</key>
 		<data>
-		iFSuRdO99tEyIPGFw/37QWRgXBg=
+		Ckf5h2h69W1usiJpLP0qD0T2BUY=
 		</data>
 		<key>Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib</key>
 		<data>
-		g0Su0l22NM+SR/EwS5wTLkNQzHg=
+		gkLbbZlo2O3xMixFlTPw6ocbd2w=
 		</data>
 		<key>Main.storyboardc/Recorder.nib</key>
 		<data>
-		L4rNwCxD3EVgUpcg6DH2AtbjXUg=
+		/lP3TgnOV9nf66cUTc41nb/IP4A=
 		</data>
 		<key>Main.storyboardc/RestaurantTV.nib</key>
 		<data>
-		jazvinDgJwrY5G+pOPJxcnRyRYQ=
+		wpFHuK1zFYJa3wCmV3wX931HG/Q=
+		</data>
+		<key>Main.storyboardc/SCImageDisplayerViewController.nib</key>
+		<data>
+		YCqua9YG8nu7+dQmqnu/K1q18GM=
+		</data>
+		<key>Main.storyboardc/SCVideoPlayerViewController.nib</key>
+		<data>
+		8yJqnA76z31/7vnUhkAND+lg6cc=
+		</data>
+		<key>Main.storyboardc/UIViewController-2.nib</key>
+		<data>
+		VqyLzaCb9qwLT60QF6HlREYmi/M=
 		</data>
 		<key>Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib</key>
 		<data>
-		7VOjSiRJn4YjHu5jqkv/ZLB1NSE=
+		8oA+89oNqfEHbA0eg8ulxzRVHkU=
 		</data>
 		<key>Main.storyboardc/UIViewController-JWG-MP-T7g.nib</key>
 		<data>
-		uvk6KSJpgIb0ZDxGBayVbCNpMfU=
+		rHit5HwoQYV8cX4KsBxdIqMkm3U=
 		</data>
 		<key>Main.storyboardc/UIViewController-eNe-5a-Fw9.nib</key>
 		<data>
-		p+vpXKohcKaTpUcUM6ebB1DmGVg=
+		kqIQ+WTZdGTbWgmGbQu09la4jtM=
 		</data>
 		<key>Main.storyboardc/UIViewController-x1a-eI-W4a.nib</key>
 		<data>
-		x8T818La5g4EXwM3Moz5WBAKqKc=
+		pKfihuEp6fpL5Q7Kl6ogdSrorIs=
+		</data>
+		<key>Main.storyboardc/VeQ-Zi-V20-view-V11-1J-PU0.nib</key>
+		<data>
+		WME9PHhGaC99UmsdFPWQaQSFQe8=
 		</data>
 		<key>Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib</key>
 		<data>
-		hi1iH21ejQ+l7u+/6klMwP12Lpo=
+		Q4OHbQ1zecLBUFywyOtP7hpnhes=
 		</data>
 		<key>Main.storyboardc/evTable.nib</key>
 		<data>
-		7Y9rI1d0SoLEKMq0F5V82LqN4J0=
+		NBn95LK7YKTIvUNYkh0EMIaj0dA=
+		</data>
+		<key>Main.storyboardc/n4i-ZU-lEg-view-6sY-Dg-LS2.nib</key>
+		<data>
+		yv6sO1G35H5uzGEHtpdvO7K+Gys=
 		</data>
 		<key>Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib</key>
 		<data>
-		5u4GnWgpfoA3ok0613cdYXg2FHI=
+		R0DLjlUr8offmApx9O/6J42svFM=
 		</data>
 		<key>Main.storyboardc/submitViewController.nib</key>
 		<data>
-		GNR4e5lkTQ5Sy3biYu49CD2IfRQ=
+		/7J95QNdIDVB5/5vnnbKl4Bkb4M=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		</data>
+		<key>ResourceRules.plist</key>
+		<data>
+		d/bl2iIqxwOE4IBWAjyDLXJVwLo=
 		</data>
 		<key>SVProgressHUD.bundle/angle-mask@2x.png</key>
 		<data>
@@ -182,23 +214,23 @@
 		</data>
 		<key>Sample2TableViewCell.nib</key>
 		<data>
-		/QkDZ1XaY93i5BFoMlCvmmgH9BE=
+		uWUpRrDdzIlUICD3p3Rm08X48F8=
 		</data>
 		<key>Sample3TableViewCell.nib</key>
 		<data>
-		cd81I3sZB2hGXIqAfUCmsF83G7w=
+		CrCVVzxyXQbT0OKFehpdQBUgg0s=
 		</data>
 		<key>Sample4TableViewCell.nib</key>
 		<data>
-		uxd4mbnUQaBR4xENC1MQg0T55Wo=
+		lpEYdRNkFAsUvvSaFULWmL9HNrI=
 		</data>
 		<key>Sample5TableViewCell.nib</key>
 		<data>
-		0iqb+QWam6Thuo06Og1ZcEwLhLg=
+		r+wqdVL1k0mHxnherSVDNTHIxlM=
 		</data>
 		<key>SampleTableViewCell.nib</key>
 		<data>
-		YDCbRHR25yyI9uDXFp+aancR/tM=
+		CZK1KWVDNi+4HyYJhjLAUUN9Fds=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>
@@ -206,12 +238,17 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		E5lFoTpRnctmhI8LoqlxIwP02AQ=
+		K/DZ5HsK5icvmq1Y+VGEuKd19J0=
 		</data>
 		<key>en.lproj/InfoPlist.strings</key>
-		<data>
-		cIesbAdPi1TUrK/6ds9e7iW8tbg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			cIesbAdPi1TUrK/6ds9e7iW8tbg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -289,7 +326,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		6I34G4zyhqXdFfEedyHbD78zddo=
+		89xdTBsjjda2gEAJmH68UuN1Hng=
 		</data>
 		<key>LaunchImage-2-568h@2x.png</key>
 		<data>
@@ -301,83 +338,107 @@
 		</data>
 		<key>Main.storyboardc/0Fg-hc-FSn-view-8FZ-yz-Qzp.nib</key>
 		<data>
-		thwJBfxKFikrSzsxrzL4H8mQbkU=
+		zWKepPUGJFqjGmRSwfQPjQvN4sw=
+		</data>
+		<key>Main.storyboardc/2-view-3.nib</key>
+		<data>
+		4s+mOT6EIp5CEYI49+RFezT6/RU=
 		</data>
 		<key>Main.storyboardc/2HP-Jr-PlJ-view-b5j-Fu-24A.nib</key>
 		<data>
-		mcuS7Y2vhDtVbaywq3KPipEpRjs=
+		ejBXab+4glhr8x4C/V5NXrXowkw=
 		</data>
 		<key>Main.storyboardc/3H1-41-IX9-view-I29-my-nvG.nib</key>
 		<data>
-		zdf5lwcaywFbj4i3d7nIb19jEMk=
+		w0fHtxhYo5c4ez8atfW/V7QvVe0=
 		</data>
 		<key>Main.storyboardc/7Ul-L7-bNU-view-9d0-cW-eFL.nib</key>
 		<data>
-		j7BpbR05Nq41MCkExmSScxFLxP4=
+		WY8rZyrt0cLm+XbpfNSdMTYtQQk=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
-		qIjF8zzlc+ZNcRqO0ToTNtSMZZU=
+		ZFXygZ5WuUSTNAOrzyYRh8nksuY=
 		</data>
 		<key>Main.storyboardc/JWG-MP-T7g-view-6yc-K1-zfR.nib</key>
 		<data>
-		E9QX8yJfCCSF7NG1I8E0iTY78nM=
+		n1hZmWIV5ZAYficXdZFztMEoqOo=
 		</data>
 		<key>Main.storyboardc/Lifelog.nib</key>
 		<data>
-		dOAcoUgMW0IJ8k3V1Sid1VxlxH4=
+		bnQyKpzs5up/2xgwOTLOpjDTLcY=
 		</data>
 		<key>Main.storyboardc/OG7-sh-lzL-view-giu-53-Roh.nib</key>
 		<data>
-		iFSuRdO99tEyIPGFw/37QWRgXBg=
+		Ckf5h2h69W1usiJpLP0qD0T2BUY=
 		</data>
 		<key>Main.storyboardc/Pt3-mZ-dDb-view-4QO-Iu-On3.nib</key>
 		<data>
-		g0Su0l22NM+SR/EwS5wTLkNQzHg=
+		gkLbbZlo2O3xMixFlTPw6ocbd2w=
 		</data>
 		<key>Main.storyboardc/Recorder.nib</key>
 		<data>
-		L4rNwCxD3EVgUpcg6DH2AtbjXUg=
+		/lP3TgnOV9nf66cUTc41nb/IP4A=
 		</data>
 		<key>Main.storyboardc/RestaurantTV.nib</key>
 		<data>
-		jazvinDgJwrY5G+pOPJxcnRyRYQ=
+		wpFHuK1zFYJa3wCmV3wX931HG/Q=
+		</data>
+		<key>Main.storyboardc/SCImageDisplayerViewController.nib</key>
+		<data>
+		YCqua9YG8nu7+dQmqnu/K1q18GM=
+		</data>
+		<key>Main.storyboardc/SCVideoPlayerViewController.nib</key>
+		<data>
+		8yJqnA76z31/7vnUhkAND+lg6cc=
+		</data>
+		<key>Main.storyboardc/UIViewController-2.nib</key>
+		<data>
+		VqyLzaCb9qwLT60QF6HlREYmi/M=
 		</data>
 		<key>Main.storyboardc/UIViewController-2HP-Jr-PlJ.nib</key>
 		<data>
-		7VOjSiRJn4YjHu5jqkv/ZLB1NSE=
+		8oA+89oNqfEHbA0eg8ulxzRVHkU=
 		</data>
 		<key>Main.storyboardc/UIViewController-JWG-MP-T7g.nib</key>
 		<data>
-		uvk6KSJpgIb0ZDxGBayVbCNpMfU=
+		rHit5HwoQYV8cX4KsBxdIqMkm3U=
 		</data>
 		<key>Main.storyboardc/UIViewController-eNe-5a-Fw9.nib</key>
 		<data>
-		p+vpXKohcKaTpUcUM6ebB1DmGVg=
+		kqIQ+WTZdGTbWgmGbQu09la4jtM=
 		</data>
 		<key>Main.storyboardc/UIViewController-x1a-eI-W4a.nib</key>
 		<data>
-		x8T818La5g4EXwM3Moz5WBAKqKc=
+		pKfihuEp6fpL5Q7Kl6ogdSrorIs=
+		</data>
+		<key>Main.storyboardc/VeQ-Zi-V20-view-V11-1J-PU0.nib</key>
+		<data>
+		WME9PHhGaC99UmsdFPWQaQSFQe8=
 		</data>
 		<key>Main.storyboardc/eNe-5a-Fw9-view-eqd-8a-FVb.nib</key>
 		<data>
-		hi1iH21ejQ+l7u+/6klMwP12Lpo=
+		Q4OHbQ1zecLBUFywyOtP7hpnhes=
 		</data>
 		<key>Main.storyboardc/evTable.nib</key>
 		<data>
-		7Y9rI1d0SoLEKMq0F5V82LqN4J0=
+		NBn95LK7YKTIvUNYkh0EMIaj0dA=
+		</data>
+		<key>Main.storyboardc/n4i-ZU-lEg-view-6sY-Dg-LS2.nib</key>
+		<data>
+		yv6sO1G35H5uzGEHtpdvO7K+Gys=
 		</data>
 		<key>Main.storyboardc/s2J-hg-79Q-view-hIX-8Q-zY9.nib</key>
 		<data>
-		5u4GnWgpfoA3ok0613cdYXg2FHI=
+		R0DLjlUr8offmApx9O/6J42svFM=
 		</data>
 		<key>Main.storyboardc/submitViewController.nib</key>
 		<data>
-		GNR4e5lkTQ5Sy3biYu49CD2IfRQ=
+		/7J95QNdIDVB5/5vnnbKl4Bkb4M=
 		</data>
-		<key>PkgInfo</key>
+		<key>ResourceRules.plist</key>
 		<data>
-		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		d/bl2iIqxwOE4IBWAjyDLXJVwLo=
 		</data>
 		<key>SVProgressHUD.bundle/angle-mask@2x.png</key>
 		<data>
@@ -393,23 +454,23 @@
 		</data>
 		<key>Sample2TableViewCell.nib</key>
 		<data>
-		/QkDZ1XaY93i5BFoMlCvmmgH9BE=
+		uWUpRrDdzIlUICD3p3Rm08X48F8=
 		</data>
 		<key>Sample3TableViewCell.nib</key>
 		<data>
-		cd81I3sZB2hGXIqAfUCmsF83G7w=
+		CrCVVzxyXQbT0OKFehpdQBUgg0s=
 		</data>
 		<key>Sample4TableViewCell.nib</key>
 		<data>
-		uxd4mbnUQaBR4xENC1MQg0T55Wo=
+		lpEYdRNkFAsUvvSaFULWmL9HNrI=
 		</data>
 		<key>Sample5TableViewCell.nib</key>
 		<data>
-		0iqb+QWam6Thuo06Og1ZcEwLhLg=
+		r+wqdVL1k0mHxnherSVDNTHIxlM=
 		</data>
 		<key>SampleTableViewCell.nib</key>
 		<data>
-		YDCbRHR25yyI9uDXFp+aancR/tM=
+		CZK1KWVDNi+4HyYJhjLAUUN9Fds=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>
@@ -417,63 +478,111 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		E5lFoTpRnctmhI8LoqlxIwP02AQ=
+		K/DZ5HsK5icvmq1Y+VGEuKd19J0=
 		</data>
 		<key>en.lproj/InfoPlist.strings</key>
-		<data>
-		cIesbAdPi1TUrK/6ds9e7iW8tbg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			cIesbAdPi1TUrK/6ds9e7iW8tbg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>.*</key>
+		<key>^</key>
 		<true/>
-		<key>^Info.plist$</key>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
-			<real>10</real>
+			<real>1100</real>
 		</dict>
-		<key>^ResourceRules.plist$</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>100</real>
-		</dict>
+		<key>^version.plist$</key>
+		<true/>
 	</dict>
 	<key>rules2</key>
 	<dict>
-		<key>.*</key>
-		<true/>
-		<key>^(Frameworks|SharedFrameworks|Plugins|Plug-ins|XPCServices|Helpers|MacOS)/</key>
+		<key>.*\.dSYM($|/)</key>
+		<dict>
+			<key>weight</key>
+			<real>11</real>
+		</dict>
+		<key>^</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^(.*/)?\.DS_Store$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>2000</real>
+		</dict>
+		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
 		<dict>
 			<key>nested</key>
 			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>10</real>
 		</dict>
-		<key>^Info.plist$</key>
+		<key>^.*</key>
+		<true/>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Info\.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^PkgInfo$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^[^/]+$</key>
+		<dict>
+			<key>nested</key>
 			<true/>
 			<key>weight</key>
 			<real>10</real>
 		</dict>
-		<key>^ResourceRules.plist$</key>
+		<key>^embedded\.provisionprofile$</key>
 		<dict>
-			<key>omit</key>
-			<true/>
 			<key>weight</key>
-			<real>100</real>
+			<real>20</real>
 		</dict>
-		<key>^[^/]+$</key>
+		<key>^version\.plist$</key>
 		<dict>
-			<key>top</key>
-			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>20</real>
 		</dict>
 	</dict>
 </dict>

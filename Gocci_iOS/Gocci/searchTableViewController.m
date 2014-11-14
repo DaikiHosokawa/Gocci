@@ -49,8 +49,9 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     _searchBar.text = NULL;
     AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+    /*
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/?lat=%@&lon=%@&limit=30",appDelegete.lat,appDelegete.lon];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -58,28 +59,29 @@
     NSLog(@"jsonData:%@",jsonData);
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSLog(@"jsonDic:%@",jsonDic);
+     */
     
     dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q2_main = dispatch_get_main_queue();
     dispatch_async(q2_global, ^{
     // 飲食店名
-    NSArray *restname = [jsonDic valueForKey:@"restname"];
+    NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
     // 店舗カテゴリー
-    NSArray *category = [jsonDic valueForKey:@"category"];
+    NSArray *category = [appDelegete.jsonDic valueForKey:@"category"];
     _category_ = [category mutableCopy];
     // 距離
-    NSArray *meter = [jsonDic valueForKey:@"distance"];
+    NSArray *meter = [appDelegete.jsonDic valueForKey:@"distance"];
     _meter_ = [meter mutableCopy];
     // 店舗住所
-    NSArray *restaddress = [jsonDic valueForKey:@"locality"];
+    NSArray *restaddress = [appDelegete.jsonDic valueForKey:@"locality"];
     _restaddress_ = [restaddress mutableCopy];
     
     //緯度
-    NSArray *jsonlat = [jsonDic valueForKey:@"lat"];
+    NSArray *jsonlat = [appDelegete.jsonDic valueForKey:@"lat"];
     _jsonlat_ = [jsonlat mutableCopy];
     //経度
-    NSArray *jsonlon = [jsonDic valueForKey:@"lon"];
+    NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
     _jsonlon_ = [jsonlon mutableCopy];
         dispatch_async(q2_main, ^{
             [self.tableView reloadData];
@@ -102,11 +104,11 @@
         
         [SVProgressHUD dismiss];
     }
-       
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -171,7 +173,7 @@
     NSString *searchText = _searchBar.text;
     AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/search.php?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/search/?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
     NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:encodeString];
@@ -327,9 +329,5 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail" sender:self.tableView];
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
-
-
-
-
 
 @end

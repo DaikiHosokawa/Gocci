@@ -17,6 +17,7 @@
 @synthesize Commentnum;
 @synthesize Starnum;
 @synthesize thumbnailView;
+@synthesize starImage;
 
 - (void)dealloc
 {
@@ -29,6 +30,7 @@
     self.Commentnum = nil;
     self.Starnum = nil;
     self.thumbnailView = nil;
+    self.starImage = nil;
 };
 
 - (void)awakeFromNib

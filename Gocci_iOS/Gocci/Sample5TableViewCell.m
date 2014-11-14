@@ -17,6 +17,8 @@
 @synthesize Review;
 @synthesize Commentnum;
 @synthesize starnum;
+@synthesize deleteBtn;
+@synthesize starImage;
 
 - (void)dealloc
 {
@@ -28,6 +30,8 @@
     self.contentViewFront = nil;
     self.Commentnum = nil;
     self.starnum = nil;
+    self.deleteBtn = nil;
+    self.starImage = nil;
 };
 
 

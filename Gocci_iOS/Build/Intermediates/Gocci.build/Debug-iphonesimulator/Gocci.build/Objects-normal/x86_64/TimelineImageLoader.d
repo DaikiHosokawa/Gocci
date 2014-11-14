@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/daikihosokawa/Desktop/Native/Gocci_iOS/Gocci/TimelineImageLoader.m \
-  /Users/daikihosokawa/Desktop/Native/Gocci_iOS/Gocci/TimelineImageLoader.h
+  /Users/daikihosokawa/Desktop/Gocci\ project\ 3/Gocci_iOS/Gocci/TimelineImageLoader.m \
+  /Users/daikihosokawa/Desktop/Gocci\ project\ 3/Gocci_iOS/Gocci/TimelineImageLoader.h

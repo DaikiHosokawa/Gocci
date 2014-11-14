@@ -12,6 +12,7 @@
 #import "everyTableViewController.h"
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
+#import "MyAlertView.h"
 
 @interface usersTableViewController ()
 
@@ -66,9 +67,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    
-    //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/mypage.php"];
+   //JSONをパース
+    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",profiledelegate.username];
     NSLog(@"restpage:%@",urlString);
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -76,6 +77,7 @@
     NSError *error=nil;
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableLeaves error:&error];
+    
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -120,7 +122,7 @@
     AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
     
     //JSONをパース
-    NSString *urlString2 = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/user_review.php?user_name=%@",logindelegate2.username];
+    NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
     NSLog(@"restpage:%@",urlString2);
     NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
@@ -141,6 +143,8 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
     [moviePlayer stop];
+    [moviePlayer.view removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -192,24 +196,15 @@
 //////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 表示しているtableVIewの現状のオフセットを取得する。
-    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+    // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
-    
-    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
-    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    
-    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
+    CGPoint p = CGPointMake(183.0, 280 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     NSLog(@"%ld", (long)_nowindexPath.row);
-    
-    [moviePlayer stop];
-    //一番下までスクロールしたかどうか
+    [moviePlayer pause];
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
-        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
+        
     }
 }
 
@@ -243,7 +238,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 520.0;
+    return 570.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -278,7 +273,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/goodinsert.php"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -288,20 +283,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                            returningResponse:&response
                       
                                                        error:&error];
+    
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         
         //JSONをパース
-        NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/restpage.php?restname=%@",_postRestName];
+        AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
         NSLog(@"restpage:%@",urlString);
-        NSURL *url2 = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error2 =nil;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2
-                                                                options:NSJSONReadingMutableLeaves error:&error2];
-        NSLog(@"jsonDic:%@", jsonDic);
+        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error=nil;
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                options:NSJSONReadingMutableLeaves error:&error];
         
         //いいね数
         NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
@@ -314,9 +310,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-// 画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
-    for (UITableViewCell *cell in [self.tableView visibleCells]){
+    //画面上に見えているセルの表示更新
+    for (_cell in [self.tableView visibleCells]){
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
@@ -337,12 +333,65 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateCell:_cell atIndexPath:indexPath];
     // Configure the cell...
     
+    //ユーザーの画像を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
     // Configure the cell...
     return _cell;
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
     //updateした時の処理
+    
+    NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
+    // 文字列をNSIntegerに変換
+    NSInteger inted = startext.integerValue;
+    NSLog(@"文字列→NSInteger:%ld", inted);
+    
+    switch(inted){
+        case 1:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green1.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+            
+        case 2:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green2.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 3:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green3.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 4:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green4.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 5:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        default:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+    }
+    
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
@@ -350,18 +399,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     _cell.starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
-    
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //ユーザーの画像を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                       placeholderImage:[UIImage imageNamed:@"default.png"]];
+    //削除ボタンのイベント
+    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
@@ -370,16 +415,237 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    
-    [moviePlayer.view setFrame:_cell.movieView.frame];
-    [_cell.movieView addSubview: moviePlayer.view];
+    CGRect frame = CGRectMake(0, 87, 320, 320);
+    [moviePlayer.view setFrame:frame];
+    //[moviePlayer.view setFrame:_cell.movieView.frame];
+    [cell.contentView addSubview: moviePlayer.view];
+    [cell.contentView bringSubviewToFront:moviePlayer.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(movieLoadStateDidChange:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+    
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
+    [moviePlayer play];
+
 }
+
+-(void)movieLoadStateDidChange:(id)sender{
+    if(MPMovieLoadStatePlaythroughOK ) {
+        NSLog(@"STATE CHANGED");
+        //動画サムネイル画像のhidden
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //_cell.thumbnailView.hidden = YES;
+        });
+    }
+}
+
+
+ - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
+     Class class = NSClassFromString(@"UIAlertController");
+     if(class){
+         // iOS 8の時の処理
+     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
+     
+     // addActionした順に左から右にボタンが配置されます
+     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+         
+         //削除ボタンの時の処理
+         NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+         NSLog(@"row %ld was tapped.",(long)indexPath.row);
+         _postID = [_postid_ objectAtIndex:indexPath.row];
+         NSLog(@"postid:%@",_postID);
+         NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
+         NSLog(@"content:%@",content);
+         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/delete/"];
+         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+         [urlRequest setHTTPMethod:@"POST"];
+         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+         NSURLResponse* response;
+         NSError* error = nil;
+         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                returningResponse:&response
+                                                            error:&error];
+         dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+         dispatch_queue_t q1_main = dispatch_get_main_queue();
+         dispatch_async(q1_global, ^{
+             
+             //JSONをパース
+             AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+             NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
+             NSLog(@"restpage:%@",urlString);
+             NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+             NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+             NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
+             NSError *error=nil;
+             NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                     options:NSJSONReadingMutableLeaves error:&error];
+             
+             // ユーザー名
+             NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+             _user_name_ = [user_name mutableCopy];
+             // プロフ画像
+             NSArray *picture = [jsonDic valueForKey:@"picture"];
+             _picture_ = [picture mutableCopy];
+             // 動画URL
+             NSArray *movie = [jsonDic valueForKey:@"movie"];
+             _movie_ = [movie mutableCopy];
+             // 住所
+             NSArray *locality = [jsonDic valueForKey:@"locality"];
+             _locality_ = [locality mutableCopy];
+             
+             //いいね数
+             NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+             _goodnum_ = [goodnum mutableCopy];
+             
+             //レストラン名
+             NSArray *restname = [jsonDic valueForKey:@"restname"];
+             _restname_ = [restname mutableCopy];
+             //画像URL
+             NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
+             _picture_ = [pictureurl mutableCopy];
+             // 動画post_id
+             NSArray *postid = [jsonDic valueForKey:@"post_id"];
+             _postid_ = [postid mutableCopy];
+             //コメント数
+             NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
+             _commentnum_ = [commentnum mutableCopy];
+             //スターの数
+             NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+             _starnum_ = [starnum mutableCopy];
+             NSLog(@"commentnum:%@",starnum);
+             
+             AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
+             
+             //JSONをパース
+             NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
+             NSLog(@"restpage:%@",urlString2);
+             NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+             NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+             NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
+             NSError *error2=nil;
+             NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
+                                                                      options:NSJSONReadingMutableLeaves error:&error2];
+             NSLog(@"jsonDic:%@", jsonDic2);
+             //レビュー
+             NSArray *review = [jsonDic2 valueForKey:@"review"];
+             _review_ = [review mutableCopy];
+             
+             dispatch_async(q1_main, ^{
+                 [self.tableView reloadData];
+             });
+         });
+         
+         
+         
+         NSLog(@"goodBtn is touched");
+         
+     }]];
+     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+         // cancelボタンが押された時の処理
+         [self cancelButtonPushed];
+     }]];
+     
+     [self presentViewController:alertController animated:YES completion:nil];
+     }else{
+                                             //削除ボタンの時の処理
+                                    NSIndexPath *indexPath = [self indexPathForControlEvent:indexPath];
+                                    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+                                    _postID = [_postid_ objectAtIndex:indexPath.row];
+                                    NSLog(@"postid:%@",_postID);
+                                    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
+                                    NSLog(@"content:%@",content);
+                                    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/delete/"];
+                                    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+                                    [urlRequest setHTTPMethod:@"POST"];
+                                    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+                                    NSURLResponse* response;
+                                    NSError* error = nil;
+                                    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                                           returningResponse:&response
+                                                                                       error:&error];
+                                    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                    dispatch_queue_t q1_main = dispatch_get_main_queue();
+                                    dispatch_async(q1_global, ^{
+                                        
+                                        ///JSONをパース
+                                        AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
+                                        NSLog(@"restpage:%@",urlString);
+                                        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+                                        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+                                        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
+                                        NSError *error=nil;
+                                        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                                                options:NSJSONReadingMutableLeaves error:&error];
+                                        // ユーザー名
+                                        NSArray *user_name = [jsonDic valueForKey:@"user_name"];
+                                        _user_name_ = [user_name mutableCopy];
+                                        // プロフ画像
+                                        NSArray *picture = [jsonDic valueForKey:@"picture"];
+                                        _picture_ = [picture mutableCopy];
+                                        // 動画URL
+                                        NSArray *movie = [jsonDic valueForKey:@"movie"];
+                                        _movie_ = [movie mutableCopy];
+                                        // 住所
+                                        NSArray *locality = [jsonDic valueForKey:@"locality"];
+                                        _locality_ = [locality mutableCopy];
+                                        
+                                        //いいね数
+                                        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
+                                        _goodnum_ = [goodnum mutableCopy];
+                                        
+                                        //レストラン名
+                                        NSArray *restname = [jsonDic valueForKey:@"restname"];
+                                        _restname_ = [restname mutableCopy];
+                                        //画像URL
+                                        NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
+                                        _picture_ = [pictureurl mutableCopy];
+                                        // 動画post_id
+                                        NSArray *postid = [jsonDic valueForKey:@"post_id"];
+                                        _postid_ = [postid mutableCopy];
+                                        //コメント数
+                                        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
+                                        _commentnum_ = [commentnum mutableCopy];
+                                        //スターの数
+                                        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
+                                        _starnum_ = [starnum mutableCopy];
+                                        NSLog(@"commentnum:%@",starnum);
+                                        
+                                        AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
+                                        
+                                        //JSONをパース
+                                        NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
+                                        NSLog(@"restpage:%@",urlString2);
+                                        NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+                                        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
+                                        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
+                                        NSError *error2=nil;
+                                        NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
+                                                                                                 options:NSJSONReadingMutableLeaves error:&error2];
+                                        NSLog(@"jsonDic:%@", jsonDic2);
+                                        //レビュー
+                                        NSArray *review = [jsonDic2 valueForKey:@"review"];
+                                        _review_ = [review mutableCopy];
+                                        
+                                        dispatch_async(q1_main, ^{
+                                            [self.tableView reloadData];
+                                        });
+                                    });
+         
+     }
+    
+ }
+
+
+- (void)cancelButtonPushed {}
+
+
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];

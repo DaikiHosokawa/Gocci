@@ -25,6 +25,12 @@
 		FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBE19E6571D00AEB06E /* usersTableViewController.m */; };
 		FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */; };
 		FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */; };
+		FF23D1DE19F0B50B008B7E5C /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */; };
+		FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */; };
+		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
+		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
+		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
+		FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -70,6 +76,22 @@
 		FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92C195824F8000FE68B /* KZCameraView.m */; };
 		FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE93219582664000FE68B /* RecorderViewController.m */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
+		FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189119F101EA00538DAC /* CIImageRendererUtils.m */; };
+		FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189319F101EA00538DAC /* SCArchivedVector.m */; };
+		FF8F18B419F101EA00538DAC /* SCAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189519F101EA00538DAC /* SCAssetExportSession.m */; };
+		FF8F18B519F101EA00538DAC /* SCAudioTools.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189719F101EA00538DAC /* SCAudioTools.m */; };
+		FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189A19F101EA00538DAC /* SCFilter.m */; };
+		FF8F18B719F101EA00538DAC /* SCFilterGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189C19F101EA00538DAC /* SCFilterGroup.m */; };
+		FF8F18B819F101EA00538DAC /* SCFilterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189E19F101EA00538DAC /* SCFilterSelectorView.m */; };
+		FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18A119F101EA00538DAC /* SCImageView.m */; };
+		FF8F18BA19F101EA00538DAC /* SCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18A319F101EA00538DAC /* SCPlayer.m */; };
+		FF8F18BB19F101EA00538DAC /* SCRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18A519F101EA00538DAC /* SCRecorder.m */; };
+		FF8F18BC19F101EA00538DAC /* SCRecorderFocusTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18A719F101EA00538DAC /* SCRecorderFocusTargetView.m */; };
+		FF8F18BD19F101EA00538DAC /* SCRecorderFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18A919F101EA00538DAC /* SCRecorderFocusView.m */; };
+		FF8F18BE19F101EA00538DAC /* SCRecordSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18AB19F101EA00538DAC /* SCRecordSession.m */; };
+		FF8F18BF19F101EA00538DAC /* SCSampleBufferHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18AD19F101EA00538DAC /* SCSampleBufferHolder.m */; };
+		FF8F18C019F101EA00538DAC /* SCSwipeableFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18AF19F101EA00538DAC /* SCSwipeableFilterView.m */; };
+		FF8F18C119F101EA00538DAC /* SCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F18B119F101EA00538DAC /* SCVideoPlayerView.m */; };
 		FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C432192470AE0025DD6A /* LoginViewController.m */; };
 		FF97C43619247FD20025DD6A /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF97C43519247FD20025DD6A /* submitViewController.m */; };
 		FFA0E2DB19AEC0DF006269B4 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA0E2CB19AEC0DF006269B4 /* AFNetworkActivityIndicatorManager.m */; };
@@ -139,6 +161,18 @@
 		FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell.h; sourceTree = "<group>"; };
 		FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell.m; sourceTree = "<group>"; };
 		FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell.xib; sourceTree = "<group>"; };
+		FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
+		FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
+		FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
+		FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
+		FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTouchDetector.h; sourceTree = "<group>"; };
+		FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTouchDetector.m; sourceTree = "<group>"; };
+		FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerViewController.h; sourceTree = "<group>"; };
+		FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
+		FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
+		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
+		FF3E1FF41A0F6C6400D08B45 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
+		FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -199,9 +233,6 @@
 		FF5DDF7019E3D3C2000F2ABD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		FF5DDF7119E3D3C2000F2ABD /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		FF5DE1CC19DA44BA00D758A4 /* Gocci copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy-Info.plist"; sourceTree = "<absolute>"; };
-		FF5DE21819DA44D800D758A4 /* Gocci copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy2-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy2-Info.plist"; sourceTree = "<absolute>"; };
-		FF5DE26719DA46E400D758A4 /* Gocci copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy3-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project/Gocci/Gocci copy3-Info.plist"; sourceTree = "<absolute>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
 		FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample2TableViewCell.h; sourceTree = "<group>"; };
@@ -225,6 +256,41 @@
 		FF8CE93219582664000FE68B /* RecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecorderViewController.m; path = ../RecorderViewController.m; sourceTree = "<group>"; };
 		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FF8F188F19F101EA00538DAC /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
+		FF8F189019F101EA00538DAC /* CIImageRendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRendererUtils.h; sourceTree = "<group>"; };
+		FF8F189119F101EA00538DAC /* CIImageRendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIImageRendererUtils.m; sourceTree = "<group>"; };
+		FF8F189219F101EA00538DAC /* SCArchivedVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCArchivedVector.h; sourceTree = "<group>"; };
+		FF8F189319F101EA00538DAC /* SCArchivedVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCArchivedVector.m; sourceTree = "<group>"; };
+		FF8F189419F101EA00538DAC /* SCAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAssetExportSession.h; sourceTree = "<group>"; };
+		FF8F189519F101EA00538DAC /* SCAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAssetExportSession.m; sourceTree = "<group>"; };
+		FF8F189619F101EA00538DAC /* SCAudioTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioTools.h; sourceTree = "<group>"; };
+		FF8F189719F101EA00538DAC /* SCAudioTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioTools.m; sourceTree = "<group>"; };
+		FF8F189819F101EA00538DAC /* SCAudioVideoRecorder-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCAudioVideoRecorder-Prefix.pch"; sourceTree = "<group>"; };
+		FF8F189919F101EA00538DAC /* SCFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilter.h; sourceTree = "<group>"; };
+		FF8F189A19F101EA00538DAC /* SCFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilter.m; sourceTree = "<group>"; };
+		FF8F189B19F101EA00538DAC /* SCFilterGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterGroup.h; sourceTree = "<group>"; };
+		FF8F189C19F101EA00538DAC /* SCFilterGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilterGroup.m; sourceTree = "<group>"; };
+		FF8F189D19F101EA00538DAC /* SCFilterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterSelectorView.h; sourceTree = "<group>"; };
+		FF8F189E19F101EA00538DAC /* SCFilterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilterSelectorView.m; sourceTree = "<group>"; };
+		FF8F189F19F101EA00538DAC /* SCFilterSelectorViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterSelectorViewInternal.h; sourceTree = "<group>"; };
+		FF8F18A019F101EA00538DAC /* SCImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageView.h; sourceTree = "<group>"; };
+		FF8F18A119F101EA00538DAC /* SCImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageView.m; sourceTree = "<group>"; };
+		FF8F18A219F101EA00538DAC /* SCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPlayer.h; sourceTree = "<group>"; };
+		FF8F18A319F101EA00538DAC /* SCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPlayer.m; sourceTree = "<group>"; };
+		FF8F18A419F101EA00538DAC /* SCRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorder.h; sourceTree = "<group>"; };
+		FF8F18A519F101EA00538DAC /* SCRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorder.m; sourceTree = "<group>"; };
+		FF8F18A619F101EA00538DAC /* SCRecorderFocusTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderFocusTargetView.h; sourceTree = "<group>"; };
+		FF8F18A719F101EA00538DAC /* SCRecorderFocusTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderFocusTargetView.m; sourceTree = "<group>"; };
+		FF8F18A819F101EA00538DAC /* SCRecorderFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderFocusView.h; sourceTree = "<group>"; };
+		FF8F18A919F101EA00538DAC /* SCRecorderFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderFocusView.m; sourceTree = "<group>"; };
+		FF8F18AA19F101EA00538DAC /* SCRecordSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSession.h; sourceTree = "<group>"; };
+		FF8F18AB19F101EA00538DAC /* SCRecordSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSession.m; sourceTree = "<group>"; };
+		FF8F18AC19F101EA00538DAC /* SCSampleBufferHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSampleBufferHolder.h; sourceTree = "<group>"; };
+		FF8F18AD19F101EA00538DAC /* SCSampleBufferHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSampleBufferHolder.m; sourceTree = "<group>"; };
+		FF8F18AE19F101EA00538DAC /* SCSwipeableFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwipeableFilterView.h; sourceTree = "<group>"; };
+		FF8F18AF19F101EA00538DAC /* SCSwipeableFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwipeableFilterView.m; sourceTree = "<group>"; };
+		FF8F18B019F101EA00538DAC /* SCVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerView.h; sourceTree = "<group>"; };
+		FF8F18B119F101EA00538DAC /* SCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerView.m; sourceTree = "<group>"; };
 		FF97C431192470AE0025DD6A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FF97C432192470AE0025DD6A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FF97C43419247FD20025DD6A /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
@@ -349,12 +415,11 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
+				FF3E1FF41A0F6C6400D08B45 /* MyAlertView.h */,
+				FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
-				FF5DE1CC19DA44BA00D758A4 /* Gocci copy-Info.plist */,
-				FF5DE21819DA44D800D758A4 /* Gocci copy2-Info.plist */,
-				FF5DE26719DA46E400D758A4 /* Gocci copy3-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -444,6 +509,16 @@
 				FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */,
 				FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */,
 				FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */,
+				FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */,
+				FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */,
+				FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */,
+				FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */,
+				FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */,
+				FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */,
+				FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */,
+				FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */,
+				FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */,
+				FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
@@ -454,6 +529,7 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF8F188E19F101EA00538DAC /* Sources */,
 				FF217CB919E62D1200AEB06E /* EDStarRating */,
 				FF5DDF5119E3D3C2000F2ABD /* SDWebImage */,
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
@@ -550,6 +626,48 @@
 				FF8CE92A195824F8000FE68B /* CaptureManager.m */,
 			);
 			path = AVCam;
+			sourceTree = "<group>";
+		};
+		FF8F188E19F101EA00538DAC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FF8F188F19F101EA00538DAC /* CIImageRenderer.h */,
+				FF8F189019F101EA00538DAC /* CIImageRendererUtils.h */,
+				FF8F189119F101EA00538DAC /* CIImageRendererUtils.m */,
+				FF8F189219F101EA00538DAC /* SCArchivedVector.h */,
+				FF8F189319F101EA00538DAC /* SCArchivedVector.m */,
+				FF8F189419F101EA00538DAC /* SCAssetExportSession.h */,
+				FF8F189519F101EA00538DAC /* SCAssetExportSession.m */,
+				FF8F189619F101EA00538DAC /* SCAudioTools.h */,
+				FF8F189719F101EA00538DAC /* SCAudioTools.m */,
+				FF8F189819F101EA00538DAC /* SCAudioVideoRecorder-Prefix.pch */,
+				FF8F189919F101EA00538DAC /* SCFilter.h */,
+				FF8F189A19F101EA00538DAC /* SCFilter.m */,
+				FF8F189B19F101EA00538DAC /* SCFilterGroup.h */,
+				FF8F189C19F101EA00538DAC /* SCFilterGroup.m */,
+				FF8F189D19F101EA00538DAC /* SCFilterSelectorView.h */,
+				FF8F189E19F101EA00538DAC /* SCFilterSelectorView.m */,
+				FF8F189F19F101EA00538DAC /* SCFilterSelectorViewInternal.h */,
+				FF8F18A019F101EA00538DAC /* SCImageView.h */,
+				FF8F18A119F101EA00538DAC /* SCImageView.m */,
+				FF8F18A219F101EA00538DAC /* SCPlayer.h */,
+				FF8F18A319F101EA00538DAC /* SCPlayer.m */,
+				FF8F18A419F101EA00538DAC /* SCRecorder.h */,
+				FF8F18A519F101EA00538DAC /* SCRecorder.m */,
+				FF8F18A619F101EA00538DAC /* SCRecorderFocusTargetView.h */,
+				FF8F18A719F101EA00538DAC /* SCRecorderFocusTargetView.m */,
+				FF8F18A819F101EA00538DAC /* SCRecorderFocusView.h */,
+				FF8F18A919F101EA00538DAC /* SCRecorderFocusView.m */,
+				FF8F18AA19F101EA00538DAC /* SCRecordSession.h */,
+				FF8F18AB19F101EA00538DAC /* SCRecordSession.m */,
+				FF8F18AC19F101EA00538DAC /* SCSampleBufferHolder.h */,
+				FF8F18AD19F101EA00538DAC /* SCSampleBufferHolder.m */,
+				FF8F18AE19F101EA00538DAC /* SCSwipeableFilterView.h */,
+				FF8F18AF19F101EA00538DAC /* SCSwipeableFilterView.m */,
+				FF8F18B019F101EA00538DAC /* SCVideoPlayerView.h */,
+				FF8F18B119F101EA00538DAC /* SCVideoPlayerView.m */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		FFA0E2C919AEC0DF006269B4 /* UIKit+AFNetworking */ = {
@@ -721,6 +839,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8F18C119F101EA00538DAC /* SCVideoPlayerView.m in Sources */,
 				FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */,
 				FFB92EDC1997A06B008E024A /* AFURLRequestSerialization.m in Sources */,
 				FFB92EDB1997A06B008E024A /* AFURLConnectionOperation.m in Sources */,
@@ -729,8 +848,12 @@
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
 				FF5DDF7D19E3D3C2000F2ABD /* UIImage+GIF.m in Sources */,
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
+				FF23D1DE19F0B50B008B7E5C /* SCImageDisplayerViewController.m in Sources */,
 				FF5DDF7919E3D3C2000F2ABD /* SDWebImageDownloaderOperation.m in Sources */,
+				FF8F18B719F101EA00538DAC /* SCFilterGroup.m in Sources */,
+				FF8F18BD19F101EA00538DAC /* SCRecorderFocusView.m in Sources */,
 				FFA0E2DE19AEC0DF006269B4 /* UIButton+AFNetworking.m in Sources */,
+				FF8F18BE19F101EA00538DAC /* SCRecordSession.m in Sources */,
 				FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */,
 				FFFC740119E0AA5500EF2969 /* TimelineImageLoader.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
@@ -740,22 +863,34 @@
 				FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */,
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
+				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
+				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
 				FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FFA0E2E219AEC0DF006269B4 /* UIWebView+AFNetworking.m in Sources */,
+				FF8F18BC19F101EA00538DAC /* SCRecorderFocusTargetView.m in Sources */,
 				FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */,
 				FFA0E2DD19AEC0DF006269B4 /* UIAlertView+AFNetworking.m in Sources */,
 				FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */,
+				FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */,
 				FF5DDF7619E3D3C2000F2ABD /* SDWebImageCompat.m in Sources */,
 				FF5DDF7E19E3D3C2000F2ABD /* UIImage+MultiFormat.m in Sources */,
 				FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */,
+				FF8F18BB19F101EA00538DAC /* SCRecorder.m in Sources */,
+				FF8F18B819F101EA00538DAC /* SCFilterSelectorView.m in Sources */,
 				FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */,
 				FF5DDF7F19E3D3C2000F2ABD /* UIImage+WebP.m in Sources */,
 				FF5DDF7A19E3D3C2000F2ABD /* SDWebImageManager.m in Sources */,
 				FF5DDF7519E3D3C2000F2ABD /* SDImageCache.m in Sources */,
+				FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
+				FF8F18BA19F101EA00538DAC /* SCPlayer.m in Sources */,
+				FF8F18B519F101EA00538DAC /* SCAudioTools.m in Sources */,
 				FF5DDF7B19E3D3C2000F2ABD /* SDWebImagePrefetcher.m in Sources */,
+				FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */,
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
+				FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */,
+				FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */,
 				FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */,
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
 				FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */,
@@ -765,18 +900,23 @@
 				FFA0E2E019AEC0DF006269B4 /* UIProgressView+AFNetworking.m in Sources */,
 				FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */,
+				FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */,
+				FF8F18B419F101EA00538DAC /* SCAssetExportSession.m in Sources */,
 				FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */,
 				FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */,
+				FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */,
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */,
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
 				FF5DDF7819E3D3C2000F2ABD /* SDWebImageDownloader.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
+				FF8F18BF19F101EA00538DAC /* SCSampleBufferHolder.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FFA0E2DB19AEC0DF006269B4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FFB92ED91997A06B008E024A /* AFNetworkReachabilityManager.m in Sources */,
+				FF8F18C019F101EA00538DAC /* SCSwipeableFilterView.m in Sources */,
 				FFB92EDD1997A06B008E024A /* AFURLResponseSerialization.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
 			);
@@ -902,7 +1042,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -930,7 +1070,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

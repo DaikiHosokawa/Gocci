@@ -38,7 +38,8 @@
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) UIImageView *thumbPic;
 @property (nonatomic, copy) NSMutableArray *starnum_;
-@property (nonatomic, retain) NSIndexPath *nowindexPath;
+@property (nonatomic, retain) NSIndexPath *nowindexPath1;
+@property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
 @end
 
@@ -58,7 +59,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 
     //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
     NSURL *url = [NSURL URLWithString:timelineString];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
@@ -103,10 +104,12 @@
         dispatch_async(q_main, ^{
         });
     });
+    
+
 
         
     //JSONをパース
-    NSString *reviewString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/submit.php"];
+    NSString *reviewString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/submit/"];
     NSURL *reviewurl = [NSURL URLWithString:reviewString];
     NSString *reviewresponse = [NSString stringWithContentsOfURL:reviewurl encoding:NSUTF8StringEncoding error:nil];
     NSData *reviewjsonData = [reviewresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
@@ -136,6 +139,7 @@
         [moviePlayer stop];
         [player stop];
         [moviePlayer.view removeFromSuperview];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -143,14 +147,13 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     [moviePlayer stop];
     [player stop];
-    
-    _cell.thumbnailView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
+
 - (IBAction)pushUserTimeline:(id)sender {
 
     CATransition *transition = [CATransition animation];
@@ -180,19 +183,24 @@
     
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    // スクロール開始
+    CGPoint offset =  self.tableView.contentOffset;
+    //スクロールポイントo
+    CGPoint o = CGPointMake(183.0, 100.0 + offset.y);
+    _nowindexPath1 = [self.tableView indexPathForRowAtPoint:o];
+    NSLog(@"%ld", (long)_nowindexPath1.row);
+    
+    //[self updateVisibleCells];
+    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
+    {
+        
+    }
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-   // スクロール開始
-    CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 485.0 + offset.y);
-    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"%ld", (long)_nowindexPath.row);
-    [moviePlayer pause];
-    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
-    {
- 
-    }
+   
 }
 
 
@@ -210,6 +218,7 @@
 	}
 }
 
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
 	// setContentOffset: 等によるスクロール終了
 	[self endScroll];
@@ -219,13 +228,16 @@
 - (void)endScroll {
     //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"%ld", (long)_nowindexPath.row);
-    [self updateVisibleCells];
-
-    [moviePlayer play];
-}
+    CGPoint p = CGPointMake(183.0, 100.0 + offset.y);
+    _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
+    NSLog(@"p:%ld", (long)_nowindexPath2.row);
+    
+    if(_nowindexPath1.row != _nowindexPath2.row){
+        NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
+        [self updateVisibleCells];
+    }
+    }
+    
 
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
@@ -254,7 +266,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 520.0;
+    return 600.0;
 }
 
 
@@ -267,17 +279,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-
+    /*
+    //動画サムネイル画像の表示
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
                          placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-    
-    
-        // セルの更新メソッド
+    */
+    //ユーザーの画像を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
+    //セルの更新メソッド
         [self updateCell:_cell atIndexPath:indexPath];
-    
         return _cell ;
 }
 
@@ -305,7 +320,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/goodinsert.php"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -319,7 +334,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     dispatch_queue_t q1_main = dispatch_get_main_queue();
     dispatch_async(q1_global, ^{
         //JSONをパース
-        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
+        NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
         NSURL *url2 = [NSURL URLWithString:timelineString];
         NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
         NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
@@ -336,79 +351,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"goodBtn is touched");
 
 }
-/*
-- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-    [_user_name_ removeAllObjects];
-    [_restname_ removeAllObjects];
-    [_picture_ removeAllObjects];
-    [_goodnum_ removeAllObjects];
-    [_starnum_ removeAllObjects];
-    [_commentnum_ removeAllObjects];
-    [_thumbnail_ removeAllObjects];
-    [_movie_ removeAllObjects];
-    [_review_ removeAllObjects];
-    //削除ボタンの時の処理
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/delete.php"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q1_main = dispatch_get_main_queue();
-    dispatch_async(q1_global, ^{
-        //JSONをパース
-        NSString *timelineString = [NSString stringWithFormat:@"https://codelecture.com/gocci/timeline.php"];
-        NSURL *url2 = [NSURL URLWithString:timelineString];
-        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
-        // ユーザー名
-        NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-        _user_name_ = [user_name mutableCopy];
-        // プロフ画像
-        NSArray *picture = [jsonDic valueForKey:@"picture"];
-        _picture_ = [picture mutableCopy];
-        // 動画URL
-        NSArray *movie = [jsonDic valueForKey:@"movie"];
-        _movie_ = [movie mutableCopy];
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-        _goodnum_ = [goodnum mutableCopy];
-        //レストラン名
-        NSArray *restname = [jsonDic valueForKey:@"restname"];
-        _restname_ = [restname mutableCopy];
-        //コメント数
-        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-        _commentnum_ = [commentnum mutableCopy];
-        NSLog(@"commentnum:%@",commentnum);
-        //スターの数
-        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-        _starnum_ = [starnum mutableCopy];
-        NSLog(@"commentnum:%@",starnum);
-        
-        //サムネイル
-        NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
-        _thumbnail_ = [thumbnail mutableCopy];
-        NSLog(@"thumbnail:%@",thumbnail);
-        
-        dispatch_async(q1_main, ^{
-            [self.tableView reloadData];
-        });
-    });
-    
-    NSLog(@"goodBtn is touched");
-}
- */
 
 
 - (void)updateVisibleCells {
@@ -419,6 +361,51 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
+    // 文字列をNSIntegerに変換
+    NSInteger inted = startext.integerValue;
+    NSLog(@"文字列→NSInteger:%ld", inted);
+    switch(inted){
+        case 1:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green1.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+            
+        case 2:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green2.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 3:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green3.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 4:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green4.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 5:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        default:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+    }
+    
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
@@ -427,56 +414,51 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     _cell.Starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
-    
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
 
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //削除ボタンのイベント
-   // [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
-   
-    
-    //ユーザーの画像を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                   placeholderImage:[UIImage imageNamed:@"default.png"]];
-
-
     //動画再生
-    NSString *text = [_movie_ objectAtIndex:_nowindexPath.row];
+    NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
  
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-
-    [moviePlayer.view setFrame:_cell.movieView.frame];
-    [_cell.movieView addSubview: moviePlayer.view];
+        //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
+    CGRect frame = CGRectMake(0, 87, 320, 320);
+ 
+        [moviePlayer.view setFrame:frame];
+    //[moviePlayer.view setFrame:_cell.movieView.frame];
+    [_cell.contentView addSubview: moviePlayer.view];
+    [_cell.contentView bringSubviewToFront:moviePlayer.view];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
+     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(movieLoadStateDidChange:)
                                                  name:MPMoviePlayerLoadStateDidChangeNotification
                                                object:nil];
 
-    
-    [moviePlayer setShouldAutoplay:YES];
+        [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
-
+    [moviePlayer play];
 }
+
 
 
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
-        
         //動画サムネイル画像のhidden
-        _cell.thumbnailView.hidden = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+           _cell.thumbnailView.hidden = YES;
+        });
     }
 }
 
@@ -500,6 +482,5 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //繰り返し
     [moviePlayer play];
 }
-
 
 @end

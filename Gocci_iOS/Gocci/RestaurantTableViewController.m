@@ -67,7 +67,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/restpage.php?restname=%@",_postRestName];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/restpage/?restname=%@",_postRestName];
     NSLog(@"restpage:%@",urlString);
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -137,7 +137,16 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
     [moviePlayer stop];
+    [moviePlayer.view removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [moviePlayer stop];
+}
+
 
 - (void)viewDidLoad
 {
@@ -200,7 +209,7 @@
     }
 
     // Return the number of rows in the section.
-    return [_movie_ count];
+    return [_restname_ count];
 }
 
 
@@ -247,24 +256,15 @@
 //////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 表示しているtableVIewの現状のオフセットを取得する。
-    // ・tableVIewのオフセットはスクロールさせると値が変わるよ。
+    // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
-    
-    // オフセットの位置からy軸に120ポイント下に座標を指定してみよう。
-    // ・この場合だと、見た目上(画面上)の(10, 120)の位置を常にCGPointで取得してるってこと。
-    CGPoint p = CGPointMake(183.0, 284.0 + offset.y);
-    
-    // で、オフセット分を調整した座標(p)からindexPathが取得できるようになると。
+    CGPoint p = CGPointMake(183.0, 280 + offset.y);
     _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     NSLog(@"%ld", (long)_nowindexPath.row);
-    
-    [moviePlayer stop];
-    //一番下までスクロールしたかどうか
+    [moviePlayer pause];
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
-        //ここで次に表示する件数を取得して表示更新の処理を書けばOK
+        
     }
 }
 
@@ -296,7 +296,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 520.0;
+    return 570.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -331,7 +331,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/goodinsert.php"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -346,7 +346,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     dispatch_async(q_global, ^{
 
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"https://codelecture.com/gocci/submit/restpage.php?restname=%@",_postRestName];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/restpage/?restname=%@",_postRestName];
     NSLog(@"restpage:%@",urlString);
     NSURL *url2 = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
@@ -369,7 +369,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 // 画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
-    for (UITableViewCell *cell in [self.tableView visibleCells]){
+    //画面上に見えているセルの表示更新
+    for (_cell in [self.tableView visibleCells]){
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
@@ -386,6 +387,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample3TableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+    //ユーザーの画像を取得
+    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
+                       placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
     // セルの更新
     [self updateCell:_cell atIndexPath:indexPath];
     // Configure the cell...
@@ -396,6 +404,52 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     //updateした時の処理
+    
+    NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
+    // 文字列をNSIntegerに変換
+    NSInteger inted = startext.integerValue;
+    NSLog(@"文字列→NSInteger:%ld", inted);
+    
+    switch(inted){
+        case 1:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green1.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+            
+        case 2:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green2.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 3:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green3.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 4:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green4.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        case 5:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+        default:
+        {
+            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
+            _cell.starImage.image = image;
+            break;
+        }
+    }
+    
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
@@ -410,13 +464,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //ユーザーの画像を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                       placeholderImage:[UIImage imageNamed:@"default.png"]];
-    
-    
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -424,15 +471,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    
-    [moviePlayer.view setFrame:_cell.movieView.frame];
-    [_cell.movieView addSubview: moviePlayer.view];
+    CGRect frame = CGRectMake(0, 87, 320, 320);
+    [moviePlayer.view setFrame:frame];
+    //[moviePlayer.view setFrame:_cell.movieView.frame];
+    [cell.contentView addSubview: moviePlayer.view];
+    [cell.contentView bringSubviewToFront:moviePlayer.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(movieLoadStateDidChange:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+    
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
+    [moviePlayer play];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -452,6 +507,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
 }
+
+-(void)movieLoadStateDidChange:(id)sender{
+    if(MPMovieLoadStatePlaythroughOK ) {
+        NSLog(@"STATE CHANGED");
+        //動画サムネイル画像のhidden
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _cell.thumbnailView.hidden = YES;
+        });
+    }
+}
+
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
 }

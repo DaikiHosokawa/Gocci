@@ -68,7 +68,7 @@
 
 //Facebookアカウント取得処理
 - (IBAction)pushFacebook:(UIButton *)sender {
-     [SVProgressHUD show];
+    [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
@@ -117,12 +117,11 @@
                                                             AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                             picturedelegate.userpicture = pictureURL;
                                                             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
-                                                            NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                                                            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
                                                             NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                             [urlRequest setHTTPMethod:@"POST"];
                                                             [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
                                                             NSURLResponse* response;
-                                                            NSLog(@"response:%@",response);
                                                             NSError* error = nil;
                                                             NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                    returningResponse:&response
@@ -150,17 +149,16 @@
                                                         AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                         picturedelegate.userpicture = pictureURL;
                                                         NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
-                                                        NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                                                        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
                                                         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                         [urlRequest setHTTPMethod:@"POST"];
                                                         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
                                                         NSURLResponse* response;
-                                                        NSLog(@"response:%@",response);
                                                         NSError* error = nil;
                                                         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                                                returningResponse:&response
                                                                                                            error:&error];
-                                                       
+                                                        NSLog(@"result:%@",result);
                                                         
                                                         [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                         NSLog(@"FacebookLogin is completed");
@@ -229,7 +227,7 @@
                                                            picturedelegate.userpicture = pictureURL;
                                                            NSLog(@"%@",pictureURL);
                                                            NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
-                                                           NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                                                           NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
                                                            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                            [urlRequest setHTTPMethod:@"POST"];
                                                            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -258,7 +256,7 @@
                                                        AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                        picturedelegate.userpicture = pictureURL;
                                                        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
-                                                       NSURL* url = [NSURL URLWithString:@"https://codelecture.com/gocci/signup.php"];
+                                                       NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
                                                        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                        [urlRequest setHTTPMethod:@"POST"];
                                                        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
