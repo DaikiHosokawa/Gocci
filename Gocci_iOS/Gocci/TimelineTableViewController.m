@@ -315,6 +315,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+
+
+
+
+
+
+
+
+
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //いいねボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
