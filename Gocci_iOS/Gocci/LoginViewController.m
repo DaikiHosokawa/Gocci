@@ -130,6 +130,15 @@
                                                             
                                                             [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                             NSLog(@"FacebookLogin is completed");
+                                                            AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
+                                                            //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
+                                                            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                            NSLog(@"urlStringatnoulon:%@",urlString);
+                                                            NSURL *urlGeo = [NSURL URLWithString:urlString];
+                                                            NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
+                                                            NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+                                                            appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+                                                            
                                                         }
                                                     }else{
                                                         //Twitterアカウントが1つだけの場合
@@ -161,6 +170,16 @@
                                                         NSLog(@"result:%@",result);
                                                         
                                                         [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                                                        
+                                                        AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
+                                                        //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
+                                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                        NSLog(@"urlStringatnoulon:%@",urlString);
+                                                        NSURL *urlGeo = [NSURL URLWithString:urlString];
+                                                        NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
+                                                        NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+                                                        appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+
                                                         NSLog(@"FacebookLogin is completed");
                                                     }
                                                 } else {
@@ -239,6 +258,14 @@
                                                            NSLog(@"result:%@",result);
                                                            [self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                            NSLog(@"TwitterLogin is completed");
+                                                           AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
+                                                           //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
+                                                           NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                           NSLog(@"urlStringatnoulon:%@",urlString);
+                                                           NSURL *urlGeo = [NSURL URLWithString:urlString];
+                                                           NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
+                                                           NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+                                                           appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
                                 
                                                        }
                                                    }else{
@@ -268,7 +295,14 @@
                                                        NSLog(@"result:%@",result);
                                                        [self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                        NSLog(@"TwitterLogin is completed");
-
+                                                       AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
+                                                       //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
+                                                       NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                       NSLog(@"urlStringatnoulon:%@",urlString);
+                                                       NSURL *urlGeo = [NSURL URLWithString:urlString];
+                                                       NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo  encoding:NSUTF8StringEncoding error:nil];
+                                                       NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+                                                       appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
                                                    }
                                                } else {
                                                    //データが取得できない場合

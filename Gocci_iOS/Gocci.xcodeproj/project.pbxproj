@@ -30,6 +30,8 @@
 		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
 		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
+		FF2B1E901A1AFD8600B5B687 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2B1E8F1A1AFD8600B5B687 /* Images-2.xcassets */; };
+		FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */; };
 		FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
@@ -105,6 +107,8 @@
 		FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE423193CAB31001A0053 /* QuartzCore.framework */; };
 		FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769C199133EE005BEE41 /* Security.framework */; };
 		FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */; };
+		FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */; };
+		FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */; };
 		FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC41997A06B008E024A /* AFHTTPRequestOperation.m */; };
 		FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC61997A06B008E024A /* AFHTTPRequestOperationManager.m */; };
 		FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC81997A06B008E024A /* AFHTTPSessionManager.m */; };
@@ -171,6 +175,9 @@
 		FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
 		FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
 		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
+		FF2B1E8F1A1AFD8600B5B687 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		FF2B1F0F1A1B0D5E00B5B687 /* Gocci copy4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gocci copy4-Info.plist"; path = "/Users/daikihosokawa/Desktop/Gocci project 3/Gocci_iOS/Gocci copy4-Info.plist"; sourceTree = "<absolute>"; };
+		FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
 		FF3E1FF41A0F6C6400D08B45 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
@@ -314,6 +321,8 @@
 		FFA0E2DA19AEC0DF006269B4 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		FFA1769C199133EE005BEE41 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 4_7_inch.storyboard; sourceTree = "<group>"; };
+		FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 5_5_inch.storyboard; sourceTree = "<group>"; };
 		FFB92EC31997A06B008E024A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FFB92EC41997A06B008E024A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FFB92EC51997A06B008E024A /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -420,6 +429,7 @@
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
+				FF2B1F0F1A1B0D5E00B5B687 /* Gocci copy4-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -470,6 +480,9 @@
 			isa = PBXGroup;
 			children = (
 				FFF0224F19E82C600007AB97 /* Main.storyboard */,
+				FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */,
+				FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */,
+				FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */,
 				FF54EFF119149A1800025DC8 /* AppDelegate.h */,
 				FF54EFF219149A1800025DC8 /* AppDelegate.m */,
 				FF54EFF719149A1800025DC8 /* ViewController.h */,
@@ -521,6 +534,7 @@
 				FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
+				FF2B1E8F1A1AFD8600B5B687 /* Images-2.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 			);
 			path = Gocci;
@@ -816,11 +830,15 @@
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
+				FF2B1E901A1AFD8600B5B687 /* Images-2.xcassets in Resources */,
+				FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
+				FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
 				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
+				FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
-@property (weak, nonatomic) IBOutlet UILabel *Starnum;
+
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;

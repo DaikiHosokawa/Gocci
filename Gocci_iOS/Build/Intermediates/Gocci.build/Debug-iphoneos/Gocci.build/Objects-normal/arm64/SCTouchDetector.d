@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/daikihosokawa/Desktop/Gocci\ project\ 3/Gocci_iOS/Gocci/SCTouchDetector.m \
-  /Users/daikihosokawa/Desktop/Gocci\ project\ 3/Gocci_iOS/Gocci/SCTouchDetector.h
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SCTouchDetector.m \
+  /Users/daikihosokawa/Desktop/Gocci\ project/Gocci_iOS/Gocci/SCTouchDetector.h

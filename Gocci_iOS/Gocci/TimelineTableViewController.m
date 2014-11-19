@@ -136,11 +136,13 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
         [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-        [moviePlayer stop];
+    　//全画面表示対応20141118
+       [moviePlayer stop];
         [player stop];
         [moviePlayer.view removeFromSuperview];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -213,7 +215,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	if(!decelerate) {
 		// ドラッグ終了 かつ 加速無し
-    [self endScroll];
+   // [self endScroll];
     NSLog(@"scroll is stoped");
 	}
 }
@@ -228,15 +230,14 @@
 - (void)endScroll {
     //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 100.0 + offset.y);
+    CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
     _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"p:%ld", (long)_nowindexPath2.row);
-    
+    [self updateVisibleCells];
     if(_nowindexPath1.row != _nowindexPath2.row){
         NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
-        [self updateVisibleCells];
     }
-    }
+}
     
 
 // UIControlEventからタッチ位置のindexPathを取得する
@@ -266,7 +267,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 600.0;
+    return 550.0;
 }
 
 
@@ -279,6 +280,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+
     /*
     //動画サムネイル画像の表示
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
@@ -286,17 +288,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
                          placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
     */
+    
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
+   
     //セルの更新メソッド
-        [self updateCell:_cell atIndexPath:indexPath];
-        return _cell ;
+     [self updateCell:_cell atIndexPath:indexPath];
+    return _cell ;
 }
-
-
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     
     //コメントボタンの時の処理
@@ -365,7 +368,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
     // 文字列をNSIntegerに変換
     NSInteger inted = startext.integerValue;
-    NSLog(@"文字列→NSInteger:%ld", inted);
+    NSLog(@"文字列→NSInteger:%ld", (long)inted);
     switch(inted){
         case 1:
         {
@@ -425,10 +428,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSURL *url = [NSURL URLWithString:text];
  
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
         //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 87, 320, 320);
+    CGRect frame = CGRectMake(0, 78, 320, 320);
  
         [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];
@@ -444,6 +447,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                              selector:@selector(movieLoadStateDidChange:)
                                                  name:MPMoviePlayerLoadStateDidChangeNotification
                                                object:nil];
+    
 
         [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];

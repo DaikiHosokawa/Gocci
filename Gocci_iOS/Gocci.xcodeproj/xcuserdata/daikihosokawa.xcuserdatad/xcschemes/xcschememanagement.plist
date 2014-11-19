@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Gocci copy 4.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Gocci copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FF2B1E911A1B0D5E00B5B687</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FF54EFDE19149A1800025DC8</key>
 		<dict>
 			<key>primary</key>

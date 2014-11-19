@@ -52,7 +52,33 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Twitter
     [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
                                consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
+    //736
+    //3.5inchと4inchを読み分けする
+    CGRect rect = [UIScreen mainScreen].bounds;
+    if (rect.size.height == 480) {
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
+        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+        
+        self.window.rootViewController = rootViewController;
+        }
     
+    //4.7inch対応
+    CGRect rect2 = [UIScreen mainScreen].bounds;
+    if (rect2.size.height == 667) {
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
+        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+        
+        self.window.rootViewController = rootViewController;
+    }
+    
+    //5.5inch対応
+    CGRect rect3 = [UIScreen mainScreen].bounds;
+    if (rect3.size.height == 736) {
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
+        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+        
+        self.window.rootViewController = rootViewController;
+    }
     
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
@@ -70,7 +96,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     // デリゲートを設定
     locationManager.delegate = self;
     // 更新頻度(メートル)
-    locationManager.distanceFilter = 200;
+    locationManager.distanceFilter = 100;
     // 取得精度
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // iOS8の対応
@@ -83,48 +109,35 @@ void uncaughtExceptionHandler(NSException *exception) {
         [locationManager startUpdatingLocation];
     }
     
-    NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
-    // Override point for customization after application launch.
+    //スプラッシュ時間設定
+    sleep(3);
+    
 
     return YES;
 }
 
+
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q2_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
-
-    CLLocation *newLocation = [locations lastObject];
-    //緯度
-    latitude = newLocation.coordinate.latitude;
-    //経度
-    longitude = newLocation.coordinate.longitude;
-    _lat = [NSString stringWithFormat:@"%f", latitude];
-    _lon = [NSString stringWithFormat:@"%f", longitude];
-    NSLog(@"lat:%@",_lat);
-    NSLog(@"lon:%@",_lon);
-
-    //現在地から近い店取得しておく
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",_lat,_lon];
-    NSLog(@"urlStringatnoulon:%@",urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
-    appDelegate.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    
-    [locationManager stopUpdatingLocation];
-
-    NSLog(@"update成功");
-        dispatch_async(q2_main, ^{
-        });
-    });
+    CLLocation *location = [locations lastObject];
+    NSLog(@"アップデート呼び出し");
+    [self showLocation:location];
 }
 
+
+
+- (void)showLocation:(CLLocation *)location
+{
+    AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
+    appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSLog(@"latitudeStr:%@",lat);
+    NSLog(@"longitudeStr:%@",lon);
+  
+    [locationManager stopUpdatingLocation];    
+    
+}
 
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -135,7 +148,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
         
         // 位置測位スタート
         [locationManager startUpdatingLocation];
-        
         
         if (status == kCLAuthorizationStatusNotDetermined) {
             // ユーザが位置情報の使用を許可していない
@@ -156,7 +168,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
+       [locationManager startUpdatingLocation]; //測位再開
     // Facebook
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 
