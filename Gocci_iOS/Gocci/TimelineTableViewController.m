@@ -138,7 +138,6 @@
         [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     　//全画面表示対応20141118
        [moviePlayer stop];
-        [player stop];
         [moviePlayer.view removeFromSuperview];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -147,8 +146,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    [moviePlayer stop];
-    [player stop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -314,16 +311,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"commentBtn is touched");
 }
 
-
-
-
-
-
-
-
-
-
-
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //いいねボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
@@ -424,7 +411,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    _cell.Starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];

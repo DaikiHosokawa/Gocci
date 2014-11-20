@@ -16,7 +16,6 @@
 @synthesize Goodnum;
 @synthesize Review;
 @synthesize Commentnum;
-@synthesize starnum;
 @synthesize deleteBtn;
 @synthesize starImage;
 
@@ -29,7 +28,6 @@
     self.Review = nil;
     self.contentViewFront = nil;
     self.Commentnum = nil;
-    self.starnum = nil;
     self.deleteBtn = nil;
     self.starImage = nil;
 };

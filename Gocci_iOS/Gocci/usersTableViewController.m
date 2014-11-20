@@ -30,6 +30,8 @@
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
+@property (nonatomic, retain) NSIndexPath *nowindexPath1;
+@property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
 
 @end
@@ -63,6 +65,7 @@
     self.profilename.text = profiledelegate.username;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -184,24 +187,32 @@
 
 - (void)endScroll {
     //スクロール終了
+    //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 380.0 + offset.y);
-    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"%ld", (long)_nowindexPath.row);
+    CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
+    _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
+    NSLog(@"p:%ld", (long)_nowindexPath2.row);
     [self updateVisibleCells];
-    //_thumbnailView.hidden = YES;
-    [moviePlayer play];
+    if(_nowindexPath1.row != _nowindexPath2.row){
+        NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
+    }
 }
 
 //////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // スクロール開始
     CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 280 + offset.y);
-    _nowindexPath = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"%ld", (long)_nowindexPath.row);
-    [moviePlayer pause];
+    //スクロールポイントo
+    CGPoint o = CGPointMake(183.0, 100.0 + offset.y);
+    _nowindexPath1 = [self.tableView indexPathForRowAtPoint:o];
+    NSLog(@"%ld", (long)_nowindexPath1.row);
+    
+    //[self updateVisibleCells];
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
         
@@ -238,7 +249,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 570.0;
+    return 550.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -323,15 +334,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //Do any additional setup after loading the view, typically from a nib.
     //storyboardで指定したIdentifierを指定する
     
-    NSString *cellIdentifier = @"usersTableViewCell";
+    static NSString *cellIdentifier = @"usersTableViewCell";
     _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!_cell){
         _cell = [[Sample5TableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    // セルの更新
-    [self updateCell:_cell atIndexPath:indexPath];
-    // Configure the cell...
+
     
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -339,7 +348,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
-    // Configure the cell...
+    [self updateCell:_cell atIndexPath:indexPath];
     return _cell;
 }
 
@@ -397,7 +406,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    _cell.starnum.text = [_starnum_ objectAtIndex:indexPath.row];
     
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
@@ -409,30 +417,35 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //動画再生
+    //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    CGRect frame = CGRectMake(0, 87, 320, 320);
+    //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
+    CGRect frame = CGRectMake(0, 78, 320, 320);
+    
     [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];
-    [cell.contentView addSubview: moviePlayer.view];
-    [cell.contentView bringSubviewToFront:moviePlayer.view];
+    [_cell.contentView addSubview: moviePlayer.view];
+    [_cell.contentView bringSubviewToFront:moviePlayer.view];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:moviePlayer];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(movieLoadStateDidChange:)
                                                  name:MPMoviePlayerLoadStateDidChangeNotification
                                                object:nil];
     
+    
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
     [moviePlayer play];
-
 }
 
 -(void)movieLoadStateDidChange:(id)sender{
@@ -547,8 +560,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
          
      }]];
      [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         // cancelボタンが押された時の処理
-         [self cancelButtonPushed];
+         
      }]];
      
      [self presentViewController:alertController animated:YES completion:nil];
@@ -641,11 +653,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      }
     
  }
-
-
-- (void)cancelButtonPushed {}
-
-
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];

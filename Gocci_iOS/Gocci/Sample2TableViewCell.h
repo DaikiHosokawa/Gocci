@@ -27,9 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (nonatomic, strong) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
-//@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
-@property (weak, nonatomic) IBOutlet UILabel *Starnum;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
 
 @end
