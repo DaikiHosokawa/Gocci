@@ -495,7 +495,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
          dispatch_queue_t q1_main = dispatch_get_main_queue();
          dispatch_async(q1_global, ^{
              
-             //JSONをパース
+             //JSONをパース(test)
              AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
              NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
              NSLog(@"restpage:%@",urlString);
