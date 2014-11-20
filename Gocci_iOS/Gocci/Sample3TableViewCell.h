@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
 @property (weak, nonatomic) Sample3TableViewCell *cell;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 

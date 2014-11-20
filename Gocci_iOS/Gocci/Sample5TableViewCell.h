@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Sample5TableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
 @property (weak, nonatomic) IBOutlet UILabel *RestaurantName;

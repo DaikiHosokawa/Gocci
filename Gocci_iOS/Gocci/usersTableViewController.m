@@ -198,6 +198,14 @@
     }
 }
 
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    return indexPath;
+}
+
 //////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -231,7 +239,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-        [self endScroll];
+       // [self endScroll];
         NSLog(@"scroll is stoped");
     }
 }
@@ -264,14 +272,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
-}
-
-// UIControlEventからタッチ位置のindexPathを取得する
-- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint p = [touch locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    return indexPath;
 }
 
 //////////////////////////Goodボタンの時の処理//////////////////////////
@@ -328,19 +328,24 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //Do any additional setup after loading the view, typically from a nib.
-    //storyboardで指定したIdentifierを指定する
     
-    static NSString *cellIdentifier = @"usersTableViewCell";
+    NSString *cellIdentifier = @"usersTableViewCell";
     _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!_cell){
         _cell = [[Sample5TableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-
+    
+    /*
+     //動画サムネイル画像の表示
+     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
+     // Here we use the new provided setImageWithURL: method to load the web image
+     [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
+     placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
+     */
     
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -348,9 +353,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
+    
+    //セルの更新メソッド
     [self updateCell:_cell atIndexPath:indexPath];
-    return _cell;
+    return _cell ;
 }
+
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
@@ -417,12 +425,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //動画再生
-    //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
     CGRect frame = CGRectMake(0, 78, 320, 320);

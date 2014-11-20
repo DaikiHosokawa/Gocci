@@ -473,7 +473,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSURL *url = [NSURL URLWithString:text];
     
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
     CGRect frame = CGRectMake(0, 78, 320, 320);
