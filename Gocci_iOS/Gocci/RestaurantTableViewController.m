@@ -170,17 +170,20 @@
     
 }
 
+
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -189,6 +192,7 @@
     // Return the number of sections.
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -214,8 +218,6 @@
 }
 
 
-#pragma mark - UIActivityItemSource
-
 
 //Twitterのアクティビティ投稿の基準
 -(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
@@ -226,6 +228,7 @@
     }
     return _text;
 }
+
 
 -(id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
 {
@@ -330,7 +333,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 //////////////////////////Goodボタンの時の処理//////////////////////////
-
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //このSegueに付けたIdentifierから遷移を呼び出すことができます
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];

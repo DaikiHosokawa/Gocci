@@ -43,8 +43,6 @@
 		FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFFA19149A1800025DC8 /* Images.xcassets */; };
 		FF54F00319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
-		FF54F00C19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54F00A19149A1800025DC8 /* InfoPlist.strings */; };
-		FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F00D19149A1800025DC8 /* GocciTests.m */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
 		FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */; };
 		FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF5319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m */; };
@@ -71,11 +69,6 @@
 		FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */; };
 		FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */; };
 		FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */; };
-		FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE926195824F8000FE68B /* AVCamRecorder.m */; };
-		FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE928195824F8000FE68B /* AVCamUtilities.m */; };
-		FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92A195824F8000FE68B /* CaptureManager.m */; };
-		FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE92C195824F8000FE68B /* KZCameraView.m */; };
-		FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8CE93219582664000FE68B /* RecorderViewController.m */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
 		FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189119F101EA00538DAC /* CIImageRendererUtils.m */; };
 		FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189319F101EA00538DAC /* SCArchivedVector.m */; };
@@ -123,7 +116,6 @@
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF0225019E82C600007AB97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF0224F19E82C600007AB97 /* Main.storyboard */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
-		FFFC740119E0AA5500EF2969 /* TimelineImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFC740019E0AA5500EF2969 /* TimelineImageLoader.m */; };
 		FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF219149A1800025DC8 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -197,9 +189,6 @@
 		FF54EFF819149A1800025DC8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FF54EFFA19149A1800025DC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FF54F00019149A1800025DC8 /* GocciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF54F00919149A1800025DC8 /* GocciTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GocciTests-Info.plist"; sourceTree = "<group>"; };
-		FF54F00B19149A1800025DC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FF54F00D19149A1800025DC8 /* GocciTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GocciTests.m; sourceTree = "<group>"; };
 		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
@@ -248,16 +237,6 @@
 		FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4TableViewCell.h; sourceTree = "<group>"; };
 		FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4TableViewCell.m; sourceTree = "<group>"; };
 		FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample4TableViewCell.xib; sourceTree = "<group>"; };
-		FF8CE925195824F8000FE68B /* AVCamRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamRecorder.h; sourceTree = "<group>"; };
-		FF8CE926195824F8000FE68B /* AVCamRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamRecorder.m; sourceTree = "<group>"; };
-		FF8CE927195824F8000FE68B /* AVCamUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamUtilities.h; sourceTree = "<group>"; };
-		FF8CE928195824F8000FE68B /* AVCamUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamUtilities.m; sourceTree = "<group>"; };
-		FF8CE929195824F8000FE68B /* CaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
-		FF8CE92A195824F8000FE68B /* CaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
-		FF8CE92B195824F8000FE68B /* KZCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZCameraView.h; sourceTree = "<group>"; };
-		FF8CE92C195824F8000FE68B /* KZCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZCameraView.m; sourceTree = "<group>"; };
-		FF8CE93119582664000FE68B /* RecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecorderViewController.h; path = ../RecorderViewController.h; sourceTree = "<group>"; };
-		FF8CE93219582664000FE68B /* RecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecorderViewController.m; path = ../RecorderViewController.m; sourceTree = "<group>"; };
 		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FF8F188F19F101EA00538DAC /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
@@ -352,8 +331,6 @@
 		FFF0224F19E82C600007AB97 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FFF16B9919554D37002FC793 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		FFFC73FF19E0AA5500EF2969 /* TimelineImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineImageLoader.h; sourceTree = "<group>"; };
-		FFFC740019E0AA5500EF2969 /* TimelineImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineImageLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,8 +467,6 @@
 				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
 				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
 				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
-				FFFC73FF19E0AA5500EF2969 /* TimelineImageLoader.h */,
-				FFFC740019E0AA5500EF2969 /* TimelineImageLoader.m */,
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
 				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
@@ -509,8 +484,6 @@
 				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
 				FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */,
 				FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */,
-				FF8CE93119582664000FE68B /* RecorderViewController.h */,
-				FF8CE93219582664000FE68B /* RecorderViewController.m */,
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
 				FF217CBD19E6571D00AEB06E /* usersTableViewController.h */,
@@ -544,31 +517,11 @@
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
 				FFA0E2C919AEC0DF006269B4 /* UIKit+AFNetworking */,
 				FFB92EC21997A06B008E024A /* AFNetworking */,
-				FF8CE923195824F8000FE68B /* VideoRecorder */,
 				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
 				FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FF54F00719149A1800025DC8 /* GocciTests */ = {
-			isa = PBXGroup;
-			children = (
-				FF54F00D19149A1800025DC8 /* GocciTests.m */,
-				FF54F00819149A1800025DC8 /* Supporting Files */,
-			);
-			name = GocciTests;
-			path = ../../GocciTests;
-			sourceTree = "<group>";
-		};
-		FF54F00819149A1800025DC8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FF54F00919149A1800025DC8 /* GocciTests-Info.plist */,
-				FF54F00A19149A1800025DC8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -611,30 +564,6 @@
 				FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		FF8CE923195824F8000FE68B /* VideoRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				FF8CE924195824F8000FE68B /* AVCam */,
-				FF8CE92B195824F8000FE68B /* KZCameraView.h */,
-				FF8CE92C195824F8000FE68B /* KZCameraView.m */,
-				FF54F00719149A1800025DC8 /* GocciTests */,
-			);
-			path = VideoRecorder;
-			sourceTree = "<group>";
-		};
-		FF8CE924195824F8000FE68B /* AVCam */ = {
-			isa = PBXGroup;
-			children = (
-				FF8CE925195824F8000FE68B /* AVCamRecorder.h */,
-				FF8CE926195824F8000FE68B /* AVCamRecorder.m */,
-				FF8CE927195824F8000FE68B /* AVCamUtilities.h */,
-				FF8CE928195824F8000FE68B /* AVCamUtilities.m */,
-				FF8CE929195824F8000FE68B /* CaptureManager.h */,
-				FF8CE92A195824F8000FE68B /* CaptureManager.m */,
-			);
-			path = AVCam;
 			sourceTree = "<group>";
 		};
 		FF8F188E19F101EA00538DAC /* Sources */ = {
@@ -840,7 +769,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF54F00C19149A1800025DC8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,12 +795,10 @@
 				FFA0E2DE19AEC0DF006269B4 /* UIButton+AFNetworking.m in Sources */,
 				FF8F18BE19F101EA00538DAC /* SCRecordSession.m in Sources */,
 				FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */,
-				FFFC740119E0AA5500EF2969 /* TimelineImageLoader.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
 				FF5DDF7419E3D3C2000F2ABD /* NSData+ImageContentType.m in Sources */,
 				FFA0E2DC19AEC0DF006269B4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
-				FF8CE930195824F8000FE68B /* KZCameraView.m in Sources */,
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
@@ -887,7 +813,6 @@
 				FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */,
 				FF5DDF7619E3D3C2000F2ABD /* SDWebImageCompat.m in Sources */,
 				FF5DDF7E19E3D3C2000F2ABD /* UIImage+MultiFormat.m in Sources */,
-				FF8CE92D195824F8000FE68B /* AVCamRecorder.m in Sources */,
 				FF8F18BB19F101EA00538DAC /* SCRecorder.m in Sources */,
 				FF8F18B819F101EA00538DAC /* SCFilterSelectorView.m in Sources */,
 				FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */,
@@ -903,7 +828,6 @@
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
 				FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */,
 				FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */,
-				FF8CE93319582664000FE68B /* RecorderViewController.m in Sources */,
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
 				FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */,
 				FFA0E2DF19AEC0DF006269B4 /* UIImageView+AFNetworking.m in Sources */,
@@ -914,8 +838,6 @@
 				FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */,
 				FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */,
 				FF8F18B419F101EA00538DAC /* SCAssetExportSession.m in Sources */,
-				FF8CE92E195824F8000FE68B /* AVCamUtilities.m in Sources */,
-				FF8CE92F195824F8000FE68B /* CaptureManager.m in Sources */,
 				FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */,
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -938,7 +860,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF54F00E19149A1800025DC8 /* GocciTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,14 +878,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				FF54EFEC19149A1800025DC8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FF54F00A19149A1800025DC8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF54F00B19149A1800025DC8 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -7,7 +7,6 @@
 //
 
 #import "Sample2TableViewCell.h"
-#import "TimelineImageLoader.h"
 
 @implementation Sample2TableViewCell
 @synthesize UsersName;
@@ -34,7 +33,6 @@
     //self.deleteBtn = nil;
     self.starImage = nil;
 };
-
 
 
 - (void)viewDidLoad

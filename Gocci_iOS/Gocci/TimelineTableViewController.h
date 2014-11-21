@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
+#import "SVProgressHUD/SVProgressHUD.h"
 
 
 
@@ -20,8 +21,7 @@
 {
     NSString *_postID;
     MPMoviePlayerController *moviePlayer;
-    MPMoviePlayerController *player;
-    //UITableViewCell *cell;
+  
     NSString *_path;
     Sample2TableViewCell  *cell;
     UIImageView *thumbnailView;

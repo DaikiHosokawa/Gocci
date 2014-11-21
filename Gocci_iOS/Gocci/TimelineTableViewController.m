@@ -7,11 +7,9 @@
 //
 
 #import "TimelineTableViewController.h"
-#import "RecorderViewController.h"
 #import "searchTableViewController.h"
 #import "Sample2TableViewCell.h"
 #import "everyTableViewController.h"
-#import "SVProgressHUD.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
@@ -36,7 +34,6 @@
 @property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
-@property (nonatomic, copy) UIImageView *thumbPic;
 @property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath1;
 @property (nonatomic, retain) NSIndexPath *nowindexPath2;

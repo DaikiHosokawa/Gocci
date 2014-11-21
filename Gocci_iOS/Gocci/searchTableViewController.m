@@ -49,17 +49,6 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     _searchBar.text = NULL;
     AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
-    /*
-    //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegete.lat,appDelegete.lon];
-    NSLog(@"urlStringatnoulon:%@",urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-     */
     
     dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q2_main = dispatch_get_main_queue();
@@ -133,9 +122,6 @@
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
 
-    //背景にイメージを追加したい
-   //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-   // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     
@@ -153,9 +139,6 @@
     // UINavigationBar上に、UISearchBarを追加
     self.navigationItem.titleView = _searchBar;
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
-    
-    // 初期フォーカスを設定
-    //[searchBar becomeFirstResponder];
     
     locationManager = [[CLLocationManager alloc] init];
     
@@ -215,7 +198,6 @@
                         _dontexist.textAlignment = NSTextAlignmentLeft;
                         [self.view addSubview:_dontexist];
                         
-                        
                     }
         });
     });
@@ -234,6 +216,7 @@
     //一度しか現在地に移動しないなら removeObserver する
     [_mapView.userLocation removeObserver:self forKeyPath:@"location"];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -316,6 +299,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -323,6 +307,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     return indexPath;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //セグエで画面遷移させる

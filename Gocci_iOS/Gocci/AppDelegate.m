@@ -12,18 +12,11 @@
 #import "SCFilterGroup.h"
 #import "SCVideoPlayerView.h"
 
-void uncaughtExceptionHandler(NSException *exception) {
-    NSLog(@"CRASH: %@", exception);
-    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
-    // Internal error reporting
-}
 
 @implementation AppDelegate
 
 
 @synthesize window = _window;
-
-
 
 
 //facebook認証のcallbackメソッド
@@ -37,22 +30,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
-    //Parseの初期設定
-    [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
-    
-    [PFUser enableAutomaticUser];
-    
-    PFACL *defaultACL = [PFACL ACL];
-    
-    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-    
-    // Facebook
-    [PFFacebookUtils initializeFacebook];
-    
-    // Twitter
-    [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
-                               consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
-    //736
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     if (rect.size.height == 480) {

@@ -16,8 +16,6 @@
     // グローバル変数
     NSString *gText;
     //グローバル変数
-    NSString *pID;
-    //グローバル変数
     NSURL *postMovieURL;
     //グローバル変数
     NSString *username;
@@ -29,10 +27,8 @@
     NSString *lon;
     NSDictionary *jsonDic;
     NSDictionary *reviewJsondic;
-    CLLocation *numa;
 }
 @property (nonatomic, retain) NSString *gText;
-@property (nonatomic, retain) NSString *pID;
 @property (nonatomic, retain) NSURL *postMovieURL;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *userpicture;
@@ -41,7 +37,6 @@
 @property (nonatomic) NSString *lon;
 @property (nonatomic, retain) NSDictionary *jsonDic;
 @property (nonatomic, retain) NSDictionary *reviewJsondic;
-@property (nonatomic, retain) CLLocation *numa;
 
 @property (strong, nonatomic) UIWindow *window;
 

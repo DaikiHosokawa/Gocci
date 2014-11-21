@@ -7,7 +7,6 @@
 //
 
 #import "submitViewController.h"
-#import "CaptureManager.h"
 #import "AppDelegate.h"
 #import "EDStarRating.h"
 
@@ -138,16 +137,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 //Twitterの投稿
 - (IBAction)submitTwitter:(UIButton*)sender {
