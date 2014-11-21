@@ -270,6 +270,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     [self endScroll];
+     [moviePlayer play];
     NSLog(@"scroll is stoped");
 }
 
@@ -498,7 +499,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
-    [moviePlayer play];
     
 }
 
