@@ -20,6 +20,9 @@
 
 {
     NSString *_postID;
+    NSString *_postRestname;
+    NSString *_postUsername;
+    
     MPMoviePlayerController *moviePlayer;
   
     NSString *_path;

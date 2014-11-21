@@ -175,8 +175,7 @@
     
     self.tableView.bounces = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    
+
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -308,6 +307,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"commentBtn is touched");
 }
 
+
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
     //いいねボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
@@ -348,6 +348,32 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
+//テスト中(ユーザー名タップ)
+- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
+    
+    //コメントボタンの時の処理
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
+    NSLog(@"postid:%@",_postID);
+    
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"commentBtn is touched");
+}
+
+//テスト中(レストラン名タップ)
+- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
+    
+    //コメントボタンの時の処理
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postRestname = [_restname_ objectAtIndex:indexPath.row];
+    NSLog(@"postid:%@",_postID);
+    
+    [self performSegueWithIdentifier:@"showDetail2" sender:self];
+    NSLog(@"commentBtn is touched");
+}
+
 
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
@@ -355,7 +381,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
+/*
+//tapするという機能を追加
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if(touch.view.tag == _cell.UsersName.tag)
+        [self clickCommand:_cell.UsersName.tag];
+}
 
+-(IBAction)clickCommand:(id)sender
+{
+    NSLog(@"in clickCommand");
+}
+*/
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
@@ -408,6 +447,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
+    //テスト(ユーザー名タップ)
+    _cell.UsersName.userInteractionEnabled = YES;
+     _cell.UsersName.tag = 100;
     
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];

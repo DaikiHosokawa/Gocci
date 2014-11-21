@@ -640,8 +640,8 @@
 		FFDC02901A1F0E5A009A787C /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
+				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
 				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
 				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
 				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
@@ -674,11 +674,11 @@
 		FFDC02931A1F0EBF009A787C /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
 				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
 				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
 				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
 				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
-				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
