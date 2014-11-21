@@ -27,6 +27,7 @@
     NSString *lon;
     NSDictionary *jsonDic;
     NSDictionary *reviewJsondic;
+    NSData *movieData;
 }
 @property (nonatomic, retain) NSString *gText;
 @property (nonatomic, retain) NSURL *postMovieURL;
@@ -37,7 +38,7 @@
 @property (nonatomic) NSString *lon;
 @property (nonatomic, retain) NSDictionary *jsonDic;
 @property (nonatomic, retain) NSDictionary *reviewJsondic;
-
+@property (nonatomic, retain) NSData *movieData;
 @property (strong, nonatomic) UIWindow *window;
 
 
