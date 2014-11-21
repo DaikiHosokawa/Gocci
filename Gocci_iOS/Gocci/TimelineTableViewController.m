@@ -55,6 +55,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 
+    
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
     NSURL *url = [NSURL URLWithString:timelineString];
@@ -126,7 +127,7 @@
     // update visible cells
     [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
-    //  [SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
     
 }
 
