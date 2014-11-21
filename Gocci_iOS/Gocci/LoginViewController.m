@@ -21,7 +21,10 @@
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController {
+    NSTimer *timer;
+}
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,12 +51,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+static float progress = 0.0f;
 
 //Facebookアカウント取得処理
 - (IBAction)pushFacebook:(UIButton *)sender {
+    progress = 0.0f;
+    [SVProgressHUD showProgress:0 status:@"ログイン中" maskType:SVProgressHUDMaskTypeCustom];
+    if (timer) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(setProgress) userInfo:nil repeats:YES];
     
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     NSDictionary *options = @{ ACFacebookAppIdKey : @"673123156062598",
@@ -112,7 +120,6 @@
                                                                                                                error:&error];
                                                             NSLog(@"result:%@",result);
                                                             
-                                                            [self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                             NSLog(@"FacebookLogin is completed");
                                                             AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                             //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
@@ -153,7 +160,7 @@
                                                                                                            error:&error];
                                                         NSLog(@"result:%@",result);
                                                         
-                                                        [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                                                        //[self performSegueWithIdentifier:@"goTimeline" sender:self];
                                                         
                                                         AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                         //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
@@ -175,7 +182,7 @@
                                                      
                                                                               delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
                                                     [alert show];
-                                                    [SVProgressHUD dismiss];
+                                                  
                                                 }
                                             });
                                         }];
@@ -186,8 +193,13 @@
 //Twitterアカウント取得処理
 - (IBAction)pushTwitter:(UIButton *)sender// Create an account store object.
 {
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"ログイン中です" maskType:SVProgressHUDMaskTypeGradient];
+    progress = 0.0f;
+    [SVProgressHUD showProgress:0 status:@"Loading" maskType:SVProgressHUDMaskTypeCustom];
+    if (timer) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(setProgress) userInfo:nil repeats:YES];
+   
     _accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -240,7 +252,7 @@
                                                                                                   returningResponse:&response
                                                                                                               error:&error];
                                                            NSLog(@"result:%@",result);
-                                                           [self performSegueWithIdentifier:@"goTimeline2" sender:self];
+                                                           //[self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                            NSLog(@"TwitterLogin is completed");
                                                            AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                            //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
@@ -277,7 +289,7 @@
                                                                                               returningResponse:&response
                                                                                                           error:&error];
                                                        NSLog(@"result:%@",result);
-                                                       [self performSegueWithIdentifier:@"goTimeline2" sender:self];
+                                                      // [self performSegueWithIdentifier:@"goTimeline2" sender:self];
                                                        NSLog(@"TwitterLogin is completed");
                                                        AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                        //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
@@ -303,6 +315,23 @@
                                        }];
 }
 
+- (void)setProgress {
+    progress+=0.1f;
+    [SVProgressHUD showProgress:progress status:@"ログイン中" maskType:SVProgressHUDMaskTypeCustom];
+    
+    if(progress >= 1.0f) {
+        [timer invalidate];
+        timer = nil;
+        
+        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
 
+    }
+}
+
+- (void)dismiss {
+    [SVProgressHUD dismiss];
+      [self performSegueWithIdentifier:@"goTimeline" sender:self];
+    [timer invalidate];
+}
 
 @end

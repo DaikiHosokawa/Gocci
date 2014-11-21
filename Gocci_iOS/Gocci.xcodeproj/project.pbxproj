@@ -109,8 +109,8 @@
 		FFB92EDD1997A06B008E024A /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED31997A06B008E024A /* AFURLResponseSerialization.m */; };
 		FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92ED51997A06B008E024A /* AFURLSessionManager.m */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
-		FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */; };
-		FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */; };
+		FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFDC02A11A1F7DFA009A787C /* SVProgressHUD.bundle */; };
+		FFDC02A51A1F7DFA009A787C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDC02A31A1F7DFA009A787C /* SVProgressHUD.m */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF0225019E82C600007AB97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF0224F19E82C600007AB97 /* Main.storyboard */; };
 		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
@@ -317,10 +317,9 @@
 		FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FFD5C867196A6A87009E4F5A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		FFD5C86C196A7CC8009E4F5A /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		FFDC02A11A1F7DFA009A787C /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		FFDC02A21A1F7DFA009A787C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		FFDC02A31A1F7DFA009A787C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF0224F19E82C600007AB97 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -469,13 +468,13 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FFDC02A01A1F7DFA009A787C /* SVProgressHUD */,
 				FF8F188E19F101EA00538DAC /* Sources */,
 				FF217CB919E62D1200AEB06E /* EDStarRating */,
 				FF5DDF5119E3D3C2000F2ABD /* SDWebImage */,
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
 				FFA0E2C919AEC0DF006269B4 /* UIKit+AFNetworking */,
 				FFB92EC21997A06B008E024A /* AFNetworking */,
-				FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */,
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
@@ -617,17 +616,6 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		FFD5C86B196A7CC8009E4F5A /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				FFD5C86C196A7CC8009E4F5A /* SVProgressHUD-Prefix.pch */,
-				FFD5C86D196A7CC8009E4F5A /* SVProgressHUD.bundle */,
-				FFD5C86E196A7CC8009E4F5A /* SVProgressHUD.h */,
-				FFD5C86F196A7CC8009E4F5A /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
 		FFDC028F1A1F0E4B009A787C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,6 +728,16 @@
 			name = Effecter;
 			sourceTree = "<group>";
 		};
+		FFDC02A01A1F7DFA009A787C /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FFDC02A11A1F7DFA009A787C /* SVProgressHUD.bundle */,
+				FFDC02A21A1F7DFA009A787C /* SVProgressHUD.h */,
+				FFDC02A31A1F7DFA009A787C /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -827,10 +825,10 @@
 				FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */,
+				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
-				FFD5C870196A7CC8009E4F5A /* SVProgressHUD.bundle in Resources */,
 				FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,12 +883,12 @@
 				FF5DDF7E19E3D3C2000F2ABD /* UIImage+MultiFormat.m in Sources */,
 				FF8F18BB19F101EA00538DAC /* SCRecorder.m in Sources */,
 				FF8F18B819F101EA00538DAC /* SCFilterSelectorView.m in Sources */,
-				FFD5C871196A7CC8009E4F5A /* SVProgressHUD.m in Sources */,
 				FF5DDF7F19E3D3C2000F2ABD /* UIImage+WebP.m in Sources */,
 				FF5DDF7A19E3D3C2000F2ABD /* SDWebImageManager.m in Sources */,
 				FF5DDF7519E3D3C2000F2ABD /* SDImageCache.m in Sources */,
 				FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
+				FFDC02A51A1F7DFA009A787C /* SVProgressHUD.m in Sources */,
 				FF8F18BA19F101EA00538DAC /* SCPlayer.m in Sources */,
 				FF8F18B519F101EA00538DAC /* SCAudioTools.m in Sources */,
 				FF5DDF7B19E3D3C2000F2ABD /* SDWebImagePrefetcher.m in Sources */,

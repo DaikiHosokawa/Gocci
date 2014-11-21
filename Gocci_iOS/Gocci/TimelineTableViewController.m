@@ -126,7 +126,7 @@
     // update visible cells
     [self updateVisibleCells];
     [self.navigationItem setHidesBackButton:YES animated:NO];
-     [SVProgressHUD dismiss];
+    //  [SVProgressHUD dismiss];
     
 }
 
@@ -296,8 +296,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     
     //コメントボタンの時の処理
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
+    //[SVProgressHUD show];
+    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
@@ -350,7 +350,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 //テスト中(ユーザー名タップ)
 - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-    
     //コメントボタンの時の処理
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
