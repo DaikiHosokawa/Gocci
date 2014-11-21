@@ -31,7 +31,6 @@
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
 		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
 		FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */; };
-		FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -39,7 +38,6 @@
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
 		FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFEB19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54EFEF19149A1800025DC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFEE19149A1800025DC8 /* main.m */; };
-		FF54EFF919149A1800025DC8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF819149A1800025DC8 /* ViewController.m */; };
 		FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFFA19149A1800025DC8 /* Images.xcassets */; };
 		FF54F00319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -167,8 +165,6 @@
 		FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
 		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
 		FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
-		FF3E1FF41A0F6C6400D08B45 /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
-		FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -185,8 +181,6 @@
 		FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gocci-Prefix.pch"; sourceTree = "<group>"; };
 		FF54EFF119149A1800025DC8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF54EFF219149A1800025DC8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FF54EFF719149A1800025DC8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FF54EFF819149A1800025DC8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FF54EFFA19149A1800025DC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FF54F00019149A1800025DC8 /* GocciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
@@ -398,8 +392,6 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
-				FF3E1FF41A0F6C6400D08B45 /* MyAlertView.h */,
-				FF3E1FF51A0F6C6400D08B45 /* MyAlertView.m */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
@@ -458,49 +450,15 @@
 				FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */,
 				FF54EFF119149A1800025DC8 /* AppDelegate.h */,
 				FF54EFF219149A1800025DC8 /* AppDelegate.m */,
-				FF54EFF719149A1800025DC8 /* ViewController.h */,
-				FF54EFF819149A1800025DC8 /* ViewController.m */,
-				FF97C431192470AE0025DD6A /* LoginViewController.h */,
-				FF97C432192470AE0025DD6A /* LoginViewController.m */,
-				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
-				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
-				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
-				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
-				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
-				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
-				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
-				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
-				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
-				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
-				FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */,
-				FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */,
-				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
-				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
-				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
-				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
-				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
-				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
-				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
-				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
-				FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */,
-				FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */,
-				FF97C43419247FD20025DD6A /* submitViewController.h */,
-				FF97C43519247FD20025DD6A /* submitViewController.m */,
-				FF217CBD19E6571D00AEB06E /* usersTableViewController.h */,
-				FF217CBE19E6571D00AEB06E /* usersTableViewController.m */,
-				FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */,
-				FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */,
-				FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */,
-				FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */,
-				FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */,
-				FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */,
-				FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */,
-				FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */,
-				FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */,
-				FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */,
-				FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */,
-				FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */,
-				FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */,
+				FFDC02901A1F0E5A009A787C /* Timeline */,
+				FFDC028F1A1F0E4B009A787C /* Login */,
+				FFDC02911A1F0E79009A787C /* Search */,
+				FFDC02931A1F0EBF009A787C /* Restaurant */,
+				FFDC02961A1F0EE9009A787C /* Comment */,
+				FFDC02971A1F0F11009A787C /* Sumbmit */,
+				FFDC02951A1F0ED4009A787C /* Profile */,
+				FFDC02981A1F0F26009A787C /* Recorder */,
+				FFDC02991A1F0F5F009A787C /* Effecter */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
@@ -670,6 +628,118 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		FFDC028F1A1F0E4B009A787C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF97C431192470AE0025DD6A /* LoginViewController.h */,
+				FF97C432192470AE0025DD6A /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FFDC02901A1F0E5A009A787C /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
+				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
+				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
+				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
+				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
+			);
+			name = Timeline;
+			sourceTree = "<group>";
+		};
+		FFDC02911A1F0E79009A787C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
+				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
+				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
+				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
+				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
+				FFDC02921A1F0E8B009A787C /* Annotation */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		FFDC02921A1F0E8B009A787C /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */,
+				FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */,
+			);
+			name = Annotation;
+			sourceTree = "<group>";
+		};
+		FFDC02931A1F0EBF009A787C /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
+				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
+				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
+				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
+				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
+			);
+			name = Restaurant;
+			sourceTree = "<group>";
+		};
+		FFDC02951A1F0ED4009A787C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FF217CBD19E6571D00AEB06E /* usersTableViewController.h */,
+				FF217CBE19E6571D00AEB06E /* usersTableViewController.m */,
+				FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */,
+				FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */,
+				FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		FFDC02961A1F0EE9009A787C /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				FF15E561191E0731007C34F7 /* everyTableViewController.h */,
+				FF15E562191E0731007C34F7 /* everyTableViewController.m */,
+				FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */,
+				FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */,
+				FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
+		FFDC02971A1F0F11009A787C /* Sumbmit */ = {
+			isa = PBXGroup;
+			children = (
+				FF97C43419247FD20025DD6A /* submitViewController.h */,
+				FF97C43519247FD20025DD6A /* submitViewController.m */,
+			);
+			name = Sumbmit;
+			sourceTree = "<group>";
+		};
+		FFDC02981A1F0F26009A787C /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */,
+				FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */,
+				FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */,
+				FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */,
+				FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */,
+				FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */,
+			);
+			name = Recorder;
+			sourceTree = "<group>";
+		};
+		FFDC02991A1F0F5F009A787C /* Effecter */ = {
+			isa = PBXGroup;
+			children = (
+				FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */,
+				FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */,
+				FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */,
+				FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */,
+			);
+			name = Effecter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -831,14 +901,12 @@
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
 				FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */,
 				FFA0E2DF19AEC0DF006269B4 /* UIImageView+AFNetworking.m in Sources */,
-				FF54EFF919149A1800025DC8 /* ViewController.m in Sources */,
 				FF5DDF7719E3D3C2000F2ABD /* SDWebImageDecoder.m in Sources */,
 				FFA0E2E019AEC0DF006269B4 /* UIProgressView+AFNetworking.m in Sources */,
 				FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */,
 				FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */,
 				FF8F18B419F101EA00538DAC /* SCAssetExportSession.m in Sources */,
-				FF3E1FF61A0F6C6400D08B45 /* MyAlertView.m in Sources */,
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */,

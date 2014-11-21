@@ -12,7 +12,6 @@
 #import "everyTableViewController.h"
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
-#import "MyAlertView.h"
 
 @interface usersTableViewController ()
 
