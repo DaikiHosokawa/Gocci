@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "TimelineTableViewController.h"
 #import "SVProgressHUD.h"

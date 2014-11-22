@@ -113,7 +113,6 @@
 		FFDC02A51A1F7DFA009A787C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDC02A31A1F7DFA009A787C /* SVProgressHUD.m */; };
 		FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE130D81943040500806B02 /* FacebookSDK.framework */; };
 		FFF0225019E82C600007AB97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF0224F19E82C600007AB97 /* Main.storyboard */; };
-		FFF16B9519528286002FC793 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF16B9419528286002FC793 /* Parse.framework */; };
 		FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFF219149A1800025DC8 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -322,7 +321,6 @@
 		FFDC02A31A1F7DFA009A787C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FFE130D81943040500806B02 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FFF0224F19E82C600007AB97 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		FFF16B9419528286002FC793 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FFF16B9919554D37002FC793 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -347,7 +345,6 @@
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
 				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
 				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
-				FFF16B9519528286002FC793 /* Parse.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
@@ -417,7 +414,6 @@
 				FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */,
 				FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */,
 				FFF16B9919554D37002FC793 /* Accelerate.framework */,
-				FFF16B9419528286002FC793 /* Parse.framework */,
 				FF4BF521194847B90099B01D /* MediaPlayer.framework */,
 				FFE130D81943040500806B02 /* FacebookSDK.framework */,
 				FF0BE45D193ED63E001A0053 /* SystemConfiguration.framework */,

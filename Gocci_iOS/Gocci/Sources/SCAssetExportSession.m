@@ -211,8 +211,6 @@ const NSString *SCAssetExportSessionPresetLowQuality = @"LowQuality";
 }
 
 - (void)setupSettings:(AVAssetTrack *)videoTrack error:(NSError **)error {
-    
-    
     if (_sessionPreset != nil) {
         int sampleRate = 0;
         int audioBitrate = 0;
@@ -220,18 +218,10 @@ const NSString *SCAssetExportSessionPresetLowQuality = @"LowQuality";
         double width = 0;
         double height = 0;
         double videoBitrate = 0;
-        CGAffineTransform translate;
-        CGSize size;
-        
         
         if (videoTrack != nil && _keepVideoSize) {
-            
-             //videoTrack.naturalSize.height;
             width = videoTrack.naturalSize.width;
             height = videoTrack.naturalSize.height;
-            NSLog(@"width:%f",videoTrack.naturalSize.width);
-            NSLog(@"height:%f",videoTrack.naturalSize.height);
-            
         }
         
         // Because Yoda was my master
