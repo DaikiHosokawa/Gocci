@@ -499,7 +499,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

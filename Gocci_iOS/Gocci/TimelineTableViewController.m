@@ -350,32 +350,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
-//テスト中(ユーザー名タップ)
-- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-    //コメントボタンの時の処理
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    
-    [self performSegueWithIdentifier:@"showDetail2" sender:self];
-    NSLog(@"commentBtn is touched");
-}
-
-//テスト中(レストラン名タップ)
-- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
-    
-    //コメントボタンの時の処理
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postRestname = [_restname_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    
-    [self performSegueWithIdentifier:@"showDetail2" sender:self];
-    NSLog(@"commentBtn is touched");
-}
-
-
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
     for (_cell in [self.tableView visibleCells]){
@@ -448,9 +422,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    //テスト(ユーザー名タップ)
-    _cell.UsersName.userInteractionEnabled = YES;
-     _cell.UsersName.tag = 100;
     
     //コメントボタンのイベント
     [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];

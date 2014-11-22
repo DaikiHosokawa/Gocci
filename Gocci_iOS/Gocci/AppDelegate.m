@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 #import <AVFoundation/AVFoundation.h>
 #import "SCFilterGroup.h"
 #import "SCVideoPlayerView.h"
@@ -18,10 +19,16 @@
 @synthesize window = _window;
 
 
+//facebook認証のcallbackメソッド
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+            withSession:[PFFacebookUtils session]];
+            };
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
-    
     
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
@@ -139,6 +146,9 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
        [locationManager startUpdatingLocation]; //測位再開
+    // Facebook
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
 }
 
 
