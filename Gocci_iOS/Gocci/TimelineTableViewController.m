@@ -168,9 +168,9 @@
      [super viewDidLoad];
     
     // UIImageを指定した生成例
-    //UIImage *image = [UIImage imageNamed:@"gocci-kun-60-60.png"];
-    //UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
-    //self.navigationItem.titleView = myImageView;
+    UIImage *image = [UIImage imageNamed:@"aka-mat.png"];
+    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
+    self.navigationItem.titleView = myImageView;
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -442,7 +442,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
         //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 78, 320, 320);
+    CGRect frame = CGRectMake(0, 64, 320, 320);
  
         [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];

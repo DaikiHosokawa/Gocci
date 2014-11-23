@@ -141,6 +141,12 @@
 
 - (void)viewDidLoad
 {
+    // UIImageを指定した生成例
+    UIImage *image = [UIImage imageNamed:@"aka-mat.png"];
+    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
+    self.navigationItem.titleView = myImageView;
+
+    
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];

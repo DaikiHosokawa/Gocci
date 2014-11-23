@@ -45,6 +45,12 @@
     UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"usersTableViewCell"];
     
+    // UIImageを指定した生成例
+    UIImage *image = [UIImage imageNamed:@"aka-mat.png"];
+    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
+    self.navigationItem.titleView = myImageView;
+
+    
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
@@ -432,7 +438,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 78, 320, 320);
+    CGRect frame = CGRectMake(0, 64, 320, 320);
     
     [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];
