@@ -16,6 +16,7 @@
 @implementation AppDelegate
 
 
+
 @synthesize window = _window;
 
 
@@ -35,7 +36,7 @@
     if (rect.size.height == 480) {
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        
+        NSLog(@"3.5inch");
         self.window.rootViewController = rootViewController;
         }
     
@@ -61,13 +62,13 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
     
     //ナビゲーションバーの色を変更
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:1.00 green:0.07 blue:0.00 alpha:0.002];
-    
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+   
     
+  
     // CLLocationManagerのインスタンスを作成
     locationManager = [[CLLocationManager alloc] init];
     // デリゲートを設定
@@ -101,8 +102,6 @@
     NSLog(@"アップデート呼び出し");
     [self showLocation:location];
 }
-
-
 
 - (void)showLocation:(CLLocation *)location
 {
@@ -148,7 +147,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
        [locationManager startUpdatingLocation]; //測位再開
     // Facebook
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-
 }
 
 
