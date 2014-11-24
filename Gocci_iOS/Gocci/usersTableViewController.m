@@ -40,16 +40,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // UIImageを指定した生成例
+    UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
+    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
+    self.navigationItem.titleView = myImageView;
     
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"usersTableViewCell"];
     
-    // UIImageを指定した生成例
-    UIImage *image = [UIImage imageNamed:@"aka-mat.png"];
-    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
-    self.navigationItem.titleView = myImageView;
-
     
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];

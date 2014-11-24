@@ -81,10 +81,10 @@
     [super viewDidLoad];
  
     // UIImageを指定した生成例
-    UIImage *image = [UIImage imageNamed:@"aka-mat.png"];
+    UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
     self.navigationItem.titleView = myImageView;
-
+    
     // Do any additional setup after loading the view.
     _textView.delegate = self;
     _textView.returnKeyType = UIReturnKeyDone;

@@ -166,7 +166,7 @@
                                 <rect key="frame" x="162" y="116" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gocci-moji" id="0fX-Tx-b95">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gocci-moji-1" id="0fX-Tx-b95">
                                 <rect key="frame" x="147" y="124" width="121" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -229,13 +229,13 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Gocci" id="CMw-GA-8Go">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="O3c-M8-tc9">
+                        <barButtonItem key="leftBarButtonItem" image="ic_account_circle_black_24dp" id="O3c-M8-tc9">
                             <connections>
                                 <action selector="pushUserTimeline:" destination="eNe-5a-Fw9" id="LxT-bE-8r5"/>
                                 <segue destination="JWG-MP-T7g" kind="push" identifier="goUserTimeline" id="BFm-CQ-6fi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="x8r-pg-0JT">
+                        <barButtonItem key="rightBarButtonItem" image="ic_search_black_24dp" id="x8r-pg-0JT">
                             <connections>
                                 <segue destination="2HP-Jr-PlJ" kind="push" identifier="searchSegue" id="jv9-UW-jnT"/>
                             </connections>
@@ -258,7 +258,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" id="IIx-2O-jGK">
-                            <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                            <rect key="frame" x="0.0" y="64" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                         </mapView>
@@ -799,9 +799,11 @@
         <image name="facebook kirinuki" width="1155" height="232"/>
         <image name="fb_share" width="400" height="50"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
-        <image name="gocci-moji" width="595" height="842"/>
+        <image name="gocci-moji-1" width="595" height="842"/>
         <image name="gradation" width="640" height="225"/>
+        <image name="ic_account_circle_black_24dp" width="24" height="24"/>
         <image name="ic_login kirinuki" width="328" height="93"/>
+        <image name="ic_search_black_24dp" width="24" height="24"/>
         <image name="login" width="230" height="359"/>
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
@@ -815,7 +817,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1zK-cZ-5jM"/>
-        <segue reference="7nL-qp-VeJ"/>
+        <segue reference="ogp-a2-6SY"/>
+        <segue reference="tK9-zW-yJ4"/>
     </inferredMetricsTieBreakers>
 </document>
