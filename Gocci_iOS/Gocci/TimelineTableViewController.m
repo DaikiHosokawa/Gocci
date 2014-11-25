@@ -280,6 +280,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+    [_cell playMovie]; // このメソッドの処理で UIImageView の非表示 & 動画の再生を行う
+
 
     /*
     //動画サムネイル画像の表示
@@ -313,6 +316,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
+
 
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
@@ -434,6 +438,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
+    /*
+    //sample2に移行中
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -462,10 +468,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
         [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
+     */
 }
 
-
-
+/*
+//sample2に移行中
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
@@ -475,6 +482,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         });
     }
 }
+ */
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -492,9 +500,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+/*
+//sample2に移行中
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     //繰り返し
     [moviePlayer play];
 }
-
+*/
 @end

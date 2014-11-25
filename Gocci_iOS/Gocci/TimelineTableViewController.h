@@ -30,8 +30,6 @@
     UIImageView *thumbnailView;
 }
 
--(void) onResume;
--(void) onPause;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) Sample2TableViewCell *cell;
 @property (nonatomic, retain) UIImageView *thumbnailView;
