@@ -9,6 +9,7 @@
 #import "submitViewController.h"
 #import "AppDelegate.h"
 #import "EDStarRating.h"
+#import "SVProgressHUD.h"
 
 @interface submitViewController ()<UITextViewDelegate>
 
@@ -27,6 +28,7 @@
 @implementation submitViewController
 @synthesize starRatingImage = _starRatingImage;
 
+/*
 //テキストビューの文字数宣言
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
@@ -46,7 +48,7 @@
 
     return YES;
 }
-
+*/
 /*
 
 -(BOOL)textViewShouldEndEditing:
@@ -78,6 +80,7 @@
 
 - (void)viewDidLoad
 {
+    sleep(3);
     [super viewDidLoad];
  
     // UIImageを指定した生成例
@@ -85,6 +88,7 @@
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
     self.navigationItem.titleView = myImageView;
     
+    /*
     // Do any additional setup after loading the view.
     _textView.delegate = self;
     _textView.returnKeyType = UIReturnKeyDone;
@@ -93,7 +97,8 @@
     _textView.layer.borderWidth = 1;
     _textView.clipsToBounds = YES;
     _textView.layer.cornerRadius = 10.0f;
-    
+    */
+     
     // Setup control using image
     //_starRatingImage.backgroundImage=[UIImage imageNamed:@"starsbackground iOS.png"];
     _starRatingImage.starImage = [UIImage imageNamed:@"hosi nasi23.png"];
@@ -131,13 +136,14 @@
 }
 
 
-
+/*
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // キーボードを隠す
     [_textView resignFirstResponder];
     return YES;
 }
-
+*/
+ 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -188,22 +194,16 @@
 
 
 - (IBAction)pushComplete:(id)sender {
-    
-    if (_textView.text.length == 0) {
-        //アラート出す
-        NSLog(@"textlength:%lu",(unsigned long)_textView.text.length);
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"レビューを入力してください"
-                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-        [alert show];
-    }
-    else{
-     _text = _textView.text;
+    {
+        NSLog(@"pushCompleteを押したよ");
+        
+    [SVProgressHUD showWithStatus:@"投稿中" maskType:SVProgressHUDMaskTypeAnimation];
+        
     // 文字列を数値型へ変換する。
     NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
     NSLog(@"substr2:%@",substr2);
     NSInteger i = substr2.integerValue;
-    NSString *content = [NSString stringWithFormat:@"val=%@&star_evaluation=%ld",_text,(long)i];
+    NSString *content = [NSString stringWithFormat:@"tar_evaluation=%ld",(long)i];
     NSLog(@"content:%@",content);
 	NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/submit/"];
 	NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -214,7 +214,8 @@
 	NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 										   returningResponse:&response
 													   error:&error];
-    
+        sleep(3);
+        //[SVProgressHUD dismiss];
         [self performSegueWithIdentifier:@"gobackTimeline" sender:self];
         NSLog(@"Go back to Timeline");
     }

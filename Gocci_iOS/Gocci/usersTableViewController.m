@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
-@property (nonatomic, copy) NSMutableArray *review_;
+//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
@@ -125,7 +125,7 @@
         dispatch_async(q_main, ^{
         });
     });
-    
+    /*
     AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
     
     //JSONをパース
@@ -141,7 +141,7 @@
     //レビュー
     NSArray *review = [jsonDic2 valueForKey:@"review"];
     _review_ = [review mutableCopy];
-    
+    */
     
     [self updateVisibleCells];
     [SVProgressHUD dismiss];
@@ -262,7 +262,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 550.0;
+    return  508.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -416,7 +416,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     
@@ -544,8 +544,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
              _starnum_ = [starnum mutableCopy];
              NSLog(@"commentnum:%@",starnum);
              
-             AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
-             
+             //AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
+             /*
              //JSONをパース
              NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
              NSLog(@"restpage:%@",urlString2);
@@ -559,7 +559,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
              //レビュー
              NSArray *review = [jsonDic2 valueForKey:@"review"];
              _review_ = [review mutableCopy];
-             
+             */
              dispatch_async(q1_main, ^{
                  [self.tableView reloadData];
              });
@@ -639,7 +639,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                         NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
                                         _starnum_ = [starnum mutableCopy];
                                         NSLog(@"commentnum:%@",starnum);
-                                        
+                                        /*
                                         AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
                                         
                                         //JSONをパース
@@ -655,7 +655,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                         //レビュー
                                         NSArray *review = [jsonDic2 valueForKey:@"review"];
                                         _review_ = [review mutableCopy];
-                                        
+                                        */
                                         dispatch_async(q1_main, ^{
                                             [self.tableView reloadData];
                                         });

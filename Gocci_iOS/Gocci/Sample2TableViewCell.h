@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "AFNetworking/AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
-#import "UIImageView+WebCache.h"
 
 @class Timeline;
 
-@interface Sample2TableViewCell : UITableViewCell{
-    MPMoviePlayerController *moviePlayer;
-}
+@interface Sample2TableViewCell : UITableViewCell
 @property (nonatomic, strong)Timeline *comment;
 
 
@@ -28,13 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *Review;
 @property (weak, nonatomic) IBOutlet UILabel *Goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-//@property (weak, nonatomic) Sample2TableViewCell *cell;
-@property (weak, nonatomic) UIImageView *dotimageView;
+@property (weak, nonatomic) Sample2TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (nonatomic, strong) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
-@property (nonatomic, copy) NSMutableArray *movie_;
 
--(void)playMovie;
 @end

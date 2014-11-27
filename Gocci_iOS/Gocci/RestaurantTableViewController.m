@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
-@property (nonatomic, copy) NSMutableArray *review_;
+//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
@@ -93,10 +93,13 @@
     // 住所
     NSArray *locality = [jsonDic valueForKey:@"locality"];
     _locality_ = [locality mutableCopy];
+    
+    /*
     //レビュー
     NSArray *review = [jsonDic valueForKey:@"review"];
     _review_ = [review mutableCopy];
-    
+    */
+     
      //いいね数
     NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
     _goodnum_ = [goodnum mutableCopy];
@@ -313,7 +316,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 550.0;
+    return 508.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -466,7 +469,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
 

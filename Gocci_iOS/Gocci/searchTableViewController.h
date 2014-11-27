@@ -21,6 +21,8 @@
     NSString *annotationSubtitle;
 }
 
+-(void) onResume;
+-(void) onPause;
 
 @property (nonatomic) NSString *headerLocality;
 @property (nonatomic) NSString *postRestName;

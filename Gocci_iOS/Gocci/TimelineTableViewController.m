@@ -31,7 +31,7 @@
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) NSMutableArray *review_;
+//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
@@ -54,8 +54,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-
-    
+    //NSLog(@"vewwillappearは呼び出されています");
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
     NSURL *url = [NSURL URLWithString:timelineString];
@@ -63,9 +62,6 @@
     NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
     // ユーザー名
     NSArray *user_name = [jsonDic valueForKey:@"user_name"];
     _user_name_ = [user_name mutableCopy];
@@ -99,13 +95,9 @@
     NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
     _thumbnail_ = [thumbnail mutableCopy];
         NSLog(@"thumbnail:%@",_thumbnail_);
-        dispatch_async(q_main, ^{
-        });
-    });
-    
 
 
-        
+    /*
     //JSONをパース
     NSString *reviewString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/submit/"];
     NSURL *reviewurl = [NSURL URLWithString:reviewString];
@@ -121,7 +113,8 @@
         dispatch_async(q2_main, ^{
         });
     });
-    
+    */
+     
    [self.tableView reloadData];
 
     // update visible cells
@@ -267,7 +260,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 550.0;
+    return 510.0;
 }
 
 
@@ -280,9 +273,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample2TableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-    [_cell playMovie]; // このメソッドの処理で UIImageView の非表示 & 動画の再生を行う
-
 
     /*
     //動画サムネイル画像の表示
@@ -316,7 +306,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:self];
     NSLog(@"commentBtn is touched");
 }
-
 
 
 - (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
@@ -428,7 +417,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //updateした時の処理
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.Review.text = [_review_ objectAtIndex:indexPath.row];
+    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     
@@ -438,8 +427,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    /*
-    //sample2に移行中
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -468,11 +455,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
         [moviePlayer setShouldAutoplay:YES];
     [moviePlayer prepareToPlay];
-     */
 }
 
-/*
-//sample2に移行中
+
+
 -(void)movieLoadStateDidChange:(id)sender{
     if(MPMovieLoadStatePlaythroughOK ) {
         NSLog(@"STATE CHANGED");
@@ -482,7 +468,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         });
     }
 }
- */
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -500,11 +485,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-/*
-//sample2に移行中
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     //繰り返し
     [moviePlayer play];
 }
-*/
+
 @end
