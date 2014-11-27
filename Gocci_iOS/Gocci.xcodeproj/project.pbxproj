@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5F08E755A9148C28EBECBC2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302F477AE49444819704F22A /* libPods.a */; };
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -132,6 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB00E8338B25450F8181FC74 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
 		FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
 		FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleTableViewCell.xib; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
+				F5F08E755A9148C28EBECBC2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +420,7 @@
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
+				BB00E8338B25450F8181FC74 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -458,6 +463,7 @@
 				FF54EFE219149A1800025DC8 /* Foundation.framework */,
 				FF54EFE419149A1800025DC8 /* CoreGraphics.framework */,
 				FF54EFE619149A1800025DC8 /* UIKit.framework */,
+				302F477AE49444819704F22A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -769,9 +775,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */;
 			buildPhases = (
+				E7DE6D97841149DCB4BA88F0 /* Check Pods Manifest.lock */,
 				FF54EFDB19149A1800025DC8 /* Sources */,
 				FF54EFDC19149A1800025DC8 /* Frameworks */,
 				FF54EFDD19149A1800025DC8 /* Resources */,
+				7DC7A1EA04474F2FAAC155E9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -809,9 +817,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Massara;
 				TargetAttributes = {
-					FF54EFDE19149A1800025DC8 = {
-						DevelopmentTeam = EY9SSB5TM5;
-					};
 					FF54EFFF19149A1800025DC8 = {
 						TestTargetID = FF54EFDE19149A1800025DC8;
 					};
@@ -867,6 +872,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7DC7A1EA04474F2FAAC155E9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7DE6D97841149DCB4BA88F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF54EFDB19149A1800025DC8 /* Sources */ = {
@@ -1057,12 +1095,13 @@
 		};
 		FF54F01219149A1900025DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB00E8338B25450F8181FC74 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
@@ -1085,12 +1124,13 @@
 		};
 		FF54F01319149A1900025DC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB00E8338B25450F8181FC74 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";

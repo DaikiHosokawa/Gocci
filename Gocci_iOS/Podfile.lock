@@ -1,0 +1,10 @@
+PODS:
+  - UIImage+Dummy (0.0.2)
+
+DEPENDENCIES:
+  - UIImage+Dummy (~> 0.0.2)
+
+SPEC CHECKSUMS:
+  UIImage+Dummy: d7b13f675eab7d9086b7b40fd4b5369abb8c62a0
+
+COCOAPODS: 0.33.1
