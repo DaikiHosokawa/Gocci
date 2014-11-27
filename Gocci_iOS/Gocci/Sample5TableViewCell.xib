@@ -38,13 +38,9 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3cs-Fs-iNf">
-                                <rect key="frame" x="200" y="393" width="105" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-Ha-rlf"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@スターバックス六本木店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mYr-hi-UhP">
-                                <rect key="frame" x="18" y="390" width="180" height="28"/>
+                                <rect key="frame" x="18" y="390" width="205" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
                                 <color key="textColor" red="0.41753029339999997" green="0.41753029339999997" blue="0.41753029339999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -109,12 +105,16 @@
                                 <rect key="frame" x="8" y="426" width="302" height="3"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbO-T7-JH4">
-                                <rect key="frame" x="295" y="8" width="20" height="20"/>
-                                <state key="normal" image="ic_delete_black_24dp">
+                                <rect key="frame" x="298" y="8" width="20" height="20"/>
+                                <state key="normal" image="delete_button">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3cs-Fs-iNf">
+                                <rect key="frame" x="225" y="390" width="85" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -152,8 +152,8 @@
     </objects>
     <resources>
         <image name="comment_button" width="310" height="88"/>
+        <image name="delete_button" width="24" height="24"/>
         <image name="heart_button" width="310" height="86"/>
-        <image name="ic_delete_black_24dp" width="48" height="48"/>
         <image name="sen" width="320" height="9"/>
         <image name="user-icon" width="79" height="80"/>
     </resources>
