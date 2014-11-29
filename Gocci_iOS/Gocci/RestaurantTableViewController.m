@@ -316,7 +316,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 508.0;
+    return 520.0;
 }
 
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -507,7 +507,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 64, 320, 320);
+    CGRect frame = CGRectMake(0, 60, 340, 340);
     
     [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];

@@ -58,7 +58,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FL-al-ONx" id="0Um-8x-zzT">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -732,9 +732,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ELX-A7-CBx"/>
-        <segue reference="wis-md-2uD"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="1zK-cZ-5jM"/>
-        <segue reference="Kch-bB-bdv"/>
+        <segue reference="wis-md-2uD"/>
+        <segue reference="ZeU-ce-dsG"/>
     </inferredMetricsTieBreakers>
 </document>

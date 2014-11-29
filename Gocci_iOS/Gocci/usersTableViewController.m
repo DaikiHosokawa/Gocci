@@ -444,7 +444,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     moviePlayer.controlStyle = MPMovieControlStyleNone;
     moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 34, 320, 320);
+    CGRect frame = CGRectMake(0, 0, 340, 340);
     
     [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];
