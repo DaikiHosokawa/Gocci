@@ -37,6 +37,7 @@
 
 @implementation usersTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -73,8 +74,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-   //JSONをパース
+    //JSONをパース
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",profiledelegate.username];
     NSLog(@"restpage:%@",urlString);
@@ -125,6 +127,7 @@
         dispatch_async(q_main, ^{
         });
     });
+    
     /*
     AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
     

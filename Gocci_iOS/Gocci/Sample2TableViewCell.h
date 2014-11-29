@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
+@property (weak, nonatomic) IBOutlet UIButton *UsernameButton;
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
 @property (weak, nonatomic) IBOutlet UILabel *RestaurantName;

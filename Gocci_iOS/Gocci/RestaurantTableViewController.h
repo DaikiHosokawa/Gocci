@@ -11,6 +11,7 @@
 #import <Accounts/Accounts.h>
 #import "Sample3TableViewCell.h"
 #import <Foundation/Foundation.h>
+#import "usersTableViewController_other.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface RestaurantTableViewController : UITableViewController
@@ -19,6 +20,10 @@
     MPMoviePlayerController *moviePlayer;
     UITableViewCell *cell;
     NSString *_postRestName;
+    //profile_otherへの引き継ぎ
+    NSString *_postUsername;
+    NSString *_postPicture;
+
     NSString *_headerLocality;
     NSString *_postID;
 }

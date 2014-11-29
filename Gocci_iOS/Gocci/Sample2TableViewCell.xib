@@ -18,16 +18,6 @@
                         <rect key="frame" x="-2" y="0.0" width="325" height="479"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="細川大己" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4PM-Aj-lEv">
-                                <rect key="frame" x="61" y="14" width="161" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <color key="textColor" red="0.0037667410714286031" green="0.00078101689854252255" blue="0.00020603485653849138" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value=" NSTextAlignmentLeft" localized="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="Nlu-iy-1N9">
                                 <rect key="frame" x="0.0" y="67" width="305" height="271"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,6 +103,15 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value="NSTextAlignmentLeft" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sq1-Jv-pyv">
+                                <rect key="frame" x="60" y="15" width="195" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="name">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -137,7 +136,7 @@
                 <outlet property="Commentnum" destination="xk2-g9-mfM" id="bYw-3J-vik"/>
                 <outlet property="Goodnum" destination="ckN-U1-JVz" id="14u-9K-EVA"/>
                 <outlet property="RestaurantName" destination="ggd-MB-LnS" id="XzR-7R-kOR"/>
-                <outlet property="UsersName" destination="4PM-Aj-lEv" id="QHb-jf-TOS"/>
+                <outlet property="UsernameButton" destination="sq1-Jv-pyv" id="BGF-C2-Odq"/>
                 <outlet property="UsersPicture" destination="PIe-Le-KZz" id="OaQ-2D-FVd"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>

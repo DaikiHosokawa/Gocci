@@ -14,8 +14,6 @@
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
-#import "AppDelegate.h"
-#import "usersTableViewController.h"
 #import "QuartzCore/QuartzCore.h"
 
 
@@ -77,7 +75,7 @@
     //レストラン名
     NSArray *restname = [jsonDic valueForKey:@"restname"];
     _restname_ = [restname mutableCopy];
-    //コメント数
+    //コメンfト数
     NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
     _commentnum_ = [commentnum mutableCopy];
         NSLog(@"commentnum:%@",commentnum);
@@ -274,6 +272,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
+    NSString *buttontext = [_user_name_ objectAtIndex:indexPath.row];
+    [_cell.UsernameButton setTitle:buttontext forState:UIControlStateNormal];
+    //user nameタップのイベント
+    [_cell.UsernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     /*
     //動画サムネイル画像の表示
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
@@ -347,6 +350,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"goodBtn is touched");
 
 }
+
+- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
+    
+    //user nameタップ時の処理
+    //[SVProgressHUD show];
+    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
+    _postPicture = [_picture_ objectAtIndex:indexPath.row];
+
+    [self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    NSLog(@"Username is touched");
+     }
 
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
@@ -482,6 +499,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = _postID;
     }
+    //プロフィール画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"goOthersTimeline"]) {
+        //ここでパラメータを渡す
+        usersTableViewController_other *useVC = segue.destinationViewController;
+        useVC.postUsername = _postUsername;
+        useVC.postPicture = _postPicture;
+    }
+    
     
 }
 

@@ -30,6 +30,9 @@
 		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
 		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
+		FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */; };
+		FF2990C91A2980E000FF4DDB /* Sample5TableViewCell_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */; };
+		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
 		FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
@@ -164,6 +167,11 @@
 		FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
 		FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
 		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
+		FF2990C11A29809400FF4DDB /* usersTableViewController_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController_other.h; sourceTree = "<group>"; };
+		FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController_other.m; sourceTree = "<group>"; };
+		FF2990C61A2980DF00FF4DDB /* Sample5TableViewCell_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell_other.h; sourceTree = "<group>"; };
+		FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell_other.m; sourceTree = "<group>"; };
+		FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell_other.xib; sourceTree = "<group>"; };
 		FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
@@ -376,6 +384,18 @@
 			path = EDStarRating;
 			sourceTree = "<group>";
 		};
+		FF2990C01A29800500FF4DDB /* Profile_other */ = {
+			isa = PBXGroup;
+			children = (
+				FF2990C11A29809400FF4DDB /* usersTableViewController_other.h */,
+				FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */,
+				FF2990C61A2980DF00FF4DDB /* Sample5TableViewCell_other.h */,
+				FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */,
+				FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */,
+			);
+			name = Profile_other;
+			sourceTree = "<group>";
+		};
 		FF41DF4019BAF42100F3DD7B /* CrittercismSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +476,7 @@
 				FFDC02961A1F0EE9009A787C /* Comment */,
 				FFDC02971A1F0F11009A787C /* Sumbmit */,
 				FFDC02951A1F0ED4009A787C /* Profile */,
+				FF2990C01A29800500FF4DDB /* Profile_other */,
 				FFDC02981A1F0F26009A787C /* Recorder */,
 				FFDC02991A1F0F5F009A787C /* Effecter */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
@@ -827,6 +848,7 @@
 				FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
+				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
 				FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */,
@@ -911,8 +933,10 @@
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
 				FF5DDF7819E3D3C2000F2ABD /* SDWebImageDownloader.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
+				FF2990C91A2980E000FF4DDB /* Sample5TableViewCell_other.m in Sources */,
 				FF8F18BF19F101EA00538DAC /* SCSampleBufferHolder.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
+				FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				FFA0E2DB19AEC0DF006269B4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FFB92ED91997A06B008E024A /* AFNetworkReachabilityManager.m in Sources */,

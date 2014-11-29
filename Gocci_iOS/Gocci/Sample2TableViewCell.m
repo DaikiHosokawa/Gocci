@@ -18,6 +18,7 @@
 @synthesize thumbnailView;
 @synthesize Commentnum;
 @synthesize starImage;
+@synthesize UsernameButton;
 
 - (void)dealloc
 {

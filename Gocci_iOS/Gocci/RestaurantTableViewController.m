@@ -386,6 +386,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
+    
+    //user nameタップ時の処理
+    //[SVProgressHUD show];
+    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
+    _postPicture = [_picture_ objectAtIndex:indexPath.row];
+    NSLog(@"確認：postUsername:%@",_postUsername);
+    
+    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
+    NSLog(@"Username is touched");
+}
+
 // 画面上に見えているセルの表示更新
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
@@ -406,6 +421,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample3TableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+    NSString *buttontext = [_user_name_ objectAtIndex:indexPath.row];
+    [_cell.UsernameButton setTitle:buttontext forState:UIControlStateNormal];
+    //user nameタップのイベント
+    [_cell.UsernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
@@ -524,6 +544,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = _postID;
     }
+        //プロフィール画面にパラメータを渡して遷移する
+        if ([segue.identifier isEqualToString:@"goOthersTimeline2"]) {
+            //ここでパラメータを渡す
+            NSLog(@"ここは通った");
+            usersTableViewController_other *useVC = segue.destinationViewController;
+            useVC.postUsername = _postUsername;
+            useVC.postPicture = _postPicture;
+        }
     
 }
 

@@ -13,6 +13,9 @@
 #import "UIImageView+AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
 #import "SVProgressHUD/SVProgressHUD.h"
+#import "usersTableViewController.h" 
+#import "usersTableViewController_other.h"
+#import "AppDelegate.h"
 
 
 
@@ -21,7 +24,9 @@
 {
     NSString *_postID;
     NSString *_postRestname;
+    //profile_otherへの引き継ぎ
     NSString *_postUsername;
+    NSString *_postPicture;
     
     MPMoviePlayerController *moviePlayer;
   
