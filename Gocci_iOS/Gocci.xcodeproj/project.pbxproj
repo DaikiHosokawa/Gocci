@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
+		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
+		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
+		AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */; };
 		F5F08E755A9148C28EBECBC2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302F477AE49444819704F22A /* libPods.a */; };
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
@@ -42,8 +46,6 @@
 		FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFEB19149A1800025DC8 /* InfoPlist.strings */; };
 		FF54EFEF19149A1800025DC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EFEE19149A1800025DC8 /* main.m */; };
 		FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54EFFA19149A1800025DC8 /* Images.xcassets */; };
-		FF54F00319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
-		FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
 		FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01B1914B3C800025DC8 /* searchTableViewController.m */; };
 		FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */; };
 		FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF5319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m */; };
@@ -123,7 +125,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FF54F00519149A1800025DC8 /* PBXContainerItemProxy */ = {
+		AB8C718B1A278D8C00BF31EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF54EFD719149A1800025DC8 /* Project object */;
 			proxyType = 1;
@@ -134,6 +136,15 @@
 
 /* Begin PBXFileReference section */
 		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8C717E1A278BFE00BF31EA /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = Model/APIClient.h; sourceTree = "<group>"; };
+		AB8C717F1A278BFE00BF31EA /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = Model/APIClient.m; sourceTree = "<group>"; };
+		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8C71881A278D8C00BF31EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB8C71911A278F4400BF31EA /* APIClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientTests.m; sourceTree = "<group>"; };
+		AB8C71941A27908700BF31EA /* TimelinePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimelinePost.h; path = Model/TimelinePost.h; sourceTree = "<group>"; };
+		AB8C71951A27908700BF31EA /* TimelinePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimelinePost.m; path = Model/TimelinePost.m; sourceTree = "<group>"; };
+		AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoviePlayerManager.h; path = Model/MoviePlayerManager.h; sourceTree = "<group>"; };
+		AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoviePlayerManager.m; path = Model/MoviePlayerManager.m; sourceTree = "<group>"; };
 		BB00E8338B25450F8181FC74 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
 		FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
@@ -193,7 +204,6 @@
 		FF54EFF119149A1800025DC8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF54EFF219149A1800025DC8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FF54EFFA19149A1800025DC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FF54F00019149A1800025DC8 /* GocciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54F01A1914B3C800025DC8 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
 		FF54F01B1914B3C800025DC8 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
@@ -340,6 +350,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AB8C71821A278D8C00BF31EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDC19149A1800025DC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,18 +386,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF54EFFD19149A1800025DC8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF54F00419149A1800025DC8 /* UIKit.framework in Frameworks */,
-				FF54F00319149A1800025DC8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB8C717C1A278BC300BF31EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C717D1A278BCF00BF31EA /* API */,
+				AB8C71931A27906500BF31EA /* APIEntity */,
+				AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */,
+				AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AB8C717D1A278BCF00BF31EA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C717E1A278BFE00BF31EA /* APIClient.h */,
+				AB8C717F1A278BFE00BF31EA /* APIClient.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		AB8C71861A278D8C00BF31EA /* GocciUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C71901A278F3500BF31EA /* Tests */,
+				AB8C71871A278D8C00BF31EA /* Supporting Files */,
+			);
+			path = GocciUnitTests;
+			sourceTree = "<group>";
+		};
+		AB8C71871A278D8C00BF31EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C71881A278D8C00BF31EA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB8C71901A278F3500BF31EA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C71911A278F4400BF31EA /* APIClientTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		AB8C71931A27906500BF31EA /* APIEntity */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C71941A27908700BF31EA /* TimelinePost.h */,
+				AB8C71951A27908700BF31EA /* TimelinePost.m */,
+			);
+			name = APIEntity;
+			sourceTree = "<group>";
+		};
 		FF217CB919E62D1200AEB06E /* EDStarRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54EFE819149A1800025DC8 /* Gocci */,
+				AB8C71861A278D8C00BF31EA /* GocciUnitTests */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
 				BB00E8338B25450F8181FC74 /* Pods.xcconfig */,
@@ -428,7 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54EFDF19149A1800025DC8 /* Gocci.app */,
-				FF54F00019149A1800025DC8 /* GocciTests.xctest */,
+				AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -487,6 +550,7 @@
 				FF2990C01A29800500FF4DDB /* Profile_other */,
 				FFDC02981A1F0F26009A787C /* Recorder */,
 				FFDC02991A1F0F5F009A787C /* Effecter */,
+				AB8C717C1A278BC300BF31EA /* Model */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF648A3E1A2D81F0008987BB /* sample.mov */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
@@ -771,6 +835,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AB8C71841A278D8C00BF31EA /* GocciUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB8C718D1A278D8C00BF31EA /* Build configuration list for PBXNativeTarget "GocciUnitTests" */;
+			buildPhases = (
+				AB8C71811A278D8C00BF31EA /* Sources */,
+				AB8C71821A278D8C00BF31EA /* Frameworks */,
+				AB8C71831A278D8C00BF31EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB8C718C1A278D8C00BF31EA /* PBXTargetDependency */,
+			);
+			name = GocciUnitTests;
+			productName = GocciUnitTests;
+			productReference = AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FF54EFDE19149A1800025DC8 /* Gocci */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */;
@@ -790,24 +872,6 @@
 			productReference = FF54EFDF19149A1800025DC8 /* Gocci.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FF54EFFF19149A1800025DC8 /* GocciTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF54F01419149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTests" */;
-			buildPhases = (
-				FF54EFFC19149A1800025DC8 /* Sources */,
-				FF54EFFD19149A1800025DC8 /* Frameworks */,
-				FF54EFFE19149A1800025DC8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF54F00619149A1800025DC8 /* PBXTargetDependency */,
-			);
-			name = GocciTests;
-			productName = GocciTests;
-			productReference = FF54F00019149A1800025DC8 /* GocciTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -817,7 +881,8 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Massara;
 				TargetAttributes = {
-					FF54EFFF19149A1800025DC8 = {
+					AB8C71841A278D8C00BF31EA = {
+						CreatedOnToolsVersion = 6.1;
 						TestTargetID = FF54EFDE19149A1800025DC8;
 					};
 				};
@@ -836,12 +901,19 @@
 			projectRoot = "";
 			targets = (
 				FF54EFDE19149A1800025DC8 /* Gocci */,
-				FF54EFFF19149A1800025DC8 /* GocciTests */,
+				AB8C71841A278D8C00BF31EA /* GocciUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AB8C71831A278D8C00BF31EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDD19149A1800025DC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -861,13 +933,6 @@
 				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF54EFFE19149A1800025DC8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +972,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AB8C71811A278D8C00BF31EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDB19149A1800025DC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -935,6 +1008,7 @@
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
 				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
+				AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */,
 				FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				FFA0E2E219AEC0DF006269B4 /* UIWebView+AFNetworking.m in Sources */,
@@ -952,12 +1026,14 @@
 				FF5DDF7519E3D3C2000F2ABD /* SDImageCache.m in Sources */,
 				FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
+				AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */,
 				FFDC02A51A1F7DFA009A787C /* SVProgressHUD.m in Sources */,
 				FF8F18BA19F101EA00538DAC /* SCPlayer.m in Sources */,
 				FF8F18B519F101EA00538DAC /* SCAudioTools.m in Sources */,
 				FF5DDF7B19E3D3C2000F2ABD /* SDWebImagePrefetcher.m in Sources */,
 				FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */,
 				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
+				AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */,
 				FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */,
 				FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */,
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
@@ -988,20 +1064,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF54EFFC19149A1800025DC8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FF54F00619149A1800025DC8 /* PBXTargetDependency */ = {
+		AB8C718C1A278D8C00BF31EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FF54EFDE19149A1800025DC8 /* Gocci */;
-			targetProxy = FF54F00519149A1800025DC8 /* PBXContainerItemProxy */;
+			targetProxy = AB8C718B1A278D8C00BF31EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1017,6 +1086,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AB8C718E1A278D8C00BF31EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GocciUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gocci.app/Gocci";
+			};
+			name = Debug;
+		};
+		AB8C718F1A278D8C00BF31EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GocciUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gocci.app/Gocci";
+			};
+			name = Release;
+		};
 		FF54F00F19149A1900025DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1052,7 +1163,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -1087,6 +1198,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -1151,49 +1263,18 @@
 			};
 			name = Release;
 		};
-		FF54F01519149A1900025DC8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gocci.app/Gocci";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "GocciTests/GocciTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		FF54F01619149A1900025DC8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gocci.app/Gocci";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
-				INFOPLIST_FILE = "GocciTests/GocciTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AB8C718D1A278D8C00BF31EA /* Build configuration list for PBXNativeTarget "GocciUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB8C718E1A278D8C00BF31EA /* Debug */,
+				AB8C718F1A278D8C00BF31EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF54EFDA19149A1800025DC8 /* Build configuration list for PBXProject "Gocci" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1208,15 +1289,6 @@
 			buildConfigurations = (
 				FF54F01219149A1900025DC8 /* Debug */,
 				FF54F01319149A1900025DC8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF54F01419149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF54F01519149A1900025DC8 /* Debug */,
-				FF54F01619149A1900025DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

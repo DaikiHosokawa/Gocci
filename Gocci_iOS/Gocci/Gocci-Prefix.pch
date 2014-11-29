@@ -26,3 +26,6 @@
 #define LOG_METHOD;
 #define LOG_PRINT(...);
 #endif
+
+/** API サーバの URL */
+#define API_BASE_URL @"http://api-gocci.jp/api/public/"

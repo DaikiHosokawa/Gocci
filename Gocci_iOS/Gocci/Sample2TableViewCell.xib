@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -46,6 +46,17 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.88245376275510201" green="0.88245376275510201" blue="0.88245376275510201" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onGoodButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5JF-m0-TZU"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3cs-Fs-iNf">
                                 <rect key="frame" x="223" y="407" width="85" height="15"/>
@@ -75,6 +86,9 @@
                                         <color key="value" red="0.8787667410714286" green="0.8787667410714286" blue="0.8787667410714286" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onCommentButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eOj-Wf-EJ9"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sen" id="P8C-i4-cA9">
                                 <rect key="frame" x="9" y="443" width="302" height="3"/>
@@ -142,17 +156,17 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="Commentnum" destination="xk2-g9-mfM" id="bYw-3J-vik"/>
-                <outlet property="Goodnum" destination="ckN-U1-JVz" id="14u-9K-EVA"/>
                 <outlet property="RestnameButton" destination="EkG-9q-gbo" id="shd-Jv-a0L"/>
                 <outlet property="UsernameButton" destination="sq1-Jv-pyv" id="BGF-C2-Odq"/>
-                <outlet property="UsersPicture" destination="PIe-Le-KZz" id="OaQ-2D-FVd"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>
+                <outlet property="commentnum" destination="xk2-g9-mfM" id="bh9-Qp-gxF"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="QjG-4Q-EaJ"/>
+                <outlet property="goodnum" destination="ckN-U1-JVz" id="elq-wk-hGU"/>
                 <outlet property="movieView" destination="Nlu-iy-1N9" id="I13-MV-Vgz"/>
                 <outlet property="starImage" destination="3cs-Fs-iNf" id="Pxb-dT-aJQ"/>
                 <outlet property="thumbnailView" destination="D1Z-7m-CjW" id="SPB-Nc-4q3"/>
+                <outlet property="usersPicture" destination="PIe-Le-KZz" id="ZVZ-za-mei"/>
             </connections>
             <point key="canvasLocation" x="143" y="19"/>
         </tableViewCell>
