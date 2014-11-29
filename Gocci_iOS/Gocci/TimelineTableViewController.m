@@ -18,6 +18,7 @@
 
 
 
+
 @protocol MovieViewDelegate;
 
 @interface TimelineTableViewController ()<CLLocationManagerDelegate>
@@ -29,7 +30,6 @@
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
 @property (nonatomic, copy) NSMutableArray *postid_;
-//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, copy) NSMutableArray *thumbnail_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
@@ -277,6 +277,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //user nameタップのイベント
     [_cell.UsernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
+    NSString *buttontext2 = [_restname_ objectAtIndex:indexPath.row];
+    [_cell.RestnameButton setTitle:buttontext2 forState:UIControlStateNormal];
+    //restaurant nameタップのイベント
+    [_cell.RestnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
+
     /*
     //動画サムネイル画像の表示
     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
@@ -351,11 +356,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
+//user nameをタップした時のイベント
 - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
     
-    //user nameタップ時の処理
-    //[SVProgressHUD show];
-    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postUsername = [_user_name_ objectAtIndex:indexPath.row];
@@ -363,7 +366,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     NSLog(@"Username is touched");
-     }
+    
+}
+
+//restnameをタップした時のイベント
+- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
+    
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postRestname = [_restname_ objectAtIndex:indexPath.row];
+
+    [self performSegueWithIdentifier:@"goRestpage" sender:self];
+    NSLog(@"Restname is touched");
+    
+}
+
 
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
@@ -371,20 +388,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
-/*
-//tapするという機能を追加
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches] anyObject];
-    if(touch.view.tag == _cell.UsersName.tag)
-        [self clickCommand:_cell.UsersName.tag];
-}
 
--(IBAction)clickCommand:(id)sender
-{
-    NSLog(@"in clickCommand");
-}
-*/
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
@@ -505,6 +509,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         usersTableViewController_other *useVC = segue.destinationViewController;
         useVC.postUsername = _postUsername;
         useVC.postPicture = _postPicture;
+    }
+    //店舗画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"goRestpage"]) {
+        //ここでパラメータを渡す
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
     }
     
     

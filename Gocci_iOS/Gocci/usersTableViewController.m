@@ -20,7 +20,6 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
-//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
@@ -347,6 +346,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+    NSString *buttontext2 = [_restname_ objectAtIndex:indexPath.row];
+    [_cell.RestnameButton setTitle:buttontext2 forState:UIControlStateNormal];
+    //restaurant nameタップのイベント
+    [_cell.RestnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     /*
      //動画サムネイル画像の表示
      NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
@@ -668,6 +672,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
  }
 
+
+//restnameをタップした時のイベント
+- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
+    
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postRestname = [_restname_ objectAtIndex:indexPath.row];
+    NSLog(@"postrestname:%@",_postRestname);
+    [self performSegueWithIdentifier:@"goRestpage" sender:self];
+    NSLog(@"Restname is touched");
+    
+}
+
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [moviePlayer play];
 }
@@ -679,6 +696,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         //ここでパラメータを渡す
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = _postID;
+    }
+    //店舗画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"goRestpage"]) {
+        //ここでパラメータを渡す
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
     }
     
 }

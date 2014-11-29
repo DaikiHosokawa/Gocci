@@ -23,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
+@property (weak, nonatomic) IBOutlet UIButton *RestnameButton;
 
 @end

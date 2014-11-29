@@ -18,6 +18,7 @@
 @synthesize Commentnum;
 @synthesize deleteBtn;
 @synthesize starImage;
+@synthesize RestnameButton;
 
 - (void)dealloc
 {

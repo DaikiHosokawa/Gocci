@@ -39,18 +39,6 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-Ha-rlf"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@スターバックス六本木店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mYr-hi-UhP">
-                                <rect key="frame" x="18" y="390" width="205" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
-                                <color key="textColor" red="0.41753029339999997" green="0.41753029339999997" blue="0.41753029339999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fe5-4W-mi0">
                                 <rect key="frame" x="13" y="435" width="150" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,6 +103,14 @@
                                 <rect key="frame" x="225" y="390" width="85" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92T-Al-Wko">
+                                <rect key="frame" x="15" y="390" width="212" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="restname">
+                                    <color key="titleColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -138,7 +134,7 @@
             <connections>
                 <outlet property="Commentnum" destination="xk2-g9-mfM" id="bYw-3J-vik"/>
                 <outlet property="Goodnum" destination="ckN-U1-JVz" id="14u-9K-EVA"/>
-                <outlet property="RestaurantName" destination="mYr-hi-UhP" id="10F-1R-Vpa"/>
+                <outlet property="RestnameButton" destination="92T-Al-Wko" id="Hcf-Qe-sNF"/>
                 <outlet property="UsersName" destination="4PM-Aj-lEv" id="QHb-jf-TOS"/>
                 <outlet property="UsersPicture" destination="PIe-Le-KZz" id="OaQ-2D-FVd"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>

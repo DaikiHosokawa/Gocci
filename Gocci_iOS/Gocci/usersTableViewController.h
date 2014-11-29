@@ -10,12 +10,14 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Sample5TableViewCell.h"
 #import <Foundation/Foundation.h>
+#import "RestaurantTableViewController.h"
 
 @interface usersTableViewController : UITableViewController
 {
     MPMoviePlayerController *moviePlayer;
     NSString *_postID;
-   NSString *_postRestName;
+    //restnameへの引き継ぎ
+    NSString *_postRestname;
 }
 
 @property (nonatomic, retain) NSString *postID;

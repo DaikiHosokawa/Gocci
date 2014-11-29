@@ -15,6 +15,7 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "usersTableViewController.h" 
 #import "usersTableViewController_other.h"
+#import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
 
 
@@ -22,21 +23,21 @@
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 
 {
+    //commentへの引き継ぎ
     NSString *_postID;
-    NSString *_postRestname;
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
     NSString *_postPicture;
-    
+    //restnameへの引き継ぎ
+    NSString *_postRestname;
+    //動画再生
     MPMoviePlayerController *moviePlayer;
   
-    NSString *_path;
     Sample2TableViewCell  *cell;
+    //サムネイル
     UIImageView *thumbnailView;
 }
 
--(void) onResume;
--(void) onPause;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic, retain) Sample2TableViewCell *cell;
 @property (nonatomic, retain) UIImageView *thumbnailView;

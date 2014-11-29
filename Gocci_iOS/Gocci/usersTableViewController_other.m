@@ -331,12 +331,27 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+
+//restnameをタップした時のイベント
+- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
+    
+    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+    NSLog(@"row %ld was tapped.",(long)indexPath.row);
+    _postRestname = [_restname_ objectAtIndex:indexPath.row];
+    NSLog(@"postrestname:%@",_postRestname);
+    [self performSegueWithIdentifier:@"goRestpage" sender:self];
+    NSLog(@"Restname is touched");
+    
+}
+
+
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
     for (_cell in [self.tableView visibleCells]){
         [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
     }
 }
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -348,6 +363,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _cell = [[Sample5TableViewCell_other alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+    NSString *buttontext2 = [_restname_ objectAtIndex:indexPath.row];
+    [_cell.RestnameButton setTitle:buttontext2 forState:UIControlStateNormal];
+    //restaurant nameタップのイベント
+    [_cell.RestnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
     
     /*
      //動画サムネイル画像の表示
@@ -483,6 +503,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         //ここでパラメータを渡す
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = _postID;
+    }
+    
+    //店舗画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"goRestpage"]) {
+        //ここでパラメータを渡す
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
     }
     
 }

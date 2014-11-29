@@ -17,6 +17,8 @@
 @synthesize Review;
 @synthesize Commentnum;
 @synthesize starImage;
+@synthesize RestnameButton;
+
 
 - (void)dealloc
 {
