@@ -17,8 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *usersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *usersName;
-@property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 @property (weak, nonatomic) IBOutlet UILabel *review;
 @property (weak, nonatomic) IBOutlet UILabel *goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
@@ -60,7 +58,7 @@
                          placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
     // ユーザ名
-    self.usersName.text = timelinePost.userName;
+    [self.usernameButton setTitle:timelinePost.userName forState:UIControlStateNormal];
     
     // サムネイル画像
     self.thumbnailView.userInteractionEnabled = YES;
@@ -68,7 +66,7 @@
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
     // 店名
-    self.restaurantName.text = timelinePost.restname;
+    [self.restnameButton setTitle:timelinePost.restname forState:UIControlStateNormal];
     
     // レート
     if (timelinePost.starEvaluation == 1) {

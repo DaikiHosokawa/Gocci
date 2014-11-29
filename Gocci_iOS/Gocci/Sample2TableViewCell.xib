@@ -156,16 +156,16 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="RestnameButton" destination="EkG-9q-gbo" id="shd-Jv-a0L"/>
-                <outlet property="UsernameButton" destination="sq1-Jv-pyv" id="BGF-C2-Odq"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>
                 <outlet property="commentnum" destination="xk2-g9-mfM" id="bh9-Qp-gxF"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="QjG-4Q-EaJ"/>
                 <outlet property="goodnum" destination="ckN-U1-JVz" id="elq-wk-hGU"/>
                 <outlet property="movieView" destination="Nlu-iy-1N9" id="I13-MV-Vgz"/>
+                <outlet property="restnameButton" destination="EkG-9q-gbo" id="hye-RD-HPL"/>
                 <outlet property="starImage" destination="3cs-Fs-iNf" id="Pxb-dT-aJQ"/>
                 <outlet property="thumbnailView" destination="D1Z-7m-CjW" id="SPB-Nc-4q3"/>
+                <outlet property="usernameButton" destination="sq1-Jv-pyv" id="ufj-hD-IFb"/>
                 <outlet property="usersPicture" destination="PIe-Le-KZz" id="ZVZ-za-mei"/>
             </connections>
             <point key="canvasLocation" x="143" y="19"/>

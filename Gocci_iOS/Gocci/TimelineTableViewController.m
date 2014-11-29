@@ -266,15 +266,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                            reuseIdentifier:cellIdentifier];
     }
 
-    NSString *buttontext = [_user_name_ objectAtIndex:indexPath.row];
-    [cell.UsernameButton setTitle:buttontext forState:UIControlStateNormal];
     //user nameタップのイベント
-    [cell.UsernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.usernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSString *buttontext2 = [_restname_ objectAtIndex:indexPath.row];
-    [cell.RestnameButton setTitle:buttontext2 forState:UIControlStateNormal];
     //restaurant nameタップのイベント
-    [cell.RestnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.restnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
 
     /*
     //動画サムネイル画像の表示

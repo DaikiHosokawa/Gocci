@@ -38,8 +38,8 @@
  */
 @interface Sample2TableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *UsernameButton;
-@property (weak, nonatomic) IBOutlet UIButton *RestnameButton;
+@property (weak, nonatomic) IBOutlet UIButton *usernameButton;
+@property (weak, nonatomic) IBOutlet UIButton *restnameButton;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 
 @property (nonatomic,weak) id<Sample2TableViewCellDelegate> delegate;
