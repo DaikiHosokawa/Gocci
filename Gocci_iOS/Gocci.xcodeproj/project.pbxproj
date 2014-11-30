@@ -33,7 +33,6 @@
 		FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */; };
 		FF2990C91A2980E000FF4DDB /* Sample5TableViewCell_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */; };
 		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
-		FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -62,6 +61,9 @@
 		FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF6E19E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m */; };
 		FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF7019E3D3C2000F2ABD /* UIImageView+WebCache.m */; };
 		FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */; };
+		FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */; };
+		FF6570E61A2B099F00E9CBA4 /* 4_7_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6570E51A2B099F00E9CBA4 /* 4_7_inch.storyboard */; };
+		FF6570E81A2B09B000E9CBA4 /* 5_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6570E71A2B09B000E9CBA4 /* 5_5_inch.storyboard */; };
 		FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */; };
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
 		FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */; };
@@ -100,8 +102,6 @@
 		FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE423193CAB31001A0053 /* QuartzCore.framework */; };
 		FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769C199133EE005BEE41 /* Security.framework */; };
 		FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */; };
-		FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */; };
-		FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */; };
 		FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC41997A06B008E024A /* AFHTTPRequestOperation.m */; };
 		FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC61997A06B008E024A /* AFHTTPRequestOperationManager.m */; };
 		FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB92EC81997A06B008E024A /* AFHTTPSessionManager.m */; };
@@ -172,7 +172,6 @@
 		FF2990C61A2980DF00FF4DDB /* Sample5TableViewCell_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell_other.h; sourceTree = "<group>"; };
 		FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell_other.m; sourceTree = "<group>"; };
 		FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell_other.xib; sourceTree = "<group>"; };
-		FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -228,6 +227,9 @@
 		FF5DDF7019E3D3C2000F2ABD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		FF5DDF7119E3D3C2000F2ABD /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
+		FF6570E51A2B099F00E9CBA4 /* 4_7_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 4_7_inch.storyboard; sourceTree = "<group>"; };
+		FF6570E71A2B09B000E9CBA4 /* 5_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 5_5_inch.storyboard; sourceTree = "<group>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
 		FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample2TableViewCell.h; sourceTree = "<group>"; };
@@ -299,8 +301,6 @@
 		FFA0E2DA19AEC0DF006269B4 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		FFA1769C199133EE005BEE41 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 4_7_inch.storyboard; sourceTree = "<group>"; };
-		FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 5_5_inch.storyboard; sourceTree = "<group>"; };
 		FFB92EC31997A06B008E024A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FFB92EC41997A06B008E024A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FFB92EC51997A06B008E024A /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -464,9 +464,9 @@
 			isa = PBXGroup;
 			children = (
 				FFF0224F19E82C600007AB97 /* Main.storyboard */,
-				FF2B1F1F1A1B4A3200B5B687 /* 3_5_inch.storyboard */,
-				FFAE7F0A1A1B5806005D1D40 /* 4_7_inch.storyboard */,
-				FFAE7F0C1A1B74F8005D1D40 /* 5_5_inch.storyboard */,
+				FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */,
+				FF6570E51A2B099F00E9CBA4 /* 4_7_inch.storyboard */,
+				FF6570E71A2B09B000E9CBA4 /* 5_5_inch.storyboard */,
 				FF54EFF119149A1800025DC8 /* AppDelegate.h */,
 				FF54EFF219149A1800025DC8 /* AppDelegate.m */,
 				FFDC028F1A1F0E4B009A787C /* Login */,
@@ -842,16 +842,16 @@
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
+				FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
-				FF2B1F201A1B4A3200B5B687 /* 3_5_inch.storyboard in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
-				FFAE7F0B1A1B5806005D1D40 /* 4_7_inch.storyboard in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
+				FF6570E81A2B09B000E9CBA4 /* 5_5_inch.storyboard in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
+				FF6570E61A2B099F00E9CBA4 /* 4_7_inch.storyboard in Resources */,
 				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
-				FFAE7F0D1A1B74F8005D1D40 /* 5_5_inch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
