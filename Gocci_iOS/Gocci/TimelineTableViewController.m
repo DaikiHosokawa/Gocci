@@ -382,6 +382,36 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+//シェアボタンを入れる準備
+/*
+//Twitterのアクティビティ投稿の基準
+-(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
+{
+    // Twitterの時だけハッシュタグをつける
+    if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
+        return [NSString stringWithFormat:@"%@ #%@", _text, _hashTag];
+    }
+    return _text;
+}
+
+
+-(id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
+{
+    return _text;
+}
+
+
+//ナビゲーションのアクションボタンを押した時の動作
+- (IBAction)share:(id)sender
+{
+    RestaurantTableViewController *text = [[RestaurantTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
+    
+}
+*/
+
+
 - (void)updateVisibleCells {
     //画面上に見えているセルの表示更新
     for (_cell in [self.tableView visibleCells]){

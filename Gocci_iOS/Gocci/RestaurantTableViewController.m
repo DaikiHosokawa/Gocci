@@ -251,7 +251,6 @@
     UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
     [self presentViewController:avc animated:YES completion:nil];
     
-    
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
