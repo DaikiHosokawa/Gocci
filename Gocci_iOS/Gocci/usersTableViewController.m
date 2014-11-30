@@ -433,9 +433,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
     
-    //削除ボタンのイベント
-    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
-    
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:text];
@@ -449,7 +446,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [moviePlayer.view setFrame:frame];
     //[moviePlayer.view setFrame:_cell.movieView.frame];
     [_cell.contentView addSubview: moviePlayer.view];
-    [_cell.contentView bringSubviewToFront:moviePlayer.view];
+    //[_cell.contentView bringSubviewToFront:moviePlayer.view];
+    
+   CGRect frame2 = CGRectMake(298 , 8, 20 , 20);
+    [_cell.deleteBtn setFrame:frame2];
+    [_cell.contentView addSubview: _cell.deleteBtn];
+    [_cell.contentView bringSubviewToFront:_cell.deleteBtn];
+   // [_cell.deleteBtn setFrame:frame2];
+    //削除ボタンのイベント
+    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)

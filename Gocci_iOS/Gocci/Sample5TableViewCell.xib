@@ -15,13 +15,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" id="Y2v-AI-3pz">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="440"/>
+                        <rect key="frame" x="-2" y="0.0" width="325" height="440"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-Ha-rlf"/>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbO-T7-JH4">
                                 <rect key="frame" x="298" y="8" width="20" height="20"/>
-                                <state key="normal" image="delete_button">
+                                <state key="normal" image="delete-white-1130">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -126,7 +126,7 @@
     </objects>
     <resources>
         <image name="comment_button" width="310" height="88"/>
-        <image name="delete_button" width="24" height="24"/>
+        <image name="delete-white-1130" width="24" height="24"/>
         <image name="heart_button" width="310" height="86"/>
         <image name="sen" width="320" height="9"/>
     </resources>
