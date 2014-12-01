@@ -138,14 +138,6 @@
 - (void)viewDidLoad
 {
      [super viewDidLoad];
-    /*
-    // UIImageを指定した生成例
-    UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
-    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
-    self.navigationItem.titleView = myImageView;
-    */
-    
-   //self.navigationItem.title = @"Gocci";
     
     CGRect frame = CGRectMake(0, 0, 500, 44);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];

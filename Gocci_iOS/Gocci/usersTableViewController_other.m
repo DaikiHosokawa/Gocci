@@ -41,12 +41,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-    // UIImageを指定した生成例
-    UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
-    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
-    self.navigationItem.titleView = myImageView;
-    */
     
     self.navigationItem.title = _postUsername;
     

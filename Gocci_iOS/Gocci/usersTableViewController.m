@@ -39,12 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-    // UIImageを指定した生成例
-    UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
-    UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
-    self.navigationItem.titleView = myImageView;
-    */
+    
     self.navigationItem.title = @"プロフィール";
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
@@ -166,7 +161,6 @@
 }
 
 - (void)endScroll {
-    //スクロール終了
     //スクロール終了
     CGPoint offset =  self.tableView.contentOffset;
     CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
