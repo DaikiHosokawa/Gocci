@@ -9,11 +9,9 @@
 #import "Sample3TableViewCell.h"
 
 @implementation Sample3TableViewCell
-@synthesize UsersName;
 @synthesize UsersPicture;
 @synthesize RestaurantName;
 @synthesize Goodnum;
-@synthesize Review;
 @synthesize Commentnum;
 @synthesize thumbnailView;
 @synthesize starImage;
@@ -23,9 +21,7 @@
 {
     self.RestaurantName = nil;
     self.UsersPicture = nil;
-    self.UsersName = nil;
     self.Goodnum = nil;
-    self.Review = nil;
     self.contentViewFront = nil;
     self.Commentnum = nil;
     self.thumbnailView = nil;

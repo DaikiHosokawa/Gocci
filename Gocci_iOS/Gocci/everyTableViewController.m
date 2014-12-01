@@ -67,7 +67,7 @@
     NSArray *comment = [jsonDic valueForKey:@"comment"];
     _comment_ = [comment mutableCopy];
         
-    // キーボードの表示・非表示はNotificationCenterから通知されますよっと
+    // キーボードの表示・非表示がNotificationCenterから通知される
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
@@ -76,7 +76,7 @@
     _dottext = _textField.text;
     if (_textField.text.length == 0) {
         //アラート出す
-        NSLog(@"textlength:%d",_textField.text.length);
+        NSLog(@"textlength:%lu",(unsigned long)_textField.text.length);
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];

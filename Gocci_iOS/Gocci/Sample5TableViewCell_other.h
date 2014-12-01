@@ -10,14 +10,9 @@
 
 @interface Sample5TableViewCell_other : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *UsersName;
-@property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
-@property (weak, nonatomic) IBOutlet UILabel *Review;
 @property (weak, nonatomic) IBOutlet UILabel *Goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
 @property (weak, nonatomic) Sample5TableViewCell_other *cell;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;

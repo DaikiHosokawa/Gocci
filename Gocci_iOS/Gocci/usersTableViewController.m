@@ -49,22 +49,13 @@
     UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"usersTableViewCell"];
     
-    
-    //背景にイメージを追加したい
-    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     self.tableView.separatorColor = [UIColor clearColor ];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+ 
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     self.profilename.text = profiledelegate.username;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
@@ -126,24 +117,6 @@
         dispatch_async(q_main, ^{
         });
     });
-    
-    /*
-    AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
-    
-    //JSONをパース
-    NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
-    NSLog(@"restpage:%@",urlString2);
-    NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-    NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error2=nil;
-    NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
-                                                            options:NSJSONReadingMutableLeaves error:&error2];
-    NSLog(@"jsonDic:%@", jsonDic2);
-    //レビュー
-    NSArray *review = [jsonDic2 valueForKey:@"review"];
-    _review_ = [review mutableCopy];
-    */
     
     [self updateVisibleCells];
     [SVProgressHUD dismiss];
@@ -217,6 +190,7 @@
 {
 
 }
+
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // スクロール開始
@@ -377,7 +351,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
     // 文字列をNSIntegerに変換
     NSInteger inted = startext.integerValue;
-    NSLog(@"文字列→NSInteger:%ld", inted);
+    NSLog(@"文字列→NSInteger:%ld", (long)inted);
     
     switch(inted){
         case 1:
@@ -549,23 +523,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
              _starnum_ = [starnum mutableCopy];
              NSLog(@"commentnum:%@",starnum);
              
-             //AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
-             /*
-             //JSONをパース
-             NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
-             NSLog(@"restpage:%@",urlString2);
-             NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-             NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-             NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
-             NSError *error2=nil;
-             NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
-                                                                      options:NSJSONReadingMutableLeaves error:&error2];
-             NSLog(@"jsonDic:%@", jsonDic2);
-             //レビュー
-             NSArray *review = [jsonDic2 valueForKey:@"review"];
-             _review_ = [review mutableCopy];
-             */
-             dispatch_async(q1_main, ^{
+       　　dispatch_async(q1_main, ^{
                  [self.tableView reloadData];
              });
          });
@@ -644,24 +602,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                         NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
                                         _starnum_ = [starnum mutableCopy];
                                         NSLog(@"commentnum:%@",starnum);
-                                        /*
-                                        AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
                                         
-                                        //JSONをパース
-                                        NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
-                                        NSLog(@"restpage:%@",urlString2);
-                                        NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-                                        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-                                        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
-                                        NSError *error2=nil;
-                                        NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
-                                                                                                 options:NSJSONReadingMutableLeaves error:&error2];
-                                        NSLog(@"jsonDic:%@", jsonDic2);
-                                        //レビュー
-                                        NSArray *review = [jsonDic2 valueForKey:@"review"];
-                                        _review_ = [review mutableCopy];
-                                        */
-                                        dispatch_async(q1_main, ^{
+                            　　　dispatch_async(q1_main, ^{
                                             [self.tableView reloadData];
                                         });
                                     });

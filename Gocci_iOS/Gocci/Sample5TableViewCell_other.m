@@ -10,11 +10,7 @@
 
 @implementation Sample5TableViewCell_other
 
-@synthesize UsersName;
-@synthesize UsersPicture;
-@synthesize RestaurantName;
 @synthesize Goodnum;
-@synthesize Review;
 @synthesize Commentnum;
 @synthesize starImage;
 @synthesize RestnameButton;
@@ -22,11 +18,7 @@
 
 - (void)dealloc
 {
-    self.RestaurantName = nil;
-    self.UsersPicture = nil;
-    self.UsersName = nil;
     self.Goodnum = nil;
-    self.Review = nil;
     self.contentViewFront = nil;
     self.Commentnum = nil;
     self.starImage = nil;

@@ -93,25 +93,6 @@
     NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
     _thumbnail_ = [thumbnail mutableCopy];
         NSLog(@"thumbnail:%@",_thumbnail_);
-
-
-    /*
-    //JSONをパース
-    NSString *reviewString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/submit/"];
-    NSURL *reviewurl = [NSURL URLWithString:reviewString];
-    NSString *reviewresponse = [NSString stringWithContentsOfURL:reviewurl encoding:NSUTF8StringEncoding error:nil];
-    NSData *reviewjsonData = [reviewresponse dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSDictionary *reviewjsonDic = [NSJSONSerialization JSONObjectWithData:reviewjsonData options:0 error:nil];
-    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q2_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
-    //レビュー
-    NSArray *review = [reviewjsonDic valueForKey:@"review"];
-    _review_ = [review mutableCopy];
-        dispatch_async(q2_main, ^{
-        });
-    });
-    */
      
    [self.tableView reloadData];
 

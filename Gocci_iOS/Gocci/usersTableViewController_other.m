@@ -20,7 +20,6 @@
 @property (nonatomic, retain) NSMutableArray *user_name_;
 @property (nonatomic, copy) NSMutableArray *picture_;
 @property (nonatomic, copy) NSMutableArray *movie_;
-//@property (nonatomic, copy) NSMutableArray *review_;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *locality_;
 @property (nonatomic, copy) NSMutableArray *starnum_;
@@ -54,21 +53,13 @@
     
     self.tableView.allowsSelection = NO;
     
-    //背景にイメージを追加したい
-    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     self.tableView.separatorColor = [UIColor clearColor ];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     NSString *picturestring = _postPicture;
     self.profilename.text = _postUsername;
@@ -130,24 +121,6 @@
             dispatch_async(q_main, ^{
             });
         });
-    
-    /*
-     AppDelegate* logindelegate2 = [[UIApplication sharedApplication] delegate];
-     
-     //JSONをパース
-     NSString *urlString2 = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/review/?user_name=%@",logindelegate2.username];
-     NSLog(@"restpage:%@",urlString2);
-     NSURL *url2 = [NSURL URLWithString:[urlString2 stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-     NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-     NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF8StringEncoding];
-     NSError *error2=nil;
-     NSDictionary *jsonDic2 = [NSJSONSerialization JSONObjectWithData:jsonData2
-     options:NSJSONReadingMutableLeaves error:&error2];
-     NSLog(@"jsonDic:%@", jsonDic2);
-     //レビュー
-     NSArray *review = [jsonDic2 valueForKey:@"review"];
-     _review_ = [review mutableCopy];
-     */
     
     [self updateVisibleCells];
     [SVProgressHUD dismiss];
@@ -381,9 +354,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                       placeholderImage:[UIImage imageNamed:@"default.png"]];
-    
     
     //セルの更新メソッド
     [self updateCell:_cell atIndexPath:indexPath];
@@ -398,7 +368,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
     // 文字列をNSIntegerに変換
     NSInteger inted = startext.integerValue;
-    NSLog(@"文字列→NSInteger:%ld", inted);
+    NSLog(@"文字列→NSInteger:%ld", (long)inted);
     
     switch(inted){
         case 1:
@@ -440,9 +410,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     
