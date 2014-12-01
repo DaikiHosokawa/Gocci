@@ -155,11 +155,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    /*
     // UIImageを指定した生成例
     UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
     self.navigationItem.titleView = myImageView;
+    */
+     self.navigationItem.title = _postRestName;
     
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
@@ -486,7 +488,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     //updateした時の処理
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
     //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];

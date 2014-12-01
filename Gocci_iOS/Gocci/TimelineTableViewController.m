@@ -138,12 +138,24 @@
 - (void)viewDidLoad
 {
      [super viewDidLoad];
-    
+    /*
     // UIImageを指定した生成例
     UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
     self.navigationItem.titleView = myImageView;
-
+    */
+    
+   //self.navigationItem.title = @"Gocci";
+    
+    CGRect frame = CGRectMake(0, 0, 500, 44);
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = @"Gocci";
+    self.navigationItem.titleView = label;
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;

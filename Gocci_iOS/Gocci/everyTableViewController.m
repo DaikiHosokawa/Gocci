@@ -141,11 +141,14 @@
 
 - (void)viewDidLoad
 {
+     /*
     // UIImageを指定した生成例
     UIImage *image = [UIImage imageNamed:@"gocci-moji.png"];
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:image];
     self.navigationItem.titleView = myImageView;
-
+    */
+    
+    self.navigationItem.title = @"コメント画面";
     
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
