@@ -362,9 +362,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //ユーザーの画像を取得
     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
     // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                       placeholderImage:[UIImage imageNamed:@"default.png"]];
-    
+   
     
     //セルの更新メソッド
     [self updateCell:_cell atIndexPath:indexPath];
@@ -421,10 +419,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    _cell.RestaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    //_cell.Review.text = [_review_ objectAtIndex:indexPath.row];
-    _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
+     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
     _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
     
     //コメントボタンのイベント
@@ -432,6 +427,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //いいねボタンのイベント
     [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //削除イベント
+    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     //動画再生
     NSString *text = [_movie_ objectAtIndex:indexPath.row];
@@ -448,13 +446,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.contentView addSubview: moviePlayer.view];
     //[_cell.contentView bringSubviewToFront:moviePlayer.view];
     
-   CGRect frame2 = CGRectMake(298 , 8, 20 , 20);
-    [_cell.deleteBtn setFrame:frame2];
-    [_cell.contentView addSubview: _cell.deleteBtn];
-    [_cell.contentView bringSubviewToFront:_cell.deleteBtn];
-   // [_cell.deleteBtn setFrame:frame2];
+ // [_cell.deleteBtn setFrame:frame2];
     //削除ボタンのイベント
-    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackDidFinish:)

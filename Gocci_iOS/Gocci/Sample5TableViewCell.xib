@@ -19,17 +19,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-Ha-rlf"/>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbO-T7-JH4">
-                                <rect key="frame" x="298" y="8" width="20" height="20"/>
-                                <state key="normal" image="delete-white-1130">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fe5-4W-mi0">
-                                <rect key="frame" x="13" y="399" width="150" height="32"/>
+                                <rect key="frame" x="50" y="398" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="heart_button">
+                                <state key="normal" image="heart_true">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -42,7 +35,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ckN-U1-JVz">
-                                <rect key="frame" x="112" y="399" width="31" height="32"/>
+                                <rect key="frame" x="90" y="400" width="31" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,9 +45,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2He-SF-LQ4">
-                                <rect key="frame" x="166" y="399" width="132" height="32"/>
+                                <rect key="frame" x="146" y="399" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="comment_button">
+                                <state key="normal" image="comment_true">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -66,16 +59,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xk2-g9-mfM">
-                                <rect key="frame" x="260" y="399" width="31" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value="NSTextAlignmentLeft" localized="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sen" translatesAutoresizingMaskIntoConstraints="NO" id="DaG-Ud-nd2">
                                 <rect key="frame" x="8" y="390" width="302" height="3"/>
                             </imageView>
@@ -91,6 +74,22 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnO-d8-JAx">
+                                <rect key="frame" x="246" y="400" width="28" height="28"/>
+                                <state key="normal" title="Button" image="delete_true">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xk2-g9-mfM">
+                                <rect key="frame" x="186" y="399" width="31" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="textAlignment" value="NSTextAlignmentLeft" localized="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -117,7 +116,7 @@
                 <outlet property="RestnameButton" destination="92T-Al-Wko" id="Hcf-Qe-sNF"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="Cxl-cn-b3h"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
-                <outlet property="deleteBtn" destination="pbO-T7-JH4" id="0Aj-LG-dpk"/>
+                <outlet property="deleteBtn" destination="fnO-d8-JAx" id="bwJ-4X-HIe"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="QjG-4Q-EaJ"/>
                 <outlet property="starImage" destination="3cs-Fs-iNf" id="Pxb-dT-aJQ"/>
             </connections>
@@ -125,9 +124,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="comment_button" width="310" height="88"/>
-        <image name="delete-white-1130" width="24" height="24"/>
-        <image name="heart_button" width="310" height="86"/>
+        <image name="comment_true" width="27" height="27"/>
+        <image name="delete_true" width="20" height="25"/>
+        <image name="heart_true" width="22" height="26"/>
         <image name="sen" width="320" height="9"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
