@@ -57,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fe5-4W-mi0">
-                                <rect key="frame" x="72" y="454" width="32" height="32"/>
+                                <rect key="frame" x="50" y="454" width="36" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="heart_true">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +72,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ckN-U1-JVz">
-                                <rect key="frame" x="112" y="453" width="31" height="32"/>
+                                <rect key="frame" x="90" y="453" width="31" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,7 +86,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xk2-g9-mfM">
-                                <rect key="frame" x="260" y="453" width="31" height="32"/>
+                                <rect key="frame" x="186" y="453" width="31" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -96,7 +96,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2He-SF-LQ4">
-                                <rect key="frame" x="220" y="453" width="32" height="32"/>
+                                <rect key="frame" x="146" y="453" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="comment_true">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,6 +109,12 @@
                                         <color key="value" red="0.8787667410714286" green="0.8787667410714286" blue="0.8787667410714286" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slD-SQ-fFo">
+                                <rect key="frame" x="241" y="449" width="36" height="36"/>
+                                <state key="normal" image="share-ic141201">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,6 +155,7 @@
         <image name="comment_true" width="27" height="27"/>
         <image name="heart_true" width="22" height="26"/>
         <image name="sen" width="320" height="9"/>
+        <image name="share-ic141201" width="24" height="24"/>
         <image name="user-icon" width="79" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
