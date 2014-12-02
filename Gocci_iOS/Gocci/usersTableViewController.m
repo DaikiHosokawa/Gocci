@@ -155,6 +155,7 @@
         
         // UIImageViewのインスタンスをビューに追加
         [self.view addSubview:imageView];
+
     }
     // Return the number of rows in the section.
     return [_movie_ count];

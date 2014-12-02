@@ -19,6 +19,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SCRecordSessionManager.h"
 
+
 #define kVideoPreset AVCaptureSessionPresetHigh
 
 ////////////////////////////////////////////////////////////
@@ -76,6 +77,12 @@
     // On iOS 8 and iPhone 5S, enabling this seems to be slow
     _recorder.initializeRecordSessionLazily = NO;
     
+    self.navigationController.navigationBarHidden = YES;
+    [self updateTimeRecordedLabel];
+    
+    // NavigationBar 非表示
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
     
     UIView *previewView = self.previewView;
     _recorder.previewView = previewView;

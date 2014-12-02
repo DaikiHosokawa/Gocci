@@ -20,15 +20,30 @@
 
 
 //facebook認証のcallbackメソッド
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
-            withSession:[PFFacebookUtils session]];
-            };
+                        withSession:[PFFacebookUtils session]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
+    
+    [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
+    
+    [PFUser enableAutomaticUser];
+    
+    PFACL *defaultACL = [PFACL ACL];
+    
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    
+    // Facebook
+    [PFFacebookUtils initializeFacebook];
     
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
@@ -165,5 +180,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

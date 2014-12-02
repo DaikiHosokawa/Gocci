@@ -52,6 +52,68 @@
                                              //[SCFilterGroup filterGroupWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"a_filter" withExtension:@"cisf"]]
                                              ];
     
+    //3.5inchと4inchを読み分けする
+    CGRect rect3 = [UIScreen mainScreen].bounds;
+    if (rect3.size.height == 480) {
+        
+        // UIImageViewの初期化
+        CGRect rect = CGRectMake(200, 360, 128, 128);
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+        
+        // 画像の読み込み
+        imageView.image = [UIImage imageNamed:@"2x_Swipe_Right-1.png"];
+        
+        // UIImageViewのインスタンスをビューに追加
+        [self.view addSubview:imageView];
+        
+        
+        
+        // UIImageViewの初期化
+        CGRect rect2 = CGRectMake(10, 360, 128, 128);
+        UIImageView *imageView2 = [[UIImageView alloc]initWithFrame:rect2];
+        
+        // 画像の読み込み
+        imageView2.image = [UIImage imageNamed:@"2x_Swipe_Left.png"];
+        
+        // UIImageViewのインスタンスをビューに追加
+        [self.view addSubview:imageView2];
+       
+    }
+    
+    //4.7inch対応
+    CGRect rect4 = [UIScreen mainScreen].bounds;
+    if (rect4.size.height == 667) {
+        
+    }
+    
+    //5.5inch対応
+    CGRect rect5 = [UIScreen mainScreen].bounds;
+    if (rect5.size.height == 736) {
+        
+    }
+    
+    // UIImageViewの初期化
+    CGRect rect = CGRectMake(200, 460, 128, 128);
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+    
+    // 画像の読み込み
+    imageView.image = [UIImage imageNamed:@"2x_Swipe_Right-1.png"];
+    
+    // UIImageViewのインスタンスをビューに追加
+    [self.view addSubview:imageView];
+    
+    
+    
+    // UIImageViewの初期化
+    CGRect rect2 = CGRectMake(10, 460, 128, 128);
+    UIImageView *imageView2 = [[UIImageView alloc]initWithFrame:rect2];
+    
+    // 画像の読み込み
+    imageView2.image = [UIImage imageNamed:@"2x_Swipe_Left.png"];
+    
+    // UIImageViewのインスタンスをビューに追加
+    [self.view addSubview:imageView2];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(saveToCameraRoll)];
     
 	_player = [SCPlayer player];
@@ -59,6 +121,9 @@
     
 	_player.loopEnabled = YES;
 }
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

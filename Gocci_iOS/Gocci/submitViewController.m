@@ -160,11 +160,29 @@
 -(void) postMedia:(NSString*)type
 {
     
-        NSString *serviceType = type;
+      NSString *serviceType = type;
         //if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
         
         SLComposeViewController *viewController = [SLComposeViewController
                                                    composeViewControllerForServiceType:serviceType];
+    
+    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me/videos"];
+    
+    NSURL *videoPathURL = [[NSURL alloc]initFileURLWithPath:@"sample.mov" isDirectory:NO];
+    NSData *videoData = [NSData dataWithContentsOfFile:@"sample.mov"];
+    
+    NSString *status = @"One step closer.";
+    NSDictionary *params = @{@"title":status, @"description":status};
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodPOST
+                                                      URL:url
+                                               parameters:params];
+    
+    [request addMultipartData:videoData
+                     withName:@"source"
+                         type:@"video/quicktime"
+                     filename:[videoPathURL absoluteString]];
     
       //デリゲートの値を取得するときは、このメソッドを使用する。
       AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
@@ -193,14 +211,11 @@
 - (IBAction)pushComplete:(id)sender {
     {
         NSLog(@"pushCompleteを押したよ");
-        
-    [SVProgressHUD showWithStatus:@"投稿中" maskType:SVProgressHUDMaskTypeAnimation];
-        
     // 文字列を数値型へ変換する。
     NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
     NSLog(@"substr2:%@",substr2);
     NSInteger i = substr2.integerValue;
-    NSString *content = [NSString stringWithFormat:@"tar_evaluation=%ld",(long)i];
+    NSString *content = [NSString stringWithFormat:@"star_evaluation=%ld",(long)i];
     NSLog(@"content:%@",content);
 	NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/submit/"];
 	NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -211,8 +226,7 @@
 	NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 										   returningResponse:&response
 													   error:&error];
-        sleep(3);
-        //[SVProgressHUD dismiss];
+        
         [self performSegueWithIdentifier:@"gobackTimeline" sender:self];
         NSLog(@"Go back to Timeline");
     }
