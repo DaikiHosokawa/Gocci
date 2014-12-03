@@ -18,6 +18,7 @@
 #import "SCRecorder.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SCRecordSessionManager.h"
+#import "RestaurantTableViewController.h"
 
 
 #define kVideoPreset AVCaptureSessionPresetHigh
@@ -81,8 +82,10 @@
     [self updateTimeRecordedLabel];
     
     // NavigationBar 非表示
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 
+    //ナビゲーションバーの色を変更
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
     
     UIView *previewView = self.previewView;
     _recorder.previewView = previewView;
@@ -116,7 +119,10 @@
         NSLog(@"=======================");
         [self prepareCamera];
     }];
+    
 }
+
+
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
     NSLog(@"Reconfigured audio input: %@", audioInputError);
@@ -156,8 +162,9 @@
 
     [_recorder endRunningSession];
     // NavigationBar 表示
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];

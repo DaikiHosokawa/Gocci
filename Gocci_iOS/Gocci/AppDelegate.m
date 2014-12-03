@@ -77,6 +77,7 @@
     
     //ナビゲーションバーの色を変更
     [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+    
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
@@ -143,10 +144,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
             // ユーザが位置情報の使用を許可していない
             [locationManager requestAlwaysAuthorization]; // 常に許可
         }
-        
     }
 }
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
