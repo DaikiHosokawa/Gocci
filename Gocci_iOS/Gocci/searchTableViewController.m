@@ -14,64 +14,57 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 
-@interface SearchTableViewController ()<UISearchBarDelegate,CLLocationManagerDelegate,UISearchBarDelegate>
+@interface SearchTableViewController ()
+<UISearchBarDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
-
-@property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic, retain) NSMutableArray *restname_;
-@property (nonatomic, retain) NSMutableArray *category_;
-@property (nonatomic, retain) NSMutableArray *meter_;
-@property (nonatomic, copy) NSMutableArray *jsonlat_;
-@property (nonatomic, copy) NSMutableArray *jsonlon_;
-@property (nonatomic, retain) NSMutableArray *restaddress_;
-@property (nonatomic, retain) NSString *nowlat_;
-@property (nonatomic, retain) NSString *nowlon_;
-@property (nonatomic, copy) SampleTableViewCell *cell;
-@property (nonatomic, copy) UISearchBar *searchBar;
-@property (nonatomic, copy) UILabel *dontexist;
+@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *restname_;
+@property (nonatomic, strong) NSMutableArray *category_;
+@property (nonatomic, strong) NSMutableArray *meter_;
+@property (nonatomic, strong) NSMutableArray *jsonlat_;
+@property (nonatomic, strong) NSMutableArray *jsonlon_;
+@property (nonatomic, strong) NSMutableArray *restaddress_;
+@property (nonatomic, strong) NSString *nowlat_;
+@property (nonatomic, strong) NSString *nowlon_;
+@property (nonatomic, strong) SampleTableViewCell *cell;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UILabel *dontexist;
+@property (nonatomic, assign) BOOL showedUserLocation;
 
 @end
 
 @implementation SearchTableViewController
 
-@synthesize locationManager;
-
-- (id)initWithStyle:(UITableViewStyle)style
+-(void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
--(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     _searchBar.text = NULL;
-    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
-    
+    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
     dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q2_main = dispatch_get_main_queue();
     dispatch_async(q2_global, ^{
-    // 飲食店名
-    NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
-    _restname_ = [restname mutableCopy];
-    // 店舗カテゴリー
-    NSArray *category = [appDelegete.jsonDic valueForKey:@"category"];
-    _category_ = [category mutableCopy];
-    // 距離
-    NSArray *meter = [appDelegete.jsonDic valueForKey:@"distance"];
-    _meter_ = [meter mutableCopy];
-    // 店舗住所
-    NSArray *restaddress = [appDelegete.jsonDic valueForKey:@"locality"];
-    _restaddress_ = [restaddress mutableCopy];
-    
-    //緯度
-    NSArray *jsonlat = [appDelegete.jsonDic valueForKey:@"lat"];
-    _jsonlat_ = [jsonlat mutableCopy];
-    //経度
-    NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
-    _jsonlon_ = [jsonlon mutableCopy];
+        // 飲食店名
+        NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
+        _restname_ = [restname mutableCopy];
+        // 店舗カテゴリー
+        NSArray *category = [appDelegete.jsonDic valueForKey:@"category"];
+        _category_ = [category mutableCopy];
+        // 距離
+        NSArray *meter = [appDelegete.jsonDic valueForKey:@"distance"];
+        _meter_ = [meter mutableCopy];
+        // 店舗住所
+        NSArray *restaddress = [appDelegete.jsonDic valueForKey:@"locality"];
+        _restaddress_ = [restaddress mutableCopy];
+        
+        //緯度
+        NSArray *jsonlat = [appDelegete.jsonDic valueForKey:@"lat"];
+        _jsonlat_ = [jsonlat mutableCopy];
+        //経度
+        NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
+        _jsonlon_ = [jsonlon mutableCopy];
         dispatch_async(q2_main, ^{
             [self.tableView reloadData];
         });
@@ -86,37 +79,27 @@
         NSLog(@"lo:%f ",loi);
         double lai = [_jsonlat_[i]doubleValue];
         NSLog(@"la:%f",lai);
-        [_mapView addAnnotation:
-         [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
-                                                       title:(@"%@",ni)
-                                                    subtitle:(@"%@",ai)]];
+        
+        [_mapView addAnnotation: [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
+                                                                               title:ni
+                                                                            subtitle:ai]];
         
         [SVProgressHUD dismiss];
     }
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
    
-    
     // 地図の表示
+    self.showedUserLocation = NO;
     _mapView = [[MKMapView alloc] init];
-    
+    _mapView.delegate = self;
     _mapView.frame = CGRectMake(0, 0, 320, 200);
     _mapView.mapType = MKMapTypeStandard;
     _mapView.showsUserLocation = YES;
     [self.view addSubview:_mapView];
-    [_mapView.userLocation addObserver:self
-                            forKeyPath:@"location"
-                               options:0
-                               context:NULL];
-    
     
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
@@ -140,13 +123,20 @@
     self.navigationItem.titleView = _searchBar;
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
     
-    locationManager = [[CLLocationManager alloc] init];
+    self.locationManager = [[CLLocationManager alloc] init];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [super viewWillDisappear:animated];
 }
 
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
     [_restaddress_ removeAllObjects];
     [_restname_ removeAllObjects];
     [_meter_ removeAllObjects];
@@ -154,7 +144,8 @@
     [_searchBar resignFirstResponder];
     _dontexist.text = NULL;
     NSString *searchText = _searchBar.text;
-    AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     //JSONをパース
     NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/search/?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
@@ -201,22 +192,7 @@
                     }
         });
     });
-
 }
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    // 表示倍率の設定
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
-    MKCoordinateRegion region = MKCoordinateRegionMake(_mapView.userLocation.coordinate, span);
-    [_mapView setRegion:region animated:NO];
-    //一度しか現在地に移動しないなら removeObserver する
-    [_mapView.userLocation removeObserver:self forKeyPath:@"location"];
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -225,21 +201,30 @@
 }
 
 
-//テーブルセルの高さ
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 85.0;
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    // 初回に現在地に移動している場合は再度移動しないようにする
+    if (self.showedUserLocation) {
+        return;
+    }
+    
+    // 表示倍率の設定
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
+    MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
+    [_mapView setRegion:region animated:NO];
+    self.showedUserLocation = YES;
 }
 
 
+#pragma mark - UITableViewDelegate
 
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
-
-
 
 
 #pragma mark - Table view data source
@@ -250,15 +235,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 1;
 }
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return [_restname_ count];
-    
 }
 
+//テーブルセルの高さ
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 85.0;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
