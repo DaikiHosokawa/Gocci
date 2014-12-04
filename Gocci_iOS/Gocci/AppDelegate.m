@@ -24,10 +24,13 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    // attempt to extract a token from the url
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
 }
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -44,6 +47,10 @@
     
     // Facebook
     [PFFacebookUtils initializeFacebook];
+    
+    // Twitter
+    [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
+                               consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
     
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
@@ -160,6 +167,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
        [locationManager startUpdatingLocation]; //測位再開
     // Facebook
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
 }
 
 
@@ -177,6 +185,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [FBSession.activeSession close];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

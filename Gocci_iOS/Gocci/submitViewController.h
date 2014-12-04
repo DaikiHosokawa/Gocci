@@ -11,20 +11,22 @@
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
 #import "EDStarRating.h"
+
+
 @protocol submitViewControllerDelegate;
 
 
-@interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate,EDStarRatingProtocol
->
+@interface submitViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate,EDStarRatingProtocol>
 
 {
-    
+
 IBOutlet UIButton *_twitterBtn;
 IBOutlet UIButton *_facebookBtn;
 __weak IBOutlet UITextView *textView;
 }
 
 - (IBAction)pushComplete:(id)sender;
+
 
 
 @end

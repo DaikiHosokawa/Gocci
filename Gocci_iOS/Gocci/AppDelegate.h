@@ -29,6 +29,8 @@
     NSDictionary *reviewJsondic;
     NSData *movieData;
 }
+
+@property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *gText;
 @property (nonatomic, retain) NSURL *postMovieURL;
 @property (nonatomic, retain) NSString *username;

@@ -26,6 +26,10 @@
 @end
 
 @implementation submitViewController
+
+
+
+
 @synthesize starRatingImage = _starRatingImage;
 
 /*
@@ -58,7 +62,8 @@
     return YES;
 }
  */
- 
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,8 +87,8 @@
 {
     sleep(3);
     [super viewDidLoad];
- 
-    self.navigationItem.title = @"投稿画面";
+    
+      self.navigationItem.title = @"投稿画面";
     
     /*
     // Do any additional setup after loading the view.
