@@ -10,25 +10,46 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @class Timeline;
+@class TimelinePost;
+@class Sample2TableViewCell;
 
+@protocol Sample2TableViewCellDelegate <NSObject>
+
+/**
+ *  コメントボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID;
+
+/**
+ *  Good ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID;
+
+@end
+
+/**
+ *  タイムライン画面 TableView の Cell
+ */
 @interface Sample2TableViewCell : UITableViewCell
-@property (nonatomic, strong)Timeline *comment;
 
+@property (weak, nonatomic) IBOutlet UIButton *usernameButton;
+@property (weak, nonatomic) IBOutlet UIButton *restnameButton;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 
-@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
-@property (weak, nonatomic) IBOutlet UIButton *goodBtn;
-@property (weak, nonatomic) IBOutlet UIButton *UsernameButton;
-@property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *UsersName;
-@property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
-@property (weak, nonatomic) IBOutlet UILabel *Review;
-@property (weak, nonatomic) IBOutlet UILabel *Goodnum;
-@property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) Sample2TableViewCell *cell;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
-@property (nonatomic, strong) IBOutlet UIImageView *thumbnailView;
-@property (weak, nonatomic) IBOutlet UIButton *RestnameButton;
-@property (weak, nonatomic) IBOutlet UILabel *Commentnum;
-@property (weak, nonatomic) IBOutlet UIImageView *starImage;
+@property (nonatomic,weak) id<Sample2TableViewCellDelegate> delegate;
+@property (nonatomic,strong) Timeline *comment;
+
+/**
+ *  セルの表示の更新
+ *
+ *  @param timelinePost 
+ */
+- (void)configureWithTimelinePost:(TimelinePost *)timelinePost;
 
 @end

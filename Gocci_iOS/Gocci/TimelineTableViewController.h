@@ -21,7 +21,6 @@
 
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
-
 {
     //commentへの引き継ぎ
     NSString *_postID;
@@ -30,16 +29,11 @@
     NSString *_postPicture;
     //restnameへの引き継ぎ
     NSString *_postRestname;
-    //動画再生
-    MPMoviePlayerController *moviePlayer;
   
-    Sample2TableViewCell  *cell;
     //サムネイル
     UIImageView *thumbnailView;
 }
 
-@property (nonatomic, retain) NSString *postID;
-@property (nonatomic, retain) Sample2TableViewCell *cell;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 
 @end
