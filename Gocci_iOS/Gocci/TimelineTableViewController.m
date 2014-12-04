@@ -286,6 +286,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.delegate = self;
     
     // 動画の読み込み
+    NSLog(@"読み込み完了");
     __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size

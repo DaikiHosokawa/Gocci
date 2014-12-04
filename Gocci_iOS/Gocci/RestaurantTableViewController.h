@@ -28,6 +28,7 @@
     NSString *_postID;
 }
 
+@property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *headerLocality;

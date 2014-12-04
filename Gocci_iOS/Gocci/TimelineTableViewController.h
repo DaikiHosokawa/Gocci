@@ -29,7 +29,6 @@
     NSString *_postPicture;
     //restnameへの引き継ぎ
     NSString *_postRestname;
-  
     //サムネイル
     UIImageView *thumbnailView;
 }
