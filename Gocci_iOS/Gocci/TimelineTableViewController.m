@@ -320,7 +320,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -334,7 +334,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     dispatch_queue_t q1_main = dispatch_get_main_queue();
     dispatch_async(q1_global, ^{
         //JSONをパース
-        NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
+        NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/timeline/"];
         NSURL *url2 = [NSURL URLWithString:timelineString];
         NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
         NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
@@ -459,7 +459,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];

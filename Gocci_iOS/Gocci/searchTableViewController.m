@@ -156,7 +156,7 @@
     NSString *searchText = _searchBar.text;
     AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/search/?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/search/?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
     NSLog(@"urlStringatnoulon:%@",urlString);
     NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:encodeString];

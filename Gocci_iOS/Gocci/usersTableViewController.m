@@ -64,7 +64,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     //JSONをパース
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",profiledelegate.username];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",profiledelegate.username];
     NSLog(@"restpage:%@",urlString);
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -261,7 +261,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -278,7 +278,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         //JSONをパース
         AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
+        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
         NSLog(@"restpage:%@",urlString);
         NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
         NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -461,7 +461,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
          NSLog(@"postid:%@",_postID);
          NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
          NSLog(@"content:%@",content);
-         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/delete/"];
+         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
          NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
          [urlRequest setHTTPMethod:@"POST"];
          [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -476,7 +476,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
              
              //JSONをパース(test)
              AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-             NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
+             NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
              NSLog(@"restpage:%@",urlString);
              NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
              NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -542,7 +542,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                     NSLog(@"postid:%@",_postID);
                                     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
                                     NSLog(@"content:%@",content);
-                                    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/delete/"];
+                                    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
                                     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                     [urlRequest setHTTPMethod:@"POST"];
                                     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -557,7 +557,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                         
                                         ///JSONをパース
                                         AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",logindelegate.username];
+                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
                                         NSLog(@"restpage:%@",urlString);
                                         NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
                                         NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];

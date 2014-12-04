@@ -69,7 +69,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
         NSString *tapusername = _postUsername;
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",tapusername];
+        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",tapusername];
         NSLog(@"restpage:%@",urlString);
         NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
         NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -265,7 +265,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -282,7 +282,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         //JSONをパース
         NSString *tapusername = _postUsername;
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/mypage/?user_name=%@",tapusername];
+        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",tapusername];
         NSLog(@"restpage:%@",urlString);
         NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
         NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];

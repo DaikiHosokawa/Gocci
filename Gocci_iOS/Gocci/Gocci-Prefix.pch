@@ -28,4 +28,4 @@
 #endif
 
 /** API サーバの URL */
-#define API_BASE_URL @"http://api-gocci.jp/api/public/"
+#define API_BASE_URL @"http://api-gocci.jp/"

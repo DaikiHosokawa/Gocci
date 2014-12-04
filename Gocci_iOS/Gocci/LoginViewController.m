@@ -50,21 +50,19 @@
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         if (!user) {
             if (!error) {
+                   [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
                 NSLog(@"Facebook ログインをユーザーがキャンセル");
+                  [SVProgressHUD dismiss];
             } else {
                 NSLog(@"Facebook ログイン中にエラーが発生: %@", error);
+                [SVProgressHUD dismiss];
             }
         } else if (user.isNew) {
-             [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
             NSLog(@"Facebook サインアップ & ログイン完了!");
             [self info];
-             [SVProgressHUD dismiss];
-
         } else {
-             [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
             NSLog(@"Facebook ログイン完了!");
             [self info];
-             [SVProgressHUD dismiss];
         }
     }];
 }
@@ -93,7 +91,7 @@
             picturedelegate.userpicture = pictureURL;
             
             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",name,pictureURL];
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
             NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
             [urlRequest setHTTPMethod:@"POST"];
             [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -108,7 +106,7 @@
             NSLog(@"FacebookLogin is completed");
             AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
             //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
             NSLog(@"urlStringatnoulon:%@",urlString);
             NSURL *urlGeo = [NSURL URLWithString:urlString];
             NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
@@ -126,7 +124,7 @@
             NSLog(@"birthday=%@",birthday);
             NSLog(@"relation=%@",relationship);
             NSLog(@"pict=%@",pictureURL);
-            
+             [SVProgressHUD dismiss];
         }
     }];
 }
@@ -172,7 +170,7 @@
             NSLog(@"%@",pictureURL);
             
             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",screenName,pictureURL];
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
             NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
             [urlRequest setHTTPMethod:@"POST"];
             [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -186,7 +184,7 @@
             NSLog(@"TwitterLogin is completed");
             AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
             //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
             NSLog(@"urlStringatnoulon:%@",urlString);
             NSURL *urlGeo = [NSURL URLWithString:urlString];
             NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo  encoding:NSUTF8StringEncoding error:nil];
@@ -258,7 +256,7 @@
                                                             AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                             picturedelegate.userpicture = pictureURL;
                                                             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
-                                                            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+                                                            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
                                                             NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                             [urlRequest setHTTPMethod:@"POST"];
                                                             [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -273,7 +271,7 @@
                                                             NSLog(@"FacebookLogin is completed");
                                                             AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                             //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-                                                            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                            NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
                                                             NSLog(@"urlStringatnoulon:%@",urlString);
                                                             NSURL *urlGeo = [NSURL URLWithString:urlString];
                                                             NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
@@ -299,7 +297,7 @@
                                                         AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                         picturedelegate.userpicture = pictureURL;
                                                         NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",fullname,pictureURL];
-                                                        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+                                                        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
                                                         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                         [urlRequest setHTTPMethod:@"POST"];
                                                         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -314,7 +312,7 @@
                                                         
                                                         AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                         //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-                                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
                                                         NSLog(@"urlStringatnoulon:%@",urlString);
                                                         NSURL *urlGeo = [NSURL URLWithString:urlString];
                                                         NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
@@ -391,7 +389,7 @@
                                                            picturedelegate.userpicture = pictureURL;
                                                            NSLog(@"%@",pictureURL);
                                                            NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
-                                                           NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+                                                           NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
                                                            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                            [urlRequest setHTTPMethod:@"POST"];
                                                            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -405,7 +403,7 @@
                                                            NSLog(@"TwitterLogin is completed");
                                                            AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                            //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-                                                           NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                           NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
                                                            NSLog(@"urlStringatnoulon:%@",urlString);
                                                            NSURL *urlGeo = [NSURL URLWithString:urlString];
                                                            NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
@@ -428,7 +426,7 @@
                                                        AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
                                                        picturedelegate.userpicture = pictureURL;
                                                        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",twitterusername,pictureURL];
-                                                       NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/login/"];
+                                                       NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
                                                        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
                                                        [urlRequest setHTTPMethod:@"POST"];
                                                        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -442,7 +440,7 @@
                                                        NSLog(@"TwitterLogin is completed");
                                                        AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
                                                        //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
-                                                       NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                                                       NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
                                                        NSLog(@"urlStringatnoulon:%@",urlString);
                                                        NSURL *urlGeo = [NSURL URLWithString:urlString];
                                                        NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo  encoding:NSUTF8StringEncoding error:nil];

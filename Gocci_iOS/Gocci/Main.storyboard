@@ -203,7 +203,7 @@
                                 <rect key="frame" x="115" y="121" width="91" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ikD-dU-nxV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ikD-dU-nxV">
                                 <rect key="frame" x="253" y="347" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
@@ -213,7 +213,7 @@
                                     <action selector="facebookButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="Oi9-ks-2VZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dvW-ja-Vzv">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dvW-ja-Vzv">
                                 <rect key="frame" x="13" y="352" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
@@ -756,8 +756,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ogp-a2-6SY"/>
         <segue reference="upz-Ke-AzS"/>
-        <segue reference="1zK-cZ-5jM"/>
         <segue reference="7nL-qp-VeJ"/>
         <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>

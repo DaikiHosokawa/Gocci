@@ -68,7 +68,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/restpage/?restname=%@",_postRestName];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/restpage/?restname=%@",_postRestName];
     NSLog(@"restpage:%@",urlString);
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -350,7 +350,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"postid:%@",_postID);
     NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
     NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/goodinsert/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -365,7 +365,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     dispatch_async(q_global, ^{
 
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/restpage/?restname=%@",_postRestName];
+    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/restpage/?restname=%@",_postRestName];
     NSLog(@"restpage:%@",urlString);
     NSURL *url2 = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];

@@ -364,7 +364,7 @@ const NSString *SCRecordSessionDateKey = @"Date";
     
     //デリゲートの値を取得するときは、このメソッドを使用する。(テスト)
     AppDelegate *appDelegete = [[UIApplication sharedApplication] delegate];
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/api/public/post_restname/"];
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/post_restname/"];
     NSString *content = [NSString stringWithFormat:@"restname=%@",appDelegete.gText];
     //   NSLog(@"content:%@",appDelegete.gText);
     NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -375,7 +375,7 @@ const NSString *SCRecordSessionDateKey = @"Date";
                                            returningResponse:&response
                                                        error:&error];
     //送信先URL
-    NSURL *serverurl = [NSURL URLWithString:@"http://api-gocci.jp/api/public/movie/"];
+    NSURL *serverurl = [NSURL URLWithString:@"http://api-gocci.jp/movie/"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serverurl];
     [request setHTTPMethod:@"POST"];
