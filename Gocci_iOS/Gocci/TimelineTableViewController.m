@@ -56,6 +56,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 
     [self.tableView reloadData];
@@ -81,6 +83,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    
+    self.navigationItem.leftBarButtonItem.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,6 +102,12 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     usersTableViewController *userTimeline = [[usersTableViewController alloc]init];
     [self.navigationController pushViewController:userTimeline animated:YES];
+}
+
+- (IBAction)onProfileButton:(id)sender
+{
+    usersTableViewController *controller = [usersTableViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)viewDidLoad
