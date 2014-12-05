@@ -8,18 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 #import "Sample5TableViewCell.h"
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
+#import "AppDelegate.h"
 
 @interface usersTableViewController : UITableViewController
 {
     MPMoviePlayerController *moviePlayer;
     NSString *_postID;
-    //restnameへの引き継ぎ
     NSString *_postRestname;
 }
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
+@property (nonatomic, retain) UIImageView *thumbnailView;
 @end

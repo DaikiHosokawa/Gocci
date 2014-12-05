@@ -11,9 +11,17 @@
 #import "SVProgressHUD.h"
 #import "everyTableViewController.h"
 #import "UIImageView+WebCache.h"
+#import "AFNetworking/AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 #import "AppDelegate.h"
+#import "APIClient.h"
+#import "ProfilePost.h"
+#import "MoviePlayerManager.h"
+#import "QuartzCore/QuartzCore.h"
 
-@interface usersTableViewController ()
+@protocol MovieViewDelegate;
+
+@interface usersTableViewController ()<Sample5TableViewCellDelegate>
 
 @property (nonatomic, retain) NSMutableArray *restname_;
 @property (nonatomic, retain) NSMutableArray *goodnum_;
@@ -31,6 +39,8 @@
 @property (nonatomic, retain) NSIndexPath *nowindexPath1;
 @property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
+/** タイムラインのデータ */
+@property (nonatomic,strong) NSArray *posts;
 
 @end
 
@@ -57,11 +67,15 @@
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
+    // API からタイムラインのデータを取得
+    [self _fetchProfile];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+   /*
     //JSONをパース
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",profiledelegate.username];
@@ -115,13 +129,14 @@
     });
     
     [self updateVisibleCells];
+    */
     [SVProgressHUD dismiss];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-    [moviePlayer stop];
-    [moviePlayer.view removeFromSuperview];
+    // 画面が隠れた際に再生中の動画を停止させる
+    [[MoviePlayerManager sharedManager] stopMovie];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -141,7 +156,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
         // Return the number of rows in the section.
-    return [_movie_ count];
+    return [self.posts count];
 }
 
 - (void)endScroll {
@@ -150,7 +165,6 @@
     CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
     _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
     NSLog(@"p:%ld", (long)_nowindexPath2.row);
-    [self updateVisibleCells];
     if(_nowindexPath1.row != _nowindexPath2.row){
         NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
     }
@@ -184,6 +198,8 @@
     {
         
     }
+    // スクロール中は動画を停止する
+    [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 #pragma mark -
@@ -191,16 +207,16 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-    [self endScroll];
-     [moviePlayer play];
+    LOG(@"scroll is stoped");
     NSLog(@"scroll is stoped");
+     [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-       // [self endScroll];
-        NSLog(@"scroll is stoped");
+        LOG(@"scroll is stoped");
+        [self _playMovieAtCurrentCell];
     }
 }
 
@@ -281,150 +297,74 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void)updateVisibleCells {
-    //画面上に見えているセルの表示更新
-    for (_cell in [self.tableView visibleCells]){
-        [self updateCell:_cell atIndexPath:[self.tableView indexPathForCell:_cell]];
-    }
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     NSString *cellIdentifier = @"usersTableViewCell";
-    _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!_cell){
-        _cell = [[Sample5TableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    Sample5TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell){
+        cell = [[Sample5TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                           reuseIdentifier:cellIdentifier];
     }
     
-    NSString *buttontext2 = [_restname_ objectAtIndex:indexPath.row];
-    [_cell.RestnameButton setTitle:buttontext2 forState:UIControlStateNormal];
-    //restaurant nameタップのイベント
-    [_cell.RestnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
+    // セルにデータを反映
+    ProfilePost *post = self.posts[indexPath.row];
+    [cell configureWithProfilePost:post];
+    cell.delegate = self;
     
-    /*
-     //動画サムネイル画像の表示
-     NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
-     // Here we use the new provided setImageWithURL: method to load the web image
-     [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
-     placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-     */
-    
-    //ユーザーの画像を取得
-    NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-   
-    
-    //セルの更新メソッド
-    [self updateCell:_cell atIndexPath:indexPath];
-    return _cell ;
-}
-
-
-- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    //updateした時の処理
-    
-    NSString *startext = [_starnum_ objectAtIndex:indexPath.row];
-    // 文字列をNSIntegerに変換
-    NSInteger inted = startext.integerValue;
-    NSLog(@"文字列→NSInteger:%ld", (long)inted);
-    
-    switch(inted){
-        case 1:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green1.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-            
-        case 2:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green2.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-        case 3:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green3.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-        case 4:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green4.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-        case 5:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-        default:
-        {
-            UIImage *image = [UIImage imageNamed:@"star_green5.png"];
-            _cell.starImage.image = image;
-            break;
-        }
-    }
-    
-     _cell.Goodnum.text= [_goodnum_ objectAtIndex:indexPath.row];
-    _cell.Commentnum.text = [_commentnum_ objectAtIndex:indexPath.row];
-    
-    //コメントボタンのイベント
-    [_cell.commentBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //いいねボタンのイベント
-    [_cell.goodBtn addTarget:self action:@selector(handleTouchButton2:event:) forControlEvents:UIControlEventTouchUpInside];
+    // 動画の読み込み
+    NSLog(@"読み込み完了");
+    __weak typeof(self)weakSelf = self;
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
+                                                         size:cell.thumbnailView.bounds.size
+                                                      atIndex:indexPath.row
+                                                   completion:^(BOOL success) {
+                                                       [weakSelf _playMovieAtCurrentCell];
+                                                   }];
     
     //削除イベント
-    [_cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+
     
-    //動画再生
-    NSString *text = [_movie_ objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:text];
-    
-    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    moviePlayer.controlStyle = MPMovieControlStyleNone;
-    moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    //[moviePlayer setRepeatMode:MPMovieRepeatModeOne];
-    CGRect frame = CGRectMake(0, 0, 340, 340);
-    
-    [moviePlayer.view setFrame:frame];
-    //[moviePlayer.view setFrame:_cell.movieView.frame];
-    [_cell.contentView addSubview: moviePlayer.view];
-    //[_cell.contentView bringSubviewToFront:moviePlayer.view];
-    
- // [_cell.deleteBtn setFrame:frame2];
-    //削除ボタンのイベント
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moviePlayBackDidFinish:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:moviePlayer];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(movieLoadStateDidChange:)
-                                                 name:MPMoviePlayerLoadStateDidChangeNotification
-                                               object:nil];
-    
-    
-    [moviePlayer setShouldAutoplay:YES];
-    [moviePlayer prepareToPlay];
+    return cell ;
 }
 
--(void)movieLoadStateDidChange:(id)sender{
-    if(MPMovieLoadStatePlaythroughOK ) {
-        NSLog(@"STATE CHANGED");
-        //動画サムネイル画像のhidden
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //_cell.thumbnailView.hidden = YES;
-        });
-    }
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
+{
+    //いいねボタンの時の処理
+    LOG(@"postid=%@", postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    
+    // タイムラインを再読み込み
+    [self _fetchProfile];
+}
+
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
+{
+    //rest nameタップの時の処理
+    LOG(@"restname=%@", restname);
+    _postRestname = restname;
+    NSLog(@"postRestname:%@",_postRestname);
+    NSLog(@"Restname is touched");
+    [self performSegueWithIdentifier:@"goRestpage" sender:self];
+}
+
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
+{
+    // コメントボタン押下時の処理
+    LOG(@"postid=%@", postID);
+    _postID = postID;
+    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
 }
 
 
@@ -453,63 +393,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
          NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                 returningResponse:&response
                                                             error:&error];
-         dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-         dispatch_queue_t q1_main = dispatch_get_main_queue();
-         dispatch_async(q1_global, ^{
-             
-             //JSONをパース(test)
-             AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-             NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
-             NSLog(@"restpage:%@",urlString);
-             NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-             NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-             NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-             NSError *error=nil;
-             NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                     options:NSJSONReadingMutableLeaves error:&error];
-             
-             // ユーザー名
-             NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-             _user_name_ = [user_name mutableCopy];
-             // プロフ画像
-             NSArray *picture = [jsonDic valueForKey:@"picture"];
-             _picture_ = [picture mutableCopy];
-             // 動画URL
-             NSArray *movie = [jsonDic valueForKey:@"movie"];
-             _movie_ = [movie mutableCopy];
-             // 住所
-             NSArray *locality = [jsonDic valueForKey:@"locality"];
-             _locality_ = [locality mutableCopy];
-             
-             //いいね数
-             NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-             _goodnum_ = [goodnum mutableCopy];
-             
-             //レストラン名
-             NSArray *restname = [jsonDic valueForKey:@"restname"];
-             _restname_ = [restname mutableCopy];
-             //画像URL
-             NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
-             _picture_ = [pictureurl mutableCopy];
-             // 動画post_id
-             NSArray *postid = [jsonDic valueForKey:@"post_id"];
-             _postid_ = [postid mutableCopy];
-             //コメント数
-             NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-             _commentnum_ = [commentnum mutableCopy];
-             //スターの数
-             NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-             _starnum_ = [starnum mutableCopy];
-             NSLog(@"commentnum:%@",starnum);
-             
-       　　dispatch_async(q1_main, ^{
-                 [self.tableView reloadData];
-             });
-         });
+         [self _fetchProfile];
          
-         
-         
-         NSLog(@"goodBtn is touched");
+    
          
      }]];
      [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -534,79 +420,86 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                                            returningResponse:&response
                                                                                        error:&error];
-                                    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                                    dispatch_queue_t q1_main = dispatch_get_main_queue();
-                                    dispatch_async(q1_global, ^{
-                                        
-                                        ///JSONをパース
-                                        AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-                                        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
-                                        NSLog(@"restpage:%@",urlString);
-                                        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-                                        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-                                        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-                                        NSError *error=nil;
-                                        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                                                options:NSJSONReadingMutableLeaves error:&error];
-                                        // ユーザー名
-                                        NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-                                        _user_name_ = [user_name mutableCopy];
-                                        // プロフ画像
-                                        NSArray *picture = [jsonDic valueForKey:@"picture"];
-                                        _picture_ = [picture mutableCopy];
-                                        // 動画URL
-                                        NSArray *movie = [jsonDic valueForKey:@"movie"];
-                                        _movie_ = [movie mutableCopy];
-                                        // 住所
-                                        NSArray *locality = [jsonDic valueForKey:@"locality"];
-                                        _locality_ = [locality mutableCopy];
-                                        
-                                        //いいね数
-                                        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-                                        _goodnum_ = [goodnum mutableCopy];
-                                        
-                                        //レストラン名
-                                        NSArray *restname = [jsonDic valueForKey:@"restname"];
-                                        _restname_ = [restname mutableCopy];
-                                        //画像URL
-                                        NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
-                                        _picture_ = [pictureurl mutableCopy];
-                                        // 動画post_id
-                                        NSArray *postid = [jsonDic valueForKey:@"post_id"];
-                                        _postid_ = [postid mutableCopy];
-                                        //コメント数
-                                        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-                                        _commentnum_ = [commentnum mutableCopy];
-                                        //スターの数
-                                        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-                                        _starnum_ = [starnum mutableCopy];
-                                        NSLog(@"commentnum:%@",starnum);
-                                        
-                            　　　dispatch_async(q1_main, ^{
-                                            [self.tableView reloadData];
-                                        });
-                                    });
          
+         [self _fetchProfile];
      }
     
  }
 
+#pragma mark - Private Methods
 
-//restnameをタップした時のイベント
-- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
-    
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postRestname = [_restname_ objectAtIndex:indexPath.row];
-    NSLog(@"postrestname:%@",_postRestname);
-    [self performSegueWithIdentifier:@"goRestpage" sender:self];
-    NSLog(@"Restname is touched");
-    
+/**
+ *  API からタイムラインのデータを取得
+ */
+- (void)_fetchProfile
+{
+    __weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [APIClient profileWithHandler:^(NSArray *result, NSUInteger code, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        //LOG(@"result=%@", result);
+        //LOG(@"code=%@, error=%@", @(code), error);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        // 取得したデータを self.posts に格納
+        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+        for (NSDictionary *post in result) {
+            [tempPosts addObject:[ ProfilePost profilePostWithDictionary:post]];
+        }
+        self.posts = [NSArray arrayWithArray:tempPosts];
+        
+        // 動画データを一度全て削除
+        [[MoviePlayerManager sharedManager] removeAllPlayers];
+        
+        // 表示の更新
+        [weakSelf.tableView reloadData];
+    }];
 }
 
-- (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    [moviePlayer play];
+/**
+ *  現在表示中のセルの動画を再生する
+ */
+- (void)_playMovieAtCurrentCell
+{
+    Sample5TableViewCell *currentCell = [self _currentCell];
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:CGRectMake(0,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
+                                                                    currentCell.thumbnailView.frame.size.width,
+                                                                    currentCell.thumbnailView.frame.size.height)];
 }
+
+/**
+ *  現在表示中のセルを取得
+ *
+ *  @return
+ */
+- (Sample5TableViewCell *)_currentCell
+{
+    return (Sample5TableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
+}
+
+/**
+ *  現在表示中の indexPath を取得
+ *
+ *  @return
+ */
+- (NSIndexPath *)_currentIndexPath
+{
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x,
+                                self.tableView.contentOffset.y + self.tableView.frame.size.height/2);
+    NSIndexPath *currentIndexPath = [self.tableView indexPathForRowAtPoint:point];
+    
+    return currentIndexPath;
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     

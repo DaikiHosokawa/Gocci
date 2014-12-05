@@ -17,7 +17,7 @@
 @interface RestaurantTableViewController : UITableViewController
 
 {
-    MPMoviePlayerController *moviePlayer;
+    //MPMoviePlayerController *moviePlayer;
     NSString *_postRestName;
     //profile_otherへの引き継ぎ
     NSString *_postUsername;

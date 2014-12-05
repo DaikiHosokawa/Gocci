@@ -7,17 +7,60 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+
+@class Profile;
+@class ProfilePost;
+@class Sample5TableViewCell;
+
+@protocol Sample5TableViewCellDelegate <NSObject>
+
+/**
+ *  コメントボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID;
+
+/**
+ *  Good ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID;
+
+
+/**
+ *  Restname ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname;
+
+@end
+
+/**
+ *  タイムライン画面 TableView の Cell
+ */
 
 @interface Sample5TableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *Goodnum;
-@property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) Sample5TableViewCell *cell;
-@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
-@property (weak, nonatomic) IBOutlet UILabel *Commentnum;
-@property (weak, nonatomic) IBOutlet UIButton *goodBtn;
-@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *starImage;
 @property (weak, nonatomic) IBOutlet UIButton *RestnameButton;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+
+@property (nonatomic,weak) id<Sample5TableViewCellDelegate> delegate;
+@property (nonatomic,strong) Profile *comment;
+
+/**
+ *  セルの表示の更新
+ *
+ *  @param profilePost
+ */
+- (void)configureWithProfilePost:(ProfilePost *)profilePost;
+
 
 @end

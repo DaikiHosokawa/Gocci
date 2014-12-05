@@ -41,6 +41,8 @@
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
 		FF42D0D91A314FDF0050F480 /* RestaurantPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0D81A314FDF0050F480 /* RestaurantPost.m */; };
+		FF42D0DC1A31B29C0050F480 /* ProfilePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DB1A31B29C0050F480 /* ProfilePost.m */; };
+		FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -195,6 +197,10 @@
 		FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
 		FF42D0D71A314FDF0050F480 /* RestaurantPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPost.h; sourceTree = "<group>"; };
 		FF42D0D81A314FDF0050F480 /* RestaurantPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPost.m; sourceTree = "<group>"; };
+		FF42D0DA1A31B29C0050F480 /* ProfilePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePost.h; sourceTree = "<group>"; };
+		FF42D0DB1A31B29C0050F480 /* ProfilePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePost.m; sourceTree = "<group>"; };
+		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
+		FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile_otherPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -444,6 +450,10 @@
 				AB8C71951A27908700BF31EA /* TimelinePost.m */,
 				FF42D0D71A314FDF0050F480 /* RestaurantPost.h */,
 				FF42D0D81A314FDF0050F480 /* RestaurantPost.m */,
+				FF42D0DA1A31B29C0050F480 /* ProfilePost.h */,
+				FF42D0DB1A31B29C0050F480 /* ProfilePost.m */,
+				FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */,
+				FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */,
 			);
 			name = APIEntity;
 			sourceTree = "<group>";
@@ -1011,6 +1021,7 @@
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
+				FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
 				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
 				AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */,
@@ -1029,6 +1040,7 @@
 				FF5DDF7F19E3D3C2000F2ABD /* UIImage+WebP.m in Sources */,
 				FF5DDF7A19E3D3C2000F2ABD /* SDWebImageManager.m in Sources */,
 				FF5DDF7519E3D3C2000F2ABD /* SDImageCache.m in Sources */,
+				FF42D0DC1A31B29C0050F480 /* ProfilePost.m in Sources */,
 				FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */,

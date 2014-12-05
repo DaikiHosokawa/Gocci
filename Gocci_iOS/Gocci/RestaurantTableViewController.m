@@ -85,6 +85,7 @@
 
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
+    
     [super viewWillDisappear:animated];
 }
 

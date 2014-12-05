@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *usersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *review;
 @property (weak, nonatomic) IBOutlet UILabel *goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
