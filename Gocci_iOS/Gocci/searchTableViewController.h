@@ -10,23 +10,19 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
 
-
-
-@interface SearchTableViewController : UITableViewController{
+@interface SearchTableViewController : UITableViewController
+{
     NSString *_postRestName;
     NSString *_headerLocality;
-    CLLocationManager *locationManager;
     CLLocationCoordinate2D coordinate;
     NSString *annotationTitle;
     NSString *annotationSubtitle;
 }
 
--(void) onResume;
--(void) onPause;
+@property (nonatomic, strong) NSString *headerLocality;
+@property (nonatomic, strong) NSString *postRestName;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (nonatomic) NSString *headerLocality;
-@property (nonatomic) NSString *postRestName;
-@property (nonatomic, retain) CLLocationManager *locationManager;
 @end
 
 
