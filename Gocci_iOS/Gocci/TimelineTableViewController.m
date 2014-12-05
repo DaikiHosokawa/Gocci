@@ -2,9 +2,7 @@
 //  TimelineTableViewController.m
 //  Gocci
 //
-//  Created by Daiki Hosokawa on 2014/05/10.
-//  Copyright (c) 2014年 Massara. All rights reserved.
-//
+
 
 #import "TimelineTableViewController.h"
 #import "searchTableViewController.h"
@@ -59,48 +57,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    //NSLog(@"vewwillappearは呼び出されています");
-    //JSONをパース
-//    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/api/public/timeline/"];
-//    NSURL *url = [NSURL URLWithString:timelineString];
-//    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-//    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-//    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-//    
-//    // ユーザー名
-//    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-//    _user_name_ = [user_name mutableCopy];
-//    // プロフ画像
-//    NSArray *picture = [jsonDic valueForKey:@"picture"];
-//    _picture_ = [picture mutableCopy];
-//    // 動画URL
-//    NSArray *movie = [jsonDic valueForKey:@"movie"];
-//    _movie_ = [movie mutableCopy];
-//    //いいね数
-//    NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-//    _goodnum_ = [goodnum mutableCopy];
-//    //レストラン名
-//    NSArray *restname = [jsonDic valueForKey:@"restname"];
-//    _restname_ = [restname mutableCopy];
-//    //コメント数
-//    NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-//    _commentnum_ = [commentnum mutableCopy];
-//        NSLog(@"commentnum:%@",commentnum);
-//    //スターの数
-//    NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-//    _starnum_ = [starnum mutableCopy];
-//    NSLog(@"commentnum:%@",starnum);
-//        
-//        // 動画post_id
-//        NSArray *postid = [jsonDic valueForKey:@"post_id"];
-//        _postid_ = [postid mutableCopy];
-//        NSLog(@"postid:%@",_postid_);
-//        
-//    //サムネイル
-//    NSArray *thumbnail = [jsonDic valueForKey:@"thumbnail"];
-//    _thumbnail_ = [thumbnail mutableCopy];
-//        NSLog(@"thumbnail:%@",_thumbnail_);
-     
+
     [self.tableView reloadData];
 
     [self.navigationItem setHidesBackButton:YES animated:NO];
@@ -265,20 +222,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];
     }
-
-    //user nameタップのイベント
-    [cell.usernameButton addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //restaurant nameタップのイベント
-    [cell.restnameButton addTarget:self action:@selector(handleTouchButton4:event:) forControlEvents:UIControlEventTouchUpInside];
-
-    /*
-    //動画サムネイル画像の表示
-    NSString *dottext2 = [_thumbnail_ objectAtIndex:indexPath.row];
-    // Here we use the new provided setImageWithURL: method to load the web image
-    [_cell.thumbnailView  setImageWithURL:[NSURL URLWithString:dottext2]
-                         placeholderImage:[UIImage imageNamed:@"yomikomi simple.png"]];
-    */
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
@@ -300,9 +243,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
     
-    //コメントボタンの時の処理
-    //[SVProgressHUD show];
-    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
     NSIndexPath *indexPath = [self indexPathForControlEvent:event];
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
@@ -313,114 +253,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-- (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
-    //いいねボタンの時の処理
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    
-    dispatch_queue_t q1_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q1_main = dispatch_get_main_queue();
-    dispatch_async(q1_global, ^{
-        //JSONをパース
-        NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/timeline/"];
-        NSURL *url2 = [NSURL URLWithString:timelineString];
-        NSString *response2 = [NSString stringWithContentsOfURL:url2 encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData2 = [response2 dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData2 options:0 error:nil];
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-        _goodnum_ = [goodnum mutableCopy];
-        //_cell.Goodnum.text= [_goodnum_ objectAtIndex:_nowindexPath];
-        dispatch_async(q1_main, ^{
-            [self.tableView reloadData];
-        });
-    });
-    
-    NSLog(@"goodBtn is touched");
 
-}
-
-//user nameをタップした時のイベント
-- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-    
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
-    _postPicture = [_picture_ objectAtIndex:indexPath.row];
-
-    [self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    NSLog(@"Username is touched");
-    
-}
-
-//restnameをタップした時のイベント
-- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
-    
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postRestname = [_restname_ objectAtIndex:indexPath.row];
-
-    [self performSegueWithIdentifier:@"goRestpage" sender:self];
-    NSLog(@"Restname is touched");
-    
-}
-
-//シェアボタンを入れる準備
-/*
-//Twitterのアクティビティ投稿の基準
--(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
-{
-    // Twitterの時だけハッシュタグをつける
-    if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
-        return [NSString stringWithFormat:@"%@ #%@", _text, _hashTag];
-    }
-    return _text;
-}
-
-
--(id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
-{
-    return _text;
-}
-
-
-//ナビゲーションのアクションボタンを押した時の動作
-- (IBAction)share:(id)sender
-{
-    RestaurantTableViewController *text = [[RestaurantTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
-    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
-    [self presentViewController:avc animated:YES completion:nil];
-    
-}
-*/
-
-/*
-//tapするという機能を追加
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches] anyObject];
-    if(touch.view.tag == _cell.UsersName.tag)
-        [self clickCommand:_cell.UsersName.tag];
-}
-
--(IBAction)clickCommand:(id)sender
-{
-    NSLog(@"in clickCommand");
-}
-*/
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     //セグエで画面遷移させる
@@ -457,7 +290,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     //いいねボタンの時の処理
     LOG(@"postid=%@", postID);
-    
     NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
     NSLog(@"content:%@",content);
     NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
@@ -474,11 +306,44 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self _fetchTimeline];
 }
 
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithusername:(NSString *)username
+{
+    //user nameタップの時の処理
+    LOG(@"username=%@", username);
+    _postUsername = username;
+    NSLog(@"postUsername:%@",_postUsername);
+    [self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    NSLog(@"Username is touched");
+    
+}
+
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithuserspicture:(NSString *)userspicture
+{
+    //user nameタップの時の処理②
+    LOG(@"userspicture=%@", userspicture);
+    _postPicture = userspicture;
+    NSLog(@"postUsername:%@",_postPicture);
+    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    NSLog(@"Username is touched");
+    
+}
+
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
+{
+    //rest nameタップの時の処理
+    LOG(@"restname=%@", restname);
+    _postRestname = restname;
+    NSLog(@"postRestname:%@",_postRestname);
+    NSLog(@"Restname is touched");
+     [self performSegueWithIdentifier:@"goRestpage" sender:self];
+}
+
+
 - (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
 {
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
-    
+    _postID = postID;
     [self performSegueWithIdentifier:@"showDetail2" sender:postID];
 }
 

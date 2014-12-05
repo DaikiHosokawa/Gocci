@@ -7,20 +7,60 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+
+@class Restaurant;
+@class RestaurantPost;
+@class Sample3TableViewCell;
+
+@protocol Sample3TableViewCellDelegate <NSObject>
+
+/**
+ *  コメントボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID;
+
+/**
+ *  Good ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID;
+
+/**
+ *  Name ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapNameWithusername:(NSString *)username;
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapNameWithuserspicture:(NSString *)userspicture;
+
+
+@end
+
+/**
+ *  レストラン画面 TableView の Cell
+ */
 
 @interface Sample3TableViewCell : UITableViewCell
 
-
-@property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
-@property (weak, nonatomic) IBOutlet UILabel *Goodnum;
-@property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) Sample3TableViewCell *cell;
-@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
-@property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIButton *UsernameButton;
-
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
-@property (weak, nonatomic) IBOutlet UIButton *goodBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *starImage;
+
+
+@property (nonatomic,weak) id<Sample3TableViewCellDelegate> delegate;
+@property (nonatomic,strong) Restaurant *comment;
+
+/**
+ *  セルの表示の更新
+ *
+ *  @param timelinePost
+ */
+- (void)configureWithRestaurantPost:(RestaurantPost *)restaurantPost;
+
 @end

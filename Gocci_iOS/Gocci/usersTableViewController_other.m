@@ -145,22 +145,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
-    //投稿が0の時の画面表示
-    if([_movie_ count] == 0){
-        
-        NSLog(@"投稿がありません。");
-        
-        // UIImageViewの初期化
-        CGRect rect = CGRectMake(30, 150, 250, 285);
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
-        
-        // 画像の読み込み
-        imageView.image = [UIImage imageNamed:@"lion huki iro.png"];
-        
-        // UIImageViewのインスタンスをビューに追加
-        [self.view addSubview:imageView];
-    }
     // Return the number of rows in the section.
     return [_movie_ count];
 }

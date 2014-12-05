@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
 
 @property (nonatomic,strong) NSString *postID;
+@property (nonatomic,strong) NSString *username;
+@property (nonatomic,strong) NSString *userspicture;
+@property (nonatomic,strong) NSString *restname;
 
 @end
 
@@ -46,12 +49,36 @@
     }
 }
 
+- (IBAction)onNameButton:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample2TableViewCell:didTapNameWithusername:)]) {
+        [self.delegate sample2TableViewCell:self didTapNameWithusername:self.username];
+    }
+}
+
+- (IBAction)onNameButton2:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample2TableViewCell:didTapNameWithuserspicture:)]) {
+        [self.delegate sample2TableViewCell:self didTapNameWithuserspicture:self.userspicture];
+    }
+}
+
+- (IBAction)onRestnameButton:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample2TableViewCell:didTapRestnameWithrestname:)]) {
+        [self.delegate sample2TableViewCell:self didTapRestnameWithrestname:self.restname];
+    }
+}
+
 
 #pragma mark - Public Method
 
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost
 {
     self.postID = timelinePost.postID;
+    self.username = timelinePost.userName;
+    self.userspicture = timelinePost.picture;
+    self.restname = timelinePost.restname;
     
     // ユーザ画像
     [self.usersPicture sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]

@@ -55,7 +55,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onGoodButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5JF-m0-TZU"/>
+                                    <action selector="onNameButton2:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dW6-KO-KEG"/>
+                                    <action selector="onNameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aiC-Vq-y3v"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3cs-Fs-iNf">
@@ -112,6 +113,9 @@
                                     <color key="titleColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onRestnameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zn0-By-L8y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fe5-4W-mi0">
                                 <rect key="frame" x="50" y="451" width="36" height="32"/>
@@ -127,6 +131,9 @@
                                         <color key="value" red="0.88245376275510201" green="0.88245376275510201" blue="0.88245376275510201" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onGoodButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UcI-SY-aKl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LQQ-Vn-IvU">
                                 <rect key="frame" x="239" y="448" width="36" height="36"/>

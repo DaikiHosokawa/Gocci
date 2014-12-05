@@ -31,6 +31,25 @@
  */
 - (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID;
 
+
+/**
+ *  Name ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithusername:(NSString *)username;
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithuserspicture:(NSString *)userspicture;
+
+
+/**
+ *  Restname ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname;
+
 @end
 
 /**

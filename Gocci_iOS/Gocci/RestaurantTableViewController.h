@@ -18,7 +18,6 @@
 
 {
     MPMoviePlayerController *moviePlayer;
-    UITableViewCell *cell;
     NSString *_postRestName;
     //profile_otherへの引き継ぎ
     NSString *_postUsername;

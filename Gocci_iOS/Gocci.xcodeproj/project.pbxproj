@@ -40,6 +40,7 @@
 		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
+		FF42D0D91A314FDF0050F480 /* RestaurantPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0D81A314FDF0050F480 /* RestaurantPost.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -192,6 +193,8 @@
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
+		FF42D0D71A314FDF0050F480 /* RestaurantPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPost.h; sourceTree = "<group>"; };
+		FF42D0D81A314FDF0050F480 /* RestaurantPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -439,6 +442,8 @@
 			children = (
 				AB8C71941A27908700BF31EA /* TimelinePost.h */,
 				AB8C71951A27908700BF31EA /* TimelinePost.m */,
+				FF42D0D71A314FDF0050F480 /* RestaurantPost.h */,
+				FF42D0D81A314FDF0050F480 /* RestaurantPost.m */,
 			);
 			name = APIEntity;
 			sourceTree = "<group>";
@@ -1048,6 +1053,7 @@
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */,
+				FF42D0D91A314FDF0050F480 /* RestaurantPost.m in Sources */,
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
 				FF5DDF7819E3D3C2000F2ABD /* SDWebImageDownloader.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
