@@ -90,6 +90,9 @@
                                 <state key="normal" image="delete_true">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onDeleteButton:" destination="1jy-Df-LFw" eventType="touchUpInside" id="qAd-HT-dRr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xk2-g9-mfM">
                                 <rect key="frame" x="186" y="399" width="31" height="32"/>

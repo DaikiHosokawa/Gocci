@@ -323,7 +323,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                    }];
     
     //削除イベント
-    [cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
+   // [cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
 
     
     return cell ;
@@ -367,64 +367,71 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showDetail2" sender:postID];
 }
 
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
+{
+    // コメントボタン押下時の処理
+    LOG(@"postid=%@", postID);
+    _postID = postID;
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class){
+        
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            //削除ボタンの時の処理
+            /*
+            NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+            NSLog(@"row %ld was tapped.",(long)indexPath.row);
+            _postID = [_postid_ objectAtIndex:indexPath.row];
+            NSLog(@"postid:%@",_postID);
+             */
+            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+            NSLog(@"content:%@",content);
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+            [urlRequest setHTTPMethod:@"POST"];
+            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLResponse* response;
+            NSError* error = nil;
+            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                   returningResponse:&response
+                                                               error:&error];
+            [self _fetchProfile];
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        /*
+        //削除ボタンの時の処理
+        NSIndexPath *indexPath = [self indexPathForControlEvent:indexPath];
+        NSLog(@"row %ld was tapped.",(long)indexPath.row);
+        _postID = [_postid_ objectAtIndex:indexPath.row];
+        NSLog(@"postid:%@",_postID);
+         */
+        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        
+        [self _fetchProfile];
+    
+    }}
 
- - (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-     Class class = NSClassFromString(@"UIAlertController");
-     if(class){
-         // iOS 8の時の処理
-     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
-     
-     // addActionした順に左から右にボタンが配置されます
-     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         
-         //削除ボタンの時の処理
-         NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-         NSLog(@"row %ld was tapped.",(long)indexPath.row);
-         _postID = [_postid_ objectAtIndex:indexPath.row];
-         NSLog(@"postid:%@",_postID);
-         NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-         NSLog(@"content:%@",content);
-         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-         [urlRequest setHTTPMethod:@"POST"];
-         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-         NSURLResponse* response;
-         NSError* error = nil;
-         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                returningResponse:&response
-                                                            error:&error];
-         [self _fetchProfile];
-         
-    
-         
-     }]];
-     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         
-     }]];
-     
-     [self presentViewController:alertController animated:YES completion:nil];
-     }else{
-                                             //削除ボタンの時の処理
-                                    NSIndexPath *indexPath = [self indexPathForControlEvent:indexPath];
-                                    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-                                    _postID = [_postid_ objectAtIndex:indexPath.row];
-                                    NSLog(@"postid:%@",_postID);
-                                    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-                                    NSLog(@"content:%@",content);
-                                    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-                                    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-                                    [urlRequest setHTTPMethod:@"POST"];
-                                    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-                                    NSURLResponse* response;
-                                    NSError* error = nil;
-                                    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                                           returningResponse:&response
-                                                                                       error:&error];
-         
-         [self _fetchProfile];
-     }
-    
- }
+
 
 #pragma mark - Private Methods
 
@@ -471,7 +478,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:CGRectMake(0,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
 }

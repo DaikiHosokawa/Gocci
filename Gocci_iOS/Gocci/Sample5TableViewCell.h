@@ -40,6 +40,13 @@
  */
 - (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname;
 
+/**
+ *  Delete ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID;
 @end
 
 /**

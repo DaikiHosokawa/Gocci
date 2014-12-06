@@ -227,7 +227,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"TimelineTableViewCell";
-    Sample2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
         cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];

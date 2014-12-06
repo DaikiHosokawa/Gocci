@@ -49,8 +49,15 @@
 
 - (IBAction)onRestnameButton:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(sample2TableViewCell:didTapRestnameWithrestname:)]) {
+    if ([self.delegate respondsToSelector:@selector(sample5TableViewCell:didTapRestnameWithrestname:)]) {
         [self.delegate sample5TableViewCell:self didTapRestnameWithrestname:self.restname];
+    }
+}
+
+- (IBAction)onDeleteButton:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample5TableViewCell:didTapDeleteWithPostID:)]) {
+        [self.delegate sample5TableViewCell:self didTapDeleteWithPostID:self.postID];
     }
 }
 

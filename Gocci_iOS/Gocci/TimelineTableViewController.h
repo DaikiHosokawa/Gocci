@@ -31,6 +31,9 @@
     NSString *_postRestname;
     //サムネイル
     UIImageView *thumbnailView;
+    
+    //テスト
+    Sample2TableViewCell *cell;
 }
 
 @property (nonatomic, retain) UIImageView *thumbnailView;
