@@ -442,11 +442,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient profileWithHandler:^(NSArray *result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        //LOG(@"result=%@", result);
-        //LOG(@"code=%@, error=%@", @(code), error);
-        
+    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
+    NSString *userName = profiledelegate.username;
+     [APIClient profileWithUserName:(NSString *)userName handler:^(id result, NSUInteger code, NSError *error) {
+         
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             // TODO: アラート等を掲出

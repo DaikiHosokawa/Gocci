@@ -60,6 +60,22 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"restname" : restName,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"restpage/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+/*
 + (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     [[APIClient sharedClient].manager GET:@"timeline"
@@ -70,6 +86,22 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
 }
+ */
+
++ (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
+    NSDictionary *params = @{
+                             @"user_name" : userName,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"mypage/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 + (void)profileWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
@@ -92,6 +124,21 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
 }
+
++ (void)profile_otherWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
+    NSDictionary *params = @{
+                             @"user_name" : userName,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"mypage/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler

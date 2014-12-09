@@ -124,6 +124,8 @@
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
     
     self.locationManager = [[CLLocationManager alloc] init];
+
+    self.tableView.allowsSelection = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated

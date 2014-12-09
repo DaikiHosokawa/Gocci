@@ -425,7 +425,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient profile_otherWithHandler:^(NSArray *result, NSUInteger code, NSError *error) {
+    NSString *userName = _postUsername;
+    [APIClient profileWithUserName:(NSString *)userName handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         //LOG(@"result=%@", result);
         //LOG(@"code=%@, error=%@", @(code), error);

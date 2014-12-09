@@ -23,6 +23,7 @@
 *  @param handler 完了イベントハンドラ
 */
 + (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  profile/
@@ -30,6 +31,8 @@
  *  @param handler 完了イベントハンドラ
  */
 + (void)profileWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 
 /**
  *
@@ -38,6 +41,7 @@
  *  @param handler 完了イベントハンドラ
  */
 + (void)profile_otherWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)profile_otherWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  ファイルのダウンロード

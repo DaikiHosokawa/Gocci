@@ -401,11 +401,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient restaurantWithHandler:^(NSArray *result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        //LOG(@"result=%@", result);
-        //LOG(@"code=%@, error=%@", @(code), error);
-        
+
+    NSString *restName = _postRestName;
+      [APIClient restaurantWithRestName:(NSString *)restName handler:^(id result, NSUInteger code, NSError *error) {
+     
+          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+          
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             // TODO: アラート等を掲出
