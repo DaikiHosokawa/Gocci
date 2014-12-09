@@ -26,7 +26,6 @@
 @property (nonatomic, strong) NSMutableArray *restaddress_;
 @property (nonatomic, strong) NSString *nowlat_;
 @property (nonatomic, strong) NSString *nowlon_;
-@property (nonatomic, strong) SampleTableViewCell *cell;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UILabel *dontexist;
 @property (nonatomic, assign) BOOL showedUserLocation;
@@ -124,8 +123,6 @@
     self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
     
     self.locationManager = [[CLLocationManager alloc] init];
-
-    self.tableView.allowsSelection = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -225,7 +222,7 @@
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 
@@ -244,49 +241,23 @@
 }
 
 //テーブルセルの高さ
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 85.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
-    // Configure the cell.
-    _cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    _cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
-    _cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
-    _cell.meter.textAlignment = NSTextAlignmentRight;
-    _cell.categoryname.text = [_category_ objectAtIndex:indexPath.row];
-    // イベントを付ける
-    [_cell.selectBtn addTarget:self action:@selector(handleTouchButton:event:) forControlEvents:UIControlEventTouchUpInside];
+    SampleTableViewCell *cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
+
+    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
+    cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
+    cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
+    cell.meter.textAlignment = NSTextAlignmentRight;
+    cell.categoryname.text = [_category_ objectAtIndex:indexPath.row];
     
-     // Configure the cell...
-    return _cell;
+    return cell;
 }
-
-#pragma mark - handleTouchEvent
-- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postRestName = [_restname_ objectAtIndex:indexPath.row];
-    _headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
-    NSLog(@"postRestName:%@",_postRestName);
-    //ViewControllerからViewControllerへ関連付けたSegueにはIdentifierが設定できます。
-    //このSegueに付けたIdentifierから遷移を呼び出すことができます。
-    [self performSegueWithIdentifier:@"showDetail" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //2つ目の画面にパラメータを渡して遷移する
-    if ([segue.identifier isEqualToString:@"showDetail"]) {
-        //ここでパラメータを渡す
-        RestaurantTableViewController *restVC = segue.destinationViewController;
-        restVC.postRestName = _postRestName;
-        restVC.headerLocality = _headerLocality;
-        
-    }
-}
-
 
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
@@ -297,10 +268,35 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"showDetail" sender:self.tableView];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *postRestName = [_restname_ objectAtIndex:indexPath.row];
+    NSString *headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
+    
+    // セグエで画面遷移させる
+    [self performSegueWithIdentifier:@"showDetail"
+                              sender:@{
+                                       @"rest_name": postRestName,
+                                       @"header_locality": headerLocality
+                                       }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
+    
+    // 選択状態の解除
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // 2つ目の画面にパラメータを渡して遷移する
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        // ここでパラメータを渡す
+        NSDictionary *params = (NSDictionary *)sender;
+        RestaurantTableViewController *restVC = segue.destinationViewController;
+        restVC.postRestName = params[@"rest_name"];
+        restVC.headerLocality = params[@"header_locality"];
+        
+    }
 }
 
 @end
