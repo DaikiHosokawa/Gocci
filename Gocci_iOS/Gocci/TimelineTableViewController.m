@@ -312,6 +312,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                            returningResponse:&response
                                                        error:&error];
     
+    
     // タイムラインを再読み込み
     [self _fetchTimeline];
 }

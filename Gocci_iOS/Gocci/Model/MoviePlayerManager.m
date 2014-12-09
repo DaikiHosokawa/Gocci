@@ -57,7 +57,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           moviePlayer.repeatMode = MPMovieRepeatModeOne;
                           moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
                           
-                          [weakSelf.players replaceObjectAtIndex:index withObject:moviePlayer];
+                        [weakSelf.players replaceObjectAtIndex:index withObject:moviePlayer];
                           
                           completion(YES);
                       }];
