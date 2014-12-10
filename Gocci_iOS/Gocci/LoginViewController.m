@@ -48,9 +48,9 @@
     NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
 // Facebook アカウントを使ってログイン
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+         [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
         if (!user) {
             if (!error) {
-                   [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
                 NSLog(@"Facebook ログインをユーザーがキャンセル");
                   [SVProgressHUD dismiss];
             } else {
@@ -117,7 +117,6 @@
             // Now add the data to the UI elements
             // ...
             
-            
             NSLog(@"name=%@",name);
             NSLog(@"location=%@",location);
             NSLog(@"gender=%@",gender);
@@ -131,24 +130,29 @@
 
 //純Twitterログインボタン
 - (IBAction)twitterButtonTapped:(id)sender {
+    [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
     [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
         if (!user) {
             if (!error) {
                 NSLog(@"Twitter ログインをユーザーがキャンセル");
+                
+                 [SVProgressHUD dismiss];
             } else {
                 NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
+                
+                 [SVProgressHUD dismiss];
             }
         } else if (user.isNew) {
             NSLog(@"Twitter サインアップ & ログイン完了!");
-            [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+        
             [self info2];
-            [SVProgressHUD dismiss];
+           
 
         } else {
             NSLog(@"Twitter ログイン完了!");
-            [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+            
             [self info2];
-            [SVProgressHUD dismiss];
+           
         }
     }];
 }
@@ -190,6 +194,7 @@
             NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo  encoding:NSUTF8StringEncoding error:nil];
             NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
             appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [SVProgressHUD dismiss];
         }
     }];
 

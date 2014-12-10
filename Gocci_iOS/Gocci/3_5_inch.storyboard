@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="x1a-eI-W4a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="x1a-eI-W4a">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -192,7 +192,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pushFacebook:" destination="s2J-hg-79Q" eventType="touchUpInside" id="fZc-Jf-1Mf"/>
+                                    <action selector="facebookButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="47W-DK-gsg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xc1-1K-Plj">
@@ -202,17 +202,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pushTwitter:" destination="s2J-hg-79Q" eventType="touchUpInside" id="wFx-vD-Qsb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OaB-mY-a83">
-                                <rect key="frame" x="258" y="286" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="FHe-Kx-5Dr"/>
+                                    <action selector="twitterButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="nCw-BR-Dmi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -232,8 +222,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="facebookBtn" destination="ojS-xN-p7a" id="gwL-Sp-q0J"/>
-                        <outlet property="twitterBtn" destination="Xc1-1K-Plj" id="R8x-Yj-LXb"/>
                         <segue destination="eNe-5a-Fw9" kind="push" identifier="goTimeline" id="ogp-a2-6SY"/>
                         <segue destination="eNe-5a-Fw9" kind="push" identifier="goTimeline2" id="gg6-6i-ecx"/>
                     </connections>
