@@ -79,6 +79,7 @@
 		FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */; };
 		FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */; };
 		FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */; };
+		FF8A67F11A37E33C00966185 /* vvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FF8A67F01A37DC3100966185 /* vvideo.mp4 */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
 		FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189119F101EA00538DAC /* CIImageRendererUtils.m */; };
 		FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8F189319F101EA00538DAC /* SCArchivedVector.m */; };
@@ -148,7 +149,8 @@
 		AB8C71951A27908700BF31EA /* TimelinePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimelinePost.m; path = Model/TimelinePost.m; sourceTree = "<group>"; };
 		AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoviePlayerManager.h; path = Model/MoviePlayerManager.h; sourceTree = "<group>"; };
 		AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoviePlayerManager.m; path = Model/MoviePlayerManager.m; sourceTree = "<group>"; };
-		BB00E8338B25450F8181FC74 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AEDA5ACCBEC0743EEB3E0030 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ECE6FBEDA779D2709F08EDBF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
 		FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
 		FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleTableViewCell.xib; sourceTree = "<group>"; };
@@ -202,6 +204,8 @@
 		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
 		FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile_otherPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		FF4DDC301A37D7DE002AEF7C /* libPods-SBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SBJson.a"; path = "Pods/build/Release-iphoneos/libPods-SBJson.a"; sourceTree = "<group>"; };
+		FF4DDC321A37D822002AEF7C /* libPods-SBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SBJson.a"; path = "Pods/build/Release-iphoneos/libPods-SBJson.a"; sourceTree = "<group>"; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -265,6 +269,7 @@
 		FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4TableViewCell.h; sourceTree = "<group>"; };
 		FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4TableViewCell.m; sourceTree = "<group>"; };
 		FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample4TableViewCell.xib; sourceTree = "<group>"; };
+		FF8A67F01A37DC3100966185 /* vvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = vvideo.mp4; path = ../../../Desktop/vvideo.mp4; sourceTree = "<group>"; };
 		FF8D84F519194F8200939312 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FF8D84F719194F8B00939312 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FF8F188F19F101EA00538DAC /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
@@ -398,6 +403,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AC81C61C1184E4EE688B386 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECE6FBEDA779D2709F08EDBF /* Pods.debug.xcconfig */,
+				AEDA5ACCBEC0743EEB3E0030 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB8C717C1A278BC300BF31EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +512,7 @@
 				AB8C71861A278D8C00BF31EA /* GocciUnitTests */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
-				BB00E8338B25450F8181FC74 /* Pods.xcconfig */,
+				1AC81C61C1184E4EE688B386 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -514,6 +528,8 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF4DDC321A37D822002AEF7C /* libPods-SBJson.a */,
+				FF4DDC301A37D7DE002AEF7C /* libPods-SBJson.a */,
 				FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */,
 				FFA1769C199133EE005BEE41 /* Security.framework */,
 				FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */,
@@ -568,6 +584,7 @@
 				AB8C717C1A278BC300BF31EA /* Model */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF648A3E1A2D81F0008987BB /* sample.mov */,
+				FF8A67F01A37DC3100966185 /* vvideo.mp4 */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 			);
@@ -933,6 +950,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8A67F11A37E33C00966185 /* vvideo.mp4 in Resources */,
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
@@ -966,7 +984,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E7DE6D97841149DCB4BA88F0 /* Check Pods Manifest.lock */ = {
@@ -1225,7 +1243,7 @@
 		};
 		FF54F01219149A1900025DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB00E8338B25450F8181FC74 /* Pods.xcconfig */;
+			baseConfigurationReference = ECE6FBEDA779D2709F08EDBF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1241,6 +1259,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Gocci/CrittercismSDK",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1254,7 +1273,7 @@
 		};
 		FF54F01319149A1900025DC8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB00E8338B25450F8181FC74 /* Pods.xcconfig */;
+			baseConfigurationReference = AEDA5ACCBEC0743EEB3E0030 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1270,6 +1289,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Gocci/CrittercismSDK",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

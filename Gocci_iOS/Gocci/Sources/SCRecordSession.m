@@ -359,6 +359,11 @@ const NSString *SCRecordSessionDateKey = @"Date";
 - (void)saveToCameraRoll {
     UISaveVideoAtPathToSavedPhotosAlbum(self.outputUrl.path, nil, nil, nil);
     NSData *sampleData = [NSData dataWithContentsOfFile:self.outputUrl.path];
+    NSLog(@"sampleData:%@",sampleData);
+    //デリゲートの値を取得するときは、このメソッドを使用する。(テスト)
+    AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
+    movieDelegete.movieData = sampleData;
+    
     // ファイルマネージャを作成
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -391,6 +396,8 @@ const NSString *SCRecordSessionDateKey = @"Date";
     
     //アップロードするファイルの名前
     NSString *fileName = [[self.outputUrl.path componentsSeparatedByString:@"/"] lastObject];
+    NSLog(@"outputurl:%@",self.outputUrl.path);
+    NSLog(@"fileName:%@",fileName);
     
     //アップロードするファイルの種類
     NSString *contentType = @"video/mp4";

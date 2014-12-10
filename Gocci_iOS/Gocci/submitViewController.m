@@ -10,6 +10,10 @@
 #import "AppDelegate.h"
 #import "EDStarRating.h"
 #import "SVProgressHUD.h"
+#import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import "AFNetworking/AFNetworking.h"
+
 
 @interface submitViewController ()<UITextViewDelegate>
 
@@ -154,62 +158,153 @@
 
 //Twitterの投稿
 - (IBAction)submitTwitter:(UIButton*)sender {
-        [self postMedia:SLServiceTypeTwitter];
-    }
+       // [self postMedia:SLServiceTypeTwitter];
+    //URLとパラメータを生成
+    NSString* url = @"https://api.twitter.com/1.1/statuses/update.json";
+    NSMutableDictionary* param = @{@"status":@"Gocciからの投稿"}.mutableCopy;
+    
+    //リクエストにメソッド(POST)、URL、パラメータを設定
+    NSMutableURLRequest *tweetRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST"
+                                                                                      URLString:url
+                                                                                     parameters:param
+                                                                                          error:nil];
+    
+    //認証
+    [[PFTwitterUtils twitter] signRequest:tweetRequest];
+    
+    //operationの定義
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:tweetRequest];
+    
+    //実行
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSLog(@"success!");
+        
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        
+        NSLog(@"fail!");
+        NSLog(@"operation=%@",operation);
+        NSLog(@"error=%@",error);
+        
+    }];
+    
+    [[NSOperationQueue mainQueue] addOperation:operation];
+}
+
+
+//twitter 画像添付バージョン
+-(void)tweetWithImage:(NSString *)message image:(UIImage *)image{
+    
+    //受け取ったUIImageをNSData形式に変換
+    NSData* data = UIImageJPEGRepresentation(image, 1.0);
+    
+    AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
+    
+    
+    // AFHTTPRequestOperationManagerの定義
+    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    //URLとパラメータを生成
+    NSString* url = @"https://api.twitter.com/1.1/statuses/update_with_media.json";
+    NSMutableDictionary* param = @{@"status":message}.mutableCopy;
+    
+    //リクエストにメソッド(POST)、URL、パラメータ、添付画像を設定
+    NSMutableURLRequest *tweetRequest = [manager.requestSerializer multipartFormRequestWithMethod:@"POST"
+                                                                                        URLString:url
+                                                                                       parameters:param
+                                         
+                                                                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+                                                                            
+                                                                            [formData appendPartWithFormData:movieDelegete.movieData name:@"media[]"];
+                                                                            
+                                                                        }
+                                                                                            error:NULL];
+    
+    
+    //認証!
+    [[PFTwitterUtils twitter] signRequest:tweetRequest];
+    
+    //送信!
+    AFHTTPRequestOperation *operation = [manager HTTPRequestOperationWithRequest:tweetRequest success:^(AFHTTPRequestOperation* operation, id responseObject){
+        
+        NSLog(@"success!");
+        
+    }failure:^(AFHTTPRequestOperation* operation, NSError* error){
+        
+        NSLog(@"operation=%@",operation);
+        NSLog(@"eror=%@",error);
+        
+    }];;
+    
+    [manager.operationQueue addOperation:operation];
+
+}
 
 //Facebookの投稿
 - (IBAction)submitFacebook:(UIButton *)sender {
-        [self postMedia:SLServiceTypeFacebook];
-    }
+     [SVProgressHUD showWithStatus:@"紹介中" maskType:SVProgressHUDMaskTypeAnimation];
     
--(void) postMedia:(NSString*)type
-{
+    //プライバシー(公開範囲)の設定
+    NSDictionary* privacy = @{@"value":@"CUSTOM", @"friends":@"ALL_FRIENDS"};
+    NSError*error2 =nil;
+    NSData*data2 =[NSJSONSerialization dataWithJSONObject:privacy options:2 error:&error2];
+    NSString*jsonstr=[[NSString alloc]initWithData:data2 encoding:NSUTF8StringEncoding];
     
-      NSString *serviceType = type;
-        //if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
+    /*
+     SBJson4Writer *jsonWriter = [[SBJson4Writer alloc] init];
+     
+     NSString *jsonString = [jsonWriter stringWithObject:privacy];
+     
+     */
+    AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
+    AppDelegate *restaurantDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *filePath =  [bundle pathForResource:@"vvideo" ofType:@"mp4"];
+    NSLog(@"filePath:%@",filePath);
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSLog(@"data:%@",data);
+    NSString *message = @"Gocciからの投稿";
+    
+    NSMutableDictionary* params = @{@"message":message,
+                                    @"privacy":jsonstr,
+                                    @"movie.mp4":movieDelegete.movieData,
+                                    @"title":restaurantDelegate.gText,
+                                    }.mutableCopy;
+    
+    //FBリクエストの作成
+    FBRequest *request = [FBRequest requestWithGraphPath:@"me/videos"
+                                              parameters:params
+                                              HTTPMethod:@"POST"];
+    
+    
+    //コネクションをセットしてすぐキャンセル→NSMutableURLRequestを生成するため???
+    //ここはStack Overflowの受け売り
+    FBRequestConnection *requestConnection = [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    }];
+    [requestConnection cancel];
+    
+    //リクエストの作成
+    NSMutableURLRequest *urlRequest = requestConnection.urlRequest;
+    
+    //送信！
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // Do your success callback.
+        NSLog(@"success!");
         
-        SLComposeViewController *viewController = [SLComposeViewController
-                                                   composeViewControllerForServiceType:serviceType];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Do your failure callback.
+        NSLog(@"fail!");
+        NSLog(@"operation=%@",operation);
+        NSLog(@"error=%@",error);
+    }];
     
-    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me/videos"];
     
-    NSURL *videoPathURL = [[NSURL alloc]initFileURLWithPath:@"sample.mov" isDirectory:NO];
-    NSData *videoData = [NSData dataWithContentsOfFile:@"sample.mov"];
-    
-    NSString *status = @"One step closer.";
-    NSDictionary *params = @{@"title":status, @"description":status};
-    
-    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                            requestMethod:SLRequestMethodPOST
-                                                      URL:url
-                                               parameters:params];
-    
-    [request addMultipartData:videoData
-                     withName:@"source"
-                         type:@"video/quicktime"
-                     filename:[videoPathURL absoluteString]];
-    
-      //デリゲートの値を取得するときは、このメソッドを使用する。
-      AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
-       NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
-       NSString* stringA = @"http://api-gocci.jp/movies/";
-       NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,filename];
-        NSURL *holeurl = [NSURL URLWithString:entitystring];
-       NSLog(@"holeurl:%@",holeurl);
-        [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
-        [viewController addURL:holeurl]; //URLのセット
-        viewController.completionHandler = ^(SLComposeViewControllerResult res) {
-            if (res == SLComposeViewControllerResultCancelled) {
-                NSLog(@"cancel");
-            }
-            else if (res == SLComposeViewControllerResultDone) {
-                NSLog(@"done");
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        };
-        [self presentViewController:viewController animated:YES completion:nil];
-        
-    }
+    [[NSOperationQueue mainQueue] addOperation:operation];
+    [SVProgressHUD dismiss];
+}
 
 
 
