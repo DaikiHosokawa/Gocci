@@ -130,14 +130,17 @@
     
     [self updateVisibleCells];
     */
+    [self _fetchProfile];
+    [self.tableView reloadData];
+    
     [SVProgressHUD dismiss];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -290,6 +293,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
         _goodnum_ = [goodnum mutableCopy];
         dispatch_async(q_main, ^{
+            [self _fetchProfile];
             [self.tableView reloadData];
             NSLog(@"goodBtn is touched");
         });
@@ -347,6 +351,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // タイムラインを再読み込み
     [self _fetchProfile];
+    [self.tableView reloadData];
 }
 
 - (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
@@ -365,11 +370,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     LOG(@"postid=%@", postID);
     _postID = postID;
     [self performSegueWithIdentifier:@"showDetail2" sender:postID];
+
 }
 
 - (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
 {
-    // コメントボタン押下時の処理
+    // 削除ボタン押下時の処理
     LOG(@"postid=%@", postID);
     _postID = postID;
     Class class = NSClassFromString(@"UIAlertController");
@@ -399,7 +405,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                    returningResponse:&response
                                                                error:&error];
-            [self _fetchProfile];
+           [self _fetchProfile];
+           [self.tableView reloadData];
             
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -428,6 +435,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                            error:&error];
         
         [self _fetchProfile];
+        [self.tableView reloadData];
     
     }}
 
@@ -478,7 +486,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:CGRectMake(0,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+65,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
 }

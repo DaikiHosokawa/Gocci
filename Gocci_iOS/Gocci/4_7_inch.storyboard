@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="eNe-5a-Fw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="x1a-eI-W4a">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -71,7 +71,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="H7k-WB-7Es"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="profilename" destination="n1E-cj-0jK" id="Iq8-TI-u15"/>
                         <outlet property="profilepicture" destination="Z4T-3h-dPQ" id="XJc-Ja-Ykd"/>
@@ -87,7 +86,7 @@
         <scene sceneID="U1j-Ki-KpJ">
             <objects>
                 <tableViewController id="JWG-MP-T7g" customClass="usersTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6yc-K1-zfR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6yc-K1-zfR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,7 +95,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_login kirinuki" id="FFs-Ax-1Nl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" id="sha-mf-CFW">
@@ -121,10 +120,8 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -135,7 +132,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dCA-qd-BO1"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="profilename" destination="pgk-3H-OJJ" id="gWS-xS-5Oe"/>
                         <outlet property="profilepicture" destination="sha-mf-CFW" id="Yub-st-JRQ"/>
@@ -145,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPk-hR-671" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2415.5" y="-2301.5"/>
+            <point key="canvasLocation" x="-2415" y="-2301"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="saE-e0-xWL">
@@ -160,48 +156,48 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login ver2" id="QBv-VK-H8r">
-                                <rect key="frame" x="-1" y="1" width="377" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="376" height="399"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gocci-kun-60-60" id="jcr-zP-wQU">
-                                <rect key="frame" x="157" y="146" width="60" height="60"/>
+                                <rect key="frame" x="152" y="130" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gocci-moji-1" id="0fX-Tx-b95">
-                                <rect key="frame" x="142" y="155" width="91" height="133"/>
+                                <rect key="frame" x="137" y="136" width="120" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ojS-xN-p7a">
-                                <rect key="frame" x="72" y="496" width="231" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ikD-dU-nxV">
+                                <rect key="frame" x="60" y="487" width="254" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="facebook kirinuki">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="facebookButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="wVV-NF-gEO"/>
+                                    <action selector="facebookButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="Oi9-ks-2VZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xc1-1K-Plj">
-                                <rect key="frame" x="72" y="560" width="231" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dvW-ja-Vzv">
+                                <rect key="frame" x="60" y="566" width="254" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="twitter kirinuki">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="twitterButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="nJu-3Y-egL"/>
+                                    <action selector="twitterButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="w7U-Rv-Eus"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食体験をシェアしよう" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYd-iH-5Ft">
-                                <rect key="frame" x="94" y="429" width="187" height="21"/>
+                                <rect key="frame" x="67" y="418" width="233" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルメ動画アプリ「Gocci」" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbd-Nc-iZG">
-                                <rect key="frame" x="104" y="458" width="166" height="21"/>
+                                <rect key="frame" x="87" y="447" width="223" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.29757570230000002" green="0.29918421960000002" blue="0.29596718500000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -264,8 +260,8 @@
                     <navigationItem key="navigationItem" title="Gocci" id="CMw-GA-8Go">
                         <barButtonItem key="leftBarButtonItem" image="ic_account_circle_black_24dp" id="O3c-M8-tc9">
                             <connections>
-                                <action selector="pushUserTimeline:" destination="eNe-5a-Fw9" id="LxT-bE-8r5"/>
-                                <segue destination="JWG-MP-T7g" kind="push" identifier="goUserTimeline" id="BFm-CQ-6fi"/>
+                                <action selector="onProfileButton:" destination="eNe-5a-Fw9" id="Yot-LD-e5W"/>
+                                <segue destination="JWG-MP-T7g" kind="push" id="QgH-hx-p31"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_search_black_24dp" id="x8r-pg-0JT">
@@ -294,7 +290,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" id="IIx-2O-jGK">
-                            <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                         </mapView>
@@ -317,7 +313,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Gocci" id="HX7-Ga-t3w"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
                     </connections>
@@ -339,19 +334,19 @@
             <objects>
                 <viewController storyboardIdentifier="submitViewController" id="3H1-41-IX9" customClass="submitViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I29-my-nvG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" id="skU-qy-F38">
-                                <rect key="frame" x="0.0" y="0.0" width="376" height="669"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character3" id="2zX-l8-dyd">
-                                <rect key="frame" x="108" y="519" width="160" height="148"/>
+                                <rect key="frame" x="80" y="420" width="160" height="148"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZPl-oK-SoY">
-                                <rect key="frame" x="47" y="284" width="283" height="38"/>
+                                <rect key="frame" x="40" y="218" width="242" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="tw_share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -360,23 +355,8 @@
                                     <action selector="submitTwitter:" destination="3H1-41-IX9" eventType="touchUpInside" id="m79-iO-1cB"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
-                                <rect key="frame" x="162" y="186" width="168" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8fM-0Y-csX">
-                                <rect key="frame" x="47" y="346" width="283" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="fb_share">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitFacebook:" destination="3H1-41-IX9" eventType="touchUpInside" id="E9U-IX-7aL"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mls-RG-o6C">
-                                <rect key="frame" x="43" y="426" width="291" height="56"/>
+                                <rect key="frame" x="40" y="323" width="252" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.21511841230000001" blue="0.25791172369999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.96984080632797054" green="1" blue="0.9539011325302571" alpha="1" colorSpace="calibratedRGB"/>
@@ -387,12 +367,27 @@
                                     <action selector="pushComplete:" destination="3H1-41-IX9" eventType="touchUpInside" id="AFB-Nv-IaL"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
+                                <rect key="frame" x="114" y="146" width="168" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8fM-0Y-csX">
+                                <rect key="frame" x="40" y="266" width="242" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="fb_share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitFacebook:" destination="3H1-41-IX9" eventType="touchUpInside" id="E9U-IX-7aL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Gocci" id="wc3-ws-9bj"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="_facebookBtn" destination="8fM-0Y-csX" id="Oez-sR-v69"/>
                         <outlet property="_twitterBtn" destination="ZPl-oK-SoY" id="WoQ-Xw-TmG"/>
@@ -402,44 +397,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144.5" y="-588.5"/>
+            <point key="canvasLocation" x="2143" y="-580"/>
         </scene>
         <!--Gocci-->
         <scene sceneID="ohC-at-e4x">
             <objects>
                 <tableViewController storyboardIdentifier="RestaurantTV" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Ul-L7-bNU" customClass="RestaurantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="22" sectionFooterHeight="22" id="9d0-cW-eFL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleAspectFit" id="JTR-Lc-xze">
-                            <rect key="frame" x="0.0" y="64" width="375" height="93"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_login kirinuki" id="oRz-WF-A89">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="93"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradation" id="7Lc-MB-8WW">
-                                    <rect key="frame" x="-4" y="0.0" width="379" height="93"/>
+                                    <rect key="frame" x="-4" y="0.0" width="328" height="93"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スターバックス　栄広小路店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5SO-Dv-yVu">
-                                    <rect key="frame" x="16" y="8" width="252" height="46"/>
+                                    <rect key="frame" x="16" y="8" width="202" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛知県名古屋市中区　3-24-24 324ビル" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7g-eC-FaU">
-                                    <rect key="frame" x="16" y="56" width="244" height="37"/>
+                                    <rect key="frame" x="16" y="56" width="196" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZVE-tL-vc2">
-                                    <rect key="frame" x="268" y="-8" width="99" height="109"/>
+                                    <rect key="frame" x="220" y="-8" width="99" height="109"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="toukou">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -476,7 +471,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="locality" destination="o7g-eC-FaU" id="Sae-n9-u4l"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
@@ -487,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcc-dt-OWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-520.5" y="-1115.5"/>
+            <point key="canvasLocation" x="-520" y="-1115"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="g4T-x8-Fma">
@@ -579,23 +574,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tsx-gY-MeH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TOS-tb-04b">
                                 <rect key="frame" x="10" y="25" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="＜戻る">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="m6I-mF-Mmf" kind="unwind" unwindAction="unwindToTop:" id="SBN-zh-eWW"/>
+                                    <segue destination="j5Y-Vt-BVT" kind="unwind" unwindAction="unwindToTop:" id="KgN-rw-49O"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0秒" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cCO-VC-azk" userLabel="Time recorded Label">
                                 <rect key="frame" x="196" y="30" width="108" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -619,7 +613,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <exit id="m6I-mF-Mmf" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="j5Y-Vt-BVT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-256" y="-301"/>
         </scene>
@@ -628,11 +622,11 @@
             <objects>
                 <viewController storyboardIdentifier="SCVideoPlayerViewController" id="VeQ-Zi-V20" customClass="SCVideoPlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V11-1J-PU0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="vYn-vb-aBd" customClass="SCSwipeableFilterView">
-                                <rect key="frame" x="0.0" y="47" width="375" height="639"/>
+                                <rect key="frame" x="0.0" y="47" width="320" height="540"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -641,7 +635,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="n7L-mL-T48"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="filterSwitcherView" destination="vYn-vb-aBd" id="UTW-5m-3hq"/>
                         <segue destination="3H1-41-IX9" kind="push" identifier="gotoSubmit" id="5rK-g9-SYM"/>
@@ -649,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQF-XH-HvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895" y="-162"/>
+            <point key="canvasLocation" x="895" y="-296"/>
         </scene>
         <!--Gocci-->
         <scene sceneID="1xX-vo-VZ6">
@@ -660,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pJh-hx-rc3">
-                            <rect key="frame" x="0.0" y="220" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" id="MGJ-05-MYY">
@@ -704,7 +698,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="textField" destination="IHK-zv-2cx" id="78J-JE-O21"/>
                     </connections>
@@ -739,9 +732,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ogp-a2-6SY"/>
         <segue reference="wis-md-2uD"/>
+        <segue reference="ogp-a2-6SY"/>
+        <segue reference="uLy-rw-ivI"/>
         <segue reference="tK9-zW-yJ4"/>
-        <segue reference="upz-Ke-AzS"/>
     </inferredMetricsTieBreakers>
 </document>

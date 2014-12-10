@@ -59,8 +59,12 @@
     self.navigationItem.leftBarButtonItem.enabled = NO;
     
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-
+    
+    // API からタイムラインのデータを取得
+    [self _fetchTimeline];
+    
     [self.tableView reloadData];
+    
 
     [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
@@ -75,6 +79,9 @@
     
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
+    
+    // 動画データを一度全て削除
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
 }

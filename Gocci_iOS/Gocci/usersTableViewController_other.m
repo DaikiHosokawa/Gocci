@@ -76,6 +76,7 @@
    
     // API からタイムラインのデータを取得
     [self _fetchProfile_other];
+    [self.tableView reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -133,6 +134,7 @@
             });
         });
     */
+    [self _fetchProfile_other];
     [self.tableView reloadData];
 
     [SVProgressHUD dismiss];
@@ -394,6 +396,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // タイムラインを再読み込み
     [self _fetchProfile_other];
+    [self.tableView reloadData];
 }
 
 - (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapRestnameWithrestname:(NSString *)restname

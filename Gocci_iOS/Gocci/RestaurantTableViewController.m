@@ -77,6 +77,9 @@
     delegate.gText = _postRestName;
 
     [SVProgressHUD dismiss];
+   
+    [self _fetchRestaurant];
+    [self.tableView reloadData];
     
 }
 
@@ -85,6 +88,9 @@
 
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
+    
+    // 動画データを一度全て削除
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
 }

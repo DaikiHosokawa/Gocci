@@ -130,8 +130,8 @@
     AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
     appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-    NSLog(@"latitudeStr:%@",lat);
-    NSLog(@"longitudeStr:%@",lon);
+    NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
+    NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
   
     [locationManager stopUpdatingLocation];    
     

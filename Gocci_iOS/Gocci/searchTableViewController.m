@@ -13,6 +13,7 @@
 #import "RestaurantTableViewController.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
+#import "MoviePlayerManager.h"
 
 @interface SearchTableViewController ()
 <UISearchBarDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
@@ -39,6 +40,7 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+
     _searchBar.text = NULL;
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
