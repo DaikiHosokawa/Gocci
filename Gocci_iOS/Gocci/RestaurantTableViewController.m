@@ -59,17 +59,11 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+-(void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
     // グローバル変数に保存
@@ -78,14 +72,12 @@
 
     [SVProgressHUD dismiss];
    
+    // API からタイムラインのデータを取得
     [self _fetchRestaurant];
-    [self.tableView reloadData];
-    
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-
+-(void)viewWillDisappear:(BOOL)animated
+{
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
@@ -98,13 +90,6 @@
 - (IBAction)unwindToTop:(UIStoryboardSegue *)segue
 {
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-    //[moviePlayer stop];
-}
-
 
 - (void)viewDidLoad
 {
@@ -126,10 +111,6 @@
     self.tableView.separatorColor = [UIColor clearColor ];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
-    
-    // API からタイムラインのデータを取得
-    [self _fetchRestaurant];
-
 }
 
 
