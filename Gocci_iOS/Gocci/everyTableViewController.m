@@ -41,9 +41,10 @@
     return self;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-  [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
-  
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     [SVProgressHUD dismiss];
     _postIDtext = _postID;
@@ -70,8 +71,8 @@
     // キーボードの表示・非表示がNotificationCenterから通知される
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
 
-    }
 - (IBAction)pushSendBtn:(id)sender {
     _dottext = _textField.text;
     if (_textField.text.length == 0) {
@@ -119,11 +120,8 @@
     [_textField resignFirstResponder];
 }
 
-
-
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-    
+-(void)viewWillDisappear:(BOOL)animated
+{
     // キーボードの表示・非表示はNotificationCenterから通知されますよっと
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -136,15 +134,15 @@
     [defaultCenter removeObserver:self
                              name:UIKeyboardWillHideNotification
                            object:nil];
-    }
-
+    
+    [super viewWillDisappear:animated];
+}
 
 - (void)viewDidLoad
 {
-
-    self.navigationItem.title = @"コメント画面";
-    
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"コメント画面";
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
 
@@ -158,8 +156,7 @@
     self.tableView.bounces = NO;
      self.tableView.allowsSelection = NO;
     _textField.placeholder = @"ここにコメントを入力してください。";
-    
-   }
+}
 
 // キーボードが表示される時に呼び出されますー
 - (void)keyboardWillShow:(NSNotification *)notification {

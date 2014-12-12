@@ -78,21 +78,18 @@
     return self;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
-}
-
-
 
 - (void)viewDidLoad
 {
     sleep(3);
     [super viewDidLoad];
     
-      self.navigationItem.title = @"投稿画面";
+    self.navigationItem.title = @"投稿画面";
     
     /*
     // Do any additional setup after loading the view.
@@ -123,8 +120,6 @@
         // For the sample, Just reuse the other control's delegate method and call it
         [self starsSelectionChanged:_starRatingImage rating:rating];
     };
-
-    
 }
 
 -(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating

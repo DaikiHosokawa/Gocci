@@ -38,8 +38,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 
     _searchBar.text = NULL;
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -129,12 +128,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewWillDisappear:animated];
 }
-
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -193,12 +190,6 @@
                     }
         });
     });
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

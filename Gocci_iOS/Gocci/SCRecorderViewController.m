@@ -141,7 +141,7 @@
     [self updateTimeRecordedLabel];
    
     // NavigationBar 非表示
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -157,16 +157,15 @@
     [_recorder focusCenter];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
 
     [_recorder endRunningSession];
-    // NavigationBar 表示
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
     
     self.navigationController.navigationBarHidden = NO;

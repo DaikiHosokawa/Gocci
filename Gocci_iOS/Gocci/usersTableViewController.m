@@ -69,12 +69,13 @@
     
     // API からタイムラインのデータを取得
     [self _fetchProfile];
-    
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
    /*
     //JSONをパース
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
@@ -136,18 +137,15 @@
     [SVProgressHUD dismiss];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+-(void)viewWillDisappear:(BOOL)animated
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
+    
+    [super viewWillDisappear:animated];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 

@@ -50,7 +50,8 @@
 @synthesize postUsername= _postUsername;
 @synthesize postPicture= _postPicture;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.navigationItem.title = _postUsername;
@@ -79,9 +80,11 @@
     [self.tableView reloadData];
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
     /*
     NSString *tapusername = _postUsername;
         NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",tapusername];
@@ -140,20 +143,16 @@
     [SVProgressHUD dismiss];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    
-    [self.navigationController setNavigationBarHidden:YES animated:YES]; // ナビゲーションバー非表示
+-(void)viewWillDisappear:(BOOL)animated
+{
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super viewWillDisappear:animated];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
