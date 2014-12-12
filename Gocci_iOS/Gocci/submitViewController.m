@@ -244,19 +244,15 @@
 //Facebookの投稿
 - (IBAction)submitFacebook:(UIButton *)sender {
      [SVProgressHUD showWithStatus:@"紹介中" maskType:SVProgressHUDMaskTypeAnimation];
-    
+
+     
+     
     //プライバシー(公開範囲)の設定
     NSDictionary* privacy = @{@"value":@"CUSTOM", @"friends":@"ALL_FRIENDS"};
     NSError*error2 =nil;
     NSData*data2 =[NSJSONSerialization dataWithJSONObject:privacy options:2 error:&error2];
     NSString*jsonstr=[[NSString alloc]initWithData:data2 encoding:NSUTF8StringEncoding];
     
-    /*
-     SBJson4Writer *jsonWriter = [[SBJson4Writer alloc] init];
-     
-     NSString *jsonString = [jsonWriter stringWithObject:privacy];
-     
-     */
     AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
     AppDelegate *restaurantDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -303,6 +299,8 @@
     
     
     [[NSOperationQueue mainQueue] addOperation:operation];
+   
+    
     [SVProgressHUD dismiss];
 }
 
