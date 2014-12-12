@@ -395,7 +395,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // タイムラインを再読み込み
     [self _fetchProfile_other];
-    [self.tableView reloadData];
 }
 
 - (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapRestnameWithrestname:(NSString *)restname
