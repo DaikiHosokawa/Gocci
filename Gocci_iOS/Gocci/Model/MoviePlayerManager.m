@@ -2,8 +2,13 @@
 #import "APIClient.h"
 
 @interface MoviePlayerManager()
-@property (nonatomic,strong) NSMutableArray *players;
+
+/** MPMoviePlayerController を格納 */
+@property (nonatomic,strong) NSMutableDictionary *players;
+
+/** 再生用の MPMoviePlayerController */
 @property (nonatomic,strong) MPMoviePlayerController *globalPlayer;
+
 @end
 
 @implementation MoviePlayerManager
@@ -26,7 +31,7 @@ static MoviePlayerManager *_sharedInstance = nil;
         return nil;
     }
     
-    self.players = [NSMutableArray arrayWithCapacity:0];
+    self.players = [NSMutableDictionary dictionaryWithCapacity:0];
     
     return self;
 }
@@ -36,12 +41,11 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)addPlayerWithMovieURL:(NSString *)urlString size:(CGSize)size atIndex:(NSUInteger)index completion:(void (^)(BOOL))completion
 {
-    if ([self.players count] > index) {
+    NSString *key = [NSString stringWithFormat:@"%@", @(index)];
+    
+    if (self.players[key]) {
         return;
     }
-    
-    // 仮で空の MPMoviePlayerController オブジェクトを格納
-    [self.players addObject:[MPMoviePlayerController new]];
     
     __weak typeof(self)weakSelf = self;
     [APIClient downloadMovieFile:urlString
@@ -56,8 +60,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
                           moviePlayer.repeatMode = MPMovieRepeatModeOne;
                           moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
-                          
-                        [weakSelf.players replaceObjectAtIndex:index withObject:moviePlayer];
+                          weakSelf.players[key] = moviePlayer;
                           
                           completion(YES);
                       }];
@@ -65,7 +68,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)removeAllPlayers
 {
-    for (MPMoviePlayerController *p in self.players) {
+    for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }
     
@@ -114,18 +117,19 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (MPMoviePlayerController *)_playerAtIndex:(NSUInteger)index
 {
-    if ([self.players count] <= index) {
+    NSString *key = [NSString stringWithFormat:@"%@", @(index)];
+    if (!self.players[key]) {
         return nil;
     }
     
-    MPMoviePlayerController *player = self.players[index];
+    MPMoviePlayerController *player = self.players[key];
     
     if (!player.contentURL) {
         return nil;
     }
     
     // 指定されたもの以外の再生を停止状態にする
-    for (MPMoviePlayerController *p in self.players) {
+    for (MPMoviePlayerController *p in [self.players allValues]) {
         if (p == player) {
             continue;
         }

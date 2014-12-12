@@ -44,36 +44,25 @@
 
 @implementation TimelineTableViewController
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.leftBarButtonItem.enabled = NO;
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     
     // API からタイムラインのデータを取得
     [self _fetchTimeline];
     
     [self.tableView reloadData];
-    
 
     [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
 }
 
-
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [super viewWillDisappear:animated];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -82,21 +71,13 @@
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
-    
-    [super viewWillDisappear:animated];
 }
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
+    [super viewDidAppear:animated];
     
     self.navigationItem.leftBarButtonItem.enabled = YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [self.navigationController setNavigationBarHidden:NO animated:YES]; // ナビゲーションバー表示
 }
 
 - (IBAction)pushUserTimeline:(id)sender {
@@ -139,9 +120,6 @@
     
     self.tableView.bounces = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    // API からタイムラインのデータを取得
-    [self _fetchTimeline];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
