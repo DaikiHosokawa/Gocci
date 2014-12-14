@@ -49,10 +49,13 @@ static APIClient *_sharedInstance = nil;
 
 #pragma mark - Class Methods
 
-+ (void)timelineWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)timelineWithHandler:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
+    NSDictionary *params = @{
+                             @"limit" : limit,
+                             };
     [[APIClient sharedClient].manager GET:@"timeline/"
-                               parameters:nil
+                               parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -353,7 +353,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient timelineWithHandler:^(NSArray *result, NSUInteger code, NSError *error) {
+    
+    NSString *limit = @"50";
+   [APIClient timelineWithHandler:(NSString *)limit  handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         //LOG(@"result=%@", result);
         //LOG(@"code=%@, error=%@", @(code), error);
