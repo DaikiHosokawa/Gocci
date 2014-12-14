@@ -386,6 +386,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  */
 - (void)_playMovieAtCurrentCell
 {
+    if (self.navigationController.topViewController != self) {
+        // 画面がフォアグラウンドのときのみ再生
+        return;
+    }
+    
     Sample2TableViewCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
