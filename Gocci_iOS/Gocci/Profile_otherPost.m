@@ -14,7 +14,7 @@
 
 + (instancetype)profile_otherPostWithDictionary:(NSDictionary *)dictionary
 {
-    dictionary = [dictionary dictionaryByRemovingNull];
+  //  dictionary = [dictionary dictionaryByRemovingNull];
     
     Profile_otherPost *obj = [Profile_otherPost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];

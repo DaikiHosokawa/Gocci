@@ -10,7 +10,7 @@
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary
 {
-    dictionary = [dictionary dictionaryByRemovingNull];
+ //   dictionary = [dictionary dictionaryByRemovingNull];
     
     TimelinePost *obj = [TimelinePost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];

@@ -13,7 +13,7 @@
 
 + (instancetype)profilePostWithDictionary:(NSDictionary *)dictionary
 {
-    dictionary = [dictionary dictionaryByRemovingNull];
+   // dictionary = [dictionary dictionaryByRemovingNull];
     
     ProfilePost *obj = [ProfilePost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];

@@ -13,7 +13,7 @@
 
 + (instancetype)restaurantPostWithDictionary:(NSDictionary *)dictionary
 {
-    dictionary = [dictionary dictionaryByRemovingNull];
+ //   dictionary = [dictionary dictionaryByRemovingNull];
     
     RestaurantPost *obj = [RestaurantPost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];
