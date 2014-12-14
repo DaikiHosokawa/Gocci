@@ -16,7 +16,7 @@
     // グローバル変数
     NSString *gText;
     //グローバル変数
-    NSURL *postMovieURL;
+    NSURL *postFileName;
     //グローバル変数
     NSString *username;
     //グローバル変数
@@ -34,7 +34,7 @@
 
 @property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *gText;
-@property (nonatomic, retain) NSURL *postMovieURL;
+@property (nonatomic, retain) NSString *postFileName;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *userpicture;
 @property (nonatomic) double latitude,longitude;

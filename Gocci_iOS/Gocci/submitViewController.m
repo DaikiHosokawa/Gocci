@@ -167,9 +167,9 @@
     
 //リゲートの値を取得するときは、このメソッドを使用する。
     AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
-    NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
+    //NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
     NSString* stringA = @"http://api-gocci.jp/movies/";
-    NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,filename];
+    NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,appDelegete2.postFileName];
     NSURL *holeurl = [NSURL URLWithString:entitystring];
     NSLog(@"holeurl:%@",holeurl);
     [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];

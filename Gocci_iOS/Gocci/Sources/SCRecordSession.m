@@ -398,6 +398,9 @@ const NSString *SCRecordSessionDateKey = @"Date";
     NSString *fileName = [[self.outputUrl.path componentsSeparatedByString:@"/"] lastObject];
     NSLog(@"outputurl:%@",self.outputUrl.path);
     NSLog(@"fileName:%@",fileName);
+    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+    delegate.postFileName = fileName;
+    NSLog(@"postMovieURL:%@",delegate.postFileName);
     
     //アップロードするファイルの種類
     NSString *contentType = @"video/mp4";
