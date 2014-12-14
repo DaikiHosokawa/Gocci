@@ -153,88 +153,40 @@
 
 //Twitterの投稿
 - (IBAction)submitTwitter:(UIButton*)sender {
-       // [self postMedia:SLServiceTypeTwitter];
-    //URLとパラメータを生成
-    NSString* url = @"https://api.twitter.com/1.1/statuses/update.json";
-    NSMutableDictionary* param = @{@"status":@"Gocciからの投稿"}.mutableCopy;
-    
-    //リクエストにメソッド(POST)、URL、パラメータを設定
-    NSMutableURLRequest *tweetRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST"
-                                                                                      URLString:url
-                                                                                     parameters:param
-                                                                                          error:nil];
-    
-    //認証
-    [[PFTwitterUtils twitter] signRequest:tweetRequest];
-    
-    //operationの定義
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:tweetRequest];
-    
-    //実行
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        NSLog(@"success!");
-        
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        
-        NSLog(@"fail!");
-        NSLog(@"operation=%@",operation);
-        NSLog(@"error=%@",error);
-        
-    }];
-    
-    [[NSOperationQueue mainQueue] addOperation:operation];
+ [self postMedia:SLServiceTypeTwitter];
 }
 
-
-//twitter 画像添付バージョン
--(void)tweetWithImage:(NSString *)message image:(UIImage *)image{
+-(void) postMedia:(NSString*)type
+{
     
-    //受け取ったUIImageをNSData形式に変換
-    NSData* data = UIImageJPEGRepresentation(image, 1.0);
+    NSString *serviceType = type;
+    //if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
     
-    AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
+    SLComposeViewController *viewController = [SLComposeViewController
+                                               composeViewControllerForServiceType:serviceType];
     
+//リゲートの値を取得するときは、このメソッドを使用する。
+    AppDelegate *appDelegete2 = [[UIApplication sharedApplication] delegate];
+    NSString *filename = [appDelegete2.postMovieURL lastPathComponent];
+    NSString* stringA = @"http://api-gocci.jp/movies/";
+    NSString* entitystring  = [NSString stringWithFormat:@"%@%@",stringA,filename];
+    NSURL *holeurl = [NSURL URLWithString:entitystring];
+    NSLog(@"holeurl:%@",holeurl);
+    [viewController setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
+    [viewController addURL:holeurl]; //URLのセット
+    viewController.completionHandler = ^(SLComposeViewControllerResult res) {
+        if (res == SLComposeViewControllerResultCancelled) {
+            NSLog(@"cancel");
+        }
+        else if (res == SLComposeViewControllerResultDone) {
+            NSLog(@"done");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    };
+    [self presentViewController:viewController animated:YES completion:nil];
     
-    // AFHTTPRequestOperationManagerの定義
-    AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    //URLとパラメータを生成
-    NSString* url = @"https://api.twitter.com/1.1/statuses/update_with_media.json";
-    NSMutableDictionary* param = @{@"status":message}.mutableCopy;
-    
-    //リクエストにメソッド(POST)、URL、パラメータ、添付画像を設定
-    NSMutableURLRequest *tweetRequest = [manager.requestSerializer multipartFormRequestWithMethod:@"POST"
-                                                                                        URLString:url
-                                                                                       parameters:param
-                                         
-                                                                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-                                                                            
-                                                                            [formData appendPartWithFormData:movieDelegete.movieData name:@"media[]"];
-                                                                            
-                                                                        }
-                                                                                            error:NULL];
-    
-    
-    //認証!
-    [[PFTwitterUtils twitter] signRequest:tweetRequest];
-    
-    //送信!
-    AFHTTPRequestOperation *operation = [manager HTTPRequestOperationWithRequest:tweetRequest success:^(AFHTTPRequestOperation* operation, id responseObject){
-        
-        NSLog(@"success!");
-        
-    }failure:^(AFHTTPRequestOperation* operation, NSError* error){
-        
-        NSLog(@"operation=%@",operation);
-        NSLog(@"eror=%@",error);
-        
-    }];;
-    
-    [manager.operationQueue addOperation:operation];
-
 }
+
 
 //Facebookの投稿
 - (IBAction)submitFacebook:(UIButton *)sender {
