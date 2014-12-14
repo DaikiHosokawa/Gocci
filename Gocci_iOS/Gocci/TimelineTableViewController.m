@@ -53,8 +53,6 @@
     
     // API からタイムラインのデータを取得
     [self _fetchTimeline];
-    
-    [self.tableView reloadData];
 
     [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
@@ -386,11 +384,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  */
 - (void)_playMovieAtCurrentCell
 {
+    if (self.navigationController.topViewController != self) {
+        // 画面がフォアグラウンドのときのみ再生
+        return;
+    }
+    
     Sample2TableViewCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-                                                   frame:CGRectMake(0,
+                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                                                     currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];

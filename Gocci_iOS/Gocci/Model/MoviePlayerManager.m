@@ -73,6 +73,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     }
     
     [self.players removeAllObjects];
+    self.globalPlayer = nil;
 }
 
 - (void)scrolling:(BOOL)scrolling
@@ -109,6 +110,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
     if (self.globalPlayer) {
         [self.globalPlayer stop];
+        self.globalPlayer = nil;
     }
 }
 
