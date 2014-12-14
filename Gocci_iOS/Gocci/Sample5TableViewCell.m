@@ -96,7 +96,7 @@
     self.Goodnum.text = [NSString stringWithFormat:@"%@", @(profilePost.goodNum)];
     
     // コメント数
-    self.Goodnum.text = [NSString stringWithFormat:@"%@", @(profilePost.commentNum)];
+    self.Commentnum.text = [NSString stringWithFormat:@"%@", @(profilePost.commentNum)];
 }
 
 @end
