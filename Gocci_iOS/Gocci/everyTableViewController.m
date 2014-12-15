@@ -221,7 +221,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64.0;
+    return 75.0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -372,7 +372,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
     _cell.Comment.text = [_comment_ objectAtIndex:indexPath.row];
     _cell.Comment.textAlignment = NSTextAlignmentLeft;
-    _cell.Comment.numberOfLines = 2;
+    _cell.Comment.numberOfLines = 4;
     
     if([_picture_ objectAtIndex:indexPath.row] != nil){
     //ユーザーの画像を取得
