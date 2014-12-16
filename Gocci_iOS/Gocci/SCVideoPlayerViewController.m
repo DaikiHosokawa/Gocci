@@ -117,6 +117,9 @@
     }
     
     //4inch
+    CGRect rect6 = [UIScreen mainScreen].bounds;
+    if (rect6.size.height == 568) {
+
     // UIImageViewの初期化
     CGRect rect = CGRectMake(200, 460, 128, 128);
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
@@ -132,7 +135,7 @@
     imageView2.image = [UIImage imageNamed:@"2x_Swipe_Left.png"];
     // UIImageViewのインスタンスをビューに追加
     [self.view addSubview:imageView2];
-    
+    }
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(saveToCameraRoll)];
     

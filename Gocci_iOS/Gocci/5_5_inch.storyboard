@@ -133,6 +133,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dCA-qd-BO1"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="profilename" destination="pgk-3H-OJJ" id="gWS-xS-5Oe"/>
                         <outlet property="profilepicture" destination="sha-mf-CFW" id="Yub-st-JRQ"/>
@@ -734,9 +735,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1zK-cZ-5jM"/>
-        <segue reference="oAW-Uz-WM7"/>
-        <segue reference="7nL-qp-VeJ"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="1zK-cZ-5jM"/>
+        <segue reference="7nL-qp-VeJ"/>
     </inferredMetricsTieBreakers>
 </document>
