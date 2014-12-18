@@ -15,6 +15,7 @@
     TimelinePost *obj = [TimelinePost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];
     obj.goodNum = [dictionary[@"goodnum"] integerValue];
+    obj.badNum =  [dictionary[@"badnum"] integerValue];
     obj.locality = dictionary[@"locality"];
     obj.movie = dictionary[@"movie"];
     obj.picture = dictionary[@"picture"];

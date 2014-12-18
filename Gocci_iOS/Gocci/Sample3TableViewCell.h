@@ -31,6 +31,15 @@
  */
 - (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID;
 
+
+/**
+ *  Bad ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID;
+
 /**
  *  Name ボタンをタップ
  *

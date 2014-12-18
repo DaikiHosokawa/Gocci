@@ -23,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
-
+@property (weak,nonatomic) IBOutlet UILabel *badnum;
+@property (weak, nonatomic) IBOutlet UIButton *badBtn;
 
 @property (nonatomic,strong) NSString *postID;
 @property (nonatomic,strong) NSString *username;
@@ -46,6 +47,13 @@
 {
     if ([self.delegate respondsToSelector:@selector(sample3TableViewCell:didTapGoodWithPostID:)]) {
         [self.delegate sample3TableViewCell:self didTapGoodWithPostID:self.postID];
+    }
+}
+
+- (IBAction)onBadButton:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample3TableViewCell:didTapBadWithPostID:)]) {
+        [self.delegate sample3TableViewCell:self didTapBadWithPostID:self.postID];
     }
 }
 
@@ -104,7 +112,9 @@
     
     // Good 数
     self.Goodnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.goodNum)];
-    
+    // Bad 数
+    self.badnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.badNum)];
+
     // コメント数
     self.Commentnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.commentNum)];
 }

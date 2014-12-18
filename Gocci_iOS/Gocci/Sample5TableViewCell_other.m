@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *commentnum;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
+@property (weak,nonatomic) IBOutlet UILabel *badnum;
+@property (weak, nonatomic) IBOutlet UIButton *badBtn;
+
 
 @property (nonatomic,strong) NSString *postID;
 @property (nonatomic,strong) NSString *restname;
@@ -42,6 +45,14 @@
         [self.delegate sample5TableViewCell_other:self didTapGoodWithPostID:self.postID];
     }
 }
+
+- (IBAction)onBadButton:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(sample5TableViewCell_other:didTapBadWithPostID:)]) {
+        [self.delegate sample5TableViewCell_other:self didTapBadWithPostID:self.postID];
+    }
+}
+
 
 - (IBAction)onRestnameButton:(id)sender
 {
@@ -84,6 +95,9 @@
     
     // Good 数
     self.goodnum.text = [NSString stringWithFormat:@"%@", @(profile_otherPost.goodNum)];
+   
+    // Bad 数
+    self.badnum.text = [NSString stringWithFormat:@"%@", @(profile_otherPost.badNum)];
     
     // コメント数
     self.commentnum.text = [NSString stringWithFormat:@"%@", @(profile_otherPost.commentNum)];

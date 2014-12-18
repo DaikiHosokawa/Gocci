@@ -30,6 +30,16 @@
  *  @param postID タップした投稿の post_id
  */
 - (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapGoodWithPostID:(NSString *)postID;
+
+
+/**
+ *  Bad ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の post_id
+ */
+- (void)sample5TableViewCell_other:(Sample5TableViewCell_other*)cell didTapBadWithPostID:(NSString *)postID;
+
 /**
 *  Restname ボタンをタップ
 *

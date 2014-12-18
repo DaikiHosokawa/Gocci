@@ -12,6 +12,7 @@
 
 @property(nonatomic) NSUInteger commentNum;
 @property(nonatomic) NSUInteger goodNum;
+@property(nonatomic )  NSInteger badNum;
 @property(nonatomic,strong) NSString *locality;
 @property(nonatomic,strong) NSString *movie;
 @property(nonatomic,strong) NSString *picture;

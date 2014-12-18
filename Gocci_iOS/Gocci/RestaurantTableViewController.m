@@ -350,6 +350,29 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self _fetchRestaurant];
 }
 
+- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
+{
+    //バッドボタンの時の処理
+    LOG(@"postid=%@", postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    NSLog(@"result:%@",result);
+    
+    
+    // タイムラインを再読み込み
+    [self _fetchRestaurant];
+}
+
+
 - (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
 {
     // コメントボタン押下時の処理

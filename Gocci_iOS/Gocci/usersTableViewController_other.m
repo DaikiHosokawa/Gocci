@@ -243,7 +243,7 @@ return [self.posts count];
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  483.0;
+    return  469.0;
 }
 /*
 //////////////////////////コメントボタンの時の処理//////////////////////////
@@ -396,6 +396,31 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // タイムラインを再読み込み
     [self _fetchProfile_other];
 }
+
+
+- (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapBadWithPostID:(NSString *)postID
+{
+    //バッドボタンの時の処理
+    LOG(@"postid=%@", postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    NSLog(@"result:%@",result);
+    
+    
+    // タイムラインを再読み込み
+    [self _fetchProfile_other];
+}
+
+
 
 - (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapRestnameWithrestname:(NSString *)restname
 {
