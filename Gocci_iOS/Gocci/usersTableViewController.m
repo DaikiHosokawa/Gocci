@@ -75,62 +75,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
-   /*
-    //JSONをパース
-    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",profiledelegate.username];
-    NSLog(@"restpage:%@",urlString);
-    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error=nil;
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                            options:NSJSONReadingMutableLeaves error:&error];
-    
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        // ユーザー名
-        NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-        _user_name_ = [user_name mutableCopy];
-        // プロフ画像
-        NSArray *picture = [jsonDic valueForKey:@"picture"];
-        _picture_ = [picture mutableCopy];
-        // 動画URL
-        NSArray *movie = [jsonDic valueForKey:@"movie"];
-        _movie_ = [movie mutableCopy];
-        // 住所
-        NSArray *locality = [jsonDic valueForKey:@"locality"];
-        _locality_ = [locality mutableCopy];
-      
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-        _goodnum_ = [goodnum mutableCopy];
-        
-        //レストラン名
-        NSArray *restname = [jsonDic valueForKey:@"restname"];
-        _restname_ = [restname mutableCopy];
-        //画像URL
-        NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
-        _picture_ = [pictureurl mutableCopy];
-        // 動画post_id
-        NSArray *postid = [jsonDic valueForKey:@"post_id"];
-        _postid_ = [postid mutableCopy];
-        //コメント数
-        NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-        _commentnum_ = [commentnum mutableCopy];
-        //スターの数
-        NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-        _starnum_ = [starnum mutableCopy];
-        NSLog(@"commentnum:%@",starnum);
-        
-        dispatch_async(q_main, ^{
-        });
-    });
-    
-    [self updateVisibleCells];
-    */
+
     [self _fetchProfile];
     [self.tableView reloadData];
     

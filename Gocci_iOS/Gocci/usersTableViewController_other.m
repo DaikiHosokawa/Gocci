@@ -85,59 +85,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    /*
-    NSString *tapusername = _postUsername;
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",tapusername];
-        NSLog(@"restpage:%@",urlString);
-        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error=nil;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                options:NSJSONReadingMutableLeaves error:&error];
-        
-        dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t q_main = dispatch_get_main_queue();
-        dispatch_async(q_global, ^{
-            // ユーザー名
-            NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-            _user_name_ = [user_name mutableCopy];
-            // プロフ画像
-            NSArray *picture = [jsonDic valueForKey:@"picture"];
-            _picture_ = [picture mutableCopy];
-            // 動画URL
-            NSArray *movie = [jsonDic valueForKey:@"movie"];
-            _movie_ = [movie mutableCopy];
-            // 住所
-            NSArray *locality = [jsonDic valueForKey:@"locality"];
-            _locality_ = [locality mutableCopy];
-            
-            //いいね数
-            NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-            _goodnum_ = [goodnum mutableCopy];
-            
-            //レストラン名
-            NSArray *restname = [jsonDic valueForKey:@"restname"];
-            _restname_ = [restname mutableCopy];
-            //画像URL
-            NSArray *pictureurl = [jsonDic valueForKey:@"picture"];
-            _picture_ = [pictureurl mutableCopy];
-            // 動画post_id
-            NSArray *postid = [jsonDic valueForKey:@"post_id"];
-            _postid_ = [postid mutableCopy];
-            //コメント数
-            NSArray *commentnum = [jsonDic valueForKey:@"comment_num"];
-            _commentnum_ = [commentnum mutableCopy];
-            //スターの数
-            NSArray *starnum = [jsonDic valueForKey:@"star_evaluation"];
-            _starnum_ = [starnum mutableCopy];
-            NSLog(@"commentnum:%@",starnum);
-            
-            dispatch_async(q_main, ^{
-            });
-        });
-    */
-    [self _fetchProfile_other];
+        [self _fetchProfile_other];
     [self.tableView reloadData];
 
     [SVProgressHUD dismiss];
@@ -238,89 +186,11 @@ return [self.posts count];
 }
 
 
-
-
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return  469.0;
 }
-/*
-//////////////////////////コメントボタンの時の処理//////////////////////////
-
-- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    
-    [self performSegueWithIdentifier:@"showDetail3" sender:self];
-    NSLog(@"commentBtn is touched");
-}
-
-//////////////////////////Goodボタンの時の処理//////////////////////////
-
-- (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
-    //このSegueに付けたIdentifierから遷移を呼び出すことができます
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                      
-                                                       error:&error];
-    
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        
-        //JSONをパース
-        NSString *tapusername = _postUsername;
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",tapusername];
-        NSLog(@"restpage:%@",urlString);
-        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error=nil;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                options:NSJSONReadingMutableLeaves error:&error];
-        
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-        _goodnum_ = [goodnum mutableCopy];
-        dispatch_async(q_main, ^{
-            [self.tableView reloadData];
-            NSLog(@"goodBtn is touched");
-        });
-    });
-    
-}
-*/
-/*
-//restnameをタップした時のイベント
-- (void)handleTouchButton4:(UIButton *)sender event:(UIEvent *)event {
-    
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postRestname = [_restname_ objectAtIndex:indexPath.row];
-    NSLog(@"postrestname:%@",_postRestname);
-    [self performSegueWithIdentifier:@"goRestpage" sender:self];
-    NSLog(@"Restname is touched");
-    
-}
-*/
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
