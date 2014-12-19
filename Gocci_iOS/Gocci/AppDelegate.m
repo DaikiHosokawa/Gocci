@@ -116,7 +116,7 @@
     return YES;
 }
 
-
+//位置情報更新処理
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
@@ -125,6 +125,7 @@
     [self showLocation:location];
 }
 
+//緯度経度を変数に格納
 - (void)showLocation:(CLLocation *)location
 {
     AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];

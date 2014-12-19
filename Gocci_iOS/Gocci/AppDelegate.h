@@ -22,13 +22,16 @@
     //グローバル変数
     NSString *userpicture;
     
-
+    //緯度経度取得用
     CLLocationManager *locationManager;
-    double latitude, longitude; // 取得した緯度経度
+    // 取得した緯度経度を保存する変数
+    double latitude, longitude;
+    // 取得した緯度経度を保存する変数
     NSString *lat;
     NSString *lon;
+    //検索画面で使うJSONを保存する変数
     NSDictionary *jsonDic;
-    NSDictionary *reviewJsondic;
+    
     NSData *movieData;
 }
 
@@ -41,7 +44,6 @@
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
 @property (nonatomic, retain) NSDictionary *jsonDic;
-@property (nonatomic, retain) NSDictionary *reviewJsondic;
 @property (nonatomic, retain) NSData *movieData;
 @property (strong, nonatomic) UIWindow *window;
 
