@@ -67,7 +67,6 @@
 		FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF6E19E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m */; };
 		FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF7019E3D3C2000F2ABD /* UIImageView+WebCache.m */; };
 		FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */; };
-		FF648A3F1A2D81F0008987BB /* sample.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF648A3E1A2D81F0008987BB /* sample.mov */; };
 		FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */; };
 		FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */; };
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
@@ -253,7 +252,6 @@
 		FF5DDF7019E3D3C2000F2ABD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		FF5DDF7119E3D3C2000F2ABD /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		FF5DDF7219E3D3C2000F2ABD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		FF648A3E1A2D81F0008987BB /* sample.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample.mov; sourceTree = "<group>"; };
 		FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 				FFDC02991A1F0F5F009A787C /* Effecter */,
 				AB8C717C1A278BC300BF31EA /* Model */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
-				FF648A3E1A2D81F0008987BB /* sample.mov */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
 			);
@@ -960,7 +957,6 @@
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
-				FF648A3F1A2D81F0008987BB /* sample.mov in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
