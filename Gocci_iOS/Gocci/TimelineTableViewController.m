@@ -25,17 +25,8 @@
 <CLLocationManagerDelegate, Sample2TableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
-@property (nonatomic, retain) NSMutableArray *restname_;
-@property (nonatomic, retain) NSMutableArray *goodnum_;
-@property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, copy) NSMutableArray *picture_;
-@property (nonatomic, copy) NSMutableArray *movie_;
+
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) NSMutableArray *commentnum_;
-@property (nonatomic, copy) NSMutableArray *thumbnail_;
-@property (nonatomic, copy) NSMutableArray *starnum_;
-@property (nonatomic, retain) NSIndexPath *nowindexPath1;
-@property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -121,18 +112,6 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    // スクロール開始
-    CGPoint offset =  self.tableView.contentOffset;
-    //スクロールポイントo
-    CGPoint o = CGPointMake(183.0, 100.0 + offset.y);
-    _nowindexPath1 = [self.tableView indexPathForRowAtPoint:o];
-    NSLog(@"%ld", (long)_nowindexPath1.row);
-    
-    //[self updateVisibleCells];
-    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
-    {
-        
-    }
     
     // スクロール中は動画を停止する
     [[MoviePlayerManager sharedManager] scrolling:YES];
@@ -145,7 +124,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	// フリック操作によるスクロール終了
-//	[self endScroll];
     LOG(@"scroll is stoped");
     
     [self _playMovieAtCurrentCell];
@@ -154,7 +132,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	if(!decelerate) {
 		// ドラッグ終了 かつ 加速無し
-//        [self endScroll];
         LOG(@"scroll is stoped");
         
         [self _playMovieAtCurrentCell];
@@ -163,22 +140,10 @@
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
 	// setContentOffset: 等によるスクロール終了
-	[self endScroll];
     NSLog(@"scroll is stoped");
 }
 
-- (void)endScroll {
-    //スクロール終了
-    CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
-    _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"p:%ld", (long)_nowindexPath2.row);
 
-    if(_nowindexPath1.row != _nowindexPath2.row){
-        NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
-    }
-}
-    
 
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {

@@ -23,21 +23,12 @@
 
 @interface usersTableViewController ()<Sample5TableViewCellDelegate>
 
-@property (nonatomic, retain) NSMutableArray *restname_;
-@property (nonatomic, retain) NSMutableArray *goodnum_;
-@property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, copy) NSMutableArray *picture_;
-@property (nonatomic, copy) NSMutableArray *movie_;
+
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) NSMutableArray *locality_;
-@property (nonatomic, copy) NSMutableArray *starnum_;
 @property (nonatomic, copy) Sample5TableViewCell *cell;
-@property (nonatomic, copy) NSMutableArray *commentnum_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
-@property (nonatomic, retain) NSIndexPath *nowindexPath1;
-@property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -105,17 +96,6 @@
     return [self.posts count];
 }
 
-- (void)endScroll {
-    //スクロール終了
-    CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
-    _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"p:%ld", (long)_nowindexPath2.row);
-    if(_nowindexPath1.row != _nowindexPath2.row){
-        NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
-    }
-}
-
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -132,18 +112,7 @@
 
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    // スクロール開始
-    CGPoint offset =  self.tableView.contentOffset;
-    //スクロールポイントo
-    CGPoint o = CGPointMake(183.0, 100.0 + offset.y);
-    _nowindexPath1 = [self.tableView indexPathForRowAtPoint:o];
-    NSLog(@"%ld", (long)_nowindexPath1.row);
-    
-    //[self updateVisibleCells];
-    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
-    {
-        
-    }
+
     // スクロール中は動画を停止する
     [[MoviePlayerManager sharedManager] scrolling:YES];
 }
@@ -154,8 +123,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
-    NSLog(@"scroll is stoped");
-     [self _playMovieAtCurrentCell];
+    [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -168,11 +136,9 @@
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     // setContentOffset: 等によるスクロール終了
-    [self endScroll];
     NSLog(@"scroll is stoped");
     
 }
-
 
 
 
@@ -182,67 +148,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return  469.0;
 }
 
-//////////////////////////コメントボタンの時の処理//////////////////////////
-
-- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    
-    [self performSegueWithIdentifier:@"showDetail2" sender:self];
-    NSLog(@"commentBtn is touched");
-}
-
-//////////////////////////Goodボタンの時の処理//////////////////////////
-
-- (void)handleTouchButton2:(UIButton *)sender event:(UIEvent *)event {
-    //このSegueに付けたIdentifierから遷移を呼び出すことができます
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postID = [_postid_ objectAtIndex:indexPath.row];
-    NSLog(@"postid:%@",_postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@",_postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                      
-                                                       error:&error];
-    
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        
-        //JSONをパース
-        AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",logindelegate.username];
-        NSLog(@"restpage:%@",urlString);
-        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
-        NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        NSData *jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error=nil;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                options:NSJSONReadingMutableLeaves error:&error];
-        
-        //いいね数
-        NSArray *goodnum = [jsonDic valueForKey:@"goodnum"];
-        _goodnum_ = [goodnum mutableCopy];
-        dispatch_async(q_main, ^{
-            [self _fetchProfile];
-            [self.tableView reloadData];
-            NSLog(@"goodBtn is touched");
-        });
-    });
-    
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -268,10 +173,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                    completion:^(BOOL success) {
                                                        [weakSelf _playMovieAtCurrentCell];
                                                    }];
-    
-    //削除イベント
-   // [cell.deleteBtn addTarget:self action:@selector(handleTouchButton3:event:) forControlEvents:UIControlEventTouchUpInside];
-
     
     return cell ;
 }
@@ -352,14 +253,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+         
             
-            //削除ボタンの時の処理
-            /*
-            NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-            NSLog(@"row %ld was tapped.",(long)indexPath.row);
-            _postID = [_postid_ objectAtIndex:indexPath.row];
-            NSLog(@"postid:%@",_postID);
-             */
             NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
             NSLog(@"content:%@",content);
             NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
@@ -381,13 +276,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         [self presentViewController:alertController animated:YES completion:nil];
     }else{
-        /*
-        //削除ボタンの時の処理
-        NSIndexPath *indexPath = [self indexPathForControlEvent:indexPath];
-        NSLog(@"row %ld was tapped.",(long)indexPath.row);
-        _postID = [_postid_ objectAtIndex:indexPath.row];
-        NSLog(@"postid:%@",_postID);
-         */
+    
         NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
         NSLog(@"content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
@@ -502,60 +391,5 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
 }
-
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

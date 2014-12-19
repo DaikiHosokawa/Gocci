@@ -22,19 +22,8 @@
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()<Sample3TableViewCellDelegate>
-@property (nonatomic, retain) NSMutableArray *restname_;
-@property (nonatomic, retain) NSMutableArray *goodnum_;
-@property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, copy) NSMutableArray *picture_;
-@property (nonatomic, copy) NSMutableArray *movie_;
-//@property (nonatomic, copy) NSMutableArray *review_;
+
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) NSMutableArray *locality_;
-@property (nonatomic, copy) NSMutableArray *thumbnail_;
-@property (nonatomic, copy) NSMutableArray *starnum_;
-@property (nonatomic, copy) NSMutableArray *commentnum_;
-@property (nonatomic, retain) NSIndexPath *nowindexPath1;
-@property (nonatomic, retain) NSIndexPath *nowindexPath2;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -172,18 +161,6 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    // スクロール開始
-    CGPoint offset =  self.tableView.contentOffset;
-    //スクロールポイントo
-    CGPoint o = CGPointMake(183.0, 100.0 + offset.y);
-    _nowindexPath1 = [self.tableView indexPathForRowAtPoint:o];
-    NSLog(@"%ld", (long)_nowindexPath1.row);
-    
-    //[self updateVisibleCells];
-    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
-    {
-        
-    }
     // スクロール中は動画を停止する
     [[MoviePlayerManager sharedManager] scrolling:YES];
 }
@@ -195,8 +172,6 @@
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // フリック操作によるスクロール終了
-    [self endScroll];
     // [moviePlayer play];
      [self _playMovieAtCurrentCell];
     NSLog(@"scroll is stoped");
@@ -204,8 +179,6 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
-        // ドラッグ終了 かつ 加速無し
-        // [self endScroll];
         [self _playMovieAtCurrentCell];
         NSLog(@"scroll is stoped");
     }
@@ -213,24 +186,9 @@
 
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    // setContentOffset: 等によるスクロール終了
-    [self endScroll];
+
     NSLog(@"scroll is stoped");
 }
-
-- (void)endScroll {
-    //スクロール終了
-    CGPoint offset =  self.tableView.contentOffset;
-    CGPoint p = CGPointMake(183.0, 200.0 + offset.y);
-    _nowindexPath2 = [self.tableView indexPathForRowAtPoint:p];
-    NSLog(@"p:%ld", (long)_nowindexPath2.row);
-   // [self updateVisibleCells];
-    if(_nowindexPath1.row != _nowindexPath2.row){
-        NSLog(@"現在oが%@でpが%@で前回スクロール時と異なっている",_nowindexPath1,_nowindexPath2);
-    }
-}
-
-
 
 
 
@@ -252,22 +210,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
-- (void)handleTouchButton3:(UIButton *)sender event:(UIEvent *)event {
-    
-    //user nameタップ時の処理
-    //[SVProgressHUD show];
-    //[SVProgressHUD showWithStatus:@"移動中.." maskType:SVProgressHUDMaskTypeGradient];
-    NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-    NSLog(@"row %ld was tapped.",(long)indexPath.row);
-    _postUsername = [_user_name_ objectAtIndex:indexPath.row];
-    _postPicture = [_picture_ objectAtIndex:indexPath.row];
-    NSLog(@"確認：postUsername:%@",_postUsername);
-    
-    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
-    NSLog(@"Username is touched");
-}
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -280,10 +222,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                  cell = [[Sample3TableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-    NSString *buttontext = [_user_name_ objectAtIndex:indexPath.row];
-    [cell.UsernameButton setTitle:buttontext forState:UIControlStateNormal];
-    
     
     // セルにデータを反映
     RestaurantPost *post = self.posts[indexPath.row];

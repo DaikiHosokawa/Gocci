@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UILabel *goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *commentnum;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
 @property (weak,nonatomic) IBOutlet UILabel *badnum;

@@ -73,6 +73,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+
+
 - (IBAction)pushSendBtn:(id)sender {
     _dottext = _textField.text;
     if (_textField.text.length == 0) {
@@ -120,6 +122,8 @@
     [_textField resignFirstResponder];
 }
 
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     // キーボードの表示・非表示はNotificationCenterから通知されますよっと
@@ -137,6 +141,8 @@
     
     [super viewWillDisappear:animated];
 }
+
+
 
 - (void)viewDidLoad
 {
@@ -158,7 +164,9 @@
     _textField.placeholder = @"ここにコメントを入力してください。";
 }
 
-// キーボードが表示される時に呼び出されますー
+
+
+// キーボードが表示される時に呼び出される
 - (void)keyboardWillShow:(NSNotification *)notification {
     // キーボードのサイズ
     CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -168,20 +176,18 @@
     
     // viewのアニメーション
     [UIView animateWithDuration:duration animations:^{
-        // ここをframeわざわざ計算してる人おおいですねー
         CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+10);
         self.view.transform = transform;
     } completion:NULL];
 }
 
-// キーボードが非表示になる時に呼び出されますー
+// キーボードが非表示になる時に呼び出される
 - (void)keyboardWillHide:(NSNotification *)notification {
     // キーボード表示アニメーションのduration
     NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     __weak typeof(self) _self = self;
     [UIView animateWithDuration:duration animations:^{
-        // tranformで動かしておけば、戻すときはこれだけ!
         _self.view.transform = CGAffineTransformIdentity;
     } completion:NULL];
 }
