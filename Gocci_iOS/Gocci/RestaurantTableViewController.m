@@ -51,7 +51,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    //[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
@@ -64,7 +64,9 @@
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
 }
-
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     // 画面が隠れた際に再生中の動画を停止させる
@@ -162,7 +164,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // スクロール中は動画を停止する
-    [[MoviePlayerManager sharedManager] scrolling:YES];
+   [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -114,7 +114,7 @@
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 
     // スクロール中は動画を停止する
-    [[MoviePlayerManager sharedManager] scrolling:YES];
+   // [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 #pragma mark -

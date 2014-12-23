@@ -732,9 +732,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Abr-YO-afi"/>
-        <segue reference="ELX-A7-CBx"/>
-        <segue reference="Kch-bB-bdv"/>
         <segue reference="ogp-a2-6SY"/>
+        <segue reference="ELX-A7-CBx"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="7nL-qp-VeJ"/>
     </inferredMetricsTieBreakers>
 </document>
