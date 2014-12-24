@@ -475,7 +475,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="locality" destination="o7g-eC-FaU" id="dj3-Bs-bMd"/>
@@ -739,9 +739,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uLy-rw-ivI"/>
         <segue reference="1zK-cZ-5jM"/>
-        <segue reference="tK9-zW-yJ4"/>
-        <segue reference="wis-md-2uD"/>
+        <segue reference="uLy-rw-ivI"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="7nL-qp-VeJ"/>
     </inferredMetricsTieBreakers>
 </document>

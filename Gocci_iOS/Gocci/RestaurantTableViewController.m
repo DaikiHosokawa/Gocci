@@ -51,7 +51,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
