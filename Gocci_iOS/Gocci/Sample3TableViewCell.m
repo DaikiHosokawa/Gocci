@@ -18,12 +18,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
 @property (weak, nonatomic) IBOutlet UILabel *Goodnum;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) Sample3TableViewCell *cell;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *Commentnum;
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
-@property (weak,nonatomic) IBOutlet UILabel *badnum;
+@property (weak, nonatomic) IBOutlet UILabel *badnum;
 @property (weak, nonatomic) IBOutlet UIButton *badBtn;
 
 @property (nonatomic,strong) NSString *postID;
@@ -118,7 +117,7 @@
     // コメント数
     self.Commentnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.commentNum)];
 }
-
+/*
 - (void)awakeFromNib
 {
     // Initialization code
@@ -129,5 +128,5 @@
    [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-
+*/
 @end

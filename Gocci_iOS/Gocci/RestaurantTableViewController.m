@@ -64,9 +64,11 @@
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
 }
+
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
 }
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     // 画面が隠れた際に再生中の動画を停止させる
@@ -221,9 +223,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"restaurantTableViewCell";
     Sample3TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
-                 cell = [[Sample3TableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                           reuseIdentifier:cellIdentifier];
     }
+
     
     // セルにデータを反映
     RestaurantPost *post = self.posts[indexPath.row];

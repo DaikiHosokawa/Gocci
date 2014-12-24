@@ -13,6 +13,7 @@
 #import "SCVideoPlayerView.h"
 
 
+
 @implementation AppDelegate
 
 
@@ -113,7 +114,26 @@
     sleep(3);
     
 
+    // エラー追跡用の機能を追加する。
+    NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
     return YES;
+}
+
+
+// 異常終了を検知した場合に呼び出されるメソッド
+void exceptionHandler(NSException *exception) {
+    // ここで、例外発生時の情報を出力します。
+    // NSLog関数でcallStackSymbolsを出力することで、
+    // XCODE上で開発している際にも、役立つスタックトレースを取得できるようになります。
+    NSLog(@"%@", exception.name);
+    NSLog(@"%@", exception.reason);
+    NSLog(@"%@", exception.callStackSymbols);
+    
+    // ログをUserDefaultsに保存しておく。
+    // 次の起動の際に存在チェックすれば、前の起動時に異常終了したことを検知できます。
+    NSString *log = [NSString stringWithFormat:@"%@, %@, %@", exception.name, exception.reason, exception.callStackSymbols];
+    [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
 
 //位置情報更新処理

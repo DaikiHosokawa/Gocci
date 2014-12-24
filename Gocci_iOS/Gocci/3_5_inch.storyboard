@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="x1a-eI-W4a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="x1a-eI-W4a">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -478,8 +478,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="locality" destination="o7g-eC-FaU" id="Sae-n9-u4l"/>
-                        <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
+                        <outlet property="locality" destination="o7g-eC-FaU" id="dj3-Bs-bMd"/>
+                        <outlet property="restname" destination="5SO-Dv-yVu" id="fpL-ag-NP3"/>
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>
                         <segue destination="Pt3-mZ-dDb" kind="push" identifier="showDetail2" id="7nL-qp-VeJ"/>
                         <segue destination="2y4-Bk-5XE" kind="push" identifier="goOthersTimeline2" id="Abr-YO-afi"/>
@@ -739,9 +739,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ELX-A7-CBx"/>
-        <segue reference="Abr-YO-afi"/>
-        <segue reference="7nL-qp-VeJ"/>
+        <segue reference="uLy-rw-ivI"/>
         <segue reference="1zK-cZ-5jM"/>
+        <segue reference="tK9-zW-yJ4"/>
+        <segue reference="wis-md-2uD"/>
     </inferredMetricsTieBreakers>
 </document>
