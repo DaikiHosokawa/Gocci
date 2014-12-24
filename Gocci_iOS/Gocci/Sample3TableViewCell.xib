@@ -162,13 +162,13 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="Commentnum" destination="xk2-g9-mfM" id="hXH-nQ-pd8"/>
-                <outlet property="Goodnum" destination="ckN-U1-JVz" id="YH9-pH-TRa"/>
-                <outlet property="RestaurantName" destination="mYr-hi-UhP" id="uyd-Po-0Bp"/>
+                <outlet property="BadNum" destination="4Qr-Tt-LiT" id="Opo-Be-ugQ"/>
+                <outlet property="CommentNum" destination="xk2-g9-mfM" id="3Z9-dK-pZ5"/>
+                <outlet property="GoodNum" destination="ckN-U1-JVz" id="dbq-og-StC"/>
+                <outlet property="RestName" destination="mYr-hi-UhP" id="Gnf-Hp-VkC"/>
                 <outlet property="UsernameButton" destination="wX7-WZ-Bh1" id="hs1-Vo-7H2"/>
                 <outlet property="UsersPicture" destination="PIe-Le-KZz" id="OaQ-2D-FVd"/>
                 <outlet property="badBtn" destination="slD-SQ-fFo" id="UJ4-Z1-jcx"/>
-                <outlet property="badnum" destination="4Qr-Tt-LiT" id="1Lf-xe-Cig"/>
                 <outlet property="commentBtn" destination="2He-SF-LQ4" id="2DT-ku-aBq"/>
                 <outlet property="contentViewFront" destination="Y2v-AI-3pz" id="eCF-uh-ewf"/>
                 <outlet property="goodBtn" destination="fe5-4W-mi0" id="ha2-Ql-pxG"/>

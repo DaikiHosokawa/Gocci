@@ -15,14 +15,22 @@
 @interface  Sample3TableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
-@property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
-@property (weak, nonatomic) IBOutlet UILabel *Goodnum;
+//@property (weak, nonatomic) IBOutlet UILabel *RestaurantName;
+@property (weak, nonatomic) IBOutlet UILabel *RestName;
+
+//@property (weak, nonatomic) IBOutlet UILabel *Goodnum;
+@property (weak, nonatomic) IBOutlet UILabel *GoodNum;
+
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
-@property (weak, nonatomic) IBOutlet UILabel *Commentnum;
+//@property (weak, nonatomic) IBOutlet UILabel *Commentnum;
+@property (weak, nonatomic) IBOutlet UILabel *CommentNum;
+
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
-@property (weak, nonatomic) IBOutlet UILabel *badnum;
+//@property (weak, nonatomic) IBOutlet UILabel *badnum;
+@property (weak, nonatomic) IBOutlet UILabel *BadNum;
+
 @property (weak, nonatomic) IBOutlet UIButton *badBtn;
 
 @property (nonatomic,strong) NSString *postID;
@@ -92,7 +100,7 @@
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
     // 店名
-    self.RestaurantName.text = restaurantPost.restname;
+    self.RestName.text = restaurantPost.restname;
     
     // レート
     if (restaurantPost.starEvaluation == 1) {
@@ -110,12 +118,12 @@
     }
     
     // Good 数
-    self.Goodnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.goodNum)];
+    self.GoodNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.goodNum)];
     // Bad 数
-    self.badnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.badNum)];
+    self.BadNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.badNum)];
 
     // コメント数
-    self.Commentnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.commentNum)];
+    self.CommentNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.commentNum)];
 }
 /*
 - (void)awakeFromNib

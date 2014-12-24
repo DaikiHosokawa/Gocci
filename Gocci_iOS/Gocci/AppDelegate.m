@@ -182,6 +182,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
         [locationManager stopUpdatingLocation]; //測位停止
 }
 
+
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
