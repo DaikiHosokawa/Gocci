@@ -108,7 +108,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
     
     self.tableView.bounces = NO;
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -169,7 +169,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 520.0;
+    return 550.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -180,6 +180,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];
     }
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
