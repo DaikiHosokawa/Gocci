@@ -101,9 +101,9 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-    self.tableView.separatorColor = [UIColor clearColor ];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
 }
 
 
@@ -199,7 +199,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 520.0;
+    return 550.0;
 }
 
 
@@ -227,6 +227,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                            reuseIdentifier:cellIdentifier];
     }
 
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
     
     // セルにデータを反映
     RestaurantPost *post = self.posts[indexPath.row];

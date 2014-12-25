@@ -49,9 +49,8 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-    self.tableView.separatorColor = [UIColor clearColor ];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
  
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     self.profilename.text = profiledelegate.username;
@@ -145,7 +144,7 @@
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  469.0;
+    return  480.0;
 }
 
 
@@ -158,6 +157,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[Sample5TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];
     }
+    
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
+    
     
     // セルにデータを反映
     ProfilePost *post = self.posts[indexPath.row];

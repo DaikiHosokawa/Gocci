@@ -55,9 +55,9 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-    self.tableView.separatorColor = [UIColor clearColor ];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
+    
     
     AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
     NSString *picturestring = _postPicture;
@@ -172,7 +172,7 @@ return [self.posts count];
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  469.0;
+    return  480.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -184,6 +184,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[Sample5TableViewCell_other alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];
     }
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
+    
     // セルにデータを反映
     Profile_otherPost *post = self.posts[indexPath.row];
     [cell configureWithProfile_otherPost:post];

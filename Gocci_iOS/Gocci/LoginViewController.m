@@ -34,6 +34,9 @@
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
+
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
     AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
     //現在地から近い店取得しておく(jsonDicはsearchTableVIewで使う)
     NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
@@ -42,6 +45,8 @@
     NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        });
+    
 }
 
 - (void)viewDidLoad

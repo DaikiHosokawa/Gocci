@@ -357,9 +357,12 @@ const NSString *SCRecordSessionDateKey = @"Date";
 }
 
 - (void)saveToCameraRoll {
+    
     UISaveVideoAtPathToSavedPhotosAlbum(self.outputUrl.path, nil, nil, nil);
     NSData *sampleData = [NSData dataWithContentsOfFile:self.outputUrl.path];
+    
     NSLog(@"sampleData:%@",sampleData);
+    
     //デリゲートの値を取得するときは、このメソッドを使用する。(テスト)
     AppDelegate *movieDelegete = [[UIApplication sharedApplication] delegate];
     movieDelegete.movieData = sampleData;
