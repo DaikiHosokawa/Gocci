@@ -31,10 +31,77 @@
                         withSession:[PFFacebookUtils session]];
 }
 
-
+- (BOOL)isFirstRun
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([userDefaults objectForKey:@"firstRunDate"]) {
+        // 日時が設定済みなら初回起動でない
+        return NO;
+    }
+    
+    // 初回起動日時を設定
+    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate"];
+    
+    // 保存
+    [userDefaults synchronize];
+    
+    // 初回起動
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if ([self isFirstRun]) {
+        // 初回起動時の処理を書く
+        NSLog(@"初回起動だよ");
+        // Init the pages texts, and pictures.
+        ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"Picture 1"
+                                                                subTitle:@"Champs-Elysées by night"
+                                                             pictureName:@"tutorial_background_00@2x.jpg"
+                                                                duration:3.0];
+        ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@"Picture 2"
+                                                                subTitle:@"The Eiffel Tower with\n cloudy weather"
+                                                             pictureName:@"tutorial_background_01@2x.jpg"
+                                                                duration:3.0];
+        ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@"Picture 3"
+                                                                subTitle:@"An other famous street of Paris"
+                                                             pictureName:@"tutorial_background_02@2x.jpg"
+                                                                duration:3.0];
+        ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@"Picture 4"
+                                                                subTitle:@"The Eiffel Tower with a better weather"
+                                                             pictureName:@"tutorial_background_03@2x.jpg"
+                                                                duration:3.0];
+        ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithTitle:@"Picture 5"
+                                                                subTitle:@"The Louvre's Museum Pyramide"
+                                                             pictureName:@"tutorial_background_04@2x.jpg"
+                                                                duration:3.0];
+        NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4,layer5];
+        
+        // Set the common style for the title.
+        ICETutorialLabelStyle *titleStyle = [[ICETutorialLabelStyle alloc] init];
+        [titleStyle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17.0f]];
+        [titleStyle setTextColor:[UIColor whiteColor]];
+        [titleStyle setLinesNumber:1];
+        [titleStyle setOffset:180];
+        [[ICETutorialStyle sharedInstance] setTitleStyle:titleStyle];
+        
+        // Set the subTitles style with few properties and let the others by default.
+        [[ICETutorialStyle sharedInstance] setSubTitleColor:[UIColor whiteColor]];
+        [[ICETutorialStyle sharedInstance] setSubTitleOffset:150];
+        
+        // Init tutorial.
+        self.viewController = [[ICETutorialController alloc] initWithPages:tutorialLayers
+                                                                  delegate:self];
+        
+        // Run it.
+        [self.viewController startScrolling];
+        
+        self.window.rootViewController = self.viewController;
+        [self.window makeKeyAndVisible];
+
+    }
+
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
@@ -118,6 +185,28 @@
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
     return YES;
+}
+
+
+//チューリアルの動作ごとのアクション
+#pragma mark - ICETutorialController delegate
+- (void)tutorialController:(ICETutorialController *)tutorialController scrollingFromPageIndex:(NSUInteger)fromIndex toPageIndex:(NSUInteger)toIndex {
+    NSLog(@"Scrolling from page %lu to page %lu.", (unsigned long)fromIndex, (unsigned long)toIndex);
+}
+
+- (void)tutorialControllerDidReachLastPage:(ICETutorialController *)tutorialController {
+    NSLog(@"Tutorial reached the last page.");
+}
+
+- (void)tutorialController:(ICETutorialController *)tutorialController didClickOnLeftButton:(UIButton *)sender {
+    NSLog(@"Button 1 pressed.");
+}
+
+- (void)tutorialController:(ICETutorialController *)tutorialController didClickOnRightButton:(UIButton *)sender {
+    NSLog(@"Button 2 pressed.");
+    NSLog(@"Auto-scrolling stopped.");
+    
+    [self.viewController stopScrolling];
 }
 
 

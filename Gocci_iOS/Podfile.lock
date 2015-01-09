@@ -1,12 +1,15 @@
 PODS:
+  - ICETutorial (1.1.1)
   - ISRemoveNull (0.0.3)
   - UIImage+Dummy (0.0.2)
 
 DEPENDENCIES:
+  - ICETutorial (~> 1.1.1)
   - ISRemoveNull (~> 0.0.3)
   - UIImage+Dummy (~> 0.0.2)
 
 SPEC CHECKSUMS:
+  ICETutorial: 785f7ea764f7d4f3702d7561497fd3c286134431
   ISRemoveNull: 1b5b42d91f3f08cd35584153a9ab3cc652416cbd
   UIImage+Dummy: d7b13f675eab7d9086b7b40fd4b5369abb8c62a0
 

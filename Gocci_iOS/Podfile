@@ -2,3 +2,4 @@ platform :ios, "7.0"
 
 pod 'UIImage+Dummy', '~> 0.0.2'
 pod 'ISRemoveNull', '~> 0.0.3'
+pod 'ICETutorial', '~> 1.1.1'
