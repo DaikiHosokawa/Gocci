@@ -17,6 +17,7 @@
 @implementation AppDelegate
 
 
+
 @synthesize window = _window;
 
 
@@ -55,6 +56,7 @@
     if ([self isFirstRun]) {
         // 初回起動時の処理を書く
         NSLog(@"初回起動だよ");
+         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         // Init the pages texts, and pictures.
         ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"Picture 1"
                                                                 subTitle:@"Champs-Elysées by night"
@@ -95,12 +97,34 @@
                                                                   delegate:self];
         
         // Run it.
-        [self.viewController startScrolling];
+        [self.viewController stopScrolling];
         
         self.window.rootViewController = self.viewController;
         [self.window makeKeyAndVisible];
+        
+        [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
+        
+        [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
+        
+        [PFUser enableAutomaticUser];
+        
+        PFACL *defaultACL = [PFACL ACL];
+        
+        [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+        
+        
+        // Facebook
+        [PFFacebookUtils initializeFacebook];
+        
+        // Twitter
+        [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
+                                   consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
+        
+        
+        
+        return YES;
 
-    }
+    }else{
 
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
@@ -146,7 +170,7 @@
         
         self.window.rootViewController = rootViewController;
     }
-    
+
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
     
@@ -185,6 +209,7 @@
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
     return YES;
+    }
 }
 
 
@@ -206,7 +231,70 @@
     NSLog(@"Button 2 pressed.");
     NSLog(@"Auto-scrolling stopped.");
     
-    [self.viewController stopScrolling];
+
+     //3.5inchと4inchを読み分けする
+     CGRect rect = [UIScreen mainScreen].bounds;
+     if (rect.size.height == 480) {
+     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
+     UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+     NSLog(@"3.5inch");
+     self.window.rootViewController = rootViewController;
+     }
+     
+     //4.7inch対応
+     CGRect rect2 = [UIScreen mainScreen].bounds;
+     if (rect2.size.height == 667) {
+     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
+     UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+     
+     self.window.rootViewController = rootViewController;
+     }
+     
+     //5.5inch対応
+     CGRect rect3 = [UIScreen mainScreen].bounds;
+     if (rect3.size.height == 736) {
+     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
+     UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+     
+     self.window.rootViewController = rootViewController;
+     }
+         
+    //ナビゲーションバーのアイテムの色を変更
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
+    
+    //ナビゲーションバーの色を変更
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+    
+    //ナビゲーションバーのタイトルの色を変更
+    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    
+    //スプラッシュ時間設定
+    sleep(3);
+    
+    // CLLocationManagerのインスタンスを作成
+    locationManager = [[CLLocationManager alloc] init];
+    // デリゲートを設定
+    locationManager.delegate = self;
+    // 更新頻度(メートル)
+    locationManager.distanceFilter = 100;
+    // 取得精度
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    // iOS8の対応
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
+        // 位置情報測位の許可を求めるメッセージを表示する
+        [locationManager requestAlwaysAuthorization]; // 常に許可
+        
+    } else { // iOS7以前
+        // 測位開始
+        [locationManager startUpdatingLocation];
+    }
+    
+    
+    
+    // エラー追跡用の機能を追加する。
+    NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
 }
 
 

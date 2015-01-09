@@ -202,8 +202,6 @@
 		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
 		FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile_otherPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		FF4DDC301A37D7DE002AEF7C /* libPods-SBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SBJson.a"; path = "Pods/build/Release-iphoneos/libPods-SBJson.a"; sourceTree = "<group>"; };
-		FF4DDC321A37D822002AEF7C /* libPods-SBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SBJson.a"; path = "Pods/build/Release-iphoneos/libPods-SBJson.a"; sourceTree = "<group>"; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -524,8 +522,6 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF4DDC321A37D822002AEF7C /* libPods-SBJson.a */,
-				FF4DDC301A37D7DE002AEF7C /* libPods-SBJson.a */,
 				FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */,
 				FFA1769C199133EE005BEE41 /* Security.framework */,
 				FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */,
@@ -1263,7 +1259,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6 armv7";
+				VALID_ARCHS = "armv7s arm64 armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1295,7 +1291,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6 armv7";
+				VALID_ARCHS = "armv7s arm64 armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

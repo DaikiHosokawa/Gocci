@@ -85,8 +85,9 @@
 
     // Title.
     [self.overlayTitle setTextColor:[UIColor whiteColor]];
-    [self.overlayTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:32.0]];
+    [self.overlayTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:30.0]];
     [self.overlayTitle setTextAlignment:NSTextAlignmentCenter];
+    self.overlayTitle.lineBreakMode  = NSLineBreakByWordWrapping;
 
     // PageControl configuration.
     [self.pageControl setNumberOfPages:[self numberOfPages]];
@@ -266,7 +267,7 @@
 // Setup the Title Label.
 - (void)setOverlayTitle {
     // ...or change by an UIImageView if you need it.
-    [self.overlayTitle setText:@"Welcome"];
+    [self.overlayTitle setText:@"ようこそ、Gocciへ"];
 }
 
 // Setup the Title/Subtitle style/text.
