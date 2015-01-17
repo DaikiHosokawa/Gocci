@@ -18,7 +18,7 @@
 
 
 
-@synthesize window = _window;
+//@synthesize window = _window;
 
 
 //facebook認証のcallbackメソッド
@@ -54,9 +54,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     if ([self isFirstRun]) {
+        
         // 初回起動時の処理を書く
         NSLog(@"初回起動だよ");
-         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
         // Init the pages texts, and pictures.
         ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"Picture 1"
                                                                 subTitle:@"Champs-Elysées by night"
@@ -97,7 +99,7 @@
                                                                   delegate:self];
         
         // Run it.
-        [self.viewController stopScrolling];
+        [self.viewController startScrolling];
         
         self.window.rootViewController = self.viewController;
         [self.window makeKeyAndVisible];
@@ -119,8 +121,6 @@
         // Twitter
         [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
                                    consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
-        
-        
         
         return YES;
 

@@ -333,6 +333,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }];
 }
 
+
 /**
  *  現在表示中のセルの動画を再生する
  */
@@ -342,12 +343,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
+    
     Sample5TableViewCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:CGRectMake(0,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+65,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
 }

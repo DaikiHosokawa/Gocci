@@ -202,7 +202,7 @@
                 <outlet property="usernameButton" destination="sq1-Jv-pyv" id="ufj-hD-IFb"/>
                 <outlet property="usersPicture" destination="PIe-Le-KZz" id="ZVZ-za-mei"/>
             </connections>
-            <point key="canvasLocation" x="755" y="-226.5"/>
+            <point key="canvasLocation" x="496" y="-237"/>
         </tableViewCell>
     </objects>
     <resources>

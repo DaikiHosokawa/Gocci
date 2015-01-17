@@ -391,11 +391,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
+    
     Sample3TableViewCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-                                                   frame:CGRectMake(0,
+                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                                                     currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+93,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
