@@ -92,15 +92,37 @@
 {
     [super viewDidLoad];
    
-    // 地図の表示
-    self.showedUserLocation = NO;
-    _mapView = [[MKMapView alloc] init];
-    _mapView.delegate = self;
-    _mapView.frame = CGRectMake(0, 0, 320, 200);
-    _mapView.mapType = MKMapTypeStandard;
-    _mapView.showsUserLocation = YES;
-    [self.view addSubview:_mapView];
     
+    //4.7inch対応
+    CGRect rect2 = [UIScreen mainScreen].bounds;
+    if (rect2.size.height == 667) {
+        self.showedUserLocation = NO;
+        _mapView = [[MKMapView alloc] init];
+        _mapView.delegate = self;
+        _mapView.frame = CGRectMake(0, 0, 375, 200);
+        _mapView.mapType = MKMapTypeStandard;
+        _mapView.showsUserLocation = YES;
+        [self.view addSubview:_mapView];
+    }
+    else if (rect2.size.height == 736) {
+        self.showedUserLocation = NO;
+        _mapView = [[MKMapView alloc] init];
+        _mapView.delegate = self;
+        _mapView.frame = CGRectMake(0, 0, 414, 200);
+        _mapView.mapType = MKMapTypeStandard;
+        _mapView.showsUserLocation = YES;
+        [self.view addSubview:_mapView];
+    }else{
+        // 地図の表示
+        self.showedUserLocation = NO;
+        _mapView = [[MKMapView alloc] init];
+        _mapView.delegate = self;
+        _mapView.frame = CGRectMake(0, 0, 320, 200);
+        _mapView.mapType = MKMapTypeStandard;
+        _mapView.showsUserLocation = YES;
+        [self.view addSubview:_mapView];
+    }
+     //375
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
