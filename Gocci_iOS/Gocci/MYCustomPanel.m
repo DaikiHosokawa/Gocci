@@ -8,6 +8,7 @@
 
 #import "MYCustomPanel.h"
 #import "MYBlurIntroductionView.h"
+#import "AppDelegate.h"
 
 @implementation MYCustomPanel
 
@@ -52,6 +53,9 @@
 
 
 - (IBAction)didPressEnable:(id)sender {
+    AppDelegate *appDelegate = [[AppDelegate alloc]init];
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate checkGPS];
     //Show CongratulationsView
     [UIView animateWithDuration:0.3 animations:^{
         CongratulationsView.alpha = 1;

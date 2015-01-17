@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "MYCustomPanel.h"
+#import "MYBlurIntroductionView.h"
 
 @interface LoginViewController ()
 
@@ -31,22 +32,23 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    AppDelegate *appDelegate = [[AppDelegate alloc]init];
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([appDelegate isFirstRun]) {
-    //Calling this methods builds the intro and adds it to the screen. See below.
-    [self buildIntro];
-    }
+   
 }
 
 -(void)buildIntro{
+    /*
     //Create Stock Panel with header
     UIView *headerView = [[NSBundle mainBundle] loadNibNamed:@"TestHeader" owner:nil options:nil][0];
     MYIntroductionPanel *panel1 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) title:@"Welcome to MYBlurIntroductionView" description:@"MYBlurIntroductionView is a powerful platform for building app introductions and tutorials. Built on the MYIntroductionView core, this revamped version has been reengineered for beauty and greater developer control." image:[UIImage imageNamed:@"HeaderImage.png"] header:headerView];
     
     //Create Stock Panel With Image
     MYIntroductionPanel *panel2 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) title:@"Automated Stock Panels" description:@"Need a quick-and-dirty solution for your app introduction? MYBlurIntroductionView comes with customizable stock panels that make writing an introduction a walk in the park. Stock panels come with optional blurring (iOS 7) and background image. A full panel is just one method away!" image:[UIImage imageNamed:@"ForkImage.png"]];
+    */
     
+     //Create Panel From Nib
+    MYIntroductionPanel *panel1 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) nibNamed:@"TestPanel1"];//Create Panel From Nib
+    MYIntroductionPanel *panel2 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) nibNamed:@"TestPanel2"];
+
     //Create Panel From Nib
     MYIntroductionPanel *panel3 = [[MYIntroductionPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) nibNamed:@"TestPanel3"];
     
@@ -92,7 +94,12 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-
+    AppDelegate *appDelegate = [[AppDelegate alloc]init];
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([appDelegate isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+        [self buildIntro];
+    }
 }
 
 -(void) viewWillDisappear:(BOOL)animated{

@@ -180,9 +180,28 @@
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    // CLLocationManagerのインスタンスを作成
+    locationManager = [[CLLocationManager alloc] init];
+    // デリゲートを設定
+    locationManager.delegate = self;
+    // 更新頻度(メートル)
+    locationManager.distanceFilter = 100;
+
+    [locationManager startUpdatingLocation];
    
     
-  
+    //スプラッシュ時間設定
+    sleep(3);
+    
+
+    // エラー追跡用の機能を追加する。
+    NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
+    return YES;
+
+}
+
+-(void)checkGPS{
     // CLLocationManagerのインスタンスを作成
     locationManager = [[CLLocationManager alloc] init];
     // デリゲートを設定
@@ -200,17 +219,9 @@
         // 測位開始
         [locationManager startUpdatingLocation];
     }
-    
-    //スプラッシュ時間設定
-    sleep(3);
-    
-
-    // エラー追跡用の機能を追加する。
-    NSSetUncaughtExceptionHandler(&exceptionHandler);
-    
-    return YES;
-
 }
+
+
 
 
 //チューリアルの動作ごとのアクション

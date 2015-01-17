@@ -17,6 +17,10 @@
 		95E00DA71A6ACFD50049AFE4 /* CheckMarkWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */; };
 		95E00DAD1A6AD0750049AFE4 /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E00DAA1A6AD0750049AFE4 /* MYBlurIntroductionView.m */; };
 		95E00DAE1A6AD0750049AFE4 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E00DAC1A6AD0750049AFE4 /* MYIntroductionPanel.m */; };
+		95E00DB11A6AE4DF0049AFE4 /* TestPanel1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DAF1A6AE4DF0049AFE4 /* TestPanel1.xib */; };
+		95E00DB21A6AE4DF0049AFE4 /* TestPanel2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */; };
+		95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB31A6AE7370049AFE4 /* siyou.jpg */; };
+		95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB51A6AE8610049AFE4 /* background-gradient.png */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
@@ -161,6 +165,10 @@
 		95E00DAA1A6AD0750049AFE4 /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
 		95E00DAB1A6AD0750049AFE4 /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
 		95E00DAC1A6AD0750049AFE4 /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
+		95E00DAF1A6AE4DF0049AFE4 /* TestPanel1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel1.xib; sourceTree = "<group>"; };
+		95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel2.xib; sourceTree = "<group>"; };
+		95E00DB31A6AE7370049AFE4 /* siyou.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = siyou.jpg; sourceTree = "<group>"; };
+		95E00DB51A6AE8610049AFE4 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
 		AB8C717E1A278BFE00BF31EA /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = Model/APIClient.h; sourceTree = "<group>"; };
 		AB8C717F1A278BFE00BF31EA /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = Model/APIClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -621,11 +629,15 @@
 				95E00DA81A6AD0740049AFE4 /* MYBlurIntroductionView */,
 				95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */,
 				95E00DA21A6ACFCB0049AFE4 /* ForkImage.png */,
+				95E00DB51A6AE8610049AFE4 /* background-gradient.png */,
 				95E00DA31A6ACFCB0049AFE4 /* HeaderImage.png */,
 				95E00D9D1A6ACFAF0049AFE4 /* MYCustomPanel.h */,
 				95E00D9E1A6ACFAF0049AFE4 /* MYCustomPanel.m */,
 				95E00D9F1A6ACFAF0049AFE4 /* MYCustomPanel.xib */,
+				95E00DB31A6AE7370049AFE4 /* siyou.jpg */,
 				95E00D971A6ACF9D0049AFE4 /* TestHeader.xib */,
+				95E00DAF1A6AE4DF0049AFE4 /* TestPanel1.xib */,
+				95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */,
 				95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */,
 				95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */,
 				FFDC02A01A1F7DFA009A787C /* SVProgressHUD */,
@@ -989,8 +1001,10 @@
 			files = (
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FFDE508C1A382A2D00D54AB5 /* 4_7_inch.storyboard in Resources */,
+				95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */,
 				95E00D9B1A6ACF9D0049AFE4 /* TestPanel3.xib in Resources */,
 				95E00DA71A6ACFD50049AFE4 /* CheckMarkWhite.png in Resources */,
+				95E00DB11A6AE4DF0049AFE4 /* TestPanel1.xib in Resources */,
 				95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				FFDE508D1A382A2D00D54AB5 /* 5_5_inch.storyboard in Resources */,
@@ -999,7 +1013,9 @@
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */,
 				95E00DA51A6ACFCB0049AFE4 /* HeaderImage.png in Resources */,
+				95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
+				95E00DB21A6AE4DF0049AFE4 /* TestPanel2.xib in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */,

@@ -55,7 +55,7 @@
     //Get skipString dimensions
     NSString *skipString = NSLocalizedString(@"Skip", nil);
     CGFloat skipStringWidth = 0;
-    kSkipButtonFont = [UIFont systemFontOfSize:16];
+    kSkipButtonFont = [UIFont systemFontOfSize:20];
     
     if ([MYIntroductionPanel runningiOS7]) {
         NSDictionary *titleAttributes = [NSDictionary dictionaryWithObject:kSkipButtonFont forKey: NSFontAttributeName];

@@ -51,5 +51,6 @@
 
 
 -(BOOL)isFirstRun;
+-(void)checkGPS;
 
 @end
