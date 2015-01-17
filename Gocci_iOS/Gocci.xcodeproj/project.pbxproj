@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95E00D9A1A6ACF9D0049AFE4 /* TestHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D971A6ACF9D0049AFE4 /* TestHeader.xib */; };
+		95E00D9B1A6ACF9D0049AFE4 /* TestPanel3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */; };
+		95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */; };
+		95E00DA01A6ACFAF0049AFE4 /* MYCustomPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E00D9E1A6ACFAF0049AFE4 /* MYCustomPanel.m */; };
+		95E00DA11A6ACFAF0049AFE4 /* MYCustomPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D9F1A6ACFAF0049AFE4 /* MYCustomPanel.xib */; };
+		95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DA21A6ACFCB0049AFE4 /* ForkImage.png */; };
+		95E00DA51A6ACFCB0049AFE4 /* HeaderImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DA31A6ACFCB0049AFE4 /* HeaderImage.png */; };
+		95E00DA71A6ACFD50049AFE4 /* CheckMarkWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */; };
+		95E00DAD1A6AD0750049AFE4 /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E00DAA1A6AD0750049AFE4 /* MYBlurIntroductionView.m */; };
+		95E00DAE1A6AD0750049AFE4 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E00DAC1A6AD0750049AFE4 /* MYIntroductionPanel.m */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
@@ -138,6 +148,19 @@
 
 /* Begin PBXFileReference section */
 		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		95E00D971A6ACF9D0049AFE4 /* TestHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestHeader.xib; sourceTree = "<group>"; };
+		95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel3.xib; sourceTree = "<group>"; };
+		95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Toronto, ON.jpg"; sourceTree = "<group>"; };
+		95E00D9D1A6ACFAF0049AFE4 /* MYCustomPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCustomPanel.h; sourceTree = "<group>"; };
+		95E00D9E1A6ACFAF0049AFE4 /* MYCustomPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCustomPanel.m; sourceTree = "<group>"; };
+		95E00D9F1A6ACFAF0049AFE4 /* MYCustomPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYCustomPanel.xib; sourceTree = "<group>"; };
+		95E00DA21A6ACFCB0049AFE4 /* ForkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForkImage.png; sourceTree = "<group>"; };
+		95E00DA31A6ACFCB0049AFE4 /* HeaderImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeaderImage.png; sourceTree = "<group>"; };
+		95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckMarkWhite.png; sourceTree = "<group>"; };
+		95E00DA91A6AD0740049AFE4 /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
+		95E00DAA1A6AD0750049AFE4 /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
+		95E00DAB1A6AD0750049AFE4 /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
+		95E00DAC1A6AD0750049AFE4 /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
 		AB8C717E1A278BFE00BF31EA /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = Model/APIClient.h; sourceTree = "<group>"; };
 		AB8C717F1A278BFE00BF31EA /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = Model/APIClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +429,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		95E00DA81A6AD0740049AFE4 /* MYBlurIntroductionView */ = {
+			isa = PBXGroup;
+			children = (
+				95E00DA91A6AD0740049AFE4 /* MYBlurIntroductionView.h */,
+				95E00DAA1A6AD0750049AFE4 /* MYBlurIntroductionView.m */,
+				95E00DAB1A6AD0750049AFE4 /* MYIntroductionPanel.h */,
+				95E00DAC1A6AD0750049AFE4 /* MYIntroductionPanel.m */,
+			);
+			path = MYBlurIntroductionView;
+			sourceTree = "<group>";
+		};
 		AB8C717C1A278BC300BF31EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +618,16 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95E00DA81A6AD0740049AFE4 /* MYBlurIntroductionView */,
+				95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */,
+				95E00DA21A6ACFCB0049AFE4 /* ForkImage.png */,
+				95E00DA31A6ACFCB0049AFE4 /* HeaderImage.png */,
+				95E00D9D1A6ACFAF0049AFE4 /* MYCustomPanel.h */,
+				95E00D9E1A6ACFAF0049AFE4 /* MYCustomPanel.m */,
+				95E00D9F1A6ACFAF0049AFE4 /* MYCustomPanel.xib */,
+				95E00D971A6ACF9D0049AFE4 /* TestHeader.xib */,
+				95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */,
+				95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */,
 				FFDC02A01A1F7DFA009A787C /* SVProgressHUD */,
 				FF8F188E19F101EA00538DAC /* Sources */,
 				FF217CB919E62D1200AEB06E /* EDStarRating */,
@@ -945,16 +989,23 @@
 			files = (
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FFDE508C1A382A2D00D54AB5 /* 4_7_inch.storyboard in Resources */,
+				95E00D9B1A6ACF9D0049AFE4 /* TestPanel3.xib in Resources */,
+				95E00DA71A6ACFD50049AFE4 /* CheckMarkWhite.png in Resources */,
+				95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				FFDE508D1A382A2D00D54AB5 /* 5_5_inch.storyboard in Resources */,
 				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
+				95E00D9A1A6ACF9D0049AFE4 /* TestHeader.xib in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */,
+				95E00DA51A6ACFCB0049AFE4 /* HeaderImage.png in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
+				95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
+				95E00DA11A6ACFAF0049AFE4 /* MYCustomPanel.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */,
 			);
@@ -1025,6 +1076,7 @@
 				FF8F18BE19F101EA00538DAC /* SCRecordSession.m in Sources */,
 				FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
+				95E00DA01A6ACFAF0049AFE4 /* MYCustomPanel.m in Sources */,
 				FF5DDF7419E3D3C2000F2ABD /* NSData+ImageContentType.m in Sources */,
 				FFA0E2DC19AEC0DF006269B4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
@@ -1040,6 +1092,7 @@
 				FF8F18BC19F101EA00538DAC /* SCRecorderFocusTargetView.m in Sources */,
 				FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */,
 				FFA0E2DD19AEC0DF006269B4 /* UIAlertView+AFNetworking.m in Sources */,
+				95E00DAE1A6AD0750049AFE4 /* MYIntroductionPanel.m in Sources */,
 				FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */,
 				FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */,
 				FF5DDF7619E3D3C2000F2ABD /* SDWebImageCompat.m in Sources */,
@@ -1068,6 +1121,7 @@
 				FF5DDF7719E3D3C2000F2ABD /* SDWebImageDecoder.m in Sources */,
 				FFA0E2E019AEC0DF006269B4 /* UIProgressView+AFNetworking.m in Sources */,
 				FF5DDF8019E3D3C2000F2ABD /* UIImageView+HighlightedWebCache.m in Sources */,
+				95E00DAD1A6AD0750049AFE4 /* MYBlurIntroductionView.m in Sources */,
 				FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */,
 				FF8F18B319F101EA00538DAC /* SCArchivedVector.m in Sources */,
 				FF8F18B419F101EA00538DAC /* SCAssetExportSession.m in Sources */,

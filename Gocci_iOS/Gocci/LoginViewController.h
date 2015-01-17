@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "MYBlurIntroductionView.h"
 
-
-@interface LoginViewController : UIViewController<FBLoginViewDelegate>
+@interface LoginViewController : UIViewController<FBLoginViewDelegate,MYIntroductionDelegate>
 
 @end

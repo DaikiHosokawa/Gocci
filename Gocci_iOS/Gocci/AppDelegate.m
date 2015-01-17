@@ -52,7 +52,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{/*
     if ([self isFirstRun]) {
         
         // 初回起動時の処理を書く
@@ -125,7 +125,7 @@
         return YES;
 
     }else{
-
+*/
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
@@ -209,7 +209,7 @@
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
     return YES;
-    }
+
 }
 
 

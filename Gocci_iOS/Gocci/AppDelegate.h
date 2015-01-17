@@ -50,6 +50,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
-
+-(BOOL)isFirstRun;
 
 @end
