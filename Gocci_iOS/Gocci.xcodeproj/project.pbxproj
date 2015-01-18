@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ADF5BC375F91ABBA0233EBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302F477AE49444819704F22A /* libPods.a */; };
 		95E00D9A1A6ACF9D0049AFE4 /* TestHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D971A6ACF9D0049AFE4 /* TestHeader.xib */; };
 		95E00D9B1A6ACF9D0049AFE4 /* TestPanel3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */; };
 		95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */; };
@@ -25,7 +26,6 @@
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
 		AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */; };
-		F5F08E755A9148C28EBECBC2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302F477AE49444819704F22A /* libPods.a */; };
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -421,7 +421,7 @@
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
-				F5F08E755A9148C28EBECBC2 /* libPods.a in Frameworks */,
+				4ADF5BC375F91ABBA0233EBD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,8 +1328,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6";
+				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1360,8 +1361,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6";
+				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
