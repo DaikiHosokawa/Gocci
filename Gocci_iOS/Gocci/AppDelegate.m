@@ -278,10 +278,7 @@
     
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    
-    //スプラッシュ時間設定
-    sleep(3);
+   
     
     // CLLocationManagerのインスタンスを作成
     locationManager = [[CLLocationManager alloc] init];
@@ -341,7 +338,15 @@ void exceptionHandler(NSException *exception) {
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
     NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
-  
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+        NSLog(@"urlStringatnoulon:%@",urlString);
+        NSURL *urlGeo = [NSURL URLWithString:urlString];
+        NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
+        NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+        appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    });
+        //});
     [locationManager stopUpdatingLocation];    
     
 }

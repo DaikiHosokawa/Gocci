@@ -43,9 +43,10 @@
     _searchBar.text = NULL;
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q2_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
+    //dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //dispatch_queue_t q2_main = dispatch_get_main_queue();
+    //dispatch_async(q2_global, ^{
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 飲食店名
         NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
         _restname_ = [restname mutableCopy];
@@ -65,9 +66,9 @@
         //経度
         NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
         _jsonlon_ = [jsonlon mutableCopy];
-        dispatch_async(q2_main, ^{
+        //dispatch_async(q2_main, ^{
             [self.tableView reloadData];
-        });
+        //});
     });
     
 
