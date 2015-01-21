@@ -365,7 +365,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-                                                   frame:CGRectMake(0,
+                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                                                     currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
