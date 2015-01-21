@@ -239,7 +239,7 @@
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample2TableViewCell" id="gkr-P1-nGu" customClass="Sample2TableViewCell">
                                 <rect key="frame" x="0.0" y="117" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gkr-P1-nGu" id="Uo6-Zi-qrK">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -733,9 +733,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tK9-zW-yJ4"/>
-        <segue reference="1zK-cZ-5jM"/>
         <segue reference="uLy-rw-ivI"/>
+        <segue reference="1zK-cZ-5jM"/>
+        <segue reference="tK9-zW-yJ4"/>
         <segue reference="wis-md-2uD"/>
     </inferredMetricsTieBreakers>
 </document>
