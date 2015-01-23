@@ -29,13 +29,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
 //@property (weak, nonatomic) IBOutlet UILabel *badnum;
-@property (weak, nonatomic) IBOutlet UILabel *BadNum;
+@property (weak, nonatomic) IBOutlet UILabel *badnum;
 
 @property (weak, nonatomic) IBOutlet UIButton *badBtn;
 
 @property (nonatomic,strong) NSString *postID;
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *userspicture;
+@property (weak, nonatomic) IBOutlet UIImageView *c;
 
 @end
 
@@ -120,7 +121,7 @@
     // Good 数
     self.GoodNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.goodNum)];
     // Bad 数
-    self.BadNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.badNum)];
+    self.badnum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.badNum)];
 
     // コメント数
     self.CommentNum.text = [NSString stringWithFormat:@"%@", @(restaurantPost.commentNum)];

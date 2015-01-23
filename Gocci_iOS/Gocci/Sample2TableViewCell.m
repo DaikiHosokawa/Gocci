@@ -29,6 +29,7 @@
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *userspicture;
 @property (nonatomic,strong) NSString *restname;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *c;
 
 @end
 
