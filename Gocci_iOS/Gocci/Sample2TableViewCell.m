@@ -21,15 +21,15 @@
 @property (weak,nonatomic) IBOutlet UILabel *badnum;
 @property (weak, nonatomic) IBOutlet UIButton *badBtn;
 @property (weak, nonatomic) IBOutlet UIView *contentViewFront;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *commentnum;
 @property (weak, nonatomic) IBOutlet UIImageView *starImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *c;
 
 @property (nonatomic,strong) NSString *postID;
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *userspicture;
 @property (nonatomic,strong) NSString *restname;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *c;
+
 
 @end
 

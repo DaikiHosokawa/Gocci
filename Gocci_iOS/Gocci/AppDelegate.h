@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "Crittercism.h"
-#import "ICETutorialController.h"
 
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate,ICETutorialControllerDelegate>{
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>{
     // グローバル変数
     NSString *gText;
     //グローバル変数
@@ -36,7 +35,6 @@
     NSData *movieData;
 }
 
-@property (strong, nonatomic) ICETutorialController *viewController;
 @property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *gText;
 @property (nonatomic, retain) NSString *postFileName;

@@ -641,7 +641,7 @@
 				95E00D981A6ACF9D0049AFE4 /* TestPanel3.xib */,
 				95E00D991A6ACF9D0049AFE4 /* Toronto, ON.jpg */,
 				FFDC02A01A1F7DFA009A787C /* SVProgressHUD */,
-				FF8F188E19F101EA00538DAC /* Sources */,
+				FF8F188E19F101EA00538DAC /* Recorder_Sources */,
 				FF217CB919E62D1200AEB06E /* EDStarRating */,
 				FF5DDF5119E3D3C2000F2ABD /* SDWebImage */,
 				FF41DF4019BAF42100F3DD7B /* CrittercismSDK */,
@@ -695,7 +695,7 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		FF8F188E19F101EA00538DAC /* Sources */ = {
+		FF8F188E19F101EA00538DAC /* Recorder_Sources */ = {
 			isa = PBXGroup;
 			children = (
 				FF8F188F19F101EA00538DAC /* CIImageRenderer.h */,
@@ -734,6 +734,7 @@
 				FF8F18B019F101EA00538DAC /* SCVideoPlayerView.h */,
 				FF8F18B119F101EA00538DAC /* SCVideoPlayerView.m */,
 			);
+			name = Recorder_Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
