@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/ISRemoveNull" "${PODS_ROOT}/Headers/Public/UIImage+Dummy"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/ISRemoveNull" -isystem "${PODS_ROOT}/Headers/Public/UIImage+Dummy"
+OTHER_LDFLAGS = -ObjC -l"Pods-ISRemoveNull" -l"Pods-UIImage+Dummy"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

@@ -70,6 +70,17 @@
     [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
                                consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
     
+    
+    // CLLocationManagerのインスタンスを作成
+    locationManager = [[CLLocationManager alloc] init];
+    // デリゲートを設定
+    locationManager.delegate = self;
+    // 更新頻度(メートル)
+    locationManager.distanceFilter = 100;
+    
+    [locationManager startUpdatingLocation];
+
+    
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     if (rect.size.height == 480) {
@@ -105,16 +116,6 @@
     
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    // CLLocationManagerのインスタンスを作成
-    locationManager = [[CLLocationManager alloc] init];
-    // デリゲートを設定
-    locationManager.delegate = self;
-    // 更新頻度(メートル)
-    locationManager.distanceFilter = 100;
-
-    [locationManager startUpdatingLocation];
-   
     
     //スプラッシュ時間設定
     sleep(3);
@@ -181,7 +182,7 @@ void exceptionHandler(NSException *exception) {
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
     NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
         NSLog(@"urlStringatnoulon:%@",urlString);
         NSURL *urlGeo = [NSURL URLWithString:urlString];
