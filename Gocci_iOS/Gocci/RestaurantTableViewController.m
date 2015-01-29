@@ -88,12 +88,11 @@
 {
     [super viewDidLoad];
    
-     self.navigationItem.title = _postRestName;
-    
     //カスタムセルの導入
     UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
    
+    self.navigationItem.title = @"レストラン";       
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
      //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
