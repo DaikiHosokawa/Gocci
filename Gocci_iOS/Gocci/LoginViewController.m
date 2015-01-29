@@ -94,7 +94,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+    //初回起動時のみの動作
     AppDelegate *appDelegate = [[AppDelegate alloc]init];
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([appDelegate isFirstRun]) {
@@ -122,7 +122,7 @@
 - (IBAction)facebookButtonTapped:(id)sender {
     // パーミッション
     NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
-　　　// Facebook アカウントを使ってログイン
+    // Facebook アカウントを使ってログイン
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
          [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
         if (!user) {

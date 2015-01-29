@@ -18,6 +18,7 @@
 #import "RestaurantPost.h"
 #import "MoviePlayerManager.h"
 #import "QuartzCore/QuartzCore.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @protocol MovieViewDelegate;
 
@@ -67,6 +68,26 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
+}
+- (IBAction)pushMap:(UIButton *)sender {
+    NSString *mapText = @"美よしの園";
+    mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:
+                            @"comgooglemaps://?q=%@&center=35.793092,139.220140&zoom=18",mapText];
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:directions]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+        //アラート出す
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+        
+    }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -396,7 +417,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+150,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+160,
                                                                     currentCell.thumbnailView.frame.size.width,
                                                                     currentCell.thumbnailView.frame.size.height)];
 }

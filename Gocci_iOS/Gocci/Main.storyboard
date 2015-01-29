@@ -408,15 +408,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleAspectFit" id="JTR-Lc-xze">
-                            <rect key="frame" x="0.0" y="64" width="320" height="134"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="163"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_login kirinuki" id="oRz-WF-A89">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="134"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="163"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradation" id="7Lc-MB-8WW">
-                                    <rect key="frame" x="-4" y="0.0" width="328" height="134"/>
+                                    <rect key="frame" x="-4" y="0.0" width="328" height="163"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛知県名古屋市中区　3-24-24 324ビル" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7g-eC-FaU">
@@ -427,7 +427,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZVE-tL-vc2">
-                                    <rect key="frame" x="223" y="48" width="89" height="84"/>
+                                    <rect key="frame" x="217" y="86" width="89" height="84"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="toukou">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -437,8 +437,18 @@
                                         <segue destination="2" kind="push" id="8mN-jF-pgx"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zJ0-CW-sJz">
+                                    <rect key="frame" x="261" y="10" width="45" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="マップ">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="pushMap:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="ca8-S1-4sg"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スターバックス　栄広小路店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5SO-Dv-yVu">
-                                    <rect key="frame" x="13" y="67" width="202" height="46"/>
+                                    <rect key="frame" x="8" y="105" width="202" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
