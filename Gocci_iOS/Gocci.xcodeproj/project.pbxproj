@@ -25,6 +25,9 @@
 		95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */; };
 		95EB365B1A7A2A37001FACAD /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */; };
 		95EB365D1A7A2D0D001FACAD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95EB365C1A7A2D0D001FACAD /* GoogleMaps.bundle */; };
+		95F937871A7BB85400C19CEC /* CXCardContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F937841A7BB85400C19CEC /* CXCardContainerView.m */; };
+		95F937881A7BB85400C19CEC /* CXCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F937861A7BB85400C19CEC /* CXCardView.m */; };
+		95F9378B1A7BB9A100C19CEC /* DemoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F9378A1A7BB9A100C19CEC /* DemoContentView.m */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
@@ -175,6 +178,12 @@
 		95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
 		95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		95EB365C1A7A2D0D001FACAD /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		95F937831A7BB85400C19CEC /* CXCardContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardContainerView.h; sourceTree = "<group>"; };
+		95F937841A7BB85400C19CEC /* CXCardContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardContainerView.m; sourceTree = "<group>"; };
+		95F937851A7BB85400C19CEC /* CXCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardView.h; sourceTree = "<group>"; };
+		95F937861A7BB85400C19CEC /* CXCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardView.m; sourceTree = "<group>"; };
+		95F937891A7BB9A100C19CEC /* DemoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoContentView.h; sourceTree = "<group>"; };
+		95F9378A1A7BB9A100C19CEC /* DemoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoContentView.m; sourceTree = "<group>"; };
 		AB8C717E1A278BFE00BF31EA /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = Model/APIClient.h; sourceTree = "<group>"; };
 		AB8C717F1A278BFE00BF31EA /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = Model/APIClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +462,17 @@
 			path = MYBlurIntroductionView;
 			sourceTree = "<group>";
 		};
+		95F937821A7BB85400C19CEC /* CXCardView */ = {
+			isa = PBXGroup;
+			children = (
+				95F937831A7BB85400C19CEC /* CXCardContainerView.h */,
+				95F937841A7BB85400C19CEC /* CXCardContainerView.m */,
+				95F937851A7BB85400C19CEC /* CXCardView.h */,
+				95F937861A7BB85400C19CEC /* CXCardView.m */,
+			);
+			path = CXCardView;
+			sourceTree = "<group>";
+		};
 		AB8C717C1A278BC300BF31EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +653,9 @@
 		FF54EFE919149A1800025DC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95F937891A7BB9A100C19CEC /* DemoContentView.h */,
+				95F9378A1A7BB9A100C19CEC /* DemoContentView.m */,
+				95F937821A7BB85400C19CEC /* CXCardView */,
 				95E00DA81A6AD0740049AFE4 /* MYBlurIntroductionView */,
 				95E00DA61A6ACFD50049AFE4 /* CheckMarkWhite.png */,
 				95E00DA21A6ACFCB0049AFE4 /* ForkImage.png */,
@@ -1097,6 +1120,7 @@
 				FF8F18B719F101EA00538DAC /* SCFilterGroup.m in Sources */,
 				FF8F18BD19F101EA00538DAC /* SCRecorderFocusView.m in Sources */,
 				FFA0E2DE19AEC0DF006269B4 /* UIButton+AFNetworking.m in Sources */,
+				95F937881A7BB85400C19CEC /* CXCardView.m in Sources */,
 				FF8F18BE19F101EA00538DAC /* SCRecordSession.m in Sources */,
 				FFB92EDE1997A06B008E024A /* AFURLSessionManager.m in Sources */,
 				FF54F01C1914B3C800025DC8 /* searchTableViewController.m in Sources */,
@@ -1119,6 +1143,7 @@
 				FFA0E2DD19AEC0DF006269B4 /* UIAlertView+AFNetworking.m in Sources */,
 				95E00DAE1A6AD0750049AFE4 /* MYIntroductionPanel.m in Sources */,
 				FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */,
+				95F937871A7BB85400C19CEC /* CXCardContainerView.m in Sources */,
 				FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */,
 				FF5DDF7619E3D3C2000F2ABD /* SDWebImageCompat.m in Sources */,
 				FF5DDF7E19E3D3C2000F2ABD /* UIImage+MultiFormat.m in Sources */,
@@ -1141,6 +1166,7 @@
 				FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */,
 				FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */,
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
+				95F9378B1A7BB9A100C19CEC /* DemoContentView.m in Sources */,
 				FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */,
 				FFA0E2DF19AEC0DF006269B4 /* UIImageView+AFNetworking.m in Sources */,
 				FF5DDF7719E3D3C2000F2ABD /* SDWebImageDecoder.m in Sources */,

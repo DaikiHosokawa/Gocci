@@ -18,15 +18,28 @@
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "QuartzCore/QuartzCore.h"
+#import "DemoContentView.h"
 
 @protocol MovieViewDelegate;
 
 @interface TimelineTableViewController ()
 <CLLocationManagerDelegate, Sample2TableViewCellDelegate>
+{
+    DemoContentView *_firstContentView;
+    DemoContentView *_secondContentView;
+}
+
+- (void)showDefaultContentView;
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
+
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UITapGestureRecognizer *doubleTapRecognizer;
+@property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *notificationText;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -65,9 +78,43 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    /*
+     //初回起動時のみの動作するポップアップ
+     AppDelegate *appDelegate2 = [[AppDelegate alloc]init];
+     appDelegate2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+     if ([appDelegate2 isFirstRun]) {
+     //Calling this methods builds the intro and adds it to the screen. See below.
+     [self showDefaultContentView];
+     }
+     */
     self.navigationItem.leftBarButtonItem.enabled = YES;
 }
+
+#pragma mark -
+- (void)showDefaultContentView
+{
+    if (!_firstContentView) {
+        _firstContentView = [DemoContentView defaultView];
+        
+        UILabel *descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
+        descriptionLabel.numberOfLines = 0.;
+        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.backgroundColor = [UIColor clearColor];
+        descriptionLabel.textColor = [UIColor blackColor];
+        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:14.];
+        descriptionLabel.text = @"This is a draggable view. You could drag it down to dismiss";
+        [_firstContentView addSubview:descriptionLabel];
+        
+        [_firstContentView setDismissHandler:^(DemoContentView *view) {
+            // to dismiss current cardView. Also you could call the `dismiss` method.
+            [CXCardView dismissCurrent];
+        }];
+    }
+    
+    [CXCardView showWithView:_firstContentView draggable:YES];
+}
+
 
 - (IBAction)pushUserTimeline:(id)sender {
 

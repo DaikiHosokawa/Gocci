@@ -17,7 +17,7 @@
 #import "usersTableViewController_other.h"
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
-
+#import "CXCardView.h"
 
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>

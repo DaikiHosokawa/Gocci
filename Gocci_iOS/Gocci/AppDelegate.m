@@ -129,7 +129,7 @@
     return YES;
 
 }
-/*
+
 
 -(void)checkGPS{
     // CLLocationManagerのインスタンスを作成
@@ -151,7 +151,7 @@
     }
 }
 
-*/
+
 
 // 異常終了を検知した場合に呼び出されるメソッド
 void exceptionHandler(NSException *exception) {
