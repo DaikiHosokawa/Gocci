@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SCFilterGroup.h"
 #import "SCVideoPlayerView.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 
 
@@ -62,6 +63,7 @@
     
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
+    [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
     
     // Facebook
     [PFFacebookUtils initializeFacebook];
@@ -127,6 +129,7 @@
     return YES;
 
 }
+/*
 
 -(void)checkGPS{
     // CLLocationManagerのインスタンスを作成
@@ -148,7 +151,7 @@
     }
 }
 
-
+*/
 
 // 異常終了を検知した場合に呼び出されるメソッド
 void exceptionHandler(NSException *exception) {

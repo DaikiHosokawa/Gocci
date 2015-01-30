@@ -22,6 +22,9 @@
 		95E00DB21A6AE4DF0049AFE4 /* TestPanel2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */; };
 		95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB31A6AE7370049AFE4 /* siyou.jpg */; };
 		95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB51A6AE8610049AFE4 /* background-gradient.png */; };
+		95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */; };
+		95EB365B1A7A2A37001FACAD /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */; };
+		95EB365D1A7A2D0D001FACAD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95EB365C1A7A2D0D001FACAD /* GoogleMaps.bundle */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
@@ -44,7 +47,6 @@
 		FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBE19E6571D00AEB06E /* usersTableViewController.m */; };
 		FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */; };
 		FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */; };
-		FF23D1DE19F0B50B008B7E5C /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */; };
 		FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */; };
 		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
@@ -169,6 +171,10 @@
 		95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel2.xib; sourceTree = "<group>"; };
 		95E00DB31A6AE7370049AFE4 /* siyou.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = siyou.jpg; sourceTree = "<group>"; };
 		95E00DB51A6AE8610049AFE4 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
+		95EB36571A7A1752001FACAD /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
+		95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
+		95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		95EB365C1A7A2D0D001FACAD /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		AB8C717E1A278BFE00BF31EA /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = Model/APIClient.h; sourceTree = "<group>"; };
 		AB8C717F1A278BFE00BF31EA /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = Model/APIClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,8 +212,6 @@
 		FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell.h; sourceTree = "<group>"; };
 		FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell.m; sourceTree = "<group>"; };
 		FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell.xib; sourceTree = "<group>"; };
-		FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
-		FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
 		FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
 		FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
 		FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTouchDetector.h; sourceTree = "<group>"; };
@@ -400,28 +404,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
+				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
 				FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */,
+				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
+				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
+				FF0BE456193ED5E9001A0053 /* libc++.dylib in Frameworks */,
+				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
+				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
+				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
 				FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */,
 				FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */,
 				FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */,
 				FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */,
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
-				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
-				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
-				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
-				FF0BE456193ED5E9001A0053 /* libc++.dylib in Frameworks */,
-				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				FFE130D91943040600806B02 /* FacebookSDK.framework in Frameworks */,
-				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
-				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
-				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
 				FFF16B9519528286002FC793 /* Parse.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
 				4ADF5BC375F91ABBA0233EBD /* libPods.a in Frameworks */,
+				95EB365B1A7A2A37001FACAD /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +549,7 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
+				95EB365C1A7A2D0D001FACAD /* GoogleMaps.bundle */,
 				FF54EFE819149A1800025DC8 /* Gocci */,
 				AB8C71861A278D8C00BF31EA /* GocciUnitTests */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
@@ -564,6 +570,7 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */,
 				FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */,
 				FFA1769C199133EE005BEE41 /* Security.framework */,
 				FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */,
@@ -895,8 +902,8 @@
 			children = (
 				FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */,
 				FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */,
-				FF23D1D619F0B50B008B7E5C /* SCImageDisplayerViewController.h */,
-				FF23D1D719F0B50B008B7E5C /* SCImageDisplayerViewController.m */,
+				95EB36571A7A1752001FACAD /* SCImageDisplayerViewController.h */,
+				95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */,
 			);
 			name = Effecter;
 			sourceTree = "<group>";
@@ -1000,6 +1007,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95EB365D1A7A2D0D001FACAD /* GoogleMaps.bundle in Resources */,
 				FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */,
 				FFDE508C1A382A2D00D54AB5 /* 4_7_inch.storyboard in Resources */,
 				95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */,
@@ -1085,7 +1093,6 @@
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
 				FF5DDF7D19E3D3C2000F2ABD /* UIImage+GIF.m in Sources */,
 				FF97C43619247FD20025DD6A /* submitViewController.m in Sources */,
-				FF23D1DE19F0B50B008B7E5C /* SCImageDisplayerViewController.m in Sources */,
 				FF5DDF7919E3D3C2000F2ABD /* SDWebImageDownloaderOperation.m in Sources */,
 				FF8F18B719F101EA00538DAC /* SCFilterGroup.m in Sources */,
 				FF8F18BD19F101EA00538DAC /* SCRecorderFocusView.m in Sources */,
@@ -1102,6 +1109,7 @@
 				FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
 				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
+				95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */,
 				AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */,
 				FFB92ED61997A06B008E024A /* AFHTTPRequestOperation.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
