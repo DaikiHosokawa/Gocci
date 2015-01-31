@@ -9,8 +9,8 @@
 
 #import "SCImageDisplayerViewController.h"
 
-@interface SCImageDisplayerViewController () {
-}
+@interface SCImageDisplayerViewController () 
+
 @end
 
 @implementation SCImageDisplayerViewController
@@ -34,6 +34,8 @@
     
     [self.filterSwitcherView setNeedsDisplay];
 }
+
+
 
 - (void)viewDidLoad
 {

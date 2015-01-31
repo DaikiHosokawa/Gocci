@@ -10,6 +10,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 @interface SCRecorderViewController : UIViewController<SCRecorderDelegate>
 

@@ -18,7 +18,7 @@
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "QuartzCore/QuartzCore.h"
-#import "DemoContentView.h"
+
 
 @protocol MovieViewDelegate;
 
@@ -78,17 +78,28 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    /*
-     //初回起動時のみの動作するポップアップ
-     AppDelegate *appDelegate2 = [[AppDelegate alloc]init];
-     appDelegate2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-     if ([appDelegate2 isFirstRun]) {
-     //Calling this methods builds the intro and adds it to the screen. See below.
-     [self showDefaultContentView];
-     }
-     */
+    if ([self isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+      [self showDefaultContentView];
+    }
     self.navigationItem.leftBarButtonItem.enabled = YES;
 }
+
+- (BOOL)isFirstRun
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"firstRunDate1"]) {
+        // 日時が設定済みなら初回起動でない
+        return NO;
+    }
+    // 初回起動日時を設定
+    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate1"];
+    // 保存
+    [userDefaults synchronize];
+    // 初回起動
+    return YES;
+}
+
 
 #pragma mark -
 - (void)showDefaultContentView
@@ -102,8 +113,8 @@
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:14.];
-        descriptionLabel.text = @"This is a draggable view. You could drag it down to dismiss";
+        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
+        descriptionLabel.text = @"タイムライン画面では最新情報が見れます。";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {

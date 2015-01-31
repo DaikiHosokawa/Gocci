@@ -11,6 +11,8 @@
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
 #import "EDStarRating.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 
 @protocol submitViewControllerDelegate;

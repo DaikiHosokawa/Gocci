@@ -32,7 +32,13 @@
     UIImage *_photo;
     SCRecordSession *_recordSession;
     UIImageView *_ghostImageView;
+    DemoContentView *_firstContentView;
+    DemoContentView *_secondContentView;
 }
+
+
+
+- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
 @end
@@ -122,7 +128,58 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+  
+    [_recorder startRunningSession];
+    [_recorder focusCenter];
+    
+    if ([self isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+        [self showDefaultContentView];
+    }
+}
 
+
+- (BOOL)isFirstRun
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"firstRunDate6"]) {
+        // 日時が設定済みなら初回起動でない
+        return NO;
+    }
+    // 初回起動日時を設定
+    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate6"];
+    // 保存
+    [userDefaults synchronize];
+    // 初回起動
+    return YES;
+}
+
+- (void)showDefaultContentView
+{
+    if (!_firstContentView) {
+        _firstContentView = [DemoContentView defaultView];
+        
+        UILabel *descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
+        descriptionLabel.numberOfLines = 0.;
+        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.backgroundColor = [UIColor clearColor];
+        descriptionLabel.textColor = [UIColor blackColor];
+        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:16.];
+        descriptionLabel.text = @"撮影画面では赤い録画ボタンを押して離して合計6秒で飲食店の良さを紹介してください";
+        [_firstContentView addSubview:descriptionLabel];
+        
+        [_firstContentView setDismissHandler:^(DemoContentView *view) {
+            // to dismiss current cardView. Also you could call the `dismiss` method.
+            [CXCardView dismissCurrent];
+        }];
+    }
+    
+    [CXCardView showWithView:_firstContentView draggable:YES];
+}
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
     NSLog(@"Reconfigured audio input: %@", audioInputError);
@@ -150,12 +207,6 @@
     [_recorder previewViewFrameChanged];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [_recorder startRunningSession];
-    [_recorder focusCenter];
-}
 
 - (void)viewWillDisappear:(BOOL)animated
 {

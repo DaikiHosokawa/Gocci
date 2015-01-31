@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SCSwipeableFilterView.h"
 
+
 @interface SCImageDisplayerViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *photo;

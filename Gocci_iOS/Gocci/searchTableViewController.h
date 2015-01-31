@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
+#import "CXCardView.h"
 
 @interface SearchTableViewController : UITableViewController
 {

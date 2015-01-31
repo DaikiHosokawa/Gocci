@@ -18,7 +18,7 @@
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
 #import "CXCardView.h"
-
+#import "DemoContentView.h"
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 {

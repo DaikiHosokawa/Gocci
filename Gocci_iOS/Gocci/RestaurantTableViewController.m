@@ -23,6 +23,12 @@
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()<Sample3TableViewCellDelegate>
+{
+    DemoContentView *_firstContentView;
+    DemoContentView *_secondContentView;
+}
+
+- (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 
@@ -88,6 +94,54 @@
         
     }
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([self isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+        [self showDefaultContentView];
+    }
+}
+
+- (BOOL)isFirstRun
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"firstRunDate5"]) {
+        // 日時が設定済みなら初回起動でない
+        return NO;
+    }
+    // 初回起動日時を設定
+    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate5"];
+    // 保存
+    [userDefaults synchronize];
+    // 初回起動
+    return YES;
+}
+
+- (void)showDefaultContentView
+{
+    if (!_firstContentView) {
+        _firstContentView = [DemoContentView defaultView];
+        
+        UILabel *descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
+        descriptionLabel.numberOfLines = 0.;
+        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.backgroundColor = [UIColor clearColor];
+        descriptionLabel.textColor = [UIColor blackColor];
+        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
+        descriptionLabel.text = @"レストラン画面ではレストランの疑似体験ができます";
+        [_firstContentView addSubview:descriptionLabel];
+        
+        [_firstContentView setDismissHandler:^(DemoContentView *view) {
+            // to dismiss current cardView. Also you could call the `dismiss` method.
+            [CXCardView dismissCurrent];
+        }];
+    }
+    
+    [CXCardView showWithView:_firstContentView draggable:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

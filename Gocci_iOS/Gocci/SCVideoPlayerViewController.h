@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "SCVideoPlayerView.h"
 #import "SCRecorder.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 @interface SCVideoPlayerViewController : UIViewController<SCPlayerDelegate>{
     BOOL _isFadeIn;
+    DemoContentView *_firstContentView;
+    DemoContentView *_secondContentView;
 }
 
+
+- (void)showDefaultContentView;
 @property (strong, nonatomic) SCRecordSession *recordSession;
 @property (weak, nonatomic) IBOutlet SCSwipeableFilterView *filterSwitcherView;
 

@@ -12,6 +12,8 @@
 #import "Sample4TableViewCell.h"
 #import <Foundation/Foundation.h>
 #import "Sample4TableViewCell.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 
 @interface everyTableViewController : UITableViewController<UITextViewDelegate>{

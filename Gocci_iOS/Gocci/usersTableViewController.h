@@ -14,6 +14,8 @@
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 @interface usersTableViewController : UITableViewController
 {

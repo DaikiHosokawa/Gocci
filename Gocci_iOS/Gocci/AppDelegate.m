@@ -36,7 +36,6 @@
 - (BOOL)isFirstRun
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
     if ([userDefaults objectForKey:@"firstRunDate"]) {
         // 日時が設定済みなら初回起動でない
         return NO;
