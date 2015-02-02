@@ -28,6 +28,8 @@
     obj.thumbnail = dictionary[@"thumbnail"];
     obj.userID = dictionary[@"user_id"];
     obj.userName = dictionary[@"user_name"];
+    obj.lat = dictionary[@"lat"];
+    obj.lon = dictionary[@"lon"];
     
     return obj;
 }

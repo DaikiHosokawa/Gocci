@@ -26,6 +26,7 @@
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
+    RestaurantPost *restaurantPost;
 }
 
 - (void)showDefaultContentView;
@@ -62,6 +63,10 @@
     
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
+    NSLog(@"This Restaurant is %@",_postRestName);
+    lon = restaurantPost.lon;
+    lat = restaurantPost.lat;
+    NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
     // グローバル変数に保存
     AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
     delegate.gText = _postRestName;
@@ -76,10 +81,10 @@
     
 }
 - (IBAction)pushMap:(UIButton *)sender {
-    NSString *mapText = @"美よしの園";
+    NSString *mapText = _postRestName;
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:
-                            @"comgooglemaps://?q=%@&center=35.793092,139.220140&zoom=18",mapText];
+                            @"comgooglemaps://?q=%@&center=%@,%@&zoom=18",mapText,lat,lon];
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
         [[UIApplication sharedApplication] openURL:

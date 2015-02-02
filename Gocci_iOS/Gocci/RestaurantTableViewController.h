@@ -27,6 +27,8 @@
 
     NSString *_headerLocality;
     NSString *_postID;
+    NSString *lat;
+    NSString *lon;
     
 }
 
@@ -34,9 +36,12 @@
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *headerLocality;
+@property (nonatomic) NSString *lat;
+@property (nonatomic) NSString *lon;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UILabel *locality;
 @property (weak, nonatomic) IBOutlet UIView *restview;
+
 
 @end
