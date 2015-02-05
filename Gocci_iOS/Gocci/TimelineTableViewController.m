@@ -57,6 +57,7 @@
     
     // API からタイムラインのデータを取得
     [self _fetchTimeline];
+     NSLog(@"posts:%@",[self posts]);
 
     [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
@@ -223,6 +224,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.posts count];
+    NSLog(@"postscount:%lu",(unsigned long)[self.posts count]);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -242,6 +244,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
+    NSLog(@"post:%@",self.posts[indexPath.row]);
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
     
@@ -346,6 +349,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // タイムラインを再読み込み
     [self _fetchTimeline];
+     NSLog(@"posts:%@",[self posts]);
 }
 
 - (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithusername:(NSString *)username

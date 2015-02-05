@@ -26,7 +26,7 @@
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
-    RestaurantPost *restaurantPost;
+   // RestaurantPost *restaurantPost;
 }
 
 - (void)showDefaultContentView;
@@ -45,6 +45,8 @@
 }
 @synthesize postRestName = _postRestName;
 @synthesize headerLocality = _headerLocality;
+@synthesize postLon = _postLon;
+@synthesize postLat = _postLat;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -64,8 +66,8 @@
     self.restname.text = _postRestName;
     self.locality.text = _headerLocality;
     NSLog(@"This Restaurant is %@",_postRestName);
-    lon = restaurantPost.lon;
-    lat = restaurantPost.lat;
+   // lon = restaurantPost.lon;
+   // lat = restaurantPost.lat;
     NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
     // グローバル変数に保存
     AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
@@ -84,7 +86,8 @@
     NSString *mapText = _postRestName;
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:
-                            @"comgooglemaps://?q=%@&center=%@,%@&zoom=18",mapText,lat,lon];
+                            @"comgooglemaps://?q=%@&center=%@,%@&zoom=18",mapText,_postLon,_postLat];
+    NSLog(@"URLSchemes:%@",directions);
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
         [[UIApplication sharedApplication] openURL:
@@ -213,6 +216,7 @@
 {
   // Return the number of rows in the section.
     return [self.posts count];
+    NSLog(@"number:%lu",(unsigned long)[self.posts count]);
 }
 
 
@@ -300,7 +304,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //storyboardで指定したIdentifierを指定する
     
     NSString *cellIdentifier = @"restaurantTableViewCell";
-    Sample3TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
         cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:cellIdentifier];
@@ -310,6 +314,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // セルにデータを反映
     RestaurantPost *post = self.posts[indexPath.row];
+    NSLog(@"post:%@",self.posts[indexPath.row]);
     [cell configureWithRestaurantPost:post];
     cell.delegate = self;
     
@@ -436,6 +441,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     NSString *restName = _postRestName;
+    NSLog(@"restName:%@",restName);
       [APIClient restaurantWithRestName:(NSString *)restName handler:^(id result, NSUInteger code, NSError *error) {
      
           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

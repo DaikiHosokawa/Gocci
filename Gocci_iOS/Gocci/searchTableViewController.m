@@ -344,12 +344,16 @@
 {
     NSString *postRestName = [_restname_ objectAtIndex:indexPath.row];
     NSString *headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
+    NSString *postLat = [_jsonlat_ objectAtIndex:indexPath.row];
+    NSString *postLon = [_jsonlon_ objectAtIndex:indexPath.row];
     
     // セグエで画面遷移させる
     [self performSegueWithIdentifier:@"showDetail"
                               sender:@{
                                        @"rest_name": postRestName,
-                                       @"header_locality": headerLocality
+                                       @"header_locality": headerLocality,
+                                       @"post_lat":postLat,
+                                       @"post_lon":postLon
                                        }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
     
     // 選択状態の解除
@@ -367,6 +371,10 @@
         RestaurantTableViewController *restVC = segue.destinationViewController;
         restVC.postRestName = params[@"rest_name"];
         restVC.headerLocality = params[@"header_locality"];
+        restVC.postLon = params[@"post_lat"];
+        NSLog(@"restVC.postLon:%@",restVC.postLon);
+        restVC.postLat = params[@"post_lon"];
+        NSLog(@"restVC.postLat:%@",restVC.postLat);
         
     }
 }

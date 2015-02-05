@@ -243,7 +243,7 @@
 }
 
 - (void)showVideo {
-    
+    //エフェクター画面への遷移
     [self performSegueWithIdentifier:@"Video" sender:self];
 }
 
@@ -376,7 +376,8 @@
     if (_recorder.recordSession == nil) {
         
         SCRecordSession *session = [SCRecordSession recordSession];
-        session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(6, 10000);
+        //最大秒数
+        session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(8, 10000);
         
         _recorder.recordSession = session;
     }

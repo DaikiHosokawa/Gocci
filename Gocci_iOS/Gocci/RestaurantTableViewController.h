@@ -19,16 +19,20 @@
 @interface RestaurantTableViewController : UITableViewController
 
 {
-    //MPMoviePlayerController *moviePlayer;
-    NSString *_postRestName;
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
     NSString *_postPicture;
-
+    //from SearchTableVIew
+    NSString *_postRestName;
     NSString *_headerLocality;
+    NSString *_postLat;
+    NSString *_postLon;
+    
     NSString *_postID;
     NSString *lat;
     NSString *lon;
+    //テスト
+    Sample3TableViewCell *cell;
     
 }
 
@@ -36,6 +40,8 @@
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *headerLocality;
+@property (nonatomic) NSString *postLat;
+@property (nonatomic) NSString *postLon;
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;

@@ -23,8 +23,8 @@
 @property(nonatomic,strong) NSString *userID;
 @property(nonatomic,strong) NSString *userName;
 //緯度経度
-@property(nonatomic,strong) NSString *lat;
-@property(nonatomic,strong) NSString *lon;
+//@property(nonatomic,strong) NSString *lat;
+//@property(nonatomic,strong) NSString *lon;
 
 + (instancetype)restaurantPostWithDictionary:(NSDictionary *)dictionary;
 
