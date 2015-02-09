@@ -49,7 +49,7 @@ static APIClient *_sharedInstance = nil;
 
 #pragma mark - Class Methods
 
-+ (void)timelineWithHandler:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
                              @"limit" : limit,

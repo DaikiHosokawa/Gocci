@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Sample2TableViewCell.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
@@ -31,8 +30,6 @@
     NSString *_postRestname;
     //サムネイル
     UIImageView *thumbnailView;
-    //テスト
-    Sample2TableViewCell *cell;
 }
 
 @property (nonatomic, retain) UIImageView *thumbnailView;

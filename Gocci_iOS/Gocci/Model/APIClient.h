@@ -15,7 +15,7 @@
  *
  *  @param handler 完了イベントハンドラ
  */
-+ (void)timelineWithHandler:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
 *  restaurant/
