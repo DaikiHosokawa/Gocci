@@ -32,6 +32,7 @@
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71951A27908700BF31EA /* TimelinePost.m */; };
 		AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */; };
+		ABF7844D1A88CA13006B435A /* UIView+DropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */; };
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -89,8 +90,8 @@
 		FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */; };
 		FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */; };
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
-		FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */; };
-		FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */; };
+		FF79170D19453FBD00D351B6 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79170B19453FBD00D351B6 /* TimelineCell.m */; };
+		FF79170E19453FBD00D351B6 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79170C19453FBD00D351B6 /* TimelineCell.xib */; };
 		FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */; };
 		FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */; };
 		FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */; };
@@ -193,6 +194,8 @@
 		AB8C71951A27908700BF31EA /* TimelinePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimelinePost.m; path = Model/TimelinePost.m; sourceTree = "<group>"; };
 		AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoviePlayerManager.h; path = Model/MoviePlayerManager.h; sourceTree = "<group>"; };
 		AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoviePlayerManager.m; path = Model/MoviePlayerManager.m; sourceTree = "<group>"; };
+		ABF7844B1A88CA13006B435A /* UIView+DropShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DropShadow.h"; path = "Categories/UIView+DropShadow.h"; sourceTree = "<group>"; };
+		ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DropShadow.m"; path = "Categories/UIView+DropShadow.m"; sourceTree = "<group>"; };
 		AEDA5ACCBEC0743EEB3E0030 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ECE6FBEDA779D2709F08EDBF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
@@ -297,9 +300,9 @@
 		FF6570E31A2B097F00E9CBA4 /* 3_5_inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 3_5_inch.storyboard; sourceTree = "<group>"; };
 		FF66F91C19B5A58600B7E758 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotation.h; path = objc/CustomAnnotation.h; sourceTree = "<group>"; };
 		FF66F91D19B5A58600B7E758 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotation.m; path = objc/CustomAnnotation.m; sourceTree = "<group>"; };
-		FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample2TableViewCell.h; sourceTree = "<group>"; };
-		FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample2TableViewCell.m; sourceTree = "<group>"; };
-		FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample2TableViewCell.xib; sourceTree = "<group>"; };
+		FF79170A19453FBD00D351B6 /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
+		FF79170B19453FBD00D351B6 /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
+		FF79170C19453FBD00D351B6 /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
 		FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample3TableViewCell.h; sourceTree = "<group>"; };
 		FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample3TableViewCell.m; sourceTree = "<group>"; };
 		FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample3TableViewCell.xib; sourceTree = "<group>"; };
@@ -533,6 +536,15 @@
 			name = APIEntity;
 			sourceTree = "<group>";
 		};
+		ABF7844A1A88C9BD006B435A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ABF7844B1A88CA13006B435A /* UIView+DropShadow.h */,
+				ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		FF217CB919E62D1200AEB06E /* EDStarRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +655,7 @@
 				FFDC02981A1F0F26009A787C /* Recorder */,
 				FFDC02991A1F0F5F009A787C /* Effecter */,
 				AB8C717C1A278BC300BF31EA /* Model */,
+				ABF7844A1A88C9BD006B435A /* Categories */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
 				FF54EFE919149A1800025DC8 /* Supporting Files */,
@@ -833,9 +846,9 @@
 			children = (
 				FF15E564191E0C2D007C34F7 /* TimelineTableViewController.h */,
 				FF15E565191E0C2D007C34F7 /* TimelineTableViewController.m */,
-				FF79170A19453FBD00D351B6 /* Sample2TableViewCell.h */,
-				FF79170B19453FBD00D351B6 /* Sample2TableViewCell.m */,
-				FF79170C19453FBD00D351B6 /* Sample2TableViewCell.xib */,
+				FF79170A19453FBD00D351B6 /* TimelineCell.h */,
+				FF79170B19453FBD00D351B6 /* TimelineCell.m */,
+				FF79170C19453FBD00D351B6 /* TimelineCell.xib */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1048,7 +1061,7 @@
 				95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
 				95E00DB21A6AE4DF0049AFE4 /* TestPanel2.xib in Resources */,
-				FF79170E19453FBD00D351B6 /* Sample2TableViewCell.xib in Resources */,
+				FF79170E19453FBD00D351B6 /* TimelineCell.xib in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */,
 				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
@@ -1161,10 +1174,11 @@
 				FF8F18B519F101EA00538DAC /* SCAudioTools.m in Sources */,
 				FF5DDF7B19E3D3C2000F2ABD /* SDWebImagePrefetcher.m in Sources */,
 				FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */,
-				FF79170D19453FBD00D351B6 /* Sample2TableViewCell.m in Sources */,
+				FF79170D19453FBD00D351B6 /* TimelineCell.m in Sources */,
 				AB8C71961A27908700BF31EA /* TimelinePost.m in Sources */,
 				FF8F18B619F101EA00538DAC /* SCFilter.m in Sources */,
 				FF8F18B219F101EA00538DAC /* CIImageRendererUtils.m in Sources */,
+				ABF7844D1A88CA13006B435A /* UIView+DropShadow.m in Sources */,
 				FF5DDF7319E3D3C2000F2ABD /* MKAnnotationView+WebCache.m in Sources */,
 				95F9378B1A7BB9A100C19CEC /* DemoContentView.m in Sources */,
 				FFB92ED81997A06B008E024A /* AFHTTPSessionManager.m in Sources */,
