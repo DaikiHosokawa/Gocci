@@ -60,6 +60,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
                           moviePlayer.repeatMode = MPMovieRepeatModeOne;
                           moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
+                          moviePlayer.view.userInteractionEnabled = NO;
                           weakSelf.players[key] = moviePlayer;
                           
                           completion(YES);

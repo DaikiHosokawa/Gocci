@@ -60,7 +60,6 @@
 		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
-		FF42D0D91A314FDF0050F480 /* RestaurantPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0D81A314FDF0050F480 /* RestaurantPost.m */; };
 		FF42D0DC1A31B29C0050F480 /* ProfilePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DB1A31B29C0050F480 /* ProfilePost.m */; };
 		FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -92,8 +91,6 @@
 		FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F719194F8B00939312 /* CoreLocation.framework */; };
 		FF79170D19453FBD00D351B6 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79170B19453FBD00D351B6 /* TimelineCell.m */; };
 		FF79170E19453FBD00D351B6 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79170C19453FBD00D351B6 /* TimelineCell.xib */; };
-		FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */; };
-		FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */; };
 		FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */; };
 		FF7917181946BB8E00D351B6 /* Sample4TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */; };
 		FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8D84F519194F8200939312 /* MapKit.framework */; };
@@ -242,8 +239,6 @@
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
-		FF42D0D71A314FDF0050F480 /* RestaurantPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPost.h; sourceTree = "<group>"; };
-		FF42D0D81A314FDF0050F480 /* RestaurantPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPost.m; sourceTree = "<group>"; };
 		FF42D0DA1A31B29C0050F480 /* ProfilePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePost.h; sourceTree = "<group>"; };
 		FF42D0DB1A31B29C0050F480 /* ProfilePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePost.m; sourceTree = "<group>"; };
 		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
@@ -303,9 +298,6 @@
 		FF79170A19453FBD00D351B6 /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
 		FF79170B19453FBD00D351B6 /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		FF79170C19453FBD00D351B6 /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
-		FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample3TableViewCell.h; sourceTree = "<group>"; };
-		FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample3TableViewCell.m; sourceTree = "<group>"; };
-		FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample3TableViewCell.xib; sourceTree = "<group>"; };
 		FF7917141946BB8E00D351B6 /* Sample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4TableViewCell.h; sourceTree = "<group>"; };
 		FF7917151946BB8E00D351B6 /* Sample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4TableViewCell.m; sourceTree = "<group>"; };
 		FF7917161946BB8E00D351B6 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample4TableViewCell.xib; sourceTree = "<group>"; };
@@ -526,8 +518,6 @@
 			children = (
 				AB8C71941A27908700BF31EA /* TimelinePost.h */,
 				AB8C71951A27908700BF31EA /* TimelinePost.m */,
-				FF42D0D71A314FDF0050F480 /* RestaurantPost.h */,
-				FF42D0D81A314FDF0050F480 /* RestaurantPost.m */,
 				FF42D0DA1A31B29C0050F480 /* ProfilePost.h */,
 				FF42D0DB1A31B29C0050F480 /* ProfilePost.m */,
 				FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */,
@@ -880,9 +870,6 @@
 			children = (
 				FF54F01D1914B41500025DC8 /* RestaurantTableViewController.h */,
 				FF54F01E1914B41500025DC8 /* RestaurantTableViewController.m */,
-				FF79170F19457EAC00D351B6 /* Sample3TableViewCell.h */,
-				FF79171019457EAC00D351B6 /* Sample3TableViewCell.m */,
-				FF79171119457EAC00D351B6 /* Sample3TableViewCell.xib */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
@@ -1053,7 +1040,6 @@
 				95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				FFDE508D1A382A2D00D54AB5 /* 5_5_inch.storyboard in Resources */,
-				FF79171319457EAC00D351B6 /* Sample3TableViewCell.xib in Resources */,
 				95E00D9A1A6ACF9D0049AFE4 /* TestHeader.xib in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
 				FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */,
@@ -1140,7 +1126,6 @@
 				95E00DA01A6ACFAF0049AFE4 /* MYCustomPanel.m in Sources */,
 				FF5DDF7419E3D3C2000F2ABD /* NSData+ImageContentType.m in Sources */,
 				FFA0E2DC19AEC0DF006269B4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				FF79171219457EAC00D351B6 /* Sample3TableViewCell.m in Sources */,
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
 				FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */,
@@ -1193,7 +1178,6 @@
 				FF5DDF7C19E3D3C2000F2ABD /* UIButton+WebCache.m in Sources */,
 				FFA0E2E119AEC0DF006269B4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF5DDF8119E3D3C2000F2ABD /* UIImageView+WebCache.m in Sources */,
-				FF42D0D91A314FDF0050F480 /* RestaurantPost.m in Sources */,
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
 				FF5DDF7819E3D3C2000F2ABD /* SDWebImageDownloader.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
