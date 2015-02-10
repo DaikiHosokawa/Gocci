@@ -102,11 +102,8 @@
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
 		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
 		FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */; };
-		FF2990C91A2980E000FF4DDB /* Sample5TableViewCell_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */; };
-		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
-		FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
 		FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
@@ -340,16 +337,11 @@
 		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
 		FF2990C11A29809400FF4DDB /* usersTableViewController_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController_other.h; sourceTree = "<group>"; };
 		FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController_other.m; sourceTree = "<group>"; };
-		FF2990C61A2980DF00FF4DDB /* Sample5TableViewCell_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell_other.h; sourceTree = "<group>"; };
-		FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell_other.m; sourceTree = "<group>"; };
-		FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell_other.xib; sourceTree = "<group>"; };
 		FF41DF4119BAF42100F3DD7B /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		FF41DF4219BAF42100F3DD7B /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
-		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
-		FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile_otherPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -720,8 +712,6 @@
 			children = (
 				AB8C71941A27908700BF31EA /* TimelinePost.h */,
 				AB8C71951A27908700BF31EA /* TimelinePost.m */,
-				FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */,
-				FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */,
 			);
 			name = APIEntity;
 			sourceTree = "<group>";
@@ -749,9 +739,6 @@
 			children = (
 				FF2990C11A29809400FF4DDB /* usersTableViewController_other.h */,
 				FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */,
-				FF2990C61A2980DF00FF4DDB /* Sample5TableViewCell_other.h */,
-				FF2990C71A2980E000FF4DDB /* Sample5TableViewCell_other.m */,
-				FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */,
 			);
 			name = Profile_other;
 			sourceTree = "<group>";
@@ -1274,7 +1261,6 @@
 				375560461A8489310051251A /* btn_capture_flip@2x.png in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */,
-				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				375B6E001A7F32D4003BB6A4 /* tabbaritem_search@2x.png in Resources */,
 				375B6DFE1A7F32D4003BB6A4 /* tabbaritem_profile@2x.png in Resources */,
 				375B6DE81A7F20F4003BB6A4 /* tabbaritem_timeline.png in Resources */,
@@ -1361,7 +1347,6 @@
 				375B6E1E1A7F78C4003BB6A4 /* JTCalendarAppearance.m in Sources */,
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
-				FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
 				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
 				375B6E211A7F78C4003BB6A4 /* JTCalendarMenuMonthView.m in Sources */,
@@ -1425,7 +1410,6 @@
 				FFB92ED71997A06B008E024A /* AFHTTPRequestOperationManager.m in Sources */,
 				FF5DDF7819E3D3C2000F2ABD /* SDWebImageDownloader.m in Sources */,
 				FF7917171946BB8E00D351B6 /* Sample4TableViewCell.m in Sources */,
-				FF2990C91A2980E000FF4DDB /* Sample5TableViewCell_other.m in Sources */,
 				FF8F18BF19F101EA00538DAC /* SCSampleBufferHolder.m in Sources */,
 				FF97C433192470AE0025DD6A /* LoginViewController.m in Sources */,
 				FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */,
