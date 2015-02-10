@@ -83,6 +83,9 @@
 		ABF7845E1A8A02E0006B435A /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF7845C1A8A02E0006B435A /* TimelineCell.xib */; };
 		FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */; };
 		FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */; };
+		ABF784511A89DF27006B435A /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF784501A89DF27006B435A /* Restaurant.m */; };
+		ABF784561A89EA66006B435A /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF784541A89EA66006B435A /* SearchCell.xib */; };
+		ABF784591A89EA81006B435A /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF784581A89EA81006B435A /* SearchCell.m */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
 		FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44F193ED5C5001A0053 /* CoreText.framework */; };
 		FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE451193ED5CD001A0053 /* GLKit.framework */; };
@@ -302,6 +305,11 @@
 		ABF7845A1A8A02E0006B435A /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
 		ABF7845B1A8A02E0006B435A /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		ABF7845C1A8A02E0006B435A /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
+		ABF7844F1A89DF27006B435A /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = Model/Restaurant.h; sourceTree = "<group>"; };
+		ABF784501A89DF27006B435A /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
+		ABF784551A89EA66006B435A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SearchCell.xib; sourceTree = "<group>"; };
+		ABF784571A89EA81006B435A /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		ABF784581A89EA81006B435A /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		AEDA5ACCBEC0743EEB3E0030 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ECE6FBEDA779D2709F08EDBF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
@@ -662,24 +670,15 @@
 			path = CXCardView;
 			sourceTree = "<group>";
 		};
-		AB8C717C1A278BC300BF31EA /* Model */ = {
+		AB8C717C1A278BC300BF31EA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AB8C717D1A278BCF00BF31EA /* API */,
-				AB8C71931A27906500BF31EA /* APIEntity */,
-				AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */,
-				AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */,
+				AB8C71941A27908700BF31EA /* TimelinePost.h */,
+				AB8C71951A27908700BF31EA /* TimelinePost.m */,
+				ABF7844F1A89DF27006B435A /* Restaurant.h */,
+				ABF784501A89DF27006B435A /* Restaurant.m */,
 			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		AB8C717D1A278BCF00BF31EA /* API */ = {
-			isa = PBXGroup;
-			children = (
-				AB8C717E1A278BFE00BF31EA /* APIClient.h */,
-				AB8C717F1A278BFE00BF31EA /* APIClient.m */,
-			);
-			name = API;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AB8C71861A278D8C00BF31EA /* GocciUnitTests */ = {
@@ -707,15 +706,6 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
-		AB8C71931A27906500BF31EA /* APIEntity */ = {
-			isa = PBXGroup;
-			children = (
-				AB8C71941A27908700BF31EA /* TimelinePost.h */,
-				AB8C71951A27908700BF31EA /* TimelinePost.m */,
-			);
-			name = APIEntity;
-			sourceTree = "<group>";
-		};
 		ABF7844A1A88C9BD006B435A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +713,17 @@
 				ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		ABF7844E1A89DCF8006B435A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C717E1A278BFE00BF31EA /* APIClient.h */,
+				AB8C717F1A278BFE00BF31EA /* APIClient.m */,
+				AB8C71A11A29CF2000BF31EA /* MoviePlayerManager.h */,
+				AB8C71A21A29CF2000BF31EA /* MoviePlayerManager.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		FF217CB919E62D1200AEB06E /* EDStarRating */ = {
@@ -836,7 +837,8 @@
 				FF2990C01A29800500FF4DDB /* Profile_other */,
 				FFDC02981A1F0F26009A787C /* Recorder */,
 				FFDC02991A1F0F5F009A787C /* Effecter */,
-				AB8C717C1A278BC300BF31EA /* Model */,
+				AB8C717C1A278BC300BF31EA /* Models */,
+				ABF7844E1A89DCF8006B435A /* Services */,
 				ABF7844A1A88C9BD006B435A /* Categories */,
 				FF217CB719E60F0200AEB06E /* NullSafe.m */,
 				FF54EFFA19149A1800025DC8 /* Images.xcassets */,
@@ -1043,6 +1045,9 @@
 				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
 				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
 				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
+				ABF784571A89EA81006B435A /* SearchCell.h */,
+				ABF784581A89EA81006B435A /* SearchCell.m */,
+				ABF784541A89EA66006B435A /* SearchCell.xib */,
 				FFDC02921A1F0E8B009A787C /* Annotation */,
 			);
 			name = Search;
@@ -1250,6 +1255,7 @@
 				3755604A1A8491510051251A /* btn_delete_black@2x.png in Resources */,
 				FF6570E41A2B097F00E9CBA4 /* 3_5_inch.storyboard in Resources */,
 				95E00DA51A6ACFCB0049AFE4 /* HeaderImage.png in Resources */,
+				ABF784561A89EA66006B435A /* SearchCell.xib in Resources */,
 				95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */,
 				37FD1F801A8894FC00D14B94 /* naviIcon@2x.png in Resources */,
 				375B6DE41A7F20F4003BB6A4 /* tabbaritem_profile.png in Resources */,
@@ -1348,6 +1354,7 @@
 				FF5DDF8219E3D3C2000F2ABD /* UIView+WebCacheOperation.m in Sources */,
 				FFB92EDA1997A06B008E024A /* AFSecurityPolicy.m in Sources */,
 				FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */,
+				ABF784511A89DF27006B435A /* Restaurant.m in Sources */,
 				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
 				375B6E211A7F78C4003BB6A4 /* JTCalendarMenuMonthView.m in Sources */,
 				95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */,
@@ -1418,6 +1425,7 @@
 				FFA0E2DB19AEC0DF006269B4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FFB92ED91997A06B008E024A /* AFNetworkReachabilityManager.m in Sources */,
 				FF8F18C019F101EA00538DAC /* SCSwipeableFilterView.m in Sources */,
+				ABF784591A89EA81006B435A /* SearchCell.m in Sources */,
 				FFB92EDD1997A06B008E024A /* AFURLResponseSerialization.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
 				37ACAD071A7DBB3D0066788A /* LifelogTableViewCell.m in Sources */,
@@ -1435,6 +1443,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		ABF784541A89EA66006B435A /* SearchCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABF784551A89EA66006B435A /* en */,
+			);
+			name = SearchCell.xib;
+			sourceTree = "<group>";
+		};
 		FF54EFEB19149A1800025DC8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
