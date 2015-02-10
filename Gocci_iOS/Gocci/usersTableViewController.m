@@ -7,17 +7,18 @@
 //
 
 #import "usersTableViewController.h"
-#import "Sample5TableViewCell.h"
-#import "SVProgressHUD.h"
 #import "everyTableViewController.h"
+#import "TimelineCell.h"
+#import "AppDelegate.h"
+#import "APIClient.h"
+#import "TimelinePost.h"
+#import "MoviePlayerManager.h"
+#import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "AppDelegate.h"
-#import "APIClient.h"
-#import "ProfilePost.h"
-#import "MoviePlayerManager.h"
-#import "QuartzCore/QuartzCore.h"
+
+@import QuartzCore;
 
 #import "everyBaseNavigationController.h"
 
@@ -28,7 +29,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController ()<Sample5TableViewCellDelegate>
+@interface usersTableViewController ()
+<TimelineCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -37,7 +39,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) Sample5TableViewCell *cell;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
@@ -78,28 +79,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		self.navigationItem.titleView =navigationTitle;
 	}
 
-	
-	//カスタムセルの導入
-    UINib *nib = [UINib nibWithNibName:@"Sample5TableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"usersTableViewCell"];
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
 	// !!!:dezamisystem
 //	self.navigationItem.backBarButtonItem = backButton;
 	
-	self.tableView.bounces = NO;
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
- 
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = profiledelegate.username;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
 						placeholderImage:[UIImage imageNamed:@"default.png"]];
     
-    // API からタイムラインのデータを取得
-    [self _fetchProfile];
-	
-	
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -124,7 +119,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 }
 
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -137,15 +131,46 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-        // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [self.posts count];
+}
+
+//1セルあたりの高さ
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [TimelineCell cell];
+    }
+    
+    // セルにデータを反映
+    TimelinePost *post = self.posts[indexPath.row];
+    [cell configureWithTimelinePost:post];
+    cell.delegate = self;
+    
+    // 動画の読み込み
+    LOG(@"読み込み完了");
+    __weak typeof(self)weakSelf = self;
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
+                                                         size:cell.thumbnailView.bounds.size
+                                                      atIndex:indexPath.row
+                                                   completion:^(BOOL success) {
+                                                       [weakSelf _playMovieAtCurrentCell];
+                                                   }];
+    
+    return cell ;
 }
 
 // UIControlEventからタッチ位置のindexPathを取得する
@@ -155,6 +180,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     return indexPath;
 }
+
+
+#pragma mark - UIScrollView Delegate
 
 //////////////////////////スクロール開始後//////////////////////////
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -191,15 +219,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"scroll is stoped");
     
 }
-
-
-
-//1セルあたりの高さ
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  480.0;
-}
-
 
 - (BOOL)isFirstRun
 {
@@ -241,166 +260,135 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSString *cellIdentifier = @"usersTableViewCell";
-    Sample5TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell){
-        cell = [[Sample5TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                           reuseIdentifier:cellIdentifier];
-    }
-    
-    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
-    
-    
-    // セルにデータを反映
-    ProfilePost *post = self.posts[indexPath.row];
-    [cell configureWithProfilePost:post];
-    cell.delegate = self;
-    
-    // 動画の読み込み
-    NSLog(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
-    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
-                                                         size:cell.thumbnailView.bounds.size
-                                                      atIndex:indexPath.row
-                                                   completion:^(BOOL success) {
-                                                       [weakSelf _playMovieAtCurrentCell];
-                                                   }];
-    
-    return cell ;
-}
-
-
 #pragma mark - TableViewCwllDelegate
-#pragma mark いいねボタンの時の処理
-- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
-{
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-	if (result) {
-		//
-	}
-    
-    // タイムラインを再読み込み
-    [self _fetchProfile];
-}
-
-#pragma mark バッドボタンの時の処理
-- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-{
-    //バッドボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    NSLog(@"result:%@",result);
-    
-    
-    // タイムラインを再読み込み
-    [self _fetchProfile];
-}
-
-#pragma mark rest_nameタップの時の処理
-- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
-{
-    //rest nameタップの時の処理
-    LOG(@"restname=%@", restname);
-    _postRestname = restname;
-    NSLog(@"postRestname:%@",_postRestname);
-    NSLog(@"Restname is touched");
-//    [self performSegueWithIdentifier:@"goRestpage" sender:self];
-	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
-}
-
-#pragma mark コメントボタン押下時の処理
-- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
-{
-    // コメントボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-	// !!!:dezamisystem
-//    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
-	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
-}
-
-#pragma mark 削除ボタン押下時の処理
-- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
-{
-    // 削除ボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-    Class class = NSClassFromString(@"UIAlertController");
-    if(class)
-	{
-        // iOS 8の時の処理
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        // addActionした順に左から右にボタンが配置されます
-        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response
-                                                               error:&error];
-			if (result) {}
-			
-           [self _fetchProfile];
-           [self.tableView reloadData];
-            
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-	else
-	{
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-		if (result) {}
-		
-        [self _fetchProfile];
-        [self.tableView reloadData];
-    }
-}
+//#pragma mark いいねボタンの時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
+//{
+//    //いいねボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//	if (result) {
+//		//
+//	}
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchProfile];
+//}
+//
+//#pragma mark バッドボタンの時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
+//{
+//    //バッドボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    NSLog(@"result:%@",result);
+//    
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchProfile];
+//}
+//
+//#pragma mark rest_nameタップの時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
+//{
+//    //rest nameタップの時の処理
+//    LOG(@"restname=%@", restname);
+//    _postRestname = restname;
+//    NSLog(@"postRestname:%@",_postRestname);
+//    NSLog(@"Restname is touched");
+////    [self performSegueWithIdentifier:@"goRestpage" sender:self];
+//	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+//}
+//
+//#pragma mark コメントボタン押下時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
+//{
+//    // コメントボタン押下時の処理
+//    LOG(@"postid=%@", postID);
+//    _postID = postID;
+//	// !!!:dezamisystem
+////    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
+//	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+//}
+//
+//#pragma mark 削除ボタン押下時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
+//{
+//    // 削除ボタン押下時の処理
+//    LOG(@"postid=%@", postID);
+//    _postID = postID;
+//    Class class = NSClassFromString(@"UIAlertController");
+//    if(class)
+//	{
+//        // iOS 8の時の処理
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        // addActionした順に左から右にボタンが配置されます
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//         
+//            
+//            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+//            NSLog(@"content:%@",content);
+//            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+//            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//            [urlRequest setHTTPMethod:@"POST"];
+//            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//            NSURLResponse* response;
+//            NSError* error = nil;
+//            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                                   returningResponse:&response
+//                                                               error:&error];
+//			if (result) {}
+//			
+//           [self _fetchProfile];
+//           [self.tableView reloadData];
+//            
+//        }]];
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            
+//        }]];
+//        
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+//	else
+//	{
+//        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+//        NSLog(@"content:%@",content);
+//        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+//        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//        [urlRequest setHTTPMethod:@"POST"];
+//        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//        NSURLResponse* response;
+//        NSError* error = nil;
+//        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                               returningResponse:&response
+//                                                           error:&error];
+//		if (result) {}
+//		
+//        [self _fetchProfile];
+//        [self.tableView reloadData];
+//    }
+//}
 
 
 #pragma mark - Private Methods
@@ -412,15 +400,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSString *userName = profiledelegate.username;
-	if (userName) {
-		NSLog(@"%@",userName);
-	}
-	
-	[APIClient profileWithUserName:(NSString *)userName handler:^(id result, NSUInteger code, NSError *error) {
-
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
+    [APIClient profileWithUserName:profiledelegate.username handler:^(id result, NSUInteger code, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"result=%@", result);
+        
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             // TODO: アラート等を掲出
@@ -430,25 +415,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
         for (NSDictionary *post in result) {
-            [tempPosts addObject:[ ProfilePost profilePostWithDictionary:post]];
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
-		
-		// !!!:dezamisystem
-//#if (TARGET_IPHONE_SIMULATOR)
-//		if (!result || [result count] == 0) {
-//			ProfilePost *profilePost = [[ProfilePost alloc] init];
-//			profilePost.postID = @"7777";
-//			profilePost.restname = @"restname";
-//			profilePost.thumbnail = @"thumbnail";
-//			profilePost.starEvaluation = 1;
-//			profilePost.goodNum = 1;
-//			profilePost.badNum = 1;
-//			profilePost.commentNum = 1;
-//			
-//			[tempPosts addObject:profilePost];
-//		}
-//#endif
-		
+        
         self.posts = [NSArray arrayWithArray:tempPosts];
 
         // 動画データを一度全て削除
@@ -488,6 +457,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  */
 - (Sample5TableViewCell *)_currentCell
 {
+    if ([self.posts count] == 0) {
+        return nil;
+    }
+    
     return (Sample5TableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
 }
 
