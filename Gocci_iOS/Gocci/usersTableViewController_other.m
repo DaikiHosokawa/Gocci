@@ -342,10 +342,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)_playMovieAtCurrentCell
 {
 	// !!!:dezamisystem
-//    if (self.navigationController.topViewController != self) {
-//        // 画面がフォアグラウンドのときのみ再生
-//        return;
-//    }
+    if (self.navigationController.topViewController != self) {
+        // 画面がフォアグラウンドのときのみ再生
+        return;
+    }
     
     TimelineCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];

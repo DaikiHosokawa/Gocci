@@ -514,10 +514,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)_playMovieAtCurrentCell
 {
 	// !!!:dezamisystem
-//    if (self.navigationController.topViewController != self) {
-//        // 画面がフォアグラウンドのときのみ再生
-//        return;
-//    }
+    if (self.navigationController.topViewController != self) {
+        // 画面がフォアグラウンドのときのみ再生
+        return;
+    }
     
     TimelineCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
