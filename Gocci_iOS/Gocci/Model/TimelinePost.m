@@ -4,14 +4,11 @@
 //
 
 #import "TimelinePost.h"
-#import <ISRemoveNull/NSDictionary+RemoveNull.h>
 
 @implementation TimelinePost
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary
-{
- //   dictionary = [dictionary dictionaryByRemovingNull];
-    
+{    
     TimelinePost *obj = [TimelinePost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];
     obj.goodNum = [dictionary[@"goodnum"] integerValue];

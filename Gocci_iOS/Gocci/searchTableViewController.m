@@ -7,20 +7,25 @@
 //
 
 #import "SearchTableViewController.h"
-#import <MapKit/MapKit.h>
-#import "CustomAnnotation.h"
-#import "SampleTableViewCell.h"
 #import "RestaurantTableViewController.h"
-#import "SVProgressHUD.h"
+#import "SearchCell.h"
+#import "CustomAnnotation.h"
 #import "AppDelegate.h"
 #import "MoviePlayerManager.h"
 #import "DemoContentView.h"
+#import "APIClient.h"
+#import "Restaurant.h"
+#import "SVProgressHUD.h"
+#import "AFNetworking.h"
+#import "CXCardView.h"
+
+@import MapKit;
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
-
-@interface SearchTableViewController () <UISearchBarDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
+@interface SearchTableViewController ()
+<UISearchBarDelegate, UISearchBarDelegate, MKMapViewDelegate, SearchCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -29,22 +34,16 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 - (void)showDefaultContentView;
 
 @property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) NSMutableArray *restname_;
-@property (nonatomic, strong) NSMutableArray *category_;
-@property (nonatomic, strong) NSMutableArray *meter_;
-@property (nonatomic, strong) NSMutableArray *jsonlat_;
-@property (nonatomic, strong) NSMutableArray *jsonlon_;
-@property (nonatomic, strong) NSMutableArray *restaddress_;
-@property (nonatomic, strong) NSString *nowlat_;
-@property (nonatomic, strong) NSString *nowlon_;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UILabel *dontexist;
 @property (nonatomic, assign) BOOL showedUserLocation;
 
+@property (nonatomic, copy) NSArray *restaurants;
+@property (nonatomic) BOOL searched;
+
 @end
 
 @implementation SearchTableViewController
-
 
 #pragma mark - アイテム名登録用
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -61,66 +60,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 	return self;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-	
-	// !!!:dezamisystem
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-
-    _searchBar.text = NULL;
-    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    //dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    //dispatch_queue_t q2_main = dispatch_get_main_queue();
-    //dispatch_async(q2_global, ^{
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 飲食店名
-        NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
-        _restname_ = [restname mutableCopy];
-        // 店舗カテゴリー
-        NSArray *category = [appDelegete.jsonDic valueForKey:@"category"];
-        _category_ = [category mutableCopy];
-        // 距離
-        NSArray *meter = [appDelegete.jsonDic valueForKey:@"distance"];
-        _meter_ = [meter mutableCopy];
-        // 店舗住所
-        NSArray *restaddress = [appDelegete.jsonDic valueForKey:@"locality"];
-        _restaddress_ = [restaddress mutableCopy];
-        
-        //緯度
-        NSArray *jsonlat = [appDelegete.jsonDic valueForKey:@"lat"];
-        _jsonlat_ = [jsonlat mutableCopy];
-        //経度
-        NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
-        _jsonlon_ = [jsonlon mutableCopy];
-        //dispatch_async(q2_main, ^{
-            [self.tableView reloadData];
-        //});
-    });
-	
-
-    //30本のピンを立てる
-    for (int i=0; i<30; i++) {
-        NSString *ni = _restname_[i];
-        NSString *ai = _category_[i];
-        double loi = [_jsonlon_[i]doubleValue];
-        NSLog(@"lo:%f ",loi);
-        double lai = [_jsonlat_[i]doubleValue];
-        NSLog(@"la:%f",lai);
-        
-        [_mapView addAnnotation: [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
-                                                                               title:ni
-                                                                            subtitle:ai]];
-        
-        [SVProgressHUD dismiss];
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
+    self.restaurants = [NSArray array];
+    self.searched = NO;
+    
     //4.7inch対応
     CGRect rect2 = [UIScreen mainScreen].bounds;
     if (rect2.size.height == 667) {
@@ -150,13 +96,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
     }
-     //375
-    //カスタムセルの導入
-    UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
-
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.bounces = NO;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -168,7 +107,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _searchBar.placeholder = @"検索";
     _searchBar.keyboardType = UIKeyboardTypeDefault;
     _searchBar.delegate = self;
-
     
     // UINavigationBar上に、UISearchBarを追加
 #if 1
@@ -187,18 +125,45 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 	}
 #endif
 
-    self.locationManager = [[CLLocationManager alloc] init];
-
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
+         forCellReuseIdentifier:SearchCellIdentifier];
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
+    _searchBar.text = nil;
+
+    //30本のピンを立てる
+//    for (int i=0; i<30; i++) {
+//        NSString *ni = _restname_[i];
+//        NSString *ai = _category_[i];
+//        double loi = [_jsonlon_[i]doubleValue];
+//        NSLog(@"lo:%f ",loi);
+//        double lai = [_jsonlat_[i]doubleValue];
+//        NSLog(@"la:%f",lai);
+//        
+//        [_mapView addAnnotation: [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
+//                                                                               title:ni
+//                                                                            subtitle:ai]];
+//        
+//        [SVProgressHUD dismiss];
+//    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
     }
 }
-
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -209,61 +174,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [_restaddress_ removeAllObjects];
-    [_restname_ removeAllObjects];
-    [_meter_ removeAllObjects];
-    [_category_ removeAllObjects];
     [_searchBar resignFirstResponder];
-    _dontexist.text = NULL;
-    NSString *searchText = _searchBar.text;
-    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/search/?restname=%@&lat=%@&lon=%@&limit=30",searchText,appDelegete.lat,appDelegete.lon];
-    NSLog(@"urlStringatnoulon:%@",urlString);
-    NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:encodeString];
-    NSLog(@"url:%@",url);
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    
-    dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q2_main = dispatch_get_main_queue();
-    dispatch_async(q2_global, ^{
-         // 飲食店名
-        NSArray *restname = [jsonDic valueForKey:@"restname"];
-        _restname_ = [restname mutableCopy];
-        // 店舗カテゴリー
-        NSArray *category = [jsonDic valueForKey:@"category"];
-        _category_ = [category mutableCopy];
-        // 距離
-        NSArray *meter = [jsonDic valueForKey:@"distance"];
-        _meter_ = [meter mutableCopy];
-        // 店舗住所
-        NSArray *restaddress = [jsonDic valueForKey:@"locality"];
-        _restaddress_ = [restaddress mutableCopy];
-                dispatch_async(q2_main, ^{
-        [self.tableView reloadData];//テーブルの更新
-                    //投稿が0の時の画面表示
-                    if([_restname_ count] == 0){
-                        
-                        NSLog(@"投稿がありません。");
-                        
-                        // UIImageViewの初期化
-                        _dontexist = [[UILabel alloc] init];
-                        _dontexist.frame = CGRectMake(30, 200, 250, 280);
-                        [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
-                        _dontexist.numberOfLines = 3;
-                        _dontexist.textAlignment = NSTextAlignmentLeft;
-                        [self.view addSubview:_dontexist];
-                        
-                    }
-        });
-    });
+    _dontexist.text = nil;
+
+    [self _searchRestaurants:searchBar.text];
 }
 
 - (BOOL)isFirstRun
@@ -310,6 +224,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+    static dispatch_once_t searchCurrentLocationOnceToken;
+    dispatch_once(&searchCurrentLocationOnceToken, ^{
+        [self _fetchFirstRestaurantsWithCoordinate:userLocation.coordinate];
+    });
+    
     // 初回に現在地に移動している場合は再度移動しないようにする
     if (self.showedUserLocation) {
         return;
@@ -336,31 +256,29 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [_restname_ count];
+    return [self.restaurants count];
 }
 
-//テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85.0;
+    return [SearchCell cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SampleTableViewCell *cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
+    SearchCell *cell = (SearchCell *)[tableView dequeueReusableCellWithIdentifier:SearchCellIdentifier];
+    if (!cell) {
+        cell = [SearchCell cell];
+    }
 
-    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
-    cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
-    cell.meter.textAlignment = NSTextAlignmentRight;
-    cell.categoryname.text = [_category_ objectAtIndex:indexPath.row];
+    Restaurant *restaurant = self.restaurants[indexPath.row];
+    [cell configureWithRestaurant:restaurant index:indexPath.row];
+    cell.delegate = self;
     
     return cell;
 }
@@ -371,35 +289,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     CGPoint p = [touch locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     return indexPath;
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *postRestName = [_restname_ objectAtIndex:indexPath.row];
-    NSString *headerLocality = [_restaddress_ objectAtIndex:indexPath.row];
-    NSString *postLat = [_jsonlat_ objectAtIndex:indexPath.row];
-    NSString *postLon = [_jsonlon_ objectAtIndex:indexPath.row];
-    
-    // セグエで画面遷移させる
-//    [self performSegueWithIdentifier:@"showDetail"
-//                              sender:@{
-//                                       @"rest_name": postRestName,
-//                                       @"header_locality": headerLocality,
-//                                       @"post_lat":postLat,
-//                                       @"post_lon":postLon
-//                                       }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
-	// !!!:dezamisystem
-	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT
-							  sender:@{
-									   @"rest_name": postRestName,
-									   @"header_locality": headerLocality,
-									   @"post_lat":postLat,
-									   @"post_lon":postLon
-									   }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
-	
-    // 選択状態の解除
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Segue
@@ -421,6 +310,128 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         NSLog(@"restVC.postLat:%@",restVC.postLat);
         
     }
+}
+
+
+#pragma mark - SearchCell Delegate
+
+- (void)searchCell:(SearchCell *)cell shouldShowMapAtIndex:(NSUInteger)index
+{
+    // TODO: 地図で店舗の場所を表示
+}
+
+- (void)searchCell:(SearchCell *)cell shouldDetailAtIndex:(NSUInteger)index
+{
+    Restaurant *restaurant = self.restaurants[index];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT
+                              sender:@{
+                                       @"rest_name": restaurant.restname,
+                                       @"header_locality": restaurant.locality,
+                                       @"post_lat": [NSString stringWithFormat:@"%@", @(restaurant.lat)],
+                                       @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
+                                       }];
+}
+
+
+#pragma mark - Private Methods
+
+/**
+ *  初回のレストラン一覧を取得
+ *
+ *  @param coordinate 検索する緯度・軽度
+ */
+- (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    // 既に検索をしている場合は、現在地中心のレストラン一覧の取得は行わない
+    if (self.searched) {
+        return;
+    }
+    
+    __weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [APIClient distWithLatitude:coordinate.latitude
+                      longitude:coordinate.longitude
+                          limit:30
+                        handler:^(id result, NSUInteger code, NSError *error)
+     {
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         
+         if (!result || error) {
+             // TODO: エラーメッセージを掲出
+             return;
+         }
+         
+         if (weakSelf.searched) {
+             return;
+         }
+         
+         [weakSelf _reloadRestaurants:result];
+     }];
+}
+
+/**
+ *  レストランを検索
+ *
+ *  @param searchText 検索文字列
+ */
+- (void)_searchRestaurants:(NSString *)searchText
+{
+    __weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [APIClient searchWithRestName:searchText
+                         latitude:[appDelegete.lat floatValue]
+                        longitude:[appDelegete.lon floatValue]
+                            limit:30
+                          handler:^(id result, NSUInteger code, NSError *error)
+     {
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         
+         if (!result || error) {
+             // TODO: エラーメッセージを掲出
+             return;
+         }
+         
+         weakSelf.searched = YES;
+         
+         [weakSelf _reloadRestaurants:result];
+     }];
+}
+
+/**
+ *  レストラン一覧を更新
+ *
+ *  @param result API からの取得結果
+ */
+- (void)_reloadRestaurants:(NSArray *)result
+{
+    NSMutableArray *tempRestaurants = [NSMutableArray arrayWithCapacity:0];
+    for (NSDictionary *dict in (NSArray *)result) {
+        [tempRestaurants addObject:[Restaurant restaurantWithDictionary:dict]];
+    }
+    self.restaurants = [NSArray arrayWithArray:tempRestaurants];
+    
+    // 投稿がない場合
+    if ([self.restaurants count] == 0) {
+        if (_dontexist) {
+            [_dontexist removeFromSuperview];
+            _dontexist = nil;
+        }
+        
+        _dontexist = [[UILabel alloc] init];
+        _dontexist.frame = CGRectMake(30, 200, 250, 280);
+        [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
+        _dontexist.numberOfLines = 3;
+        _dontexist.textAlignment = NSTextAlignmentLeft;
+        
+        [self.view addSubview:_dontexist];
+    } else {
+        [_dontexist removeFromSuperview];
+        _dontexist = nil;
+    }
+    
+    [self.tableView reloadData];
 }
 
 @end

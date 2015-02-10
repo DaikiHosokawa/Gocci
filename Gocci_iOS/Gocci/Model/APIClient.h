@@ -44,6 +44,34 @@
 + (void)profile_otherWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  search/
+ *
+ *  @param restName
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler   
+ */
++ (void)searchWithRestName:(NSString *)restName
+                  latitude:(CGFloat)latitude
+                 longitude:(CGFloat)longitude
+                     limit:(NSUInteger)limit
+                   handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  dist/
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler
+ */
++ (void)distWithLatitude:(CGFloat)latitude
+               longitude:(CGFloat)longitude
+                   limit:(NSUInteger)limit
+                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
  *  ファイルのダウンロード
  *  既にダウンロード済みのファイルを指定した場合は再度ダウンロードせず、そのファイルのローカルパスを返す
  *  ファイルはキャッシュディレクトリに保存される

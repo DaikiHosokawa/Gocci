@@ -11,7 +11,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
-#import "SVProgressHUD/SVProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "usersTableViewController.h" 
 #import "usersTableViewController_other.h"
 #import "RestaurantTableViewController.h"
