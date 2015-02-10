@@ -49,8 +49,6 @@
 		FF217CB819E60F0200AEB06E /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CB719E60F0200AEB06E /* NullSafe.m */; };
 		FF217CBC19E62D1200AEB06E /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBB19E62D1200AEB06E /* EDStarRating.m */; };
 		FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBE19E6571D00AEB06E /* usersTableViewController.m */; };
-		FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */; };
-		FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */; };
 		FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */; };
 		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
 		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
@@ -60,7 +58,6 @@
 		FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2990C81A2980E000FF4DDB /* Sample5TableViewCell_other.xib */; };
 		FF41DF4619BAF42100F3DD7B /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */; };
 		FF41DF4719BAF42100F3DD7B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */; };
-		FF42D0DC1A31B29C0050F480 /* ProfilePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DB1A31B29C0050F480 /* ProfilePost.m */; };
 		FF42D0DF1A31D3020050F480 /* Profile_otherPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE419149A1800025DC8 /* CoreGraphics.framework */; };
@@ -218,9 +215,6 @@
 		FF217CBB19E62D1200AEB06E /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
 		FF217CBD19E6571D00AEB06E /* usersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController.h; sourceTree = "<group>"; };
 		FF217CBE19E6571D00AEB06E /* usersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController.m; sourceTree = "<group>"; };
-		FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TableViewCell.h; sourceTree = "<group>"; };
-		FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TableViewCell.m; sourceTree = "<group>"; };
-		FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample5TableViewCell.xib; sourceTree = "<group>"; };
 		FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
 		FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
 		FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTouchDetector.h; sourceTree = "<group>"; };
@@ -239,8 +233,6 @@
 		FF41DF4319BAF42100F3DD7B /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		FF41DF4419BAF42100F3DD7B /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		FF41DF4519BAF42100F3DD7B /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
-		FF42D0DA1A31B29C0050F480 /* ProfilePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePost.h; sourceTree = "<group>"; };
-		FF42D0DB1A31B29C0050F480 /* ProfilePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePost.m; sourceTree = "<group>"; };
 		FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile_otherPost.h; sourceTree = "<group>"; };
 		FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile_otherPost.m; sourceTree = "<group>"; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -518,8 +510,6 @@
 			children = (
 				AB8C71941A27908700BF31EA /* TimelinePost.h */,
 				AB8C71951A27908700BF31EA /* TimelinePost.m */,
-				FF42D0DA1A31B29C0050F480 /* ProfilePost.h */,
-				FF42D0DB1A31B29C0050F480 /* ProfilePost.m */,
 				FF42D0DD1A31D3020050F480 /* Profile_otherPost.h */,
 				FF42D0DE1A31D3020050F480 /* Profile_otherPost.m */,
 			);
@@ -879,9 +869,6 @@
 			children = (
 				FF217CBD19E6571D00AEB06E /* usersTableViewController.h */,
 				FF217CBE19E6571D00AEB06E /* usersTableViewController.m */,
-				FF217CC019E657A600AEB06E /* Sample5TableViewCell.h */,
-				FF217CC119E657A600AEB06E /* Sample5TableViewCell.m */,
-				FF217CC219E657A600AEB06E /* Sample5TableViewCell.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1050,7 +1037,6 @@
 				FF79170E19453FBD00D351B6 /* TimelineCell.xib in Resources */,
 				FFDC02A41A1F7DFA009A787C /* SVProgressHUD.bundle in Resources */,
 				95E00D9C1A6ACF9D0049AFE4 /* Toronto, ON.jpg in Resources */,
-				FF217CC419E657A600AEB06E /* Sample5TableViewCell.xib in Resources */,
 				FF2990CA1A2980E000FF4DDB /* Sample5TableViewCell_other.xib in Resources */,
 				95E00DA11A6ACFAF0049AFE4 /* MYCustomPanel.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
@@ -1110,7 +1096,6 @@
 				FF66F91E19B5A58600B7E758 /* CustomAnnotation.m in Sources */,
 				FFB92EDC1997A06B008E024A /* AFURLRequestSerialization.m in Sources */,
 				FFB92EDB1997A06B008E024A /* AFURLConnectionOperation.m in Sources */,
-				FF217CC319E657A600AEB06E /* Sample5TableViewCell.m in Sources */,
 				FFFC8907198DFD20008DC584 /* AppDelegate.m in Sources */,
 				FF54F01F1914B41500025DC8 /* RestaurantTableViewController.m in Sources */,
 				FF5DDF7D19E3D3C2000F2ABD /* UIImage+GIF.m in Sources */,
@@ -1150,7 +1135,6 @@
 				FF5DDF7F19E3D3C2000F2ABD /* UIImage+WebP.m in Sources */,
 				FF5DDF7A19E3D3C2000F2ABD /* SDWebImageManager.m in Sources */,
 				FF5DDF7519E3D3C2000F2ABD /* SDImageCache.m in Sources */,
-				FF42D0DC1A31B29C0050F480 /* ProfilePost.m in Sources */,
 				FF8F18B919F101EA00538DAC /* SCImageView.m in Sources */,
 				FF15E563191E0731007C34F7 /* everyTableViewController.m in Sources */,
 				AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */,

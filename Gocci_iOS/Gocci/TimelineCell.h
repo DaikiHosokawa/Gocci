@@ -17,6 +17,8 @@ extern NSString * const TimelineCellIdentifier;
 
 @protocol TimelineCellDelegate <NSObject>
 
+@optional
+
 /**
  *  ユーザ名をタップ
  *
