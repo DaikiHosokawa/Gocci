@@ -6,24 +6,24 @@
 
 #import "TimelineTableViewController.h"
 #import "searchTableViewController.h"
-#import "Sample2TableViewCell.h"
 #import "everyTableViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import "AFNetworking/AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
-#import "UIImageView+WebCache.h"
+#import "TimelineCell.h"
 #import "AppDelegate.h"
 #import "usersTableViewController.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
-#import "QuartzCore/QuartzCore.h"
+#import "AFNetworking/AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
+@import AVFoundation;
+@import QuartzCore;
 
 @protocol MovieViewDelegate;
 
 @interface TimelineTableViewController ()
-<CLLocationManagerDelegate, Sample2TableViewCellDelegate>
+<CLLocationManagerDelegate, TimelineCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -163,11 +163,12 @@
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
    
-    UINib *nib = [UINib nibWithNibName:@"Sample2TableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"TimelineTableViewCell"];
-    
-    self.tableView.bounces = NO;
-     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -224,32 +225,30 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.posts count];
-    NSLog(@"postscount:%lu",(unsigned long)[self.posts count]);
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 550.0;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"TimelineTableViewCell";
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
-        cell = [[Sample2TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                           reuseIdentifier:cellIdentifier];
+        cell = [[TimelineCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                   reuseIdentifier:cellIdentifier];
     }
-    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
-    NSLog(@"post:%@",self.posts[indexPath.row]);
+    LOG(@"post:%@",self.posts[indexPath.row]);
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
     
     // 動画の読み込み
-    NSLog(@"読み込み完了");
+    LOG(@"読み込み完了");
     __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
@@ -272,12 +271,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"commentBtn is touched");
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: 詳細画面のモーダルを表示
+    LOG_METHOD;
 
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    //セグエで画面遷移させる
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+    // 選択状態の解除
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -305,93 +305,90 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-#pragma mark - Sample2TableViewCellDelegate
+#pragma mark - TimelineCellDelegate
 
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
-{
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    
-    
-    // タイムラインを再読み込み
-    [self _fetchTimeline];
-}
+//- (void)sample2TableViewCell:(TimelineCell *)cell didTapGoodWithPostID:(NSString *)postID
+//{
+//    //いいねボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchTimeline];
+//}
+//
+//
+//- (void)sample2TableViewCell:(TimelineCell *)cell didTapBadWithPostID:(NSString *)postID
+//{
+//    //バッドボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    NSLog(@"result:%@",result);
+//    
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchTimeline];
+//     NSLog(@"posts:%@",[self posts]);
+//}
 
-
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-{
-    //バッドボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    NSLog(@"result:%@",result);
-    
-    
-    // タイムラインを再読み込み
-    [self _fetchTimeline];
-     NSLog(@"posts:%@",[self posts]);
-}
-
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithusername:(NSString *)username
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName
 {
     //user nameタップの時の処理
-    LOG(@"username=%@", username);
-    _postUsername = username;
-    NSLog(@"postUsername:%@",_postUsername);
+    LOG(@"username=%@", userName);
+    _postUsername = userName;
+    LOG(@"postUsername:%@",_postUsername);
     [self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    NSLog(@"Username is touched");
-    
+    LOG(@"Username is touched");
 }
 
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapNameWithuserspicture:(NSString *)userspicture
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
 {
     //user nameタップの時の処理②
-    LOG(@"userspicture=%@", userspicture);
-    _postPicture = userspicture;
-    NSLog(@"postUsername:%@",_postPicture);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    NSLog(@"Username is touched");
-    
+    LOG(@"userspicture=%@", userPicture);
+    _postPicture = userPicture;
+    LOG(@"postUsername:%@",_postPicture);
+    LOG(@"Username is touched");
 }
 
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
-{
-    //rest nameタップの時の処理
-    LOG(@"restname=%@", restname);
-    _postRestname = restname;
-    NSLog(@"postRestname:%@",_postRestname);
-    NSLog(@"Restname is touched");
-     [self performSegueWithIdentifier:@"goRestpage" sender:self];
-}
-
-
-- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
-{
-    // コメントボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
-}
+//- (void)sample2TableViewCell:(TimelineCell *)cell didTapRestnameWithrestname:(NSString *)restname
+//{
+//    //rest nameタップの時の処理
+//    LOG(@"restname=%@", restname);
+//    _postRestname = restname;
+//    NSLog(@"postRestname:%@",_postRestname);
+//    NSLog(@"Restname is touched");
+//     [self performSegueWithIdentifier:@"goRestpage" sender:self];
+//}
+//
+//
+//- (void)sample2TableViewCell:(TimelineCell *)cell didTapCommentWithPostID:(NSString *)postID
+//{
+//    // コメントボタン押下時の処理
+//    LOG(@"postid=%@", postID);
+//    _postID = postID;
+//    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
+//}
 
 
 #pragma mark - Private Methods
@@ -404,8 +401,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSString *limit = @"50";
-   [APIClient timelineWithHandler:(NSString *)limit  handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient timelineWithLimit:@"50" handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         //LOG(@"result=%@", result);
         //LOG(@"code=%@, error=%@", @(code), error);
@@ -441,7 +437,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     
-    Sample2TableViewCell *currentCell = [self _currentCell];
+    TimelineCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
@@ -456,9 +452,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  *
  *  @return
  */
-- (Sample2TableViewCell *)_currentCell
+- (TimelineCell *)_currentCell
 {
-    return (Sample2TableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
+    return (TimelineCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
 }
 
 /**
