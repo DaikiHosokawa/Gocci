@@ -12,7 +12,7 @@
 #import "SVProgressHUD.h"
 #import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import "AFNetworking/AFNetworking.h"
+#import "AFNetworking.h"
 
 #import "TimelineTableViewController.h"
 

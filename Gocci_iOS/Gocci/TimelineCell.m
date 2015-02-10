@@ -10,7 +10,7 @@
 #import "TimelinePost.h"
 #import "UIView+DropShadow.h"
 #import "UIImageView+WebCache.h"
-#import <UIImage+Dummy/UIImage+Dummy.h>
+#import "UIImage+Dummy.h"
 
 NSString * const TimelineCellIdentifier = @"TimelineCell";
 
