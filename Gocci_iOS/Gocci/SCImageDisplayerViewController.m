@@ -17,8 +17,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    
+	
+	// !!!:dezamisystem
+//	self.navigationController.navigationBarHidden = NO;
+	
     self.filterSwitcherView.preferredCIImageTransform = [CIImageRendererUtils preferredCIImageTransformFromUIImage:self.photo];
     
     self.filterSwitcherView.CIImage = [CIImage imageWithCGImage:self.photo.CGImage];
@@ -26,7 +28,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+	
+	// !!!:dezamisystem
+//	self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -40,9 +44,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStylePlain target:self action:@selector(saveToCameraRoll)];
-    
+	
+	// !!!:dezamisystem
+//	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStylePlain target:self action:@selector(saveToCameraRoll)];
+	
     self.filterSwitcherView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.filterSwitcherView.filterGroups = @[

@@ -17,6 +17,7 @@
 
 @implementation SCVideoPlayerViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +38,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	//ナビゲーションバーに画像
+	{
+		//タイトル画像設定
+		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+		CGFloat width_image = height_image;
+		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
+		navigationTitle.image = image;
+		self.navigationItem.titleView =navigationTitle;
+	}
+
     
     self.filterSwitcherView.refreshAutomaticallyWhenScrolling = NO;
     self.filterSwitcherView.contentMode =  UIViewContentModeScaleAspectFill;
@@ -136,18 +149,40 @@
     // UIImageViewのインスタンスをビューに追加
     [self.view addSubview:imageView2];
     }
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(saveToCameraRoll)];
-    
+	
+	// !!!:dezamisystem
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了"
+																			  style:UIBarButtonItemStyleBordered
+																			 target:self
+																			 action:@selector(saveToCameraRoll)];
+	// !!!:dezamisystem
+#if (!TARGET_IPHONE_SIMULATOR)
 	_player = [SCPlayer player];
     _player.CIImageRenderer = self.filterSwitcherView;
     
 	_player.loopEnabled = YES;
+#endif
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	// !!!:dezamisystem
+	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+	
+	// !!!:dezamisystem
+#if (!TARGET_IPHONE_SIMULATOR)
+	[_player setItemByAsset:_recordSession.assetRepresentingRecordSegments];
+	[_player play];
+#endif
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+	
     if ([self isFirstRun]) {
         //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
@@ -194,22 +229,26 @@
 }
 
 
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [_player setItemByAsset:_recordSession.assetRepresentingRecordSegments];
-	[_player play];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    [_player setItemByAsset:_recordSession.assetRepresentingRecordSegments];
+//	[_player play];
+//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+	// !!!:dezamisystem
+#if (!TARGET_IPHONE_SIMULATOR)
     [_player pause];
+#endif
 }
 
-
-- (void)saveToCameraRoll {
+- (void)saveToCameraRoll
+{
+	// !!!:dezamisystem
+#if (!TARGET_IPHONE_SIMULATOR)
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     SCFilterGroup *currentFilter = self.filterSwitcherView.selectedFilterGroup;
     
@@ -235,8 +274,15 @@
             completionHandler(exportSession.error);
         }];
     }
+#endif
     [self performSegueWithIdentifier:@"gotoSubmit" sender:self];
     
+}
+
+#pragma mark - 
+- (IBAction)buttonFadeInOut:(id)sender
+{
+	
 }
 
 @end

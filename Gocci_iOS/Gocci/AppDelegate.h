@@ -16,7 +16,7 @@
     // グローバル変数
     NSString *gText;
     //グローバル変数
-    NSURL *postFileName;
+//    NSURL *postFileName;	// !!!:dezamisystem
     //グローバル変数
     NSString *username;
     //グローバル変数

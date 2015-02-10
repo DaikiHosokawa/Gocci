@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
+#import "Sample3TableViewCell.h"
 #import <Foundation/Foundation.h>
 #import "usersTableViewController_other.h"
 #import <MediaPlayer/MediaPlayer.h>
@@ -16,6 +17,7 @@
 #import "DemoContentView.h"
 
 @interface RestaurantTableViewController : UITableViewController
+
 {
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
@@ -29,6 +31,9 @@
     NSString *_postID;
     NSString *lat;
     NSString *lon;
+    //テスト
+    Sample3TableViewCell *cell;
+    
 }
 
 @property (nonatomic, retain) UIImageView *thumbnailView;

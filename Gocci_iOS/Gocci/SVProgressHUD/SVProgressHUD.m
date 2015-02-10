@@ -400,7 +400,7 @@ const int ANIMATION_COUNT = 8;
 - (void)positionHUD:(NSNotification*)notification {
     
     CGFloat keyboardHeight;
-    double animationDuration;
+    double animationDuration = 0.01;
     
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     

@@ -16,15 +16,17 @@
 #import "MoviePlayerManager.h"
 #import "DemoContentView.h"
 
-@interface SearchTableViewController ()
-<UISearchBarDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
+// !!!:dezamisystem
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
+
+
+@interface SearchTableViewController () <UISearchBarDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
 }
 
 - (void)showDefaultContentView;
-
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *restname_;
@@ -43,10 +45,28 @@
 
 @implementation SearchTableViewController
 
+
+#pragma mark - アイテム名登録用
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+//		// !!!:dezamisystem・アイテム名
+//		[self setTitle:@"近くの店"];
+//		// タブバーアイコン
+//		UIImage *icon_normal = [UIImage imageNamed:@"tabbaritem_search.png"];
+//		UIImage *icon_selected = [UIImage imageNamed:@"tabbaritem_search_sel.png"];
+//		[self.tabBarItem setFinishedSelectedImage:icon_selected withFinishedUnselectedImage:icon_normal];
+	}
+	return self;
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+	
+	// !!!:dezamisystem
+	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 
     _searchBar.text = NULL;
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -78,7 +98,7 @@
             [self.tableView reloadData];
         //});
     });
-    
+	
 
     //30本のピンを立てる
     for (int i=0; i<30; i++) {
@@ -100,8 +120,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    
+	
     //4.7inch対応
     CGRect rect2 = [UIScreen mainScreen].bounds;
     if (rect2.size.height == 667) {
@@ -141,8 +160,9 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-    self.navigationItem.backBarButtonItem = backButton;
-    
+	// !!!:dezamisystem
+//	self.navigationItem.backBarButtonItem = backButton;
+	
     _searchBar = [[UISearchBar alloc] init];
     _searchBar.tintColor = [UIColor darkGrayColor];
     _searchBar.placeholder = @"検索";
@@ -151,10 +171,24 @@
 
     
     // UINavigationBar上に、UISearchBarを追加
-    self.navigationItem.titleView = _searchBar;
-    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
-    
+#if 1
+	self.navigationItem.titleView = _searchBar;
+	self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+#else
+	//ナビゲーションバーに画像
+	{
+		//タイトル画像設定
+		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+		CGFloat width_image = height_image;
+		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
+		navigationTitle.image = image;
+		self.navigationItem.titleView =navigationTitle;
+	}
+#endif
+
     self.locationManager = [[CLLocationManager alloc] init];
+
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -348,24 +382,34 @@
     NSString *postLon = [_jsonlon_ objectAtIndex:indexPath.row];
     
     // セグエで画面遷移させる
-    [self performSegueWithIdentifier:@"showDetail"
-                              sender:@{
-                                       @"rest_name": postRestName,
-                                       @"header_locality": headerLocality,
-                                       @"post_lat":postLat,
-                                       @"post_lon":postLon
-                                       }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
-    
+//    [self performSegueWithIdentifier:@"showDetail"
+//                              sender:@{
+//                                       @"rest_name": postRestName,
+//                                       @"header_locality": headerLocality,
+//                                       @"post_lat":postLat,
+//                                       @"post_lon":postLon
+//                                       }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
+	// !!!:dezamisystem
+	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT
+							  sender:@{
+									   @"rest_name": postRestName,
+									   @"header_locality": headerLocality,
+									   @"post_lat":postLat,
+									   @"post_lon":postLon
+									   }]; // prepareForSegue:sender: の sender に遷移に使うパラメータを渡す
+	
     // 選択状態の解除
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Segue
-
+#pragma mark 遷移前準備
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // 2つ目の画面にパラメータを渡して遷移する
-    if ([segue.identifier isEqualToString:@"showDetail"]) {
+//    if ([segue.identifier isEqualToString:@"showDetail"])
+	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+	{
         // ここでパラメータを渡す
         NSDictionary *params = (NSDictionary *)sender;
         RestaurantTableViewController *restVC = segue.destinationViewController;

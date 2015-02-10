@@ -105,8 +105,6 @@
 
 -(void) viewWillDisappear:(BOOL)animated{
 
-    
-    
 }
 
 - (void)viewDidLoad
@@ -114,12 +112,14 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
-
+	
+	// !!!:dezamisystem
+//	[self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー非表示
 }
 
 //Facebookログインを押す
 - (IBAction)facebookButtonTapped:(id)sender {
+	
     // パーミッション
     NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
     // Facebook アカウントを使ってログイン
@@ -156,14 +156,14 @@
             
             NSString *facebookID = userData[@"id"];
             NSString *name = userData[@"name"];
-            AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
+            AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
             logindelegate.username = name;
             NSString *location = userData[@"location"][@"name"];
             NSString *gender = userData[@"gender"];
             NSString *birthday = userData[@"birthday"];
             NSString *relationship = userData[@"relationship_status"];
             NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID ];
-            AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
+            AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
             picturedelegate.userpicture = pictureURL;
             
             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",name,pictureURL];
@@ -177,8 +177,10 @@
                                                    returningResponse:&response
                                                                error:&error];
             NSLog(@"result:%@",result);
-            
-            [self performSegueWithIdentifier:@"goTimeline" sender:self];
+			
+//            [self performSegueWithIdentifier:@"goTimeline" sender:self];
+			[self performSegueWithIdentifier:@"ShowTabBarController" sender:self];	// !!!:dezamisystem・Segue変更
+
             NSLog(@"FacebookLogin is completed");
 
             
@@ -208,63 +210,69 @@
             }
         } else if (user.isNew) {
             NSLog(@"Twitter サインアップ & ログイン完了!");
-           [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-            [self info2];
-           
-
+			
+			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+			[self info2];
         } else {
             NSLog(@"Twitter ログイン完了!");
-               [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+			
+			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
             [self info2];
-           
         }
     }];
 }
 
 //Twitterの各種データ取得
--(void)info2{
+-(void)info2
+{
     [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!error && user) {
-            NSString *userId = [PFTwitterUtils twitter].userId;
-            NSLog(@"userId:%@",userId);
-            NSString *authToken = [PFTwitterUtils twitter].authToken;
-           NSLog(@"authToken:%@",authToken);
-            NSString *screenName = [PFTwitterUtils twitter].screenName;
-            NSLog(@"screenName:%@",screenName);
-            AppDelegate* logindelegate = [[UIApplication sharedApplication] delegate];
-            logindelegate.username = screenName;
-            NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", screenName];
-            AppDelegate* picturedelegate = [[UIApplication sharedApplication] delegate];
-            picturedelegate.userpicture = pictureURL;
-            NSLog(@"%@",pictureURL);
+        if (!error) {
+			if (user) {
+				NSString *userId = [PFTwitterUtils twitter].userId;
+				NSLog(@"userId:%@",userId);
+				NSString *authToken = [PFTwitterUtils twitter].authToken;
+				NSLog(@"authToken:%@",authToken);
+				NSString *screenName = [PFTwitterUtils twitter].screenName;
+				NSLog(@"screenName:%@",screenName);
+				AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+				logindelegate.username = screenName;
+				NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", screenName];
+				AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+				picturedelegate.userpicture = pictureURL;
+				NSLog(@"%@",pictureURL);
             
-            NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",screenName,pictureURL];
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response
-                                                               error:&error];
-            NSLog(@"result:%@",result);
-            [self performSegueWithIdentifier:@"goTimeline2" sender:self];
-            NSLog(@"TwitterLogin is completed");
-        [SVProgressHUD dismiss];
+				NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",screenName,pictureURL];
+				NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
+				NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+				[urlRequest setHTTPMethod:@"POST"];
+				[urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+				NSURLResponse* response;
+				NSError* error = nil;
+				NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+													returningResponse:&response
+																error:&error];
+				NSLog(@"result:%@",result);
+//				[self performSegueWithIdentifier:@"goTimeline2" sender:self];
+				[self performSegueWithIdentifier:@"ShowTabBarController" sender:self];	// !!!:dezamisystem・Segue変更
+			
+				NSLog(@"TwitterLogin is completed");
+				[SVProgressHUD dismiss];
+			}
+			else {
+				NSLog(@"%s USER IS NULL",__func__);
+			}
         }
+		else {
+			NSLog(@"%s ERROR:%@",__func__, error);
+		}
     }];
-
 }
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 @end

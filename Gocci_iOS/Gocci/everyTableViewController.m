@@ -50,8 +50,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
+	
+	// !!!:dezamisystem
+	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+	
     [SVProgressHUD dismiss];
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
@@ -195,12 +197,27 @@
 }
 
 
-
+#pragma mark viewDidLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"コメント画面";
+	
+	
+	//ナビゲーションバーに画像
+	{
+		//タイトル画像設定
+		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+		CGFloat width_image = height_image;
+		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
+		navigationTitle.image = image;
+		self.navigationItem.titleView =navigationTitle;
+	}
+
+	
+	// !!!:dezamisystem
+//	self.navigationItem.title = @"コメント画面";
+	
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
 
@@ -210,10 +227,35 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-    self.navigationItem.backBarButtonItem = backButton;
-    self.tableView.bounces = NO;
+	// !!!:dezamisystem
+//	self.navigationItem.backBarButtonItem = backButton;
+
+	self.tableView.bounces = NO;
      self.tableView.allowsSelection = NO;
     _textField.placeholder = @"ここにコメントを入力してください。";
+
+#if 0
+	// タブの中身（UIViewController）をインスタンス化
+	UIViewController *item01 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+	UIViewController *item02 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+	NSArray *views = [NSArray arrayWithObjects:item01,item02, nil];
+
+	// タブコントローラをインスタンス化
+	UITabBarController *tbc = [[UITabBarController alloc] init];
+	tbc.delegate = self;
+	
+	// タブコントローラにタブの中身をセット
+	[tbc setViewControllers:views animated:NO];
+	[self.view addSubview:tbc.view];
+	
+	// １つめのタブのタイトルを"hoge"に設定する
+	UITabBarItem *tbi = [tbc.tabBar.items objectAtIndex:0];
+	tbi.title = @"hoge";
+	tbi = [tbc.tabBar.items objectAtIndex:1];
+	tbi.title = @"ABCDEFG";
+#endif
+	
+	
 }
 
 
@@ -417,8 +459,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -443,7 +483,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return _cell;
 }
 
-
-
+#pragma mark - ツールバー
+#pragma mark 戻る＝Modal Close
+- (IBAction)onReturn:(id)sender {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		//
+	}];
+}
 
 @end

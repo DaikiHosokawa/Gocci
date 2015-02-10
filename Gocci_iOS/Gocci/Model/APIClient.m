@@ -49,7 +49,7 @@ static APIClient *_sharedInstance = nil;
 
 #pragma mark - Class Methods
 
-+ (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)timelineWithHandler:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
                              @"limit" : limit,
@@ -62,6 +62,12 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
 }
+
++ (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+	
+}
+
 
 + (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {

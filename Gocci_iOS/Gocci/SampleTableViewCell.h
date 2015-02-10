@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SampleTableViewCell : UITableViewCell{
+@interface SampleTableViewCell : UITableViewCell
+{
     NSMutableArray *venues_;
 }
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;

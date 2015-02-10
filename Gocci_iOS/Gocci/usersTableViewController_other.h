@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Sample5TableViewCell_other.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <Foundation/Foundation.h>

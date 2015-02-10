@@ -220,8 +220,8 @@ const NSString *SCAssetExportSessionPresetLowQuality = @"LowQuality";
         double width = 0;
         double height = 0;
         double videoBitrate = 0;
-        CGAffineTransform translate;
-        CGSize size;
+        //CGAffineTransform translate;
+        //CGSize size;
         
         
         if (videoTrack != nil && _keepVideoSize) {

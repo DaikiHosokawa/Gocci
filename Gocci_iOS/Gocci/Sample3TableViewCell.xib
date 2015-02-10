@@ -163,7 +163,7 @@
                                             <constraint firstAttribute="centerX" secondItem="f5p-UU-hcy" secondAttribute="centerX" id="aam-1A-MEI"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaX-nQ-DLA">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MaX-nQ-DLA">
                                         <rect key="frame" x="106" y="0.0" width="105" height="42"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-pR-LnV">

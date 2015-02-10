@@ -14,9 +14,25 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 
+@interface AppDelegate() {
+	UITabBarController *tabBarController;
+}
+
+@end
+
 
 @implementation AppDelegate
-
+// !!!:dezamisystem
+@synthesize movieData;
+@synthesize jsonDic;
+@synthesize gText;
+@synthesize username;
+@synthesize longitude;
+@synthesize userpicture;
+@synthesize latitude;
+@synthesize lon;
+@synthesize lat;
+@synthesize postFileName;
 
 
 //@synthesize window = _window;
@@ -89,15 +105,16 @@
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
         NSLog(@"3.5inch");
         self.window.rootViewController = rootViewController;
-        }
+	}
     
     //4.7inch対応
     CGRect rect2 = [UIScreen mainScreen].bounds;
     if (rect2.size.height == 667) {
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        
-        self.window.rootViewController = rootViewController;
+		NSLog(@"4.7inch");
+
+		self.window.rootViewController = rootViewController;
     }
     
     //5.5inch対応
@@ -105,22 +122,47 @@
     if (rect3.size.height == 736) {
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        
-        self.window.rootViewController = rootViewController;
+		NSLog(@"5.5inch");
+		
+		self.window.rootViewController = rootViewController;
     }
 
+	// !!!:dezamisystem
+	UIColor *color_custom = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];
+
     //ナビゲーションバーのアイテムの色を変更
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:1.000]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     //ナビゲーションバーの色を変更
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+    [UINavigationBar appearance].barTintColor = color_custom;
     
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
+	
+	// !!!:dezamisystem・タブバー設定
+	{
+		//UIColor *color_selected = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];
+		
+		UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f];
+		//タブ選択時のフォントとカラー
+		UIColor *colorSelected = color_custom; //[UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+		NSDictionary *selectedAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorSelected};
+		[[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
+		//通常時のフォントとカラー
+		UIColor *colorNormal = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
+		NSDictionary *attributesNormal = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorNormal};
+		[[UITabBarItem appearance] setTitleTextAttributes:attributesNormal forState:UIControlStateNormal];
+
+		//背景色
+		[UITabBar appearance].barTintColor = [UIColor whiteColor];
+		
+		// 選択時
+		[[UITabBar appearance] setTintColor:color_custom];
+	}
+	
     //スプラッシュ時間設定
     sleep(3);
-    
+	
 
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
@@ -179,8 +221,9 @@ void exceptionHandler(NSException *exception) {
 //緯度経度を変数に格納
 - (void)showLocation:(CLLocation *)location
 {
-    AppDelegate* appDelegateGeo = [[UIApplication sharedApplication] delegate];
-    appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    AppDelegate* appDelegateGeo = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	
+	appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
     NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
@@ -250,7 +293,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     [FBSession.activeSession close];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 
 @end

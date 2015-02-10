@@ -16,11 +16,14 @@
 #import "DemoContentView.h"
 
 
-@interface everyTableViewController : UITableViewController<UITextViewDelegate>{
+@interface everyTableViewController : UITableViewController<UITextViewDelegate, UITabBarControllerDelegate> {
      NSString *_postID;
 }
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (nonatomic) NSString *postID;
+
+// !!!:dezamisystem
+- (IBAction)onReturn:(id)sender;
 
 @end
