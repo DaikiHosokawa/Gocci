@@ -1078,12 +1078,12 @@
 			children = (
 				FF54F01A1914B3C800025DC8 /* searchTableViewController.h */,
 				FF54F01B1914B3C800025DC8 /* searchTableViewController.m */,
-				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
-				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
-				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
 				ABF784571A89EA81006B435A /* SearchCell.h */,
 				ABF784581A89EA81006B435A /* SearchCell.m */,
 				ABF784541A89EA66006B435A /* SearchCell.xib */,
+				FF0BE40E193C47C1001A0053 /* SampleTableViewCell.h */,
+				FF0BE40F193C47C1001A0053 /* SampleTableViewCell.m */,
+				FF0BE410193C47C1001A0053 /* SampleTableViewCell.xib */,
 				FFDC02921A1F0E8B009A787C /* Annotation */,
 			);
 			name = Search;
