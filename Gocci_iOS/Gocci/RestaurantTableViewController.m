@@ -8,18 +8,15 @@
 
 #import "RestaurantTableViewController.h"
 #import "searchTableViewController.h"
-#import "Sample3TableViewCell.h"
-#import "AppDelegate.h"
-#import <AVFoundation/AVFoundation.h>
-#import "SVProgressHUD.h"
 #import "everyTableViewController.h"
-#import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
+#import "TimelineCell.h"
 #import "APIClient.h"
-#import "RestaurantPost.h"
+#import "TimelinePost.h"
 #import "MoviePlayerManager.h"
-#import "QuartzCore/QuartzCore.h"
+#import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
 #import <GoogleMaps/GoogleMaps.h>
-
 #import "everyBaseNavigationController.h"
 
 // !!!:dezamisystem
@@ -27,10 +24,13 @@ static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
+@import AVFoundation;
+@import QuartzCore;
 
 @protocol MovieViewDelegate;
 
-@interface RestaurantTableViewController ()<Sample3TableViewCellDelegate>
+@interface RestaurantTableViewController ()
+<TimelineCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -68,6 +68,43 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     return self;
 }
 
+
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
+        navigationTitle.image = image;
+        self.navigationItem.titleView =navigationTitle;
+    }
+    
+    //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
+    //背景にイメージを追加したい
+    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    
+    // !!!:dezamisystem
+    //	self.navigationItem.backBarButtonItem = backButton;
+    
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -99,6 +136,28 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //
 //}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([self isFirstRun]) {
+        [self showDefaultContentView];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    // 画面が隠れた際に再生中の動画を停止させる
+    [[MoviePlayerManager sharedManager] stopMovie];
+    
+    // 動画データを一度全て削除
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    
+    [super viewWillDisappear:animated];
+}
+
+
+#pragma mark - Action
+
 - (IBAction)pushMap:(UIButton *)sender {
     NSString *mapText = _postRestName;
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -121,14 +180,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
-        [self showDefaultContentView];
-    }
-}
+
 
 - (BOOL)isFirstRun
 {
@@ -169,87 +221,68 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [CXCardView showWithView:_firstContentView draggable:YES];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    // 画面が隠れた際に再生中の動画を停止させる
-    [[MoviePlayerManager sharedManager] stopMovie];
-    
-    // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
-    
-    [super viewWillDisappear:animated];
-}
-
 - (IBAction)unwindToTop:(UIStoryboardSegue *)segue
 {
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
-		navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
-	}
+#pragma mark - Table view data source
 
-    //カスタムセルの導入
-    UINib *nib = [UINib nibWithNibName:@"Sample3TableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"restaurantTableViewCell"];
-   
-//    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
-    //背景にイメージを追加したい
-    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-     //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    backButton.title = @"";
-	
-	// !!!:dezamisystem
-//	self.navigationItem.backBarButtonItem = backButton;
-	
-	self.tableView.bounces = NO;
-    
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961]];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.posts count];
+}
+
+//1セルあたりの高さ
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [TimelineCell cell];
+    }
+    
+    cell.delegate = self;
+    
+    // セルにデータを反映
+    TimelinePost *post = self.posts[indexPath.row];
+    [cell configureWithTimelinePost:post];
+    
+    // 動画の読み込み
+    LOG(@"読み込み完了");
+    __weak typeof(self)weakSelf = self;
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
+                                                         size:cell.thumbnailView.bounds.size
+                                                      atIndex:indexPath.row
+                                                   completion:^(BOOL success) {
+                                                       [weakSelf _playMovieAtCurrentCell];
+                                                   }];
+    
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LOG_METHOD;
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+}
 
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  // Return the number of rows in the section.
-    return [self.posts count];
-    NSLog(@"number:%lu",(unsigned long)[self.posts count]);
-}
-
 
 
 //Twitterのアクティビティ投稿の基準
@@ -310,11 +343,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 
-//1セルあたりの高さ
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 550.0;
-}
+
 
 
 
@@ -326,51 +355,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return indexPath;
 }
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    //Do any additional setup after loading the view, typically from a nib.
-    //storyboardで指定したIdentifierを指定する
-    
-    NSString *cellIdentifier = @"restaurantTableViewCell";
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell){
-        cell = [[Sample3TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                           reuseIdentifier:cellIdentifier];
-    }
-
-    cell.contentView.backgroundColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:0.961];
-    
-    // セルにデータを反映
-    RestaurantPost *post = self.posts[indexPath.row];
-    NSLog(@"post:%@",self.posts[indexPath.row]);
-    [cell configureWithRestaurantPost:post];
-    cell.delegate = self;
-    
-    // 動画の読み込み
-    NSLog(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
-    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
-                                                         size:cell.thumbnailView.bounds.size
-                                                      atIndex:indexPath.row
-                                                   completion:^(BOOL success) {	
-                                                       [weakSelf _playMovieAtCurrentCell];	
-                                                   }];
- 
-    return cell;
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSLog(@"didSelectRowAtIndex");
-    //セグエで画面遷移する
-     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
-}
-
-#pragma mark - 遷移前の準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     //2つ目の画面にパラメータを渡して遷移する
@@ -402,88 +386,90 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - Cell Event
-#pragma mark いいねボタンの時の処理
-- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
-{
-   //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-	if (result) {
-		//
-	}
-    
-    // タイムラインを再読み込み
-    [self _fetchRestaurant];
-}
-
-#pragma mark バッドボタンの時の処理
-- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-{
-    //バッドボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    NSLog(@"result:%@",result);
-    
-    
-    // タイムラインを再読み込み
-    [self _fetchRestaurant];
-}
-
-#pragma mark コメントボタン押下時の処理
-- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
-{
-    // コメントボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-	// !!!:dezamisystem
-//    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
-	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
-}
+//#pragma mark いいねボタンの時の処理
+//- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
+//{
+//   //いいねボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//	if (result) {
+//		//
+//	}
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchRestaurant];
+//}
+//
+//#pragma mark バッドボタンの時の処理
+//- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
+//{
+//    //バッドボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    NSLog(@"result:%@",result);
+//    
+//    
+//    // タイムラインを再読み込み
+//    [self _fetchRestaurant];
+//}
+//
+//#pragma mark コメントボタン押下時の処理
+//- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
+//{
+//    // コメントボタン押下時の処理
+//    LOG(@"postid=%@", postID);
+//    _postID = postID;
+//	// !!!:dezamisystem
+////    [self performSegueWithIdentifier:@"showDetail2" sender:postID];
+//	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+//}
 
 #pragma mark user_nameタップの時の処理
-- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapNameWithusername:(NSString *)username
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName
 {
     //user nameタップの時の処理
-	LOG(@"username=%@", username);
-	_postUsername = username;
-	NSLog(@"postUsername:%@",_postUsername);
+	LOG(@"username=%@", userName);
+	_postUsername = userName;
+	LOG(@"postUsername:%@",_postUsername);
 	// !!!:dezamisystem
 //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
 	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-	NSLog(@"Username is touched");
+	LOG(@"Username is touched");
 }
 
 #pragma mark user_nameタップの時の処理②
-- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapNameWithuserspicture:(NSString *)userspicture
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
 {
     //user nameタップの時の処理②
-    LOG(@"userspicture=%@", userspicture);
-    _postPicture = userspicture;
-    NSLog(@"postUsername:%@",_postPicture);
+    LOG(@"userspicture=%@", userPicture);
+    _postPicture = userPicture;
+    LOG(@"postUsername:%@",_postPicture);
     //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    NSLog(@"Username is touched");
+    LOG(@"Username is touched");
 }
 
+
+#pragma mark - Private Methods
 
 /**
  *  API からタイムラインのデータを取得
@@ -494,11 +480,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     NSString *restName = _postRestName;
-    NSLog(@"restName:%@",restName);
-      [APIClient restaurantWithRestName:(NSString *)restName handler:^(id result, NSUInteger code, NSError *error) {
-     
-          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-          
+    LOG(@"restName:%@",restName);
+    
+    [APIClient restaurantWithRestName:(NSString *)restName handler:^(id result, NSUInteger code, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"result=%@", result);
+        
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             // TODO: アラート等を掲出
@@ -508,7 +496,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
         for (NSDictionary *post in result) {
-            [tempPosts addObject:[RestaurantPost restaurantPostWithDictionary:post]];
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
         self.posts = [NSArray arrayWithArray:tempPosts];
         
@@ -530,9 +518,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //        // 画面がフォアグラウンドのときのみ再生
 //        return;
 //    }
-	
-	
-    Sample3TableViewCell *currentCell = [self _currentCell];
+    
+    TimelineCell *currentCell = [self _currentCell];
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
@@ -547,9 +534,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  *
  *  @return
  */
-- (Sample3TableViewCell *)_currentCell
+- (TimelineCell *)_currentCell
 {
-    return (Sample3TableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
+    return (TimelineCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
 }
 
 /**
