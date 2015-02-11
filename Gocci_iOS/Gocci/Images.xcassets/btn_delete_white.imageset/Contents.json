@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "pin_search_cell.png"
+      "filename" : "btn_delete_white.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "btn_delete_white@2x.png"
     },
     {
       "idiom" : "universal",
