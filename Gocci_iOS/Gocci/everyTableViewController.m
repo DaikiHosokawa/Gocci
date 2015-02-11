@@ -209,8 +209,8 @@
 		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
 		CGFloat width_image = height_image;
 		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_image, height_image)];
-		navigationTitle.image = image;
+		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        navigationTitle.image = image;
 		self.navigationItem.titleView =navigationTitle;
 	}
 

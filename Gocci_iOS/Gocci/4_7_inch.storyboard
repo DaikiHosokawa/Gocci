@@ -708,7 +708,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="6.0000003259945993" width="48" height="48"/>
+                                        <rect key="frame" x="8" y="6.0000004069196899" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_black.png">
@@ -927,9 +927,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="R4l-rq-eUo"/>
-        <segue reference="ELX-A7-CBx"/>
+        <segue reference="ElI-qq-NoV"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="FOa-6V-u96"/>
+        <segue reference="G4K-cf-py4"/>
     </inferredMetricsTieBreakers>
 </document>
