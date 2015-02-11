@@ -91,13 +91,16 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 	
 	
 	
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"naviIcon.png"]];
-		navigationTitle.frame = CGRectMake(0, 0, 44, 44);
-		self.navigationItem.titleView =navigationTitle;
-	}
+    //ナビゲーションバーに画像
+    {
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        navigationTitle.image = image;
+        self.navigationItem.titleView =navigationTitle;
+    }
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -105,16 +108,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 	[super viewWillAppear:animated];
 	
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
-	}
+	
 
 	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
@@ -235,6 +229,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 	int yearSelected = [self getYear:date];
 	int monthSelected = [self getMonth:date];
 	int daySelected = [self getDay:date];
+    NSLog(@"%s %04d-%02d-%02d",__func__, yearSelected,monthSelected,daySelected);
 	if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
 		[self performSegueWithIdentifier:SEGUE_GO_LIFELOG_SUB sender:self];
 	}
