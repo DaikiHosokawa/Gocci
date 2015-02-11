@@ -157,7 +157,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark - Action
-
+/*
 - (IBAction)pushMap:(UIButton *)sender {
     NSString *mapText = _postRestName;
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -179,6 +179,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
 
 }
+ */
 
 
 

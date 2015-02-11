@@ -222,9 +222,10 @@ void exceptionHandler(NSException *exception) {
 - (void)showLocation:(CLLocation *)location
 {
     AppDelegate* appDelegateGeo = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	
 	appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    appDelegateGeo.coordinate = &(coordinate);
     NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
     NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

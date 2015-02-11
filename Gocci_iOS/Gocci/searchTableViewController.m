@@ -18,6 +18,7 @@
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
 #import "CXCardView.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @import MapKit;
 
@@ -141,7 +142,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _searchBar.text = nil;
 
     //30本のピンを立てる
-//    for (int i=0; i<30; i++) {
+ // for (int i=0; i<30; i++) {
 //        NSString *ni = _restname_[i];
 //        NSString *ai = _category_[i];
 //        double loi = [_jsonlon_[i]doubleValue];
@@ -317,7 +318,25 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 - (void)searchCell:(SearchCell *)cell shouldShowMapAtIndex:(NSUInteger)index
 {
-    // TODO: 地図で店舗の場所を表示
+    Restaurant *restaurant = self.restaurants[index];
+    NSString *mapText = restaurant.restname;
+    mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:
+                            @"comgooglemaps://?q=%@&zoom=18",mapText];
+    NSLog(@"URLSchemes:%@",directions);
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:directions]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+        //アラート出す
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 - (void)searchCell:(SearchCell *)cell shouldDetailAtIndex:(NSUInteger)index

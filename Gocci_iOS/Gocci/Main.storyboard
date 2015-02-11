@@ -574,7 +574,7 @@
                                         <action selector="onPostingButton:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="S6x-rk-FKF"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zJ0-CW-sJz">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zJ0-CW-sJz">
                                     <rect key="frame" x="261" y="10" width="45" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="マップ">
@@ -733,7 +733,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="8" y="6" width="48" height="48.000000039736427"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_black.png">
@@ -950,9 +950,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LdY-JN-EqV"/>
         <segue reference="cpH-lv-fYL"/>
-        <segue reference="Nkn-A9-wHX"/>
-        <segue reference="0Dp-RU-HDt"/>
+        <segue reference="pPi-jq-5EO"/>
+        <segue reference="5vL-6n-Sjz"/>
+        <segue reference="pwx-NL-GhF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,7 +31,10 @@
     NSString *lon;
     //検索画面で使うJSONを保存する変数
     NSDictionary *jsonDic;
-    
+    //
+    NSArray *jsonArray;
+    CLLocationCoordinate2D *coodinate;
+
     NSData *movieData;
 }
 
@@ -46,6 +49,8 @@
 @property (nonatomic, retain) NSDictionary *jsonDic;
 @property (nonatomic, retain) NSData *movieData;
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, nonatomic) NSArray *jsonArray;
+@property(nonatomic) CLLocationCoordinate2D *coordinate;
 
 
 -(BOOL)isFirstRun;

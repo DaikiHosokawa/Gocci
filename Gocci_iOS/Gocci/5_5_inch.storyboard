@@ -582,7 +582,7 @@
                                         <action selector="onPostingButton:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="szE-ZX-p85"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CDq-KS-vWI">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CDq-KS-vWI">
                                     <rect key="frame" x="331" y="21" width="45" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="マップ">
@@ -711,7 +711,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="6.0000002796650351" width="48" height="48"/>
+                                        <rect key="frame" x="8" y="6.0000003554424035" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_black.png">
@@ -932,8 +932,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="uLy-rw-ivI"/>
-        <segue reference="cwl-oS-FaU"/>
-        <segue reference="wis-md-2uD"/>
-        <segue reference="kep-ZV-SWG"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="wry-3B-S2G"/>
+        <segue reference="JYh-MP-8XI"/>
     </inferredMetricsTieBreakers>
 </document>
