@@ -31,9 +31,8 @@
     NSString *lon;
     //検索画面で使うJSONを保存する変数
     NSDictionary *jsonDic;
-    //
+    //検索画面から撮影前画面へ
     NSArray *jsonArray;
-    CLLocationCoordinate2D *coodinate;
 
     NSData *movieData;
 }

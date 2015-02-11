@@ -221,6 +221,7 @@ void exceptionHandler(NSException *exception) {
 //緯度経度を変数に格納
 - (void)showLocation:(CLLocation *)location
 {
+    /*
     AppDelegate* appDelegateGeo = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
@@ -237,7 +238,8 @@ void exceptionHandler(NSException *exception) {
         appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     });
         //});
-    [locationManager stopUpdatingLocation];    
+    [locationManager stopUpdatingLocation]; 
+     */
     
 }
 
