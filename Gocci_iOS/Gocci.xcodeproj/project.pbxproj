@@ -55,6 +55,7 @@
 		95E00DB21A6AE4DF0049AFE4 /* TestPanel2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */; };
 		95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB31A6AE7370049AFE4 /* siyou.jpg */; };
 		95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB51A6AE8610049AFE4 /* background-gradient.png */; };
+		95E1E52B1A8C606E00F7E02E /* ic_userpicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E1E52A1A8C606E00F7E02E /* ic_userpicture.png */; };
 		95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */; };
 		95F9378B1A7BB9A100C19CEC /* DemoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F9378A1A7BB9A100C19CEC /* DemoContentView.m */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
@@ -257,6 +258,7 @@
 		95E00DB01A6AE4DF0049AFE4 /* TestPanel2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel2.xib; sourceTree = "<group>"; };
 		95E00DB31A6AE7370049AFE4 /* siyou.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = siyou.jpg; sourceTree = "<group>"; };
 		95E00DB51A6AE8610049AFE4 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
+		95E1E52A1A8C606E00F7E02E /* ic_userpicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_userpicture.png; sourceTree = "<group>"; };
 		95EB36571A7A1752001FACAD /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
 		95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
 		95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				375B6DDE1A7F20F4003BB6A4 /* tabbaritem_timeline.png */,
 				375B6DEE1A7F311D003BB6A4 /* tabbaritem_timeline@2x.png */,
 				375B6E011A7F381D003BB6A4 /* test_topbar.png */,
+				95E1E52A1A8C606E00F7E02E /* ic_userpicture.png */,
 				375560561A85A2A10051251A /* ui_black.png */,
 			);
 			path = Resouces;
@@ -1298,6 +1301,7 @@
 				95E00DA11A6ACFAF0049AFE4 /* MYCustomPanel.xib in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				ABCE2AA71A8A26BD008F9D44 /* LICENSE in Resources */,
+				95E1E52B1A8C606E00F7E02E /* ic_userpicture.png in Resources */,
 				375B6DFC1A7F32D4003BB6A4 /* tabbaritem_posting@2x.png in Resources */,
 				3755604D1A84921C0051251A /* btn_toukou.png in Resources */,
 				375560571A85A2A10051251A /* ui_black.png in Resources */,

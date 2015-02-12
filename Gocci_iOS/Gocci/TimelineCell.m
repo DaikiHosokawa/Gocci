@@ -135,7 +135,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
     // TODO: 店舗サムネイル画像
-    self.restaurantImageView.image = nil;
+    self.restaurantImageView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     // 店舗名
     self.restaurantNameLabel.text = timelinePost.restname;
