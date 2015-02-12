@@ -30,6 +30,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @implementation beforeRecorderTableViewController
 
 #pragma mark - アイテム名登録用
+/*
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
@@ -41,6 +42,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	}
 	return self;
 }
+ */
 
 -(void)viewWillAppear:(BOOL)animated
 {
