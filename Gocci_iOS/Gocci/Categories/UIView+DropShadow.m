@@ -12,8 +12,16 @@
 - (void)dropShadow
 {
     self.layer.masksToBounds = NO;
-    self.layer.shadowOffset = CGSizeMake(2.0, 0.0);
+    self.layer.shadowOffset = CGSizeMake(1.0, 1.0);
     self.layer.shadowRadius = 3.0;
+    self.layer.shadowOpacity = 0.2;
+}
+
+- (void)dropShadowLight
+{
+    self.layer.masksToBounds = NO;
+    self.layer.shadowOffset = CGSizeMake(1.0, 1.0);
+    self.layer.shadowRadius = 1.0;
     self.layer.shadowOpacity = 0.2;
 }
 
