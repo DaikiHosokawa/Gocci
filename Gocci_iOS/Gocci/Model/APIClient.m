@@ -183,6 +183,23 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)distWithLatitude2:(CGFloat)latitude longitude2:(CGFloat)longitude limit2:(NSUInteger)limit handler2:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
+                             @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
+                             @"limit": [NSString stringWithFormat:@"%@", @(limit)],
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"dist/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
 {
     NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory

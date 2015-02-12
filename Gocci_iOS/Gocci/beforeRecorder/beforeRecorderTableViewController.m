@@ -11,13 +11,13 @@
 #import "SCRecorderViewController.h"
 #import "SampleTableViewCell.h"
 #import "APIClient.h"
-#import "SearchCell.h"
+#import "beforeCell.h"
 #import "Restaurant.h"
 
 static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
-@interface beforeRecorderTableViewController ()<SearchCellDelegate>
+@interface beforeRecorderTableViewController ()<beforeCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *restname_;
 @property (nonatomic, strong) NSMutableArray *category_;
@@ -162,8 +162,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
-         forCellReuseIdentifier:SearchCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"beforeCell" bundle:nil]
+         forCellReuseIdentifier:beforeCellIdentifier];
 
   
 	//ナビゲーションバーに画像
@@ -219,14 +219,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [SearchCell cellHeight];
+    return [beforeCell cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SearchCell *cell = (SearchCell *)[tableView dequeueReusableCellWithIdentifier:SearchCellIdentifier];
+    beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
     if (!cell) {
-        cell = [SearchCell cell];
+        cell = [beforeCell cell];
     }
     
     Restaurant *restaurant = self.restaurants[indexPath.row];
@@ -286,7 +286,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 */
 
-- (void)searchCell:(SearchCell *)cell shouldShowMapAtIndex:(NSUInteger)index
+- (void)beforeCell:(beforeCell *)cell shouldShowMapAtIndex:(NSUInteger)index
 {
     Restaurant *restaurant = self.restaurants[index];
     NSString *mapText = restaurant.restname;
@@ -309,7 +309,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
-- (void)searchCell:(SearchCell *)cell shouldDetailAtIndex:(NSUInteger)index
+- (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex:(NSUInteger)index
 {
     Restaurant *restaurant = self.restaurants[index];
     // グローバル変数に保存
@@ -354,10 +354,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient distWithLatitude:coordinate.latitude
-                      longitude:coordinate.longitude
-                          limit:30
-                        handler:^(id result, NSUInteger code, NSError *error)
+    [APIClient distWithLatitude2:coordinate.latitude
+                      longitude2:coordinate.longitude
+                          limit2:30
+                        handler2:^(id result, NSUInteger code, NSError *error)
      {
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          

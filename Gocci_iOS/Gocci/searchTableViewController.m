@@ -79,6 +79,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.frame = CGRectMake(0, 0, 375, 200);
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
+        
         [self.view addSubview:_mapView];
     }
     else if (rect2.size.height == 736) {

@@ -72,6 +72,19 @@
                  handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  dist/ 2
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler
+ */
++ (void)distWithLatitude2:(CGFloat)latitude
+               longitude2:(CGFloat)longitude
+                   limit2:(NSUInteger)limit
+                 handler2:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
  *  ファイルのダウンロード
  *  既にダウンロード済みのファイルを指定した場合は再度ダウンロードせず、そのファイルのローカルパスを返す
  *  ファイルはキャッシュディレクトリに保存される

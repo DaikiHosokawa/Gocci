@@ -53,6 +53,8 @@
 		95E00DB41A6AE7370049AFE4 /* siyou.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB31A6AE7370049AFE4 /* siyou.jpg */; };
 		95E00DB61A6AE8610049AFE4 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E00DB51A6AE8610049AFE4 /* background-gradient.png */; };
 		95E1E52B1A8C606E00F7E02E /* ic_userpicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E1E52A1A8C606E00F7E02E /* ic_userpicture.png */; };
+		95E1E52F1A8D619E00F7E02E /* beforeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E1E52D1A8D619E00F7E02E /* beforeCell.m */; };
+		95E1E5301A8D619E00F7E02E /* beforeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E1E52E1A8D619E00F7E02E /* beforeCell.xib */; };
 		95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */; };
 		95F9378B1A7BB9A100C19CEC /* DemoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F9378A1A7BB9A100C19CEC /* DemoContentView.m */; };
 		AB8C71801A278BFE00BF31EA /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C717F1A278BFE00BF31EA /* APIClient.m */; };
@@ -258,6 +260,9 @@
 		95E00DB31A6AE7370049AFE4 /* siyou.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = siyou.jpg; sourceTree = "<group>"; };
 		95E00DB51A6AE8610049AFE4 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
 		95E1E52A1A8C606E00F7E02E /* ic_userpicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_userpicture.png; sourceTree = "<group>"; };
+		95E1E52C1A8D619E00F7E02E /* beforeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beforeCell.h; sourceTree = "<group>"; };
+		95E1E52D1A8D619E00F7E02E /* beforeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beforeCell.m; sourceTree = "<group>"; };
+		95E1E52E1A8D619E00F7E02E /* beforeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = beforeCell.xib; sourceTree = "<group>"; };
 		95EB36571A7A1752001FACAD /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
 		95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
 		95EB365A1A7A2A37001FACAD /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -560,6 +565,9 @@
 			children = (
 				375560531A8495BB0051251A /* beforeRecorderTableViewController.h */,
 				375560541A8495BB0051251A /* beforeRecorderTableViewController.m */,
+				95E1E52C1A8D619E00F7E02E /* beforeCell.h */,
+				95E1E52D1A8D619E00F7E02E /* beforeCell.m */,
+				95E1E52E1A8D619E00F7E02E /* beforeCell.xib */,
 			);
 			name = BeforeRecorder;
 			sourceTree = "<group>";
@@ -1274,6 +1282,7 @@
 				375560491A8491510051251A /* btn_delete_black.png in Resources */,
 				95E00DB11A6AE4DF0049AFE4 /* TutorialPage1.xib in Resources */,
 				375B6DF91A7F32D4003BB6A4 /* tabbaritem_lifelog_sel@2x.png in Resources */,
+				95E1E5301A8D619E00F7E02E /* beforeCell.xib in Resources */,
 				95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
 				ABE00DAD1A8C9C8300C8DF1C /* TutorialPage3.xib in Resources */,
@@ -1374,6 +1383,7 @@
 				ABCE2A9F1A8A26BD008F9D44 /* UIImage+WebP.m in Sources */,
 				FF0BE411193C47C2001A0053 /* SampleTableViewCell.m in Sources */,
 				ABCE2A9A1A8A26BD008F9D44 /* SDWebImageManager.m in Sources */,
+				95E1E52F1A8D619E00F7E02E /* beforeCell.m in Sources */,
 				ABCE2AA41A8A26BD008F9D44 /* SVProgressHUD.m in Sources */,
 				ABCE2AC01A8A2776008F9D44 /* UIButton+AFNetworking.m in Sources */,
 				ABCE2A871A8A26BD008F9D44 /* JTCalendarAppearance.m in Sources */,
