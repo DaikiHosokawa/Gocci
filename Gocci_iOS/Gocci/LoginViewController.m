@@ -32,9 +32,9 @@
     // 初回起動時のみの動作
     AppDelegate *appDelegate = [[AppDelegate alloc]init];
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//    if ([appDelegate isFirstRun]) {
-    self.tutorialView = [TutorialView showInView:self.view delegate:self];
-//    }
+    if ([appDelegate isFirstRun]) {
+        self.tutorialView = [TutorialView showInView:self.view delegate:self];
+    }
 }
 
 
