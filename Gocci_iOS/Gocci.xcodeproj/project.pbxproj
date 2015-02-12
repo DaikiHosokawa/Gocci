@@ -122,6 +122,8 @@
 		ABE00D8F1A8C7F4D00C8DF1C /* TutorialPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE00D8E1A8C7F4D00C8DF1C /* TutorialPage2.xib */; };
 		ABE00DA81A8C919800C8DF1C /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE00DA71A8C919800C8DF1C /* TutorialView.xib */; };
 		ABE00DAB1A8C96EC00C8DF1C /* TutorialPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE00DAA1A8C96EC00C8DF1C /* TutorialPageView.m */; };
+		ABE00DAD1A8C9C8300C8DF1C /* TutorialPage3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE00DAC1A8C9C8300C8DF1C /* TutorialPage3.xib */; };
+		ABE00DB11A8C9EFF00C8DF1C /* TutorialPage4.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE00DB01A8C9EFF00C8DF1C /* TutorialPage4.xib */; };
 		ABF7844D1A88CA13006B435A /* UIView+DropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */; };
 		ABF784511A89DF27006B435A /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF784501A89DF27006B435A /* Restaurant.m */; };
 		ABF784561A89EA66006B435A /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF784541A89EA66006B435A /* SearchCell.xib */; };
@@ -392,6 +394,8 @@
 		ABE00DA71A8C919800C8DF1C /* TutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		ABE00DA91A8C96EC00C8DF1C /* TutorialPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageView.h; sourceTree = "<group>"; };
 		ABE00DAA1A8C96EC00C8DF1C /* TutorialPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageView.m; sourceTree = "<group>"; };
+		ABE00DAC1A8C9C8300C8DF1C /* TutorialPage3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialPage3.xib; sourceTree = "<group>"; };
+		ABE00DB01A8C9EFF00C8DF1C /* TutorialPage4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialPage4.xib; sourceTree = "<group>"; };
 		ABF7844B1A88CA13006B435A /* UIView+DropShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DropShadow.h"; path = "Categories/UIView+DropShadow.h"; sourceTree = "<group>"; };
 		ABF7844C1A88CA13006B435A /* UIView+DropShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DropShadow.m"; path = "Categories/UIView+DropShadow.m"; sourceTree = "<group>"; };
 		ABF7844F1A89DF27006B435A /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = Model/Restaurant.h; sourceTree = "<group>"; };
@@ -866,6 +870,8 @@
 				ABE00DAA1A8C96EC00C8DF1C /* TutorialPageView.m */,
 				95E00DAF1A6AE4DF0049AFE4 /* TutorialPage1.xib */,
 				ABE00D8E1A8C7F4D00C8DF1C /* TutorialPage2.xib */,
+				ABE00DAC1A8C9C8300C8DF1C /* TutorialPage3.xib */,
+				ABE00DB01A8C9EFF00C8DF1C /* TutorialPage4.xib */,
 				95E00D9D1A6ACFAF0049AFE4 /* MYCustomPanel.h */,
 				95E00D9E1A6ACFAF0049AFE4 /* MYCustomPanel.m */,
 				95E00D9F1A6ACFAF0049AFE4 /* MYCustomPanel.xib */,
@@ -1270,6 +1276,7 @@
 				375B6DF91A7F32D4003BB6A4 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				95E00DA41A6ACFCB0049AFE4 /* ForkImage.png in Resources */,
 				FFF0225019E82C600007AB97 /* Main.storyboard in Resources */,
+				ABE00DAD1A8C9C8300C8DF1C /* TutorialPage3.xib in Resources */,
 				375B6DE91A7F20F4003BB6A4 /* tabbaritem_timeline_sel.png in Resources */,
 				FFDE508D1A382A2D00D54AB5 /* 5_5_inch.storyboard in Resources */,
 				FF0BE412193C47C2001A0053 /* SampleTableViewCell.xib in Resources */,
@@ -1304,6 +1311,7 @@
 				95E1E52B1A8C606E00F7E02E /* ic_userpicture.png in Resources */,
 				375B6DFC1A7F32D4003BB6A4 /* tabbaritem_posting@2x.png in Resources */,
 				ABE00D8F1A8C7F4D00C8DF1C /* TutorialPage2.xib in Resources */,
+				ABE00DB11A8C9EFF00C8DF1C /* TutorialPage4.xib in Resources */,
 				3755604D1A84921C0051251A /* btn_toukou.png in Resources */,
 				375560571A85A2A10051251A /* ui_black.png in Resources */,
 				375B6DEF1A7F311D003BB6A4 /* tabbaritem_timeline_sel@2x.png in Resources */,

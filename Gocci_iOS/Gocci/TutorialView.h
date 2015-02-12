@@ -28,6 +28,11 @@
  *
  *  @return 
  */
-+ (instancetype)showTutorialInView:(UIView *)view delegate:(id<TutorialViewDelegate>)tutorialDelegate;
++ (instancetype)showInView:(UIView *)view delegate:(id<TutorialViewDelegate>)tutorialDelegate;
+
+/**
+ *  チュートリアル画面の表示を終了
+ */
+- (void)dismiss;
 
 @end

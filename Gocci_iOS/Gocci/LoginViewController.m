@@ -33,7 +33,7 @@
     AppDelegate *appDelegate = [[AppDelegate alloc]init];
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 //    if ([appDelegate isFirstRun]) {
-    self.tutorialView = [TutorialView showTutorialInView:self.view delegate:self];
+    self.tutorialView = [TutorialView showInView:self.view delegate:self];
 //    }
 }
 
@@ -196,7 +196,12 @@
 
 - (void)tutorialDidFinish:(TutorialView *)view
 {
-    LOG_METHOD;
+    // 位置情報サービス利用の確認
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate checkGPS];
+    
+    // チュートリアル終了
+    [self.tutorialView dismiss];
 }
 
 

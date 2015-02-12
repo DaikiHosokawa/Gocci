@@ -23,15 +23,17 @@
 
 - (void)setup
 {
-    self.graphicBaseView.center = CGPointMake(self.frame.size.width / 2.0, self.graphicBaseView.center.y);
+    // イラストを画面上部に中央寄せで配置
+    self.graphicBaseView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.width / 2.0);
     [self.graphicBaseView addSubview:self.graphicView];
     self.graphicView.center = CGPointMake(self.graphicBaseView.frame.size.width / 2.0,
                                           self.graphicBaseView.frame.size.height / 2.0);
     
-    self.titleLabel.center = CGPointMake(self.frame.size.width / 2.0, self.titleLabel.center.y);
-    self.descriptionLabel.center = CGPointMake(self.frame.size.width / 2.0, self.descriptionLabel.center.y);
-    
-    LOG(@"self.frame=%@", NSStringFromCGRect(self.frame));
+    // タイトル・説明を中央・下寄せに配置
+    self.descriptionLabel.center = CGPointMake(self.frame.size.width / 2.0,
+                                               self.frame.size.height - self.descriptionLabel.frame.size.height);
+    self.titleLabel.center = CGPointMake(self.frame.size.width / 2.0,
+                                         self.frame.size.height - self.descriptionLabel.frame.size.height - self.titleLabel.frame.size.height - 8.0);
 }
 
 @end
