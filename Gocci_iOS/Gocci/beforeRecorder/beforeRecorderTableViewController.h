@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface beforeRecorderTableViewController : UITableViewController
+@interface beforeRecorderTableViewController : UITableViewController <CLLocationManagerDelegate>
+{
+    // ロケーションマネージャー
+    CLLocationManager* locationManager;
+}
+
 
 @end

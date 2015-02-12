@@ -468,7 +468,7 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
         
         SCRecordSession *session = [SCRecordSession recordSession];
         //最大秒数
-        session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(8, 10000);
+        session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(7, 10000);
         
         _recorder.recordSession = session;
     }

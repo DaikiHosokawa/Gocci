@@ -10,11 +10,14 @@
 #import "AppDelegate.h"
 #import "SCRecorderViewController.h"
 #import "SampleTableViewCell.h"
+#import "APIClient.h"
+#import "SearchCell.h"
+#import "Restaurant.h"
 
 static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
-@interface beforeRecorderTableViewController ()
+@interface beforeRecorderTableViewController ()<SearchCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *restname_;
 @property (nonatomic, strong) NSMutableArray *category_;
@@ -24,6 +27,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, strong) NSMutableArray *restaddress_;
 @property (nonatomic, strong) NSString *nowlat_;
 @property (nonatomic, strong) NSString *nowlon_;
+@property (nonatomic, copy) NSArray *restaurants;
 
 @end
 
@@ -54,6 +58,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     //dispatch_queue_t q2_main = dispatch_get_main_queue();
     //dispatch_async(q2_global, ^{
+    [self call];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 飲食店名
         NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
@@ -81,6 +86,68 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
+-(void)call
+{
+    // ロケーションマネージャ生成
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲート設定
+        locationManager.delegate = self;
+        // 精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 更新頻度
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
+    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
+        // iOS8の場合は、以下の何れかの処理を追加しないと位置の取得ができない
+        // アプリがアクティブな場合だけ位置取得する場合
+        [locationManager requestWhenInUseAuthorization];
+        // アプリが非アクティブな場合でも位置取得する場合
+        //[locationManager requestAlwaysAuthorization];
+    }
+    
+    if([CLLocationManager locationServicesEnabled]){
+        // 位置情報取得開始
+        [locationManager startUpdatingLocation];
+    }else{
+        // 位置取得が許可されていない場合
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    // 位置情報取得
+    CLLocationDegrees latitude = newLocation.coordinate.latitude;
+    CLLocationDegrees longitude = newLocation.coordinate.longitude;
+    NSLog(@"%f,%f",latitude,longitude);
+    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+    static dispatch_once_t searchCurrentLocationOnceToken;
+    dispatch_once(&searchCurrentLocationOnceToken, ^{
+        [self _fetchFirstRestaurantsWithCoordinate:newLocation.coordinate];
+    });
+    // ロケーションマネージャ停止
+    [locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if (error) {
+        switch ([error code]) {
+                // アプリでの位置情報サービスが許可されていない場合
+            case kCLErrorDenied:
+                NSLog(@"%@", @"このアプリは位置情報サービスが許可されていません");
+                break;
+            default:
+                NSLog(@"%@", @"位置情報の取得に失敗しました");
+                break;
+        }
+    }
+    // 位置情報取得停止
+    [locationManager stopUpdatingLocation];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,9 +158,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-    //カスタムセルの導入
-    UINib *nib = [UINib nibWithNibName:@"SampleTableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"searchTableViewCell"];
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
+         forCellReuseIdentifier:SearchCellIdentifier];
+
   
 	//ナビゲーションバーに画像
 	{
@@ -127,33 +198,40 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //    return 1;
 //}
 
+//セルの透過処理
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
+}
+
+
+#pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [_restname_ count];
+    return [self.restaurants count];
 }
 
-//テーブルセルの高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85.0;
+    return [SearchCell cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SampleTableViewCell *cell = (SampleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableViewCell"];
+    SearchCell *cell = (SearchCell *)[tableView dequeueReusableCellWithIdentifier:SearchCellIdentifier];
+    if (!cell) {
+        cell = [SearchCell cell];
+    }
     
-    cell.restaurantName.text = [_restname_ objectAtIndex:indexPath.row];
-    cell.restaurantAddress.text = [_restaddress_ objectAtIndex:indexPath.row];
-    cell.meter.text= [_meter_ objectAtIndex:indexPath.row];
-    cell.meter.textAlignment = NSTextAlignmentRight;
-    cell.categoryname.text = [_category_ objectAtIndex:indexPath.row];
+    Restaurant *restaurant = self.restaurants[indexPath.row];
+    [cell configureWithRestaurant:restaurant index:indexPath.row];
+    cell.delegate = self;
     
     return cell;
 }
@@ -208,6 +286,42 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 */
 
+- (void)searchCell:(SearchCell *)cell shouldShowMapAtIndex:(NSUInteger)index
+{
+    Restaurant *restaurant = self.restaurants[index];
+    NSString *mapText = restaurant.restname;
+    mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:
+                            @"comgooglemaps://?q=%@&zoom=18",mapText];
+    NSLog(@"URLSchemes:%@",directions);
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:directions]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+        //アラート出す
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+}
+
+- (void)searchCell:(SearchCell *)cell shouldDetailAtIndex:(NSUInteger)index
+{
+    Restaurant *restaurant = self.restaurants[index];
+    // グローバル変数に保存
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.gText = restaurant.restname;
+    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+                               sender:@{
+                                       @"rest_name": restaurant.restname,
+                                       }];
+}
+
+
 
 
 #pragma mark - Navigation
@@ -229,5 +343,49 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	}
 }
 
+
+/**
+ *  初回のレストラン一覧を取得
+ *
+ *  @param coordinate 検索する緯度・軽度
+ */
+- (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    
+    __weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [APIClient distWithLatitude:coordinate.latitude
+                      longitude:coordinate.longitude
+                          limit:30
+                        handler:^(id result, NSUInteger code, NSError *error)
+     {
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         
+         if (!result || error) {
+             // TODO: エラーメッセージを掲出
+             return;
+         }
+         
+         [weakSelf _reloadRestaurants:result];
+     }];
+}
+
+
+/**
+ *  レストラン一覧を更新
+ *
+ *  @param result API からの取得結果
+ */
+- (void)_reloadRestaurants:(NSArray *)result
+{
+    NSMutableArray *tempRestaurants = [NSMutableArray arrayWithCapacity:0];
+    for (NSDictionary *dict in (NSArray *)result) {
+        [tempRestaurants addObject:[Restaurant restaurantWithDictionary:dict]];
+    }
+    
+    self.restaurants = [NSArray arrayWithArray:tempRestaurants];
+    NSLog(@"restaurant:%@",self.restaurants);
+    [self.tableView reloadData];
+}
 
 @end
