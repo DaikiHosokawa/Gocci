@@ -16,18 +16,26 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @interface TimelineCell()
 
-@property (nonatomic,weak) IBOutlet UIView *background;
-@property (nonatomic,weak) IBOutlet UIImageView *avaterImageView;
-@property (nonatomic,weak) IBOutlet UILabel *userNameLabel;
-@property (nonatomic,weak) IBOutlet UILabel *timeLabel;
-@property (nonatomic,weak) IBOutlet UILabel *commentLabel;
+@property (nonatomic, weak) IBOutlet UIView *background;
+@property (nonatomic, weak) IBOutlet UIImageView *avaterImageView;
+@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 
-@property (nonatomic,weak) IBOutlet NSLayoutConstraint *commentHeightConstraint;
+@property (nonatomic, weak) IBOutlet UIView *restaurantView;
+@property (nonatomic, weak) IBOutlet UIImageView *restaurantImageView;
+@property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *restaurantAddressLabel;
 
-@property (nonatomic,strong) NSString *postID;
-@property (nonatomic,strong) NSString *username;
-@property (nonatomic,strong) NSString *userspicture;
-@property (nonatomic,strong) NSString *restname;
+@property (nonatomic, weak) IBOutlet UIView *likeView;
+@property (nonatomic, weak) IBOutlet UILabel *likeCountLabel;
+
+@property (nonatomic, weak) IBOutlet UIView *commentView;
+@property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
+
+@property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *userspicture;
+@property (nonatomic, strong) NSString *restname;
 
 
 @end
@@ -58,12 +66,34 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)tapRestautant:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:)]) {
+        [self.delegate timelineCell:self didTapRestaurant:self.restname];
+    }
+}
+
+- (void)tapLike:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapLikeButtonWithPostID:)]) {
+        [self.delegate timelineCell:self didTapLikeButtonWithPostID:self.postID];
+    }
+}
+
+- (void)tapComment:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapCommentButtonWithPostID:)]) {
+        [self.delegate timelineCell:self didTapCommentButtonWithPostID:self.postID];
+    }
+}
+
 
 #pragma mark - Public Method
 
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost
 {
     [self.background dropShadow];
+    [self.restaurantView dropShadowLight];
     
     self.postID = timelinePost.postID;
     self.username = timelinePost.userName;
@@ -88,39 +118,27 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [self.thumbnailView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
-    // コメント
-    self.commentLabel.text = timelinePost.comment;
+    // TODO: 店舗サムネイル画像
+    self.restaurantImageView.image = nil;
     
-    // コメントに合わせてセルの高さを調整
-    [self.commentLabel sizeToFit];
-    self.commentHeightConstraint.constant = self.commentLabel.frame.size.height;
+    // 店舗名
+    self.restaurantNameLabel.text = timelinePost.restname;
     
-    CGFloat height = 0.0;
-    height += self.commentLabel.frame.origin.y;
-    height += self.commentLabel.frame.size.height;
-    height += 20;
+    // 店舗住所
+    self.restaurantAddressLabel.text = timelinePost.locality;
     
-    CGRect frame = self.frame;
-    frame.size.height = height;
-    self.frame = frame;
+    // Like 数
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.goodNum)];
     
-    // ユーザ名タップイベント
-    for (UIGestureRecognizer *recognizer in self.userNameLabel.gestureRecognizers) {
-        [self.userNameLabel removeGestureRecognizer:recognizer];
-    }
-    UITapGestureRecognizer *tapName = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                              action:@selector(tapNameLabel:)];
-    self.userNameLabel.userInteractionEnabled = YES;
-    [self.userNameLabel addGestureRecognizer:tapName];
+    // Comment 数
+    self.commentCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.commentNum)];
     
-    // ユーザアイコンタップイベント
-    for (UIGestureRecognizer *recognizer in self.avaterImageView.gestureRecognizers) {
-        [self.avaterImageView removeGestureRecognizer:recognizer];
-    }
-    UITapGestureRecognizer *tapAvater = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                action:@selector(tapAvaterImageView:)];
-    self.avaterImageView.userInteractionEnabled = YES;
-    [self.avaterImageView addGestureRecognizer:tapAvater];
+    // タップイベント
+    [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];
+    [self _assignTapAction:@selector(tapAvaterImageView:) view:self.avaterImageView];
+    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantView];
+    [self _assignTapAction:@selector(tapLike:) view:self.likeView];
+    [self _assignTapAction:@selector(tapComment:) view:self.commentView];
 }
 
 + (CGFloat)cellHeightWithTimelinePost:(TimelinePost *)post
@@ -129,6 +147,26 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [cell configureWithTimelinePost:post];
     
     return cell.frame.size.height;
+}
+
+
+#pragma mark - Private Methods
+
+/**
+ *  View にタップイベントを設定
+ *
+ *  @param selector タップイベント時に呼び出されるメソッド
+ *  @param view     設定先の View
+ */
+- (void)_assignTapAction:(SEL)selector view:(UIView *)view
+{
+    for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {
+        [view removeGestureRecognizer:recognizer];
+    }
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:selector];
+    view.userInteractionEnabled = YES;
+    [view addGestureRecognizer:tap];
 }
 
 @end

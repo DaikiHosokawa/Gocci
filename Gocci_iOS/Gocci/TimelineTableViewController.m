@@ -314,9 +314,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: 詳細画面のモーダルを表示
-    LOG_METHOD;
-
     // 選択状態の解除
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -359,28 +356,29 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 
-#pragma mark - Sample2TableViewCellDelegate
-//#pragma mark いいねボタンの時の処理
-//- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapGoodWithPostID:(NSString *)postID
-//{
-//    //いいねボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//	if (result) {}    
-//    
-//    // タイムラインを再読み込み
-//    [self _fetchTimeline];
-//}
+#pragma mark - TimelineCellDelegate
+
+- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
+{
+    //いいねボタンの時の処理
+    LOG(@"postid=%@", postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+	if (result) {}    
+    
+    // タイムラインを再読み込み
+    [self _fetchTimeline];
+}
+
 //
 //#pragma mark バッドボタンの時の処理
 //- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
@@ -432,34 +430,25 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-//#pragma mark rest_nameタップの時の処理
-//- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapRestnameWithrestname:(NSString *)restname
-//{
-//    //rest nameタップの時の処理
-//    LOG(@"restname=%@", restname);
-//    _postRestname = restname;
-//    NSLog(@"postRestname:%@",_postRestname);
-//    NSLog(@"Restname is touched");
-//
-//	// !!!:dezamisystem
-//	//[self performSegueWithIdentifier:@"goRestpage" sender:self];
-//	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
-//}
-//
-//#pragma mark コメントボタン押下時の処理
-//- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapCommentWithPostID:(NSString *)postID
-//{
-//    // コメントボタン押下時の処理
-//    LOG(@"postid=%@", postID);
-//    _postID = postID;
-//	// !!!:dezamisystem
-//    //[self performSegueWithIdentifier:@"showDetail2" sender:postID];
-//#if 1
-//	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
-//#else
-//	
-//#endif
-//}
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName
+{
+    //rest nameタップの時の処理
+    LOG(@"restname=%@", restaurantName);
+    _postRestname = restaurantName;
+    LOG(@"postRestname:%@",_postRestname);
+    LOG(@"Restname is touched");
+
+	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+}
+
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
+{
+    // コメントボタン押下時の処理
+    LOG(@"postid=%@", postID);
+    _postID = postID;
+
+	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+}
 
 
 #pragma mark - Private Methods

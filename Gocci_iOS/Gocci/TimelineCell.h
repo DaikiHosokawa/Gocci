@@ -29,6 +29,30 @@ extern NSString * const TimelineCellIdentifier;
 
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture;
 
+/**
+ *  店舗をタップ
+ *
+ *  @param cell
+ *  @param restaurantName 店舗名
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName;
+
+/**
+ *  Like ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
+
+/**
+ *  コメントボタンをタップ
+ *
+ *  @param cell
+ *  @param postID 
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID;
+
 @end
 
 /**

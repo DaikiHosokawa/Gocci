@@ -12,4 +12,10 @@
  */
 - (void)dropShadow;
 
+/**
+ *  View に影を設定
+ *  (弱め)
+ */
+- (void)dropShadowLight;
+
 @end
