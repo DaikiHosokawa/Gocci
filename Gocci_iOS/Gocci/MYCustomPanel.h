@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Matthew York. All rights reserved.
 //
 
-#import "MYIntroductionPanel.h"
-
-@interface MYCustomPanel : MYIntroductionPanel <UITextViewDelegate> {
-    
-    __weak IBOutlet UIView *CongratulationsView;
-}
-
-
-- (IBAction)didPressEnable:(id)sender;
-
-@end
+//#import "MYIntroductionPanel.h"
+//
+//@interface MYCustomPanel : MYIntroductionPanel <UITextViewDelegate> {
+//    
+//    __weak IBOutlet UIView *CongratulationsView;
+//}
+//
+//
+//- (IBAction)didPressEnable:(id)sender;
+//
+//@end
