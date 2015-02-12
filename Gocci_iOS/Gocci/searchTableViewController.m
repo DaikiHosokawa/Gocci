@@ -40,6 +40,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @property (nonatomic, assign) BOOL showedUserLocation;
 
 @property (nonatomic, copy) NSArray *restaurants;
+@property (nonatomic, copy) NSArray *annotations;
 @property (nonatomic) BOOL searched;
 
 @end
@@ -66,6 +67,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [super viewDidLoad];
     
     self.restaurants = [NSArray array];
+    self.annotations = [NSArray array];
     self.searched = NO;
     
     //4.7inch対応
@@ -241,6 +243,27 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
     [_mapView setRegion:region animated:NO];
     self.showedUserLocation = YES;
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    // 現在位置の画像は置き換えない
+    if (annotation.coordinate.latitude == mapView.userLocation.coordinate.latitude &&
+        annotation.coordinate.longitude == mapView.userLocation.coordinate.longitude) {
+        return nil;
+    }
+    
+    // 検索結果のピン画像を pin.png に変更
+    NSString *identifier = @"SearchPin";
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    if (!annotationView) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        annotationView.image = [UIImage imageNamed:@"pin"];
+        annotationView.canShowCallout = YES;
+    }
+    
+    return annotationView;
 }
 
 
@@ -449,6 +472,22 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         [_dontexist removeFromSuperview];
         _dontexist = nil;
     }
+    
+    // ピンを設置
+    [self.mapView removeAnnotations:self.annotations];
+    NSMutableArray *tempAnnotations = [NSMutableArray arrayWithCapacity:0];
+    for (Restaurant *restaurant in self.restaurants) {
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(restaurant.lat, restaurant.lon);
+        CustomAnnotation *annotation = [[CustomAnnotation alloc]initWithLocationCoordinate:coordinate
+                                                                                     title:restaurant.restname
+                                                                                  subtitle:restaurant.category];
+        [self.mapView addAnnotation:annotation];
+        [tempAnnotations addObject:annotation];
+    }
+    self.annotations = [NSArray arrayWithArray:tempAnnotations];
+    
+    // ピンが全て見えるように地図のズームレベルを調整
+    [self.mapView showAnnotations:self.annotations animated:YES];
     
     [self.tableView reloadData];
 }
