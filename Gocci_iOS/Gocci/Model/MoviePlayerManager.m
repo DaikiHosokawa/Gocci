@@ -42,15 +42,20 @@ static MoviePlayerManager *_sharedInstance = nil;
 - (void)addPlayerWithMovieURL:(NSString *)urlString size:(CGSize)size atIndex:(NSUInteger)index completion:(void (^)(BOOL))completion
 {
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
+    LOG(@"players[%@]=%@", key, self.players[key]);
     
     if (self.players[key]) {
         return;
     }
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
     [APIClient downloadMovieFile:urlString
                       completion:^(NSURL *fileURL, NSError *error) {
+                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                          
                           if (fileURL == nil || error != nil) {
+                              [self.players removeObjectForKey:key];
                               completion(NO);
                               return;
                           }
@@ -88,7 +93,10 @@ static MoviePlayerManager *_sharedInstance = nil;
         [self.globalPlayer pause];
     } else {
         self.globalPlayer.view.alpha = 1.0;
-        [self.globalPlayer play];
+        
+        if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
+            [self.globalPlayer play];
+        }
     }
 }
 
@@ -96,14 +104,20 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
     if (self.globalPlayer) {
         [self.globalPlayer.view removeFromSuperview];
+        [self.globalPlayer stop];
+        self.globalPlayer = nil;
     }
     
-    self.globalPlayer = [self _playerAtIndex:index];
+    MPMoviePlayerController *player = [self _playerAtIndex:index];
     
-    if (self.globalPlayer) {
+    if (player && player != self.globalPlayer) {
+        self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
-        [self.globalPlayer play];
+        
+        if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
+            [self.globalPlayer play];
+        }
     }
 }
 
