@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -47,7 +46,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hND-ON-WcS">
                         <rect key="frame" x="4" y="71" width="310" height="310"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="hND-ON-WcS" secondAttribute="height" multiplier="1:1" id="cck-hw-eDU"/>
+                            <constraint firstAttribute="width" constant="310" id="XcS-KM-xRn"/>
+                            <constraint firstAttribute="height" constant="310" id="xJ2-yo-HSs"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSl-cf-iOp">
@@ -218,20 +218,20 @@
                     <constraint firstAttribute="trailing" secondItem="XCG-79-oul" secondAttribute="trailing" constant="17" id="Q3E-q8-RcL"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="bottom" constant="8" id="VB8-D3-vDA"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="W11-XA-rhy"/>
+                    <constraint firstAttribute="centerX" secondItem="hND-ON-WcS" secondAttribute="centerX" id="X4G-PT-9Y5"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38" id="Zc5-xh-Eil"/>
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cfl-94-Sfa"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="5" id="gFL-RK-jQe"/>
-                    <constraint firstAttribute="trailing" secondItem="hND-ON-WcS" secondAttribute="trailing" constant="4" id="gKe-As-D7i"/>
                     <constraint firstAttribute="trailing" secondItem="ohQ-nj-eFT" secondAttribute="trailing" constant="32" id="l7Q-gH-EIb"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lB1-bO-TlV"/>
                     <constraint firstAttribute="bottom" secondItem="reR-SP-qcM" secondAttribute="bottom" constant="8" id="mU5-hB-own"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="reO-ph-QOU"/>
+                    <constraint firstAttribute="bottom" secondItem="hND-ON-WcS" secondAttribute="bottom" priority="999" constant="136" id="s0V-rO-n5Y"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="ttI-HL-akT"/>
                     <constraint firstAttribute="trailing" secondItem="reR-SP-qcM" secondAttribute="trailing" constant="8" id="uZr-tr-1b6"/>
                     <constraint firstItem="ohQ-nj-eFT" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="vlU-kQ-ldG"/>
                     <constraint firstAttribute="trailing" secondItem="pJp-Tg-6h0" secondAttribute="trailing" constant="24" id="zVz-eO-XnO"/>
-                    <constraint firstItem="hND-ON-WcS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="zjf-ca-cK6"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,6 +247,10 @@
                 <outlet property="restaurantNameLabel" destination="QPi-nC-yon" id="PtI-5Q-gbK"/>
                 <outlet property="restaurantView" destination="YSl-cf-iOp" id="JY6-5y-l4T"/>
                 <outlet property="thumbnailView" destination="hND-ON-WcS" id="FQq-rz-yvO"/>
+                <outlet property="thumbnailViewBottomConstraint" destination="s0V-rO-n5Y" id="qv8-tF-jzU"/>
+                <outlet property="thumbnailViewHeightConstraint" destination="xJ2-yo-HSs" id="t8Z-b8-Vm5"/>
+                <outlet property="thumbnailViewTopConstraint" destination="4Vh-hT-1QK" id="xc2-D9-dCC"/>
+                <outlet property="thumbnailViewWidthConstraint" destination="XcS-KM-xRn" id="L4h-2Z-LLg"/>
                 <outlet property="timeLabel" destination="F7J-7N-gdB" id="eOX-LR-Ufn"/>
                 <outlet property="userNameLabel" destination="XCG-79-oul" id="L5I-N9-Ou1"/>
             </connections>

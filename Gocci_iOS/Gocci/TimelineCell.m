@@ -12,6 +12,8 @@
 #import "UIImageView+WebCache.h"
 #import "UIImage+Dummy.h"
 
+#define THUMBNAIL_VIEW_MARGIN 4.0
+
 NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @interface TimelineCell()
@@ -31,6 +33,11 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @property (nonatomic, weak) IBOutlet UIView *commentView;
 @property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewTopConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewBottomConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewWidthConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewHeightConstraint;
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *username;
@@ -104,6 +111,15 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;
     self.avaterImageView.clipsToBounds = YES;
     
+    // 動画サムネイルのサイズ調整
+    // 一辺の長さが (画面の横幅 - マージン) の正方形とする
+    CGFloat thumbnailWidth = [UIScreen mainScreen].bounds.size.width - (THUMBNAIL_VIEW_MARGIN * 2);
+    self.thumbnailViewWidthConstraint.constant = thumbnailWidth;
+    self.thumbnailViewHeightConstraint.constant = thumbnailWidth;
+    self.thumbnailView.frame = CGRectMake(THUMBNAIL_VIEW_MARGIN,
+                                          self.thumbnailView.frame.origin.y,
+                                          thumbnailWidth, thumbnailWidth);
+    
     // ユーザ画像
     [self.avaterImageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
                             placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
@@ -146,7 +162,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     TimelineCell *cell = [TimelineCell cell];
     [cell configureWithTimelinePost:post];
     
-    return cell.frame.size.height;
+    return cell.thumbnailViewTopConstraint.constant + cell.thumbnailView.frame.size.height + cell.thumbnailViewBottomConstraint.constant;
 }
 
 
