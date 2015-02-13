@@ -455,15 +455,23 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // 画面がフォアグラウンドのときのみ再生
         return;
    }
-	
+    CGFloat currentHeight = 0.0;
+    for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
+        if ([self.posts count] <= i) continue;
+        
+        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
+    }
+    
     Sample5TableViewCell *currentCell = [self _currentCell];
+    CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+125,
+                                  currentCell.thumbnailView.frame.size.width,
+                                  currentCell.thumbnailView.frame.size.height);
+    
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
-                                                                    currentCell.thumbnailView.frame.size.width,
-                                                                    currentCell.thumbnailView.frame.size.height)];
+                                                   frame:movieRect];
 }
 
 /**

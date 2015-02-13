@@ -529,30 +529,29 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_playMovieAtCurrentCell
 {
-	// !!!:dezamisystem
-    if (self.navigationController.topViewController != self) {
+    if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
     
-        CGFloat currentHeight = 0.0;
-        for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
-                if ([self.posts count] <= i) continue;
+    CGFloat currentHeight = 0.0;
+    for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
+        if ([self.posts count] <= i) continue;
         
-                currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
+        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
     
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                                                         currentHeight + currentCell.thumbnailView.frame.origin.y,
-                                                                         currentCell.thumbnailView.frame.size.width,
-                                                                         currentCell.thumbnailView.frame.size.height);
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+163,
+                                  currentCell.thumbnailView.frame.size.width,
+                                  currentCell.thumbnailView.frame.size.height);
+    
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-     
-    frame:movieRect];
+                                                   frame:movieRect];
 }
 
 /**
@@ -568,6 +567,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     return currentIndexPath;
 }
+
+
 
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {
