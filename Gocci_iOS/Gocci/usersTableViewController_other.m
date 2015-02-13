@@ -30,6 +30,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
+@property (nonatomic, strong) UIRefreshControl *refresh;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -79,9 +80,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.profilepicture setImageWithURL:[NSURL URLWithString:picturestring]
                         placeholderImage:[UIImage imageNamed:@"default.png"]
 	 ];
-   
-    // API からタイムラインのデータを取得
-    [self _fetchProfile_other];
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -105,6 +108,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewWillDisappear:animated];
+}
+
+
+#pragma mark - Action
+
+- (void)refresh:(UIRefreshControl *)sender
+{
+    [self _fetchProfile_other];
 }
 
 
@@ -306,13 +317,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchProfile_other
 {
-    __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSString *userName = _postUsername;
-    [APIClient profileWithUserName:(NSString *)userName handler:^(id result, NSUInteger code, NSError *error) {
+    [self.refresh beginRefreshing];
+    
+    __weak typeof(self)weakSelf = self;
+    [APIClient profileWithUserName: _postUsername handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        //LOG(@"result=%@", result);
-        //LOG(@"code=%@, error=%@", @(code), error);
         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
@@ -332,6 +342,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
+        
+        if ([weakSelf.refresh isRefreshing]) {
+            [weakSelf.refresh endRefreshing];
+        }
     }];
 }
 

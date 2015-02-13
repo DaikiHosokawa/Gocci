@@ -38,14 +38,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)showDefaultContentView;
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
-
 @property (nonatomic, copy) NSMutableArray *postid_;
-
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapRecognizer;
 @property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSString *notificationText;
+@property (nonatomic, strong) UIRefreshControl *refresh;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -62,6 +61,48 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	if (self) {
 	}
 	return self;
+}
+
+
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    CGRect frame = CGRectMake(0, 0, 500, 44);
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = @"Gocci";
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        navigationTitle.image = image;
+        self.navigationItem.titleView = navigationTitle;
+    }
+    
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -149,6 +190,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 
+#pragma mark - Action
+
 - (IBAction)pushUserTimeline:(id)sender {
 
     CATransition *transition = [CATransition animation];
@@ -170,43 +213,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //    [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - viewDidLoad
-- (void)viewDidLoad
+- (void)refresh:(UIRefreshControl *)sender
 {
-     [super viewDidLoad];
-	
-    CGRect frame = CGRectMake(0, 0, 500, 44);
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = @"Gocci";
-	// !!!:dezamisystem
-//    self.navigationItem.titleView = label;
-	
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    backButton.title = @"";
-//    self.navigationItem.backBarButtonItem = backButton;
-		
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-		navigationTitle.image = image;
-		self.navigationItem.titleView = navigationTitle;
-	}
-   
-    // Table View の設定
-    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = YES;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
-         forCellReuseIdentifier:TimelineCellIdentifier];
+    [self _fetchTimeline];
 }
+
+
+#pragma mark - UIScrollView Delegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
@@ -456,13 +469,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchTimeline
 {
-    __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self.refresh beginRefreshing];
     
+    __weak typeof(self)weakSelf = self;
     [APIClient timelineWithLimit:@"50" handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        //LOG(@"result=%@", result);
-        //LOG(@"code=%@, error=%@", @(code), error);
         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
@@ -482,6 +494,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
+        
+        if ([weakSelf.refresh isRefreshing]) {
+            [weakSelf.refresh endRefreshing];
+        }
     }];
 }
 
