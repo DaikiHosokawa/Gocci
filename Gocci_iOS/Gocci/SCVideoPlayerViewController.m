@@ -247,6 +247,7 @@
 
 - (void)saveToCameraRoll
 {
+    
 	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];

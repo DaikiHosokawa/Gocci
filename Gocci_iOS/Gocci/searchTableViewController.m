@@ -486,9 +486,16 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         [tempAnnotations addObject:annotation];
     }
     self.annotations = [NSArray arrayWithArray:tempAnnotations];
-    
+    // 取得した座標を中心に地図を表示
+    MKCoordinateRegion zoom = _mapView.region;
+    // どのくらいの範囲までズームするか。※値が小さいほどズームします
+    zoom.span.latitudeDelta = 0.001;
+    zoom.span.longitudeDelta = 0.001;
+    // ズームする
+    [self.mapView setRegion:zoom animated: YES];
+
     // ピンが全て見えるように地図のズームレベルを調整
-    [self.mapView showAnnotations:self.annotations animated:YES];
+    //[self.mapView showAnnotations:self.annotations animated:YES];
     
     [self.tableView reloadData];
 }
