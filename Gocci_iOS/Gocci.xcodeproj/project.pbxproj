@@ -37,8 +37,6 @@
 		375B6E021A7F381D003BB6A4 /* test_topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 375B6E011A7F381D003BB6A4 /* test_topbar.png */; };
 		375B6E061A7F4D2B003BB6A4 /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375B6E051A7F4D2B003BB6A4 /* TabbarBaseViewController.m */; };
 		37ACAD031A7DAAE30066788A /* LifelogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ACAD021A7DAAE30066788A /* LifelogViewController.m */; };
-		37ACAD071A7DBB3D0066788A /* LifelogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ACAD051A7DBB3D0066788A /* LifelogTableViewCell.m */; };
-		37ACAD081A7DBB3D0066788A /* LifelogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37ACAD061A7DBB3D0066788A /* LifelogTableViewCell.xib */; };
 		37E1FD771A86F13600C5711D /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E1FD761A86F13600C5711D /* GaugeView.m */; };
 		37FD1F7E1A88906D00D14B94 /* naviIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FD1F7D1A88906D00D14B94 /* naviIcon.png */; };
 		37FD1F801A8894FC00D14B94 /* naviIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FD1F7F1A8894FC00D14B94 /* naviIcon@2x.png */; };
@@ -240,9 +238,6 @@
 		375B6E051A7F4D2B003BB6A4 /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
 		37ACAD011A7DAAE30066788A /* LifelogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifelogViewController.h; path = Lifelog/LifelogViewController.h; sourceTree = "<group>"; };
 		37ACAD021A7DAAE30066788A /* LifelogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifelogViewController.m; path = Lifelog/LifelogViewController.m; sourceTree = "<group>"; };
-		37ACAD041A7DBB3D0066788A /* LifelogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifelogTableViewCell.h; path = Lifelog/LifelogTableViewCell.h; sourceTree = "<group>"; };
-		37ACAD051A7DBB3D0066788A /* LifelogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifelogTableViewCell.m; path = Lifelog/LifelogTableViewCell.m; sourceTree = "<group>"; };
-		37ACAD061A7DBB3D0066788A /* LifelogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LifelogTableViewCell.xib; path = Lifelog/LifelogTableViewCell.xib; sourceTree = "<group>"; };
 		37E1FD751A86F13600C5711D /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GaugeView.h; path = RecorderView/GaugeView.h; sourceTree = "<group>"; };
 		37E1FD761A86F13600C5711D /* GaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GaugeView.m; path = RecorderView/GaugeView.m; sourceTree = "<group>"; };
 		37FD1F7D1A88906D00D14B94 /* naviIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = naviIcon.png; sourceTree = "<group>"; };
@@ -622,9 +617,6 @@
 			children = (
 				37ACAD011A7DAAE30066788A /* LifelogViewController.h */,
 				37ACAD021A7DAAE30066788A /* LifelogViewController.m */,
-				37ACAD041A7DBB3D0066788A /* LifelogTableViewCell.h */,
-				37ACAD051A7DBB3D0066788A /* LifelogTableViewCell.m */,
-				37ACAD061A7DBB3D0066788A /* LifelogTableViewCell.xib */,
 				375560581A85B6940051251A /* LifelogSubTableViewController.h */,
 				375560591A85B6940051251A /* LifelogSubTableViewController.m */,
 			);
@@ -1302,7 +1294,6 @@
 				37FD1F801A8894FC00D14B94 /* naviIcon@2x.png in Resources */,
 				375B6DE41A7F20F4003BB6A4 /* tabbaritem_profile.png in Resources */,
 				FF54EFFB19149A1800025DC8 /* Images.xcassets in Resources */,
-				37ACAD081A7DBB3D0066788A /* LifelogTableViewCell.xib in Resources */,
 				375560451A8489310051251A /* btn_capture_flip.png in Resources */,
 				ABCE2AA31A8A26BD008F9D44 /* SVProgressHUD.bundle in Resources */,
 				ABE00DA81A8C919800C8DF1C /* TutorialView.xib in Resources */,
@@ -1447,7 +1438,6 @@
 				ABF784591A89EA81006B435A /* SearchCell.m in Sources */,
 				ABCE2A8E1A8A26BD008F9D44 /* JTCalendarWeekView.m in Sources */,
 				FF15E566191E0C2D007C34F7 /* TimelineTableViewController.m in Sources */,
-				37ACAD071A7DBB3D0066788A /* LifelogTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

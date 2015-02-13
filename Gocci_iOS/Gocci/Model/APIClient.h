@@ -33,6 +33,14 @@
 + (void)profileWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 + (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  profile/
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)LifelogWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)LifelogWithDate:(NSString *)date handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 
 /**
  *

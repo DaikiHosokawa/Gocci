@@ -607,6 +607,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ログ" id="Vps-wS-KKH"/>
+                    <connections>
+                        <segue destination="J9W-eO-UF1" kind="modal" identifier="goEveryComment" id="Kyr-19-8In"/>
+                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="zCC-8d-K8k"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dky-cc-vmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -708,7 +712,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="12.00000006436551" width="48" height="46"/>
+                                        <rect key="frame" x="8" y="12.00000008731706" width="48" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -927,9 +931,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ElI-qq-NoV"/>
-        <segue reference="oAW-Uz-WM7"/>
         <segue reference="G4K-cf-py4"/>
+        <segue reference="Kyr-19-8In"/>
+        <segue reference="zCC-8d-K8k"/>
         <segue reference="dXj-10-ygf"/>
     </inferredMetricsTieBreakers>
 </document>

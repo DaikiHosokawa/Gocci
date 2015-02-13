@@ -10,10 +10,10 @@
 
 #import "JTCalendar.h"
 
-#import "LifelogTableViewCell.h"
+#import "AppDelegate.h"
 
 
-@interface LifelogViewController : UIViewController <LifelogTableViewCellDelegate, JTCalendarDataSource>
+@interface LifelogViewController : UIViewController <JTCalendarDataSource>
 
 @property (strong, nonatomic) JTCalendarContentView *calendarContentView;
 

@@ -368,6 +368,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="ログ" id="1nw-qK-oql"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="VtS-PK-3sl" kind="modal" identifier="goEveryComment" id="Izl-F2-LsT"/>
+                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="Enz-08-5MA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frk-H7-oXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -950,8 +954,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cpH-lv-fYL"/>
-        <segue reference="pPi-jq-5EO"/>
+        <segue reference="xYX-AQ-O3C"/>
+        <segue reference="Izl-F2-LsT"/>
         <segue reference="5vL-6n-Sjz"/>
         <segue reference="pwx-NL-GhF"/>
     </inferredMetricsTieBreakers>

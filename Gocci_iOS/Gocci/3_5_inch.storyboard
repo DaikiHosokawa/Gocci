@@ -379,10 +379,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="ログ" id="O1c-qO-5zk"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="Cpf-e8-3Ri" kind="modal" identifier="goEveryComment" id="xyC-lG-eaU"/>
+                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="m7o-Lx-IlY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0N-LA-eTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3193" y="-3804"/>
+            <point key="canvasLocation" x="-3183" y="-3821"/>
         </scene>
         <!--BaseSearch-->
         <scene sceneID="JAK-Bl-4GF">
@@ -719,7 +723,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="11.999999913302336" width="44" height="44"/>
+                                        <rect key="frame" x="8" y="11.99999982041197" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -934,9 +938,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="C1M-QS-Z25"/>
         <segue reference="MOj-yp-PwV"/>
-        <segue reference="Z5F-zp-BbI"/>
-        <segue reference="uLy-rw-ivI"/>
+        <segue reference="C1M-QS-Z25"/>
+        <segue reference="40C-xL-QhE"/>
+        <segue reference="xyC-lG-eaU"/>
     </inferredMetricsTieBreakers>
 </document>

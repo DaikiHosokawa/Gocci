@@ -1,129 +1,453 @@
 //
-//  LifelogSubTableViewController.m
+//  usersTableViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/02/07.
-//  Copyright (c) 2015年 Massara. All rights reserved.
+//  Created by Ometeotl on 2014/10/09.
+//  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
 #import "LifelogSubTableViewController.h"
+#import "TimelineCell.h"
+#import "AppDelegate.h"
+#import "APIClient.h"
+#import "TimelinePost.h"
+#import "MoviePlayerManager.h"
+#import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+#import "everyTableViewController.h"
+#import "RestaurantTableViewController.h"
 
-#import "LifelogTableViewCell.h"
+@import QuartzCore;
+
+#import "everyBaseNavigationController.h"
+
+// !!!:dezamisystem
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
+static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
-@interface LifelogSubTableViewController () {
-	
-}
+@protocol MovieViewDelegate;
+
+@interface LifelogSubTableViewController()
+<TimelineCellDelegate>
+
+- (void)showDefaultContentView;
+
+@property (nonatomic, copy) NSMutableArray *postid_;
+@property (nonatomic, retain) NSIndexPath *nowindexPath;
+
+/** タイムラインのデータ */
+@property (nonatomic,strong) NSArray *posts;
 
 @end
 
 @implementation LifelogSubTableViewController
 
+#pragma mark - アイテム名登録用
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        //		// !!!:dezamisystem・アイテム名
+        //		[self setTitle:@"アカウント"];
+        //		// タブバーアイコン
+        //		UIImage *icon_normal = [UIImage imageNamed:@"tabbaritem_profile.png"];
+        //		UIImage *icon_selected = [UIImage imageNamed:@"tabbaritem_profile_sel.png"];
+        //		[self.tabBarItem setFinishedSelectedImage:icon_selected withFinishedUnselectedImage:icon_normal];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        navigationTitle.image = image;
+        self.navigationItem.titleView =navigationTitle;
+    }
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Table View の設定
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
-	
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示	
+    [super viewWillAppear:animated];
+    
+    // !!!:dezamisystem
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
+    [self _fetchLifelog];
+    [self.tableView reloadData];
+    
+    [SVProgressHUD dismiss];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // 画面が隠れた際に再生中の動画を停止させる
+    [[MoviePlayerManager sharedManager] stopMovie];
+    
+    [super viewWillDisappear:animated];
+}
+
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-	return 10; //[_restname_ count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
-//セルの定義
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.posts count];
+}
+
+//1セルあたりの高さ
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSString *cellIdentifier = @"LifelogTableViewCell";
-	LifelogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-	if (!cell) {
-		// セルを作成
-		cell = [[LifelogTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-	}
- 
-	// セルにテキストを設定
-	// セルの内容はNSArray型の「items」にセットされているものとする
-	cell.textLabel.text = @"ログ";
-	
-	return cell;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [TimelineCell cell];
+    }
     
-    // Configure the cell...
+    // セルにデータを反映
+    TimelinePost *post = self.posts[indexPath.row];
+    [cell configureWithTimelinePost:post];
+    cell.delegate = self;
     
-    return cell;
+    // 動画の読み込み
+    LOG(@"読み込み完了");
+    __weak typeof(self)weakSelf = self;
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
+                                                         size:cell.thumbnailView.bounds.size
+                                                      atIndex:indexPath.row
+                                                   completion:^(BOOL success) {
+                                                       [weakSelf _playMovieAtCurrentCell];
+                                                   }];
+    
+    return cell ;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+// UIControlEventからタッチ位置のindexPathを取得する
+- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint p = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    return indexPath;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+#pragma mark - UIScrollView Delegate
+
+//////////////////////////スクロール開始後//////////////////////////
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    // スクロール中は動画を停止する
+    // [[MoviePlayerManager sharedManager] scrolling:YES];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+#pragma mark -
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // フリック操作によるスクロール終了
+    LOG(@"scroll is stoped");
+    [self _playMovieAtCurrentCell];
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if(!decelerate) {
+        // ドラッグ終了 かつ 加速無し
+        LOG(@"scroll is stoped");
+        [self _playMovieAtCurrentCell];
+    }
 }
-*/
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    // setContentOffset: 等によるスクロール終了
+    NSLog(@"scroll is stoped");
+    
+}
+
+
+#pragma mark - TimelineCellDelegate
+#pragma mark いいねボタンの時の処理
+- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
+{
+    //いいねボタンの時の処理
+    LOG(@"postid=%@", postID);
+    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+    NSLog(@"content:%@",content);
+    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
+    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLResponse* response;
+    NSError* error = nil;
+    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                           returningResponse:&response
+                                                       error:&error];
+    
+    // タイムラインを再読み込み
+    [self _fetchLifelog];
+}
+//
+//#pragma mark バッドボタンの時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
+//{
+//    //バッドボタンの時の処理
+//    LOG(@"postid=%@", postID);
+//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
+//    NSLog(@"content:%@",content);
+//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
+//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLResponse* response;
+//    NSError* error = nil;
+//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    NSLog(@"result:%@",result);
+//
+//
+//    // タイムラインを再読み込み
+//    [self _fetchProfile];
+//}
+
+#pragma mark rest_nameタップの時の処理
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName
+{
+    //rest nameタップの時の処理
+    LOG(@"restname=%@", restaurantName);
+    _postRestname = restaurantName;
+    LOG(@"postRestname:%@",_postRestname);
+    LOG(@"Restname is touched");
+    
+    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+}
+
+#pragma mark コメントボタン押下時の処理
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
+{
+    // コメントボタン押下時の処理
+    LOG(@"postid=%@", postID);
+    _postID = postID;
+    
+    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+}
+
+// TODO: 削除機能の実装
+//#pragma mark 削除ボタン押下時の処理
+//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
+//{
+//    // 削除ボタン押下時の処理
+//    LOG(@"postid=%@", postID);
+//    _postID = postID;
+//    Class class = NSClassFromString(@"UIAlertController");
+//    if(class)
+//	{
+//        // iOS 8の時の処理
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
+//
+//        // addActionした順に左から右にボタンが配置されます
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//
+//
+//            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+//            NSLog(@"content:%@",content);
+//            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+//            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//            [urlRequest setHTTPMethod:@"POST"];
+//            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//            NSURLResponse* response;
+//            NSError* error = nil;
+//            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                                   returningResponse:&response
+//                                                               error:&error];
+//			if (result) {}
+//
+//           [self _fetchProfile];
+//           [self.tableView reloadData];
+//
+//        }]];
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//
+//        }]];
+//
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+//	else
+//	{
+//        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+//        NSLog(@"content:%@",content);
+//        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+//        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+//        [urlRequest setHTTPMethod:@"POST"];
+//        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+//        NSURLResponse* response;
+//        NSError* error = nil;
+//        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                               returningResponse:&response
+//                                                           error:&error];
+//		if (result) {}
+//
+//        [self _fetchProfile];
+//        [self.tableView reloadData];
+//    }
+//}
+
+
+#pragma mark - Private Methods
+
+/**
+ *  API からタイムラインのデータを取得
+ */
+- (void)_fetchLifelog
+{
+    __weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];
+    [APIClient LifelogWithDate:lifelogdelegate.lifelogDate handler:^(id result, NSUInteger code, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"result=%@", result);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        // 取得したデータを self.posts に格納
+        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+        for (NSDictionary *post in result) {
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+        }
+        
+        self.posts = [NSArray arrayWithArray:tempPosts];
+        
+        // 動画データを一度全て削除
+        [[MoviePlayerManager sharedManager] removeAllPlayers];
+        
+        // 表示の更新
+        [weakSelf.tableView reloadData];
+    }];
+}
+
+
+/**
+ *  現在表示中のセルの動画を再生する
+ */
+- (void)_playMovieAtCurrentCell
+{
+    // !!!:dezamisystem
+    if (self.tabBarController.selectedIndex != 4) {
+        // 画面がフォアグラウンドのときのみ再生
+        return;
+    }
+    
+    TimelineCell *currentCell = [self _currentCell];
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
+                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
+                                                                    currentCell.thumbnailView.frame.size.width,
+                                                                    currentCell.thumbnailView.frame.size.height)];
+}
+
+/**
+ *  現在表示中のセルを取得
+ *
+ *  @return
+ */
+- (TimelineCell *)_currentCell
+{
+    if ([self.posts count] == 0) {
+        return nil;
+    }
+    
+    return (TimelineCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
+}
+
+/**
+ *  現在表示中の indexPath を取得
+ *
+ *  @return
+ */
+- (NSIndexPath *)_currentIndexPath
+{
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x,
+                                self.tableView.contentOffset.y + self.tableView.frame.size.height/2);
+    NSIndexPath *currentIndexPath = [self.tableView indexPathForRowAtPoint:point];
+    
+    return currentIndexPath;
+}
+
+#pragma mark - Segue
+#pragma mark 遷移前準備
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    //2つ目の画面にパラメータを渡して遷移する
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"showDetail2"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
+    {
+        //ここでパラメータを渡す
+#if 0
+        everyTableViewController *eveVC = segue.destinationViewController;
+#else
+        everyBaseNavigationController *eveNC = segue.destinationViewController;
+        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+#endif
+        eveVC.postID = _postID;
+    }
+    //店舗画面にパラメータを渡して遷移する
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"goRestpage"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
+        //ここでパラメータを渡す
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
+    }
+    
+}
 
 @end

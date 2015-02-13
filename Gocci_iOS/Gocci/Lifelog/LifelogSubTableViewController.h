@@ -1,13 +1,29 @@
 //
-//  LifelogSubTableViewController.h
+//  usersTableViewController.h
 //  Gocci
 //
-//  Created by デザミ on 2015/02/07.
-//  Copyright (c) 2015年 Massara. All rights reserved.
+//  Created by Ometeotl on 2014/10/09.
+//  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+#import <Foundation/Foundation.h>
+#import "RestaurantTableViewController.h"
+#import "AppDelegate.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 @interface LifelogSubTableViewController : UITableViewController
+{
+    MPMoviePlayerController *moviePlayer;
+    NSString *_postID;
+    NSString *_postRestname;
+}
 
+@property (nonatomic, retain) NSString *postID;
+@property (nonatomic) NSString *postRestName;
+@property (nonatomic, retain) UIImageView *thumbnailView;
 @end

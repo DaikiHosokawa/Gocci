@@ -123,6 +123,32 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)LifelogWithDate:(NSString *)date handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
+    NSDictionary *params = @{
+                             @"lifelog_date" : date,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"lifelogs/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+
++ (void)LifelogWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    [[APIClient sharedClient].manager GET:@"timeline"
+                               parameters:nil
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 + (void)profile_otherWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     [[APIClient sharedClient].manager GET:@"timeline"

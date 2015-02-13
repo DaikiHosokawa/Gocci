@@ -35,6 +35,8 @@
     NSArray *jsonArray;
 
     NSData *movieData;
+    
+    NSString *lifelogDate;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -50,7 +52,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic, nonatomic) NSArray *jsonArray;
 @property(nonatomic) CLLocationCoordinate2D *coordinate;
-
+@property(nonatomic) NSString *lifelogDate;
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;
