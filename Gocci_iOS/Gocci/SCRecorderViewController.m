@@ -614,5 +614,14 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
 #endif
 }
 
+#pragma mark - バックボタン
+- (IBAction)onBackbutton:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        //
+    }];
+}
+
+
 
 @end
