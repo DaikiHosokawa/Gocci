@@ -40,6 +40,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
+@property (nonatomic, strong) UIRefreshControl *refresh;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -103,6 +104,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -157,6 +163,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark - Action
+
+
+- (void)refresh:(UIRefreshControl *)sender
+{
+    [self _fetchRestaurant];
+}
+
+
 /*
 - (IBAction)pushMap:(UIButton *)sender {
     NSString *mapText = _postRestName;
@@ -474,13 +488,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_fetchRestaurant
 {
-    __weak typeof(self)weakSelf = self;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
-    NSString *restName = _postRestName;
-    LOG(@"restName:%@",restName);
+    LOG(@"restName:%@",_postRestName);
     
-    [APIClient restaurantWithRestName:(NSString *)restName handler:^(id result, NSUInteger code, NSError *error) {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self.refresh beginRefreshing];
+    
+    __weak typeof(self)weakSelf = self;
+    [APIClient restaurantWithRestName:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         LOG(@"result=%@", result);
@@ -503,6 +517,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
+        
+        if ([weakSelf.refresh isRefreshing]) {
+            [weakSelf.refresh endRefreshing];
+        }
     }];
 }
 
