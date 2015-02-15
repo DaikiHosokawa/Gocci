@@ -344,9 +344,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     Restaurant *restaurant = self.restaurants[index];
     NSString *mapText = restaurant.restname;
+    NSString *mapText2 = restaurant.locality;
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *directions = [NSString stringWithFormat:
-                            @"comgooglemaps://?q=%@&zoom=18",mapText];
+    mapText2  = [mapText2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18",mapText2];
     NSLog(@"URLSchemes:%@",directions);
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
