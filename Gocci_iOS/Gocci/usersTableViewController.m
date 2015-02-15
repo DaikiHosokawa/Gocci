@@ -449,12 +449,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_playMovieAtCurrentCell
 {
-    /*
-    if (self.tabBarController.selectedIndex != 0) {
+    
+    if (self.tabBarController.selectedIndex != 4) {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
-     */
     
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {

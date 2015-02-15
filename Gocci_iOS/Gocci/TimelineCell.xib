@@ -210,9 +210,13 @@
                             <constraint firstItem="oQN-HV-iQl" firstAttribute="leading" secondItem="Gm0-YD-5iv" secondAttribute="trailing" constant="2" id="y5h-GP-9SG"/>
                         </constraints>
                     </view>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
-                        <rect key="frame" x="269" y="18" width="27" height="24"/>
-                        <state key="normal" image="delete_button">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
+                        <rect key="frame" x="290" y="18" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="6gF-dk-Y3A"/>
+                            <constraint firstAttribute="height" constant="12" id="k6A-Rn-aoj"/>
+                        </constraints>
+                        <state key="normal" image="butn-dele-gray">
                             <color key="titleColor" red="0.0" green="0.0021956962970000001" blue="0.0046400207179999996" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -225,7 +229,6 @@
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="XCG-79-oul" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="0Ff-em-JDC"/>
-                    <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="0Xs-zf-c1v"/>
                     <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="4Vh-hT-1QK"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EV4-90-av7"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="top" secondItem="hND-ON-WcS" secondAttribute="bottom" constant="8" id="HmL-gk-Hxo"/>
@@ -236,6 +239,7 @@
                     <constraint firstAttribute="trailing" secondItem="XCG-79-oul" secondAttribute="trailing" constant="13" id="Q3E-q8-RcL"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="bottom" constant="8" id="VB8-D3-vDA"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="W11-XA-rhy"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xjB-00-Bte" secondAttribute="trailing" constant="8" id="X3B-w5-znM"/>
                     <constraint firstAttribute="centerX" secondItem="hND-ON-WcS" secondAttribute="centerX" id="X4G-PT-9Y5"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38" id="Zc5-xh-Eil"/>
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
@@ -244,13 +248,13 @@
                     <constraint firstAttribute="trailing" secondItem="ohQ-nj-eFT" secondAttribute="trailing" constant="32" id="l7Q-gH-EIb"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lB1-bO-TlV"/>
                     <constraint firstAttribute="bottom" secondItem="reR-SP-qcM" secondAttribute="bottom" constant="8" id="mU5-hB-own"/>
+                    <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="pZs-rs-VBp"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="reO-ph-QOU"/>
                     <constraint firstAttribute="bottom" secondItem="hND-ON-WcS" secondAttribute="bottom" priority="999" constant="136" id="s0V-rO-n5Y"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="ttI-HL-akT"/>
                     <constraint firstAttribute="trailing" secondItem="reR-SP-qcM" secondAttribute="trailing" constant="8" id="uZr-tr-1b6"/>
                     <constraint firstItem="ohQ-nj-eFT" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="vlU-kQ-ldG"/>
                     <constraint firstAttribute="trailing" secondItem="pJp-Tg-6h0" secondAttribute="trailing" constant="24" id="zVz-eO-XnO"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="xjB-00-Bte" secondAttribute="trailing" constant="14" id="zei-al-BaA"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,8 +282,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_true" width="27" height="27"/>
-        <image name="delete_button" width="24" height="24"/>
         <image name="heart_fill" width="24" height="23"/>
         <image name="ic_userpicture" width="100" height="100"/>
     </resources>
