@@ -94,6 +94,12 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)onDeleteButton:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapDeleteWithPostID:)]) {
+        [self.delegate timelineCell:self didTapDeleteWithPostID:self.postID];
+    }
+}
 
 #pragma mark - Public Method
 

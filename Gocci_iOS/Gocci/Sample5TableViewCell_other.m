@@ -10,7 +10,7 @@
 #import "Profile_otherPost.h"
 #import "APIClient.h"
 #import "UIImageView+WebCache.h"
-#import <UIImage+Dummy/UIImage+Dummy.h>
+#import "UIImage+Dummy.h"
 
 @interface Sample5TableViewCell_other()
 

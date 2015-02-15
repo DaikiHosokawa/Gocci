@@ -53,6 +53,14 @@ extern NSString * const TimelineCellIdentifier;
  */
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID;
 
+/**
+ *  Delete ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID タップした投稿の username
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapDeleteWithPostID:(NSString *)postID;
+
 @end
 
 /**
@@ -62,6 +70,7 @@ extern NSString * const TimelineCellIdentifier;
 
 @property (nonatomic,weak) id<TimelineCellDelegate> delegate;
 @property (nonatomic,strong) Timeline *comment;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic,weak) IBOutlet UIImageView *thumbnailView;
 
 /**

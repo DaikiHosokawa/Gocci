@@ -168,7 +168,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if (!cell) {
         cell = [TimelineCell cell];
     }
-    
+    cell.deleteBtn.hidden = NO;
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post];
@@ -343,63 +343,62 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 // TODO: 削除機能の実装
 //#pragma mark 削除ボタン押下時の処理
-//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
-//{
-//    // 削除ボタン押下時の処理
-//    LOG(@"postid=%@", postID);
-//    _postID = postID;
-//    Class class = NSClassFromString(@"UIAlertController");
-//    if(class)
-//	{
-//        // iOS 8の時の処理
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        // addActionした順に左から右にボタンが配置されます
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//         
-//            
-//            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-//            NSLog(@"content:%@",content);
-//            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-//            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//            [urlRequest setHTTPMethod:@"POST"];
-//            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//            NSURLResponse* response;
-//            NSError* error = nil;
-//            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                                   returningResponse:&response
-//                                                               error:&error];
-//			if (result) {}
-//			
-//           [self _fetchProfile];
-//           [self.tableView reloadData];
-//            
-//        }]];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            
-//        }]];
-//        
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
-//	else
-//	{
-//        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-//        NSLog(@"content:%@",content);
-//        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-//        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//        [urlRequest setHTTPMethod:@"POST"];
-//        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//        NSURLResponse* response;
-//        NSError* error = nil;
-//        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                               returningResponse:&response
-//                                                           error:&error];
-//		if (result) {}
-//		
-//        [self _fetchProfile];
-//        [self.tableView reloadData];
-//    }
-//}
+- (void)timelineCell:(TimelineCell *)cell didTapDeleteWithPostID:(NSString *)postID
+{
+    // 削除ボタン押下時の処理
+    LOG(@"postid=%@", postID);
+    _postID = postID;
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class)
+	{
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+         
+            
+            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+            NSLog(@"content:%@",content);
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+            [urlRequest setHTTPMethod:@"POST"];
+            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLResponse* response;
+            NSError* error = nil;
+            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                   returningResponse:&response                                                               error:&error];
+			if (result) {}
+			
+           [self _fetchProfile];
+           [self.tableView reloadData];
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+	else
+	{
+        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+		if (result) {}
+		
+        [self _fetchProfile];
+        [self.tableView reloadData];
+    }
+}
 
 
 #pragma mark - Private Methods
@@ -450,11 +449,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_playMovieAtCurrentCell
 {
-	// !!!:dezamisystem
-   if (self.tabBarController.selectedIndex != 4) {
+    /*
+    if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
         return;
-   }
+    }
+     */
+    
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -462,7 +463,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
     
-    Sample5TableViewCell *currentCell = [self _currentCell];
+    TimelineCell *currentCell = [TimelineCell cell];
+    [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                   currentHeight + currentCell.thumbnailView.frame.origin.y+125,
                                   currentCell.thumbnailView.frame.size.width,
@@ -472,20 +474,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:movieRect];
-}
-
-/**
- *  現在表示中のセルを取得
- *
- *  @return
- */
-- (Sample5TableViewCell *)_currentCell
-{
-    if ([self.posts count] == 0) {
-        return nil;
-    }
-    
-    return (Sample5TableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:[self _currentIndexPath]];
 }
 
 /**
