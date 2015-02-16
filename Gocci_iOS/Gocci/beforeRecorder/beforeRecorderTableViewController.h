@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CXCardView.h"
+#import "DemoContentView.h"
 
 @interface beforeRecorderTableViewController : UITableViewController <CLLocationManagerDelegate>
 {

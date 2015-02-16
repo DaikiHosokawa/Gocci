@@ -11,11 +11,16 @@
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 
-@interface LifelogViewController () {
+@interface LifelogViewController ()
+
+{
 	JTCalendarMenuView *calendarMenuView;
-	NSLayoutConstraint *calendarContentViewHeight;
-	
+    NSLayoutConstraint *calendarContentViewHeight;
+        DemoContentView *_firstContentView;
+        DemoContentView *_secondContentView;
+
 }
+- (void)showDefaultContentView;
 @property(nonatomic,strong) NSArray *array_year;
 @property(nonatomic,strong) NSArray *array_month;
 @property(nonatomic,strong) NSArray *array_day;
@@ -149,6 +154,11 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+    if ([self isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+        [self showDefaultContentView];
+    }
+
 	
 	[self.calendar reloadData]; // Must be call in viewDidAppear
 }
@@ -271,6 +281,48 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 										  }];
 					 }];
 }
+
+- (BOOL)isFirstRun
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"firstRunDate10"]) {
+        // 日時が設定済みなら初回起動でない
+        return NO;
+    }
+    // 初回起動日時を設定
+    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate10"];
+    // 保存
+    [userDefaults synchronize];
+    // 初回起動
+    return YES;
+}
+
+
+#pragma mark -
+- (void)showDefaultContentView
+{
+    if (!_firstContentView) {
+        _firstContentView = [DemoContentView defaultView];
+        
+        UILabel *descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
+        descriptionLabel.numberOfLines = 0.;
+        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.backgroundColor = [UIColor clearColor];
+        descriptionLabel.textColor = [UIColor blackColor];
+        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
+        descriptionLabel.text = @"思い出の記録や食生活管理に活かしましょう！";
+        [_firstContentView addSubview:descriptionLabel];
+        
+        [_firstContentView setDismissHandler:^(DemoContentView *view) {
+            // to dismiss current cardView. Also you could call the `dismiss` method.
+            [CXCardView dismissCurrent];
+        }];
+    }
+    
+    [CXCardView showWithView:_firstContentView draggable:YES];
+}
+
 
 /*
 #pragma mark - Navigation

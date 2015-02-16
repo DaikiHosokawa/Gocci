@@ -12,6 +12,10 @@
 
 #import "AppDelegate.h"
 
+#import "CXCardView.h"
+#import "DemoContentView.h"
+
+
 
 @interface LifelogViewController : UIViewController <JTCalendarDataSource>
 
