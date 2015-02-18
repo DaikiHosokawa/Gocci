@@ -16,7 +16,7 @@
 #import "CXCardView.h"
 #import "DemoContentView.h"
 
-@interface LifelogSubTableViewController : UITableViewController
+@interface LifelogSubTableViewController : UITableViewController<UIScrollViewDelegate>
 {
     MPMoviePlayerController *moviePlayer;
     NSString *_postID;

@@ -188,6 +188,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
     [self _playMovieAtCurrentCell];
+
+    NSLog(@"@2");
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -195,6 +197,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         [self _playMovieAtCurrentCell];
+        NSLog(@"@2");
     }
 }
 
@@ -376,20 +379,29 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_playMovieAtCurrentCell
 {
-    // !!!:dezamisystem
-    if (self.tabBarController.selectedIndex != 4) {
+    if (self.tabBarController.selectedIndex != 1) {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
     
-    TimelineCell *currentCell = [self _currentCell];
+    CGFloat currentHeight = 0.0;
+    for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
+        if ([self.posts count] <= i) continue;
+        
+        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
+    }
+    
+    TimelineCell *currentCell = [TimelineCell cell];
+    [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
+    CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y,
+                                  currentCell.thumbnailView.frame.size.width,
+                                  currentCell.thumbnailView.frame.size.height);
+    
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
-                                                   frame:CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                                                    currentCell.frame.size.height * [self _currentIndexPath].row + currentCell.thumbnailView.frame.origin.y+66,
-                                                                    currentCell.thumbnailView.frame.size.width,
-                                                                    currentCell.thumbnailView.frame.size.height)];
+                                                   frame:movieRect];
 }
 
 /**
