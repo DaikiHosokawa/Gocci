@@ -81,10 +81,6 @@
             NSString *name = userData[@"name"];
             AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
             logindelegate.username = name;
-            NSString *location = userData[@"location"][@"name"];
-            NSString *gender = userData[@"gender"];
-            NSString *birthday = userData[@"birthday"];
-            NSString *relationship = userData[@"relationship_status"];
             NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID ];
             AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
             picturedelegate.userpicture = pictureURL;
@@ -108,10 +104,6 @@
 
             
             NSLog(@"name=%@",name);
-            NSLog(@"location=%@",location);
-            NSLog(@"gender=%@",gender);
-            NSLog(@"birthday=%@",birthday);
-            NSLog(@"relation=%@",relationship);
             NSLog(@"pict=%@",pictureURL);
              [SVProgressHUD dismiss];
         }
