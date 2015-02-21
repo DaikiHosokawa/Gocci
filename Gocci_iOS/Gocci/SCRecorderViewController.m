@@ -8,7 +8,6 @@
 
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 #import "SCTouchDetector.h"
 #import "SCRecorderViewController.h"
 #import "SCAudioTools.h"
@@ -16,16 +15,15 @@
 #import "SCRecorderFocusView.h"
 #import "SCImageDisplayerViewController.h"
 #import "SCRecorder.h"
-#import <AssetsLibrary/AssetsLibrary.h>
 #import "SCRecordSessionManager.h"
 #import "RestaurantTableViewController.h"
-
-#import "GaugeView.h" // !!!:dezamisystem
+#import "GaugeView.h"
+#import "SVProgressHUD.h"
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
-// !!!:dezamisystem
-static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
+@import AVFoundation;
+@import AssetsLibrary;
 
 
 ////////////////////////////////////////////////////////////
@@ -35,7 +33,6 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
 @interface SCRecorderViewController () {
     SCRecorder *_recorder;
     UIImage *_photo;
-    SCRecordSession *_recordSession;
     UIImageView *_ghostImageView;
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -49,6 +46,8 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
 - (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
+@property (nonatomic, strong) SCRecordSession *recordSession;
+
 @end
 
 ////////////////////////////////////////////////////////////
@@ -286,21 +285,11 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
 }
 
 #pragma mark - Segue
-#pragma mark エフェクター画面への移行
-- (void)showVideo {
-    //エフェクター画面への遷移
-//    [self performSegueWithIdentifier:@"Video" sender:self];
-	// !!!:dezamisystem
-	[self performSegueWithIdentifier:SEGUE_GO_SC_VIDEO sender:self];
-}
 
 #pragma mark 遷移前準備
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[SCVideoPlayerViewController class]]) {
-        SCVideoPlayerViewController *videoPlayer = segue.destinationViewController;
-        videoPlayer.recordSession = _recordSession;
-    } else if ([segue.destinationViewController isKindOfClass:[SCImageDisplayerViewController class]]) {
+    if ([segue.destinationViewController isKindOfClass:[SCImageDisplayerViewController class]]) {
         SCImageDisplayerViewController *imageDisplayer = segue.destinationViewController;
         imageDisplayer.photo = _photo;
         _photo = nil;
@@ -343,8 +332,8 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
     [recordSession endRecordSegment:^(NSInteger segmentIndex, NSError *error) {
         [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
         
-        _recordSession = recordSession;
-        [self showVideo];
+        self.recordSession = recordSession;
+        [self _complete];
         [self prepareCamera];
     }];
 #endif
@@ -577,7 +566,7 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
 		}
 		test_timeGauge = 0.0;
 
-		[self showVideo];
+        [self _complete];
 #endif
     }
 }
@@ -612,6 +601,49 @@ static NSString * const SEGUE_GO_SC_VIDEO = @"goSCVideo";
    // _ghostModeButton.selected = !_ghostModeButton.selected;
    // _ghostImageView.hidden = !_ghostModeButton.selected;
 #endif
+}
+
+#pragma mark - Private Methods
+
+#pragma mark Complete
+
+/**
+ *  完了処理
+ */
+- (void)_complete
+{
+    NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
+    
+    [SVProgressHUD show];
+    __weak typeof(self)weakSelf = self;
+    [self.recordSession mergeRecordSegments:^(NSError *error)
+    {
+        if (error) {
+            [SVProgressHUD dismiss];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存失敗しました！撮り直してください"
+                                                            message:error.localizedDescription
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
+        {
+            // データの保存・送信
+            [weakSelf.recordSession saveToCameraRollAndPost];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^
+            {
+                [SVProgressHUD dismiss];
+                
+                // 完了(シェア)画面へ
+                [weakSelf performSegueWithIdentifier:@"RecorderToSubmit" sender:nil];
+            });
+        });
+    }];
 }
 
 #pragma mark - バックボタン

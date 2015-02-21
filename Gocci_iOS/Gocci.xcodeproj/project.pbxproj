@@ -147,7 +147,6 @@
 		FF217CBF19E6571D00AEB06E /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF217CBE19E6571D00AEB06E /* usersTableViewController.m */; };
 		FF23D1DF19F0B50B008B7E5C /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */; };
 		FF23D1E019F0B50B008B7E5C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */; };
-		FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */; };
 		FF23D22B19F0B67F008B7E5C /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */; };
 		FF2990C41A29809400FF4DDB /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2990C21A29809400FF4DDB /* usersTableViewController_other.m */; };
 		FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
@@ -431,8 +430,6 @@
 		FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
 		FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTouchDetector.h; sourceTree = "<group>"; };
 		FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTouchDetector.m; sourceTree = "<group>"; };
-		FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerViewController.h; sourceTree = "<group>"; };
-		FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
 		FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
 		FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
 		FF2990C11A29809400FF4DDB /* usersTableViewController_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController_other.h; sourceTree = "<group>"; };
@@ -984,11 +981,10 @@
 				FFDC02911A1F0E79009A787C /* Search */,
 				FFDC02931A1F0EBF009A787C /* Restaurant */,
 				FFDC02961A1F0EE9009A787C /* Comment */,
-				FFDC02971A1F0F11009A787C /* Sumbmit */,
 				FFDC02951A1F0ED4009A787C /* Profile */,
 				FF2990C01A29800500FF4DDB /* Profile_other */,
 				FFDC02981A1F0F26009A787C /* Recorder */,
-				FFDC02991A1F0F5F009A787C /* Effecter */,
+				FFDC02971A1F0F11009A787C /* Submit */,
 				AB8C717C1A278BC300BF31EA /* Models */,
 				ABF7844E1A89DCF8006B435A /* Services */,
 				ABF7844A1A88C9BD006B435A /* Categories */,
@@ -1141,39 +1137,30 @@
 			name = Comment;
 			sourceTree = "<group>";
 		};
-		FFDC02971A1F0F11009A787C /* Sumbmit */ = {
+		FFDC02971A1F0F11009A787C /* Submit */ = {
 			isa = PBXGroup;
 			children = (
 				FF97C43419247FD20025DD6A /* submitViewController.h */,
 				FF97C43519247FD20025DD6A /* submitViewController.m */,
 			);
-			name = Sumbmit;
+			name = Submit;
 			sourceTree = "<group>";
 		};
 		FFDC02981A1F0F26009A787C /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */,
-				FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */,
 				FF23D1D819F0B50B008B7E5C /* SCRecorderViewController.h */,
 				FF23D1D919F0B50B008B7E5C /* SCRecorderViewController.m */,
+				FF23D22A19F0B67F008B7E5C /* SCRecordSessionManager.h */,
+				FF23D22919F0B67F008B7E5C /* SCRecordSessionManager.m */,
 				FF23D1DA19F0B50B008B7E5C /* SCTouchDetector.h */,
 				FF23D1DB19F0B50B008B7E5C /* SCTouchDetector.m */,
 				37E1FD751A86F13600C5711D /* GaugeView.h */,
 				37E1FD761A86F13600C5711D /* GaugeView.m */,
-			);
-			name = Recorder;
-			sourceTree = "<group>";
-		};
-		FFDC02991A1F0F5F009A787C /* Effecter */ = {
-			isa = PBXGroup;
-			children = (
-				FF23D1DC19F0B50B008B7E5C /* SCVideoPlayerViewController.h */,
-				FF23D1DD19F0B50B008B7E5C /* SCVideoPlayerViewController.m */,
 				95EB36571A7A1752001FACAD /* SCImageDisplayerViewController.h */,
 				95EB36581A7A1752001FACAD /* SCImageDisplayerViewController.m */,
 			);
-			name = Effecter;
+			name = Recorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1366,7 +1353,6 @@
 				ABCE2A861A8A26BD008F9D44 /* JTCalendar.m in Sources */,
 				ABCE2AC21A8A2776008F9D44 /* UIProgressView+AFNetworking.m in Sources */,
 				ABF784511A89DF27006B435A /* Restaurant.m in Sources */,
-				FF23D1E119F0B50B008B7E5C /* SCVideoPlayerViewController.m in Sources */,
 				ABCE2A951A8A26BD008F9D44 /* SDImageCache.m in Sources */,
 				95EB36591A7A1752001FACAD /* SCImageDisplayerViewController.m in Sources */,
 				AB8C71A31A29CF2000BF31EA /* MoviePlayerManager.m in Sources */,
