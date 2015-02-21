@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -539,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-U6-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2602" y="-1203"/>
+            <point key="canvasLocation" x="-3070" y="-1203"/>
         </scene>
         <!--Restaurant-->
         <scene sceneID="ohC-at-e4x">
@@ -711,11 +711,11 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="x1h-gh-Vl1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="59.999999105930343"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="12" width="48" height="48"/>
+                                        <rect key="frame" x="8" y="11.999999105930339" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -800,39 +800,12 @@
                         <outlet property="timeRecordedLabel" destination="cCO-VC-azk" id="8mA-ME-xof"/>
                         <outlet property="viewBaseGauge" destination="x1h-gh-Vl1" id="OKB-nH-nD6"/>
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="Uvp-el-Aoa"/>
-                        <segue destination="VeQ-Zi-V20" kind="push" identifier="goSCVideo" id="TVi-Ab-Kmr"/>
+                        <segue destination="3H1-41-IX9" kind="push" identifier="RecorderToSubmit" id="x7W-hM-9Sr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3584" y="-1203"/>
-        </scene>
-        <!--Video Player View Controller-->
-        <scene sceneID="TUk-1x-B6K">
-            <objects>
-                <viewController storyboardIdentifier="SCVideoPlayerViewController" id="VeQ-Zi-V20" customClass="SCVideoPlayerViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V11-1J-PU0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="vYn-vb-aBd" customClass="SCSwipeableFilterView">
-                                <rect key="frame" x="0.0" y="47" width="414" height="708"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="n7L-mL-T48"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="filterSwitcherView" destination="vYn-vb-aBd" id="UTW-5m-3hq"/>
-                        <segue destination="3H1-41-IX9" kind="push" identifier="gotoSubmit" id="5rK-g9-SYM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aQF-XH-HvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3096" y="-1203"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="PzO-Kk-faR">

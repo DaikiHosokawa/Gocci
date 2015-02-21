@@ -249,12 +249,6 @@ extern const NSString *SCRecordSessionDateKey;
 + (id)recordSession:(NSDictionary *)dictionaryRepresentation;
 
 /**
- If the video was already merged, this save
- the merged video to the camera roll
- */
-- (void)saveToCameraRoll;
-
-/**
  Start a new record segment.
  This method is automatically called by the SCRecorder
  */
@@ -338,6 +332,12 @@ extern const NSString *SCRecordSessionDateKey;
  Returns the fileType that the SCRecordSession is going to use
  */
 - (NSString *)suggestedFileType;
+
+
+/**
+ *  カメラロールへの保存と、API への送信を行う
+ */
+- (void)saveToCameraRollAndPost;
 
 //////////////////
 // PRIVATE API
