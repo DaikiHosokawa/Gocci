@@ -134,7 +134,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.userNameLabel.text = timelinePost.userName;
     
     // TODO: 時間
-    self.timeLabel.text = nil;
+    self.timeLabel.text = timelinePost.timelabel;
     
     // サムネイル画像
     [self.thumbnailView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]

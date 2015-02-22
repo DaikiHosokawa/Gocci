@@ -35,6 +35,9 @@
     if ([appDelegate isFirstRun]) {
         self.tutorialView = [TutorialView showInView:self.view delegate:self];
     }
+    
+    //テスト
+    //テスト
 }
 
 
