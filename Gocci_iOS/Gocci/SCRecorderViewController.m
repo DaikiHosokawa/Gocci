@@ -613,8 +613,7 @@
 - (void)_complete
 {
     NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
-    
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"保存中" maskType:SVProgressHUDMaskTypeAnimation];
     __weak typeof(self)weakSelf = self;
     [self.recordSession mergeRecordSegments:^(NSError *error)
     {
@@ -637,6 +636,7 @@
             
             dispatch_sync(dispatch_get_main_queue(), ^
             {
+                //
                 [SVProgressHUD dismiss];
                 
                 // 完了(シェア)画面へ

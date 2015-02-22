@@ -108,6 +108,11 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
+}
+
 - (void)viewDidLoad
 {
     sleep(3);
@@ -340,7 +345,7 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 - (IBAction)pushComplete:(id)sender {
     {
         NSLog(@"pushCompleteを押したよ");
-		
+		[SVProgressHUD showWithStatus:@"投稿中" maskType:SVProgressHUDMaskTypeAnimation];
 #if (!TARGET_IPHONE_SIMULATOR)
 		// 文字列を数値型へ変換する。
 		NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
@@ -389,5 +394,6 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 		timeVC.hidesBottomBarWhenPushed = NO;	// タブバー表示
 	}
 }
+
 
 @end
