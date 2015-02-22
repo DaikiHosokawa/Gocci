@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSString *userID;
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *comment;
+@property (nonatomic) NSString *timelabel;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

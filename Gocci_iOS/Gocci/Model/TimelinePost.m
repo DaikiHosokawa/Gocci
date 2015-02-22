@@ -22,6 +22,8 @@
     obj.thumbnail = dictionary[@"thumbnail"];
     obj.userID = dictionary[@"user_id"];
     obj.userName = dictionary[@"user_name"];
+    obj.timelabel = dictionary[@"date_time"];
+
     
     return obj;
 }
