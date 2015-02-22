@@ -36,7 +36,7 @@
         self.tutorialView = [TutorialView showInView:self.view delegate:self];
     }
     
-    
+    //テスト
     //テスト
 }
 
