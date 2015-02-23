@@ -104,6 +104,9 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"";
+        self.navigationItem.backBarButtonItem = barButton;
     }
 
 }

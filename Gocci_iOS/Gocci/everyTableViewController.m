@@ -484,7 +484,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - ツールバー
-#pragma mark 戻る＝Modal Close
+#pragma mark ＜＝Modal Close
 - (IBAction)onReturn:(id)sender {
 	
 	[self dismissViewControllerAnimated:YES completion:^{

@@ -72,8 +72,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        
     }
-    
 
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];

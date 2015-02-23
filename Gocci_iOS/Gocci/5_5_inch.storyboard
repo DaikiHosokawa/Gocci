@@ -104,7 +104,21 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n1E-cj-0jK">
                                     <rect key="frame" x="77" y="73" width="165" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hm0-ig-Yy0">
+                                    <rect key="frame" x="352" y="76" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="hosi23">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tr5-Ug-RJx">
+                                    <rect key="frame" x="315" y="80" width="29" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -202,8 +216,8 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pgk-3H-OJJ">
                                     <rect key="frame" x="81" y="75" width="165" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -872,7 +886,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cal-vI-YT3">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="mqG-L3-e3x">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="mqG-L3-e3x">
                             <connections>
                                 <action selector="onReturn:" destination="Pt3-mZ-dDb" id="TVN-km-Tss"/>
                             </connections>
@@ -896,6 +910,7 @@
     </scenes>
     <resources>
         <image name="Backbutton" width="60" height="60"/>
+        <image name="arrow_left" width="8" height="13"/>
         <image name="btn_capture_flip.png" width="36" height="30"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="btn_toukou.png" width="100" height="100"/>
@@ -906,6 +921,7 @@
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="gradation" width="640" height="225"/>
+        <image name="hosi23" width="23" height="22"/>
         <image name="ic_login kirinuki" width="328" height="93"/>
         <image name="login" width="230" height="359"/>
         <image name="login ver2" width="595" height="679"/>
@@ -927,9 +943,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="sBC-Zs-pgG"/>
         <segue reference="wis-md-2uD"/>
-        <segue reference="ELX-A7-CBx"/>
-        <segue reference="G4x-eD-yOI"/>
+        <segue reference="pxJ-t0-X38"/>
         <segue reference="wry-3B-S2G"/>
     </inferredMetricsTieBreakers>
 </document>

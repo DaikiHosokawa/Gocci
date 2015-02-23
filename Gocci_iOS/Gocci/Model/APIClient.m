@@ -182,7 +182,7 @@ static APIClient *_sharedInstance = nil;
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
                              @"limit": [NSString stringWithFormat:@"%@", @(limit)],
                              };
-    
+    NSLog(@"searchparams:%@",params);
     [[APIClient sharedClient].manager GET:@"search/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -199,7 +199,7 @@ static APIClient *_sharedInstance = nil;
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
                              @"limit": [NSString stringWithFormat:@"%@", @(limit)],
                              };
-    
+    NSLog(@"distparams:%@",params);
     [[APIClient sharedClient].manager GET:@"dist/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

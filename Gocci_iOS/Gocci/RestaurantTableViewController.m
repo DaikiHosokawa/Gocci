@@ -85,6 +85,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        
     }
     
     //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem

@@ -101,8 +101,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         [self.view addSubview:_mapView];
     }
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    backButton.title = @"";
 	// !!!:dezamisystem
 //	self.navigationItem.backBarButtonItem = backButton;
 	
@@ -112,6 +110,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _searchBar.keyboardType = UIKeyboardTypeDefault;
     _searchBar.delegate = self;
     
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationItem.backBarButtonItem = barButton;
     // UINavigationBar上に、UISearchBarを追加
 #if 1
 	self.navigationItem.titleView = _searchBar;
@@ -126,6 +127,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
 		self.navigationItem.titleView =navigationTitle;
+        
 	}
 #endif
 
@@ -141,7 +143,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
+ 
+     [self call];
     _searchBar.text = nil;
 
     //30本のピンを立てる
@@ -222,17 +225,68 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     [CXCardView showWithView:_firstContentView draggable:YES];
 }
+-(void)call
+{
+    // ロケーションマネージャ生成
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲート設定
+        locationManager.delegate = self;
+        // 精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 更新頻度
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
+    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
+        // iOS8の場合は、以下の何れかの処理を追加しないと位置の取得ができない
+        // アプリがアクティブな場合だけ位置取得する場合
+        [locationManager requestWhenInUseAuthorization];
+        // アプリが非アクティブな場合でも位置取得する場合
+        //[locationManager requestAlwaysAuthorization];
+    }
+    
+    if([CLLocationManager locationServicesEnabled]){
+        // 位置情報取得開始
+        [locationManager startUpdatingLocation];
+    }else{
+        // 位置取得が許可されていない場合
+    }
+}
 
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    // 位置情報取得
+    CLLocationDegrees latitude = newLocation.coordinate.latitude;
+    CLLocationDegrees longitude = newLocation.coordinate.longitude;
+    NSLog(@"%f,%f",latitude,longitude);
+    
+    testLocation = newLocation;
+    
+    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+    static dispatch_once_t searchCurrentLocationOnceToken;
+    dispatch_once(&searchCurrentLocationOnceToken, ^{
+        [self _fetchFirstRestaurantsWithCoordinate:newLocation.coordinate];
+    });
+    // ロケーションマネージャ停止
+    [locationManager stopUpdatingLocation];
+}
 
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+
     // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-    static dispatch_once_t searchCurrentLocationOnceToken;
-    dispatch_once(&searchCurrentLocationOnceToken, ^{
-        [self _fetchFirstRestaurantsWithCoordinate:userLocation.coordinate];
-    });
+   // static dispatch_once_t searchCurrentLocationOnceToken;
+   // dispatch_once(&searchCurrentLocationOnceToken, ^{
+       // [self _fetchFirstRestaurantsWithCoordinate:userLocation.coordinate];
+      //  NSLog(@"testLat:%f",userLocation.coordinate.latitude);
+       // NSLog(@"testLon:%f",userLocation.coordinate.longitude);
+  //  });
+
     
     // 初回に現在地に移動している場合は再度移動しないようにする
     if (self.showedUserLocation) {
@@ -387,11 +441,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
  */
 - (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
+    NSLog(@"serachLat:%f",coordinate.latitude);
+    NSLog(@"serachLat:%f",coordinate.longitude);
     // 既に検索をしている場合は、現在地中心のレストラン一覧の取得は行わない
     if (self.searched) {
         return;
     }
-    
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [APIClient distWithLatitude:coordinate.latitude
@@ -425,8 +480,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [APIClient searchWithRestName:searchText
-                         latitude:[appDelegete.lat floatValue]
-                        longitude:[appDelegete.lon floatValue]
+                         latitude:testLocation.coordinate.latitude
+                        longitude:testLocation.coordinate.longitude
                             limit:30
                           handler:^(id result, NSUInteger code, NSError *error)
      {
@@ -438,6 +493,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          }
          
          weakSelf.searched = YES;
+         
+         NSLog(@"result:%@",result);
          
          [weakSelf _reloadRestaurants:result];
      }];
@@ -464,7 +521,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         }
         
         _dontexist = [[UILabel alloc] init];
-        _dontexist.frame = CGRectMake(30, 200, 250, 280);
+        _dontexist.frame = CGRectMake(30, 250, 250, 330);
         [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
         _dontexist.numberOfLines = 3;
         _dontexist.textAlignment = NSTextAlignmentLeft;

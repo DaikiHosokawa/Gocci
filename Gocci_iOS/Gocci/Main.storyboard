@@ -34,7 +34,21 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n1E-cj-0jK">
                                     <rect key="frame" x="75" y="73" width="165" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yB4-1Z-oVZ">
+                                    <rect key="frame" x="259" y="81" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="hosi23">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OXs-o0-BWz">
+                                    <rect key="frame" x="228" y="85" width="29" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -68,7 +82,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="od2-gO-bz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1137" y="-3357"/>
+            <point key="canvasLocation" x="-1128" y="-3397"/>
         </scene>
         <!--BaseUsers-->
         <scene sceneID="Jma-rF-lK5">
@@ -117,8 +131,8 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pgk-3H-OJJ">
                                     <rect key="frame" x="72" y="77" width="165" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -889,7 +903,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cal-vI-YT3">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="YSf-wg-H0o">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="YSf-wg-H0o">
                             <connections>
                                 <action selector="onReturn:" destination="Pt3-mZ-dDb" id="gnO-IF-udE"/>
                             </connections>
@@ -914,6 +928,7 @@
     </scenes>
     <resources>
         <image name="Backbutton" width="60" height="60"/>
+        <image name="arrow_left" width="8" height="13"/>
         <image name="btn_capture_flip.png" width="36" height="30"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="btn_toukou.png" width="100" height="100"/>
@@ -924,6 +939,7 @@
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="gradation" width="640" height="225"/>
+        <image name="hosi23" width="23" height="22"/>
         <image name="ic_login kirinuki" width="328" height="93"/>
         <image name="login" width="230" height="359"/>
         <image name="login ver2" width="595" height="679"/>
@@ -945,9 +961,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5vL-6n-Sjz"/>
-        <segue reference="Rhk-9Y-XzF"/>
         <segue reference="pwx-NL-GhF"/>
-        <segue reference="pPi-jq-5EO"/>
+        <segue reference="Enz-08-5MA"/>
+        <segue reference="Izl-F2-LsT"/>
+        <segue reference="5vL-6n-Sjz"/>
     </inferredMetricsTieBreakers>
 </document>
