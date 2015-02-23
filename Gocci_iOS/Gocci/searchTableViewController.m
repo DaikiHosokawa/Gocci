@@ -112,7 +112,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"";
-    self.navigationItem.backBarButtonItem = barButton;
+    self.navigationItem.backBarButtonItem = barButton;  
     // UINavigationBar上に、UISearchBarを追加
 #if 1
 	self.navigationItem.titleView = _searchBar;
