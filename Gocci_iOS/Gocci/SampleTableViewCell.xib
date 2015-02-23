@@ -84,7 +84,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="character2" width="1024" height="1024"/>
+        <image name="character2" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
