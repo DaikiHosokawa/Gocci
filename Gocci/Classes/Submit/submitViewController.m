@@ -49,36 +49,6 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 
 @synthesize starRatingImage = _starRatingImage;
 
-/*
-//テキストビューの文字数宣言
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    
-    // 入力済みのテキストを取得
-    _str = [_textView.text mutableCopy];
-    
-    // 入力済みのテキストと入力が行われたテキストを結合
-    [_str replaceCharactersInRange:range withString:text];
-    NSLog(@"%@",_str);
-    
-   
-    if ([text isEqualToString:@"\n"]) {
-        [_textView resignFirstResponder];
-        return NO;
-    }
-
-    return YES;
-}
-*/
-/*
-
--(BOOL)textViewShouldEndEditing:
-(UITextView*)textView{
-    _text = _textView.text;
-    NSLog(@"text:%@",_text);
-    return YES;
-}
- */
 
 #pragma mark - アイテム名登録用
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -131,45 +101,17 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 
 	// !!!:dezamisystem
 //	self.navigationItem.title = @"投稿画面";
-	
-    /*
-    // Do any additional setup after loading the view.
-    _textView.delegate = self;
-    _textView.returnKeyType = UIReturnKeyDone;
-    _textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _textView.keyboardType = UIKeyboardTypeDefault;
-    _textView.layer.borderWidth = 1;
-    _textView.clipsToBounds = YES;
-    _textView.layer.cornerRadius = 10.0f;
-    */
-     
-    // Setup control using image
-    //_starRatingImage.backgroundImage=[UIImage imageNamed:@"starsbackground iOS.png"];
-    _starRatingImage.starImage = [UIImage imageNamed:@"hosi nasi23.png"];
-    _starRatingImage.starHighlightedImage = [UIImage imageNamed:@"hosi23.png"];
-    _starRatingImage.maxRating = 5.0;
-    _starRatingImage.delegate = self;
-    _starRatingImage.horizontalMargin = 12;
-    _starRatingImage.editable=YES;
-    _starRatingImage.rating= 3;
-    _starRatingImage.displayMode=EDStarRatingDisplayAccurate;
-    [self starsSelectionChanged:_starRatingImage rating:3];
-    // This one will use the returnBlock instead of the delegate
-    _starRatingImage.returnBlock = ^(float rating )
-    {
-        NSLog(@"ReturnBlock: Star rating changed to %.1f", rating);
-        // For the sample, Just reuse the other control's delegate method and call it
-        [self starsSelectionChanged:_starRatingImage rating:rating];
-    };
 
 }
 
+/*
 -(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating
 {
     _ratingString = [NSString stringWithFormat:@"Rating:%.1f", rating];
 
     NSLog(@"ratingString:%@",_ratingString);
 }
+ */
 
 - (void)viewDidUnload
 {
@@ -348,7 +290,8 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 		[SVProgressHUD showWithStatus:@"投稿中" maskType:SVProgressHUDMaskTypeAnimation];
 #if (!TARGET_IPHONE_SIMULATOR)
 		// 文字列を数値型へ変換する。
-		NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
+		/*
+        NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
 		NSLog(@"substr2:%@",substr2);
 		NSInteger i = substr2.integerValue;
 		NSString *content = [NSString stringWithFormat:@"star_evaluation=%ld",(long)i];
@@ -362,9 +305,12 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 		NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 											   returningResponse:&response
 														   error:&error];
+         */
+        /*
 		if (result) {
 			//
 		}
+         */
 #endif
 		// !!!:dezamisystem
 		// [self performSegueWithIdentifier:@"gobackTimeline" sender:self];

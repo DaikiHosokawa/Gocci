@@ -521,7 +521,7 @@
                                     <action selector="pushComplete:" destination="3H1-41-IX9" eventType="touchUpInside" id="AFB-Nv-IaL"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
+                            <view hidden="YES" contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
                                 <rect key="frame" x="114" y="146" width="168" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

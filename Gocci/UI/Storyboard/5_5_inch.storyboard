@@ -533,7 +533,7 @@
                                     <action selector="submitFacebook:" destination="3H1-41-IX9" eventType="touchUpInside" id="E9U-IX-7aL"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
+                            <view hidden="YES" contentMode="scaleToFill" id="rMD-bh-uat" customClass="EDStarRating">
                                 <rect key="frame" x="173" y="194" width="168" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
