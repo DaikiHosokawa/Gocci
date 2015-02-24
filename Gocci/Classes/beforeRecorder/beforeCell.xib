@@ -21,7 +21,7 @@
                         <rect key="frame" x="16" y="18" width="10" height="14"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1.4km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-OR-j7i">
-                        <rect key="frame" x="32" y="16" width="42" height="21"/>
+                        <rect key="frame" x="32" y="17" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="d2X-UQ-Cjt"/>
                             <constraint firstAttribute="width" constant="42" id="hq4-LP-LP7"/>
@@ -154,10 +154,11 @@
                 <outlet property="detailLabel" destination="yfP-Hz-KMH" id="3sy-fE-FRv"/>
                 <outlet property="distanceLabel" destination="BuW-OR-j7i" id="vKZ-t2-BzU"/>
                 <outlet property="mapLabel" destination="2Sq-Zn-lSM" id="JdA-r7-nTs"/>
+                <outlet property="restaurantLabel" destination="fOs-tC-Sp9" id="pNS-1p-ueQ"/>
                 <outlet property="restaurantNameLabel" destination="fOs-tC-Sp9" id="feX-pb-6ZF"/>
                 <outlet property="scrollView" destination="Ver-dY-eTg" id="lR1-JE-XbF"/>
             </connections>
-            <point key="canvasLocation" x="237" y="187.5"/>
+            <point key="canvasLocation" x="237" y="186.5"/>
         </tableViewCell>
     </objects>
     <resources>

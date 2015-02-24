@@ -30,6 +30,15 @@ extern NSString * const SearchCellIdentifier;
  */
 - (void)searchCell:(SearchCell *)cell shouldDetailAtIndex:(NSUInteger)index;
 
+/**
+ *  店名タップ時
+ *
+ *  @param cell
+ *  @param index
+ */
+- (void)searchCell:(SearchCell *)cell shouldDetailAtIndex2:(NSUInteger)index;
+
+
 @end
 
 /**

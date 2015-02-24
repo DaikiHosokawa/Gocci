@@ -431,6 +431,19 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        }];
 }
 
+- (void)searchCell:(SearchCell *)cell shouldDetailAtIndex2:(NSUInteger)index
+{
+    Restaurant *restaurant = self.restaurants[index];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT
+                              sender:@{
+                                       @"rest_name": restaurant.restname,
+                                       @"header_locality": restaurant.locality,
+                                       @"post_lat": [NSString stringWithFormat:@"%@", @(restaurant.lat)],
+                                       @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
+                                       }];
+}
+
 
 #pragma mark - Private Methods
 

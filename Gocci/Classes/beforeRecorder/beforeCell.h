@@ -30,6 +30,14 @@ extern NSString * const beforeCellIdentifier;
  */
 - (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex:(NSUInteger)index;
 
+/**
+ *  店名タップ時
+ *
+ *  @param cell
+ *  @param index
+ */
+- (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex2:(NSUInteger)index;
+
 @end
 
 /**

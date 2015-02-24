@@ -290,7 +290,7 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 		[SVProgressHUD showWithStatus:@"投稿中" maskType:SVProgressHUDMaskTypeAnimation];
 #if (!TARGET_IPHONE_SIMULATOR)
 		// 文字列を数値型へ変換する。
-		/*
+		
         NSString *substr2 = [_ratingString stringByReplacingOccurrencesOfString:@"Rating:" withString:@""];
 		NSLog(@"substr2:%@",substr2);
 		NSInteger i = substr2.integerValue;
@@ -305,7 +305,7 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
 		NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
 											   returningResponse:&response
 														   error:&error];
-         */
+        
         /*
 		if (result) {
 			//

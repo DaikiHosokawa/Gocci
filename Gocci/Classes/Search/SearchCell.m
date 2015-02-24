@@ -17,6 +17,7 @@ NSString * const SearchCellIdentifier = @"SearchCell";
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UILabel *mapLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
+@property (nonatomic, weak) IBOutlet UILabel *restaurantLabel;
 
 @property (nonatomic) NSUInteger restaurantIndex;
 
@@ -48,6 +49,13 @@ NSString * const SearchCellIdentifier = @"SearchCell";
     }
 }
 
+- (void)tapRestaurantLabel:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(searchCell:shouldDetailAtIndex2:)]) {
+        [self.delegate searchCell:self shouldDetailAtIndex2:self.restaurantIndex];
+    }
+}
+
 
 #pragma mark - Public Methods
 
@@ -72,6 +80,11 @@ NSString * const SearchCellIdentifier = @"SearchCell";
     UITapGestureRecognizer *tapDetail = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetailLabel:)];
     [self.detailLabel addGestureRecognizer:tapDetail];
     self.detailLabel.userInteractionEnabled = YES;
+    
+    // 店名タップイベント
+    UITapGestureRecognizer *tapRestaurant = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRestaurantLabel:)];
+    [self.restaurantLabel addGestureRecognizer:tapRestaurant];
+    self.restaurantLabel.userInteractionEnabled = YES;
 
     // 情報を表示
     self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];

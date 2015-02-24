@@ -256,7 +256,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     delegate.gText = postRestName;
 
 	//遷移：SCRecorderVideoController
-	[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
+	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 
 	// 選択状態の解除
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -327,6 +327,18 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     delegate.gText = restaurant.restname;
     [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
                                sender:@{
+                                       @"rest_name": restaurant.restname,
+                                       }];
+}
+
+- (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex2:(NSUInteger)index
+{
+    Restaurant *restaurant = self.restaurants[index];
+    // グローバル変数に保存
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.gText = restaurant.restname;
+    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+                              sender:@{
                                        @"rest_name": restaurant.restname,
                                        }];
 }

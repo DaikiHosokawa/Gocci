@@ -154,6 +154,7 @@
                 <outlet property="detailLabel" destination="yfP-Hz-KMH" id="3sy-fE-FRv"/>
                 <outlet property="distanceLabel" destination="BuW-OR-j7i" id="vKZ-t2-BzU"/>
                 <outlet property="mapLabel" destination="2Sq-Zn-lSM" id="JdA-r7-nTs"/>
+                <outlet property="restaurantLabel" destination="fOs-tC-Sp9" id="wNL-lF-LlF"/>
                 <outlet property="restaurantNameLabel" destination="fOs-tC-Sp9" id="feX-pb-6ZF"/>
                 <outlet property="scrollView" destination="Ver-dY-eTg" id="lR1-JE-XbF"/>
             </connections>
