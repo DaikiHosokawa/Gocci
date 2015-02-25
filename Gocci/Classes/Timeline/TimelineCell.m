@@ -61,8 +61,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 - (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserName:self.username];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:picture:)]) {
+        [self.delegate timelineCell:self didTapNameWithUserName:self.username picture:_userspicture];
     }
 }
 

@@ -25,7 +25,7 @@ extern NSString * const TimelineCellIdentifier;
  *  @param cell
  *  @param userName タップした投稿の username
  */
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName;
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture;
 
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture;
 

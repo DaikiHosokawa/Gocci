@@ -85,6 +85,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"";
+        self.navigationItem.backBarButtonItem = barButton;
         
     }
     
@@ -458,11 +461,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
 {
     //user nameタップの時の処理
 	LOG(@"username=%@", userName);
 	_postUsername = userName;
+    _postPicture = usersPicture;
 	LOG(@"postUsername:%@",_postUsername);
 	// !!!:dezamisystem
 //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];

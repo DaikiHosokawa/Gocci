@@ -419,11 +419,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //}
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
 {
     //user nameタップの時の処理
     LOG(@"username=%@", userName);
     _postUsername = userName;
+    _postPicture = usersPicture;
+
     LOG(@"postUsername:%@",_postUsername);
 
 	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
