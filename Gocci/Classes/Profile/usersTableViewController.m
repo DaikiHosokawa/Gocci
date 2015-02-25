@@ -471,7 +471,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+123,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+218,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
