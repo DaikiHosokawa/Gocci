@@ -64,11 +64,11 @@
                         <color key="textColor" red="0.623459816" green="0.62356954809999998" blue="0.62345290180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hND-ON-WcS">
-                        <rect key="frame" x="4" y="74" width="310" height="310"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hND-ON-WcS">
+                        <rect key="frame" x="8" y="74" width="302" height="302"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="310" id="XcS-KM-xRn"/>
-                            <constraint firstAttribute="height" constant="310" id="xJ2-yo-HSs"/>
+                            <constraint firstAttribute="width" constant="302" id="XcS-KM-xRn"/>
+                            <constraint firstAttribute="height" constant="302" id="xJ2-yo-HSs"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YSl-cf-iOp">
@@ -244,7 +244,7 @@
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="XCG-79-oul" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="0Ff-em-JDC"/>
-                    <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="4Vh-hT-1QK"/>
+                    <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="74" id="4Vh-hT-1QK"/>
                     <constraint firstItem="gW1-Wt-hg6" firstAttribute="leading" secondItem="XCG-79-oul" secondAttribute="trailing" constant="7" id="7Aa-OP-hng"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EV4-90-av7"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="top" secondItem="hND-ON-WcS" secondAttribute="bottom" constant="8" id="HmL-gk-Hxo"/>
@@ -267,7 +267,7 @@
                     <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="gW1-Wt-hg6" secondAttribute="bottom" constant="24" id="fHf-Di-tfD"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="12" id="gFL-RK-jQe"/>
                     <constraint firstItem="1u9-2R-sh0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="25" id="iGK-Jc-nX0"/>
-                    <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="1u9-2R-sh0" secondAttribute="bottom" constant="22" id="jaX-Rz-YXL"/>
+                    <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="1u9-2R-sh0" secondAttribute="bottom" constant="24" id="jaX-Rz-YXL"/>
                     <constraint firstAttribute="trailing" secondItem="ohQ-nj-eFT" secondAttribute="trailing" constant="32" id="l7Q-gH-EIb"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lB1-bO-TlV"/>
                     <constraint firstAttribute="bottom" secondItem="reR-SP-qcM" secondAttribute="bottom" constant="8" id="mU5-hB-own"/>
