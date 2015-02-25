@@ -78,6 +78,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
 		self.navigationItem.titleView =navigationTitle;
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"";
+        self.navigationItem.backBarButtonItem = barButton;
 	}
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -468,7 +471,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+125,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+123,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     

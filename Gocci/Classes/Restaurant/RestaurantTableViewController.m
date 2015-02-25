@@ -530,11 +530,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_playMovieAtCurrentCell
 {
-    if (self.tabBarController.selectedIndex != 0) {
-        // 画面がフォアグラウンドのときのみ再生
-        return;
-    }
-    
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -545,7 +540,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+163,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+153,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
