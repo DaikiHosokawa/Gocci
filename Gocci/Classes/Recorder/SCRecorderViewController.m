@@ -192,8 +192,8 @@
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:16.];
-        descriptionLabel.text = @"撮影画面では赤い録画ボタンを押して離して合計6秒で飲食店の良さを紹介してください";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.text = @"赤い録画ボタンを押して離して合計7秒で飲食店の良さを紹介してください";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {

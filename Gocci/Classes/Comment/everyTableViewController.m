@@ -115,8 +115,8 @@
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
-        descriptionLabel.text = @"コメント画面では投稿者と会話ができます。";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.text = @"投稿者と会話ができます。";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {

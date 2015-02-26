@@ -155,7 +155,7 @@ static NSString * const SEGUE_GO_BACK_TIMELINE = @"gobackTimeline";
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
         descriptionLabel.text = @"最後に星をつけて”完了”を押せば投稿完了です！";
         [_firstContentView addSubview:descriptionLabel];
         

@@ -194,10 +194,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //	self.tabBarItem.image = image;
 
 	[super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
-        [self showDefaultContentView];
-    }
+    [self showDefaultContentView];
 
 }
 #pragma mark - Table view data source
@@ -438,7 +435,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
         descriptionLabel.text = @"投稿したい店を選びましょう！";
         [_firstContentView addSubview:descriptionLabel];
         

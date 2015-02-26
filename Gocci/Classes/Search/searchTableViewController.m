@@ -210,11 +210,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         UILabel *descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
         descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
-        descriptionLabel.text = @"検索画面では近くのお店が探せます";
+         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.text = @"近くの美味しいお店が探せます";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {

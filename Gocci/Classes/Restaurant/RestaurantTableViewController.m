@@ -227,8 +227,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"Avenir-Roman" size:18.];
-        descriptionLabel.text = @"レストラン画面ではレストランの疑似体験ができます";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.text = @"レストランの疑似体験ができます";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {
