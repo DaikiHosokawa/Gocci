@@ -53,7 +53,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
@@ -136,7 +136,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="0.88641980229999995" green="0.88641980229999995" blue="0.88641980229999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
@@ -961,9 +961,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mxO-EZ-B49"/>
-        <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="pwx-NL-GhF"/>
+        <segue reference="cpH-lv-fYL"/>
         <segue reference="5vL-6n-Sjz"/>
+        <segue reference="pwx-NL-GhF"/>
+        <segue reference="WI8-eQ-W3n"/>
     </inferredMetricsTieBreakers>
 </document>
