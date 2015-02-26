@@ -160,10 +160,7 @@
 	[self.viewIndicator stopAnimating];	
 #endif
 	
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
-    }
 }
 
 - (BOOL)isFirstRun
@@ -192,8 +189,8 @@
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
-        descriptionLabel.text = @"赤い録画ボタンを押して離して合計7秒で飲食店の良さを紹介してください";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.];
+        descriptionLabel.text = @"7秒で飲食店を紹介してください\n(例)外観2秒→内装3秒→ごはん3秒";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {
