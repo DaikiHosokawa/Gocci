@@ -12,7 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIImage+Dummy.h"
 
-#define THUMBNAIL_VIEW_MARGIN 4.0
+#define THUMBNAIL_VIEW_MARGIN 8.0
 
 NSString * const TimelineCellIdentifier = @"TimelineCell";
 
