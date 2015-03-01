@@ -358,8 +358,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)_playMovieAtCurrentCell
 {
     
-    if (self.tabBarController.selectedIndex != 0) {
-        // 画面がフォアグラウンドのときのみ再生
+    if ( [self.posts count] == 0){
         return;
     }
     

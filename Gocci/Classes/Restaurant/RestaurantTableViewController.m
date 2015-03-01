@@ -534,6 +534,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_playMovieAtCurrentCell
 {
+   if ( [self.posts count] == 0){
+            return;
+         }
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
