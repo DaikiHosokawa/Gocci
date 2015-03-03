@@ -465,7 +465,6 @@
 		952D24EB1A9B9EC800C354DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		952D24ED1A9B9EC800C354DF /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
-		952D25141A9B9F1500C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = ../../../NullSafe.m; sourceTree = "<group>"; };
 		952D25161A9B9F4700C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C71881A278D8C00BF31EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -776,10 +775,10 @@
 				952D24311A9B9D3300C354DF /* Profile */,
 				952D24341A9B9D3300C354DF /* Profile_other */,
 				952D24371A9B9D3300C354DF /* Recorder */,
+				952D24721A9B9D3300C354DF /* Submit */,
 				952D24421A9B9D3300C354DF /* Restaurant */,
 				952D24451A9B9D3300C354DF /* Search */,
 				952D244E1A9B9D3300C354DF /* Sources */,
-				952D24721A9B9D3300C354DF /* Submit */,
 				952D24751A9B9D3300C354DF /* Timeline */,
 			);
 			path = Classes;
@@ -892,12 +891,12 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */,
+				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D24381A9B9D3300C354DF /* GaugeView.h */,
 				952D24391A9B9D3300C354DF /* GaugeView.m */,
 				952D243A1A9B9D3300C354DF /* SCImageDisplayerViewController.h */,
 				952D243B1A9B9D3300C354DF /* SCImageDisplayerViewController.m */,
-				952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */,
-				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D243E1A9B9D3300C354DF /* SCRecordSessionManager.h */,
 				952D243F1A9B9D3300C354DF /* SCRecordSessionManager.m */,
 				952D24401A9B9D3300C354DF /* SCTouchDetector.h */,
@@ -1202,7 +1201,6 @@
 			children = (
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
-				952D25141A9B9F1500C354DF /* NullSafe.m */,
 				952D25161A9B9F4700C354DF /* NullSafe.m */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
 				FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */,

@@ -17,6 +17,7 @@
 #import "SCRecordSessionManager.h"
 #import "RestaurantTableViewController.h"
 #import "GaugeView.h"
+#import "APIClient.h"
 #import "SVProgressHUD.h"
 
 #define kVideoPreset AVCaptureSessionPresetHigh
@@ -615,31 +616,53 @@
     {
         if (error) {
             [SVProgressHUD dismiss];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存失敗しました！撮り直してください"
-                                                            message:error.localizedDescription
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
             return;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
+        // 動画をカメラロールに保存
+        [weakSelf.recordSession saveToCameraRoll];
+        
+        // サーバへ送信
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [APIClient postRestname:appDelegate.gText
+                        handler:^(id result, NSUInteger code, NSError *error)
         {
-            // データの保存・送信
-            [weakSelf.recordSession saveToCameraRollAndPost];
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             
-            dispatch_sync(dispatch_get_main_queue(), ^
+            if (error) {
+                [SVProgressHUD dismiss];
+                [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
+                return;
+            }
+            
+            [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl
+                                    handler:^(id result, NSUInteger code, NSError *error)
             {
-                //
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                
                 [SVProgressHUD dismiss];
                 
-                // 完了(シェア)画面へ
-                [weakSelf performSegueWithIdentifier:@"RecorderToSubmit" sender:nil];
-            });
-        });
+                // 画面を閉じる
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }];
     }];
+}
+
+/**
+ *  保存・投稿失敗アラート
+ *
+ *  @param message
+ */
+- (void)_showUploadErrorAlertWithMessage:(NSString *)message
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存失敗しました！撮り直してください"
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - バックボタン
