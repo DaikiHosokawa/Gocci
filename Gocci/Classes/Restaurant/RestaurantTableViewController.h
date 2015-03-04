@@ -50,6 +50,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UILabel *locality;
 @property (weak, nonatomic) IBOutlet UIView *restview;
+@property (weak, nonatomic) IBOutlet UILabel *tell;
+@property (weak, nonatomic) IBOutlet UILabel *homepage;
 
 
 @end

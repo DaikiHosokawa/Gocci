@@ -126,6 +126,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	
     self.restname.text = _postRestName;
     self.locality.text = _postLocality;
+    self.tell.text = _postTell;
+    self.homepage.text = _postHomepage;
+    
     NSLog(@"This Restaurant is %@",_postRestName);
     NSLog(@"This Locality is %@",_postLocality);
     NSLog(@"This Tell is %@",_postTell);
