@@ -22,6 +22,10 @@
     NSString *_postPicture;
     //from SearchTableVIew
     NSString *_postRestName;
+    //
+    NSString *_postLocality;
+    NSString *_postTell;
+    NSString *_postHomepage;
     NSString *_headerLocality;
     NSString *_postLat;
     NSString *_postLon;
@@ -34,6 +38,9 @@
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
+@property (nonatomic) NSString *postLocality;
+@property (nonatomic) NSString *postTell;
+@property (nonatomic) NSString *postHomepage;
 @property (nonatomic) NSString *headerLocality;
 @property (nonatomic) NSString *postLat;
 @property (nonatomic) NSString *postLon;

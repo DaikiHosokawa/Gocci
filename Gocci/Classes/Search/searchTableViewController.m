@@ -380,13 +380,18 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 	{
         // ここでパラメータを渡す
         NSDictionary *params = (NSDictionary *)sender;
+        NSLog(@"params:%@",params);
         RestaurantTableViewController *restVC = segue.destinationViewController;
         restVC.postRestName = params[@"rest_name"];
-        restVC.headerLocality = params[@"header_locality"];
+        restVC.postLocality = params[@"header_locality"];
         restVC.postLon = params[@"post_lat"];
         NSLog(@"restVC.postLon:%@",restVC.postLon);
         restVC.postLat = params[@"post_lon"];
         NSLog(@"restVC.postLat:%@",restVC.postLat);
+        /*
+        restVC.postTell = params[@"tell"];
+        restVC.postHomepage = params[@"homepage"];
+         */
         
     }
 }
@@ -428,6 +433,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"header_locality": restaurant.locality,
                                        @"post_lat": [NSString stringWithFormat:@"%@", @(restaurant.lat)],
                                        @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
+                                       /*
+                                       @"tell": restaurant.tel,
+                                       @"homepage": restaurant.homepage,
+                                        */
                                        }];
 }
 
@@ -441,6 +450,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"header_locality": restaurant.locality,
                                        @"post_lat": [NSString stringWithFormat:@"%@", @(restaurant.lat)],
                                        @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
+                                       /*
+                                       @"tell": restaurant.tel,
+                                       @"homepage": restaurant.homepage/
+                                        */
                                        }];
 }
 

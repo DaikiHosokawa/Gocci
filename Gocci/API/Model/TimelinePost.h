@@ -24,6 +24,8 @@
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *comment;
 @property (nonatomic) NSString *timelabel;
+@property (nonatomic) NSString *tel;
+@property (nonatomic) NSString *homepage;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

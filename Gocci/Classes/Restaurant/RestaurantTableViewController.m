@@ -53,7 +53,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSString *_text, *_hashTag;
 }
 @synthesize postRestName = _postRestName;
-@synthesize headerLocality = _headerLocality;
+@synthesize postLocality = _postLocality;
+@synthesize postTell = _postTell;
+@synthesize postHomepage = _postHomepage;
 @synthesize postLon = _postLon;
 @synthesize postLat = _postLat;
 @synthesize lon;
@@ -123,8 +125,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 	
     self.restname.text = _postRestName;
-    self.locality.text = _headerLocality;
+    self.locality.text = _postLocality;
     NSLog(@"This Restaurant is %@",_postRestName);
+    NSLog(@"This Locality is %@",_postLocality);
+    NSLog(@"This Tell is %@",_postTell);
+    NSLog(@"This Homepage is %@",_postHomepage);
    // lon = restaurantPost.lon;
    // lat = restaurantPost.lat;
     NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);

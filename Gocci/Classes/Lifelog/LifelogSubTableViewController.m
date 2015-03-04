@@ -257,14 +257,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //}
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage
 {
+    NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    LOG(@"restname=%@", restaurantName);
     _postRestname = restaurantName;
-    LOG(@"postRestname:%@",_postRestname);
-    LOG(@"Restname is touched");
-    
+    _postHomepage = homepage;
+    _postLocality = locality;
+    _postTell = tel;
+    NSLog(@"restname=%@", restaurantName);
+    NSLog(@"locality=%@", locality);
+    NSLog(@"tel=%@", tel);
+    NSLog(@"homepage=%@", homepage);
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 

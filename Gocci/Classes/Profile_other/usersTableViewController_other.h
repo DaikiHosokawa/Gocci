@@ -23,6 +23,9 @@
     NSString *_postPicture;
     //restnameへの引き継ぎ
     NSString *_postRestname;
+    NSString *_postHomepage;
+    NSString *_postLocality;
+    NSString *_postTell;
 
 }
 

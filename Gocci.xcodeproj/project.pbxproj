@@ -1648,7 +1648,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "07632434-5ab0-4641-bedd-28fe120a6c6e";
+				PROVISIONING_PROFILE = "e150104b-306b-450e-ad55-30058dbcb601";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
@@ -1686,7 +1686,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "07632434-5ab0-4641-bedd-28fe120a6c6e";
+				PROVISIONING_PROFILE = "e150104b-306b-450e-ad55-30058dbcb601";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
