@@ -335,9 +335,9 @@ extern const NSString *SCRecordSessionDateKey;
 
 
 /**
- *  カメラロールへの保存と、API への送信を行う
+ *  カメラロールへの保存を行う
  */
-- (void)saveToCameraRollAndPost;
+- (void)saveToCameraRoll;
 
 //////////////////
 // PRIVATE API

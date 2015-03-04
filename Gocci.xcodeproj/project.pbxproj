@@ -118,7 +118,6 @@
 		952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D246D1A9B9D3300C354DF /* SCSampleBufferHolder.m */; };
 		952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D246F1A9B9D3300C354DF /* SCSwipeableFilterView.m */; };
 		952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24711A9B9D3300C354DF /* SCVideoPlayerView.m */; };
-		952D24AE1A9B9D3300C354DF /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24741A9B9D3300C354DF /* submitViewController.m */; };
 		952D24AF1A9B9D3300C354DF /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24771A9B9D3300C354DF /* TimelineCell.m */; };
 		952D24B01A9B9D3300C354DF /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24781A9B9D3300C354DF /* TimelineCell.xib */; };
 		952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D247A1A9B9D3300C354DF /* TimelineTableViewController.m */; };
@@ -164,6 +163,10 @@
 		952D25121A9B9EC800C354DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952D24EB1A9B9EC800C354DF /* Main.storyboard */; };
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
+		AB645CD71AA697FB00827B7A /* RecorderSubmitPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645CD61AA697FB00827B7A /* RecorderSubmitPopupView.m */; };
+		AB645CD91AA6982100827B7A /* RecorderSubmitPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB645CD81AA6982100827B7A /* RecorderSubmitPopupView.xib */; };
+		AB645CE01AA6991900827B7A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645CDD1AA6991900827B7A /* BFPaperCheckbox.m */; };
+		AB645CEB1AA69DCA00827B7A /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645CE81AA69DCA00827B7A /* UIColor+BFPaperColors.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
 		FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44F193ED5C5001A0053 /* CoreText.framework */; };
@@ -412,8 +415,6 @@
 		952D246F1A9B9D3300C354DF /* SCSwipeableFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwipeableFilterView.m; sourceTree = "<group>"; };
 		952D24701A9B9D3300C354DF /* SCVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerView.h; sourceTree = "<group>"; };
 		952D24711A9B9D3300C354DF /* SCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerView.m; sourceTree = "<group>"; };
-		952D24731A9B9D3300C354DF /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
-		952D24741A9B9D3300C354DF /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 		952D24761A9B9D3300C354DF /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
 		952D24771A9B9D3300C354DF /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		952D24781A9B9D3300C354DF /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
@@ -465,8 +466,14 @@
 		952D24EB1A9B9EC800C354DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		952D24ED1A9B9EC800C354DF /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
-		952D25141A9B9F1500C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = ../../../NullSafe.m; sourceTree = "<group>"; };
 		952D25161A9B9F4700C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		AB645CD51AA697FB00827B7A /* RecorderSubmitPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupView.h; sourceTree = "<group>"; };
+		AB645CD61AA697FB00827B7A /* RecorderSubmitPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupView.m; sourceTree = "<group>"; };
+		AB645CD81AA6982100827B7A /* RecorderSubmitPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupView.xib; sourceTree = "<group>"; };
+		AB645CDC1AA6991900827B7A /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
+		AB645CDD1AA6991900827B7A /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
+		AB645CE71AA69DCA00827B7A /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
+		AB645CE81AA69DCA00827B7A /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C71881A278D8C00BF31EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB8C71911A278F4400BF31EA /* APIClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientTests.m; sourceTree = "<group>"; };
@@ -545,6 +552,8 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AB645CE31AA69DCA00827B7A /* BFPaperColors */,
+				AB645CDA1AA6991900827B7A /* BFPaperCheckbox */,
 				952D23EA1A9B9C6100C354DF /* PopUp */,
 				952D22E41A9B95E800C354DF /* AFNetworking */,
 				952D22F81A9B95E800C354DF /* CrittercismSDK */,
@@ -779,7 +788,6 @@
 				952D24421A9B9D3300C354DF /* Restaurant */,
 				952D24451A9B9D3300C354DF /* Search */,
 				952D244E1A9B9D3300C354DF /* Sources */,
-				952D24721A9B9D3300C354DF /* Submit */,
 				952D24751A9B9D3300C354DF /* Timeline */,
 			);
 			path = Classes;
@@ -892,16 +900,19 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */,
+				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D24381A9B9D3300C354DF /* GaugeView.h */,
 				952D24391A9B9D3300C354DF /* GaugeView.m */,
 				952D243A1A9B9D3300C354DF /* SCImageDisplayerViewController.h */,
 				952D243B1A9B9D3300C354DF /* SCImageDisplayerViewController.m */,
-				952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */,
-				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D243E1A9B9D3300C354DF /* SCRecordSessionManager.h */,
 				952D243F1A9B9D3300C354DF /* SCRecordSessionManager.m */,
 				952D24401A9B9D3300C354DF /* SCTouchDetector.h */,
 				952D24411A9B9D3300C354DF /* SCTouchDetector.m */,
+				AB645CD51AA697FB00827B7A /* RecorderSubmitPopupView.h */,
+				AB645CD61AA697FB00827B7A /* RecorderSubmitPopupView.m */,
+				AB645CD81AA6982100827B7A /* RecorderSubmitPopupView.xib */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -977,15 +988,6 @@
 				952D24711A9B9D3300C354DF /* SCVideoPlayerView.m */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		952D24721A9B9D3300C354DF /* Submit */ = {
-			isa = PBXGroup;
-			children = (
-				952D24731A9B9D3300C354DF /* submitViewController.h */,
-				952D24741A9B9D3300C354DF /* submitViewController.m */,
-			);
-			path = Submit;
 			sourceTree = "<group>";
 		};
 		952D24751A9B9D3300C354DF /* Timeline */ = {
@@ -1108,6 +1110,40 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		AB645CDA1AA6991900827B7A /* BFPaperCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				AB645CDB1AA6991900827B7A /* Classes */,
+			);
+			path = BFPaperCheckbox;
+			sourceTree = "<group>";
+		};
+		AB645CDB1AA6991900827B7A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AB645CDC1AA6991900827B7A /* BFPaperCheckbox.h */,
+				AB645CDD1AA6991900827B7A /* BFPaperCheckbox.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AB645CE31AA69DCA00827B7A /* BFPaperColors */ = {
+			isa = PBXGroup;
+			children = (
+				AB645CE61AA69DCA00827B7A /* UIColor+BFPaperColors */,
+			);
+			path = BFPaperColors;
+			sourceTree = "<group>";
+		};
+		AB645CE61AA69DCA00827B7A /* UIColor+BFPaperColors */ = {
+			isa = PBXGroup;
+			children = (
+				AB645CE71AA69DCA00827B7A /* UIColor+BFPaperColors.h */,
+				AB645CE81AA69DCA00827B7A /* UIColor+BFPaperColors.m */,
+			);
+			path = "UIColor+BFPaperColors";
+			sourceTree = "<group>";
+		};
 		AB8C71861A278D8C00BF31EA /* GocciUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1202,7 +1238,6 @@
 			children = (
 				FF54EFEA19149A1800025DC8 /* Gocci-Info.plist */,
 				FF54EFEB19149A1800025DC8 /* InfoPlist.strings */,
-				952D25141A9B9F1500C354DF /* NullSafe.m */,
 				952D25161A9B9F4700C354DF /* NullSafe.m */,
 				FF54EFEE19149A1800025DC8 /* main.m */,
 				FF54EFF019149A1800025DC8 /* Gocci-Prefix.pch */,
@@ -1319,6 +1354,7 @@
 				952D250D1A9B9EC800C354DF /* test_topbar.png in Resources */,
 				952D248B1A9B9D3300C354DF /* TutorialPage1.xib in Resources */,
 				952D236D1A9B95E800C354DF /* dsym_upload.sh in Resources */,
+				AB645CD91AA6982100827B7A /* RecorderSubmitPopupView.xib in Resources */,
 				952D250F1A9B9EC800C354DF /* 3_5_inch.storyboard in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
 				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
@@ -1379,7 +1415,6 @@
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
-				952D24AE1A9B9D3300C354DF /* submitViewController.m in Sources */,
 				952D23701A9B95E800C354DF /* CXCardView.m in Sources */,
 				952D24831A9B9D3300C354DF /* Sample4TableViewCell.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
@@ -1388,6 +1423,7 @@
 				952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
+				AB645CD71AA697FB00827B7A /* RecorderSubmitPopupView.m in Sources */,
 				952D23901A9B95E800C354DF /* UIView+WebCacheOperation.m in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,
 				952D24871A9B9D3300C354DF /* LoginViewController.m in Sources */,
@@ -1399,6 +1435,7 @@
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
+				AB645CE01AA6991900827B7A /* BFPaperCheckbox.m in Sources */,
 				952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */,
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
 				952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */,
@@ -1447,6 +1484,7 @@
 				952D23671A9B95E800C354DF /* AFNetworkReachabilityManager.m in Sources */,
 				952D23851A9B95E800C354DF /* SDWebImageDecoder.m in Sources */,
 				952D24851A9B9D3300C354DF /* LifelogSubTableViewController.m in Sources */,
+				AB645CEB1AA69DCA00827B7A /* UIColor+BFPaperColors.m in Sources */,
 				952D23821A9B95E800C354DF /* NSData+ImageContentType.m in Sources */,
 				952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */,
 				952D23881A9B95E800C354DF /* SDWebImageManager.m in Sources */,
