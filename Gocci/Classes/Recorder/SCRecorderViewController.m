@@ -696,7 +696,7 @@
     // サーバへデータを送信
     __weak typeof(self)weakSelf = self;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+    /*
     // post_restname
     [APIClient postRestname:appDelegate.gText
                     handler:^(id result, NSUInteger code, NSError *error)
@@ -710,10 +710,10 @@
              [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
              return;
          }
+     */
          
          // movie
-         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl
-                                 handler:^(id result, NSUInteger code, NSError *error)
+         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText                               handler:^(id result, NSUInteger code, NSError *error)
           {
               LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
               
@@ -723,7 +723,6 @@
               // 画面を閉じる
               [weakSelf dismissViewControllerAnimated:YES completion:nil];
           }];
-     }];
 }
 
 

@@ -249,10 +249,12 @@ static APIClient *_sharedInstance = nil;
     });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName handler:(void (^)(id, NSUInteger, NSError *))handler{
+    NSDictionary *params = @{
+                             @"restname" : restaurantName,
+                             };
     [[APIClient sharedClient].manager POST:@"movie/"
-                                parameters:nil
+                                parameters:params
                  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                      NSError *error = nil;
                      [formData appendPartWithFileURL:fileURL
