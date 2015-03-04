@@ -17,6 +17,7 @@
 #import "SCRecordSessionManager.h"
 #import "RestaurantTableViewController.h"
 #import "GaugeView.h"
+#import "RecorderSubmitPopupView.h"
 #import "APIClient.h"
 #import "SVProgressHUD.h"
 
@@ -30,7 +31,9 @@
 // PRIVATE DEFINITION
 /////////////////////
 
-@interface SCRecorderViewController () {
+@interface SCRecorderViewController ()
+<RecorderSubmitPopupViewDelegate>
+{
     SCRecorder *_recorder;
     UIImage *_photo;
     UIImageView *_ghostImageView;
@@ -47,6 +50,7 @@
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
 @property (nonatomic, strong) SCRecordSession *recordSession;
+@property (nonatomic, strong) RecorderSubmitPopupView *submitView;
 
 @end
 
@@ -600,6 +604,129 @@
 #endif
 }
 
+
+#pragma mark - RecorderSubmitPopupViewDelegate
+
+- (void)recorderSubmitPopupViewOnTwitterShare:(RecorderSubmitPopupView *)view
+{
+    LOG_METHOD;
+    
+    // Twitter へ投稿
+    SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    
+    // TODO: この URL は有効？
+    //       動画を API に投稿してからじゃないとアクセスできない？
+    AppDelegate *appDelegete2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString *urlString = [NSString stringWithFormat:@"%@movies/%@", API_BASE_URL, appDelegete2.postFileName];
+    
+    [controller setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
+    [controller addURL:[NSURL URLWithString:urlString]];
+    controller.completionHandler = ^(SLComposeViewControllerResult res) {
+        LOG(@"res=%@", @(res));
+        
+        if (res == SLComposeViewControllerResultDone) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    };
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)recorderSubmitPopupViewOnFacebookShare:(RecorderSubmitPopupView *)view
+{
+    LOG_METHOD;
+    
+    [SVProgressHUD showWithStatus:@"紹介中" maskType:SVProgressHUDMaskTypeAnimation];
+    
+    // Facebook へ投稿
+    // プライバシー (公開範囲) の設定
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:@{
+                                                             @"value":@"CUSTOM",
+                                                             @"friends":@"ALL_FRIENDS"
+                                                             }
+                                                   options:2
+                                                     error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSData *movieData = [[NSData alloc] initWithContentsOfURL:self.recordSession.outputUrl];
+    
+    // パラメータの設定
+    NSMutableDictionary *params = @{
+                                    @"message": @"Gocciからの投稿",
+                                    @"privacy": jsonString,
+                                    @"movie.mp4": movieData,
+                                    @"title": delegate.gText,
+                                    }.mutableCopy;
+    
+    // リクエストの生成
+    FBRequest *request = [FBRequest requestWithGraphPath:@"me/videos"
+                                              parameters:params
+                                              HTTPMethod:@"POST"];
+    
+    //コネクションをセットしてすぐキャンセル→NSMutableURLRequestを生成するため???
+    //ここはStack Overflowの受け売り
+    FBRequestConnection *requestConnection = [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    }];
+    [requestConnection cancel];
+    
+    // 送信
+    NSMutableURLRequest *urlRequest = requestConnection.urlRequest;
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        LOG(@"success / responseObject=%@", responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        LOG(@"failure / error=%@", error);
+        [SVProgressHUD dismiss];
+    }];
+    [[NSOperationQueue mainQueue] addOperation:operation];
+}
+
+- (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
+{
+    NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
+    
+    [SVProgressHUD showWithStatus:@"保存中" maskType:SVProgressHUDMaskTypeAnimation];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    // サーバへデータを送信
+    __weak typeof(self)weakSelf = self;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // post_restname
+    [APIClient postRestname:appDelegate.gText
+                    handler:^(id result, NSUInteger code, NSError *error)
+     {
+         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+              
+         if (error) {
+             [SVProgressHUD dismiss];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             
+             [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
+             return;
+         }
+         
+         // movie
+         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl
+                                 handler:^(id result, NSUInteger code, NSError *error)
+          {
+              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+              
+              [SVProgressHUD dismiss];
+              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+              
+              // 画面を閉じる
+              [weakSelf dismissViewControllerAnimated:YES completion:nil];
+          }];
+     }];
+}
+
+
 #pragma mark - Private Methods
 
 #pragma mark Complete
@@ -609,13 +736,27 @@
  */
 - (void)_complete
 {
-    NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
     [SVProgressHUD showWithStatus:@"保存中" maskType:SVProgressHUDMaskTypeAnimation];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    [self.recordSession mergeRecordSegments:^(NSError *error)
-    {
+    
+    // 投稿画面を設定
+    self.submitView = [RecorderSubmitPopupView view];
+    self.submitView.delegate = self;
+    self.submitView.cancelCallback = ^{
+        // 投稿画面を閉じる
+        [weakSelf.submitView dismiss];
+        
+        // 動画撮影画面を閉じる
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    // 動画を書き出し・保存
+    [self.recordSession mergeRecordSegments:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
         if (error) {
-            [SVProgressHUD dismiss];
             [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
             return;
         }
@@ -623,30 +764,11 @@
         // 動画をカメラロールに保存
         [weakSelf.recordSession saveToCameraRoll];
         
-        // サーバへ送信
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [APIClient postRestname:appDelegate.gText
-                        handler:^(id result, NSUInteger code, NSError *error)
-        {
-            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-            
-            if (error) {
-                [SVProgressHUD dismiss];
-                [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
-                return;
-            }
-            
-            [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl
-                                    handler:^(id result, NSUInteger code, NSError *error)
-            {
-                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-                
-                [SVProgressHUD dismiss];
-                
-                // 画面を閉じる
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-            }];
-        }];
+         // カメラを停止
+         [_recorder endRunningSession];
+        
+        // 投稿画面を表示
+        [weakSelf.submitView showInView:weakSelf.view];
     }];
 }
 
@@ -664,6 +786,7 @@
                                           otherButtonTitles:nil];
     [alert show];
 }
+
 
 #pragma mark - バックボタン
 - (IBAction)onBackbutton:(id)sender {
