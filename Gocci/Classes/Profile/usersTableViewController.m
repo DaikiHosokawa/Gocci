@@ -126,10 +126,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
     }
-    if ([self.posts count]== 0) {
-        NSLog(@"投稿がない");
-        _emptyView.hidden = NO;
-    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -448,6 +444,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
+        if ([self.posts count]== 0) {
+            NSLog(@"投稿がない");
+            _emptyView.hidden = NO;
+        }
         
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];

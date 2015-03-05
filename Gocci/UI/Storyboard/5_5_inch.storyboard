@@ -131,6 +131,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FL-al-ONx" id="0Um-8x-zzT">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -460,6 +461,17 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                         </mapView>
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="mpl-wd-nwp">
+                            <rect key="frame" x="0.0" y="333" width="414" height="330"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="1js-hi-6QQ">
+                                    <rect key="frame" x="67" y="33" width="280" height="280"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
                                 <rect key="frame" x="0.0" y="286" width="320" height="47"/>
@@ -482,6 +494,7 @@
                     <navigationItem key="navigationItem" title="近くの店" id="HX7-Ga-t3w"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="emptyView" destination="mpl-wd-nwp" id="IOR-tX-Y3Y"/>
                         <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
                     </connections>
                 </tableViewController>
@@ -629,6 +642,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="bGk-8i-wMe">
+                            <rect key="frame" x="0.0" y="130" width="414" height="650"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="meL-I5-B7K">
+                                    <rect key="frame" x="57" y="137" width="300" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kNc-kB-iRx">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -646,6 +670,7 @@
                     <navigationItem key="navigationItem" id="k20-K6-bhZ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="emptyView" destination="bGk-8i-wMe" id="Aij-og-VaX"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goSCRecorder" id="kep-ZV-SWG"/>
                     </connections>
                 </tableViewController>
@@ -909,9 +934,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oAW-Uz-WM7"/>
-        <segue reference="JYh-MP-8XI"/>
-        <segue reference="wry-3B-S2G"/>
+        <segue reference="kep-ZV-SWG"/>
+        <segue reference="upz-Ke-AzS"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="G4x-eD-yOI"/>
     </inferredMetricsTieBreakers>
 </document>

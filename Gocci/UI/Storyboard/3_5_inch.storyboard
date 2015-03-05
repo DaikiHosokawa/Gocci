@@ -441,10 +441,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" id="IIx-2O-jGK">
-                            <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="173"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                         </mapView>
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="3SC-2L-boc">
+                            <rect key="frame" x="0.0" y="306" width="320" height="140"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="tqf-oS-mda">
+                                    <rect key="frame" x="95" y="8" width="130" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
                                 <rect key="frame" x="0.0" y="286" width="320" height="47"/>
@@ -453,6 +464,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="46"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="upz-Ke-AzS"/>
                                 </connections>
@@ -467,6 +479,7 @@
                     <navigationItem key="navigationItem" title="近くの店" id="HX7-Ga-t3w"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="emptyView" destination="3SC-2L-boc" id="JPG-Mu-hmg"/>
                         <outlet property="searchDisplayController" destination="snb-IM-elg" id="CMz-he-2Ep"/>
                     </connections>
                 </tableViewController>
@@ -632,6 +645,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="EvX-CG-2bG">
+                            <rect key="frame" x="0.0" y="130" width="320" height="370"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="ICE-NH-Ypi">
+                                    <rect key="frame" x="30" y="18" width="260" height="260"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buU-Ca-aI8">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -649,6 +673,7 @@
                     <navigationItem key="navigationItem" title="投稿" id="tRO-Pb-OZ2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="emptyView" destination="EvX-CG-2bG" id="qCZ-1l-qvv"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goSCRecorder" id="MOj-yp-PwV"/>
                     </connections>
                 </tableViewController>
@@ -911,8 +936,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="uWM-e4-y5S"/>
-        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="upz-Ke-AzS"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="F6h-Ya-bAd"/>
+        <segue reference="MOj-yp-PwV"/>
     </inferredMetricsTieBreakers>
 </document>

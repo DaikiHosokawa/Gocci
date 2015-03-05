@@ -386,6 +386,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
          }
          
          [weakSelf _reloadRestaurants:result];
+         if ([self.restaurants count]== 0) {
+             NSLog(@"投稿がない");
+             _emptyView.hidden = NO;
+         }
      }];
 }
 

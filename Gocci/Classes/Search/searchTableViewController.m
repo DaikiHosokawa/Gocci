@@ -486,6 +486,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          }
          
          [weakSelf _reloadRestaurants:result];
+         if ([self.restaurants count]== 0) {
+             NSLog(@"投稿がない");
+             _emptyView.hidden = NO;
+         }
      }];
 }
 
@@ -539,13 +543,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
             [_dontexist removeFromSuperview];
             _dontexist = nil;
         }
-        
+        /*
         _dontexist = [[UILabel alloc] init];
         _dontexist.frame = CGRectMake(30, 250, 250, 330);
         [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
         _dontexist.numberOfLines = 3;
         _dontexist.textAlignment = NSTextAlignmentLeft;
-        
+        */
         [self.view addSubview:_dontexist];
     } else {
         [_dontexist removeFromSuperview];
