@@ -29,5 +29,6 @@
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @end

@@ -144,6 +144,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
    
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
+    
 }
 
 //// !!!:dezamisystem
@@ -160,6 +161,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([self isFirstRun]) {
         [self showDefaultContentView];
     }
+    if ([self.posts count]== 0) {
+        NSLog(@"投稿がない");
+        _emptyView.hidden = NO;
+    }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated

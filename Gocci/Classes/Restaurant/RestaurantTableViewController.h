@@ -53,5 +53,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tell;
 @property (weak, nonatomic) IBOutlet UILabel *homepage;
 
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
+
 
 @end
