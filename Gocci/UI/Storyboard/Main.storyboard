@@ -139,11 +139,11 @@
                             <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="w7r-0F-Es3">
-                            <rect key="frame" x="0.0" y="350" width="320" height="240"/>
+                            <rect key="frame" x="0.0" y="350" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="hd9-aG-nHX">
-                                    <rect key="frame" x="60" y="8" width="200" height="200"/>
+                                    <rect key="frame" x="60" y="8" width="200" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                             </subviews>
@@ -461,11 +461,11 @@
                             <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                         </mapView>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="dxe-Nn-Dce">
-                            <rect key="frame" x="0.0" y="333" width="320" height="220"/>
+                            <rect key="frame" x="0.0" y="333" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="zh1-ni-LJJ">
-                                    <rect key="frame" x="60" y="8" width="200" height="200"/>
+                                    <rect key="frame" x="60" y="8" width="200" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                             </subviews>
@@ -581,11 +581,11 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="0UJ-H5-wFe">
-                            <rect key="frame" x="0.0" y="295" width="320" height="251"/>
+                            <rect key="frame" x="0.0" y="295" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="f1A-4Q-kXg">
-                                    <rect key="frame" x="50" y="8" width="220" height="220"/>
+                                    <rect key="frame" x="50" y="8" width="220" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                             </subviews>
@@ -661,11 +661,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="q3D-ar-R00">
-                            <rect key="frame" x="0.0" y="130" width="320" height="440"/>
+                            <rect key="frame" x="0.0" y="130" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="DuG-6R-N1k">
-                                    <rect key="frame" x="35" y="95" width="250" height="250"/>
+                                    <rect key="frame" x="35" y="95" width="250" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                             </subviews>
@@ -952,9 +952,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cpH-lv-fYL"/>
+        <segue reference="LdY-JN-EqV"/>
+        <segue reference="Rhk-9Y-XzF"/>
+        <segue reference="mxO-EZ-B49"/>
         <segue reference="5vL-6n-Sjz"/>
-        <segue reference="pwx-NL-GhF"/>
-        <segue reference="pPi-jq-5EO"/>
     </inferredMetricsTieBreakers>
 </document>
