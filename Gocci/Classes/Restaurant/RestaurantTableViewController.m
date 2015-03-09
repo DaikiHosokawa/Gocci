@@ -530,6 +530,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
         
+        
         // 表示の更新
         [weakSelf.tableView reloadData];
         if ([self.posts count]== 0) {

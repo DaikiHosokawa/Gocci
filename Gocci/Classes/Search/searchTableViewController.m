@@ -485,6 +485,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
              return;
          }
          
+         
          [weakSelf _reloadRestaurants:result];
          if ([self.restaurants count]== 0) {
              NSLog(@"投稿がない");
