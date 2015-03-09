@@ -465,6 +465,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+        restVC.postLocality = _postLocality;
+        restVC.postHomepage = _postHomepage;
+        restVC.postTell = _postTell;
     }
     
 }
