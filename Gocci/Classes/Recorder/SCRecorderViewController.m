@@ -690,7 +690,7 @@
 {
     NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
     
-    [SVProgressHUD showWithStatus:@"保存中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD showWithStatus:@"送信中" maskType:SVProgressHUDMaskTypeAnimation];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     // サーバへデータを送信
