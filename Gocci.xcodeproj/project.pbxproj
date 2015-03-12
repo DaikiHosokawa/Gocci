@@ -163,6 +163,7 @@
 		952D25121A9B9EC800C354DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952D24EB1A9B9EC800C354DF /* Main.storyboard */; };
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
+		AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2DDA371AB194A100A47450 /* LocationClient.m */; };
 		AB645CD71AA697FB00827B7A /* RecorderSubmitPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645CD61AA697FB00827B7A /* RecorderSubmitPopupView.m */; };
 		AB645CD91AA6982100827B7A /* RecorderSubmitPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB645CD81AA6982100827B7A /* RecorderSubmitPopupView.xib */; };
 		AB645CE01AA6991900827B7A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645CDD1AA6991900827B7A /* BFPaperCheckbox.m */; };
@@ -467,6 +468,8 @@
 		952D24ED1A9B9EC800C354DF /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
 		952D25161A9B9F4700C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		AB2DDA361AB194A100A47450 /* LocationClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationClient.h; sourceTree = "<group>"; };
+		AB2DDA371AB194A100A47450 /* LocationClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationClient.m; sourceTree = "<group>"; };
 		AB645CD51AA697FB00827B7A /* RecorderSubmitPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupView.h; sourceTree = "<group>"; };
 		AB645CD61AA697FB00827B7A /* RecorderSubmitPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupView.m; sourceTree = "<group>"; };
 		AB645CD81AA6982100827B7A /* RecorderSubmitPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupView.xib; sourceTree = "<group>"; };
@@ -1029,6 +1032,8 @@
 				952D24BC1A9B9DE100C354DF /* APIClient.m */,
 				952D24BD1A9B9DE100C354DF /* MoviePlayerManager.h */,
 				952D24BE1A9B9DE100C354DF /* MoviePlayerManager.m */,
+				AB2DDA361AB194A100A47450 /* LocationClient.h */,
+				AB2DDA371AB194A100A47450 /* LocationClient.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1495,6 +1500,7 @@
 				952D24A71A9B9D3300C354DF /* SCRecorder.m in Sources */,
 				952D23981A9B95E800C354DF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				952D24991A9B9D3300C354DF /* RestaurantTableViewController.m in Sources */,
+				AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */,
 				952D24861A9B9D3300C354DF /* LifelogViewController.m in Sources */,
 				952D237E1A9B95E800C354DF /* MYBlurIntroductionView.m in Sources */,
 				952D23771A9B95E800C354DF /* JTCalendarDayView.m in Sources */,

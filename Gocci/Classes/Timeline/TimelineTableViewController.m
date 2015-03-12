@@ -17,6 +17,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "LocationClient.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -123,6 +124,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	// !!!:dezamisystem
 //    [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
+    
+    // TODO: 位置情報を取得
+    CLLocation *location = [LocationClient sharedClient].cachedLocation;
+    LOG(@"location=%@", location);
+    if (!location) {
+        [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error) {
+            CLLocation *loc = [LocationClient sharedClient].cachedLocation;
+            LOG(@"loc=%@", loc);
+        }];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated

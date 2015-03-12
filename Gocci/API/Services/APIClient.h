@@ -80,17 +80,19 @@
                  handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  dist/ 2
+ *  dist/
  *
  *  @param latitude
  *  @param longitude
  *  @param limit
  *  @param handler
+ *  @param cacheHandler キャッシュされた結果を取得
  */
-+ (void)distWithLatitude2:(CGFloat)latitude
-               longitude2:(CGFloat)longitude
-                   limit2:(NSUInteger)limit
-                 handler2:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)distWithLatitude:(CGFloat)latitude
+               longitude:(CGFloat)longitude
+                   limit:(NSUInteger)limit
+                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+                useCache:(void (^)(id cachedResult))cacheHandler;
 
 /**
  *  post_restname/

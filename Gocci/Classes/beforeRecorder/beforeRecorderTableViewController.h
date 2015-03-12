@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import "CXCardView.h"
 #import "DemoContentView.h"
 
-@interface beforeRecorderTableViewController : UITableViewController <CLLocationManagerDelegate>
-{
-    // ロケーションマネージャー
-    CLLocationManager* locationManager;
-}
-@property (weak, nonatomic) IBOutlet UIView *emptyView;
+@interface beforeRecorderTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end
