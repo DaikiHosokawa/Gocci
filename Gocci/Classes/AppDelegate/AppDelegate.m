@@ -156,7 +156,25 @@
 
 }
 
-
+-(void)checkGPS{
+        // CLLocationManagerのインスタンスを作成
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲートを設定
+        locationManager.delegate = self;
+        // 更新頻度(メートル)
+        locationManager.distanceFilter = 100;
+        // 取得精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // iOS8の対応
+        if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
+                // 位置情報測位の許可を求めるメッセージを表示する
+                [locationManager requestAlwaysAuthorization]; // 常に許可
+        
+           } else { // iOS7以前
+                    // 測位開始
+                    [locationManager startUpdatingLocation];
+                }
+}
 
 // 異常終了を検知した場合に呼び出されるメソッド
 void exceptionHandler(NSException *exception) {
@@ -173,14 +191,70 @@ void exceptionHandler(NSException *exception) {
     [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
 
+//位置情報更新処理
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+        CLLocation *location = [locations lastObject];
+        NSLog(@"アップデート呼び出し");
+        [self showLocation:location];
+}
+
+//緯度経度を変数に格納
+- (void)showLocation:(CLLocation *)location
+{
+       /*
+              AppDelegate* appDelegateGeo = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+          	appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+              appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+              CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+              appDelegateGeo.coordinate = &(coordinate);
+              NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
+              NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
+              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                  NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
+                  NSLog(@"urlStringatnoulon:%@",urlString);
+                  NSURL *urlGeo = [NSURL URLWithString:urlString];
+                  NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
+                  NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+                  appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+              });
+                  //});
+             [locationManager stopUpdatingLocation];
+               */
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{//iOS8対応
+        if (status == kCLAuthorizationStatusAuthorizedAlways ||
+                    status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+                // 位置測位スタート
+                [locationManager startUpdatingLocation];
+        
+                if (status == kCLAuthorizationStatusNotDetermined) {
+                        // ユーザが位置情報の使用を許可していない
+                        [locationManager requestAlwaysAuthorization]; // 常に許可
+                    }
+           }
+}
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     NSLog(@"applicationWillResignActive");
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+              [locationManager stopUpdatingLocation]; //測位停止
 }
 
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"applicationDidBecomeActive");
+    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
+            [locationManager startUpdatingLocation]; //測位再開
     // Facebook
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 
