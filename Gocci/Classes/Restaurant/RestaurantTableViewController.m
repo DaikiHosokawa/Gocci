@@ -43,6 +43,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, strong) UIRefreshControl *refresh;
 @property (weak, nonatomic) IBOutlet UIButton *telButton;
 @property (weak, nonatomic) IBOutlet UIButton *homepageButton;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -60,6 +61,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postHomepage = _postHomepage;
 @synthesize postLon = _postLon;
 @synthesize postLat = _postLat;
+@synthesize postCategory = _postCategory;
 @synthesize lon;
 @synthesize lat;
 
@@ -94,6 +96,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         self.navigationItem.backBarButtonItem = barButton;
         
     }
+    
+    NSLog(@"postCategory:%@",_postCategory);
     
     //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
     //背景にイメージを追加したい
@@ -135,6 +139,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.locality.text = _postLocality;
     self.tell.text = _postTell;
     self.homepage.text = _postHomepage;
+    self.categoryLabel.text = _postCategory;
     
     NSLog(@"This Restaurant is %@",_postRestName);
     NSLog(@"This Locality is %@",_postLocality);
@@ -589,7 +594,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+270,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+300,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     

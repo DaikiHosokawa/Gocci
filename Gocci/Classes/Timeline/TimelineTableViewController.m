@@ -369,6 +369,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postHomepage = _postHomepage;
         restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
+        restVC.postCategory = _postCategory;
     }
 }
 
@@ -458,7 +459,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -466,6 +467,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postHomepage = homepage;
     _postLocality = locality;
     _postTell = tel;
+    _postCategory = category;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);

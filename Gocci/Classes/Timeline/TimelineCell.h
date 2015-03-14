@@ -35,7 +35,7 @@ extern NSString * const TimelineCellIdentifier;
  *  @param cell
  *  @param restaurantName 店舗名
  */
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage;
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category;
 
 /**
  *  Like ボタンをタップ
