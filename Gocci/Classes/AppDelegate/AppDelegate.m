@@ -97,6 +97,7 @@
     
     [locationManager startUpdatingLocation];
 
+    _screenType = 1;
     
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
@@ -104,6 +105,7 @@
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
         NSLog(@"3.5inch");
+        _screenType = 2;
         self.window.rootViewController = rootViewController;
 	}
     
@@ -113,7 +115,7 @@
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
 		NSLog(@"4.7inch");
-
+        _screenType = 3;
 		self.window.rootViewController = rootViewController;
     }
     
@@ -123,7 +125,7 @@
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
         UIViewController* rootViewController = [storyboard instantiateInitialViewController];
 		NSLog(@"5.5inch");
-		
+		_screenType = 4;
 		self.window.rootViewController = rootViewController;
     }
 

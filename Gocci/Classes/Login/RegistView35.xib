@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="RegistView35" id="xkg-Pz-ZXa" customClass="RegistView">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="427"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-Ws-9fb">
+                    <rect key="frame" x="6" y="5" width="25" height="25"/>
+                    <state key="normal" image="Cancel.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClose_clicked:" destination="xkg-Pz-ZXa" eventType="touchUpInside" id="2XD-Nm-tbJ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アカウントを作成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-TQ-jaT">
+                    <rect key="frame" x="29" y="14" width="243" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SNSでアカウント作成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQy-xV-udD">
+                    <rect key="frame" x="55" y="94" width="192" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="メールアドレスでアカウント作成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bs-11-2XD">
+                    <rect key="frame" x="34" y="233" width="233" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsI-bn-dOA">
+                    <rect key="frame" x="13" y="34" width="275" height="50"/>
+                    <string key="text">"Gocciは楽しい動画アプリですので
+登録するといいですよ"</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w93-om-dLN">
+                    <rect key="frame" x="18" y="129" width="265" height="38"/>
+                    <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="twitterでアカウント作成">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnTwitter_clicked:" destination="xkg-Pz-ZXa" eventType="touchUpInside" id="MAS-Yt-rl8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-0s-DZG">
+                    <rect key="frame" x="18" y="175" width="265" height="38"/>
+                    <color key="backgroundColor" red="0.23529411759999999" green="0.34901960780000002" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="facebookでアカウント作成">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnFacebook_clicked:" destination="xkg-Pz-ZXa" eventType="touchUpInside" id="nvR-l5-Ruh"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="ユーザーID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNc-KS-U65">
+                    <rect key="frame" x="18" y="255" width="265" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFB-cB-Nol">
+                    <rect key="frame" x="18" y="333" width="265" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="メールアドレス" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3jq-R2-l0T">
+                    <rect key="frame" x="18" y="294" width="265" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djm-ck-uBx">
+                    <rect key="frame" x="18" y="382" width="265" height="34"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.3294117647" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="アカウントを作成する">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnRegistLocal_clicked:" destination="xkg-Pz-ZXa" eventType="touchUpInside" id="sEb-q2-aj2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnFacebook" destination="Y3R-0s-DZG" id="HK0-p0-pcf"/>
+                <outlet property="btnRegist" destination="djm-ck-uBx" id="PPd-C0-sn4"/>
+                <outlet property="btnTwitter" destination="w93-om-dLN" id="XjG-mg-ilA"/>
+                <outlet property="tfEmail" destination="3jq-R2-l0T" id="7g0-Ip-doE"/>
+                <outlet property="tfPwd" destination="JFB-cB-Nol" id="dBt-Ad-jEP"/>
+                <outlet property="tfUsername" destination="gNc-KS-U65" id="mzg-9y-wkx"/>
+            </connections>
+            <point key="canvasLocation" x="199" y="139.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Cancel.png" width="25" height="25"/>
+    </resources>
+</document>

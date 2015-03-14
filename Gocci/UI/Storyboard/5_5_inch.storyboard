@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -277,7 +277,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ikD-dU-nxV">
                                 <rect key="frame" x="42" y="552" width="331" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="facebook kirinuki">
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.3294117647" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="アカウントを作成する">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -287,21 +289,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dvW-ja-Vzv">
                                 <rect key="frame" x="42" y="634" width="331" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="twitter kirinuki">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="サインイン">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="twitterButtonTapped:" destination="s2J-hg-79Q" eventType="touchUpInside" id="w7U-Rv-Eus"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="レストランをより直感的に" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYd-iH-5Ft">
-                                <rect key="frame" x="67" y="458" width="281" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食体験をシャアしよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYd-iH-5Ft">
+                                <rect key="frame" x="67" y="458" width="281" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                 <color key="textColor" red="0.27878970990000002" green="0.27878970990000002" blue="0.27878970990000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7秒のグルメ動画アプリ「Gocci」" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbd-Nc-iZG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルメ動画アプリ「Gocci」" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbd-Nc-iZG">
                                 <rect key="frame" x="93" y="499" width="228" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -325,6 +329,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="btnLogin" destination="dvW-ja-Vzv" id="kRN-gQ-u4A"/>
+                        <outlet property="btnRegist" destination="ikD-dU-nxV" id="rRd-VG-rk8"/>
                         <segue destination="7Lq-Ov-gzf" kind="custom" identifier="ShowTabBarController" id="Oev-yS-u4x"/>
                     </connections>
                 </viewController>
@@ -916,7 +922,6 @@
         <image name="btn_toukou.png" width="100" height="100"/>
         <image name="character_7" width="512" height="512"/>
         <image name="default" width="710" height="676"/>
-        <image name="facebook kirinuki" width="1155" height="232"/>
         <image name="fb_share" width="400" height="50"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
@@ -934,7 +939,6 @@
         <image name="topbar" width="320" height="125"/>
         <image name="toukou" width="512" height="512"/>
         <image name="tw_share" width="400" height="50"/>
-        <image name="twitter kirinuki" width="1153" height="229"/>
         <image name="ui_black.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
