@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *locality;
 @property (nonatomic, copy) NSString *restname;
 @property (nonatomic, copy) NSString *tel;
+@property (nonatomic, copy) NSString *homepage;
 
 + (instancetype)restaurantWithDictionary:(NSDictionary *)dictionary;
 

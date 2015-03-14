@@ -41,6 +41,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
+@property (weak, nonatomic) IBOutlet UIButton *telButton;
+@property (weak, nonatomic) IBOutlet UIButton *homepageButton;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -53,9 +56,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSString *_text, *_hashTag;
 }
 @synthesize postRestName = _postRestName;
-@synthesize headerLocality = _headerLocality;
+@synthesize postLocality = _postLocality;
+@synthesize postTell = _postTell;
+@synthesize postHomepage = _postHomepage;
 @synthesize postLon = _postLon;
 @synthesize postLat = _postLat;
+@synthesize postCategory = _postCategory;
 @synthesize lon;
 @synthesize lat;
 
@@ -91,14 +97,21 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
+    NSLog(@"postCategory:%@",_postCategory);
+    
     //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
+    [self.telButton setTitle:_postTell forState:UIControlStateNormal];
+    if (_postHomepage == nil) {
+        self.homepageButton.hidden = YES;
+    }
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
     
@@ -123,8 +136,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 	
     self.restname.text = _postRestName;
-    self.locality.text = _headerLocality;
+    self.locality.text = _postLocality;
+    self.tell.text = _postTell;
+    self.homepage.text = _postHomepage;
+    self.categoryLabel.text = _postCategory;
+    
     NSLog(@"This Restaurant is %@",_postRestName);
+    NSLog(@"This Locality is %@",_postLocality);
+    NSLog(@"This Tell is %@",_postTell);
+    NSLog(@"This Homepage is %@",_postHomepage);
    // lon = restaurantPost.lon;
    // lat = restaurantPost.lat;
     NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
@@ -136,6 +156,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
    
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
+    
 }
 
 //// !!!:dezamisystem
@@ -152,6 +173,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([self isFirstRun]) {
         [self showDefaultContentView];
     }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -450,6 +472,26 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //}
 //
 
+
+- (IBAction)tapTEL {
+    
+    NSString *number = @"tel:";
+    NSString *telstring = [NSString stringWithFormat:@"%@%@",number,_postTell];
+    NSLog(@"telstring:%@",telstring);
+    NSURL *url = [[NSURL alloc] initWithString:telstring];
+    [[UIApplication sharedApplication] openURL:url];
+    
+}
+
+- (IBAction)tapHomepatge {
+
+    NSString *urlString = _postHomepage;
+    NSLog(@"tapHomepage:%@",_postHomepage);
+    NSURL *url = [NSURL URLWithString:urlString];
+    // ブラウザを起動する
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 #pragma mark コメントボタン押下時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
 {
@@ -520,8 +562,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
         
+        
         // 表示の更新
         [weakSelf.tableView reloadData];
+        if ([self.posts count]== 0) {
+            NSLog(@"投稿がない");
+            _emptyView.hidden = NO;
+        }
         
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];
@@ -547,7 +594,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+153,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+300,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     

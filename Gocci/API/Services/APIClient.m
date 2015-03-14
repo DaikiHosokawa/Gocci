@@ -226,6 +226,50 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)postRestname:(NSString *)restaurantName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
+    {
+        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@post_restname/", API_BASE_URL]];
+        NSString *content = [NSString stringWithFormat:@"restname=%@", restaurantName];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]]; NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^
+        {
+            handler([[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding],
+                    [(NSHTTPURLResponse *)response statusCode],
+                    error);
+        });
+    });
+}
+
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName handler:(void (^)(id, NSUInteger, NSError *))handler{
+    NSDictionary *params = @{
+                             @"restname" : restaurantName,
+                             };
+    [[APIClient sharedClient].manager POST:@"movie/"
+                                parameters:params
+                 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                     NSError *error = nil;
+                     [formData appendPartWithFileURL:fileURL
+                                                name:@"movie"
+                                            fileName:[fileURL lastPathComponent]
+                                            mimeType:@"video/mp4"
+                                               error:&error];
+                     if (error) LOG(@"error=%@", error);
+                 } success:^(NSURLSessionDataTask *task, id responseObject) {
+                     handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                     handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                 }];
+}
+
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
 {
     NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory

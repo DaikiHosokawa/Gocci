@@ -27,7 +27,7 @@ extern NSString * const TimelineCellIdentifier;
  */
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture;
 
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture;
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName;
 
 /**
  *  店舗をタップ
@@ -35,7 +35,7 @@ extern NSString * const TimelineCellIdentifier;
  *  @param cell
  *  @param restaurantName 店舗名
  */
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName;
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category;
 
 /**
  *  Like ボタンをタップ

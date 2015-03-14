@@ -16,6 +16,7 @@
     // ロケーションマネージャー
     CLLocationManager* locationManager;
 }
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 
 @end

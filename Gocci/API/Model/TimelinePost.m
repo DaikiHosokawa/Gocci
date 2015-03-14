@@ -23,7 +23,11 @@
     obj.userID = dictionary[@"user_id"];
     obj.userName = dictionary[@"user_name"];
     obj.timelabel = dictionary[@"date_time"];
-
+    obj.locality = dictionary[@"locality"];
+    obj.restname = dictionary[@"restname"];
+    obj.tel = dictionary[@"tell"];
+    obj.homepage = dictionary[@"homepage"];
+    obj.category = dictionary[@"category"];
     
     return obj;
 }

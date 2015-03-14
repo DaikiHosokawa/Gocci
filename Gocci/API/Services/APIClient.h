@@ -93,6 +93,22 @@
                  handler2:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  post_restname/
+ *
+ *  @param restaurantName
+ *  @param handler
+ */
++ (void)postRestname:(NSString *)restaurantName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  movie/
+ *
+ *  @param fileURL
+ *  @param handler 
+ */
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString*)restaurantName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
  *  ファイルのダウンロード
  *  既にダウンロード済みのファイルを指定した場合は再度ダウンロードせず、そのファイルのローカルパスを返す
  *  ファイルはキャッシュディレクトリに保存される

@@ -366,6 +366,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+        restVC.postHomepage = _postHomepage;
+        restVC.postTell = _postTell;
+        restVC.postLocality = _postLocality;
+        restVC.postCategory = _postCategory;
     }
 }
 
@@ -436,24 +440,38 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName
 {
     //user nameタップの時の処理 2
     LOG(@"userspicture=%@", userPicture);
     _postPicture = userPicture;
+    _postUsername = userName;
+    
+    LOG(@"postUsername:%@",_postUsername);
+    
+    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    // !!!:dezamisystem
+    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+    
+    LOG(@"Username is touched");
     LOG(@"postUsername:%@",_postPicture);
     //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
+    NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    LOG(@"restname=%@", restaurantName);
     _postRestname = restaurantName;
-    LOG(@"postRestname:%@",_postRestname);
-    LOG(@"Restname is touched");
-
+    _postHomepage = homepage;
+    _postLocality = locality;
+    _postTell = tel;
+    _postCategory = category;
+    NSLog(@"restname=%@", restaurantName);
+    NSLog(@"locality=%@", locality);
+    NSLog(@"tel=%@", tel);
+    NSLog(@"homepage=%@", homepage);
 	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 

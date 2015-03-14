@@ -257,14 +257,19 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //}
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
+    NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    LOG(@"restname=%@", restaurantName);
     _postRestname = restaurantName;
-    LOG(@"postRestname:%@",_postRestname);
-    LOG(@"Restname is touched");
-    
+    _postHomepage = homepage;
+    _postLocality = locality;
+    _postTell = tel;
+    _postCategory = category;
+    NSLog(@"restname=%@", restaurantName);
+    NSLog(@"locality=%@", locality);
+    NSLog(@"tel=%@", tel);
+    NSLog(@"homepage=%@", homepage);
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -461,6 +466,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+        restVC.postLocality = _postLocality;
+        restVC.postHomepage = _postHomepage;
+        restVC.postTell = _postTell;
+        restVC.postCategory = _postCategory;
     }
     
 }

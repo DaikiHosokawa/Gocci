@@ -18,6 +18,7 @@
     obj.locality = dictionary[@"locality"];
     obj.restname = dictionary[@"restname"];
     obj.tel = dictionary[@"tell"];
+    obj.homepage = dictionary[@"homepage"];
     
     return obj;
 }
