@@ -342,13 +342,13 @@
             NSLog(@"register user: %@", result);
             if ([result[@"code"] integerValue] == 200) {
                 //success
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功しました。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功です。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveCancel object:self];
                 [self removeFromSuperview];
             } else {
                 //fail
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"失敗しました。再度アカウント作成をお願いします。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"失敗です。再度アカウント作成をお願いします。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
             }
         }
