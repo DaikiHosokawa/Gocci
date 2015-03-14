@@ -42,6 +42,8 @@
 @property(nonatomic, nonatomic) NSArray *jsonArray;
 @property(nonatomic) CLLocationCoordinate2D *coordinate;
 @property(nonatomic) NSString *lifelogDate;
+@property (nonatomic, assign) NSInteger screenType;
+
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;
