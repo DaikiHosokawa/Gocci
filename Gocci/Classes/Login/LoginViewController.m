@@ -175,28 +175,7 @@
     
     return;
     
-    // パーミッション
-//    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
-//    // Facebook アカウントを使ってログイン
-//    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-//         [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-//        if (!user) {
-//            if (!error) {
-//                NSLog(@"Facebook ログインをユーザーがキャンセル");
-//                  [SVProgressHUD dismiss];
-//            } else {
-//                NSLog(@"Facebook ログイン中にエラーが発生: %@", error);
-//                [SVProgressHUD dismiss];
-//            }
-//        } else if (user.isNew) {
-//            NSLog(@"Facebook サインアップ & ログイン完了!");
-//            [self info];
-//        } else {
-//            NSLog(@"Facebook ログイン完了!");
-//            [self info];
-//        }
-//    }];
-}
+   }
 
 //facebookの各種データ取得
 -(void)info{
