@@ -280,6 +280,7 @@
                     <connections>
                         <outlet property="btnLogin" destination="Xc1-1K-Plj" id="oVO-y1-jE0"/>
                         <outlet property="btnRegist" destination="ojS-xN-p7a" id="8IR-s3-mq3"/>
+                        <outlet property="button" destination="Xc1-1K-Plj" id="RGT-ya-v6i"/>
                         <segue destination="zAG-Pq-b3o" kind="custom" identifier="ShowTabBarController" id="rMP-ny-KRJ"/>
                     </connections>
                 </viewController>
@@ -746,7 +747,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="11.99999982041197" width="44" height="44"/>
+                                        <rect key="frame" x="8" y="11.999999720886574" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">

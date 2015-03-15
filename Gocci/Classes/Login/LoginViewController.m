@@ -34,6 +34,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *btnRegist;
 @property (nonatomic, retain) IBOutlet UIButton *btnLogin;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -43,6 +44,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _button.layer.borderColor = [UIColor grayColor].CGColor;
+    _button.layer.borderWidth = 0.5f;
+    
     
     // 初回起動時のみの動作
     AppDelegate *appDelegate = [[AppDelegate alloc]init];

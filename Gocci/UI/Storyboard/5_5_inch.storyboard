@@ -344,6 +344,7 @@
                     <connections>
                         <outlet property="btnLogin" destination="dvW-ja-Vzv" id="kRN-gQ-u4A"/>
                         <outlet property="btnRegist" destination="ikD-dU-nxV" id="rRd-VG-rk8"/>
+                        <outlet property="button" destination="dvW-ja-Vzv" id="kIh-lK-jbG"/>
                         <segue destination="7Lq-Ov-gzf" kind="custom" identifier="ShowTabBarController" id="Oev-yS-u4x"/>
                     </connections>
                 </viewController>
@@ -918,8 +919,6 @@
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="btn_toukou.png" width="100" height="100"/>
         <image name="default" width="710" height="676"/>
-        <image name="fb_share" width="400" height="50"/>
-        <image name="facebook kirinuki" width="1155" height="232"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="hosi23" width="23" height="22"/>
@@ -933,8 +932,6 @@
         <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="topbar" width="320" height="125"/>
-        <image name="toukou" width="512" height="512"/>
-        <image name="tw_share" width="400" height="50"/>
         <image name="ui_black.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
