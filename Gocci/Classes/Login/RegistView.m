@@ -541,7 +541,7 @@
 }
 
 - (IBAction)tap_link:(id)sender {
-    NSString *urlString = @"http://ameblo.jp/iphone-sdk-app/entry-10472788476.html";
+    NSString *urlString = @"http://inase-inc.jp/rules/";
     NSURL *url= [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
     
