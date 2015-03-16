@@ -38,6 +38,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 @property (nonatomic, strong) NSArray *iOSAccounts;
 @property (nonatomic, strong) accountChooserBlock_t accountChooserBlock;
 
+- (IBAction)tap_link:(id)sender;
 @property (nonatomic, retain) NSString *consumerKeyTextField;
 @property (nonatomic, retain) NSString *consumerSecretTextField;
 

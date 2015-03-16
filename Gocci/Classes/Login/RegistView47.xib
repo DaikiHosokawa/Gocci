@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBn-Ul-JEH">
-                    <rect key="frame" x="27" y="167" width="301" height="38"/>
+                    <rect key="frame" x="27" y="154" width="301" height="38"/>
                     <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="twitterでアカウント作成">
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoj-Kg-QQC">
-                    <rect key="frame" x="27" y="213" width="301" height="38"/>
+                    <rect key="frame" x="27" y="200" width="301" height="38"/>
                     <color key="backgroundColor" red="0.23529411759999999" green="0.34901960780000002" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="facebookでアカウント作成">
@@ -55,22 +55,22 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="ユーザー名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uf1-pT-ZpR">
-                    <rect key="frame" x="27" y="316" width="301" height="40"/>
+                    <rect key="frame" x="27" y="303" width="301" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-Ca-RFS">
-                    <rect key="frame" x="27" y="394" width="301" height="40"/>
+                    <rect key="frame" x="27" y="381" width="301" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="メールアドレス" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-Pe-py6">
-                    <rect key="frame" x="27" y="355" width="301" height="40"/>
+                    <rect key="frame" x="27" y="342" width="301" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D27-UV-GmA">
-                    <rect key="frame" x="27" y="491" width="301" height="40"/>
+                    <rect key="frame" x="27" y="447" width="301" height="40"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.3294117647" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="アカウントを作成する">
@@ -81,15 +81,39 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SNSでアカウント作成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ0-MG-klK">
-                    <rect key="frame" x="81" y="128" width="192" height="24"/>
+                    <rect key="frame" x="81" y="115" width="192" height="24"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アカウント作成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73K-2J-SZ0">
-                    <rect key="frame" x="61" y="282" width="233" height="24"/>
+                    <rect key="frame" x="61" y="269" width="233" height="24"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9m2-ln-80m" customClass="BFPaperCheckbox">
+                    <rect key="frame" x="77" y="512" width="41" height="30"/>
+                    <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFT-sW-GZ9">
+                    <rect key="frame" x="126" y="516" width="60" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="利用規約">
+                        <color key="titleColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tap_link:" destination="8Nm-s7-NnF" eventType="touchUpInside" id="odN-lc-kro"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="に同意する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g28-Z8-we3">
+                    <rect key="frame" x="186" y="516" width="199" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -99,11 +123,12 @@
                 <outlet property="btnFacebook" destination="aoj-Kg-QQC" id="A4N-PK-Fss"/>
                 <outlet property="btnRegist" destination="D27-UV-GmA" id="2Qd-gP-EqV"/>
                 <outlet property="btnTwitter" destination="uBn-Ul-JEH" id="etS-Ne-b0t"/>
+                <outlet property="checkbox1" destination="9m2-ln-80m" id="WTc-XK-Y1o"/>
                 <outlet property="tfEmail" destination="V4A-Pe-py6" id="OId-Bg-k7A"/>
                 <outlet property="tfPwd" destination="DxZ-Ca-RFS" id="mDz-sk-APS"/>
                 <outlet property="tfUsername" destination="Uf1-pT-ZpR" id="oXe-gM-1er"/>
             </connections>
-            <point key="canvasLocation" x="283.5" y="227.5"/>
+            <point key="canvasLocation" x="-124.5" y="217.5"/>
         </view>
     </objects>
     <resources>

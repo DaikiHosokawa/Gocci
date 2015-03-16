@@ -8,7 +8,16 @@
 
 #import "RegistView.h"
 #import "AppDelegate.h"
+#import "BFPaperCheckbox.h"
 
+@interface RegistView()
+<BFPaperCheckboxDelegate>
+
+@property (nonatomic, weak) IBOutlet BFPaperCheckbox *checkbox1;
+
+@property (nonatomic, copy) NSArray *checkboxes;
+
+@end
 
 #define Rgb2UIColor(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
 #define kActiveLogin @"ActiveLogin"
@@ -40,6 +49,17 @@
     self.layer.shadowOpacity = 0.9f;
     self.layer.shadowRadius = 4.0;
     self.layer.cornerRadius = 4;
+    
+    _checkboxes = @[_checkbox1];
+    
+    for (NSUInteger i=0; i<[_checkboxes count]; i++) {
+        BFPaperCheckbox *checkbox = _checkboxes[i];
+        //selfに設定
+        checkbox.delegate = self;
+        checkbox.tag = (i+1);
+        checkbox.layer.cornerRadius = 0.0;
+    }
+
     
     _tfEmail.delegate = self;
     _tfPwd.delegate = self;
@@ -132,6 +152,43 @@
     return YES;
 }
 
+#pragma mark - BGPaperCheckboxDelegate
+
+- (void)paperCheckboxChangedState:(BFPaperCheckbox *)changedCheckbox
+{
+    if (!changedCheckbox.isChecked) {
+        return;
+    }
+    
+    for (BFPaperCheckbox *checkbox in self.checkboxes) {
+        if (changedCheckbox != checkbox) {
+            [checkbox uncheckAnimated:YES];
+            continue;
+        }
+        
+        // TODO: チェックボックス選択時の処理
+        LOG(@"%@番目のチェックボックスを選択", @(changedCheckbox.tag));
+    }
+}
+
+
+#pragma mark - Private Methods
+
+/**
+ *  チェックボックスのどれか1つが選択されているか
+ *
+ *  @return
+ */
+- (BOOL)_validateCheckboxes
+{
+    for (BFPaperCheckbox *checkbox in self.checkboxes) {
+        if (checkbox.isChecked) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 
 #pragma mark - Functions
 -(void) dismissKeyboard:(UITapGestureRecognizer *)tap {
@@ -293,7 +350,18 @@
 }
 
 -(IBAction)btnFacebook_clicked:(id)sender {
-    _btnFacebook.hidden = YES;
+   
+    if (![self _validateCheckboxes]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+
+    //_btnFacebook.hidden = YES;
     
     [SVProgressHUD show];
     
@@ -325,12 +393,33 @@
 
 -(IBAction)btnTwitter_clicked:(id)sender {
     
+    if (![self _validateCheckboxes]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+    
     [self loginWithiOSAction:nil];
     //    [self reverseAuthAction:nil];
     
 }
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
+    
+    if (![self _validateCheckboxes]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+    
     [SVProgressHUD show];
     [APIClient registUserWithUsername:_tfUsername.text
                          withPassword:_tfPwd.text
@@ -450,4 +539,10 @@
     
 }
 
+- (IBAction)tap_link:(id)sender {
+    NSString *urlString = @"http://ameblo.jp/iphone-sdk-app/entry-10472788476.html";
+    NSURL *url= [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
+    
+}
 @end
