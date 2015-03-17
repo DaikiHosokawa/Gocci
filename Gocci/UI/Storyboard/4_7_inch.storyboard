@@ -471,8 +471,8 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B9Z-vP-PVb">
-                                    <rect key="frame" x="20" y="256" width="151" height="27"/>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B9Z-vP-PVb">
+                                    <rect key="frame" x="117" y="194" width="151" height="27"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.21568627450980393" green="0.55686274509803924" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -485,21 +485,25 @@
                                             <integer key="value" value="5"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="tapTEL" destination="7Ul-L7-bNU" eventType="touchUpInside" id="jIx-W0-rCQ"/>
-                                    </connections>
                                 </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lka-ZM-Wge">
-                                    <rect key="frame" x="209" y="255" width="150" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lka-ZM-Wge">
+                                    <rect key="frame" x="20" y="256" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="ホームページを見る" image="photoBtn">
+                                    <state key="normal" image="telButton">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="tapHomepatge" destination="7Ul-L7-bNU" eventType="touchUpInside" id="Uxg-3F-RTF"/>
+                                        <action selector="tapTEL" destination="7Ul-L7-bNU" eventType="touchUpInside" id="eu9-ZE-21G"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="090-8636-1031" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PtA-di-ib6">
+                                    <rect key="frame" x="51" y="261" width="119" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.99698247354497349" green="0.99698247354497349" blue="0.99698247354497349" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -543,11 +547,10 @@
                     <connections>
                         <outlet property="categoryLabel" destination="SXQ-Cy-r6l" id="7HV-op-Mwz"/>
                         <outlet property="emptyView" destination="mQD-1H-ZwP" id="QAt-60-DjG"/>
-                        <outlet property="homepageButton" destination="lka-ZM-Wge" id="Ldq-OK-BiX"/>
                         <outlet property="locality" destination="o7g-eC-FaU" id="Sae-n9-u4l"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>
-                        <outlet property="telButton" destination="B9Z-vP-PVb" id="YfG-n8-sPf"/>
+                        <outlet property="telButtonLabel" destination="PtA-di-ib6" id="90T-YE-5Wb"/>
                         <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="Abr-YO-afi"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goSCRecorder" id="R4l-rq-eUo"/>
                         <segue destination="J9W-eO-UF1" kind="modal" identifier="goEveryComment" id="FOa-6V-u96"/>
@@ -735,7 +738,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="12.000000020732053" width="48" height="46"/>
+                                        <rect key="frame" x="8" y="12.000000042179014" width="48" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -926,12 +929,12 @@
         <image name="ikituke" width="55" height="51"/>
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
-        <image name="photoBtn" width="244" height="45"/>
         <image name="tabbaritem_lifelog.png" width="30" height="30"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
         <image name="tabbaritem_profile.png" width="30" height="30"/>
         <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
+        <image name="telButton" width="244" height="45"/>
         <image name="topbar" width="320" height="125"/>
         <image name="ui_black.png" width="32" height="32"/>
     </resources>

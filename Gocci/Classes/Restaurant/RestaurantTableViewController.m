@@ -41,9 +41,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
-@property (weak, nonatomic) IBOutlet UIButton *telButton;
-@property (weak, nonatomic) IBOutlet UIButton *homepageButton;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *telButtonLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -99,6 +98,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     NSLog(@"postCategory:%@",_postCategory);
     
+    
     //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
@@ -108,7 +108,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
-    [self.telButton setTitle:_postTell forState:UIControlStateNormal];
+    //[self.telButton setTitle:_postTell forState:UIControlStateNormal];
+    self.telButtonLabel.text = _postTell;
     if (_postHomepage == nil) {
         self.homepageButton.hidden = YES;
     }
