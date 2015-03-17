@@ -57,12 +57,14 @@ static LocationClient *_sharedInstance = nil;
         return;
     }
     
-    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
-        LOG(@"アクティブ時の位置情報の利用不可");
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse &&
+        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways &&
+        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+        LOG(@"位置情報サービス利用不可 (iPhone の位置情報サービスの設定を確認してください)");
         
         NSError *error = [[NSError alloc] initWithDomain:LocationClientErrorDomain
                                                     code:LocationClientErrorCodeSettingErrorCode
-                                                userInfo:@{NSLocalizedDescriptionKey: @"アクティブ時の位置情報の利用不可"}];
+                                                userInfo:@{NSLocalizedDescriptionKey: @"位置情報サービス利用不可 (iPhone の位置情報サービスの設定を確認してください)"}];
         completion(nil, error);
         return;
     }
