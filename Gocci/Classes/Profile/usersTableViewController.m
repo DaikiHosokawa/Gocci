@@ -172,6 +172,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         cell = [TimelineCell cell];
     }
     cell.deleteBtn.hidden = NO;
+    cell.ViolateView.hidden = YES;
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post];

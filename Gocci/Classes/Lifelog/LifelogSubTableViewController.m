@@ -146,6 +146,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
+    cell.ViolateView.hidden = YES;
     
     // 動画の読み込み
     LOG(@"読み込み完了");
@@ -232,6 +233,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // タイムラインを再読み込み
     [self _fetchLifelog];
 }
+
+
 //
 //#pragma mark バッドボタンの時の処理
 //- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID

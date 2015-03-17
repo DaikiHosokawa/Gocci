@@ -111,7 +111,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //[self.telButton setTitle:_postTell forState:UIControlStateNormal];
     self.telButtonLabel.text = _postTell;
     if (_postHomepage == nil) {
-        self.homepageButton.hidden = YES;
+       
     }
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
@@ -448,6 +448,69 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // タイムラインを再読み込み
     [self _fetchRestaurant];
 }
+
+
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
+{
+    //違反報告ボタンの時の処理
+    LOG(@"postid=%@", postID);
+    
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class)
+    {
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            
+            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+            NSLog(@"content:%@",content);
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+            [urlRequest setHTTPMethod:@"POST"];
+            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLResponse* response;
+            NSError* error = nil;
+            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                   returningResponse:&response                                                               error:&error];
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+
+            }
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else
+    {
+        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        if (result) {
+            NSString *alertMessage = @"違反報告をしました";
+            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alrt show];
+}
+        
+    }
+    
+}
+
 //
 //#pragma mark バッドボタンの時の処理
 //- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID

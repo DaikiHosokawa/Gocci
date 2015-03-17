@@ -98,6 +98,13 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)tapViolate:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapViolateButtonWithPostID:)]) {
+        [self.delegate timelineCell:self didTapViolateButtonWithPostID:self.postID];
+    }
+}
+
 - (void)onDeleteButton:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapDeleteWithPostID:)]) {
@@ -169,6 +176,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantView];
     [self _assignTapAction:@selector(tapLike:) view:self.likeView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
+   [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];
 }
 
 + (CGFloat)cellHeightWithTimelinePost:(TimelinePost *)post

@@ -46,6 +46,15 @@ extern NSString * const TimelineCellIdentifier;
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
 
 /**
+ *  Violate ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID;
+
+
+/**
  *  コメントボタンをタップ
  *
  *  @param cell
@@ -72,6 +81,7 @@ extern NSString * const TimelineCellIdentifier;
 @property (nonatomic,strong) Timeline *comment;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic,weak) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIImageView *ViolateView;
 
 /**
  *  TimelineCell を生成
