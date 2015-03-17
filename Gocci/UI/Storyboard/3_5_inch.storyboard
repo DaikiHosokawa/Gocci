@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s2J-hg-79Q">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tvf-ba-ViT">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="220"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topbar" id="HOB-kW-wKj">
@@ -62,16 +62,9 @@
                                     <rect key="frame" x="228" y="91" width="30" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mB0-iv-8Xi">
-                                    <rect key="frame" x="66" y="201" width="189" height="27"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button" image="follow_button">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" id="Z4T-3h-dPQ">
                                     <rect key="frame" x="120" y="85" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,7 +162,7 @@
                             <rect key="frame" x="0.0" y="350" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="kGq-QS-OUt">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" id="kGq-QS-OUt">
                                     <rect key="frame" x="90" y="8" width="140" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
@@ -222,14 +215,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="レストランをより直感的に" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYd-iH-5Ft">
-                                <rect key="frame" x="52" y="295" width="216" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食体験をシェアしよう" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYd-iH-5Ft">
+                                <rect key="frame" x="70" y="295" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.27878970990000002" green="0.27878970990000002" blue="0.27878970990000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7秒のグルメ動画アプリ「Gocci」" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbd-Nc-iZG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="グルメ動画アプリ「Gocci」" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbd-Nc-iZG">
                                 <rect key="frame" x="61" y="324" width="198" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -243,7 +236,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ojS-xN-p7a">
                                 <rect key="frame" x="42" y="358" width="237" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="facebook kirinuki">
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.3294117647" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="アカウントを作成する">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -253,7 +248,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xc1-1K-Plj">
                                 <rect key="frame" x="42" y="413" width="237" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="twitter kirinuki">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="サインイン">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -281,6 +278,9 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btnLogin" destination="Xc1-1K-Plj" id="oVO-y1-jE0"/>
+                        <outlet property="btnRegist" destination="ojS-xN-p7a" id="8IR-s3-mq3"/>
+                        <outlet property="button" destination="Xc1-1K-Plj" id="RGT-ya-v6i"/>
                         <segue destination="zAG-Pq-b3o" kind="custom" identifier="ShowTabBarController" id="rMP-ny-KRJ"/>
                     </connections>
                 </viewController>
@@ -511,22 +511,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleAspectFit" id="JTR-Lc-xze">
-                            <rect key="frame" x="0.0" y="64" width="320" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topbar" id="oRz-WF-A89">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="163"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exeBar" id="oRz-WF-A89">
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="151"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スターバックス　栄広小路店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5SO-Dv-yVu">
-                                    <rect key="frame" x="20" y="163" width="293" height="46"/>
+                                    <rect key="frame" x="18" y="161" width="293" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛知県名古屋市中区　3-24-24 324ビル" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7g-eC-FaU">
-                                    <rect key="frame" x="20" y="201" width="257" height="22"/>
+                                    <rect key="frame" x="18" y="212" width="257" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -542,12 +542,32 @@
                                         <action selector="pushMap:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="kWc-r2-ITc"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JrM-3F-dSb">
-                                    <rect key="frame" x="24" y="232" width="136" height="27"/>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fJq-iH-lX4">
+                                    <rect key="frame" x="283" y="173" width="29" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.2156862745" green="0.5568627451" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" image="ikituke">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カフェ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OXv-WY-YK6">
+                                    <rect key="frame" x="18" y="192" width="257" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JLM-D3-BRO">
+                                    <rect key="frame" x="231" y="212" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JrM-3F-dSb">
+                                    <rect key="frame" x="18" y="240" width="150" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <state key="normal" title="090-8636-1031">
+                                    <state key="normal" image="telButton">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -559,20 +579,13 @@
                                         <action selector="tapTEL" destination="7Ul-L7-bNU" eventType="touchUpInside" id="3wr-PV-yca"/>
                                     </connections>
                                 </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JLM-D3-BRO">
-                                    <rect key="frame" x="197" y="226" width="46" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="090-8636-1031" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNF-30-hQh">
+                                    <rect key="frame" x="49" y="244" width="119" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fJq-iH-lX4">
-                                    <rect key="frame" x="283" y="173" width="29" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="ikituke">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -580,7 +593,7 @@
                             <rect key="frame" x="0.0" y="295" width="320" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="nQT-vJ-LPu">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" id="nQT-vJ-LPu">
                                     <rect key="frame" x="75" y="8" width="170" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
@@ -613,11 +626,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="categoryLabel" destination="OXv-WY-YK6" id="OTQ-6l-ikT"/>
                         <outlet property="emptyView" destination="YJe-BQ-Y95" id="NjS-tu-NCC"/>
                         <outlet property="locality" destination="o7g-eC-FaU" id="zGp-ag-FA7"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="fpL-ag-NP3"/>
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>
-                        <outlet property="telButton" destination="JrM-3F-dSb" id="45Q-Qh-Y0z"/>
+                        <outlet property="telButtonLabel" destination="cNF-30-hQh" id="S7u-bw-IFc"/>
                         <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="Abr-YO-afi"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goSCRecorder" id="F6h-Ya-bAd"/>
                         <segue destination="Cpf-e8-3Ri" kind="modal" identifier="goEveryComment" id="E8I-Ul-lW0"/>
@@ -739,7 +753,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="11.99999982041197" width="44" height="44"/>
+                                        <rect key="frame" x="8" y="12" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -757,7 +771,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -918,8 +932,8 @@
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="btn_toukou.png" width="100" height="100"/>
         <image name="default" width="710" height="676"/>
-        <image name="facebook kirinuki" width="1155" height="232"/>
-        <image name="follow_button" width="361" height="53"/>
+        <image name="empty" width="250" height="280"/>
+        <image name="exeBar" width="640" height="256"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="hosi23" width="23" height="22"/>
@@ -932,8 +946,8 @@
         <image name="tabbaritem_profile.png" width="30" height="30"/>
         <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
+        <image name="telButton" width="244" height="45"/>
         <image name="topbar" width="320" height="125"/>
-        <image name="twitter kirinuki" width="1153" height="229"/>
         <image name="ui_black.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -942,9 +956,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="E8I-Ul-lW0"/>
-        <segue reference="oAW-Uz-WM7"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="uWM-e4-y5S"/>
         <segue reference="F6h-Ya-bAd"/>
     </inferredMetricsTieBreakers>
 </document>

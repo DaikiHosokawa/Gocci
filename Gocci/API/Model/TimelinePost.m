@@ -27,6 +27,7 @@
     obj.restname = dictionary[@"restname"];
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
+    obj.category = dictionary[@"category"];
     
     return obj;
 }

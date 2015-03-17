@@ -26,6 +26,7 @@
 @property (nonatomic) NSString *timelabel;
 @property (nonatomic) NSString *tel;
 @property (nonatomic) NSString *homepage;
+@property (nonatomic) NSString *category;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

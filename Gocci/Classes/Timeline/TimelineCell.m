@@ -45,6 +45,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic, strong) NSString *restname;
 @property (nonatomic, strong) NSString *locality;
 @property (nonatomic, strong) NSString *tell;
+@property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *homepage;
 
 
@@ -78,8 +79,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 - (void)tapRestautant:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:locality:tel:homepage:)]) {
-        [self.delegate timelineCell:self didTapRestaurant:self.restname locality:self.locality tel:self.tell homepage:self.homepage];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:locality:tel:homepage:category:)]) {
+        [self.delegate timelineCell:self didTapRestaurant:self.restname locality:self.locality tel:self.tell homepage:self.homepage category:self.category];
     }
 }
 
@@ -94,6 +95,13 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapCommentButtonWithPostID:)]) {
         [self.delegate timelineCell:self didTapCommentButtonWithPostID:self.postID];
+    }
+}
+
+- (void)tapViolate:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapViolateButtonWithPostID:)]) {
+        [self.delegate timelineCell:self didTapViolateButtonWithPostID:self.postID];
     }
 }
 
@@ -118,6 +126,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.locality = timelinePost.locality;
     self.homepage = timelinePost.homepage;
     self.tell = timelinePost.tel;
+    self.category = timelinePost.category;
     
     // ユーザアイコンを円形に
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;
@@ -167,6 +176,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantView];
     [self _assignTapAction:@selector(tapLike:) view:self.likeView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
+   [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];
 }
 
 + (CGFloat)cellHeightWithTimelinePost:(TimelinePost *)post

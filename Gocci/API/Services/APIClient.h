@@ -120,4 +120,31 @@
  */
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler;
 
+/**
+ *  Regist new user
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ *  @param email email
+ */
++ (void)registUserWithUsername:(NSString *)username
+                  withPassword:(NSString *)pwd
+                     withEmail:(NSString *)email
+                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  Login user
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ */
++ (void)loginUserWithUsername:(NSString *)username
+                 withPassword:(NSString *)pwd
+                      handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
 @end

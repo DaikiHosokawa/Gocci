@@ -29,6 +29,7 @@
     NSString *_headerLocality;
     NSString *_postLat;
     NSString *_postLon;
+    NSString *_postCategory;
     
     NSString *_postID;
     NSString *lat;
@@ -41,6 +42,7 @@
 @property (nonatomic) NSString *postLocality;
 @property (nonatomic) NSString *postTell;
 @property (nonatomic) NSString *postHomepage;
+@property (nonatomic) NSString *postCategory;
 @property (nonatomic) NSString *headerLocality;
 @property (nonatomic) NSString *postLat;
 @property (nonatomic) NSString *postLon;

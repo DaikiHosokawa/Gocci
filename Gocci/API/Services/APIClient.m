@@ -307,4 +307,44 @@ static APIClient *_sharedInstance = nil;
     [downloadTask resume];
 }
 
++ (void)registUserWithUsername:(NSString *)username
+                  withPassword:(NSString *)pwd
+                     withEmail:(NSString *)email
+                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"user_name" : username,
+                             @"password" : pwd,
+                             @"email" : email
+                             };
+    
+    NSLog(@"Params: %@", params);
+    
+    [[APIClient sharedClient].manager POST:@"register/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)loginUserWithUsername:(NSString *)username
+                  withPassword:(NSString *)pwd
+                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"user_name" : username,
+                             @"password" : pwd
+                             };
+    [[APIClient sharedClient].manager POST:@"auth/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+
 @end

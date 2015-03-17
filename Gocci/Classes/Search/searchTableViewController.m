@@ -334,6 +334,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         NSLog(@"restVC.postLat:%@",restVC.postLat);
         restVC.postTell = params[@"tell"];
         restVC.postHomepage = params[@"homepage"];
+        restVC.postCategory = params[@"category"];
         
     }
 }
@@ -377,6 +378,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
                                        @"tell": restaurant.tel,
                                        @"homepage": restaurant.homepage,
+                                       @"category" : restaurant.category,
                                        }];
 }
 
@@ -391,7 +393,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"post_lat": [NSString stringWithFormat:@"%@", @(restaurant.lat)],
                                        @"post_lon": [NSString stringWithFormat:@"%@", @(restaurant.lon)],
                                        @"tell": restaurant.tel,
-                                       @"homepage": restaurant.homepage
+                                       @"homepage": restaurant.homepage,
+                                       @"category" : restaurant.category,
                                        }];
 }
 

@@ -380,6 +380,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postHomepage = _postHomepage;
         restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
+        restVC.postCategory = _postCategory;
     }
 }
 
@@ -405,6 +406,66 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // タイムラインを再読み込み
     [self _fetchTimeline];
+}
+
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
+{
+    //違反報告ボタンの時の処理
+    LOG(@"postid=%@", postID);
+
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class)
+    {
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            
+            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+            NSLog(@"content:%@",content);
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+            [urlRequest setHTTPMethod:@"POST"];
+            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLResponse* response;
+            NSError* error = nil;
+            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                   returningResponse:&response                                                               error:&error];
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました。";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+}
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else
+    {
+        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        if (result) {
+            NSString *alertMessage = @"違反報告をしました";
+            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alrt show];
+}
+        
+    }
+
 }
 
 //
@@ -469,7 +530,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -477,6 +538,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postHomepage = homepage;
     _postLocality = locality;
     _postTell = tel;
+    _postCategory = category;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);

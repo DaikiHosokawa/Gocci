@@ -41,8 +41,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
-@property (weak, nonatomic) IBOutlet UIButton *telButton;
-@property (weak, nonatomic) IBOutlet UIButton *homepageButton;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *telButtonLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -60,6 +60,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postHomepage = _postHomepage;
 @synthesize postLon = _postLon;
 @synthesize postLat = _postLat;
+@synthesize postCategory = _postCategory;
 @synthesize lon;
 @synthesize lat;
 
@@ -95,6 +96,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
+    NSLog(@"postCategory:%@",_postCategory);
+    
+    
     //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
     //背景にイメージを追加したい
     //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
@@ -104,9 +108,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
-    [self.telButton setTitle:_postTell forState:UIControlStateNormal];
+    //[self.telButton setTitle:_postTell forState:UIControlStateNormal];
+    self.telButtonLabel.text = _postTell;
     if (_postHomepage == nil) {
-        self.homepageButton.hidden = YES;
+       
     }
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
@@ -135,6 +140,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.locality.text = _postLocality;
     self.tell.text = _postTell;
     self.homepage.text = _postHomepage;
+    self.categoryLabel.text = _postCategory;
     
     NSLog(@"This Restaurant is %@",_postRestName);
     NSLog(@"This Locality is %@",_postLocality);
@@ -442,6 +448,69 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // タイムラインを再読み込み
     [self _fetchRestaurant];
 }
+
+
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
+{
+    //違反報告ボタンの時の処理
+    LOG(@"postid=%@", postID);
+    
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class)
+    {
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            
+            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+            NSLog(@"content:%@",content);
+            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+            [urlRequest setHTTPMethod:@"POST"];
+            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLResponse* response;
+            NSError* error = nil;
+            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                   returningResponse:&response                                                               error:&error];
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+
+            }
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else
+    {
+        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        if (result) {
+            NSString *alertMessage = @"違反報告をしました";
+            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alrt show];
+}
+        
+    }
+    
+}
+
 //
 //#pragma mark バッドボタンの時の処理
 //- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
@@ -589,7 +658,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+270,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+280,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     

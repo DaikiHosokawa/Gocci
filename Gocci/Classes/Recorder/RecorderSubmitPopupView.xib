@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,21 +15,21 @@
                     <rect key="frame" x="11" y="37" width="298" height="406"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="確認" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHR-Fz-V8N">
-                            <rect key="frame" x="28" y="28" width="242" height="28"/>
+                            <rect key="frame" x="28" y="25" width="242" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="slN-Ce-HdE"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="18"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0f-GU-K1c">
-                            <rect key="frame" x="28" y="84" width="242" height="30"/>
+                            <rect key="frame" x="28" y="73" width="242" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="JD8-nj-id0"/>
+                                <constraint firstAttribute="height" constant="40" id="JD8-nj-id0"/>
                                 <constraint firstAttribute="width" constant="242" id="hBy-tC-3WP"/>
                             </constraints>
-                            <state key="normal" image="tw_share">
+                            <state key="normal" image="tw_Share">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -37,12 +37,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-fq-3dk">
-                            <rect key="frame" x="28" y="122" width="242" height="30"/>
+                            <rect key="frame" x="28" y="121" width="242" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="242" id="WJ2-ps-R4r"/>
-                                <constraint firstAttribute="height" constant="30" id="u9u-lX-KKj"/>
+                                <constraint firstAttribute="height" constant="40" id="u9u-lX-KKj"/>
                             </constraints>
-                            <state key="normal" image="fb_share">
+                            <state key="normal" image="fb_Share">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -50,35 +50,35 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BI5-fr-hOS">
-                            <rect key="frame" x="28" y="176" width="48" height="48"/>
+                            <rect key="frame" x="28" y="185" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="BDN-2a-y2O"/>
                                 <constraint firstAttribute="height" constant="48" id="mdS-PJ-PMv"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OLV-jd-TXc">
-                            <rect key="frame" x="93" y="176" width="48" height="48"/>
+                            <rect key="frame" x="93" y="185" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="JDC-aT-8rj"/>
                                 <constraint firstAttribute="height" constant="48" id="Rgd-xL-5Va"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-zg-tYc">
-                            <rect key="frame" x="157" y="176" width="48" height="48"/>
+                            <rect key="frame" x="157" y="185" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="YEH-2l-gmq"/>
                                 <constraint firstAttribute="width" constant="48" id="p6T-Ac-I3K"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIN-bA-Om2">
-                            <rect key="frame" x="222" y="176" width="48" height="48"/>
+                            <rect key="frame" x="222" y="185" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="Fw0-r8-1rC"/>
                                 <constraint firstAttribute="height" constant="48" id="XrF-DH-pvn"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPo-LY-typ" customClass="BFPaperCheckbox">
-                            <rect key="frame" x="28" y="228" width="48" height="30"/>
+                            <rect key="frame" x="28" y="237" width="48" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="iJX-8v-HhG"/>
@@ -89,7 +89,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZx-ak-ojL" customClass="BFPaperCheckbox">
-                            <rect key="frame" x="93" y="228" width="48" height="30"/>
+                            <rect key="frame" x="93" y="237" width="48" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="9vg-4k-4a5"/>
@@ -100,7 +100,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-YX-mMT" customClass="BFPaperCheckbox">
-                            <rect key="frame" x="157" y="228" width="48" height="30"/>
+                            <rect key="frame" x="157" y="237" width="48" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="0K2-GY-fOT"/>
@@ -111,7 +111,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7x-Nj-9X6" customClass="BFPaperCheckbox">
-                            <rect key="frame" x="222" y="228" width="48" height="30"/>
+                            <rect key="frame" x="222" y="237" width="48" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="etJ-sH-Cnh"/>
@@ -121,28 +121,13 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="286-w4-kPx">
-                            <rect key="frame" x="28" y="282" width="242" height="44"/>
-                            <color key="backgroundColor" red="1" green="0.21511841230000001" blue="0.25791172369999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="lKM-T1-l32"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
-                            <color key="tintColor" red="0.96984080630000002" green="1" blue="0.95390113249999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="投稿する">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="onSubmitButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eoz-Ni-ccO"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOJ-yb-eg2">
                             <rect key="frame" x="28" y="334" width="242" height="44"/>
                             <color key="backgroundColor" red="0.78076088428497314" green="0.78089606761932373" blue="0.78075236082077026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="r9g-fV-B9v"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
                             <color key="tintColor" red="0.96984080630000002" green="1" blue="0.95390113249999997" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="キャンセル">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,12 +136,26 @@
                                 <action selector="onCancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="OQN-Bc-jhC"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="286-w4-kPx">
+                            <rect key="frame" x="28" y="282" width="242" height="44"/>
+                            <color key="backgroundColor" red="1" green="0.21511841230000001" blue="0.25791172369999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="lKM-T1-l32"/>
+                            </constraints>
+                            <color key="tintColor" red="0.96984080630000002" green="1" blue="0.95390113249999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" image="submitBtn">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onSubmitButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eoz-Ni-ccO"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="oHR-Fz-V8N" secondAttribute="trailing" constant="28" id="151-Wz-6R8"/>
                         <constraint firstItem="BI5-fr-hOS" firstAttribute="leading" secondItem="3cN-Aj-o3N" secondAttribute="leading" constant="28" id="2Va-8J-H2u"/>
-                        <constraint firstItem="v0f-GU-K1c" firstAttribute="top" secondItem="oHR-Fz-V8N" secondAttribute="bottom" constant="28" id="4cU-Pd-F5o"/>
+                        <constraint firstItem="v0f-GU-K1c" firstAttribute="top" secondItem="oHR-Fz-V8N" secondAttribute="bottom" constant="20" id="4cU-Pd-F5o"/>
                         <constraint firstItem="8FC-zg-tYc" firstAttribute="top" secondItem="Nlf-fq-3dk" secondAttribute="bottom" constant="24" id="4se-fB-hz3"/>
                         <constraint firstItem="OLV-jd-TXc" firstAttribute="top" secondItem="Nlf-fq-3dk" secondAttribute="bottom" constant="24" id="5wF-3E-mUP"/>
                         <constraint firstItem="OLV-jd-TXc" firstAttribute="leading" secondItem="BI5-fr-hOS" secondAttribute="trailing" constant="17" id="8rS-4L-AYt"/>
@@ -175,7 +174,7 @@
                         <constraint firstItem="SZx-ak-ojL" firstAttribute="top" secondItem="OLV-jd-TXc" secondAttribute="bottom" constant="4" id="WCj-8G-d5i"/>
                         <constraint firstItem="BIN-bA-Om2" firstAttribute="top" secondItem="Nlf-fq-3dk" secondAttribute="bottom" constant="24" id="abA-OC-eaN"/>
                         <constraint firstItem="YOJ-yb-eg2" firstAttribute="top" secondItem="286-w4-kPx" secondAttribute="bottom" constant="8" id="eYB-JJ-U6w"/>
-                        <constraint firstItem="oHR-Fz-V8N" firstAttribute="top" secondItem="3cN-Aj-o3N" secondAttribute="top" constant="28" id="eh6-3r-c6q"/>
+                        <constraint firstItem="oHR-Fz-V8N" firstAttribute="top" secondItem="3cN-Aj-o3N" secondAttribute="top" constant="25" id="eh6-3r-c6q"/>
                         <constraint firstAttribute="height" constant="406" id="gLf-Y6-PFB"/>
                         <constraint firstAttribute="bottom" secondItem="YOJ-yb-eg2" secondAttribute="bottom" constant="28" id="hBZ-T5-D6n"/>
                         <constraint firstAttribute="width" constant="298" id="jRs-rS-Kan"/>
@@ -205,7 +204,8 @@
         </view>
     </objects>
     <resources>
-        <image name="fb_share" width="400" height="50"/>
-        <image name="tw_share" width="400" height="50"/>
+        <image name="fb_Share" width="535" height="80"/>
+        <image name="submitBtn" width="535" height="92"/>
+        <image name="tw_Share" width="535" height="80"/>
     </resources>
 </document>

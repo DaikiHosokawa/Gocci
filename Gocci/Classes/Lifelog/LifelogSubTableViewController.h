@@ -24,6 +24,7 @@
     NSString *_postHomepage;
     NSString *_postLocality;
     NSString *_postTell;
+    NSString *_postCategory;
 
 }
 

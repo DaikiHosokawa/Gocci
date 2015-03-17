@@ -13,13 +13,28 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "TutorialView.h"
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
+#import "SigninView.h"
+#import "GUser.h"
+#import "RegistView.h"
+#import "UIImage+BlurEffect.h"
+
+#define kActiveLogin @"ActiveLogin"
+#define kActiveCancel @"kActiveCancel"
 
 @import Social;
 
 @interface LoginViewController ()
-<TutorialViewDelegate, FBLoginViewDelegate>
+<TutorialViewDelegate, FBLoginViewDelegate> {
+    UIImageView *bgBlur;
+}
 
 @property (nonatomic, strong) TutorialView *tutorialView;
+
+@property (nonatomic, retain) IBOutlet UIButton *btnRegist;
+@property (nonatomic, retain) IBOutlet UIButton *btnLogin;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -30,6 +45,10 @@
 {
     [super viewDidLoad];
     
+    _button.layer.borderColor = [UIColor grayColor].CGColor;
+    _button.layer.borderWidth = 0.5f;
+    
+    
     // 初回起動時のみの動作
     AppDelegate *appDelegate = [[AppDelegate alloc]init];
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -39,36 +58,124 @@
     
     //テスト
     //テスト
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(autoLogin)
+                                                 name:kActiveLogin
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cancel)
+                                                 name:kActiveCancel
+                                               object:nil];
+    
+    
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [self autoLogin];
+}
+
+#pragma mark - Functions
+-(void) cancel {
+    _btnLogin.enabled = YES;
+    _btnRegist.enabled = YES;
+    [bgBlur removeFromSuperview];
+}
+
+-(void) autoLogin {
+    
+    _btnLogin.enabled = YES;
+    _btnRegist.enabled = YES;
+    [bgBlur removeFromSuperview];
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
+    
+    if (username) {
+        
+        AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        logindelegate.username = username;
+        NSString *pictureURL = avatarLink;
+        AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        picturedelegate.userpicture = pictureURL;
+        
+        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",username,pictureURL];
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        NSLog(@"result:%@",result);
+        [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+    }
+    
+    
+}
+
+
+-(void) addBackgroundEffect {
+    //Get a screen capture from the current view.
+    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, 0.0f);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    backgroundImage = [backgroundImage applyLightEffect];
+    
+    bgBlur = [[UIImageView alloc] initWithFrame:self.view.frame];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [bgBlur addGestureRecognizer:tap];
+    bgBlur.image = backgroundImage;
+    [self.view addSubview:bgBlur];
+    
+    _btnLogin.enabled = NO;
+    _btnRegist.enabled = NO;
+    
+}
+
+-(void) dismissKeyboard:(UITapGestureRecognizer *)tap {
+    [self.view endEditing:YES];
+}
 
 #pragma mark - Action
 
 //Facebookログインを押す
 - (IBAction)facebookButtonTapped:(id)sender {
-	
-    // パーミッション
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
-    // Facebook アカウントを使ってログイン
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-         [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-        if (!user) {
-            if (!error) {
-                NSLog(@"Facebook ログインをユーザーがキャンセル");
-                  [SVProgressHUD dismiss];
-            } else {
-                NSLog(@"Facebook ログイン中にエラーが発生: %@", error);
-                [SVProgressHUD dismiss];
-            }
-        } else if (user.isNew) {
-            NSLog(@"Facebook サインアップ & ログイン完了!");
-            [self info];
-        } else {
-            NSLog(@"Facebook ログイン完了!");
-            [self info];
-        }
-    }];
-}
+    
+    [self addBackgroundEffect];
+    
+    NSString *nibName = @"RegistView";
+    AppDelegate *dele = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    switch (dele.screenType) {
+        case 2:
+            nibName = @"RegistView35";
+            break;
+            
+        case 3:
+            nibName = @"RegistView47";
+            break;
+            
+        case 4:
+            nibName = @"RegistView55";
+            break;
+            
+        default:
+            break;
+    }
+    
+    RegistView *registView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil] lastObject];;
+    [registView initComponent];
+    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 20, registView.frame.size.width, registView.frame.size.height);
+    [self.view addSubview:registView];
+    
+    return;
+    
+   }
 
 //facebookの各種データ取得
 -(void)info{
@@ -101,7 +208,6 @@
                                                                error:&error];
             NSLog(@"result:%@",result);
 			
-//            [self performSegueWithIdentifier:@"goTimeline" sender:self];
 			[self performSegueWithIdentifier:@"ShowTabBarController" sender:self];	// !!!:dezamisystem・Segue変更
 
             NSLog(@"FacebookLogin is completed");
@@ -109,36 +215,46 @@
             
             NSLog(@"name=%@",name);
             NSLog(@"pict=%@",pictureURL);
-             [SVProgressHUD dismiss];
+            [SVProgressHUD dismiss];
         }
     }];
 }
 
 //Twitterログインボタンを押す
 - (IBAction)twitterButtonTapped:(id)sender {
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!user) {
-            if (!error) {
-                NSLog(@"Twitter ログインをユーザーがキャンセル");
-                
-                 [SVProgressHUD dismiss];
-            } else {
-                NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
-                
-                 [SVProgressHUD dismiss];
-            }
-        } else if (user.isNew) {
-            NSLog(@"Twitter サインアップ & ログイン完了!");
-			
-			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-			[self info2];
-        } else {
-            NSLog(@"Twitter ログイン完了!");
-			
-			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-            [self info2];
-        }
-    }];
+    
+    [self addBackgroundEffect];
+    
+    SigninView *registView = [[[NSBundle mainBundle] loadNibNamed:@"SigninView" owner:nil options:nil] lastObject];;
+    [registView initComponent];
+    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 20, registView.frame.size.width, registView.frame.size.height);
+    [self.view addSubview:registView];
+    
+    
+    // Objective-C
+//    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+//        if (!user) {
+//            if (!error) {
+//                NSLog(@"Twitter ログインをユーザーがキャンセル");
+//                
+//                 [SVProgressHUD dismiss];
+//            } else {
+//                NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
+//                
+//                 [SVProgressHUD dismiss];
+//            }
+//        } else if (user.isNew) {
+//            NSLog(@"Twitter サインアップ & ログイン完了!");
+//			
+//			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+//			[self info2];
+//        } else {
+//            NSLog(@"Twitter ログイン完了!");
+//			
+//			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
+//            [self info2];
+//        }
+//    }];
 }
 
 //Twitterの各種データ取得

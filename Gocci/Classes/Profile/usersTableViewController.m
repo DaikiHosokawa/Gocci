@@ -172,6 +172,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         cell = [TimelineCell cell];
     }
     cell.deleteBtn.hidden = NO;
+    cell.ViolateView.hidden = YES;
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post];
@@ -323,7 +324,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //}
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -331,6 +332,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postHomepage = homepage;
     _postLocality = locality;
     _postTell = tel;
+    _postCategory = category;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);
@@ -533,6 +535,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postHomepage = _postHomepage;
         restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
+        restVC.postCategory = _postCategory;
     
     }
     
