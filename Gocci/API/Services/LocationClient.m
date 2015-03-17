@@ -69,6 +69,11 @@ static LocationClient *_sharedInstance = nil;
         return;
     }
     
+    if (self.locationManager) {
+        [self.locationManager stopUpdatingLocation];
+        self.locationManager = nil;
+    }
+    
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -77,6 +82,14 @@ static LocationClient *_sharedInstance = nil;
         [self.locationManager requestWhenInUseAuthorization];
     }
     
+    // 既に待機中の Blocks がある場合はエラーを返す
+    if (self.updatedBlock) {
+        NSError *interruptedError = [[NSError alloc] initWithDomain:LocationClientErrorDomain
+                                                               code:LocationClientErrorCodeInterrupted
+                                                           userInfo:@{NSLocalizedDescriptionKey: @"処理が中断されました"}];
+        self.updatedBlock(nil, interruptedError);
+        self.updatedBlock = nil;
+    }
     self.updatedBlock = completion;
     
     [self.locationManager startUpdatingLocation];
@@ -98,6 +111,7 @@ static LocationClient *_sharedInstance = nil;
     
     if (self.updatedBlock) {
         self.updatedBlock(location, nil);
+        self.updatedBlock = nil;
     }
     
     self.locationManager.delegate = nil;
@@ -108,6 +122,7 @@ static LocationClient *_sharedInstance = nil;
 {
     if (self.updatedBlock) {
         self.updatedBlock(nil, error);
+        self.updatedBlock = nil;
     }
 }
 

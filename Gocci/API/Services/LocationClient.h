@@ -11,6 +11,7 @@ extern NSString * const LocationClientErrorDomain;
 
 typedef NS_ENUM(NSUInteger, LocationClientErrorCode) {
     LocationClientErrorCodeSettingErrorCode = 1,
+    LocationClientErrorCodeInterrupted = 2,
 };
 
 typedef void (^LocationClientUpdatedBlock)(CLLocation *location, NSError *error);

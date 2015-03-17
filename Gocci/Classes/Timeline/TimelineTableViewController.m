@@ -107,6 +107,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
+    
+    // API からタイムラインのデータを取得
+    [self _fetchTimelineUsingLocationCache:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -116,24 +119,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	// !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 	//    self.navigationItem.leftBarButtonItem.enabled = NO;
-    
-    // API からタイムラインのデータを取得
-    [self _fetchTimeline];
-     NSLog(@"posts:%@",[self posts]);
 
 	// !!!:dezamisystem
 //    [self.navigationItem setHidesBackButton:YES animated:NO];
     [SVProgressHUD dismiss];
-    
-    // TODO: 位置情報を取得
-    CLLocation *location = [LocationClient sharedClient].cachedLocation;
-    LOG(@"location=%@", location);
-    if (!location) {
-        [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error) {
-            CLLocation *loc = [LocationClient sharedClient].cachedLocation;
-            LOG(@"loc=%@", loc);
-        }];
-    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -559,39 +548,82 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - Private Methods
 
 /**
- *  API からタイムラインのデータを取得
+ *  タイムラインのデータを取得
  */
 - (void)_fetchTimeline
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self.refresh beginRefreshing];
-    
+    [self _fetchTimelineUsingLocationCache:YES];
+}
+
+/**
+ *  タイムラインのデータを取得
+ *
+ *  @param usingLocationCache 前回取得した位置情報を利用する場合 YES を指定
+ */
+- (void)_fetchTimelineUsingLocationCache:(BOOL)usingLocationCache
+{
     __weak typeof(self)weakSelf = self;
-    [APIClient timelineWithLimit:@"50" handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
+    {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [weakSelf.refresh beginRefreshing];
         
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
+        // API からデータを取得
+        [APIClient distTimelineWithLatitude:coordinate.latitude
+                                  longitude:coordinate.longitude
+                                      limit:50
+                                    handler:^(id result, NSUInteger code, NSError *error)
+         {
+             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             
+             if ([weakSelf.refresh isRefreshing]) {
+                 [weakSelf.refresh endRefreshing];
+             }
+             
+             if (code != 200 || error != nil) {
+                 // API からのデータの取得に失敗
+                 // TODO: アラート等を掲出
+                 return;
+             }
+             
+             // 取得したデータを self.posts に格納
+             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+             for (NSDictionary *post in result) {
+                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+             }
+             self.posts = [NSArray arrayWithArray:tempPosts];
+             
+             // 動画データを一度全て削除
+             [[MoviePlayerManager sharedManager] removeAllPlayers];
+             
+             // 表示の更新
+             [weakSelf.tableView reloadData];
+         }];
+    };
+    
+    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
+    // キャッシュされた位置情報を利用して API からデータを取得する
+    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
+    if (usingLocationCache && cachedLocation != nil) {
+        fetchAPI(cachedLocation.coordinate);
+        return;
+    }
+    
+    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
+    // 位置情報を取得してから API へアクセスする
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+    {
+        LOG(@"location=%@, error=%@", location, error);
+        
+        if (error) {
+            // 位置情報の取得に失敗
             // TODO: アラート等を掲出
             return;
         }
         
-        // 取得したデータを self.posts に格納
-        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
-            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-        }
-        self.posts = [NSArray arrayWithArray:tempPosts];
-        
-        // 動画データを一度全て削除
-        [[MoviePlayerManager sharedManager] removeAllPlayers];
-        
-        // 表示の更新
-        [weakSelf.tableView reloadData];
-        
-        if ([weakSelf.refresh isRefreshing]) {
-            [weakSelf.refresh endRefreshing];
-        }
+        fetchAPI(location.coordinate);
     }];
 }
 

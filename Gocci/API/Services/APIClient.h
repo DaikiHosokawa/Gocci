@@ -18,6 +18,16 @@
 + (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  dist_timeline/
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler   
+ */
++ (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
 *  restaurant/
 *
 *  @param handler 完了イベントハンドラ

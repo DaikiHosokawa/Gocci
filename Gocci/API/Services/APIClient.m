@@ -69,6 +69,23 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"lat" : @(latitude),
+                             @"lon" : @(longitude),
+                             @"limit" : @(limit)
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"dist_timeline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 + (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
 	
