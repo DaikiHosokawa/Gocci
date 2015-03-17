@@ -7,23 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
-@interface SearchTableViewController : UITableViewController<CLLocationManagerDelegate>
+@interface SearchTableViewController : UITableViewController
 {
     NSString *_postRestName;
     NSString *_headerLocality;
     NSString *annotationTitle;
     NSString *annotationSubtitle;
-    // ロケーションマネージャー
-    CLLocationManager* locationManager;
-    
-    CLLocation *testLocation;
 }
 
 @property (nonatomic, strong) NSString *headerLocality;
 @property (nonatomic, strong) NSString *postRestName;
-@property (nonatomic) CLLocation *testLocation;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end

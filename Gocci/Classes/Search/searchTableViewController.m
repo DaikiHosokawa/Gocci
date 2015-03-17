@@ -18,9 +18,11 @@
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
 #import "CXCardView.h"
+#import "LocationClient.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @import MapKit;
+@import CoreLocation;
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -42,6 +44,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @property (nonatomic, copy) NSArray *restaurants;
 @property (nonatomic, copy) NSArray *annotations;
 @property (nonatomic) BOOL searched;
+@property (nonatomic, strong) CLLocation *fetchedLocation;
 
 @end
 
@@ -144,24 +147,23 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
  
-     [self call];
     _searchBar.text = nil;
-
-    //30本のピンを立てる
- // for (int i=0; i<30; i++) {
-//        NSString *ni = _restname_[i];
-//        NSString *ai = _category_[i];
-//        double loi = [_jsonlon_[i]doubleValue];
-//        NSLog(@"lo:%f ",loi);
-//        double lai = [_jsonlat_[i]doubleValue];
-//        NSLog(@"la:%f",lai);
-//        
-//        [_mapView addAnnotation: [[CustomAnnotation alloc]initWithLocationCoordinate:CLLocationCoordinate2DMake(lai, loi)
-//                                                                               title:ni
-//                                                                            subtitle:ai]];
-//        
-//        [SVProgressHUD dismiss];
-//    }
+    
+    __weak typeof(self)weakSelf = self;
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error) {
+        if (error) {
+            LOG(@"位置情報の取得に失敗 / error=%@", error);
+            return;
+        }
+        
+        weakSelf.fetchedLocation = location;
+        
+        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+        static dispatch_once_t searchCurrentLocationOnceToken;
+        dispatch_once(&searchCurrentLocationOnceToken, ^{
+            [weakSelf _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+        });
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -225,69 +227,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     [CXCardView showWithView:_firstContentView draggable:YES];
 }
--(void)call
-{
-    // ロケーションマネージャ生成
-    if(!locationManager){
-        locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
-        locationManager.delegate = self;
-        // 精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-    }
-    
-    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
-        // iOS8の場合は、以下の何れかの処理を追加しないと位置の取得ができない
-        // アプリがアクティブな場合だけ位置取得する場合
-        [locationManager requestWhenInUseAuthorization];
-        // アプリが非アクティブな場合でも位置取得する場合
-        //[locationManager requestAlwaysAuthorization];
-    }
-    
-    if([CLLocationManager locationServicesEnabled]){
-        // 位置情報取得開始
-        [locationManager startUpdatingLocation];
-    }else{
-        // 位置取得が許可されていない場合
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    // 位置情報取得
-    CLLocationDegrees latitude = newLocation.coordinate.latitude;
-    CLLocationDegrees longitude = newLocation.coordinate.longitude;
-    NSLog(@"%f,%f",latitude,longitude);
-    
-    testLocation = newLocation;
-    
-    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-    static dispatch_once_t searchCurrentLocationOnceToken;
-    dispatch_once(&searchCurrentLocationOnceToken, ^{
-        [self _fetchFirstRestaurantsWithCoordinate:newLocation.coordinate];
-    });
-    // ロケーションマネージャ停止
-    [locationManager stopUpdatingLocation];
-}
 
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-
-    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-   // static dispatch_once_t searchCurrentLocationOnceToken;
-   // dispatch_once(&searchCurrentLocationOnceToken, ^{
-       // [self _fetchFirstRestaurantsWithCoordinate:userLocation.coordinate];
-      //  NSLog(@"testLat:%f",userLocation.coordinate.latitude);
-       // NSLog(@"testLon:%f",userLocation.coordinate.longitude);
-  //  });
-
-    
     // 初回に現在地に移動している場合は再度移動しないようにする
     if (self.showedUserLocation) {
         return;
@@ -464,12 +408,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
  */
 - (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    NSLog(@"serachLat:%f",coordinate.latitude);
-    NSLog(@"serachLat:%f",coordinate.longitude);
+    LOG(@"lat=%@, lng=%@", @(coordinate.latitude), @(coordinate.longitude));
+
     // 既に検索をしている場合は、現在地中心のレストラン一覧の取得は行わない
     if (self.searched) {
         return;
     }
+    
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [APIClient distWithLatitude:coordinate.latitude
@@ -488,12 +433,23 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
              return;
          }
          
-         
          [weakSelf _reloadRestaurants:result];
-         if ([self.restaurants count]== 0) {
-             NSLog(@"投稿がない");
+         
+         if ([self.restaurants count] == 0) {
+             LOG(@"投稿がない");
              _emptyView.hidden = NO;
          }
+     } useCache:^(id cachedResult)
+     {
+         if (!cachedResult) {
+             return;
+         }
+         
+         if (weakSelf.searched) {
+             return;
+         }
+         
+         [weakSelf _reloadRestaurants:cachedResult];
      }];
 }
 
@@ -504,12 +460,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
  */
 - (void)_searchRestaurants:(NSString *)searchText
 {
-    __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    __weak typeof(self)weakSelf = self;
     [APIClient searchWithRestName:searchText
-                         latitude:testLocation.coordinate.latitude
-                        longitude:testLocation.coordinate.longitude
+                         latitude:self.fetchedLocation.coordinate.latitude
+                        longitude:self.fetchedLocation.coordinate.longitude
                             limit:30
                           handler:^(id result, NSUInteger code, NSError *error)
      {
@@ -522,7 +478,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          
          weakSelf.searched = YES;
          
-         NSLog(@"result:%@",result);
+         LOG(@"result=%@",result);
          
          [weakSelf _reloadRestaurants:result];
      }];

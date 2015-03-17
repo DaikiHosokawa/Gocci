@@ -9,8 +9,13 @@
 NSString * const APIClientBaseURL = API_BASE_URL;
 NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
 
+NSString * const APIClientResultCacheKeyDist = @"dist";
+
 @interface APIClient()
-@property(nonatomic,strong) AFHTTPSessionManager *manager;
+
+@property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) NSCache *resultCache;
+
 @end
 
 @implementation APIClient
@@ -42,6 +47,7 @@ static APIClient *_sharedInstance = nil;
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
+    self.resultCache = [NSCache new];
     
     return self;
 }
@@ -55,6 +61,23 @@ static APIClient *_sharedInstance = nil;
                              @"limit" : limit,
                              };
     [[APIClient sharedClient].manager GET:@"timeline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"lat" : @(latitude),
+                             @"lon" : @(longitude),
+                             @"limit" : @(limit)
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"dist_timeline/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -194,23 +217,21 @@ static APIClient *_sharedInstance = nil;
 
 + (void)distWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
-    NSDictionary *params = @{
-                             @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
-                             @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
-                             @"limit": [NSString stringWithFormat:@"%@", @(limit)],
-                             };
-    NSLog(@"distparams:%@",params);
-    [[APIClient sharedClient].manager GET:@"dist/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
+    [APIClient distWithLatitude:latitude longitude:longitude limit:limit handler:handler useCache:nil];
 }
 
-+ (void)distWithLatitude2:(CGFloat)latitude longitude2:(CGFloat)longitude limit2:(NSUInteger)limit handler2:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)distWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler useCache:(void (^)(id))cacheHandler
 {
+    if (cacheHandler != nil) {
+        NSDictionary *cachedDictionary = [[APIClient sharedClient].resultCache objectForKey:APIClientResultCacheKeyDist];
+        
+        if (cachedDictionary) {
+            cacheHandler(cachedDictionary);
+        } else {
+            cacheHandler(nil);
+        }
+    }
+    
     NSDictionary *params = @{
                              @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
@@ -220,7 +241,12 @@ static APIClient *_sharedInstance = nil;
     [[APIClient sharedClient].manager GET:@"dist/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      
+                                      // 結果をキャッシュ
+                                      [[APIClient sharedClient].resultCache setObject:responseObject forKey:APIClientResultCacheKeyDist];
+                                      
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                      
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];

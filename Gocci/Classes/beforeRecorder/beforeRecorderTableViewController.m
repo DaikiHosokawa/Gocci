@@ -12,9 +12,11 @@
 #import "APIClient.h"
 #import "beforeCell.h"
 #import "Restaurant.h"
+#import "LocationClient.h"
 
 static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
+@import CoreLocation;
 
 @interface beforeRecorderTableViewController ()<beforeCellDelegate>
 {
@@ -60,10 +62,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    //dispatch_queue_t q2_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    //dispatch_queue_t q2_main = dispatch_get_main_queue();
-    //dispatch_async(q2_global, ^{
-    [self call];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 飲食店名
         NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
@@ -89,69 +87,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         //});
     });
     
-}
-
--(void)call
-{
-    // ロケーションマネージャ生成
-    if(!locationManager){
-        locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
-        locationManager.delegate = self;
-        // 精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-    }
-    
-    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
-        // iOS8の場合は、以下の何れかの処理を追加しないと位置の取得ができない
-        // アプリがアクティブな場合だけ位置取得する場合
-        [locationManager requestWhenInUseAuthorization];
-        // アプリが非アクティブな場合でも位置取得する場合
-        //[locationManager requestAlwaysAuthorization];
-    }
-    
-    if([CLLocationManager locationServicesEnabled]){
-        // 位置情報取得開始
-        [locationManager startUpdatingLocation];
-    }else{
-        // 位置取得が許可されていない場合
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    // 位置情報取得
-    CLLocationDegrees latitude = newLocation.coordinate.latitude;
-    CLLocationDegrees longitude = newLocation.coordinate.longitude;
-    NSLog(@"%f,%f",latitude,longitude);
-    // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-    static dispatch_once_t searchCurrentLocationOnceToken;
-    dispatch_once(&searchCurrentLocationOnceToken, ^{
-        [self _fetchFirstRestaurantsWithCoordinate:newLocation.coordinate];
-    });
-    // ロケーションマネージャ停止
-    [locationManager stopUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    if (error) {
-        switch ([error code]) {
-                // アプリでの位置情報サービスが許可されていない場合
-            case kCLErrorDenied:
-                NSLog(@"%@", @"このアプリは位置情報サービスが許可されていません");
-                break;
-            default:
-                NSLog(@"%@", @"位置情報の取得に失敗しました");
-                break;
-        }
-    }
-    // 位置情報取得停止
-    [locationManager stopUpdatingLocation];
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+    {
+        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+        static dispatch_once_t searchCurrentLocationOnceToken;
+        dispatch_once(&searchCurrentLocationOnceToken, ^{
+            [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+        });
+    }];
 }
 
 - (void)viewDidLoad {
@@ -370,13 +313,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     __weak typeof(self)weakSelf = self;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient distWithLatitude2:coordinate.latitude
-                      longitude2:coordinate.longitude
-                          limit2:30
-                        handler2:^(id result, NSUInteger code, NSError *error)
+    [APIClient distWithLatitude:coordinate.latitude
+                      longitude:coordinate.longitude
+                          limit:30
+                        handler:^(id result, NSUInteger code, NSError *error)
      {
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          
@@ -390,6 +333,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
              NSLog(@"投稿がない");
              _emptyView.hidden = NO;
          }
+     } useCache:^(id cachedResult)
+     {
+         if (!cachedResult) {
+             return;
+         }
+         
+         [weakSelf _reloadRestaurants:cachedResult];
      }];
 }
 
