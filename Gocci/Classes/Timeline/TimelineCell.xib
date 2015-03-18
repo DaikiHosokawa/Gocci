@@ -225,11 +225,6 @@
                             <constraint firstItem="oQN-HV-iQl" firstAttribute="leading" secondItem="Gm0-YD-5iv" secondAttribute="trailing" constant="2" id="y5h-GP-9SG"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qn-b6-MIj">
-                        <state key="normal" title="Button" image="delete">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -293,7 +288,6 @@
     <resources>
         <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_true" width="27" height="27"/>
-        <image name="delete" width="30" height="30"/>
         <image name="heart_fill" width="24" height="23"/>
         <image name="ic_userpicture" width="100" height="100"/>
         <image name="tententen" width="17" height="53"/>

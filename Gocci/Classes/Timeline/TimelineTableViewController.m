@@ -71,6 +71,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     [super viewDidLoad];
     
+    
     CGRect frame = CGRectMake(0, 0, 500, 44);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.backgroundColor = [UIColor clearColor];
@@ -457,30 +458,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 }
 
-//
-//#pragma mark バッドボタンの時の処理
-//- (void)sample2TableViewCell:(Sample2TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-//{
-//    //バッドボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    NSLog(@"result:%@",result);
-//    
-//    
-//    // タイムラインを再読み込み
-//    [self _fetchTimeline];
-//     NSLog(@"posts:%@",[self posts]);
-//}
 
 #pragma mark user_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
@@ -555,8 +532,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self _fetchTimelineUsingLocationCache:YES];
 }
 
+
+
 /**
- *  タイムラインのデータを取得
+ *  近くのお店のタイムラインのデータを取得
  *
  *  @param usingLocationCache 前回取得した位置情報を利用する場合 YES を指定
  */
@@ -595,6 +574,39 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              self.posts = [NSArray arrayWithArray:tempPosts];
              
+             if ([self.posts count]== 0) {
+                 
+                 
+                 Class class = NSClassFromString(@"UIAlertController");
+                 if(class)
+                 {
+                     // iOS 8の時の処理
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"近くに投稿がありません。全体の投稿を再度取得しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     // addActionした順に左から右にボタンが配置されます
+                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                         
+                         //はいのときのアクション内容
+                         [self _fetchTimelineUsingLocationCacheALL:YES];
+                         
+                         if (result) {
+                             
+                         }
+                     }]];
+                     
+                     [self presentViewController:alertController animated:YES completion:nil];
+                 }
+                 else
+                 {
+                     //その他の時のアクション内容
+                     
+                     if (result) {
+                         //はいのときのアクション内容
+                         [self _fetchTimelineUsingLocationCacheALL:YES];
+                     }
+                 }
+             }
+             
              // 動画データを一度全て削除
              [[MoviePlayerManager sharedManager] removeAllPlayers];
              
@@ -614,17 +626,94 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
     // 位置情報を取得してから API へアクセスする
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+     {
+         LOG(@"location=%@, error=%@", location, error);
+         
+         if (error) {
+             // 位置情報の取得に失敗
+             // TODO: アラート等を掲出
+             return;
+         }
+         fetchAPI(location.coordinate);
+     }];
+}
+
+
+/**
+ *　全体タイムラインのデータを取得
+ *
+ *  @param usingLocationCache2 近くの投稿がなかった場合の全体のタイムライン表示
+ */
+- (void)_fetchTimelineUsingLocationCacheALL:(BOOL)usingLocationCache
+{
+    __weak typeof(self)weakSelf = self;
+    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
-        LOG(@"location=%@, error=%@", location, error);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [weakSelf.refresh beginRefreshing];
         
-        if (error) {
-            // 位置情報の取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        
-        fetchAPI(location.coordinate);
-    }];
+        // API からデータを取得
+        [APIClient distTimelineWithLatitudeAll:coordinate.latitude
+                                   longitude:coordinate.longitude
+                                       limit:50
+                                     handler:^(id result, NSUInteger code, NSError *error)
+         {
+             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             
+             if ([weakSelf.refresh isRefreshing]) {
+                 [weakSelf.refresh endRefreshing];
+             }
+             
+             if (code != 200 || error != nil) {
+                 // API からのデータの取得に失敗
+                 // TODO: アラート等を掲出
+                 return;
+             }
+             
+             // 取得したデータを self.posts に格納
+             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+             for (NSDictionary *post in result) {
+                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+             }
+             self.posts = [NSArray arrayWithArray:tempPosts];
+             
+             if ([self.posts count]== 0) {
+                 NSLog(@"投稿がない");
+                 
+             }
+             
+             // 動画データを一度全て削除
+             [[MoviePlayerManager sharedManager] removeAllPlayers];
+             
+             // 表示の更新
+             [weakSelf.tableView reloadData];
+         }];
+    };
+    
+    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
+    // キャッシュされた位置情報を利用して API からデータを取得する
+    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
+    if (usingLocationCache && cachedLocation != nil) {
+        fetchAPI(cachedLocation.coordinate);
+        return;
+    }
+    
+    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
+    // 位置情報を取得してから API へアクセスする
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+     {
+         LOG(@"location=%@, error=%@", location, error);
+         
+         if (error) {
+             // 位置情報の取得に失敗
+             // TODO: アラート等を掲出
+             return;
+         }
+         
+         fetchAPI(location.coordinate);
+     }];
 }
 
 /**
@@ -632,6 +721,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_playMovieAtCurrentCell
 {
+    if ( [self.posts count] == 0){
+        return;
+    }
+    
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
         return;

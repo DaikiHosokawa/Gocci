@@ -18,7 +18,7 @@
 + (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  dist_timeline/
+ *  timeline_date/
  *
  *  @param latitude
  *  @param longitude
@@ -26,6 +26,17 @@
  *  @param handler   
  */
 + (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
+ *  timeline/
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler
+ */
++ (void)distTimelineWithLatitudeAll:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
 *  restaurant/
