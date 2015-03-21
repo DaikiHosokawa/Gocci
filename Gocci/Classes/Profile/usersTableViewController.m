@@ -264,7 +264,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"あなたの画面です";
         [_firstContentView addSubview:descriptionLabel];
         

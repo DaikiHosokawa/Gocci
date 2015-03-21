@@ -215,7 +215,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"近くの美味しいお店が探せます";
         [_firstContentView addSubview:descriptionLabel];
         

@@ -97,6 +97,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }];
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -137,7 +138,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //	self.tabBarItem.image = image;
 
 	[super viewDidAppear:animated];
-    [self showDefaultContentView];
+    if ([self isFirstRun]) {
+        //Calling this methods builds the intro and adds it to the screen. See below.
+        [self showDefaultContentView];
+    }
+
 
 }
 #pragma mark - Table view data source
@@ -386,10 +391,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UILabel *descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
         descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"投稿したい店を選びましょう！";
         [_firstContentView addSubview:descriptionLabel];
         

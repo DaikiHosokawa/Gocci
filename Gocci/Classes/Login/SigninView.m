@@ -240,7 +240,7 @@
 
 
 -(IBAction)btnFacebook_clicked:(id)sender {
-    _btnFacebook.hidden = YES;
+    _btnFacebook.hidden = NO;
     //[SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
     // FBSessionLoginBehaviorForcingWebView

@@ -310,10 +310,10 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
         UILabel *descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
         descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"思い出の記録や食生活管理に活かしましょう！";
         [_firstContentView addSubview:descriptionLabel];
         

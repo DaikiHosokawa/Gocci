@@ -180,7 +180,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"近くのグルメ情報が見れます";
         [_firstContentView addSubview:descriptionLabel];
         
