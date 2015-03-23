@@ -5,6 +5,7 @@
 
 #import "RecorderSubmitPopupView.h"
 #import "BFPaperCheckbox.h"
+#import "AppDelegate.h"
 
 @interface RecorderSubmitPopupView()
 <BFPaperCheckboxDelegate>
@@ -81,16 +82,8 @@
  */
 - (IBAction)onSubmitButton:(id)sender
 {
-    if (![self _validateCheckboxes]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"どれか1つを選択してください"
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
-        return;
-    }
-    
+    [self _validateCheckboxes];
+
     if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupViewOnSubmit:)]) {
         [self.delegate recorderSubmitPopupViewOnSubmit:self];
     }
@@ -114,6 +107,10 @@
 - (void)paperCheckboxChangedState:(BFPaperCheckbox *)changedCheckbox
 {
     if (!changedCheckbox.isChecked) {
+        NSString *str1 = @"0";
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        delegate.cheertag = str1;
+        NSLog(@"cheertag:%@",str1);
         return;
     }
     
@@ -125,6 +122,12 @@
         
         // TODO: チェックボックス選択時の処理
         LOG(@"%@番目のチェックボックスを選択", @(changedCheckbox.tag));
+        // NSIntegerを文字列に変換
+        NSString *str2 = [NSString stringWithFormat:@"%ld", (long)changedCheckbox.tag];
+        // グローバル変数に保存
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        delegate.cheertag = str2;
+        NSLog(@"cheertag:%@",str2);
     }
 }
 
@@ -140,6 +143,7 @@
 {
     for (BFPaperCheckbox *checkbox in self.checkboxes) {
         if (checkbox.isChecked) {
+            NSLog(@"チェックされています");
             return YES;
         }
     }

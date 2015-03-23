@@ -292,9 +292,10 @@ static APIClient *_sharedInstance = nil;
     });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSString *)cheertag handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
                              @"restname" : restaurantName,
+                             @"star_evaluation" : cheertag,
                              };
     [[APIClient sharedClient].manager POST:@"movie/"
                                 parameters:params
@@ -305,6 +306,7 @@ static APIClient *_sharedInstance = nil;
                                             fileName:[fileURL lastPathComponent]
                                             mimeType:@"video/mp4"
                                                error:&error];
+                     NSLog(@"pram:%@",params);
                      if (error) LOG(@"error=%@", error);
                  } success:^(NSURLSessionDataTask *task, id responseObject) {
                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

@@ -713,7 +713,7 @@
      */
          
          // movie
-         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText                               handler:^(id result, NSUInteger code, NSError *error)
+         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
           {
               LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
               

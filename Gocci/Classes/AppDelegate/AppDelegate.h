@@ -29,6 +29,8 @@
     NSData *movieData;
     
     NSString *lifelogDate;
+    
+    NSString *cheertag;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -43,6 +45,7 @@
 @property(nonatomic) CLLocationCoordinate2D *coordinate;
 @property(nonatomic) NSString *lifelogDate;
 @property (nonatomic, assign) NSInteger screenType;
+@property (nonatomic, retain) NSString *cheertag;
 
 
 -(BOOL)isFirstRun;
