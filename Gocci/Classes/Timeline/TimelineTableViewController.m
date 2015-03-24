@@ -376,6 +376,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
         restVC.postCategory = _postCategory;
+        NSLog(@"postCategory:%@",_postCategory);
     }
 }
 
@@ -514,6 +515,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);
     NSLog(@"homepage=%@", homepage);
+    NSLog(@"category=%@", category);
 	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 

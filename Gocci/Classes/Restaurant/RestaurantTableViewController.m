@@ -58,8 +58,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postLocality = _postLocality;
 @synthesize postTell = _postTell;
 @synthesize postHomepage = _postHomepage;
-@synthesize postLon = _postLon;
-@synthesize postLat = _postLat;
 @synthesize postCategory = _postCategory;
 @synthesize lon;
 @synthesize lat;
@@ -140,9 +138,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	
     self.restname.text = _postRestName;
     self.locality.text = _postLocality;
-    self.tell.text = _postTell;
-    self.homepage.text = _postHomepage;
     self.categoryLabel.text = _postCategory;
+    NSLog(@"postCategory2:%@",_postCategory);
     
     NSLog(@"This Restaurant is %@",_postRestName);
     NSLog(@"This Locality is %@",_postLocality);

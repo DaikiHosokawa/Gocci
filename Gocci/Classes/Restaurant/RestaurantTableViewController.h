@@ -43,9 +43,6 @@
 @property (nonatomic) NSString *postTell;
 @property (nonatomic) NSString *postHomepage;
 @property (nonatomic) NSString *postCategory;
-@property (nonatomic) NSString *headerLocality;
-@property (nonatomic) NSString *postLat;
-@property (nonatomic) NSString *postLon;
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
@@ -53,8 +50,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *locality;
 @property (weak, nonatomic) IBOutlet UIView *restview;
 @property (weak, nonatomic) IBOutlet UIButton *cheerNumBtn;
-@property (weak, nonatomic) IBOutlet UILabel *tell;
-@property (weak, nonatomic) IBOutlet UILabel *homepage;
 
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
