@@ -113,6 +113,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if (_postHomepage == nil) {
        
     }
+    //応援総数のラベル
+    //[self.cheerNumBtn setTitle:_postTell forState:UIControlStateNormal];
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
     

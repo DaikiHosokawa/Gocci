@@ -25,7 +25,7 @@
 {
     RecorderSubmitPopupView *view = [[NSBundle mainBundle] loadNibNamed:@"RecorderSubmitPopupView" owner:self options:nil][0];
     
-    view.checkboxes = @[view.checkbox1, view.checkbox2, view.checkbox3, view.checkbox4];
+    view.checkboxes = @[view.checkbox1];
     
     for (NSUInteger i=0; i<[view.checkboxes count]; i++) {
         BFPaperCheckbox *checkbox = view.checkboxes[i];

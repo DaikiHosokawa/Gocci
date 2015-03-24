@@ -368,7 +368,7 @@
     // FBSessionLoginBehaviorForcingWebView
     FBSessionLoginBehavior loginBehavior = FBSessionLoginBehaviorWithFallbackToWebView;
     
-    NSArray *permissionArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"publish_stream"];
+    NSArray *permissionArray = @[@"user_about_me"];
     
     FBSession *session = [[FBSession alloc] initWithPermissions:permissionArray];
     

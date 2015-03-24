@@ -28,6 +28,7 @@
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
     obj.category = dictionary[@"category"];
+   // obj.starEvaluation = dictionary[@"category"]; int型です
     
     return obj;
 }

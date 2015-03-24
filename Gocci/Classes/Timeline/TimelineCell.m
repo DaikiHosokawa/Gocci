@@ -30,6 +30,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @property (nonatomic, weak) IBOutlet UIView *likeView;
 @property (nonatomic, weak) IBOutlet UILabel *likeCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cheerView;
 
 @property (nonatomic, weak) IBOutlet UIView *commentView;
 @property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
@@ -169,6 +170,21 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     // Comment 数
     self.commentCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.commentNum)];
+    
+    /*
+    //応援画像
+    if(timelinePost.commentNum == 1){
+        self.cheerView.image
+    }else if(timelinePost.commentNum == 2){
+        self.cheerView.image
+    }else if(timelinePost.commentNum == 3) {
+        self.cheerView.image
+     }else if(timelinePost.commentNum == 3) {
+     self.cheerView.image
+     }
+     */
+    
+    self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     // タップイベント
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];

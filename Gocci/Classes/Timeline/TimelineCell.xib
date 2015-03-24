@@ -17,6 +17,11 @@
                 <subviews>
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reR-SP-qcM">
                         <rect key="frame" x="8" y="9" width="302" height="501"/>
+                        <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-PY-ESh">
+                                <rect key="frame" x="216" y="8" width="40" height="40"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tv0-nB-x5O">
@@ -265,6 +270,7 @@
                 <outlet property="ViolateView" destination="QXg-6k-EmD" id="gfw-zt-aKk"/>
                 <outlet property="avaterImageView" destination="tv0-nB-x5O" id="ble-ha-UGa"/>
                 <outlet property="background" destination="reR-SP-qcM" id="KY9-qr-KLy"/>
+                <outlet property="cheerView" destination="wbK-PY-ESh" id="LWi-SI-wkl"/>
                 <outlet property="commentCountLabel" destination="oQN-HV-iQl" id="gMF-em-tq1"/>
                 <outlet property="commentView" destination="ohQ-nj-eFT" id="7xO-8Q-wTR"/>
                 <outlet property="deleteBtn" destination="xjB-00-Bte" id="VWn-QN-Tr6"/>
