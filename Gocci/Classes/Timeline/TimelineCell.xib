@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GOCCI_MAN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCG-79-oul">
-                        <rect key="frame" x="76" y="21" width="152" height="21"/>
+                        <rect key="frame" x="76" y="22" width="152" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2yT-6z-hy9"/>
                         </constraints>
@@ -40,12 +40,8 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tententen" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-6k-EmD">
-                        <rect key="frame" x="290" y="23" width="7" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="7" id="ISS-mZ-2jZ"/>
-                            <constraint firstAttribute="height" constant="23" id="cuo-6V-cuZ"/>
-                        </constraints>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tententen2" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-6k-EmD">
+                        <rect key="frame" x="273" y="24" width="30" height="30"/>
                     </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
                         <rect key="frame" x="290" y="19" width="12" height="12"/>
@@ -237,6 +233,8 @@
                     <constraint firstItem="XCG-79-oul" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="0Ff-em-JDC"/>
                     <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="74" id="4Vh-hT-1QK"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EV4-90-av7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QXg-6k-EmD" secondAttribute="trailing" constant="7" id="FKz-Bz-GrC"/>
+                    <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="QXg-6k-EmD" secondAttribute="bottom" constant="21" id="GhK-oA-Qp6"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="top" secondItem="hND-ON-WcS" secondAttribute="bottom" constant="8" id="HmL-gk-Hxo"/>
                     <constraint firstAttribute="trailing" secondItem="F7J-7N-gdB" secondAttribute="trailing" constant="90" id="Lfg-o1-0M2"/>
                     <constraint firstItem="XCG-79-oul" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="12" id="Nhc-aO-o7Y"/>
@@ -251,10 +249,8 @@
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cfl-94-Sfa"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="12" id="gFL-RK-jQe"/>
-                    <constraint firstItem="QXg-6k-EmD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="gmR-8d-34P"/>
                     <constraint firstAttribute="trailing" secondItem="ohQ-nj-eFT" secondAttribute="trailing" constant="32" id="l7Q-gH-EIb"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lB1-bO-TlV"/>
-                    <constraint firstItem="QXg-6k-EmD" firstAttribute="leading" secondItem="XCG-79-oul" secondAttribute="trailing" constant="62" id="lY5-Zg-y74"/>
                     <constraint firstAttribute="bottom" secondItem="reR-SP-qcM" secondAttribute="bottom" constant="8" id="mU5-hB-own"/>
                     <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="pZs-rs-VBp"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="reO-ph-QOU"/>
@@ -262,6 +258,8 @@
                     <constraint firstItem="zpK-2i-P20" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="ttI-HL-akT"/>
                     <constraint firstAttribute="trailing" secondItem="reR-SP-qcM" secondAttribute="trailing" constant="8" id="uZr-tr-1b6"/>
                     <constraint firstItem="ohQ-nj-eFT" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="vlU-kQ-ldG"/>
+                    <constraint firstItem="QXg-6k-EmD" firstAttribute="leading" secondItem="F7J-7N-gdB" secondAttribute="trailing" constant="45" id="vzY-8Z-KUH"/>
+                    <constraint firstItem="QXg-6k-EmD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="xyu-ng-e9G"/>
                     <constraint firstAttribute="trailing" secondItem="pJp-Tg-6h0" secondAttribute="trailing" constant="24" id="zVz-eO-XnO"/>
                 </constraints>
             </tableViewCellContentView>
@@ -288,7 +286,7 @@
                 <outlet property="timeLabel" destination="F7J-7N-gdB" id="eOX-LR-Ufn"/>
                 <outlet property="userNameLabel" destination="XCG-79-oul" id="L5I-N9-Ou1"/>
             </connections>
-            <point key="canvasLocation" x="245" y="-272.5"/>
+            <point key="canvasLocation" x="245" y="-273.5"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -296,7 +294,7 @@
         <image name="comment_true" width="27" height="27"/>
         <image name="heart_fill" width="24" height="23"/>
         <image name="ic_userpicture" width="100" height="100"/>
-        <image name="tententen" width="17" height="53"/>
+        <image name="tententen2" width="80" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
