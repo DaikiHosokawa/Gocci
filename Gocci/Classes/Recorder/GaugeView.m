@@ -28,7 +28,7 @@
 		//ゲージバー
 		CGRect sub_frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 		view_bar = [[UIView alloc] initWithFrame:sub_frame];
-		view_bar.backgroundColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+		view_bar.backgroundColor = [UIColor colorWithRed:230./255. green:51./255. blue:51./255. alpha:1.];
 		[self addSubview:view_bar];
 
 	}
