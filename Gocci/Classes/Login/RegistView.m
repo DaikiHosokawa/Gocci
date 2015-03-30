@@ -498,18 +498,6 @@
 {
     NSLog(@"%@", user);
     
-    // Submit user info to server
-    NSDictionary *params = @{
-                             @"email" : user[@"email"],
-                             @"name" : user[@"name"],
-                             @"gender" : user[@"gender"],
-                             @"first_name" : user[@"first_name"],
-                             @"last_name" : user[@"last_name"],
-                             @"id" : user[@"id"],
-                             @"link" : user[@"link"],
-                             @"locale" : user[@"locale"],
-                             @"atk" : [FBSession activeSession].accessTokenData.accessToken
-                             };
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

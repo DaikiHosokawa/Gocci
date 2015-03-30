@@ -27,6 +27,11 @@
     
     view.checkboxes = @[view.checkbox1];
     
+    NSString *str1 = @"0";
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.cheertag = str1;
+    NSLog(@"cheertag:%@",str1);
+    
     for (NSUInteger i=0; i<[view.checkboxes count]; i++) {
         BFPaperCheckbox *checkbox = view.checkboxes[i];
         checkbox.delegate = view;

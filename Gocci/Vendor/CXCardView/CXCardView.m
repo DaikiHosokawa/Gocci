@@ -460,7 +460,7 @@ static CXCardView *__cx_cardview_current_view;
         frame;
     });
     
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    //CGSize screenSize = [UIScreen mainScreen].bounds.size;
     
     CGRect frame = _contentView.frame;
     frame.origin.y = (CGRectGetHeight([self currentScreenBoundsDependOnOrientation]) - CGRectGetHeight(_contentView.frame))/2;

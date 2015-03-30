@@ -711,7 +711,7 @@
              return;
          }
      */
-         
+    NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
          // movie
          [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
           {
