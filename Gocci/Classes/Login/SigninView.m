@@ -221,14 +221,14 @@
         } errorBlock:^(NSError *error) {
             
             NSLog(@"ERROR");
-            exit(1);
+            //exit(1);
             
         }];
         
     } errorBlock:^(NSError *error) {
         
         NSLog(@"ERROR");
-        exit(1);
+       // exit(1);
         
     }];
 }

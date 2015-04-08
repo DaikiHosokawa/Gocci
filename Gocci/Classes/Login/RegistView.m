@@ -322,6 +322,10 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
                 
             } errorBlock:^(NSError *error) {
+                NSString *alertMessage = @"Twitterのアカウントでサインインできません。";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+
                 
                 [SVProgressHUD dismiss];
                 
@@ -331,15 +335,27 @@
             
         } errorBlock:^(NSError *error) {
             
+            NSString *alertMessage = @"Twitterのアカウントでサインインできません。";
+            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alrt show];
+            
+            [SVProgressHUD dismiss];
+
             NSLog(@"ERROR");
-            exit(1);
+            //exit(1);
             
         }];
         
     } errorBlock:^(NSError *error) {
+        NSString *alertMessage = @"Twitterのアカウントでサインインできません。";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
         
+        [SVProgressHUD dismiss];
+
+
         NSLog(@"ERROR");
-        exit(1);
+        //exit(1);
         
     }];
 }
@@ -379,7 +395,7 @@
         if (error) {
             NSLog(@"FB Error: %@", error.localizedDescription);
             
-            NSString *alertMessage = @"facebookでアカウントでサインインできません。";
+            NSString *alertMessage = @"facebookのアカウントでサインインできません。";
             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alrt show];
             

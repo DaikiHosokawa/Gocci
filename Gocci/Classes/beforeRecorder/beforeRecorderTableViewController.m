@@ -145,11 +145,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-////#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 1;
-//}
 
 //セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
