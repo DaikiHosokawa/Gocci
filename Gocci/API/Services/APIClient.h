@@ -55,7 +55,7 @@
 + (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  profile/
+ *  lifelog/
  *
  *  @param handler 完了イベントハンドラ
  */
@@ -166,6 +166,8 @@
 + (void)loginUserWithUsername:(NSString *)username
                  withPassword:(NSString *)pwd
                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
 
 
 @end

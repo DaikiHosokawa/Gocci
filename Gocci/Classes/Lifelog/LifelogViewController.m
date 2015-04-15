@@ -7,6 +7,8 @@
 //
 
 #import "LifelogViewController.h"
+#import "APIClient.h"
+#import "TimelinePost.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
@@ -37,14 +39,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
-	if (self) {
-//		// !!!:dezamisystem・アイテム名
-//		[self setTitle:@"ライフログ"];
-//		// タブバーアイコン
-//		UIImage *icon_normal = [UIImage imageNamed:@"tabbaritem_lifelog.png"];
-//		UIImage *icon_selected = [UIImage imageNamed:@"tabbaritem_lifelog_sel.png"];
-//		[self.tabBarItem setFinishedSelectedImage:icon_selected withFinishedUnselectedImage:icon_normal];
-	}
+	
 	return self;
 }
 
@@ -116,41 +111,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 	[super viewWillAppear:animated];
 	
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-	
-
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-	//JSONのパース処理
-	NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/lifelogs"];
-	NSString *encodeString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL *url = [NSURL URLWithString:encodeString];
-	NSLog(@"url:%@",url);
-	NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-	NSLog(@"response:%@",response);
-	NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-	NSLog(@"jsonData:%@",jsonData);
-	NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-	NSLog(@"jsonDic:%@",jsonDic);
-	//年
-	NSArray *year = [jsonDic valueForKey:@"year"];
-	array_year = [year mutableCopy];
-	//月
-	NSArray *month = [jsonDic valueForKey:@"month"];
-	array_month = [month mutableCopy];
-	//日
-	NSArray *day = [jsonDic valueForKey:@"day"];
-	array_day = [day mutableCopy];
-#else
-	if (!array_year || [array_year count] == 0) {
-		array_year = [[NSArray alloc] initWithObjects:@"2015",@"2015", nil];
-	}
-	if (!array_month || [array_month count] == 0) {
-		array_month = [[NSArray alloc] initWithObjects:@"02",@"02", nil];
-	}
-	if (!array_day || [array_day count] == 0) {
-		array_day = [[NSArray alloc] initWithObjects:@"15",@"28", nil];
-	}
-#endif
+    [self _fetchLifelog];
 	
 }
 
@@ -162,8 +123,8 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
         [self showDefaultContentView];
     }
 
-	
-	[self.calendar reloadData]; // Must be call in viewDidAppear
+    NSLog(@"ここが重い");
+	//::[self.calendar reloadData]; // Must be call in viewDidAppear
 }
 
 - (void)didReceiveMemoryWarning {
@@ -324,6 +285,70 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     }
     
     [CXCardView showWithView:_firstContentView draggable:YES];
+}
+
+
+/**
+ *　全体タイムラインのデータを取得
+ *
+ *  @param usingLocationCache2 近くの投稿がなかった場合の全体のタイムライン表示
+ */
+- (void)_fetchLifelog
+{
+    __weak typeof(self)weakSelf = self;
+    {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        
+        // API からデータを取得
+        [APIClient LifelogWithHandler:^(id result, NSUInteger code, NSError *error)
+         {
+             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             
+             
+             if (code != 200 || error != nil) {
+                 // API からのデータの取得に失敗
+                 // TODO: アラート等を掲出
+                 return;
+             }
+             NSLog(@"result:%@",result);
+             
+            // 取得したデータを self.posts に格納
+             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+             for (NSDictionary *post in result) {
+        
+                 [tempPosts addObject:post];
+                 //NSLog(@"tempPosts:%@",resuglt);
+             }
+             NSLog(@"tempPosts:%@",tempPosts);
+             //self.posts = [NSArray arrayWithArray:tempPosts];
+             //年
+             NSArray *year = [tempPosts valueForKey:@"year"];
+             array_year = [year mutableCopy];
+             NSLog(@"year:%@",array_year);
+             //月
+             NSArray *month = [tempPosts valueForKey:@"month"];
+             array_month = [month mutableCopy];
+             NSLog(@"month:%@",array_month);
+             //日
+             NSArray *day = [tempPosts valueForKey:@"day"];
+             array_day = [day mutableCopy];
+             NSLog(@"day:%@",array_day);
+             
+             if (!array_year || [array_year count] == 0) {
+                 array_year = [[NSArray alloc] initWithObjects:@"2015",@"2015", nil];
+             }
+             if (!array_month || [array_month count] == 0) {
+                 array_month = [[NSArray alloc] initWithObjects:@"02",@"02", nil];
+             }
+             if (!array_day || [array_day count] == 0) {
+                 array_day = [[NSArray alloc] initWithObjects:@"15",@"28", nil];
+             }
+             [self.calendar reloadData];
+         }];
+    };
+    
 }
 
 

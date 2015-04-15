@@ -114,6 +114,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self _fetchProfile];
     [self.tableView reloadData];
     
+    
+    
     [SVProgressHUD dismiss];
 }
 
