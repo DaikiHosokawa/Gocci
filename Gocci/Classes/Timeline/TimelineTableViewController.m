@@ -482,6 +482,27 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	LOG(@"Username is touched");
 }
 
+-(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
+{
+    NSString *mapText = Locality;
+    mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText];
+    NSLog(@"URLSchemes:%@",directions);
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:directions]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+        //アラート出す
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+        
+}
+}
+
 #pragma mark user_nameタップの時の処理 2
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName
 {

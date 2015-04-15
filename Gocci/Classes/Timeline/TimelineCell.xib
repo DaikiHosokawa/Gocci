@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -83,36 +83,43 @@
                                     <constraint firstAttribute="height" constant="48" id="wZZ-bh-8LS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="東京都千代田区飯田橋 4-6-10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6I-op-mkY">
-                                <rect key="frame" x="64" y="32" width="214" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="東京都千代田区飯田橋 4-6-10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6I-op-mkY">
+                                <rect key="frame" x="64" y="32" width="175" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="etJ-Rn-sDA"/>
+                                    <constraint firstAttribute="height" constant="25" id="MeP-f1-khR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
                                 <color key="textColor" red="0.623459816" green="0.62356954809999998" blue="0.62345290180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="サンマルクカフェ 飯田橋東口店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPi-nC-yon">
-                                <rect key="frame" x="64" y="9" width="214" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="サンマルクカフェ 飯田橋東口店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPi-nC-yon">
+                                <rect key="frame" x="64" y="9" width="175" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="dS3-vk-aV1"/>
+                                    <constraint firstAttribute="height" constant="25" id="FpW-rl-lYQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbaritem_search.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ved-qS-0vN">
+                                <rect key="frame" x="245" y="17" width="32" height="32"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="X6I-op-mkY" secondAttribute="bottom" constant="8" id="6iv-2w-Lzq"/>
-                            <constraint firstAttribute="trailing" secondItem="QPi-nC-yon" secondAttribute="trailing" constant="8" id="7Ie-aC-Dnb"/>
-                            <constraint firstAttribute="trailing" secondItem="X6I-op-mkY" secondAttribute="trailing" constant="8" id="GUJ-fL-Fca"/>
-                            <constraint firstItem="X6I-op-mkY" firstAttribute="leading" secondItem="ke9-rb-P2P" secondAttribute="trailing" constant="8" id="NiF-vk-WTf"/>
+                            <constraint firstAttribute="trailing" secondItem="QPi-nC-yon" secondAttribute="trailing" constant="47" id="0bF-Dc-eKM"/>
+                            <constraint firstItem="QPi-nC-yon" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="9" id="4hX-ap-gcb"/>
+                            <constraint firstItem="QPi-nC-yon" firstAttribute="leading" secondItem="ke9-rb-P2P" secondAttribute="trailing" constant="8" id="7EQ-Vt-Of7"/>
+                            <constraint firstAttribute="trailing" secondItem="Ved-qS-0vN" secondAttribute="trailing" constant="9" id="GPH-5G-sdy"/>
+                            <constraint firstItem="Ved-qS-0vN" firstAttribute="leading" secondItem="QPi-nC-yon" secondAttribute="trailing" constant="6" id="MnZ-4x-k86"/>
                             <constraint firstItem="ke9-rb-P2P" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="8" id="Qgy-jd-X3g"/>
+                            <constraint firstItem="X6I-op-mkY" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="32" id="RWe-pL-m25"/>
                             <constraint firstItem="ke9-rb-P2P" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" constant="8" id="V09-sb-zCo"/>
                             <constraint firstAttribute="height" constant="64" id="bey-Ty-i5G"/>
-                            <constraint firstItem="QPi-nC-yon" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="8" id="fIH-0o-eaa"/>
-                            <constraint firstItem="QPi-nC-yon" firstAttribute="leading" secondItem="ke9-rb-P2P" secondAttribute="trailing" constant="8" id="s2p-mk-49c"/>
+                            <constraint firstItem="X6I-op-mkY" firstAttribute="leading" secondItem="ke9-rb-P2P" secondAttribute="trailing" constant="8" id="da7-Oh-YmL"/>
+                            <constraint firstItem="Ved-qS-0vN" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="17" id="q1q-6E-jZz"/>
+                            <constraint firstAttribute="trailing" secondItem="X6I-op-mkY" secondAttribute="trailing" constant="47" id="sMh-QG-4D5"/>
+                            <constraint firstAttribute="bottom" secondItem="Ved-qS-0vN" secondAttribute="bottom" constant="15" id="waY-oo-3nE"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-Tg-6h0">
@@ -277,6 +284,7 @@
                 <outlet property="restaurantAddressLabel" destination="X6I-op-mkY" id="syq-9Z-HXm"/>
                 <outlet property="restaurantImageView" destination="ke9-rb-P2P" id="eNZ-ho-PSr"/>
                 <outlet property="restaurantNameLabel" destination="QPi-nC-yon" id="PtI-5Q-gbK"/>
+                <outlet property="restaurantNaviview" destination="Ved-qS-0vN" id="cRG-lt-MS9"/>
                 <outlet property="restaurantView" destination="YSl-cf-iOp" id="JY6-5y-l4T"/>
                 <outlet property="thumbnailView" destination="hND-ON-WcS" id="FQq-rz-yvO"/>
                 <outlet property="thumbnailViewBottomConstraint" destination="s0V-rO-n5Y" id="qv8-tF-jzU"/>
@@ -294,6 +302,7 @@
         <image name="comment_true" width="27" height="27"/>
         <image name="heart_fill" width="24" height="23"/>
         <image name="ic_userpicture" width="100" height="100"/>
+        <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tententen2" width="80" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

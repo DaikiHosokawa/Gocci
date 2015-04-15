@@ -34,6 +34,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @property (nonatomic, weak) IBOutlet UIView *commentView;
 @property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *restaurantNaviview;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewTopConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewBottomConstraint;
@@ -92,12 +93,20 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)tapNavi:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNaviWithLocality:)]) {
+        [self.delegate timelineCell:self didTapNaviWithLocality:self.locality];
+    }
+}
+
 - (void)tapComment:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapCommentButtonWithPostID:)]) {
         [self.delegate timelineCell:self didTapCommentButtonWithPostID:self.postID];
     }
 }
+
 
 - (void)tapViolate:(UITapGestureRecognizer *)recognizer
 {
@@ -189,7 +198,10 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     // タップイベント
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];
     [self _assignTapAction:@selector(tapAvaterImageView:) view:self.avaterImageView];
-    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantView];
+    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantImageView];
+    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantAddressLabel];
+    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantNameLabel];
+    [self _assignTapAction:@selector(tapNavi:) view:self.restaurantNaviview];
     [self _assignTapAction:@selector(tapLike:) view:self.likeView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
    [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];

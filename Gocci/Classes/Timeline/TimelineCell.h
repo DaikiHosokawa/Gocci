@@ -60,7 +60,15 @@ extern NSString * const TimelineCellIdentifier;
  *  @param cell
  *  @param postID 
  */
-- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID;
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)Locality;
+
+/**
+ *  ナビをタップ
+ *
+ *  @param cell
+ *  @param postID
+ */
+- (void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)postID;
 
 /**
  *  Delete ボタンをタップ
