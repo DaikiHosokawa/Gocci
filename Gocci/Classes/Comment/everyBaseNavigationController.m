@@ -2,8 +2,8 @@
 //  everyBaseNavigationController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/02/09.
-//  Copyright (c) 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2014/05/10.
+//  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
 #import "everyBaseNavigationController.h"

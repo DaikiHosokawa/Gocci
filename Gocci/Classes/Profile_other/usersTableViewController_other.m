@@ -65,8 +65,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-	// !!!:dezamisystem
-//	self.navigationItem.backBarButtonItem = backButton;
     
     // Table View の設定
     self.tableView.allowsSelection = NO;
@@ -334,29 +332,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-//
-//#pragma mark バッドボタンの時の処理
-//- (void)sample5TableViewCell_other:(Sample5TableViewCell_other *)cell didTapBadWithPostID:(NSString *)postID
-//{
-//    //バッドボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    NSLog(@"result:%@",result);
-//    
-//    
-//    // タイムラインを再読み込み
-//    [self _fetchProfile_other];
-//}
+
 
 #pragma mark rest_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category

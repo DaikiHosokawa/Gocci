@@ -47,11 +47,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 {
 	[super viewDidLoad];
 	
-	//ステータスバーの高さ
-	//const CGFloat height_satus = [[UIApplication sharedApplication] statusBarFrame].size.height;
-	//ナビゲーションバーの高さ
-	//const CGFloat height_navigation = self.navigationController.navigationBar.frame.size.height;
-	
 	//座標
 	const CGFloat width_view = self.view.frame.size.width;
 	const CGFloat height_view = self.view.frame.size.height;
@@ -195,10 +190,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
 	NSLog(@"Date: %@", date);
-	
-//	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//	[formatter setDateFormat:@"yyyy/MM/dd"];
-//	NSString *dateStr = [formatter stringFromDate:date];
 	
 	int yearSelected = [self getYear:date];
 	int monthSelected = [self getMonth:date];
@@ -352,14 +343,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

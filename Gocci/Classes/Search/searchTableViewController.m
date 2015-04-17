@@ -55,12 +55,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
 	self = [super initWithCoder:aDecoder];
 	if (self) {
-//		// !!!:dezamisystem・アイテム名
-//		[self setTitle:@"近くの店"];
-//		// タブバーアイコン
-//		UIImage *icon_normal = [UIImage imageNamed:@"tabbaritem_search.png"];
-//		UIImage *icon_selected = [UIImage imageNamed:@"tabbaritem_search_sel.png"];
-//		[self.tabBarItem setFinishedSelectedImage:icon_selected withFinishedUnselectedImage:icon_normal];
 	}
 	return self;
 }

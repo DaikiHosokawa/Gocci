@@ -97,11 +97,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSLog(@"postCategory:%@",_postCategory);
     
     
-    //    self.navigationItem.title = @"レストラン";	// !!!:dezamisystem
-    //背景にイメージを追加したい
-    //UIImage *backgroundImage = [UIImage imageNamed:@"login.png"];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -111,12 +106,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if (_postHomepage == nil) {
        
     }
-    //応援総数のラベル
-    //[self.cheerNumBtn setTitle:_postTell forState:UIControlStateNormal];
-    // !!!:dezamisystem
-    //	self.navigationItem.backBarButtonItem = backButton;
     
-    // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -159,13 +149,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
-//// !!!:dezamisystem
-//- (void)navigationController:(UINavigationController *)navigationController
-//	   didShowViewController:(UIViewController *)viewController
-//					animated:(BOOL)animated
-//{
-//
-//}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -197,29 +181,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 
-/*
-- (IBAction)pushMap:(UIButton *)sender {
-    NSString *mapText = _postRestName;
-    mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *directions = [NSString stringWithFormat:
-                            @"comgooglemaps://?q=%@&center=%@,%@&zoom=18",mapText,_postLon,_postLat];
-    NSLog(@"URLSchemes:%@",directions);
-    if ([[UIApplication sharedApplication] canOpenURL:
-         [NSURL URLWithString:@"comgooglemaps://"]]) {
-        [[UIApplication sharedApplication] openURL:
-         [NSURL URLWithString:directions]];
-    } else {
-        NSLog(@"Can't use comgooglemaps://");
-        //アラート出す
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
-                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-        [alert show];
-        
-    }
-
-}
- */
 
 
 
@@ -385,9 +346,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 
-
-
-
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -504,36 +462,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             NSString *alertMessage = @"違反報告をしました";
             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alrt show];
+         }
+     }
 }
-        
-    }
-    
-}
-
-//
-//#pragma mark バッドボタンの時の処理
-//- (void)sample3TableViewCell:(Sample3TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-//{
-//    //バッドボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    NSLog(@"result:%@",result);
-//    
-//    
-//    // タイムラインを再読み込み
-//    [self _fetchRestaurant];
-//}
-//
 
 
 - (IBAction)tapTEL {

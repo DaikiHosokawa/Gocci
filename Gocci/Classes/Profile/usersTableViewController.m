@@ -56,12 +56,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
 	self = [super initWithCoder:aDecoder];
 	if (self) {
-//		// !!!:dezamisystem・アイテム名
-//		[self setTitle:@"アカウント"];
-//		// タブバーアイコン
-//		UIImage *icon_normal = [UIImage imageNamed:@"tabbaritem_profile.png"];
-//		UIImage *icon_selected = [UIImage imageNamed:@"tabbaritem_profile_sel.png"];
-//		[self.tabBarItem setFinishedSelectedImage:icon_selected withFinishedUnselectedImage:icon_normal];
+        
 	}
 	return self;
 }
@@ -202,12 +197,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 #pragma mark - UIScrollView Delegate
 
-//////////////////////////スクロール開始後//////////////////////////
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-
-}
-
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 
@@ -299,29 +288,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // タイムラインを再読み込み
     [self _fetchProfile];
 }
-//
-//#pragma mark バッドボタンの時の処理
-//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-//{
-//    //バッドボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    NSLog(@"result:%@",result);
-//    
-//    
-//    // タイムラインを再読み込み
-//    [self _fetchProfile];
-//}
+
 
 #pragma mark rest_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category

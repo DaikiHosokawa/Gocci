@@ -235,29 +235,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 
-//
-//#pragma mark バッドボタンの時の処理
-//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapBadWithPostID:(NSString *)postID
-//{
-//    //バッドボタンの時の処理
-//    LOG(@"postid=%@", postID);
-//    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-//    NSLog(@"content:%@",content);
-//    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/badinsert/"];
-//    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSURLResponse* response;
-//    NSError* error = nil;
-//    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    NSLog(@"result:%@",result);
-//
-//
-//    // タイムラインを再読み込み
-//    [self _fetchProfile];
-//}
 
 #pragma mark rest_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
@@ -285,66 +262,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
-
-// TODO: 削除機能の実装
-//#pragma mark 削除ボタン押下時の処理
-//- (void)sample5TableViewCell:(Sample5TableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID
-//{
-//    // 削除ボタン押下時の処理
-//    LOG(@"postid=%@", postID);
-//    _postID = postID;
-//    Class class = NSClassFromString(@"UIAlertController");
-//    if(class)
-//	{
-//        // iOS 8の時の処理
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
-//
-//        // addActionした順に左から右にボタンが配置されます
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//
-//
-//            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-//            NSLog(@"content:%@",content);
-//            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-//            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//            [urlRequest setHTTPMethod:@"POST"];
-//            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//            NSURLResponse* response;
-//            NSError* error = nil;
-//            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                                   returningResponse:&response
-//                                                               error:&error];
-//			if (result) {}
-//
-//           [self _fetchProfile];
-//           [self.tableView reloadData];
-//
-//        }]];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//
-//        }]];
-//
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
-//	else
-//	{
-//        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-//        NSLog(@"content:%@",content);
-//        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
-//        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-//        [urlRequest setHTTPMethod:@"POST"];
-//        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-//        NSURLResponse* response;
-//        NSError* error = nil;
-//        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-//                                               returningResponse:&response
-//                                                           error:&error];
-//		if (result) {}
-//
-//        [self _fetchProfile];
-//        [self.tableView reloadData];
-//    }
-//}
 
 
 #pragma mark - Private Methods

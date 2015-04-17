@@ -230,32 +230,8 @@
     registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 20, registView.frame.size.width, registView.frame.size.height);
     [self.view addSubview:registView];
     
-    
-    // Objective-C
-//    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            if (!error) {
-//                NSLog(@"Twitter ログインをユーザーがキャンセル");
-//                
-//                 [SVProgressHUD dismiss];
-//            } else {
-//                NSLog(@"Twitter ログイン中にエラーが発生: %@", error);
-//                
-//                 [SVProgressHUD dismiss];
-//            }
-//        } else if (user.isNew) {
-//            NSLog(@"Twitter サインアップ & ログイン完了!");
-//			
-//			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-//			[self info2];
-//        } else {
-//            NSLog(@"Twitter ログイン完了!");
-//			
-//			[SVProgressHUD showWithStatus:@"ログイン中" maskType:SVProgressHUDMaskTypeAnimation];
-//            [self info2];
-//        }
-//    }];
 }
+
 
 //Twitterの各種データ取得
 -(void)info2
