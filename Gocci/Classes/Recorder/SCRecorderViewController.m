@@ -697,22 +697,8 @@
     // サーバへデータを送信
     __weak typeof(self)weakSelf = self;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    /*
-    // post_restname
-    [APIClient postRestname:appDelegate.gText
-                    handler:^(id result, NSUInteger code, NSError *error)
-     {
-         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-              
-         if (error) {
-             [SVProgressHUD dismiss];
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             
-             [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
-             return;
-         }
-     */
     
+    //バックグラウンドで投稿
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // movie
         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
