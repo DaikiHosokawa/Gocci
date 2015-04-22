@@ -265,9 +265,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
-                                                   completion:^(BOOL success) {
-                                                       [weakSelf _playMovieAtCurrentCell];
-                                                   }];
+                                                   completion:^(BOOL f){}];
+
     
     return cell;
 }
