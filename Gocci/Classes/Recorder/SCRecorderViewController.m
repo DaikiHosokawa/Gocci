@@ -691,6 +691,7 @@
     NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
     
     [SVProgressHUD showWithStatus:@"送信中" maskType:SVProgressHUDMaskTypeAnimation];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     // サーバへデータを送信
@@ -711,18 +712,23 @@
              return;
          }
      */
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // movie
+        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+         {
+             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             }];
+    });
+    
     NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
-         // movie
-         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
-          {
-              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+
               
               [SVProgressHUD dismiss];
               [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
               
               // 画面を閉じる
               [weakSelf dismissViewControllerAnimated:YES completion:nil];
-          }];
 }
 
 

@@ -44,10 +44,10 @@
                         <rect key="frame" x="273" y="24" width="30" height="29"/>
                     </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
-                        <rect key="frame" x="290" y="18" width="12" height="12"/>
+                        <rect key="frame" x="290" y="17" width="17" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="12" id="6gF-dk-Y3A"/>
-                            <constraint firstAttribute="height" constant="12" id="k6A-Rn-aoj"/>
+                            <constraint firstAttribute="height" constant="17" id="Uz4-eX-nAr"/>
+                            <constraint firstAttribute="width" constant="17" id="g0L-Dt-n92"/>
                         </constraints>
                         <state key="normal" image="butn-dele-gray">
                             <color key="titleColor" red="0.0" green="0.0021956962970000001" blue="0.0046400207179999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -248,10 +248,11 @@
                     <constraint firstItem="reR-SP-qcM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="NxW-Zv-uo6"/>
                     <constraint firstItem="reR-SP-qcM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Pea-XT-fig"/>
                     <constraint firstAttribute="trailing" secondItem="XCG-79-oul" secondAttribute="trailing" constant="90" id="Q3E-q8-RcL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xjB-00-Bte" secondAttribute="trailing" constant="3" id="QH9-2a-oAW"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="bottom" constant="8" id="VB8-D3-vDA"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="W11-XA-rhy"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="xjB-00-Bte" secondAttribute="trailing" constant="8" id="X3B-w5-znM"/>
                     <constraint firstAttribute="centerX" secondItem="hND-ON-WcS" secondAttribute="centerX" id="X4G-PT-9Y5"/>
+                    <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="X5x-sA-OoL"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="Zc5-xh-Eil"/>
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cfl-94-Sfa"/>
@@ -259,7 +260,6 @@
                     <constraint firstAttribute="trailing" secondItem="ohQ-nj-eFT" secondAttribute="trailing" constant="32" id="l7Q-gH-EIb"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lB1-bO-TlV"/>
                     <constraint firstAttribute="bottom" secondItem="reR-SP-qcM" secondAttribute="bottom" constant="8" id="mU5-hB-own"/>
-                    <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="pZs-rs-VBp"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="reO-ph-QOU"/>
                     <constraint firstAttribute="bottom" secondItem="hND-ON-WcS" secondAttribute="bottom" priority="999" constant="136" id="s0V-rO-n5Y"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="ttI-HL-akT"/>
