@@ -25,19 +25,20 @@
 {
     RecorderSubmitPopupView *view = [[NSBundle mainBundle] loadNibNamed:@"RecorderSubmitPopupView" owner:self options:nil][0];
     
-    view.checkboxes = @[view.checkbox1];
+    //view.checkboxes = @[view.checkbox1];
     
     NSString *str1 = @"0";
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.cheertag = str1;
     NSLog(@"cheertag:%@",str1);
-    
+    /*
     for (NSUInteger i=0; i<[view.checkboxes count]; i++) {
         BFPaperCheckbox *checkbox = view.checkboxes[i];
         checkbox.delegate = view;
         checkbox.tag = (i+1);
         checkbox.layer.cornerRadius = 0.0;
     }
+     */
     
     return view;
 }
@@ -87,7 +88,7 @@
  */
 - (IBAction)onSubmitButton:(id)sender
 {
-    [self _validateCheckboxes];
+    //[self _validateCheckboxes];
 
     if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupViewOnSubmit:)]) {
         [self.delegate recorderSubmitPopupViewOnSubmit:self];
