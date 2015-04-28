@@ -90,6 +90,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
 	
 	// !!!:dezamisystem
@@ -159,7 +160,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
 
-    
+     [SVProgressHUD dismiss];
     
     return cell ;
 }
@@ -388,6 +389,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchProfile_other
 {
+    [SVProgressHUD show];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.refresh beginRefreshing];
     

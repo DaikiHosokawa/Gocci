@@ -155,6 +155,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
+     [SVProgressHUD dismiss];
     
     return cell ;
 }
@@ -269,6 +270,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchLifelog
 {
+    [SVProgressHUD show];
+    
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];

@@ -138,6 +138,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
  
@@ -297,6 +298,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [cell configureWithRestaurant:restaurant index:indexPath.row];
     cell.delegate = self;
     
+     [SVProgressHUD dismiss];
+    
     return cell;
 }
 
@@ -450,6 +453,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
  */
 - (void)_searchRestaurants:(NSString *)searchText
 {
+    [SVProgressHUD show];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     __weak typeof(self)weakSelf = self;
@@ -481,6 +486,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
  */
 - (void)_reloadRestaurants:(NSArray *)result
 {
+    [SVProgressHUD show];
+    
     NSMutableArray *tempRestaurants = [NSMutableArray arrayWithCapacity:0];
     for (NSDictionary *dict in (NSArray *)result) {
         [tempRestaurants addObject:[Restaurant restaurantWithDictionary:dict]];

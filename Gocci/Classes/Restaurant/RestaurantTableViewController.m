@@ -267,7 +267,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
 
-    
+     [SVProgressHUD dismiss];
     return cell;
 }
 
@@ -572,6 +572,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_fetchRestaurant
 {
+    [SVProgressHUD show];
+    
     LOG(@"restName:%@",_postRestName);
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

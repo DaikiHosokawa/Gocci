@@ -49,6 +49,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+     [SVProgressHUD show];
     [super viewWillAppear:animated];
 	
 	// !!!:dezamisystem
@@ -478,6 +479,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     }
+    
+     [SVProgressHUD dismiss];
     
     return _cell;
 }

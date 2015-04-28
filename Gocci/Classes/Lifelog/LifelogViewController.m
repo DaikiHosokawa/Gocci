@@ -7,6 +7,7 @@
 //
 
 #import "LifelogViewController.h"
+#import  "SVProgressHUD.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 
@@ -103,7 +104,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 
 -(void)viewWillAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
+    [super viewWillAppear:animated];
 	
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     [self _fetchLifelog];
@@ -286,6 +287,8 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
  */
 - (void)_fetchLifelog
 {
+    [SVProgressHUD show];
+    
     __weak typeof(self)weakSelf = self;
     {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -337,6 +340,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
                  array_day = [[NSArray alloc] initWithObjects:@"15",@"28", nil];
              }
              [self.calendar reloadData];
+              [SVProgressHUD dismiss];
          }];
     };
     

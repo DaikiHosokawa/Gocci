@@ -17,6 +17,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "SVProgressHUD.h"
 #import "LocationClient.h"
 
 // !!!:dezamisystem
@@ -123,7 +124,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 	// !!!:dezamisystem
 //    [self.navigationItem setHidesBackButton:YES animated:NO];
-    [SVProgressHUD dismiss];
+
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -137,6 +139,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
+    
 }
 
 #pragma mark - viewDidAppear
@@ -149,7 +152,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
       [self showDefaultContentView];
     }
 	// !!!:dezamisystem
-//    self.navigationItem.leftBarButtonItem.enabled = YES;	
+//    self.navigationItem.leftBarButtonItem.enabled = YES;
 }
 
 - (BOOL)isFirstRun
@@ -293,6 +296,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"ここ出されてる");
     NSString *cellIdentifier = TimelineCellIdentifier;
     TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
@@ -311,7 +315,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-    
+     [SVProgressHUD dismiss];
     return cell;
 }
 
@@ -567,6 +571,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchTimelineUsingLocationCache:(BOOL)usingLocationCache
 {
+    
+    [SVProgressHUD show];
+    
     __weak typeof(self)weakSelf = self;
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -638,6 +645,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              
              // 表示の更新
              [weakSelf.tableView reloadData];
+    
          }];
     };
     
@@ -672,9 +680,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  */
 - (void)_fetchTimelineUsingLocationCacheALL:(BOOL)usingLocationCache
 {
+    
+    [SVProgressHUD show];
+    
     __weak typeof(self)weakSelf = self;
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
+        
+        [SVProgressHUD show];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [weakSelf.refresh beginRefreshing];
         
@@ -715,6 +728,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              
              // 表示の更新
              [weakSelf.tableView reloadData];
+             [SVProgressHUD dismiss];
          }];
     };
     
@@ -740,6 +754,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          
          fetchAPI(location.coordinate);
      }];
+    
 }
 
 /**

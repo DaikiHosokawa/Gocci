@@ -11,6 +11,7 @@
 #import "SCRecorderViewController.h"
 #import "APIClient.h"
 #import "beforeCell.h"
+#import "SVProgressHUD.h"
 #import "Restaurant.h"
 #import "LocationClient.h"
 
@@ -169,6 +170,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [cell configureWithRestaurant:restaurant index:indexPath.row];
     cell.delegate = self;
     
+     [SVProgressHUD dismiss];
     return cell;
 }
 
@@ -267,6 +269,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
+    [SVProgressHUD show];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     __weak typeof(self)weakSelf = self;

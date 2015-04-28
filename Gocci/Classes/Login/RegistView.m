@@ -258,7 +258,7 @@
     
     NSLog(@"Trying to login with iOS...");
     
-    [SVProgressHUD showWithStatus:@"作成中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD show];
     
     __weak typeof(self) weakSelf = self;
     
@@ -379,7 +379,7 @@
 
     //_btnFacebook.hidden = YES;
     
-    [SVProgressHUD showWithStatus:@"作成中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD show];
     
     // FBSessionLoginBehaviorForcingWebView
     FBSessionLoginBehavior loginBehavior = FBSessionLoginBehaviorWithFallbackToWebView;
@@ -436,7 +436,8 @@
         return;
     }
     
-    [SVProgressHUD showWithStatus:@"作成中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD show];
+    
     [APIClient registUserWithUsername:_tfUsername.text
                          withPassword:_tfPwd.text
                             withEmail:_tfEmail.text
@@ -529,8 +530,7 @@
     [defaults synchronize];
     
     // Show activity while download film types
-        [SVProgressHUD showWithStatus:@"作成中" maskType:SVProgressHUDMaskTypeAnimation];
-    
+       [SVProgressHUD show];
     
     // Login user with facebook info
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);

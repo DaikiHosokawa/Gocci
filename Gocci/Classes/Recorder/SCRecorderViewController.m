@@ -636,7 +636,7 @@
 {
     LOG_METHOD;
     
-    [SVProgressHUD showWithStatus:@"紹介中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD show];
     
     // Facebook へ投稿
     // プライバシー (公開範囲) の設定
@@ -690,7 +690,7 @@
 {
     NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
     
-    [SVProgressHUD showWithStatus:@"送信中" maskType:SVProgressHUDMaskTypeAnimation];
+    [SVProgressHUD show];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -727,7 +727,7 @@
  */
 - (void)_complete
 {
-    [SVProgressHUD showWithStatus:@"保存中" maskType:SVProgressHUDMaskTypeAnimation];
+   [SVProgressHUD show];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
     
