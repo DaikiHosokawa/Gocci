@@ -290,6 +290,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
          if ([self.restaurants count]== 0) {
              NSLog(@"投稿がない");
              _emptyView.hidden = NO;
+              [SVProgressHUD dismiss];
          }
      } useCache:^(id cachedResult)
      {

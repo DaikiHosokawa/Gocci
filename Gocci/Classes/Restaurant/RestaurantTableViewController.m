@@ -169,6 +169,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
+
+    
 }
 
 
@@ -607,6 +609,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
             _emptyView.hidden = NO;
+            [SVProgressHUD dismiss];
+
         }
         
         if ([weakSelf.refresh isRefreshing]) {

@@ -438,6 +438,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
             _emptyView.hidden = NO;
+             [SVProgressHUD dismiss];
         }
         
         if ([weakSelf.refresh isRefreshing]) {

@@ -305,8 +305,8 @@
                 [self removeFromSuperview];
             } else {
                 //fail
-                //UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-               // [alrt show];
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+               [alrt show];
             }
         }
         

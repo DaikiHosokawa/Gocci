@@ -431,6 +431,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          if ([self.restaurants count] == 0) {
              LOG(@"投稿がない");
              _emptyView.hidden = NO;
+              [SVProgressHUD dismiss];
          }
      } useCache:^(id cachedResult)
      {

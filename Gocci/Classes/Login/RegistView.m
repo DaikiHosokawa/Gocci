@@ -454,7 +454,7 @@
                 [self removeFromSuperview];
             } else {
                 //fail
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"失敗です。再度アカウント作成をお願いします。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
             }
         }
