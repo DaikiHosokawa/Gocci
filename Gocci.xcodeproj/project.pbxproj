@@ -183,6 +183,7 @@
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
+		95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AC1AF09B58001599EE /* Reachability.m */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
 		A13FB9721AB44E1500B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96F1AB44E1500B893F9 /* README.md */; };
@@ -538,6 +539,8 @@
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		95E3C5AB1AF09B58001599EE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		95E3C5AC1AF09B58001599EE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		A13FB96E1AB44E1500B893F9 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -686,6 +689,7 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				95E3C5A71AF09B0F001599EE /* Reachability */,
 				A13FB9731AB45F7E00B893F9 /* BFPaperColors */,
 				A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */,
 				53B9427B1AB40414000150C4 /* STTwitter */,
@@ -1255,6 +1259,15 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		95E3C5A71AF09B0F001599EE /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				95E3C5AB1AF09B58001599EE /* Reachability.h */,
+				95E3C5AC1AF09B58001599EE /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -1678,6 +1691,7 @@
 				A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */,
 				53B942A01AB40414000150C4 /* STTwitterOAuth.m in Sources */,
 				952D237E1A9B95E800C354DF /* MYBlurIntroductionView.m in Sources */,
+				95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */,
 				53B9429B1AB40414000150C4 /* NSString+STTwitter.m in Sources */,
 				952D23771A9B95E800C354DF /* JTCalendarDayView.m in Sources */,
 				952D237B1A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m in Sources */,

@@ -36,6 +36,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, strong) NSString *nowlat_;
 @property (nonatomic, strong) NSString *nowlon_;
 @property (nonatomic, copy) NSArray *restaurants;
+@property (nonatomic, strong) UIRefreshControl *refresh;
+
 
 @end
 
@@ -98,11 +100,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = NO;
+     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"beforeCell" bundle:nil]
          forCellReuseIdentifier:beforeCellIdentifier];
 
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
   
 	//ナビゲーションバーに画像
 	{
@@ -261,6 +268,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	}
 }
 
+- (void)refresh:(UIRefreshControl *)sender
+{
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+     {
+         [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+     }];
+}
+
+
 
 /**
  *  初回のレストラン一覧を取得
@@ -272,14 +288,21 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [SVProgressHUD show];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
+
     __weak typeof(self)weakSelf = self;
+
+    [weakSelf.refresh beginRefreshing];
+    
     [APIClient distWithLatitude:coordinate.latitude
                       longitude:coordinate.longitude
                           limit:30
                         handler:^(id result, NSUInteger code, NSError *error)
      {
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         
+         if ([weakSelf.refresh isRefreshing]) {
+             [weakSelf.refresh endRefreshing];
+         }
          
          if (!result || error) {
              // TODO: エラーメッセージを掲出
@@ -299,6 +322,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
          }
          
          [weakSelf _reloadRestaurants:cachedResult];
+     
+         // 表示の更新
+         [weakSelf.tableView reloadData];
+         [SVProgressHUD dismiss];
      }];
 }
 

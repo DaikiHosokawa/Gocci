@@ -18,6 +18,7 @@
 #import "UIImageView+WebCache.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
+#import "Reachability.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -606,6 +607,35 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
+        Reachability *curReach2 = [Reachability reachabilityForInternetConnection];
+        NetworkStatus netStatus2 = [curReach2 currentReachabilityStatus];
+        
+        NSString *alertMessage = @"圏外ですので再生できません。";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        
+        NSString *alertMessage2 = @"3G回線では動画は再生できません。";
+        UIAlertView *alrt2 = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage2 delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        
+        switch (netStatus2) {
+            case NotReachable:  //圏外
+                /*圏外のときの処理*/
+                [alrt show];
+                break;
+            case ReachableViaWWAN:  //3G
+                /*3G回線接続のときの処理*/
+                [alrt2 show];
+                break;
+            case ReachableViaWiFi:
+                //WiFi
+                
+                break;
+                
+            default:
+                
+                break;
+        }
+
+        
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
             _emptyView.hidden = NO;
@@ -624,7 +654,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_playMovieAtCurrentCell
 {
-   if ( [self.posts count] == 0){
+   
+    Reachability *curReach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    
+    if ( [self.posts count] == 0){
             return;
          }
     CGFloat currentHeight = 0.0;
@@ -641,10 +675,31 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-    [[MoviePlayerManager sharedManager] scrolling:NO];
-    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                  inView:self.tableView
-                                                   frame:movieRect];
+        switch (netStatus) {
+        case NotReachable:  //圏外
+            /*圏外のときの処理*/
+            
+            break;
+        case ReachableViaWWAN:  //3G
+            /*3G回線接続のときの処理*/
+            
+            break;
+        case ReachableViaWiFi:  //WiFi
+            [[MoviePlayerManager sharedManager] scrolling:NO];
+            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                          inView:self.tableView
+                                                           frame:movieRect];
+            
+            break;
+        default:
+            [[MoviePlayerManager sharedManager] scrolling:NO];
+            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                          inView:self.tableView
+                                                           frame:movieRect];
+            
+            break;
+    }
+    
 }
 
 /**
