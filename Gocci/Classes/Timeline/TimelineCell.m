@@ -72,6 +72,13 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)tapthumb:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {
+        [self.delegate timelineCell:self didTapthumb:self.thumbnailView];
+    }
+}
+
 - (void)tapAvaterImageView:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserPicture:name:)]) {
@@ -203,6 +210,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantNameLabel];
     [self _assignTapAction:@selector(tapNavi:) view:self.restaurantNaviview];
     [self _assignTapAction:@selector(tapLike:) view:self.likeView];
+    //テスト
+    [self _assignTapAction:@selector(tapthumb:) view:self.thumbnailView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
    [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];
 }

@@ -328,14 +328,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // [moviePlayer play];
-     [self _playMovieAtCurrentCell];
+   //  [self _playMovieAtCurrentCell];
     NSLog(@"scroll is stoped");
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
-        [self _playMovieAtCurrentCell];
-        NSLog(@"scroll is stoped");
+     //   [self _playMovieAtCurrentCell];
+     //   NSLog(@"scroll is stoped");
     }
 }
 
@@ -613,8 +613,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
-        NSString *alertMessage2 = @"3G回線では動画は再生できません。";
-        UIAlertView *alrt2 = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage2 delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        
         
         switch (netStatus2) {
             case NotReachable:  //圏外
@@ -623,7 +622,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 break;
             case ReachableViaWWAN:  //3G
                 /*3G回線接続のときの処理*/
-                [alrt2 show];
                 break;
             case ReachableViaWiFi:
                 //WiFi
@@ -647,6 +645,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             [weakSelf.refresh endRefreshing];
         }
     }];
+}
+
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+    [self _playMovieAtCurrentCell];
 }
 
 /**
@@ -681,8 +683,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             
             break;
         case ReachableViaWWAN:  //3G
-            /*3G回線接続のときの処理*/
-            
+                [[MoviePlayerManager sharedManager] scrolling:NO];
+                [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                              inView:self.tableView
+                                                               frame:movieRect];
             break;
         case ReachableViaWiFi:  //WiFi
             [[MoviePlayerManager sharedManager] scrolling:NO];

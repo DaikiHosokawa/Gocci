@@ -43,10 +43,11 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     LOG(@"players[%@]=%@", key, self.players[key]);
-    
+    /*
     if (self.players[key]) {
         return;
     }
+     */
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
@@ -59,8 +60,9 @@ static MoviePlayerManager *_sharedInstance = nil;
                               completion(NO);
                               return;
                           }
-                          
-                          MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
+                          MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] init];
+                          moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+                          [moviePlayer setContentURL:fileURL];
                           moviePlayer.controlStyle = MPMovieControlStyleNone;
                           moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
                           moviePlayer.repeatMode = MPMovieRepeatModeOne;
@@ -71,6 +73,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           completion(YES);
                       }];
 }
+
 
 - (void)removeAllPlayers
 {
@@ -134,6 +137,8 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (MPMoviePlayerController *)_playerAtIndex:(NSUInteger)index
 {
+    
+    
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     if (!self.players[key]) {
         return nil;

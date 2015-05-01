@@ -250,7 +250,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	// フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
     
-    [self _playMovieAtCurrentCell];
+   // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -258,7 +258,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		// ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         
-        [self _playMovieAtCurrentCell];
+       // [self _playMovieAtCurrentCell];
 	}
 }
 
@@ -741,8 +741,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              NSString *alertMessage = @"圏外ですので再生できません。";
              UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
              
-             NSString *alertMessage2 = @"3G回線では動画は再生できません。";
-             UIAlertView *alrt2 = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage2 delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
              
              switch (netStatus2) {
                  case NotReachable:  //圏外
@@ -751,7 +749,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                      break;
                  case ReachableViaWWAN:  //3G
                      /*3G回線接続のときの処理*/
-                     [alrt2 show];
                      break;
                  case ReachableViaWiFi:
                      //WiFi
@@ -791,11 +788,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+    [self _playMovieAtCurrentCell];
+}
+
 /**
  *  現在表示中のセルの動画を再生する
  */
 - (void)_playMovieAtCurrentCell
 {
+    
     if ( [self.posts count] == 0){
         return;
     }
@@ -822,14 +824,31 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
+    
+    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] init];
+    /*
+     ai.frame = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
+                         currentHeight + currentCell.thumbnailView.frame.origin.y,
+                         currentCell.thumbnailView.frame.size.width,
+                         currentCell.thumbnailView.frame.size.height);
+     */
+    ai.center = currentCell.center;
+    ai.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [self.view addSubview:ai];
 
+    [ai startAnimating];
+    
+     
     switch (netStatus) {
         case NotReachable:  //圏外
             /*圏外のときの処理*/
     
             break;
         case ReachableViaWWAN:  //3G
-            /*3G回線接続のときの処理*/
+            [[MoviePlayerManager sharedManager] scrolling:NO];
+            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                          inView:self.tableView
+                                                           frame:movieRect];
         
             break;
         case ReachableViaWiFi:  //WiFi

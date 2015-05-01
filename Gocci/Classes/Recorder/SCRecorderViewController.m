@@ -49,8 +49,10 @@
 - (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
+@property (weak, nonatomic) IBOutlet UIImageView *tapVIew;
 @property (nonatomic, strong) SCRecordSession *recordSession;
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
+@property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
 @end
 
@@ -496,6 +498,8 @@
 }
 
 - (void)updateTimeRecordedLabel {
+    
+    self.tapView.hidden = NO;
 	
     CMTime currentTime = kCMTimeZero;
 	
@@ -540,7 +544,6 @@
 // recordViewでタップの有無を判定し、押している時だけ撮影、話している時にストップで作っています。
 - (void)handleTouchDetected:(SCTouchDetector*)touchDetector {
 	
-	// !!!:dezamisystem
 
     if (touchDetector.state == UIGestureRecognizerStateBegan) {
 #if (!TARGET_IPHONE_SIMULATOR)
@@ -630,6 +633,7 @@
     };
     
     [self presentViewController:controller animated:YES completion:nil];
+    
 }
 
 - (void)recorderSubmitPopupViewOnFacebookShare:(RecorderSubmitPopupView *)view
@@ -699,15 +703,20 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //バックグラウンドで投稿
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
         // movie
         [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             
+             if (error){
+               
+             }
+             
+             
              }];
-    });
-    
-    NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+  
+              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
 
               
               [SVProgressHUD dismiss];
@@ -715,6 +724,7 @@
               
               // 画面を閉じる
               [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

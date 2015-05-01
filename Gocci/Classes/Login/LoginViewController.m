@@ -84,6 +84,7 @@
 
 -(void) autoLogin {
     
+    
     _btnLogin.enabled = YES;
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
@@ -92,6 +93,8 @@
     NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
     
     if (username) {
+        
+        [SVProgressHUD show];
         
         AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         logindelegate.username = username;
@@ -112,7 +115,6 @@
         NSLog(@"result:%@",result);
         [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
     }
-    
     
 }
 
@@ -176,6 +178,9 @@
     return;
     
    }
+-(void)viewDidDisappear:(BOOL)animated{
+    [SVProgressHUD dismiss];
+}
 
 //facebookの各種データ取得
 -(void)info{
@@ -284,7 +289,7 @@
 
 - (void)tutorialDidFinish:(TutorialView *)view
 {
-    // 位置情報サービス利用の確認
+    // 位置情報サービス利用の利用確認
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [appDelegate checkGPS];
     

@@ -113,6 +113,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
 }
 
@@ -191,7 +192,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
-    [self _playMovieAtCurrentCell];
+   // [self _playMovieAtCurrentCell];
 
     NSLog(@"@2");
 }
@@ -200,7 +201,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
-        [self _playMovieAtCurrentCell];
+       // [self _playMovieAtCurrentCell];
         NSLog(@"@2");
     }
 }
@@ -306,17 +307,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
-        NSString *alertMessage2 = @"3G回線では動画は再生できません。";
-        UIAlertView *alrt2 = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage2 delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
         switch (netStatus2) {
             case NotReachable:  //圏外
                 /*圏外のときの処理*/
                 [alrt show];
                 break;
             case ReachableViaWWAN:  //3G
-                /*3G回線接続のときの処理*/
-                [alrt2 show];
+                
                 break;
             case ReachableViaWiFi:
                 //WiFi
@@ -329,6 +326,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         }
 
     }];
+}
+
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+    [self _playMovieAtCurrentCell];
 }
 
 
@@ -366,6 +367,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             break;
         case ReachableViaWWAN:  //3G
             /*3G回線接続のときの処理*/
+            [[MoviePlayerManager sharedManager] scrolling:NO];
+            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                          inView:self.tableView
+                                                           frame:movieRect];
             
             break;
         case ReachableViaWiFi:  //WiFi

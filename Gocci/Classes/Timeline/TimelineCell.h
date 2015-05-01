@@ -46,6 +46,15 @@ extern NSString * const TimelineCellIdentifier;
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
 
 /**
+*  サムネイルをタップ
+*
+*  @param cell
+*  @param restaurantName 店舗名
+*/
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView;
+
+
+/**
  *  Violate ボタンをタップ
  *
  *  @param cell
@@ -90,6 +99,7 @@ extern NSString * const TimelineCellIdentifier;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic,weak) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UIImageView *ViolateView;
+
 
 /**
  *  TimelineCell を生成
