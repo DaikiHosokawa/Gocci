@@ -824,21 +824,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-    
+     /*
     UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] init];
-    /*
+   
      ai.frame = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                          currentHeight + currentCell.thumbnailView.frame.origin.y,
                          currentCell.thumbnailView.frame.size.width,
-                         currentCell.thumbnailView.frame.size.height);
-     */
+      
     ai.center = currentCell.center;
     ai.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [self.view addSubview:ai];
 
     [ai startAnimating];
+      currentCell.thumbnailView.frame.size.height);
+      */
     
-     
     switch (netStatus) {
         case NotReachable:  //圏外
             /*圏外のときの処理*/

@@ -15,6 +15,7 @@
     NSString *annotationSubtitle;
 }
 
+
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, retain) NSString *annotationTitle;
 @property (nonatomic, retain) NSString *annotationSubtitle;
@@ -22,6 +23,8 @@
                            title:(NSString *)_annotationTitle subtitle:(NSString *)_annotationannSubtitle;
 - (NSString *)title;
 - (NSString *)subtitle;
+
+
 
 @end
 

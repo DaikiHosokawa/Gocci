@@ -184,6 +184,14 @@
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AC1AF09B58001599EE /* Reachability.m */; };
+		95E3C5B11AF42400001599EE /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AF1AF42400001599EE /* ProfileCell.m */; };
+		95E3C5B21AF42400001599EE /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5B01AF42400001599EE /* ProfileCell.xib */; };
+		95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5B41AF4342F001599EE /* ProfileCell2.m */; };
+		95E3C5B71AF4342F001599EE /* ProfileCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5B51AF4342F001599EE /* ProfileCell2.xib */; };
+		95E3C5BB1AF45073001599EE /* RestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5B91AF45073001599EE /* RestaurantCell.m */; };
+		95E3C5BC1AF45073001599EE /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BA1AF45073001599EE /* RestaurantCell.xib */; };
+		95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5BE1AF4572F001599EE /* LifelogCell.m */; };
+		95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BF1AF4572F001599EE /* LifelogCell.xib */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
 		A13FB9721AB44E1500B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96F1AB44E1500B893F9 /* README.md */; };
@@ -541,6 +549,18 @@
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		95E3C5AB1AF09B58001599EE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		95E3C5AC1AF09B58001599EE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		95E3C5AE1AF42400001599EE /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		95E3C5AF1AF42400001599EE /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		95E3C5B01AF42400001599EE /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		95E3C5B31AF4342F001599EE /* ProfileCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell2.h; sourceTree = "<group>"; };
+		95E3C5B41AF4342F001599EE /* ProfileCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell2.m; sourceTree = "<group>"; };
+		95E3C5B51AF4342F001599EE /* ProfileCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell2.xib; sourceTree = "<group>"; };
+		95E3C5B81AF45073001599EE /* RestaurantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCell.h; sourceTree = "<group>"; };
+		95E3C5B91AF45073001599EE /* RestaurantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCell.m; sourceTree = "<group>"; };
+		95E3C5BA1AF45073001599EE /* RestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
+		95E3C5BD1AF4572F001599EE /* LifelogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogCell.h; sourceTree = "<group>"; };
+		95E3C5BE1AF4572F001599EE /* LifelogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogCell.m; sourceTree = "<group>"; };
+		95E3C5BF1AF4572F001599EE /* LifelogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifelogCell.xib; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		A13FB96E1AB44E1500B893F9 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -979,6 +999,9 @@
 				952D241E1A9B9D3300C354DF /* LifelogSubTableViewController.m */,
 				952D241F1A9B9D3300C354DF /* LifelogViewController.h */,
 				952D24201A9B9D3300C354DF /* LifelogViewController.m */,
+				95E3C5BD1AF4572F001599EE /* LifelogCell.h */,
+				95E3C5BE1AF4572F001599EE /* LifelogCell.m */,
+				95E3C5BF1AF4572F001599EE /* LifelogCell.xib */,
 			);
 			path = Lifelog;
 			sourceTree = "<group>";
@@ -1025,6 +1048,9 @@
 			isa = PBXGroup;
 			children = (
 				952D24321A9B9D3300C354DF /* usersTableViewController.h */,
+				95E3C5AE1AF42400001599EE /* ProfileCell.h */,
+				95E3C5AF1AF42400001599EE /* ProfileCell.m */,
+				95E3C5B01AF42400001599EE /* ProfileCell.xib */,
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
 			);
 			path = Profile;
@@ -1034,6 +1060,9 @@
 			isa = PBXGroup;
 			children = (
 				952D24351A9B9D3300C354DF /* usersTableViewController_other.h */,
+				95E3C5B31AF4342F001599EE /* ProfileCell2.h */,
+				95E3C5B41AF4342F001599EE /* ProfileCell2.m */,
+				95E3C5B51AF4342F001599EE /* ProfileCell2.xib */,
 				952D24361A9B9D3300C354DF /* usersTableViewController_other.m */,
 			);
 			path = Profile_other;
@@ -1063,6 +1092,9 @@
 			isa = PBXGroup;
 			children = (
 				952D24431A9B9D3300C354DF /* RestaurantTableViewController.h */,
+				95E3C5B81AF45073001599EE /* RestaurantCell.h */,
+				95E3C5B91AF45073001599EE /* RestaurantCell.m */,
+				95E3C5BA1AF45073001599EE /* RestaurantCell.xib */,
 				952D24441A9B9D3300C354DF /* RestaurantTableViewController.m */,
 			);
 			path = Restaurant;
@@ -1500,10 +1532,12 @@
 			files = (
 				952D25081A9B9EC800C354DF /* tabbaritem_search_sel@2x.png in Resources */,
 				952D250A1A9B9EC800C354DF /* tabbaritem_timeline@2x.png in Resources */,
+				95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */,
 				952D25001A9B9EC800C354DF /* tabbaritem_posting_sel@2x.png in Resources */,
 				952D23951A9B95E800C354DF /* LICENSE in Resources */,
 				BFA1DA791AB2BA7F00B4F63A /* Cancel@2x.png in Resources */,
 				BFA1DA741AB2B9A900B4F63A /* RegistView.xib in Resources */,
+				95E3C5B71AF4342F001599EE /* ProfileCell2.xib in Resources */,
 				952D250C1A9B9EC800C354DF /* tabbaritem_timeline_sel@2x.png in Resources */,
 				952D25021A9B9EC800C354DF /* tabbaritem_profile@2x.png in Resources */,
 				53B942AF1AB42D11000150C4 /* RegistView47.xib in Resources */,
@@ -1511,6 +1545,7 @@
 				952D23911A9B95E800C354DF /* SVProgressHUD.bundle in Resources */,
 				952D25041A9B9EC800C354DF /* tabbaritem_profile_sel@2x.png in Resources */,
 				952D24F91A9B9EC800C354DF /* tabbaritem_lifelog.png in Resources */,
+				95E3C5B21AF42400001599EE /* ProfileCell.xib in Resources */,
 				952D24F01A9B9EC800C354DF /* btn_capture_flip.png in Resources */,
 				952D24891A9B9D3300C354DF /* TestPanel2.xib in Resources */,
 				952D24FA1A9B9EC800C354DF /* tabbaritem_lifelog@2x.png in Resources */,
@@ -1525,6 +1560,7 @@
 				952D248B1A9B9D3300C354DF /* TutorialPage1.xib in Resources */,
 				AB645CD91AA6982100827B7A /* RecorderSubmitPopupView.xib in Resources */,
 				952D250F1A9B9EC800C354DF /* 3_5_inch.storyboard in Resources */,
+				95E3C5BC1AF45073001599EE /* RestaurantCell.xib in Resources */,
 				BFA1DA7A1AB2BA7F00B4F63A /* Cancel@3x.png in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
 				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
@@ -1630,6 +1666,7 @@
 				952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
+				95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */,
 				952D23961A9B95E800C354DF /* README.md in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
@@ -1650,6 +1687,7 @@
 				952D23791A9B95E800C354DF /* JTCalendarMenuView.m in Sources */,
 				53B942A21AB40414000150C4 /* STTwitterOSRequest.m in Sources */,
 				952D248F1A9B9D3300C354DF /* TutorialPageView.m in Sources */,
+				95E3C5BB1AF45073001599EE /* RestaurantCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
@@ -1658,7 +1696,9 @@
 				952D247F1A9B9D3300C354DF /* UIColor+App.m in Sources */,
 				952D24921A9B9D3300C354DF /* usersTableViewController.m in Sources */,
 				53B9429F1AB40414000150C4 /* STTwitterHTML.m in Sources */,
+				95E3C5B11AF42400001599EE /* ProfileCell.m in Sources */,
 				535626731AB39C97009C7D12 /* SigninView.m in Sources */,
+				95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */,
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,

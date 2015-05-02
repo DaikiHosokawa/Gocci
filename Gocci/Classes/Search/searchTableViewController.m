@@ -46,6 +46,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @property (nonatomic) BOOL searched;
 @property (nonatomic, strong) CLLocation *fetchedLocation;
 
+@property (nonatomic, strong) UIRefreshControl *refresh;
+
 @end
 
 @implementation SearchTableViewController
@@ -66,6 +68,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     self.restaurants = [NSArray array];
     self.annotations = [NSArray array];
     self.searched = NO;
+     self.tableView.bounces = YES;
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
+    
     
     //4.7inch対応
     CGRect rect2 = [UIScreen mainScreen].bounds;
@@ -73,7 +82,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         self.showedUserLocation = NO;
         _mapView = [[MKMapView alloc] init];
         _mapView.delegate = self;
-        _mapView.frame = CGRectMake(0, 0, 375, 200);
+        _mapView.frame = CGRectMake(0, 0, 375, 315);
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         
@@ -83,7 +92,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         self.showedUserLocation = NO;
         _mapView = [[MKMapView alloc] init];
         _mapView.delegate = self;
-        _mapView.frame = CGRectMake(0, 0, 414, 200);
+        _mapView.frame = CGRectMake(0, 0, 414, 315);
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
@@ -92,7 +101,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         self.showedUserLocation = NO;
         _mapView = [[MKMapView alloc] init];
         _mapView.delegate = self;
-        _mapView.frame = CGRectMake(0, 0, 320, 200);
+        _mapView.frame = CGRectMake(0, 0, 320, 315);
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
@@ -130,8 +139,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
          forCellReuseIdentifier:SearchCellIdentifier];
 }
@@ -409,6 +417,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     }
     
     __weak typeof(self)weakSelf = self;
+    
+    [weakSelf.refresh beginRefreshing];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [APIClient distWithLatitude:coordinate.latitude
                       longitude:coordinate.longitude
@@ -416,6 +427,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                         handler:^(id result, NSUInteger code, NSError *error)
      {
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         
+         if ([weakSelf.refresh isRefreshing]) {
+             [weakSelf.refresh endRefreshing];
+         }
+         
          
          if (!result || error) {
              // TODO: エラーメッセージを掲出
@@ -538,6 +554,14 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     //[self.mapView showAnnotations:self.annotations animated:YES];
     
     [self.tableView reloadData];
+}
+
+- (void)refresh:(UIRefreshControl *)sender
+{
+    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+     {
+         [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+     }];
 }
 
 @end

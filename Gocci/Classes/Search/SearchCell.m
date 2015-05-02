@@ -14,10 +14,12 @@ NSString * const SearchCellIdentifier = @"SearchCell";
 @property (nonatomic, weak) IBOutlet UIView *background;
 @property (nonatomic, weak) IBOutlet UILabel *distanceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, weak) IBOutlet UILabel *mapLabel;
+//@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+//@property (nonatomic, weak) IBOutlet UILabel *mapLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
 @property (nonatomic, weak) IBOutlet UILabel *restaurantLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *localityLabel;
 
 @property (nonatomic) NSUInteger restaurantIndex;
 
@@ -72,9 +74,9 @@ NSString * const SearchCellIdentifier = @"SearchCell";
     [self.background dropShadow];
     
     // 「地図を見る」タップイベント
-    UITapGestureRecognizer *tapMap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMapLabel:)];
-    [self.mapLabel addGestureRecognizer:tapMap];
-    self.mapLabel.userInteractionEnabled = YES;
+   // UITapGestureRecognizer *tapMap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMapLabel:)];
+   // [self.mapLabel addGestureRecognizer:tapMap];
+   // self.mapLabel.userInteractionEnabled = YES;
     
     // 「この店舗の詳しく見る」タップイベント
     UITapGestureRecognizer *tapDetail = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetailLabel:)];
@@ -90,6 +92,14 @@ NSString * const SearchCellIdentifier = @"SearchCell";
     self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];
     self.restaurantNameLabel.text = restaurant.restname;
     
+    // カテゴリー名
+    self.categoryLabel.text = [NSString stringWithFormat:@"%@", (restaurant.category)];
+    
+    // カテゴリー名
+    self.localityLabel.text = [NSString stringWithFormat:@"%@", (restaurant.locality)];
+
+    
+    /*
     // 店舗サムネイルの表示
     // TODO: API から取得した画像を表示
     for (UIView *v in self.scrollView.subviews) {
@@ -111,6 +121,7 @@ NSString * const SearchCellIdentifier = @"SearchCell";
     
     self.scrollView.contentSize = CGSizeMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * 10,
                                              self.scrollView.frame.size.height);
+     */
 }
 
 @end
