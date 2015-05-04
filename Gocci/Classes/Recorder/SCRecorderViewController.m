@@ -18,6 +18,7 @@
 #import "RestaurantTableViewController.h"
 #import "GaugeView.h"
 #import "RecorderSubmitPopupView.h"
+#import "RecorderSubmitPopupAdditionView.h"
 #import "APIClient.h"
 #import "SVProgressHUD.h"
 
@@ -32,7 +33,7 @@
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate>
+<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
     SCRecorder *_recorder;
     UIImage *_photo;
@@ -52,6 +53,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tapVIew;
 @property (nonatomic, strong) SCRecordSession *recordSession;
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
+@property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
 @end
@@ -78,6 +80,74 @@
 	
     [super viewDidLoad];
 	
+     NSInteger pageSize = 2; // ページ数
+    CGFloat width = self.view.bounds.size.width;
+    CGFloat height = self.view.bounds.size.height;
+    
+    
+    // UIScrollViewのインスタンス化
+    _scrollView = [[UIScrollView alloc]init];
+    _scrollView.backgroundColor = [UIColor blackColor];
+    _scrollView.frame = CGRectMake(0,self.view.bounds.size.height-height*0.3, width, height);
+    
+    // 横スクロールのインジケータを非表示にする
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    
+    // ページングを有効にする
+    _scrollView.pagingEnabled = YES;
+    
+    _scrollView.userInteractionEnabled = YES;
+    _scrollView.delegate = self;
+    
+    // スクロールの範囲を設定
+    [_scrollView setContentSize:CGSizeMake((pageSize * width), height)];
+    
+    // スクロールビューを貼付ける
+    [self.view addSubview:_scrollView];
+    
+    
+    // スクロールビューにラベルを貼付ける
+    for (int i = 0; i < pageSize; i++) {
+        // UILabel作成
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(i * width, width, width, height)];
+        label.text = [NSString stringWithFormat:@"%d", i + 1];
+        label.font = [UIFont fontWithName:@"Arial" size:92];
+        label.textColor = [UIColor whiteColor];
+        label.backgroundColor = [UIColor blackColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        [_scrollView addSubview:label];
+        _recordView.frame = CGRectMake(width*0.35, 40, 120,120);
+         [_scrollView addSubview:_recordView];
+        NSLog(@"imagenum:%d",i);
+    }
+    
+    // ページコントロールのインスタンス化
+    CGFloat x = (width - 300) / 2;
+    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(x, 530, 300, 250)];
+    
+    // 背景色を設定
+   // _pageControl.backgroundColor = [UIColor whiteColor];
+    
+    // ページ数を設定
+    _pageControl.numberOfPages = pageSize;
+    
+    // 現在のページを設定
+    _pageControl.currentPage = 0;
+    
+    // デフォルトの色
+    self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    // 選択されてるページを現す色
+    self.pageControl.currentPageIndicatorTintColor = [UIColor lightGrayColor];
+    // ページコントロールをタップされたときに呼ばれるメソッドを設定
+    _pageControl.userInteractionEnabled = YES;
+    [_pageControl addTarget:self
+                    action:@selector(pageControl_Tapped:)
+          forControlEvents:UIControlEventValueChanged];
+    
+    // ページコントロールを貼付ける
+    [_scrollView addSubview:_pageControl];
+    [_scrollView addSubview:_recordView];
+    
 	// !!!:dezamisystem
 	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
 	CGRect rect_gauge = CGRectMake(0, 0, self.viewBaseGauge.frame.size.width, self.viewBaseGauge.frame.size.height);
@@ -153,6 +223,24 @@
         [self prepareCamera];
     }];
 #endif
+}
+
+// スクロールビューがスワイプされたとき
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = _scrollView.frame.size.width;
+    if ((NSInteger)fmod(_scrollView.contentOffset.x , pageWidth) == 0) {
+        // ページコントロールに現在のページを設定
+        _pageControl.currentPage = _scrollView.contentOffset.x / pageWidth;
+    }
+}
+
+// ページコントロールがタップされたとき
+- (void)pageControl_Tapped:(id)sender
+{
+    CGRect frame = _scrollView.frame;
+    frame.origin.x = frame.size.width * _pageControl.currentPage;
+    [_scrollView scrollRectToVisible:frame animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -692,8 +780,21 @@
 
 - (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
 {
-    NSAssert(self.recordSession != nil, @"recordSesssion が存在しない");
+   
     
+    //セッションが7秒未満の時
+     CMTime currentRecordDuration = _recordSession.currentRecordDuration;
+    
+   if (currentRecordDuration.timescale < 7) {
+        NSString *alertMessage = @"まだ7秒撮れていません";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
+    }
+    
+    else  {
+        
+        //NSLog(@"ここが通っている") ;
+        
     [SVProgressHUD show];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -724,7 +825,27 @@
               
               // 画面を閉じる
               [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        
+    }
     
+}
+
+- (IBAction)popButton:(UIButton *)sender {
+    //// 投稿画面を表示
+    __weak typeof(self)weakSelf = self;
+    
+    // 投稿画面を設定
+    self.AdditionView = [RecorderSubmitPopupAdditionView view];
+    self.AdditionView.delegate = self;
+    self.AdditionView.cancelCallback = ^{
+        // 投稿画面を閉じる
+        [weakSelf.AdditionView dismiss];
+        
+        // 動画撮影画面を閉じる
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
+    // 投稿画面を表示
+    [weakSelf.AdditionView showInView:weakSelf.view];
 }
 
 

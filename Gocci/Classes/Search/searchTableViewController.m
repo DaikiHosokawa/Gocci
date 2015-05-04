@@ -68,7 +68,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     self.restaurants = [NSArray array];
     self.annotations = [NSArray array];
     self.searched = NO;
-     self.tableView.bounces = YES;
+     self.tableView.bounces = NO;
     
     // Pull to refresh
     self.refresh = [UIRefreshControl new];

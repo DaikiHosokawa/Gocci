@@ -3,11 +3,11 @@
 //  Gocci
 //
 
-#import "RecorderSubmitPopupView.h"
+#import "RecorderSubmitPopupAdditionView.h"
 #import "BFPaperCheckbox.h"
 #import "AppDelegate.h"
 
-@interface RecorderSubmitPopupView()
+@interface RecorderSubmitPopupAdditionView()
 <BFPaperCheckboxDelegate>
 
 @property (nonatomic, weak) IBOutlet BFPaperCheckbox *checkbox1;
@@ -19,11 +19,11 @@
 
 @end
 
-@implementation RecorderSubmitPopupView
+@implementation RecorderSubmitPopupAdditionView
 
 + (instancetype)view
 {
-    RecorderSubmitPopupView *view = [[NSBundle mainBundle] loadNibNamed:@"RecorderSubmitPopupView" owner:self options:nil][0];
+    RecorderSubmitPopupAdditionView *view = [[NSBundle mainBundle] loadNibNamed:@"RecorderSubmitPopupAdditionView" owner:self options:nil][0];
     
     //view.checkboxes = @[view.checkbox1];
     
@@ -65,8 +65,8 @@
  */
 - (IBAction)onTwitterShareButton:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupViewOnTwitterShare:)]) {
-        [self.delegate recorderSubmitPopupViewOnTwitterShare:self];
+    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupAdditionViewOnTwitterShare:)]) {
+        [self.delegate recorderSubmitPopupAdditionViewOnTwitterShare:self];
     }
 }
 
@@ -77,8 +77,8 @@
  */
 - (IBAction)onFacebookShareButton:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupViewOnFacebookShare:)]) {
-        [self.delegate recorderSubmitPopupViewOnFacebookShare:self];
+    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupAdditionViewOnFacebookShare:)]) {
+        [self.delegate recorderSubmitPopupAdditionViewOnFacebookShare:self];
     }
 }
 
@@ -92,8 +92,8 @@
     //[self _validateCheckboxes];
     //ここに必要情報入力してくださいを入力する
     
-    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupViewOnSubmit:)]) {
-        [self.delegate recorderSubmitPopupViewOnSubmit:self];
+    if ([self.delegate respondsToSelector:@selector(recorderSubmitPopupAdditionViewOnSubmit:)]) {
+        [self.delegate recorderSubmitPopupAdditionViewOnSubmit:self];
     }
 }
 

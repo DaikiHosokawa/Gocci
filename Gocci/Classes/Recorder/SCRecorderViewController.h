@@ -27,6 +27,10 @@
 //@property (weak, nonatomic) IBOutlet UIButton *capturePhotoButton;
 //@property (weak, nonatomic) IBOutlet UIButton *ghostModeButton;
 @property (weak, nonatomic) IBOutlet UIView *viewBaseGauge;
+@property(nonatomic,strong) UIScrollView *scrollView;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property(nonatomic,strong) UIPageControl *pageControl;
+
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *viewIndicator;
 

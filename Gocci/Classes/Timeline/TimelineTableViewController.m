@@ -817,6 +817,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
     
+    
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
@@ -838,6 +839,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [ai startAnimating];
       currentCell.thumbnailView.frame.size.height);
       */
+  
     
     switch (netStatus) {
         case NotReachable:  //圏外

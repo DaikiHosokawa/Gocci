@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecorderSubmitPopupAdditionView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cN-Aj-o3N">
+                    <rect key="frame" x="8" y="25" width="304" height="430"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-Hm-6hI">
+                            <rect key="frame" x="12" y="12" width="20" height="20"/>
+                            <state key="normal" image="butn-dele-gray">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tapKakuCan:" destination="iN0-l3-epB" eventType="touchUpInside" id="qjJ-ur-oaZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="304" id="HAi-7a-Bf2"/>
+                        <constraint firstAttribute="height" constant="430" id="iE9-Xg-3ec"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3cN-Aj-o3N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="IRX-vk-Kf7"/>
+                <constraint firstAttribute="bottom" secondItem="3cN-Aj-o3N" secondAttribute="bottom" constant="25" id="Jzh-Ni-qoI"/>
+                <constraint firstAttribute="centerX" secondItem="3cN-Aj-o3N" secondAttribute="centerX" id="Vck-6y-Z9u"/>
+                <constraint firstAttribute="centerY" secondItem="3cN-Aj-o3N" secondAttribute="centerY" id="Wcd-jl-zgx"/>
+                <constraint firstAttribute="trailing" secondItem="3cN-Aj-o3N" secondAttribute="trailing" constant="8" id="avU-23-Igy"/>
+                <constraint firstAttribute="bottom" secondItem="3cN-Aj-o3N" secondAttribute="bottom" constant="25" id="fRL-vA-ub4"/>
+                <constraint firstItem="3cN-Aj-o3N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="yhs-19-ZDQ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="273" y="265"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="butn-dele-gray" width="30" height="30"/>
+    </resources>
+</document>

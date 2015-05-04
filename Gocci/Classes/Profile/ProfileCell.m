@@ -214,6 +214,7 @@ NSString * const ProfileCellIdentifier = @"ProfileCell";
     [self _assignTapAction:@selector(tapthumb:) view:self.thumbnailView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
    [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];
+    [self _assignTapAction:@selector(onDeleteButton:) view:self.deleteBtn];
 }
 
 + (CGFloat)cellHeightWithTimelinePost:(TimelinePost *)post
