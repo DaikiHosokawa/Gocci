@@ -84,7 +84,7 @@
     CGFloat width = self.view.bounds.size.width;
     CGFloat height = self.view.bounds.size.height;
     
-    
+    /*
     // UIScrollViewのインスタンス化
     _scrollView = [[UIScrollView alloc]init];
     _scrollView.backgroundColor = [UIColor blackColor];
@@ -147,6 +147,7 @@
     // ページコントロールを貼付ける
     [_scrollView addSubview:_pageControl];
     [_scrollView addSubview:_recordView];
+    */
     
 	// !!!:dezamisystem
 	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
