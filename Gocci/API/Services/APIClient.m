@@ -80,6 +80,7 @@ static APIClient *_sharedInstance = nil;
     [[APIClient sharedClient].manager GET:@"dist_timeline/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                     NSLog(@"task:%@",params);
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
@@ -260,7 +261,7 @@ static APIClient *_sharedInstance = nil;
     [[APIClient sharedClient].manager GET:@"dist/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      
+                                      NSLog(@"task:%@",task);
                                       // 結果をキャッシュ
                                       [[APIClient sharedClient].resultCache setObject:responseObject forKey:APIClientResultCacheKeyDist];
                                       

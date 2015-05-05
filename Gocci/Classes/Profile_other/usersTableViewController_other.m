@@ -33,6 +33,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 @property (nonatomic, strong) UIRefreshControl *refresh;
+@property (weak, nonatomic) IBOutlet UIButton *UIalot;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -61,7 +62,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
 	}
-
+ 
+   
 	// !!!:dezamisystem
 //	self.navigationItem.title = _postUsername;
     
@@ -88,6 +90,71 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
+    
+    flash_on = 1;
+    
+    if((flash_on = 0)){
+    UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+    [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }else{
+        UIImage *img = [UIImage imageNamed:@"フォロー.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }
+    
+    NSString *test = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSLog(@"%@=%@",test,_postUsername);
+    if ([_postUsername isEqualToString:test]) {
+        _flashBtn.hidden = YES;
+    }
+}
+
+-(IBAction)light:(id)sender {
+    
+    if(flash_on == 0 ){
+        
+        UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 1;
+        //スイッチオン時の処理を記述できます
+        NSLog(@"フォロー解除しました");
+        NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/favorites/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        
+        if (result) {
+            
+        }
+        
+    }else{
+        
+        UIImage *img = [UIImage imageNamed:@"フォロー.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 0;
+        //スイッチオフに戻った場合の処理を記述
+        NSLog(@"フォローしました");
+        NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unfavorites/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        if (result) {
+            
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -416,6 +483,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
         self.posts = [NSArray arrayWithArray:tempPosts];
+       NSLog(@"result_id:%@",result);
+        NSLog(@"tempPosts:%@",tempPosts);
+        NSLog(@"post:%@",_posts);
         
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];

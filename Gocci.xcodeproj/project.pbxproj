@@ -194,6 +194,15 @@
 		95E3C5BC1AF45073001599EE /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BA1AF45073001599EE /* RestaurantCell.xib */; };
 		95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5BE1AF4572F001599EE /* LifelogCell.m */; };
 		95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BF1AF4572F001599EE /* LifelogCell.xib */; };
+		95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5121AF9103B006FD54E /* FollowListCell.m */; };
+		95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5131AF9103B006FD54E /* FollowListCell.xib */; };
+		95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5151AF9103B006FD54E /* FollowListViewController.m */; };
+		95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5241AF914A7006FD54E /* FolloweeListCell.m */; };
+		95EEC5291AF914A7006FD54E /* FolloweeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5251AF914A7006FD54E /* FolloweeListCell.xib */; };
+		95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5271AF914A7006FD54E /* FolloweeListViewController.m */; };
+		95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC52D1AF91A20006FD54E /* CheerListCell.m */; };
+		95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC52E1AF91A20006FD54E /* CheerListCell.xib */; };
+		95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5301AF91A20006FD54E /* CheerListViewController.m */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
 		A13FB9721AB44E1500B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96F1AB44E1500B893F9 /* README.md */; };
@@ -566,6 +575,21 @@
 		95E3C5BD1AF4572F001599EE /* LifelogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogCell.h; sourceTree = "<group>"; };
 		95E3C5BE1AF4572F001599EE /* LifelogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogCell.m; sourceTree = "<group>"; };
 		95E3C5BF1AF4572F001599EE /* LifelogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifelogCell.xib; sourceTree = "<group>"; };
+		95EEC5111AF9103B006FD54E /* FollowListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListCell.h; sourceTree = "<group>"; };
+		95EEC5121AF9103B006FD54E /* FollowListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowListCell.m; sourceTree = "<group>"; };
+		95EEC5131AF9103B006FD54E /* FollowListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowListCell.xib; sourceTree = "<group>"; };
+		95EEC5141AF9103B006FD54E /* FollowListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListViewController.h; sourceTree = "<group>"; };
+		95EEC5151AF9103B006FD54E /* FollowListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowListViewController.m; sourceTree = "<group>"; };
+		95EEC5231AF914A7006FD54E /* FolloweeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolloweeListCell.h; sourceTree = "<group>"; };
+		95EEC5241AF914A7006FD54E /* FolloweeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolloweeListCell.m; sourceTree = "<group>"; };
+		95EEC5251AF914A7006FD54E /* FolloweeListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolloweeListCell.xib; sourceTree = "<group>"; };
+		95EEC5261AF914A7006FD54E /* FolloweeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolloweeListViewController.h; sourceTree = "<group>"; };
+		95EEC5271AF914A7006FD54E /* FolloweeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolloweeListViewController.m; sourceTree = "<group>"; };
+		95EEC52C1AF91A20006FD54E /* CheerListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheerListCell.h; sourceTree = "<group>"; };
+		95EEC52D1AF91A20006FD54E /* CheerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListCell.m; sourceTree = "<group>"; };
+		95EEC52E1AF91A20006FD54E /* CheerListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheerListCell.xib; sourceTree = "<group>"; };
+		95EEC52F1AF91A20006FD54E /* CheerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheerListViewController.h; sourceTree = "<group>"; };
+		95EEC5301AF91A20006FD54E /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		A13FB96E1AB44E1500B893F9 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -932,6 +956,9 @@
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				95EEC52B1AF91A20006FD54E /* CheerList */,
+				95EEC5221AF914A7006FD54E /* FolloweeList */,
+				95EEC5101AF9103B006FD54E /* FollowList */,
 				952D24061A9B9D3300C354DF /* AppDelegate */,
 				952D24091A9B9D3300C354DF /* beforeRecorder */,
 				952D240F1A9B9D3300C354DF /* Categories */,
@@ -1308,6 +1335,42 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		95EEC5101AF9103B006FD54E /* FollowList */ = {
+			isa = PBXGroup;
+			children = (
+				95EEC5111AF9103B006FD54E /* FollowListCell.h */,
+				95EEC5121AF9103B006FD54E /* FollowListCell.m */,
+				95EEC5131AF9103B006FD54E /* FollowListCell.xib */,
+				95EEC5141AF9103B006FD54E /* FollowListViewController.h */,
+				95EEC5151AF9103B006FD54E /* FollowListViewController.m */,
+			);
+			path = FollowList;
+			sourceTree = "<group>";
+		};
+		95EEC5221AF914A7006FD54E /* FolloweeList */ = {
+			isa = PBXGroup;
+			children = (
+				95EEC5231AF914A7006FD54E /* FolloweeListCell.h */,
+				95EEC5241AF914A7006FD54E /* FolloweeListCell.m */,
+				95EEC5251AF914A7006FD54E /* FolloweeListCell.xib */,
+				95EEC5261AF914A7006FD54E /* FolloweeListViewController.h */,
+				95EEC5271AF914A7006FD54E /* FolloweeListViewController.m */,
+			);
+			path = FolloweeList;
+			sourceTree = "<group>";
+		};
+		95EEC52B1AF91A20006FD54E /* CheerList */ = {
+			isa = PBXGroup;
+			children = (
+				95EEC52C1AF91A20006FD54E /* CheerListCell.h */,
+				95EEC52D1AF91A20006FD54E /* CheerListCell.m */,
+				95EEC52E1AF91A20006FD54E /* CheerListCell.xib */,
+				95EEC52F1AF91A20006FD54E /* CheerListViewController.h */,
+				95EEC5301AF91A20006FD54E /* CheerListViewController.m */,
+			);
+			path = CheerList;
+			sourceTree = "<group>";
+		};
 		A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -1538,6 +1601,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */,
 				952D25081A9B9EC800C354DF /* tabbaritem_search_sel@2x.png in Resources */,
 				952D250A1A9B9EC800C354DF /* tabbaritem_timeline@2x.png in Resources */,
 				95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */,
@@ -1570,6 +1634,7 @@
 				952D250F1A9B9EC800C354DF /* 3_5_inch.storyboard in Resources */,
 				95E3C5BC1AF45073001599EE /* RestaurantCell.xib in Resources */,
 				BFA1DA7A1AB2BA7F00B4F63A /* Cancel@3x.png in Resources */,
+				95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
 				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,
@@ -1596,6 +1661,7 @@
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				952D24881A9B9D3300C354DF /* TestHeader.xib in Resources */,
 				952D25111A9B9EC800C354DF /* 5_5_inch.storyboard in Resources */,
+				95EEC5291AF914A7006FD54E /* FolloweeListCell.xib in Resources */,
 				952D24FC1A9B9EC800C354DF /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				952D24F11A9B9EC800C354DF /* btn_capture_flip@2x.png in Resources */,
 				952D24B01A9B9D3300C354DF /* TimelineCell.xib in Resources */,
@@ -1649,6 +1715,7 @@
 				AB645CD71AA697FB00827B7A /* RecorderSubmitPopupView.m in Sources */,
 				952D23901A9B95E800C354DF /* UIView+WebCacheOperation.m in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,
+				95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */,
 				952D24871A9B9D3300C354DF /* LoginViewController.m in Sources */,
 				53B942A31AB40414000150C4 /* BAVPlistNode.m in Sources */,
 				A13FB97B1AB45F7E00B893F9 /* UIColor+BFPaperColors.m in Sources */,
@@ -1669,11 +1736,14 @@
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
 				952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */,
 				952D23831A9B95E800C354DF /* SDImageCache.m in Sources */,
+				95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */,
+				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				952D24C31A9B9DE100C354DF /* MoviePlayerManager.m in Sources */,
 				BFA1DA721AB2B93400B4F63A /* RegistView.m in Sources */,
 				952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
+				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
 				95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */,
 				952D23961A9B95E800C354DF /* README.md in Sources */,
@@ -1697,6 +1767,7 @@
 				53B942A21AB40414000150C4 /* STTwitterOSRequest.m in Sources */,
 				952D248F1A9B9D3300C354DF /* TutorialPageView.m in Sources */,
 				95E3C5BB1AF45073001599EE /* RestaurantCell.m in Sources */,
+				95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
@@ -1727,6 +1798,7 @@
 				952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */,
 				952D23881A9B95E800C354DF /* SDWebImageManager.m in Sources */,
 				952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */,
+				95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */,
 				952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */,
 				952D23681A9B95E800C354DF /* AFSecurityPolicy.m in Sources */,
 				952D24A11A9B9D3300C354DF /* SCAudioTools.m in Sources */,

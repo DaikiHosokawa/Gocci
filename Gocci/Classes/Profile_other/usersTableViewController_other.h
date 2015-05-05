@@ -27,6 +27,8 @@
     NSString *_postLocality;
     NSString *_postTell;
     NSString *_postCategory;
+    
+    int flash_on;
 
 }
 
@@ -35,5 +37,6 @@
 @property (nonatomic) NSString *postUsername;
 @property (nonatomic) NSString *postPicture;
 
+@property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @end

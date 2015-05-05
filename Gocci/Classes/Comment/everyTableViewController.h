@@ -11,12 +11,12 @@
 #import <Accounts/Accounts.h>
 #import "Sample4TableViewCell.h"
 #import <Foundation/Foundation.h>
-#import "Sample4TableViewCell.h"
 #import "CXCardView.h"
 #import "DemoContentView.h"
 
 
-@interface everyTableViewController : UITableViewController<UITextViewDelegate, UITabBarControllerDelegate> {
+@interface everyTableViewController : UITableViewController<UITextViewDelegate, UITabBarControllerDelegate>
+{
      NSString *_postID;
 }
 

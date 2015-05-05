@@ -21,6 +21,7 @@
     MPMoviePlayerController *moviePlayer;
     NSString *_postID;
     NSString *_postRestname;
+    NSString *_postUsername;
     NSString *_postHomepage;
     NSString *_postLocality;
     NSString *_postTell;
@@ -30,6 +31,7 @@
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
+@property (nonatomic) NSString *postUsername;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @end
