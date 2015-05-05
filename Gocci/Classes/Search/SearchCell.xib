@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="21" id="tTp-EE-lBT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
-                                <color key="textColor" red="0.93642612771382405" green="0.15973688585517679" blue="0.1327395597320766" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -40,15 +40,15 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリー" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2c-k3-Dk5">
-                                <rect key="frame" x="18" y="38" width="263" height="20"/>
+                                <rect key="frame" x="78" y="33" width="180" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="東京都青梅市梅郷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-Jv-ndB">
-                                <rect key="frame" x="18" y="56" width="254" height="20"/>
+                                <rect key="frame" x="78" y="51" width="230" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
-                                <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -114,7 +114,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-hK-gTY">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-hK-gTY">
                         <rect key="frame" x="20" y="42" width="252" height="1"/>
                         <color key="backgroundColor" red="0.9410743117" green="0.94123542309999997" blue="0.94106405969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
