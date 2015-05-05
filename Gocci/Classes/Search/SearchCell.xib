@@ -17,8 +17,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tM-tX-IxM">
                         <rect key="frame" x="8" y="8" width="304" height="105"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店舗ページに行く" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-Hz-KMH">
-                                <rect key="frame" x="10" y="77" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店舗ページに行く" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-Hz-KMH">
+                                <rect key="frame" x="18" y="79" width="120" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1F2-FY-dZ8"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="1kQ-FX-Teo"/>
@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="21" id="tTp-EE-lBT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
-                                <color key="textColor" red="0.57248467209999998" green="0.57258617879999996" blue="0.57247823480000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.93642612771382405" green="0.15973688585517679" blue="0.1327395597320766" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -40,13 +40,13 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリー" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2c-k3-Dk5">
-                                <rect key="frame" x="18" y="32" width="263" height="20"/>
+                                <rect key="frame" x="18" y="38" width="263" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="東京都青梅市梅郷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-Jv-ndB">
-                                <rect key="frame" x="18" y="49" width="254" height="20"/>
+                                <rect key="frame" x="18" y="56" width="254" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
@@ -54,10 +54,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yfP-Hz-KMH" secondAttribute="bottom" constant="7" id="Yth-92-XBM"/>
+                            <constraint firstItem="yfP-Hz-KMH" firstAttribute="leading" secondItem="9tM-tX-IxM" secondAttribute="leading" constant="18" id="Nbk-CH-UYV"/>
+                            <constraint firstAttribute="trailing" secondItem="yfP-Hz-KMH" secondAttribute="trailing" constant="166" id="Qub-pS-8F3"/>
+                            <constraint firstAttribute="bottom" secondItem="yfP-Hz-KMH" secondAttribute="bottom" constant="5" id="Yth-92-XBM"/>
                             <constraint firstAttribute="trailing" secondItem="yfP-Hz-KMH" secondAttribute="trailing" constant="174" id="kHI-zq-lOp"/>
                             <constraint firstItem="yfP-Hz-KMH" firstAttribute="leading" secondItem="9tM-tX-IxM" secondAttribute="leading" constant="10" id="lyk-RR-Z81"/>
+                            <constraint firstAttribute="bottom" secondItem="yfP-Hz-KMH" secondAttribute="bottom" constant="5" id="zpc-6Y-P6c"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Yth-92-XBM"/>
+                                <exclude reference="kHI-zq-lOp"/>
+                                <exclude reference="lyk-RR-Z81"/>
+                            </mask>
+                        </variation>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_search_cell" translatesAutoresizingMaskIntoConstraints="NO" id="Bti-Gh-Bys">
                         <rect key="frame" x="24" y="21" width="10" height="14"/>
@@ -77,7 +87,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ティーシーカフェ 自由が丘店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOs-tC-Sp9">
-                        <rect key="frame" x="84" y="18" width="216" height="21"/>
+                        <rect key="frame" x="84" y="18" width="188" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="JsV-VQ-ytM"/>
                         </constraints>
@@ -86,7 +96,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngh-he-Ifv">
-                        <rect key="frame" x="20" y="80" width="280" height="1"/>
+                        <rect key="frame" x="20" y="84" width="280" height="1"/>
                         <color key="backgroundColor" red="0.94107431173324585" green="0.94123542308807373" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="dRA-fs-eHF"/>
@@ -104,6 +114,25 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-hK-gTY">
+                        <rect key="frame" x="20" y="42" width="252" height="1"/>
+                        <color key="backgroundColor" red="0.9410743117" green="0.94123542309999997" blue="0.94106405969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Di2-6J-JcA"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.0" height="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                <color key="value" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
@@ -112,22 +141,25 @@
                     <constraint firstItem="fOs-tC-Sp9" firstAttribute="trailing" secondItem="DAh-6P-zq9" secondAttribute="trailingMargin" id="5ZX-qD-4UT"/>
                     <constraint firstItem="fOs-tC-Sp9" firstAttribute="top" secondItem="DAh-6P-zq9" secondAttribute="top" constant="18" id="8fo-kl-zTh"/>
                     <constraint firstItem="BuW-OR-j7i" firstAttribute="leading" secondItem="Bti-Gh-Bys" secondAttribute="trailing" constant="6" id="Ckx-1J-QYB"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ngh-he-Ifv" secondAttribute="bottom" constant="32" id="DEW-IM-abF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ngh-he-Ifv" secondAttribute="bottom" constant="28" id="DEW-IM-abF"/>
                     <constraint firstItem="Bti-Gh-Bys" firstAttribute="leading" secondItem="DAh-6P-zq9" secondAttribute="leadingMargin" constant="16" id="Gcz-88-WqU"/>
                     <constraint firstItem="fOs-tC-Sp9" firstAttribute="leading" secondItem="BuW-OR-j7i" secondAttribute="trailing" constant="2" id="IWC-iE-c0C"/>
+                    <constraint firstItem="AbO-hK-gTY" firstAttribute="leading" secondItem="ngh-he-Ifv" secondAttribute="leading" id="S7g-q9-sb8"/>
                     <constraint firstItem="9tM-tX-IxM" firstAttribute="top" secondItem="DAh-6P-zq9" secondAttribute="topMargin" id="SXf-TF-FIr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ngh-he-Ifv" secondAttribute="trailing" constant="12" id="YY8-hf-ta6"/>
                     <constraint firstItem="ngh-he-Ifv" firstAttribute="leading" secondItem="DAh-6P-zq9" secondAttribute="leadingMargin" constant="12" id="avI-g3-Z4s"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="fOs-tC-Sp9" secondAttribute="trailing" constant="12" id="mFW-ot-gWw"/>
+                    <constraint firstItem="AbO-hK-gTY" firstAttribute="trailing" secondItem="fOs-tC-Sp9" secondAttribute="trailing" id="jLg-2E-F5x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fOs-tC-Sp9" secondAttribute="trailing" constant="40" id="mFW-ot-gWw"/>
                     <constraint firstItem="Bti-Gh-Bys" firstAttribute="top" secondItem="DAh-6P-zq9" secondAttribute="topMargin" constant="13" id="n0f-8n-S8N"/>
+                    <constraint firstItem="AbO-hK-gTY" firstAttribute="top" secondItem="fOs-tC-Sp9" secondAttribute="bottom" constant="3" id="pEt-Wl-g3a"/>
                     <constraint firstItem="9tM-tX-IxM" firstAttribute="trailing" secondItem="DAh-6P-zq9" secondAttribute="trailingMargin" id="qgU-GV-5Gu"/>
                     <constraint firstItem="BuW-OR-j7i" firstAttribute="top" secondItem="DAh-6P-zq9" secondAttribute="top" constant="18" id="yza-z9-t0U"/>
                     <constraint firstItem="9tM-tX-IxM" firstAttribute="bottom" secondItem="DAh-6P-zq9" secondAttribute="bottomMargin" id="ztX-up-L4G"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="57D-XU-YMg"/>
                         <exclude reference="5ZX-qD-4UT"/>
+                        <exclude reference="57D-XU-YMg"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

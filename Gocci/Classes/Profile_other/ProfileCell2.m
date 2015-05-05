@@ -134,7 +134,6 @@ NSString * const Profile2CellIdentifier = @"ProfileCell2";
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost
 {
     [self.background dropShadow];
-    [self.restaurantView dropShadowLight];
     
     self.postID = timelinePost.postID;
     self.username = timelinePost.userName;

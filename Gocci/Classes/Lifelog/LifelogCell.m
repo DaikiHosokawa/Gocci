@@ -134,7 +134,6 @@ NSString * const LifelogCellIdentifier = @"LifelogCell";
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost
 {
     [self.background dropShadow];
-    [self.restaurantView dropShadowLight];
     
     self.postID = timelinePost.postID;
     self.username = timelinePost.userName;
