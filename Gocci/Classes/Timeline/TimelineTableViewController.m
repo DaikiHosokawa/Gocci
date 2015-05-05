@@ -308,6 +308,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
+    
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
     
@@ -404,10 +405,19 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
-	if (result) {}    
-    
+   
+    //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
+    //_currentIndexPath
+  
+	if (result) {}
+   
     // タイムラインを再読み込み
-    [self _fetchTimeline];
+    //[self _fetchTimeline];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
@@ -720,7 +730,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
              }
              self.posts = [NSArray arrayWithArray:tempPosts];
-             
              if ([self.posts count]== 0) {
                  NSLog(@"投稿がない");
                  

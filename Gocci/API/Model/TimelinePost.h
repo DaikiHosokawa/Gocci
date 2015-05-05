@@ -27,6 +27,7 @@
 @property (nonatomic) NSString *tel;
 @property (nonatomic) NSString *homepage;
 @property (nonatomic) NSString *category;
+@property (nonatomic) NSString *pushed_at;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

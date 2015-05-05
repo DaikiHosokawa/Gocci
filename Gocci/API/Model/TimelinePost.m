@@ -28,6 +28,7 @@
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
     obj.category = dictionary[@"category"];
+    obj.pushed_at = dictionary[@"pushed_at"];
     
     return obj;
 }

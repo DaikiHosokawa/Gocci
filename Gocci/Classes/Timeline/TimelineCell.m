@@ -35,11 +35,14 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic, weak) IBOutlet UIView *commentView;
 @property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantNaviview;
+@property (weak, nonatomic) IBOutlet UIImageView *startPlaying;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewTopConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewBottomConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewWidthConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewHeightConstraint;
+
+@property (nonatomic) NSString *pushed_at;
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *username;
@@ -76,6 +79,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {
         [self.delegate timelineCell:self didTapthumb:self.thumbnailView];
+        self.startPlaying.hidden = YES;
     }
 }
 
@@ -97,7 +101,25 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapLikeButtonWithPostID:)]) {
         [self.delegate timelineCell:self didTapLikeButtonWithPostID:self.postID];
-    }
+       /*
+        if ([self.pushed_at  isEqual: @"0"]) {
+             TimelinePost *post;
+            // self.likeCountLabel// 文字列をNSIntegerに変換
+            NSInteger i = self.likeCountLabel.text.integerValue;
+            NSLog(@"文字列→NSInteger：%ld", i);;
+            NSInteger s = i+1;
+           // post.goodNum = post.goodNum+1;
+            NSLog(@"%lu",(unsigned long)post.goodNum);
+            NSString *newStr = [NSString stringWithFormat:@"%ld", (long)s];
+            NSLog(@"NSInteger→文字列：%@", newStr);
+            self.likeCountLabel.text = [NSString stringWithFormat:@"%@", newStr];
+            self.pushed_at = @"1";
+           // post.pushed_at = @"1";
+        
+        }
+        */
+       
+        }
 }
 
 - (void)tapNavi:(UITapGestureRecognizer *)recognizer
@@ -185,6 +207,10 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     // Comment 数
     self.commentCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.commentNum)];
+    
+    //
+    self.pushed_at = timelinePost.pushed_at;
+
     
     /*
     //応援画像

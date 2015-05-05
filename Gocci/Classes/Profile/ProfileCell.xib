@@ -95,50 +95,41 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag-A" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-9m-Zwm">
-                                <rect key="frame" x="0.0" y="30" width="69" height="21"/>
+                                <rect key="frame" x="0.0" y="28" width="90" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="KyL-h4-bOB"/>
-                                    <constraint firstAttribute="width" constant="69" id="eMl-48-fmZ"/>
+                                    <constraint firstAttribute="height" constant="25" id="KyL-h4-bOB"/>
+                                    <constraint firstAttribute="width" constant="90" id="eMl-48-fmZ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-B" translatesAutoresizingMaskIntoConstraints="NO" id="67U-t0-FdZ">
-                                <rect key="frame" x="71" y="30" width="69" height="21"/>
+                                <rect key="frame" x="95" y="28" width="90" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="bHo-en-Me7"/>
-                                    <constraint firstAttribute="height" constant="21" id="vMV-xr-r5t"/>
+                                    <constraint firstAttribute="width" constant="90" id="bHo-en-Me7"/>
+                                    <constraint firstAttribute="height" constant="25" id="vMV-xr-r5t"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-C" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-cc-4mb">
-                                <rect key="frame" x="142" y="30" width="69" height="21"/>
+                                <rect key="frame" x="190" y="28" width="90" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="0DS-WP-Fbb"/>
-                                    <constraint firstAttribute="height" constant="21" id="Zsg-zU-MOK"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="tag-D" translatesAutoresizingMaskIntoConstraints="NO" id="MDZ-nX-80G">
-                                <rect key="frame" x="213" y="30" width="69" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="MdJ-tD-wc4"/>
-                                    <constraint firstAttribute="width" constant="69" id="yml-I4-7hS"/>
+                                    <constraint firstAttribute="width" constant="90" id="0DS-WP-Fbb"/>
+                                    <constraint firstAttribute="height" constant="25" id="Zsg-zU-MOK"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="QPi-nC-yon" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" constant="8" id="2BW-B7-oBu"/>
-                            <constraint firstItem="Bfz-cc-4mb" firstAttribute="leading" secondItem="67U-t0-FdZ" secondAttribute="trailing" constant="2" id="6fE-UV-x1F"/>
-                            <constraint firstItem="67U-t0-FdZ" firstAttribute="leading" secondItem="ceh-9m-Zwm" secondAttribute="trailing" constant="2" id="AaG-mO-igx"/>
+                            <constraint firstItem="Bfz-cc-4mb" firstAttribute="leading" secondItem="67U-t0-FdZ" secondAttribute="trailing" constant="5" id="6fE-UV-x1F"/>
+                            <constraint firstItem="67U-t0-FdZ" firstAttribute="leading" secondItem="ceh-9m-Zwm" secondAttribute="trailing" constant="5" id="AaG-mO-igx"/>
                             <constraint firstItem="Ved-qS-0vN" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" constant="3" id="FBS-l3-aqu"/>
                             <constraint firstAttribute="trailing" secondItem="Ved-qS-0vN" secondAttribute="trailing" constant="16" id="HQa-4x-7uC"/>
-                            <constraint firstItem="MDZ-nX-80G" firstAttribute="leading" secondItem="Bfz-cc-4mb" secondAttribute="trailing" constant="2" id="Kun-TD-7Mi"/>
-                            <constraint firstItem="MDZ-nX-80G" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="5" id="OXw-fB-UeR"/>
                             <constraint firstAttribute="height" constant="55" id="QiQ-Ga-ahw"/>
                             <constraint firstItem="Ved-qS-0vN" firstAttribute="leading" secondItem="QPi-nC-yon" secondAttribute="trailing" constant="25" id="XP5-I3-Pce"/>
-                            <constraint firstItem="67U-t0-FdZ" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="5" id="ZZ2-eR-DIb"/>
+                            <constraint firstItem="67U-t0-FdZ" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="3" id="ZZ2-eR-DIb"/>
                             <constraint firstItem="ceh-9m-Zwm" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" id="etc-tG-bJR"/>
-                            <constraint firstItem="ceh-9m-Zwm" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="5" id="qWp-Ek-5Yz"/>
+                            <constraint firstItem="ceh-9m-Zwm" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="3" id="qWp-Ek-5Yz"/>
                             <constraint firstItem="QPi-nC-yon" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" id="s9D-n0-dba"/>
-                            <constraint firstItem="Bfz-cc-4mb" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="5" id="wiQ-vc-eI1"/>
+                            <constraint firstItem="Bfz-cc-4mb" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="3" id="wiQ-vc-eI1"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-Tg-6h0">
@@ -344,7 +335,6 @@
         <image name="tag-A" width="128" height="28"/>
         <image name="tag-B" width="128" height="28"/>
         <image name="tag-C" width="128" height="28"/>
-        <image name="tag-D" width="128" height="28"/>
         <image name="金" width="28" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
