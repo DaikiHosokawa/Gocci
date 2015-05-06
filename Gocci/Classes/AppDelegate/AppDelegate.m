@@ -114,7 +114,7 @@
     }
 
 	// !!!:dezamisystem
-	UIColor *color_custom = [UIColor colorWithRed:230./255. green:51./255. blue:51./255. alpha:1.];
+	UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
 
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
