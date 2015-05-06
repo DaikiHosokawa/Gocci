@@ -10,11 +10,18 @@
 #import "FolloweeListCell.h"
 #import <Foundation/Foundation.h>
 
-@interface FolloweeListViewController : UITableViewController
+@interface FolloweeListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+
 {
     NSString *_postUsername;
+    NSString *_postUsername_with_profile2;
+    NSString *_postUserPicture_with_profile2;
+
 }
 
 @property (nonatomic) NSString *postUsername;
+@property (nonatomic) NSString *postUsername_with_profile2;
+@property (nonatomic) NSString *postUserPicture_with_profile2;
+
 
 @end

@@ -10,11 +10,16 @@
 #import "FollowListCell.h"
 #import <Foundation/Foundation.h>
 
-@interface FollowListViewController : UITableViewController
+@interface FollowListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSString *_postUsername;
+    NSString *_postUsername_with_profile;
+    NSString *_postUserPicture_with_profile;
+
 }
 
 @property (nonatomic) NSString *postUsername;
+@property (nonatomic) NSString *postUsername_with_profile;
+@property (nonatomic) NSString *postUserPicture_with_profile;
 
 @end

@@ -9,6 +9,9 @@
 #import "FolloweeListViewController.h"
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
+#import "usersTableViewController_other.h"
+
 
 @interface FolloweeListViewController ()
 
@@ -20,6 +23,7 @@
 
 @end
 
+static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 
 @implementation FolloweeListViewController
@@ -27,19 +31,21 @@
 @synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     
     //ナビゲーションバーに画像
     {
-        //タイトル画像設定
-        //CGFloat width_image = height_image;
+        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"";
+        self.navigationItem.backBarButtonItem = barButton;
     }
-    
     
     // !!!:dezamisystem
     //	self.navigationItem.title = @"コメント画面";
@@ -58,6 +64,11 @@
     
     self.tableView.bounces = NO;
     self.tableView.allowsSelection = NO;
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.allowsSelection = YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
     
 #if 0
     // タブの中身（UIViewController）をインスタンス化
@@ -79,7 +90,6 @@
     tbi = [tbc.tabBar.items objectAtIndex:1];
     tbi.title = @"ABCDEFG";
 #endif
-    
     
 
     
@@ -130,6 +140,25 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+    
+    _postUsername_with_profile2 =  [_user_name_ objectAtIndex:indexPath.row];
+    _postUserPicture_with_profile2 = [_picture_ objectAtIndex:indexPath.row];
+    
+    NSLog(@"postusername_with_profile:%@",_postUsername_with_profile2);
+    
+    [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SEGUE_GO_PROFILE])
+    {
+        //ここでパラメータを渡す
+        usersTableViewController_other *users_otherVC = segue.destinationViewController;
+        users_otherVC.postUsername = _postUsername_with_profile2;
+        users_otherVC.postPicture = _postUserPicture_with_profile2;
+    }
 }
 
 - (void)didReceiveMemoryWarning

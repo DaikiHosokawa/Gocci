@@ -9,12 +9,16 @@
 #import "CheerListViewController.h"
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
+#import "RestaurantTableViewController.h"
 
 @interface CheerListViewController ()
 
 
 @property (nonatomic, retain) NSMutableArray *locality_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
+@property (nonatomic, retain) NSMutableArray *homepage_;
+@property (nonatomic, retain) NSMutableArray *tell_;
+@property (nonatomic, retain) NSMutableArray *category_;
 @property (nonatomic, retain) CheerListCell *cell;
 
 
@@ -24,6 +28,8 @@
 
 @implementation CheerListViewController
 
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
+
 @synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
@@ -32,12 +38,14 @@
     
     //ナビゲーションバーに画像
     {
-        //タイトル画像設定
-        //CGFloat width_image = height_image;
+        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"";
+        self.navigationItem.backBarButtonItem = barButton;
     }
     
     
@@ -58,6 +66,11 @@
     
     self.tableView.bounces = NO;
     self.tableView.allowsSelection = NO;
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.allowsSelection = YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
     
 #if 0
     // タブの中身（UIViewController）をインスタンス化
@@ -90,6 +103,36 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+  
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+    
+    _postRestname =  [_user_name_ objectAtIndex:indexPath.row];
+    _postTell = [_tell_ objectAtIndex:indexPath.row];
+    _postCategory = [_category_ objectAtIndex:indexPath.row];
+    _postLocality = [_locality_ objectAtIndex:indexPath.row];
+    _postHomepage = [_homepage_ objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
+        //ここでパラメータを渡す
+       RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
+        restVC.postHomepage = _postLocality;
+        restVC.postCategory = _postCategory;
+        restVC.postTell = _postTell;
+        restVC.postLocality = _postLocality;
+    }
+}
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
     
     [SVProgressHUD show];
@@ -118,7 +161,15 @@
     // プロフ画像
     NSArray *locality = [jsonDic valueForKey:@"locality"];
     _locality_ = [locality mutableCopy];
-    
+    // ホームページ
+    NSArray *homepage = [jsonDic valueForKey:@"homepage"];
+    _homepage_ = [homepage mutableCopy];
+    // プロフ画像
+    NSArray *tell = [jsonDic valueForKey:@"tell"];
+    _tell_ = [tell mutableCopy];
+    //カテゴリー
+    NSArray *category = [jsonDic valueForKey:@"category"];
+    _category_ = [category mutableCopy];
 }
 
 
@@ -127,9 +178,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 75.0;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
-}
 
 - (void)didReceiveMemoryWarning
 {

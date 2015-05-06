@@ -1091,10 +1091,10 @@
 		952D24341A9B9D3300C354DF /* Profile_other */ = {
 			isa = PBXGroup;
 			children = (
-				952D24351A9B9D3300C354DF /* usersTableViewController_other.h */,
 				95E3C5B31AF4342F001599EE /* ProfileCell2.h */,
 				95E3C5B41AF4342F001599EE /* ProfileCell2.m */,
 				95E3C5B51AF4342F001599EE /* ProfileCell2.xib */,
+				952D24351A9B9D3300C354DF /* usersTableViewController_other.h */,
 				952D24361A9B9D3300C354DF /* usersTableViewController_other.m */,
 			);
 			path = Profile_other;
@@ -1126,10 +1126,10 @@
 		952D24421A9B9D3300C354DF /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				952D24431A9B9D3300C354DF /* RestaurantTableViewController.h */,
 				95E3C5B81AF45073001599EE /* RestaurantCell.h */,
 				95E3C5B91AF45073001599EE /* RestaurantCell.m */,
 				95E3C5BA1AF45073001599EE /* RestaurantCell.xib */,
+				952D24431A9B9D3300C354DF /* RestaurantTableViewController.h */,
 				952D24441A9B9D3300C354DF /* RestaurantTableViewController.m */,
 			);
 			path = Restaurant;

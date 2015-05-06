@@ -13,6 +13,9 @@
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
+#import "FollowListViewController.h"
+#import "FolloweeListViewController.h"
+
 
 
 @interface usersTableViewController_other : UITableViewController
@@ -27,7 +30,11 @@
     NSString *_postLocality;
     NSString *_postTell;
     NSString *_postCategory;
-    
+    NSString *_postUsername_with_profile;
+    NSString *_postUserPicture_with_profile;
+    NSString *_postUsername_with_profile2;
+    NSString *_postUserPicture_with_profile2;
+
     int flash_on;
 
 }
@@ -36,6 +43,10 @@
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *postUsername;
 @property (nonatomic) NSString *postPicture;
+@property (nonatomic) NSString *postUsername_with_profile;
+@property (nonatomic) NSString *postUserPicture_with_profile;
+@property (nonatomic) NSString *postUsername_with_profile2;
+@property (nonatomic) NSString *postUserPicture_with_profile2;
 
 @property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;
