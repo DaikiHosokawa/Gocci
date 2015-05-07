@@ -9,6 +9,7 @@
 /** 再生用の MPMoviePlayerController */
 @property (nonatomic,strong) MPMoviePlayerController *globalPlayer;
 
+
 @end
 
 @implementation MoviePlayerManager
@@ -70,6 +71,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           moviePlayer.view.userInteractionEnabled = NO;
                           weakSelf.players[key] = moviePlayer;
                           
+                          
                           completion(YES);
                       }];
 }
@@ -106,10 +108,29 @@ static MoviePlayerManager *_sharedInstance = nil;
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
     if (self.globalPlayer) {
+ 
         [self.globalPlayer.view removeFromSuperview];
-        [self.globalPlayer stop];
+        [self.globalPlayer pause];
         self.globalPlayer = nil;
+      
+        /*
+        //再生中でない時
+        if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
+            NSLog(@"再生中に停止します");
+            MPMoviePlayerController *player = [self _playerAtIndex:index];
+            self.globalPlayer = player;
+            [self.globalPlayer pause];
+        }
+       else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePaused) {
+            NSLog(@"停止中に再生します");
+            //MPMoviePlayerController *player = [self _playerAtIndex:index];
+            //self.globalPlayer = player;
+            [self.globalPlayer play];
+        }
+         */
+
     }
+    
     
     MPMoviePlayerController *player = [self _playerAtIndex:index];
     
@@ -118,9 +139,20 @@ static MoviePlayerManager *_sharedInstance = nil;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
         
+        //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
             [self.globalPlayer play];
         }
+    
+        /*
+        //再生中のとき
+        else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
+            [self.globalPlayer play];
+            NSLog(@"再生中");
+        }else if ([self.globalPlayer playbackState] == MPMoviePlaybackStateSeekingForward) {
+             NSLog(@"待機中");
+        }
+         */
     }
 }
 
@@ -129,6 +161,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     if (self.globalPlayer) {
         [self.globalPlayer stop];
         self.globalPlayer = nil;
+        NSLog(@"ちゃんときいてるで");
     }
 }
 

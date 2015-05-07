@@ -156,7 +156,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JHC-Lm-ITa">
-                                    <rect key="frame" x="277" y="212" width="75" height="30"/>
+                                    <rect key="frame" x="260" y="212" width="75" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="応援リスト">
                                         <color key="titleColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
@@ -1137,10 +1137,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="ElI-qq-NoV"/>
-        <segue reference="6vJ-uD-CoV"/>
-        <segue reference="R4l-rq-eUo"/>
         <segue reference="Iae-iA-x0s"/>
+        <segue reference="R4l-rq-eUo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

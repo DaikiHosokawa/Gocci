@@ -85,8 +85,18 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.frame = CGRectMake(0, 0, 375, 315);
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
-        
         [self.view addSubview:_mapView];
+
+        /*1
+        UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
+        buttonA.frame = CGRectMake(280, 10, 100, 30);
+        buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+        [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
+        [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
+        //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
+        //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
+        [_mapView addSubview:buttonA];
+         */
     }
     else if (rect2.size.height == 736) {
         self.showedUserLocation = NO;
@@ -96,6 +106,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
+        
+        
     }else{
         // 地図の表示
         self.showedUserLocation = NO;
@@ -105,6 +117,16 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
+        /*
+        UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
+        buttonA.frame = CGRectMake(240, 10, 100, 30);
+        buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+        [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
+        [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
+        //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
+        //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
+        [_mapView addSubview:buttonA];
+         */
     }
     
 	// !!!:dezamisystem
@@ -143,6 +165,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
          forCellReuseIdentifier:SearchCellIdentifier];
 }
+
+/*
+-(void)getValue{
+    NSLog(@"succecced getValue");
+}
+*/
 
 -(void)viewWillAppear:(BOOL)animated
 {

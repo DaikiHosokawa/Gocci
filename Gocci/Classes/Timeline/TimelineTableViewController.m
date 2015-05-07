@@ -796,6 +796,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+
     [self _playMovieAtCurrentCell];
 }
 
