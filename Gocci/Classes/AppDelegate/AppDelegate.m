@@ -34,6 +34,10 @@
 @synthesize lifelogDate;
 @synthesize cheertag;
 
+@synthesize valueKakaku;
+@synthesize stringTenmei;
+@synthesize indexCategory;
+@synthesize indexFuniki;
 
 //@synthesize window = _window;
 
@@ -148,6 +152,12 @@
 		
 		// 選択時
 		[[UITabBar appearance] setTintColor:color_custom];
+	}
+	
+	// !!!:dezamisystem・初期化
+	{
+		indexCategory = -1;
+		indexFuniki = -1;
 	}
 	
     //スプラッシュ時間設定

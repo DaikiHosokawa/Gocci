@@ -15,7 +15,7 @@
 #import "Restaurant.h"
 #import "LocationClient.h"
 
-static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
+//static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 @import CoreLocation;
 
@@ -313,15 +313,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 	
-	//2つ目の画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-	if ([segue.identifier isEqualToString:SEGUE_GO_SC_RECORDER])
-	{
-		//ここでパラメータを渡す
-		SCRecorderViewController *recVC = segue.destinationViewController;
-		//recVC.postID = (NSString *)sender;
-		recVC.hidesBottomBarWhenPushed = YES;	// タブバー非表示
-	}
+//	//2つ目の画面にパラメータを渡して遷移する
+//	// !!!:dezamisystem
+//	if ([segue.identifier isEqualToString:SEGUE_GO_SC_RECORDER])
+//	{
+//		//ここでパラメータを渡す
+//		SCRecorderViewController *recVC = segue.destinationViewController;
+//		//recVC.postID = (NSString *)sender;
+//		recVC.hidesBottomBarWhenPushed = YES;	// タブバー非表示
+//	}
 }
 
 - (void)refresh:(UIRefreshControl *)sender

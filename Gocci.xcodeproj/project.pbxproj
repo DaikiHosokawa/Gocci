@@ -21,6 +21,7 @@
 		377063441AFC6F9F00CD891D /* SCSecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377063371AFC6F9F00CD891D /* SCSecondView.m */; };
 		377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */; };
 		377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770633A1AFC6F9F00CD891D /* XYPieChart.m */; };
+		37A038D01AFC923D0095702F /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A038CF1AFC923D0095702F /* SCPostingViewController.m */; };
 		535626731AB39C97009C7D12 /* SigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 535626721AB39C97009C7D12 /* SigninView.m */; };
 		535626751AB39CB4009C7D12 /* SigninView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535626741AB39CB4009C7D12 /* SigninView.xib */; };
 		53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
@@ -287,6 +288,8 @@
 		377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondViewMain.xib; sourceTree = "<group>"; };
 		377063391AFC6F9F00CD891D /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		3770633A1AFC6F9F00CD891D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		37A038CE1AFC923D0095702F /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
+		37A038CF1AFC923D0095702F /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
 		535626711AB39C97009C7D12 /* SigninView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninView.h; sourceTree = "<group>"; };
 		535626721AB39C97009C7D12 /* SigninView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninView.m; sourceTree = "<group>"; };
 		535626741AB39CB4009C7D12 /* SigninView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SigninView.xib; sourceTree = "<group>"; };
@@ -1135,6 +1138,8 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				37A038CE1AFC923D0095702F /* SCPostingViewController.h */,
+				37A038CF1AFC923D0095702F /* SCPostingViewController.m */,
 				3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */,
 				3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */,
 				3770632D1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib */,
@@ -1808,6 +1813,7 @@
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
 				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
+				37A038D01AFC923D0095702F /* SCPostingViewController.m in Sources */,
 				95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */,
 				952D23961A9B95E800C354DF /* README.md in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,

@@ -11,7 +11,7 @@
 //#import "SCTenmeiView.h"
 
 @protocol SCSecondViewDelegate <NSObject>
-@optional
+//@optional
 -(void)goBeforeRecorder;
 -(void)goKakakuText;
 @end
@@ -19,11 +19,14 @@
 @interface SCSecondView : UIView<UITableViewDelegate,UITableViewDataSource, UIActionSheetDelegate>
 @property(nonatomic,strong) id<SCSecondViewDelegate> delegate;
 
-- (void)showInView:(UIView *)view offset:(CGPoint)offset;
+- (void)showInView:(UIView *)view offset:(CGPoint)offset back:(NSInteger)index;
 
 
 -(void)setTenmeiString:(NSString*)name;
 -(void)setKakakuValue:(int)value;
+-(void)setCategoryIndex:(int)index;
+-(void)setFunikiIndex:(int)index;
+-(void)reloadTableList;
 
 #pragma mark 生成
 + (instancetype)create;

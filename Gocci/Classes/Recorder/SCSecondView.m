@@ -9,6 +9,7 @@
 #import "SCSecondView.h"
 
 #import "SCRecorderViewController.h"
+#import "AppDelegate.h"
 
 
 static NSString * const CellIdentifier = @"SCSecondCell";
@@ -20,7 +21,7 @@ static NSString * const TextFuniki = @"雰囲気";
 
 //グローバル
 static int valueKakaku = 0;
-
+static NSString *stringTenmei = nil;
 
 @interface SCSecondView()
 {
@@ -31,18 +32,19 @@ static int valueKakaku = 0;
 	
 	NSInteger selectedCategory;
 	NSInteger selectedFuniki;
+	
+	NSInteger indexBackColor;
 }
-@property(nonatomic,strong) NSString *stringTenmei;
-//@property(nonatomic,strong) NSString *stringKakaku;
+//@property(nonatomic,strong) NSString *stringTenmei;
 
 @end
 
 @implementation SCSecondView
-@synthesize stringTenmei;
+//@synthesize stringTenmei;
 //@synthesize stringKakaku;
 
 #pragma mark - addsubview
-- (void)showInView:(UIView *)view offset:(CGPoint)offset
+- (void)showInView:(UIView *)view offset:(CGPoint)offset back:(NSInteger)index
 {
 	self.frame = CGRectOffset(self.frame, offset.x, offset.y);
 	
@@ -57,6 +59,8 @@ static int valueKakaku = 0;
 		selectedFuniki = -1;
 		stringTenmei = nil;
 //		stringKakaku = nil;
+		
+		indexBackColor = index;
 	}
 	
 	[view addSubview:self];
@@ -125,9 +129,23 @@ static int valueKakaku = 0;
 #pragma mark 色変更
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	cell.backgroundColor = [UIColor blackColor];
-	cell.textLabel.textColor = [UIColor whiteColor];
-	cell.detailTextLabel.textColor = [UIColor whiteColor];
+	switch (indexBackColor) {
+		case 0:
+			cell.backgroundColor = [UIColor blackColor];
+			cell.textLabel.textColor = [UIColor whiteColor];
+			cell.detailTextLabel.textColor = [UIColor whiteColor];
+			break;
+			
+		default:
+			cell.backgroundColor = [UIColor whiteColor];
+			cell.textLabel.textColor = [UIColor blackColor];
+			cell.detailTextLabel.textColor = [UIColor blackColor];
+			break;
+	}
+	
+//	cell.backgroundColor = [UIColor blackColor];
+//	cell.textLabel.textColor = [UIColor whiteColor];
+//	cell.detailTextLabel.textColor = [UIColor whiteColor];
 }
 
 #pragma mark タップイベント
@@ -220,11 +238,15 @@ static int valueKakaku = 0;
 		NSLog(@"cancel");
 	}
 	else {
+		
+		AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
 		switch (actionSheet.tag) {
 			case 1:
 				//カテゴリー
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
+				delegate.indexCategory = (int)buttonIndex;
 				
 //				switch (buttonIndex) {
 //					case 0:
@@ -241,6 +263,7 @@ static int valueKakaku = 0;
 				//雰囲気
 				NSLog(@"%@",[arrayFuniki objectAtIndex:buttonIndex]);
 				selectedFuniki = buttonIndex;
+				delegate.indexFuniki = (int)buttonIndex;
 				
 //				switch (buttonIndex) {
 //					case 0:
@@ -262,12 +285,26 @@ static int valueKakaku = 0;
 #pragma mark - 代入
 -(void)setTenmeiString:(NSString*)name
 {
+	if (!name) return;
+	
 	stringTenmei = [NSString stringWithString:name];
-	[tableviewList reloadData];
+//	[tableviewList reloadData];
 }
 -(void)setKakakuValue:(int)value
 {
 	valueKakaku = value;
+//	[tableviewList reloadData];
+}
+-(void)setCategoryIndex:(int)index
+{
+	selectedCategory = index;
+}
+-(void)setFunikiIndex:(int)index
+{
+	selectedFuniki = index;
+}
+-(void)reloadTableList
+{
 	[tableviewList reloadData];
 }
 

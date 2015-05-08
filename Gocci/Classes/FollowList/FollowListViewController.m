@@ -35,7 +35,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     
     //ナビゲーションバーに画像
     {
-        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;

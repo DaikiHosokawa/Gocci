@@ -282,7 +282,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -1096,6 +1096,7 @@
                         <outlet property="viewBaseGauge" destination="x1h-gh-Vl1" id="OKB-nH-nD6"/>
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="Uvp-el-Aoa"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="MfG-Lz-zuY"/>
+                        <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="djI-FJ-Av1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

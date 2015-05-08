@@ -987,7 +987,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="投稿" image="tabbaritem_posting.png" id="CdW-42-QAk"/>
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="loadingView" destination="fdr-8e-oyR" id="gkZ-Rd-Fe7"/>

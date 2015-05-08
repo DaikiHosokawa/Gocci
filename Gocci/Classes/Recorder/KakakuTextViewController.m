@@ -92,6 +92,16 @@
 	}];
 }
 
+#pragma mark - 未使用
+-(void)goBeforeRecorder
+{
+
+}
+-(void)goKakakuText
+{
+	
+}
+
 /*
 #pragma mark - Navigation
 
