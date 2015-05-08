@@ -726,7 +726,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {
 	
-	self.tabBarController.selectedIndex = 0;
+	self.tabBarController.selectedIndex = 2;
 	
 	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }

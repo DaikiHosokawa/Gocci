@@ -227,7 +227,7 @@
                             <outlet property="delegate" destination="JWG-MP-T7g" id="RgH-ld-9tQ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="3" title="アカウント" image="tabbaritem_profile.png" id="PtJ-iE-dOH"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="アカウント" image="tabbaritem_profile.png" id="PtJ-iE-dOH"/>
                     <navigationItem key="navigationItem" title="アカウント" id="dCA-qd-BO1"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -571,7 +571,7 @@
                             <outlet property="delegate" destination="2HP-Jr-PlJ" id="KJp-EX-1mn"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="2" title="近くの店" image="tabbaritem_search.png" id="tib-c4-4pI"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="近くの店" image="tabbaritem_search.png" id="tib-c4-4pI"/>
                     <navigationItem key="navigationItem" title="近くの店" id="HX7-Ga-t3w"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -1024,7 +1024,7 @@
                             </view>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="4" title="投稿" image="tabbaritem_posting.png" id="JYH-SQ-JzL"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="投稿" image="tabbaritem_posting.png" id="JYH-SQ-JzL"/>
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
