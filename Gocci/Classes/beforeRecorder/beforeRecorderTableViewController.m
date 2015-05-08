@@ -80,11 +80,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
     {
-        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-        static dispatch_once_t searchCurrentLocationOnceToken;
-        dispatch_once(&searchCurrentLocationOnceToken, ^{
-            [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
-        });
+//        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+//        static dispatch_once_t searchCurrentLocationOnceToken;
+//        dispatch_once(&searchCurrentLocationOnceToken, ^{
+//            [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+//        });
+		
+		//画面表示のたびに、現在地を中心にしたレストラン一覧を取得する
+		[self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+
     }];
 }
 
@@ -190,14 +194,58 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = postRestName;
 
-	//遷移：SCRecorderVideoController
+	// モーダル閉じる
+	[self dismissWithTenmei];
 	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 
 	// 選択状態の解除
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
+#pragma mark 店名転送
+-(void)dismissWithTenmei
+{
+	//SCRecorderViewControllerに送信→SCSecondViewに送信
+	static NSString * const namebundle = @"screcorder";
+	
+	SCRecorderViewController* viewController = nil;
+	{
+		CGRect rect = [UIScreen mainScreen].bounds;
+		if (rect.size.height == 480) {
+			// ストーリーボードを取得
+			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
+			//ビューコントローラ取得
+			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+			//rootViewController = [storyboard instantiateInitialViewController];
+		}
+		else if (rect.size.height == 667) {
+			// ストーリーボードを取得
+			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
+			//ビューコントローラ取得
+			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+			//rootViewController = [storyboard instantiateInitialViewController];
+		}
+		else if (rect.size.height == 736) {
+			// ストーリーボードを取得
+			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
+			//ビューコントローラ取得
+			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+			//rootViewController = [storyboard instantiateInitialViewController];
+		}
+		else {
+			// ストーリーボードを取得
+			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			//ビューコントローラ取得
+			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+			//rootViewController = [storyboard instantiateInitialViewController];
+		}
+	}
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	[viewController sendTenmeiString:delegate.gText];
+	
+	//モーダルを閉じる
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)beforeCell:(beforeCell *)cell shouldShowMapAtIndex:(NSUInteger)index
 {
@@ -228,10 +276,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = restaurant.restname;
-    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
-                               sender:@{
-                                       @"rest_name": restaurant.restname,
-                                       }];
+	
+	// モーダル閉じる
+	[self dismissWithTenmei];
+
+//    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+//                               sender:@{
+//                                       @"rest_name": restaurant.restname,
+//                                       }];
 }
 
 - (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex2:(NSUInteger)index
@@ -240,10 +292,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = restaurant.restname;
-    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
-                              sender:@{
-                                       @"rest_name": restaurant.restname,
-                                       }];
+	
+	// モーダル閉じる
+	[self dismissWithTenmei];
+
+//    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+//                              sender:@{
+//                                       @"rest_name": restaurant.restname,
+//                                       }];
 }
 
 
@@ -388,5 +444,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [CXCardView showWithView:_firstContentView draggable:YES];
 }
 
+- (IBAction)onBack:(id)sender {
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

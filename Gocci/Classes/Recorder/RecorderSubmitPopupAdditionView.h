@@ -8,7 +8,7 @@
 @class RecorderSubmitPopupAdditionView;
 
 @protocol RecorderSubmitPopupAdditionViewDelegate <NSObject>
-
+@optional
 - (void)recorderSubmitPopupAdditionViewOnTwitterShare:(RecorderSubmitPopupAdditionView *)view;
 - (void)recorderSubmitPopupAdditionViewOnFacebookShare:(RecorderSubmitPopupAdditionView *)view;
 - (void)recorderSubmitPopupAdditionViewOnSubmit:(RecorderSubmitPopupAdditionView *)view;

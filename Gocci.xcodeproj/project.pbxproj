@@ -9,7 +9,18 @@
 /* Begin PBXBuildFile section */
 		377063271AFC6DBA00CD891D /* icon_record_cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063251AFC6DBA00CD891D /* icon_record_cam.png */; };
 		377063281AFC6DBA00CD891D /* icon_record_cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */; };
-		3770632A1AFC6DD500CD891D /* pageview in Resources */ = {isa = PBXBuildFile; fileRef = 377063291AFC6DD500CD891D /* pageview */; };
+		3770633B1AFC6F9F00CD891D /* KakakuTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */; };
+		3770633C1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3770632D1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib */; };
+		3770633D1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3770632E1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib */; };
+		3770633E1AFC6F9F00CD891D /* SCFirstView_5_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3770632F1AFC6F9F00CD891D /* SCFirstView_5_5_inch.xib */; };
+		3770633F1AFC6F9F00CD891D /* SCFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377063311AFC6F9F00CD891D /* SCFirstView.m */; };
+		377063401AFC6F9F00CD891D /* SCFirstViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063321AFC6F9F00CD891D /* SCFirstViewMain.xib */; };
+		377063411AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063331AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib */; };
+		377063421AFC6F9F00CD891D /* SCSecondView_4_7_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063341AFC6F9F00CD891D /* SCSecondView_4_7_inch.xib */; };
+		377063431AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063351AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib */; };
+		377063441AFC6F9F00CD891D /* SCSecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377063371AFC6F9F00CD891D /* SCSecondView.m */; };
+		377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */; };
+		377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770633A1AFC6F9F00CD891D /* XYPieChart.m */; };
 		535626731AB39C97009C7D12 /* SigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 535626721AB39C97009C7D12 /* SigninView.m */; };
 		535626751AB39CB4009C7D12 /* SigninView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535626741AB39CB4009C7D12 /* SigninView.xib */; };
 		53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
@@ -260,7 +271,22 @@
 		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		377063251AFC6DBA00CD891D /* icon_record_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_cam.png; sourceTree = "<group>"; };
 		377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_record_cam@2x.png"; sourceTree = "<group>"; };
-		377063291AFC6DD500CD891D /* pageview */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pageview; sourceTree = "<group>"; };
+		3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KakakuTextViewController.h; sourceTree = "<group>"; };
+		3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KakakuTextViewController.m; sourceTree = "<group>"; };
+		3770632D1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstView_3_5_inch.xib; sourceTree = "<group>"; };
+		3770632E1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstView_4_7_inch.xib; sourceTree = "<group>"; };
+		3770632F1AFC6F9F00CD891D /* SCFirstView_5_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstView_5_5_inch.xib; sourceTree = "<group>"; };
+		377063301AFC6F9F00CD891D /* SCFirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstView.h; sourceTree = "<group>"; };
+		377063311AFC6F9F00CD891D /* SCFirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstView.m; sourceTree = "<group>"; };
+		377063321AFC6F9F00CD891D /* SCFirstViewMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstViewMain.xib; sourceTree = "<group>"; };
+		377063331AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondView_3_5_inch.xib; sourceTree = "<group>"; };
+		377063341AFC6F9F00CD891D /* SCSecondView_4_7_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondView_4_7_inch.xib; sourceTree = "<group>"; };
+		377063351AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondView_5_5_inch.xib; sourceTree = "<group>"; };
+		377063361AFC6F9F00CD891D /* SCSecondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSecondView.h; sourceTree = "<group>"; };
+		377063371AFC6F9F00CD891D /* SCSecondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSecondView.m; sourceTree = "<group>"; };
+		377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondViewMain.xib; sourceTree = "<group>"; };
+		377063391AFC6F9F00CD891D /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		3770633A1AFC6F9F00CD891D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		535626711AB39C97009C7D12 /* SigninView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninView.h; sourceTree = "<group>"; };
 		535626721AB39C97009C7D12 /* SigninView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninView.m; sourceTree = "<group>"; };
 		535626741AB39CB4009C7D12 /* SigninView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SigninView.xib; sourceTree = "<group>"; };
@@ -1109,7 +1135,22 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				377063291AFC6DD500CD891D /* pageview */,
+				3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */,
+				3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */,
+				3770632D1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib */,
+				3770632E1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib */,
+				3770632F1AFC6F9F00CD891D /* SCFirstView_5_5_inch.xib */,
+				377063301AFC6F9F00CD891D /* SCFirstView.h */,
+				377063311AFC6F9F00CD891D /* SCFirstView.m */,
+				377063321AFC6F9F00CD891D /* SCFirstViewMain.xib */,
+				377063331AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib */,
+				377063341AFC6F9F00CD891D /* SCSecondView_4_7_inch.xib */,
+				377063351AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib */,
+				377063361AFC6F9F00CD891D /* SCSecondView.h */,
+				377063371AFC6F9F00CD891D /* SCSecondView.m */,
+				377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */,
+				377063391AFC6F9F00CD891D /* XYPieChart.h */,
+				3770633A1AFC6F9F00CD891D /* XYPieChart.m */,
 				952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */,
 				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D24381A9B9D3300C354DF /* GaugeView.h */,
@@ -1620,7 +1661,6 @@
 				BFA1DA791AB2BA7F00B4F63A /* Cancel@2x.png in Resources */,
 				BFA1DA741AB2B9A900B4F63A /* RegistView.xib in Resources */,
 				95E3C5B71AF4342F001599EE /* ProfileCell2.xib in Resources */,
-				3770632A1AFC6DD500CD891D /* pageview in Resources */,
 				952D250C1A9B9EC800C354DF /* tabbaritem_timeline_sel@2x.png in Resources */,
 				952D25021A9B9EC800C354DF /* tabbaritem_profile@2x.png in Resources */,
 				53B942AF1AB42D11000150C4 /* RegistView47.xib in Resources */,
@@ -1630,14 +1670,17 @@
 				952D24F91A9B9EC800C354DF /* tabbaritem_lifelog.png in Resources */,
 				95E3C5B21AF42400001599EE /* ProfileCell.xib in Resources */,
 				952D24F01A9B9EC800C354DF /* btn_capture_flip.png in Resources */,
+				3770633E1AFC6F9F00CD891D /* SCFirstView_5_5_inch.xib in Resources */,
 				952D24891A9B9D3300C354DF /* TestPanel2.xib in Resources */,
 				952D24FA1A9B9EC800C354DF /* tabbaritem_lifelog@2x.png in Resources */,
 				952D25121A9B9EC800C354DF /* Main.storyboard in Resources */,
 				952D24FD1A9B9EC800C354DF /* tabbaritem_posting.png in Resources */,
 				952D250E1A9B9EC800C354DF /* ui_black.png in Resources */,
 				952D24F71A9B9EC800C354DF /* naviIcon.png in Resources */,
+				377063401AFC6F9F00CD891D /* SCFirstViewMain.xib in Resources */,
 				952D24FB1A9B9EC800C354DF /* tabbaritem_lifelog_sel.png in Resources */,
 				53B942AD1AB42BE0000150C4 /* RegistView35.xib in Resources */,
+				377063421AFC6F9F00CD891D /* SCSecondView_4_7_inch.xib in Resources */,
 				952D24F81A9B9EC800C354DF /* naviIcon@2x.png in Resources */,
 				952D250D1A9B9EC800C354DF /* test_topbar.png in Resources */,
 				952D248B1A9B9D3300C354DF /* TutorialPage1.xib in Resources */,
@@ -1648,7 +1691,9 @@
 				95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
 				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
+				377063431AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib in Resources */,
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,
+				377063411AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib in Resources */,
 				952D250B1A9B9EC800C354DF /* tabbaritem_timeline_sel.png in Resources */,
 				952D24911A9B9D3300C354DF /* TutorialView.xib in Resources */,
 				952D25101A9B9EC800C354DF /* 4_7_inch.storyboard in Resources */,
@@ -1663,6 +1708,7 @@
 				952D25031A9B9EC800C354DF /* tabbaritem_profile_sel.png in Resources */,
 				95A8623E1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib in Resources */,
 				952D248E1A9B9D3300C354DF /* TutorialPage4.xib in Resources */,
+				3770633D1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib in Resources */,
 				952D24FF1A9B9EC800C354DF /* tabbaritem_posting_sel.png in Resources */,
 				952D248D1A9B9D3300C354DF /* TutorialPage3.xib in Resources */,
 				952D25011A9B9EC800C354DF /* tabbaritem_profile.png in Resources */,
@@ -1673,12 +1719,14 @@
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				952D24881A9B9D3300C354DF /* TestHeader.xib in Resources */,
 				952D25111A9B9EC800C354DF /* 5_5_inch.storyboard in Resources */,
+				3770633C1AFC6F9F00CD891D /* SCFirstView_3_5_inch.xib in Resources */,
 				95EEC5291AF914A7006FD54E /* FolloweeListCell.xib in Resources */,
 				952D24FC1A9B9EC800C354DF /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				952D24F11A9B9EC800C354DF /* btn_capture_flip@2x.png in Resources */,
 				952D24B01A9B9D3300C354DF /* TimelineCell.xib in Resources */,
 				952D24FE1A9B9EC800C354DF /* tabbaritem_posting@2x.png in Resources */,
 				952D248C1A9B9D3300C354DF /* TutorialPage2.xib in Resources */,
+				377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */,
 				952D249C1A9B9D3300C354DF /* SearchCell.xib in Resources */,
 				952D247D1A9B9D3300C354DF /* beforeCell.xib in Resources */,
 			);
@@ -1699,7 +1747,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377063441AFC6F9F00CD891D /* SCSecondView.m in Sources */,
 				952D239C1A9B95E800C354DF /* UIProgressView+AFNetworking.m in Sources */,
+				377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */,
 				952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */,
 				952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
@@ -1752,6 +1802,7 @@
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				952D24C31A9B9DE100C354DF /* MoviePlayerManager.m in Sources */,
+				3770633B1AFC6F9F00CD891D /* KakakuTextViewController.m in Sources */,
 				BFA1DA721AB2B93400B4F63A /* RegistView.m in Sources */,
 				952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
@@ -1797,6 +1848,7 @@
 				53B942A51AB40414000150C4 /* STHTTPRequest.m in Sources */,
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,
+				3770633F1AFC6F9F00CD891D /* SCFirstView.m in Sources */,
 				952D24901A9B9D3300C354DF /* TutorialView.m in Sources */,
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,

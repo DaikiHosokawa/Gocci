@@ -85,7 +85,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     {
         //タイトル画像設定
         CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        CGFloat width_image = height_image;
+        //CGFloat width_image = height_image;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
@@ -265,7 +265,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     // 動画の読み込み
     LOG(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
+    //__weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
@@ -726,7 +726,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {
 	
-	[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
+	self.tabBarController.selectedIndex = 0;
+	
+	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
 
 @end
