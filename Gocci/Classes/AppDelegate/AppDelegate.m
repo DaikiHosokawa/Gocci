@@ -30,6 +30,10 @@
 @synthesize userpicture;
 @synthesize postFileName;
 
+@synthesize jsonArray;
+@synthesize lifelogDate;
+@synthesize cheertag;
+
 
 //@synthesize window = _window;
 
