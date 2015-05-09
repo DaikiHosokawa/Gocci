@@ -110,7 +110,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     if (self.globalPlayer) {
  
         [self.globalPlayer.view removeFromSuperview];
-        [self.globalPlayer pause];
+       // [self.globalPlayer pause];
         self.globalPlayer = nil;
       
         /*

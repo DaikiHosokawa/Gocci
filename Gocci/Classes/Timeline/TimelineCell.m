@@ -221,23 +221,39 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
 
     //tagA
-    if ([timelinePost.tagA isEqualToString:@"和"]) {
+    if ([timelinePost.tagA isEqualToString:@"和風"]) {
       self.tagA.image = [UIImage imageNamed:@"tag-A-和.png"];
-    } else if ([timelinePost.tagA isEqualToString:@"洋"]) {
+    
+    } else if ([timelinePost.tagA isEqualToString:@"洋風"]) {
        self.tagA.image = [UIImage imageNamed:@"tag-A-洋.png"];
-    } else if ([timelinePost.tagA isEqualToString:@"中"]) {
+    
+    } else if ([timelinePost.tagA isEqualToString:@"中華"]) {
     self.tagA.image = [UIImage imageNamed:@"tag-A-中.png"];
+    
+    } else if ([timelinePost.tagA isEqualToString:@"カレー"]) {
+        self.tagA.image = [UIImage imageNamed:@"tag-A-カレー.png"];
+    
+    } else if ([timelinePost.tagA isEqualToString:@"カフェ"]) {
+        self.tagA.image = [UIImage imageNamed:@"tag-A-カフェ.png"];
+    
+    } else if ([timelinePost.tagA isEqualToString:@"ラーメン"]) {
+        self.tagA.image = [UIImage imageNamed:@"tag-A-ラーメン.png"];
+    
+    }else if ([timelinePost.tagA isEqualToString:@"居酒屋"]) {
+        self.tagA.image = [UIImage imageNamed:@"tag-A-居酒屋.png"];
+    
+    } else if ([timelinePost.tagA isEqualToString:@"その他"]) {
+        self.tagA.image = [UIImage imageNamed:@"tag-A-その他.png"];
+    
     } else if ([timelinePost.tagA isEqualToString:@"none"]) {
     self.tagA.hidden = YES;
     }
     
     //tagB
-    if ([timelinePost.tagB isEqualToString:@"おしゃれ"]) {
-        self.tagB.image = [UIImage imageNamed:@"tag-B-おしゃれ.png"];
-    } else if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
+    if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
         self.tagB.image = [UIImage imageNamed:@"tag-B-にぎやか.png"];
-    } else if ([timelinePost.tagB isEqualToString:@"しずか"]) {
-        self.tagB.image = [UIImage imageNamed:@"tag-B-しずか.png"];
+    } else if ([timelinePost.tagB isEqualToString:@"ゆったり"]) {
+        self.tagB.image = [UIImage imageNamed:@"tag-B-ゆったり.png"];
     } else if([timelinePost.tagB isEqualToString:@"none"]) {
        self.tagB.hidden = YES;
     }
