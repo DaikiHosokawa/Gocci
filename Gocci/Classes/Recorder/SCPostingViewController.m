@@ -190,7 +190,6 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	}
 	
 	return cell;
-
 }
 
 #pragma mark 色変更
