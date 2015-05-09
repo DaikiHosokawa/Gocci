@@ -25,6 +25,7 @@
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
     NSString *_postPicture;
+    NSInteger _postFlag;
     //restnameへの引き継ぎ
     NSString *_postRestname;
     NSString *_postHomepage;

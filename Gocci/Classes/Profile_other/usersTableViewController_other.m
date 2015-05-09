@@ -31,6 +31,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 <Profile2CellDelegate>
 
 @property (nonatomic, copy) NSMutableArray *postid_;
+@property (nonatomic, copy) NSMutableArray *status_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 @property (nonatomic, strong) UIRefreshControl *refresh;
@@ -49,6 +50,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @synthesize postUserPicture_with_profile= _postUserPicture_with_profile;
 @synthesize postUsername_with_profile2= _postUsername_with_profile2;
 @synthesize postUserPicture_with_profile2= _postUserPicture_with_profile2;
+@synthesize postFlag = _postFlag;
 
 - (void)viewDidLoad
 {
@@ -68,6 +70,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         self.navigationItem.backBarButtonItem = barButton;
 	}
  
+   
    
 	// !!!:dezamisystem
 //	self.navigationItem.title = _postUsername;
@@ -96,9 +99,25 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
     
-    flash_on = 1;
+    if (_status_) {
+        NSString *dotse = _status_[1];
+        NSLog(@"dotse:%@",dotse);
+        NSInteger i = dotse.integerValue;
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        //NSLog(@"postFlag:%ld",(long)_postFlag);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }else{
+        NSInteger i = _postFlag;
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        //NSLog(@"postFlag:%ld",(long)_postFlag);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }
     
-    if((flash_on = 0)){
+    if(flash_on == 1){
     UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
     [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }else{
@@ -117,11 +136,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if(flash_on == 0 ){
         
-        UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 1;
         //スイッチオン時の処理を記述できます
-        NSLog(@"フォロー解除しました");
+      NSLog(@"フォローしました");
         NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
         NSLog(@"content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/favorites/"];
@@ -135,16 +151,19 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                            error:&error];
         
         if (result) {
-            
+            UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+            [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 1;
+            NSLog(@"result:%@",result);
+
         }
         
-    }else{
-        
+    }else if (flash_on == 1){
+          NSLog(@"フォロー解除しました");
         UIImage *img = [UIImage imageNamed:@"フォロー.png"];
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 0;
         //スイッチオフに戻った場合の処理を記述
-        NSLog(@"フォローしました");
         NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
         NSLog(@"content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unfavorites/"];
@@ -167,6 +186,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [super viewWillAppear:animated];
 	
+    //JSONをパース
+    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",_postUsername];
+    NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL* Url = [NSURL URLWithString:escaped];
+    NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"response:%@",response);
+    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSLog(@"jsonData:%@",jsonData);
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"jsonDic:%@",jsonDic);
+    //status
+    NSArray *user_name = [jsonDic valueForKey:@"status"];
+    _status_ = [user_name mutableCopy];
+    NSLog(@"statusZ:%@",_status_);
+    
+    
 	// !!!:dezamisystem
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー非表示
 	

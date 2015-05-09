@@ -371,6 +371,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         usersTableViewController_other *useVC = segue.destinationViewController;
         useVC.postUsername = _postUsername;
         useVC.postPicture = _postPicture;
+        useVC.postFlag = _postFlag;
     }
     //店舗画面にパラメータを渡して遷移する
 //	if ([segue.identifier isEqualToString:@"goRestpage"])
@@ -480,12 +481,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
 {
     //user nameタップの時の処理
     LOG(@"username=%@", userName);
     _postUsername = userName;
     _postPicture = usersPicture;
+    _postFlag = flag;
 
     LOG(@"postUsername:%@",_postUsername);
 
@@ -518,12 +520,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
 {
     //user nameタップの時の処理 2
     LOG(@"userspicture=%@", userPicture);
     _postPicture = userPicture;
     _postUsername = userName;
+    _postFlag = flag;
     
     LOG(@"postUsername:%@",_postUsername);
     

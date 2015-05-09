@@ -43,6 +43,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewHeightConstraint;
 
 @property (nonatomic) NSString *pushed_at;
+@property (nonatomic) NSInteger flag;
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *username;
@@ -53,7 +54,10 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *homepage;
 
-
+@property (weak, nonatomic) IBOutlet UIImageView *tagA;
+@property (weak, nonatomic) IBOutlet UIImageView *tagB;
+@property (weak, nonatomic) IBOutlet UIImageView *tagC;
+@property (weak, nonatomic) IBOutlet UIImageView *medal;
 
 @end
 
@@ -71,8 +75,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 - (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:picture:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserName:self.username picture:_userspicture];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:picture:flag:)]) {
+        [self.delegate timelineCell:self didTapNameWithUserName:self.username picture:_userspicture flag:_flag];
     }
 }
 
@@ -86,8 +90,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 - (void)tapAvaterImageView:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserPicture:name:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserPicture:self.userspicture name:_username];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserPicture:name:flag:)]) {
+        [self.delegate timelineCell:self didTapNameWithUserPicture:self.userspicture name:_username flag:_flag];
     }
 }
 
@@ -209,24 +213,52 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     // Comment 数
     self.commentCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.commentNum)];
     
-    //
+    //いいねしているかどうか
     self.pushed_at = timelinePost.pushed_at;
 
+    //自分がフォローしているかどうか
+    self.flag = timelinePost.flag;
     
-    /*
+
+    //tagA
+    if ([timelinePost.tagA isEqualToString:@"和"]) {
+      self.tagA.image = [UIImage imageNamed:@"tag-A-和.png"];
+    } else if ([timelinePost.tagA isEqualToString:@"洋"]) {
+       self.tagA.image = [UIImage imageNamed:@"tag-A-洋.png"];
+    } else if ([timelinePost.tagA isEqualToString:@"中"]) {
+    self.tagA.image = [UIImage imageNamed:@"tag-A-中.png"];
+    } else if ([timelinePost.tagA isEqualToString:@"none"]) {
+    self.tagA.hidden = YES;
+    }
+    
+    //tagB
+    if ([timelinePost.tagB isEqualToString:@"おしゃれ"]) {
+        self.tagB.image = [UIImage imageNamed:@"tag-B-おしゃれ.png"];
+    } else if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
+        self.tagB.image = [UIImage imageNamed:@"tag-B-にぎやか.png"];
+    } else if ([timelinePost.tagB isEqualToString:@"しずか"]) {
+        self.tagB.image = [UIImage imageNamed:@"tag-B-しずか.png"];
+    } else if([timelinePost.tagB isEqualToString:@"none"]) {
+       self.tagB.hidden = YES;
+    }
+    
+    //tagC
+     //self.tagA.image = [UIImage imageNamed:@"ic_userpicture.png"];
+    
+    
     //応援画像
-    if(timelinePost.commentNum == 1){
-        self.cheerView.image
-    }else if(timelinePost.commentNum == 2){
-        self.cheerView.image
-    }else if(timelinePost.commentNum == 3) {
-        self.cheerView.image
-     }else if(timelinePost.commentNum == 3) {
-     self.cheerView.image
-     }
-     */
     
-    self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
+    if(timelinePost.cheernum > 10){
+        self.cheerView.image = [UIImage imageNamed:@"金.png"];
+    }else if(timelinePost.cheernum > 5){
+        self.cheerView.image = [UIImage imageNamed:@"銀.png"];
+    }else if(timelinePost.cheernum > 3) {
+        self.cheerView.image = [UIImage imageNamed:@"銅.png"];
+     }else if(timelinePost.commentNum > 0) {
+         self.cheerView.hidden = YES;
+     }
+    
+    //self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     // タップイベント
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];
