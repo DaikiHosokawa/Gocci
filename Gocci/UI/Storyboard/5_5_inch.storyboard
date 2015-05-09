@@ -783,7 +783,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kNc-kB-iRx">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kNc-kB-iRx" id="Bgs-cz-2X6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -799,6 +799,7 @@
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="28f-Ki-6dZ"/>
                     <navigationItem key="navigationItem" title="投稿" id="k20-K6-bhZ">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="Bg9-Bi-Gv3">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="HcX-TI-03a" id="r2O-Rb-A4P"/>
                             </connections>
@@ -935,6 +936,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="価格" id="g0P-hZ-zOO">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="10c-H7-cxR">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="Hm0-rk-06A" id="d5u-ng-3cl"/>
                             </connections>

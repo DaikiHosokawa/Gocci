@@ -858,7 +858,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="価格" id="XyO-nu-eZb">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="dNm-FR-SZG">
-                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="WYB-md-TcI" id="oXp-mi-TXY"/>
                             </connections>
@@ -893,7 +893,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -909,7 +909,7 @@
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="6fp-xm-MLy"/>
                     <navigationItem key="navigationItem" title="投稿" id="OHF-sG-Dip">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="Eq7-1a-E7P">
-                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="GHb-ik-hau" id="iOe-h5-BBU"/>
                             </connections>
@@ -1211,7 +1211,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="xtj-fv-F3D" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtj-fv-F3D" id="DVt-E1-vg9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1244,7 +1244,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="4XJ-qA-NLM" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XJ-qA-NLM" id="U1h-SU-AUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1303,8 +1303,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pJ4-iy-6wo"/>
-        <segue reference="4Gi-cU-FKM"/>
+        <segue reference="rgp-uC-gVz"/>
+        <segue reference="EB8-lD-Dfx"/>
         <segue reference="dXj-10-ygf"/>
         <segue reference="ElI-qq-NoV"/>
         <segue reference="oAW-Uz-WM7"/>

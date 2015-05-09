@@ -52,8 +52,8 @@ static NSString *stringTenmei = nil;
 //		tableviewList.delegate = self;
 //		tableviewList.dataSource = self;
 		
-		arrayCategory = [[NSArray alloc] initWithObjects:@"和",@"洋",@"中", nil];
-		arrayFuniki = [[NSArray alloc] initWithObjects:@"にぎやか",@"しずか",@"おしゃれ", nil];
+		arrayCategory = [[NSArray alloc] initWithObjects:@"和風",@"洋風",@"中華",@"カレー",@"ラーメン",@"カフェ",@"居酒屋",@"その他", nil];
+		arrayFuniki = [[NSArray alloc] initWithObjects:@"にぎやか",@"ゆったり", nil];
 
 		selectedCategory = -1;
 		selectedFuniki = -1;
@@ -203,7 +203,7 @@ static NSString *stringTenmei = nil;
 													   delegate:self
 											  cancelButtonTitle:@"Cancel"
 										 destructiveButtonTitle:nil
-											  otherButtonTitles:[arrayCategory objectAtIndex:0],[arrayCategory objectAtIndex:1],[arrayCategory objectAtIndex:2], nil];
+											  otherButtonTitles:[arrayCategory objectAtIndex:0],[arrayCategory objectAtIndex:1],[arrayCategory objectAtIndex:2],[arrayCategory objectAtIndex:3],[arrayCategory objectAtIndex:4],[arrayCategory objectAtIndex:5],[arrayCategory objectAtIndex:6],[arrayCategory objectAtIndex:6],  nil];
 			actionsheet.tag = 1;
 			[actionsheet showInView:rootViewController.view];
 			break;
@@ -219,7 +219,7 @@ static NSString *stringTenmei = nil;
 													  delegate:self
 											 cancelButtonTitle:@"Cancel"
 										destructiveButtonTitle:nil
-											 otherButtonTitles:[arrayFuniki objectAtIndex:0],[arrayFuniki objectAtIndex:1],[arrayFuniki objectAtIndex:2], nil];
+											 otherButtonTitles:[arrayFuniki objectAtIndex:0],[arrayFuniki objectAtIndex:1],nil];
 			actionsheet.tag = 3;
 			[actionsheet showInView:rootViewController.view];
 			break;
@@ -288,20 +288,24 @@ static NSString *stringTenmei = nil;
 	if (!name) return;
 	
 	stringTenmei = [NSString stringWithString:name];
+    NSLog(@"stringTenmei:%@",stringTenmei);
 //	[tableviewList reloadData];
 }
 -(void)setKakakuValue:(int)value
 {
 	valueKakaku = value;
+    NSLog(@"valueKakaku:%d",valueKakaku);
 //	[tableviewList reloadData];
 }
 -(void)setCategoryIndex:(int)index
 {
 	selectedCategory = index;
+    NSLog(@"selectedCategory:%ld",(long)selectedCategory);
 }
 -(void)setFunikiIndex:(int)index
 {
 	selectedFuniki = index;
+    NSLog(@"selectedFuniki:%ld",(long)selectedFuniki);
 }
 -(void)reloadTableList
 {

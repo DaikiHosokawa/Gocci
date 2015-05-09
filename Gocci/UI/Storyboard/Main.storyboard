@@ -834,7 +834,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RSz-fH-zHG">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSz-fH-zHG" id="ikv-xf-iej">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -850,6 +850,7 @@
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="A6m-sl-hcI"/>
                     <navigationItem key="navigationItem" title="投稿" id="CIF-fQ-lyF">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="duY-Zi-Vbr">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="jLm-ft-sh2" id="th2-Oe-PaC"/>
                             </connections>
@@ -874,7 +875,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="XIt-3D-4hP" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIt-3D-4hP" id="8xZ-p4-Cpr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1028,6 +1029,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="価格" id="PHY-1P-BZH">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="a9u-vX-2oL">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="dwY-BZ-Pdw" id="KgY-vj-OnA"/>
                             </connections>
@@ -1322,10 +1324,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="SDs-PX-5V3"/>
         <segue reference="0Dp-RU-HDt"/>
-        <segue reference="Nkn-A9-wHX"/>
         <segue reference="NV9-nc-uNy"/>
-        <segue reference="xtK-F5-G4I"/>
-        <segue reference="Wcl-6f-Fmi"/>
+        <segue reference="Nkn-A9-wHX"/>
+        <segue reference="Kbo-Zn-huj"/>
     </inferredMetricsTieBreakers>
 </document>
