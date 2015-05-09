@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "RestaurantCell.h"
 #import "APIClient.h"
-
+#import "TimelineCell.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "SVProgressHUD.h"
@@ -32,7 +32,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()
-<RestaurantCellDelegate>
+<TimelineCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -113,8 +113,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"RestaurantCell" bundle:nil]
-         forCellReuseIdentifier:RestaurantCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
     
     // Pull to refresh
     self.refresh = [UIRefreshControl new];
@@ -247,15 +247,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [RestaurantCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = RestaurantCellIdentifier;
-    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [RestaurantCell cell];
+        cell = [TimelineCell cell];
     }
     
     cell.delegate = self;
@@ -390,7 +390,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 #pragma mark - Cell Event
 //#pragma mark いいねボタンの時の処理
-- (void)timelineCell:(RestaurantCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
    //いいねボタンの時の処理
     LOG(@"postid=%@", postID);
@@ -412,7 +412,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 
-- (void)restaurantCell:(RestaurantCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
     //違反報告ボタンの時の処理
     LOG(@"postid=%@", postID);
@@ -513,7 +513,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 #pragma mark コメントボタン押下時の処理
-- (void)restaurantCell:(RestaurantCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
 {
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
@@ -524,7 +524,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理
-- (void)restaurantCell:(RestaurantCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
+- (void)timeline:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
 {
     //user nameタップの時の処理
 	LOG(@"username=%@", userName);
@@ -537,7 +537,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	LOG(@"Username is touched");
 }
 
--(void)restaurantCell:(RestaurantCell *)cell didTapNaviWithLocality:(NSString *)Locality
+-(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
 {
     NSString *mapText = Locality;
     mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -560,7 +560,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理②
-- (void)restaurantCell:(RestaurantCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
+- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
 {
     //user nameタップの時の処理②
     LOG(@"userspicture=%@", userPicture);
@@ -650,7 +650,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }];
 }
 
-- (void)restaurantCell:(RestaurantCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
     [self _playMovieAtCurrentCell];
 }
 
@@ -670,10 +670,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
         
-        currentHeight += [RestaurantCell cellHeightWithTimelinePost:self.posts[i]];
+        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
     
-    RestaurantCell *currentCell = [RestaurantCell cell];
+    TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                   currentHeight + currentCell.thumbnailView.frame.origin.y+280,

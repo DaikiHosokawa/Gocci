@@ -203,7 +203,7 @@ static NSString *stringTenmei = nil;
 													   delegate:self
 											  cancelButtonTitle:@"Cancel"
 										 destructiveButtonTitle:nil
-											  otherButtonTitles:[arrayCategory objectAtIndex:0],[arrayCategory objectAtIndex:1],[arrayCategory objectAtIndex:2],[arrayCategory objectAtIndex:3],[arrayCategory objectAtIndex:4],[arrayCategory objectAtIndex:5],[arrayCategory objectAtIndex:6],[arrayCategory objectAtIndex:6],  nil];
+											  otherButtonTitles:[arrayCategory objectAtIndex:0],[arrayCategory objectAtIndex:1],[arrayCategory objectAtIndex:2],[arrayCategory objectAtIndex:3],[arrayCategory objectAtIndex:4],[arrayCategory objectAtIndex:5],[arrayCategory objectAtIndex:6],[arrayCategory objectAtIndex:7],  nil];
 			actionsheet.tag = 1;
 			[actionsheet showInView:rootViewController.view];
 			break;

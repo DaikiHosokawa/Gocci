@@ -374,8 +374,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"7秒で飲食店を紹介してください\n(例)外観2秒→内装2秒→ごはん3秒";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.text = @"7秒で飲食店を紹介してください";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {
