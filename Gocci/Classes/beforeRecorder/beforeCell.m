@@ -61,7 +61,7 @@ NSString * const beforeCellIdentifier = @"beforeCell";
 
 + (CGFloat)cellHeight
 {
-    return 190;
+    return 60;
 }
 
 - (void)configureWithRestaurant:(Restaurant *)restaurant index:(NSUInteger)index;
@@ -86,10 +86,12 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     [self.restaurantLabel addGestureRecognizer:tapRestaurant];
     self.restaurantLabel.userInteractionEnabled = YES;
     
+
     // 情報を表示
-    self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];
+    //self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];
     self.restaurantNameLabel.text = restaurant.restname;
     
+    /*
     // 店舗サムネイルの表示
     // TODO: API から取得した画像を表示
     for (UIView *v in self.scrollView.subviews) {
@@ -111,6 +113,10 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     
     self.scrollView.contentSize = CGSizeMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * 10,
                                              self.scrollView.frame.size.height);
-}
+
+     */
+    
+     }
+    
 
 @end

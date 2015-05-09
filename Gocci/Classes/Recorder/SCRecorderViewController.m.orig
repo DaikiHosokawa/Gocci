@@ -368,8 +368,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
         descriptionLabel.textAlignment = NSTextAlignmentLeft;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
-        descriptionLabel.text = @"7秒で飲食店を紹介してください";
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
+        descriptionLabel.text = @"7秒で飲食店を紹介してください\n(例)外観2秒→内装2秒→ごはん3秒";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {
@@ -1108,6 +1108,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #pragma mark 投稿
 -(void)execSubmit
 {
+<<<<<<< HEAD
 //	//セッションが7秒未満の時
 //	CMTime currentRecordDuration = staticRecordSession.currentRecordDuration;
 //	if (currentRecordDuration.timescale < 7) {
@@ -1116,6 +1117,19 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //		[alrt show];
 //	}
 //	else
+=======
+	// ???:recordeSessionが開放されている＝画面遷移で自動開放されている？
+	
+	//セッションが7秒未満の時
+	CMTime currentRecordDuration = _recordSession.currentRecordDuration;
+	
+	if (currentRecordDuration.timescale < 6) {
+		NSString *alertMessage = @"まだ7秒撮れていません";
+		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alrt show];
+	}
+	else
+>>>>>>> 66e77e6fff6db845178ba6aec6c4635f35649a0a
 	{
 		NSLog(@"%s",__func__) ;
 		
