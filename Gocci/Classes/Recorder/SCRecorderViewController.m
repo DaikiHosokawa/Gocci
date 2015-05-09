@@ -64,11 +64,10 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 //- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
-@property (weak, nonatomic) IBOutlet UIImageView *tapVIew;
 @property (nonatomic, strong) SCRecordSession *recordSession;
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
-@property (weak, nonatomic) IBOutlet UIImageView *tapView;
+//@property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
 // !!!:dezamisystem
 @property (nonatomic,strong) UIScrollView *pageingScrollView;
@@ -691,7 +690,7 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 - (void)updateTimeRecordedLabel {
     
-    self.tapView.hidden = NO;
+    //self.tapView.hidden = NO;
 	
     CMTime currentTime = kCMTimeZero;
 	
@@ -887,55 +886,52 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 }
 
 #pragma mark 投稿
-- (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
-{
-    //セッションが7秒未満の時
-     CMTime currentRecordDuration = _recordSession.currentRecordDuration;
-    
-   if (currentRecordDuration.timescale < 7) {
-        NSString *alertMessage = @"まだ7秒撮れていません";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alrt show];
-    }
-    
-    else  {
-        
-        //NSLog(@"ここが通っている") ;
-        
-    [SVProgressHUD show];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    // サーバへデータを送信
-    __weak typeof(self)weakSelf = self;
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //バックグラウンドで投稿
-    
-        // movie
-        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
-         {
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-             
-             if (error){
-               
-             }
-             
-             
-             }];
-  
-              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
-
-              
-              [SVProgressHUD dismiss];
-              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-              
-              // 画面を閉じる
-              [weakSelf dismissViewControllerAnimated:YES completion:nil];
-        
-    }
-    
-}
+// !!!:未使用
+//- (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
+//{
+//    //セッションが7秒未満の時
+//     CMTime currentRecordDuration = _recordSession.currentRecordDuration;
+//    
+//   if (currentRecordDuration.timescale < 7) {
+//        NSString *alertMessage = @"まだ7秒撮れていません";
+//        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alrt show];
+//    }
+//    
+//    else  {
+//        //NSLog(@"ここが通っている") ;
+//        
+//    [SVProgressHUD show];
+//    
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    
+//    // サーバへデータを送信
+//    __weak typeof(self)weakSelf = self;
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    //バックグラウンドで投稿
+//    
+//        // movie
+//        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+//         {
+//             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+//             
+//             if (error){
+//               
+//             }
+//
+//             }];
+//  
+//              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+//              
+//              [SVProgressHUD dismiss];
+//              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//              
+//              // 画面を閉じる
+//              [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//        
+//    }
+//}
 
 - (IBAction)popButton:(UIButton *)sender {
     //// 投稿画面を表示
@@ -964,9 +960,9 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
  */
 - (void)_complete
 {
-   [SVProgressHUD show];
+	[SVProgressHUD show];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    __weak typeof(self)weakSelf = self;
+    //__weak typeof(self)weakSelf = self;
 	
 #if 0
     // 投稿画面を設定
@@ -1006,12 +1002,12 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 		
 		if (error) {
-			[weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
+			[self _showUploadErrorAlertWithMessage:error.localizedDescription];
 			return;
 		}
 		
 		// 動画をカメラロールに保存
-		[weakSelf.recordSession saveToCameraRoll];
+		[self.recordSession saveToCameraRoll];
 		
 		// カメラを停止
 		[_recorder endRunningSession];
@@ -1128,6 +1124,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 #pragma mark 投稿
 -(void)execSubmit
 {
+	// ???:recordeSessionが開放されている＝画面遷移で自動開放されている？
+	
 	//セッションが7秒未満の時
 	CMTime currentRecordDuration = _recordSession.currentRecordDuration;
 	
@@ -1136,8 +1134,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
 		[alrt show];
 	}
-	else  {
-		
+	else
+	{
 		NSLog(@"%s",__func__) ;
 		
 		[SVProgressHUD show];
@@ -1145,29 +1143,27 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 		
 		// サーバへデータを送信
-		__weak typeof(self)weakSelf = self;
+//		__weak typeof(self)weakSelf = self;
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 		
 		//バックグラウンドで投稿
-		
 		// movie
-		[APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+		[APIClient movieWithFilePathURL:self.recordSession.outputUrl
+							   restname:appDelegate.gText
+						star_evaluation:appDelegate.cheertag
+								handler:^(id result, NSUInteger code, NSError *error)
 		 {
 			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
 			 
 			 if (error){
 				 
 			 }
-			 
-			 
 		 }];
   
 		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
 		
-		
 		[SVProgressHUD dismiss];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-		
 	}
 }
 

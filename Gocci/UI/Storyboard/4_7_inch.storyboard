@@ -785,7 +785,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="wHK-bG-dSr"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -981,7 +980,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="239" y="10.000000124392299" width="48" height="46"/>
+                                        <rect key="frame" x="239" y="10" width="48" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1301,11 +1300,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uLy-rw-ivI"/>
+        <segue reference="pJ4-iy-6wo"/>
+        <segue reference="4Gi-cU-FKM"/>
         <segue reference="thH-ZB-h8s"/>
         <segue reference="dXj-10-ygf"/>
-        <segue reference="rgp-uC-gVz"/>
-        <segue reference="EB8-lD-Dfx"/>
+        <segue reference="uLy-rw-ivI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
