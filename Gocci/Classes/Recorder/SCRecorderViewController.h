@@ -46,4 +46,7 @@
 -(void)sendTenmeiString:(NSString*)str;
 -(void)sendKakakuValue:(int)value;
 
+-(void)execSubmit;
+-(void)cancelSubmit;
+
 @end

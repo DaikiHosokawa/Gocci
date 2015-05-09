@@ -21,14 +21,17 @@
 #import "RecorderSubmitPopupAdditionView.h"
 #import "APIClient.h"
 #import "SVProgressHUD.h"
+#import "SCPostingViewController.h"
+
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
-static int valueKakaku = 0;
-static NSString *stringTenmei = nil;
+static NSString * const SEGUE_GO_POSTING = @"goPosting";
+//static int valueKakaku = 0;
+//static NSString *stringTenmei = nil;
 
 
 @import AVFoundation;
@@ -58,7 +61,7 @@ static NSString *stringTenmei = nil;
 }
 
 
-- (void)showDefaultContentView;
+//- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
 @property (weak, nonatomic) IBOutlet UIImageView *tapVIew;
@@ -198,6 +201,7 @@ static NSString *stringTenmei = nil;
     _recorder.initializeRecordSessionLazily = NO;
 	
 	[self updateTimeRecordedLabel];
+	
     // NavigationBar 非表示
 	// !!!:dezamisystem
 //	[self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -255,7 +259,7 @@ static NSString *stringTenmei = nil;
 			secondView = [SCSecondView create];
 			secondView.delegate = self;
 			//[pageingScrollView addSubview:secondView];
-			[secondView showInView:pageingScrollView offset:CGPointMake(width_page, 0)];
+			[secondView showInView:pageingScrollView offset:CGPointMake(width_page, 0) back:0];
 		}
 		
 		CGFloat y_page = 35 + 100;
@@ -322,6 +326,7 @@ static NSString *stringTenmei = nil;
     [_scrollView scrollRectToVisible:frame animated:YES];
 }
 
+#pragma mark 描画完了後
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -334,7 +339,14 @@ static NSString *stringTenmei = nil;
 	[self.viewIndicator stopAnimating];	
 #endif
 	
-        [self showDefaultContentView];
+	static BOOL isPassed = NO;
+	if (!isPassed) {
+		[self showDefaultContentView];
+	}
+	isPassed = YES;
+
+	//ゲージリセット
+	[self updateTimeRecordedLabel];
 }
 
 - (BOOL)isFirstRun
@@ -384,6 +396,7 @@ static NSString *stringTenmei = nil;
     NSLog(@"Reconfigured video input: %@", videoInputError);
 }
 
+#pragma mark 描画開始前
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
@@ -392,14 +405,18 @@ static NSString *stringTenmei = nil;
 	// !!!:dezamisystem
 //	self.navigationController.navigationBarHidden = YES;
 	
-	[self updateTimeRecordedLabel];
+//	[self updateTimeRecordedLabel];
 	
     // NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	
 	// !!!:dezamisystem・パラメータ
-	[secondView setKakakuValue:valueKakaku];
-	if (stringTenmei) [secondView setTenmeiString:stringTenmei];
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	[secondView setKakakuValue:delegate.valueKakaku];
+	[secondView setTenmeiString:delegate.stringTenmei];
+	[secondView setCategoryIndex:delegate.indexCategory];
+	[secondView setFunikiIndex:delegate.indexFuniki];
+	[secondView reloadTableList];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -411,6 +428,7 @@ static NSString *stringTenmei = nil;
 #endif
 }
 
+#pragma mark 退避開始前
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -421,6 +439,7 @@ static NSString *stringTenmei = nil;
 #endif
 }
 
+#pragma mark 退避完了後
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -475,28 +494,28 @@ static NSString *stringTenmei = nil;
 }
 
 // !!!:使用停止
-- (void) handleReverseCameraTapped:(id)sender {
-	
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-	[_recorder switchCaptureDevices];
-#else
-	NSLog(@"%s",__func__);
-#endif
-}
+//- (void) handleReverseCameraTapped:(id)sender {
+//	
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//	[_recorder switchCaptureDevices];
+//#else
+//	NSLog(@"%s",__func__);
+//#endif
+//}
 
 // !!!:使用停止
-- (void) handleStopButtonTapped:(id)sender {
-	
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-    SCRecordSession *recordSession = _recorder.recordSession;
-    
-    if (recordSession != nil) {
-        [self finishSession:recordSession];
-    }
-#endif
-}
+//- (void) handleStopButtonTapped:(id)sender {
+//	
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//    
+//    if (recordSession != nil) {
+//        [self finishSession:recordSession];
+//    }
+//#endif
+//}
 
 - (void)finishSession:(SCRecordSession *)recordSession {
 	
@@ -516,30 +535,30 @@ static NSString *stringTenmei = nil;
 #pragma mark Retakeイベント
 // !!!:使用停止
 // retakeButtonでタップを判定し、押されたときに撮影秒数をゼロにするボタンです
-- (void) handleRetakeButtonTapped:(id)sender
-{
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-    SCRecordSession *recordSession = _recorder.recordSession;
-    
-    if (recordSession != nil) {
-        _recorder.recordSession = nil;
-        
-        // If the recordSession was saved, we don't want to completely destroy it
-        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-            [recordSession endRecordSegment:nil];
-        } else {
-            [recordSession cancelSession:nil];
-        }
-    }
-    
-	[self prepareCamera];
-    [self updateTimeRecordedLabel];
-#else
-	[self prepareCamera];
-	[self updateTimeRecordedLabel];
-#endif
-}
+//- (void) handleRetakeButtonTapped:(id)sender
+//{
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//    
+//    if (recordSession != nil) {
+//        _recorder.recordSession = nil;
+//        
+//        // If the recordSession was saved, we don't want to completely destroy it
+//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+//            [recordSession endRecordSegment:nil];
+//        } else {
+//            [recordSession cancelSession:nil];
+//        }
+//    }
+//    
+//	[self prepareCamera];
+//    [self updateTimeRecordedLabel];
+//#else
+//	[self prepareCamera];
+//	[self updateTimeRecordedLabel];
+//#endif
+//}
 
 #pragma mark カメラモード切り替えイベント
 - (IBAction)switchCameraMode:(id)sender
@@ -628,12 +647,13 @@ static NSString *stringTenmei = nil;
 	
 	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
-    if (_recorder.recordSession == nil) {
-        
+	// ???:毎回生成する？
+	// if (_recorder.recordSession == nil)
+	{
         SCRecordSession *session = [SCRecordSession recordSession];
         //最大秒数
         session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(7, 10000);
-        
+		
         _recorder.recordSession = session;
     }
 #else
@@ -700,11 +720,11 @@ static NSString *stringTenmei = nil;
 #endif
 	
 	//currentTimelをラベルに表示する
-//    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
+	//    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
 	
 	//ゲージ
-//	double time_per = time_now / time_max;
-//	[gaugeViewTimer updateWithPer:time_per];
+	//	double time_per = time_now / time_max;
+	//	[gaugeViewTimer updateWithPer:time_per];
 	// !!!:dezamisystem・円グラフゲージ
 	[firstView updatePieChartWith:time_now MAX:time_max];
 
@@ -785,7 +805,7 @@ static NSString *stringTenmei = nil;
 
 
 #pragma mark - RecorderSubmitPopupViewDelegate
-
+#pragma mark Twitter へ投稿
 - (void)recorderSubmitPopupViewOnTwitterShare:(RecorderSubmitPopupView *)view
 {
     LOG_METHOD;
@@ -811,7 +831,7 @@ static NSString *stringTenmei = nil;
     [self presentViewController:controller animated:YES completion:nil];
     
 }
-
+#pragma mark Facebook へ投稿
 - (void)recorderSubmitPopupViewOnFacebookShare:(RecorderSubmitPopupView *)view
 {
     LOG_METHOD;
@@ -866,10 +886,9 @@ static NSString *stringTenmei = nil;
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
 
+#pragma mark 投稿
 - (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
 {
-   
-    
     //セッションが7秒未満の時
      CMTime currentRecordDuration = _recordSession.currentRecordDuration;
     
@@ -939,8 +958,7 @@ static NSString *stringTenmei = nil;
 
 #pragma mark - Private Methods
 
-#pragma mark Complete
-
+#pragma mark Complete完了処理
 /**
  *  完了処理
  */
@@ -949,7 +967,8 @@ static NSString *stringTenmei = nil;
    [SVProgressHUD show];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    
+	
+#if 0
     // 投稿画面を設定
     self.submitView = [RecorderSubmitPopupView view];
     self.submitView.delegate = self;
@@ -980,6 +999,27 @@ static NSString *stringTenmei = nil;
         // 投稿画面を表示
         [weakSelf.submitView showInView:weakSelf.view];
     }];
+#else
+	// 動画を書き出し・保存
+	[self.recordSession mergeRecordSegments:^(NSError *error) {
+		[SVProgressHUD dismiss];
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		
+		if (error) {
+			[weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
+			return;
+		}
+		
+		// 動画をカメラロールに保存
+		[weakSelf.recordSession saveToCameraRoll];
+		
+		// カメラを停止
+		[_recorder endRunningSession];
+		
+		// 投稿画面を表示
+		[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+	}];
+#endif
 }
 
 /**
@@ -1070,14 +1110,91 @@ static NSString *stringTenmei = nil;
 #pragma mark - beforeRecorderViewController
 -(void)sendTenmeiString:(NSString*)str
 {
-	stringTenmei = [NSString stringWithString:str];
+	if (!str) return;
+	
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+	delegate.stringTenmei = [NSString stringWithString:str];
 }
 
 #pragma mark - KakakuTextViewController
 -(void)sendKakakuValue:(int)value
 {
-	valueKakaku = value;
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	delegate.valueKakaku = value;
 }
 
+#pragma mark - SCPostingViewController
+#pragma mark 投稿
+-(void)execSubmit
+{
+	//セッションが7秒未満の時
+	CMTime currentRecordDuration = _recordSession.currentRecordDuration;
+	
+	if (currentRecordDuration.timescale < 7) {
+		NSString *alertMessage = @"まだ7秒撮れていません";
+		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alrt show];
+	}
+	else  {
+		
+		NSLog(@"%s",__func__) ;
+		
+		[SVProgressHUD show];
+		
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+		
+		// サーバへデータを送信
+		__weak typeof(self)weakSelf = self;
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+		
+		//バックグラウンドで投稿
+		
+		// movie
+		[APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+		 {
+			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+			 
+			 if (error){
+				 
+			 }
+			 
+			 
+		 }];
+  
+		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+		
+		
+		[SVProgressHUD dismiss];
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		
+	}
+}
+
+-(void)cancelSubmit
+{
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//
+//    if (recordSession != nil) {
+//        _recorder.recordSession = nil;
+//
+//        // If the recordSession was saved, we don't want to completely destroy it
+//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+//            [recordSession endRecordSegment:nil];
+//        } else {
+//            [recordSession cancelSession:nil];
+//        }
+//    }
+//	else {
+//		
+//	}
+}
+
+#pragma mark - 戻る
+- (IBAction)popViewController1:(UIStoryboardSegue *)segue {
+
+	NSLog(@"%s",__func__);
+	
+}
 
 @end
