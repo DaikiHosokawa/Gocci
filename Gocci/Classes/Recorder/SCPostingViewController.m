@@ -51,19 +51,39 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		self.navigationItem.backBarButtonItem = barButton;
 	}
 
+	//情報テーブルビュー
+	CGRect rect_second = CGRectMake(0, 246, 320, 170);	// 4inch
 	{
+		//画面サイズから場合分け
+		CGRect rect = [UIScreen mainScreen].bounds;
+		if (rect.size.height == 480) {
+			//3.5inch
+			rect_second = CGRectMake(0, 198, 320, 144);
+		}
+		else if (rect.size.height == 667) {
+			//4.7inch
+			rect_second = CGRectMake(0, 284, 375, 200);
+		}
+		else if (rect.size.height == 736) {
+			//5.5inch
+			rect_second = CGRectMake(0, 322, 414, 220);
+		}
+		
 		secondView = [SCSecondView create];
+		secondView.frame = rect_second;
 		secondView.delegate = self;
-		[secondView showInView:viewsecond offset:CGPointZero back:1];
+		[secondView showInView:self.view offset:CGPointZero back:1];
 	}
 	
+	//ソーシャルテーブルビュー
 	{
-		tableviewSocial = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, view_social.frame.size.width, view_social.frame.size.height)
-													   style:UITableViewStylePlain];
+		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
+		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
+		//tableviewSocial.frame = rect_social;
 		tableviewSocial.delegate = self;
 		tableviewSocial.dataSource = self;
 		tableviewSocial.scrollEnabled = NO;
-		[view_social addSubview:tableviewSocial];
+		[self.view addSubview:tableviewSocial];
 	}
 }
 
