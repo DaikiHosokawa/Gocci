@@ -711,8 +711,10 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="NK0-cb-M9U">
             <objects>
-                <navigationController title="BaseBeforeRecorder" id="yVB-VL-M06" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="yVB-VL-M06" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="KdD-0U-shw"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qax-RD-hkv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -729,7 +731,7 @@
         <!--Posting View Controller-->
         <scene sceneID="HOh-ob-sRP">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HiE-hz-T1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -943,7 +945,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>

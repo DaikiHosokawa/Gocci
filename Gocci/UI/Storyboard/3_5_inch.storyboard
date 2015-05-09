@@ -755,8 +755,10 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="ZG0-Xs-FT3">
             <objects>
-                <navigationController title="BaseBeforeRecorder" id="ZSr-CZ-nAo" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" navigationBarHidden="YES" id="ZSr-CZ-nAo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Pbe-zP-AFS"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oS9-Wp-wa8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -963,7 +965,7 @@
         <!--SCPostingViewController-->
         <scene sceneID="z5T-qs-wV4">
             <objects>
-                <viewController title="SCPostingViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="grg-UZ-rTW" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController title="SCPostingViewController" id="grg-UZ-rTW" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Gn-4K-wy8">
                         <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1055,7 +1057,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1315,8 +1317,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Gee-JD-9BO"/>
-        <segue reference="mqM-qI-glM"/>
+        <segue reference="J2l-nh-8BO"/>
+        <segue reference="Ffq-fV-qzW"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
