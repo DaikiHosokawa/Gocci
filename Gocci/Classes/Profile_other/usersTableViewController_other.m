@@ -16,6 +16,7 @@
 #import "everyBaseNavigationController.h"
 #import "SVProgressHUD.h"
 #import "Reachability.h"
+#import "TimelineCell.h"
 
 
 
@@ -28,7 +29,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @protocol MovieViewDelegate;
 
 @interface usersTableViewController_other ()
-<Profile2CellDelegate>
+<TimelineCellDelegate>
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *status_;
@@ -83,8 +84,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell2" bundle:nil]
-         forCellReuseIdentifier:Profile2CellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+         forCellReuseIdentifier:TimelineCellIdentifier];
     
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	if (profiledelegate) {}
@@ -249,15 +250,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [ProfileCell2 cellHeightWithTimelinePost:self.posts[indexPath.row]];
+    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = Profile2CellIdentifier;
-    ProfileCell2 *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = TimelineCellIdentifier;
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
-        cell = [ProfileCell2 cell];
+        cell = [TimelineCell cell];
     }
     
     // セルにデータを反映
@@ -362,7 +363,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - TimelineCellDelegate
 
 #pragma mark いいねボタンの時の処理
-- (void)profileCell2:(ProfileCell2 *)cell didTapLikeButtonWithPostID:(NSString *)postID
+- (void)timelineCeloo:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
     //いいねボタンの時の処理
     LOG(@"postid=%@", postID);
@@ -385,7 +386,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 
-- (void)profileCell2:(ProfileCell2 *)cell didTapViolateButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
     //違反報告ボタンの時の処理
     LOG(@"postid=%@", postID);
@@ -448,7 +449,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark rest_nameタップの時の処理
-- (void)profileCell2:(ProfileCell2 *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -465,7 +466,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark コメントボタン押下時の処理
-- (void)profileCell2:(ProfileCell2 *)cell didTapCommentButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
 {
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
@@ -474,7 +475,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
--(void)profileCell2:(ProfileCell2 *)cell didTapNaviWithLocality:(NSString *)Locality
+-(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
 {
     NSString *mapText = Locality;
     mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -563,7 +564,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }];
 }
 
-- (void)profileCell2:(ProfileCell2 *)cell didTapthumb:(UIImageView *)thumbnailView{
+- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
     [self _playMovieAtCurrentCell];
 }
 
@@ -585,9 +586,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
         
-        currentHeight += [ProfileCell2 cellHeightWithTimelinePost:self.posts[i]];
+        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
-    ProfileCell2 *currentCell = [ProfileCell2 cell];
+    TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                   currentHeight + currentCell.thumbnailView.frame.origin.y+230,
