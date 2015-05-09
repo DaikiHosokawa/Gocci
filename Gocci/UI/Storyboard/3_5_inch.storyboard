@@ -962,6 +962,22 @@
             </objects>
             <point key="canvasLocation" x="-2861" y="-1196"/>
         </scene>
+        <!--Dummy View Controller-->
+        <scene sceneID="3fe-zA-FUW">
+            <objects>
+                <viewController id="yAA-dq-VR1" customClass="DummyViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zjh-Me-rp3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IXC-Or-aNi"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4130" y="-723"/>
+        </scene>
         <!--SCPostingViewController-->
         <scene sceneID="z5T-qs-wV4">
             <objects>
@@ -1186,7 +1202,7 @@
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="wz6-2Z-iBT"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="J2l-nh-8BO"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Ffq-fV-qzW"/>
-                        <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="XaM-gv-GJS"/>
+                        <segue destination="yAA-dq-VR1" kind="push" identifier="goPosting" id="m6V-fr-IBP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
