@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373BB8381AFE59A300F7AC77 /* DummyViewController.m */; };
 		377063271AFC6DBA00CD891D /* icon_record_cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063251AFC6DBA00CD891D /* icon_record_cam.png */; };
 		377063281AFC6DBA00CD891D /* icon_record_cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */; };
 		3770633B1AFC6F9F00CD891D /* KakakuTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */; };
@@ -271,6 +272,8 @@
 
 /* Begin PBXFileReference section */
 		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		373BB8371AFE59A300F7AC77 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
+		373BB8381AFE59A300F7AC77 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		377063251AFC6DBA00CD891D /* icon_record_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_cam.png; sourceTree = "<group>"; };
 		377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_record_cam@2x.png"; sourceTree = "<group>"; };
 		3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KakakuTextViewController.h; sourceTree = "<group>"; };
@@ -1140,6 +1143,8 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				373BB8371AFE59A300F7AC77 /* DummyViewController.h */,
+				373BB8381AFE59A300F7AC77 /* DummyViewController.m */,
 				37A038CE1AFC923D0095702F /* SCPostingViewController.h */,
 				37A038CF1AFC923D0095702F /* SCPostingViewController.m */,
 				3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */,
@@ -1821,6 +1826,7 @@
 				95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */,
 				952D23961A9B95E800C354DF /* README.md in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
+				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
 				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
