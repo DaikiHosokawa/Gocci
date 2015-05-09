@@ -170,6 +170,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         usersTableViewController_other *users_otherVC = segue.destinationViewController;
         users_otherVC.postUsername = _postUsername_with_profile;
         users_otherVC.postPicture = _postUserPicture_with_profile;
+        users_otherVC.postFlag = 1;
     }
 }
 

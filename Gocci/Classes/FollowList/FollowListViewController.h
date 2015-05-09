@@ -15,6 +15,7 @@
     NSString *_postUsername;
     NSString *_postUsername_with_profile;
     NSString *_postUserPicture_with_profile;
+    NSInteger _postFlag;
 
 }
 

@@ -21,7 +21,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-PY-ESh">
                                 <rect key="frame" x="40" y="-65" width="8" height="68"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="金" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-5E-2NP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-5E-2NP">
                                 <rect key="frame" x="267" y="15" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="6s9-e8-HZg"/>
@@ -94,21 +94,21 @@
                                     <constraint firstAttribute="width" constant="50" id="fVw-WT-wn1"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag-A" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-9m-Zwm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-9m-Zwm">
                                 <rect key="frame" x="0.0" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KyL-h4-bOB"/>
                                     <constraint firstAttribute="width" constant="90" id="eMl-48-fmZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-B" translatesAutoresizingMaskIntoConstraints="NO" id="67U-t0-FdZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="67U-t0-FdZ">
                                 <rect key="frame" x="95" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="bHo-en-Me7"/>
                                     <constraint firstAttribute="height" constant="25" id="vMV-xr-r5t"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-C" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-cc-4mb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-cc-4mb">
                                 <rect key="frame" x="190" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="0DS-WP-Fbb"/>
@@ -310,15 +310,18 @@
                 <outlet property="ViolateView" destination="1qY-YP-y3A" id="fNI-ih-guP"/>
                 <outlet property="avaterImageView" destination="tv0-nB-x5O" id="ble-ha-UGa"/>
                 <outlet property="background" destination="reR-SP-qcM" id="KY9-qr-KLy"/>
-                <outlet property="cheerView" destination="wbK-PY-ESh" id="LWi-SI-wkl"/>
                 <outlet property="commentCountLabel" destination="oQN-HV-iQl" id="gMF-em-tq1"/>
                 <outlet property="commentView" destination="ohQ-nj-eFT" id="7xO-8Q-wTR"/>
                 <outlet property="deleteBtn" destination="xjB-00-Bte" id="VWn-QN-Tr6"/>
                 <outlet property="likeCountLabel" destination="fKp-CK-jj1" id="gsf-0C-POm"/>
                 <outlet property="likeView" destination="zpK-2i-P20" id="e2I-jU-EhO"/>
+                <outlet property="medal" destination="t2c-5E-2NP" id="rfI-dp-hx8"/>
                 <outlet property="restaurantNameLabel" destination="QPi-nC-yon" id="PtI-5Q-gbK"/>
                 <outlet property="restaurantNaviview" destination="Ved-qS-0vN" id="cRG-lt-MS9"/>
                 <outlet property="restaurantView" destination="YSl-cf-iOp" id="JY6-5y-l4T"/>
+                <outlet property="tagA" destination="ceh-9m-Zwm" id="cPw-L7-Ebv"/>
+                <outlet property="tagB" destination="67U-t0-FdZ" id="P3J-AF-SaK"/>
+                <outlet property="tagC" destination="Bfz-cc-4mb" id="RPS-ja-zEu"/>
                 <outlet property="thumbnailView" destination="hND-ON-WcS" id="FQq-rz-yvO"/>
                 <outlet property="thumbnailViewBottomConstraint" destination="s0V-rO-n5Y" id="qv8-tF-jzU"/>
                 <outlet property="thumbnailViewHeightConstraint" destination="xJ2-yo-HSs" id="t8Z-b8-Vm5"/>
@@ -336,11 +339,7 @@
         <image name="etc" width="41" height="12"/>
         <image name="like_new" width="34" height="31"/>
         <image name="startPlaying" width="209" height="209"/>
-        <image name="tag-A" width="128" height="28"/>
-        <image name="tag-B" width="128" height="28"/>
-        <image name="tag-C" width="128" height="28"/>
         <image name="案内" width="102" height="44"/>
-        <image name="金" width="37" height="37"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

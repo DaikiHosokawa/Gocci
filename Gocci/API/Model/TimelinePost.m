@@ -29,7 +29,11 @@
     obj.homepage = dictionary[@"homepage"];
     obj.category = dictionary[@"category"];
     obj.pushed_at = dictionary[@"pushed_at"];
-    
+    obj.flag  = [dictionary[@"status"] integerValue];
+    obj.tagA = dictionary[@"tag_category"];
+    obj.tagB = dictionary[@"atmosphere"];
+    //obj.tagC = dictionary[@""];
+    //obj.cheernum  = [dictionary[@"cheernum"] integerValue];
     return obj;
 }
 

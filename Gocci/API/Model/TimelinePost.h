@@ -28,6 +28,11 @@
 @property (nonatomic) NSString *homepage;
 @property (nonatomic) NSString *category;
 @property (nonatomic) NSString *pushed_at;
+@property (nonatomic) NSInteger flag;
+@property (nonatomic) NSString *tagA;
+@property (nonatomic) NSString *tagB;
+@property (nonatomic) NSString *tagC;
+@property (nonatomic) NSInteger cheernum;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

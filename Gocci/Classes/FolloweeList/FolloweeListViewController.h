@@ -16,7 +16,8 @@
     NSString *_postUsername;
     NSString *_postUsername_with_profile2;
     NSString *_postUserPicture_with_profile2;
-
+    NSString *_postFlagPrepere;
+    NSInteger _postFlag;
 }
 
 @property (nonatomic) NSString *postUsername;

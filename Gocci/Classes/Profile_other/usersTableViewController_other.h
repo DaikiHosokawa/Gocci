@@ -21,6 +21,7 @@
 @interface usersTableViewController_other : UITableViewController
 {
     NSString *_postUsername;
+    NSInteger _postFlag;
     //MPMoviePlayerController *moviePlayer;
     NSString *_postID;
     NSString *_postPicture;
@@ -43,6 +44,7 @@
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic) NSString *postUsername;
 @property (nonatomic) NSString *postPicture;
+@property (nonatomic) NSInteger postFlag;
 @property (nonatomic) NSString *postUsername_with_profile;
 @property (nonatomic) NSString *postUserPicture_with_profile;
 @property (nonatomic) NSString *postUsername_with_profile2;

@@ -236,30 +236,30 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QVg-Oi-518">
-                                    <rect key="frame" x="41" y="210" width="67" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lfb-LW-0sy">
+                                    <rect key="frame" x="162" y="212" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="フォロー">
+                                    <state key="normal" image="followee">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <segue destination="8Tp-jm-W4Z" kind="push" identifier="goFollow" id="6ml-V6-KH4"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lfb-LW-0sy">
-                                    <rect key="frame" x="167" y="210" width="80" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a5N-2I-VZU">
+                                    <rect key="frame" x="266" y="212" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="フォロイー">
+                                    <state key="normal" image="応援">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <segue destination="7ak-qr-taw" kind="push" identifier="goFollowee" id="qaR-5I-EkE"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a5N-2I-VZU">
-                                    <rect key="frame" x="296" y="210" width="90" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QVg-Oi-518">
+                                    <rect key="frame" x="59" y="212" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="応援リスト">
+                                    <state key="normal" image="follow">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -799,6 +799,7 @@
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="28f-Ki-6dZ"/>
                     <navigationItem key="navigationItem" title="投稿" id="k20-K6-bhZ">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="Bg9-Bi-Gv3">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="HcX-TI-03a" id="r2O-Rb-A4P"/>
                             </connections>
@@ -823,7 +824,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="cz9-Qw-kgD" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz9-Qw-kgD" id="ER8-hf-ZHu">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -856,7 +857,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="41R-xo-4Zo" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="41R-xo-4Zo" id="LHl-dS-rpQ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -935,6 +936,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="価格" id="g0P-hZ-zOO">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="10c-H7-cxR">
+                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="Hm0-rk-06A" id="d5u-ng-3cl"/>
                             </connections>
@@ -1078,7 +1080,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="270" y="9.0000001241583831" width="48" height="48"/>
+                                        <rect key="frame" x="270" y="9.0000001834514993" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1275,6 +1277,8 @@
         <image name="default" width="710" height="676"/>
         <image name="empty" width="250" height="280"/>
         <image name="exeBar" width="640" height="256"/>
+        <image name="follow" width="168" height="52"/>
+        <image name="followee" width="168" height="52"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="hosi23" width="23" height="22"/>
@@ -1293,6 +1297,7 @@
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="telButton" width="244" height="45"/>
         <image name="ui_black.png" width="32" height="32"/>
+        <image name="応援" width="168" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1300,10 +1305,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cwl-oS-FaU"/>
-        <segue reference="A6l-Sl-qZw"/>
-        <segue reference="33G-Rn-4Mg"/>
+        <segue reference="MfG-Lz-zuY"/>
+        <segue reference="djI-FJ-Av1"/>
+        <segue reference="sBC-Zs-pgG"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="wis-md-2uD"/>
-        <segue reference="uLy-rw-ivI"/>
     </inferredMetricsTieBreakers>
 </document>

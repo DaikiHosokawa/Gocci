@@ -18,6 +18,7 @@
 
 @property (nonatomic, retain) NSMutableArray *picture_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
+@property (nonatomic, retain) NSMutableArray *status_;
 @property (nonatomic, retain) FolloweeListCell *cell;
 
 
@@ -129,6 +130,9 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     // プロフ画像
     NSArray *picture = [jsonDic valueForKey:@"picture"];
     _picture_ = [picture mutableCopy];
+    // status
+    NSArray *status = [jsonDic valueForKey:@"status"];
+    _status_ = [status mutableCopy];
     
 }
 
@@ -143,7 +147,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _postUsername_with_profile2 =  [_user_name_ objectAtIndex:indexPath.row];
     _postUserPicture_with_profile2 = [_picture_ objectAtIndex:indexPath.row];
-    
+    _postFlagPrepere = [_status_ objectAtIndex:indexPath.row];
+    _postFlag = _postFlagPrepere.integerValue;
     NSLog(@"postusername_with_profile:%@",_postUsername_with_profile2);
     
     [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
@@ -158,6 +163,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         usersTableViewController_other *users_otherVC = segue.destinationViewController;
         users_otherVC.postUsername = _postUsername_with_profile2;
         users_otherVC.postPicture = _postUserPicture_with_profile2;
+        users_otherVC.postFlag = _postFlag;
     }
 }
 
