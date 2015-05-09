@@ -22,6 +22,7 @@
 		377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */; };
 		377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770633A1AFC6F9F00CD891D /* XYPieChart.m */; };
 		37A038D01AFC923D0095702F /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A038CF1AFC923D0095702F /* SCPostingViewController.m */; };
+		37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37D66AC91AFD858100767114 /* image_sample00.jpg */; };
 		535626731AB39C97009C7D12 /* SigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 535626721AB39C97009C7D12 /* SigninView.m */; };
 		535626751AB39CB4009C7D12 /* SigninView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535626741AB39CB4009C7D12 /* SigninView.xib */; };
 		53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
@@ -290,6 +291,7 @@
 		3770633A1AFC6F9F00CD891D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		37A038CE1AFC923D0095702F /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
 		37A038CF1AFC923D0095702F /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
+		37D66AC91AFD858100767114 /* image_sample00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_sample00.jpg; sourceTree = "<group>"; };
 		535626711AB39C97009C7D12 /* SigninView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninView.h; sourceTree = "<group>"; };
 		535626721AB39C97009C7D12 /* SigninView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninView.m; sourceTree = "<group>"; };
 		535626741AB39CB4009C7D12 /* SigninView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SigninView.xib; sourceTree = "<group>"; };
@@ -1321,6 +1323,7 @@
 		952D24C71A9B9EC800C354DF /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				37D66AC91AFD858100767114 /* image_sample00.jpg */,
 				377063251AFC6DBA00CD891D /* icon_record_cam.png */,
 				377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */,
 				BFA1DA751AB2BA7F00B4F63A /* Cancel.png */,
@@ -1734,6 +1737,7 @@
 				377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */,
 				952D249C1A9B9D3300C354DF /* SearchCell.xib in Resources */,
 				952D247D1A9B9D3300C354DF /* beforeCell.xib in Resources */,
+				37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

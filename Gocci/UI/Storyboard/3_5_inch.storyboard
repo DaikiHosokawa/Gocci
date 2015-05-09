@@ -791,7 +791,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buU-Ca-aI8">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buU-Ca-aI8" id="iSI-EU-uBM">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -966,6 +966,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="xV5-Bt-Qfr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mno-Ua-FG2">
                                 <rect key="frame" x="56" y="422" width="208" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -973,11 +977,38 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onSubmit:" destination="grg-UZ-rTW" eventType="touchUpInside" id="mLv-pG-xT8"/>
                                     <segue destination="qzC-LN-a0E" kind="unwind" unwindAction="popViewController1:" id="Vln-2o-24F"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="wmG-7Z-xrI">
+                                <rect key="frame" x="0.0" y="342" width="320" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Pop-Ly-rke">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pyd-7y-6ed">
+                                        <rect key="frame" x="8" y="33" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="btn_delete_white">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qzC-LN-a0E" kind="unwind" unwindAction="popViewController1:" id="kK0-tg-JaR"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="ooe-AB-5Kp">
+                                        <rect key="frame" x="145" y="34" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="nx6-IL-vNu">
-                                <rect key="frame" x="0.0" y="168" width="320" height="144"/>
+                                <rect key="frame" x="0.0" y="198" width="320" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -988,9 +1019,12 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="xNq-QA-OyL"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="imageview_samnail" destination="xV5-Bt-Qfr" id="CbY-ri-yv8"/>
+                        <outlet property="view_social" destination="wmG-7Z-xrI" id="ZBV-oz-cNQ"/>
                         <outlet property="viewsecond" destination="nx6-IL-vNu" id="X5y-4U-9ce"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="mqM-qI-glM"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Gee-JD-9BO"/>
@@ -1073,7 +1107,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="198" y="11" width="41" height="46"/>
+                                        <rect key="frame" x="198" y="11.000000077745183" width="41" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1259,6 +1293,7 @@
         <image name="hosi23" width="23" height="22"/>
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ikituke" width="55" height="51"/>
+        <image name="image_sample00.jpg" width="640" height="454"/>
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
         <image name="naviButton" width="189" height="45"/>
@@ -1279,10 +1314,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="xol-bB-B1F"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="E8I-Ul-lW0"/>
         <segue reference="Gee-JD-9BO"/>
         <segue reference="mqM-qI-glM"/>
-        <segue reference="xol-bB-B1F"/>
-        <segue reference="E8I-Ul-lW0"/>
-        <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>
 </document>
