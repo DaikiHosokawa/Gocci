@@ -755,10 +755,8 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="ZG0-Xs-FT3">
             <objects>
-                <navigationController title="BaseBeforeRecorder" navigationBarHidden="YES" id="ZSr-CZ-nAo" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" id="ZSr-CZ-nAo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Pbe-zP-AFS"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oS9-Wp-wa8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

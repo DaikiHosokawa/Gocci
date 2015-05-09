@@ -24,6 +24,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+	// NavigationBar 表示
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
+
+	
+	[super viewWillAppear:animated];
+}
 /*
 #pragma mark - Navigation
 

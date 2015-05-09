@@ -711,9 +711,8 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="NK0-cb-M9U">
             <objects>
-                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="yVB-VL-M06" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" id="yVB-VL-M06" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="KdD-0U-shw"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qax-RD-hkv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
