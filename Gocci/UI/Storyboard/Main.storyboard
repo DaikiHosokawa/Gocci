@@ -148,30 +148,30 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tw8-8k-yy8">
-                                    <rect key="frame" x="19" y="212" width="90" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tw8-8k-yy8">
+                                    <rect key="frame" x="41" y="210" width="67" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="フォロー" image="follow">
+                                    <state key="normal" title="フォロー">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <segue destination="aCH-TV-u9z" kind="push" identifier="goFollow" id="STE-yu-6Dh"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="opr-ss-DBN">
-                                    <rect key="frame" x="115" y="212" width="90" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="opr-ss-DBN">
+                                    <rect key="frame" x="123" y="210" width="75" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="followee">
+                                    <state key="normal" title="フォロイー">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <segue destination="UlG-Rt-Zw4" kind="push" identifier="goFollowee" id="WJq-ju-hcH"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c9k-6A-0vc">
-                                    <rect key="frame" x="213" y="212" width="90" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c9k-6A-0vc">
+                                    <rect key="frame" x="211" y="210" width="75" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="応援">
+                                    <state key="normal" title="応援リスト">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -194,7 +194,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -232,7 +232,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="whW-QS-wZZ" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whW-QS-wZZ" id="xmg-b5-SEd">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -265,7 +265,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="FLI-7N-ZFZ" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLI-7N-ZFZ" id="h5r-Uz-WQP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -788,7 +788,6 @@
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>
                         <outlet property="telButtonLabel" destination="mE2-d7-x3V" id="hIc-Cj-vca"/>
                         <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="5vL-6n-Sjz"/>
-                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goSCRecorder" id="pwx-NL-GhF"/>
                         <segue destination="VtS-PK-3sl" kind="modal" identifier="goEveryComment" id="pPi-jq-5EO"/>
                     </connections>
                 </tableViewController>
@@ -807,7 +806,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jLm-ft-sh2" kind="relationship" relationship="rootViewController" id="vKn-yd-bxw"/>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="DlW-dk-BKX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gh-QT-LHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -849,16 +848,21 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="A6m-sl-hcI"/>
-                    <navigationItem key="navigationItem" title="投稿" id="CIF-fQ-lyF"/>
+                    <navigationItem key="navigationItem" title="投稿" id="CIF-fQ-lyF">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="duY-Zi-Vbr">
+                            <connections>
+                                <action selector="onBack:" destination="jLm-ft-sh2" id="th2-Oe-PaC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="emptyView" destination="q3D-ar-R00" id="g3g-od-IyA"/>
-                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goSCRecorder" id="LdY-JN-EqV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-mg-LZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3456" y="-1199"/>
+            <point key="canvasLocation" x="-2222" y="-137"/>
         </scene>
         <!--Cheer List View Controller-->
         <scene sceneID="u5u-xv-MCo">
@@ -870,7 +874,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="XIt-3D-4hP" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIt-3D-4hP" id="8xZ-p4-Cpr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -893,27 +897,173 @@
             </objects>
             <point key="canvasLocation" x="-2686" y="-777"/>
         </scene>
+        <!--Posting View Controller-->
+        <scene sceneID="uzt-L0-1vf">
+            <objects>
+                <viewController id="Sal-Jd-8HJ" customClass="SCPostingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V7U-eq-0Rf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Ye4-oI-V8u">
+                                <rect key="frame" x="0.0" y="416" width="320" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zEa-9S-xGH">
+                                <rect key="frame" x="56" y="511" width="208" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="submitBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubmit:" destination="Sal-Jd-8HJ" eventType="touchUpInside" id="Kbp-S8-XSf"/>
+                                    <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="yaX-lr-5e2"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="mcH-2Y-ViT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="2kY-xk-iUb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bZ9-0v-YIb">
+                                        <rect key="frame" x="14" y="26" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="btn_delete_white">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="R6m-wh-QJo"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="7TI-CB-zBC">
+                                        <rect key="frame" x="144" y="25" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="pBe-80-Ngp">
+                                <rect key="frame" x="0.0" y="246" width="320" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jZo-Yg-Zbc"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imageview_samnail" destination="mcH-2Y-ViT" id="4R0-QP-zu4"/>
+                        <outlet property="view_social" destination="Ye4-oI-V8u" id="GZ5-gT-SBf"/>
+                        <outlet property="viewsecond" destination="pBe-80-Ngp" id="bWp-Zo-YHf"/>
+                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="SDs-PX-5V3"/>
+                        <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Kbo-Zn-huj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFp-bf-Wln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GDX-Rq-Mj4" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-3513" y="-66"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7G5-py-4O7">
+            <objects>
+                <navigationController id="gx9-Fe-itj" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFl-2t-Geh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dwY-BZ-Pdw" kind="relationship" relationship="rootViewController" id="RQh-PP-v2x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnj-57-oFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2977" y="583"/>
+        </scene>
+        <!--kakakuTextViewController-->
+        <scene sceneID="hxk-kb-hDi">
+            <objects>
+                <viewController title="kakakuTextViewController" id="dwY-BZ-Pdw" customClass="KakakuTextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="31o-DW-ors">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="金額を入力して下さい" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="L5I-i7-t0I">
+                                <rect key="frame" x="16" y="86" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dwY-BZ-Pdw" id="vFy-ZC-2s8"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Shk-5P-vDz">
+                                <rect key="frame" x="287" y="90" width="17" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bLk-6I-M3r">
+                                <rect key="frame" x="266" y="124" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onOkey:" destination="dwY-BZ-Pdw" eventType="touchUpInside" id="D6d-9Q-6F5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="価格" id="PHY-1P-BZH">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="a9u-vX-2oL">
+                            <connections>
+                                <action selector="onBack:" destination="dwY-BZ-Pdw" id="KgY-vj-OnA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textfieldKakaku" destination="L5I-i7-t0I" id="pEU-9j-aJt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5FS-8f-ac8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2520" y="583"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="adC-Uv-D5W">
             <objects>
                 <navigationController id="MeZ-25-kLm" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5nZ-NN-Wqe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="AqI-a6-dEi"/>
+                        <segue destination="jLm-ft-sh2" kind="relationship" relationship="rootViewController" id="uS4-Bs-xUs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPG-sg-nYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2133" y="-983"/>
+            <point key="canvasLocation" x="-2664" y="-137"/>
         </scene>
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController title="SCRecorder" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -938,7 +1088,7 @@
                                 <rect key="frame" x="0.0" y="479" width="320" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="1tK-5N-rpS">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="1tK-5N-rpS">
                                 <rect key="frame" x="270" y="90" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
@@ -953,8 +1103,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="8" y="12" width="48" height="48"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
+                                        <rect key="frame" x="202" y="9.0000000922419243" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -966,7 +1116,7 @@
                                         </state>
                                     </button>
                                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.0秒" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cCO-VC-azk" userLabel="Time recorded Label">
-                                        <rect key="frame" x="204" y="20" width="108" height="22"/>
+                                        <rect key="frame" x="240" y="20" width="72" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -974,10 +1124,31 @@
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gW1-Gm-Q8M">
+                                        <rect key="frame" x="8" y="20" width="38" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="btn_delete_white">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBackbutton:" destination="2" eventType="touchUpInside" id="cN3-p8-nEp"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="6o7-me-stg">
+                                        <rect key="frame" x="145" y="24" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="jaS-8J-FB6" userLabel="Record View">
+                            <view hidden="YES" contentMode="scaleToFill" id="jaS-8J-FB6" userLabel="Record View">
                                 <rect key="frame" x="105" y="479" width="110" height="89"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
@@ -987,7 +1158,7 @@
                                     </imageView>
                                 </subviews>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M4R-qi-aeH">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M4R-qi-aeH">
                                 <rect key="frame" x="260" y="502" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1001,45 +1172,32 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gW1-Gm-Q8M">
-                                <rect key="frame" x="16" y="502" width="38" height="38"/>
+                            <view contentMode="scaleToFill" id="WRL-Io-14S">
+                                <rect key="frame" x="0.0" y="398" width="320" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="Backbutton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onBackbutton:" destination="2" eventType="touchUpInside" id="cN3-p8-nEp"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="" id="QFm-df-MY0"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="投稿" image="tabbaritem_posting.png" id="QFm-df-MY0"/>
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="loadingView" destination="fdr-8e-oyR" id="gkZ-Rd-Fe7"/>
+                        <outlet property="pagebaseview" destination="WRL-Io-14S" id="Iie-sT-MuJ"/>
                         <outlet property="previewView" destination="iw9-cB-Pni" id="TJx-SO-uXu"/>
-                        <outlet property="recordView" destination="jaS-8J-FB6" id="SMn-AQ-gOo"/>
-                        <outlet property="retakeButton" destination="L9d-q2-oZh" id="zTg-Cn-leH"/>
-                        <outlet property="reverseCamera" destination="M4R-qi-aeH" id="DgE-iJ-Rs1"/>
-                        <outlet property="timeRecordedLabel" destination="cCO-VC-azk" id="8mA-ME-xof"/>
                         <outlet property="viewBaseGauge" destination="252-DP-OOD" id="6OM-9e-XMw"/>
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="k6R-pJ-URU"/>
+                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="xtK-F5-G4I"/>
+                        <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Wcl-6f-Fmi"/>
+                        <segue destination="Sal-Jd-8HJ" kind="push" identifier="goPosting" id="swi-wj-NxB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1544" y="-1015"/>
+            <point key="canvasLocation" x="-3456" y="-1199"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="n8X-zv-Lhk">
@@ -1130,23 +1288,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Backbutton" width="60" height="60"/>
         <image name="arrow_left" width="8" height="13"/>
         <image name="btn_capture_flip.png" width="36" height="30"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="btn_toukou.png" width="100" height="100"/>
         <image name="default" width="710" height="676"/>
         <image name="empty" width="250" height="280"/>
-        <image name="follow" width="168" height="52"/>
-        <image name="followee" width="168" height="52"/>
         <image name="gocci-kun-60-60" width="60" height="60"/>
         <image name="gocci-moji-1" width="595" height="842"/>
         <image name="hosi23" width="23" height="22"/>
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ikituke" width="55" height="51"/>
+        <image name="image_sample00.jpg" width="640" height="454"/>
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
         <image name="naviButton" width="189" height="45"/>
+        <image name="naviIcon.png" width="30" height="30"/>
+        <image name="submitBtn" width="535" height="92"/>
         <image name="tabbaritem_lifelog.png" width="30" height="30"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
         <image name="tabbaritem_profile.png" width="30" height="30"/>
@@ -1155,7 +1313,6 @@
         <image name="telButton" width="244" height="45"/>
         <image name="topbar" width="320" height="125"/>
         <image name="ui_black.png" width="32" height="32"/>
-        <image name="応援" width="168" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1163,9 +1320,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pwx-NL-GhF"/>
-        <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="mxO-EZ-B49"/>
-        <segue reference="KZE-ic-GdL"/>
+        <segue reference="Nkn-A9-wHX"/>
+        <segue reference="NV9-nc-uNy"/>
+        <segue reference="0Dp-RU-HDt"/>
+        <segue reference="SDs-PX-5V3"/>
+        <segue reference="Kbo-Zn-huj"/>
     </inferredMetricsTieBreakers>
 </document>

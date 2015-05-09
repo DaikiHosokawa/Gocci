@@ -31,6 +31,13 @@
     NSString *lifelogDate;
     
     NSString *cheertag;
+	
+	// !!!:dezamisystem・グローバル変数
+	int valueKakaku;
+	NSString *stringTenmei;
+	int indexCategory;
+	int indexFuniki;
+
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -46,6 +53,11 @@
 @property(nonatomic) NSString *lifelogDate;
 @property (nonatomic, assign) NSInteger screenType;
 @property (nonatomic, retain) NSString *cheertag;
+
+@property(nonatomic,assign) int valueKakaku;
+@property(nonatomic,retain) NSString *stringTenmei;
+@property(nonatomic,assign) int indexCategory;
+@property(nonatomic,assign) int indexFuniki;
 
 
 -(BOOL)isFirstRun;

@@ -84,12 +84,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //ナビゲーションバーに画像
     {
         //タイトル画像設定
-        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        CGFloat width_image = height_image;
+        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        //CGFloat width_image = height_image;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
+		
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -100,8 +101,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    backButton.title = @"";
+    //UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    //backButton.title = @"";
     
     //[self.telButton setTitle:_postTell forState:UIControlStateNormal];
     self.telButtonLabel.text = _postTell;
@@ -265,7 +266,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     // 動画の読み込み
     LOG(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
+    //__weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
@@ -401,7 +402,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLResponse* response;
     NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+    //NSData* result =
+	[NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
     
@@ -726,7 +728,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {
 	
-	[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
+	self.tabBarController.selectedIndex = 2;
+	
+	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
 
 @end

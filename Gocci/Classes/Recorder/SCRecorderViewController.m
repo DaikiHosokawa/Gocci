@@ -16,13 +16,23 @@
 #import "SCRecorder.h"
 #import "SCRecordSessionManager.h"
 #import "RestaurantTableViewController.h"
-#import "GaugeView.h"
+//#import "GaugeView.h"
 #import "RecorderSubmitPopupView.h"
 #import "RecorderSubmitPopupAdditionView.h"
 #import "APIClient.h"
 #import "SVProgressHUD.h"
+#import "SCPostingViewController.h"
+
 
 #define kVideoPreset AVCaptureSessionPresetHigh
+
+// !!!:dezamisystem
+static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
+static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
+static NSString * const SEGUE_GO_POSTING = @"goPosting";
+//static int valueKakaku = 0;
+//static NSString *stringTenmei = nil;
+
 
 @import AVFoundation;
 @import AssetsLibrary;
@@ -41,13 +51,17 @@
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
 	
-	GaugeView *gaugeViewTimer;	// !!!:dezamisystem
+//	GaugeView *gaugeViewTimer;	// !!!:dezamisystem
 	NSTimer *timerRecord;
 	NSTimeInterval test_timeGauge;
+	
+	// !!!:dezamisystem・スクロールページ用
+	UIPageControl *pager;
+	__weak IBOutlet UIView *pagebaseview;
 }
 
 
-- (void)showDefaultContentView;
+//- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
 @property (weak, nonatomic) IBOutlet UIImageView *tapVIew;
@@ -56,6 +70,11 @@
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
+// !!!:dezamisystem
+@property (nonatomic,strong) UIScrollView *pageingScrollView;
+@property(nonatomic,strong) SCFirstView *firstView;
+@property(nonatomic,strong) SCSecondView *secondView;
+
 @end
 
 ////////////////////////////////////////////////////////////
@@ -63,6 +82,9 @@
 /////////////////////
 
 @implementation SCRecorderViewController
+@synthesize pageingScrollView;
+@synthesize firstView;
+@synthesize secondView;
 
 #pragma mark - UIViewController 
 
@@ -80,10 +102,10 @@
 	
     [super viewDidLoad];
 	
-     NSInteger pageSize = 2; // ページ数
-    CGFloat width = self.view.bounds.size.width;
-    CGFloat height = self.view.bounds.size.height;
-    
+//     NSInteger pageSize = 2; // ページ数
+//    CGFloat width = self.view.bounds.size.width;
+//    CGFloat height = self.view.bounds.size.height;
+	
     /*
     // UIScrollViewのインスタンス化
     _scrollView = [[UIScrollView alloc]init];
@@ -149,14 +171,14 @@
     [_scrollView addSubview:_recordView];
     */
     
-	// !!!:dezamisystem
-	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
-	CGRect rect_gauge = CGRectMake(0, 0, self.viewBaseGauge.frame.size.width, self.viewBaseGauge.frame.size.height);
-	gaugeViewTimer = [[GaugeView alloc] initWithFrame:rect_gauge];
-	[self.viewBaseGauge addSubview:gaugeViewTimer];
-	[self.viewBaseGauge sendSubviewToBack:gaugeViewTimer];
-	self.viewBaseGauge.backgroundColor = [UIColor clearColor];
-	[gaugeViewTimer updateWithPer:0.5];
+	// !!!:dezamisystem・削除
+//	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
+//	CGRect rect_gauge = CGRectMake(0, 0, self.viewBaseGauge.frame.size.width, self.viewBaseGauge.frame.size.height);
+//	gaugeViewTimer = [[GaugeView alloc] initWithFrame:rect_gauge];
+//	[self.viewBaseGauge addSubview:gaugeViewTimer];
+//	[self.viewBaseGauge sendSubviewToBack:gaugeViewTimer];
+//	self.viewBaseGauge.backgroundColor = [UIColor clearColor];
+//	[gaugeViewTimer updateWithPer:0.5];
 	
 	// !!!:dezamisystem
     //self.capturePhotoButton.alpha = 0.0;
@@ -177,11 +199,9 @@
     
     // On iOS 8 and iPhone 5S, enabling this seems to be slow
     _recorder.initializeRecordSessionLazily = NO;
-
-	// !!!:dezamisystem
-//	self.navigationController.navigationBarHidden = YES;
 	
 	[self updateTimeRecordedLabel];
+	
     // NavigationBar 非表示
 	// !!!:dezamisystem
 //	[self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -193,13 +213,14 @@
     UIView *previewView = self.previewView;
     _recorder.previewView = previewView;
 
-    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-	// !!!:dezamisystem・未使用なので
-    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
+	// !!!:dezamisystem・削除
+//    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//	// !!!:dezamisystem・未使用なので
+//    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
+    //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
+	//self.recordView.alpha = 1.0;
 	
-    [self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
-	self.recordView.alpha = 1.0;
 	self.loadingView.hidden = YES;
     self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
     self.focusView.recorder = _recorder;
@@ -209,7 +230,68 @@
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
-     
+	
+	// !!!:dezamisystem・スクロールビュー
+	{
+		int count_page = 2;
+		
+		CGFloat width_page = pagebaseview.frame.size.width; //self.view.frame.size.width;
+		CGFloat height_page = pagebaseview.frame.size.height; // self.view.frame.size.height;
+		CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
+		pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
+		pageingScrollView.delegate = self;
+		pageingScrollView.contentSize = CGSizeMake(width_page * 2, height_page);
+		pageingScrollView.pagingEnabled = YES;
+		pageingScrollView.showsHorizontalScrollIndicator = NO;
+		pageingScrollView.showsVerticalScrollIndicator = NO;
+		pageingScrollView.scrollsToTop = NO;
+		//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
+		[pagebaseview addSubview:pageingScrollView];
+		
+		//スクロールビューの上にビューコントローラー
+		{
+			firstView = [SCFirstView create];
+			firstView.delegate = self;
+			//[pageingScrollView addSubview:firstView];
+			[firstView showInView:pageingScrollView];
+		}
+		{
+			secondView = [SCSecondView create];
+			secondView.delegate = self;
+			//[pageingScrollView addSubview:secondView];
+			[secondView showInView:pageingScrollView offset:CGPointMake(width_page, 0) back:0];
+		}
+		
+		CGFloat y_page = 35 + 100;
+		//画面サイズから場合分け
+		CGRect rect = [UIScreen mainScreen].bounds;
+		if (rect.size.height == 480) {
+			//3.5inch
+			y_page = 27 + 90;
+		}
+		else if (rect.size.height == 667) {
+			//4.7inch
+			y_page = 50 + 100;
+		}
+		else if (rect.size.height == 736) {
+			//5.5inch
+			y_page = 60 + 100;
+		}
+		
+		// ページコントロール
+		// ページングスクロールビューの下にページコントロールを配置
+		CGFloat height_pc = 20;
+		pager = [[UIPageControl alloc] initWithFrame:CGRectMake(0,y_page, width_page,height_pc)];
+		//pager.backgroundColor = [UIColor blackColor];
+		pager.numberOfPages = count_page;		// ページ数を指定
+		pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
+		pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
+		[pagebaseview addSubview:pager];
+		pager.userInteractionEnabled = NO;
+		// ページコントロールの値が変わったときのアクションを登録
+		//[pager addTarget:self action:@selector(changePageControl:) forControlEvents:UIControlEventValueChanged];
+	}
+
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
         NSError *error = nil;
@@ -227,14 +309,14 @@
 }
 
 // スクロールビューがスワイプされたとき
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat pageWidth = _scrollView.frame.size.width;
-    if ((NSInteger)fmod(_scrollView.contentOffset.x , pageWidth) == 0) {
-        // ページコントロールに現在のページを設定
-        _pageControl.currentPage = _scrollView.contentOffset.x / pageWidth;
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    CGFloat pageWidth = _scrollView.frame.size.width;
+//    if ((NSInteger)fmod(_scrollView.contentOffset.x , pageWidth) == 0) {
+//        // ページコントロールに現在のページを設定
+//        _pageControl.currentPage = _scrollView.contentOffset.x / pageWidth;
+//    }
+//}
 
 // ページコントロールがタップされたとき
 - (void)pageControl_Tapped:(id)sender
@@ -244,6 +326,7 @@
     [_scrollView scrollRectToVisible:frame animated:YES];
 }
 
+#pragma mark 描画完了後
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -256,7 +339,14 @@
 	[self.viewIndicator stopAnimating];	
 #endif
 	
-        [self showDefaultContentView];
+	static BOOL isPassed = NO;
+	if (!isPassed) {
+		[self showDefaultContentView];
+	}
+	isPassed = YES;
+
+	//ゲージリセット
+	[self updateTimeRecordedLabel];
 }
 
 - (BOOL)isFirstRun
@@ -306,6 +396,7 @@
     NSLog(@"Reconfigured video input: %@", videoInputError);
 }
 
+#pragma mark 描画開始前
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
@@ -314,10 +405,18 @@
 	// !!!:dezamisystem
 //	self.navigationController.navigationBarHidden = YES;
 	
-	[self updateTimeRecordedLabel];
+//	[self updateTimeRecordedLabel];
 	
     // NavigationBar 非表示
-	[self.navigationController setNavigationBarHidden:YES animated:NO];	
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
+	
+	// !!!:dezamisystem・パラメータ
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	[secondView setKakakuValue:delegate.valueKakaku];
+	[secondView setTenmeiString:delegate.stringTenmei];
+	[secondView setCategoryIndex:delegate.indexCategory];
+	[secondView setFunikiIndex:delegate.indexFuniki];
+	[secondView reloadTableList];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -329,6 +428,7 @@
 #endif
 }
 
+#pragma mark 退避開始前
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -339,12 +439,11 @@
 #endif
 }
 
+#pragma mark 退避完了後
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
 
-	// !!!:dezamisystem
-//	self.navigationController.navigationBarHidden = NO;
 }
 
 // Focus
@@ -394,27 +493,29 @@
     [self performSegueWithIdentifier:@"Photo" sender:self];
 }
 
-- (void) handleReverseCameraTapped:(id)sender {
-	
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-	[_recorder switchCaptureDevices];
-#else
-	NSLog(@"%s",__func__);
-#endif
-}
+// !!!:使用停止
+//- (void) handleReverseCameraTapped:(id)sender {
+//	
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//	[_recorder switchCaptureDevices];
+//#else
+//	NSLog(@"%s",__func__);
+//#endif
+//}
 
-- (void) handleStopButtonTapped:(id)sender {
-	
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-    SCRecordSession *recordSession = _recorder.recordSession;
-    
-    if (recordSession != nil) {
-        [self finishSession:recordSession];
-    }
-#endif
-}
+// !!!:使用停止
+//- (void) handleStopButtonTapped:(id)sender {
+//	
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//    
+//    if (recordSession != nil) {
+//        [self finishSession:recordSession];
+//    }
+//#endif
+//}
 
 - (void)finishSession:(SCRecordSession *)recordSession {
 	
@@ -432,31 +533,32 @@
 }
 
 #pragma mark Retakeイベント
+// !!!:使用停止
 // retakeButtonでタップを判定し、押されたときに撮影秒数をゼロにするボタンです
-- (void) handleRetakeButtonTapped:(id)sender
-{
-	// !!!:dezamisystem
-#if (!TARGET_IPHONE_SIMULATOR)
-    SCRecordSession *recordSession = _recorder.recordSession;
-    
-    if (recordSession != nil) {
-        _recorder.recordSession = nil;
-        
-        // If the recordSession was saved, we don't want to completely destroy it
-        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-            [recordSession endRecordSegment:nil];
-        } else {
-            [recordSession cancelSession:nil];
-        }
-    }
-    
-	[self prepareCamera];
-    [self updateTimeRecordedLabel];
-#else
-	[self prepareCamera];
-	[self updateTimeRecordedLabel];
-#endif
-}
+//- (void) handleRetakeButtonTapped:(id)sender
+//{
+//	// !!!:dezamisystem
+//#if (!TARGET_IPHONE_SIMULATOR)
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//    
+//    if (recordSession != nil) {
+//        _recorder.recordSession = nil;
+//        
+//        // If the recordSession was saved, we don't want to completely destroy it
+//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+//            [recordSession endRecordSegment:nil];
+//        } else {
+//            [recordSession cancelSession:nil];
+//        }
+//    }
+//    
+//	[self prepareCamera];
+//    [self updateTimeRecordedLabel];
+//#else
+//	[self prepareCamera];
+//	[self updateTimeRecordedLabel];
+//#endif
+//}
 
 #pragma mark カメラモード切り替えイベント
 - (IBAction)switchCameraMode:(id)sender
@@ -545,12 +647,13 @@
 	
 	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
-    if (_recorder.recordSession == nil) {
-        
+	// ???:毎回生成する？
+	// if (_recorder.recordSession == nil)
+	{
         SCRecordSession *session = [SCRecordSession recordSession];
         //最大秒数
         session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(7, 10000);
-        
+		
         _recorder.recordSession = session;
     }
 #else
@@ -617,11 +720,14 @@
 #endif
 	
 	//currentTimelをラベルに表示する
-    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
+	//    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
 	
 	//ゲージ
-	double time_per = time_now / time_max;
-	[gaugeViewTimer updateWithPer:time_per];
+	//	double time_per = time_now / time_max;
+	//	[gaugeViewTimer updateWithPer:time_per];
+	// !!!:dezamisystem・円グラフゲージ
+	[firstView updatePieChartWith:time_now MAX:time_max];
+
 }
 
 - (void)recorder:(SCRecorder *)recorder didAppendVideoSampleBuffer:(SCRecordSession *)recordSession {
@@ -630,39 +736,40 @@
 }
 
 #pragma mark 撮影イベント開始
+// !!!:dezamisystem・SCFirstView側でDelegate化して、[self recordBegan]と[self recordEnded]に移行
 // recordViewでタップの有無を判定し、押している時だけ撮影、話している時にストップで作っています。
-- (void)handleTouchDetected:(SCTouchDetector*)touchDetector {
-	
-
-    if (touchDetector.state == UIGestureRecognizerStateBegan) {
-#if (!TARGET_IPHONE_SIMULATOR)
-        _ghostImageView.hidden = YES;
-        [_recorder record];
-#else
-		if (timerRecord) {
-			[timerRecord invalidate];
-			timerRecord = nil;
-		}
-		test_timeGauge = 0.0;
-		const NSTimeInterval interval = 1.0 / 60.0;
-		timerRecord = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(updateTimeRecordedLabel) userInfo:nil repeats:YES];
-#endif
-    }
-	else if (touchDetector.state == UIGestureRecognizerStateEnded) {
-#if (!TARGET_IPHONE_SIMULATOR)
-        [_recorder pause];
-        [self updateGhostImage];
-#else
-		if (timerRecord) {
-			[timerRecord invalidate];
-			timerRecord = nil;
-		}
-		test_timeGauge = 0.0;
-
-        [self _complete];
-#endif
-    }
-}
+//- (void)handleTouchDetected:(SCTouchDetector*)touchDetector {
+//	
+//
+//    if (touchDetector.state == UIGestureRecognizerStateBegan) {
+//#if (!TARGET_IPHONE_SIMULATOR)
+//        _ghostImageView.hidden = YES;
+//        [_recorder record];
+//#else
+//		if (timerRecord) {
+//			[timerRecord invalidate];
+//			timerRecord = nil;
+//		}
+//		test_timeGauge = 0.0;
+//		const NSTimeInterval interval = 1.0 / 60.0;
+//		timerRecord = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(updateTimeRecordedLabel) userInfo:nil repeats:YES];
+//#endif
+//    }
+//	else if (touchDetector.state == UIGestureRecognizerStateEnded) {
+//#if (!TARGET_IPHONE_SIMULATOR)
+//        [_recorder pause];
+//        [self updateGhostImage];
+//#else
+//		if (timerRecord) {
+//			[timerRecord invalidate];
+//			timerRecord = nil;
+//		}
+//		test_timeGauge = 0.0;
+//
+//        [self _complete];
+//#endif
+//    }
+//}
 
 - (IBAction)capturePhoto:(id)sender {
 	
@@ -698,7 +805,7 @@
 
 
 #pragma mark - RecorderSubmitPopupViewDelegate
-
+#pragma mark Twitter へ投稿
 - (void)recorderSubmitPopupViewOnTwitterShare:(RecorderSubmitPopupView *)view
 {
     LOG_METHOD;
@@ -724,7 +831,7 @@
     [self presentViewController:controller animated:YES completion:nil];
     
 }
-
+#pragma mark Facebook へ投稿
 - (void)recorderSubmitPopupViewOnFacebookShare:(RecorderSubmitPopupView *)view
 {
     LOG_METHOD;
@@ -779,10 +886,9 @@
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
 
+#pragma mark 投稿
 - (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
 {
-   
-    
     //セッションが7秒未満の時
      CMTime currentRecordDuration = _recordSession.currentRecordDuration;
     
@@ -852,8 +958,7 @@
 
 #pragma mark - Private Methods
 
-#pragma mark Complete
-
+#pragma mark Complete完了処理
 /**
  *  完了処理
  */
@@ -862,7 +967,8 @@
    [SVProgressHUD show];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    
+	
+#if 0
     // 投稿画面を設定
     self.submitView = [RecorderSubmitPopupView view];
     self.submitView.delegate = self;
@@ -893,6 +999,27 @@
         // 投稿画面を表示
         [weakSelf.submitView showInView:weakSelf.view];
     }];
+#else
+	// 動画を書き出し・保存
+	[self.recordSession mergeRecordSegments:^(NSError *error) {
+		[SVProgressHUD dismiss];
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		
+		if (error) {
+			[weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
+			return;
+		}
+		
+		// 動画をカメラロールに保存
+		[weakSelf.recordSession saveToCameraRoll];
+		
+		// カメラを停止
+		[_recorder endRunningSession];
+		
+		// 投稿画面を表示
+		[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+	}];
+#endif
 }
 
 /**
@@ -913,12 +1040,161 @@
 
 #pragma mark - バックボタン
 - (IBAction)onBackbutton:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        //
-    }];
+	
+	// !!!:dezamisystem・タブ間を移動、タイムラインへ
+	self.tabBarController.selectedIndex = 0;
+
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        //
+//    }];
 }
 
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	// UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
+	pager.currentPage = pageingScrollView.contentOffset.x / self.view.frame.size.width;
+}
 
+#pragma mark - UIPageControle
+- (void)changePageControl:(id)sender {
+}
+
+#pragma mark - SCFirstView
+-(void)recordBegan
+{
+	_ghostImageView.hidden = YES;
+	[_recorder record];
+}
+-(void)recordEnded
+{
+	[_recorder pause];
+	[self updateGhostImage];
+}
+-(void)flipCamera
+{
+	[_recorder switchCaptureDevices];
+}
+-(void)retake
+{
+	SCRecordSession *recordSession = _recorder.recordSession;
+	
+	if (recordSession != nil) {
+		_recorder.recordSession = nil;
+		
+		// If the recordSession was saved, we don't want to completely destroy it
+		if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+			[recordSession endRecordSegment:nil];
+		} else {
+			[recordSession cancelSession:nil];
+		}
+	}
+	
+	[self prepareCamera];
+	[self updateTimeRecordedLabel];
+	
+}
+
+#pragma mark - SCSecondView
+-(void)goBeforeRecorder
+{
+	//遷移：beforeRecorderTableViewController
+	[self performSegueWithIdentifier:SEGUE_GO_BEFORE_RECORDER sender:self];
+}
+-(void)goKakakuText
+{
+	//遷移：SCRecorderVideoController
+	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
+}
+
+#pragma mark - beforeRecorderViewController
+-(void)sendTenmeiString:(NSString*)str
+{
+	if (!str) return;
+	
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+	delegate.stringTenmei = [NSString stringWithString:str];
+}
+
+#pragma mark - KakakuTextViewController
+-(void)sendKakakuValue:(int)value
+{
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	delegate.valueKakaku = value;
+}
+
+#pragma mark - SCPostingViewController
+#pragma mark 投稿
+-(void)execSubmit
+{
+	//セッションが7秒未満の時
+	CMTime currentRecordDuration = _recordSession.currentRecordDuration;
+	
+	if (currentRecordDuration.timescale < 6) {
+		NSString *alertMessage = @"まだ7秒撮れていません";
+		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alrt show];
+	}
+	else  {
+		
+		NSLog(@"%s",__func__) ;
+		
+		[SVProgressHUD show];
+		
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+		
+		// サーバへデータを送信
+		__weak typeof(self)weakSelf = self;
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+		
+		//バックグラウンドで投稿
+		
+		// movie
+		[APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+		 {
+			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+			 
+			 if (error){
+				 
+			 }
+			 
+			 
+		 }];
+  
+		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+		
+		
+		[SVProgressHUD dismiss];
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		
+	}
+}
+
+-(void)cancelSubmit
+{
+//    SCRecordSession *recordSession = _recorder.recordSession;
+//
+//    if (recordSession != nil) {
+//        _recorder.recordSession = nil;
+//
+//        // If the recordSession was saved, we don't want to completely destroy it
+//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+//            [recordSession endRecordSegment:nil];
+//        } else {
+//            [recordSession cancelSession:nil];
+//        }
+//    }
+//	else {
+//		
+//	}
+}
+
+#pragma mark - 戻る
+- (IBAction)popViewController1:(UIStoryboardSegue *)segue {
+
+	NSLog(@"%s",__func__);
+	
+}
 
 @end

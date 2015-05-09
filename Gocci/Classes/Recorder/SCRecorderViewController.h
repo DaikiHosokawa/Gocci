@@ -13,7 +13,10 @@
 #import "CXCardView.h"
 #import "DemoContentView.h"
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate>
+#import "SCFirstView.h"
+#import "SCSecondView.h"
+
+@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, UIScrollViewDelegate, SCFirstViewDelegate,SCSecondViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *recordView;
 //@property (weak, nonatomic) IBOutlet UIButton *stopButton;
@@ -38,5 +41,12 @@
 //- (IBAction)switchFlash:(id)sender;
 //- (IBAction)capturePhoto:(id)sender;
 //- (IBAction)switchGhostMode:(id)sender;
+
+#pragma mark - beforeRecorderViewController
+-(void)sendTenmeiString:(NSString*)str;
+-(void)sendKakakuValue:(int)value;
+
+-(void)execSubmit;
+-(void)cancelSubmit;
 
 @end
