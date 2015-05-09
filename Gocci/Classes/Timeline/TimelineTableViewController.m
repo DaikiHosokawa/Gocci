@@ -302,8 +302,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSString *cellIdentifier = TimelineCellIdentifier;
     TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell){
-        cell = [[TimelineCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                   reuseIdentifier:cellIdentifier];
+        cell = [TimelineCell cell];
     }
     
     // セルにデータを反映

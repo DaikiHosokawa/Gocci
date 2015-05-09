@@ -365,10 +365,10 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
         UILabel *descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
         descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentLeft;
+        descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"7秒で飲食店を紹介してください";
         [_firstContentView addSubview:descriptionLabel];
         

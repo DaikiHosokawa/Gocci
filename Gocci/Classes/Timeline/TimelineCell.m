@@ -221,7 +221,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
 
     //tagA
-    if ([timelinePost.tagA isEqualToString:@"和風"]) {
+    if ([timelinePost.tagA isEqualToString:@"和食"]) {
       self.tagA.image = [UIImage imageNamed:@"tag-A-和.png"];
     
     } else if ([timelinePost.tagA isEqualToString:@"洋風"]) {
@@ -251,7 +251,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     //tagB
     if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
-        self.tagB.image = [UIImage imageNamed:@"tag-B-にぎやか.png"];
+        self.tagB.image = [UIImage imageNamed:@"tag-B-にぎやか.png"];
     } else if ([timelinePost.tagB isEqualToString:@"ゆったり"]) {
         self.tagB.image = [UIImage imageNamed:@"tag-B-ゆったり.png"];
     } else if([timelinePost.tagB isEqualToString:@"none"]) {

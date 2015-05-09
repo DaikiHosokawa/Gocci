@@ -242,8 +242,8 @@
                                 <color key="textColor" red="0.623459816" green="0.62356954809999998" blue="0.62345290180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4M-ZN-K7v">
-                                <rect key="frame" x="53" y="4" width="65" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4M-ZN-K7v">
+                                <rect key="frame" x="57" y="4" width="61" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="e5e-f7-I8k"/>
                                     <constraint firstAttribute="width" constant="65" id="zHG-R3-Ic2"/>
