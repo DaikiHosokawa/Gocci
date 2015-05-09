@@ -30,8 +30,8 @@
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
 static NSString * const SEGUE_GO_POSTING = @"goPosting";
-//static int valueKakaku = 0;
-//static NSString *stringTenmei = nil;
+
+static SCRecordSession *staticRecordSession;	// !!!:開放を避けるためにスタティック化
 
 
 @import AVFoundation;
@@ -51,7 +51,7 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
 	
-//	GaugeView *gaugeViewTimer;	// !!!:dezamisystem
+	//	GaugeView *gaugeViewTimer;
 	NSTimer *timerRecord;
 	NSTimeInterval test_timeGauge;
 	
@@ -64,12 +64,12 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 //- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
-@property (nonatomic, strong) SCRecordSession *recordSession;
+//@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
 //@property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
-// !!!:dezamisystem
+// !!!:dezamisystem・スクロールページ用
 @property (nonatomic,strong) UIScrollView *pageingScrollView;
 @property(nonatomic,strong) SCFirstView *firstView;
 @property(nonatomic,strong) SCSecondView *secondView;
@@ -179,7 +179,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 //	self.viewBaseGauge.backgroundColor = [UIColor clearColor];
 //	[gaugeViewTimer updateWithPer:0.5];
 	
-	// !!!:dezamisystem
     //self.capturePhotoButton.alpha = 0.0;
 	
     _ghostImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
@@ -199,22 +198,15 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
     // On iOS 8 and iPhone 5S, enabling this seems to be slow
     _recorder.initializeRecordSessionLazily = NO;
 	
-	[self updateTimeRecordedLabel];
+//	[self updateTimeRecordedLabel];
 	
-    // NavigationBar 非表示
-	// !!!:dezamisystem
-//	[self.navigationController setNavigationBarHidden:NO animated:YES];
-
-    //ナビゲーションバーの色を変更
-	// !!!:dezamisystem
-//	[UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
 	
     UIView *previewView = self.previewView;
     _recorder.previewView = previewView;
 
 	// !!!:dezamisystem・削除
 //    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-//	// !!!:dezamisystem・未使用なので
+//	// !!!:未使用なので
 //    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 //	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
@@ -290,6 +282,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		// ページコントロールの値が変わったときのアクションを登録
 		//[pager addTarget:self action:@selector(changePageControl:) forControlEvents:UIControlEventValueChanged];
 	}
+	
+	[self updateTimeRecordedLabel];
 
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
@@ -330,7 +324,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 {
     [super viewDidAppear:animated];
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder startRunningSession];
     [_recorder focusCenter];
@@ -344,7 +337,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 	}
 	isPassed = YES;
 
-	//ゲージリセット
+	// !!!:ゲージリセット
+//	[firstView updatePieChartWith:0 MAX:1];
 	[self updateTimeRecordedLabel];
 }
 
@@ -401,11 +395,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 	
     [self prepareCamera];
 	
-	// !!!:dezamisystem
-//	self.navigationController.navigationBarHidden = YES;
-	
-//	[self updateTimeRecordedLabel];
-	
     // NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	
@@ -416,12 +405,14 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 	[secondView setCategoryIndex:delegate.indexCategory];
 	[secondView setFunikiIndex:delegate.indexFuniki];
 	[secondView reloadTableList];
+	
+	// !!!:ゲージリセット
+	[firstView updatePieChartWith:0 MAX:1];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder previewViewFrameChanged];
 #endif
@@ -432,7 +423,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 {
     [super viewWillDisappear:animated];
 
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder endRunningSession];
 #endif
@@ -447,21 +437,21 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 // Focus
 - (void)recorderDidStartFocus:(SCRecorder *)recorder {
-	// !!!:dezamisystem
+
 #if (!TARGET_IPHONE_SIMULATOR)
     [self.focusView showFocusAnimation];
 #endif
 }
 
 - (void)recorderDidEndFocus:(SCRecorder *)recorder {
-	// !!!:dezamisystem
+
 #if (!TARGET_IPHONE_SIMULATOR)
     [self.focusView hideFocusAnimation];
 #endif
 }
 
 - (void)recorderWillStartFocus:(SCRecorder *)recorder {
-	// !!!:dezamisystem
+
 #if (!TARGET_IPHONE_SIMULATOR)
     [self.focusView showFocusAnimation];
 #endif
@@ -492,10 +482,9 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
     [self performSegueWithIdentifier:@"Photo" sender:self];
 }
 
-// !!!:使用停止
+// !!!:未使用
 //- (void) handleReverseCameraTapped:(id)sender {
 //	
-//	// !!!:dezamisystem
 //#if (!TARGET_IPHONE_SIMULATOR)
 //	[_recorder switchCaptureDevices];
 //#else
@@ -503,10 +492,9 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 //#endif
 //}
 
-// !!!:使用停止
+// !!!:未使用
 //- (void) handleStopButtonTapped:(id)sender {
 //	
-//	// !!!:dezamisystem
 //#if (!TARGET_IPHONE_SIMULATOR)
 //    SCRecordSession *recordSession = _recorder.recordSession;
 //    
@@ -516,15 +504,16 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 //#endif
 //}
 
+#pragma mark 撮影完了
 - (void)finishSession:(SCRecordSession *)recordSession {
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
 
     [recordSession endRecordSegment:^(NSInteger segmentIndex, NSError *error) {
         [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
         
-        self.recordSession = recordSession;
+//        self.recordSession = recordSession;
+		staticRecordSession = recordSession;
         [self _complete];
         [self prepareCamera];
     }];
@@ -532,11 +521,10 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 }
 
 #pragma mark Retakeイベント
-// !!!:使用停止
+// !!!:未使用
 // retakeButtonでタップを判定し、押されたときに撮影秒数をゼロにするボタンです
 //- (void) handleRetakeButtonTapped:(id)sender
 //{
-//	// !!!:dezamisystem
 //#if (!TARGET_IPHONE_SIMULATOR)
 //    SCRecordSession *recordSession = _recorder.recordSession;
 //    
@@ -562,7 +550,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 #pragma mark カメラモード切り替えイベント
 - (IBAction)switchCameraMode:(id)sender
 {
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -596,7 +583,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 - (IBAction)switchFlash:(id)sender
 {
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     NSString *flashModeString = nil;
     if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
@@ -644,7 +630,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 #pragma mark - カメラ準備
 - (void) prepareCamera {
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
 	// ???:毎回生成する？
 	// if (_recorder.recordSession == nil)
@@ -696,12 +681,10 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 	
 	NSTimeInterval time_now = 0.0;
 	NSTimeInterval time_max = 8.0;
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     if (_recorder.recordSession != nil) {
         currentTime = _recorder.recordSession.currentRecordDuration;
 		
-		// !!!:dezamisystem
 		time_now = CMTimeGetSeconds(currentTime);
 		
 		CMTime cmMaxTime = _recorder.recordSession.suggestedMaxRecordDuration;
@@ -772,7 +755,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 - (IBAction)capturePhoto:(id)sender {
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder capturePhoto:^(NSError *error, UIImage *image) {
         if (image != nil) {
@@ -786,7 +768,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 - (void)updateGhostImage {
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
     _ghostImageView.image = [_recorder snapshotOfLastAppendedVideoBuffer];
     //_ghostImageView.hidden = !_ghostModeButton.selected;
@@ -795,7 +776,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 - (IBAction)switchGhostMode:(id)sender {
 	
-	// !!!:dezamisystem
 #if (!TARGET_IPHONE_SIMULATOR)
    // _ghostModeButton.selected = !_ghostModeButton.selected;
    // _ghostImageView.hidden = !_ghostModeButton.selected;
@@ -849,8 +829,9 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSData *movieData = [[NSData alloc] initWithContentsOfURL:self.recordSession.outputUrl];
-    
+    //NSData *movieData = [[NSData alloc] initWithContentsOfURL:self.recordSession.outputUrl];
+	NSData *movieData = [[NSData alloc] initWithContentsOfURL:staticRecordSession.outputUrl];
+	
     // パラメータの設定
     NSMutableDictionary *params = @{
                                     @"message": @"Gocciからの投稿",
@@ -997,7 +978,9 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
     }];
 #else
 	// 動画を書き出し・保存
-	[self.recordSession mergeRecordSegments:^(NSError *error) {
+	//[self.recordSession mergeRecordSegments:^(NSError *error)
+	[staticRecordSession mergeRecordSegments:^(NSError *error)
+	 {
 		[SVProgressHUD dismiss];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 		
@@ -1007,7 +990,8 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		}
 		
 		// 動画をカメラロールに保存
-		[self.recordSession saveToCameraRoll];
+		//[self.recordSession saveToCameraRoll];
+		[staticRecordSession saveToCameraRoll];
 		
 		// カメラを停止
 		[_recorder endRunningSession];
@@ -1124,17 +1108,14 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 #pragma mark 投稿
 -(void)execSubmit
 {
-	// ???:recordeSessionが開放されている＝画面遷移で自動開放されている？
-	
-	//セッションが7秒未満の時
-	CMTime currentRecordDuration = _recordSession.currentRecordDuration;
-	
-	if (currentRecordDuration.timescale < 7) {
-		NSString *alertMessage = @"まだ7秒撮れていません";
-		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-		[alrt show];
-	}
-	else
+//	//セッションが7秒未満の時
+//	CMTime currentRecordDuration = staticRecordSession.currentRecordDuration;
+//	if (currentRecordDuration.timescale < 7) {
+//		NSString *alertMessage = @"まだ7秒撮れていません";
+//		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//		[alrt show];
+//	}
+//	else
 	{
 		NSLog(@"%s",__func__) ;
 		
@@ -1143,14 +1124,22 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 		
 		// サーバへデータを送信
-//		__weak typeof(self)weakSelf = self;
+		//__weak typeof(self)weakSelf = self;
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+		
+		NSLog(@"%@",staticRecordSession.outputUrl);
+		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+		
+		NSString *gText = @"？";
+		if (appDelegate.gText) gText = appDelegate.gText;
+		NSString *cheertag = @"？";
+		if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
 		
 		//バックグラウンドで投稿
 		// movie
-		[APIClient movieWithFilePathURL:self.recordSession.outputUrl
-							   restname:appDelegate.gText
-						star_evaluation:appDelegate.cheertag
+		[APIClient movieWithFilePathURL:staticRecordSession.outputUrl
+							   restname:gText
+						star_evaluation:cheertag
 								handler:^(id result, NSUInteger code, NSError *error)
 		 {
 			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
@@ -1159,8 +1148,6 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 				 
 			 }
 		 }];
-  
-		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
 		
 		[SVProgressHUD dismiss];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -1169,28 +1156,13 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 -(void)cancelSubmit
 {
-//    SCRecordSession *recordSession = _recorder.recordSession;
-//
-//    if (recordSession != nil) {
-//        _recorder.recordSession = nil;
-//
-//        // If the recordSession was saved, we don't want to completely destroy it
-//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-//            [recordSession endRecordSegment:nil];
-//        } else {
-//            [recordSession cancelSession:nil];
-//        }
-//    }
-//	else {
-//		
-//	}
+	NSLog(@"%s",__func__);
 }
 
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
 
 	NSLog(@"%s",__func__);
-	
 }
 
 @end
