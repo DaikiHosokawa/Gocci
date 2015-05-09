@@ -901,7 +901,7 @@
         <!--Posting View Controller-->
         <scene sceneID="uzt-L0-1vf">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Sal-Jd-8HJ" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Sal-Jd-8HJ" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7U-eq-0Rf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1062,7 +1062,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1103,7 +1103,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="202" y="9.0000000458798866" width="48" height="48"/>
+                                        <rect key="frame" x="202" y="9.0000000706463528" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1321,10 +1321,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0Dp-RU-HDt"/>
-        <segue reference="Nkn-A9-wHX"/>
         <segue reference="NV9-nc-uNy"/>
-        <segue reference="Wcl-6f-Fmi"/>
+        <segue reference="Nkn-A9-wHX"/>
+        <segue reference="0Dp-RU-HDt"/>
         <segue reference="xtK-F5-G4I"/>
+        <segue reference="Wcl-6f-Fmi"/>
     </inferredMetricsTieBreakers>
 </document>

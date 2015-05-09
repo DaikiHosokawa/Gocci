@@ -438,7 +438,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="401" width="375" height="47"/>
+                                <rect key="frame" x="0.0" y="337" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="46"/>
@@ -597,7 +597,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="366" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -729,7 +729,7 @@
         <!--Posting View Controller-->
         <scene sceneID="HOh-ob-sRP">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HiE-hz-T1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -891,7 +891,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -943,7 +943,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -978,7 +978,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="239" y="10" width="48" height="46.000000124392301"/>
+                                        <rect key="frame" x="239" y="10" width="48" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1175,7 +1175,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="iZ2-A9-906" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iZ2-A9-906" id="YdG-PO-9SA">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1208,7 +1208,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="xtj-fv-F3D" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtj-fv-F3D" id="DVt-E1-vg9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1241,7 +1241,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="4XJ-qA-NLM" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XJ-qA-NLM" id="U1h-SU-AUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1300,11 +1300,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="ElI-qq-NoV"/>
         <segue reference="dXj-10-ygf"/>
         <segue reference="rgp-uC-gVz"/>
         <segue reference="EB8-lD-Dfx"/>
-        <segue reference="oAW-Uz-WM7"/>
-        <segue reference="ElI-qq-NoV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
