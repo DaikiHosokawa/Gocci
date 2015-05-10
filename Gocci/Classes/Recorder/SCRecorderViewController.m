@@ -1095,7 +1095,7 @@ static SCRecorder *_recorder;
 #pragma mark - DEBUG
 - (IBAction)onGoPosting:(id)sender {
 #ifdef DEBUG
-	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+//	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
 

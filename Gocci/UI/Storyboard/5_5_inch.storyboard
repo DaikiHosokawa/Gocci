@@ -958,27 +958,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cQa-MD-hOC">
-                                <rect key="frame" x="103" y="670" width="208" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="submitBtn">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSubmit:" destination="7Oz-JW-I5Z" eventType="touchUpInside" id="JzT-NF-MNp"/>
-                                    <segue destination="nWG-ez-quk" kind="unwind" unwindAction="popViewController1:" id="dJ8-3s-qRg"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="lo3-Dm-6H0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="322"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" id="UVg-Uj-2zs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                            <view contentMode="scaleToFill" id="vXd-ZP-gtT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="lo3-Dm-6H0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="322"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="ztZ-67-daC">
+                                        <rect key="frame" x="198" y="20" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4YN-IV-DLE">
+                                        <rect key="frame" x="0.0" y="559" width="414" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7Oz-JW-I5Z" id="HDC-7W-eij"/>
+                                            <outlet property="delegate" destination="7Oz-JW-I5Z" id="K3p-cc-Nc4"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cQa-MD-hOC">
+                                        <rect key="frame" x="103" y="677" width="208" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="submitBtn">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSubmit:" destination="7Oz-JW-I5Z" eventType="touchUpInside" id="JzT-NF-MNp"/>
+                                            <segue destination="nWG-ez-quk" kind="unwind" unwindAction="popViewController1:" id="dJ8-3s-qRg"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Rk-Te-r32">
-                                        <rect key="frame" x="10" y="26" width="30" height="30"/>
+                                        <rect key="frame" x="8" y="21" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="btn_delete_white">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -987,30 +1000,19 @@
                                             <segue destination="nWG-ez-quk" kind="unwind" unwindAction="popViewController1:" id="go7-WG-Gr7"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="ztZ-67-daC">
-                                        <rect key="frame" x="191" y="25" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4YN-IV-DLE">
-                                <rect key="frame" x="0.0" y="552" width="414" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="7Oz-JW-I5Z" id="HDC-7W-eij"/>
-                                    <outlet property="delegate" destination="7Oz-JW-I5Z" id="K3p-cc-Nc4"/>
-                                </connections>
-                            </tableView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="grf-6H-V8k"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="lo3-Dm-6H0" id="Iec-Vr-OpR"/>
                         <outlet property="tableviewTubuyaki" destination="4YN-IV-DLE" id="pjW-po-7Nv"/>
+                        <outlet property="viewBase" destination="vXd-ZP-gtT" id="LcK-ea-PWA"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="33G-Rn-4Mg"/>
                         <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="A6l-Sl-qZw"/>
                     </connections>
