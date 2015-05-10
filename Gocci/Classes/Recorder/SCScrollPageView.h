@@ -15,4 +15,6 @@
 
 -(void)showInView:(UIView*)superview first:(SCFirstView*)viewfirst second:(SCSecondView*)viewsecond;
 
+-(void)showInView:(UIView*)superview first:(SCFirstView*)viewfirst first2:(SCFirstView*)viewsecond;
+
 @end

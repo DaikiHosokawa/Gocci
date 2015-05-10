@@ -61,8 +61,9 @@ static SCRecorder *_recorder;
 	
 	// !!!:dezamisystem・スクロールページ用
 	SCScrollPageView *scrollpageview;
-//	UIPageControl *pager;
+	SCFirstView *dummyfirstvuew;
 
+	
 }
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -181,92 +182,20 @@ static SCRecorder *_recorder;
 		firstView = [SCFirstView create];
 		firstView.delegate = self;
 		//[pageingScrollView addSubview:firstView];
-
+#if 1
 		secondView = [SCSecondView create];
 		secondView.delegate = self;
 		//[pageingScrollView addSubview:secondView];
+#else	
+		dummyfirstvuew = [SCFirstView create];
+		dummyfirstvuew.delegate = self;
+		dummyfirstvuew.frame = CGRectOffset(dummyfirstvuew.frame, rect_page.size.width, 0);
+#endif
 	}
+#if 1
 	[scrollpageview showInView:self.view first:firstView second:secondView];
-	
-#if 0
-	{
-		int count_page = 2;
-		
-//		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
-		//画面サイズから場合分け
-		CGRect rect = [UIScreen mainScreen].bounds;
-//		if (rect.size.height == 480) {
-//			//3.5inch
-//			rect_page = CGRectMake(0, 336, 320, 144);
-//		}
-//		else if (rect.size.height == 667) {
-//			//4.7inch
-//			rect_page = CGRectMake(0, 467, 375, 200);
-//		}
-//		else if (rect.size.height == 736) {
-//			//5.5inch
-//			rect_page = CGRectMake(0, 516, 414, 220);
-//		}
-
-		CGFloat width_page = self.scrollviewPage.frame.size.width; //self.view.frame.size.width;
-		CGFloat height_page = self.scrollviewPage.frame.size.height; // self.view.frame.size.height;
-		//CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
-		//pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
-		//pageingScrollView.delegate = self;
-		//pageingScrollView.contentSize = CGSizeMake(width_page * 2, height_page);
-		//pageingScrollView.pagingEnabled = YES;
-		//pageingScrollView.showsHorizontalScrollIndicator = NO;
-		//pageingScrollView.showsVerticalScrollIndicator = NO;
-		//pageingScrollView.scrollsToTop = NO;
-		//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
-		//[self.viewPageBase addSubview:pageingScrollView];
-		//[self.view addSubview:pageingScrollView];
-		self.scrollviewPage.contentSize = CGSizeMake(width_page * 2, height_page);
-		
-		//スクロールビューの上にビュー追加
-		{
-			firstView = [SCFirstView create];
-			firstView.delegate = self;
-			//[pageingScrollView addSubview:firstView];
-			[firstView showInView:self.scrollviewPage];
-		}
-		{
-			secondView = [SCSecondView create];
-			secondView.delegate = self;
-			//[pageingScrollView addSubview:secondView];
-			[secondView showInView:self.scrollviewPage offset:CGPointMake(width_page, 0) back:0];
-		}
-		
-		CGFloat y_page = 35 + 100;
-		//画面サイズから場合分け
-		if (rect.size.height == 480) {
-			//3.5inch
-			y_page = 27 + 90;
-		}
-		else if (rect.size.height == 667) {
-			//4.7inch
-			y_page = 50 + 100;
-		}
-		else if (rect.size.height == 736) {
-			//5.5inch
-			y_page = 60 + 100;
-		}
-		CGFloat origin_y_scroll = self.scrollviewPage.frame.origin.y;
-		y_page += origin_y_scroll;
-		
-		// ページコントロール
-		// ページングスクロールビューの下にページコントロールを配置
-		CGFloat height_pc = 20;
-		pager = [[UIPageControl alloc] initWithFrame:CGRectMake(0,y_page, width_page,height_pc)];
-		//pager.backgroundColor = [UIColor blackColor];
-		pager.numberOfPages = count_page;		// ページ数を指定
-		pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
-		pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
-		pager.userInteractionEnabled = NO;
-		[self.view addSubview:pager];
-
-	}
-	[self updateTimeRecordedLabel];
+#else
+	[scrollpageview showInView:self.view first:firstView first2:dummyfirstvuew];
 #endif
 	
 #if (!TARGET_IPHONE_SIMULATOR)
@@ -319,7 +248,7 @@ static SCRecorder *_recorder;
 	
 	[super viewWillAppear:animated];
 	
-	NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
+	//NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
 	
 	//[self prepareCamera];
 	

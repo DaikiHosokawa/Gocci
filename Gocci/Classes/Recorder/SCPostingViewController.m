@@ -37,6 +37,8 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
+	
 	// ???:ずれを解消出来る？
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	
@@ -54,7 +56,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		self.navigationItem.backBarButtonItem = barButton;
 	}
 
-#if 0
+#if 1
 	//情報テーブルビュー
 	CGRect rect_second = CGRectMake(0, 246, 320, 170);	// 4inch
 	{
@@ -76,7 +78,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		secondView = [SCSecondView create];
 		secondView.frame = rect_second;
 		secondView.delegate = self;
-		[secondView showInView:self.view offset:CGPointZero back:1];
+		//[secondView showInView:self.view offset:CGPointZero back:1];
 	}
 	
 	//ソーシャルテーブルビュー
@@ -87,7 +89,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		tableviewSocial.delegate = self;
 		tableviewSocial.dataSource = self;
 		tableviewSocial.scrollEnabled = NO;
-		[self.view addSubview:tableviewSocial];
+		//[self.view addSubview:tableviewSocial];
 	}
 #endif
 }
@@ -100,13 +102,16 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 -(void)viewDidLayoutSubviews
 {
 	[super viewDidLayoutSubviews];
-	
+
+	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
+
 	tableviewSocial.contentOffset = CGPointMake(0, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
 	//NSLog(@"投稿画面：矩形：%@", NSStringFromCGRect(self.view.frame) );
+	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 	
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -116,45 +121,49 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 -(void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+
+	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
+
+
+	[secondView showInView:self.view offset:CGPointZero back:1];
+	[self.view addSubview:tableviewSocial];
 	
-	//NSLog(@"%@", self.navigationItem.backBarButtonItem.title);
-	
-	//情報テーブルビュー
-	CGRect rect_second = CGRectMake(0, 246, 320, 170);	// 4inch
-	if (!secondView)
-	{
-		//画面サイズから場合分け
-		CGRect rect = [UIScreen mainScreen].bounds;
-		if (rect.size.height == 480) {
-			//3.5inch
-			rect_second = CGRectMake(0, 198, 320, 144);
-		}
-		else if (rect.size.height == 667) {
-			//4.7inch
-			rect_second = CGRectMake(0, 284, 375, 200);
-		}
-		else if (rect.size.height == 736) {
-			//5.5inch
-			rect_second = CGRectMake(0, 322, 414, 220);
-		}
-		
-		secondView = [SCSecondView create];
-		secondView.frame = rect_second;
-		secondView.delegate = self;
-		[secondView showInView:self.view offset:CGPointZero back:1];
-	}
-	
-	//ソーシャルテーブルビュー
-	if (!tableviewSocial)
-	{
-		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
-		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
-		//tableviewSocial.frame = rect_social;
-		tableviewSocial.delegate = self;
-		tableviewSocial.dataSource = self;
-		tableviewSocial.scrollEnabled = NO;
-		[self.view addSubview:tableviewSocial];
-	}
+//	//情報テーブルビュー
+//	CGRect rect_second = CGRectMake(0, 246, 320, 170);	// 4inch
+//	if (!secondView)
+//	{
+//		//画面サイズから場合分け
+//		CGRect rect = [UIScreen mainScreen].bounds;
+//		if (rect.size.height == 480) {
+//			//3.5inch
+//			rect_second = CGRectMake(0, 198, 320, 144);
+//		}
+//		else if (rect.size.height == 667) {
+//			//4.7inch
+//			rect_second = CGRectMake(0, 284, 375, 200);
+//		}
+//		else if (rect.size.height == 736) {
+//			//5.5inch
+//			rect_second = CGRectMake(0, 322, 414, 220);
+//		}
+//		
+//		secondView = [SCSecondView create];
+//		secondView.frame = rect_second;
+//		secondView.delegate = self;
+//		[secondView showInView:self.view offset:CGPointZero back:1];
+//	}
+//	
+//	//ソーシャルテーブルビュー
+//	if (!tableviewSocial)
+//	{
+//		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
+//		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
+//		//tableviewSocial.frame = rect_social;
+//		tableviewSocial.delegate = self;
+//		tableviewSocial.dataSource = self;
+//		tableviewSocial.scrollEnabled = NO;
+//		[self.view addSubview:tableviewSocial];
+//	}
 	
 	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	[secondView setKakakuValue:delegate.valueKakaku];
