@@ -748,7 +748,7 @@
                     <navigationItem key="navigationItem" id="7gH-GR-dGI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="2" kind="push" identifier="goRecorder" id="pSr-rg-SQo"/>
+                        <segue destination="y1g-iL-KK8" kind="push" identifier="goPosting" id="yBd-gY-jth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5U-0S-S6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1096,7 +1096,6 @@
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="MYt-Vr-66O"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="pJ4-iy-6wo"/>
                         <segue destination="6sj-W1-HXY" kind="modal" identifier="goKakaku" id="4Gi-cU-FKM"/>
-                        <segue destination="y1g-iL-KK8" kind="push" identifier="goPosting" id="Gz2-Wf-F3C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -1325,11 +1324,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pJ4-iy-6wo"/>
-        <segue reference="4Gi-cU-FKM"/>
+        <segue reference="rgp-uC-gVz"/>
+        <segue reference="EB8-lD-Dfx"/>
+        <segue reference="FOa-6V-u96"/>
         <segue reference="ELX-A7-CBx"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

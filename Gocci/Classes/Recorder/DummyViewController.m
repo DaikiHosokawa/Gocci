@@ -50,7 +50,13 @@
 - (IBAction)onRecorder:(id)sender {
 
 	//遷移：SCRecorderVideoController
-	[self performSegueWithIdentifier:@"goRecorder" sender:self];
+	[self performSegueWithIdentifier:@"goPosting" sender:self];
+}
+
+#pragma mark - 戻る
+- (IBAction)popViewController1:(UIStoryboardSegue *)segue {
+	
+	NSLog(@"%s",__func__);
 }
 
 /*

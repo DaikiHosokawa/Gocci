@@ -985,7 +985,7 @@
                     <navigationItem key="navigationItem" id="IXC-Or-aNi"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <segue destination="2" kind="push" identifier="goRecorder" id="I6m-35-MQH"/>
+                        <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="bLZ-oX-KcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1052,6 +1052,7 @@
                     <navigationItem key="navigationItem" id="bXL-oA-Usp">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="xNq-QA-OyL"/>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="xV5-Bt-Qfr" id="CbY-ri-yv8"/>
@@ -1213,7 +1214,6 @@
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="wz6-2Z-iBT"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="J2l-nh-8BO"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Ffq-fV-qzW"/>
-                        <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="P9y-6H-Gbp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -1344,10 +1344,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ffq-fV-qzW"/>
-        <segue reference="J2l-nh-8BO"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="Ffq-fV-qzW"/>
+        <segue reference="J2l-nh-8BO"/>
     </inferredMetricsTieBreakers>
 </document>
