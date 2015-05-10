@@ -24,6 +24,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	SCSecondView *secondView;
 	
 //	UITableView *tableviewSocial;
+	__weak IBOutlet UIView *viewBase;
 	__weak IBOutlet UITableView *tableviewTubuyaki;
 }
 
@@ -77,7 +78,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		secondView = [SCSecondView create];
 		secondView.frame = rect_second;
 		secondView.delegate = self;
-		[secondView showInView:self.view offset:CGPointZero back:1];
+		[secondView showInView:viewBase offset:CGPointZero back:1];
 	}
 	
 //	//ソーシャルテーブルビュー

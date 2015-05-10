@@ -954,27 +954,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zEa-9S-xGH">
-                                <rect key="frame" x="56" y="511" width="208" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="submitBtn">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSubmit:" destination="Sal-Jd-8HJ" eventType="touchUpInside" id="Kbp-S8-XSf"/>
-                                    <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="yaX-lr-5e2"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="mcH-2Y-ViT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" id="2kY-xk-iUb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                            <view contentMode="scaleToFill" id="GtY-iQ-mOh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="mcH-2Y-ViT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bZ9-0v-YIb">
-                                        <rect key="frame" x="14" y="26" width="30" height="30"/>
+                                        <rect key="frame" x="8" y="20" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="btn_delete_white">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -983,29 +972,42 @@
                                             <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="R6m-wh-QJo"/>
                                         </connections>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dlz-3X-mki">
+                                        <rect key="frame" x="0.0" y="421" width="320" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Sal-Jd-8HJ" id="oEL-fV-uMq"/>
+                                            <outlet property="delegate" destination="Sal-Jd-8HJ" id="NCQ-iJ-LSU"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zEa-9S-xGH">
+                                        <rect key="frame" x="65" y="514" width="208" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="submitBtn">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSubmit:" destination="Sal-Jd-8HJ" eventType="touchUpInside" id="Kbp-S8-XSf"/>
+                                            <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="yaX-lr-5e2"/>
+                                        </connections>
+                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="7TI-CB-zBC">
-                                        <rect key="frame" x="144" y="25" width="32" height="32"/>
+                                        <rect key="frame" x="144" y="19" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dlz-3X-mki">
-                                <rect key="frame" x="0.0" y="418" width="320" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Sal-Jd-8HJ" id="oEL-fV-uMq"/>
-                                    <outlet property="delegate" destination="Sal-Jd-8HJ" id="NCQ-iJ-LSU"/>
-                                </connections>
-                            </tableView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jZo-Yg-Zbc"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="mcH-2Y-ViT" id="4R0-QP-zu4"/>
                         <outlet property="tableviewTubuyaki" destination="Dlz-3X-mki" id="0tP-wD-HPI"/>
+                        <outlet property="viewBase" destination="GtY-iQ-mOh" id="nup-Af-r0l"/>
                         <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="SDs-PX-5V3"/>
                         <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Kbo-Zn-huj"/>
                     </connections>
@@ -1360,8 +1362,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="pPi-jq-5EO"/>
         <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="tk5-fM-XTh"/>
-        <segue reference="Cte-je-0wV"/>
+        <segue reference="SDs-PX-5V3"/>
+        <segue reference="Kbo-Zn-huj"/>
         <segue reference="5vL-6n-Sjz"/>
     </inferredMetricsTieBreakers>
 </document>
