@@ -37,6 +37,9 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	// ???:ずれを解消出来る？
+	self.automaticallyAdjustsScrollViewInsets = NO;
+	
 	//ナビゲーションバーに画像
 	{
 		//CGFloat height_image = self.navigationController.navigationBar.frame.size.height;

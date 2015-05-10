@@ -106,6 +106,9 @@ static SCRecorder *_recorder;
 	
     [super viewDidLoad];
 	
+	// ???:ずれを解消出来る？
+	self.automaticallyAdjustsScrollViewInsets = NO;
+
     //self.capturePhotoButton.alpha = 0.0;
 	
 	// ???:hiddenのまま
@@ -331,8 +334,8 @@ static SCRecorder *_recorder;
 	[secondView setFunikiIndex:delegate.indexFuniki];
 	[secondView reloadTableList];
 	
-	// !!!:ゲージリセット
-	//[firstView updatePieChartWith:0 MAX:1];
+	// !!!:ゲージ再描画
+	[self updateTimeRecordedLabel];
 }
 
 #pragma mark 描画完了後
@@ -353,9 +356,8 @@ static SCRecorder *_recorder;
 	}
 	isPassed = YES;
 
-	// !!!:ゲージリセット
-//	[firstView updatePieChartWith:0 MAX:1];
-//	[self updateTimeRecordedLabel];
+	// !!!:ゲージ再描画
+	[self updateTimeRecordedLabel];
 }
 
 - (BOOL)isFirstRun
@@ -614,10 +616,10 @@ static SCRecorder *_recorder;
 }
 
 #pragma mark - カメラ準備
-- (void) prepareCamera {
-	
+- (void) prepareCamera
+{
 #if (!TARGET_IPHONE_SIMULATOR)
-	if (_recorder.recordSession == nil)
+	//if (_recorder.recordSession == nil)
 	{
         SCRecordSession *session = [SCRecordSession recordSession];
         //最大秒数
@@ -1139,7 +1141,7 @@ static SCRecorder *_recorder;
 {
 	NSLog(@"%s",__func__);
 	
-	[self retake];
+//	[self retake];
 	
 	//SCRecordSession *recordSession = _recorder.recordSession;
 	//
@@ -1163,6 +1165,8 @@ static SCRecorder *_recorder;
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
 
 	NSLog(@"%s",__func__);
+	
+	[self retake];
 }
 
 #pragma mark - DEBUG

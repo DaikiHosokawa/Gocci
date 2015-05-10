@@ -953,7 +953,7 @@
         <!--Posting View Controller-->
         <scene sceneID="cKI-j5-cT4">
             <objects>
-                <viewController id="7Oz-JW-I5Z" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7Oz-JW-I5Z" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XwZ-pV-AIx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1041,11 +1041,37 @@
         <!--投稿-->
         <scene sceneID="0N9-JN-Mno">
             <objects>
-                <viewController storyboardIdentifier="screcorder" id="Ea5-Rq-ylI" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" id="Ea5-Rq-ylI" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ekF-9W-qgR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_black.png" id="zUY-q5-bhN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rNT-Os-jeU">
+                                <rect key="frame" x="11" y="26" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_delete_white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBackbutton:" destination="Ea5-Rq-ylI" eventType="touchUpInside" id="vnN-g7-UDy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8a6-tN-bsA">
+                                <rect key="frame" x="192" y="26" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="naviIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGoPosting:" destination="Ea5-Rq-ylI" eventType="touchUpInside" id="x0s-DD-xEx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="87p-Jb-JmX"/>
                     <navigationItem key="navigationItem" id="rfg-P8-iNA"/>
@@ -1190,7 +1216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4516" y="-1074"/>
+            <point key="canvasLocation" x="-6257" y="-727"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="PzO-Kk-faR">
@@ -1317,8 +1343,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wis-md-2uD"/>
-        <segue reference="OKq-Wv-gQ1"/>
-        <segue reference="UpQ-zf-3aZ"/>
+        <segue reference="33G-Rn-4Mg"/>
+        <segue reference="A6l-Sl-qZw"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="sBC-Zs-pgG"/>
     </inferredMetricsTieBreakers>

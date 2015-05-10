@@ -963,7 +963,7 @@
         <!--撮影-->
         <scene sceneID="3fe-zA-FUW">
             <objects>
-                <viewController storyboardIdentifier="screcorder" hidesBottomBarWhenPushed="YES" id="yAA-dq-VR1" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="yAA-dq-VR1" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zjh-Me-rp3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1012,7 +1012,7 @@
         <!--SCPostingViewController-->
         <scene sceneID="z5T-qs-wV4">
             <objects>
-                <viewController title="SCPostingViewController" id="grg-UZ-rTW" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController title="SCPostingViewController" automaticallyAdjustsScrollViewInsets="NO" id="grg-UZ-rTW" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Gn-4K-wy8">
                         <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1348,8 +1348,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TRo-Kj-rA7"/>
-        <segue reference="7Yb-Fi-HEj"/>
+        <segue reference="Gee-JD-9BO"/>
+        <segue reference="mqM-qI-glM"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
