@@ -57,22 +57,24 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 	// !!!:dezamisystem・スクロールページ用
 	UIPageControl *pager;
-	__weak IBOutlet UIView *pagebaseview;
+//	__weak IBOutlet UIView *pagebaseview;
 }
 
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIView *viewPageBase;
 
-//- (void)showDefaultContentView;
 
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
-//@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
+
 //@property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
 // !!!:dezamisystem・スクロールページ用
 @property (nonatomic,strong) UIScrollView *pageingScrollView;
 @property(nonatomic,strong) SCFirstView *firstView;
 @property(nonatomic,strong) SCSecondView *secondView;
+//@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
 
 @end
 
@@ -96,7 +98,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #endif
 
 #pragma mark - Left cycle
-
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
@@ -105,71 +106,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //    CGFloat width = self.view.bounds.size.width;
 //    CGFloat height = self.view.bounds.size.height;
 	
-    /*
-    // UIScrollViewのインスタンス化
-    _scrollView = [[UIScrollView alloc]init];
-    _scrollView.backgroundColor = [UIColor blackColor];
-    _scrollView.frame = CGRectMake(0,self.view.bounds.size.height-height*0.3, width, height);
-    
-    // 横スクロールのインジケータを非表示にする
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    
-    // ページングを有効にする
-    _scrollView.pagingEnabled = YES;
-    
-    _scrollView.userInteractionEnabled = YES;
-    _scrollView.delegate = self;
-    
-    // スクロールの範囲を設定
-    [_scrollView setContentSize:CGSizeMake((pageSize * width), height)];
-    
-    // スクロールビューを貼付ける
-    [self.view addSubview:_scrollView];
-    
-    
-    // スクロールビューにラベルを貼付ける
-    for (int i = 0; i < pageSize; i++) {
-        // UILabel作成
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(i * width, width, width, height)];
-        label.text = [NSString stringWithFormat:@"%d", i + 1];
-        label.font = [UIFont fontWithName:@"Arial" size:92];
-        label.textColor = [UIColor whiteColor];
-        label.backgroundColor = [UIColor blackColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        [_scrollView addSubview:label];
-        _recordView.frame = CGRectMake(width*0.35, 40, 120,120);
-         [_scrollView addSubview:_recordView];
-        NSLog(@"imagenum:%d",i);
-    }
-    
-    // ページコントロールのインスタンス化
-    CGFloat x = (width - 300) / 2;
-    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(x, 530, 300, 250)];
-    
-    // 背景色を設定
-   // _pageControl.backgroundColor = [UIColor whiteColor];
-    
-    // ページ数を設定
-    _pageControl.numberOfPages = pageSize;
-    
-    // 現在のページを設定
-    _pageControl.currentPage = 0;
-    
-    // デフォルトの色
-    self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    // 選択されてるページを現す色
-    self.pageControl.currentPageIndicatorTintColor = [UIColor lightGrayColor];
-    // ページコントロールをタップされたときに呼ばれるメソッドを設定
-    _pageControl.userInteractionEnabled = YES;
-    [_pageControl addTarget:self
-                    action:@selector(pageControl_Tapped:)
-          forControlEvents:UIControlEventValueChanged];
-    
-    // ページコントロールを貼付ける
-    [_scrollView addSubview:_pageControl];
-    [_scrollView addSubview:_recordView];
-    */
-    
 	// !!!:dezamisystem・削除
 //	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
 //	CGRect rect_gauge = CGRectMake(0, 0, self.viewBaseGauge.frame.size.width, self.viewBaseGauge.frame.size.height);
@@ -212,7 +148,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
 	//self.recordView.alpha = 1.0;
 	
-	self.loadingView.hidden = YES;
+//	self.loadingView.hidden = YES;
     self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
@@ -226,8 +162,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	{
 		int count_page = 2;
 		
-		CGFloat width_page = pagebaseview.frame.size.width; //self.view.frame.size.width;
-		CGFloat height_page = pagebaseview.frame.size.height; // self.view.frame.size.height;
+		CGFloat width_page = self.viewPageBase.frame.size.width; //self.view.frame.size.width;
+		CGFloat height_page = self.viewPageBase.frame.size.height; // self.view.frame.size.height;
 		CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
 		pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
 		pageingScrollView.delegate = self;
@@ -237,7 +173,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		pageingScrollView.showsVerticalScrollIndicator = NO;
 		pageingScrollView.scrollsToTop = NO;
 		//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
-		[pagebaseview addSubview:pageingScrollView];
+		[self.viewPageBase addSubview:pageingScrollView];
 		
 		//スクロールビューの上にビューコントローラー
 		{
@@ -277,7 +213,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		pager.numberOfPages = count_page;		// ページ数を指定
 		pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
 		pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
-		[pagebaseview addSubview:pager];
+		[self.viewPageBase addSubview:pager];
 		pager.userInteractionEnabled = NO;
 		// ページコントロールの値が変わったときのアクションを登録
 		//[pager addTarget:self action:@selector(changePageControl:) forControlEvents:UIControlEventValueChanged];
@@ -311,12 +247,43 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //    }
 //}
 
+// !!!:未使用
 // ページコントロールがタップされたとき
-- (void)pageControl_Tapped:(id)sender
-{
-    CGRect frame = _scrollView.frame;
-    frame.origin.x = frame.size.width * _pageControl.currentPage;
-    [_scrollView scrollRectToVisible:frame animated:YES];
+//- (void)pageControl_Tapped:(id)sender
+//{
+//    CGRect frame = _scrollView.frame;
+//    frame.origin.x = frame.size.width * _pageControl.currentPage;
+//    [_scrollView scrollRectToVisible:frame animated:YES];
+//}
+
+- (void)viewDidLayoutSubviews {
+	[super viewDidLayoutSubviews];
+	
+#if (!TARGET_IPHONE_SIMULATOR)
+	[_recorder previewViewFrameChanged];
+#endif
+}
+
+#pragma mark 描画開始前
+- (void)viewWillAppear:(BOOL)animated {
+	
+	[super viewWillAppear:animated];
+	
+	[self prepareCamera];
+	
+	// NavigationBar 非表示
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
+	
+	// !!!:dezamisystem・パラメータ
+	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+	[secondView setKakakuValue:delegate.valueKakaku];
+	[secondView setTenmeiString:delegate.stringTenmei];
+	[secondView setCategoryIndex:delegate.indexCategory];
+	[secondView setFunikiIndex:delegate.indexFuniki];
+	[secondView reloadTableList];
+	
+	// !!!:ゲージリセット
+	[firstView updatePieChartWith:0 MAX:1];
 }
 
 #pragma mark 描画完了後
@@ -328,7 +295,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [_recorder startRunningSession];
     [_recorder focusCenter];
 #else
-	[self.viewIndicator stopAnimating];	
+//	[self.viewIndicator stopAnimating];	
 #endif
 	
 	static BOOL isPassed = NO;
@@ -387,35 +354,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureVideoInput:(NSError *)videoInputError {
     NSLog(@"Reconfigured video input: %@", videoInputError);
-}
-
-#pragma mark 描画開始前
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-	
-    [self prepareCamera];
-	
-    // NavigationBar 非表示
-	[self.navigationController setNavigationBarHidden:YES animated:NO];
-	
-	// !!!:dezamisystem・パラメータ
-	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	[secondView setKakakuValue:delegate.valueKakaku];
-	[secondView setTenmeiString:delegate.stringTenmei];
-	[secondView setCategoryIndex:delegate.indexCategory];
-	[secondView setFunikiIndex:delegate.indexFuniki];
-	[secondView reloadTableList];
-	
-	// !!!:ゲージリセット
-	[firstView updatePieChartWith:0 MAX:1];
-}
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-	
-#if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder previewViewFrameChanged];
-#endif
 }
 
 #pragma mark 退避開始前
@@ -547,39 +485,40 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //#endif
 //}
 
-#pragma mark カメラモード切り替えイベント
-- (IBAction)switchCameraMode:(id)sender
-{
-#if (!TARGET_IPHONE_SIMULATOR)
-    if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-           // self.capturePhotoButton.alpha = 0.0;
-            self.recordView.alpha = 1.0;
-            self.retakeButton.alpha = 1.0;
-           // self.stopButton.alpha = 1.0;
-        } completion:^(BOOL finished) {
-			_recorder.sessionPreset = kVideoPreset;
-           // [self.switchCameraModeButton setTitle:@"Switch Photo" forState:UIControlStateNormal];
-           // [self.flashModeButton setTitle:@"Flash : Off" forState:UIControlStateNormal];
-            _recorder.flashMode = SCFlashModeOff;
-        }];
-    } else {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.recordView.alpha = 0.0;
-            self.retakeButton.alpha = 0.0;
-            //self.stopButton.alpha = 0.0;
-            //self.capturePhotoButton.alpha = 1.0;
-        } completion:^(BOOL finished) {
-			_recorder.sessionPreset = AVCaptureSessionPresetPhoto;
-            //[self.switchCameraModeButton setTitle:@"Switch Video" forState:UIControlStateNormal];
-            //[self.flashModeButton setTitle:@"Flash : Auto" forState:UIControlStateNormal];
-            _recorder.flashMode = SCFlashModeAuto;
-        }];
-    }
-#else
-	NSLog(@"%s",__func__);
-#endif
-}
+// !!!:未使用
+//#pragma mark カメラモード切り替えイベント
+//- (IBAction)switchCameraMode:(id)sender
+//{
+//#if (!TARGET_IPHONE_SIMULATOR)
+//    if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//           // self.capturePhotoButton.alpha = 0.0;
+//            self.recordView.alpha = 1.0;
+//            self.retakeButton.alpha = 1.0;
+//           // self.stopButton.alpha = 1.0;
+//        } completion:^(BOOL finished) {
+//			_recorder.sessionPreset = kVideoPreset;
+//           // [self.switchCameraModeButton setTitle:@"Switch Photo" forState:UIControlStateNormal];
+//           // [self.flashModeButton setTitle:@"Flash : Off" forState:UIControlStateNormal];
+//            _recorder.flashMode = SCFlashModeOff;
+//        }];
+//    } else {
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            self.recordView.alpha = 0.0;
+//            self.retakeButton.alpha = 0.0;
+//            //self.stopButton.alpha = 0.0;
+//            //self.capturePhotoButton.alpha = 1.0;
+//        } completion:^(BOOL finished) {
+//			_recorder.sessionPreset = AVCaptureSessionPresetPhoto;
+//            //[self.switchCameraModeButton setTitle:@"Switch Video" forState:UIControlStateNormal];
+//            //[self.flashModeButton setTitle:@"Flash : Auto" forState:UIControlStateNormal];
+//            _recorder.flashMode = SCFlashModeAuto;
+//        }];
+//    }
+//#else
+//	NSLog(@"%s",__func__);
+//#endif
+//}
 
 - (IBAction)switchFlash:(id)sender
 {

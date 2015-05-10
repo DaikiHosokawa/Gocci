@@ -554,7 +554,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="337" width="320" height="47"/>
+                                <rect key="frame" x="0.0" y="401" width="320" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="46"/>
@@ -963,34 +963,59 @@
         <!--撮影-->
         <scene sceneID="3fe-zA-FUW">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="yAA-dq-VR1" customClass="DummyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" hidesBottomBarWhenPushed="YES" id="yAA-dq-VR1" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zjh-Me-rp3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nX4-lU-zpU">
-                                <rect key="frame" x="135" y="215" width="50" height="50"/>
+                            <view contentMode="scaleToFill" id="hOt-MO-YNq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="CuS-FC-LCU">
+                                <rect key="frame" x="0.0" y="336" width="320" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="naviIcon.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onRecorder:" destination="yAA-dq-VR1" eventType="touchUpInside" id="uhS-sg-PKx"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="dCr-oh-zDu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="B6b-mL-9mm">
+                                        <rect key="frame" x="145" y="26" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KX4-kR-Ui5">
+                                        <rect key="frame" x="8" y="26" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="btn_delete_white">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBackbutton:" destination="yAA-dq-VR1" eventType="touchUpInside" id="4Fd-J4-R8P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="撮影" image="tabbaritem_posting.png" id="OVx-z2-Ocw"/>
                     <navigationItem key="navigationItem" id="IXC-Or-aNi"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="previewView" destination="hOt-MO-YNq" id="BHm-6c-78q"/>
+                        <outlet property="viewPageBase" destination="CuS-FC-LCU" id="YxD-b7-4HI"/>
                         <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="bLZ-oX-KcE"/>
+                        <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="TRo-Kj-rA7"/>
+                        <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="7Yb-Fi-HEj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4059" y="-780"/>
+            <point key="canvasLocation" x="-3590" y="-1436"/>
         </scene>
         <!--SCPostingViewController-->
         <scene sceneID="z5T-qs-wV4">
@@ -1065,7 +1090,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekk-nu-emt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qzC-LN-a0E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3621" y="-655"/>
+            <point key="canvasLocation" x="-3637" y="-574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3UQ-V6-awd">
@@ -1088,7 +1113,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController title="SCRecorder" id="2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1160,9 +1185,6 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="onBackbutton:" destination="2" eventType="touchUpInside" id="oDN-Ba-sFn"/>
-                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="U33-kM-0Ku">
                                         <rect key="frame" x="145" y="27" width="30" height="30"/>
@@ -1205,20 +1227,10 @@
                     <tabBarItem key="tabBarItem" tag="2" title="投稿" image="tabbaritem_posting.png" id="JYH-SQ-JzL"/>
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="loadingView" destination="fdr-8e-oyR" id="gkZ-Rd-Fe7"/>
-                        <outlet property="pagebaseview" destination="ank-Xj-R2m" id="3Ux-5A-m1u"/>
-                        <outlet property="previewView" destination="iw9-cB-Pni" id="TJx-SO-uXu"/>
-                        <outlet property="timeRecordedLabel" destination="cCO-VC-azk" id="8mA-ME-xof"/>
-                        <outlet property="viewBaseGauge" destination="ZSc-8B-cjO" id="f3b-Ca-zLn"/>
-                        <outlet property="viewIndicator" destination="CED-Hv-p55" id="wz6-2Z-iBT"/>
-                        <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="J2l-nh-8BO"/>
-                        <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Ffq-fV-qzW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3500" y="-1436"/>
+            <point key="canvasLocation" x="-4059" y="-823"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="NDq-PP-wFp">
@@ -1344,10 +1356,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="TRo-Kj-rA7"/>
+        <segue reference="7Yb-Fi-HEj"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="Ffq-fV-qzW"/>
-        <segue reference="J2l-nh-8BO"/>
     </inferredMetricsTieBreakers>
 </document>
