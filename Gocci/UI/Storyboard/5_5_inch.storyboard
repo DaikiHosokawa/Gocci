@@ -170,17 +170,15 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="SRO-vB-Qfe">
             <objects>
-                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="iot-bG-iVN" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" id="iot-bG-iVN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="xn3-hc-IDO"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vCu-0r-NLK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="9cH-bf-hCH"/>
+                        <segue destination="Ea5-Rq-ylI" kind="relationship" relationship="rootViewController" id="mIB-TJ-77j"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQ9-iK-evS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,7 +282,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -1020,7 +1018,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XL0-L4-N5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nWG-ez-quk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-5631" y="-225"/>
+            <point key="canvasLocation" x="-5655" y="-261"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qn8-qI-Ts8">
@@ -1040,10 +1038,33 @@
             </objects>
             <point key="canvasLocation" x="-4892" y="-137"/>
         </scene>
+        <!--投稿-->
+        <scene sceneID="0N9-JN-Mno">
+            <objects>
+                <viewController storyboardIdentifier="screcorder" id="Ea5-Rq-ylI" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekF-9W-qgR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="87p-Jb-JmX"/>
+                    <navigationItem key="navigationItem" id="rfg-P8-iNA"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="7Oz-JW-I5Z" kind="push" identifier="goPosting" id="ZYz-dz-CD6"/>
+                        <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="OKq-Wv-gQ1"/>
+                        <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="UpQ-zf-3aZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2w-ty-izy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4951" y="-1211"/>
+        </scene>
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1164,19 +1185,12 @@
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="loadingView" destination="fdr-8e-oyR" id="gkZ-Rd-Fe7"/>
-                        <outlet property="pagebaseview" destination="Wcs-p4-QL0" id="IIj-bK-l1q"/>
                         <outlet property="previewView" destination="iw9-cB-Pni" id="TJx-SO-uXu"/>
-                        <outlet property="viewBaseGauge" destination="x1h-gh-Vl1" id="OKB-nH-nD6"/>
-                        <outlet property="viewIndicator" destination="CED-Hv-p55" id="Uvp-el-Aoa"/>
-                        <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="MfG-Lz-zuY"/>
-                        <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="djI-FJ-Av1"/>
-                        <segue destination="7Oz-JW-I5Z" kind="push" identifier="goPosting" id="5Zr-af-fbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4951" y="-1211"/>
+            <point key="canvasLocation" x="-4516" y="-1074"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="PzO-Kk-faR">
@@ -1303,8 +1317,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wis-md-2uD"/>
-        <segue reference="MfG-Lz-zuY"/>
-        <segue reference="djI-FJ-Av1"/>
+        <segue reference="OKq-Wv-gQ1"/>
+        <segue reference="UpQ-zf-3aZ"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="sBC-Zs-pgG"/>
     </inferredMetricsTieBreakers>

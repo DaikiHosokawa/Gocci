@@ -194,7 +194,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -798,22 +798,42 @@
         <!--BaseBeforeRecorder-->
         <scene sceneID="rCA-Xq-jRG">
             <objects>
-                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="BQj-hn-jKA" sceneMemberID="viewController">
+                <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" id="BQj-hn-jKA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Qnh-iR-phH"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ewC-Zy-Tgn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="DlW-dk-BKX"/>
+                        <segue destination="5lh-7v-Vdx" kind="relationship" relationship="rootViewController" id="1fI-nn-Y03"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gh-QT-LHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3891" y="-1199"/>
+        </scene>
+        <!--投稿-->
+        <scene sceneID="xqf-d8-vbT">
+            <objects>
+                <viewController storyboardIdentifier="screcorder" id="5lh-7v-Vdx" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iuP-dL-G8G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="1fa-QL-JrF"/>
+                    <navigationItem key="navigationItem" id="feL-P5-YvM"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="Sal-Jd-8HJ" kind="push" identifier="goPosting" id="oeL-PT-oa9"/>
+                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="tk5-fM-XTh"/>
+                        <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Cte-je-0wV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6aE-SR-k6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3456" y="-1199"/>
         </scene>
         <!--befereRecorder-->
         <scene sceneID="Ihg-uP-iuv">
@@ -865,7 +885,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acG-mg-LZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2222" y="-137"/>
+            <point key="canvasLocation" x="-2686" y="-194"/>
         </scene>
         <!--Cheer List View Controller-->
         <scene sceneID="u5u-xv-MCo">
@@ -967,7 +987,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFp-bf-Wln" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GDX-Rq-Mj4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3513" y="-66"/>
+            <point key="canvasLocation" x="-3750" y="-369"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7G5-py-4O7">
@@ -985,7 +1005,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mnj-57-oFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2977" y="583"/>
+            <point key="canvasLocation" x="-3410" y="458"/>
         </scene>
         <!--kakakuTextViewController-->
         <scene sceneID="hxk-kb-hDi">
@@ -1038,7 +1058,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FS-8f-ac8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2520" y="583"/>
+            <point key="canvasLocation" x="-2929" y="458"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="adC-Uv-D5W">
@@ -1056,12 +1076,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPG-sg-nYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2664" y="-137"/>
+            <point key="canvasLocation" x="-3129" y="-194"/>
         </scene>
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1181,19 +1201,12 @@
                     <tabBarItem key="tabBarItem" tag="2" title="投稿" image="tabbaritem_posting.png" id="QFm-df-MY0"/>
                     <navigationItem key="navigationItem" id="bvx-6l-zji"/>
                     <connections>
-                        <outlet property="loadingView" destination="fdr-8e-oyR" id="gkZ-Rd-Fe7"/>
-                        <outlet property="pagebaseview" destination="WRL-Io-14S" id="Iie-sT-MuJ"/>
                         <outlet property="previewView" destination="iw9-cB-Pni" id="TJx-SO-uXu"/>
-                        <outlet property="viewBaseGauge" destination="252-DP-OOD" id="6OM-9e-XMw"/>
-                        <outlet property="viewIndicator" destination="CED-Hv-p55" id="k6R-pJ-URU"/>
-                        <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="xtK-F5-G4I"/>
-                        <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Wcl-6f-Fmi"/>
-                        <segue destination="Sal-Jd-8HJ" kind="push" identifier="goPosting" id="swi-wj-NxB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3456" y="-1199"/>
+            <point key="canvasLocation" x="-3077" y="-979"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="n8X-zv-Lhk">
@@ -1319,10 +1332,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rhk-9Y-XzF"/>
         <segue reference="pPi-jq-5EO"/>
+        <segue reference="Rhk-9Y-XzF"/>
+        <segue reference="tk5-fM-XTh"/>
+        <segue reference="Cte-je-0wV"/>
         <segue reference="5vL-6n-Sjz"/>
-        <segue reference="xtK-F5-G4I"/>
-        <segue reference="Wcl-6f-Fmi"/>
     </inferredMetricsTieBreakers>
 </document>
