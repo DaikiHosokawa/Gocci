@@ -248,7 +248,7 @@ static SCRecorder *_recorder;
 	
 	[super viewWillAppear:animated];
 	
-	NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
+	//NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
 	
 	//[self prepareCamera];
 	
