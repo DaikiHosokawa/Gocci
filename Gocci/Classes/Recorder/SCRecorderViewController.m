@@ -69,10 +69,11 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
 
 // !!!:dezamisystem・スクロールページ用
-@property (nonatomic,strong) UIScrollView *pageingScrollView;
+//@property (nonatomic,strong) UIScrollView *pageingScrollView;
 @property(nonatomic,strong) SCFirstView *firstView;
 @property(nonatomic,strong) SCSecondView *secondView;
 //@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
 
 @end
 
@@ -81,7 +82,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 /////////////////////
 
 @implementation SCRecorderViewController
-@synthesize pageingScrollView;
+//@synthesize pageingScrollView;
 @synthesize firstView;
 @synthesize secondView;
 
@@ -123,10 +124,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 //	[self updateTimeRecordedLabel];
 	
-#if 1
 	UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
-#endif
 
 	// !!!:dezamisystem・削除
 	//    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -136,7 +135,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
 	//self.recordView.alpha = 1.0;
 	
-#if 1
 //	self.loadingView.hidden = YES;
 	CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	//NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
@@ -147,60 +145,60 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
 //    self.focusView.recorder = _recorder;
 //    [previewView addSubview:self.focusView];
-#endif
 
     /*
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
 	
-#if 0
+#if 1
 	// !!!:dezamisystem・スクロールビュー
 	{
 		int count_page = 2;
 		
-		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
+//		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
 		//画面サイズから場合分け
 		CGRect rect = [UIScreen mainScreen].bounds;
-		if (rect.size.height == 480) {
-			//3.5inch
-			rect_page = CGRectMake(0, 336, 320, 144);
-		}
-		else if (rect.size.height == 667) {
-			//4.7inch
-			rect_page = CGRectMake(0, 467, 375, 200);
-		}
-		else if (rect.size.height == 736) {
-			//5.5inch
-			rect_page = CGRectMake(0, 516, 414, 220);
-		}
+//		if (rect.size.height == 480) {
+//			//3.5inch
+//			rect_page = CGRectMake(0, 336, 320, 144);
+//		}
+//		else if (rect.size.height == 667) {
+//			//4.7inch
+//			rect_page = CGRectMake(0, 467, 375, 200);
+//		}
+//		else if (rect.size.height == 736) {
+//			//5.5inch
+//			rect_page = CGRectMake(0, 516, 414, 220);
+//		}
 
-		CGFloat width_page = rect_page.size.width; //self.view.frame.size.width;
-		CGFloat height_page = rect_page.size.height; // self.view.frame.size.height;
+		CGFloat width_page = self.scrollviewPage.frame.size.width; //self.view.frame.size.width;
+		CGFloat height_page = self.scrollviewPage.frame.size.height; // self.view.frame.size.height;
 		//CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
-		pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
-		pageingScrollView.delegate = self;
-		pageingScrollView.contentSize = CGSizeMake(width_page * 2, height_page);
-		pageingScrollView.pagingEnabled = YES;
-		pageingScrollView.showsHorizontalScrollIndicator = NO;
-		pageingScrollView.showsVerticalScrollIndicator = NO;
-		pageingScrollView.scrollsToTop = NO;
+		//pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
+		//pageingScrollView.delegate = self;
+		//pageingScrollView.contentSize = CGSizeMake(width_page * 2, height_page);
+		//pageingScrollView.pagingEnabled = YES;
+		//pageingScrollView.showsHorizontalScrollIndicator = NO;
+		//pageingScrollView.showsVerticalScrollIndicator = NO;
+		//pageingScrollView.scrollsToTop = NO;
 		//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
 		//[self.viewPageBase addSubview:pageingScrollView];
-		[self.view addSubview:pageingScrollView];
+		//[self.view addSubview:pageingScrollView];
+		self.scrollviewPage.contentSize = CGSizeMake(width_page * 2, height_page);
 		
 		//スクロールビューの上にビューコントローラー
 		{
 			firstView = [SCFirstView create];
 			firstView.delegate = self;
 			//[pageingScrollView addSubview:firstView];
-			[firstView showInView:pageingScrollView];
+			[firstView showInView:self.scrollviewPage];
 		}
 		{
 			secondView = [SCSecondView create];
 			secondView.delegate = self;
 			//[pageingScrollView addSubview:secondView];
-			[secondView showInView:pageingScrollView offset:CGPointMake(width_page, 0) back:0];
+			[secondView showInView:self.scrollviewPage offset:CGPointMake(width_page, 0) back:0];
 		}
 		
 		CGFloat y_page = 35 + 100;
@@ -217,7 +215,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 			//5.5inch
 			y_page = 60 + 100;
 		}
-		y_page += rect_page.origin.y;
+		CGFloat origin_y_scroll = self.scrollviewPage.frame.origin.y;
+		y_page += origin_y_scroll;
 		
 		// ページコントロール
 		// ページングスクロールビューの下にページコントロールを配置
@@ -250,6 +249,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #endif
 }
 
+// !!!:未使用
 // スクロールビューがスワイプされたとき
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{
@@ -289,7 +289,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
-	
+
 	// !!!:dezamisystem・パラメータ
 	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	[secondView setKakakuValue:delegate.valueKakaku];
@@ -365,11 +365,11 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
-    NSLog(@"Reconfigured audio input: %@", audioInputError);
+    NSLog(@"Reconfigured audio input: error = %@", audioInputError);
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureVideoInput:(NSError *)videoInputError {
-    NSLog(@"Reconfigured video input: %@", videoInputError);
+    NSLog(@"Reconfigured video input: error = %@", videoInputError);
 }
 
 #pragma mark 退避開始前
@@ -412,7 +412,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 }
 
 #pragma mark - Handle
-
 - (void)showAlertViewWithTitle:(NSString*)title message:(NSString*) message {
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertView show];
@@ -621,11 +620,11 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 }
 
 - (void)recorder:(SCRecorder *)recorder didBeginRecordSegment:(SCRecordSession *)recordSession error:(NSError *)error {
-    NSLog(@"Began record segment: %@", error);
+    NSLog(@"Began record segment: error = %@", error);
 }
 
 - (void)recorder:(SCRecorder *)recorder didEndRecordSegment:(SCRecordSession *)recordSession segmentIndex:(NSInteger)segmentIndex error:(NSError *)error {
-    NSLog(@"End record segment %d at %@: %@", (int)segmentIndex, segmentIndex >= 0 ? [recordSession.recordSegments objectAtIndex:segmentIndex] : nil, error);
+    NSLog(@"End record segment %d at %@: error = %@", (int)segmentIndex, segmentIndex >= 0 ? [recordSession.recordSegments objectAtIndex:segmentIndex] : nil, error);
 }
 
 - (void)updateTimeRecordedLabel {
@@ -985,7 +984,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	// UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-	pager.currentPage = pageingScrollView.contentOffset.x / self.view.frame.size.width;
+	pager.currentPage = self.scrollviewPage.contentOffset.x / self.view.frame.size.width;
 }
 
 #pragma mark - UIPageControle
@@ -1137,7 +1136,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #pragma mark - DEBUG
 - (IBAction)onGoPosting:(id)sender {
 #ifdef DEBUG
-	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+//	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
 
