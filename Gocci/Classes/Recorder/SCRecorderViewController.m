@@ -123,8 +123,10 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 //	[self updateTimeRecordedLabel];
 	
+#if 1
 	UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
+#endif
 
 	// !!!:dezamisystem・削除
 	//    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -134,9 +136,10 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
 	//self.recordView.alpha = 1.0;
 	
+#if 1
 //	self.loadingView.hidden = YES;
 	CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-	NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
+	//NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
 	self.focusView = [[SCRecorderFocusView alloc] initWithFrame:rect_focus];
 	self.focusView.recorder = _recorder;
 	[self.view addSubview:self.focusView];
@@ -144,14 +147,14 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
 //    self.focusView.recorder = _recorder;
 //    [previewView addSubview:self.focusView];
+#endif
 
-	
-	
     /*
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
 	
+#if 0
 	// !!!:dezamisystem・スクロールビュー
 	{
 		int count_page = 2;
@@ -228,9 +231,9 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		[self.view addSubview:pager];
 
 	}
-	
 	[self updateTimeRecordedLabel];
-
+#endif
+	
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
         NSError *error = nil;
@@ -279,6 +282,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 - (void)viewWillAppear:(BOOL)animated {
 	
 	[super viewWillAppear:animated];
+	
+	NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
 	
 	[self prepareCamera];
 	
@@ -654,10 +659,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	//currentTimelをラベルに表示する
 	//    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
 	
-	//ゲージ
-	//	double time_per = time_now / time_max;
-	//	[gaugeViewTimer updateWithPer:time_per];
-	// !!!:dezamisystem・円グラフゲージ
+	// !!!:・円グラフゲージ
 	[firstView updatePieChartWith:time_now MAX:time_max];
 
 }
@@ -1107,12 +1109,36 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 -(void)cancelSubmit
 {
 	NSLog(@"%s",__func__);
+	
+	//SCRecordSession *recordSession = _recorder.recordSession;
+	//
+	//    if (recordSession != nil) {
+	//        _recorder.recordSession = nil;
+	//
+	//        // If the recordSession was saved, we don't want to completely destroy it
+	//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
+	//            [recordSession endRecordSegment:nil];
+	//        } else {
+	//            [recordSession cancelSession:nil];
+	//        }
+	//    }
+	//
+	//	[self prepareCamera];
+	//    [self updateTimeRecordedLabel];
+
 }
 
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
 
 	NSLog(@"%s",__func__);
+}
+
+#pragma mark - DEBUG
+- (IBAction)onGoPosting:(id)sender {
+#ifdef DEBUG
+	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+#endif
 }
 
 @end

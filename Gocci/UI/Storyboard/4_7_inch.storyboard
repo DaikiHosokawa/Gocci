@@ -738,10 +738,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="2jL-VJ-dkJ">
-                                <rect key="frame" x="172" y="26" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N86-vH-lvu">
                                 <rect key="frame" x="9" y="26" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -750,6 +746,16 @@
                                 </state>
                                 <connections>
                                     <action selector="onBackbutton:" destination="QUa-W4-V2E" eventType="touchUpInside" id="Oos-rf-VW7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PMR-WF-cXZ">
+                                <rect key="frame" x="172" y="26" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="naviIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGoPosting:" destination="QUa-W4-V2E" eventType="touchUpInside" id="7MR-KA-tuj"/>
                                 </connections>
                             </button>
                         </subviews>
