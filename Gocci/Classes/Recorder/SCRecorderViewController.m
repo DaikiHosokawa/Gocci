@@ -61,7 +61,7 @@ static SCRecorder *_recorder;
 	
 	// !!!:dezamisystem・スクロールページ用
 	SCScrollPageView *scrollpageview;
-	SCFirstView *dummyfirstvuew;
+	//SCFirstView *dummyfirstvuew;
 
 	
 }
@@ -160,42 +160,36 @@ static SCRecorder *_recorder;
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
 	
+#if 0
 	// !!!:dezamisystem・スクロールビュー
-	CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
-	//画面サイズから場合分け
-	CGRect rect = [UIScreen mainScreen].bounds;
-	if (rect.size.height == 480) {
-		//3.5inch
-		rect_page = CGRectMake(0, 336, 320, 144);
-	}
-	else if (rect.size.height == 667) {
-		//4.7inch
-		rect_page = CGRectMake(0, 467, 375, 200);
-	}
-	else if (rect.size.height == 736) {
-		//5.5inch
-		rect_page = CGRectMake(0, 516, 414, 220);
-	}
-	scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
-	//スクロールビューの上ビュー
 	{
-		firstView = [SCFirstView create];
-		firstView.delegate = self;
-		//[pageingScrollView addSubview:firstView];
-#if 1
-		secondView = [SCSecondView create];
-		secondView.delegate = self;
-		//[pageingScrollView addSubview:secondView];
-#else	
-		dummyfirstvuew = [SCFirstView create];
-		dummyfirstvuew.delegate = self;
-		dummyfirstvuew.frame = CGRectOffset(dummyfirstvuew.frame, rect_page.size.width, 0);
-#endif
+		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
+		//画面サイズから場合分け
+		CGRect rect = [UIScreen mainScreen].bounds;
+		if (rect.size.height == 480) {
+			//3.5inch
+			rect_page = CGRectMake(0, 336, 320, 144);
+		}
+		else if (rect.size.height == 667) {
+			//4.7inch
+			rect_page = CGRectMake(0, 467, 375, 200);
+		}
+		else if (rect.size.height == 736) {
+			//5.5inch
+			rect_page = CGRectMake(0, 516, 414, 220);
+		}
+		scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
+		//スクロールビューの上ビュー
+		{
+			firstView = [SCFirstView create];
+			firstView.delegate = self;
+			//[pageingScrollView addSubview:firstView];
+			secondView = [SCSecondView create];
+			secondView.delegate = self;
+			//[pageingScrollView addSubview:secondView];
+		}
+		[scrollpageview showInView:self.view first:firstView second:secondView];
 	}
-#if 1
-	[scrollpageview showInView:self.view first:firstView second:secondView];
-#else
-	[scrollpageview showInView:self.view first:firstView first2:dummyfirstvuew];
 #endif
 	
 #if (!TARGET_IPHONE_SIMULATOR)
@@ -1101,7 +1095,7 @@ static SCRecorder *_recorder;
 #pragma mark - DEBUG
 - (IBAction)onGoPosting:(id)sender {
 #ifdef DEBUG
-//	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
+	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
 

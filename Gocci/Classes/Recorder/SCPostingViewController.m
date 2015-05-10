@@ -19,13 +19,12 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 
 @interface SCPostingViewController ()
 {
-	__weak IBOutlet UIView *viewsecond;
 	__weak IBOutlet UIImageView *imageview_samnail;
-	__weak IBOutlet UIView *view_social;
 	
 	SCSecondView *secondView;
 	
-	UITableView *tableviewSocial;
+//	UITableView *tableviewSocial;
+	__weak IBOutlet UITableView *tableviewTubuyaki;
 }
 
 @end
@@ -78,19 +77,19 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		secondView = [SCSecondView create];
 		secondView.frame = rect_second;
 		secondView.delegate = self;
-		//[secondView showInView:self.view offset:CGPointZero back:1];
+		[secondView showInView:self.view offset:CGPointZero back:1];
 	}
 	
-	//ソーシャルテーブルビュー
-	{
-		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
-		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
-		//tableviewSocial.frame = rect_social;
-		tableviewSocial.delegate = self;
-		tableviewSocial.dataSource = self;
-		tableviewSocial.scrollEnabled = NO;
-		//[self.view addSubview:tableviewSocial];
-	}
+//	//ソーシャルテーブルビュー
+//	{
+//		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
+//		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
+//		//tableviewSocial.frame = rect_social;
+//		tableviewSocial.delegate = self;
+//		tableviewSocial.dataSource = self;
+//		tableviewSocial.scrollEnabled = NO;
+//		[self.view addSubview:tableviewSocial];
+//	}
 #endif
 }
 
@@ -105,7 +104,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 
 	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 
-	tableviewSocial.contentOffset = CGPointMake(0, 0);
+//	tableviewSocial.contentOffset = CGPointMake(0, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -125,45 +124,8 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 
 
-	[secondView showInView:self.view offset:CGPointZero back:1];
-	[self.view addSubview:tableviewSocial];
-	
-//	//情報テーブルビュー
-//	CGRect rect_second = CGRectMake(0, 246, 320, 170);	// 4inch
-//	if (!secondView)
-//	{
-//		//画面サイズから場合分け
-//		CGRect rect = [UIScreen mainScreen].bounds;
-//		if (rect.size.height == 480) {
-//			//3.5inch
-//			rect_second = CGRectMake(0, 198, 320, 144);
-//		}
-//		else if (rect.size.height == 667) {
-//			//4.7inch
-//			rect_second = CGRectMake(0, 284, 375, 200);
-//		}
-//		else if (rect.size.height == 736) {
-//			//5.5inch
-//			rect_second = CGRectMake(0, 322, 414, 220);
-//		}
-//		
-//		secondView = [SCSecondView create];
-//		secondView.frame = rect_second;
-//		secondView.delegate = self;
-//		[secondView showInView:self.view offset:CGPointZero back:1];
-//	}
-//	
-//	//ソーシャルテーブルビュー
-//	if (!tableviewSocial)
-//	{
-//		CGRect rect_social = CGRectMake(0, rect_second.origin.y + rect_second.size.height, rect_second.size.width, rect_second.size.height/2);
-//		tableviewSocial = [[UITableView alloc] initWithFrame:rect_social   style:UITableViewStylePlain];
-//		//tableviewSocial.frame = rect_social;
-//		tableviewSocial.delegate = self;
-//		tableviewSocial.dataSource = self;
-//		tableviewSocial.scrollEnabled = NO;
-//		[self.view addSubview:tableviewSocial];
-//	}
+	//[secondView showInView:self.view offset:CGPointZero back:1];
+	//[self.view addSubview:tableviewSocial];
 	
 	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	[secondView setKakakuValue:delegate.valueKakaku];
@@ -239,7 +201,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
 }
 
-#pragma mark - TableViewSocial
+#pragma mark - TableViewDatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return 2;
@@ -247,7 +209,11 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return view_social.frame.size.height /2;
+	CGFloat height = tableView.frame.size.height / 2;
+	
+	NSLog(@"%s %f",__func__, height);
+	
+	return height;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

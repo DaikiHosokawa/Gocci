@@ -1053,6 +1053,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="x23-IM-9v5">
+                                <rect key="frame" x="0.0" y="342" width="320" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="grg-UZ-rTW" id="YGj-p5-CKV"/>
+                                    <outlet property="delegate" destination="grg-UZ-rTW" id="zJl-ea-N76"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1060,9 +1069,11 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="xNq-QA-OyL"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="xV5-Bt-Qfr" id="CbY-ri-yv8"/>
+                        <outlet property="tableviewTubuyaki" destination="x23-IM-9v5" id="q6X-du-IhX"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="mqM-qI-glM"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Gee-JD-9BO"/>
                     </connections>
