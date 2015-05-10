@@ -202,10 +202,10 @@
                         <rect key="frame" x="119" y="185" width="80" height="80"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-Aw-YJt">
-                        <rect key="frame" x="275" y="467" width="30" height="20"/>
+                        <rect key="frame" x="275" y="465" width="30" height="20"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc_new" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-YP-y3A">
-                                <rect key="frame" x="6" y="0.0" width="30" height="20"/>
+                                <rect key="frame" x="2" y="0.0" width="30" height="20"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,7 +314,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="3jS-02-jt5" secondAttribute="trailing" constant="111" id="0nz-3b-PW0"/>
                     <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="74" id="4Vh-hT-1QK"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="bottom" constant="10" id="CxS-1U-Xnd"/>
-                    <constraint firstItem="WEP-Aw-YJt" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="8" id="DKD-3R-0aJ"/>
+                    <constraint firstItem="WEP-Aw-YJt" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="6" id="DKD-3R-0aJ"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EV4-90-av7"/>
                     <constraint firstItem="YSl-cf-iOp" firstAttribute="top" secondItem="hND-ON-WcS" secondAttribute="bottom" constant="12" id="HmL-gk-Hxo"/>
                     <constraint firstAttribute="trailing" secondItem="F7J-7N-gdB" secondAttribute="trailing" constant="90" id="Lfg-o1-0M2"/>
