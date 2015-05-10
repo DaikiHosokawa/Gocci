@@ -1032,11 +1032,6 @@
                                     <segue destination="qzC-LN-a0E" kind="unwind" unwindAction="popViewController1:" id="Vln-2o-24F"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" id="wmG-7Z-xrI">
-                                <rect key="frame" x="0.0" y="342" width="320" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" id="Pop-Ly-rke">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1058,11 +1053,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" id="nx6-IL-vNu">
-                                <rect key="frame" x="0.0" y="198" width="320" height="144"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1073,8 +1063,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="xV5-Bt-Qfr" id="CbY-ri-yv8"/>
-                        <outlet property="view_social" destination="wmG-7Z-xrI" id="ZBV-oz-cNQ"/>
-                        <outlet property="viewsecond" destination="nx6-IL-vNu" id="X5y-4U-9ce"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="mqM-qI-glM"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Gee-JD-9BO"/>
                     </connections>
@@ -1222,7 +1210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4059" y="-823"/>
+            <point key="canvasLocation" x="-4385" y="-731"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="NDq-PP-wFp">
@@ -1348,8 +1336,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TRo-Kj-rA7"/>
-        <segue reference="7Yb-Fi-HEj"/>
+        <segue reference="Gee-JD-9BO"/>
+        <segue reference="mqM-qI-glM"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
