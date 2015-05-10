@@ -23,6 +23,8 @@
 #import "SVProgressHUD.h"
 #import "SCPostingViewController.h"
 
+#import "SCScrollPageView.h"
+
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -46,6 +48,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 <RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
     SCRecorder *_recorder;
+	
     UIImage *_photo;
     UIImageView *_ghostImageView;
     DemoContentView *_firstContentView;
@@ -56,7 +59,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	NSTimeInterval test_timeGauge;
 	
 	// !!!:dezamisystem・スクロールページ用
-	UIPageControl *pager;
+	SCScrollPageView *scrollpageview;
+//	UIPageControl *pager;
 
 }
 
@@ -73,7 +77,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 @property(nonatomic,strong) SCFirstView *firstView;
 @property(nonatomic,strong) SCSecondView *secondView;
 //@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
 
 @end
 
@@ -151,8 +155,36 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
 	
-#if 1
 	// !!!:dezamisystem・スクロールビュー
+	CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
+	//画面サイズから場合分け
+	CGRect rect = [UIScreen mainScreen].bounds;
+	if (rect.size.height == 480) {
+		//3.5inch
+		rect_page = CGRectMake(0, 336, 320, 144);
+	}
+	else if (rect.size.height == 667) {
+		//4.7inch
+		rect_page = CGRectMake(0, 467, 375, 200);
+	}
+	else if (rect.size.height == 736) {
+		//5.5inch
+		rect_page = CGRectMake(0, 516, 414, 220);
+	}
+	scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
+	//スクロールビューの上ビュー
+	{
+		firstView = [SCFirstView create];
+		firstView.delegate = self;
+		//[pageingScrollView addSubview:firstView];
+
+		secondView = [SCSecondView create];
+		secondView.delegate = self;
+		//[pageingScrollView addSubview:secondView];
+	}
+	[scrollpageview showInView:self.view first:firstView second:secondView];
+	
+#if 0
 	{
 		int count_page = 2;
 		
@@ -187,7 +219,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		//[self.view addSubview:pageingScrollView];
 		self.scrollviewPage.contentSize = CGSizeMake(width_page * 2, height_page);
 		
-		//スクロールビューの上にビューコントローラー
+		//スクロールビューの上にビュー追加
 		{
 			firstView = [SCFirstView create];
 			firstView.delegate = self;
@@ -465,7 +497,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [recordSession endRecordSegment:^(NSInteger segmentIndex, NSError *error) {
         [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
         
-//        self.recordSession = recordSession;
+		//   self.recordSession = recordSession;
 		staticRecordSession = recordSession;
         [self _complete];
         [self prepareCamera];
@@ -980,16 +1012,16 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 //    }];
 }
 
-#pragma mark - UIScrollViewDelegate
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-	// UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-	pager.currentPage = self.scrollviewPage.contentOffset.x / self.view.frame.size.width;
-}
+//#pragma mark - UIScrollViewDelegate
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//	// UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
+////	pager.currentPage = self.scrollviewPage.contentOffset.x / self.view.frame.size.width;
+//}
 
-#pragma mark - UIPageControle
-- (void)changePageControl:(id)sender {
-}
+//#pragma mark - UIPageControle
+//- (void)changePageControl:(id)sender {
+//}
 
 #pragma mark - SCFirstView
 -(void)recordBegan
