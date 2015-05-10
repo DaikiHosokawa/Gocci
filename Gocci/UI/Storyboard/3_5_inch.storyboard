@@ -763,7 +763,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="Mxh-et-WrM"/>
+                        <segue destination="yAA-dq-VR1" kind="relationship" relationship="rootViewController" id="qqn-U9-AHs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soa-5J-sao" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -960,21 +960,37 @@
             </objects>
             <point key="canvasLocation" x="-2861" y="-1196"/>
         </scene>
-        <!--Dummy View Controller-->
+        <!--撮影-->
         <scene sceneID="3fe-zA-FUW">
             <objects>
-                <viewController id="yAA-dq-VR1" customClass="DummyViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="yAA-dq-VR1" customClass="DummyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zjh-Me-rp3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nX4-lU-zpU">
+                                <rect key="frame" x="135" y="215" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="naviIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRecorder:" destination="yAA-dq-VR1" eventType="touchUpInside" id="uhS-sg-PKx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="撮影" image="tabbaritem_posting.png" id="OVx-z2-Ocw"/>
                     <navigationItem key="navigationItem" id="IXC-Or-aNi"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="2" kind="push" identifier="goRecorder" id="I6m-35-MQH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4130" y="-723"/>
+            <point key="canvasLocation" x="-4059" y="-780"/>
         </scene>
         <!--SCPostingViewController-->
         <scene sceneID="z5T-qs-wV4">
@@ -1048,7 +1064,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekk-nu-emt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qzC-LN-a0E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3734" y="-593"/>
+            <point key="canvasLocation" x="-3621" y="-655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3UQ-V6-awd">
@@ -1071,7 +1087,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1197,7 +1213,7 @@
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="wz6-2Z-iBT"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="J2l-nh-8BO"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Ffq-fV-qzW"/>
-                        <segue destination="yAA-dq-VR1" kind="push" identifier="goPosting" id="m6V-fr-IBP"/>
+                        <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="P9y-6H-Gbp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -1328,8 +1344,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="J2l-nh-8BO"/>
         <segue reference="Ffq-fV-qzW"/>
+        <segue reference="J2l-nh-8BO"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>

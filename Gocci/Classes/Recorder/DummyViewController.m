@@ -17,6 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
+	//ナビゲーションバーに画像
+	{
+		//タイトル画像設定
+		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+		navigationTitle.image = image;
+		self.navigationItem.titleView = navigationTitle;
+		
+		UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+		barButton.title = @"";
+		self.navigationItem.backBarButtonItem = barButton;
+	}
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,12 +40,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-	// NavigationBar 表示
-	[self.navigationController setNavigationBarHidden:NO animated:NO];
+	// NavigationBar 非表示
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
 
 	
 	[super viewWillAppear:animated];
 }
+
+- (IBAction)onRecorder:(id)sender {
+
+	//遷移：SCRecorderVideoController
+	[self performSegueWithIdentifier:@"goRecorder" sender:self];
+}
+
 /*
 #pragma mark - Navigation
 
