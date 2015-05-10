@@ -729,16 +729,11 @@
         <!--撮影-->
         <scene sceneID="ewy-ZD-h2d">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="QUa-W4-V2E" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" hidesBottomBarWhenPushed="YES" id="QUa-W4-V2E" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GH3-v8-hR2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="Bv2-NM-Ook">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" id="qlx-Mx-SC8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -760,20 +755,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="T3V-7w-oNQ">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="撮影" image="tabbaritem_posting.png" id="Gom-sj-KeY"/>
                     <navigationItem key="navigationItem" id="7gH-GR-dGI"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="previewView" destination="Bv2-NM-Ook" id="24E-IQ-WPL"/>
-                        <outlet property="viewPageBase" destination="T3V-7w-oNQ" id="JDa-SD-4E6"/>
                         <segue destination="y1g-iL-KK8" kind="push" identifier="goPosting" id="yBd-gY-jth"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="hp2-GU-Cwb"/>
                         <segue destination="6sj-W1-HXY" kind="modal" identifier="goKakaku" id="jdS-Fq-Qzq"/>
@@ -1000,7 +989,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" id="2" sceneMemberID="viewController">
+                <viewController title="SCRecorder" id="2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>

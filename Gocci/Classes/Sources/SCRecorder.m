@@ -631,6 +631,9 @@
 }
 
 - (void)previewViewFrameChanged {
+	
+	//NSLog(@"プレビュービュー：矩形:%@", NSStringFromCGRect(_previewView.bounds));
+
     _previewLayer.frame = _previewView.bounds;
 }
 
