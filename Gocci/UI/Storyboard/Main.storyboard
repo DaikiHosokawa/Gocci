@@ -990,12 +990,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dlz-3X-mki">
+                                <rect key="frame" x="0.0" y="418" width="320" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sal-Jd-8HJ" id="oEL-fV-uMq"/>
+                                    <outlet property="delegate" destination="Sal-Jd-8HJ" id="NCQ-iJ-LSU"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jZo-Yg-Zbc"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="mcH-2Y-ViT" id="4R0-QP-zu4"/>
+                        <outlet property="tableviewTubuyaki" destination="Dlz-3X-mki" id="0tP-wD-HPI"/>
                         <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="SDs-PX-5V3"/>
                         <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Kbo-Zn-huj"/>
                     </connections>
@@ -1350,8 +1360,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="pPi-jq-5EO"/>
         <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="SDs-PX-5V3"/>
-        <segue reference="Kbo-Zn-huj"/>
+        <segue reference="tk5-fM-XTh"/>
+        <segue reference="Cte-je-0wV"/>
         <segue reference="5vL-6n-Sjz"/>
     </inferredMetricsTieBreakers>
 </document>

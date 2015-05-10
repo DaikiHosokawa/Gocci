@@ -160,7 +160,7 @@ static SCRecorder *_recorder;
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
 	
-#if 0
+#if 1
 	// !!!:dezamisystem・スクロールビュー
 	{
 		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
