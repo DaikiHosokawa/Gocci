@@ -1041,7 +1041,7 @@
         <!--投稿-->
         <scene sceneID="0N9-JN-Mno">
             <objects>
-                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" id="Ea5-Rq-ylI" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Ea5-Rq-ylI" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ekF-9W-qgR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1071,7 +1071,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="87p-Jb-JmX"/>
                     <navigationItem key="navigationItem" id="rfg-P8-iNA"/>

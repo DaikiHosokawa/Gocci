@@ -816,7 +816,7 @@
         <!--投稿-->
         <scene sceneID="xqf-d8-vbT">
             <objects>
-                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" id="5lh-7v-Vdx" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="5lh-7v-Vdx" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iuP-dL-G8G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -846,7 +846,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="1fa-QL-JrF"/>
                     <navigationItem key="navigationItem" id="feL-P5-YvM"/>
@@ -1360,8 +1360,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="pPi-jq-5EO"/>
         <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="tk5-fM-XTh"/>
-        <segue reference="Cte-je-0wV"/>
+        <segue reference="SDs-PX-5V3"/>
+        <segue reference="Kbo-Zn-huj"/>
         <segue reference="5vL-6n-Sjz"/>
     </inferredMetricsTieBreakers>
 </document>
