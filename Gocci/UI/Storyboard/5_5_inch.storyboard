@@ -994,6 +994,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4YN-IV-DLE">
+                                <rect key="frame" x="0.0" y="552" width="414" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Oz-JW-I5Z" id="HDC-7W-eij"/>
+                                    <outlet property="delegate" destination="7Oz-JW-I5Z" id="K3p-cc-Nc4"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1001,6 +1010,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="lo3-Dm-6H0" id="Iec-Vr-OpR"/>
+                        <outlet property="tableviewTubuyaki" destination="4YN-IV-DLE" id="pjW-po-7Nv"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="33G-Rn-4Mg"/>
                         <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="A6l-Sl-qZw"/>
                     </connections>
