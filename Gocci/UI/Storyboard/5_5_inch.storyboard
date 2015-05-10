@@ -826,7 +826,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="cz9-Qw-kgD" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz9-Qw-kgD" id="ER8-hf-ZHu">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -1302,10 +1302,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sBC-Zs-pgG"/>
-        <segue reference="oAW-Uz-WM7"/>
-        <segue reference="33G-Rn-4Mg"/>
-        <segue reference="A6l-Sl-qZw"/>
         <segue reference="wis-md-2uD"/>
+        <segue reference="MfG-Lz-zuY"/>
+        <segue reference="djI-FJ-Av1"/>
+        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="sBC-Zs-pgG"/>
     </inferredMetricsTieBreakers>
 </document>

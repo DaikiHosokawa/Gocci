@@ -57,7 +57,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 	// !!!:dezamisystem・スクロールページ用
 	UIPageControl *pager;
-//	__weak IBOutlet UIView *pagebaseview;
+
 }
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -67,8 +67,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 @property (strong, nonatomic) SCRecorderFocusView *focusView;
 @property (nonatomic, strong) RecorderSubmitPopupView *submitView;
 @property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
-
-//@property (weak, nonatomic) IBOutlet UIImageView *tapView;
 
 // !!!:dezamisystem・スクロールページ用
 @property (nonatomic,strong) UIScrollView *pageingScrollView;
@@ -102,28 +100,17 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
     [super viewDidLoad];
 	
-//     NSInteger pageSize = 2; // ページ数
-//    CGFloat width = self.view.bounds.size.width;
-//    CGFloat height = self.view.bounds.size.height;
-	
-	// !!!:dezamisystem・削除
-//	//const CGFloat height_status = [[UIApplication sharedApplication] statusBarFrame].size.height;
-//	CGRect rect_gauge = CGRectMake(0, 0, self.viewBaseGauge.frame.size.width, self.viewBaseGauge.frame.size.height);
-//	gaugeViewTimer = [[GaugeView alloc] initWithFrame:rect_gauge];
-//	[self.viewBaseGauge addSubview:gaugeViewTimer];
-//	[self.viewBaseGauge sendSubviewToBack:gaugeViewTimer];
-//	self.viewBaseGauge.backgroundColor = [UIColor clearColor];
-//	[gaugeViewTimer updateWithPer:0.5];
-	
     //self.capturePhotoButton.alpha = 0.0;
 	
+	// ???:hiddenのまま
+	/*
     _ghostImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     _ghostImageView.contentMode = UIViewContentModeScaleAspectFill;
     _ghostImageView.alpha = 0.2;
     _ghostImageView.userInteractionEnabled = NO;
     _ghostImageView.hidden = YES;
-	
     [self.view insertSubview:_ghostImageView aboveSubview:self.previewView];
+	 */
 
     _recorder = [SCRecorder recorder];
     _recorder.sessionPreset = AVCaptureSessionPreset640x480;
@@ -136,23 +123,30 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 //	[self updateTimeRecordedLabel];
 	
-	
-    UIView *previewView = self.previewView;
+	UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
 
 	// !!!:dezamisystem・削除
-//    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-//	// !!!:未使用なので
-//    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-//	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
+	//    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+	//	// !!!:未使用なので
+	//    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+	//	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
 	//self.recordView.alpha = 1.0;
 	
 //	self.loadingView.hidden = YES;
-    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
-    self.focusView.recorder = _recorder;
-    [previewView addSubview:self.focusView];
-    
+	CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+	NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
+	self.focusView = [[SCRecorderFocusView alloc] initWithFrame:rect_focus];
+	self.focusView.recorder = _recorder;
+	[self.view addSubview:self.focusView];
+	[self.view sendSubviewToBack:self.focusView];
+//    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
+//    self.focusView.recorder = _recorder;
+//    [previewView addSubview:self.focusView];
+
+	
+	
     /*
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
@@ -162,9 +156,25 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	{
 		int count_page = 2;
 		
-		CGFloat width_page = self.viewPageBase.frame.size.width; //self.view.frame.size.width;
-		CGFloat height_page = self.viewPageBase.frame.size.height; // self.view.frame.size.height;
-		CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
+		CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
+		//画面サイズから場合分け
+		CGRect rect = [UIScreen mainScreen].bounds;
+		if (rect.size.height == 480) {
+			//3.5inch
+			rect_page = CGRectMake(0, 336, 320, 144);
+		}
+		else if (rect.size.height == 667) {
+			//4.7inch
+			rect_page = CGRectMake(0, 467, 375, 200);
+		}
+		else if (rect.size.height == 736) {
+			//5.5inch
+			rect_page = CGRectMake(0, 516, 414, 220);
+		}
+
+		CGFloat width_page = rect_page.size.width; //self.view.frame.size.width;
+		CGFloat height_page = rect_page.size.height; // self.view.frame.size.height;
+		//CGRect rect_page = CGRectMake(0, 0, width_page, height_page);
 		pageingScrollView = [[UIScrollView alloc] initWithFrame:rect_page];
 		pageingScrollView.delegate = self;
 		pageingScrollView.contentSize = CGSizeMake(width_page * 2, height_page);
@@ -173,7 +183,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		pageingScrollView.showsVerticalScrollIndicator = NO;
 		pageingScrollView.scrollsToTop = NO;
 		//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
-		[self.viewPageBase addSubview:pageingScrollView];
+		//[self.viewPageBase addSubview:pageingScrollView];
+		[self.view addSubview:pageingScrollView];
 		
 		//スクロールビューの上にビューコントローラー
 		{
@@ -191,7 +202,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		
 		CGFloat y_page = 35 + 100;
 		//画面サイズから場合分け
-		CGRect rect = [UIScreen mainScreen].bounds;
 		if (rect.size.height == 480) {
 			//3.5inch
 			y_page = 27 + 90;
@@ -204,6 +214,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 			//5.5inch
 			y_page = 60 + 100;
 		}
+		y_page += rect_page.origin.y;
 		
 		// ページコントロール
 		// ページングスクロールビューの下にページコントロールを配置
@@ -213,10 +224,9 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		pager.numberOfPages = count_page;		// ページ数を指定
 		pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
 		pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
-		[self.viewPageBase addSubview:pager];
 		pager.userInteractionEnabled = NO;
-		// ページコントロールの値が変わったときのアクションを登録
-		//[pager addTarget:self action:@selector(changePageControl:) forControlEvents:UIControlEventValueChanged];
+		[self.view addSubview:pager];
+
 	}
 	
 	[self updateTimeRecordedLabel];
@@ -258,6 +268,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
+	
 	
 #if (!TARGET_IPHONE_SIMULATOR)
 	[_recorder previewViewFrameChanged];

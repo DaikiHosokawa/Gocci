@@ -94,7 +94,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 
 -(void)viewWillAppear:(BOOL)animated
 {
-	NSLog(@"投稿画面：矩形：%@", NSStringFromCGRect(self.view.frame) );
+	//NSLog(@"投稿画面：矩形：%@", NSStringFromCGRect(self.view.frame) );
 	
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
