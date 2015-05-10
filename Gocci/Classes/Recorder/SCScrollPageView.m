@@ -44,7 +44,7 @@
 	scrollviewPage.pagingEnabled = YES;
 	scrollviewPage.showsHorizontalScrollIndicator = NO;
 	scrollviewPage.showsVerticalScrollIndicator = NO;
-	scrollviewPage.scrollsToTop = NO;
+	//scrollviewPage.scrollsToTop = NO;
 	scrollviewPage.bounces = NO;
 	//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
 	[self addSubview:scrollviewPage];
