@@ -94,41 +94,67 @@
                                     <constraint firstAttribute="width" constant="50" id="fVw-WT-wn1"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-9m-Zwm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag-A" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-9m-Zwm">
                                 <rect key="frame" x="0.0" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KyL-h4-bOB"/>
                                     <constraint firstAttribute="width" constant="90" id="eMl-48-fmZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="67U-t0-FdZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-Xz-YeH">
+                                <rect key="frame" x="13" y="33" width="66" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-B" translatesAutoresizingMaskIntoConstraints="NO" id="67U-t0-FdZ">
                                 <rect key="frame" x="95" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="bHo-en-Me7"/>
                                     <constraint firstAttribute="height" constant="25" id="vMV-xr-r5t"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-cc-4mb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-Lg-tmy">
+                                <rect key="frame" x="107" y="33" width="66" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="tag-C" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-cc-4mb">
                                 <rect key="frame" x="190" y="31" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="0DS-WP-Fbb"/>
                                     <constraint firstAttribute="height" constant="25" id="Zsg-zU-MOK"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOt-F3-EuU">
+                                <rect key="frame" x="203" y="33" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
+                            <constraint firstItem="67U-t0-FdZ" firstAttribute="leading" secondItem="bQU-Xz-YeH" secondAttribute="trailing" constant="16" id="1cg-Nq-rKB"/>
                             <constraint firstItem="QPi-nC-yon" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" constant="8" id="2BW-B7-oBu"/>
+                            <constraint firstAttribute="bottom" secondItem="bQU-Xz-YeH" secondAttribute="bottom" constant="6" id="4rc-ag-QQ0"/>
                             <constraint firstItem="Bfz-cc-4mb" firstAttribute="leading" secondItem="67U-t0-FdZ" secondAttribute="trailing" constant="5" id="6fE-UV-x1F"/>
                             <constraint firstItem="67U-t0-FdZ" firstAttribute="leading" secondItem="ceh-9m-Zwm" secondAttribute="trailing" constant="5" id="AaG-mO-igx"/>
                             <constraint firstItem="Ved-qS-0vN" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" id="FBS-l3-aqu"/>
                             <constraint firstAttribute="trailing" secondItem="Ved-qS-0vN" secondAttribute="trailing" constant="5" id="HQa-4x-7uC"/>
                             <constraint firstAttribute="height" constant="60" id="QiQ-Ga-ahw"/>
+                            <constraint firstItem="hvj-Lg-tmy" firstAttribute="leading" secondItem="ceh-9m-Zwm" secondAttribute="trailing" constant="17" id="SWN-d8-WiI"/>
                             <constraint firstItem="Ved-qS-0vN" firstAttribute="leading" secondItem="QPi-nC-yon" secondAttribute="trailing" constant="5" id="XP5-I3-Pce"/>
                             <constraint firstItem="67U-t0-FdZ" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="6" id="ZZ2-eR-DIb"/>
+                            <constraint firstItem="bQU-Xz-YeH" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" constant="13" id="a3m-Go-NNI"/>
+                            <constraint firstItem="bQU-Xz-YeH" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="8" id="bhP-Yx-kVm"/>
                             <constraint firstItem="ceh-9m-Zwm" firstAttribute="leading" secondItem="YSl-cf-iOp" secondAttribute="leading" id="etc-tG-bJR"/>
+                            <constraint firstItem="hvj-Lg-tmy" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="8" id="oJY-Xr-qTe"/>
                             <constraint firstItem="ceh-9m-Zwm" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="6" id="qWp-Ek-5Yz"/>
                             <constraint firstItem="QPi-nC-yon" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="top" id="s9D-n0-dba"/>
+                            <constraint firstItem="Bfz-cc-4mb" firstAttribute="leading" secondItem="hvj-Lg-tmy" secondAttribute="trailing" constant="17" id="sq9-Vg-pIy"/>
+                            <constraint firstAttribute="bottom" secondItem="hvj-Lg-tmy" secondAttribute="bottom" constant="6" id="waz-16-sHT"/>
                             <constraint firstItem="Bfz-cc-4mb" firstAttribute="top" secondItem="QPi-nC-yon" secondAttribute="bottom" constant="6" id="wiQ-vc-eI1"/>
                         </constraints>
                     </view>
@@ -320,8 +346,11 @@
                 <outlet property="restaurantNaviview" destination="Ved-qS-0vN" id="cRG-lt-MS9"/>
                 <outlet property="restaurantView" destination="YSl-cf-iOp" id="JY6-5y-l4T"/>
                 <outlet property="tagA" destination="ceh-9m-Zwm" id="cPw-L7-Ebv"/>
+                <outlet property="tagALabel" destination="bQU-Xz-YeH" id="sHA-wc-eSm"/>
                 <outlet property="tagB" destination="67U-t0-FdZ" id="P3J-AF-SaK"/>
+                <outlet property="tagBLabel" destination="hvj-Lg-tmy" id="K6J-nz-dbV"/>
                 <outlet property="tagC" destination="Bfz-cc-4mb" id="RPS-ja-zEu"/>
+                <outlet property="tagCLabel" destination="lOt-F3-EuU" id="2Eu-zO-pLi"/>
                 <outlet property="thumbnailView" destination="hND-ON-WcS" id="FQq-rz-yvO"/>
                 <outlet property="thumbnailViewBottomConstraint" destination="s0V-rO-n5Y" id="qv8-tF-jzU"/>
                 <outlet property="thumbnailViewHeightConstraint" destination="xJ2-yo-HSs" id="t8Z-b8-Vm5"/>
@@ -339,6 +368,9 @@
         <image name="etc" width="41" height="12"/>
         <image name="like_new" width="34" height="31"/>
         <image name="startPlaying" width="209" height="209"/>
+        <image name="tag-A" width="128" height="28"/>
+        <image name="tag-B" width="128" height="28"/>
+        <image name="tag-C" width="128" height="28"/>
         <image name="案内" width="102" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

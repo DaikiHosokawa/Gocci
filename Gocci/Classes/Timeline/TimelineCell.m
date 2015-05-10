@@ -58,6 +58,9 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (weak, nonatomic) IBOutlet UIImageView *tagB;
 @property (weak, nonatomic) IBOutlet UIImageView *tagC;
 @property (weak, nonatomic) IBOutlet UIImageView *medal;
+@property (weak, nonatomic) IBOutlet UILabel *tagBLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagALabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagCLabel;
 
 @end
 
@@ -219,45 +222,47 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     //自分がフォローしているかどうか
     self.flag = timelinePost.flag;
     
-
-    //tagA
-    if ([timelinePost.tagA isEqualToString:@"和食"]) {
-      self.tagA.image = [UIImage imageNamed:@"tag-A-和.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"洋風"]) {
-       self.tagA.image = [UIImage imageNamed:@"tag-A-洋.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"中華"]) {
-    self.tagA.image = [UIImage imageNamed:@"tag-A-中.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"カレー"]) {
-        self.tagA.image = [UIImage imageNamed:@"tag-A-カレー.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"カフェ"]) {
-        self.tagA.image = [UIImage imageNamed:@"tag-A-カフェ.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"ラーメン"]) {
-        self.tagA.image = [UIImage imageNamed:@"tag-A-ラーメン.png"];
-    
-    }else if ([timelinePost.tagA isEqualToString:@"居酒屋"]) {
-        self.tagA.image = [UIImage imageNamed:@"tag-A-居酒屋.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"その他"]) {
-        self.tagA.image = [UIImage imageNamed:@"tag-A-その他.png"];
-    
-    } else if ([timelinePost.tagA isEqualToString:@"none"]) {
-    self.tagA.hidden = YES;
-    }
     
     //tagB
     if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
-        self.tagB.image = [UIImage imageNamed:@"tag-B-にぎやか.png"];
+        self.tagBLabel.text = timelinePost.tagB;
     } else if ([timelinePost.tagB isEqualToString:@"ゆったり"]) {
-        self.tagB.image = [UIImage imageNamed:@"tag-B-ゆったり.png"];
+        self.tagBLabel.text = timelinePost.tagB;
     } else if([timelinePost.tagB isEqualToString:@"none"]) {
-       self.tagB.hidden = YES;
+        self.tagBLabel.text = @"未入力";
+    }
+
+        //tagA
+    if ([timelinePost.tagA isEqualToString:@"和食"]) {
+       self.tagALabel.text = timelinePost.tagA;
+    
+    } else if ([timelinePost.tagA isEqualToString:@"洋風"]) {
+       self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"中華"]) {
+     self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"カレー"]) {
+      self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"カフェ"]) {
+      self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"ラーメン"]) {
+     self.tagALabel.text = timelinePost.tagA;
+    }else if ([timelinePost.tagA isEqualToString:@"居酒屋"]) {
+       self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"その他"]) {
+     self.tagALabel.text = timelinePost.tagA;
+    } else if ([timelinePost.tagA isEqualToString:@"none"]) {
+    self.tagALabel.text = @"未入力";
     }
     
+    if([timelinePost.tagA isEqualToString:@"0"]){
+    self.tagCLabel.text = @"未入力";
+    }
+    else if ([timelinePost.tagA isEqualToString:@"none"]){
+        self.tagCLabel.text = @"未入力";
+   }else {
+    NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagC];
+    self.tagCLabel.text = str3;
+    }
     //tagC
      //self.tagA.image = [UIImage imageNamed:@"ic_userpicture.png"];
     

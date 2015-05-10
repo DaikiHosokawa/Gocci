@@ -32,7 +32,7 @@
     obj.flag  = [dictionary[@"status"] integerValue];
     obj.tagA = dictionary[@"tag_category"];
     obj.tagB = dictionary[@"atmosphere"];
-    //obj.tagC = dictionary[@""];
+    obj.tagC = dictionary[@"value"];
     //obj.cheernum  = [dictionary[@"cheernum"] integerValue];
     return obj;
 }
