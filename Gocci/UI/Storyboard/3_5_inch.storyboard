@@ -972,10 +972,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="328" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="naviIcon.png" id="B6b-mL-9mm">
-                                <rect key="frame" x="145" y="29" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KX4-kR-Ui5">
                                 <rect key="frame" x="6" y="29" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -984,6 +980,16 @@
                                 </state>
                                 <connections>
                                     <action selector="onBackbutton:" destination="yAA-dq-VR1" eventType="touchUpInside" id="4Fd-J4-R8P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jxW-P7-IQa">
+                                <rect key="frame" x="145" y="29" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="naviIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGoPosting:" destination="yAA-dq-VR1" eventType="touchUpInside" id="mc8-ig-Izp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1342,8 +1348,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Gee-JD-9BO"/>
-        <segue reference="mqM-qI-glM"/>
+        <segue reference="TRo-Kj-rA7"/>
+        <segue reference="7Yb-Fi-HEj"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
         <segue reference="Abr-YO-afi"/>
