@@ -992,14 +992,6 @@
                                     <action selector="onGoPosting:" destination="yAA-dq-VR1" eventType="touchUpInside" id="mc8-ig-Izp"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="ykX-Gg-EiN">
-                                <rect key="frame" x="0.0" y="336" width="320" height="144"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="yAA-dq-VR1" id="d0R-1v-aNQ"/>
-                                </connections>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1008,7 +1000,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="scrollviewPage" destination="ykX-Gg-EiN" id="3Rw-qD-fve"/>
                         <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="bLZ-oX-KcE"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="TRo-Kj-rA7"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="7Yb-Fi-HEj"/>

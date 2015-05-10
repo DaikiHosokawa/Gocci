@@ -16,7 +16,7 @@
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, UIScrollViewDelegate, SCFirstViewDelegate,SCSecondViewDelegate>
+@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate>
 
 //@property (weak, nonatomic) IBOutlet UIView *recordView;
 //@property (weak, nonatomic) IBOutlet UIButton *stopButton;
