@@ -719,28 +719,41 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="T8e-By-osn"/>
+                        <segue destination="QUa-W4-V2E" kind="relationship" relationship="rootViewController" id="xub-04-eCl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJ3-r8-379" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2841.5" y="-927.5"/>
         </scene>
-        <!--Dummy View Controller-->
+        <!--撮影-->
         <scene sceneID="ewy-ZD-h2d">
             <objects>
-                <viewController id="QUa-W4-V2E" customClass="DummyViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="QUa-W4-V2E" customClass="DummyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GH3-v8-hR2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZeB-w2-aZ2">
+                                <rect key="frame" x="162" y="309" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="naviIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="撮影" image="tabbaritem_posting.png" id="Gom-sj-KeY"/>
                     <navigationItem key="navigationItem" id="7gH-GR-dGI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="2" kind="push" identifier="goRecorder" id="pSr-rg-SQo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5U-0S-S6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2921.5" y="-69.5"/>
+            <point key="canvasLocation" x="-2904.5" y="-128.5"/>
         </scene>
         <!--Posting View Controller-->
         <scene sceneID="HOh-ob-sRP">
@@ -959,7 +972,7 @@
         <!--SCRecorder-->
         <scene sceneID="g4T-x8-Fma">
             <objects>
-                <viewController storyboardIdentifier="screcorder" title="SCRecorder" hidesBottomBarWhenPushed="YES" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="screcorder" title="SCRecorder" id="2" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -994,7 +1007,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="239" y="13.5" width="48" height="62.500000106811527"/>
+                                        <rect key="frame" x="239" y="13.500000106811525" width="48" height="62.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1083,7 +1096,7 @@
                         <outlet property="viewIndicator" destination="CED-Hv-p55" id="MYt-Vr-66O"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="pJ4-iy-6wo"/>
                         <segue destination="6sj-W1-HXY" kind="modal" identifier="goKakaku" id="4Gi-cU-FKM"/>
-                        <segue destination="QUa-W4-V2E" kind="push" identifier="goPosting" id="lVb-PY-i1J"/>
+                        <segue destination="y1g-iL-KK8" kind="push" identifier="goPosting" id="Gz2-Wf-F3C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
