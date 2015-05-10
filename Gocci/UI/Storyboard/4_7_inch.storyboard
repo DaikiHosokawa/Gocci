@@ -783,6 +783,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="N8A-eA-Pjv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kS4-yM-zmk">
                                 <rect key="frame" x="83" y="601" width="208" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -815,17 +819,25 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="N8A-eA-Pjv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w4d-Jf-Q7q">
+                                <rect key="frame" x="0.0" y="493" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="y1g-iL-KK8" id="8ES-gP-hiV"/>
+                                    <outlet property="delegate" destination="y1g-iL-KK8" id="o2h-jx-Vha"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="wHK-bG-dSr"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="N8A-eA-Pjv" id="MXe-d6-6h9"/>
+                        <outlet property="tableviewTubuyaki" destination="w4d-Jf-Q7q" id="dRe-eJ-N7b"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="EB8-lD-Dfx"/>
                         <segue destination="6sj-W1-HXY" kind="modal" identifier="goKakaku" id="rgp-uC-gVz"/>
                     </connections>
