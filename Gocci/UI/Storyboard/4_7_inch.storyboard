@@ -783,20 +783,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" id="I6T-qN-cfy">
-                                <rect key="frame" x="0.0" y="284" width="375" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" id="Agk-oc-LZw">
-                                <rect key="frame" x="0.0" y="484" width="375" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="N8A-eA-Pjv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kS4-yM-zmk">
                                 <rect key="frame" x="83" y="601" width="208" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -829,6 +815,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_sample00.jpg" id="N8A-eA-Pjv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -836,8 +826,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imageview_samnail" destination="N8A-eA-Pjv" id="MXe-d6-6h9"/>
-                        <outlet property="view_social" destination="Agk-oc-LZw" id="wea-i1-e1R"/>
-                        <outlet property="viewsecond" destination="I6T-qN-cfy" id="kWn-X4-xN9"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="EB8-lD-Dfx"/>
                         <segue destination="6sj-W1-HXY" kind="modal" identifier="goKakaku" id="rgp-uC-gVz"/>
                     </connections>
@@ -1108,7 +1096,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3041.5" y="-129.5"/>
+            <point key="canvasLocation" x="-3294.5" y="-29.5"/>
         </scene>
         <!--Every Base Navigation Controller-->
         <scene sceneID="ffp-8Y-rg7">
@@ -1332,8 +1320,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hp2-GU-Cwb"/>
-        <segue reference="jdS-Fq-Qzq"/>
+        <segue reference="rgp-uC-gVz"/>
+        <segue reference="EB8-lD-Dfx"/>
         <segue reference="FOa-6V-u96"/>
         <segue reference="ELX-A7-CBx"/>
         <segue reference="Abr-YO-afi"/>
