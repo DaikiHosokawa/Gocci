@@ -799,7 +799,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="28f-Ki-6dZ"/>
-                    <navigationItem key="navigationItem" title="投稿" id="k20-K6-bhZ">
+                    <navigationItem key="navigationItem" id="k20-K6-bhZ">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="Bg9-Bi-Gv3">
                             <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>

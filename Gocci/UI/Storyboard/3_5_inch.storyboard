@@ -805,7 +805,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="80d-c7-QoP"/>
-                    <navigationItem key="navigationItem" title="投稿" id="tRO-Pb-OZ2">
+                    <navigationItem key="navigationItem" id="tRO-Pb-OZ2">
                         <barButtonItem key="leftBarButtonItem" image="arrow_left" id="rek-tN-uDj">
                             <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
@@ -1104,9 +1104,6 @@
                                     <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="titleShadowColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
-                                <connections>
-                                    <action selector="popButton:" destination="2" eventType="touchUpInside" id="C4F-8U-IGg"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="ZSc-8B-cjO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -1184,7 +1181,7 @@
                             <view contentMode="scaleToFill" id="ank-Xj-R2m">
                                 <rect key="frame" x="0.0" y="336" width="320" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                     </view>
