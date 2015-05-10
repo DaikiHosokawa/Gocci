@@ -233,7 +233,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 
         //tagA
-    if ([timelinePost.tagA isEqualToString:@"和食"]) {
+    if ([timelinePost.tagA isEqualToString:@"和風"]) {
        self.tagALabel.text = timelinePost.tagA;
     
     } else if ([timelinePost.tagA isEqualToString:@"洋風"]) {
@@ -254,10 +254,10 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.tagALabel.text = @"未入力";
     }
     
-    if([timelinePost.tagA isEqualToString:@"0"]){
+    if([timelinePost.tagC isEqualToString:@"0"]){
     self.tagCLabel.text = @"未入力";
     }
-    else if ([timelinePost.tagA isEqualToString:@"none"]){
+    else if ([timelinePost.tagC isEqualToString:@"none"]){
         self.tagCLabel.text = @"未入力";
    }else {
     NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagC];
