@@ -34,6 +34,7 @@ static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
 static NSString * const SEGUE_GO_POSTING = @"goPosting";
 
 static SCRecordSession *staticRecordSession;	// !!!:開放を避けるためにスタティック化
+static SCRecorder *_recorder;
 
 
 @import AVFoundation;
@@ -47,7 +48,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 @interface SCRecorderViewController ()
 <RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
-    SCRecorder *_recorder;
+//    SCRecorder *_recorder;
 	
     UIImage *_photo;
     UIImageView *_ghostImageView;
@@ -317,7 +318,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 	NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
 	
-	[self prepareCamera];
+	//[self prepareCamera];
 	
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -331,7 +332,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	[secondView reloadTableList];
 	
 	// !!!:ゲージリセット
-	[firstView updatePieChartWith:0 MAX:1];
+	//[firstView updatePieChartWith:0 MAX:1];
 }
 
 #pragma mark 描画完了後
@@ -354,7 +355,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 	// !!!:ゲージリセット
 //	[firstView updatePieChartWith:0 MAX:1];
-	[self updateTimeRecordedLabel];
+//	[self updateTimeRecordedLabel];
 }
 
 - (BOOL)isFirstRun
@@ -418,7 +419,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-
 }
 
 // Focus
@@ -617,8 +617,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 - (void) prepareCamera {
 	
 #if (!TARGET_IPHONE_SIMULATOR)
-	// ???:毎回生成する？
-	// if (_recorder.recordSession == nil)
+	if (_recorder.recordSession == nil)
 	{
         SCRecordSession *session = [SCRecordSession recordSession];
         //最大秒数
@@ -1055,7 +1054,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	
 	[self prepareCamera];
 	[self updateTimeRecordedLabel];
-	
 }
 
 #pragma mark - SCSecondView
@@ -1140,6 +1138,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 -(void)cancelSubmit
 {
 	NSLog(@"%s",__func__);
+	
+	[self retake];
 	
 	//SCRecordSession *recordSession = _recorder.recordSession;
 	//
