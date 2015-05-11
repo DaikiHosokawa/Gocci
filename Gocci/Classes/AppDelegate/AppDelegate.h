@@ -30,11 +30,14 @@
     
     NSString *lifelogDate;
     
-    NSString *cheertag;
+    int cheertag;
+
 	
 	// !!!:dezamisystem・グローバル変数
 	int valueKakaku;
 	NSString *stringTenmei;
+    NSString *stringFuniki;
+    NSString *stringCategory;
 	int indexCategory;
 	int indexFuniki;
 
@@ -52,13 +55,14 @@
 @property(nonatomic) CLLocationCoordinate2D *coordinate;
 @property(nonatomic) NSString *lifelogDate;
 @property (nonatomic, assign) NSInteger screenType;
-@property (nonatomic, retain) NSString *cheertag;
+@property (nonatomic, assign) int cheertag;
 
 @property(nonatomic,assign) int valueKakaku;
 @property(nonatomic,retain) NSString *stringTenmei;
 @property(nonatomic,assign) int indexCategory;
 @property(nonatomic,assign) int indexFuniki;
-
+@property(nonatomic,retain) NSString *stringFuniki;
+@property(nonatomic,retain) NSString *stringCategory;
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;

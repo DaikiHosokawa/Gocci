@@ -33,7 +33,7 @@
     obj.tagA = dictionary[@"tag_category"];
     obj.tagB = dictionary[@"atmosphere"];
     obj.tagC = dictionary[@"value"];
-    //obj.cheernum  = [dictionary[@"cheernum"] integerValue];
+    obj.cheernum  = [dictionary[@"cheer_num"] integerValue];
     return obj;
 }
 

@@ -230,6 +230,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
         self.tagBLabel.text = timelinePost.tagB;
     } else if([timelinePost.tagB isEqualToString:@"none"]) {
         self.tagBLabel.text = @"未入力";
+    }else{
+        self.tagBLabel.text = @"未入力";
     }
 
         //tagA
@@ -251,6 +253,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     } else if ([timelinePost.tagA isEqualToString:@"その他"]) {
      self.tagALabel.text = timelinePost.tagA;
     } else if ([timelinePost.tagA isEqualToString:@"none"]) {
+    self.tagALabel.text = @"未入力";
+    }else{
     self.tagALabel.text = @"未入力";
     }
     

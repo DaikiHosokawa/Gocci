@@ -295,11 +295,16 @@ static APIClient *_sharedInstance = nil;
     });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSString *)cheertag handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atomosphere:(NSString*)atomosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
                              @"restname" : restaurantName,
-                             @"star_evaluation" : cheertag,
-                             };
+                             @"star_evaluation" :@(cheertag),
+                             @"atomosphere" : atomosphere,
+                             @"value" :@(value),
+                             @"category" : category,
+                             @"comment" : comment
+                              };
+    NSLog(@"params:%@",params);
     [[APIClient sharedClient].manager POST:@"movie/"
                                 parameters:params
                  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

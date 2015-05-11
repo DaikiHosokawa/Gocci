@@ -129,7 +129,7 @@
  *  @param fileURL
  *  @param handler 
  */
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString*)restaurantName star_evaluation:(NSString*)cheertag handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString*)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atomosphere:(NSString*)atomosphere comment:(NSString *)comment handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  ファイルのダウンロード

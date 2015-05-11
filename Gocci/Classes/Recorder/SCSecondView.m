@@ -247,7 +247,7 @@ static NSString *stringTenmei = nil;
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
 				delegate.indexCategory = (int)buttonIndex;
-				
+                delegate.stringFuniki = [arrayCategory objectAtIndex:buttonIndex];
 //				switch (buttonIndex) {
 //					case 0:
 //						break;
@@ -264,6 +264,7 @@ static NSString *stringTenmei = nil;
 				NSLog(@"%@",[arrayFuniki objectAtIndex:buttonIndex]);
 				selectedFuniki = buttonIndex;
 				delegate.indexFuniki = (int)buttonIndex;
+                delegate.stringFuniki = [arrayFuniki objectAtIndex:buttonIndex];
 				
 //				switch (buttonIndex) {
 //					case 0:

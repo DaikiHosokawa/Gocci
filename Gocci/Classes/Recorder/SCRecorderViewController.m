@@ -1036,16 +1036,28 @@ static SCRecorder *_recorder;
 		NSLog(@"%@",staticRecordSession.outputUrl);
 		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
 		
-		NSString *gText = @"？";
+		NSString *gText = @"none";
 		if (appDelegate.gText) gText = appDelegate.gText;
-		NSString *cheertag = @"？";
+		int cheertag = 1;
 		if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
-		
+        int valueKakaku = 0;
+        if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
+        NSString *atomosphere = @"none";
+        if (appDelegate.stringFuniki) atomosphere = appDelegate.stringFuniki;
+        NSString *category = @"none";
+        if (appDelegate.stringCategory) category= appDelegate.stringCategory;
+        NSString *comment = @"none";
+
 		//バックグラウンドで投稿
 		// movie
+        
 		[APIClient movieWithFilePathURL:staticRecordSession.outputUrl
 							   restname:gText
-						star_evaluation:cheertag
+		 				star_evaluation:1
+                        value:valueKakaku
+                        category:category
+                        atomosphere:atomosphere
+                        comment:comment
 								handler:^(id result, NSUInteger code, NSError *error)
 		 {
 			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
@@ -1084,6 +1096,7 @@ static SCRecorder *_recorder;
 
 }
 
+
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
 
@@ -1091,6 +1104,7 @@ static SCRecorder *_recorder;
 	
 	[self retake];
 }
+
 
 #pragma mark - DEBUG
 - (IBAction)onGoPosting:(id)sender {

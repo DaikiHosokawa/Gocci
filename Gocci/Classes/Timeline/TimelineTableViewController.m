@@ -620,7 +620,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
              }
              self.posts = [NSArray arrayWithArray:tempPosts];
-             
+             NSLog(@"rposts:%@",_posts);
              if ([self.posts count]== 0) {
                  
                  
