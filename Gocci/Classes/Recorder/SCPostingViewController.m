@@ -27,6 +27,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	__weak IBOutlet UIView *viewBase;
 	__weak IBOutlet UITableView *tableviewTubuyaki;
 }
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 @end
 
@@ -36,7 +37,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	
+    
 	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 	
 	// ???:ずれを解消出来る？
@@ -91,8 +92,11 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 //		tableviewSocial.scrollEnabled = NO;
 //		[self.view addSubview:tableviewSocial];
 //	}
+    
 #endif
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -113,6 +117,15 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	//NSLog(@"投稿画面：矩形：%@", NSStringFromCGRect(self.view.frame) );
 	NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 	
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSLog(@"gText:%@",delegate.gText);
+    if(delegate.gText)
+    {
+        NSLog(@"ある");
+        _submitBtn.enabled = YES;
+    }
+    
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	
@@ -200,6 +213,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 {
 	//遷移：SCRecorderVideoController
 	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
+    
 }
 
 #pragma mark - TableViewDatasource
@@ -262,8 +276,6 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	// 選択状態の解除
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 /*
 #pragma mark - Navigation
 

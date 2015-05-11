@@ -7,7 +7,7 @@
 //
 
 #import "SCSecondView.h"
-
+#import "SCPostingViewController.h"
 #import "SCRecorderViewController.h"
 #import "AppDelegate.h"
 
@@ -34,6 +34,8 @@ static NSString *stringTenmei = nil;
 	NSInteger selectedFuniki;
 	
 	NSInteger indexBackColor;
+    
+    SCPostingViewController *postingView;
 }
 //@property(nonatomic,strong) NSString *stringTenmei;
 
@@ -290,7 +292,9 @@ static NSString *stringTenmei = nil;
 	
 	stringTenmei = [NSString stringWithString:name];
     NSLog(@"stringTenmei:%@",stringTenmei);
-//	[tableviewList reloadData];
+ 
+    
+    
 }
 -(void)setKakakuValue:(int)value
 {

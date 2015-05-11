@@ -261,6 +261,8 @@ static SCRecorder *_recorder;
 	[self updateTimeRecordedLabel];
 }
 
+
+
 #pragma mark 描画完了後
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -1034,7 +1036,7 @@ static SCRecorder *_recorder;
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 		
 		NSLog(@"%@",staticRecordSession.outputUrl);
-		NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+		NSLog(@"restname:%@,star_evaluation:%d",appDelegate.gText,appDelegate.cheertag);
 		
 		NSString *gText = @"none";
 		if (appDelegate.gText) gText = appDelegate.gText;
@@ -1062,11 +1064,13 @@ static SCRecorder *_recorder;
 		 {
 			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
 			 
+             
 			 if (error){
 				 
 			 }
 		 }];
 		
+        
 		[SVProgressHUD dismiss];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	}

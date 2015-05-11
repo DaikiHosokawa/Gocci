@@ -17,4 +17,5 @@ typedef void (^SCPostingViewControllerCancelCallback)(void);
 
 @interface SCPostingViewController : UIViewController<SCSecondViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
+
 @end
