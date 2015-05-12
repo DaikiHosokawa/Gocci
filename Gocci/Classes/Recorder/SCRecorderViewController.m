@@ -336,7 +336,8 @@ static SCRecorder *_recorder;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
+    
+    
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder endRunningSession];
 #endif
@@ -1063,14 +1064,24 @@ static SCRecorder *_recorder;
 								handler:^(id result, NSUInteger code, NSError *error)
 		 {
 			 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-			 
              
 			 if (error){
 				 
 			 }
 		 }];
 		
+        appDelegate.stringTenmei = @"";
+        appDelegate.gText = nil;
+        appDelegate.valueKakaku = 0;
+        appDelegate.indexCategory = -1;
+        appDelegate.indexFuniki = -1;
         
+        [secondView setKakakuValue:appDelegate.valueKakaku];
+        [secondView setTenmeiString:appDelegate.stringTenmei];
+        [secondView setCategoryIndex:appDelegate.indexCategory];
+        [secondView setFunikiIndex:appDelegate.indexFuniki];
+        [secondView reloadTableList];
+
 		[SVProgressHUD dismiss];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	}
@@ -1104,9 +1115,14 @@ static SCRecorder *_recorder;
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
 
+    
 	NSLog(@"%s",__func__);
 	
 	[self retake];
+}
+- (IBAction)onRetake:(id)sender {
+    
+    [self retake];
 }
 
 

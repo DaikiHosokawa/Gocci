@@ -18,10 +18,12 @@ static NSString * const TextTenmei = @"店名";
 static NSString * const TextCategory = @"カテゴリー";
 static NSString * const TextKakaku = @"価格";
 static NSString * const TextFuniki = @"雰囲気";
+//static NSString * const TextHitokoto = @"一言";
 
 //グローバル
 static int valueKakaku = 0;
 static NSString *stringTenmei = nil;
+//static NSString *stringHitokoto = nil;
 
 @interface SCSecondView()
 {
@@ -61,6 +63,7 @@ static NSString *stringTenmei = nil;
 		selectedFuniki = -1;
 		stringTenmei = nil;
 //		stringKakaku = nil;
+       // stringHitokoto = nil;
 		
 		indexBackColor = index;
 	}
@@ -103,7 +106,8 @@ static NSString *stringTenmei = nil;
 			cell.textLabel.text = TextTenmei;
 			if (stringTenmei) {
 				cell.detailTextLabel.text = stringTenmei;
-			}
+                NSLog(@"stringTenmei:%@",stringTenmei);
+            }
 			break;
 		case 1:
 			cell.textLabel.text = TextCategory;
@@ -123,6 +127,14 @@ static NSString *stringTenmei = nil;
 				cell.detailTextLabel.text = [arrayFuniki objectAtIndex:selectedFuniki];
 			}
 			break;
+         /*
+        case 4:
+            cell.textLabel.text = TextHitokoto;
+            if (stringHitokoto) {
+                cell.detailTextLabel.text = stringHitokoto];
+            }
+            break;
+          */
 	}
 
 	return cell;

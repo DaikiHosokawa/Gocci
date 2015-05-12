@@ -272,17 +272,19 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     
     //応援画像
-    
+    /*
     if(timelinePost.cheernum > 10){
-        self.cheerView.image = [UIImage imageNamed:@"金.png"];
+        self.medal.image = [UIImage imageNamed:@"金.png"];
     }else if(timelinePost.cheernum > 5){
-        self.cheerView.image = [UIImage imageNamed:@"銀.png"];
+        self.medal.image = [UIImage imageNamed:@"銀.png"];
     }else if(timelinePost.cheernum > 3) {
-        self.cheerView.image = [UIImage imageNamed:@"銅.png"];
+        self.medal.image = [UIImage imageNamed:@"銅.png"];
      }else if(timelinePost.commentNum > 0) {
-         self.cheerView.hidden = YES;
+         //self.image.hidden = YES;
      }
+     */
     
+    NSLog(@"cheernum:%ld",(long)timelinePost.cheernum);
     //self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     // タップイベント

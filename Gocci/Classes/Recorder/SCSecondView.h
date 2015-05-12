@@ -14,6 +14,8 @@
 //@optional
 -(void)goBeforeRecorder;
 -(void)goKakakuText;
+
+
 @end
 
 @interface SCSecondView : UIView<UITableViewDelegate,UITableViewDataSource, UIActionSheetDelegate>
