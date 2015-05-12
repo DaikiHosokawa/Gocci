@@ -429,7 +429,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient profileWithUserName:@"きなふー" handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient profileWithUserName:profiledelegate.username handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
