@@ -984,7 +984,7 @@
                                             <segue destination="GDX-Rq-Mj4" kind="unwind" unwindAction="popViewController1:" id="R6m-wh-QJo"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dlz-3X-mki">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dlz-3X-mki">
                                         <rect key="frame" x="0.0" y="421" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1377,7 +1377,7 @@
         <segue reference="mxO-EZ-B49"/>
         <segue reference="Rhk-9Y-XzF"/>
         <segue reference="5vL-6n-Sjz"/>
-        <segue reference="Cte-je-0wV"/>
-        <segue reference="tk5-fM-XTh"/>
+        <segue reference="SDs-PX-5V3"/>
+        <segue reference="Kbo-Zn-huj"/>
     </inferredMetricsTieBreakers>
 </document>

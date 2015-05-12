@@ -783,7 +783,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kNc-kB-iRx">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kNc-kB-iRx" id="Bgs-cz-2X6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -970,7 +970,7 @@
                                         <rect key="frame" x="198" y="20" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4YN-IV-DLE">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4YN-IV-DLE">
                                         <rect key="frame" x="0.0" y="559" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1360,8 +1360,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="sBC-Zs-pgG"/>
         <segue reference="oAW-Uz-WM7"/>
-        <segue reference="UpQ-zf-3aZ"/>
-        <segue reference="OKq-Wv-gQ1"/>
+        <segue reference="A6l-Sl-qZw"/>
+        <segue reference="33G-Rn-4Mg"/>
         <segue reference="wis-md-2uD"/>
     </inferredMetricsTieBreakers>
 </document>

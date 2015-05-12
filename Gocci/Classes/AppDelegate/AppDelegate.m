@@ -166,10 +166,51 @@
 
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
-    
+ 
+    /*
+    // プッシュ許可の確認を表示
+    if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1){
+        // iOS8以降
+        UIUserNotificationType types =  UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound |
+        UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [application registerUserNotificationSettings:mySettings];
+    }else{
+        // iOS8以前
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+     */
     return YES;
 
 }
+
+/*
+// iOS8以降ここを通る
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:
+(UIUserNotificationSettings *)notificationSettings{
+    // これ呼ばないとデバイストークン取得できない
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // デバイストークン取得完了
+    NSString *token = deviceToken.description;
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"apnsToken"]; //save token to resend it if request fails
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"apnsTokenSentSuccessfully"]; // set flag for request status
+
+    
+    NSLog(@"token:%@",token);
+    // トークンをサーバに保存する処理など
+    [self postDeviceToken:token]; // POST
+}
+ */
+
+
+
 
 -(void)checkGPS{
         // CLLocationManagerのインスタンスを作成

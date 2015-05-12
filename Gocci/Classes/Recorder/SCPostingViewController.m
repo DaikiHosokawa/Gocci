@@ -219,7 +219,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 #pragma mark - TableViewDatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 2;
+	return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -238,6 +238,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
+    
 	
 	NSInteger row_index = indexPath.row;
 	switch (row_index) {
