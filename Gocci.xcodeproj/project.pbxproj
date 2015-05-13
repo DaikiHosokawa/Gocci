@@ -201,6 +201,7 @@
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
+		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
 		95A8623D1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */; };
 		95A8623E1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */; };
 		95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AC1AF09B58001599EE /* Reachability.m */; };
@@ -601,6 +602,8 @@
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
+		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		95A8623A1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupAdditionView.h; sourceTree = "<group>"; };
 		95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupAdditionView.m; sourceTree = "<group>"; };
 		95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupAdditionView.xib; sourceTree = "<group>"; };
@@ -781,6 +784,7 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */,
 				95E3C5A71AF09B0F001599EE /* Reachability */,
 				A13FB9731AB45F7E00B893F9 /* BFPaperColors */,
 				A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */,
@@ -1394,6 +1398,15 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */,
+				958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */,
+			);
+			path = BBBadgeBarButtonItem;
+			sourceTree = "<group>";
+		};
 		95E3C5A71AF09B0F001599EE /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -1894,6 +1907,7 @@
 				952D23981A9B95E800C354DF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				95A8623D1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m in Sources */,
 				952D24991A9B9D3300C354DF /* RestaurantTableViewController.m in Sources */,
+				958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */,
 				AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */,
 				952D24861A9B9D3300C354DF /* LifelogViewController.m in Sources */,
 				A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */,

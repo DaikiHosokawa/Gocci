@@ -20,7 +20,7 @@
 #import "SVProgressHUD.h"
 #import "LocationClient.h"
 #import "Reachability.h"
-
+#import "BBBadgeBarButtonItem.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -73,6 +73,24 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //右ナビゲーションアイテム(通知)の実装
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+     [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // BBBadgeBarButtonItemオブジェクトの作成
+    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+
+    barButton.badgeBGColor      = [UIColor whiteColor];
+    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
+    barButton.badgeTextColor    = color_custom;
+    barButton.badgeOriginX = 10;
+    barButton.badgeOriginY = 10;
+    
+    // バッジ内容の設定
+    barButton.badgeValue = @"1";// ナビゲーションバーに設定する
+    self.navigationItem.rightBarButtonItem = barButton;
     
     
     CGRect frame = CGRectMake(0, 0, 500, 44);
@@ -170,6 +188,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [userDefaults synchronize];
     // 初回起動
     return YES;
+}
+
+-(void)barButtonItemPressed:(id)sender{
+NSLog(@"badge touched");
 }
 
 

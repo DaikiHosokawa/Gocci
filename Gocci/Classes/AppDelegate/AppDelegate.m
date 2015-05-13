@@ -132,6 +132,8 @@
     
     //ナビゲーションバーのタイトルの色を変更
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    
 	
 	// !!!:dezamisystem・タブバー設定
 	{
