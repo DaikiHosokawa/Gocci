@@ -20,6 +20,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
 #import "Reachability.h"
+#import "CustomAnnotation.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -32,10 +33,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()
-<TimelineCellDelegate>
+<TimelineCellDelegate,MKMapViewDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
+    __weak IBOutlet MKMapView *map_;
    // RestaurantPost *restaurantPost;
 }
 
@@ -44,7 +46,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *telButtonLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *telButtonLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
@@ -61,8 +63,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postTell = _postTell;
 @synthesize postHomepage = _postHomepage;
 @synthesize postCategory = _postCategory;
-@synthesize lon;
-@synthesize lat;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -97,18 +97,23 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
-    NSLog(@"postCategory:%@",_postCategory);
+    double latdo = _postLat.doubleValue;
+    _coordinate.latitude = latdo;
+    double londo = _postLon.doubleValue;
+    _coordinate.longitude = londo;
     
-    
-    
-    //UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    //backButton.title = @"";
-    
-    //[self.telButton setTitle:_postTell forState:UIControlStateNormal];
-    self.telButtonLabel.text = _postTell;
-    if (_postHomepage == nil) {
-       
-    }
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latdo
+                                                            longitude:londo
+                                                                 zoom:18];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = camera.target;
+    marker.title = _postRestName;
+    marker.snippet = _postLocality;
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.map  = _map;
+    _map.selectedMarker = marker;
+    //GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
+    [_map setCamera:camera];
     
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -122,6 +127,19 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self.tableView addSubview:self.refresh];
 }
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+    {
+        // 初回に現在地に移動している場合は再度移動しないようにする
+      
+          CLLocationCoordinate2D centerCoordinate = userLocation.coordinate;
+        
+        // 表示倍率の設定
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
+        MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
+        [map_ setRegion:region animated:NO];
+  }
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -130,7 +148,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 	
     self.restname.text = _postRestName;
-    self.locality.text = _postLocality;
+    //self.locality.text = _postLocality;
     self.categoryLabel.text = _postCategory;
     NSLog(@"postCategory2:%@",_postCategory);
     
@@ -676,7 +694,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+280,
+                                  currentHeight + currentCell.thumbnailView.frame.origin.y+430,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     

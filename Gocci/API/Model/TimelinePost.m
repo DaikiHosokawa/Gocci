@@ -34,6 +34,8 @@
     obj.tagB = dictionary[@"atmosphere"];
     obj.tagC = dictionary[@"value"];
     obj.cheernum  = [dictionary[@"cheer_num"] integerValue];
+    obj.lat = dictionary[@"lat"];
+    obj.lon = dictionary[@"lon"];
     return obj;
 }
 

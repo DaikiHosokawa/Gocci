@@ -26,6 +26,9 @@
     NSString *_postLocality;
     NSString *_postTell;
     NSString *_postCategory;
+    NSString *_postLat;
+    NSString *_postLon;
+
 
 }
 

@@ -364,7 +364,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         restVC.postTell = params[@"tell"];
         restVC.postHomepage = params[@"homepage"];
         restVC.postCategory = params[@"category"];
-        
+        restVC.postLon = params[@"post_lon"];
+        restVC.postLat = params[@"post_lat"];
+        NSLog(@"paramsAt:%@",params);
     }
 }
 

@@ -92,7 +92,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     barButton.badgeValue = @"1";// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = barButton;
     
-    
     CGRect frame = CGRectMake(0, 0, 500, 44);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.backgroundColor = [UIColor clearColor];
@@ -402,10 +401,11 @@ NSLog(@"badge touched");
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
         restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
         restVC.postCategory = _postCategory;
-        NSLog(@"postCategory:%@",_postCategory);
+        restVC.postLon = _postLon;
+        restVC.postLat = _postLat;
+        restVC.postTell = _postTell;
     }
 }
 
@@ -561,15 +561,17 @@ NSLog(@"badge touched");
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
     _postRestname = restaurantName;
     _postHomepage = homepage;
     _postLocality = locality;
-    _postTell = tel;
     _postCategory = category;
+    _postLat = lat;
+    _postLon = lon;
+    _postTell = tel;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);
@@ -858,21 +860,6 @@ NSLog(@"badge touched");
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-     /*
-    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] init];
-   
-     ai.frame = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                         currentHeight + currentCell.thumbnailView.frame.origin.y,
-                         currentCell.thumbnailView.frame.size.width,
-      
-    ai.center = currentCell.center;
-    ai.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [self.view addSubview:ai];
-
-    [ai startAnimating];
-      currentCell.thumbnailView.frame.size.height);
-      */
-  
     
     switch (netStatus) {
         case NotReachable:  //圏外

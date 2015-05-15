@@ -36,6 +36,8 @@
     NSString *_postUsername_with_profile2;
     NSString *_postUserPicture_with_profile2;
 
+    NSString *_postLat;
+    NSString *_postLon;
     int flash_on;
 
 }

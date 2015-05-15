@@ -30,8 +30,10 @@
     NSString *_postRestname;
     NSString *_postHomepage;
     NSString *_postLocality;
-    NSString *_postTell;
     NSString *_postCategory;
+    NSString *_postLon;
+    NSString *_postLat;
+    NSString *_postTell;
     //サムネイル
     UIImageView *thumbnailView;
 }

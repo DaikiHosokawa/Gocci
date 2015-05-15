@@ -59,7 +59,6 @@
 		952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23001A9B95E800C354DF /* CXCardContainerView.m */; };
 		952D23701A9B95E800C354DF /* CXCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23021A9B95E800C354DF /* CXCardView.m */; };
 		952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D23061A9B95E800C354DF /* FacebookSDK.framework */; };
-		952D23731A9B95E800C354DF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D23071A9B95E800C354DF /* GoogleMaps.framework */; };
 		952D23741A9B95E800C354DF /* JTCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230A1A9B95E800C354DF /* JTCalendar.m */; };
 		952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230C1A9B95E800C354DF /* JTCalendarAppearance.m */; };
 		952D23761A9B95E800C354DF /* JTCalendarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230E1A9B95E800C354DF /* JTCalendarContentView.m */; };
@@ -202,6 +201,8 @@
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
+		958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958E31521B05899E00863EDF /* GoogleMaps.framework */; };
+		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
 		95A8623D1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */; };
 		95A8623E1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */; };
 		95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AC1AF09B58001599EE /* Reachability.m */; };
@@ -365,7 +366,6 @@
 		952D23011A9B95E800C354DF /* CXCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardView.h; sourceTree = "<group>"; };
 		952D23021A9B95E800C354DF /* CXCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardView.m; sourceTree = "<group>"; };
 		952D23061A9B95E800C354DF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		952D23071A9B95E800C354DF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		952D23091A9B95E800C354DF /* JTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendar.h; sourceTree = "<group>"; };
 		952D230A1A9B95E800C354DF /* JTCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendar.m; sourceTree = "<group>"; };
 		952D230B1A9B95E800C354DF /* JTCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarAppearance.h; sourceTree = "<group>"; };
@@ -604,6 +604,8 @@
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
+		958E31521B05899E00863EDF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		958E31541B0589F300863EDF /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		95A8623A1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupAdditionView.h; sourceTree = "<group>"; };
 		95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupAdditionView.m; sourceTree = "<group>"; };
 		95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupAdditionView.xib; sourceTree = "<group>"; };
@@ -713,7 +715,6 @@
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
-				952D23731A9B95E800C354DF /* GoogleMaps.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				952D23801A9B95E800C354DF /* Parse.framework in Frameworks */,
 				952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */,
@@ -729,6 +730,7 @@
 				FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */,
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
+				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
@@ -784,6 +786,8 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				958E31541B0589F300863EDF /* GoogleMaps.bundle */,
+				958E31521B05899E00863EDF /* GoogleMaps.framework */,
 				958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */,
 				95E3C5A71AF09B0F001599EE /* Reachability */,
 				A13FB9731AB45F7E00B893F9 /* BFPaperColors */,
@@ -794,7 +798,6 @@
 				952D22F81A9B95E800C354DF /* CrittercismSDK */,
 				952D22FE1A9B95E800C354DF /* CXCardView */,
 				952D23061A9B95E800C354DF /* FacebookSDK.framework */,
-				952D23071A9B95E800C354DF /* GoogleMaps.framework */,
 				952D23081A9B95E800C354DF /* JTCalendar */,
 				952D231E1A9B95E800C354DF /* MYBlurIntroductionView */,
 				952D23231A9B95E800C354DF /* Parse.framework */,
@@ -1721,6 +1724,7 @@
 				BFA1DA7A1AB2BA7F00B4F63A /* Cancel@3x.png in Resources */,
 				95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
+				958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */,
 				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
 				377063431AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib in Resources */,
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,

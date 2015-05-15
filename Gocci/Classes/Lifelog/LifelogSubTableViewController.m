@@ -239,8 +239,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category
-{
+-(void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
     _postRestname = restaurantName;
@@ -248,10 +247,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postLocality = locality;
     _postTell = tel;
     _postCategory = category;
-    NSLog(@"restname=%@", restaurantName);
-    NSLog(@"locality=%@", locality);
-    NSLog(@"tel=%@", tel);
-    NSLog(@"homepage=%@", homepage);
+    _postLon = lon;
+    _postLat = lat;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -449,6 +446,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postHomepage = _postHomepage;
         restVC.postTell = _postTell;
         restVC.postCategory = _postCategory;
+        restVC.postLon = _postLon;
+        restVC.postLat = _postLat;
     }
     
 }

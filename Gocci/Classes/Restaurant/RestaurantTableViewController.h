@@ -14,8 +14,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "CXCardView.h"
 #import "DemoContentView.h"
+#import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface RestaurantTableViewController : UITableViewController
+@interface RestaurantTableViewController : UITableViewController <MKAnnotation>
 {
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
@@ -36,6 +38,9 @@
     NSString *lon;
 }
 
+@property (readwrite, nonatomic) CLLocationCoordinate2D coordinate; // required
+
+@property (weak, nonatomic) IBOutlet GMSMapView *map;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
@@ -43,8 +48,8 @@
 @property (nonatomic) NSString *postTell;
 @property (nonatomic) NSString *postHomepage;
 @property (nonatomic) NSString *postCategory;
-@property (nonatomic) NSString *lat;
-@property (nonatomic) NSString *lon;
+@property (nonatomic) NSString *postLon;
+@property (nonatomic) NSString *postLat;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UILabel *locality;
