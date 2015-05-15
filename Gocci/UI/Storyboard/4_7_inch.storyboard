@@ -526,7 +526,7 @@
                                     <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="paI-Wr-qFc">
-                                    <rect key="frame" x="194" y="150" width="85" height="65"/>
+                                    <rect key="frame" x="194" y="150" width="85" height="67"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="地図で見る">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -538,7 +538,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mcd-ST-nov">
-                                    <rect key="frame" x="287" y="150" width="80" height="65"/>
+                                    <rect key="frame" x="287" y="150" width="80" height="67"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="その他">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -546,7 +546,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J8a-I5-WcS">
-                                    <rect key="frame" x="8" y="151" width="85" height="63"/>
+                                    <rect key="frame" x="10" y="152" width="85" height="63"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="notOen">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -554,7 +554,7 @@
                                     <state key="selected" image="Oen"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lka-ZM-Wge">
-                                    <rect key="frame" x="101" y="150" width="85" height="67"/>
+                                    <rect key="frame" x="101" y="150" width="88" height="67"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="予約をする">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1368,7 +1368,7 @@
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="ui_black.png" width="32" height="32"/>
         <image name="その他" width="150" height="107"/>
-        <image name="予約をする" width="151" height="107"/>
+        <image name="予約をする" width="151" height="101"/>
         <image name="地図で見る" width="150" height="107"/>
         <image name="応援" width="168" height="52"/>
     </resources>
