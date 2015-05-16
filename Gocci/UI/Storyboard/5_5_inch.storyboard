@@ -54,7 +54,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GdI-Ak-fmj">
-                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GdI-Ak-fmj" id="lLT-uC-0qX">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -320,7 +320,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="Vfx-KZ-72O" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vfx-KZ-72O" id="Wrd-U6-8UT">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -572,7 +572,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="401" width="414" height="47"/>
+                                <rect key="frame" x="0.0" y="337" width="414" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="46"/>
@@ -864,7 +864,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="cz9-Qw-kgD" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz9-Qw-kgD" id="ER8-hf-ZHu">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -897,7 +897,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="41R-xo-4Zo" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="41R-xo-4Zo" id="LHl-dS-rpQ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -936,6 +936,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClN-mv-zag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5581" y="725"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6b1-zy-tlP">
+            <objects>
+                <navigationController id="9k7-tA-do2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iZp-Qc-F5j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yya-kT-Tti" kind="relationship" relationship="rootViewController" id="mgU-yK-w3g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quP-id-Quf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5679" y="1689"/>
+        </scene>
+        <!--HitokotoTextViewController-->
+        <scene sceneID="2DR-nH-fUs">
+            <objects>
+                <viewController title="HitokotoTextViewController" id="yya-kT-Tti" customClass="HitokotoTextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="acN-7B-Xjx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="一言を入力してください" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="1Ga-xg-Tuf">
+                                <rect key="frame" x="48" y="125" width="318" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O98-gi-sEy">
+                                <rect key="frame" x="336" y="174" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onOkey:" destination="yya-kT-Tti" eventType="touchUpInside" id="oMV-p3-QXY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="一言" id="Em3-0W-Lzr">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="J0N-ro-sge">
+                            <connections>
+                                <action selector="onBack:" destination="yya-kT-Tti" id="tS3-CK-rd4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textfieldHitokoto" destination="1Ga-xg-Tuf" id="heJ-RN-Ov9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xS4-mo-aaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5022" y="1683"/>
         </scene>
         <!--KakakuTextViewController-->
         <scene sceneID="op0-fz-VGX">
@@ -1056,6 +1114,7 @@
                         <outlet property="viewBase" destination="vXd-ZP-gtT" id="LcK-ea-PWA"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="33G-Rn-4Mg"/>
                         <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="A6l-Sl-qZw"/>
+                        <segue destination="9k7-tA-do2" kind="modal" identifier="goHitokoto" id="Za3-0c-f07"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XL0-L4-N5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1136,6 +1195,7 @@
                         <segue destination="7Oz-JW-I5Z" kind="push" identifier="goPosting" id="ZYz-dz-CD6"/>
                         <segue destination="UNX-Jg-mSw" kind="modal" identifier="goBeforeRecorder" id="OKq-Wv-gQ1"/>
                         <segue destination="1EW-q9-wez" kind="modal" identifier="goKakaku" id="UpQ-zf-3aZ"/>
+                        <segue destination="9k7-tA-do2" kind="modal" identifier="goHitokoto" id="rzP-bu-pMU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2w-ty-izy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1180,7 +1240,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="270" y="9.0000002033745758" width="48" height="48"/>
+                                        <rect key="frame" x="270" y="9" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1392,7 +1452,7 @@
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="ui_black.png" width="32" height="32"/>
         <image name="その他" width="150" height="107"/>
-        <image name="予約をする" width="151" height="107"/>
+        <image name="予約をする" width="151" height="101"/>
         <image name="地図で見る" width="150" height="107"/>
         <image name="応援" width="168" height="52"/>
     </resources>
@@ -1403,9 +1463,10 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="oAW-Uz-WM7"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="JYh-MP-8XI"/>
+        <segue reference="rzP-bu-pMU"/>
         <segue reference="A6l-Sl-qZw"/>
         <segue reference="33G-Rn-4Mg"/>
-        <segue reference="JYh-MP-8XI"/>
-        <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>
 </document>

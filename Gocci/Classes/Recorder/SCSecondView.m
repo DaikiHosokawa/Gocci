@@ -18,12 +18,12 @@ static NSString * const TextTenmei = @"店名";
 static NSString * const TextCategory = @"カテゴリー";
 static NSString * const TextKakaku = @"価格";
 static NSString * const TextFuniki = @"雰囲気";
-//static NSString * const TextHitokoto = @"一言";
+static NSString * const TextHitokoto = @"一言";
 
 //グローバル
 static int valueKakaku = 0;
 static NSString *stringTenmei = nil;
-//static NSString *stringHitokoto = nil;
+static NSString *stringHitokoto = nil;
 
 @interface SCSecondView()
 {
@@ -63,7 +63,7 @@ static NSString *stringTenmei = nil;
 		selectedFuniki = -1;
 		stringTenmei = nil;
 //		stringKakaku = nil;
-       // stringHitokoto = nil;
+        stringHitokoto = nil;
 		
 		indexBackColor = index;
 	}
@@ -80,13 +80,13 @@ static NSString *stringTenmei = nil;
 #pragma mark 行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 4;
+	return 5;
 }
 
 #pragma mark 高さ
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	CGFloat height = self.frame.size.height / 4;
+	CGFloat height = self.frame.size.height / 5;
 	
 	return height;
 }
@@ -127,14 +127,13 @@ static NSString *stringTenmei = nil;
 				cell.detailTextLabel.text = [arrayFuniki objectAtIndex:selectedFuniki];
 			}
 			break;
-         /*
+         
         case 4:
             cell.textLabel.text = TextHitokoto;
             if (stringHitokoto) {
-                cell.detailTextLabel.text = stringHitokoto];
+                cell.detailTextLabel.text = stringHitokoto;
             }
-            break;
-          */
+    break;
 	}
 
 	return cell;
@@ -237,7 +236,12 @@ static NSString *stringTenmei = nil;
 			actionsheet.tag = 3;
 			[actionsheet showInView:rootViewController.view];
 			break;
-			
+            
+        case 4:
+            NSLog(@"一言");
+            [self.delegate goHitokotoText];
+            break;
+    
 	}
 	
 	// 選択状態の解除
@@ -304,15 +308,19 @@ static NSString *stringTenmei = nil;
 	
 	stringTenmei = [NSString stringWithString:name];
     NSLog(@"stringTenmei:%@",stringTenmei);
- 
-    
-    
 }
+
 -(void)setKakakuValue:(int)value
 {
 	valueKakaku = value;
     NSLog(@"valueKakaku:%d",valueKakaku);
 //	[tableviewList reloadData];
+}
+-(void)setHitokotoValue:(NSString*)value
+{
+    stringHitokoto = value;
+    NSLog(@"valueHitokoto:%@",stringHitokoto);
+    //	[tableviewList reloadData];
 }
 -(void)setCategoryIndex:(int)index
 {

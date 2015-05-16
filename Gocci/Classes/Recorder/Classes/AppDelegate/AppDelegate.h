@@ -35,7 +35,6 @@
 	
 	// !!!:dezamisystem・グローバル変数
 	int valueKakaku;
-    NSString *valueHitokoto;
 	NSString *stringTenmei;
     NSString *stringFuniki;
     NSString *stringCategory;
@@ -62,7 +61,6 @@
 @property(nonatomic,retain) NSString *stringTenmei;
 @property(nonatomic,assign) int indexCategory;
 @property(nonatomic,assign) int indexFuniki;
-@property(nonatomic,retain) NSString *valueHitokoto;
 @property(nonatomic,retain) NSString *stringFuniki;
 @property(nonatomic,retain) NSString *stringCategory;
 

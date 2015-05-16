@@ -32,6 +32,7 @@
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
 static NSString * const SEGUE_GO_POSTING = @"goPosting";
+static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";
 
 static SCRecordSession *staticRecordSession;	// !!!:開放を避けるためにスタティック化
 static SCRecorder *_recorder;
@@ -255,6 +256,7 @@ static SCRecorder *_recorder;
 	[secondView setTenmeiString:delegate.stringTenmei];
 	[secondView setCategoryIndex:delegate.indexCategory];
 	[secondView setFunikiIndex:delegate.indexFuniki];
+    [secondView setHitokotoValue:delegate.valueHitokoto];
 	[secondView reloadTableList];
 	
 	// !!!:ゲージ再描画
@@ -996,6 +998,12 @@ static SCRecorder *_recorder;
 	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
 }
 
+-(void)goHitokotoText
+{
+    //遷移：SCRecorderVideoController
+    [self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
+}
+
 #pragma mark - beforeRecorderViewController
 -(void)sendTenmeiString:(NSString*)str
 {
@@ -1012,6 +1020,13 @@ static SCRecorder *_recorder;
 	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	delegate.valueKakaku = value;
 }
+
+-(void)sendHitokotoValue:(NSString *)value
+{
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.valueHitokoto = value;
+}
+
 
 #pragma mark - SCPostingViewController
 #pragma mark 投稿
@@ -1050,6 +1065,7 @@ static SCRecorder *_recorder;
         NSString *category = @"none";
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
         NSString *comment = @"none";
+        if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
 
 		//バックグラウンドで投稿
 		// movie
@@ -1072,6 +1088,7 @@ static SCRecorder *_recorder;
 		
         appDelegate.stringTenmei = @"";
         appDelegate.gText = nil;
+        appDelegate.valueHitokoto = @"";
         appDelegate.valueKakaku = 0;
         appDelegate.indexCategory = -1;
         appDelegate.indexFuniki = -1;
@@ -1080,6 +1097,7 @@ static SCRecorder *_recorder;
         [secondView setTenmeiString:appDelegate.stringTenmei];
         [secondView setCategoryIndex:appDelegate.indexCategory];
         [secondView setFunikiIndex:appDelegate.indexFuniki];
+        [secondView setHitokotoValue:appDelegate.valueHitokoto];
         [secondView reloadTableList];
 
 		[SVProgressHUD dismiss];

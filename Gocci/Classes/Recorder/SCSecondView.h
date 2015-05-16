@@ -14,6 +14,7 @@
 //@optional
 -(void)goBeforeRecorder;
 -(void)goKakakuText;
+-(void)goHitokotoText;
 
 
 @end
@@ -28,6 +29,7 @@
 -(void)setKakakuValue:(int)value;
 -(void)setCategoryIndex:(int)index;
 -(void)setFunikiIndex:(int)index;
+-(void)setHitokotoValue:(NSString*)value;
 -(void)reloadTableList;
 
 #pragma mark 生成

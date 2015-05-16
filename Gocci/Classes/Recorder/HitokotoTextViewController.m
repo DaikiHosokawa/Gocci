@@ -6,20 +6,19 @@
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
-#import "KakakuTextViewController.h"
-
+#import "HitokotoTextViewController.h"
 #import "SCRecorderViewController.h"
 
 
-@interface KakakuTextViewController ()
+@interface HitokotoTextViewController ()
 {
-	__weak IBOutlet UITextField *textfieldKakaku;
+	__weak IBOutlet UITextField *textfieldHitokoto;
 	
 }
 
 @end
 
-@implementation KakakuTextViewController
+@implementation HitokotoTextViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +84,7 @@
 			//rootViewController = [storyboard instantiateInitialViewController];
 		}
 	}
-	[viewController sendKakakuValue:[textfieldKakaku.text intValue]];
+	[viewController sendHitokotoValue:textfieldHitokoto.text];
 	
 	[self dismissViewControllerAnimated:YES completion:^{
 
@@ -98,7 +97,7 @@
 
 }
 
--(void)goKakakuText
+-(void)goHitokotoText
 {
 	
 }

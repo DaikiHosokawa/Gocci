@@ -214,7 +214,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -554,7 +554,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="401" width="320" height="47"/>
+                                <rect key="frame" x="0.0" y="337" width="320" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="46"/>
@@ -741,7 +741,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
@@ -902,6 +902,64 @@
             </objects>
             <point key="canvasLocation" x="-2774" y="44"/>
         </scene>
+        <!--HitokotoTextViewController-->
+        <scene sceneID="eCH-NA-Ahp">
+            <objects>
+                <viewController title="HitokotoTextViewController" id="TrA-LT-zvm" customClass="HitokotoTextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="59b-Ps-8e0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="一言を入力してください" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="ear-Si-PxE">
+                                <rect key="frame" x="21" y="103" width="283" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jto-36-CyN">
+                                <rect key="frame" x="274" y="147" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onOkey:" destination="TrA-LT-zvm" eventType="touchUpInside" id="EHS-Zq-p2s"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="一言" id="lbQ-J2-GoG">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="otU-5Q-jVv">
+                            <connections>
+                                <action selector="onBack:" destination="TrA-LT-zvm" id="Q4Y-BM-0b7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textfieldHitokoto" destination="ear-Si-PxE" id="tZL-VX-PoG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIc-LK-gG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2806" y="853"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RyP-u7-rC3">
+            <objects>
+                <navigationController id="UTb-wV-ofs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4PA-Sh-Bp7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TrA-LT-zvm" kind="relationship" relationship="rootViewController" id="cNh-dt-7ym"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygh-Wf-aDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3266" y="853"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YDQ-cv-A2F">
             <objects>
@@ -1041,6 +1099,7 @@
                         <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="bLZ-oX-KcE"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="TRo-Kj-rA7"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="7Yb-Fi-HEj"/>
+                        <segue destination="UTb-wV-ofs" kind="modal" identifier="goHitokoto" id="bbz-Lf-K7I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1116,6 +1175,7 @@
                         <outlet property="viewBase" destination="kOQ-Ld-2NX" id="LWd-WQ-DUa"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="mqM-qI-glM"/>
                         <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Gee-JD-9BO"/>
+                        <segue destination="UTb-wV-ofs" kind="modal" identifier="goHitokoto" id="m3r-Nr-3DM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekk-nu-emt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1382,7 +1442,7 @@
         <image name="topbar" width="320" height="125"/>
         <image name="ui_black.png" width="32" height="32"/>
         <image name="その他" width="150" height="107"/>
-        <image name="予約をする" width="151" height="107"/>
+        <image name="予約をする" width="151" height="101"/>
         <image name="地図で見る" width="150" height="107"/>
         <image name="応援" width="168" height="52"/>
     </resources>
@@ -1392,10 +1452,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Gee-JD-9BO"/>
         <segue reference="oAW-Uz-WM7"/>
         <segue reference="E8I-Ul-lW0"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="mqM-qI-glM"/>
+        <segue reference="7Yb-Fi-HEj"/>
+        <segue reference="TRo-Kj-rA7"/>
+        <segue reference="m3r-Nr-3DM"/>
     </inferredMetricsTieBreakers>
 </document>

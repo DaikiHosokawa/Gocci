@@ -36,6 +36,7 @@
     obj.cheernum  = [dictionary[@"cheer_num"] integerValue];
     obj.lat = dictionary[@"lat"];
     obj.lon = dictionary[@"lon"];
+    obj.comment = dictionary[@"comment"];
     return obj;
 }
 

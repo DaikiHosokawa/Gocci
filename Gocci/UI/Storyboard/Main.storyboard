@@ -194,7 +194,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -232,7 +232,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="whW-QS-wZZ" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whW-QS-wZZ" id="xmg-b5-SEd">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -265,7 +265,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="FLI-7N-ZFZ" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLI-7N-ZFZ" id="h5r-Uz-WQP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -912,6 +912,7 @@
                         <segue destination="Sal-Jd-8HJ" kind="push" identifier="goPosting" id="oeL-PT-oa9"/>
                         <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="tk5-fM-XTh"/>
                         <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Cte-je-0wV"/>
+                        <segue destination="lQm-S2-HAg" kind="modal" identifier="goHitokoto" id="gfc-KD-RJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aE-SR-k6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1068,6 +1069,7 @@
                         <outlet property="viewBase" destination="GtY-iQ-mOh" id="nup-Af-r0l"/>
                         <segue destination="MeZ-25-kLm" kind="modal" identifier="goBeforeRecorder" id="SDs-PX-5V3"/>
                         <segue destination="gx9-Fe-itj" kind="modal" identifier="goKakaku" id="Kbo-Zn-huj"/>
+                        <segue destination="lQm-S2-HAg" kind="modal" identifier="goHitokoto" id="iyl-mj-H8d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFp-bf-Wln" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1092,6 +1094,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mnj-57-oFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3410" y="458"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cHu-bG-nR9">
+            <objects>
+                <navigationController id="lQm-S2-HAg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6WI-En-vhH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wyT-py-ay7" kind="relationship" relationship="rootViewController" id="iec-UK-szy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxY-E4-lfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3881" y="1104"/>
+        </scene>
+        <!--HitokotoTextViewController-->
+        <scene sceneID="YkE-64-wao">
+            <objects>
+                <viewController title="HitokotoTextViewController" id="wyT-py-ay7" customClass="HitokotoTextViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="id5-1H-fPq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="一言を入力してください" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="gzU-vg-Z4b">
+                                <rect key="frame" x="26" y="106" width="269" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PWD-2S-1CK">
+                                <rect key="frame" x="265" y="144" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onOkey:" destination="wyT-py-ay7" eventType="touchUpInside" id="bwv-i9-YUL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="一言" id="B1R-PQ-q6h">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="bNd-bj-W0y">
+                            <connections>
+                                <action selector="onBack:" destination="wyT-py-ay7" id="IWF-t9-Is6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textfieldHitokoto" destination="gzU-vg-Z4b" id="o92-n1-fRC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzP-Sc-HXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3467" y="1122"/>
         </scene>
         <!--kakakuTextViewController-->
         <scene sceneID="hxk-kb-hDi">
@@ -1423,10 +1483,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Kbo-Zn-huj"/>
+        <segue reference="Cte-je-0wV"/>
+        <segue reference="tk5-fM-XTh"/>
+        <segue reference="gfc-KD-RJs"/>
         <segue reference="cpH-lv-fYL"/>
-        <segue reference="5vL-6n-Sjz"/>
         <segue reference="pPi-jq-5EO"/>
-        <segue reference="SDs-PX-5V3"/>
+        <segue reference="5vL-6n-Sjz"/>
     </inferredMetricsTieBreakers>
 </document>

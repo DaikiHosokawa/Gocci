@@ -46,6 +46,7 @@
 #pragma mark - beforeRecorderViewController
 -(void)sendTenmeiString:(NSString*)str;
 -(void)sendKakakuValue:(int)value;
+-(void)sendHitokotoValue:(NSString *)value;
 
 -(void)execSubmit;
 -(void)cancelSubmit;

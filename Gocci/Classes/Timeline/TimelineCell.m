@@ -23,6 +23,9 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+
+
 @property (nonatomic, weak) IBOutlet UIView *restaurantView;
 @property (nonatomic, weak) IBOutlet UIImageView *restaurantImageView;
 @property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
@@ -215,6 +218,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     // 店舗住所
     self.restaurantAddressLabel.text = timelinePost.locality;
     
+    self.commentLabel.text = timelinePost.comment;
+    
     // Like 数
     self.likeCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.goodNum)];
     
@@ -272,6 +277,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagC];
     self.tagCLabel.text = str3;
     }
+    
     //tagC
      //self.tagA.image = [UIImage imageNamed:@"ic_userpicture.png"];
     

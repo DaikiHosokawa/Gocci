@@ -14,7 +14,7 @@
 
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
-
+static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";
 static NSString * const CellIdentifier = @"CellIdentifierSocial";
 
 @interface SCPostingViewController ()
@@ -146,6 +146,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	[secondView setTenmeiString:delegate.stringTenmei];
 	[secondView setCategoryIndex:delegate.indexCategory];
 	[secondView setFunikiIndex:delegate.indexFuniki];
+    [secondView setHitokotoValue:delegate.valueHitokoto];
 	[secondView reloadTableList];
 }
 
@@ -213,6 +214,13 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 {
 	//遷移：SCRecorderVideoController
 	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
+    
+}
+
+-(void)goHitokotoText
+{
+    //遷移：SCRecorderVideoController
+    [self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
     
 }
 
