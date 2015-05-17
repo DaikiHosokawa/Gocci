@@ -491,6 +491,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 - (IBAction)tapTEL {
+   
+    if ([_postTell isEqualToString:@"非公開"]) {
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+        
+    }else{
     
     NSString *number = @"tel:";
     NSString *telstring = [NSString stringWithFormat:@"%@%@",number,_postTell];
@@ -498,7 +506,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSURL *url = [[NSURL alloc] initWithString:telstring];
     [[UIApplication sharedApplication] openURL:url];
     
+    }
 }
+
+
 - (IBAction)tapNavi:(id)sender {
     NSString *mapText = _postRestName;
     NSString *mapText2 = _postLocality;
@@ -518,7 +529,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
     }
-    
 }
 
 - (IBAction)tapHomepatge {
@@ -741,7 +751,34 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     return currentIndexPath;
 }
 
+- (IBAction)onOther:(UIButton *)sender {
+   
+    UIActionSheet *actionsheet = nil;
+    actionsheet = [[UIActionSheet alloc] initWithTitle:@"その他"
+                                              delegate:self
+                                     cancelButtonTitle:@"Cancel"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@"ホームページを見る",nil];
+    actionsheet.tag = 1;
+    [actionsheet showInView:self.view];
+}
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        NSLog(@"cancel");
+    }else if(buttonIndex == 0) {
+        NSLog(@"ホームページ%@",_postHomepage);
+        if ([_postHomepage isEqualToString:@"none"]) {
+            UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。ホームページが登録されておりません"
+                                      delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+            [alert show];
+        }else{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_postHomepage]];
+        }
+    }
+}
 
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {

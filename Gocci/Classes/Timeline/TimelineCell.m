@@ -239,9 +239,9 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     } else if ([timelinePost.tagB isEqualToString:@"ゆったり"]) {
         self.tagBLabel.text = timelinePost.tagB;
     } else if([timelinePost.tagB isEqualToString:@"none"]) {
-        self.tagBLabel.text = @"未入力";
+        self.tagBLabel.text = @"タグなし";
     }else{
-        self.tagBLabel.text = @"未入力";
+        self.tagBLabel.text = @"タグなし";
     }
 
         //tagA
@@ -263,16 +263,16 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     } else if ([timelinePost.tagA isEqualToString:@"その他"]) {
      self.tagALabel.text = timelinePost.tagA;
     } else if ([timelinePost.tagA isEqualToString:@"none"]) {
-    self.tagALabel.text = @"未入力";
+    self.tagALabel.text = @"タグなし";
     }else{
-    self.tagALabel.text = @"未入力";
+    self.tagALabel.text = @"タグなし";
     }
     
     if([timelinePost.tagC isEqualToString:@"0"]){
-    self.tagCLabel.text = @"未入力";
+    self.tagCLabel.text = @"タグなし";
     }
     else if ([timelinePost.tagC isEqualToString:@"none"]){
-        self.tagCLabel.text = @"未入力";
+        self.tagCLabel.text = @"タグなし";
    }else {
     NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagC];
     self.tagCLabel.text = str3;

@@ -544,6 +544,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="onOther:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="Fmt-RS-f6p"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J8a-I5-WcS">
                                     <rect key="frame" x="10" y="152" width="85" height="63"/>
@@ -1044,7 +1047,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1131,7 +1134,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="239" y="13.000000161086822" width="48" height="63"/>
+                                        <rect key="frame" x="239" y="13.000000154427388" width="48" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1344,7 +1347,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="xtj-fv-F3D" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtj-fv-F3D" id="DVt-E1-vg9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1377,7 +1380,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="4XJ-qA-NLM" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XJ-qA-NLM" id="U1h-SU-AUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1402,7 +1405,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Oen" width="150" height="106"/>
+        <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="arrow_left" width="8" height="13"/>
         <image name="btn_capture_flip.png" width="36" height="30"/>
@@ -1420,7 +1423,7 @@
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
         <image name="naviIcon.png" width="30" height="30"/>
-        <image name="notOen" width="150" height="107"/>
+        <image name="notOen" width="151" height="101"/>
         <image name="postingBack" width="20" height="20"/>
         <image name="sampleBar" width="414" height="322"/>
         <image name="submitBtn" width="535" height="92"/>
@@ -1430,9 +1433,9 @@
         <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="ui_black.png" width="32" height="32"/>
-        <image name="その他" width="150" height="107"/>
+        <image name="その他" width="151" height="101"/>
         <image name="予約をする" width="151" height="101"/>
-        <image name="地図で見る" width="150" height="107"/>
+        <image name="地図で見る" width="151" height="101"/>
         <image name="応援" width="168" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

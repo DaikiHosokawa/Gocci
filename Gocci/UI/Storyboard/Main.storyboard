@@ -1268,7 +1268,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="202" y="9.000000096716315" width="48" height="48"/>
+                                        <rect key="frame" x="202" y="9.0000001530447715" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1461,7 +1461,7 @@
         <image name="login ver2" width="595" height="679"/>
         <image name="logo-1" width="894" height="208"/>
         <image name="naviIcon.png" width="30" height="30"/>
-        <image name="notOen" width="150" height="107"/>
+        <image name="notOen" width="151" height="101"/>
         <image name="postingBack" width="20" height="20"/>
         <image name="sampleBar" width="414" height="322"/>
         <image name="submitBtn" width="535" height="92"/>
@@ -1472,9 +1472,9 @@
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="topbar" width="320" height="125"/>
         <image name="ui_black.png" width="32" height="32"/>
-        <image name="その他" width="150" height="107"/>
+        <image name="その他" width="151" height="101"/>
         <image name="予約をする" width="151" height="101"/>
-        <image name="地図で見る" width="150" height="107"/>
+        <image name="地図で見る" width="151" height="101"/>
         <image name="応援" width="168" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

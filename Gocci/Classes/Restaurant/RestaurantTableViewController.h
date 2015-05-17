@@ -17,7 +17,7 @@
 #import <MapKit/MapKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface RestaurantTableViewController : UITableViewController <MKAnnotation>
+@interface RestaurantTableViewController : UITableViewController <MKAnnotation,UIActionSheetDelegate>
 {
     //profile_otherへの引き継ぎ
     NSString *_postUsername;
