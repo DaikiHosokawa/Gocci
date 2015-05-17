@@ -427,14 +427,15 @@ NSLog(@"badge touched");
     NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                            returningResponse:&response
                                                        error:&error];
-   
+    
+
     //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
     //_currentIndexPath
   
 	if (result) {}
    
     // タイムラインを再読み込み
-    //[self _fetchTimeline];
+    [self _fetchTimeline];
 }
 
 

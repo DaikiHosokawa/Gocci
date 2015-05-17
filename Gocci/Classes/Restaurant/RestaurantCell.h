@@ -16,7 +16,6 @@
 extern NSString * const RestaurantCellIdentifier;
 
 @protocol RestaurantCellDelegate <NSObject>
-
 @optional
 
 /**
@@ -93,6 +92,9 @@ extern NSString * const RestaurantCellIdentifier;
  *  タイムライン画面 TableView の Cell
  */
 @interface RestaurantCell : UITableViewCell
+
+
+
 
 @property (nonatomic,weak) id<RestaurantCellDelegate> delegate;
 @property (nonatomic,strong) RestaurantCell *comment;

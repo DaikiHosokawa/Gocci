@@ -125,6 +125,35 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
+    
+    /*
+    if (_status_) {
+        NSString *dotse = _status_[1];
+        NSLog(@"dotse:%@",dotse);
+        NSInteger i = dotse.integerValue;
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        //NSLog(@"postFlag:%ld",(long)_postFlag);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }else{
+        NSInteger i = _postFlag;
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        //NSLog(@"postFlag:%ld",(long)_postFlag);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }
+    */
+    
+    if(flash_on == 1){
+        UIImage *img = [UIImage imageNamed:@"notOen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }else{
+        UIImage *img = [UIImage imageNamed:@"Oen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }
+
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -489,6 +518,54 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
      }
 }
 
+-(IBAction)light:(id)sender {
+    
+    if(flash_on == 0 ){
+        
+        //スイッチオン時の処理を記述できます
+        NSLog(@"行きたいしました");
+        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/wants/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        
+        if (result) {
+            UIImage *img = [UIImage imageNamed:@"notOen.png"];
+            [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 1;
+            NSLog(@"result:%@",result);
+            
+        }
+        
+    }else if (flash_on == 1){
+        NSLog(@"行きたい解除しました");
+        UIImage *img = [UIImage imageNamed:@"Oen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 0;
+        //スイッチオフに戻った場合の処理を記述
+        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSLog(@"content:%@",content);
+        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unwants/"];
+        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLResponse* response;
+        NSError* error = nil;
+        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+                                               returningResponse:&response
+                                                           error:&error];
+        if (result) {
+            
+        }
+    }
+}
 
 - (IBAction)tapTEL {
    
@@ -630,8 +707,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         for (NSDictionary *post in result) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
+        NSLog(@"tempPosts:%@",tempPosts);
         self.posts = [NSArray arrayWithArray:tempPosts];
-        
+    
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
         

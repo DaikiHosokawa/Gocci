@@ -129,6 +129,8 @@ NSString * const RestaurantCellIdentifier = @"RestaurantCell";
     }
 }
 
+
+
 #pragma mark - Public Method
 
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost

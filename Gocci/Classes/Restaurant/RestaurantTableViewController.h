@@ -36,10 +36,12 @@
     NSString *_postID;
     NSString *lat;
     NSString *lon;
+    
+     int flash_on;
 }
 
 @property (readwrite, nonatomic) CLLocationCoordinate2D coordinate; // required
-
+@property IBOutlet UIButton *flashBtn;
 @property (weak, nonatomic) IBOutlet GMSMapView *map;
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSString *postID;
