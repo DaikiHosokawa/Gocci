@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSMutableArray *homepage_;
 @property (nonatomic, retain) NSMutableArray *tell_;
 @property (nonatomic, retain) NSMutableArray *category_;
+@property (nonatomic, retain) NSMutableArray *total_cheer_num;
 @property (nonatomic, retain) CheerListCell *cell;
 
 
@@ -112,7 +113,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     _postCategory = [_category_ objectAtIndex:indexPath.row];
     _postLocality = [_locality_ objectAtIndex:indexPath.row];
     _postHomepage = [_homepage_ objectAtIndex:indexPath.row];
-    //_postTotalCheer = []
+    _postTotalCheer = [_total_cheer_num objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
     
@@ -172,6 +173,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     //カテゴリー
     NSArray *category = [jsonDic valueForKey:@"category"];
     _category_ = [category mutableCopy];
+    
+    NSArray *total_cheer_num = [jsonDic valueForKey:@"total_cheer_num"];
+    _total_cheer_num = [total_cheer_num mutableCopy];
 }
 
 
