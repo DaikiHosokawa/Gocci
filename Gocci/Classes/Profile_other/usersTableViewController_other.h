@@ -38,6 +38,8 @@
 
     NSString *_postLat;
     NSString *_postLon;
+    
+    NSString *_postTotalCheer;
     int flash_on;
 
 }
@@ -47,6 +49,7 @@
 @property (nonatomic) NSString *postUsername;
 @property (nonatomic) NSString *postPicture;
 @property (nonatomic) NSInteger postFlag;
+@property (nonatomic) NSString *postTotalCheer;
 @property (nonatomic) NSString *postUsername_with_profile;
 @property (nonatomic) NSString *postUserPicture_with_profile;
 @property (nonatomic) NSString *postUsername_with_profile2;

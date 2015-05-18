@@ -32,6 +32,7 @@
     NSString *_postLat;
     NSString *_postLon;
     NSString *_postCategory;
+    NSString *_postTotalCheer;
     
     NSString *_postID;
     NSString *lat;
@@ -50,6 +51,7 @@
 @property (nonatomic) NSString *postTell;
 @property (nonatomic) NSString *postHomepage;
 @property (nonatomic) NSString *postCategory;
+@property (nonatomic) NSString *postTotalCheer;
 @property (nonatomic) NSString *postLon;
 @property (nonatomic) NSString *postLat;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
@@ -57,6 +59,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locality;
 @property (weak, nonatomic) IBOutlet UIView *restview;
 @property (weak, nonatomic) IBOutlet UIButton *cheerNumBtn;
+@property (weak, nonatomic) IBOutlet UILabel *total_cheer_num;
 
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 

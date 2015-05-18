@@ -52,6 +52,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @synthesize postUsername_with_profile2= _postUsername_with_profile2;
 @synthesize postUserPicture_with_profile2= _postUserPicture_with_profile2;
 @synthesize postFlag = _postFlag;
+@synthesize postTotalCheer = _postTotalCheer;
 
 - (void)viewDidLoad
 {
@@ -60,8 +61,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	//ナビゲーションバーに画像
 	{
 		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
 		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
 		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
@@ -357,6 +356,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postCategory = _postCategory;
         restVC.postLon = _postLon;
         restVC.postLat = _postLat;
+        restVC.postTotalCheer = _postTotalCheer;
     }
 }
 
@@ -450,7 +450,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark rest_nameタップの時の処理
--(void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat{
+-(void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
     _postRestname = restaurantName;
@@ -460,6 +460,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postCategory = category;
     _postLon = lon;
     _postLat = lat;
+    _postTotalCheer = total_cheer;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 

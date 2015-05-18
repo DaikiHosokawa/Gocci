@@ -366,6 +366,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         restVC.postCategory = params[@"category"];
         restVC.postLon = params[@"post_lon"];
         restVC.postLat = params[@"post_lat"];
+        restVC.postTotalCheer = params[@"total_cheer_num"];
         NSLog(@"paramsAt:%@",params);
     }
 }
@@ -410,6 +411,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"tell": restaurant.tel,
                                        @"homepage": restaurant.homepage,
                                        @"category" : restaurant.category,
+                                       @"total_cheer_num" : restaurant.total_cheer_num
                                        }];
 }
 
@@ -426,6 +428,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                        @"tell": restaurant.tel,
                                        @"homepage": restaurant.homepage,
                                        @"category" : restaurant.category,
+                                       @"total_cheer_num" : restaurant.total_cheer_num
                                        }];
 }
 

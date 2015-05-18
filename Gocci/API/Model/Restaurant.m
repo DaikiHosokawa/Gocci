@@ -19,6 +19,7 @@
     obj.restname = dictionary[@"restname"];
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
+    obj.total_cheer_num = dictionary[@"total_cheer_num"];
     
     return obj;
 }

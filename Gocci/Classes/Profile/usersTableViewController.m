@@ -307,7 +307,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat{
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
     _postRestname = restaurantName;
@@ -317,6 +317,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postCategory = category;
     _postLon = lon;
     _postLat = lat;
+    _postTotalCheer = total_cheer;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -598,6 +599,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         restVC.postCategory = _postCategory;
         restVC.postLon = _postLon;
         restVC.postLat = _postLat;
+        restVC.postTotalCheer = _postTotalCheer;
     }
     
     if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])

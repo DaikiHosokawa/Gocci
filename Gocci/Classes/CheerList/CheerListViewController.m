@@ -112,6 +112,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     _postCategory = [_category_ objectAtIndex:indexPath.row];
     _postLocality = [_locality_ objectAtIndex:indexPath.row];
     _postHomepage = [_homepage_ objectAtIndex:indexPath.row];
+    //_postTotalCheer = []
     
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
     
@@ -128,6 +129,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
         restVC.postCategory = _postCategory;
         restVC.postTell = _postTell;
         restVC.postLocality = _postLocality;
+        restVC.postTotalCheer = _postTotalCheer;
     }
 }
 

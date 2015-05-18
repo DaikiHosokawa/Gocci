@@ -63,6 +63,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postTell = _postTell;
 @synthesize postHomepage = _postHomepage;
 @synthesize postCategory = _postCategory;
+@synthesize postTotalCheer = _postTotalCheer;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -115,6 +116,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
     [_map setCamera:camera];
     
+    _total_cheer_num.text = _postTotalCheer;
+    NSLog(@"postTotalCheer:%@",_postTotalCheer);
+    
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -153,6 +157,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UIImage *img = [UIImage imageNamed:@"Oen.png"];
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }
+    
+    NSLog(@"total_cheer_num:%@",_postTotalCheer);
 
 }
 

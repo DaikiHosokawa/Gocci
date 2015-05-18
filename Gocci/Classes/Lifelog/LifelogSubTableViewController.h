@@ -27,7 +27,7 @@
     NSString *_postCategory;
     NSString *_postLat;
     NSString *_postLon;
-
+    NSString *_postTotalCheer;
 }
 
 @property (nonatomic, retain) NSString *postID;

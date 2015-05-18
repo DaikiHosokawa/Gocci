@@ -37,6 +37,7 @@
     obj.lat = dictionary[@"lat"];
     obj.lon = dictionary[@"lon"];
     obj.comment = dictionary[@"comment"];
+    obj.totalCheer = dictionary[@"total_cheer_num"];
     return obj;
 }
 

@@ -34,6 +34,7 @@
     NSString *_postLon;
     NSString *_postLat;
     NSString *_postTell;
+    NSString *_postTotalCheer;
     //サムネイル
     UIImageView *thumbnailView;
 }

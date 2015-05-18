@@ -35,6 +35,7 @@
 @property (nonatomic) NSString *tagB;
 @property (nonatomic) NSString *tagC;
 @property (nonatomic) NSInteger cheernum;
+@property (nonatomic) NSString* totalCheer;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

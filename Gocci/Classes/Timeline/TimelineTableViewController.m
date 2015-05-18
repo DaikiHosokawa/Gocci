@@ -406,6 +406,7 @@ NSLog(@"badge touched");
         restVC.postLon = _postLon;
         restVC.postLat = _postLat;
         restVC.postTell = _postTell;
+        restVC.postTotalCheer = _postTotalCheer;
     }
 }
 
@@ -562,7 +563,7 @@ NSLog(@"badge touched");
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -573,6 +574,7 @@ NSLog(@"badge touched");
     _postLat = lat;
     _postLon = lon;
     _postTell = tel;
+    _postTotalCheer = total_cheer;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);
