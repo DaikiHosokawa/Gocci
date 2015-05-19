@@ -15,8 +15,9 @@
 #import "AppDelegate.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
-
-
+#import "WYPopoverController.h"
+#import "WYStoryboardPopoverSegue.h"
+#import "BBBadgeBarButtonItem.h"
 
 @interface usersTableViewController_other : UITableViewController
 {
@@ -57,4 +58,6 @@
 
 @property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @end

@@ -20,6 +20,7 @@
 #import "everyTableViewController.h"
 #import "RestaurantTableViewController.h"
 #import "Reachability.h"
+#import "NotificationViewController.h"
 
 @import QuartzCore;
 
@@ -64,6 +65,26 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //右ナビゲーションアイテム(通知)の実装
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // BBBadgeBarButtonItemオブジェクトの作成
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    
+    self.barButton.badgeBGColor      = [UIColor whiteColor];
+    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
+    self.barButton.badgeTextColor    = color_custom;
+    self.barButton.badgeOriginX = 10;
+    self.barButton.badgeOriginY = 10;
+    
+    // バッジ内容の設定
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    self.navigationItem.rightBarButtonItem = self.barButton;
+
     
     //ナビゲーションバーに画像
     {
@@ -452,6 +473,27 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postTotalCheer = _postTotalCheer;
     }
     
+}
+
+-(void)barButtonItemPressed:(id)sender{
+    NSLog(@"badge touched");
+    
+    self.barButton.badgeValue = nil;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    [ud removeObjectForKey:@"numberOfNewMessages"];
+    
+    if (!self.popover) {
+        NotificationViewController *vc = [[NotificationViewController alloc] init];
+        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+    }
+    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
+    [self.popover presentPopoverFromRect:CGRectMake(
+                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
+                                  inView:self.barButton.customView
+                permittedArrowDirections:WYPopoverArrowDirectionUp
+                                animated:YES
+                                 options:WYPopoverAnimationOptionFadeWithScale];
 }
 
 @end

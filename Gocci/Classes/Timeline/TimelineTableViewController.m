@@ -21,6 +21,7 @@
 #import "LocationClient.h"
 #import "Reachability.h"
 #import "BBBadgeBarButtonItem.h"
+#import "NotificationViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -80,17 +81,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     // BBBadgeBarButtonItemオブジェクトの作成
-    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
 
-    barButton.badgeBGColor      = [UIColor whiteColor];
+    self.barButton.badgeBGColor      = [UIColor whiteColor];
     UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
-    barButton.badgeTextColor    = color_custom;
-    barButton.badgeOriginX = 10;
-    barButton.badgeOriginY = 10;
+    self.barButton.badgeTextColor    = color_custom;
+    self.barButton.badgeOriginX = 10;
+    self.barButton.badgeOriginY = 10;
     
     // バッジ内容の設定
-    barButton.badgeValue = @"1";// ナビゲーションバーに設定する
-    self.navigationItem.rightBarButtonItem = barButton;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    self.navigationItem.rightBarButtonItem = self.barButton;
     
     CGRect frame = CGRectMake(0, 0, 500, 44);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -190,7 +192,24 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)barButtonItemPressed:(id)sender{
-NSLog(@"badge touched");
+    NSLog(@"badge touched");
+    
+    self.barButton.badgeValue = nil;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    [ud removeObjectForKey:@"numberOfNewMessages"];
+    
+    if (!self.popover) {
+        NotificationViewController *vc = [[NotificationViewController alloc] init];
+        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+    }
+    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
+    [self.popover presentPopoverFromRect:CGRectMake(
+                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
+                                  inView:self.barButton.customView
+                permittedArrowDirections:WYPopoverArrowDirectionUp
+                                animated:YES
+                                 options:WYPopoverAnimationOptionFadeWithScale];
 }
 
 
