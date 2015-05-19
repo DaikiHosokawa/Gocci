@@ -295,11 +295,11 @@ static APIClient *_sharedInstance = nil;
     });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atomosphere:(NSString*)atomosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
                              @"restname" : restaurantName,
                              @"star_evaluation" :@(cheertag),
-                             @"atomosphere" : atomosphere,
+                             @"atmosphere" : atmosphere,
                              @"value" :@(value),
                              @"category" : category,
                              @"comment" : comment

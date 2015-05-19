@@ -200,6 +200,11 @@
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
+		9589EED21B0B6F3800A7D8C1 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589EECA1B0B6F3800A7D8C1 /* CustomTableViewCell.m */; };
+		9589EED31B0B6F3800A7D8C1 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589EECC1B0B6F3800A7D8C1 /* NotificationViewController.m */; };
+		9589EED41B0B6F3800A7D8C1 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589EECF1B0B6F3800A7D8C1 /* WYPopoverController.m */; };
+		9589EED51B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589EED11B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.m */; };
+		9589EED71B0B700C00A7D8C1 /* TableViewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9589EED61B0B700C00A7D8C1 /* TableViewCustomCell.xib */; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
 		958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958E31521B05899E00863EDF /* GoogleMaps.framework */; };
 		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
@@ -603,6 +608,15 @@
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		9589EEC91B0B6F3800A7D8C1 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		9589EECA1B0B6F3800A7D8C1 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		9589EECB1B0B6F3800A7D8C1 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		9589EECC1B0B6F3800A7D8C1 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		9589EECE1B0B6F3800A7D8C1 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
+		9589EECF1B0B6F3800A7D8C1 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
+		9589EED01B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
+		9589EED11B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		9589EED61B0B700C00A7D8C1 /* TableViewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCustomCell.xib; sourceTree = "<group>"; };
 		958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		958E31521B05899E00863EDF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -1009,6 +1023,7 @@
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9589EEC81B0B6F3800A7D8C1 /* Common */,
 				95EEC52B1AF91A20006FD54E /* CheerList */,
 				95EEC5221AF914A7006FD54E /* FolloweeList */,
 				95EEC5101AF9103B006FD54E /* FollowList */,
@@ -1389,6 +1404,7 @@
 		952D24E71A9B9EC800C354DF /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				9589EED61B0B700C00A7D8C1 /* TableViewCustomCell.xib */,
 				952D24E81A9B9EC800C354DF /* 3_5_inch.storyboard */,
 				952D24E91A9B9EC800C354DF /* 4_7_inch.storyboard */,
 				952D24EA1A9B9EC800C354DF /* 5_5_inch.storyboard */,
@@ -1404,6 +1420,29 @@
 				952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		9589EEC81B0B6F3800A7D8C1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9589EEC91B0B6F3800A7D8C1 /* CustomTableViewCell.h */,
+				9589EECA1B0B6F3800A7D8C1 /* CustomTableViewCell.m */,
+				9589EECB1B0B6F3800A7D8C1 /* NotificationViewController.h */,
+				9589EECC1B0B6F3800A7D8C1 /* NotificationViewController.m */,
+				9589EECD1B0B6F3800A7D8C1 /* WYPopoverController */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9589EECD1B0B6F3800A7D8C1 /* WYPopoverController */ = {
+			isa = PBXGroup;
+			children = (
+				9589EECE1B0B6F3800A7D8C1 /* WYPopoverController.h */,
+				9589EECF1B0B6F3800A7D8C1 /* WYPopoverController.m */,
+				9589EED01B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.h */,
+				9589EED11B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.m */,
+			);
+			path = WYPopoverController;
 			sourceTree = "<group>";
 		};
 		958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */ = {
@@ -1749,6 +1788,7 @@
 				95A8623E1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib in Resources */,
 				952D248E1A9B9D3300C354DF /* TutorialPage4.xib in Resources */,
 				3770633D1AFC6F9F00CD891D /* SCFirstView_4_7_inch.xib in Resources */,
+				9589EED71B0B700C00A7D8C1 /* TableViewCustomCell.xib in Resources */,
 				952D24FF1A9B9EC800C354DF /* tabbaritem_posting_sel.png in Resources */,
 				952D248D1A9B9D3300C354DF /* TutorialPage3.xib in Resources */,
 				952D25011A9B9EC800C354DF /* tabbaritem_profile.png in Resources */,
@@ -1806,6 +1846,7 @@
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
+				9589EED41B0B6F3800A7D8C1 /* WYPopoverController.m in Sources */,
 				952D23701A9B95E800C354DF /* CXCardView.m in Sources */,
 				53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */,
 				952D24831A9B9D3300C354DF /* Sample4TableViewCell.m in Sources */,
@@ -1831,6 +1872,7 @@
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
+				9589EED21B0B6F3800A7D8C1 /* CustomTableViewCell.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
@@ -1844,6 +1886,7 @@
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				952D24C31A9B9DE100C354DF /* MoviePlayerManager.m in Sources */,
 				3770633B1AFC6F9F00CD891D /* KakakuTextViewController.m in Sources */,
+				9589EED51B0B6F3800A7D8C1 /* WYStoryboardPopoverSegue.m in Sources */,
 				BFA1DA721AB2B93400B4F63A /* RegistView.m in Sources */,
 				952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
@@ -1930,6 +1973,7 @@
 				952D24A51A9B9D3300C354DF /* SCImageView.m in Sources */,
 				952D249A1A9B9D3300C354DF /* CustomAnnotation.m in Sources */,
 				952D23861A9B95E800C354DF /* SDWebImageDownloader.m in Sources */,
+				9589EED31B0B6F3800A7D8C1 /* NotificationViewController.m in Sources */,
 				952D23761A9B95E800C354DF /* JTCalendarContentView.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				952D24C21A9B9DE100C354DF /* APIClient.m in Sources */,

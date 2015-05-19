@@ -1032,6 +1032,7 @@ static SCRecorder *_recorder;
 #pragma mark 投稿
 -(void)execSubmit
 {
+    
 //	//セッションが7秒未満の時
 //	CMTime currentRecordDuration = staticRecordSession.currentRecordDuration;
 //	if (currentRecordDuration.timescale < 7) {
@@ -1060,8 +1061,8 @@ static SCRecorder *_recorder;
 		if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
         int valueKakaku = 0;
         if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
-        NSString *atomosphere = @"none";
-        if (appDelegate.stringFuniki) atomosphere = appDelegate.stringFuniki;
+        NSString *atmosphere = @"none";
+        if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
         NSString *category = @"none";
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
         NSString *comment = @"...";
@@ -1075,7 +1076,7 @@ static SCRecorder *_recorder;
 		 				star_evaluation:1
                         value:valueKakaku
                         category:category
-                        atomosphere:atomosphere
+                        atmosphere:atmosphere
                         comment:comment
 								handler:^(id result, NSUInteger code, NSError *error)
 		 {
