@@ -1064,7 +1064,7 @@ static SCRecorder *_recorder;
         if (appDelegate.stringFuniki) atomosphere = appDelegate.stringFuniki;
         NSString *category = @"none";
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
-        NSString *comment = @"none";
+        NSString *comment = @"...";
         if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
 
 		//バックグラウンドで投稿

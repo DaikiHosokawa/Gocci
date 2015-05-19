@@ -265,7 +265,7 @@ static NSString *stringHitokoto = nil;
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
 				delegate.indexCategory = (int)buttonIndex;
-                delegate.stringFuniki = [arrayCategory objectAtIndex:buttonIndex];
+                delegate.stringCategory = [arrayCategory objectAtIndex:buttonIndex];
 //				switch (buttonIndex) {
 //					case 0:
 //						break;
