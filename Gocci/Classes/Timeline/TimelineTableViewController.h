@@ -17,6 +17,9 @@
 #import "AppDelegate.h"
 #import "CXCardView.h"
 #import "DemoContentView.h"
+#import "WYPopoverController.h"
+#import "WYStoryboardPopoverSegue.h"
+#import "BBBadgeBarButtonItem.h"
 
 @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 {
@@ -40,5 +43,7 @@
 }
 
 @property (nonatomic, retain) UIImageView *thumbnailView;
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 
 @end

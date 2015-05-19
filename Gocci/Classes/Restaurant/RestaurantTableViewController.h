@@ -16,6 +16,9 @@
 #import "DemoContentView.h"
 #import <MapKit/MapKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "WYPopoverController.h"
+#import "WYStoryboardPopoverSegue.h"
+#import "BBBadgeBarButtonItem.h"
 
 @interface RestaurantTableViewController : UITableViewController <MKAnnotation,UIActionSheetDelegate>
 {
@@ -63,5 +66,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 
 @end

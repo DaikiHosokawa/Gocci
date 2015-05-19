@@ -14,7 +14,9 @@
 
 #import "CXCardView.h"
 #import "DemoContentView.h"
-
+#import "WYPopoverController.h"
+#import "WYStoryboardPopoverSegue.h"
+#import "BBBadgeBarButtonItem.h"
 
 
 @interface LifelogViewController : UIViewController <JTCalendarDataSource>
@@ -22,5 +24,7 @@
 @property (strong, nonatomic) JTCalendarContentView *calendarContentView;
 
 @property (strong, nonatomic) JTCalendar *calendar;
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 
 @end

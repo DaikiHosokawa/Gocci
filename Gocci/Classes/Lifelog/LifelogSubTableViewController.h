@@ -15,6 +15,10 @@
 #import "AppDelegate.h"
 #import "CXCardView.h"
 #import "DemoContentView.h"
+#import "WYPopoverController.h"
+#import "WYStoryboardPopoverSegue.h"
+#import "BBBadgeBarButtonItem.h"
+
 
 @interface LifelogSubTableViewController : UITableViewController<UIScrollViewDelegate>
 {
@@ -28,9 +32,12 @@
     NSString *_postLat;
     NSString *_postLon;
     NSString *_postTotalCheer;
+
 }
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
 @property (nonatomic, retain) UIImageView *thumbnailView;
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @end

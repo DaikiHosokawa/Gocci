@@ -168,6 +168,20 @@
 
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
+    [application unregisterForRemoteNotifications];
+
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        [application registerForRemoteNotifications];
+        
+    #else
+        UIRemoteNotificationType remoteNotificationType =
+        UIRemoteNotificationTypeBadge|
+        UIRemoteNotificationTypeSound|
+        UIRemoteNotificationTypeAlert|
+        UIRemoteNotificationTypeNewsstandContentAvailability;
+        [application registerForRemoteNotificationTypes:remoteNotificationType];
+    #endif
  
     /*
     // プッシュ許可の確認を表示
@@ -337,5 +351,38 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// デバイストークン受信成功
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *token = deviceToken.description;
+    
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //このトークンをサーバ側で管理する
+    NSLog(@"deviceToken: %@", token);
+}
 
+// デバイストークン受信失敗
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"deviceToken error: %@", [error description]);
+}
+
+// PUSH通知の受信時に呼ばれるデリゲートメソッド
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"pushInfo: %@", [userInfo description]);
+    
+    // 新着メッセージ数
+    int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+    [ud synchronize];
+}
+
+// BackgroundFetchによるPUSH通知のバックグラウンドの受信時に呼ばれるデリゲートメソッド
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"pushInfo in Background: %@", [userInfo description]);
+    completionHandler(UIBackgroundFetchResultNoData);
+}
 @end
