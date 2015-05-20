@@ -38,6 +38,8 @@
     obj.lon = dictionary[@"lon"];
     obj.comment = dictionary[@"comment"];
     obj.totalCheer = dictionary[@"total_cheer_num"];
+    obj.want_flag = dictionary[@"want_flag"];
+    NSLog(@"want_tag:%@",obj.want_flag);
     return obj;
 }
 

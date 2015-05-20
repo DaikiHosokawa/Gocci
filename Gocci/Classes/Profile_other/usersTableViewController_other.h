@@ -40,6 +40,8 @@
     NSString *_postLat;
     NSString *_postLon;
     
+    NSString *_postWanttag;
+    
     NSString *_postTotalCheer;
     int flash_on;
 

@@ -37,6 +37,8 @@
     NSString *_postCategory;
     NSString *_postTotalCheer;
     
+    NSString *_postWanttag;
+    
     NSString *_postID;
     NSString *lat;
     NSString *lon;
@@ -57,6 +59,7 @@
 @property (nonatomic) NSString *postTotalCheer;
 @property (nonatomic) NSString *postLon;
 @property (nonatomic) NSString *postLat;
+@property (nonatomic) NSString *postWanttag;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UILabel *locality;

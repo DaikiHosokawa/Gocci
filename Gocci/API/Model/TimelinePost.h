@@ -36,6 +36,7 @@
 @property (nonatomic) NSString *tagC;
 @property (nonatomic) NSInteger cheernum;
 @property (nonatomic) NSString* totalCheer;
+@property (nonatomic) NSString *want_flag;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

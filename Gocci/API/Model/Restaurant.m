@@ -20,6 +20,8 @@
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
     obj.total_cheer_num = dictionary[@"total_cheer_num"];
+    obj.want_tag = dictionary[@"want_flag"];
+    NSLog(@"want_tag:%@",obj.want_tag);
     
     return obj;
 }

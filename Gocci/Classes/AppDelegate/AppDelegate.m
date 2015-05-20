@@ -391,7 +391,14 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     
     //APNsPHPからuserInfo(message,badge数等)を受け取る
     
+    
     NSLog(@"pushInfo in Background: %@", [userInfo description]);
+    
+    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+    int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+    [ud synchronize];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);

@@ -65,6 +65,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @synthesize postHomepage = _postHomepage;
 @synthesize postCategory = _postCategory;
 @synthesize postTotalCheer = _postTotalCheer;
+@synthesize postWanttag = _postWanttag;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -170,6 +171,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         NSLog(@"flash_on:%d",flash_on);
     }
     */
+    NSInteger i = _postWanttag.integerValue;
+    NSLog(@"i:%ld",(long)i);
+    int pi = (int)i;
+    NSLog(@"pi:%d",pi);
+    flash_on = pi;
     
     if(flash_on == 1){
         UIImage *img = [UIImage imageNamed:@"notOen.png"];

@@ -32,6 +32,7 @@
     NSString *_postLat;
     NSString *_postLon;
     NSString *_postTotalCheer;
+    NSString *_postWanttag;
 
 }
 

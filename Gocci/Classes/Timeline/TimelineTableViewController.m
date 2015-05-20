@@ -92,6 +92,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // バッジ内容の設定
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
     
     CGRect frame = CGRectMake(0, 0, 500, 44);
@@ -426,6 +427,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         restVC.postLat = _postLat;
         restVC.postTell = _postTell;
         restVC.postTotalCheer = _postTotalCheer;
+        restVC.postWanttag = _postWanttag;
     }
 }
 
@@ -582,7 +584,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
@@ -594,6 +596,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postLon = lon;
     _postTell = tel;
     _postTotalCheer = total_cheer;
+    _postWanttag = want_tag;
     NSLog(@"restname=%@", restaurantName);
     NSLog(@"locality=%@", locality);
     NSLog(@"tel=%@", tel);

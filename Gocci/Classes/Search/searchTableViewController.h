@@ -11,6 +11,7 @@
 @interface SearchTableViewController : UITableViewController
 {
     NSString *_postRestName;
+    NSString *_postWanttag;
     NSString *_headerLocality;
     NSString *annotationTitle;
     NSString *annotationSubtitle;
@@ -18,6 +19,7 @@
 
 @property (nonatomic, strong) NSString *headerLocality;
 @property (nonatomic, strong) NSString *postRestName;
+@property (nonatomic, strong) NSString *postWanttag;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end
