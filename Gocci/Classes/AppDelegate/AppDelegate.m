@@ -351,38 +351,49 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-// デバイストークン受信成功
+//APNsサーバーよりデバイストークン受信成功したときに呼ばれるメソッド
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSString *token = deviceToken.description;
     
+    //deveceTokenから"<"と">"を消す
     token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    //このトークンをサーバ側で管理する
+    //このトークンをサーバ側で管理する。取り合えず、ログで出す
     NSLog(@"deviceToken: %@", token);
 }
 
-// デバイストークン受信失敗
+// デバイストークン受信失敗時に呼ばれるメソッド
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //エラー内容をlogに
     NSLog(@"deviceToken error: %@", [error description]);
 }
 
 // PUSH通知の受信時に呼ばれるデリゲートメソッド
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    //APNsPHPからuserInfo(message,badge数等)を受け取る
+    //log
     NSLog(@"pushInfo: %@", [userInfo description]);
     
-    // 新着メッセージ数
+    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
     int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
     [ud synchronize];
 }
 
-// BackgroundFetchによるPUSH通知のバックグラウンドの受信時に呼ばれるデリゲートメソッド
+// BackgroundFetchによってバックグラウンドでPUSH通知を受けたとき呼ばれるデリゲートメソッド
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    //APNsPHPからuserInfo(message,badge数等)を受け取る
+    
     NSLog(@"pushInfo in Background: %@", [userInfo description]);
+    
+    //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
 }
 @end
