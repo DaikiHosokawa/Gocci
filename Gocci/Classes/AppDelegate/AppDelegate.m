@@ -12,7 +12,7 @@
 #import "SCFilterGroup.h"
 #import "SCVideoPlayerView.h"
 #import <GoogleMaps/GoogleMaps.h>
-
+#import  "TWMessageBarManager.h"
 
 @interface AppDelegate() {
 	UITabBarController *tabBarController;
@@ -394,6 +394,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     
     NSLog(@"pushInfo in Background: %@", [userInfo description]);
     
+    [self showMessageWithRemoteNotification:userInfo];
+    
     // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
     int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -403,4 +405,26 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
 }
+
+
+- (void) showMessageWithRemoteNotification:(NSDictionary *)userInfo {
+    
+   // [TWMessageBarManager sharedInstance];
+    
+    NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"お知らせ"
+                                                   description:message
+                                                          type:TWMessageBarMessageTypeSuccess
+                                                      duration:4.0];
+    
+    /*
+    NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    if(message) {
+        [[[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+     */
+   
+ }
+
 @end
