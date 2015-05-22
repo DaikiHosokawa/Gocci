@@ -153,6 +153,25 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if ([_postUsername isEqualToString:test]) {
         _flashBtn.hidden = YES;
     }
+    
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"HogeNotification"
+                             object:nil];
+
+}
+
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.navigationItem.rightBarButtonItem = self.barButton;
+    
 }
 
 -(IBAction)light:(id)sender {
@@ -670,6 +689,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 -(void)barButtonItemPressed:(id)sender{
+    
+    self.barButton.badgeValue = nil;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    [ud removeObjectForKey:@"numberOfNewMessages"];
+    
     NSLog(@"badge touched");
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];

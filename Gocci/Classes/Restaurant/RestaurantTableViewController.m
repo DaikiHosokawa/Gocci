@@ -186,6 +186,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
     
     NSLog(@"total_cheer_num:%@",_postTotalCheer);
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"HogeNotification"
+                             object:nil];
 
 }
 
@@ -898,6 +905,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 	
 	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.navigationItem.rightBarButtonItem = self.barButton;
+    
+}
+
 
 -(void)barButtonItemPressed:(id)sender{
     NSLog(@"badge touched");

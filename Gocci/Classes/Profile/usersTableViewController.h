@@ -38,4 +38,7 @@
 @property (nonatomic) NSString *postUsername;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (nonatomic, retain) UIImageView *thumbnailView;
+
+@property (strong, nonatomic) WYPopoverController *popover;
+@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @end

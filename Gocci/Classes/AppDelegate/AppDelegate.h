@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "Crittercism.h"
-
+#import "BBBadgeBarButtonItem.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>{
@@ -41,7 +41,8 @@
     NSString *stringCategory;
 	int indexCategory;
 	int indexFuniki;
-
+    
+    BBBadgeBarButtonItem *barButton;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -65,6 +66,7 @@
 @property(nonatomic,retain) NSString *valueHitokoto;
 @property(nonatomic,retain) NSString *stringFuniki;
 @property(nonatomic,retain) NSString *stringCategory;
+@property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;

@@ -108,8 +108,26 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"HogeNotification"
+                             object:nil];
+
 
 }
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.navigationItem.rightBarButtonItem = self.barButton;
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -479,13 +497,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)barButtonItemPressed:(id)sender{
-    NSLog(@"badge touched");
     
     self.barButton.badgeValue = nil;
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     [ud removeObjectForKey:@"numberOfNewMessages"];
     
+    NSLog(@"badge touched");
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
@@ -498,5 +516,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                 animated:YES
                                  options:WYPopoverAnimationOptionFadeWithScale];
 }
+
 
 @end

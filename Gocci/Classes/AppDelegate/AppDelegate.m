@@ -324,6 +324,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
     NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
             [locationManager startUpdatingLocation]; //測位再開
@@ -393,12 +394,21 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     
     
     NSLog(@"pushInfo in Background: %@", [userInfo description]);
+   
+    if ( userInfo ) {
+        NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
+                                                                     object:self
+                                                                   userInfo:userInfo];
+        NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
+        [queue enqueueNotification:notification postingStyle:NSPostWhenIdle];
+    }
     
     [self showMessageWithRemoteNotification:userInfo];
     
     // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
+    int numberOfNewMessages = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
     [ud synchronize];
     
@@ -418,6 +428,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                           type:TWMessageBarMessageTypeSuccess
                                                       duration:4.0];
     
+    
     /*
     NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     if(message) {
@@ -426,5 +437,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
      */
    
  }
+
 
 @end

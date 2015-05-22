@@ -80,6 +80,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
      [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
     // BBBadgeBarButtonItemオブジェクトの作成
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
 
@@ -92,6 +94,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // バッジ内容の設定
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
     
@@ -134,6 +137,23 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCache:NO];
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"HogeNotification"
+                             object:nil];
+}
+
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+ 
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.navigationItem.rightBarButtonItem = self.barButton;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

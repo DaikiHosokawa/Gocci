@@ -120,6 +120,14 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
     }
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"HogeNotification"
+                             object:nil];
+
 
 }
 
@@ -142,6 +150,15 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 
     NSLog(@"ここが重い");
 	//::[self.calendar reloadData]; // Must be call in viewDidAppear
+}
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.navigationItem.rightBarButtonItem = self.barButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
