@@ -111,6 +111,7 @@
             NSLog(@"FB accesstoken: %@", [FBSession activeSession].accessTokenData.accessToken);
             [self loginViewFetchedUserInfo:result];
             
+            
         }];
     } else {
         // in the closed case, we check to see if we picked up a cached token that we
@@ -121,6 +122,8 @@
                                                                    FBSessionState status,
                                                                    NSError *error) {
                 [self updateForSessionChange];
+                NSLog(@"a:");
+                
             }];
         }
         else {
@@ -365,12 +368,15 @@
 
 - (void)loginViewFetchedUserInfo:(id<FBGraphUser>)user
 {
-    NSLog(@"%@", user);
+    NSLog(@"fetchInfo:%@", user);
     
     // Show indicator
     //8b353d5cc07e13577608711f4602fcb7@1407628801
     
+    NSLog(@"test0");
+    
     // Submit user info to server
+   /*
     NSDictionary *params = @{
                              @"email" : user[@"email"],
                              @"name" : user[@"name"],
@@ -382,7 +388,9 @@
                              @"locale" : user[@"locale"],
                              @"atk" : [FBSession activeSession].accessTokenData.accessToken
                              };
-    
+    */
+    //NSLog(@"params:%@",params);
+    NSLog(@"test1");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:user[@"name"] forKey:@"username"];
@@ -390,7 +398,7 @@
     [defaults setObject:@"facebook" forKey:@"type"];
     [defaults setObject:@"" forKey:@"user_id"];
     [defaults setObject:user[@"email"] forKey:@"email"];
-    
+    NSLog(@"test2");
     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", user[@"id"] ];
     [defaults setObject:pictureURL forKey:@"avatarLink"];
     
@@ -398,11 +406,12 @@
     
     // Show activity while download film types
     [SVProgressHUD show];
-    
+    NSLog(@"test3");
     // Login user with facebook info
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    
+    NSLog(@"test4");
     dispatch_async(backgroundQueue, ^{
+        NSLog(@"test5");
         //save data and login
         [SVProgressHUD dismiss];
         [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
