@@ -438,9 +438,12 @@
     
     [SVProgressHUD show];
     
+     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
     [APIClient registUserWithUsername:_tfUsername.text
                          withPassword:_tfPwd.text
                             withEmail:_tfEmail.text
+                         withToken_id:[ud stringForKey:@"STRING"]
                               handler:^(id result, NSUInteger code, NSError *error) {
         [SVProgressHUD dismiss];
         //receive data

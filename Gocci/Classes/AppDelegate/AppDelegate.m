@@ -364,6 +364,9 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     
     //このトークンをサーバ側で管理する。取り合えず、ログで出す
     NSLog(@"deviceToken: %@", token);
+
+     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:token forKey:@"STRING"];
 }
 
 // デバイストークン受信失敗時に呼ばれるメソッド

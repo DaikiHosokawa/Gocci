@@ -268,10 +268,13 @@
         } else {
             
             [self updateForSessionChange];
+           // [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
         }
         
     }];
 }
+
+
 
 -(IBAction)btnTwitter_clicked:(id)sender {
     
@@ -284,7 +287,10 @@
    // [SVProgressHUD show];
     [SVProgressHUD show];
     
-    [APIClient loginUserWithUsername:_tfUsername.text withPassword:_tfPwd.text handler:^(id result, NSUInteger code, NSError *error) {
+    // バッジ内容の設定
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    
+    [APIClient loginUserWithUsername:_tfUsername.text withPassword:_tfPwd.text WithToken_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
         //success
         [SVProgressHUD dismiss];
         //receive data

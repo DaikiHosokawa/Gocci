@@ -102,7 +102,10 @@
         AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         picturedelegate.userpicture = pictureURL;
         
-        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",username,pictureURL];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        
+        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@&token_id=%@",username,pictureURL,[ud stringForKey:@"STRING"]];
+        NSLog(@"login_content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
         [urlRequest setHTTPMethod:@"POST"];

@@ -354,15 +354,17 @@ static APIClient *_sharedInstance = nil;
 + (void)registUserWithUsername:(NSString *)username
                   withPassword:(NSString *)pwd
                      withEmail:(NSString *)email
+                    withToken_id:(NSString *)token_id
                        handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
                              @"user_name" : username,
                              @"password" : pwd,
-                             @"email" : email
+                             @"email" : email,
+                             @"token_id" : token_id
                              };
     
-    NSLog(@"Params: %@", params);
+    NSLog(@"regist_Params: %@", params);
     
     [[APIClient sharedClient].manager POST:@"register/"
                                parameters:params
@@ -376,12 +378,18 @@ static APIClient *_sharedInstance = nil;
 
 + (void)loginUserWithUsername:(NSString *)username
                   withPassword:(NSString *)pwd
-                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+                  WithToken_id:(NSString *)token_id
+                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
                              @"user_name" : username,
-                             @"password" : pwd
+                             @"password" : pwd,
+                             @"token_id" : token_id
                              };
+    
+    
+    NSLog(@"login_Params: %@", params);
+    
     [[APIClient sharedClient].manager POST:@"auth/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -389,6 +397,18 @@ static APIClient *_sharedInstance = nil;
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
+}
+
++ (void)notice_WithHandler:(void (^)(id, NSUInteger, NSError *))handler{
+    
+    [[APIClient sharedClient].manager GET:@"notice"
+                               parameters:nil
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
 }
 
 

@@ -153,6 +153,7 @@
 + (void)registUserWithUsername:(NSString *)username
                   withPassword:(NSString *)pwd
                      withEmail:(NSString *)email
+                  withToken_id:(NSString *)token_id
                        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
@@ -165,9 +166,16 @@
  */
 + (void)loginUserWithUsername:(NSString *)username
                  withPassword:(NSString *)pwd
+                 WithToken_id:(NSString *)token_id
                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
-
+/**
+ *
+ *  notice
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 @end
