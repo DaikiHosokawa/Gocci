@@ -425,7 +425,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	if (result) {}
     
     // タイムラインを再読み込み
-    [self _fetchProfile_other];
+    //[self _fetchProfile_other];
 }
 
 

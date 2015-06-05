@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -116,6 +116,28 @@
                         <action selector="btnRegistLocal_clicked:" destination="fvz-gA-uiB" eventType="touchUpInside" id="MwL-y7-PR3"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wfa-mO-DOr">
+                    <rect key="frame" x="8" y="8" width="398" height="638"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-Wf-NKQ">
+                            <rect key="frame" x="8" y="13" width="30" height="30"/>
+                            <state key="normal" image="btn_delete_white">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-qU-KzY">
+                            <rect key="frame" x="0.0" y="51" width="398" height="587"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </webView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="利用規約" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D02-Ww-sjB">
+                            <rect key="frame" x="157" y="12" width="85" height="31"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -124,6 +146,9 @@
                 <outlet property="btnRegist" destination="QgA-2h-dty" id="Db0-As-QP4"/>
                 <outlet property="btnTwitter" destination="5t0-Xo-tsy" id="H1g-1k-bt8"/>
                 <outlet property="checkbox1" destination="Pcq-54-aYb" id="RIN-Uj-ccy"/>
+                <outlet property="ruleCancel" destination="YcO-Wf-NKQ" id="jGp-tg-abe"/>
+                <outlet property="ruleView" destination="Wfa-mO-DOr" id="fQN-ZR-zVW"/>
+                <outlet property="ruleWebView" destination="HgA-qU-KzY" id="HvR-pQ-a17"/>
                 <outlet property="tfEmail" destination="aDL-u3-dSh" id="pi2-7G-PZX"/>
                 <outlet property="tfPwd" destination="mMp-wG-q0I" id="1ud-fy-c9y"/>
                 <outlet property="tfUsername" destination="SQJ-dL-IxA" id="q2J-MX-RlN"/>
@@ -133,5 +158,6 @@
     </objects>
     <resources>
         <image name="Cancel.png" width="25" height="25"/>
+        <image name="btn_delete_white" width="30" height="30"/>
     </resources>
 </document>

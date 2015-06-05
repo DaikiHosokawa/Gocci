@@ -68,6 +68,17 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
 
+   
+    /*
+    //右ナビゲーションアイテム(通知)の実装
+   // UIButton *wantButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"行きたい" style:UIBarButtonItemStylePlain target:self action:@selector(tapWantButton)];
+  //  [barButtonItem setCustomView:wantButton];
+    //左に設定する
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+    */
+    
 	
 	//座標
 	const CGFloat width_view = self.view.frame.size.width;

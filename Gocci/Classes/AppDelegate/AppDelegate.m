@@ -164,6 +164,9 @@
 	
     //スプラッシュ時間設定
     sleep(3);
+    
+    //badge数を解放
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 	
 
     // エラー追跡用の機能を追加する。
@@ -229,6 +232,8 @@
 
 
 -(void)checkGPS{
+    
+        NSLog(@"open checkGPS");
         // CLLocationManagerのインスタンスを作成
         locationManager = [[CLLocationManager alloc] init];
         // デリゲートを設定
@@ -238,9 +243,9 @@
         // 取得精度
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         // iOS8の対応
-        if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) { // iOS8以降
+        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) { // iOS8以降
                 // 位置情報測位の許可を求めるメッセージを表示する
-                [locationManager requestAlwaysAuthorization]; // 常に許可
+                [locationManager requestWhenInUseAuthorization]; // 使用中だけ
         
            } else { // iOS7以前
                     // 測位開始
@@ -308,7 +313,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
         
                 if (status == kCLAuthorizationStatusNotDetermined) {
                         // ユーザが位置情報の使用を許可していない
-                        [locationManager requestAlwaysAuthorization]; // 常に許可
+                        [locationManager requestWhenInUseAuthorization]; // 常に許可
+                
                     }
            }
 }
@@ -324,7 +330,10 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
+
+    //badge数を解放
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
             [locationManager startUpdatingLocation]; //測位再開

@@ -273,7 +273,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                        error:&error];
     
     // タイムラインを再読み込み
-    [self _fetchLifelog];
+    //[self _fetchLifelog];
 }
 
 

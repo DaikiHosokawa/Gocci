@@ -533,7 +533,7 @@
     [defaults synchronize];
     
     // Show activity while download film types
-       [SVProgressHUD show];
+    [SVProgressHUD show];
     
     // Login user with facebook info
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
@@ -548,9 +548,27 @@
 }
 
 - (IBAction)tap_link:(id)sender {
-    NSString *urlString = @"http://inase-inc.jp/rules/";
-    NSURL *url= [NSURL URLWithString:urlString];
-    [[UIApplication sharedApplication] openURL:url];
     
+    self.ruleView.hidden = NO;
+    
+    self.ruleWebView.delegate = self;
+    self.ruleWebView.scalesPageToFit = YES;
+    [self.ruleView addSubview:self.ruleWebView];
+    
+    NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [self.ruleWebView loadRequest:req];
+    
+    // 画像を指定したボタン例文
+    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];  // ボタンにする画像を生成する
+    [self.ruleCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    // ボタンが押された時にhogeメソッドを呼び出す
+    [self.ruleCancel addTarget:self
+            action:@selector(hoge:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+-(void)hoge:(UIButton*)button{
+    self.ruleView.hidden = YES;
+}
+
 @end

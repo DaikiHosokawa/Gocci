@@ -130,6 +130,32 @@
                         <action selector="tap_link:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xbn-hV-RE6"/>
                     </connections>
                 </button>
+                <view hidden="YES" contentMode="scaleToFill" id="1Mr-qy-h7n">
+                    <rect key="frame" x="8" y="8" width="284" height="501"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J96-ql-vzw">
+                            <rect key="frame" x="8" y="8" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="btn_delete_white">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NaI-us-yd1">
+                            <rect key="frame" x="105" y="10" width="75" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <webView contentMode="scaleToFill" id="2i0-ah-dcy">
+                            <rect key="frame" x="0.0" y="44" width="284" height="457"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </webView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -138,6 +164,9 @@
                 <outlet property="btnRegist" destination="LRW-19-2ob" id="ESa-K8-Ehc"/>
                 <outlet property="btnTwitter" destination="0hU-Vt-xdJ" id="bV9-Uf-Npw"/>
                 <outlet property="checkbox1" destination="XIp-ne-UTK" id="1jm-6k-DNN"/>
+                <outlet property="ruleCancel" destination="J96-ql-vzw" id="aJP-mN-OuR"/>
+                <outlet property="ruleView" destination="1Mr-qy-h7n" id="8nc-AP-mhC"/>
+                <outlet property="ruleWebView" destination="2i0-ah-dcy" id="I7C-T9-6n3"/>
                 <outlet property="tfEmail" destination="I2y-LI-TvT" id="dpD-hj-Yv8"/>
                 <outlet property="tfPwd" destination="aFN-By-ekX" id="OxL-ss-fek"/>
                 <outlet property="tfUsername" destination="EU4-aS-Sxn" id="Gf3-Vw-VBB"/>
@@ -147,6 +176,7 @@
     </objects>
     <resources>
         <image name="Cancel.png" width="25" height="25"/>
+        <image name="btn_delete_white" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

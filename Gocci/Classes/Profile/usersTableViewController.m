@@ -359,7 +359,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                                        error:&error];
     
     // タイムラインを再読み込み
-    [self _fetchProfile];
+    //[self _fetchProfile];
 }
 
 

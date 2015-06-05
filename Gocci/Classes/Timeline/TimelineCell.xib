@@ -225,6 +225,9 @@
                                 <state key="normal" image="like_new">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="light:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VOW-xm-gKV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKp-CK-jj1">
                                 <rect key="frame" x="25" y="4" width="22" height="21"/>
@@ -351,6 +354,7 @@
                 <outlet property="commentLabel" destination="F7J-7N-gdB" id="xjX-b7-Pwp"/>
                 <outlet property="commentView" destination="ohQ-nj-eFT" id="7xO-8Q-wTR"/>
                 <outlet property="deleteBtn" destination="xjB-00-Bte" id="VWn-QN-Tr6"/>
+                <outlet property="likeBtn" destination="SOv-EM-lr7" id="dZh-9n-w9R"/>
                 <outlet property="likeCountLabel" destination="fKp-CK-jj1" id="gsf-0C-POm"/>
                 <outlet property="likeView" destination="zpK-2i-P20" id="e2I-jU-EhO"/>
                 <outlet property="restaurantNameLabel" destination="QPi-nC-yon" id="PtI-5Q-gbK"/>

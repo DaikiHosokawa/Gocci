@@ -382,9 +382,9 @@ static APIClient *_sharedInstance = nil;
                  handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
-                             @"user_name" : username,
-                             @"password" : pwd,
-                             @"token_id" : token_id
+                             @"user_name" :username,
+                             @"password" :pwd,
+                             @"token_id" :token_id
                              };
     
     

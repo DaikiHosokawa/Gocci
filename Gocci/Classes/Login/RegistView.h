@@ -23,7 +23,7 @@
 
 typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage); // don't bother with NSError for that
 
-@interface RegistView : UIView <UITextFieldDelegate>
+@interface RegistView : UIView <UITextFieldDelegate,UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITextField *tfUsername;
 @property (nonatomic, retain) IBOutlet UITextField *tfPwd;
@@ -41,6 +41,10 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 - (IBAction)tap_link:(id)sender;
 @property (nonatomic, retain) NSString *consumerKeyTextField;
 @property (nonatomic, retain) NSString *consumerSecretTextField;
+
+@property (weak, nonatomic) IBOutlet UIView *ruleView;
+@property (weak, nonatomic) IBOutlet UIButton *ruleCancel;
+@property (weak, nonatomic) IBOutlet UIWebView *ruleWebView;
 
 -(IBAction)btnClose_clicked:(id)sender;
 -(IBAction)btnFacebook_clicked:(id)sender;

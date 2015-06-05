@@ -116,27 +116,34 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 - (void)tapLike:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapLikeButtonWithPostID:)]) {
-        [self.delegate timelineCell:self didTapLikeButtonWithPostID:self.postID];
-       /*
-        if ([self.pushed_at  isEqual: @"0"]) {
-             TimelinePost *post;
-            // self.likeCountLabel// 文字列をNSIntegerに変換
-            NSInteger i = self.likeCountLabel.text.integerValue;
-            NSLog(@"文字列→NSInteger：%ld", i);;
-            NSInteger s = i+1;
-           // post.goodNum = post.goodNum+1;
-            NSLog(@"%lu",(unsigned long)post.goodNum);
-            NSString *newStr = [NSString stringWithFormat:@"%ld", (long)s];
-            NSLog(@"NSInteger→文字列：%@", newStr);
-            self.likeCountLabel.text = [NSString stringWithFormat:@"%@", newStr];
-            self.pushed_at = @"1";
-           // post.pushed_at = @"1";
         
+        if(flash_on == 0 ){
+            UIImage *img = [UIImage imageNamed:@"like_new_selected.png"];
+            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 1;
+            int plus1 = self.likeCountLabel.text.floatValue+1;
+            [_likeCountLabel setText:[NSString stringWithFormat:@"%d", plus1]];
+            //_likeCountLabel.text.floatValue == a;
+            //スイッチオフに戻った場合の処理を記述
+            NSLog(@"button selected");
+            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+            dispatch_sync(globalQueue, ^{
+           [self.delegate timelineCell:self didTapLikeButtonWithPostID:self.postID];
+                });
+        }else{
+            
+            UIImage *img = [UIImage imageNamed:@"like_new.png"];
+            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+            int minus1 = self.likeCountLabel.text.floatValue-1;
+            [_likeCountLabel setText:[NSString stringWithFormat:@"%d", minus1]];
+            flash_on = 0;
+            //スイッチオン時の処理を記述できます
+            NSLog(@"button not selected");
         }
-        */
-       
-        }
+        
+    }
 }
+
 
 - (void)tapNavi:(UITapGestureRecognizer *)recognizer
 {
@@ -283,7 +290,18 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.tagCLabel.text = str3;
     }
     
-    
+    NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
+    if ([string isEqualToString:@"0"])
+    {
+    UIImage *img = [UIImage imageNamed:@"like_new.png"];
+    [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+    flash_on = 0;
+   
+    }else{
+    UIImage *img = [UIImage imageNamed:@"like_new_selected.png"];
+    [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+    flash_on = 1;
+    }
     
     //応援画像
     /*

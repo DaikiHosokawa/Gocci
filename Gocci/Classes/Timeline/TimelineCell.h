@@ -93,12 +93,16 @@ extern NSString * const TimelineCellIdentifier;
  *  タイムライン画面 TableView の Cell
  */
 @interface TimelineCell : UITableViewCell
+{
+    int flash_on;
+}
 
 @property (nonatomic,weak) id<TimelineCellDelegate> delegate;
 @property (nonatomic,strong) Timeline *comment;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic,weak) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UIImageView *ViolateView;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 
 /**

@@ -4,6 +4,8 @@
 //
 
 #import "LocationClient.h"
+#import "SVProgressHUD.h"
+#import "AppDelegate.h"
 
 NSString * const LocationClientErrorDomain = @"LocationClientErrorDomain";
 
@@ -53,7 +55,14 @@ static LocationClient *_sharedInstance = nil;
         NSError *error = [[NSError alloc] initWithDomain:LocationClientErrorDomain
                                                     code:LocationClientErrorCodeSettingErrorCode
                                                 userInfo:@{NSLocalizedDescriptionKey: @"位置情報使用不可"}];
+        
+        
         completion(nil, error);
+        //progress dismiss
+        [SVProgressHUD dismiss];
+        //checkGPS
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate checkGPS];
         return;
     }
     
@@ -65,7 +74,13 @@ static LocationClient *_sharedInstance = nil;
         NSError *error = [[NSError alloc] initWithDomain:LocationClientErrorDomain
                                                     code:LocationClientErrorCodeSettingErrorCode
                                                 userInfo:@{NSLocalizedDescriptionKey: @"位置情報サービス利用不可 (iPhone の位置情報サービスの設定を確認してください)"}];
+        
         completion(nil, error);
+        //progress dismiss
+        [SVProgressHUD dismiss];
+        //checkGPS
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate checkGPS];
         return;
     }
     

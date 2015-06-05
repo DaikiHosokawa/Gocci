@@ -495,7 +495,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                        error:&error];
     
     // タイムラインを再読み込み
-    [self _fetchRestaurant];
+    //[self _fetchRestaurant];
 }
 
 
