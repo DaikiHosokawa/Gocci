@@ -16,7 +16,10 @@
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate>
+@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate>{
+    UIAlertView *FirstalertView;
+    UIAlertView *SecondalertView;
+}
 
 //@property (weak, nonatomic) IBOutlet UIView *recordView;
 //@property (weak, nonatomic) IBOutlet UIButton *stopButton;
@@ -50,5 +53,6 @@
 
 -(void)execSubmit;
 -(void)cancelSubmit;
+
 
 @end

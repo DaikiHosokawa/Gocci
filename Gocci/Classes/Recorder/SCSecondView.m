@@ -24,6 +24,7 @@ static NSString * const TextHitokoto = @"一言";
 static int valueKakaku = 0;
 static NSString *stringTenmei = nil;
 static NSString *stringHitokoto = nil;
+static NSString *stringKakaku = nil;
 
 @interface SCSecondView()
 {
@@ -55,16 +56,16 @@ static NSString *stringHitokoto = nil;
 	{
 //		tableviewList.delegate = self;
 //		tableviewList.dataSource = self;
-		
+
 		arrayCategory = [[NSArray alloc] initWithObjects:@"和風",@"洋風",@"中華",@"カレー",@"ラーメン",@"カフェ",@"居酒屋",@"その他", nil];
 		arrayFuniki = [[NSArray alloc] initWithObjects:@"にぎやか",@"ゆったり", nil];
-
 		selectedCategory = -1;
 		selectedFuniki = -1;
 		stringTenmei = nil;
-//		stringKakaku = nil;
+        valueKakaku = 0;
         stringHitokoto = nil;
-		
+//		*/
+    
 		indexBackColor = index;
 	}
 	
@@ -113,12 +114,14 @@ static NSString *stringHitokoto = nil;
 			cell.textLabel.text = TextCategory;
 			if (selectedCategory >= 0) {
 				cell.detailTextLabel.text = [arrayCategory objectAtIndex:selectedCategory];
+                NSLog(@"stringCategory:%@",[arrayCategory objectAtIndex:selectedCategory]);
 			}
 			break;
 		case 2:
 			cell.textLabel.text = TextKakaku;
 			if (valueKakaku) {
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"%d円",valueKakaku];
+                NSLog(@"stringValue:%@",[NSString stringWithFormat:@"%d円",valueKakaku]);
 			}
 			break;
 		case 3:

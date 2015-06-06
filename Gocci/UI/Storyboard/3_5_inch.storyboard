@@ -821,7 +821,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buU-Ca-aI8">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buU-Ca-aI8" id="iSI-EU-uBM">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -852,136 +852,6 @@
             </objects>
             <point key="canvasLocation" x="-2614" y="-569"/>
         </scene>
-        <!--KakakuTextViewCOntroller-->
-        <scene sceneID="BCU-OX-uiu">
-            <objects>
-                <viewController title="KakakuTextViewCOntroller" id="waL-qA-ECA" customClass="KakakuTextViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jmj-7Y-ao7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="金額を入力して下さい" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="Jdq-NL-cyt">
-                                <rect key="frame" x="16" y="81" width="261" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="waL-qA-ECA" id="Ld6-Dy-hby"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ewk-iJ-mXc">
-                                <rect key="frame" x="285" y="84" width="17" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LYr-DU-Qsg">
-                                <rect key="frame" x="264" y="119" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="OK">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onOkey:" destination="waL-qA-ECA" eventType="touchUpInside" id="j8m-0f-tnh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="価格" id="Haf-rK-Ws2">
-                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="1YY-tI-cUj">
-                            <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
-                            <connections>
-                                <action selector="onBack:" destination="waL-qA-ECA" id="6p5-nH-ODP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="textfieldKakaku" destination="Jdq-NL-cyt" id="ual-AY-3dq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2aI-mP-1KJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2774" y="44"/>
-        </scene>
-        <!--HitokotoTextViewController-->
-        <scene sceneID="eCH-NA-Ahp">
-            <objects>
-                <viewController title="HitokotoTextViewController" id="TrA-LT-zvm" customClass="HitokotoTextViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="59b-Ps-8e0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="一言を入力してください" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" id="ear-Si-PxE">
-                                <rect key="frame" x="21" y="103" width="283" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jto-36-CyN">
-                                <rect key="frame" x="274" y="147" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="OK">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onOkey:" destination="TrA-LT-zvm" eventType="touchUpInside" id="EHS-Zq-p2s"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="一言" id="lbQ-J2-GoG">
-                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="otU-5Q-jVv">
-                            <connections>
-                                <action selector="onBack:" destination="TrA-LT-zvm" id="Q4Y-BM-0b7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="textfieldHitokoto" destination="ear-Si-PxE" id="tZL-VX-PoG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XIc-LK-gG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2806" y="853"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RyP-u7-rC3">
-            <objects>
-                <navigationController id="UTb-wV-ofs" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4PA-Sh-Bp7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="TrA-LT-zvm" kind="relationship" relationship="rootViewController" id="cNh-dt-7ym"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygh-Wf-aDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3266" y="853"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="YDQ-cv-A2F">
-            <objects>
-                <navigationController id="xk8-Yn-BQc" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NBv-VW-gsb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="waL-qA-ECA" kind="relationship" relationship="rootViewController" id="Ns1-Zq-mad"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CDE-TJ-KAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3239" y="44"/>
-        </scene>
         <!--Followee List View Controller-->
         <scene sceneID="j4E-lU-LTm">
             <objects>
@@ -992,7 +862,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="Frb-OG-Kof" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Frb-OG-Kof" id="Cba-Jk-L35">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1025,7 +895,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="74o-Ga-cjY" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74o-Ga-cjY" id="8Qn-AQ-ZAV">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1102,8 +972,6 @@
                     <connections>
                         <segue destination="grg-UZ-rTW" kind="push" identifier="goPosting" id="bLZ-oX-KcE"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="TRo-Kj-rA7"/>
-                        <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="7Yb-Fi-HEj"/>
-                        <segue destination="UTb-wV-ofs" kind="modal" identifier="goHitokoto" id="bbz-Lf-K7I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWC-oN-UzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1185,8 +1053,6 @@
                         <outlet property="tableviewTubuyaki" destination="x23-IM-9v5" id="q6X-du-IhX"/>
                         <outlet property="viewBase" destination="kOQ-Ld-2NX" id="LWd-WQ-DUa"/>
                         <segue destination="tyi-Eu-yD5" kind="modal" identifier="goBeforeRecorder" id="mqM-qI-glM"/>
-                        <segue destination="xk8-Yn-BQc" kind="modal" identifier="goKakaku" id="Gee-JD-9BO"/>
-                        <segue destination="UTb-wV-ofs" kind="modal" identifier="goHitokoto" id="m3r-Nr-3DM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekk-nu-emt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1263,7 +1129,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="198" y="11.000000159582227" width="41" height="46"/>
+                                        <rect key="frame" x="198" y="11" width="41" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1462,11 +1328,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="E8I-Ul-lW0"/>
-        <segue reference="oAW-Uz-WM7"/>
-        <segue reference="Gee-JD-9BO"/>
-        <segue reference="m3r-Nr-3DM"/>
         <segue reference="mqM-qI-glM"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="E8I-Ul-lW0"/>
     </inferredMetricsTieBreakers>
 </document>

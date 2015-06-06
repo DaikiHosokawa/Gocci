@@ -212,16 +212,83 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 }
 -(void)goKakakuText
 {
+    [self showAlert];
 	//遷移：SCRecorderVideoController
-	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
+	//[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
     
 }
 
 -(void)goHitokotoText
 {
+    [self showAlert2];
     //遷移：SCRecorderVideoController
-    [self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
+    //[self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
     
+}
+
+- (void)showAlert
+{
+    FirstalertView = [[UIAlertView alloc] initWithTitle:@"価格を入力してください"
+                                                message:nil
+                                               delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                      otherButtonTitles:@"OK", nil];
+    FirstalertView.delegate       = self;
+    FirstalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [FirstalertView show];
+}
+
+
+- (void)showAlert2
+{
+    SecondalertView = [[UIAlertView alloc] initWithTitle:@"一言を入力してください"
+                                                 message:nil
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                       otherButtonTitles:@"OK", nil];
+    SecondalertView.delegate       = self;
+    SecondalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [SecondalertView show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if(FirstalertView == alertView){
+        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
+        
+        NSString* textValue = [[alertView textFieldAtIndex:0] text];
+        if( [textValue length] > 0 )
+        {
+            // 入力内容を利用した処理
+            NSLog(@"入力内容:%@",textValue);
+            [self sendKakakuValue:[textValue intValue]];
+            
+            // !!!:dezamisystem・パラメータ
+            AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+            [secondView setKakakuValue:delegate.valueKakaku];
+            [secondView reloadTableList];
+        }
+    }
+    if(SecondalertView == alertView){
+        
+        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
+        
+        NSString* textValue = [[alertView textFieldAtIndex:0] text];
+        if( [textValue length] > 0 )
+        {
+            // 入力内容を利用した処理
+            NSLog(@"入力内容2:%@",textValue);
+            [self sendHitokotoValue:textValue];
+            
+            // !!!:dezamisystem・パラメータ
+            AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+            [secondView setHitokotoValue:delegate.valueHitokoto];
+            [secondView reloadTableList];
+            
+        }
+    }
 }
 
 #pragma mark - TableViewDatasource
@@ -284,6 +351,19 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 	
 	// 選択状態の解除
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - KakakuTextViewController
+-(void)sendKakakuValue:(int)value
+{
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.valueKakaku = value;
+}
+
+-(void)sendHitokotoValue:(NSString *)value
+{
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.valueHitokoto = value;
 }
 /*
 #pragma mark - Navigation

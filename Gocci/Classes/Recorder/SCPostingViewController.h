@@ -9,13 +9,20 @@
 #import <UIKit/UIKit.h>
 
 #import "SCSecondView.h"
+#import "SCRecorderViewController.h"
 
 //@class SCPostingViewController;
 
 
 typedef void (^SCPostingViewControllerCancelCallback)(void);
 
-@interface SCPostingViewController : UIViewController<SCSecondViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SCPostingViewController : UIViewController<SCSecondViewDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,SCRecorderDelegate>
+{
+    UIAlertView *FirstalertView;
+    UIAlertView *SecondalertView;
+    SCRecorderViewController *SCRecorder;
+}
+
 
 
 @end

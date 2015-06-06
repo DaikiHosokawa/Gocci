@@ -107,7 +107,8 @@ static SCRecorder *_recorder;
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
-	
+
+    
 	// ???:ずれを解消出来る？
 	self.automaticallyAdjustsScrollViewInsets = NO;
 
@@ -160,11 +161,58 @@ static SCRecorder *_recorder;
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
     */
-	
+   
+    
 #if 1
 	// !!!:dezamisystem・スクロールビュー
+    
+    {
+        // !!!:dezamisystem・パラメータ
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [secondView setKakakuValue:delegate.valueKakaku];
+        [secondView setTenmeiString:delegate.stringTenmei];
+        [secondView setCategoryIndex:delegate.indexCategory];
+        [secondView setFunikiIndex:delegate.indexFuniki];
+        [secondView setHitokotoValue:delegate.valueHitokoto];
+        
+        [secondView reloadTableList];
+        
+        // !!!:ゲージ再描画
+        [self updateTimeRecordedLabel];
+        
+        {
+            CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
+            //画面サイズから場合分け
+            CGRect rect = [UIScreen mainScreen].bounds;
+            if (rect.size.height == 480) {
+                //3.5inch
+                rect_page = CGRectMake(0, 336, 320, 144);
+            }
+            else if (rect.size.height == 667) {
+                //4.7inch
+                rect_page = CGRectMake(0, 467, 375, 200);
+            }
+            else if (rect.size.height == 736) {
+                //5.5inch
+                rect_page = CGRectMake(0, 516, 414, 220);
+            }
+            scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
+            //スクロールビューの上ビュー
+            {
+                firstView = [SCFirstView create];
+                firstView.delegate = self;
+                //[pageingScrollView addSubview:firstView];
+                secondView = [SCSecondView create];
+                secondView.delegate = self;
+                //[pageingScrollView addSubview:secondView];
+            }
+            [scrollpageview showInView:self.view first:firstView second:secondView];
+        }
+    }
+
 	
 #endif
+   
 	
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
@@ -222,48 +270,89 @@ static SCRecorder *_recorder;
 	
 	// NavigationBar 非表示
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
-
-	// !!!:dezamisystem・パラメータ
-	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	[secondView setKakakuValue:delegate.valueKakaku];
-	[secondView setTenmeiString:delegate.stringTenmei];
-	[secondView setCategoryIndex:delegate.indexCategory];
-	[secondView setFunikiIndex:delegate.indexFuniki];
-    [secondView setHitokotoValue:delegate.valueHitokoto];
-	[secondView reloadTableList];
-	
-	// !!!:ゲージ再描画
-	[self updateTimeRecordedLabel];
     
+    // !!!:dezamisystem・パラメータ
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [secondView setKakakuValue:delegate.valueKakaku];
+    [secondView setTenmeiString:delegate.stringTenmei];
+    [secondView setCategoryIndex:delegate.indexCategory];
+    [secondView setFunikiIndex:delegate.indexFuniki];
+    [secondView setHitokotoValue:delegate.valueHitokoto];
+    [secondView reloadTableList];
+    
+    // !!!:ゲージ再描画
+    [self updateTimeRecordedLabel];
+
+
+}
+
+
+- (void)showAlert
+{
+   FirstalertView = [[UIAlertView alloc] initWithTitle:@"価格を入力してください"
+                                                    message:nil
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil];
+    FirstalertView.delegate       = self;
+    FirstalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [FirstalertView show];
+}
+
+
+- (void)showAlert2
+{
+    SecondalertView = [[UIAlertView alloc] initWithTitle:@"一言を入力してください"
+                                                     message:nil
+                                                    delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                           otherButtonTitles:@"OK", nil];
+    SecondalertView.delegate       = self;
+    SecondalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [SecondalertView show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+    if(FirstalertView == alertView){
+    if( buttonIndex == alertView.cancelButtonIndex ) { return; }
+    
+    NSString* textValue = [[alertView textFieldAtIndex:0] text];
+    if( [textValue length] > 0 )
     {
-        CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
-        //画面サイズから場合分け
-        CGRect rect = [UIScreen mainScreen].bounds;
-        if (rect.size.height == 480) {
-            //3.5inch
-            rect_page = CGRectMake(0, 336, 320, 144);
+        // 入力内容を利用した処理
+        NSLog(@"入力内容:%@",textValue);
+        [self sendKakakuValue:[textValue intValue]];
+        
+        // !!!:dezamisystem・パラメータ
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [secondView setKakakuValue:delegate.valueKakaku];
+        [secondView reloadTableList];
         }
-        else if (rect.size.height == 667) {
-            //4.7inch
-            rect_page = CGRectMake(0, 467, 375, 200);
-        }
-        else if (rect.size.height == 736) {
-            //5.5inch
-            rect_page = CGRectMake(0, 516, 414, 220);
-        }
-        scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
-        //スクロールビューの上ビュー
+    }
+    if(SecondalertView == alertView){
+        
+        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
+        
+        NSString* textValue = [[alertView textFieldAtIndex:0] text];
+        if( [textValue length] > 0 )
         {
-            firstView = [SCFirstView create];
-            firstView.delegate = self;
-            //[pageingScrollView addSubview:firstView];
-            secondView = [SCSecondView create];
-            secondView.delegate = self;
-            //[pageingScrollView addSubview:secondView];
-        }
-        [scrollpageview showInView:self.view first:firstView second:secondView];
+            // 入力内容を利用した処理
+            NSLog(@"入力内容2:%@",textValue);
+            [self sendHitokotoValue:textValue];
+            
+            // !!!:dezamisystem・パラメータ
+            AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+            [secondView setHitokotoValue:delegate.valueHitokoto];
+            [secondView reloadTableList];
+           
+            }
     }
 }
+
+
 
 
 
@@ -995,14 +1084,17 @@ static SCRecorder *_recorder;
 }
 -(void)goKakakuText
 {
+    
+    [self showAlert];
 	//遷移：SCRecorderVideoController
-	[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
+	//[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
 }
 
 -(void)goHitokotoText
 {
+    [self showAlert2];
     //遷移：SCRecorderVideoController
-    [self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
+   //[self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
 }
 
 #pragma mark - beforeRecorderViewController
@@ -1065,8 +1157,10 @@ static SCRecorder *_recorder;
         NSString *atmosphere = @"none";
         if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
         NSString *category = @"none";
+        NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
         NSString *comment = @"...";
+        NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
         if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
 
 		//バックグラウンドで投稿
