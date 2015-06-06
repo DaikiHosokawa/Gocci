@@ -47,7 +47,8 @@
 			[recordView addSubview:pieChartTimer];
 			[self updatePieChartWith:0 MAX:100];
 			pieChartTimer.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
-			
+            [pieChartTimer reloadData];
+            
 			//アイコン
 			CGFloat width_icon = width_record * 0.65; // 75;
 			CGFloat height_icon = width_icon;
@@ -56,6 +57,7 @@
 			imageview.image = image;
 			imageview.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
 			[recordView addSubview:imageview];
+            
 		}
        
 	}
