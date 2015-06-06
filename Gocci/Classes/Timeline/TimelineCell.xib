@@ -187,7 +187,7 @@
                             <constraint firstAttribute="height" constant="302" id="xJ2-yo-HSs"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startPlaying" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-02-jt5">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startPlaying" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-02-jt5">
                         <rect key="frame" x="119" y="183" width="80" height="82"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-Aw-YJt">

@@ -417,13 +417,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // [moviePlayer play];
-   //  [self _playMovieAtCurrentCell];
+    //[self _playMovieAtCurrentCell];
     NSLog(@"scroll is stoped");
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
-     //   [self _playMovieAtCurrentCell];
+    [self _playMovieAtCurrentCell];
      //   NSLog(@"scroll is stoped");
     }
 }
@@ -796,9 +796,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }];
 }
 
+/*
 - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
     [self _playMovieAtCurrentCell];
 }
+ */
 
 /**
  *  現在表示中のセルの動画を再生する

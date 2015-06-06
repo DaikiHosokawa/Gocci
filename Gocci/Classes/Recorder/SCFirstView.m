@@ -27,6 +27,7 @@
 {
 	//撮影ボタン
 	{
+        
 		CGFloat width_record = recordView.frame.size.width * 0.95; // 90;
 		CGFloat height_record = width_record;
 		//CGFloat x_record = self.frame.size.width /2 - width_record /2;
@@ -150,7 +151,8 @@
 	}
 
 	SCFirstView *view = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil][0];
-
+ 
+    
 	return view;
 }
 

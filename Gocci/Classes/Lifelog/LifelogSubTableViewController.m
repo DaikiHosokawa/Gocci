@@ -233,7 +233,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
-   // [self _playMovieAtCurrentCell];
+   //[self _playMovieAtCurrentCell];
 
     NSLog(@"@2");
 }
@@ -242,7 +242,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
-       // [self _playMovieAtCurrentCell];
+    [self _playMovieAtCurrentCell];
         NSLog(@"@2");
     }
 }
@@ -368,9 +368,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }];
 }
 
+/*
 - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
     [self _playMovieAtCurrentCell];
 }
+ */
 
 
 /**

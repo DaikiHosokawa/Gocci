@@ -290,7 +290,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
-    //    [self _playMovieAtCurrentCell];
+     [self _playMovieAtCurrentCell];
     }
 }
 
@@ -544,9 +544,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }];
 }
 
+/*
 - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
     [self _playMovieAtCurrentCell];
 }
+ */
 
 
 /**

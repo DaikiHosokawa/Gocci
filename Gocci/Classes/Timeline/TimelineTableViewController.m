@@ -294,7 +294,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
     // スクロール中は動画を停止する
-   // [[MoviePlayerManager sharedManager] scrolling:YES];
+ //  [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -311,7 +311,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	// フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
     
-   // [self _playMovieAtCurrentCell];
+  // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -319,7 +319,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		// ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         
-       // [self _playMovieAtCurrentCell];
+    [self _playMovieAtCurrentCell];
 	}
 }
 
@@ -865,10 +865,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
+/*
 - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
 
     [self _playMovieAtCurrentCell];
 }
+ */
 
 /**
  *  現在表示中のセルの動画を再生する
