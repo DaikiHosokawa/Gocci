@@ -15,6 +15,15 @@
                     <rect key="frame" x="127" y="25" width="120" height="120"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZQ-KD-WxU">
+                    <rect key="frame" x="308" y="79" width="40" height="40"/>
+                    <state key="normal" image="capture_flip">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="reverseCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="y92-mT-mXK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -23,7 +32,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="recordView" destination="Mw1-X3-isV" id="hZW-hb-XXM"/>
+                <outlet property="reverseCamera" destination="WZQ-KD-WxU" id="SeT-TD-CIW"/>
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="capture_flip" width="36" height="30"/>
+    </resources>
 </document>

@@ -398,14 +398,11 @@ static SCRecorder *_recorder;
 }
 
 // !!!:未使用
-//- (void) handleReverseCameraTapped:(id)sender {
-//	
-//#if (!TARGET_IPHONE_SIMULATOR)
-//	[_recorder switchCaptureDevices];
-//#else
-//	NSLog(@"%s",__func__);
-//#endif
-//}
+- (void) handleReverseCameraTapped {
+
+[_recorder switchCaptureDevices];
+
+}
 
 // !!!:未使用
 //- (void) handleStopButtonTapped:(id)sender {
@@ -584,6 +581,7 @@ static SCRecorder *_recorder;
     NSLog(@"Began record segment: error = %@", error);
 }
 
+//セグメントを保存している(トリミングするならここ)
 - (void)recorder:(SCRecorder *)recorder didEndRecordSegment:(SCRecordSession *)recordSession segmentIndex:(NSInteger)segmentIndex error:(NSError *)error {
     NSLog(@"End record segment %d at %@: error = %@", (int)segmentIndex, segmentIndex >= 0 ? [recordSession.recordSegments objectAtIndex:segmentIndex] : nil, error);
 }

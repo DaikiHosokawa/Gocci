@@ -14,6 +14,7 @@
 -(void)recordBegan;
 -(void)recordEnded;
 -(void)flipCamera;
+-(void)handleReverseCameraTapped;
 -(void)retake;
 @end
 

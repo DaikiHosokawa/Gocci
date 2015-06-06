@@ -16,6 +16,7 @@
 	CGFloat percentPieChart;
 	
 	__weak IBOutlet UIView *recordView;
+    __weak IBOutlet UIView *reverseCamera;
 }
 
 @end
@@ -33,6 +34,7 @@
 		//CGFloat x_record = self.frame.size.width /2 - width_record /2;
 		//CGFloat y_record = self.frame.origin.y;
 		[recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
+         
 		{
 			//円グラフゲージ
 			CGRect rect_pie = CGRectMake(0, 0, width_record, height_record);
@@ -55,6 +57,7 @@
 			imageview.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
 			[recordView addSubview:imageview];
 		}
+       
 	}
 	
 	[view addSubview:self];
@@ -73,6 +76,12 @@
 		[self.delegate recordEnded];
 	}
 }
+- (IBAction)reverseCamera:(id)sender {
+
+    [self.delegate handleReverseCameraTapped];
+}
+
+
 
 
 #pragma mark - 円グラフ
