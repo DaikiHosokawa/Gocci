@@ -407,7 +407,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - TimelineCellDelegate
 
 #pragma mark いいねボタンの時の処理
-- (void)timelineCeloo:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
+- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
     //いいねボタンの時の処理
     LOG(@"postid=%@", postID);

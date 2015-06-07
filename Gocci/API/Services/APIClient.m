@@ -399,8 +399,9 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)notice_WithHandler:(void (^)(id, NSUInteger, NSError *))handler{
-    
+
++ (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
     [[APIClient sharedClient].manager GET:@"notice"
                                parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

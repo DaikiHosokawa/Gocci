@@ -211,6 +211,7 @@
 		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
 		95A8623D1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */; };
 		95A8623E1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */; };
+		95DFDC2B1B244808004B3F3F /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFDC2A1B244808004B3F3F /* Notice.m */; };
 		95E107271B06E3F900095340 /* HitokotoTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E107261B06E3F900095340 /* HitokotoTextViewController.m */; };
 		95E3C5AD1AF09B58001599EE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AC1AF09B58001599EE /* Reachability.m */; };
 		95E3C5B11AF42400001599EE /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5AF1AF42400001599EE /* ProfileCell.m */; };
@@ -634,6 +635,8 @@
 		95A8623A1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupAdditionView.h; sourceTree = "<group>"; };
 		95A8623B1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupAdditionView.m; sourceTree = "<group>"; };
 		95A8623C1AF5B8A500549839 /* RecorderSubmitPopupAdditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupAdditionView.xib; sourceTree = "<group>"; };
+		95DFDC291B244808004B3F3F /* Notice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notice.h; sourceTree = "<group>"; };
+		95DFDC2A1B244808004B3F3F /* Notice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notice.m; sourceTree = "<group>"; };
 		95E107251B06E3F900095340 /* HitokotoTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitokotoTextViewController.h; sourceTree = "<group>"; };
 		95E107261B06E3F900095340 /* HitokotoTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitokotoTextViewController.m; sourceTree = "<group>"; };
 		95E3C5AB1AF09B58001599EE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1335,6 +1338,8 @@
 		952D24B31A9B9DE100C354DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95DFDC291B244808004B3F3F /* Notice.h */,
+				95DFDC2A1B244808004B3F3F /* Notice.m */,
 				952D24B41A9B9DE100C354DF /* Restaurant.h */,
 				952D24B51A9B9DE100C354DF /* Restaurant.m */,
 				952D24B81A9B9DE100C354DF /* TimelinePost.h */,
@@ -1915,6 +1920,7 @@
 				952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
+				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
 				AB645CD71AA697FB00827B7A /* RecorderSubmitPopupView.m in Sources */,
 				952D23901A9B95E800C354DF /* UIView+WebCacheOperation.m in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,

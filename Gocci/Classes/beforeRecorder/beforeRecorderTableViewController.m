@@ -90,6 +90,7 @@
 		[self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
 
     }];
+    
 }
 
 
@@ -157,12 +158,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 1)
+    {
     return [self.restaurants count];
+    }
+    else if(section == 2) {
+    return 1;
+    }else{
+    return 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,6 +181,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if(indexPath.section == 1){
     beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
     if (!cell) {
         cell = [beforeCell cell];
@@ -182,8 +193,53 @@
     cell.delegate = self;
     
      [SVProgressHUD dismiss];
+     return cell;
+    }
+    
+    else if(indexPath.section == 2){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+        
+        cell.textLabel.text = @"店舗がないときは。。。。";
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (cell == nil) {
+            
+            /*
+             *   Actually create a new cell (with an identifier so that it can be dequeued).
+             */
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
+            cell.textLabel.text = @"店舗がないときは。。。。";
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+        }
+      return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+        
+        cell.textLabel.text = @"店舗を追加する";
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (cell == nil) {
+            
+            /*
+             *   Actually create a new cell (with an identifier so that it can be dequeued).
+             */
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
+            cell.textLabel.text = @"店舗を追加する";
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+        }
+ 
     return cell;
+    }
 }
+
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
