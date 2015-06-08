@@ -183,7 +183,7 @@
                                     <constraint firstAttribute="width" constant="20" id="m9J-H0-rNh"/>
                                     <constraint firstAttribute="height" constant="20" id="oqq-YC-wyV"/>
                                 </constraints>
-                                <state key="normal" image="like_new">
+                                <state key="normal" image="gocci_new">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -334,7 +334,7 @@
         <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_new" width="37" height="35"/>
         <image name="etc" width="41" height="12"/>
-        <image name="like_new" width="34" height="31"/>
+        <image name="gocci_new" width="34" height="31"/>
         <image name="startPlaying" width="209" height="209"/>
         <image name="tag-A" width="128" height="28"/>
         <image name="tag-B" width="128" height="28"/>

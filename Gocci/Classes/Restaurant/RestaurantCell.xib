@@ -178,17 +178,17 @@
                         <rect key="frame" x="14" y="461" width="90" height="30"/>
                         <subviews>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-EM-lr7">
-                                <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                <rect key="frame" x="5" y="5" width="25" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="m9J-H0-rNh"/>
+                                    <constraint firstAttribute="width" constant="25" id="m9J-H0-rNh"/>
                                     <constraint firstAttribute="height" constant="20" id="oqq-YC-wyV"/>
                                 </constraints>
-                                <state key="normal" image="like_new">
+                                <state key="normal" image="gocci_new">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKp-CK-jj1">
-                                <rect key="frame" x="25" y="4" width="25" height="21"/>
+                                <rect key="frame" x="30" y="4" width="25" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="PQa-M6-xQL"/>
                                     <constraint firstAttribute="height" constant="21" id="nC0-GI-nGI"/>
@@ -198,7 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33W-Q4-rnt">
-                                <rect key="frame" x="53" y="4" width="40" height="21"/>
+                                <rect key="frame" x="58" y="4" width="40" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="5zY-SK-jud"/>
                                     <constraint firstAttribute="height" constant="21" id="IP8-m2-747"/>
@@ -334,7 +334,7 @@
         <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_new" width="37" height="35"/>
         <image name="etc" width="41" height="12"/>
-        <image name="like_new" width="34" height="31"/>
+        <image name="gocci_new" width="34" height="31"/>
         <image name="startPlaying" width="209" height="209"/>
         <image name="tag-A" width="128" height="28"/>
         <image name="tag-B" width="128" height="28"/>

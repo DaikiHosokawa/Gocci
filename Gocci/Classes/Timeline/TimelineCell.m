@@ -118,7 +118,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapLikeButtonWithPostID:)]) {
         
         if(flash_on == 0 ){
-            UIImage *img = [UIImage imageNamed:@"like_new_selected.png"];
+            UIImage *img = [UIImage imageNamed:@"gocci_new_selected.png"];
             [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
             flash_on = 1;
             int plus1 = self.likeCountLabel.text.floatValue+1;
@@ -132,7 +132,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
                 });
         }else{
             
-            UIImage *img = [UIImage imageNamed:@"like_new.png"];
+            UIImage *img = [UIImage imageNamed:@"gocci_new.png"];
             [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
             int minus1 = self.likeCountLabel.text.floatValue-1;
             [_likeCountLabel setText:[NSString stringWithFormat:@"%d", minus1]];
@@ -293,12 +293,12 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
     {
-    UIImage *img = [UIImage imageNamed:@"like_new.png"];
+    UIImage *img = [UIImage imageNamed:@"gocci_new.png"];
     [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
     flash_on = 0;
    
     }else{
-    UIImage *img = [UIImage imageNamed:@"like_new_selected.png"];
+    UIImage *img = [UIImage imageNamed:@"gocci_new_selected.png"];
     [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
     flash_on = 1;
     }
