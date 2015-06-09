@@ -19,7 +19,6 @@
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
 #import "LocationClient.h"
-#import "Reachability.h"
 #import "BBBadgeBarButtonItem.h"
 #import "NotificationViewController.h"
 
@@ -269,18 +268,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type = kCATransitionPush;//pushのトランジション
     transition.subtype = kCATransitionFromRight;//右から左へ
-	// !!!:dezamisystem
-//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-//    usersTableViewController *userTimeline = [[usersTableViewController alloc]init];
-//    [self.navigationController pushViewController:userTimeline animated:YES];
 }
 
 - (IBAction)onProfileButton:(id)sender
 {
-	// !!!:dezamisystem
-
-//    usersTableViewController *controller = [usersTableViewController new];
-//    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)refresh:(UIRefreshControl *)sender
@@ -408,9 +400,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //2つ目の画面にパラメータを渡して遷移する
-//    if ([segue.identifier isEqualToString:@"showDetail2"])
-	// !!!:dezamisystem
+  
 	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
 	{
         //ここでパラメータを渡す
@@ -422,9 +412,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #endif
         eveVC.postID = (NSString *)sender;
     }
-    //プロフィール画面にパラメータを渡して遷移する
-//    if ([segue.identifier isEqualToString:@"goOthersTimeline"])
-	// !!!:dezamisystem
+
 	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
 	{
         //ここでパラメータを渡す
@@ -639,11 +627,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 /**
  *  タイムラインのデータを取得
  */
+/*
 - (void)_fetchTimeline
 {
     [self _fetchTimelineUsingLocationCache:YES];
 }
-
+*/
 
 
 /**
@@ -651,6 +640,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
  *
  *  @param usingLocationCache 前回取得した位置情報を利用する場合 YES を指定
  */
+/*
 - (void)_fetchTimelineUsingLocationCache:(BOOL)usingLocationCache
 {
     
@@ -753,7 +743,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          fetchAPI(location.coordinate);
      }];
 }
-
+ */
 
 /**
  *　全体タイムラインのデータを取得
@@ -811,32 +801,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [SVProgressHUD dismiss];
         
              BOOL isServerAvailable;
-             Reachability *curReach2 = [Reachability reachabilityForInternetConnection];
-             NetworkStatus netStatus2 = [curReach2 currentReachabilityStatus];
              
              
              NSString *alertMessage = @"圏外ですので再生できません。";
              UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
              
              
-             switch (netStatus2) {
-                 case NotReachable:  //圏外
-                     /*圏外のときの処理*/
-                     [alrt show];
-                     break;
-                 case ReachableViaWWAN:  //3G
-                     /*3G回線接続のときの処理*/
-                     break;
-                 case ReachableViaWiFi:
-                     //WiFi
-                     
-                     break;
-                     
-                 default:
-                     
-                     break;
-             }
-
          }];
     };
     
@@ -888,9 +858,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         return;
     }
  
-    Reachability *curReach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus netStatus = [curReach currentReachabilityStatus];
-    
+  
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -907,33 +875,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentCell.thumbnailView.frame.size.height);
     
     
-    switch (netStatus) {
-        case NotReachable:  //圏外
-            /*圏外のときの処理*/
-    
-            break;
-        case ReachableViaWWAN:  //3G
-            [[MoviePlayerManager sharedManager] scrolling:NO];
+     [[MoviePlayerManager sharedManager] scrolling:NO];
             [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                           inView:self.tableView
                                                            frame:movieRect];
-        
-            break;
-        case ReachableViaWiFi:  //WiFi
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-    
-            break;
-        default:
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-
-            break;
-    }
     
 }
 

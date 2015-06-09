@@ -162,9 +162,6 @@
 		indexFuniki = -1;
 	}
 	
-    //スプラッシュ時間設定
-    sleep(3);
-    
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 	

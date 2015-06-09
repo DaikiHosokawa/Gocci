@@ -19,7 +19,6 @@
 #import "UIImageView+WebCache.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
-#import "Reachability.h"
 #import "CustomAnnotation.h"
 #import "NotificationViewController.h"
 
@@ -756,32 +755,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
-        Reachability *curReach2 = [Reachability reachabilityForInternetConnection];
-        NetworkStatus netStatus2 = [curReach2 currentReachabilityStatus];
-        
-        NSString *alertMessage = @"圏外ですので再生できません。";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
         
-        
-        switch (netStatus2) {
-            case NotReachable:  //圏外
-                /*圏外のときの処理*/
-                [alrt show];
-                break;
-            case ReachableViaWWAN:  //3G
-                /*3G回線接続のときの処理*/
-                break;
-            case ReachableViaWiFi:
-                //WiFi
-                
-                break;
-                
-            default:
-                
-                break;
-        }
-
         
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
@@ -808,9 +783,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)_playMovieAtCurrentCell
 {
    
-    Reachability *curReach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus netStatus = [curReach currentReachabilityStatus];
-    
     if ( [self.posts count] == 0){
             return;
          }
@@ -828,32 +800,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-        switch (netStatus) {
-        case NotReachable:  //圏外
-            /*圏外のときの処理*/
-            
-            break;
-        case ReachableViaWWAN:  //3G
-                [[MoviePlayerManager sharedManager] scrolling:NO];
                 [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                               inView:self.tableView
                                                                frame:movieRect];
-            break;
-        case ReachableViaWiFi:  //WiFi
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-        default:
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-    }
     
 }
 

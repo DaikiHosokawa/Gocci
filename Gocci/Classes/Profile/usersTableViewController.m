@@ -8,7 +8,6 @@
 
 #import "usersTableViewController.h"
 #import "everyTableViewController.h"
-#import "ProfileCell.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
@@ -17,7 +16,6 @@
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "Reachability.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
@@ -282,14 +280,14 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-    LOG(@"scroll is stoped");
+   // LOG(@"scroll is stoped");
    // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-        LOG(@"scroll is stoped");
+    //    LOG(@"scroll is stoped");
      [self _playMovieAtCurrentCell];
     }
 }
@@ -508,29 +506,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         // 表示の更新
         [weakSelf.tableView reloadData];
         [SVProgressHUD dismiss];
-        Reachability *curReach2 = [Reachability reachabilityForInternetConnection];
-        NetworkStatus netStatus2 = [curReach2 currentReachabilityStatus];
         
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
-                switch (netStatus2) {
-            case NotReachable:  //圏外
-                /*圏外のときの処理*/
-                [alrt show];
-                break;
-            case ReachableViaWWAN:  //3G
-                /*3G回線接続のときの処理*/
-                break;
-            case ReachableViaWiFi:
-                //WiFi
-                
-                break;
-                
-            default:
-                
-                break;
-        }
 
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
@@ -557,11 +536,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)_playMovieAtCurrentCell
 {
     
-    Reachability *curReach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus netStatus = [curReach currentReachabilityStatus];
-    
-    
-    if (self.tabBarController.selectedIndex != 4 ) {
+    if (self.tabBarController.selectedIndex != 2 ) {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
@@ -583,35 +558,14 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-    switch (netStatus) {
-        case NotReachable:  //圏外
-            /*圏外のときの処理*/
-            
-            break;
-        case ReachableViaWWAN:  //3G
-            /*3G回線接続のときの処理*/
+   
             [[MoviePlayerManager sharedManager] scrolling:NO];
             [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                           inView:self.tableView
                                                            frame:movieRect];
             
-            break;
-        case ReachableViaWiFi:  //WiFi
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-        default:
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
     }
-}
+
 
 /**
  *  現在表示中の indexPath を取得

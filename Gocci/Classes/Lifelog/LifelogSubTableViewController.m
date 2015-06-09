@@ -19,7 +19,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "everyTableViewController.h"
 #import "RestaurantTableViewController.h"
-#import "Reachability.h"
 #import "NotificationViewController.h"
 
 @import QuartzCore;
@@ -341,29 +340,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
-        Reachability *curReach2 = [Reachability reachabilityForInternetConnection];
-        NetworkStatus netStatus2 = [curReach2 currentReachabilityStatus];
         
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
-        switch (netStatus2) {
-            case NotReachable:  //圏外
-                /*圏外のときの処理*/
-                [alrt show];
-                break;
-            case ReachableViaWWAN:  //3G
-                
-                break;
-            case ReachableViaWiFi:
-                //WiFi
-                
-                break;
-                
-            default:
-                
-                break;
-        }
+        
 
     }];
 }
@@ -385,9 +366,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         return;
     }
     
-    Reachability *curReach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus netStatus = [curReach currentReachabilityStatus];
-    
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -401,35 +379,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentHeight + currentCell.thumbnailView.frame.origin.y,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
+ 
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                          inView:self.tableView
+                                                           frame:movieRect];
     
-    switch (netStatus) {
-        case NotReachable:  //圏外
-            /*圏外のときの処理*/
-            
-            break;
-        case ReachableViaWWAN:  //3G
-            /*3G回線接続のときの処理*/
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-        case ReachableViaWiFi:  //WiFi
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-        default:
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-            break;
-    }
 }
 
 /**
