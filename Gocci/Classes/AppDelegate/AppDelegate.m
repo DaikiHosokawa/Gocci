@@ -150,8 +150,8 @@
 		[[UITabBarItem appearance] setTitleTextAttributes:attributesNormal forState:UIControlStateNormal];
 
 		//背景色
-		[UITabBar appearance].barTintColor = [UIColor whiteColor];
-		
+        [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
+        [UITabBar appearance].translucent = NO;
 		// 選択時
 		[[UITabBar appearance] setTintColor:color_custom];
 	}
@@ -204,29 +204,6 @@
 
 }
 
-/*
-// iOS8以降ここを通る
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:
-(UIUserNotificationSettings *)notificationSettings{
-    // これ呼ばないとデバイストークン取得できない
-    [application registerForRemoteNotifications];
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // デバイストークン取得完了
-    NSString *token = deviceToken.description;
-    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"apnsToken"]; //save token to resend it if request fails
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"apnsTokenSentSuccessfully"]; // set flag for request status
-
-    
-    NSLog(@"token:%@",token);
-    // トークンをサーバに保存する処理など
-    [self postDeviceToken:token]; // POST
-}
- */
 
 
 
@@ -268,38 +245,6 @@ void exceptionHandler(NSException *exception) {
     [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
 
-//位置情報更新処理
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations
-{
-        CLLocation *location = [locations lastObject];
-        NSLog(@"アップデート呼び出し");
-        [self showLocation:location];
-}
-
-//緯度経度を変数に格納
-- (void)showLocation:(CLLocation *)location
-{
-       /*
-              AppDelegate* appDelegateGeo = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-          	appDelegateGeo.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-              appDelegateGeo.lon =  [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-              CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-              appDelegateGeo.coordinate = &(coordinate);
-              NSLog(@"latitudeStr:%@",appDelegateGeo.lat);
-              NSLog(@"longitudeStr:%@",appDelegateGeo.lon);
-              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                  NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/dist/?lat=%@&lon=%@&limit=30",appDelegateGeo.lat,appDelegateGeo.lon];
-                  NSLog(@"urlStringatnoulon:%@",urlString);
-                  NSURL *urlGeo = [NSURL URLWithString:urlString];
-                  NSString *responseGeo = [NSString stringWithContentsOfURL:urlGeo encoding:NSUTF8StringEncoding error:nil];
-                  NSData *jsonData = [responseGeo dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-                  appDelegateGeo.jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-              });
-                  //});
-             [locationManager stopUpdatingLocation];
-               */
-}
 
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -441,12 +386,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                       duration:4.0];
     
     
-    /*
-    NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    if(message) {
-        [[[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
-     */
    
  }
 

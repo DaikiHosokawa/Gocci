@@ -50,14 +50,16 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-     [self createRaisedCenterButton];
+    [self createRaisedCenterButton];
+    //背景色
+    
 }
 
 - (void)createRaisedCenterButton {
     
     // Load Image
     UIImage *buttonImage = [UIImage imageNamed:@"rec_1"];
-    UIImage *highlightImage = [UIImage imageNamed:@"character_3"];
+    UIImage *highlightImage = [UIImage imageNamed:@"rec_1_sel"];
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, -15, buttonImage.size.width, buttonImage.size.height);
