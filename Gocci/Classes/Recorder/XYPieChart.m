@@ -293,8 +293,9 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             angles[index] = M_PI * 2 * div;
         }
 
-        [CATransaction begin];
-        [CATransaction setAnimationDuration:_animationSpeed];
+		// !!!:dezamisystem・アニメーション制御しない
+//        [CATransaction begin];
+//        [CATransaction setAnimationDuration:_animationSpeed];
 		
         [_pieView setUserInteractionEnabled:NO];
         
@@ -318,7 +319,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                                         toValue:[NSNumber numberWithDouble:_startPieAngle] 
                                        Delegate:self];
             }
-            [CATransaction commit];
+			// !!!:dezamisystem・アニメーション制御しない
+//            [CATransaction commit];
 
 			return;
         }
@@ -401,7 +403,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                                    Delegate:self];
             startToAngle = endToAngle;
         }
-        [CATransaction setDisableActions:YES];
+		// !!!:dezamisystem・アニメーション制御しない
+//        [CATransaction setDisableActions:YES];
 
 		for(SliceLayer *layer in layersToRemove)
         {
@@ -425,8 +428,9 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         [_pieView setUserInteractionEnabled:YES];
 		
-        [CATransaction setDisableActions:NO];
-        [CATransaction commit];
+		// !!!:dezamisystem・アニメーション制御しない
+//        [CATransaction setDisableActions:NO];
+//        [CATransaction commit];
     }
 }
 
@@ -452,9 +456,11 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         {
             CALayer *labelLayer = [[obj sublayers] objectAtIndex:0];
             CGFloat interpolatedMidAngle = (interpolatedEndAngle + interpolatedStartAngle) / 2;        
-            [CATransaction setDisableActions:YES];
+			// !!!:dezamisystem・アニメーション制御しない
+//            [CATransaction setDisableActions:YES];
             [labelLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(interpolatedMidAngle)), _pieCenter.y + (_labelRadius * sin(interpolatedMidAngle)))];
-            [CATransaction setDisableActions:NO];
+			// !!!:dezamisystem・アニメーション制御しない
+//            [CATransaction setDisableActions:NO];
         }
     }];
 }
@@ -649,11 +655,12 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 	NSDictionary *attributes = @{ NSFontAttributeName : self.labelFont };
 	size = [@"0" sizeWithAttributes:attributes];
 
-	
-    [CATransaction setDisableActions:YES];
+	// !!!:dezamisystem・アニメーション制御しない
+//    [CATransaction setDisableActions:YES];
     [textLayer setFrame:CGRectMake(0, 0, size.width, size.height)];
     [textLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(0)), _pieCenter.y + (_labelRadius * sin(0)))];
-    [CATransaction setDisableActions:NO];
+	// !!!:dezamisystem・アニメーション制御しない
+//    [CATransaction setDisableActions:NO];
     [pieLayer addSublayer:textLayer];
     return pieLayer;
 }
@@ -673,8 +680,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 	NSDictionary *attributes = @{ NSFontAttributeName : self.labelFont };
 	size = [label sizeWithAttributes:attributes];
 
-	
-    [CATransaction setDisableActions:YES];
+	// !!!:dezamisystem・アニメーション制御しない
+//    [CATransaction setDisableActions:YES];
     if(M_PI*2*_labelRadius*pieLayer.percentage < MAX(size.width,size.height) || value <= 0)
     {
         [textLayer setString:@""];
@@ -684,7 +691,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         [textLayer setString:label];
         [textLayer setBounds:CGRectMake(0, 0, size.width, size.height)];
     }
-    [CATransaction setDisableActions:NO];
+	// !!!:dezamisystem・アニメーション制御しない
+//    [CATransaction setDisableActions:NO];
 }
 
 @end
