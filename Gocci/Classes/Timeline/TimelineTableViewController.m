@@ -136,7 +136,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.tableView addSubview:self.refresh];
     
     // API からタイムラインのデータを取得
-    [self _fetchTimelineUsingLocationCache:NO];
+      [self _fetchTimelineUsingLocationCacheALL:YES];
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -285,7 +285,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)refresh:(UIRefreshControl *)sender
 {
-    [self _fetchTimeline];
+    [self _fetchTimelineUsingLocationCacheALL:YES];
 }
 
 

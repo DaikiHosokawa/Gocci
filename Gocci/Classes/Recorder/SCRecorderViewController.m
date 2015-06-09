@@ -1024,8 +1024,8 @@ static SCRecorder *_recorder;
 - (IBAction)onBackbutton:(id)sender {
 	
 	// !!!:dezamisystem・タブ間を移動、タイムラインへ
-	self.tabBarController.selectedIndex = 0;
-
+	//self.tabBarController.selectedIndex = 0;
+    [self dismissViewControllerAnimated:YES completion:nil];
 //    [self dismissViewControllerAnimated:YES completion:^{
 //        //
 //    }];

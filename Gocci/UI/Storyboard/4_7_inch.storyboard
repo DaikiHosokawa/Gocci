@@ -338,7 +338,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample2TableViewCell" id="gkr-P1-nGu" customClass="Sample2TableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gkr-P1-nGu" id="Uo6-Zi-qrK">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -346,7 +346,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lk1-Zk-Wic">
-                                <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lk1-Zk-Wic" id="W1K-OU-DNM">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -386,10 +386,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="AGV-Kw-4Od" kind="relationship" relationship="viewControllers" id="3JG-8K-coc"/>
-                        <segue destination="Kah-e1-yRA" kind="relationship" relationship="viewControllers" id="s6X-Hs-bQs"/>
                         <segue destination="yVB-VL-M06" kind="relationship" relationship="viewControllers" id="Yg7-93-Car"/>
-                        <segue destination="WFx-5o-E6d" kind="relationship" relationship="viewControllers" id="tzU-ph-1oy"/>
                         <segue destination="QNX-GD-ayb" kind="relationship" relationship="viewControllers" id="l97-gV-V8U"/>
+                        <segue destination="yVB-VL-M06" kind="modal" identifier="go_Rec1" id="Bp3-0k-nzs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHr-br-g9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -440,7 +439,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="337" width="375" height="47"/>
+                                <rect key="frame" x="0.0" y="401" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="46"/>
@@ -752,6 +751,7 @@
             <objects>
                 <navigationController title="BaseBeforeRecorder" hidesBottomBarWhenPushed="YES" id="yVB-VL-M06" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="KdD-0U-shw"/>
+                    <navigationItem key="navigationItem" id="wgC-Lb-Kt8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qax-RD-hkv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -765,7 +765,7 @@
             </objects>
             <point key="canvasLocation" x="-2841.5" y="-927.5"/>
         </scene>
-        <!--撮影-->
+        <!--Recorder View Controller-->
         <scene sceneID="ewy-ZD-h2d">
             <objects>
                 <viewController storyboardIdentifier="screcorder" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="QUa-W4-V2E" customClass="SCRecorderViewController" sceneMemberID="viewController">
@@ -808,12 +808,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="撮影" image="tabbaritem_posting.png" id="Gom-sj-KeY"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbaritem_posting.png" id="Gom-sj-KeY"/>
                     <navigationItem key="navigationItem" id="7gH-GR-dGI"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="y1g-iL-KK8" kind="push" identifier="goPosting" id="yBd-gY-jth"/>
+                        <segue destination="y1g-iL-KK8" kind="modal" identifier="goPosting" id="yBd-gY-jth"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="hp2-GU-Cwb"/>
                     </connections>
                 </viewController>
@@ -918,7 +918,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1005,7 +1005,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="239" y="13.000000070774552" width="48" height="63"/>
+                                        <rect key="frame" x="239" y="13.000000059361843" width="48" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1251,7 +1251,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="4XJ-qA-NLM" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XJ-qA-NLM" id="U1h-SU-AUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1314,9 +1314,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Abr-YO-afi"/>
         <segue reference="oAW-Uz-WM7"/>
-        <segue reference="EB8-lD-Dfx"/>
+        <segue reference="Bp3-0k-nzs"/>
+        <segue reference="hp2-GU-Cwb"/>
+        <segue reference="dXj-10-ygf"/>
         <segue reference="ElI-qq-NoV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

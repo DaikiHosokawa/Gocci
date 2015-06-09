@@ -316,8 +316,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
      }
      */
     
-    NSLog(@"cheernum:%ld",(long)timelinePost.cheernum);
-    //self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
+       //self.cheerView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     // タップイベント
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];

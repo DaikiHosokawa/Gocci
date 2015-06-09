@@ -33,6 +33,7 @@
 //		//背景色
 //		[UITabBar appearance].barTintColor = [UIColor whiteColor];
 //	}
+    
 
 }
 
@@ -45,14 +46,52 @@
 {
 	
 	[super viewDidAppear:animated];
+    
 }
 
-/*
+-(void)viewWillAppear:(BOOL)animated{
+     [self createRaisedCenterButton];
+}
+
+- (void)createRaisedCenterButton {
+    
+    // Load Image
+    UIImage *buttonImage = [UIImage imageNamed:@"rec_1"];
+    UIImage *highlightImage = [UIImage imageNamed:@"character_3"];
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, -15, buttonImage.size.width, buttonImage.size.height);
+    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    
+    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    if (heightDifference < 0)
+        button.center = self.tabBar.center;
+    else
+    {
+        CGPoint center = self.tabBar.center;
+        center.y = center.y - heightDifference/2.0;
+        button.center = center;
+    }
+    
+    [button addTarget:self action:@selector(countup:)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button];
+    //if (heightDifference)
+        
+}
+
+-(void)countup:(id)inSender{
+ [self performSegueWithIdentifier:@"go_Rec1" sender:self];
+}
+    /*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    // Get the new view controll
+ er using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
