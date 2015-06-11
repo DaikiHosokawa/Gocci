@@ -16,6 +16,7 @@
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 
+
 @interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate>{
     UIAlertView *FirstalertView;
     UIAlertView *SecondalertView;
@@ -53,6 +54,7 @@
 
 -(void)execSubmit;
 -(void)cancelSubmit;
-
+- (void)recorderSubmitPopupViewOnTwitterShare;
+- (void)recorderSubmitPopupViewOnFacebookShare;
 
 @end

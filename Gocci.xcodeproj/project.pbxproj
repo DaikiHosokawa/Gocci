@@ -2190,6 +2190,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendor",
 					"$(PROJECT_DIR)/Gocci/Vendor",
+					/Users/daikihosokawa/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
@@ -2236,6 +2237,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendor",
 					"$(PROJECT_DIR)/Gocci/Vendor",
+					/Users/daikihosokawa/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";

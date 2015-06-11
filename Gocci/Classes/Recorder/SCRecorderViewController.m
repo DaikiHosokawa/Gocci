@@ -20,6 +20,7 @@
 #import "RecorderSubmitPopupView.h"
 #import "RecorderSubmitPopupAdditionView.h"
 #import "APIClient.h"
+#import "SCPostingViewController.h"
 #import "SVProgressHUD.h"
 #import "SCPostingViewController.h"
 
@@ -787,9 +788,11 @@ static SCRecorder *_recorder;
 
 #pragma mark - RecorderSubmitPopupViewDelegate
 #pragma mark Twitter へ投稿
-- (void)recorderSubmitPopupViewOnTwitterShare:(RecorderSubmitPopupView *)view
+- (void)recorderSubmitPopupViewOnTwitterShare
 {
     LOG_METHOD;
+    
+    //注意：Twitterのメソッドをここに書く
     
     // Twitter へ投稿
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -813,24 +816,40 @@ static SCRecorder *_recorder;
     
 }
 #pragma mark Facebook へ投稿
-- (void)recorderSubmitPopupViewOnFacebookShare:(RecorderSubmitPopupView *)view
+- (void)recorderSubmitPopupViewOnFacebookShare
 {
     LOG_METHOD;
     
+    //注意：FacebookShareのメソッドをここに書く
+    
+    /*
     [SVProgressHUD show];
+    
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  
+    delegate.session = [[FBSession alloc] init];
+   
+    [FBSession setActiveSession:delegate.session];
+    
+    [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        // ログイン後の処理
+    }];
+    
+    
+    
     
     // Facebook へ投稿
     // プライバシー (公開範囲) の設定
     NSError *error = nil;
+    //要注意　共有範囲はSELFのまま
     NSData *data = [NSJSONSerialization dataWithJSONObject:@{
                                                              @"value":@"CUSTOM",
-                                                             @"friends":@"ALL_FRIENDS"
+                                                             @"friends":@"SELF"
                                                              }
                                                    options:2
                                                      error:&error];
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     //NSData *movieData = [[NSData alloc] initWithContentsOfURL:self.recordSession.outputUrl];
 	NSData *movieData = [[NSData alloc] initWithContentsOfURL:staticRecordSession.outputUrl];
 	
@@ -866,6 +885,7 @@ static SCRecorder *_recorder;
         [SVProgressHUD dismiss];
     }];
     [[NSOperationQueue mainQueue] addOperation:operation];
+     */
 }
 
 #pragma mark 投稿

@@ -52,7 +52,7 @@
 
 @implementation BFPaperCheckbox
 // -Button size:
-CGFloat const bfPaperCheckboxDefaultRadius = 39.f;
+CGFloat const bfPaperCheckboxDefaultRadius = 30.f;
 // -animation durations:
 static CGFloat const bfPaperCheckbox_animationDurationConstant       = 0.12f;
 static CGFloat const bfPaperCheckbox_tapCircleGrowthDurationConstant = bfPaperCheckbox_animationDurationConstant * 2;
