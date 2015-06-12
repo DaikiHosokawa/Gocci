@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3728F2BC1B2B0339009D8B88 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728F2BB1B2B0339009D8B88 /* EveryPost.m */; };
 		373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373BB8381AFE59A300F7AC77 /* DummyViewController.m */; };
 		377063271AFC6DBA00CD891D /* icon_record_cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063251AFC6DBA00CD891D /* icon_record_cam.png */; };
 		377063281AFC6DBA00CD891D /* icon_record_cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */; };
@@ -291,6 +292,8 @@
 
 /* Begin PBXFileReference section */
 		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3728F2BA1B2B0339009D8B88 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
+		3728F2BB1B2B0339009D8B88 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
 		373BB8371AFE59A300F7AC77 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
 		373BB8381AFE59A300F7AC77 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		377063251AFC6DBA00CD891D /* icon_record_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_cam.png; sourceTree = "<group>"; };
@@ -1113,6 +1116,8 @@
 				37D785711B2AC51300378467 /* everyTableViewCell.h */,
 				37D785721B2AC51300378467 /* everyTableViewCell.m */,
 				37D785741B2AC54F00378467 /* everyTableViewCell.xib */,
+				3728F2BA1B2B0339009D8B88 /* EveryPost.h */,
+				3728F2BB1B2B0339009D8B88 /* EveryPost.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1969,6 +1974,7 @@
 				952D23941A9B95E800C354DF /* UIImage+Dummy.m in Sources */,
 				952D249E1A9B9D3300C354DF /* CIImageRendererUtils.m in Sources */,
 				952D238B1A9B95E800C354DF /* UIImage+GIF.m in Sources */,
+				3728F2BC1B2B0339009D8B88 /* EveryPost.m in Sources */,
 				952D23791A9B95E800C354DF /* JTCalendarMenuView.m in Sources */,
 				53B942A21AB40414000150C4 /* STTwitterOSRequest.m in Sources */,
 				95E107271B06E3F900095340 /* HitokotoTextViewController.m in Sources */,

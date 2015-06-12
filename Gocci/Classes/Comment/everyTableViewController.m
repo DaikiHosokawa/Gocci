@@ -11,19 +11,21 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
-#import "TimelineCell.h"
-#import "TimelinePost.h"
+//#import "TimelineCell.h"
+#import "everyTableViewCell.h"
+//#import "TimelinePost.h"
+#import "EveryPost.h"
 #import "MoviePlayerManager.h"
 
 
-@interface everyTableViewController ()<TimelineCellDelegate>
+@interface everyTableViewController ()<EveryCellDelegate>
 {
 	DemoContentView *_firstContentView;
 	DemoContentView *_secondContentView;
 	
 	//NSArray *list_post;
 	NSArray *list_comments;
-	TimelinePost *myPost;
+	EveryPost *myPost;
 }
 
 - (void)showDefaultContentView;
@@ -154,7 +156,7 @@
 	//NSLog(@"%@",list_comments);
 
 	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
-	myPost = [TimelinePost timelinePostWithDictionary:d_post];
+	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
 	
 //	// ユーザー名
 //	NSArray *user_name = [jsonDic valueForKey:@"user_name"];
@@ -349,7 +351,7 @@
 #pragma mark 高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	return [TimelineCell cellHeightWithTimelinePost:myPost];
+	return [everyTableViewCell cellHeightWithTimelinePost:myPost];
 }
 
 #pragma mark セルの透過処理
@@ -367,10 +369,10 @@
 #pragma mark セル作成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSString *cellIdentifier = TimelineCellIdentifier;
-	TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	NSString *cellIdentifier = EveryCellIdentifier;
+	everyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (!cell){
-		cell = [TimelineCell cell];
+		cell = [everyTableViewCell cell];
 	}
 	
 	// セルにデータを反映
