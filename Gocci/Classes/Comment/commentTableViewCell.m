@@ -16,14 +16,14 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 
 @interface commentTableViewCell()
 {
-//	NSMutableArray *listUsername;
-//	NSMutableArray *listProfileImg;
-//	NSMutableArray *listComment;
+	BOOL isAllComment;
 }
 @property(nonatomic,retain) NSMutableArray *listUsername;
 @property(nonatomic,retain) NSMutableArray *listProfileImg;
 @property(nonatomic,retain) NSMutableArray *listComment;
+@property(nonatomic,retain) NSMutableArray *listDate;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonMoreComment;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewComment;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintButton;
@@ -40,12 +40,22 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	
 	self.tableviewComment.delegate = self;
 	self.tableviewComment.dataSource = self;
+	
+	[self.buttonMoreComment setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+#pragma mark - Action
+- (IBAction)onMoreComment:(id)sender {
+	
+	isAllComment = YES;
+	
+	[self.tableviewComment reloadData];
 }
 
 #pragma mark - 反映
@@ -65,6 +75,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	self.listUsername = [[NSMutableArray alloc] init];
 	self.listProfileImg = [[NSMutableArray alloc] init];
 	self.listComment = [[NSMutableArray alloc] init];
+	self.listDate = [[NSMutableArray alloc] init];
 	
 	for (NSDictionary *dict in commentlist) {
 		// ユーザー名
@@ -76,16 +87,28 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		[self.listProfileImg addObject:picture];
 
 		//コメント内容
-		NSString *comment = [dict valueForKey:@"comment"];
+		NSString *comment = [dict objectForKey:@"comment"];
 		[self.listComment addObject:comment];
+		
+		//日付
+		NSString *date_str = [dict objectForKey:@"comment_date"];
+		[self.listDate addObject:date_str];
 	}
 	
+	isAllComment = NO;
+	
+	NSInteger count_comment = [self.listUsername count];
+	NSString *title_btn = [NSString stringWithFormat:@"%ld件のコメントを読み込む",(long)count_comment];
+	[self.buttonMoreComment setTitle:title_btn forState:UIControlStateNormal];
 }
 
 #pragma mark - UItableViewData
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	NSInteger count = [self.listUsername count];
+	if (!isAllComment) {
+		count = 3;
+	}
 	
 	return count;
 }
@@ -105,6 +128,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	}
 	
 	//セル内
+	//ユーザーも名
 	if ([self.listUsername objectAtIndex:row_index]) {
 		cell.UsersName.text = [self.listUsername objectAtIndex:row_index];
 	}
@@ -120,14 +144,17 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 									 progress:nil
 									completed:nil
 		 ];
-
-//		[cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-//						   placeholderImage:[UIImage imageNamed:@"default.png"]];
 	}
 	//cell.UsersPicture.image = nil;
 	
+	//コメント
 	if ([self.listComment objectAtIndex:row_index]) {
 		cell.Comment.text = [self.listComment objectAtIndex:row_index];
+	}
+	
+	//日付
+	if ([self.listDate objectAtIndex:row_index]) {
+		cell.DateOfComment.text = [self.listDate objectAtIndex:row_index];
 	}
 	
 	return cell;

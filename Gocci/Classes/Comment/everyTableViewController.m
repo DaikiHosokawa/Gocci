@@ -127,6 +127,9 @@
 	_postIDtext = _postID;
 	NSLog(@"postIDtext:%@",_postIDtext);
 	
+#if 1
+	[self perseJson];
+#else
 	//JSONをパース
 	NSString *timelineString = @"http://160.16.90.152/v1/comment/?post_id=3024&user_id=4";
 	//[NSString stringWithFormat:@"http://api-gocci.jp/comment_json/?post_id=%@",_postIDtext];
@@ -156,17 +159,7 @@
 
 	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
 	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
-	
-//	// ユーザー名
-//	NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-//	_user_name_ = [user_name mutableCopy];
-//	NSLog(@"user_name:%@",_user_name_);
-//	// プロフ画像
-//	NSArray *picture = [jsonDic valueForKey:@"picture"];
-//	_picture_ = [picture mutableCopy];
-//	//コメント内容
-//	NSArray *comment = [jsonDic valueForKey:@"comment"];
-//	_comment_ = [comment mutableCopy];
+#endif
 	
 	// キーボードの表示・非表示がNotificationCenterから通知される
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -184,40 +177,40 @@
 }
 - (BOOL)isFirstRun
 {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        if ([userDefaults objectForKey:@"firstRunDate3"]) {
-            // 日時が設定済みなら初回起動でない
-            return NO;
-        }
-        // 初回起動日時を設定
-        [userDefaults setObject:[NSDate date] forKey:@"firstRunDate3"];
-        // 保存
-        [userDefaults synchronize];
-        // 初回起動
-        return YES;
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults objectForKey:@"firstRunDate3"]) {
+		// 日時が設定済みなら初回起動でない
+		return NO;
+	}
+	// 初回起動日時を設定
+	[userDefaults setObject:[NSDate date] forKey:@"firstRunDate3"];
+	// 保存
+	[userDefaults synchronize];
+	// 初回起動
+	return YES;
 }
 - (void)showDefaultContentView
 {
-        if (!_firstContentView) {
-            _firstContentView = [DemoContentView defaultView];
-            
-            UILabel *descriptionLabel = [[UILabel alloc] init];
-            descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-            descriptionLabel.numberOfLines = 0.;
-            descriptionLabel.textAlignment = NSTextAlignmentCenter;
-            descriptionLabel.backgroundColor = [UIColor clearColor];
-            descriptionLabel.textColor = [UIColor blackColor];
-            descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-            descriptionLabel.text = @"投稿者と会話ができます。";
-            [_firstContentView addSubview:descriptionLabel];
-            
-            [_firstContentView setDismissHandler:^(DemoContentView *view) {
-                // to dismiss current cardView. Also you could call the `dismiss` method.
-                [CXCardView dismissCurrent];
-            }];
-        }
-        
-        [CXCardView showWithView:_firstContentView draggable:YES];
+	if (!_firstContentView) {
+		_firstContentView = [DemoContentView defaultView];
+		
+		UILabel *descriptionLabel = [[UILabel alloc] init];
+		descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
+		descriptionLabel.numberOfLines = 0.;
+		descriptionLabel.textAlignment = NSTextAlignmentCenter;
+		descriptionLabel.backgroundColor = [UIColor clearColor];
+		descriptionLabel.textColor = [UIColor blackColor];
+		descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
+		descriptionLabel.text = @"投稿者と会話ができます。";
+		[_firstContentView addSubview:descriptionLabel];
+		
+		[_firstContentView setDismissHandler:^(DemoContentView *view) {
+			// to dismiss current cardView. Also you could call the `dismiss` method.
+			[CXCardView dismissCurrent];
+		}];
+	}
+	
+	[CXCardView showWithView:_firstContentView draggable:YES];
 }
 
 #pragma mark viewWillDisappear
@@ -239,82 +232,132 @@
 	[super viewWillDisappear:animated];
 }
 
+#pragma mark - Json
+-(void)perseJson
+{
+	//test user
+	_postIDtext = @"3024";
+	
+	//JSONをパース
+	NSString *urlString = @"http://160.16.90.152/v1/comment/?post_id=3024&user_id=4";
+	//[NSString stringWithFormat:@"http://api-gocci.jp/comment_json/?post_id=%@",_postIDtext];
+	
+	NSLog(@"Timeline Api:%@",urlString);
+	NSURL *url = [NSURL URLWithString:urlString];
+	NSError *err = nil;
+	NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
+	if (err) {
+		NSLog(@"%s %@",__func__,err);
+		//NSLog(@"ERROR : %s",__func__);
+		return;
+	}
+	NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+	err = nil;
+	NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&err];
+	if (err) {
+		NSLog(@"%s %@",__func__,err);
+		//NSLog(@"ERROR : %s",__func__);
+		return;
+	}
+	//NSLog(@"%@",jsonDic);
+	
+	NSArray *d_comments = [jsonDic objectForKey:@"comments"];
+	list_comments = [[NSArray alloc] initWithArray:d_comments];
+	//NSLog(@"%@",list_comments);
+	
+	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
+	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+}
+
 #pragma mark - アクション
-- (IBAction)pushSendBtn:(id)sender {
-        _dottext = _textField.text;
-        if (_textField.text.length == 0) {
-            //アラート出す
-            NSLog(@"textlength:%lu",(unsigned long)_textField.text.length);
-            UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
-                                      delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-            [alert show];
-            
-        }else{
-            
-        
-            
-        NSLog(@"コメント内容:%@",_dottext);
-        NSLog(@"sendBtn is touched");;
-        NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/comment/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-            NSLog(@"result:%@",result);
-       
-        //アラート出す
-        UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
-                                      delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-            [alert show];
-        
-        }
-        //セルの表示更新を行う
-       [self viewWillAppear:YES];
-       [self.tableView reloadData];
-       //テキストビューの表示更新
-        _textField.text = NULL;
-        
-        
-        //キーボードを隠す
-        [_textField resignFirstResponder];
+- (IBAction)pushSendBtn:(id)sender
+{
+	_dottext = _textField.text;
+	
+	if (_textField.text.length == 0) {
+		//アラート出す
+		NSLog(@"textlength:%lu",(unsigned long)_textField.text.length);
+		UIAlertView *alert =
+		[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
+								  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+		[alert show];
+		
+	}
+	else {
+		NSLog(@"コメント内容:%@",_dottext);
+		NSLog(@"sendBtn is touched");;
+		NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
+		NSLog(@"content:%@",content);
+		
+		NSString *urlString = @"http://160.16.90.152/v1/comment/"; // @"http://api-gocci.jp/comment/"
+		NSURL* url = [NSURL URLWithString:urlString];
+		NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
+		[urlRequest setHTTPMethod:@"POST"];
+		[urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
+		NSURLResponse* response;
+		NSError* error = nil;
+		NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
+											   returningResponse:&response
+														   error:&error];
+		if (error) {
+			NSLog(@"ERROR : %@",error);
+			
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"書き込み出来ませんでした"
+									  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+			[alert show];
+		}
+		else
+		{
+			//データ再習得
+			[self perseJson];
+
+			NSLog(@"result:%@",result);
+			
+			UIAlertView *alert =
+			[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
+									  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+			[alert show];
+		}
+		
+	}
+	//セルの表示更新を行う
+	[self viewWillAppear:YES];
+	[self.tableView reloadData];
+	//テキストビューの表示更新
+	_textField.text = NULL;
+	
+	//キーボードを隠す
+	[_textField resignFirstResponder];
 }
 
 // キーボードが表示される時に呼び出される
-- (void)keyboardWillShow:(NSNotification *)notification {
-        // キーボードのサイズ
-        CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        
-        // キーボード表示アニメーションのduration
-        NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        
-        // viewのアニメーション
-        [UIView animateWithDuration:duration animations:^{
-            CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+10);
-            self.view.transform = transform;
-        } completion:NULL];
-    }
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+	// キーボードのサイズ
+	CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	
+	// キーボード表示アニメーションのduration
+	NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	
+	// viewのアニメーション
+	[UIView animateWithDuration:duration animations:^{
+		CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+10);
+		self.view.transform = transform;
+	} completion:NULL];
+}
 
-    // キーボードが非表示になる時に呼び出される
-    - (void)keyboardWillHide:(NSNotification *)notification {
-        // キーボード表示アニメーションのduration
-        NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        
-        __weak typeof(self) _self = self;
-        [UIView animateWithDuration:duration animations:^{
-            _self.view.transform = CGAffineTransformIdentity;
-        } completion:NULL];
+// キーボードが非表示になる時に呼び出される
+- (void)keyboardWillHide:(NSNotification *)notification {
+	// キーボード表示アニメーションのduration
+	NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	
+	__weak typeof(self) _self = self;
+	[UIView animateWithDuration:duration animations:^{
+		_self.view.transform = CGAffineTransformIdentity;
+	} completion:NULL];
 }
 
 //[textField resignFirstResponder];
-
 
 #pragma mark - UIActivityItemSource
 //Twitterのアクティビティ動作

@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
 @property (weak, nonatomic) IBOutlet UILabel *Comment;
+@property (weak, nonatomic) IBOutlet UILabel *DateOfComment;
 
 #pragma mark - Value
 +(CGFloat)heightCell;

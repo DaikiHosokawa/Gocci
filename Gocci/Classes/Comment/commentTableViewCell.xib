@@ -26,6 +26,9 @@
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="onMoreComment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cN4-qP-Xc9"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZi-iU-J3E">
                         <rect key="frame" x="0.0" y="40" width="320" height="200"/>
@@ -56,6 +59,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="buttonMoreComment" destination="wD9-9O-v4b" id="rnM-kv-Pju"/>
                 <outlet property="layoutConstraintButton" destination="KKa-kt-lKx" id="sGo-kg-INf"/>
                 <outlet property="layoutConstraintView" destination="jV4-lF-jra" id="bU1-5H-NfL"/>
                 <outlet property="tableviewComment" destination="E17-MR-MaU" id="F94-sq-WNU"/>
