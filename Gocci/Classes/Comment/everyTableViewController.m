@@ -127,39 +127,7 @@
 	_postIDtext = _postID;
 	NSLog(@"postIDtext:%@",_postIDtext);
 	
-#if 1
 	[self perseJson];
-#else
-	//JSONをパース
-	NSString *timelineString = @"http://160.16.90.152/v1/comment/?post_id=3024&user_id=4";
-	//[NSString stringWithFormat:@"http://api-gocci.jp/comment_json/?post_id=%@",_postIDtext];
-	
-	NSLog(@"Timeline Api:%@",timelineString);
-	NSURL *url = [NSURL URLWithString:timelineString];
-	NSError *err = nil;
-	NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
-	if (err) {
-		NSLog(@"%s %@",__func__,err);
-		//NSLog(@"ERROR : %s",__func__);
-		return;
-	}
-	NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-	err = nil;
-	NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&err];
-	if (err) {
-		NSLog(@"%s %@",__func__,err);
-		//NSLog(@"ERROR : %s",__func__);
-		return;
-	}
-	//NSLog(@"%@",jsonDic);
-
-	NSArray *d_comments = [jsonDic objectForKey:@"comments"];
-	list_comments = [[NSArray alloc] initWithArray:d_comments];
-	//NSLog(@"%@",list_comments);
-
-	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
-	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
-#endif
 	
 	// キーボードの表示・非表示がNotificationCenterから通知される
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
