@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="commentTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD9-9O-v4b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="KKa-kt-lKx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                        <state key="normal" title="コメントをもっと読む">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZi-iU-J3E">
+                        <rect key="frame" x="0.0" y="40" width="320" height="200"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E17-MR-MaU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="y1A-LV-nhi"/>
+                                    <outlet property="delegate" destination="-1" id="WLH-VU-cez"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.8521107456" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="jV4-lF-jra"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RZi-iU-J3E" firstAttribute="top" secondItem="wD9-9O-v4b" secondAttribute="bottom" id="04n-8K-Z8s"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RZi-iU-J3E" secondAttribute="bottom" constant="-8" id="0Ny-5v-NN2"/>
+                    <constraint firstAttribute="trailing" secondItem="wD9-9O-v4b" secondAttribute="trailing" id="C4V-eT-H2X"/>
+                    <constraint firstItem="wD9-9O-v4b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GvS-Xs-zsr"/>
+                    <constraint firstItem="wD9-9O-v4b" firstAttribute="trailing" secondItem="RZi-iU-J3E" secondAttribute="trailing" id="Lap-tr-gTN"/>
+                    <constraint firstItem="wD9-9O-v4b" firstAttribute="leading" secondItem="RZi-iU-J3E" secondAttribute="leading" id="MPB-Ob-Dzp"/>
+                    <constraint firstItem="wD9-9O-v4b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="the-Ty-qgu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="layoutConstraintButton" destination="KKa-kt-lKx" id="sGo-kg-INf"/>
+                <outlet property="layoutConstraintView" destination="jV4-lF-jra" id="bU1-5H-NfL"/>
+                <outlet property="tableviewComment" destination="E17-MR-MaU" id="F94-sq-WNU"/>
+            </connections>
+            <point key="canvasLocation" x="306" y="404"/>
+        </tableViewCell>
+    </objects>
+</document>

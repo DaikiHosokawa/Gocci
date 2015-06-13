@@ -28,6 +28,8 @@
 		37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37D66AC91AFD858100767114 /* image_sample00.jpg */; };
 		37D785731B2AC51300378467 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D785721B2AC51300378467 /* everyTableViewCell.m */; };
 		37D785751B2AC54F00378467 /* everyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D785741B2AC54F00378467 /* everyTableViewCell.xib */; };
+		37E8F9B71B2BD5370082F9AB /* commentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E8F9B51B2BD5370082F9AB /* commentTableViewCell.m */; };
+		37E8F9B81B2BD5370082F9AB /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E8F9B61B2BD5370082F9AB /* commentTableViewCell.xib */; };
 		535626731AB39C97009C7D12 /* SigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 535626721AB39C97009C7D12 /* SigninView.m */; };
 		535626751AB39CB4009C7D12 /* SigninView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535626741AB39CB4009C7D12 /* SigninView.xib */; };
 		53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
@@ -322,6 +324,9 @@
 		37D785711B2AC51300378467 /* everyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewCell.h; sourceTree = "<group>"; };
 		37D785721B2AC51300378467 /* everyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewCell.m; sourceTree = "<group>"; };
 		37D785741B2AC54F00378467 /* everyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = everyTableViewCell.xib; sourceTree = "<group>"; };
+		37E8F9B41B2BD5370082F9AB /* commentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentTableViewCell.h; sourceTree = "<group>"; };
+		37E8F9B51B2BD5370082F9AB /* commentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentTableViewCell.m; sourceTree = "<group>"; };
+		37E8F9B61B2BD5370082F9AB /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		535626711AB39C97009C7D12 /* SigninView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninView.h; sourceTree = "<group>"; };
 		535626721AB39C97009C7D12 /* SigninView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninView.m; sourceTree = "<group>"; };
 		535626741AB39CB4009C7D12 /* SigninView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SigninView.xib; sourceTree = "<group>"; };
@@ -1106,6 +1111,8 @@
 		952D24141A9B9D3300C354DF /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				3728F2BA1B2B0339009D8B88 /* EveryPost.h */,
+				3728F2BB1B2B0339009D8B88 /* EveryPost.m */,
 				952D24151A9B9D3300C354DF /* everyBaseNavigationController.h */,
 				952D24161A9B9D3300C354DF /* everyBaseNavigationController.m */,
 				952D24171A9B9D3300C354DF /* everyTableViewController.h */,
@@ -1116,8 +1123,9 @@
 				37D785711B2AC51300378467 /* everyTableViewCell.h */,
 				37D785721B2AC51300378467 /* everyTableViewCell.m */,
 				37D785741B2AC54F00378467 /* everyTableViewCell.xib */,
-				3728F2BA1B2B0339009D8B88 /* EveryPost.h */,
-				3728F2BB1B2B0339009D8B88 /* EveryPost.m */,
+				37E8F9B41B2BD5370082F9AB /* commentTableViewCell.h */,
+				37E8F9B51B2BD5370082F9AB /* commentTableViewCell.m */,
+				37E8F9B61B2BD5370082F9AB /* commentTableViewCell.xib */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1827,6 +1835,7 @@
 				377063431AFC6F9F00CD891D /* SCSecondView_5_5_inch.xib in Resources */,
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,
 				377063411AFC6F9F00CD891D /* SCSecondView_3_5_inch.xib in Resources */,
+				37E8F9B81B2BD5370082F9AB /* commentTableViewCell.xib in Resources */,
 				952D250B1A9B9EC800C354DF /* tabbaritem_timeline_sel.png in Resources */,
 				950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */,
 				952D24911A9B9D3300C354DF /* TutorialView.xib in Resources */,
@@ -2003,6 +2012,7 @@
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,
 				952D238C1A9B95E800C354DF /* UIImage+MultiFormat.m in Sources */,
+				37E8F9B71B2BD5370082F9AB /* commentTableViewCell.m in Sources */,
 				952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */,
 				952D23781A9B95E800C354DF /* JTCalendarMenuMonthView.m in Sources */,
 				952D23671A9B95E800C354DF /* AFNetworkReachabilityManager.m in Sources */,

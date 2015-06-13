@@ -11,11 +11,10 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
-//#import "TimelineCell.h"
 #import "everyTableViewCell.h"
-//#import "TimelinePost.h"
 #import "EveryPost.h"
 #import "MoviePlayerManager.h"
+#import "commentTableViewCell.h"
 
 
 @interface everyTableViewController ()<EveryCellDelegate>
@@ -351,7 +350,19 @@
 #pragma mark 高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	return [everyTableViewCell cellHeightWithTimelinePost:myPost];
+	NSInteger row_index = indexPath.row;
+
+	CGFloat height = 100.f;
+	if (row_index % 2) {
+		//Comment
+		height = [commentTableViewCell heightCell];
+	}
+	else {
+		//POST
+		height = [everyTableViewCell cellHeightWithTimelinePost:myPost];
+	}
+	
+	return height;
 }
 
 #pragma mark セルの透過処理
@@ -363,30 +374,49 @@
 #pragma mark セル数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 1; //[list_post count];	
+	NSInteger count = 1 + 1; // POST用セル + コメント用セル
+	
+	return count;
 }
 
 #pragma mark セル作成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	NSInteger row_index = indexPath.row;
+	
+	if (row_index % 2) {
+		//コメントセル
+		commentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CommentCellIdentifier];
+		if (!cell) {
+			cell = [commentTableViewCell cell];
+		}
+		
+		//セルにデータ反映
+		[cell configureWithArray:list_comments];
+		
+		//終了
+		return cell;
+	}
+	
+	//ポストセル
 	NSString *cellIdentifier = EveryCellIdentifier;
 	everyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (!cell){
 		cell = [everyTableViewCell cell];
 	}
-	
+		
 	// セルにデータを反映
 	[cell configureWithTimelinePost:myPost];
 	cell.delegate = self;
-	
+		
 	// 動画の読み込み
 	//__weak typeof(self)weakSelf = self;
 	[[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
-														 size:cell.thumbnailView.bounds.size
-													  atIndex:indexPath.row
-												   completion:^(BOOL f){}];
+															 size:cell.thumbnailView.bounds.size
+														  atIndex:indexPath.row
+													   completion:^(BOOL f){}];
 	[SVProgressHUD dismiss];
-	
+
 	return cell;
 }
 

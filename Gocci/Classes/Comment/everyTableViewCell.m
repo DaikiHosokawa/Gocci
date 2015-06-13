@@ -16,7 +16,7 @@
 
 #define THUMBNAIL_VIEW_MARGIN 8.0
 
-NSString * const EveryCellIdentifier = @"EveryCell";
+NSString * const EveryCellIdentifier = @"everyTableViewCell";
 
 @interface everyTableViewCell()
 {
@@ -330,7 +330,7 @@ NSString * const EveryCellIdentifier = @"EveryCell";
 #pragma mark - Initialize
 + (instancetype)cell
 {
-	return [[NSBundle mainBundle] loadNibNamed:@"everyTableViewCell" owner:self options:nil][0];
+	return [[NSBundle mainBundle] loadNibNamed:EveryCellIdentifier owner:self options:nil][0];
 }
 
 @end
