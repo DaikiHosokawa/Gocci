@@ -257,7 +257,7 @@
 		NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
 		NSLog(@"content:%@",content);
 		
-		NSString *urlString = @"http://160.16.90.152/v1/comment/"; // @"http://api-gocci.jp/comment/"
+		NSString *urlString = @"http://api-gocci.jp/comment/";
 		NSURL* url = [NSURL URLWithString:urlString];
 		NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
 		[urlRequest setHTTPMethod:@"POST"];

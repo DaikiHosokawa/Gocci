@@ -36,7 +36,7 @@
  *  @param limit
  *  @param handler
  */
-+ (void)distTimelineWithLatitudeAll:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
 *  restaurant/

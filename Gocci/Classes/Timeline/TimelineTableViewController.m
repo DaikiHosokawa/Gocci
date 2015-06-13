@@ -719,9 +719,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [weakSelf.refresh beginRefreshing];
         
         // API からデータを取得
-        [APIClient distTimelineWithLatitudeAll:coordinate.latitude
-                                   longitude:coordinate.longitude
-                                       limit:50
+        [APIClient distTimelineWithLatitudeAll:50
                                      handler:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
