@@ -237,6 +237,47 @@
 	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
 }
 
+/**
+ *  現在表示中のセルの動画を再生する
+ */
+- (void)_playMovieAtCurrentCell
+{
+	/*
+	 if ( [self.posts count] == 0){
+	 return;
+	 }
+	 */
+	
+	if (self.tabBarController.selectedIndex != 0) {
+		// 画面がフォアグラウンドのときのみ再生
+		return;
+	}
+ 
+	NSInteger currentIndexRow = 0;
+	CGFloat currentHeight = 0.0;
+//	for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
+//		if ([self.posts count] <= i) continue;
+//		
+//		currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
+//	}
+	
+	currentHeight += [everyTableViewCell cellHeightWithTimelinePost:myPost];
+	
+	everyTableViewCell *currentCell = [everyTableViewCell cell];
+	[currentCell configureWithTimelinePost:myPost];
+	CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
+								  currentHeight + currentCell.thumbnailView.frame.origin.y,
+								  currentCell.thumbnailView.frame.size.width,
+								  currentCell.thumbnailView.frame.size.height);
+	
+	
+	[[MoviePlayerManager sharedManager] scrolling:NO];
+	[[MoviePlayerManager sharedManager] playMovieAtIndex:currentIndexRow
+												  inView:self.tableView
+												   frame:movieRect];
+	
+}
+
 #pragma mark - アクション
 - (IBAction)pushSendBtn:(id)sender
 {
@@ -326,6 +367,17 @@
 }
 
 //[textField resignFirstResponder];
+
+#pragma mark - UIScrollDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+	if(!decelerate) {
+		// ドラッグ終了 かつ 加速無し
+//		LOG(@"scroll is stoped");
+		
+//		[self _playMovieAtCurrentCell];
+	}
+}
 
 #pragma mark - UIActivityItemSource
 //Twitterのアクティビティ動作
