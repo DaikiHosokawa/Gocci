@@ -95,11 +95,11 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		NSDictionary *dict = [commentlist objectAtIndex:i];
 		
 		// ユーザー名
-		NSString *username = [dict objectForKey:@"username"];
+		NSString *username = [dict objectForKey:@"user_name"];
 		[self.listUsername addObject:username];
 		
 		// プロフ画像URL
-		NSString *picture = [dict objectForKey:@"profile_img"];
+		NSString *picture = [dict objectForKey:@"picture"];
 		[self.listProfileImg addObject:picture];
 		
 		//コメント内容
@@ -107,7 +107,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		[self.listComment addObject:comment];
 		
 		//日付
-		NSString *date_str = [dict objectForKey:@"comment_date"];
+		NSString *date_str = [dict objectForKey:@"date_time"];
 		[self.listDate addObject:date_str];
 	}
 	

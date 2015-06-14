@@ -204,11 +204,10 @@
 -(void)perseJson
 {
 	//test user
-	_postIDtext = @"3024";
+	//_postIDtext = @"3024";
 	
 	//JSONをパース
-	NSString *urlString = @"http://160.16.90.152/v1/comment/?post_id=3024&user_id=4";
-	//[NSString stringWithFormat:@"http://api-gocci.jp/comment_json/?post_id=%@",_postIDtext];
+	NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/commentpage/?post_id=%@",_postIDtext];
 	
 	NSLog(@"Timeline Api:%@",urlString);
 	NSURL *url = [NSURL URLWithString:urlString];
@@ -474,10 +473,10 @@
 		
 	// 動画の読み込み
 	//__weak typeof(self)weakSelf = self;
-	[[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
-															 size:cell.thumbnailView.bounds.size
-														  atIndex:indexPath.row
-													   completion:^(BOOL f){}];
+	//[[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
+	//														 size:cell.thumbnailView.bounds.size
+	//													  atIndex:indexPath.row
+	//												   completion:^(BOOL f){}];
 	[SVProgressHUD dismiss];
 
 	return cell;
