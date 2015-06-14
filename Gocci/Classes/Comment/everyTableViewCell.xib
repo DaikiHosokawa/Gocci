@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOCCI_MANNNNNN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0v4-mR-vb5">
-                        <rect key="frame" x="72" y="23" width="139.5" height="21"/>
+                        <rect key="frame" x="72" y="23" width="140" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="g16-jU-G6l"/>
                         </constraints>
@@ -69,7 +69,7 @@
                         <rect key="frame" x="10" y="383" width="300" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SATSUKI（サツキ）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnq-E0-row">
-                                <rect key="frame" x="8" y="4" width="138.5" height="25"/>
+                                <rect key="frame" x="8" y="4" width="139" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="acX-qZ-Obw"/>
                                 </constraints>
@@ -164,7 +164,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-tB-EpM">
-                                <rect key="frame" x="33" y="5" width="20.5" height="21"/>
+                                <rect key="frame" x="33" y="5" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4yz-0k-APl"/>
                                 </constraints>
@@ -172,7 +172,7 @@
                                 <color key="textColor" red="0.623459816" green="0.62356954809999998" blue="0.62345290180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocci" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EL-nV-TGz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gocci" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EL-nV-TGz">
                                 <rect key="frame" x="59" y="5" width="35" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="jLS-Eh-bCf"/>
@@ -218,7 +218,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8b-ZJ-Su5">
-                                <rect key="frame" x="55" y="7" width="65" height="14.5"/>
+                                <rect key="frame" x="55" y="7" width="65" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="hE4-Af-LxI"/>
                                 </constraints>

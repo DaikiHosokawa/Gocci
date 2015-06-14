@@ -18,9 +18,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="Jx6-OE-A57" kind="relationship" relationship="viewControllers" id="BiI-lm-cGN"/>
-                        <segue destination="ZSr-CZ-nAo" kind="relationship" relationship="viewControllers" id="DbI-oK-Lq4"/>
                         <segue destination="UCF-fV-ZU1" kind="relationship" relationship="viewControllers" id="ggo-8v-Rgb"/>
-                        <segue destination="ZSr-CZ-nAo" kind="modal" identifier="go_Rec1" id="IdX-bZ-ORR"/>
+                        <segue destination="yAA-dq-VR1" kind="modal" identifier="go_Rec1" id="rxZ-2S-7zs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QXu-Zw-UPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,24 +780,6 @@
             </objects>
             <point key="canvasLocation" x="-2305" y="-2858"/>
         </scene>
-        <!--BaseBeforeRecorder-->
-        <scene sceneID="ZG0-Xs-FT3">
-            <objects>
-                <navigationController title="BaseBeforeRecorder" id="ZSr-CZ-nAo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Pbe-zP-AFS"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oS9-Wp-wa8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yAA-dq-VR1" kind="relationship" relationship="rootViewController" id="qqn-U9-AHs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="soa-5J-sao" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4043" y="-1436"/>
-        </scene>
         <!--beforeRecorder-->
         <scene sceneID="6Ug-UH-OCL">
             <objects>
@@ -1128,7 +1109,7 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L9d-q2-oZh">
-                                        <rect key="frame" x="198" y="11.000000159582227" width="41" height="46"/>
+                                        <rect key="frame" x="198" y="11" width="41" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" image="btn_delete_white">
@@ -1327,10 +1308,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IdX-bZ-ORR"/>
         <segue reference="TRo-Kj-rA7"/>
-        <segue reference="oAW-Uz-WM7"/>
         <segue reference="uWM-e4-y5S"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>
 </document>

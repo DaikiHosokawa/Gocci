@@ -37,7 +37,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-00-00 00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z06-hH-tt7">
-                        <rect key="frame" x="198" y="0.0" width="111.5" height="21"/>
+                        <rect key="frame" x="198" y="0.0" width="112" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="gB3-M7-mzz"/>
                         </constraints>
