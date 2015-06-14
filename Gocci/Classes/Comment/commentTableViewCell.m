@@ -40,6 +40,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	
 	self.tableviewComment.delegate = self;
 	self.tableviewComment.dataSource = self;
+	self.tableviewComment.separatorColor = [UIColor clearColor];
 	
 	[self.buttonMoreComment setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
 }
