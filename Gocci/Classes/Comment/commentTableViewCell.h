@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 extern NSString * const CommentCellIdentifier;
+extern NSString * const CommentAllCellIdentifier;
 
 @interface commentTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
 

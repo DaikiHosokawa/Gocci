@@ -16,10 +16,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD9-9O-v4b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="5" width="320" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="KKa-kt-lKx"/>
+                            <constraint firstAttribute="height" constant="30" id="KKa-kt-lKx"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                         <state key="normal" title="これより前の投稿を読み込む">
@@ -31,11 +31,11 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-ez-JPk">
-                        <rect key="frame" x="0.0" y="40" width="320" height="10"/>
+                        <rect key="frame" x="0.0" y="35" width="320" height="10"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DY-UB-zk1">
-                                <rect key="frame" x="10" y="4" width="302" height="1"/>
-                                <color key="backgroundColor" white="0.8521107456" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="4" width="304" height="1"/>
+                                <color key="backgroundColor" red="0.9410743117" green="0.94123542309999997" blue="0.94106405969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="1Nd-cf-VRu"/>
                                 </constraints>
@@ -43,14 +43,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1DY-UB-zk1" firstAttribute="leading" secondItem="iMa-ez-JPk" secondAttribute="leading" constant="10" id="Via-EY-mv8"/>
+                            <constraint firstItem="1DY-UB-zk1" firstAttribute="leading" secondItem="iMa-ez-JPk" secondAttribute="leading" constant="16" id="Via-EY-mv8"/>
                             <constraint firstItem="1DY-UB-zk1" firstAttribute="top" secondItem="iMa-ez-JPk" secondAttribute="top" constant="4" id="d33-i9-GLO"/>
-                            <constraint firstAttribute="trailing" secondItem="1DY-UB-zk1" secondAttribute="trailing" constant="8" id="j3q-Wq-k5i"/>
+                            <constraint firstAttribute="trailing" secondItem="1DY-UB-zk1" secondAttribute="trailing" id="j3q-Wq-k5i"/>
                             <constraint firstAttribute="height" constant="10" id="ksB-CD-Rny"/>
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E17-MR-MaU">
-                        <rect key="frame" x="0.0" y="49" width="320" height="190"/>
+                        <rect key="frame" x="0.0" y="45" width="320" height="200"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="-1" id="y1A-LV-nhi"/>
@@ -58,34 +58,31 @@
                         </connections>
                     </tableView>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="E17-MR-MaU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="1OI-fW-kiy"/>
+                    <constraint firstItem="E17-MR-MaU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="37" id="3EX-yw-eeC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="E17-MR-MaU" secondAttribute="trailing" constant="-8" id="Bw3-xk-DCP"/>
                     <constraint firstAttribute="trailing" secondItem="wD9-9O-v4b" secondAttribute="trailing" id="C4V-eT-H2X"/>
                     <constraint firstItem="iMa-ez-JPk" firstAttribute="top" secondItem="wD9-9O-v4b" secondAttribute="bottom" id="G03-Nl-oEX"/>
                     <constraint firstAttribute="trailingMargin" secondItem="iMa-ez-JPk" secondAttribute="trailing" constant="-8" id="GPB-mP-LJF"/>
                     <constraint firstItem="wD9-9O-v4b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GvS-Xs-zsr"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="E17-MR-MaU" secondAttribute="bottom" constant="-7" id="HIK-Eh-DRS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="E17-MR-MaU" secondAttribute="bottom" constant="-13.5" id="HIK-Eh-DRS"/>
                     <constraint firstItem="wD9-9O-v4b" firstAttribute="trailing" secondItem="E17-MR-MaU" secondAttribute="trailing" id="JPa-MD-XEo"/>
                     <constraint firstItem="iMa-ez-JPk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="SH2-uJ-09h"/>
-                    <constraint firstItem="E17-MR-MaU" firstAttribute="top" secondItem="wD9-9O-v4b" secondAttribute="bottom" constant="9" id="fI2-mz-nKP"/>
+                    <constraint firstItem="E17-MR-MaU" firstAttribute="top" secondItem="wD9-9O-v4b" secondAttribute="bottom" constant="10" id="fI2-mz-nKP"/>
                     <constraint firstItem="iMa-ez-JPk" firstAttribute="top" secondItem="wD9-9O-v4b" secondAttribute="bottom" id="iN2-mV-eX9"/>
                     <constraint firstItem="wD9-9O-v4b" firstAttribute="leading" secondItem="E17-MR-MaU" secondAttribute="leading" id="jqw-z7-DKg"/>
                     <constraint firstItem="wD9-9O-v4b" firstAttribute="trailing" secondItem="iMa-ez-JPk" secondAttribute="trailing" id="oSI-HS-Arw"/>
-                    <constraint firstItem="wD9-9O-v4b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="the-Ty-qgu"/>
                     <constraint firstItem="wD9-9O-v4b" firstAttribute="leading" secondItem="iMa-ez-JPk" secondAttribute="leading" id="uet-u5-A0Q"/>
-                    <constraint firstItem="wD9-9O-v4b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zvx-lh-GZq"/>
+                    <constraint firstItem="wD9-9O-v4b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="zvx-lh-GZq"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="the-Ty-qgu"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="buttonMoreComment" destination="wD9-9O-v4b" id="rnM-kv-Pju"/>
-                <outlet property="layoutConstraintButton" destination="KKa-kt-lKx" id="sGo-kg-INf"/>
+                <outlet property="buttonMoreComment" destination="wD9-9O-v4b" id="yrL-48-Dec"/>
+                <outlet property="layoutConstraintTableviewBottom" destination="HIK-Eh-DRS" id="nOm-uy-cIJ"/>
+                <outlet property="layoutConstraintTableviewHeight" destination="KKa-kt-lKx" id="em0-Kd-5ga"/>
+                <outlet property="layoutConstraintTop" destination="3EX-yw-eeC" id="wvM-bZ-Ift"/>
                 <outlet property="tableviewComment" destination="E17-MR-MaU" id="F94-sq-WNU"/>
             </connections>
             <point key="canvasLocation" x="306" y="404"/>

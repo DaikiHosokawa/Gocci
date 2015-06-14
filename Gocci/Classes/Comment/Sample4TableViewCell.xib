@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="314" height="74.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="史上最高のラーメンだった！だだだだだだだだだ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-9l-NZP">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="史上最高のラーメンだった！だだだだだだだだだ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="242" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-9l-NZP">
                         <rect key="frame" x="62" y="34" width="242" height="42"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="42" id="N52-yl-fae"/>

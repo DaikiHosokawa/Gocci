@@ -13,10 +13,13 @@
 
 
 NSString * const CommentCellIdentifier = @"commentTableViewCell";
+//NSString * const CommentAllCellIdentifier = @"commentAllTableViewCell";
+
+//static BOOL isCommentTableViewCellAll = NO;
 
 @interface commentTableViewCell()
 {
-	BOOL isAllComment;
+	BOOL isCommentTableViewCellAll;
 }
 @property(nonatomic,retain) NSMutableArray *listUsername;
 @property(nonatomic,retain) NSMutableArray *listProfileImg;
@@ -26,9 +29,9 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 @property (weak, nonatomic) IBOutlet UIButton *buttonMoreComment;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewComment;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintView;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintTableviewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintTableviewBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintTop;
 
 @end
 
@@ -42,7 +45,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	self.tableviewComment.dataSource = self;
 	self.tableviewComment.separatorColor = [UIColor clearColor];
 	
-	[self.buttonMoreComment setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+//	[self.buttonMoreComment setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -52,9 +55,17 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 }
 
 #pragma mark - Action
+#pragma mark 読み込むボタン
 - (IBAction)onMoreComment:(id)sender {
 	
-	isAllComment = YES;
+	isCommentTableViewCellAll = YES;
+	
+	//tableviewを全体に
+	
+	self.buttonMoreComment.hidden = YES;
+	self.tableviewComment.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+	self.layoutConstraintTop.constant = 0;
+	
 	
 	[self.tableviewComment reloadData];
 }
@@ -118,7 +129,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 //		[self.listDate addObject:date_str];
 //	}
 	
-	isAllComment = NO;
+	isCommentTableViewCellAll = NO;
 
 	
 //	NSInteger count_comment = [self.listUsername count];
@@ -130,7 +141,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	NSInteger count = [self.listUsername count];
-	if (!isAllComment) {
+	if (!isCommentTableViewCellAll) {
 		if (count > 3) count = 3;
 	}
 	
@@ -154,7 +165,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	NSInteger index_now = row_index;
 	
 	//セル内
-	if (!isAllComment) {
+	if (!isCommentTableViewCellAll) {
 		//最初の３件まで表示の場合
 		//データ数
 		NSInteger count_data = [self.listUsername count];
@@ -214,5 +225,10 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 {
 	return [[NSBundle mainBundle] loadNibNamed:CommentCellIdentifier owner:self options:nil][0];
 }
+
+//+ (instancetype)cell2
+//{
+//	return [[NSBundle mainBundle] loadNibNamed:CommentAllCellIdentifier owner:self options:nil][0];
+//}
 
 @end

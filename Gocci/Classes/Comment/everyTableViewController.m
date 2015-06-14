@@ -87,6 +87,7 @@
 	
 	self.tableView.bounces = NO;
 	self.tableView.allowsSelection = NO;
+//	self.tableView.separatorColor = [UIColor clearColor];
 	_textField.placeholder = @"ここにコメントを入力してください。";
 	
 #if 0
