@@ -22,7 +22,6 @@
 	DemoContentView *_firstContentView;
 	DemoContentView *_secondContentView;
 	
-	//NSArray *list_post;
 	NSArray *list_comments;
 	EveryPost *myPost;
 }

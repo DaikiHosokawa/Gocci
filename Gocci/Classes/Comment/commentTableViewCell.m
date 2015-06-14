@@ -109,7 +109,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 {
 	NSInteger count = [self.listUsername count];
 	if (!isAllComment) {
-		count = 3;
+		if (count > 3) count = 3;
 	}
 	
 	return count;
@@ -129,15 +129,31 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		cell = [Sample4TableViewCell cell];
 	}
 	
+	NSInteger index_now = row_index;
+	
 	//セル内
-	//ユーザーも名
-	if ([self.listUsername objectAtIndex:row_index]) {
-		cell.UsersName.text = [self.listUsername objectAtIndex:row_index];
+	if (!isAllComment) {
+		//最初の３件まで表示の場合
+		//データ数
+		NSInteger count_data = [self.listUsername count];
+		//最初のインデックス
+		NSInteger index_first = count_data - 3;
+		//データ数が３件未満なら
+		if (index_first < 0) {
+			index_first = 0;
+		}
+		//読み込むインデックス
+		index_now = index_first + row_index;
+	}
+	//全表示の場合
+	//ユーザー名
+	if ([self.listUsername objectAtIndex:index_now]) {
+		cell.UsersName.text = [self.listUsername objectAtIndex:index_now];
 	}
 	
-	if([self.listProfileImg objectAtIndex:row_index]) {
+	if([self.listProfileImg objectAtIndex:index_now]) {
 		//ユーザーの画像を取得
-		NSString *dottext = [self.listProfileImg objectAtIndex:row_index];
+		NSString *dottext = [self.listProfileImg objectAtIndex:index_now];
 		// Here we use the new provided setImageWithURL: method to load the web image
 		
 		[cell.UsersPicture sd_setImageWithURL:[NSURL URLWithString:dottext]
@@ -147,16 +163,15 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 									completed:nil
 		 ];
 	}
-	//cell.UsersPicture.image = nil;
 	
 	//コメント
-	if ([self.listComment objectAtIndex:row_index]) {
-		cell.Comment.text = [self.listComment objectAtIndex:row_index];
+	if ([self.listComment objectAtIndex:index_now]) {
+		cell.Comment.text = [self.listComment objectAtIndex:index_now];
 	}
 	
 	//日付
-	if ([self.listDate objectAtIndex:row_index]) {
-		cell.DateOfComment.text = [self.listDate objectAtIndex:row_index];
+	if ([self.listDate objectAtIndex:index_now]) {
+		cell.DateOfComment.text = [self.listDate objectAtIndex:index_now];
 	}
 	
 	return cell;
