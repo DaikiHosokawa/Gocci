@@ -21,6 +21,7 @@
                                 <rect key="frame" x="40" y="-65" width="8" height="68"/>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqG-za-pCG">
                         <rect key="frame" x="10" y="18" width="48" height="48"/>
@@ -58,10 +59,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HOM-5a-NHV">
-                        <rect key="frame" x="9" y="74" width="302" height="302"/>
+                        <rect key="frame" x="10" y="74" width="300" height="302"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="302" id="nwn-hU-Lvx"/>
-                            <constraint firstAttribute="width" constant="302" id="qFW-I2-xyh"/>
+                            <constraint firstAttribute="width" constant="300" id="qFW-I2-xyh"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-7v-Rye">

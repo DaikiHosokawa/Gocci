@@ -97,10 +97,11 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	}
 	
 	isAllComment = NO;
+
 	
-	NSInteger count_comment = [self.listUsername count];
-	NSString *title_btn = [NSString stringWithFormat:@"%ld件のコメントを読み込む",(long)count_comment];
-	[self.buttonMoreComment setTitle:title_btn forState:UIControlStateNormal];
+//	NSInteger count_comment = [self.listUsername count];
+//	NSString *title_btn = [NSString stringWithFormat:@"%ld件のコメントを読み込む",(long)count_comment];
+//	[self.buttonMoreComment setTitle:title_btn forState:UIControlStateNormal];
 }
 
 #pragma mark - UItableViewData
