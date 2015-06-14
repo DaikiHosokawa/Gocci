@@ -87,11 +87,9 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)distTimelineWithLatitudeAll:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
-                             @"lat" : @(latitude),
-                             @"lon" : @(longitude),
                              @"limit" : @(limit)
                              };
     
