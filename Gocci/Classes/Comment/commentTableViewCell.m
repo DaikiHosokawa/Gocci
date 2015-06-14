@@ -78,7 +78,11 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 	self.listComment = [[NSMutableArray alloc] init];
 	self.listDate = [[NSMutableArray alloc] init];
 	
-	for (NSDictionary *dict in commentlist) {
+	//新しい順から古い順へ
+	NSInteger count = [commentlist count];
+	for (NSInteger i = count - 1; i >= 0; i--) {
+		NSDictionary *dict = [commentlist objectAtIndex:i];
+		
 		// ユーザー名
 		NSString *username = [dict objectForKey:@"username"];
 		[self.listUsername addObject:username];
@@ -86,7 +90,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		// プロフ画像URL
 		NSString *picture = [dict objectForKey:@"profile_img"];
 		[self.listProfileImg addObject:picture];
-
+		
 		//コメント内容
 		NSString *comment = [dict objectForKey:@"comment"];
 		[self.listComment addObject:comment];
@@ -95,6 +99,24 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 		NSString *date_str = [dict objectForKey:@"comment_date"];
 		[self.listDate addObject:date_str];
 	}
+	
+//	for (NSDictionary *dict in commentlist) {
+//		// ユーザー名
+//		NSString *username = [dict objectForKey:@"username"];
+//		[self.listUsername addObject:username];
+//		
+//		// プロフ画像URL
+//		NSString *picture = [dict objectForKey:@"profile_img"];
+//		[self.listProfileImg addObject:picture];
+//
+//		//コメント内容
+//		NSString *comment = [dict objectForKey:@"comment"];
+//		[self.listComment addObject:comment];
+//		
+//		//日付
+//		NSString *date_str = [dict objectForKey:@"comment_date"];
+//		[self.listDate addObject:date_str];
+//	}
 	
 	isAllComment = NO;
 

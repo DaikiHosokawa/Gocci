@@ -111,7 +111,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 #pragma mark - Public Method
 - (void)configureWithTimelinePost:(EveryPost *)everyPost
 {
-	[self.background dropShadow];
+//	[self.background dropShadow];
 	
 	self.postID = everyPost.post_id;
 	self.username = everyPost.username;
@@ -139,7 +139,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 	// ユーザ名
 	self.userNameLabel.text = everyPost.username;
 	
-	// TODO: 時間
+	// 時間
 	self.timeLabel.text = everyPost.post_date;
 	
 	// サムネイル画像
