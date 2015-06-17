@@ -52,8 +52,6 @@
 		53B942AF1AB42D11000150C4 /* RegistView47.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B942AE1AB42D11000150C4 /* RegistView47.xib */; };
 		53B942B11AB42D1F000150C4 /* RegistView55.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B942B01AB42D1F000150C4 /* RegistView55.xib */; };
 		950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 950A8B6B1B217C1400BD66BD /* ui_nav.png */; };
-		951AD5311B2F10830057F081 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD5301B2F10820057F081 /* FBSDKShareKit.framework */; };
-		951AD5331B2F12490057F081 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD5321B2F12490057F081 /* FBSDKCoreKit.framework */; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -368,8 +366,6 @@
 		53B942AE1AB42D11000150C4 /* RegistView47.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistView47.xib; sourceTree = "<group>"; };
 		53B942B01AB42D1F000150C4 /* RegistView55.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistView55.xib; sourceTree = "<group>"; };
 		950A8B6B1B217C1400BD66BD /* ui_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_nav.png; sourceTree = "<group>"; };
-		951AD5301B2F10820057F081 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
-		951AD5321B2F12490057F081 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -763,7 +759,6 @@
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
-				951AD5311B2F10830057F081 /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
@@ -783,7 +778,6 @@
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
-				951AD5331B2F12490057F081 /* FBSDKCoreKit.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
 			);
@@ -1644,8 +1638,6 @@
 			isa = PBXGroup;
 			children = (
 				53B942791AB3FE2C000150C4 /* libxml2.dylib */,
-				951AD5321B2F12490057F081 /* FBSDKCoreKit.framework */,
-				951AD5301B2F10820057F081 /* FBSDKShareKit.framework */,
 				53A267C31AB3CF4A00CD759A /* Social.framework */,
 				BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */,
 				BFA1DA691AB29C9000B4F63A /* Twitter.framework */,
