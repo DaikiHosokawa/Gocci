@@ -35,8 +35,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @interface TimelineTableViewController ()
 <CLLocationManagerDelegate, TimelineCellDelegate>
 
-
-- (void)showDefaultContentView;
+//- (void)showDefaultContentView;
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (nonatomic, copy) NSMutableArray *postid_;
@@ -75,7 +74,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
      [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
     
     
     // BBBadgeBarButtonItemオブジェクトの作成
@@ -163,7 +161,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // !!!:dezamisystem
 //    [self.navigationItem setHidesBackButton:YES animated:NO];
 
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -177,7 +174,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
-    
 }
 
 #pragma mark - viewDidAppear
@@ -188,7 +184,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // !!!:dezamisystem
 //    self.navigationItem.leftBarButtonItem.enabled = YES;
 }
-
 
 -(void)barButtonItemPressed:(id)sender{
     NSLog(@"badge touched");
@@ -321,7 +316,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     cell.delegate = self;
     
     // 動画の読み込み
-    __weak typeof(self)weakSelf = self;
+//    __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
