@@ -176,11 +176,13 @@ if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound
 //注意：投稿ボタンを押した時のアクション
 - (IBAction)onSubmit:(id)sender
 {
+    /*
     //注意：Facebookシェアにチェックマークが入っている時
     if (SNStag == 2) {
         //注意：Facebookシェアにチェックマークが入っている時はSCRecorderViewControllerのrecorderSubmitPopupViewOnFacebookShareを呼ぶ
         [[self viewControllerSCRecorder] recorderSubmitPopupViewOnFacebookShare];
     }
+     */
  [[self viewControllerSCRecorder] execSubmit];
 }
 
@@ -311,7 +313,7 @@ if(SecondalertView == alertView){
 #pragma mark - TableViewDatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-return 1;
+return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -334,6 +336,7 @@ if (!cell) {
 
 NSInteger row_index = indexPath.row;
 switch (row_index) {
+    /*
     case 0:
         cell.textLabel.text = @"Facebookにシェアする";
         cell.imageView.image  = [UIImage imageNamed:@"table_facebook"];
@@ -344,8 +347,9 @@ switch (row_index) {
         _checkbox1.delegate = self;
         _checkbox1.tag = (1);
         cell.accessoryView = _checkbox1;
-        
+     
         break;
+     */
     /*
     case 1:
         cell.textLabel.text = @"twitter";
@@ -398,7 +402,7 @@ if (!changedCheckbox.isChecked) {
     // TODO: チェックボックス選択時の処理
     SNStag = 2;
     LOG(@"Facebookシェアを選択しました,SNStag=%d",SNStag);
-        
+    [[self viewControllerSCRecorder] recorderSubmitPopupViewOnFacebookShare];
    }
 }
 }

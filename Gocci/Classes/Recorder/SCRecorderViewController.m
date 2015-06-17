@@ -25,6 +25,7 @@
 #import "SCPostingViewController.h"
 
 #import "SCScrollPageView.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 #define kVideoPreset AVCaptureSessionPresetHigh
@@ -48,7 +49,7 @@ static SCRecorder *_recorder;
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
+<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate,FBSDKSharingDelegate>
 {
 //    SCRecorder *_recorder;
 	
@@ -886,7 +887,27 @@ static SCRecorder *_recorder;
     }];
     [[NSOperationQueue mainQueue] addOperation:operation];
      */
+    /*
+    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
+    video.videoURL = staticRecordSession.outputUrl;
+    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
+    content.video = video;
+    [FBSDKShareDialog showFromViewController:self
+                               withContent:content
+                                    delegate:nil];
+     */
+    /*
+    FBSDKShareLinkContent* content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = staticRecordSession.outputUrl;
+    content.contentDescription = @"test";
+    content.contentTitle = @"New Post";
+    BOOL ok = [[FBSDKShareAPI shareWithContent:content delegate:self] share];
+    */
+     
+   
 }
+
+
 
 #pragma mark 投稿
 // !!!:未使用

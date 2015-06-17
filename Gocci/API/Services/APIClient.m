@@ -364,7 +364,7 @@ static APIClient *_sharedInstance = nil;
     
     NSLog(@"regist_Params: %@", params);
     
-    [[APIClient sharedClient].manager POST:@"register/"
+    [[APIClient sharedClient].manager POST:@"register/test.php"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -388,7 +388,7 @@ static APIClient *_sharedInstance = nil;
     
     NSLog(@"login_Params: %@", params);
     
-    [[APIClient sharedClient].manager POST:@"auth/"
+    [[APIClient sharedClient].manager POST:@"auth/test.php"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

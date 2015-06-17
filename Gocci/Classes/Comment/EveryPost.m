@@ -16,8 +16,8 @@
 	
 	obj.post_id = dictionary[@"post_id"];
 	obj.post_user_id = dictionary[@"post_user_id"];
-	obj.username = dictionary[@"username"];
-	obj.profile_img = dictionary[@"profile_img"];
+	obj.username = dictionary[@"user_name"];
+	obj.profile_img = dictionary[@"picture"];
 	obj.post_rest_id = dictionary[@"post_rest_id"];
 	obj.restname = dictionary[@"restname"];
 	obj.movie = dictionary[@"movie"];
@@ -25,7 +25,7 @@
 	obj.category = dictionary[@"category"];
 	obj.tag = dictionary[@"tag"];
 	obj.value = dictionary[@"value"];
-	obj.memo = dictionary[@"memo"];
+	obj.memo = dictionary[@"comment"];
 	obj.post_date = dictionary[@"post_date"];
 	obj.cheer_flag = dictionary[@"cheer_flag"];
 	obj.like_num = [dictionary[@"like_num"] integerValue];
