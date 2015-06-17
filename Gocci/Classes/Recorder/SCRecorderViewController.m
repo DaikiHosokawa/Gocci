@@ -25,7 +25,6 @@
 #import "SCPostingViewController.h"
 
 #import "SCScrollPageView.h"
-#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 #define kVideoPreset AVCaptureSessionPresetHigh
@@ -49,7 +48,7 @@ static SCRecorder *_recorder;
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate,FBSDKSharingDelegate>
+<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
 //    SCRecorder *_recorder;
 	
