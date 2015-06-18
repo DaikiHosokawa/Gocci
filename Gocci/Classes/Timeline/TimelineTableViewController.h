@@ -21,7 +21,7 @@
     #import "WYStoryboardPopoverSegue.h"
     #import "BBBadgeBarButtonItem.h"
 
-    @interface TimelineTableViewController : UITableViewController<UIScrollViewDelegate>
+    @interface TimelineTableViewController : UIViewController //  UITableViewController<UIScrollViewDelegate>
     {
         //commentへの引き継ぎ
         NSString *_postID;

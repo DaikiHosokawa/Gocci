@@ -23,6 +23,8 @@
 #import "NotificationViewController.h"
 
 #import "CAPSPageMenu.h"
+#import "NearTimelineTableViewController.h"
+#import "FollowTableViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -34,8 +36,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @protocol MovieViewDelegate;
 
-@interface TimelineTableViewController ()
-<CLLocationManagerDelegate, TimelineCellDelegate>
+@interface TimelineTableViewController()<CLLocationManagerDelegate, TimelineCellDelegate>
+@property (nonatomic) CAPSPageMenu *pageMenu;
 
 //- (void)showDefaultContentView;
 
@@ -141,6 +143,50 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
+	
+	//!!!:dezamisystem
+	//PageMenu登録
+	NearTimelineTableViewController *controller1 = [[NearTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
+	controller1.title = @"近くのタイムライン";
+	FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
+	controller2.title = @"フォロー＆応援した店";
+	
+	//PageMenuアイテム
+	NSArray *controllerArray = @[controller1, controller2, /*controller3, controller4*/];	
+	NSInteger count_item = 2;	//画面数
+	CGFloat height_item = 40.f;	//高さ
+	CGFloat width_item = self.view.frame.size.width / count_item; //幅
+	NSDictionary *parameters = @{
+								 CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0
+								 //CAPSPageMenuOptionMenuItemSeparatorWidth : @(0.5),		//アイテム間隔 default = 0.5
+								 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
+								 CAPSPageMenuOptionViewBackgroundColor : [UIColor cyanColor],	//サブビュー色
+								 CAPSPageMenuOptionBottomMenuHairlineColor : [UIColor lightGrayColor],	//アンダーライン色
+								 CAPSPageMenuOptionSelectionIndicatorColor: [UIColor orangeColor],	//選択マーク色
+								 //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
+								 //CAPSPageMenuOptionMenuMargin : @(15.f),	// ???:default = 15.f
+								 CAPSPageMenuOptionMenuHeight : @(height_item),	//メニュー高さ
+								 CAPSPageMenuOptionSelectedMenuItemLabelColor : [UIColor orangeColor],	//選択時文字色
+								 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor lightGrayColor],	//非選択文字色
+								 CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
+								 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(NO),	//角に丸みを付けるか？
+								 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],	//タイトルフォント
+								 //CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.2),	// ???:default = 0.2
+								 CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
+								 //CAPSPageMenuOptionEnableHorizontalBounce : @(YES), // ???:default = YES
+								 //CAPSPageMenuOptionAddBottomMenuHairline : @(YES),	// ???:default = YES
+								 //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth : @(NO),	// ???:default = NO
+								 CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),	//アニメーション時間[ms] default = 500
+								 CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
+								 //CAPSPageMenuOptionHideTopMenuBar : @(NO),//メニューを隠した状態にするか？
+								 };
+	
+	//PageMenu確保
+	_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+	
+	//サブビューとして追加
+	[self.view addSubview:_pageMenu.view];
+
 }
 
 #pragma mark - Notification

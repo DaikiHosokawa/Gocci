@@ -107,6 +107,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 	// !!!:dezamisystem
 //	self.navigationItem.backBarButtonItem = backButton;
 	
+	//ユーザー画像
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = profiledelegate.username;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
