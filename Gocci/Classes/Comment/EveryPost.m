@@ -28,7 +28,7 @@
 	obj.memo = dictionary[@"comment"];
 	obj.post_date = dictionary[@"post_date"];
 	obj.cheer_flag = dictionary[@"cheer_flag"];
-	obj.like_num = [dictionary[@"like_num"] integerValue];
+	obj.like_num = [dictionary[@"goodnum"] integerValue];
 	obj.comment_num = [dictionary[@"comment_num"] integerValue];
 	obj.follow_flag = [dictionary[@"follow_flag"] integerValue];
 	obj.like_flag = [dictionary[@"like_flag"] integerValue];

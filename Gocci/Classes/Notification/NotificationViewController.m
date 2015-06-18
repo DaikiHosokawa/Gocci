@@ -15,7 +15,8 @@
 #import "Notice.h"
 #import "everyTableViewController.h"
 #import "TimelineTableViewController.h"
-
+#import "usersTableViewController_other.h"
+#import "usersTableViewController.h"
 
 
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -105,6 +106,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if([notice_category[indexPath.row] isEqualToString:@"いいね"]||[notice_category[indexPath.row] isEqualToString:@"コメント"]){
         NSLog(@"コメント画面に遷移");
+        NSLog(@"postid:%@",post_id[indexPath.row]);
         [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
         //[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
         
@@ -188,6 +190,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     NSMutableArray *tempNotices = [NSMutableArray arrayWithCapacity:0];
     notice_category = [NSMutableArray arrayWithCapacity:0];
+    post_id = [NSMutableArray arrayWithCapacity:0];
     
     NSLog(@"resultatnotice:%@",result);
     
@@ -202,6 +205,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.notices = [NSArray arrayWithArray:tempNotices];
     [self.tableView reloadData];
     NSLog(@"noticeCategory:%@",notice_category);
+     NSLog(@"postid:%@",post_id);
 }
 
 #pragma mark - UITableViewDelegate methods

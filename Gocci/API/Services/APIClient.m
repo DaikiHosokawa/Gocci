@@ -400,7 +400,7 @@ static APIClient *_sharedInstance = nil;
 
 + (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
-    [[APIClient sharedClient].manager POST:@"notice/index.php"
+    [[APIClient sharedClient].manager GET:@"notice/test.php"
                                parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

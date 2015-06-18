@@ -151,6 +151,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSLog(@"badge touched");
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
     }
     NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
@@ -589,7 +590,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
 #endif
-        eveVC.postID = _postID;
+        eveVC.postID = (NSString *)sender;
     }
     //店舗画面にパラメータを渡して遷移する
     // !!!:dezamisystem
