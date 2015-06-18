@@ -10,4 +10,8 @@
 
 @interface NotificationViewController : UITableViewController
 
+//スーパービューへのリンクを持っておく　スーパービューの方をpushを呼ぶ
+
+@property id supervc; //親
+
 @end

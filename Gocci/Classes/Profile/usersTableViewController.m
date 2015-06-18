@@ -60,27 +60,27 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 #pragma mark - アイテム名登録用
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-	self = [super initWithCoder:aDecoder];
-	if (self) {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
         
-	}
-	return self;
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
+    
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
+        self.navigationItem.titleView =navigationTitle;
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
-	}
+    }
     
     //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
@@ -101,16 +101,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
-
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-	// !!!:dezamisystem
-//	self.navigationItem.backBarButtonItem = backButton;
-	
+    // !!!:dezamisystem
+    //	self.navigationItem.backBarButtonItem = backButton;
+    
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = profiledelegate.username;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
-						placeholderImage:[UIImage imageNamed:@"default.png"]];
+                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
@@ -167,10 +167,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     
     [super viewWillAppear:animated];
-
-	// !!!:dezamisystem
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-
+    
+    // !!!:dezamisystem
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
     [self _fetchProfile];
     [self.tableView reloadData];
     
@@ -193,11 +193,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-
+    
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
-
+    
     
     [super viewWillDisappear:animated];
 }
@@ -252,8 +252,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-
-     [SVProgressHUD dismiss];
+    
+    [SVProgressHUD dismiss];
     return cell ;
 }
 
@@ -270,9 +270,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-
+    
     // スクロール中は動画を停止する
-   // [[MoviePlayerManager sharedManager] scrolling:YES];
+    // [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 #pragma mark -
@@ -280,15 +280,15 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-   // LOG(@"scroll is stoped");
-   // [self _playMovieAtCurrentCell];
+    // LOG(@"scroll is stoped");
+    // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-    //    LOG(@"scroll is stoped");
-     [self _playMovieAtCurrentCell];
+        //    LOG(@"scroll is stoped");
+        [self _playMovieAtCurrentCell];
     }
 }
 
@@ -324,7 +324,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"あなたの画面です";
         [_firstContentView addSubview:descriptionLabel];
         
@@ -342,19 +342,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 #pragma mark いいねボタンの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
+    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
     
     // タイムラインを再読み込み
     //[self _fetchProfile];
@@ -404,8 +396,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
     _postID = postID;
-
-	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
 // TODO: 削除機能の実装
@@ -417,13 +409,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postID = postID;
     Class class = NSClassFromString(@"UIAlertController");
     if(class)
-	{
+    {
         // iOS 8の時の処理
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
         
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         
+            
             
             NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
             NSLog(@"content:%@",content);
@@ -435,10 +427,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             NSError* error = nil;
             NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                    returningResponse:&response                                                               error:&error];
-			if (result) {}
-			
-           [self _fetchProfile];
-           [self.tableView reloadData];
+            if (result) {}
+            
+            [self _fetchProfile];
+            [self.tableView reloadData];
             
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -447,8 +439,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-	else
-	{
+    else
+    {
         NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
         NSLog(@"content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/delete/"];
@@ -460,8 +452,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
                                                returningResponse:&response
                                                            error:&error];
-		if (result) {}
-		
+        if (result) {}
+        
         [self _fetchProfile];
         [self.tableView reloadData];
     }
@@ -499,7 +491,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         }
         
         self.posts = [NSArray arrayWithArray:tempPosts];
-
+        
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
         
@@ -510,11 +502,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
-
+        
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
             _emptyView.hidden = NO;
-             [SVProgressHUD dismiss];
+            [SVProgressHUD dismiss];
         }
         
         if ([weakSelf.refresh isRefreshing]) {
@@ -524,9 +516,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 /*
-- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
-    [self _playMovieAtCurrentCell];
-}
+ - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+ [self _playMovieAtCurrentCell];
+ }
  */
 
 
@@ -558,13 +550,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-   
-            [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
-            
-    }
+    
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:movieRect];
+    
+}
 
 
 /**
@@ -586,24 +578,24 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     //2つ目の画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//    if ([segue.identifier isEqualToString:@"showDetail2"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
-	{
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"showDetail2"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
+    {
         //ここでパラメータを渡す
 #if 0
-		everyTableViewController *eveVC = segue.destinationViewController;
+        everyTableViewController *eveVC = segue.destinationViewController;
 #else
-		everyBaseNavigationController *eveNC = segue.destinationViewController;
-		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        everyBaseNavigationController *eveNC = segue.destinationViewController;
+        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
 #endif
         eveVC.postID = _postID;
     }
     //店舗画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//    if ([segue.identifier isEqualToString:@"goRestpage"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-	{
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"goRestpage"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
@@ -620,7 +612,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])
     {
         //ここでパラメータを渡す
-         FollowListViewController *followVC = segue.destinationViewController;
+        FollowListViewController *followVC = segue.destinationViewController;
         AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         _postUsername = profiledelegate.username;
         followVC.postUsername = _postUsername;

@@ -84,7 +84,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
-
+    
     
     //ナビゲーションバーに画像
     {
@@ -100,7 +100,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         self.navigationItem.backBarButtonItem = barButton;
         
     }
-
+    
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -114,8 +114,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
-
-
+    
+    
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -197,7 +197,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-     [SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
     
     return cell ;
 }
@@ -232,8 +232,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
-   //[self _playMovieAtCurrentCell];
-
+    //[self _playMovieAtCurrentCell];
+    
     NSLog(@"@2");
 }
 
@@ -241,7 +241,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
-    [self _playMovieAtCurrentCell];
+        [self _playMovieAtCurrentCell];
         NSLog(@"@2");
     }
 }
@@ -256,22 +256,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - TimelineCellDelegate
 #pragma mark いいねボタンの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    
-    // タイムラインを再読み込み
+{    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];    // タイムラインを再読み込み
     //[self _fetchLifelog];
 }
 
@@ -345,14 +334,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
         
-
+        
     }];
 }
 
 /*
-- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
-    [self _playMovieAtCurrentCell];
-}
+ - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+ [self _playMovieAtCurrentCell];
+ }
  */
 
 
@@ -379,11 +368,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentHeight + currentCell.thumbnailView.frame.origin.y,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
- 
+    
     [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:movieRect];
     
 }
 

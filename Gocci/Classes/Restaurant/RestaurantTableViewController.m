@@ -38,7 +38,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
     __weak IBOutlet MKMapView *map_;
-   // RestaurantPost *restaurantPost;
+    // RestaurantPost *restaurantPost;
 }
 
 - (void)showDefaultContentView;
@@ -101,7 +101,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
-
+    
     
     //ナビゲーションバーに画像
     {
@@ -112,7 +112,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
-		
+        
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -152,24 +152,24 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self.tableView addSubview:self.refresh];
     
     /*
-    if (_status_) {
-        NSString *dotse = _status_[1];
-        NSLog(@"dotse:%@",dotse);
-        NSInteger i = dotse.integerValue;
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        //NSLog(@"postFlag:%ld",(long)_postFlag);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }else{
-        NSInteger i = _postFlag;
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        //NSLog(@"postFlag:%ld",(long)_postFlag);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }
-    */
+     if (_status_) {
+     NSString *dotse = _status_[1];
+     NSLog(@"dotse:%@",dotse);
+     NSInteger i = dotse.integerValue;
+     int pi = (int)i;
+     NSLog(@"pi:%d",pi);
+     //NSLog(@"postFlag:%ld",(long)_postFlag);
+     flash_on = pi;
+     NSLog(@"flash_on:%d",flash_on);
+     }else{
+     NSInteger i = _postFlag;
+     int pi = (int)i;
+     NSLog(@"pi:%d",pi);
+     //NSLog(@"postFlag:%ld",(long)_postFlag);
+     flash_on = pi;
+     NSLog(@"flash_on:%d",flash_on);
+     }
+     */
     NSInteger i = _postWanttag.integerValue;
     NSLog(@"i:%ld",(long)i);
     int pi = (int)i;
@@ -192,29 +192,29 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
-
+    
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-    {
-        // 初回に現在地に移動している場合は再度移動しないようにする
-      
-          CLLocationCoordinate2D centerCoordinate = userLocation.coordinate;
-        
-        // 表示倍率の設定
-        MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
-        MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
-        [map_ setRegion:region animated:NO];
-  }
+{
+    // 初回に現在地に移動している場合は再度移動しないようにする
+    
+    CLLocationCoordinate2D centerCoordinate = userLocation.coordinate;
+    
+    // 表示倍率の設定
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
+    MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
+    [map_ setRegion:region animated:NO];
+}
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-	
-	// !!!:dezamisystem
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-	
+    
+    // !!!:dezamisystem
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
     self.restname.text = _postRestName;
     //self.locality.text = _postLocality;
     self.categoryLabel.text = _postCategory;
@@ -224,15 +224,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSLog(@"This Locality is %@",_postLocality);
     NSLog(@"This Tell is %@",_postTell);
     NSLog(@"This Homepage is %@",_postHomepage);
-   // lon = restaurantPost.lon;
-   // lat = restaurantPost.lat;
+    // lon = restaurantPost.lon;
+    // lat = restaurantPost.lat;
     NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = _postRestName;
-
+    
     [SVProgressHUD dismiss];
-   
+    
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
     
@@ -246,7 +246,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([self isFirstRun]) {
         [self showDefaultContentView];
     }
-
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -258,7 +258,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
-
+    
     
 }
 
@@ -357,8 +357,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-
-     [SVProgressHUD dismiss];
+    
+    [SVProgressHUD dismiss];
     return cell;
 }
 
@@ -405,7 +405,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // スクロール中は動画を停止する
-  // [[MoviePlayerManager sharedManager] scrolling:YES];
+    // [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -422,14 +422,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
-    [self _playMovieAtCurrentCell];
-     //   NSLog(@"scroll is stoped");
+        [self _playMovieAtCurrentCell];
+        //   NSLog(@"scroll is stoped");
     }
 }
 
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-
+    
     NSLog(@"scroll is stoped");
 }
 
@@ -447,51 +447,41 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     //2つ目の画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//    if ([segue.identifier isEqualToString:@"showDetail2"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
-	{
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"showDetail2"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
+    {
         //ここでパラメータを渡す
 #if 0
-		everyTableViewController *eveVC = segue.destinationViewController;
+        everyTableViewController *eveVC = segue.destinationViewController;
 #else
-		everyBaseNavigationController *eveNC = segue.destinationViewController;
-		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        everyBaseNavigationController *eveNC = segue.destinationViewController;
+        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
 #endif
         eveVC.postID = _postID;
     }
-	
-	//プロフィール画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
-	{
-		//ここでパラメータを渡す
-		NSLog(@"ここは通った");
-		usersTableViewController_other *useVC = segue.destinationViewController;
-		useVC.postUsername = _postUsername;
-		useVC.postPicture = _postPicture;
-	}
+    
+    //プロフィール画面にパラメータを渡して遷移する
+    // !!!:dezamisystem
+    //	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+    {
+        //ここでパラメータを渡す
+        NSLog(@"ここは通った");
+        usersTableViewController_other *useVC = segue.destinationViewController;
+        useVC.postUsername = _postUsername;
+        useVC.postPicture = _postPicture;
+    }
 }
 
 #pragma mark - Cell Event
 //#pragma mark いいねボタンの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{
-   //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    LOG(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    //NSData* result =
-	[NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
+{    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
     
     // タイムラインを再読み込み
     //[self _fetchRestaurant];
@@ -527,7 +517,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 NSString *alertMessage = @"違反報告をしました";
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
-
+                
             }
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -553,8 +543,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             NSString *alertMessage = @"違反報告をしました";
             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alrt show];
-         }
-     }
+        }
+    }
 }
 
 -(IBAction)light:(id)sender {
@@ -607,7 +597,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (IBAction)tapTEL {
-   
+    
     if ([_postTell isEqualToString:@"非公開"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
@@ -615,13 +605,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [alert show];
         
     }else{
-    
-    NSString *number = @"tel:";
-    NSString *telstring = [NSString stringWithFormat:@"%@%@",number,_postTell];
-    NSLog(@"telstring:%@",telstring);
-    NSURL *url = [[NSURL alloc] initWithString:telstring];
-    [[UIApplication sharedApplication] openURL:url];
-    
+        
+        NSString *number = @"tel:";
+        NSString *telstring = [NSString stringWithFormat:@"%@%@",number,_postTell];
+        NSLog(@"telstring:%@",telstring);
+        NSURL *url = [[NSURL alloc] initWithString:telstring];
+        [[UIApplication sharedApplication] openURL:url];
+        
     }
 }
 
@@ -648,7 +638,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (IBAction)tapHomepatge {
-
+    
     NSString *urlString = _postHomepage;
     NSLog(@"tapHomepage:%@",_postHomepage);
     NSURL *url = [NSURL URLWithString:urlString];
@@ -662,8 +652,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
     _postID = postID;
-
-	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
 
@@ -671,14 +661,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)timeline:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
 {
     //user nameタップの時の処理
-	LOG(@"username=%@", userName);
-	_postUsername = userName;
+    LOG(@"username=%@", userName);
+    _postUsername = userName;
     _postPicture = usersPicture;
-	LOG(@"postUsername:%@",_postUsername);
-	// !!!:dezamisystem
-//    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
-	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-	LOG(@"Username is touched");
+    LOG(@"postUsername:%@",_postUsername);
+    // !!!:dezamisystem
+    //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
+    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+    LOG(@"Username is touched");
 }
 
 -(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
@@ -748,7 +738,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         }
         NSLog(@"tempPosts:%@",tempPosts);
         self.posts = [NSArray arrayWithArray:tempPosts];
-    
+        
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
         
@@ -762,7 +752,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             NSLog(@"投稿がない");
             _emptyView.hidden = NO;
             [SVProgressHUD dismiss];
-
+            
         }
         
         if ([weakSelf.refresh isRefreshing]) {
@@ -772,9 +762,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 /*
-- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
-    [self _playMovieAtCurrentCell];
-}
+ - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+ [self _playMovieAtCurrentCell];
+ }
  */
 
 /**
@@ -782,10 +772,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
  */
 - (void)_playMovieAtCurrentCell
 {
-   
+    
     if ( [self.posts count] == 0){
-            return;
-         }
+        return;
+    }
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -800,9 +790,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-                [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                              inView:self.tableView
-                                                               frame:movieRect];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:movieRect];
     
 }
 
@@ -821,7 +811,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (IBAction)onOther:(UIButton *)sender {
-   
+    
     UIActionSheet *actionsheet = nil;
     actionsheet = [[UIActionSheet alloc] initWithTitle:@"その他"
                                               delegate:self
@@ -844,17 +834,17 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                       delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
             [alert show];
         }else{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_postHomepage]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_postHomepage]];
         }
     }
 }
 
 #pragma mark - 投稿するボタン
 - (IBAction)onPostingButton:(id)sender {
-	
-	self.tabBarController.selectedIndex = 2;
-	
-	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
+    
+    self.tabBarController.selectedIndex = 2;
+    
+    //[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
