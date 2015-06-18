@@ -1346,15 +1346,15 @@
 				37A074091B31A73900D91FE2 /* CAPSPageMenu.m */,
 				3758462C1B32671500E7B4A0 /* TimelinePageMenuViewController.h */,
 				3758462D1B32671500E7B4A0 /* TimelinePageMenuViewController.m */,
+				37A074021B31A14D00D91FE2 /* NearTimelineTableViewController.h */,
+				37A074031B31A14D00D91FE2 /* NearTimelineTableViewController.m */,
+				37A074051B31A5CF00D91FE2 /* FollowTableViewController.h */,
+				37A074061B31A5CF00D91FE2 /* FollowTableViewController.m */,
 				952D24761A9B9D3300C354DF /* TimelineCell.h */,
 				952D24771A9B9D3300C354DF /* TimelineCell.m */,
 				952D24781A9B9D3300C354DF /* TimelineCell.xib */,
 				952D24791A9B9D3300C354DF /* TimelineTableViewController.h */,
 				952D247A1A9B9D3300C354DF /* TimelineTableViewController.m */,
-				37A074021B31A14D00D91FE2 /* NearTimelineTableViewController.h */,
-				37A074031B31A14D00D91FE2 /* NearTimelineTableViewController.m */,
-				37A074051B31A5CF00D91FE2 /* FollowTableViewController.h */,
-				37A074061B31A5CF00D91FE2 /* FollowTableViewController.m */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
