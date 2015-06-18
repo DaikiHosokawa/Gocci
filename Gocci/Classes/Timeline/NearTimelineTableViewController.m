@@ -24,7 +24,9 @@
 #import "BBBadgeBarButtonItem.h"
 #import "NotificationViewController.h"
 
-// !!!:dezamisystem
+#import "TimelinePageMenuViewController.h"
+
+// 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -175,8 +177,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //	_postID = [_postid_ objectAtIndex:indexPath.row];
 //	NSLog(@"postid:%@",_postID);
 //	
-//	//[self performSegueWithIdentifier:@"showDetail2" sender:self];
-//	// !!!:dezamisystem
 //	[self performSegueWithIdentifier:@"showDetail" sender:self];
 //	
 //	NSLog(@"commentBtn is touched");
@@ -427,10 +427,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	_postFlag = flag;
 	
 	LOG(@"postUsername:%@",_postUsername);
-	
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-	// !!!:dezamisystem
+
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+#else
+	[self.delegate nearTimeline:self username:userName picture:usersPicture flag:flag];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+#endif
 	
 	LOG(@"Username is touched");
 }
@@ -467,13 +471,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	LOG(@"postUsername:%@",_postUsername);
 	
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-	// !!!:dezamisystem
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+#else
+	[self.delegate nearTimeline:self username:userName picture:userPicture flag:flag];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+#endif
 	
 	LOG(@"Username is touched");
 	LOG(@"postUsername:%@",_postPicture);
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
 	LOG(@"Username is touched");
 }
 
@@ -495,7 +502,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	NSLog(@"tel=%@", tel);
 	NSLog(@"homepage=%@", homepage);
 	NSLog(@"category=%@", category);
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+#else
+	[self.delegate nearTimeline:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:nil];
+#endif
+
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
@@ -504,7 +518,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	LOG(@"postid=%@", postID);
 	_postID = postID;
 	
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+#else
+	[self.delegate nearTimeline:self postid:postID];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:nil];
+#endif
 }
 
 /**
@@ -592,51 +612,51 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 }
 
-#pragma mark - Navigation
-#pragma mark 遷移前準備
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-	
-	
-	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
-	{
-		//ここでパラメータを渡す
-#if 0
-		everyTableViewController *eveVC = segue.destinationViewController;
-#else
-		everyBaseNavigationController *eveNC = segue.destinationViewController;
-		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-#endif
-		eveVC.postID = (NSString *)sender;
-	}
-	
-	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
-	{
-		//ここでパラメータを渡す
-		usersTableViewController_other *useVC = segue.destinationViewController;
-		useVC.postUsername = _postUsername;
-		useVC.postPicture = _postPicture;
-		useVC.postFlag = _postFlag;
-	}
-	//店舗画面にパラメータを渡して遷移する
-	//	if ([segue.identifier isEqualToString:@"goRestpage"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-	{
-		//ここでパラメータを渡す
-		RestaurantTableViewController  *restVC = segue.destinationViewController;
-		restVC.postRestName = _postRestname;
-		restVC.postHomepage = _postHomepage;
-		restVC.postLocality = _postLocality;
-		restVC.postCategory = _postCategory;
-		restVC.postLon = _postLon;
-		restVC.postLat = _postLat;
-		restVC.postTell = _postTell;
-		restVC.postTotalCheer = _postTotalCheer;
-		restVC.postWanttag = _postWanttag;
-	}
-
-}
-
+//#pragma mark - Navigation
+//#pragma mark 遷移前準備
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//	
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//	
+//	
+//	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
+//	{
+//		//ここでパラメータを渡す
+//#if 0
+//		everyTableViewController *eveVC = segue.destinationViewController;
+//#else
+//		everyBaseNavigationController *eveNC = segue.destinationViewController;
+//		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+//#endif
+//		eveVC.postID = (NSString *)sender;
+//	}
+//	
+//	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+//	{
+//		//ここでパラメータを渡す
+//		usersTableViewController_other *useVC = segue.destinationViewController;
+//		useVC.postUsername = _postUsername;
+//		useVC.postPicture = _postPicture;
+//		useVC.postFlag = _postFlag;
+//	}
+//	//店舗画面にパラメータを渡して遷移する
+//	//	if ([segue.identifier isEqualToString:@"goRestpage"])
+//	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+//	{
+//		//ここでパラメータを渡す
+//		RestaurantTableViewController  *restVC = segue.destinationViewController;
+//		restVC.postRestName = _postRestname;
+//		restVC.postHomepage = _postHomepage;
+//		restVC.postLocality = _postLocality;
+//		restVC.postCategory = _postCategory;
+//		restVC.postLon = _postLon;
+//		restVC.postLat = _postLat;
+//		restVC.postTell = _postTell;
+//		restVC.postTotalCheer = _postTotalCheer;
+//		restVC.postWanttag = _postWanttag;
+//	}
+//
+//}
+//
 @end

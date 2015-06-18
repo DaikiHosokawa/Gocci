@@ -21,6 +21,29 @@
 #import "WYStoryboardPopoverSegue.h"
 #import "BBBadgeBarButtonItem.h"
 
+@class NearTimelineTableViewController;
+
+@protocol NearTimelineTableViewControllerDelegate <NSObject>
+//@optional
+-(void)nearTimeline:(NearTimelineTableViewController*)vc
+				 postid:(NSString*)postid;
+
+-(void)nearTimeline:(NearTimelineTableViewController*)vc
+			   username:(NSString*)username picture:(NSString*)picture
+				   flag:(NSInteger)flag;
+
+-(void)nearTimeline:(NearTimelineTableViewController*)vc
+		   restname:(NSString*)restname
+			   homepage:(NSString *)homepage
+			   locality:(NSString *)locality
+			   category:(NSString*)category
+					lon:(NSString*)lon
+					lat:(NSString*)lat
+				   tell:(NSString*)tell
+			 totalcheer:(NSString*)totalcheer
+				wanttag:(NSString*)wanttag;
+@end
+
 @interface NearTimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 {
 	//commentへの引き継ぎ
@@ -42,6 +65,7 @@
 	//サムネイル
 	UIImageView *thumbnailView;
 }
+@property(nonatomic,strong) id<NearTimelineTableViewControllerDelegate> delegate;
 
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (strong, nonatomic) WYPopoverController *popover;

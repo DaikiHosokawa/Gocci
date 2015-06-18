@@ -24,7 +24,9 @@
 #import "BBBadgeBarButtonItem.h"
 #import "NotificationViewController.h"
 
-// !!!:dezamisystem
+#import "TimelinePageMenuViewController.h"
+
+//遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -172,20 +174,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark - タッチイベント
-- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-	
-	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-	NSLog(@"row %ld was tapped.",(long)indexPath.row);
-	_postID = [_postid_ objectAtIndex:indexPath.row];
-	NSLog(@"postid:%@",_postID);
-	
-	//[self performSegueWithIdentifier:@"showDetail2" sender:self];
-	// !!!:dezamisystem
-	[self performSegueWithIdentifier:@"showDetail" sender:self];
-	
-	
-	NSLog(@"commentBtn is touched");
-}
+//- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+//	
+//	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+//	NSLog(@"row %ld was tapped.",(long)indexPath.row);
+//	_postID = [_postid_ objectAtIndex:indexPath.row];
+//	NSLog(@"postid:%@",_postID);
+//
+//#if 0
+//	[self performSegueWithIdentifier:@"showDetail" sender:self];
+//#else
+//	
+//#endif
+//	
+//	
+//	NSLog(@"commentBtn is touched");
+//}
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -423,10 +427,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	LOG(@"postUsername:%@",_postUsername);
 	
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-	// !!!:dezamisystem
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-	
+#else
+	[self.delegate follow:self username:userName picture:usersPicture flag:flag];
+	 TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+#endif
+
 	LOG(@"Username is touched");
 }
 
@@ -462,13 +470,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	LOG(@"postUsername:%@",_postUsername);
 	
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-	// !!!:dezamisystem
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+#else
+	[self.delegate follow:self username:userName picture:userPicture flag:flag];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+#endif
 	
 	LOG(@"Username is touched");
 	LOG(@"postUsername:%@",_postPicture);
-	//[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
 	LOG(@"Username is touched");
 }
 
@@ -490,7 +501,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	NSLog(@"tel=%@", tel);
 	NSLog(@"homepage=%@", homepage);
 	NSLog(@"category=%@", category);
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+#else
+	[self.delegate follow:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:nil];
+#endif
+
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
@@ -499,7 +517,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	LOG(@"postid=%@", postID);
 	_postID = postID;
 	
+#if 0
 	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+#else
+	[self.delegate follow:self postid:postID];
+	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+	[vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:nil];
+#endif
+
 }
 
 /**

@@ -186,6 +186,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	//サブビューとして追加
 	[self.view addSubview:_pageMenu.view];
+	//[self.viewBasePageMenu addSubview:_pageMenu.view];
 
 }
 
@@ -400,7 +401,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
+	
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
         //ここでパラメータを渡す
