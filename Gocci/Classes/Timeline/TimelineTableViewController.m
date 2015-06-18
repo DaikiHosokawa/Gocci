@@ -22,6 +22,8 @@
 #import "BBBadgeBarButtonItem.h"
 #import "NotificationViewController.h"
 
+#import "CAPSPageMenu.h"
+
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -54,18 +56,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @implementation TimelineTableViewController
 @synthesize thumbnailView;
 
-#pragma mark - アイテム名登録用
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-    }
-    return self;
-}
+//#pragma mark - アイテム名登録用
+//-(id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    self = [super initWithCoder:aDecoder];
+//    if (self) {
+//    }
+//    return self;
+//}
 
 
 #pragma mark - View Lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -116,7 +117,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
     }
-    
+	
+#if 0
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -130,8 +132,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.tableView addSubview:self.refresh];
     
     // API からタイムラインのデータを取得
-      [self _fetchTimelineUsingLocationCacheALL:YES];
-    
+	[self _fetchTimelineUsingLocationCacheALL:YES];
+#endif
+	
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
@@ -140,78 +143,76 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              object:nil];
 }
 
-
+#pragma mark - Notification
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
  
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
-
+	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+	self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+	NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+	self.navigationItem.rightBarButtonItem = self.barButton;
 }
 
+#pragma mark - NavigationBarItemAction
+-(void)barButtonItemPressed:(id)sender
+{
+	NSLog(@"badge touched");
+	
+	self.barButton.badgeValue = nil;
+	
+	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+	[ud removeObjectForKey:@"numberOfNewMessages"];
+	
+	if (!self.popover) {
+		NotificationViewController *vc = [[NotificationViewController alloc] init];
+		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+	}
+	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
+	[self.popover presentPopoverFromRect:CGRectMake(
+													self.barButton.accessibilityFrame.origin.x + 15,
+													self.barButton.accessibilityFrame.origin.y + 30,
+													self.barButton.accessibilityFrame.size.width,
+													self.barButton.accessibilityFrame.size.height)
+								  inView:self.barButton.customView
+				permittedArrowDirections:WYPopoverArrowDirectionUp
+								animated:YES
+								 options:WYPopoverAnimationOptionFadeWithScale];
+}
+
+#pragma mark viewAppear
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    // !!!:dezamisystem
+	
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    //    self.navigationItem.leftBarButtonItem.enabled = NO;
-
-    // !!!:dezamisystem
-//    [self.navigationItem setHidesBackButton:YES animated:NO];
-
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+}
+
+#pragma mark viewDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+	
+#if 0
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
+#endif
 }
 
-#pragma mark - viewDidAppear
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-    // !!!:dezamisystem
-//    self.navigationItem.leftBarButtonItem.enabled = YES;
-}
-
--(void)barButtonItemPressed:(id)sender{
-    NSLog(@"badge touched");
-    
-    self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
-    
-    if (!self.popover) {
-        NotificationViewController *vc = [[NotificationViewController alloc] init];
-        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-    }
-    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-    [self.popover presentPopoverFromRect:CGRectMake(
-                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-                                  inView:self.barButton.customView
-                permittedArrowDirections:WYPopoverArrowDirectionUp
-                                animated:YES
-                                 options:WYPopoverAnimationOptionFadeWithScale];
-}
 
 
 #pragma mark -
-
-
 #pragma mark - Action
-
+/*
 - (IBAction)pushUserTimeline:(id)sender {
 
     CATransition *transition = [CATransition animation];
@@ -220,20 +221,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     transition.type = kCATransitionPush;//pushのトランジション
     transition.subtype = kCATransitionFromRight;//右から左へ
 }
-
+*/
 - (IBAction)onProfileButton:(id)sender
 {
     
 }
 
+/*
 - (void)refresh:(UIRefreshControl *)sender
 {
     [self _fetchTimelineUsingLocationCacheALL:YES];
 }
-
+ */
 
 #pragma mark - UIScrollView Delegate
-
+/*
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
     // スクロール中は動画を停止する
@@ -280,11 +282,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     return indexPath;
 }
-
+ */
 
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -347,6 +349,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // 選択状態の解除
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+ */
 
 #pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -392,7 +395,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark - TimelineCellDelegate
-
+/*
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
     //いいねボタンの時の処理
@@ -418,8 +421,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // タイムラインを再読み込み
    // [self _fetchTimeline];
 }
-
-
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
@@ -480,7 +481,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 
 }
-
 
 #pragma mark user_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
@@ -571,16 +571,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
-
+ */
 
 #pragma mark - Private Methods
-
 
 /**
  *　全体タイムラインのデータを取得
  *
  *  @param usingLocationCache2 近くの投稿がなかった場合の全体のタイムライン表示
  */
+/*
 - (void)_fetchTimelineUsingLocationCacheALL:(BOOL)usingLocationCache
 {
     
@@ -629,12 +629,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
         
-             BOOL isServerAvailable;
-             
-             
-             NSString *alertMessage = @"圏外ですので再生できません。";
-             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             
+			 
+			 //BOOL isServerAvailable;
+			 
+			 // NSString *alertMessage = @"圏外ですので再生できません。";
+			 // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
              
          }];
     };
@@ -664,14 +663,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-
 - (void)_playMovieAtCurrentCell
 {
-    /*
-    if ( [self.posts count] == 0){
-        return;
-    }
-    */
+	
+//    if ( [self.posts count] == 0){
+//        return;
+//    }
     
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
@@ -701,12 +698,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                            frame:movieRect];
     
 }
+*/
 
 /**
  *  現在表示中の indexPath を取得
  *
  *  @return 
  */
+/*
 - (NSIndexPath *)_currentIndexPath
 {
     CGPoint point = CGPointMake(self.tableView.contentOffset.x,
@@ -715,5 +714,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     return currentIndexPath;
 }
+ */
 
 @end

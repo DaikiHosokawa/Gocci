@@ -55,7 +55,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-	
 	// Table View の設定
 	self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
 	self.tableView.bounces = YES;
@@ -70,47 +69,51 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	// API からタイムラインのデータを取得
 	[self _fetchTimelineUsingLocationCacheALL:YES];
-	
+
+	/*
 	//set notificationCenter
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self
 						   selector:@selector(handleRemotePushToUpdateBell:)
 							   name:@"HogeNotification"
 							 object:nil];
+	 */
 
 }
 
-- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
- 
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-	self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-	NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-	self.navigationItem.rightBarButtonItem = self.barButton;
-}
+//- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+// 
+//	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+//	self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+//	NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+//	self.navigationItem.rightBarButtonItem = self.barButton;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 描画
+#pragma mark - viewAppear
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
-	// !!!:dezamisystem
 	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-	//    self.navigationItem.leftBarButtonItem.enabled = NO;
-	
-	// !!!:dezamisystem
-	//    [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+}
+
+#pragma mark - viewDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+//	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	// 画面が隠れた際に再生中の動画を停止させる
 	[[MoviePlayerManager sharedManager] stopMovie];
@@ -119,73 +122,65 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	[[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
-#pragma mark - viewDidAppear
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	
-	// !!!:dezamisystem
-	//    self.navigationItem.leftBarButtonItem.enabled = YES;
-}
-
-#pragma mark - ナビゲーションバーアクション
--(void)barButtonItemPressed:(id)sender{
-	NSLog(@"badge touched");
-	
-	self.barButton.badgeValue = nil;
-	
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-	[ud removeObjectForKey:@"numberOfNewMessages"];
-	
-	if (!self.popover) {
-		NotificationViewController *vc = [[NotificationViewController alloc] init];
-		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-	}
-	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-	[self.popover presentPopoverFromRect:CGRectMake(
-													self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-								  inView:self.barButton.customView
-				permittedArrowDirections:WYPopoverArrowDirectionUp
-								animated:YES
-								 options:WYPopoverAnimationOptionFadeWithScale];
-}
+//#pragma mark - ナビゲーションバーアクション
+//-(void)barButtonItemPressed:(id)sender
+//{
+//	NSLog(@"badge touched");
+//	
+//	self.barButton.badgeValue = nil;
+//	
+//	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+//	[ud removeObjectForKey:@"numberOfNewMessages"];
+//	
+//	if (!self.popover) {
+//		NotificationViewController *vc = [[NotificationViewController alloc] init];
+//		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+//	}
+//	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
+//	[self.popover presentPopoverFromRect:CGRectMake(
+//													self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
+//								  inView:self.barButton.customView
+//				permittedArrowDirections:WYPopoverArrowDirectionUp
+//								animated:YES
+//								 options:WYPopoverAnimationOptionFadeWithScale];
+//}
 
 
-#pragma mark - Action
-- (IBAction)pushUserTimeline:(id)sender {
-	
-	CATransition *transition = [CATransition animation];
-	transition.duration = 0.4;
-	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	transition.type = kCATransitionPush;//pushのトランジション
-	transition.subtype = kCATransitionFromRight;//右から左へ
-}
+//#pragma mark - Action
+//- (IBAction)pushUserTimeline:(id)sender {
+//	
+//	CATransition *transition = [CATransition animation];
+//	transition.duration = 0.4;
+//	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//	transition.type = kCATransitionPush;//pushのトランジション
+//	transition.subtype = kCATransitionFromRight;//右から左へ
+//}
+//
+//- (IBAction)onProfileButton:(id)sender
+//{
+//	
+//}
 
-- (IBAction)onProfileButton:(id)sender
-{
-	
-}
-
+#pragma mark - UIRefreshControl Action
 - (void)refresh:(UIRefreshControl *)sender
 {
 	[self _fetchTimelineUsingLocationCacheALL:YES];
 }
 
-#pragma mark - タッチイベント
-- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-	
-	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-	NSLog(@"row %ld was tapped.",(long)indexPath.row);
-	_postID = [_postid_ objectAtIndex:indexPath.row];
-	NSLog(@"postid:%@",_postID);
-	
-	//[self performSegueWithIdentifier:@"showDetail2" sender:self];
-	// !!!:dezamisystem
-	[self performSegueWithIdentifier:@"showDetail" sender:self];
-	
-	
-	NSLog(@"commentBtn is touched");
-}
+//#pragma mark - タッチイベント
+//- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
+//	
+//	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
+//	NSLog(@"row %ld was tapped.",(long)indexPath.row);
+//	_postID = [_postid_ objectAtIndex:indexPath.row];
+//	NSLog(@"postid:%@",_postID);
+//	
+//	//[self performSegueWithIdentifier:@"showDetail2" sender:self];
+//	// !!!:dezamisystem
+//	[self performSegueWithIdentifier:@"showDetail" sender:self];
+//	
+//	NSLog(@"commentBtn is touched");
+//}
 
 
 #pragma mark - UIScrollView Delegate
@@ -227,9 +222,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 // UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
+	
 	UITouch *touch = [[event allTouches] anyObject];
 	CGPoint p = [touch locationInView:self.tableView];
 	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+	
 	return indexPath;
 }
 
@@ -448,14 +445,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		 [NSURL URLWithString:@"comgooglemaps://"]]) {
 		[[UIApplication sharedApplication] openURL:
 		 [NSURL URLWithString:directions]];
-	} else {
+	}
+	else {
 		NSLog(@"Can't use comgooglemaps://");
 		//アラート出す
 		UIAlertView *alert =
 		[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
 								  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
 		[alert show];
-		
 	}
 }
 
