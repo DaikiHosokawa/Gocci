@@ -194,7 +194,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -1230,9 +1230,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SDs-PX-5V3"/>
+        <segue reference="kX1-oE-Kec"/>
         <segue reference="cAF-eC-h6q"/>
         <segue reference="Inu-4B-shH"/>
-        <segue reference="kX1-oE-Kec"/>
+        <segue reference="SDs-PX-5V3"/>
     </inferredMetricsTieBreakers>
 </document>

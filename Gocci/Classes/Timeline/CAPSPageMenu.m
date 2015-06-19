@@ -702,6 +702,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
         
         if (itemIndex >= 0 && itemIndex < _controllerArray.count) {
             // Update page if changed
+			
+			//画面更新
             if (itemIndex != _currentPageIndex) {
                 _startingPageForScroll = itemIndex;
                 _lastPageIndex = _currentPageIndex;
