@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol Sample4TableViewCellDelegate <NSObject>
+
+@end
+
 @interface Sample4TableViewCell : UITableViewCell
+@property (nonatomic, weak) id<Sample4TableViewCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
 @property (weak, nonatomic) IBOutlet UILabel *Comment;
@@ -19,5 +24,7 @@
 
 #pragma mark - Initialize
 + (instancetype)cell;
+
+
 
 @end

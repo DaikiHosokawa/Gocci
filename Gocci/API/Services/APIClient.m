@@ -427,5 +427,22 @@ static APIClient *_sharedInstance = nil;
     
 }
 
++ (void)postDelete:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"post_id" :post_id,
+                             };
+    
+    NSLog(@"paramsgoodinsert:%@",params);
+    [[APIClient sharedClient].manager POST:@"delete/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+    
+}
+
 
 @end

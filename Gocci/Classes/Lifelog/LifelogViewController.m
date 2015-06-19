@@ -18,11 +18,11 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 @interface LifelogViewController ()
 
 {
-	JTCalendarMenuView *calendarMenuView;
+    JTCalendarMenuView *calendarMenuView;
     NSLayoutConstraint *calendarContentViewHeight;
-        DemoContentView *_firstContentView;
-        DemoContentView *_secondContentView;
-
+    DemoContentView *_firstContentView;
+    DemoContentView *_secondContentView;
+    
 }
 - (void)showDefaultContentView;
 @property(nonatomic,strong) NSArray *array_year;
@@ -40,14 +40,14 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 #pragma mark - アイテム名登録用
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-	self = [super initWithCoder:aDecoder];
-	
-	return self;
+    self = [super initWithCoder:aDecoder];
+    
+    return self;
 }
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
+    [super viewDidLoad];
     
     //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
@@ -67,58 +67,58 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
-
-   
+    
+    
     /*
-    //右ナビゲーションアイテム(通知)の実装
-   // UIButton *wantButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+     //右ナビゲーションアイテム(通知)の実装
+     // UIButton *wantButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+     
+     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"行きたい" style:UIBarButtonItemStylePlain target:self action:@selector(tapWantButton)];
+     //  [barButtonItem setCustomView:wantButton];
+     //左に設定する
+     self.navigationItem.leftBarButtonItem = barButtonItem;
+     */
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"行きたい" style:UIBarButtonItemStylePlain target:self action:@selector(tapWantButton)];
-  //  [barButtonItem setCustomView:wantButton];
-    //左に設定する
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-    */
     
-	
-	//座標
-	const CGFloat width_view = self.view.frame.size.width;
-	const CGFloat height_view = self.view.frame.size.height;
-	const CGFloat height_content = width_view * 0.9;
-	const CGFloat y_content = height_view / 2 - height_content / 2;
-	const CGFloat height_menu = 24.0;
-	const CGFloat y_menu = y_content - height_menu; // + height_navigation;
-	
-	// タイトル（月表示）バー
-	calendarContentViewHeight = [[NSLayoutConstraint alloc] init];
-	calendarMenuView = [[JTCalendarMenuView alloc] initWithFrame:CGRectMake(0, y_menu, width_view, height_menu)];
-	calendarMenuView.backgroundColor = [UIColor clearColor];
-	[self.view addSubview:calendarMenuView];
-	
-	// カレンダー
-	//CGFloat y_origin = self.view.frame.size.height / 2 - width_view / 2;
-	self.calendarContentView = [[JTCalendarContentView alloc] initWithFrame:CGRectMake(0, 0, width_view, height_content)];
-	self.calendarContentView.center = CGPointMake(width_view/2., height_view/2.);
-	self.calendarContentView.backgroundColor = [UIColor clearColor];
-	[self.view addSubview:self.calendarContentView];
-	//
-	
-	self.calendar = [JTCalendar new];
-	
-	// All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
-	// Or you will have to call reloadAppearance
-	{
-		self.calendar.calendarAppearance.calendar.firstWeekday = 1; // Sunday == 1, Saturday == 7
-		self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
-		self.calendar.calendarAppearance.ratioContentMenu = 1.;
-	}
-	
-	//カレンダーデータセット
-	[self.calendar setMenuMonthsView:calendarMenuView];
-	[self.calendar setContentView:self.calendarContentView];
-	[self.calendar setDataSource:self];
-	
-	
-	
+    //座標
+    const CGFloat width_view = self.view.frame.size.width;
+    const CGFloat height_view = self.view.frame.size.height;
+    const CGFloat height_content = width_view * 0.9;
+    const CGFloat y_content = height_view / 2 - height_content / 2;
+    const CGFloat height_menu = 24.0;
+    const CGFloat y_menu = y_content - height_menu; // + height_navigation;
+    
+    // タイトル（月表示）バー
+    calendarContentViewHeight = [[NSLayoutConstraint alloc] init];
+    calendarMenuView = [[JTCalendarMenuView alloc] initWithFrame:CGRectMake(0, y_menu, width_view, height_menu)];
+    calendarMenuView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:calendarMenuView];
+    
+    // カレンダー
+    //CGFloat y_origin = self.view.frame.size.height / 2 - width_view / 2;
+    self.calendarContentView = [[JTCalendarContentView alloc] initWithFrame:CGRectMake(0, 0, width_view, height_content)];
+    self.calendarContentView.center = CGPointMake(width_view/2., height_view/2.);
+    self.calendarContentView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.calendarContentView];
+    //
+    
+    self.calendar = [JTCalendar new];
+    
+    // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
+    // Or you will have to call reloadAppearance
+    {
+        self.calendar.calendarAppearance.calendar.firstWeekday = 1; // Sunday == 1, Saturday == 7
+        self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
+        self.calendar.calendarAppearance.ratioContentMenu = 1.;
+    }
+    
+    //カレンダーデータセット
+    [self.calendar setMenuMonthsView:calendarMenuView];
+    [self.calendar setContentView:self.calendarContentView];
+    [self.calendar setDataSource:self];
+    
+    
+    
     //ナビゲーションバーに画像
     {
         CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
@@ -138,29 +138,29 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
-
-
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-	
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     [self _fetchLifelog];
-	
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-	[super viewDidAppear:animated];
+    [super viewDidAppear:animated];
     if ([self isFirstRun]) {
         //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
     }
-
+    
     NSLog(@"ここが重い");
-	//::[self.calendar reloadData]; // Must be call in viewDidAppear
+    //::[self.calendar reloadData]; // Must be call in viewDidAppear
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -180,70 +180,70 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 #pragma mark - 変換
 -(int)getYear:(NSDate *)date
 {
-	NSDateFormatter *formatter_year = [[NSDateFormatter alloc] init];
-	[formatter_year setDateFormat:@"yyyy"];
-	NSString *yearStr = [formatter_year stringFromDate:date];
-	return [yearStr intValue];
+    NSDateFormatter *formatter_year = [[NSDateFormatter alloc] init];
+    [formatter_year setDateFormat:@"yyyy"];
+    NSString *yearStr = [formatter_year stringFromDate:date];
+    return [yearStr intValue];
 }
 -(int)getMonth:(NSDate *)date
 {
-	NSDateFormatter *formatter_month = [[NSDateFormatter alloc] init];
-	[formatter_month setDateFormat:@"MM"];
-	NSString *monthStr = [formatter_month stringFromDate:date];
-	return [monthStr intValue];
+    NSDateFormatter *formatter_month = [[NSDateFormatter alloc] init];
+    [formatter_month setDateFormat:@"MM"];
+    NSString *monthStr = [formatter_month stringFromDate:date];
+    return [monthStr intValue];
 }
 -(int)getDay:(NSDate *)date
 {
-	NSDateFormatter *formatter_day = [[NSDateFormatter alloc] init];
-	[formatter_day setDateFormat:@"dd"];
-	NSString *dayStr = [formatter_day stringFromDate:date];
-	return [dayStr intValue];
+    NSDateFormatter *formatter_day = [[NSDateFormatter alloc] init];
+    [formatter_day setDateFormat:@"dd"];
+    NSString *dayStr = [formatter_day stringFromDate:date];
+    return [dayStr intValue];
 }
 
 #pragma mark - 判定
 -(BOOL)checkExistDataWithYear:(int)year Month:(int)month Day:(int)day
 {
-	for (int i = 0; i < [array_year count]; i++) {
-		NSString *number_year = [array_year objectAtIndex:i];
-		int valueYear = [number_year intValue];
-		if (valueYear == year) {
-			NSString *number_month = [array_month objectAtIndex:i];
-			int valueMonth = [number_month intValue];
-			if (valueMonth == month) {
-				NSString *number_day = [array_day objectAtIndex:i];
-				int valueDay = [number_day intValue];
-				if (valueDay == day) {
-					return YES;
-				}
-			}
-		}
-	}
-	
-	return NO;
+    for (int i = 0; i < [array_year count]; i++) {
+        NSString *number_year = [array_year objectAtIndex:i];
+        int valueYear = [number_year intValue];
+        if (valueYear == year) {
+            NSString *number_month = [array_month objectAtIndex:i];
+            int valueMonth = [number_month intValue];
+            if (valueMonth == month) {
+                NSString *number_day = [array_day objectAtIndex:i];
+                int valueDay = [number_day intValue];
+                if (valueDay == day) {
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - JTCalendarDataSource
 // イベントマーカー
 - (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
 {
-	int yearSelected = [self getYear:date];
-	int monthSelected = [self getMonth:date];
-	int daySelected = [self getDay:date];
-	if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
-		return YES;
-	}
-	
-	return NO;
+    int yearSelected = [self getYear:date];
+    int monthSelected = [self getMonth:date];
+    int daySelected = [self getDay:date];
+    if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 //　日にち選択時
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
-	NSLog(@"Date: %@", date);
-	
-	int yearSelected = [self getYear:date];
-	int monthSelected = [self getMonth:date];
-	int daySelected = [self getDay:date];
+    NSLog(@"Date: %@", date);
+    
+    int yearSelected = [self getYear:date];
+    int monthSelected = [self getMonth:date];
+    int daySelected = [self getDay:date];
     // NSIntegerを文字列に変換
     NSString *str1 = [NSString stringWithFormat:@"%04d", yearSelected];
     // NSIntegerを文字列に変換
@@ -254,37 +254,37 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];
     lifelogdelegate.lifelogDate = str;
     NSLog(@"%s %04d-%02d-%02d",__func__, yearSelected,monthSelected,daySelected);
-	if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
-		[self performSegueWithIdentifier:SEGUE_GO_LIFELOG_SUB sender:self];
-	}
+    if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
+        [self performSegueWithIdentifier:SEGUE_GO_LIFELOG_SUB sender:self];
+    }
 }
 
 #pragma mark - Transition examples
 - (void)transitionExample
 {
-	CGFloat newHeight = 300;
-	if(self.calendar.calendarAppearance.isWeekMode){
-		newHeight = 75.;
-	}
-	
-	[UIView animateWithDuration:.5
-					 animations:^{
-						 calendarContentViewHeight.constant = newHeight;
-						 [self.view layoutIfNeeded];
-					 }];
-	
-	[UIView animateWithDuration:.25
-					 animations:^{
-						 self.calendarContentView.layer.opacity = 0;
-					 }
-					 completion:^(BOOL finished) {
-						 [self.calendar reloadAppearance];
-						 
-						 [UIView animateWithDuration:.25
-										  animations:^{
-											  self.calendarContentView.layer.opacity = 1;
-										  }];
-					 }];
+    CGFloat newHeight = 300;
+    if(self.calendar.calendarAppearance.isWeekMode){
+        newHeight = 75.;
+    }
+    
+    [UIView animateWithDuration:.5
+                     animations:^{
+                         calendarContentViewHeight.constant = newHeight;
+                         [self.view layoutIfNeeded];
+                     }];
+    
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         self.calendarContentView.layer.opacity = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.calendar reloadAppearance];
+                         
+                         [UIView animateWithDuration:.25
+                                          animations:^{
+                                              self.calendarContentView.layer.opacity = 1;
+                                          }];
+                     }];
 }
 
 - (BOOL)isFirstRun
@@ -357,10 +357,10 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
              }
              NSLog(@"result:%@",result);
              
-            // 取得したデータを self.posts に格納
+             // 取得したデータを self.posts に格納
              NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
              for (NSDictionary *post in result) {
-        
+                 
                  [tempPosts addObject:post];
                  //NSLog(@"tempPosts:%@",resuglt);
              }
@@ -389,7 +389,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
                  array_day = [[NSArray alloc] initWithObjects:@"15",@"28", nil];
              }
              [self.calendar reloadData];
-              [SVProgressHUD dismiss];
+             [SVProgressHUD dismiss];
          }];
     };
     

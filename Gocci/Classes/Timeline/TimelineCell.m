@@ -91,6 +91,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+
 - (void)tapthumb:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {

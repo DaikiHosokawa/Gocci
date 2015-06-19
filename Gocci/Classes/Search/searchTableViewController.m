@@ -55,10 +55,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark - アイテム名登録用
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-	self = [super initWithCoder:aDecoder];
-	if (self) {
-	}
-	return self;
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+    }
+    return self;
 }
 
 - (void)viewDidLoad
@@ -68,7 +68,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     self.restaurants = [NSArray array];
     self.annotations = [NSArray array];
     self.searched = NO;
-     self.tableView.bounces = NO;
+    self.tableView.bounces = NO;
     
     // Pull to refresh
     self.refresh = [UIRefreshControl new];
@@ -86,16 +86,16 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.mapType = MKMapTypeStandard;
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
-
+        
         /*1
-        UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
-        buttonA.frame = CGRectMake(280, 10, 100, 30);
-        buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
-        [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
-        [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
-        //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
-        //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
-        [_mapView addSubview:buttonA];
+         UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
+         buttonA.frame = CGRectMake(280, 10, 100, 30);
+         buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+         [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
+         [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
+         //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
+         //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
+         [_mapView addSubview:buttonA];
          */
     }
     else if (rect2.size.height == 736) {
@@ -118,20 +118,20 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         _mapView.showsUserLocation = YES;
         [self.view addSubview:_mapView];
         /*
-        UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
-        buttonA.frame = CGRectMake(240, 10, 100, 30);
-        buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
-        [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
-        [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
-        //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
-        //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
-        [_mapView addSubview:buttonA];
+         UIButton * buttonA = [ UIButton buttonWithType:UIButtonTypeRoundedRect ];
+         buttonA.frame = CGRectMake(240, 10, 100, 30);
+         buttonA.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+         [ buttonA setTitle:@"更新" forState:UIControlStateNormal ];
+         [ buttonA setTitleColor:[ UIColor redColor ] forState:UIControlStateNormal ];
+         //[ buttonA setTitleShadowColor:[ UIColor grayColor ] forState:UIControlStateNormal ];
+         //buttonA.titleLabel.shadowOffset = CGSizeMake( 1, 1 );
+         [_mapView addSubview:buttonA];
          */
     }
     
-	// !!!:dezamisystem
-//	self.navigationItem.backBarButtonItem = backButton;
-	
+    // !!!:dezamisystem
+    //	self.navigationItem.backBarButtonItem = backButton;
+    
     _searchBar = [[UISearchBar alloc] init];
     _searchBar.tintColor = [UIColor darkGrayColor];
     _searchBar.placeholder = @"検索";
@@ -140,44 +140,44 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"";
-    self.navigationItem.backBarButtonItem = barButton;  
+    self.navigationItem.backBarButtonItem = barButton;
     // UINavigationBar上に、UISearchBarを追加
 #if 1
-	self.navigationItem.titleView = _searchBar;
-	self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
+    self.navigationItem.titleView = _searchBar;
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 320, 44);
 #else
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
+        self.navigationItem.titleView =navigationTitle;
         
-	}
+    }
 #endif
-
+    
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchCell" bundle:nil]
          forCellReuseIdentifier:SearchCellIdentifier];
 }
 
 /*
--(void)getValue{
-    NSLog(@"succecced getValue");
-}
-*/
+ -(void)getValue{
+ NSLog(@"succecced getValue");
+ }
+ */
 
 -(void)viewWillAppear:(BOOL)animated
 {
     
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
- 
+    
     _searchBar.text = nil;
     
     __weak typeof(self)weakSelf = self;
@@ -216,7 +216,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     [_searchBar resignFirstResponder];
     _dontexist.text = nil;
-
+    
     [self _searchRestaurants:searchBar.text];
 }
 
@@ -246,7 +246,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
-         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
+        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
         descriptionLabel.text = @"近くの美味しいお店が探せます";
         [_firstContentView addSubview:descriptionLabel];
         
@@ -329,12 +329,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     if (!cell) {
         cell = [SearchCell cell];
     }
-
+    
     Restaurant *restaurant = self.restaurants[indexPath.row];
     [cell configureWithRestaurant:restaurant index:indexPath.row];
     cell.delegate = self;
     
-     [SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
     
     return cell;
 }
@@ -352,9 +352,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // 2つ目の画面にパラメータを渡して遷移する
-//    if ([segue.identifier isEqualToString:@"showDetail"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-	{
+    //    if ([segue.identifier isEqualToString:@"showDetail"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
         // ここでパラメータを渡す
         NSDictionary *params = (NSDictionary *)sender;
         NSLog(@"params:%@",params);
@@ -446,7 +446,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 - (void)_fetchFirstRestaurantsWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
     LOG(@"lat=%@, lng=%@", @(coordinate.latitude), @(coordinate.longitude));
-
+    
     // 既に検索をしている場合は、現在地中心のレストラン一覧の取得は行わない
     if (self.searched) {
         return;
@@ -483,7 +483,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          if ([self.restaurants count] == 0) {
              LOG(@"投稿がない");
              _emptyView.hidden = NO;
-              [SVProgressHUD dismiss];
+             [SVProgressHUD dismiss];
          }
      } useCache:^(id cachedResult)
      {
@@ -554,12 +554,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
             _dontexist = nil;
         }
         /*
-        _dontexist = [[UILabel alloc] init];
-        _dontexist.frame = CGRectMake(30, 250, 250, 330);
-        [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
-        _dontexist.numberOfLines = 3;
-        _dontexist.textAlignment = NSTextAlignmentLeft;
-        */
+         _dontexist = [[UILabel alloc] init];
+         _dontexist.frame = CGRectMake(30, 250, 250, 330);
+         [_dontexist setText:[NSString stringWithFormat:@"キーワード「%@」に該当する店舗はありません。",_searchBar.text]];
+         _dontexist.numberOfLines = 3;
+         _dontexist.textAlignment = NSTextAlignmentLeft;
+         */
         [self.view addSubview:_dontexist];
     } else {
         [_dontexist removeFromSuperview];
@@ -585,7 +585,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     zoom.span.longitudeDelta = 0.001;
     // ズームする
     [self.mapView setRegion:zoom animated: YES];
-
+    
     // ピンが全て見えるように地図のズームレベルを調整
     //[self.mapView showAnnotations:self.annotations animated:YES];
     

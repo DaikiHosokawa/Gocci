@@ -182,8 +182,16 @@
 /**
  *  goodinsert
  *
- *  @param restaurantName
+ *  @param post_id
  *  @param handler
  */
 + (void)postGood:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  delete
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)postDelete:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 @end
