@@ -53,6 +53,8 @@
 @property (nonatomic) NSUInteger follow_flag;
 @property (nonatomic) NSUInteger like_flag;
 @property (nonatomic) NSUInteger want_flag;
+@property (nonatomic) NSString *pushed_at;
+@property (nonatomic) NSInteger flag;
 
 
 + (instancetype)everyPostWithJsonDictionary:(NSDictionary *)dictionary;

@@ -229,11 +229,14 @@
 	//NSLog(@"%@",jsonDic);
 	
 	NSArray *d_comments = [jsonDic objectForKey:@"comments"];
+    NSLog(@"d_comments:%@",d_comments);
 	list_comments = [[NSArray alloc] initWithArray:d_comments];
-	NSLog(@"%@",list_comments);
+
 	
 	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
+    NSLog(@"d_post:%@",d_post);
 	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+    
 }
 
 /**

@@ -25,22 +25,22 @@
     NSDictionary *jsonDic;
     //検索画面から撮影前画面へ
     NSArray *jsonArray;
-
+    
     NSData *movieData;
     
     NSString *lifelogDate;
     
     int cheertag;
-
-	
-	// !!!:dezamisystem・グローバル変数
-	int valueKakaku;
+    
+    
+    // !!!:dezamisystem・グローバル変数
+    int valueKakaku;
     NSString *valueHitokoto;
-	NSString *stringTenmei;
+    NSString *stringTenmei;
     NSString *stringFuniki;
     NSString *stringCategory;
-	int indexCategory;
-	int indexFuniki;
+    int indexCategory;
+    int indexFuniki;
     
     BBBadgeBarButtonItem *barButton;
 }

@@ -522,7 +522,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #else
 	[self.delegate nearTimeline:self postid:postID];
 	TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
-	[vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:nil];
+	[vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 #endif
 }
 
