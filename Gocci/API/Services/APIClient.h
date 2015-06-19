@@ -10,22 +10,6 @@
  */
 @interface APIClient : NSObject
 
-/**
- *  timeline/
- *
- *  @param handler 完了イベントハンドラ
- */
-+ (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  timeline_date/
- *
- *  @param latitude
- *  @param longitude
- *  @param limit
- *  @param handler   
- */
-+ (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 /**
@@ -205,4 +189,29 @@
  *  @param handler
  */
 + (void)postDelete:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  violation
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)postViolation:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  favorites
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)postFavorites:(NSString *)user_name handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  unfavorites
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 @end

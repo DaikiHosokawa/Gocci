@@ -121,17 +121,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
     
+    NSLog(@"statushere:%@",_status_);
     if (_status_) {
-        NSString *dotse = _status_[1];
+        NSString *dotse = _status_[0];
         NSLog(@"dotse:%@",dotse);
         NSInteger i = dotse.integerValue;
         int pi = (int)i;
         NSLog(@"pi:%d",pi);
-        //NSLog(@"postFlag:%ld",(long)_postFlag);
         flash_on = pi;
         NSLog(@"flash_on:%d",flash_on);
     }else{
         NSInteger i = _postFlag;
+         NSLog(@"postFlag:%ld",(long)_postFlag);
         int pi = (int)i;
         NSLog(@"pi:%d",pi);
         //NSLog(@"postFlag:%ld",(long)_postFlag);
@@ -177,48 +178,32 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if(flash_on == 0 ){
         
-        //スイッチオン時の処理を記述できます
-        NSLog(@"フォローしました");
-        NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/favorites/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        
-        if (result) {
-            UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
-            [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-            flash_on = 1;
-            NSLog(@"result:%@",result);
-            
+        // API からデータを取得
+        [APIClient postFavorites:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if ((code=200)) {
+                UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+                [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+                flash_on = 1;
+                NSLog(@"フォローしました");
+            }
         }
+         ];
+        
+        
         
     }else if (flash_on == 1){
-        NSLog(@"フォロー解除しました");
-        UIImage *img = [UIImage imageNamed:@"フォロー.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 0;
-        //スイッチオフに戻った場合の処理を記述
-        NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unfavorites/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            
+        
+        [APIClient postUnfavorites:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if ((code=200)) {
+                NSLog(@"フォロー解除しました");
+                UIImage *img = [UIImage imageNamed:@"フォロー.png"];
+                [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+                flash_on = 0;
+            }
         }
+         ];
     }
 }
 
@@ -240,7 +225,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //status
     NSArray *user_name = [jsonDic valueForKey:@"status"];
     _status_ = [user_name mutableCopy];
-    NSLog(@"statusZ:%@",_status_);
+    NSLog(@"statust:%@",_status_[0]);
     
     
     // !!!:dezamisystem
@@ -432,21 +417,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
+            // API からデータを取得
+            [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
+             ];
+            
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -456,23 +437,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
-        
+         ];
     }
     
 }
@@ -565,10 +538,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // 表示の更新
         [weakSelf.tableView reloadData];
         
-        NSString *alertMessage = @"圏外ですので再生できません。";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
-        
         
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];
@@ -578,11 +547,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }];
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- [self _playMovieAtCurrentCell];
- }
- */
+
 
 /**
  *  現在表示中のセルの動画を再生する

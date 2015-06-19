@@ -55,37 +55,7 @@ static APIClient *_sharedInstance = nil;
 
 #pragma mark - Class Methods
 
-+ (void)timelineWithLimit:(NSString *)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    NSDictionary *params = @{
-                             @"limit" : limit,
-                             };
-    [[APIClient sharedClient].manager GET:@"timeline/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
 
-+ (void)distTimelineWithLatitude:(double)latitude longitude:(double)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    NSDictionary *params = @{
-                             @"lat" : @(latitude),
-                             @"lon" : @(longitude),
-                             @"limit" : @(limit)
-                             };
-    
-    [[APIClient sharedClient].manager GET:@"dist_timeline/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      NSLog(@"task:%@",params);
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
 
 + (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
@@ -450,6 +420,55 @@ static APIClient *_sharedInstance = nil;
     
     NSLog(@"paramsgoodinsert:%@",params);
     [[APIClient sharedClient].manager POST:@"delete/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+    
+}
+
++ (void)postViolation:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"post_id" :post_id,
+                             };
+    
+    NSLog(@"paramsgoodinsert:%@",params);
+    [[APIClient sharedClient].manager POST:@"violation/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+    
+}
+
++ (void)postFavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"user_name" :user_name,
+                             };
+    
+    [[APIClient sharedClient].manager POST:@"favorites/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+    
+}
+
++ (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"user_name" :user_name,
+                             };
+    
+    [[APIClient sharedClient].manager POST:@"unfavorites/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
