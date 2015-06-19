@@ -72,14 +72,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-     [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
+    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
     // BBBadgeBarButtonItemオブジェクトの作成
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-
+    
     self.barButton.badgeBGColor      = [UIColor whiteColor];
     UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
     self.barButton.badgeTextColor    = color_custom;
@@ -106,9 +106,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     //ナビゲーションバーに画像
     {
-        //タイトル画像設定
-        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        //CGFloat width_image = height_image;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
@@ -131,7 +128,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.tableView addSubview:self.refresh];
     
     // API からタイムラインのデータを取得
-      [self _fetchTimelineUsingLocationCacheALL:YES];
+    [self _fetchTimelineUsingLocationCacheALL:YES];
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -143,32 +140,26 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
- 
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    //    self.navigationItem.leftBarButtonItem.enabled = NO;
-
-    // !!!:dezamisystem
-//    [self.navigationItem setHidesBackButton:YES animated:NO];
-
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     // 画面が隠れた際に再生中の動画を停止させる
@@ -183,9 +174,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    // !!!:dezamisystem
-//    self.navigationItem.leftBarButtonItem.enabled = YES;
+    
 }
 
 
@@ -218,7 +207,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - Action
 
 - (IBAction)pushUserTimeline:(id)sender {
-
+    
     CATransition *transition = [CATransition animation];
     transition.duration = 0.4;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -241,8 +230,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
-    // スクロール中は動画を停止する
- //  [[MoviePlayerManager sharedManager] scrolling:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -250,16 +237,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //一番下までスクロールしたかどうか
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
     {
-        //まだ表示するコンテンツが存在するか判定し存在するなら○件分を取得して表示更新する
+        //投稿追加処理を入れたい
     }
-   
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
     LOG(@"scroll is stoped");
     
-  // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -267,7 +253,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         
-    [self _playMovieAtCurrentCell];
+        [self _playMovieAtCurrentCell];
     }
 }
 
@@ -321,12 +307,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     cell.delegate = self;
     
     // 動画の読み込み
-//    __weak typeof(self)weakSelf = self;
+    //    __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-     [SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
     
     
     return cell;
@@ -338,9 +324,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
-    
-    //[self performSegueWithIdentifier:@"showDetail2" sender:self];
-    // !!!:dezamisystem
+ 
     [self performSegueWithIdentifier:@"showDetail" sender:self];
     
     
@@ -356,7 +340,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
+    
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
         //ここでパラメータを渡す
@@ -368,7 +352,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #endif
         eveVC.postID = (NSString *)sender;
     }
-
+    
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         //ここでパラメータを渡す
@@ -378,7 +362,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         useVC.postFlag = _postFlag;
     }
     //店舗画面にパラメータを渡して遷移する
-//	if ([segue.identifier isEqualToString:@"goRestpage"])
+    //	if ([segue.identifier isEqualToString:@"goRestpage"])
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
         //ここでパラメータを渡す
@@ -405,7 +389,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
     }
      ];
-
+    
 }
 
 
@@ -414,7 +398,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     //違反報告ボタンの時の処理
     LOG(@"postid=%@", postID);
-
+    
     Class class = NSClassFromString(@"UIAlertController");
     if(class)
     {
@@ -439,7 +423,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 NSString *alertMessage = @"違反報告をしました。";
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
-}
+            }
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -464,10 +448,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             NSString *alertMessage = @"違反報告をしました";
             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alrt show];
-}
+        }
         
     }
-
+    
 }
 
 
@@ -479,13 +463,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postUsername = userName;
     _postPicture = usersPicture;
     _postFlag = flag;
-
+    
     LOG(@"postUsername:%@",_postUsername);
-
+    
     //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     // !!!:dezamisystem
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-
+    
     LOG(@"Username is touched");
 }
 
@@ -507,7 +491,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
         
-}
+    }
 }
 
 #pragma mark user_nameタップの時の処理 2
@@ -557,133 +541,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
     _postID = postID;
-
+    
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
 
 #pragma mark - Private Methods
 
-/**
- *  タイムラインのデータを取得
- */
-/*
-- (void)_fetchTimeline
-{
-    [self _fetchTimelineUsingLocationCache:YES];
-}
-*/
-
-
-/**
- *  近くのお店のタイムラインのデータを取得
- *
- *  @param usingLocationCache 前回取得した位置情報を利用する場合 YES を指定
- */
-/*
-- (void)_fetchTimelineUsingLocationCache:(BOOL)usingLocationCache
-{
-    
-    [SVProgressHUD show];
-    
-    __weak typeof(self)weakSelf = self;
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        [weakSelf.refresh beginRefreshing];
-        
-        // API からデータを取得
-        [APIClient distTimelineWithLatitude:coordinate.latitude
-                                  longitude:coordinate.longitude
-                                      limit:50
-                                    handler:^(id result, NSUInteger code, NSError *error)
-         {
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-             
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             
-             if ([weakSelf.refresh isRefreshing]) {
-                 [weakSelf.refresh endRefreshing];
-             }
-             
-             if (code != 200 || error != nil) {
-                 // API からのデータの取得に失敗
-                 // TODO: アラート等を掲出
-                 return;
-             }
-             
-             // 取得したデータを self.posts に格納
-             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-             for (NSDictionary *post in result) {
-                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-             }
-             self.posts = [NSArray arrayWithArray:tempPosts];
-             NSLog(@"rposts:%@",_posts);
-             if ([self.posts count]== 0) {
-                 
-                 
-                 Class class = NSClassFromString(@"UIAlertController");
-                 if(class)
-                 {
-                     // iOS 8の時の処理
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"近くに投稿がありません。全体の投稿を再度取得しますか？" preferredStyle:UIAlertControllerStyleAlert];
-                     
-                     // addActionした順に左から右にボタンが配置されます
-                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                         
-                         //はいのときのアクション内容
-                         [self _fetchTimelineUsingLocationCacheALL:YES];
-                         
-                         if (result) {
-                             
-                         }
-                     }]];
-                     
-                     [self presentViewController:alertController animated:YES completion:nil];
-                 }
-                 else
-                 {
-                     //その他の時のアクション内容
-                     
-                     if (result) {
-                         //はいのときのアクション内容
-                         [self _fetchTimelineUsingLocationCacheALL:YES];
-                     }
-                 }
-             }
-             
-             // 動画データを一度全て削除
-             [[MoviePlayerManager sharedManager] removeAllPlayers];
-             
-             // 表示の更新
-             [weakSelf.tableView reloadData];
-    
-         }];
-    };
-    
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        return;
-    }
-    
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         LOG(@"location=%@, error=%@", location, error);
-         
-         if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
-             return;
-         }
-         fetchAPI(location.coordinate);
-     }];
-}
- */
 
 /**
  *　全体タイムラインのデータを取得
@@ -704,7 +568,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // API からデータを取得
         [APIClient distTimelineWithLatitudeAll:50
-                                     handler:^(id result, NSUInteger code, NSError *error)
+                                       handler:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              
@@ -737,13 +601,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              // 表示の更新
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
-        
-//             BOOL isServerAvailable;
-//             
-//             
-//             NSString *alertMessage = @"圏外ですので再生できません。";
-//             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-			 
+             
+             //             BOOL isServerAvailable;
+             //
+             //
+             //             NSString *alertMessage = @"圏外ですので再生できません。";
+             //             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             
              
          }];
     };
@@ -774,10 +638,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 /*
-- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
-
-    [self _playMovieAtCurrentCell];
-}
+ - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+ 
+ [self _playMovieAtCurrentCell];
+ }
  */
 
 /**
@@ -786,17 +650,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)_playMovieAtCurrentCell
 {
     /*
-    if ( [self.posts count] == 0){
-        return;
-    }
-    */
+     if ( [self.posts count] == 0){
+     return;
+     }
+     */
     
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
         return;
     }
- 
-  
+    
+    
     CGFloat currentHeight = 0.0;
     for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
         if ([self.posts count] <= i) continue;
@@ -813,17 +677,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentCell.thumbnailView.frame.size.height);
     
     
-     [[MoviePlayerManager sharedManager] scrolling:NO];
-            [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                          inView:self.tableView
-                                                           frame:movieRect];
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:movieRect];
     
 }
 
 /**
  *  現在表示中の indexPath を取得
  *
- *  @return 
+ *  @return
  */
 - (NSIndexPath *)_currentIndexPath
 {
