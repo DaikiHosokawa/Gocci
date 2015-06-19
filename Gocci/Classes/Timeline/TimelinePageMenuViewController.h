@@ -13,4 +13,6 @@
 
 @interface TimelinePageMenuViewController : UIViewController<NearTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
 
+@property id supervc;
+
 @end

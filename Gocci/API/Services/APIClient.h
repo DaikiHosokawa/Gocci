@@ -39,6 +39,17 @@
 + (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  gochi_rank/
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param limit
+ *  @param handler
+ */
++ (void)rankTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
 *  restaurant/
 *
 *  @param handler 完了イベントハンドラ

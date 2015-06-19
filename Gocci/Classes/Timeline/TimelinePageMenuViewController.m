@@ -167,11 +167,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 	//PageMenu登録
 	NearTimelineTableViewController *controller1 = [[NearTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
-	controller1.title = @"近くのタイムライン";
+	controller1.title = @"全体";
 	controller1.delegate = self;
 	
 	FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
-	controller2.title = @"フォロー＆応援した店";
+	controller2.title = @"人気";
 	controller2.delegate = self;
 	
 	//PageMenuアイテム
@@ -228,6 +228,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	
 	if (!self.popover) {
 		NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
 		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
 	}
 	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
@@ -286,7 +287,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		//ここでパラメータを渡す
 		everyBaseNavigationController *eveNC = segue.destinationViewController;
 		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-		eveVC.postID = _postID; // (NSString *)sender;
+		eveVC.postID = (NSString *)sender;
 	}
 	else
 	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
