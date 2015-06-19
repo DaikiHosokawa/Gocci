@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3728F2BC1B2B0339009D8B88 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728F2BB1B2B0339009D8B88 /* EveryPost.m */; };
 		373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373BB8381AFE59A300F7AC77 /* DummyViewController.m */; };
+		3758462E1B32671500E7B4A0 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3758462D1B32671500E7B4A0 /* TimelinePageMenuViewController.m */; };
 		377063271AFC6DBA00CD891D /* icon_record_cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063251AFC6DBA00CD891D /* icon_record_cam.png */; };
 		377063281AFC6DBA00CD891D /* icon_record_cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */; };
 		3770633B1AFC6F9F00CD891D /* KakakuTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770632C1AFC6F9F00CD891D /* KakakuTextViewController.m */; };
@@ -24,6 +25,9 @@
 		377063451AFC6F9F00CD891D /* SCSecondViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377063381AFC6F9F00CD891D /* SCSecondViewMain.xib */; };
 		377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770633A1AFC6F9F00CD891D /* XYPieChart.m */; };
 		37A038D01AFC923D0095702F /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A038CF1AFC923D0095702F /* SCPostingViewController.m */; };
+		37A074041B31A14D00D91FE2 /* NearTimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A074031B31A14D00D91FE2 /* NearTimelineTableViewController.m */; };
+		37A074071B31A5CF00D91FE2 /* FollowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A074061B31A5CF00D91FE2 /* FollowTableViewController.m */; };
+		37A0740A1B31A73900D91FE2 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A074091B31A73900D91FE2 /* CAPSPageMenu.m */; };
 		37D3231C1AFF593A00DBE8C6 /* SCScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D3231B1AFF593A00DBE8C6 /* SCScrollPageView.m */; };
 		37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37D66AC91AFD858100767114 /* image_sample00.jpg */; };
 		37D785731B2AC51300378467 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D785721B2AC51300378467 /* everyTableViewCell.m */; };
@@ -298,6 +302,8 @@
 		3728F2BB1B2B0339009D8B88 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
 		373BB8371AFE59A300F7AC77 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
 		373BB8381AFE59A300F7AC77 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
+		3758462C1B32671500E7B4A0 /* TimelinePageMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePageMenuViewController.h; sourceTree = "<group>"; };
+		3758462D1B32671500E7B4A0 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
 		377063251AFC6DBA00CD891D /* icon_record_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_cam.png; sourceTree = "<group>"; };
 		377063261AFC6DBA00CD891D /* icon_record_cam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_record_cam@2x.png"; sourceTree = "<group>"; };
 		3770632B1AFC6F9F00CD891D /* KakakuTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KakakuTextViewController.h; sourceTree = "<group>"; };
@@ -318,6 +324,12 @@
 		3770633A1AFC6F9F00CD891D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		37A038CE1AFC923D0095702F /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
 		37A038CF1AFC923D0095702F /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
+		37A074021B31A14D00D91FE2 /* NearTimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearTimelineTableViewController.h; sourceTree = "<group>"; };
+		37A074031B31A14D00D91FE2 /* NearTimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearTimelineTableViewController.m; sourceTree = "<group>"; };
+		37A074051B31A5CF00D91FE2 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
+		37A074061B31A5CF00D91FE2 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
+		37A074081B31A73900D91FE2 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
+		37A074091B31A73900D91FE2 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
 		37D3231A1AFF593A00DBE8C6 /* SCScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScrollPageView.h; sourceTree = "<group>"; };
 		37D3231B1AFF593A00DBE8C6 /* SCScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScrollPageView.m; sourceTree = "<group>"; };
 		37D66AC91AFD858100767114 /* image_sample00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_sample00.jpg; sourceTree = "<group>"; };
@@ -1330,6 +1342,14 @@
 		952D24751A9B9D3300C354DF /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				37A074081B31A73900D91FE2 /* CAPSPageMenu.h */,
+				37A074091B31A73900D91FE2 /* CAPSPageMenu.m */,
+				3758462C1B32671500E7B4A0 /* TimelinePageMenuViewController.h */,
+				3758462D1B32671500E7B4A0 /* TimelinePageMenuViewController.m */,
+				37A074021B31A14D00D91FE2 /* NearTimelineTableViewController.h */,
+				37A074031B31A14D00D91FE2 /* NearTimelineTableViewController.m */,
+				37A074051B31A5CF00D91FE2 /* FollowTableViewController.h */,
+				37A074061B31A5CF00D91FE2 /* FollowTableViewController.m */,
 				952D24761A9B9D3300C354DF /* TimelineCell.h */,
 				952D24771A9B9D3300C354DF /* TimelineCell.m */,
 				952D24781A9B9D3300C354DF /* TimelineCell.xib */,
@@ -1747,7 +1767,7 @@
 						TestTargetID = FF54EFDE19149A1800025DC8;
 					};
 					FF54EFDE19149A1800025DC8 = {
-						DevelopmentTeam = EY9SSB5TM5;
+						DevelopmentTeam = WZD6L926C2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1908,11 +1928,13 @@
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
 				53B9429C1AB40414000150C4 /* STHTTPRequest+STTwitter.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
+				37A074041B31A14D00D91FE2 /* NearTimelineTableViewController.m in Sources */,
 				952D237A1A9B95E800C354DF /* JTCalendarMonthView.m in Sources */,
 				53B9429E1AB40414000150C4 /* STTwitterAppOnly.m in Sources */,
 				952D236B1A9B95E800C354DF /* AFURLResponseSerialization.m in Sources */,
 				952D238D1A9B95E800C354DF /* UIImage+WebP.m in Sources */,
 				952D23691A9B95E800C354DF /* AFURLConnectionOperation.m in Sources */,
+				37A0740A1B31A73900D91FE2 /* CAPSPageMenu.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
@@ -1963,10 +1985,12 @@
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
 				37A038D01AFC923D0095702F /* SCPostingViewController.m in Sources */,
 				95E3C5B61AF4342F001599EE /* ProfileCell2.m in Sources */,
+				37A074071B31A5CF00D91FE2 /* FollowTableViewController.m in Sources */,
 				952D23961A9B95E800C354DF /* README.md in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
 				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
+				3758462E1B32671500E7B4A0 /* TimelinePageMenuViewController.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
 				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
 				53B942A11AB40414000150C4 /* STTwitterOS.m in Sources */,
