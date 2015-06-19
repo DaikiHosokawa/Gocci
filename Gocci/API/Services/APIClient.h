@@ -178,4 +178,12 @@
  */
 + (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+
+/**
+ *  goodinsert
+ *
+ *  @param restaurantName
+ *  @param handler
+ */
++ (void)postGood:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 @end

@@ -76,26 +76,26 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
-
-	
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-		CGFloat width_image = height_image;
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    
+    
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
+        CGFloat width_image = height_image;
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
+        self.navigationItem.titleView =navigationTitle;
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
-	}
- 
-   
-   
-	// !!!:dezamisystem
-//	self.navigationItem.title = _postUsername;
+    }
+    
+    
+    
+    // !!!:dezamisystem
+    //	self.navigationItem.title = _postUsername;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -109,12 +109,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          forCellReuseIdentifier:TimelineCellIdentifier];
     
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	if (profiledelegate) {}
+    if (profiledelegate) {}
     NSString *picturestring = _postPicture;
     self.profilename.text = _postUsername;
     [self.profilepicture setImageWithURL:[NSURL URLWithString:picturestring]
                         placeholderImage:[UIImage imageNamed:@"default.png"]
-	 ];
+     ];
     
     // Pull to refresh
     self.refresh = [UIRefreshControl new];
@@ -140,8 +140,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     
     if(flash_on == 1){
-    UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
-    [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+        UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }else{
         UIImage *img = [UIImage imageNamed:@"フォロー.png"];
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
@@ -160,7 +160,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
-
+    
 }
 
 
@@ -178,7 +178,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(flash_on == 0 ){
         
         //スイッチオン時の処理を記述できます
-      NSLog(@"フォローしました");
+        NSLog(@"フォローしました");
         NSString *content = [NSString stringWithFormat:@"user_name=%@",_postUsername];
         NSLog(@"content:%@",content);
         NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/favorites/"];
@@ -196,11 +196,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
             flash_on = 1;
             NSLog(@"result:%@",result);
-
+            
         }
         
     }else if (flash_on == 1){
-          NSLog(@"フォロー解除しました");
+        NSLog(@"フォロー解除しました");
         UIImage *img = [UIImage imageNamed:@"フォロー.png"];
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 0;
@@ -226,7 +226,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [super viewWillAppear:animated];
-	
+    
     //JSONをパース
     NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",_postUsername];
     NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -243,12 +243,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"statusZ:%@",_status_);
     
     
-	// !!!:dezamisystem
-	[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー非表示
-	
-	[self _fetchProfile_other];
+    // !!!:dezamisystem
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー非表示
+    
+    [self _fetchProfile_other];
     [self.tableView reloadData];
-
+    
     [SVProgressHUD dismiss];
 }
 
@@ -259,8 +259,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // 動画データを一度全て削除
     [[MoviePlayerManager sharedManager] removeAllPlayers];
-
-
+    
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewWillDisappear:animated];
@@ -313,8 +313,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-
-     [SVProgressHUD dismiss];
+    
+    [SVProgressHUD dismiss];
     
     return cell ;
 }
@@ -344,14 +344,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // スクロール中は動画を停止する
-   // [[MoviePlayerManager sharedManager] scrolling:YES];
-
+    // [[MoviePlayerManager sharedManager] scrolling:YES];
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-
+    
     LOG(@"scroll is stoped");
-  // [self _playMovieAtCurrentCell];
+    // [self _playMovieAtCurrentCell];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -369,25 +369,25 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     //2つ目の画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//    if ([segue.identifier isEqualToString:@"showDetail3"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
-	{
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"showDetail3"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
+    {
         //ここでパラメータを渡す
 #if 0
-		everyTableViewController *eveVC = segue.destinationViewController;
+        everyTableViewController *eveVC = segue.destinationViewController;
 #else
-		everyBaseNavigationController *eveNC = segue.destinationViewController;
-		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        everyBaseNavigationController *eveNC = segue.destinationViewController;
+        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
 #endif
-        eveVC.postID = _postID;
+        eveVC.postID = (NSString *)sender;
     }
     
     //店舗画面にパラメータを渡して遷移する
-	// !!!:dezamisystem
-//    if ([segue.identifier isEqualToString:@"goRestpage"])
-	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-	{
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"goRestpage"])
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
@@ -408,23 +408,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark いいねボタンの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    LOG(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-	if (result) {}
-    
-    // タイムラインを再読み込み
-    //[self _fetchProfile_other];
+    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
 }
 
 
@@ -458,7 +446,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 NSString *alertMessage = @"違反報告をしました";
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
-}
+            }
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -483,7 +471,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             NSString *alertMessage = @"違反報告をしました";
             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alrt show];
-}
+        }
         
     }
     
@@ -514,8 +502,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // コメントボタン押下時の処理
     LOG(@"postid=%@", postID);
     _postID = postID;
-
-	[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+    
+    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
 -(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
@@ -567,7 +555,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
         self.posts = [NSArray arrayWithArray:tempPosts];
-       NSLog(@"result_id:%@",result);
+        NSLog(@"result_id:%@",result);
         NSLog(@"tempPosts:%@",tempPosts);
         NSLog(@"post:%@",_posts);
         
@@ -591,9 +579,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 /*
-- (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
-    [self _playMovieAtCurrentCell];
-}
+ - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
+ [self _playMovieAtCurrentCell];
+ }
  */
 
 /**
@@ -620,10 +608,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
     
-   [[MoviePlayerManager sharedManager] scrolling:NO];
-             [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                           inView:self.tableView
-                                                            frame:movieRect];
+    [[MoviePlayerManager sharedManager] scrolling:NO];
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
+                                                  inView:self.tableView
+                                                   frame:movieRect];
     
 }
 
@@ -654,6 +642,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"badge touched");
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
     }
     NSLog(@"%f",self.barButton.accessibilityFrame.size.width);

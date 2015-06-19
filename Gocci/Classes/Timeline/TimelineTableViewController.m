@@ -199,6 +199,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
     }
     NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
@@ -399,28 +400,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
-    
+    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
 
-    //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
-    //_currentIndexPath
-  
-    if (result) {}
-   
-    // タイムラインを再読み込み
-   // [self _fetchTimeline];
 }
 
 
