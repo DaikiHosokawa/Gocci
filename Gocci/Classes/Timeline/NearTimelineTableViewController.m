@@ -46,8 +46,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (strong, nonatomic) NSString *notificationText;
 @property (nonatomic, strong) UIRefreshControl *refresh;
 
-/** タイムラインのデータ */
-@property (nonatomic,strong) NSArray *posts;
+@property (nonatomic,strong) NSArray *posts;	// タイムラインのデータ
 
 @end
 
