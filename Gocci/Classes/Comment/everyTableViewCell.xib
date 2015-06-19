@@ -162,6 +162,7 @@
                                 <state key="normal" image="gocci_new">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="gocci_new_selected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-tB-EpM">
                                 <rect key="frame" x="33" y="5" width="21" height="21"/>
@@ -301,6 +302,7 @@
     <resources>
         <image name="comment_new" width="37" height="35"/>
         <image name="gocci_new" width="34" height="31"/>
+        <image name="gocci_new_selected" width="34" height="31"/>
         <image name="tag-A" width="128" height="28"/>
         <image name="tag-B" width="128" height="28"/>
         <image name="tag-C" width="128" height="28"/>

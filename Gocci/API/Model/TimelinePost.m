@@ -8,7 +8,7 @@
 @implementation TimelinePost
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary
-{    
+{
     TimelinePost *obj = [TimelinePost new];
     obj.commentNum = [dictionary[@"comment_num"] integerValue];
     obj.goodNum = [dictionary[@"goodnum"] integerValue];

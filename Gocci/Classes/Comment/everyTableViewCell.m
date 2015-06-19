@@ -19,10 +19,7 @@
 NSString * const EveryCellIdentifier = @"everyTableViewCell";
 
 @interface everyTableViewCell()
-{
-	int flash_on;
 
-}
 
 @property (weak, nonatomic) IBOutlet UIView *background;
 
@@ -41,7 +38,6 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 @property (weak, nonatomic) IBOutlet UILabel *tagCLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *likeView;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *commentView;
@@ -108,6 +104,8 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 	[view addGestureRecognizer:tap];
 }
 
+
+
 #pragma mark - Public Method
 - (void)configureWithTimelinePost:(EveryPost *)everyPost
 {
@@ -118,6 +116,12 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 	self.userspicture = everyPost.profile_img;
 	self.restname = everyPost.restname;
 	self.category = everyPost.category;
+    //いいねしているかどうか
+    self.pushed_at = everyPost.pushed_at;
+    NSLog(@"pushed_at:%@",self.pushed_at);
+    
+    //自分がフォローしているかどうか
+    self.flag = everyPost.flag;
 	
 	// ユーザアイコンを円形に
 	self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;
@@ -184,7 +188,20 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 	} else{
 		self.tagALabel.text = @"タグなし";
 	}
-	
+    
+    NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
+    if ([string isEqualToString:@"0"])
+    {
+        UIImage *img = [UIImage imageNamed:@"gocci_new.png"];
+        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 0;
+        
+    }else{
+        UIImage *img = [UIImage imageNamed:@"gocci_new_selected.png"];
+        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 1;
+    }
+    
 	//Tag
 	if ([everyPost.tag isEqualToString:@"にぎやか"]) {
 		self.tagBLabel.text = everyPost.tag;
@@ -214,7 +231,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 //	[self _assignTapAction:@selector(tapRestautant:) view:self.restaurantAddressLabel];
 //	[self _assignTapAction:@selector(tapRestautant:) view:self.restaurantNameLabel];
 //	[self _assignTapAction:@selector(tapNavi:) view:self.restaurantNaviview];
-//	[self _assignTapAction:@selector(tapLike:) view:self.likeView];
+    [self _assignTapAction:@selector(tapLike:) view:self.likeView];
 //	//テスト
 //	[self _assignTapAction:@selector(tapthumb:) view:self.thumbnailView];
 //	[self _assignTapAction:@selector(tapComment:) view:self.commentView];

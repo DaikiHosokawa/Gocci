@@ -92,8 +92,12 @@ extern NSString * const EveryCellIdentifier;
 
 
 @interface everyTableViewCell : UITableViewCell
+{
+    int flash_on;
+}
 @property (nonatomic,weak) id<EveryCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 /**
  *  TimelineCell を生成
@@ -117,5 +121,13 @@ extern NSString * const EveryCellIdentifier;
  *  @return
  */
 + (CGFloat)cellHeightWithTimelinePost:(EveryPost *)post;
+
+/**
+ *  Like ボタンをタップ
+ *
+ *  @param cell
+ *  @param postID
+ */
+- (void)timelineCell:(everyTableViewCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
 
 @end

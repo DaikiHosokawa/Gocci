@@ -31,8 +31,9 @@
 	obj.like_num = [dictionary[@"goodnum"] integerValue];
 	obj.comment_num = [dictionary[@"comment_num"] integerValue];
 	obj.follow_flag = [dictionary[@"follow_flag"] integerValue];
-	obj.like_flag = [dictionary[@"like_flag"] integerValue];
 	obj.want_flag = [dictionary[@"want_flag"] integerValue];
+    obj.pushed_at = dictionary[@"pushed_at"];
+    obj.flag  = [dictionary[@"status"] integerValue];
 
 	return obj;
 }
