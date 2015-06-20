@@ -79,17 +79,17 @@
     });
     
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-    {
-//        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
-//        static dispatch_once_t searchCurrentLocationOnceToken;
-//        dispatch_once(&searchCurrentLocationOnceToken, ^{
-//            [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
-//        });
-		
-		//画面表示のたびに、現在地を中心にしたレストラン一覧を取得する
-		[self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
-
-    }];
+     {
+         //        // 画面を表示した初回の一回のみ、現在地を中心にしたレストラン一覧を取得する
+         //        static dispatch_once_t searchCurrentLocationOnceToken;
+         //        dispatch_once(&searchCurrentLocationOnceToken, ^{
+         //            [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+         //        });
+         
+         //画面表示のたびに、現在地を中心にしたレストラン一覧を取得する
+         [self _fetchFirstRestaurantsWithCoordinate:location.coordinate];
+         
+     }];
     
 }
 
@@ -102,28 +102,28 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+    
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-     self.tableView.bounces = YES;
+    self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"beforeCell" bundle:nil]
          forCellReuseIdentifier:beforeCellIdentifier];
-
+    
     
     // Pull to refresh
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
-  
-	//ナビゲーションバーに画像
-	{
-		//タイトル画像設定
-		UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-		UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    
+    //ナビゲーションバーに画像
+    {
+        //タイトル画像設定
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
-		self.navigationItem.titleView =navigationTitle;
-	}
+        self.navigationItem.titleView =navigationTitle;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,16 +133,16 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-//	UIImage *image = [[UIImage imageNamed:@"tabbaritem_posting.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//	self.tabBarItem.image = image;
-
-	[super viewDidAppear:animated];
+    //	UIImage *image = [[UIImage imageNamed:@"tabbaritem_posting.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //	self.tabBarItem.image = image;
+    
+    [super viewDidAppear:animated];
     if ([self isFirstRun]) {
         //Calling this methods builds the intro and adds it to the screen. See below.
         [self showDefaultContentView];
     }
-
-
+    
+    
 }
 #pragma mark - Table view data source
 
@@ -158,20 +158,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1)
-    {
-    return [self.restaurants count];
-    }
-    else if(section == 2) {
-    return 1;
-    }else{
-    return 1;
-    }
+    return 31;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,61 +174,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if(indexPath.section == 1){
-    beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
-    if (!cell) {
-        cell = [beforeCell cell];
-    }
-    
-    Restaurant *restaurant = self.restaurants[indexPath.row];
-    [cell configureWithRestaurant:restaurant index:indexPath.row];
-    cell.delegate = self;
-    
-     [SVProgressHUD dismiss];
-     return cell;
-    }
-    
-    else if(indexPath.section == 2){
+    if(indexPath.row == 31){
+        
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
         
         cell.textLabel.text = @"店舗がないときは。。。。";
         cell.backgroundColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        if (cell == nil) {
-            
-            /*
-             *   Actually create a new cell (with an identifier so that it can be dequeued).
-             */
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-            cell.textLabel.text = @"店舗がないときは。。。。";
-            cell.backgroundColor = [UIColor whiteColor];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-        }
-      return cell;
-    }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+        return cell;
         
-        cell.textLabel.text = @"店舗を追加する";
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
         
-        if (cell == nil) {
-            
-            /*
-             *   Actually create a new cell (with an identifier so that it can be dequeued).
-             */
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-            cell.textLabel.text = @"店舗を追加する";
-            cell.backgroundColor = [UIColor whiteColor];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
+        beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
+        if (!cell) {
+            cell = [beforeCell cell];
         }
- 
-    return cell;
+        
+        Restaurant *restaurant = self.restaurants[indexPath.row];
+        [cell configureWithRestaurant:restaurant index:indexPath.row];
+        cell.delegate = self;
+        
+        [SVProgressHUD dismiss];
+        return cell;
+        
     }
 }
 
@@ -244,63 +205,63 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"%s",__func__);
+    NSLog(@"%s",__func__);
     
     NSString *postRestName = [_restname_ objectAtIndex:indexPath.row];
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = postRestName;
-
-	// モーダル閉じる
-	[self dismissWithTenmei];
-	//[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
-
-	// 選択状態の解除
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // モーダル閉じる
+    [self dismissWithTenmei];
+    //[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
+    
+    // 選択状態の解除
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark 店名転送
 -(void)dismissWithTenmei
 {
-	//SCRecorderViewControllerに送信→SCSecondViewに送信
-	static NSString * const namebundle = @"screcorder";
-	
-	SCRecorderViewController* viewController = nil;
-	{
-		CGRect rect = [UIScreen mainScreen].bounds;
-		if (rect.size.height == 480) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			//rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 667) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-			//ビューコントローラ取得
-			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			//rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 736) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			//rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-			//ビューコントローラ取得
-			viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			//rootViewController = [storyboard instantiateInitialViewController];
-		}
-	}
-	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	[viewController sendTenmeiString:delegate.gText];
-	
-	//モーダルを閉じる
-	[self dismissViewControllerAnimated:YES completion:nil];
+    //SCRecorderViewControllerに送信→SCSecondViewに送信
+    static NSString * const namebundle = @"screcorder";
+    
+    SCRecorderViewController* viewController = nil;
+    {
+        CGRect rect = [UIScreen mainScreen].bounds;
+        if (rect.size.height == 480) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+            //rootViewController = [storyboard instantiateInitialViewController];
+        }
+        else if (rect.size.height == 667) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+            //rootViewController = [storyboard instantiateInitialViewController];
+        }
+        else if (rect.size.height == 736) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+            //rootViewController = [storyboard instantiateInitialViewController];
+        }
+        else {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+            //rootViewController = [storyboard instantiateInitialViewController];
+        }
+    }
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [viewController sendTenmeiString:delegate.gText];
+    
+    //モーダルを閉じる
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)beforeCell:(beforeCell *)cell shouldShowMapAtIndex:(NSUInteger)index
@@ -332,14 +293,14 @@
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = restaurant.restname;
-	
-	// モーダル閉じる
-	[self dismissWithTenmei];
-
-//    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
-//                               sender:@{
-//                                       @"rest_name": restaurant.restname,
-//                                       }];
+    
+    // モーダル閉じる
+    [self dismissWithTenmei];
+    
+    //    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+    //                               sender:@{
+    //                                       @"rest_name": restaurant.restname,
+    //                                       }];
 }
 
 - (void)beforeCell:(beforeCell *)cell shouldDetailAtIndex2:(NSUInteger)index
@@ -348,14 +309,14 @@
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.gText = restaurant.restname;
-	
-	// モーダル閉じる
-	[self dismissWithTenmei];
-
-//    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
-//                              sender:@{
-//                                       @"rest_name": restaurant.restname,
-//                                       }];
+    
+    // モーダル閉じる
+    [self dismissWithTenmei];
+    
+    //    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
+    //                              sender:@{
+    //                                       @"rest_name": restaurant.restname,
+    //                                       }];
 }
 
 
@@ -368,16 +329,16 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-	
-//	//2つ目の画面にパラメータを渡して遷移する
-//	// !!!:dezamisystem
-//	if ([segue.identifier isEqualToString:SEGUE_GO_SC_RECORDER])
-//	{
-//		//ここでパラメータを渡す
-//		SCRecorderViewController *recVC = segue.destinationViewController;
-//		//recVC.postID = (NSString *)sender;
-//		recVC.hidesBottomBarWhenPushed = YES;	// タブバー非表示
-//	}
+    
+    //	//2つ目の画面にパラメータを渡して遷移する
+    //	// !!!:dezamisystem
+    //	if ([segue.identifier isEqualToString:SEGUE_GO_SC_RECORDER])
+    //	{
+    //		//ここでパラメータを渡す
+    //		SCRecorderViewController *recVC = segue.destinationViewController;
+    //		//recVC.postID = (NSString *)sender;
+    //		recVC.hidesBottomBarWhenPushed = YES;	// タブバー非表示
+    //	}
 }
 
 - (void)refresh:(UIRefreshControl *)sender
@@ -400,9 +361,9 @@
     [SVProgressHUD show];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
+    
     __weak typeof(self)weakSelf = self;
-
+    
     [weakSelf.refresh beginRefreshing];
     
     [APIClient distWithLatitude:coordinate.latitude
@@ -425,7 +386,7 @@
          if ([self.restaurants count]== 0) {
              NSLog(@"投稿がない");
              _emptyView.hidden = NO;
-              [SVProgressHUD dismiss];
+             [SVProgressHUD dismiss];
          }
      } useCache:^(id cachedResult)
      {
@@ -434,7 +395,7 @@
          }
          
          [weakSelf _reloadRestaurants:cachedResult];
-     
+         
          // 表示の更新
          [weakSelf.tableView reloadData];
          [SVProgressHUD dismiss];
@@ -501,8 +462,8 @@
 }
 
 - (IBAction)onBack:(id)sender {
-	
-	[self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
