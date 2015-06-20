@@ -70,6 +70,8 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.background dropShadow];
     
+
+    
     // 「地図を見る」タップイベント
     UITapGestureRecognizer *tapMap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMapLabel:)];
     [self.mapLabel addGestureRecognizer:tapMap];

@@ -175,8 +175,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"配列個数：%lu",(unsigned long)_restaurants.count);
-    
     //if (indexPath.row <= 30) {
     beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
     
@@ -186,7 +184,8 @@
     
     if(indexPath.row == 29){
         cell.restaurantNameLabel.text = @"店舗がないときは。。。。";
-        cell.backgroundColor = [UIColor whiteColor];
+      // [cell.cont setBackgroundColor:[UIColor orangeColor]];
+        //cell.backgroundColor = [UIColor orangeColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
@@ -414,6 +413,8 @@
                           limit:30
                         handler:^(id result, NSUInteger code, NSError *error)
      {
+         [SVProgressHUD dismiss];
+        
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          
          if ([weakSelf.refresh isRefreshing]) {
@@ -441,7 +442,6 @@
          
          // 表示の更新
          [weakSelf.tableView reloadData];
-         [SVProgressHUD dismiss];
      }];
 }
 
