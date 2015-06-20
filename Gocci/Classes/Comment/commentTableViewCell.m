@@ -11,7 +11,6 @@
 #import "Sample4TableViewCell.h"
 #import "UIImageView+WebCache.h"
 
-
 NSString * const CommentCellIdentifier = @"commentTableViewCell";
 //NSString * const CommentAllCellIdentifier = @"commentAllTableViewCell";
 
@@ -149,6 +148,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
     return count;
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [Sample4TableViewCell heightCell];
@@ -212,6 +212,11 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"tapped %@",self.listUsername[indexPath.row]);
 }
 
 #pragma mark - Value
