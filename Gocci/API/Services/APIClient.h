@@ -214,4 +214,18 @@
  */
 + (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+
+/**
+ *  gochi_rank/
+ *
+ *  @param latitude
+ *  @param longitude
+ *  @param restname
+ *  @param handler
+ */
++ (void)restInsert:(NSString *)restName
+          latitude:(CGFloat)latitude
+         longitude:(CGFloat)longitude
+           handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 @end

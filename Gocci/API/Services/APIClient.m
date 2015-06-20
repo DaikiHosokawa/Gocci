@@ -478,5 +478,21 @@ static APIClient *_sharedInstance = nil;
     
 }
 
++ (void)restInsert:(NSString *)restName latitude:(CGFloat)latitude longitude:(CGFloat)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"restname": restName,
+                             @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
+                             @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
+                             };
+    [[APIClient sharedClient].manager POST:@"restinsert/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 @end

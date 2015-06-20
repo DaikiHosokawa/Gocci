@@ -47,6 +47,7 @@ extern NSString * const beforeCellIdentifier;
 
 @property (nonatomic, weak) id<beforeCellDelegate> delegate;
 @property (nonatomic, readonly) NSUInteger restaurantIndex;
+@property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
 
 /**
  *  beforeCell を生成

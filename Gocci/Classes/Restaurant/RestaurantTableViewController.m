@@ -229,7 +229,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.gText = _postRestName;
+    delegate.restrantname = _postRestName;
     
     [SVProgressHUD dismiss];
     

@@ -124,6 +124,8 @@
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -163,7 +165,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 31;
+    return 30;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,50 +175,86 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //if (indexPath.row <= 30) {
+    beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
     
-    if(indexPath.row == 31){
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
-        
-        cell.textLabel.text = @"店舗がないときは。。。。";
-        cell.backgroundColor = [UIColor whiteColor];
+    Restaurant *restaurant = self.restaurants[indexPath.row];
+    [cell configureWithRestaurant:restaurant index:indexPath.row];
+    cell.delegate = self;
+    
+    if(indexPath.row == 29){
+        cell.restaurantNameLabel.text = @"店舗がないときは。。。。";
+      // [cell.cont setBackgroundColor:[UIColor orangeColor]];
+        //cell.backgroundColor = [UIColor orangeColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-        
-    } else {
-        
-        beforeCell *cell = (beforeCell *)[tableView dequeueReusableCellWithIdentifier:beforeCellIdentifier];
-        if (!cell) {
-            cell = [beforeCell cell];
-        }
-        
-        Restaurant *restaurant = self.restaurants[indexPath.row];
-        [cell configureWithRestaurant:restaurant index:indexPath.row];
-        cell.delegate = self;
-        
-        [SVProgressHUD dismiss];
-        return cell;
-        
     }
+    return cell;
+    
+    
+
 }
 
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s",__func__);
+    NSLog(@"選択したセル：%ld",(long)indexPath.row);
     
-    NSString *postRestName = [_restname_ objectAtIndex:indexPath.row];
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.gText = postRestName;
+    if(indexPath.row <= 28){
+        
+        Restaurant *restaurant = self.restaurants[indexPath.row];
+        // グローバル変数に保存
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        delegate.restrantname = restaurant.restname;
+        
+        // モーダル閉じる
+        [self dismissWithTenmei];
+    }
     
-    // モーダル閉じる
-    [self dismissWithTenmei];
-    //[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
-    
+    if(indexPath.row == 29){
+        FirstalertView = [[UIAlertView alloc] initWithTitle:@"店名を入力してください"
+                                                    message:nil
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil];
+        FirstalertView.delegate       = self;
+        FirstalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [FirstalertView show];
+        NSLog(@"フラグ：%ld",(long)indexPath.row);
+        
+    }
+  
     // 選択状態の解除
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if(FirstalertView == alertView){
+        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
+        
+        NSString* textValue = [[alertView textFieldAtIndex:0] text];
+        if( [textValue length] > 0 )
+        {
+            [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
+             {
+                 
+                 [APIClient restInsert:textValue latitude:location.coordinate.latitude longitude:location.coordinate.longitude handler:^(id result, NSUInteger code, NSError *error) {
+                    LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                     
+                     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+                     delegate.restrantname = textValue;
+                     // モーダル閉じる
+                     [self dismissWithTenmei];
+                     
+                     
+                 }];
+             }];
+            
+        }
+    }
+    
 }
 
 #pragma mark 店名転送
@@ -258,7 +296,7 @@
         }
     }
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [viewController sendTenmeiString:delegate.gText];
+    [viewController sendTenmeiString:delegate.restrantname];
     
     //モーダルを閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -292,10 +330,12 @@
     Restaurant *restaurant = self.restaurants[index];
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.gText = restaurant.restname;
+    delegate.restrantname = restaurant.restname;
     
     // モーダル閉じる
     [self dismissWithTenmei];
+    
+    NSLog(@"ここを通ってる1");
     
     //    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
     //                               sender:@{
@@ -308,10 +348,12 @@
     Restaurant *restaurant = self.restaurants[index];
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.gText = restaurant.restname;
+    delegate.restrantname = restaurant.restname;
     
     // モーダル閉じる
     [self dismissWithTenmei];
+    
+    NSLog(@"ここを通ってる2");
     
     //    [self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER
     //                              sender:@{
@@ -371,6 +413,8 @@
                           limit:30
                         handler:^(id result, NSUInteger code, NSError *error)
      {
+         [SVProgressHUD dismiss];
+        
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          
          if ([weakSelf.refresh isRefreshing]) {
@@ -398,7 +442,6 @@
          
          // 表示の更新
          [weakSelf.tableView reloadData];
-         [SVProgressHUD dismiss];
      }];
 }
 
