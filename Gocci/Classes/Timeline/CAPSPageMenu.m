@@ -441,13 +441,18 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
                                 newScrollDirection = CAPSPageMenuScrollDirectionLeft;
                             }
                             
-                            if (newScrollDirection != CAPSPageMenuScrollDirectionOther) {
-                                if (_lastScrollDirection != newScrollDirection) {
+                            if (newScrollDirection != CAPSPageMenuScrollDirectionOther)
+							{
+                                if (_lastScrollDirection != newScrollDirection)
+								{
                                     NSInteger index = newScrollDirection == CAPSPageMenuScrollDirectionLeft ? _currentPageIndex + 1 : _currentPageIndex - 1;
                                     
-                                    if (index >= 0 && index < _controllerArray.count ){
+                                    if (index >= 0 && index < _controllerArray.count )
+									{
                                         // Check dictionary if page was already added
-                                        if ([_pagesAddedDictionary[@(index).stringValue] integerValue] != index) {
+										// !!!:dezamisystem・不具合の原因
+                                        //if ([_pagesAddedDictionary[@(index).stringValue] integerValue] != index)
+										{
                                             [self addPageAtIndex:index];
                                             
                                             _pagesAddedDictionary[@(index).stringValue] = @(index);
@@ -459,8 +464,9 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
                             
                             _lastScrollDirection = newScrollDirection;
                         }
-                        
-                        if (!_didScrollAlready) {
+                        else
+                        //if (!_didScrollAlready)
+						{
                             if (_lastControllerScrollViewContentOffset > scrollView.contentOffset.x) {
                                 if (_currentPageIndex != _controllerArray.count - 1 ){
                                     // Add page to the left of current page
@@ -702,6 +708,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
         
         if (itemIndex >= 0 && itemIndex < _controllerArray.count) {
             // Update page if changed
+			
+			//画面更新
             if (itemIndex != _currentPageIndex) {
                 _startingPageForScroll = itemIndex;
                 _lastPageIndex = _currentPageIndex;
