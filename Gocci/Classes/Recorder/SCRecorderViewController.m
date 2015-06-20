@@ -858,7 +858,7 @@ static SCRecorder *_recorder;
                                     @"message": @"Gocciからの投稿",
                                     @"privacy": jsonString,
                                     @"movie.mp4": movieData,
-                                    @"title": delegate.gText,
+                                    @"title": delegate.restrantname,
                                     }.mutableCopy;
     
     // リクエストの生成
@@ -935,7 +935,7 @@ static SCRecorder *_recorder;
 //    //バックグラウンドで投稿
 //    
 //        // movie
-//        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.gText star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
+//        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.restrantname star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
 //         {
 //             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
 //             
@@ -945,7 +945,7 @@ static SCRecorder *_recorder;
 //
 //             }];
 //  
-//              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.gText,appDelegate.cheertag);
+//              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.restrantname,appDelegate.cheertag);
 //              
 //              [SVProgressHUD dismiss];
 //              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -1186,10 +1186,10 @@ static SCRecorder *_recorder;
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 		
 		NSLog(@"%@",staticRecordSession.outputUrl);
-		NSLog(@"restname:%@,star_evaluation:%d",appDelegate.gText,appDelegate.cheertag);
+		NSLog(@"restname:%@,star_evaluation:%d",appDelegate.restrantname,appDelegate.cheertag);
 		
-		NSString *gText = @"none";
-		if (appDelegate.gText) gText = appDelegate.gText;
+		NSString *restrantname = @"none";
+		if (appDelegate.restrantname) restrantname = appDelegate.restrantname;
 		int cheertag = 1;
 		if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
         int valueKakaku = 0;
@@ -1207,7 +1207,7 @@ static SCRecorder *_recorder;
 		// movie
         
 		[APIClient movieWithFilePathURL:staticRecordSession.outputUrl
-							   restname:gText
+							   restname:restrantname
 		 				star_evaluation:1
                         value:valueKakaku
                         category:category
@@ -1223,7 +1223,7 @@ static SCRecorder *_recorder;
 		 }];
 		
         appDelegate.stringTenmei = @"";
-        appDelegate.gText = nil;
+        appDelegate.restrantname = nil;
         appDelegate.valueHitokoto = @"";
         appDelegate.valueKakaku = 0;
         appDelegate.indexCategory = -1;

@@ -24,7 +24,7 @@
 // !!!:dezamisystem
 @synthesize movieData;
 @synthesize jsonDic;
-@synthesize gText;
+@synthesize restrantname;
 @synthesize username;
 @synthesize userpicture;
 @synthesize postFileName;

@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "CXCardView.h"
 #import "DemoContentView.h"
+#import "LocationClient.h"
 
-@interface beforeRecorderTableViewController : UITableViewController
+@interface beforeRecorderTableViewController : UITableViewController<UIAlertViewDelegate>{
+    UIAlertView *FirstalertView;
+    CGFloat lat;
+    CGFloat lon;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 

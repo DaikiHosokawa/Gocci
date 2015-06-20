@@ -13,7 +13,6 @@ NSString * const beforeCellIdentifier = @"beforeCell";
 
 @property (nonatomic, weak) IBOutlet UIView *background;
 @property (nonatomic, weak) IBOutlet UILabel *distanceLabel;
-@property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UILabel *mapLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
@@ -82,8 +81,8 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     self.detailLabel.userInteractionEnabled = YES;
     
     // 店名タップイベント
-    UITapGestureRecognizer *tapRestaurant = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRestaurantLabel:)];
-    [self.restaurantLabel addGestureRecognizer:tapRestaurant];
+    //UITapGestureRecognizer *tapRestaurant = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRestaurantLabel:)];
+    //[self.restaurantLabel addGestureRecognizer:tapRestaurant];
     self.restaurantLabel.userInteractionEnabled = YES;
     
 
