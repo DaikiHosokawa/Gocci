@@ -161,7 +161,6 @@ static MoviePlayerManager *_sharedInstance = nil;
     if (self.globalPlayer) {
         [self.globalPlayer stop];
         self.globalPlayer = nil;
-        NSLog(@"ちゃんときいてるで");
     }
 }
 

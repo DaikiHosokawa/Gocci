@@ -8,7 +8,6 @@
 
 #import "usersTableViewController_other.h"
 #import "everyTableViewController.h"
-#import "ProfileCell2.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "TimelinePost.h"

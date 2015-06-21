@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "NearTimelineTableViewController.h"
+#import "AllTimelineTableViewController.h"
 #import "FollowTableViewController.h"
 
-@interface TimelinePageMenuViewController : UIViewController<NearTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
+@interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
 
 @property id supervc;
 

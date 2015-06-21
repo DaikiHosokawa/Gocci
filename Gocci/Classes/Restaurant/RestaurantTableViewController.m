@@ -10,7 +10,6 @@
 #import "searchTableViewController.h"
 #import "everyTableViewController.h"
 #import "AppDelegate.h"
-#import "RestaurantCell.h"
 #import "APIClient.h"
 #import "TimelineCell.h"
 #import "TimelinePost.h"
@@ -46,7 +45,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *telButtonLabel;
 
 /** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;

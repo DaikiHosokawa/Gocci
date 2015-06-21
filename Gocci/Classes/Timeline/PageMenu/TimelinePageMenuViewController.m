@@ -58,18 +58,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @implementation TimelinePageMenuViewController
 
-#pragma mark - NearTimelneTableViewControllerDelegate
--(void)nearTimeline:(NearTimelineTableViewController *)vc postid:(NSString *)postid
+#pragma mark - ALlTimelneTableViewControllerDelegate
+-(void)allTimeline:(AllTimelineTableViewController *)vc postid:(NSString *)postid
 {
 	_postID = postid;
 }
--(void)nearTimeline:(NearTimelineTableViewController *)vc username:(NSString *)username picture:(NSString *)picture flag:(NSInteger)flag
+-(void)allTimeline:(AllTimelineTableViewController *)vc username:(NSString *)username picture:(NSString *)picture flag:(NSInteger)flag
 {
 	_postUsername = username;
 	_postPicture = picture;
 	_postFlag = flag;
 }
--(void)nearTimeline:(NearTimelineTableViewController *)vc restname:(NSString *)restname homepage:(NSString *)homepage locality:(NSString *)locality category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat tell:(NSString *)tell totalcheer:(NSString *)totalcheer wanttag:(NSString *)wanttag
+-(void)allTimeline:(AllTimelineTableViewController *)vc restname:(NSString *)restname homepage:(NSString *)homepage locality:(NSString *)locality category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat tell:(NSString *)tell totalcheer:(NSString *)totalcheer wanttag:(NSString *)wanttag
 {
 	_postRestname = restname;
 	_postHomepage = homepage;
@@ -167,7 +167,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 							 object:nil];
 
 	//PageMenu登録
-	NearTimelineTableViewController *controller1 = [[NearTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
+	AllTimelineTableViewController *controller1 = [[AllTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
 	controller1.title = @"全体";
 	controller1.delegate = self;
 	
@@ -180,7 +180,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	NSArray *controllerArray = @[controller1, controller2, /*controller3, controller4*/];
 	NSInteger count_item = 2;	//画面数
 	// !!!:高さは画面高さの10%
-	CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
+	CGFloat height_item = rect_screen.size.height * 0.08; //40.f;	//高さ
 	CGFloat width_item = self.view.frame.size.width / count_item; //幅
 	NSDictionary *parameters = @{
 								 CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0

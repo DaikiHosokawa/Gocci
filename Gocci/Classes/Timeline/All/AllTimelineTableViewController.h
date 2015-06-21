@@ -1,5 +1,5 @@
 //
-//  NearTimelineTableViewController.h
+//  AllTimelineTableViewController.h
 //  Gocci
 //
 //  Created by デザミ on 2015/06/17.
@@ -21,18 +21,18 @@
 #import "WYStoryboardPopoverSegue.h"
 #import "BBBadgeBarButtonItem.h"
 
-@class NearTimelineTableViewController;
+@class AllTimelineTableViewController;
 
-@protocol NearTimelineTableViewControllerDelegate <NSObject>
+@protocol AllTimelineTableViewControllerDelegate <NSObject>
 //@optional
--(void)nearTimeline:(NearTimelineTableViewController*)vc
+-(void)allTimeline:(AllTimelineTableViewController*)vc
 				 postid:(NSString*)postid;
 
--(void)nearTimeline:(NearTimelineTableViewController*)vc
+-(void)allTimeline:(AllTimelineTableViewController*)vc
 			   username:(NSString*)username picture:(NSString*)picture
 				   flag:(NSInteger)flag;
 
--(void)nearTimeline:(NearTimelineTableViewController*)vc
+-(void)allTimeline:(AllTimelineTableViewController*)vc
 		   restname:(NSString*)restname
 			   homepage:(NSString *)homepage
 			   locality:(NSString *)locality
@@ -44,7 +44,7 @@
 				wanttag:(NSString*)wanttag;
 @end
 
-@interface NearTimelineTableViewController : UITableViewController<UIScrollViewDelegate>
+@interface AllTimelineTableViewController : UITableViewController<UIScrollViewDelegate>
 {
 	//commentへの引き継ぎ
 	NSString *_postID;
@@ -65,7 +65,7 @@
 	//サムネイル
 	UIImageView *thumbnailView;
 }
-@property(nonatomic,strong) id<NearTimelineTableViewControllerDelegate> delegate;
+@property(nonatomic,strong) id<AllTimelineTableViewControllerDelegate> delegate;
 
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (strong, nonatomic) WYPopoverController *popover;

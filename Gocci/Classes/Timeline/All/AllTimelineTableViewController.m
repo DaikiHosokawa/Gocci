@@ -1,12 +1,12 @@
 //
-//  NearTimelineTableViewController.m
+//  AllTimelineTableViewController.m
 //  Gocci
 //
 //  Created by デザミ on 2015/06/17.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
-#import "NearTimelineTableViewController.h"
+#import "AllTimelineTableViewController.h"
 #import "searchTableViewController.h"
 #import "everyTableViewController.h"
 #import "TimelineCell.h"
@@ -36,7 +36,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @protocol MovieViewDelegate;
 
-@interface NearTimelineTableViewController()<CLLocationManagerDelegate, TimelineCellDelegate>
+@interface AllTimelineTableViewController()<CLLocationManagerDelegate, TimelineCellDelegate>
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (strong, nonatomic) UIImageView *imageView;
@@ -50,7 +50,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @end
 
-@implementation NearTimelineTableViewController
+@implementation AllTimelineTableViewController
 @synthesize thumbnailView;
 
 - (void)viewDidLoad {
@@ -430,7 +430,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate nearTimeline:self username:userName picture:usersPicture flag:flag];
+    [self.delegate allTimeline:self username:userName picture:usersPicture flag:flag];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif
@@ -473,7 +473,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate nearTimeline:self username:userName picture:userPicture flag:flag];
+    [self.delegate allTimeline:self username:userName picture:userPicture flag:flag];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif
@@ -504,7 +504,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 #else
-    [self.delegate nearTimeline:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
+    [self.delegate allTimeline:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:nil];
 #endif
@@ -520,7 +520,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 #else
-    [self.delegate nearTimeline:self postid:postID];
+    [self.delegate allTimeline:self postid:postID];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 #endif

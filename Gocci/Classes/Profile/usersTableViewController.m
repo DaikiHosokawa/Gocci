@@ -288,8 +288,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-        //    LOG(@"scroll is stoped");
-        [self _playMovieAtCurrentCell];
+       [self _playMovieAtCurrentCell];
     }
 }
 
@@ -515,11 +514,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)_playMovieAtCurrentCell
 {
     
-    if (self.tabBarController.selectedIndex != 2 ) {
-        // 画面がフォアグラウンドのときのみ再生
-        return;
-    }
-    else if ( [self.posts count] == 0){
+    
+    if ( [self.posts count] == 0){
         return;
     }
     
@@ -529,14 +525,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
-    
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
                                   currentHeight + currentCell.thumbnailView.frame.origin.y+250,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
-    
     
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
