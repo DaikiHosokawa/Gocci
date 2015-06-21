@@ -13,10 +13,10 @@
 #import "WYPopoverController.h"
 
 #import "CAPSPageMenu.h"
-//#import "NearTimelineTableViewController.h"
-//#import "FollowTableViewController.h"
 #import "everyBaseNavigationController.h"
 #import "everyTableViewController.h"
+
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -51,6 +51,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
+//ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
 @end
@@ -110,6 +111,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	
 	//右ナビゲーションアイテム(通知)の実装
 	UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
 	[customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
@@ -164,7 +166,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 							   name:@"HogeNotification"
 							 object:nil];
 
-
 	//PageMenu登録
 	NearTimelineTableViewController *controller1 = [[NearTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
 	controller1.title = @"全体";
@@ -212,7 +213,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
 														frame:rect_pagemenu
 													  options:parameters];
-	
+
 	//サブビューとして追加
 	[self.viewBasePageMenu addSubview:_pageMenu.view];
 
