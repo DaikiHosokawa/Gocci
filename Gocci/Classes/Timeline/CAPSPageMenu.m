@@ -765,8 +765,10 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     UIViewController *newVC = _controllerArray[index];
     
     [newVC willMoveToParentViewController:self];
-    
-    newVC.view.frame = CGRectMake(self.view.frame.size.width * (CGFloat)index, _menuHeight, self.view.frame.size.width, self.view.frame.size.height - _menuHeight);
+	
+	CGFloat decriment = 8.0;	// ???:なぜか開始地点がずれている
+
+    newVC.view.frame = CGRectMake(self.view.frame.size.width * (CGFloat)index, _menuHeight-decriment, self.view.frame.size.width, self.view.frame.size.height - _menuHeight);
     
     [self addChildViewController:newVC];
     [_controllerScrollView addSubview:newVC.view];

@@ -178,6 +178,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	CGRect rect_screen = [UIScreen mainScreen].bounds;
 	NSArray *controllerArray = @[controller1, controller2, /*controller3, controller4*/];
 	NSInteger count_item = 2;	//画面数
+	// !!!:高さは画面高さの10%
 	CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
 	CGFloat width_item = self.view.frame.size.width / count_item; //幅
 	NSDictionary *parameters = @{
