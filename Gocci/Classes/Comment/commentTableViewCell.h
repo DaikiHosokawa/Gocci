@@ -13,6 +13,8 @@ extern NSString * const CommentAllCellIdentifier;
 
 @interface commentTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
 
+@property id supervc; //親
+
 #pragma mark - 反映
 -(void)configureWithArray:(NSArray*)commentlist;
 

@@ -53,7 +53,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
-                                <rect key="frame" x="0.0" y="252" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="316" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FL-al-ONx" id="0Um-8x-zzT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -944,7 +944,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1075,6 +1075,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="textField" destination="IHK-zv-2cx" id="78J-JE-O21"/>
+                        <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="77d-3O-O9c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXB-YT-ZEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1218,10 +1219,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hp2-GU-Cwb"/>
-        <segue reference="fVk-vW-ACc"/>
-        <segue reference="m10-Cb-1kc"/>
         <segue reference="wZe-RH-qBh"/>
+        <segue reference="hp2-GU-Cwb"/>
+        <segue reference="m10-Cb-1kc"/>
+        <segue reference="77d-3O-O9c"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

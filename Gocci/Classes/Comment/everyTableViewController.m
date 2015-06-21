@@ -15,6 +15,8 @@
 #import "EveryPost.h"
 #import "MoviePlayerManager.h"
 #import "commentTableViewCell.h"
+#import "usersTableViewController_other.h"
+#import "APIClient.h"
 
 
 @interface everyTableViewController ()<EveryCellDelegate>
@@ -24,6 +26,7 @@
 	
 	NSArray *list_comments;
 	EveryPost *myPost;
+    NSMutableArray *postCommentname;
 }
 
 - (void)showDefaultContentView;
@@ -77,7 +80,7 @@
 	
 	UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
 	[self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
-	
+    
 	//背景にイメージを追加したい
 	// UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
 	// self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
@@ -110,6 +113,7 @@
 	tbi = [tbc.tabBar.items objectAtIndex:1];
 	tbi.title = @"ABCDEFG";
 #endif
+    
 	
 }
 
@@ -230,12 +234,15 @@
 	
 	NSArray *d_comments = [jsonDic objectForKey:@"comments"];
     NSLog(@"d_comments:%@",d_comments);
-	list_comments = [[NSArray alloc] initWithArray:d_comments];
-
+    list_comments = [[NSArray alloc] initWithArray:d_comments];
+    
+    NSDictionary *d_comments2 = [jsonDic objectForKey:@"comments"];
+    NSArray *user_name = [d_comments2 valueForKey:@"user_name"];
+    postCommentname = [user_name mutableCopy];
 	
 	NSDictionary *d_post = [jsonDic objectForKey:@"post"];
     NSLog(@"d_post:%@",d_post);
-	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+   	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
     
 }
 
@@ -283,62 +290,55 @@
 #pragma mark - アクション
 - (IBAction)pushSendBtn:(id)sender
 {
-	_dottext = _textField.text;
-	
-	if (_textField.text.length == 0) {
-		//アラート出す
-		NSLog(@"textlength:%lu",(unsigned long)_textField.text.length);
-		UIAlertView *alert =
-		[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
-								  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-		[alert show];
-		
-	}
-	else {
-		NSLog(@"コメント内容:%@",_dottext);
-		NSLog(@"sendBtn is touched");;
-		NSString *content = [NSString stringWithFormat:@"comment=%@&post_id=%@",_dottext,_postIDtext];
-		NSLog(@"content:%@",content);
-		
-		NSString *urlString = @"http://api-gocci.jp/comment/";
-		NSURL* url = [NSURL URLWithString:urlString];
-		NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-		[urlRequest setHTTPMethod:@"POST"];
-		[urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-		NSURLResponse* response;
-		NSError* error = nil;
-		NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-											   returningResponse:&response
-														   error:&error];
-		if (error) {
-			NSLog(@"ERROR : %@",error);
-			
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"書き込み出来ませんでした"
-									  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-			[alert show];
-		}
-		else
-		{
-			//データ再習得
-			[self perseJson];
-
-			NSLog(@"result:%@",result);
-			
-			UIAlertView *alert =
-			[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
-									  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-			[alert show];
-		}
-		
-	}
-	//セルの表示更新を行う
-	[self viewWillAppear:YES];
-	[self.tableView reloadData];
-	//テキストビューの表示更新
-	_textField.text = NULL;
-	
-	//キーボードを隠す
-	[_textField resignFirstResponder];
+    _dottext = _textField.text;
+    
+    if (_textField.text.length == 0) {
+        //アラート出す
+        NSLog(@"textlength:%lu",(unsigned long)_textField.text.length);
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    else {
+        NSLog(@"コメント内容:%@",_dottext);
+        NSLog(@"sendBtn is touched");;
+        
+        [APIClient postComment:_dottext post_id:_postIDtext handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if ((code=200)) {
+                //データ再習得
+                [self perseJson];
+                
+                NSLog(@"result:%@",result);
+                
+                UIAlertView *alert =
+                [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメント完了"
+                                          delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+                [alert show];
+            }else{
+                
+                NSLog(@"ERROR : %@",error);
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"書き込み出来ませんでした"
+                                                               delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+                [alert show];
+                
+            }
+        }
+         ];
+   
+        //セルの表示更新を行う
+        [self viewWillAppear:YES];
+        [self.tableView reloadData];
+        //テキストビューの表示更新
+        _textField.text = NULL;
+        
+        //キーボードを隠す
+        [_textField resignFirstResponder];
+    }
+   
 }
 
 // キーボードが表示される時に呼び出される
@@ -452,6 +452,7 @@
 	if (row_index % 2) {
 		//コメントセル
 		commentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CommentCellIdentifier];
+       // cell.supervc = self;
 		if (!cell) {
 			cell = [commentTableViewCell cell];
 		}
@@ -466,6 +467,7 @@
 	//ポストセル
 	NSString *cellIdentifier = EveryCellIdentifier;
 	everyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
 	if (!cell){
 		cell = [everyTableViewCell cell];
 	}
@@ -488,7 +490,12 @@
 #pragma mark 選択時
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
  
+        
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+    //[self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+    //NSLog(@"tap username:%@",postCommentname[indexPath.row]);
+    //}
+
 }
 
 #pragma mark - ツールバー
@@ -498,6 +505,21 @@
 	[self dismissViewControllerAnimated:YES completion:^{
             //
 	}];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+   /*
+    if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+    {
+        //ここでパラメータを渡す
+#if 0
+        usersTableViewController_other *useVC  = segue.destinationViewController;
+#else
+        usersTableViewController_other *useVC = segue.destinationViewController;
+#endif
+        useVC.postUsername = (NSString *)sender;
+    }
+    */
 }
 
 @end

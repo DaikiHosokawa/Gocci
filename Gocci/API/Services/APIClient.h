@@ -228,4 +228,15 @@
          longitude:(CGFloat)longitude
            handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  comment
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)postComment:(NSString *)text
+            post_id:(NSString *)post_id
+        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
 @end
