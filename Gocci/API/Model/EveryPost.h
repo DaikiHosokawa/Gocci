@@ -29,10 +29,17 @@
 @property (nonatomic) NSUInteger comment_num;
 @property (nonatomic) NSUInteger follow_flag;
 @property (nonatomic) NSUInteger like_flag;
-@property (nonatomic) NSUInteger want_flag;
+@property (nonatomic) NSString* want_flag;
 @property (nonatomic) NSString *pushed_at;
 @property (nonatomic) NSInteger flag;
-
+@property (nonatomic) NSString* lat;
+@property (nonatomic) NSString* lon;
+@property (nonatomic, copy) NSString *locality;
+@property (nonatomic, copy) NSString *tel;
+@property (nonatomic, copy) NSString *homepage;
+@property (nonatomic, copy) NSString *total_cheer_num;
+@property (nonatomic, copy) NSString *tag_category;
+@property (nonatomic, copy) NSString *atmosphere;
 
 + (instancetype)everyPostWithJsonDictionary:(NSDictionary *)dictionary;
 

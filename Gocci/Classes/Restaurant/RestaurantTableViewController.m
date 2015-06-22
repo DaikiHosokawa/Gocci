@@ -596,7 +596,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (IBAction)tapTEL {
     
-    if ([_postTell isEqualToString:@"非公開"]) {
+    if ([_postTell isEqualToString:@"非公開"] || [_postTell isEqualToString:@"準備中"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
@@ -825,8 +825,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         NSLog(@"cancel");
     }else if(buttonIndex == 0) {
-        NSLog(@"ホームページ%@",_postHomepage);
-        if ([_postHomepage isEqualToString:@"none"]) {
+        NSLog(@"%@",_postHomepage);
+        if ([_postHomepage isEqualToString:@"none"]||[_postHomepage isEqualToString:@"準備中"]) {
             UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。ホームページが登録されておりません"
                                       delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];

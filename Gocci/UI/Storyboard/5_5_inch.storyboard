@@ -139,7 +139,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
-                                <rect key="frame" x="0.0" y="252" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="316" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FL-al-ONx" id="0Um-8x-zzT">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -714,6 +714,9 @@
                                     <state key="normal" image="その他">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="onOther:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="o02-hX-Fct"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" id="J62-2I-3Yq">
                                     <rect key="frame" x="8" y="219" width="394" height="1"/>
@@ -767,7 +770,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="452" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="516" width="414" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="45"/>
@@ -1147,7 +1150,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cal-vI-YT3">
-                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="mqG-L3-e3x">
+                        <barButtonItem key="leftBarButtonItem" image="postingBack" id="mqG-L3-e3x">
                             <connections>
                                 <action selector="onReturn:" destination="Pt3-mZ-dDb" id="TVN-km-Tss"/>
                             </connections>
@@ -1162,6 +1165,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="textField" destination="IHK-zv-2cx" id="78J-JE-O21"/>
+                        <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="1ql-zk-pWS"/>
+                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="JT8-Lx-YzC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXB-YT-ZEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1207,8 +1212,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="OKq-Wv-gQ1"/>
-        <segue reference="TYN-A9-0VC"/>
-        <segue reference="AL8-kP-O1h"/>
-        <segue reference="eVS-Zq-5aW"/>
+        <segue reference="JYh-MP-8XI"/>
+        <segue reference="JT8-Lx-YzC"/>
+        <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -216,7 +216,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"tapped %@",self.listUsername[indexPath.row]);
+    NSLog(@"tapped %@　%@",self.listUsername[indexPath.row],self.listProfileImg[indexPath.row]);
 }
 
 #pragma mark - Value

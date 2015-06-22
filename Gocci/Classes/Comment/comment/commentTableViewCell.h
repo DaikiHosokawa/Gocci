@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "everyTableViewController.h"
 
 extern NSString * const CommentCellIdentifier;
 extern NSString * const CommentAllCellIdentifier;
+
+@protocol everyTableViewControllerDelegate <NSObject>
+
+@end
 
 @interface commentTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
 

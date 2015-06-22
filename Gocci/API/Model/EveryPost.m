@@ -31,9 +31,17 @@
 	obj.like_num = [dictionary[@"goodnum"] integerValue];
 	obj.comment_num = [dictionary[@"comment_num"] integerValue];
 	obj.follow_flag = [dictionary[@"follow_flag"] integerValue];
-	obj.want_flag = [dictionary[@"want_flag"] integerValue];
+	obj.want_flag = dictionary[@"want_flag"] ;
     obj.pushed_at = dictionary[@"pushed_at"];
     obj.flag  = [dictionary[@"status"] integerValue];
+    obj.tel = dictionary[@"tell"];
+    obj.homepage = dictionary[@"homepage"];
+    obj.total_cheer_num = dictionary[@"total_cheer_num"];
+    obj.lat = dictionary[@"lat"];
+    obj.lon = dictionary[@"lon"];
+    obj.locality = dictionary[@"locality"];
+    obj.tag_category = dictionary[@"tag_category"];
+    obj.atmosphere = dictionary[@"atmosphere"];
 
 	return obj;
 }

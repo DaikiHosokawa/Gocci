@@ -313,7 +313,7 @@ if(SecondalertView == alertView){
 #pragma mark - TableViewDatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-return 0;
+return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -336,7 +336,7 @@ if (!cell) {
 
 NSInteger row_index = indexPath.row;
 switch (row_index) {
-    /*
+    
     case 0:
         cell.textLabel.text = @"Facebookにシェアする";
         cell.imageView.image  = [UIImage imageNamed:@"table_facebook"];
@@ -349,7 +349,7 @@ switch (row_index) {
         cell.accessoryView = _checkbox1;
      
         break;
-     */
+
     /*
     case 1:
         cell.textLabel.text = @"twitter";
@@ -402,7 +402,7 @@ if (!changedCheckbox.isChecked) {
     // TODO: チェックボックス選択時の処理
     SNStag = 2;
     LOG(@"Facebookシェアを選択しました,SNStag=%d",SNStag);
-    [[self viewControllerSCRecorder] recorderSubmitPopupViewOnFacebookShare];
+    [[self viewControllerSCRecorder] recorderSubmitPopupViewOnFacebookShare:self];
    }
 }
 }

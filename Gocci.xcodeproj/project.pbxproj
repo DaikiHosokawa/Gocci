@@ -58,6 +58,9 @@
 		951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5501B36B27A0057F081 /* CAPSPageMenu.m */; };
 		951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */; };
 		951AD5591B36B6180057F081 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5581B36B6180057F081 /* EveryPost.m */; };
+		951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD55A1B36BBDC0057F081 /* Parse.framework */; };
+		951AD55E1B36E7680057F081 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD55C1B36E7680057F081 /* FBSDKShareKit.framework */; };
+		951AD55F1B36E7680057F081 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD55D1B36E7680057F081 /* FBSDKCoreKit.framework */; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -83,7 +86,6 @@
 		952D237D1A9B95E800C354DF /* JTCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D231D1A9B95E800C354DF /* JTCircleView.m */; };
 		952D237E1A9B95E800C354DF /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23201A9B95E800C354DF /* MYBlurIntroductionView.m */; };
 		952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23221A9B95E800C354DF /* MYIntroductionPanel.m */; };
-		952D23801A9B95E800C354DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D23231A9B95E800C354DF /* Parse.framework */; };
 		952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23261A9B95E800C354DF /* MKAnnotationView+WebCache.m */; };
 		952D23821A9B95E800C354DF /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23281A9B95E800C354DF /* NSData+ImageContentType.m */; };
 		952D23831A9B95E800C354DF /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D232A1A9B95E800C354DF /* SDImageCache.m */; };
@@ -376,6 +378,9 @@
 		951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
 		951AD5571B36B6180057F081 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		951AD5581B36B6180057F081 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
+		951AD55A1B36BBDC0057F081 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		951AD55C1B36E7680057F081 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../FBSDKShareKit.framework; sourceTree = "<group>"; };
+		951AD55D1B36E7680057F081 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -429,7 +434,6 @@
 		952D23201A9B95E800C354DF /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
 		952D23211A9B95E800C354DF /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
 		952D23221A9B95E800C354DF /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
-		952D23231A9B95E800C354DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		952D23251A9B95E800C354DF /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		952D23261A9B95E800C354DF /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		952D23271A9B95E800C354DF /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -759,10 +763,11 @@
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
+				951AD55E1B36E7680057F081 /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
+				951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
-				952D23801A9B95E800C354DF /* Parse.framework in Frameworks */,
 				952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */,
 				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
 				FF0BE456193ED5E9001A0053 /* libc++.dylib in Frameworks */,
@@ -778,6 +783,7 @@
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
+				951AD55F1B36E7680057F081 /* FBSDKCoreKit.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
 			);
@@ -884,6 +890,9 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				951AD55C1B36E7680057F081 /* FBSDKShareKit.framework */,
+				951AD55D1B36E7680057F081 /* FBSDKCoreKit.framework */,
+				951AD55A1B36BBDC0057F081 /* Parse.framework */,
 				959CF8E31B26CF0D00CDB492 /* WYPopoverController */,
 				95E3CD491B0DCA4200497EB9 /* Classes */,
 				958E31541B0589F300863EDF /* GoogleMaps.bundle */,
@@ -899,7 +908,6 @@
 				952D23061A9B95E800C354DF /* FacebookSDK.framework */,
 				952D23081A9B95E800C354DF /* JTCalendar */,
 				952D231E1A9B95E800C354DF /* MYBlurIntroductionView */,
-				952D23231A9B95E800C354DF /* Parse.framework */,
 				952D23241A9B95E800C354DF /* SDWebImage */,
 				952D23461A9B95E800C354DF /* SVProgressHUD */,
 				952D234A1A9B95E800C354DF /* UIImage+Dummy */,
@@ -2257,6 +2265,7 @@
 					"$(PROJECT_DIR)/Vendor",
 					"$(PROJECT_DIR)/Gocci/Vendor",
 					/Users/daikihosokawa/Documents/FacebookSDK,
+					/Users/daikihosokawa/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
@@ -2304,6 +2313,7 @@
 					"$(PROJECT_DIR)/Vendor",
 					"$(PROJECT_DIR)/Gocci/Vendor",
 					/Users/daikihosokawa/Documents/FacebookSDK,
+					/Users/daikihosokawa/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";

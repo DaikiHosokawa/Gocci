@@ -17,7 +17,7 @@
 #import "TimelineCell.h"
 #import "BBBadgeBarButtonItem.h"
 #import "NotificationViewController.h"
-
+#import "everyTableViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -510,7 +510,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.refresh beginRefreshing];
-    
+    NSLog(@"updateUsername:%@",_postUsername);
     __weak typeof(self)weakSelf = self;
     [APIClient profileWithUserName: _postUsername handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

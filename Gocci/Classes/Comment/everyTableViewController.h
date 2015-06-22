@@ -17,7 +17,21 @@
 
 @interface everyTableViewController : UITableViewController<UITextViewDelegate, UITabBarControllerDelegate>
 {
-         NSString *_postID;
+    NSString *_postID;
+    //profile_otherへの引き継ぎ
+    NSString *_postUsername;
+    NSString *_postPicture;
+    NSInteger _postFlag;
+    //restnameへの引き継ぎ
+    NSString *_postRestname;
+    NSString *_postHomepage;
+    NSString *_postLocality;
+    NSString *_postTell;
+    NSString *_postCategory;
+    NSString *_postLat;
+    NSString *_postLon;
+    NSString *_postWanttag;
+    NSString *_postTotalCheer;
 }
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
@@ -25,5 +39,7 @@
 
 // !!!:dezamisystem
 - (IBAction)onReturn:(id)sender;
+- (void)goUsersDelegate:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag;
+
 
 @end

@@ -535,7 +535,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tcf-Uk-jys">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tcf-Uk-jys" id="T8m-kH-Enx">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -627,7 +627,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SampleTableViewCell" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="335" width="320" height="47"/>
+                                <rect key="frame" x="0.0" y="399" width="320" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="46"/>
@@ -793,6 +793,9 @@
                                     <state key="normal" image="その他">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="onOther:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="GsK-oU-1iw"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DxY-Wb-3em">
                                     <rect key="frame" x="164" y="152" width="75" height="63"/>
@@ -1165,7 +1168,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cal-vI-YT3">
-                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="YSf-wg-H0o">
+                        <barButtonItem key="leftBarButtonItem" image="postingBack" id="YSf-wg-H0o">
                             <connections>
                                 <action selector="onReturn:" destination="Pt3-mZ-dDb" id="gnO-IF-udE"/>
                             </connections>
@@ -1181,6 +1184,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="textField" destination="IHK-zv-2cx" id="78J-JE-O21"/>
+                        <segue destination="2y4-Bk-5XE" kind="push" identifier="goUsersOthers" id="o8h-Lx-bMw"/>
+                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestaurant" id="bbo-p8-1Ce"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXB-YT-ZEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1225,9 +1230,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kX1-oE-Kec"/>
-        <segue reference="cAF-eC-h6q"/>
-        <segue reference="Inu-4B-shH"/>
         <segue reference="SDs-PX-5V3"/>
+        <segue reference="5vL-6n-Sjz"/>
+        <segue reference="bbo-p8-1Ce"/>
+        <segue reference="pPi-jq-5EO"/>
     </inferredMetricsTieBreakers>
 </document>

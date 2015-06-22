@@ -25,9 +25,9 @@ extern NSString * const EveryCellIdentifier;
  *  @param cell
  *  @param userName タップした投稿の username
  */
-- (void)timelineCell:(everyTableViewCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger )flag;
+- (void)everyCell:(everyTableViewCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger )flag;
 
-- (void)timelineCell:(everyTableViewCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag;
+- (void)everyCell:(everyTableViewCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag;
 
 /**
  *  店舗をタップ
@@ -35,7 +35,7 @@ extern NSString * const EveryCellIdentifier;
  *  @param cell
  *  @param restaurantName 店舗名
  */
-- (void)timelineCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag;
+- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag;
 
 /**
  *  Like ボタンをタップ
@@ -43,7 +43,7 @@ extern NSString * const EveryCellIdentifier;
  *  @param cell
  *  @param postID
  */
-- (void)timelineCell:(everyTableViewCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
+- (void)everyCell:(everyTableViewCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
 
 /**
  *  サムネイルをタップ
@@ -122,12 +122,5 @@ extern NSString * const EveryCellIdentifier;
  */
 + (CGFloat)cellHeightWithTimelinePost:(EveryPost *)post;
 
-/**
- *  Like ボタンをタップ
- *
- *  @param cell
- *  @param postID
- */
-- (void)timelineCell:(everyTableViewCell *)cell didTapLikeButtonWithPostID:(NSString *)postID;
 
 @end

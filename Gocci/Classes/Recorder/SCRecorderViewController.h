@@ -12,7 +12,6 @@
 #import "SCRecorder.h"
 #import "CXCardView.h"
 #import "DemoContentView.h"
-
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 
@@ -54,7 +53,8 @@
 
 -(void)execSubmit;
 -(void)cancelSubmit;
+-(void)updatePieChartWith:(double)now MAX:(double)max;
 - (void)recorderSubmitPopupViewOnTwitterShare;
-- (void)recorderSubmitPopupViewOnFacebookShare;
+- (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller;
 
 @end

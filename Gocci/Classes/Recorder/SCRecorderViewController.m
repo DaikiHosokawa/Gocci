@@ -25,7 +25,7 @@
 #import "SCPostingViewController.h"
 
 #import "SCScrollPageView.h"
-
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -816,7 +816,7 @@ static SCRecorder *_recorder;
     
 }
 #pragma mark Facebook へ投稿
-- (void)recorderSubmitPopupViewOnFacebookShare
+- (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller
 {
     LOG_METHOD;
     
@@ -902,7 +902,43 @@ static SCRecorder *_recorder;
     content.contentTitle = @"New Post";
     BOOL ok = [[FBSDKShareAPI shareWithContent:content delegate:self] share];
     */
-     
+    /*
+    NSURL *videoURL = staticRecordSession.outputUrl;
+    
+    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
+    video.videoURL = videoURL;
+    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
+    content.video = video;
+    */
+    
+    //コールバックブロック内に任意の選択UIを実装する
+  
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    /*
+    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
+    video.videoURL = staticRecordSession.outputUrl;
+    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
+     content.video = video;
+    [FBSDKShareDialog showFromViewController:viewcontroller
+                                 withContent:content
+                                    delegate:nil];
+    // 遷移ロジック
+        NSLog(@"content:%@",content);
+        NSLog(@"contentURL:%@",content.contentURL);
+   */
+    
+    FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc]init];
+    NSURL *videoURL= staticRecordSession.outputUrl;
+    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
+    video.videoURL = videoURL;
+    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
+    content.video = video;
+    shareDialog.shareContent = content;
+    
+    
+    shareDialog.delegate=viewcontroller;
+    [shareDialog show];
    
 }
 
