@@ -830,7 +830,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buU-Ca-aI8">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buU-Ca-aI8" id="iSI-EU-uBM">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -845,7 +845,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="投稿" image="tabbaritem_posting.png" id="80d-c7-QoP"/>
                     <navigationItem key="navigationItem" id="tRO-Pb-OZ2">
-                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="rek-tN-uDj">
+                        <barButtonItem key="leftBarButtonItem" image="postingBack" id="rek-tN-uDj">
                             <color key="tintColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="onBack:" destination="o02-dI-eFk" id="mYB-cA-Oqa"/>
@@ -871,7 +871,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="Frb-OG-Kof" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Frb-OG-Kof" id="Cba-Jk-L35">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -904,7 +904,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="74o-Ga-cjY" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74o-Ga-cjY" id="8Qn-AQ-ZAV">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1178,7 +1178,6 @@
     </scenes>
     <resources>
         <image name="Oen_Flag" width="93" height="134"/>
-        <image name="arrow_left" width="8" height="13"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="default" width="710" height="676"/>
         <image name="empty" width="250" height="280"/>

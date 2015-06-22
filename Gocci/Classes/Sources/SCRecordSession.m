@@ -357,8 +357,10 @@ const NSString *SCRecordSessionDateKey = @"Date";
 }
 
 - (void)saveToCameraRoll
-{
+{   
     UISaveVideoAtPathToSavedPhotosAlbum(self.outputUrl.path, nil, nil, nil);
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.assetURL = self.outputUrl;
 }
 
 - (void)recomputeRecordDuration {

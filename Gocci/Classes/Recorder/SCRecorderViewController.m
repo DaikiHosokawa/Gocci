@@ -48,7 +48,7 @@ static SCRecorder *_recorder;
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
+<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate,FBSDKSharingDelegate>
 {
 //    SCRecorder *_recorder;
 	
@@ -912,34 +912,63 @@ static SCRecorder *_recorder;
     */
     
     //コールバックブロック内に任意の選択UIを実装する
-  
+    /*
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    // Facebook アプリがインストールされているかの確認
+    NSDictionary *params = @{@"name"       : @"なまえ",
+                             @"caption"    : @"キャプション",
+                             @"description": @"説明文",
+                             @"link"       : @"https://developers.facebook.com/docs/ios/share/",
+                             @"video"    :  @"http://api-gocci.jp/movies/../movies/888dbd9727c959ebba0bf74767c90a89.mp4"};
+    
+    // 投稿画面をWebViewで表示
+    [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                           parameters:params
+                                              handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                  if (error) {
+                                                      NSLog(@"エラー: %@", error.description);
+                                                  }
+                                              }];
+     */
     
     /*
     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-    video.videoURL = staticRecordSession.outputUrl;
+    video.videoURL = delegate.assetURL;
     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
      content.video = video;
     [FBSDKShareDialog showFromViewController:viewcontroller
                                  withContent:content
-                                    delegate:nil];
+                                    delegate:self];
     // 遷移ロジック
-        NSLog(@"content:%@",content);
-        NSLog(@"contentURL:%@",content.contentURL);
-   */
+        NSLog(@"content.video:%@",content.video);
+        NSLog(@"content.video.videoURL:%@",content.video.videoURL);
+*/
     
+    /*
     FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc]init];
-    NSURL *videoURL= staticRecordSession.outputUrl;
+    shareDialog.fromViewController = viewcontroller;
+    NSURL *videoURL= delegate.assetURL;
+    NSLog(@"assetURL:%@",delegate.assetURL);
     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
     video.videoURL = videoURL;
     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
     content.video = video;
     shareDialog.shareContent = content;
-    
-    
-    shareDialog.delegate=viewcontroller;
+    shareDialog.delegate=self;
     [shareDialog show];
-   
+   */
+}
+
+#pragma mark - FBSDKSharingDelegate
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    NSLog(@"FB: SHARE RESULTS=%@\n",[results debugDescription]);
+}
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    NSLog(@"FB: ERROR=%@\n",[error debugDescription]);
+}
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    NSLog(@"FB: CANCELED SHARER=%@\n",[sharer debugDescription]);
 }
 
 

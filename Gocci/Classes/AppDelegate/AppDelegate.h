@@ -43,6 +43,8 @@
     int indexFuniki;
     
     BBBadgeBarButtonItem *barButton;
+    
+    NSURL *assetURL;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -67,6 +69,8 @@
 @property(nonatomic,retain) NSString *stringFuniki;
 @property(nonatomic,retain) NSString *stringCategory;
 @property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
+
+@property(nonatomic,retain) NSURL *assetURL;
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;
