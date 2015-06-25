@@ -25,7 +25,6 @@
 #import "SCPostingViewController.h"
 
 #import "SCScrollPageView.h"
-#import <FBSDKShareKit/FBSDKShareKit.h>
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -48,7 +47,7 @@ static SCRecorder *_recorder;
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate,FBSDKSharingDelegate>
+<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
 //    SCRecorder *_recorder;
 	
@@ -960,16 +959,7 @@ static SCRecorder *_recorder;
    */
 }
 
-#pragma mark - FBSDKSharingDelegate
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    NSLog(@"FB: SHARE RESULTS=%@\n",[results debugDescription]);
-}
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    NSLog(@"FB: ERROR=%@\n",[error debugDescription]);
-}
-- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
-    NSLog(@"FB: CANCELED SHARER=%@\n",[sharer debugDescription]);
-}
+
 
 
 
