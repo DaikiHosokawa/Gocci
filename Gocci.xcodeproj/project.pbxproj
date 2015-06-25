@@ -245,7 +245,6 @@
 		95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5301AF91A20006FD54E /* CheerListViewController.m */; };
 		95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207241B3BFAD90074612F /* FBSDKShareKit.framework */; };
 		95F207271B3BFAD90074612F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */; };
-		95F2072A1B3C260A0074612F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207281B3C260A0074612F /* Bolts.framework */; };
 		95F2072B1B3C260A0074612F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207291B3C260A0074612F /* FBSDKLoginKit.framework */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
@@ -693,7 +692,6 @@
 		95EEC5301AF91A20006FD54E /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
 		95F207241B3BFAD90074612F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		95F207281B3C260A0074612F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		95F207291B3C260A0074612F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
@@ -772,7 +770,6 @@
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
-				95F2072A1B3C260A0074612F /* Bolts.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */,
 				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
@@ -896,7 +893,6 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				95F207281B3C260A0074612F /* Bolts.framework */,
 				95F207291B3C260A0074612F /* FBSDKLoginKit.framework */,
 				95F207241B3BFAD90074612F /* FBSDKShareKit.framework */,
 				95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */,
