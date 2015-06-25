@@ -14,6 +14,7 @@
 #import "DemoContentView.h"
 #import "SCFirstView.h"
 #import "SCSecondView.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 @interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate>{
