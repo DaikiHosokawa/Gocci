@@ -312,6 +312,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
+    //前の処理のダウンロードを止める仕組み
+    
     [SVProgressHUD dismiss];
     
     
