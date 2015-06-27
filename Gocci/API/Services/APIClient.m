@@ -333,7 +333,8 @@ static APIClient *_sharedInstance = nil;
     }];
     [manager setDownloadTaskDidWriteDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
         NSLog(@"totalBytesWritten:%d totalBytesExpectedToWrite:%d",(int)totalBytesWritten,(int)totalBytesExpectedToWrite );
-        NSLog(@"Progress:%d",(int)totalBytesWritten/(int)totalBytesExpectedToWrite);
+        float myFloat = (float)totalBytesWritten/(float)totalBytesExpectedToWrite;
+        NSLog(@"Progress:%.2f",myFloat);
     }];
     [downloadTask resume];
 }
