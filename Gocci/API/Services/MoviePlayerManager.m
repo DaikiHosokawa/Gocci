@@ -52,9 +52,11 @@ static MoviePlayerManager *_sharedInstance = nil;
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    [APIClient downloadMovieFile:urlString
+    [APIClient downloadMovieFile:urlString 
                       completion:^(NSURL *fileURL, NSError *error) {
                           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                          
+                          NSLog(@"fileURL:%@",fileURL);
                           
                           if (fileURL == nil || error != nil) {
                               [self.players removeObjectForKey:key];
@@ -107,27 +109,14 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
+    NSLog(@"start playing2");
+    
     if (self.globalPlayer) {
  
         [self.globalPlayer.view removeFromSuperview];
        // [self.globalPlayer pause];
         self.globalPlayer = nil;
-      
-        /*
-        //再生中でない時
-        if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
-            NSLog(@"再生中に停止します");
-            MPMoviePlayerController *player = [self _playerAtIndex:index];
-            self.globalPlayer = player;
-            [self.globalPlayer pause];
-        }
-       else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePaused) {
-            NSLog(@"停止中に再生します");
-            //MPMoviePlayerController *player = [self _playerAtIndex:index];
-            //self.globalPlayer = player;
-            [self.globalPlayer play];
-        }
-         */
+
 
     }
     
@@ -169,7 +158,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (MPMoviePlayerController *)_playerAtIndex:(NSUInteger)index
 {
-    
+    NSLog(@"start playing3");
     
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     if (!self.players[key]) {

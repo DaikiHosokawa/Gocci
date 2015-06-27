@@ -331,6 +331,10 @@ static APIClient *_sharedInstance = nil;
         handler(filePath, error);
         
     }];
+    [manager setDownloadTaskDidWriteDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        NSLog(@"totalBytesWritten:%d totalBytesExpectedToWrite:%d",(int)totalBytesWritten,(int)totalBytesExpectedToWrite );
+        NSLog(@"Progress:%d",(int)totalBytesWritten/(int)totalBytesExpectedToWrite);
+    }];
     [downloadTask resume];
 }
 
