@@ -12,6 +12,13 @@
 #import "SCVideoPlayerView.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import  "TWMessageBarManager.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
+#import <AWSS3/AWSS3.h>
+#import <AWSDynamoDB/AWSDynamoDB.h>
+#import <AWSSQS/AWSSQS.h>
+#import <AWSSNS/AWSSNS.h>
+#import <AWSCognito/AWSCognito.h>
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -200,6 +207,21 @@
      [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
      }
      */
+    
+   
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+    
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
+    
+   
+    
+    // Retrieve your Amazon Cognito ID.
+    NSString *cognitoId = credentialsProvider.identityId;
+    
+    NSLog(@"cognitoId:%@",cognitoId);
+    
     return YES;
     
 }
