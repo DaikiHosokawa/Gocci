@@ -19,6 +19,8 @@
 #import "GUser.h"
 #import "RegistView.h"
 #import "UIImage+BlurEffect.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 #define kActiveLogin @"ActiveLogin"
 #define kActiveCancel @"kActiveCancel"
@@ -92,6 +94,8 @@
     NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
     
+    NSLog(@"usernameI:%@",username);
+    
     if (username) {
         
         [SVProgressHUD show];
@@ -116,6 +120,23 @@
                                                returningResponse:&response
                                                            error:&error];
         NSLog(@"result:%@",result);
+        
+        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+        // Initialize the Cognito Sync client
+        AWSCognito *syncClient = [AWSCognito defaultCognito];
+        // Create a record in a dataset and synchronize with the server
+        AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+        [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+        [dataset setString:os forKey:@"os"];
+        [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
+        [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
+        [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+            // Your handler code here
+            NSLog(@"dataset:%@",dataset);
+            return nil;
+        }];
+
         [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
     }
     

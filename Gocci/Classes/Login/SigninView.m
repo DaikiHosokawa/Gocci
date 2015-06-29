@@ -8,6 +8,8 @@
 
 #import "SigninView.h"
 #import "AppDelegate.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 #define kActiveLogin @"ActiveLogin"
 #define KEY_EMAIL          @"KEYCHAIN_EMAIL"
@@ -307,6 +309,22 @@
                 [def setObject:@"" forKey:@"email"];
                 [def setObject:result[@"picture"] forKey:@"avatarLink"];
                 [def synchronize];
+                
+                // Initialize the Cognito Sync client
+                AWSCognito *syncClient = [AWSCognito defaultCognito];
+                // Create a record in a dataset and synchronize with the server
+                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+                [dataset setString:os forKey:@"os"];
+                [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
+                [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
+                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+                    // Your handler code here
+                    NSLog(@"dataset:%@",dataset);
+                    return nil;
+                }];
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
                 
                // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -395,8 +413,23 @@
                              @"atk" : [FBSession activeSession].accessTokenData.accessToken
                              };
     */
-    //NSLog(@"params:%@",params);
-    NSLog(@"test1");
+    
+    // Initialize the Cognito Sync client
+    AWSCognito *syncClient = [AWSCognito defaultCognito];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    // Create a record in a dataset and synchronize with the server
+    AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+    [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+    NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+    [dataset setString:os forKey:@"os"];
+    [dataset setString:[ud stringForKey:@"STRING"] forKey:@"register_id"];
+    [dataset setString:[ud stringForKey:@"username"] forKey:@"username"];
+    [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+        // Your handler code here
+        NSLog(@"dataset:%@",dataset);
+        return nil;
+    }];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:user[@"name"] forKey:@"username"];
@@ -404,7 +437,7 @@
     [defaults setObject:@"facebook" forKey:@"type"];
     [defaults setObject:@"" forKey:@"user_id"];
     [defaults setObject:user[@"email"] forKey:@"email"];
-    NSLog(@"test2");
+   
     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", user[@"id"] ];
     [defaults setObject:pictureURL forKey:@"avatarLink"];
     
@@ -412,12 +445,11 @@
     
     // Show activity while download film types
     [SVProgressHUD show];
-    NSLog(@"test3");
     // Login user with facebook info
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    NSLog(@"test4");
+    
     dispatch_async(backgroundQueue, ^{
-        NSLog(@"test5");
+
         //save data and login
         [SVProgressHUD dismiss];
         [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];

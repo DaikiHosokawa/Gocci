@@ -9,6 +9,8 @@
 #import "RegistView.h"
 #import "AppDelegate.h"
 #import "BFPaperCheckbox.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 @interface RegistView()
 <BFPaperCheckboxDelegate>
@@ -450,6 +452,23 @@
         if (!error) {
             NSLog(@"register user: %@", result);
             if ([result[@"code"] integerValue] == 200) {
+                
+                // Initialize the Cognito Sync client
+                AWSCognito *syncClient = [AWSCognito defaultCognito];
+                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                // Create a record in a dataset and synchronize with the server
+                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+                [dataset setString:os forKey:@"os"];
+                [dataset setString:[ud stringForKey:@"STRING"] forKey:@"register_id"];
+                [dataset setString:[ud stringForKey:@"username"] forKey:@"username"];
+                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+                    // Your handler code here
+                NSLog(@"dataset:%@",dataset);
+                    return nil;
+                }];
+                
                 //success
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功です。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
@@ -531,6 +550,21 @@
     [defaults setObject:pictureURL forKey:@"avatarLink"];
     
     [defaults synchronize];
+    
+    // Initialize the Cognito Sync client
+    AWSCognito *syncClient = [AWSCognito defaultCognito];
+    // Create a record in a dataset and synchronize with the server
+    AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+    [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+    NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+    [dataset setString:os forKey:@"os"];
+    [dataset setString:[defaults stringForKey:@"STRING"] forKey:@"register_id"];
+    [dataset setString:[defaults stringForKey:@"username"] forKey:@"username"];
+    [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+        // Your handler code here
+        NSLog(@"dataset:%@",dataset);
+        return nil;
+    }];
     
     // Show activity while download film types
     [SVProgressHUD show];

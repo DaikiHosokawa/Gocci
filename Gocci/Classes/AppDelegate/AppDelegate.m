@@ -217,22 +217,17 @@
     
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     
-   
-    // Retrieve your Amazon Cognito ID.
-    NSString *cognitoId = credentialsProvider.identityId;
-    NSLog(@"cognitoId:%@",cognitoId);
     
-    // Initialize the Cognito Sync client
-    AWSCognito *syncClient = [AWSCognito defaultCognito];
-    
-    // Create a record in a dataset and synchronize with the server
-    AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"myDataset"];
-    [dataset setString:@"myValue" forKey:@"myKey"];
-    [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+    [[credentialsProvider getIdentityId] continueWithBlock:^id(AWSTask *task) {
         // Your handler code here
-        NSLog(@"dataset:%@",dataset);
+        NSString* cognitoId = credentialsProvider.identityId;
+        NSLog(@"cognitoId: %@", cognitoId);
+        [[NSUserDefaults standardUserDefaults] setValue:cognitoId forKey:@"cognitoId"];
+        NSString* accessKey = credentialsProvider.accessKey;
+        NSLog(@"accesskey: %@", accessKey);
         return nil;
     }];
+    
     return YES;
     
 }
