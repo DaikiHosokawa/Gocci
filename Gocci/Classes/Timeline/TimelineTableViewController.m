@@ -244,7 +244,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-    LOG(@"scroll is stoped");
+   // LOG(@"scroll is stoped");
     
 }
 
@@ -259,7 +259,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     // setContentOffset: 等によるスクロール終了
-    NSLog(@"scroll is stoped");
+   // NSLog(@"scroll is stoped");
 }
 
 
@@ -312,6 +312,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
+    //前の処理のダウンロードを止める仕組み
+    
     [SVProgressHUD dismiss];
     
     
@@ -654,6 +656,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
      return;
      }
      */
+
+    
     
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
