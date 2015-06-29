@@ -23,8 +23,8 @@
 #import "SCPostingViewController.h"
 #import "SVProgressHUD.h"
 #import "SCPostingViewController.h"
-
 #import "SCScrollPageView.h"
+#import <AWSS3/AWSS3.h>
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -1092,7 +1092,55 @@ static SCRecorder *_recorder;
 		
 		// カメラを停止
 		[_recorder endRunningSession];
-		
+         
+         /*
+         NSURL *bucketFileURL = staticRecordSession.outputUrl;
+         NSString *key = [bucketFileURL lastPathComponent];
+         
+         // Initialize the Amazon Cognito credentials provider
+         
+         AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+         
+         
+         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+         uploadRequest.bucket = @"gocci.movie.bucket";
+         uploadRequest.key = key;
+         uploadRequest.body = bucketFileURL;
+         uploadRequest.contentType = @"video/mp4";
+         
+         NSLog(@"bucket:%@,key:%@,body:%@",uploadRequest.bucket,uploadRequest.key,uploadRequest.body);
+         
+         [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
+                                                            withBlock:^id(AWSTask *task) {
+                                                                
+                                                                
+                                                                if (task.error) {
+                                                                    if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
+                                                                        switch (task.error.code) {
+                                                                            case AWSS3TransferManagerErrorCancelled:
+                                                                            case AWSS3TransferManagerErrorPaused:
+                                                                                break;
+                                                                                
+                                                                            default:
+                                                                                NSLog(@"errorS3: %@", task.error);
+                                                                                break;
+                                                                        }
+                                                                    } else {
+                                                                        // Unknown error.
+                                                                        NSLog(@"errorS3: %@", task.error);
+                                                                    }
+                                                                }
+                                                                
+                                                                if (task.result) {
+                                                                    
+                                                                    AWSS3TransferManagerUploadOutput *uploadOutput = task.result;
+                                                                    NSLog(@"sucsessS3:%@",uploadOutput);
+                                                                    // The file uploaded successfully.
+                                                                }
+                                                                return nil;
+                                                            }];
+          */
+         
 		// 投稿画面を表示
 		[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 	}];
