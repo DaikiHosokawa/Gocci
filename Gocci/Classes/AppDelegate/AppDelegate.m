@@ -15,7 +15,6 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 #import <AWSS3/AWSS3.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
 #import <AWSSQS/AWSSQS.h>
 #import <AWSSNS/AWSSNS.h>
 #import <AWSCognito/AWSCognito.h>
@@ -208,20 +207,32 @@
      }
      */
     
-   
-    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
+    // Initialize the Amazon Cognito credentials provider
+    
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                          initWithRegionType:AWSRegionUSEast1
+                                                          identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
     
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
     
-    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     
    
-    
     // Retrieve your Amazon Cognito ID.
     NSString *cognitoId = credentialsProvider.identityId;
-    
     NSLog(@"cognitoId:%@",cognitoId);
     
+    // Initialize the Cognito Sync client
+    AWSCognito *syncClient = [AWSCognito defaultCognito];
+    
+    // Create a record in a dataset and synchronize with the server
+    AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"myDataset"];
+    [dataset setString:@"myValue" forKey:@"myKey"];
+    [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+        // Your handler code here
+        NSLog(@"dataset:%@",dataset);
+        return nil;
+    }];
     return YES;
     
 }
