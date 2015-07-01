@@ -108,18 +108,13 @@
         
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
-        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@&token_id=%@",username,pictureURL,[ud stringForKey:@"STRING"]];
-        NSLog(@"login_content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        NSLog(@"result:%@",result);
+        [APIClient loginWithCognito:@"test" handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"Login result=%@, code=%@, error=%@", result, @(code), error);
+            if ((code=200)) {
+            
+            }
+        }
+         ];
         
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         // Initialize the Cognito Sync client

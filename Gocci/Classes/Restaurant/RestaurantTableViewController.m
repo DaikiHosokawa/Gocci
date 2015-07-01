@@ -38,6 +38,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     DemoContentView *_secondContentView;
     __weak IBOutlet MKMapView *map_;
     // RestaurantPost *restaurantPost;
+    NSMutableArray *header;
+     NSMutableArray *post;
 }
 
 - (void)showDefaultContentView;
@@ -721,20 +723,32 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [APIClient restaurantWithRestName:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        LOG(@"result=%@", result);
+        LOG(@"resultRest1=%@", result);
         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
+            
             // TODO: アラート等を掲出
             return;
         }
         
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
-            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+        header = [NSMutableArray arrayWithCapacity:0];
+        post = [NSMutableArray arrayWithCapacity:0];
+        
+        for (NSDictionary *dict in result) {
+            
+            LOG(@"resultRest2=%@", result);
+            NSDictionary *headerGet = [dict objectForKey:@"restaurants"];
+            [header addObject:headerGet];
+            NSDictionary *postGet = [dict objectForKey:@"post"];
+             [post addObject:postGet];
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:postGet]];
+            
         }
-        NSLog(@"tempPosts:%@",tempPosts);
+        NSLog(@"header:%@",header);
+        NSLog(@"post:%@",post);
         self.posts = [NSArray arrayWithArray:tempPosts];
         
         // 動画データを一度全て削除

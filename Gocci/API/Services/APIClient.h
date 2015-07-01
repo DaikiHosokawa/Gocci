@@ -238,5 +238,14 @@
             post_id:(NSString *)post_id
         handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  login
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)loginWithCognito:(NSString *)cognitoId handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
 
 @end

@@ -7,6 +7,7 @@
 #import "AFNetworking.h"
 
 NSString * const APIClientBaseURL = API_BASE_URL;
+NSString * const APIClientBaseVer2URL = API_BASE_VER2_URL;
 NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
 
 NSString * const APIClientResultCacheKeyDist = @"dist";
@@ -40,13 +41,14 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    NSURL *baseURL = [NSURL URLWithString:APIClientBaseURL];
+    NSURL *baseURL = [NSURL URLWithString:APIClientBaseVer2URL];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                               @"application/json",
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
+    
     self.resultCache = [NSCache new];
     
     return self;
@@ -63,8 +65,8 @@ static APIClient *_sharedInstance = nil;
                              @"limit" : @(limit)
                              };
     
-    [[APIClient sharedClient].manager GET:@"timeline/"
-                               parameters:params
+    [[APIClient sharedClient].manager GET:@"get/timeline/"
+                               parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -78,8 +80,8 @@ static APIClient *_sharedInstance = nil;
                              @"limit" : @(limit)
                              };
     
-    [[APIClient sharedClient].manager GET:@"gochi_rank/"
-                               parameters:params
+    [[APIClient sharedClient].manager GET:@"get/timeline/"
+                               parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -96,10 +98,10 @@ static APIClient *_sharedInstance = nil;
 + (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     NSDictionary *params = @{
-                             @"restname" : restName,
+                             @"rest_id" : restName,
                              };
     
-    [[APIClient sharedClient].manager GET:@"restpage/"
+    [[APIClient sharedClient].manager GET:@"get/rest/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -135,10 +137,11 @@ static APIClient *_sharedInstance = nil;
 
 + (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
     NSDictionary *params = @{
-                             @"user_name" : userName,
+                             @"target_user_id" : @"1",
                              };
     
-    [[APIClient sharedClient].manager GET:@"mypage/"
+    
+    [[APIClient sharedClient].manager GET:@"get/user/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -512,6 +515,23 @@ static APIClient *_sharedInstance = nil;
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                    }];
+}
+
+
++ (void)loginWithCognito:(NSString *)cognitoId handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"identity_id" :@"us-east-1:0c4ceabc-08e8-4542-85d1-2b496a3b6bee",
+                             };
+    
+    [[APIClient sharedClient].manager POST:@"auth/login/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+    
 }
 
 @end

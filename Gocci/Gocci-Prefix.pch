@@ -29,3 +29,4 @@
 
 /** API サーバの URL */
 #define API_BASE_URL @"http://api-gocci.jp/"
+#define API_BASE_VER2_URL @"http://52.68.82.56/v1/"
