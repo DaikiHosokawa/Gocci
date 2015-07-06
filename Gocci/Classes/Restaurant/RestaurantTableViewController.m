@@ -742,7 +742,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             LOG(@"resultRest2=%@", result);
             NSDictionary *headerGet = [dict objectForKey:@"restaurants"];
             [header addObject:headerGet];
-            NSDictionary *postGet = [dict objectForKey:@"post"];
+            NSDictionary *postGet = [dict objectForKey:@"posts"];
              [post addObject:postGet];
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:postGet]];
             

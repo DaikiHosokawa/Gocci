@@ -449,6 +449,7 @@
                               handler:^(id result, NSUInteger code, NSError *error) {
         [SVProgressHUD dismiss];
         //receive data
+               NSLog(@"register result: %@ error :%@", result, error);
         if (!error) {
             NSLog(@"register user: %@", result);
             if ([result[@"code"] integerValue] == 200) {
@@ -563,7 +564,13 @@
     [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
         // Your handler code here
         NSLog(@"dataset:%@",dataset);
+        
         return nil;
+    }];
+    
+    [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
+        NSLog(@"SNS result:%@",result);
+        NSLog(@"SNS error:%@",error);
     }];
     
     // Show activity while download film types

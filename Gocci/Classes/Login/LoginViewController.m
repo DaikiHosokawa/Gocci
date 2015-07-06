@@ -21,6 +21,10 @@
 #import "UIImage+BlurEffect.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
+#import "APIClient.h"
+#import "AFHTTPRequestOperation.h"
+
+
 
 #define kActiveLogin @"ActiveLogin"
 #define kActiveCancel @"kActiveCancel"
@@ -49,6 +53,7 @@
     
     _button.layer.borderColor = [UIColor grayColor].CGColor;
     _button.layer.borderWidth = 0.5f;
+    
     
     
     // 初回起動時のみの動作
@@ -106,33 +111,30 @@
         AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         picturedelegate.userpicture = pictureURL;
         
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
-        [APIClient loginWithCognito:@"test" handler:^(id result, NSUInteger code, NSError *error) {
-            LOG(@"Login result=%@, code=%@, error=%@", result, @(code), error);
-            if ((code=200)) {
-            
+        [APIClient Welcome:^(id result, NSUInteger code, NSError *error) {
+            if((code = 200)){
+                [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+                /*
+                NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+                // Initialize the Cognito Sync client
+                AWSCognito *syncClient = [AWSCognito defaultCognito];
+                // Create a record in a dataset and synchronize with the server
+                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+                [dataset setString:os forKey:@"os"];
+                [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
+                [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
+                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+                    // Your handler code here
+                    NSLog(@"dataset:%@",dataset);
+                    
+                    return nil;
+                }];
+                 */
             }
-        }
-         ];
-        
-        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        // Initialize the Cognito Sync client
-        AWSCognito *syncClient = [AWSCognito defaultCognito];
-        // Create a record in a dataset and synchronize with the server
-        AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-        [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-        [dataset setString:os forKey:@"os"];
-        [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
-        [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
-        [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-            // Your handler code here
-            NSLog(@"dataset:%@",dataset);
-            return nil;
         }];
-
-        [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
     }
     
 }

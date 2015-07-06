@@ -41,13 +41,16 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    NSURL *baseURL = [NSURL URLWithString:APIClientBaseVer2URL];
+    NSURL *baseURL = [NSURL URLWithString:API_BASE_VER2_URL];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    self.manager.responseSerializer =[AFJSONResponseSerializer serializer];
+    
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                               @"application/json",
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
+   // self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     self.resultCache = [NSCache new];
     
@@ -517,14 +520,17 @@ static APIClient *_sharedInstance = nil;
                                    }];
 }
 
-
+/*
 + (void)loginWithCognito:(NSString *)cognitoId handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"identity_id" :@"us-east-1:0c4ceabc-08e8-4542-85d1-2b496a3b6bee",
+                             @"sns_flag" :@"0"
                              };
     
-    [[APIClient sharedClient].manager POST:@"auth/login/"
+    NSLog(@"params:%@",params);
+    
+    [[APIClient sharedClient].manager POST:@"auth/welcome/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -533,5 +539,39 @@ static APIClient *_sharedInstance = nil;
                                    }];
     
 }
+ */
+
++ (void)Welcome:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"identity_id" :@"us-east-1:fd029b33-9a42-41e4-973f-3daf790a25f0",
+                             @"sns_flag" :@"1"
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"auth/welcome/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+}
+
++ (void)SNSSignUp:(NSString *)identity_id profile_img:(NSString *)profile_img handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"identity_id" :@"us-east-1:fd029b33-9a42-41e4-973f-3daf790a25f0",
+                             @"profile_img" :profile_img
+                             };
+    NSLog(@"SNS param:%@",params);
+    [[APIClient sharedClient].manager GET:@"auth/sns/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 @end

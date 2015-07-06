@@ -165,7 +165,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - UIRefreshControl Action
 - (void)refresh:(UIRefreshControl *)sender
 {
-    [self _fetchTimelineUsingLocationCacheALL:YES];
+   [self _fetchTimelineUsingLocationCacheALL:YES];
 }
 
 //#pragma mark - タッチイベント

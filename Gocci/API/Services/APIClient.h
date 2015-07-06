@@ -162,7 +162,7 @@
 + (void)loginUserWithUsername:(NSString *)username
                  withPassword:(NSString *)pwd
                  WithToken_id:(NSString *)token_id
-                      handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+                      handler:(void (^)(NSDictionary *result, NSUInteger code, NSError *error))handler;
 
 
 /**
@@ -244,8 +244,16 @@
  *  @param post_id
  *  @param handler
  */
-+ (void)loginWithCognito:(NSString *)cognitoId handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Welcome:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-
+/**
+ *  login
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)SNSSignUp:(NSString *)identity_id
+       profile_img:(NSString *)profile_img
+       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 @end
