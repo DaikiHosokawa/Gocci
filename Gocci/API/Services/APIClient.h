@@ -244,7 +244,7 @@
  *  @param post_id
  *  @param handler
  */
-+ (void)Welcome:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Welcome:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  login

@@ -112,29 +112,12 @@
         picturedelegate.userpicture = pictureURL;
         
         
-        [APIClient Welcome:^(id result, NSUInteger code, NSError *error) {
-            if((code = 200)){
-                [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
-                /*
-                NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-                // Initialize the Cognito Sync client
-                AWSCognito *syncClient = [AWSCognito defaultCognito];
-                // Create a record in a dataset and synchronize with the server
-                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-                [dataset setString:os forKey:@"os"];
-                [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
-                [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
-                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-                    // Your handler code here
-                    NSLog(@"dataset:%@",dataset);
-                    
-                    return nil;
-                }];
-                 */
-            }
-        }];
+        [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] handler:^(id result, NSUInteger code, NSError *error) {
+            NSLog(@"Welcome result:%@ error:%@",result,error);
+           if((code = 200)){
+            [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+           }
+       }];
     }
     
 }

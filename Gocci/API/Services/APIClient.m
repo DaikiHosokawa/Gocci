@@ -541,13 +541,13 @@ static APIClient *_sharedInstance = nil;
 }
  */
 
-+ (void)Welcome:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Welcome:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"identity_id" :@"us-east-1:fd029b33-9a42-41e4-973f-3daf790a25f0",
+                             @"identity_id" :identity_id,
                              @"sns_flag" :@"1"
                              };
-    
+    NSLog(@"Welcome param:%@",params);
     [[APIClient sharedClient].manager GET:@"auth/welcome/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -560,7 +560,7 @@ static APIClient *_sharedInstance = nil;
 + (void)SNSSignUp:(NSString *)identity_id profile_img:(NSString *)profile_img handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"identity_id" :@"us-east-1:fd029b33-9a42-41e4-973f-3daf790a25f0",
+                             @"identity_id" :identity_id,
                              @"profile_img" :profile_img
                              };
     NSLog(@"SNS param:%@",params);

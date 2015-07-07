@@ -562,29 +562,35 @@
     [dataset setString:[defaults stringForKey:@"STRING"] forKey:@"register_id"];
     [dataset setString:[defaults stringForKey:@"username"] forKey:@"username"];
     [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+        
         // Your handler code here
         NSLog(@"dataset:%@",dataset);
+        
+        [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
+            NSLog(@"SNS result:%@",result);
+            NSLog(@"SNS error:%@",error);
+            if (result) {
+                // Show activity while download film types
+                if (result) {
+                    [SVProgressHUD show];
+                    
+                    // Login user with facebook info
+                    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+                    
+                    dispatch_async(backgroundQueue, ^{
+                        //save data and login
+                        [SVProgressHUD dismiss];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
+                        [self removeFromSuperview];
+                    });
+                }
+                
+            }
+        }];
         
         return nil;
     }];
     
-    [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
-        NSLog(@"SNS result:%@",result);
-        NSLog(@"SNS error:%@",error);
-    }];
-    
-    // Show activity while download film types
-    [SVProgressHUD show];
-    
-    // Login user with facebook info
-    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    
-    dispatch_async(backgroundQueue, ^{
-        //save data and login
-        [SVProgressHUD dismiss];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
-        [self removeFromSuperview];
-    });
     
 }
 
