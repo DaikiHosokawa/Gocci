@@ -24,7 +24,7 @@
 
 #define Rgb2UIColor(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
 
-@implementation SigninView 
+@implementation SigninView
 
 -(void) initComponent {
     _tfPwd.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
@@ -148,7 +148,7 @@
 - (IBAction)loginWithiOSAction:(id)sender {
     
     NSLog(@"Trying to login with iOS...");
-   [SVProgressHUD show];
+    [SVProgressHUD show];
     
     __weak typeof(self) weakSelf = self;
     
@@ -212,7 +212,7 @@
                 [def setObject:pictureURL forKey:@"avatarLink"];
                 [def synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
-
+                
                 
                 
             } errorBlock:^(NSError *error) {
@@ -233,7 +233,7 @@
     } errorBlock:^(NSError *error) {
         
         NSLog(@"ERROR");
-       // exit(1);
+        // exit(1);
         
     }];
 }
@@ -270,7 +270,7 @@
         } else {
             
             [self updateForSessionChange];
-           // [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
+            // [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
         }
         
     }];
@@ -281,12 +281,12 @@
 -(IBAction)btnTwitter_clicked:(id)sender {
     
     [self loginWithiOSAction:nil];
-//    [self reverseAuthAction:nil];
+    //    [self reverseAuthAction:nil];
     
 }
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
-   // [SVProgressHUD show];
+    // [SVProgressHUD show];
     [SVProgressHUD show];
     
     // バッジ内容の設定
@@ -327,13 +327,13 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
                 
-               // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 //[alrt show];
                 [self removeFromSuperview];
             } else {
                 //fail
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-               [alrt show];
+                [alrt show];
             }
         }
         
@@ -400,19 +400,19 @@
     NSLog(@"test0");
     
     // Submit user info to server
-   /*
-    NSDictionary *params = @{
-                             @"email" : user[@"email"],
-                             @"name" : user[@"name"],
-                             @"gender" : user[@"gender"],
-                             @"first_name" : user[@"first_name"],
-                             @"last_name" : user[@"last_name"],
-                             @"id" : user[@"id"],
-                             @"link" : user[@"link"],
-                             @"locale" : user[@"locale"],
-                             @"atk" : [FBSession activeSession].accessTokenData.accessToken
-                             };
-    */
+    /*
+     NSDictionary *params = @{
+     @"email" : user[@"email"],
+     @"name" : user[@"name"],
+     @"gender" : user[@"gender"],
+     @"first_name" : user[@"first_name"],
+     @"last_name" : user[@"last_name"],
+     @"id" : user[@"id"],
+     @"link" : user[@"link"],
+     @"locale" : user[@"locale"],
+     @"atk" : [FBSession activeSession].accessTokenData.accessToken
+     };
+     */
     
     // Initialize the Cognito Sync client
     AWSCognito *syncClient = [AWSCognito defaultCognito];
@@ -437,7 +437,7 @@
     [defaults setObject:@"facebook" forKey:@"type"];
     [defaults setObject:@"" forKey:@"user_id"];
     [defaults setObject:user[@"email"] forKey:@"email"];
-   
+    
     NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", user[@"id"] ];
     [defaults setObject:pictureURL forKey:@"avatarLink"];
     
@@ -449,7 +449,7 @@
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     
     dispatch_async(backgroundQueue, ^{
-
+        
         //save data and login
         [SVProgressHUD dismiss];
         [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
