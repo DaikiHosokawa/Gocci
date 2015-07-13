@@ -33,15 +33,8 @@
 				   flag:(NSInteger)flag;
 
 -(void)allTimeline:(AllTimelineTableViewController*)vc
-		   restname:(NSString*)restname
-			   homepage:(NSString *)homepage
-			   locality:(NSString *)locality
-			   category:(NSString*)category
-					lon:(NSString*)lon
-					lat:(NSString*)lat
-				   tell:(NSString*)tell
-			 totalcheer:(NSString*)totalcheer
-				wanttag:(NSString*)wanttag;
+		   rest_id:(NSString*)rest_id;
+			   
 @end
 
 @interface AllTimelineTableViewController : UITableViewController<UIScrollViewDelegate>

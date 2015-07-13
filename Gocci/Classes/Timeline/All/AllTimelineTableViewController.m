@@ -483,28 +483,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postCategory = category;
-    _postLat = lat;
-    _postLon = lon;
-    _postTell = tel;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
-    NSLog(@"restname=%@", restaurantName);
-    NSLog(@"locality=%@", locality);
-    NSLog(@"tel=%@", tel);
-    NSLog(@"homepage=%@", homepage);
-    NSLog(@"category=%@", category);
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 #else
-    [self.delegate allTimeline:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
+    [self.delegate allTimeline:self rest_id:rest_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:nil];
 #endif

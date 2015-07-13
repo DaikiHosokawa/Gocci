@@ -49,6 +49,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic) NSInteger flag;
 
 @property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *rest_id;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userspicture;
 @property (nonatomic, strong) NSString *restname;
@@ -109,8 +110,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 - (void)tapRestautant:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:locality:tel:homepage:category:lon:lat:total_cheer:want_tag:)]) {
-        [self.delegate timelineCell:self didTapRestaurant:self.restname locality:self.locality tel:self.tell homepage:self.homepage category:self.category lon:self.lon lat:self.lat total_cheer:self.total_cheer want_tag:self.want_tag];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:)]) {
+        [self.delegate timelineCell:self didTapRestaurant:self.rest_id];
     }
 }
 
@@ -193,6 +194,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.lon = timelinePost.lon;
     self.total_cheer = timelinePost.totalCheer;
     self.want_tag = timelinePost.want_flag;
+    self.rest_id = timelinePost.rest_id;
     
     // ユーザアイコンを円形に
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;

@@ -128,6 +128,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                             longitude:londo
                                                                  zoom:18];
     GMSMarker *marker = [[GMSMarker alloc] init];
+    /*
     marker.position = camera.target;
     marker.title = _postRestName;
     marker.snippet = _postLocality;
@@ -136,9 +137,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     _map.selectedMarker = marker;
     //GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
     [_map setCamera:camera];
-    
-    _total_cheer_num.text = _postTotalCheer;
-    NSLog(@"postTotalCheer:%@",_postTotalCheer);
+    */
+    //_total_cheer_num.text = _postTotalCheer;
+    //NSLog(@"postTotalCheer:%@",_postTotalCheer);
     
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -184,7 +185,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }
     
-    NSLog(@"total_cheer_num:%@",_postTotalCheer);
+  //  NSLog(@"total_cheer_num:%@",_postTotalCheer);
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -215,6 +216,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
+    /*
     self.restname.text = _postRestName;
     //self.locality.text = _postLocality;
     self.categoryLabel.text = _postCategory;
@@ -230,7 +232,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.restrantname = _postRestName;
-    
+    */
+     
     [SVProgressHUD dismiss];
     
     // API からタイムラインのデータを取得
@@ -553,9 +556,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         //スイッチオン時の処理を記述できます
         NSLog(@"行きたいしました");
-        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSString *content = [NSString stringWithFormat:@"rest_id=%@",_postRestName];
         NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/wants/"];
+        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/want/"];
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
         [urlRequest setHTTPMethod:@"POST"];
         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -579,9 +582,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 0;
         //スイッチオフに戻った場合の処理を記述
-        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSString *content = [NSString stringWithFormat:@"rest_id=%@",_postRestName];
         NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unwants/"];
+        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/unwant/"];
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
         [urlRequest setHTTPMethod:@"POST"];
         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -738,8 +741,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         post = [NSMutableArray arrayWithCapacity:0];
         
         for (NSDictionary *dict in result) {
-            
-            LOG(@"resultRest2=%@", result);
+
             NSDictionary *headerGet = [dict objectForKey:@"restaurants"];
             [header addObject:headerGet];
             NSDictionary *postGet = [dict objectForKey:@"posts"];

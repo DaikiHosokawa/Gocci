@@ -50,8 +50,6 @@ static APIClient *_sharedInstance = nil;
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
-   // self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
     self.resultCache = [NSCache new];
     
     return self;
@@ -83,7 +81,7 @@ static APIClient *_sharedInstance = nil;
                              @"limit" : @(limit)
                              };
     
-    [[APIClient sharedClient].manager GET:@"get/timeline/"
+    [[APIClient sharedClient].manager GET:@"get/popular"
                                parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -396,7 +394,7 @@ static APIClient *_sharedInstance = nil;
 
 + (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
-    [[APIClient sharedClient].manager GET:@"notice/test.php"
+    [[APIClient sharedClient].manager GET:@"get/notice/"
                                parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -413,7 +411,7 @@ static APIClient *_sharedInstance = nil;
                              };
     
     NSLog(@"paramsgoodinsert:%@",params);
-    [[APIClient sharedClient].manager POST:@"goodinsert/test.php"
+    [[APIClient sharedClient].manager POST:@"post/gochi/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -430,7 +428,7 @@ static APIClient *_sharedInstance = nil;
                              };
     
     NSLog(@"paramsgoodinsert:%@",params);
-    [[APIClient sharedClient].manager POST:@"delete/"
+    [[APIClient sharedClient].manager POST:@"post/postdel/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -460,10 +458,10 @@ static APIClient *_sharedInstance = nil;
 + (void)postFavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"user_name" :user_name,
+                             @"target_user_id" :user_name,
                              };
     
-    [[APIClient sharedClient].manager POST:@"favorites/"
+    [[APIClient sharedClient].manager POST:@"post/follow/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -476,10 +474,10 @@ static APIClient *_sharedInstance = nil;
 + (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"user_name" :user_name,
+                             @"?target_user_id" :user_name,
                              };
     
-    [[APIClient sharedClient].manager POST:@"unfavorites/"
+    [[APIClient sharedClient].manager POST:@"post/unfollow/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -496,7 +494,7 @@ static APIClient *_sharedInstance = nil;
                              @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
                              };
-    [[APIClient sharedClient].manager POST:@"restinsert/"
+    [[APIClient sharedClient].manager POST:@"post/restadd/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -511,7 +509,7 @@ static APIClient *_sharedInstance = nil;
                              @"comment": text,
                              @"post_id": post_id,
                             };
-    [[APIClient sharedClient].manager POST:@"comment/"
+    [[APIClient sharedClient].manager POST:@"post/comment/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

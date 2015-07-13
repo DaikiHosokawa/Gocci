@@ -69,17 +69,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	_postPicture = picture;
 	_postFlag = flag;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc restname:(NSString *)restname homepage:(NSString *)homepage locality:(NSString *)locality category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat tell:(NSString *)tell totalcheer:(NSString *)totalcheer wanttag:(NSString *)wanttag
+-(void)allTimeline:(AllTimelineTableViewController *)vc rest_id:(NSString *)rest_id
 {
-	_postRestname = restname;
-	_postHomepage = homepage;
-	_postLocality = locality;
-	_postCategory = category;
-	_postLat = lat;
-	_postLon = lon;
-	_postTell = tell;
-	_postTotalCheer = totalcheer;
-	_postWanttag = wanttag;
+	_postRestname = rest_id;
 }
 
 #pragma mark - FollowTableViewController

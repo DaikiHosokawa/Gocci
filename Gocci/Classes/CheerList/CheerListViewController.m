@@ -150,7 +150,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     [SVProgressHUD dismiss];
     
     //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/favorites_list/?user_name=%@&get=cheer",_postUsername];
+    NSString *timelineString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/user_cheer/?target_user_id=%@",_postUsername];
     NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* Url = [NSURL URLWithString:escaped];
     NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];

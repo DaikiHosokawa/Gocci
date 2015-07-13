@@ -222,9 +222,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     //_postIDtext = @"3024";
     
     //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://api-gocci.jp/commentpage/?post_id=%@",_postIDtext];
+    NSString *urlString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/comment/?post_id=%@",_postIDtext];
     
-    NSLog(@"Timeline Api:%@",urlString);
+    NSLog(@"Comment Api:%@",urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSError *err = nil;
     NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];

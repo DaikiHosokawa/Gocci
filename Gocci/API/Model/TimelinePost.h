@@ -12,11 +12,11 @@
 
 @property (nonatomic) NSUInteger commentNum;
 @property (nonatomic) NSUInteger goodNum;
-@property (nonatomic )  NSInteger badNum;
 @property (nonatomic,copy) NSString *locality;
 @property (nonatomic,copy) NSString *movie;
 @property (nonatomic,copy) NSString *picture;
 @property (nonatomic,copy) NSString *postID;
+@property (nonatomic,copy) NSString *rest_id;
 @property (nonatomic,copy) NSString *restname;
 @property (nonatomic) NSUInteger starEvaluation;
 @property (nonatomic,copy) NSString *thumbnail;
