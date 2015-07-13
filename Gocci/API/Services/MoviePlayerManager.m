@@ -58,6 +58,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                           
                           NSLog(@"fileURL:%@",fileURL);
                           
+                          
                           if (fileURL == nil || error != nil) {
                               [self.players removeObjectForKey:key];
                               completion(NO);
