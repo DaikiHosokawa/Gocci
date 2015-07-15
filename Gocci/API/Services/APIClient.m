@@ -15,6 +15,7 @@ NSString * const APIClientResultCacheKeyDist = @"dist";
 @interface APIClient()
 
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) AFHTTPSessionManager *manager2;
 @property (nonatomic, strong) NSCache *resultCache;
 
 @end
@@ -50,6 +51,12 @@ static APIClient *_sharedInstance = nil;
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
+    
+    NSURL *baseURL2 = [NSURL URLWithString:API_BASE_VER2_URL];
+    self.manager2 = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL2];
+    NSMutableSet *newAcceptableContentTypes = [NSMutableSet setWithSet:self.manager2.responseSerializer.acceptableContentTypes] ;
+    [newAcceptableContentTypes addObject:@"text/html"];
+    self.manager2.responseSerializer.acceptableContentTypes = newAcceptableContentTypes;
     self.resultCache = [NSCache new];
     
     return self;

@@ -40,6 +40,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
+    NSDictionary *header;
 }
 
 - (void)showDefaultContentView;
@@ -107,10 +108,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
     
-    AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.profilename.text = profiledelegate.username;
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
-                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
@@ -446,6 +443,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
+-(void)byoga{
+    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"picture"]]
+                        placeholderImage:[UIImage imageNamed:@"default.png"]];
+}
+
 #pragma mark - Private Methods
 
 /**
@@ -461,7 +465,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient profileWithUserName:profiledelegate.username handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient profileWithUserName:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
@@ -472,10 +476,15 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
+        
+        
+        for (NSDictionary *post in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
         
+        header = headerDic;
         self.posts = [NSArray arrayWithArray:tempPosts];
         
         // 動画データを一度全て削除
@@ -498,6 +507,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];
         }
+        [self byoga];
     }];
 }
 

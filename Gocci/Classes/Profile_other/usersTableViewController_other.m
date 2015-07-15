@@ -28,7 +28,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @protocol MovieViewDelegate;
 
 @interface usersTableViewController_other ()
-<TimelineCellDelegate>
+<TimelineCellDelegate>{
+    NSDictionary *header;
+}
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, copy) NSMutableArray *status_;
@@ -107,52 +109,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
     
-    AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (profiledelegate) {}
-    NSString *picturestring = _postPicture;
-    self.profilename.text = _postUsername;
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:picturestring]
-                        placeholderImage:[UIImage imageNamed:@"default.png"]
-     ];
-    
-    // Pull to refresh
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
-    
-    NSLog(@"statushere:%@",_status_);
-    if (_status_) {
-        NSString *dotse = _status_[0];
-        NSLog(@"dotse:%@",dotse);
-        NSInteger i = dotse.integerValue;
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }else{
-        NSInteger i = _postFlag;
-         NSLog(@"postFlag:%ld",(long)_postFlag);
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        //NSLog(@"postFlag:%ld",(long)_postFlag);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }
-    
-    if(flash_on == 1){
-        UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-    }else{
-        UIImage *img = [UIImage imageNamed:@"フォロー.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-    }
-    
-    NSString *test = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    NSLog(@"%@=%@",test,_postUsername);
-    if ([_postUsername isEqualToString:test]) {
-        _flashBtn.hidden = YES;
-    }
-    
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -178,7 +134,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(flash_on == 0 ){
         
         // API からデータを取得
-        [APIClient postFavorites:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postFavorites:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
@@ -193,7 +149,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     }else if (flash_on == 1){
         
-        [APIClient postUnfavorites:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postUnfavorites:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 NSLog(@"フォロー解除しました");
@@ -212,7 +168,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [super viewWillAppear:animated];
     
     //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",_postUsername];
+    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",[header objectForKey:@"username"]];
     NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL* Url = [NSURL URLWithString:escaped];
     NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
@@ -374,15 +330,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
-        restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
-        restVC.postLocality = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
+        restVC.postRestName = [header objectForKey:@"user_id"];
     }
 }
 
@@ -499,6 +447,58 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 }
 
+
+-(void)byoga{
+    
+    AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (profiledelegate) {}
+    NSString *picturestring = _postPicture;
+    self.profilename.text = [header objectForKey:@"username"];
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:picturestring]
+                        placeholderImage:[UIImage imageNamed:@"default.png"]
+     ];
+    
+    // Pull to refresh
+    self.refresh = [UIRefreshControl new];
+    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refresh];
+    
+    NSLog(@"statushere:%@",_status_);
+    if (_status_) {
+        NSString *dotse = _status_[0];
+        NSLog(@"dotse:%@",dotse);
+        NSInteger i = dotse.integerValue;
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }else{
+        NSInteger i =  [[header objectForKey:@"follow_flag"] integerValue];
+        NSLog(@"postFlag:%ld",i);
+        int pi = (int)i;
+        NSLog(@"pi:%d",pi);
+        //NSLog(@"postFlag:%ld",(long)_postFlag);
+        flash_on = pi;
+        NSLog(@"flash_on:%d",flash_on);
+    }
+    
+    if(flash_on == 1){
+        UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }else{
+        UIImage *img = [UIImage imageNamed:@"フォロー.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }
+    
+    NSString *test = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSLog(@"%@=%@",test,[header objectForKey:@"username"]);
+    if ([[header objectForKey:@"username"] isEqualToString:test]) {
+        _flashBtn.hidden = YES;
+    }
+
+    
+}
+
 #pragma mark - Private Methods
 
 /**
@@ -523,13 +523,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
+
+        
+        for (NSDictionary *post in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
+        
+        header = headerDic;
         self.posts = [NSArray arrayWithArray:tempPosts];
-        NSLog(@"result_id:%@",result);
-        NSLog(@"tempPosts:%@",tempPosts);
-        NSLog(@"post:%@",_posts);
+        
         
         // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
@@ -543,6 +547,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [SVProgressHUD dismiss];
             
         }
+        [self byoga];
+
     }];
 }
 

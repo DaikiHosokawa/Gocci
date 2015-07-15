@@ -253,7 +253,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         
-        [self _playMovieAtCurrentCell];
+        //[self _playMovieAtCurrentCell];
     }
 }
 

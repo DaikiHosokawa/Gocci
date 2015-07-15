@@ -115,6 +115,13 @@
         [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] handler:^(id result, NSUInteger code, NSError *error) {
             NSLog(@"Welcome result:%@ error:%@",result,error);
            if((code = 200)){
+            NSString* username = [result objectForKey:@"username"];
+            NSString* picture = [result objectForKey:@"profile_img"];
+            NSString* user_id = [result objectForKey:@"user_id"];
+            [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+            [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+            
             [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
            }
        }];
