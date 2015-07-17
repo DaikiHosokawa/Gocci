@@ -113,11 +113,11 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
     //データは古い順に並んでいる
     for (NSDictionary *dict in commentlist) {
         // ユーザー名
-        NSString *username = [dict objectForKey:@"user_name"];
+        NSString *username = [dict objectForKey:@"username"];
         [self.listUsername addObject:username];
         
         // プロフ画像URL
-        NSString *picture = [dict objectForKey:@"picture"];
+        NSString *picture = [dict objectForKey:@"profile_img"];
         [self.listProfileImg addObject:picture];
         
         //コメント内容
@@ -125,7 +125,7 @@ NSString * const CommentCellIdentifier = @"commentTableViewCell";
         [self.listComment addObject:comment];
         
         //日付
-        NSString *date_str = [dict objectForKey:@"date_time"];
+        NSString *date_str = [dict objectForKey:@"comment_date"];
         [self.listDate addObject:date_str];
     }
     

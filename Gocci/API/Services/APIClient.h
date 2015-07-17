@@ -239,7 +239,7 @@
         handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  login
+ *  welcome
  *
  *  @param post_id
  *  @param handler
@@ -247,7 +247,7 @@
 + (void)Welcome:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  login
+ *  SNS
  *
  *  @param post_id
  *  @param handler
@@ -255,5 +255,13 @@
 + (void)SNSSignUp:(NSString *)identity_id
        profile_img:(NSString *)profile_img
        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  comment
+ *
+ *  @param post_id
+ *
+ */
++ (void)commentJSON:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 @end

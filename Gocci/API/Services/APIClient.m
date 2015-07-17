@@ -578,5 +578,19 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)commentJSON:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+{
+    NSDictionary *params = @{
+                             @"post_id" : post_id,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"get/comment/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
 
 @end

@@ -126,6 +126,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 -(void)viewWillAppear:(BOOL)animated
 {
     [SVProgressHUD show];
+    
+    [self perseJson];
+    
     [super viewWillAppear:animated];
     
     // !!!:dezamisystem
@@ -136,7 +139,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
     
-    [self perseJson];
     
     // キーボードの表示・非表示がNotificationCenterから通知される
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -220,40 +222,37 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     //test user
     //_postIDtext = @"3024";
-    
-    //JSONをパース
-    NSString *urlString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/comment/?post_id=%@",_postIDtext];
-    
-    NSLog(@"Comment Api:%@",urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSError *err = nil;
-    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&err];
-    if (err) {
-        NSLog(@"%s %@",__func__,err);
-        //NSLog(@"ERROR : %s",__func__);
-        return;
-    }
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    err = nil;
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&err];
-    if (err) {
-        NSLog(@"%s %@",__func__,err);
-        //NSLog(@"ERROR : %s",__func__);
-        return;
-    }
-    //NSLog(@"%@",jsonDic);
-    
-    NSArray *d_comments = [jsonDic objectForKey:@"comments"];
-    NSLog(@"d_comments:%@",d_comments);
-    list_comments = [[NSArray alloc] initWithArray:d_comments];
-    
-    NSDictionary *d_comments2 = [jsonDic objectForKey:@"comments"];
-    NSArray *user_name = [d_comments2 valueForKey:@"user_name"];
-    postCommentname = [user_name mutableCopy];
-    
-    NSDictionary *d_post = [jsonDic objectForKey:@"post"];
-    NSLog(@"d_post:%@",d_post);
-   	myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+    [APIClient commentJSON:@"200" handler:^(id result, NSUInteger code, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"resultComment=%@", result);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        if(result){
+        NSArray* d_comments = (NSArray*)[result valueForKey:@"comments"];
+        NSLog(@"d_comments:%@",d_comments);
+        list_comments = [[NSArray alloc] initWithArray:d_comments];
+        
+        NSArray *user_name = [d_comments valueForKey:@"username"];
+        postCommentname = [user_name mutableCopy];
+        
+        NSDictionary *d_post = [result objectForKey:@"post"];
+        NSLog(@"d_post:%@",d_post);
+        myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+        }
+    }];
     
 }
 
@@ -537,6 +536,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
             cell = [commentTableViewCell cell];
         }
         
+        NSLog(@"list_comments:%@",list_comments);
         //セルにデータ反映
         [cell configureWithArray:list_comments];
         

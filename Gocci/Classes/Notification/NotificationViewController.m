@@ -104,7 +104,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //Storyboardを特定して
     //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
     
-    if([notice_category[indexPath.row] isEqualToString:@"いいね"]||[notice_category[indexPath.row] isEqualToString:@"コメント"]){
+    if([notice_category[indexPath.row] isEqualToString:@"like"]||[notice_category[indexPath.row] isEqualToString:@"comment"]){
         NSLog(@"コメント画面に遷移");
         NSLog(@"postid:%@",post_id[indexPath.row]);
         [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
@@ -126,7 +126,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     else if([notice_category[indexPath.row] isEqualToString:@"お知らせ"]){
         NSLog(@"今の所、遷移なし");
     }
-    else if([notice_category[indexPath.row] isEqualToString:@"フォロー"]){
+    else if([notice_category[indexPath.row] isEqualToString:@"follow"]){
         NSLog(@"ユーザー画面遷移");
     }
     /*
@@ -195,9 +195,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"resultatnotice:%@",result);
     
     for (NSDictionary *dict in (NSArray *)result) {
-        NSDictionary *categoryGet = [dict objectForKey:@"notice_category"];
+        NSDictionary *categoryGet = [dict objectForKey:@"notice"];
         [notice_category addObject:categoryGet];
-        NSDictionary *post_idGet = [dict objectForKey:@"post_id"];
+        NSDictionary *post_idGet = [dict objectForKey:@"notice_post_id"];
         [post_id addObject:post_idGet];
         [tempNotices addObject:[Notice noticeWithDictionary:dict]];
     }
