@@ -289,14 +289,14 @@ static APIClient *_sharedInstance = nil;
                    });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString *)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)movieWithFilePathURL:(NSURL *)fileURL rest_id:(NSString *)rest_id cheer_flag:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
-                             @"restname" : restaurantName,
-                             @"star_evaluation" :@(cheertag),
-                             @"atmosphere" : atmosphere,
+                             @"rest_id" : rest_id,
+                             @"cheer_flag" :@(cheertag),
+                             @"tag_id" : atmosphere,
                              @"value" :@(value),
-                             @"category" : category,
-                             @"comment" : comment
+                             @"category_id" : category,
+                             @"memo" : comment
                              };
     NSLog(@"params:%@",params);
     [[APIClient sharedClient].manager POST:@"movie/"

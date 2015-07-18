@@ -123,7 +123,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          [self.navigationController pushViewController:controller animated:YES];
          */
     }
-    else if([notice_category[indexPath.row] isEqualToString:@"お知らせ"]){
+    else if([notice_category[indexPath.row] isEqualToString:@"announce"]){
         NSLog(@"今の所、遷移なし");
     }
     else if([notice_category[indexPath.row] isEqualToString:@"follow"]){
