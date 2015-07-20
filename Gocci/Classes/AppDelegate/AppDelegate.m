@@ -80,24 +80,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
-    /*
-     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
-     
-     [PFUser enableAutomaticUser];
-     
-     PFACL *defaultACL = [PFACL ACL];
-     
-     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-     
-     
-     
-     // Facebook
-     [PFFacebookUtils initializeFacebook];
-     
-     // Twitter
-     [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
-     consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
-     */
     
     [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
     //3.5inchと4inchを読み分けする
@@ -191,23 +173,6 @@
     UIRemoteNotificationTypeNewsstandContentAvailability;
     [application registerForRemoteNotificationTypes:remoteNotificationType];
 #endif
-    
-    /*
-     // プッシュ許可の確認を表示
-     if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1){
-     // iOS8以降
-     UIUserNotificationType types =  UIUserNotificationTypeBadge |
-     UIUserNotificationTypeSound |
-     UIUserNotificationTypeAlert;
-     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-     [application registerUserNotificationSettings:mySettings];
-     }else{
-     // iOS8以前
-     [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-     }
-     */
-    
-    // Initialize the Amazon Cognito credentials provider
     
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                           initWithRegionType:AWSRegionUSEast1

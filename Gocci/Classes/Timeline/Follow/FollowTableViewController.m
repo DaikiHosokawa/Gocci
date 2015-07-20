@@ -332,25 +332,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark いいねボタン押し
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
     
-    
+    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
     //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
     //_currentIndexPath
     
-    if (result) {}
     
     // タイムラインを再読み込み
     // [self _fetchTimeline];
@@ -489,9 +479,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
     _postRestname = rest_id;
-
+    
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
-
+    
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
@@ -528,8 +518,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [weakSelf.refresh beginRefreshing];
         
         // API からデータを取得
-        [APIClient rankTimelineWithLatitudeAll:50
-                                       handler:^(id result, NSUInteger code, NSError *error)
+        [APIClient Popular:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              

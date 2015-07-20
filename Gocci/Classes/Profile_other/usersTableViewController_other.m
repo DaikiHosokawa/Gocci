@@ -134,7 +134,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(flash_on == 0 ){
         
         // API からデータを取得
-        [APIClient postFavorites:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient User:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
@@ -149,7 +149,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     }else if (flash_on == 1){
         
-        [APIClient postUnfavorites:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postUnFollow:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 NSLog(@"フォロー解除しました");
@@ -400,18 +400,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark rest_nameタップの時の処理
--(void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag{
+-(void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id
+{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postTell = tel;
-    _postCategory = category;
-    _postLon = lon;
-    _postLat = lat;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
+    _postRestname = rest_id;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -495,7 +488,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if ([[header objectForKey:@"username"] isEqualToString:test]) {
         _flashBtn.hidden = YES;
     }
-
+    
     
 }
 
@@ -512,7 +505,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.refresh beginRefreshing];
     NSLog(@"updateUsername:%@",_postUsername);
     __weak typeof(self)weakSelf = self;
-    [APIClient profileWithUserName: _postUsername handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
@@ -525,7 +518,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
-
+        
         
         for (NSDictionary *post in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
@@ -548,7 +541,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             
         }
         [self byoga];
-
+        
     }];
 }
 

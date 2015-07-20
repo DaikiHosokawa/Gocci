@@ -97,7 +97,6 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {
         [self.delegate timelineCell:self didTapthumb:self.thumbnailView];
-        //self.startPlaying.hidden = YES;
     }
 }
 

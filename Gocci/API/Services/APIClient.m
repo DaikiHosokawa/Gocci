@@ -6,7 +6,6 @@
 #import "APIClient.h"
 #import "AFNetworking.h"
 
-NSString * const APIClientBaseURL = API_BASE_URL;
 NSString * const APIClientBaseVer2URL = API_BASE_VER2_URL;
 NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
 
@@ -67,11 +66,8 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)Timeline:(void (^)(id, NSUInteger, NSError *))handler
 {
-    NSDictionary *params = @{
-                             @"limit" : @(limit)
-                             };
     
     [[APIClient sharedClient].manager GET:@"get/timeline/"
                                parameters:nil
@@ -82,11 +78,8 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)rankTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)Popular:(void (^)(id, NSUInteger, NSError *))handler
 {
-    NSDictionary *params = @{
-                             @"limit" : @(limit)
-                             };
     
     [[APIClient sharedClient].manager GET:@"get/popular"
                                parameters:nil
@@ -97,16 +90,13 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    
-}
 
 
-+ (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)Restaurant:(NSString *)rest_id handler:(void (^)(id, NSUInteger, NSError *))handler
+
 {
     NSDictionary *params = @{
-                             @"rest_id" : restName,
+                             @"rest_id" : rest_id,
                              };
     
     [[APIClient sharedClient].manager GET:@"get/rest/"
@@ -117,19 +107,6 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
 }
-
-/*
- + (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
- {
- [[APIClient sharedClient].manager GET:@"timeline"
- parameters:nil
- success:^(NSURLSessionDataTask *task, id responseObject) {
- handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
- } failure:^(NSURLSessionDataTask *task, NSError *error) {
- handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
- }];
- }
- */
 
 
 + (void)LifelogWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
@@ -143,9 +120,10 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
++ (void)User:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
     NSDictionary *params = @{
-                             @"target_user_id" : @"1",
+                             @"target_user_id" : target_user_id,
                              };
     
     
@@ -158,17 +136,6 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-
-+ (void)profileWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    [[APIClient sharedClient].manager GET:@"timeline"
-                               parameters:nil
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
 
 + (void)LifelogWithDate:(NSString *)date handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
     NSDictionary *params = @{
@@ -186,30 +153,6 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)profile_otherWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    [[APIClient sharedClient].manager GET:@"timeline"
-                               parameters:nil
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
-
-+ (void)profile_otherWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler{
-    NSDictionary *params = @{
-                             @"user_name" : userName,
-                             };
-    
-    [[APIClient sharedClient].manager GET:@"mypage/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
 
 + (void)searchWithRestName:(NSString *)restName latitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id, NSUInteger, NSError *))handler
 {
@@ -399,7 +342,7 @@ static APIClient *_sharedInstance = nil;
 }
 
 
-+ (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler
++ (void)Notice:(void (^)(id result, NSUInteger code, NSError *error))handler
 {
     [[APIClient sharedClient].manager GET:@"get/notice/"
                                parameters:nil
@@ -462,10 +405,10 @@ static APIClient *_sharedInstance = nil;
     
 }
 
-+ (void)postFavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)postFollow:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"target_user_id" :user_name,
+                             @"target_user_id" :target_user_id,
                              };
     
     [[APIClient sharedClient].manager POST:@"post/follow/"
@@ -478,10 +421,10 @@ static APIClient *_sharedInstance = nil;
     
 }
 
-+ (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)postUnFollow:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"?target_user_id" :user_name,
+                             @"target_user_id" :target_user_id,
                              };
     
     [[APIClient sharedClient].manager POST:@"post/unfollow/"
@@ -502,12 +445,12 @@ static APIClient *_sharedInstance = nil;
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
                              };
     [[APIClient sharedClient].manager POST:@"post/restadd/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
 }
 
 + (void)postComment:(NSString *)text post_id:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
@@ -515,7 +458,7 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"comment": text,
                              @"post_id": post_id,
-                            };
+                             };
     [[APIClient sharedClient].manager POST:@"post/comment/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -525,26 +468,6 @@ static APIClient *_sharedInstance = nil;
                                    }];
 }
 
-/*
-+ (void)loginWithCognito:(NSString *)cognitoId handler:(void (^)(id, NSUInteger, NSError *))handler
-{
-    NSDictionary *params = @{
-                             @"identity_id" :@"us-east-1:0c4ceabc-08e8-4542-85d1-2b496a3b6bee",
-                             @"sns_flag" :@"0"
-                             };
-    
-    NSLog(@"params:%@",params);
-    
-    [[APIClient sharedClient].manager POST:@"auth/welcome/"
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                   }];
-    
-}
- */
 
 + (void)Welcome:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
@@ -553,13 +476,13 @@ static APIClient *_sharedInstance = nil;
                              @"sns_flag" :@"1"
                              };
     NSLog(@"Welcome param:%@",params);
-    [[APIClient sharedClient].manager GET:@"auth/welcome/"
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                   }];
+    [[APIClient sharedClient].manager GET:@"auth/login/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
 }
 
 + (void)SNSSignUp:(NSString *)identity_id profile_img:(NSString *)profile_img handler:(void (^)(id, NSUInteger, NSError *))handler
@@ -592,5 +515,55 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
 }
+
++ (void)FollowList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    
+  NSDictionary *params = @{
+                             @"target_user_id" : target_user_id,
+                             };
+    
+    
+    [[APIClient sharedClient].manager GET:@"get/follow/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)FollowerList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"target_user_id" : target_user_id,
+                             };
+    
+    
+    [[APIClient sharedClient].manager GET:@"get/follower/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)CheerList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"target_user_id" : target_user_id,
+                             };
+    
+    
+    [[APIClient sharedClient].manager GET:@"get/user_cheer/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 @end

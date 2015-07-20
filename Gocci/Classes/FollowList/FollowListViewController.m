@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "usersTableViewController_other.h"
+#import "APIClient.h"
 
 @interface FollowListViewController ()
 
@@ -90,14 +91,45 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 #endif
     
     
-
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
+-(void)perseJson
+{
+    //test user
+    //_postIDtext = @"3024";
+    [APIClient FollowList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"resultComment=%@", result);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        if(result){
+            
+            // ユーザー名
+            NSArray *user_name = [result valueForKey:@"user_name"];
+            _user_name_ = [user_name mutableCopy];
+            NSLog(@"user_name:%@",_user_name_);
+            // プロフ画像
+            NSArray *picture = [result valueForKey:@"picture"];
+            _picture_ = [picture mutableCopy];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }
+    }];
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -109,25 +141,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     
     [SVProgressHUD dismiss];
     
-    //JSONをパース
-
-    NSString *timelineString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/follow/?target_user_id=%@",_postUsername];
-    NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL* Url = [NSURL URLWithString:escaped];
-    NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    
-    // ユーザー名
-    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-    _user_name_ = [user_name mutableCopy];
-    NSLog(@"user_name:%@",_user_name_);
-    // プロフ画像
-    NSArray *picture = [jsonDic valueForKey:@"picture"];
-    _picture_ = [picture mutableCopy];
+    [self perseJson];
     
 }
 
@@ -213,59 +227,5 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return _cell;
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

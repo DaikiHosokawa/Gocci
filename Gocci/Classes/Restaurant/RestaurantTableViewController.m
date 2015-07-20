@@ -725,7 +725,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient restaurantWithRestName:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         LOG(@"resultRest1=%@", result);

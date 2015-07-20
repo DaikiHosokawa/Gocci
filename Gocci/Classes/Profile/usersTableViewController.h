@@ -21,15 +21,6 @@
     MPMoviePlayerController *moviePlayer;
     NSString *_postID;
     NSString *_postRestname;
-    NSString *_postUsername;
-    NSString *_postHomepage;
-    NSString *_postLocality;
-    NSString *_postTell;
-    NSString *_postCategory;
-    NSString *_postLat;
-    NSString *_postLon;
-    NSString *_postTotalCheer;
-    NSString *_postWanttag;
 
 }
 

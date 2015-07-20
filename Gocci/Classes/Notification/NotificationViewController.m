@@ -171,7 +171,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     __weak typeof(self)weakSelf = self;
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient notice_WithHandler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient Notice:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (!result || error) {

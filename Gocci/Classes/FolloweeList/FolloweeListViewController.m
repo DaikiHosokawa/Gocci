@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "usersTableViewController_other.h"
+#import "APIClient.h"
 
 
 @interface FolloweeListViewController ()
@@ -93,13 +94,48 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 #endif
     
 
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+-(void)perseJson
+{
+    //test user
+    //_postIDtext = @"3024";
+    [APIClient FollowerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"resultComment=%@", result);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        if(result){
+            
+            
+            // ユーザー名
+            NSArray *user_name = [result valueForKey:@"user_name"];
+            _user_name_ = [user_name mutableCopy];
+            NSLog(@"user_name:%@",_user_name_);
+            // プロフ画像
+            NSArray *picture = [result valueForKey:@"picture"];
+            _picture_ = [picture mutableCopy];
+            // status
+            NSArray *status = [result valueForKey:@"status"];
+            _status_ = [status mutableCopy];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }
+    }];
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -111,28 +147,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     
     [SVProgressHUD dismiss];
     
-    //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/follower/?target_user_id=%@",_postUsername];
-    NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL* Url = [NSURL URLWithString:escaped];
-    NSLog(@"url:%@",Url);
-    NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    
-    // ユーザー名
-    NSArray *user_name = [jsonDic valueForKey:@"user_name"];
-    _user_name_ = [user_name mutableCopy];
-    NSLog(@"user_name:%@",_user_name_);
-    // プロフ画像
-    NSArray *picture = [jsonDic valueForKey:@"picture"];
-    _picture_ = [picture mutableCopy];
-    // status
-    NSArray *status = [jsonDic valueForKey:@"status"];
-    _status_ = [status mutableCopy];
+    [self perseJson];
     
 }
 

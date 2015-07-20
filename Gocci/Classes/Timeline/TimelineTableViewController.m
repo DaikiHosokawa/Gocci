@@ -244,7 +244,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-   // LOG(@"scroll is stoped");
+    // LOG(@"scroll is stoped");
     
 }
 
@@ -259,7 +259,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     // setContentOffset: 等によるスクロール終了
-   // NSLog(@"scroll is stoped");
+    // NSLog(@"scroll is stoped");
 }
 
 
@@ -326,7 +326,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
- 
+    
     [self performSegueWithIdentifier:@"showDetail" sender:self];
     
     
@@ -556,8 +556,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [weakSelf.refresh beginRefreshing];
         
         // API からデータを取得
-        [APIClient distTimelineWithLatitudeAll:50
-                                       handler:^(id result, NSUInteger code, NSError *error)
+        [APIClient Timeline:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              
@@ -591,13 +590,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
              
-             //             BOOL isServerAvailable;
-             //
-             //
-             //             NSString *alertMessage = @"圏外ですので再生できません。";
-             //             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             
-             
+           
          }];
     };
     
@@ -626,12 +619,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- 
- [self _playMovieAtCurrentCell];
- }
- */
+
 
 /**
  *  現在表示中のセルの動画を再生する
@@ -643,7 +631,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
      return;
      }
      */
-
+    
     
     
     if (self.tabBarController.selectedIndex != 0) {

@@ -351,18 +351,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag{
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postTell = tel;
-    _postCategory = category;
-    _postLon = lon;
-    _postLat = lat;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
+    _postRestname = rest_id;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -465,7 +457,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient profileWithUserName:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
@@ -590,45 +582,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
-        restVC.postLocality = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
     }
     
-    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])
-    {
-        //ここでパラメータを渡す
-        FollowListViewController *followVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        followVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
-    
-    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOWEE])
-    {
-        //ここでパラメータを渡す
-        FolloweeListViewController *followeeVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        followeeVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
-    
-    if ([segue.identifier isEqualToString:SEGUE_GO_CHEER])
-    {
-        //ここでパラメータを渡す
-        CheerListViewController *cheerVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        cheerVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
 }
 
 @end

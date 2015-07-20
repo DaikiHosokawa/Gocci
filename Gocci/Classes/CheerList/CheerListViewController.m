@@ -10,17 +10,14 @@
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "RestaurantTableViewController.h"
+#import "APIClient.h"
 
 @interface CheerListViewController ()
 
 
 @property (nonatomic, retain) NSMutableArray *locality_;
-@property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, retain) NSMutableArray *homepage_;
-@property (nonatomic, retain) NSMutableArray *tell_;
-@property (nonatomic, retain) NSMutableArray *category_;
-@property (nonatomic, retain) NSMutableArray *total_cheer_num;
-@property (nonatomic, retain) NSMutableArray *want_tag;
+@property (nonatomic, retain) NSMutableArray *restname_;
+@property (nonatomic, retain) NSMutableArray *rest_id_;
 @property (nonatomic, retain) CheerListCell *cell;
 
 
@@ -31,8 +28,6 @@
 @implementation CheerListViewController
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
-
-@synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,29 +90,53 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     tbi.title = @"ABCDEFG";
 #endif
     
-    
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
     
-    _postRestname =  [_user_name_ objectAtIndex:indexPath.row];
-    _postTell = [_tell_ objectAtIndex:indexPath.row];
-    _postCategory = [_category_ objectAtIndex:indexPath.row];
-    _postLocality = [_locality_ objectAtIndex:indexPath.row];
-    _postHomepage = [_homepage_ objectAtIndex:indexPath.row];
-    _postTotalCheer = [_total_cheer_num objectAtIndex:indexPath.row];
-    _postWanttag = [_want_tag objectAtIndex:indexPath.row];
+    _postRestID =  [_rest_id_ objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
+    
+}
+
+#pragma mark - Json
+-(void)perseJson
+{
+    //test user
+    //_postIDtext = @"3024";
+    [APIClient CheerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        LOG(@"resultComment=%@", result);
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        if(result){
+           
+            //住所
+            NSArray *locality = [result valueForKey:@"locality"];
+            _locality_ = [locality mutableCopy];
+            //店名
+            NSArray *restname = [result valueForKey:@"restname"];
+            _restname_ = [restname mutableCopy];
+            //店舗ID
+            NSArray *rest_id = [result valueForKey:@"rest_id"];
+            _rest_id_ = [rest_id mutableCopy];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }
+    }];
     
 }
 
@@ -127,13 +146,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
-        restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postTell = _postTell;
-        restVC.postLocality = _postLocality;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
+        restVC.postRestName = _postRestID;
     }
 }
 
@@ -149,39 +162,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     
     [SVProgressHUD dismiss];
     
-    //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"http://test.api.gocci.me/v1/get/user_cheer/?target_user_id=%@",_postUsername];
-    NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL* Url = [NSURL URLWithString:escaped];
-    NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
+    [self perseJson];
     
-    // ユーザー名
-    NSArray *user_name = [jsonDic valueForKey:@"restname"];
-    _user_name_ = [user_name mutableCopy];
-    NSLog(@"user_name:%@",_user_name_);
-    // プロフ画像
-    NSArray *locality = [jsonDic valueForKey:@"locality"];
-    _locality_ = [locality mutableCopy];
-    // ホームページ
-    NSArray *homepage = [jsonDic valueForKey:@"homepage"];
-    _homepage_ = [homepage mutableCopy];
-    // プロフ画像
-    NSArray *tell = [jsonDic valueForKey:@"tell"];
-    _tell_ = [tell mutableCopy];
-    //カテゴリー
-    NSArray *category = [jsonDic valueForKey:@"category"];
-    _category_ = [category mutableCopy];
-    
-    NSArray *total_cheer_num = [jsonDic valueForKey:@"total_cheer_num"];
-    _total_cheer_num = [total_cheer_num mutableCopy];
-    
-    NSArray *want_tag = [jsonDic valueForKey:@"want_tag"];
-    _want_tag = [want_tag mutableCopy];
+   
 }
 
 
@@ -217,7 +200,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [_user_name_ count];;
+    return [_restname_ count];;
 }
 
 
@@ -226,66 +209,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _cell = (CheerListCell *)[tableView dequeueReusableCellWithIdentifier:@"CheerListCell"];
     
-    
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
+    _cell.RestName.text = [_restname_ objectAtIndex:indexPath.row];
     _cell.Locality.text = [_locality_ objectAtIndex:indexPath.row];
     [SVProgressHUD dismiss];
     
     return _cell;
 }
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
