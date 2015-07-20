@@ -58,13 +58,12 @@ static MoviePlayerManager *_sharedInstance = nil;
                           
                           NSLog(@"fileURL:%@",fileURL);
                           
-                          
                           if (fileURL == nil || error != nil) {
                               [self.players removeObjectForKey:key];
                               completion(NO);
                               return;
                           }
-                          MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] init];
+                          MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
                           moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
                           [moviePlayer setContentURL:fileURL];
                           moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -73,7 +72,6 @@ static MoviePlayerManager *_sharedInstance = nil;
                           moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
                           moviePlayer.view.userInteractionEnabled = NO;
                           weakSelf.players[key] = moviePlayer;
-                          
                           
                           completion(YES);
                       }];

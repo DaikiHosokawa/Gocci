@@ -53,6 +53,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @implementation AllTimelineTableViewController
 @synthesize thumbnailView;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,14 +72,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
     
-    /*
-     //set notificationCenter
-     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-     [notificationCenter addObserver:self
-     selector:@selector(handleRemotePushToUpdateBell:)
-     name:@"HogeNotification"
-     object:nil];
-     */
     
 }
 
@@ -123,44 +116,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
-//#pragma mark - ナビゲーションバーアクション
-//-(void)barButtonItemPressed:(id)sender
-//{
-//	NSLog(@"badge touched");
-//
-//	self.barButton.badgeValue = nil;
-//
-//	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-//	[ud removeObjectForKey:@"numberOfNewMessages"];
-//
-//	if (!self.popover) {
-//		NotificationViewController *vc = [[NotificationViewController alloc] init];
-//		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-//	}
-//	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-//	[self.popover presentPopoverFromRect:CGRectMake(
-//													self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-//								  inView:self.barButton.customView
-//				permittedArrowDirections:WYPopoverArrowDirectionUp
-//								animated:YES
-//								 options:WYPopoverAnimationOptionFadeWithScale];
-//}
 
-
-//#pragma mark - Action
-//- (IBAction)pushUserTimeline:(id)sender {
-//
-//	CATransition *transition = [CATransition animation];
-//	transition.duration = 0.4;
-//	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//	transition.type = kCATransitionPush;//pushのトランジション
-//	transition.subtype = kCATransitionFromRight;//右から左へ
-//}
-//
-//- (IBAction)onProfileButton:(id)sender
-//{
-//
-//}
 
 #pragma mark - UIRefreshControl Action
 - (void)refresh:(UIRefreshControl *)sender
@@ -168,18 +124,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self _fetchTimelineUsingLocationCacheALL:YES];
 }
 
-//#pragma mark - タッチイベント
-//- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-//
-//	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-//	NSLog(@"row %ld was tapped.",(long)indexPath.row);
-//	_postID = [_postid_ objectAtIndex:indexPath.row];
-//	NSLog(@"postid:%@",_postID);
-//
-//	[self performSegueWithIdentifier:@"showDetail" sender:self];
-//
-//	NSLog(@"commentBtn is touched");
-//}
+
 
 
 #pragma mark - UIScrollView Delegate
@@ -358,24 +303,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました。";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
+            // API からデータを取得
+            [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
-        }]];
+             ];
+            
+                   }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
         }]];
@@ -384,23 +323,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
-        
+         ];
     }
     
 }

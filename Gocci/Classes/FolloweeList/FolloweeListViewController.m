@@ -16,10 +16,10 @@
 
 @interface FolloweeListViewController ()
 
-
 @property (nonatomic, retain) NSMutableArray *picture_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, retain) NSMutableArray *status_;
+@property (nonatomic, retain) NSMutableArray *follow_flag_;
+@property (nonatomic, retain) NSMutableArray *user_id_;
 @property (nonatomic, retain) FolloweeListCell *cell;
 
 
@@ -115,17 +115,20 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
         
         if(result){
             
-            
             // ユーザー名
-            NSArray *user_name = [result valueForKey:@"user_name"];
+            NSArray *user_name = [result valueForKey:@"username"];
             _user_name_ = [user_name mutableCopy];
             NSLog(@"user_name:%@",_user_name_);
             // プロフ画像
-            NSArray *picture = [result valueForKey:@"picture"];
+            NSArray *picture = [result valueForKey:@"profile_img"];
             _picture_ = [picture mutableCopy];
-            // status
-            NSArray *status = [result valueForKey:@"status"];
-            _status_ = [status mutableCopy];
+            // フォローしてるか
+            NSArray *follow_flag = [result valueForKey:@"follow_flag"];
+            _follow_flag_ = [follow_flag mutableCopy];
+            // User_id
+            NSArray *user_id = [result valueForKey:@"user_id"];
+            _user_id_ = [user_id mutableCopy];
+            
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -160,11 +163,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
     
-    _postUsername_with_profile2 =  [_user_name_ objectAtIndex:indexPath.row];
-    _postUserPicture_with_profile2 = [_picture_ objectAtIndex:indexPath.row];
-    _postFlagPrepere = [_status_ objectAtIndex:indexPath.row];
-    _postFlag = _postFlagPrepere.integerValue;
-    NSLog(@"postusername_with_profile:%@",_postUsername_with_profile2);
+    _postUsername_with_profile =  [_user_id_ objectAtIndex:indexPath.row];
+    _postUserPicture_with_profile = [_picture_ objectAtIndex:indexPath.row];
+    _postUserFlag_with_profile = [_follow_flag_ objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
 
@@ -176,9 +177,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         //ここでパラメータを渡す
         usersTableViewController_other *users_otherVC = segue.destinationViewController;
-        users_otherVC.postUsername = _postUsername_with_profile2;
-        users_otherVC.postPicture = _postUserPicture_with_profile2;
-        users_otherVC.postFlag = _postFlag;
+        users_otherVC.postUsername = _postUsername_with_profile;
+        users_otherVC.postPicture = _postUserPicture_with_profile;
+        users_otherVC.postFlag = _postUserFlag_with_profile.integerValue;
     }
 }
 

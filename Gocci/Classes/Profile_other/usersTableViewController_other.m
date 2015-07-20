@@ -52,8 +52,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @synthesize postUserPicture_with_profile= _postUserPicture_with_profile;
 @synthesize postUsername_with_profile2= _postUsername_with_profile2;
 @synthesize postUserPicture_with_profile2= _postUserPicture_with_profile2;
-@synthesize postFlag = _postFlag;
-@synthesize postTotalCheer = _postTotalCheer;
 
 - (void)viewDidLoad
 {
@@ -166,22 +164,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [super viewWillAppear:animated];
-    
-    //JSONをパース
-    NSString *timelineString = [NSString stringWithFormat:@"http://api-gocci.jp/mypage/?user_name=%@",[header objectForKey:@"username"]];
-    NSString* escaped = [timelineString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL* Url = [NSURL URLWithString:escaped];
-    NSString *response = [NSString stringWithContentsOfURL:Url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"response:%@",response);
-    NSData *jsonData = [response dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-    NSLog(@"jsonData:%@",jsonData);
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSLog(@"jsonDic:%@",jsonDic);
-    //status
-    NSArray *user_name = [jsonDic valueForKey:@"status"];
-    _status_ = [user_name mutableCopy];
-    NSLog(@"statust:%@",_status_[0]);
-    
     
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー非表示
@@ -470,7 +452,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         NSLog(@"postFlag:%ld",i);
         int pi = (int)i;
         NSLog(@"pi:%d",pi);
-        //NSLog(@"postFlag:%ld",(long)_postFlag);
         flash_on = pi;
         NSLog(@"flash_on:%d",flash_on);
     }

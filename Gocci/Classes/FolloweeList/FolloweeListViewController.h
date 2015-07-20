@@ -14,15 +14,15 @@
 
 {
     NSString *_postUsername;
-    NSString *_postUsername_with_profile2;
-    NSString *_postUserPicture_with_profile2;
-    NSString *_postFlagPrepere;
-    NSInteger _postFlag;
+    NSString *_postUsername_with_profile;
+    NSString *_postUserPicture_with_profile;
+    NSString *_postUserFlag_with_profile;
 }
 
 @property (nonatomic) NSString *postUsername;
-@property (nonatomic) NSString *postUsername_with_profile2;
-@property (nonatomic) NSString *postUserPicture_with_profile2;
+@property (nonatomic) NSString *postUsername_with_profile;
+@property (nonatomic) NSString *postUserPicture_with_profile;
+@property (nonatomic) NSString *_postUserFlag_with_profile;
 
 
 @end
