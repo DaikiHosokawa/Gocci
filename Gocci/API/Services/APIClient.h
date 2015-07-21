@@ -276,5 +276,19 @@
  */
 + (void)CheerList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  Regist new user
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ *  @param email email
+ */
++ (void)Singup:(NSString *)username
+            os:(NSString *)os
+         model:(NSString *)model
+   register_id:(NSString *)register_id
+       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 @end

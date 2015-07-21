@@ -519,7 +519,7 @@ static APIClient *_sharedInstance = nil;
 + (void)FollowList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     
-  NSDictionary *params = @{
+    NSDictionary *params = @{
                              @"target_user_id" : target_user_id,
                              };
     
@@ -563,6 +563,27 @@ static APIClient *_sharedInstance = nil;
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
+}
+
++ (void)Singup:(NSString *)username os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"username" : username,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
+    
+    NSLog(@"Signup:%@",params);
+    
+    [[APIClient sharedClient].manager POST:@"auth/signup/"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                       NSLog(@"%@",responseObject);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
 }
 
 

@@ -45,14 +45,14 @@ static MoviePlayerManager *_sharedInstance = nil;
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     LOG(@"players[%@]=%@", key, self.players[key]);
     /*
-    if (self.players[key]) {
-        return;
-    }
+     if (self.players[key]) {
+     return;
+     }
      */
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    [APIClient downloadMovieFile:urlString 
+    [APIClient downloadMovieFile:urlString
                       completion:^(NSURL *fileURL, NSError *error) {
                           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                           
@@ -63,6 +63,7 @@ static MoviePlayerManager *_sharedInstance = nil;
                               completion(NO);
                               return;
                           }
+                          
                           MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
                           moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
                           [moviePlayer setContentURL:fileURL];
@@ -111,12 +112,12 @@ static MoviePlayerManager *_sharedInstance = nil;
     NSLog(@"start playing2");
     
     if (self.globalPlayer) {
- 
+        
         [self.globalPlayer.view removeFromSuperview];
-       // [self.globalPlayer pause];
+        // [self.globalPlayer pause];
         self.globalPlayer = nil;
-
-
+        
+        
     }
     
     
@@ -131,15 +132,15 @@ static MoviePlayerManager *_sharedInstance = nil;
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
             [self.globalPlayer play];
         }
-    
+        
         /*
-        //再生中のとき
-        else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
-            [self.globalPlayer play];
-            NSLog(@"再生中");
-        }else if ([self.globalPlayer playbackState] == MPMoviePlaybackStateSeekingForward) {
-             NSLog(@"待機中");
-        }
+         //再生中のとき
+         else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
+         [self.globalPlayer play];
+         NSLog(@"再生中");
+         }else if ([self.globalPlayer playbackState] == MPMoviePlaybackStateSeekingForward) {
+         NSLog(@"待機中");
+         }
          */
     }
 }

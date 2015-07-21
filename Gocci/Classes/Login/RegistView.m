@@ -22,7 +22,7 @@
 @end
 
 #define Rgb2UIColor(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
-#define kActiveLogin @"ActiveLogin"
+//#define kActiveLogin @"ActiveLogin"
 #define KEY_EMAIL          @"KEYCHAIN_EMAIL"
 #define KEY_FIRSTNAME      @"KEYCHAIN_FIRSTNAME"
 #define KEY_LASTNAME       @"KEYCHAIN_LASTNAME"
@@ -30,19 +30,23 @@
 #define KEY_FULLNAME       @"KEYCHAIN_FULLNAME"
 #define KEY_GENDER         @"KEYCHAIN_GENDER"
 #define kActiveCancel @"kActiveCancel"
+#define kActiveLogin @"kActiveLogin"
 #define kTwitterConsumerKey @"BjIi16n6oTTQosw7V8EekVOnY"
 #define kTwitterConsumerSecret @"vczV03jB7lFFWcCWpFpb0WOFHFnPB6umJQeMOgxnllmXUKGEBj"
 
 @implementation RegistView
 
 
-#pragma mark - InitComponent 
+#pragma mark - InitComponent
 
 -(void) initComponent {
-    _tfEmail.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
-    _tfEmail.layer.borderWidth = 1;
-    _tfPwd.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
-    _tfPwd.layer.borderWidth = 1;
+    /*
+     _tfEmail.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
+     _tfEmail.layer.borderWidth = 1;
+     
+     _tfPwd.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
+     _tfPwd.layer.borderWidth = 1;
+     */
     _tfUsername.layer.borderColor = Rgb2UIColor(240, 240, 240).CGColor;
     _tfUsername.layer.borderWidth = 1;
     
@@ -61,14 +65,14 @@
         checkbox.tag = (i+1);
         checkbox.layer.cornerRadius = 0.0;
     }
-
     
-    _tfEmail.delegate = self;
-    _tfPwd.delegate = self;
+    
+    // _tfEmail.delegate = self;
+    //_tfPwd.delegate = self;
     _tfUsername.delegate = self;
     
-    _btnFacebook.layer.cornerRadius = 5;
-    _btnTwitter.layer.cornerRadius = 5;
+    //_btnFacebook.layer.cornerRadius = 5;
+    //_btnTwitter.layer.cornerRadius = 5;
     _btnRegist.layer.cornerRadius = 5;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
@@ -78,7 +82,7 @@
     _consumerKeyTextField = kTwitterConsumerKey;
     _consumerSecretTextField = kTwitterConsumerSecret;
     
-
+    
 }
 
 
@@ -94,13 +98,16 @@
             if (textField == _tfUsername) {
                 frame.origin.y = -100;
                 self.frame =frame;
-            } else if (textField == _tfEmail) {
-                frame.origin.y = -140;
-                self.frame =frame;
-            } else if (textField == _tfPwd) {
-                frame.origin.y = -180;
-                self.frame =frame;
             }
+            /*
+             else if (textField == _tfEmail) {
+             frame.origin.y = -140;
+             self.frame =frame;
+             } else if (textField == _tfPwd) {
+             frame.origin.y = -180;
+             self.frame =frame;
+             }
+             */
         }
             break;
             
@@ -109,13 +116,16 @@
             if (textField == _tfUsername) {
                 frame.origin.y = -60;
                 self.frame =frame;
-            } else if (textField == _tfEmail) {
-                frame.origin.y = -100;
-                self.frame =frame;
-            } else if (textField == _tfPwd) {
-                frame.origin.y = -140;
-                self.frame =frame;
             }
+            /*
+             else if (textField == _tfEmail) {
+             frame.origin.y = -100;
+             self.frame =frame;
+             } else if (textField == _tfPwd) {
+             frame.origin.y = -140;
+             self.frame =frame;
+             }
+             */
         }
             break;
             
@@ -124,13 +134,16 @@
             if (textField == _tfUsername) {
                 frame.origin.y = -40;
                 self.frame =frame;
-            } else if (textField == _tfEmail) {
-                frame.origin.y = -80;
-                self.frame =frame;
-            } else if (textField == _tfPwd) {
-                frame.origin.y = -120;
-                self.frame =frame;
             }
+            /*
+             else if (textField == _tfEmail) {
+             frame.origin.y = -80;
+             self.frame =frame;
+             } else if (textField == _tfPwd) {
+             frame.origin.y = -120;
+             self.frame =frame;
+             }
+             */
         }
             break;
             
@@ -138,13 +151,16 @@
             if (textField == _tfUsername) {
                 frame.origin.y = -80;
                 self.frame =frame;
-            } else if (textField == _tfEmail) {
-                frame.origin.y = -120;
-                self.frame =frame;
-            } else if (textField == _tfPwd) {
-                frame.origin.y = -160;
-                self.frame =frame;
             }
+            /*
+             else if (textField == _tfEmail) {
+             frame.origin.y = -120;
+             self.frame =frame;
+             } else if (textField == _tfPwd) {
+             frame.origin.y = -160;
+             self.frame =frame;
+             }
+             */
         }
             break;
     }
@@ -194,8 +210,8 @@
 
 #pragma mark - Functions
 -(void) dismissKeyboard:(UITapGestureRecognizer *)tap {
-    [_tfEmail resignFirstResponder];
-    [_tfPwd resignFirstResponder];
+    //[_tfEmail resignFirstResponder];
+    //[_tfPwd resignFirstResponder];
     [_tfUsername resignFirstResponder];
     CGRect frame = self.frame;
     frame.origin.y = 20;
@@ -327,7 +343,7 @@
                 NSString *alertMessage = @"Twitterのアカウントでサインインできません。";
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alrt show];
-
+                
                 
                 [SVProgressHUD dismiss];
                 
@@ -342,7 +358,7 @@
             [alrt show];
             
             [SVProgressHUD dismiss];
-
+            
             NSLog(@"ERROR");
             //exit(1);
             
@@ -354,8 +370,8 @@
         [alrt show];
         
         [SVProgressHUD dismiss];
-
-
+        
+        
         NSLog(@"ERROR");
         //exit(1);
         
@@ -368,7 +384,7 @@
 }
 
 -(IBAction)btnFacebook_clicked:(id)sender {
-   
+    
     if (![self _validateCheckboxes]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
                                                         message:nil
@@ -378,7 +394,7 @@
         [alert show];
         return;
     }
-
+    
     //_btnFacebook.hidden = YES;
     
     [SVProgressHUD show];
@@ -440,49 +456,62 @@
     
     [SVProgressHUD show];
     
-     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    [APIClient registUserWithUsername:_tfUsername.text
-                         withPassword:_tfPwd.text
-                            withEmail:_tfEmail.text
-                         withToken_id:[ud stringForKey:@"STRING"]
-                              handler:^(id result, NSUInteger code, NSError *error) {
-        [SVProgressHUD dismiss];
-        //receive data
-               NSLog(@"register result: %@ error :%@", result, error);
-        if (!error) {
-            NSLog(@"register user: %@", result);
-            if ([result[@"code"] integerValue] == 200) {
-                
-                // Initialize the Cognito Sync client
-                AWSCognito *syncClient = [AWSCognito defaultCognito];
-                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                // Create a record in a dataset and synchronize with the server
-                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-                [dataset setString:os forKey:@"os"];
-                [dataset setString:[ud stringForKey:@"STRING"] forKey:@"register_id"];
-                [dataset setString:[ud stringForKey:@"username"] forKey:@"username"];
-                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-                    // Your handler code here
-                NSLog(@"dataset:%@",dataset);
-                    return nil;
-                }];
-                
-                //success
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功です。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kActiveCancel object:self];
-                [self removeFromSuperview];
-            } else {
-                //fail
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-            }
-        }
-        
-    }];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+    
+    [APIClient Singup:_tfUsername.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
+     {
+         [SVProgressHUD dismiss];
+         //receive data
+         NSLog(@"register result: %@ error :%@", result, error);
+         if (!error) {
+             NSLog(@"register user: %@", result);
+             if ([result[@"code"] integerValue] == 200) {
+                 
+                 NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
+                 [def setObject:_tfUsername.text forKey:@"username"];
+                 [def setObject:result[@"identity_id"] forKey:@"identity_id"];
+                 
+                 /*
+                  // Initialize the Cognito Sync client
+                  AWSCognito *syncClient = [AWSCognito defaultCognito];
+                  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                  // Create a record in a dataset and synchronize with the server
+                  AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
+                  [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
+                  NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+                  [dataset setString:os forKey:@"os"];
+                  [dataset setString:[ud stringForKey:@"STRING"] forKey:@"register_id"];
+                  [dataset setString:[ud stringForKey:@"username"] forKey:@"username"];
+                  [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
+                  // Your handler code here
+                  NSLog(@"dataset:%@",dataset);
+                  return nil;
+                  }];
+                  */
+                 //success
+                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功です。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                 [alrt show];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
+                 [self removeFromSuperview];
+                 
+             }else if([result[@"code"] integerValue] != 200) {
+                 
+                 //success
+                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                 [alrt show];
+                 //[self removeFromSuperview];
+                 
+             }
+             else {
+                 //fail
+                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                 [alrt show];
+             }
+         }
+         
+     }];
 }
 
 - (void)chooseAccount {
@@ -566,7 +595,7 @@
         // Your handler code here
         NSLog(@"dataset:%@",dataset);
         
-        [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
             NSLog(@"SNS result:%@",result);
             NSLog(@"SNS error:%@",error);
             if (result) {
@@ -611,7 +640,7 @@
     [self.ruleCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
     // ボタンが押された時にhogeメソッドを呼び出す
     [self.ruleCancel addTarget:self
-            action:@selector(hoge:) forControlEvents:UIControlEventTouchUpInside];
+                        action:@selector(hoge:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)hoge:(UIButton*)button{

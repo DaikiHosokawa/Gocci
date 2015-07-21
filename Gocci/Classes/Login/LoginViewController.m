@@ -112,7 +112,7 @@
         picturedelegate.userpicture = pictureURL;
         
         
-        [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"cognitoId"] handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
             NSLog(@"Welcome result:%@ error:%@",result,error);
            if((code = 200)){
             NSString* username = [result objectForKey:@"username"];
@@ -157,7 +157,7 @@
 
 #pragma mark - Action
 
-//Facebookログインを押す
+//「Gocciを始める」を押す
 - (IBAction)facebookButtonTapped:(id)sender {
     
     [self addBackgroundEffect];

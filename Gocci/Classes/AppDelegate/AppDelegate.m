@@ -174,6 +174,7 @@
     [application registerForRemoteNotificationTypes:remoteNotificationType];
 #endif
     
+    /*
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                           initWithRegionType:AWSRegionUSEast1
                                                           identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
@@ -185,13 +186,14 @@
     
     [[credentialsProvider getIdentityId] continueWithBlock:^id(AWSTask *task) {
         // Your handler code here
-        NSString* cognitoId = credentialsProvider.identityId;
-        NSLog(@"cognitoId: %@", cognitoId);
-        [[NSUserDefaults standardUserDefaults] setValue:cognitoId forKey:@"cognitoId"];
+        NSString* identity_id = credentialsProvider.identityId;
+        NSLog(@"identity_id: %@", identity_id);
+        [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
         NSString* accessKey = credentialsProvider.accessKey;
         NSLog(@"accesskey: %@", accessKey);
         return nil;
     }];
+     */
     
     return YES;
     
