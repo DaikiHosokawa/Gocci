@@ -73,20 +73,10 @@
                      limit:(NSUInteger)limit
                    handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  dist/
- *
- *  @param latitude
- *  @param longitude
- *  @param limit
- *  @param handler
- */
-+ (void)distWithLatitude:(CGFloat)latitude
-               longitude:(CGFloat)longitude
-                   limit:(NSUInteger)limit
-                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
+
+
+/*
  *  dist/
  *
  *  @param latitude
@@ -95,11 +85,10 @@
  *  @param handler
  *  @param cacheHandler キャッシュされた結果を取得
  */
-+ (void)distWithLatitude:(CGFloat)latitude
-               longitude:(CGFloat)longitude
-                   limit:(NSUInteger)limit
-                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-                useCache:(void (^)(id cachedResult))cacheHandler;
++ (void)Near:(CGFloat)latitude
+   longitude:(CGFloat)longitude
+     handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+    useCache:(void (^)(id cachedResult))cacheHandler;
 
 /**
  *  post_restname/
@@ -115,7 +104,7 @@
  *  @param fileURL
  *  @param handler
  */
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString*)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)POST:(NSString *)movie_name rest_id:(NSString*)rest_id cheer_flag:(NSInteger )cheer_flag value:(NSInteger )value category_id:(NSString*)category_id tag_id:(NSString*)tag_id memo:(NSString *)memo handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  ファイルのダウンロード

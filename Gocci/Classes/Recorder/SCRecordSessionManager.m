@@ -17,7 +17,7 @@
     if (metadatas == nil) {
         metadatas = [NSMutableArray new];
     }
-
+    
     block(metadatas);
     
     [[NSUserDefaults standardUserDefaults] setObject:metadatas forKey:kUserDefaultsStorageKey];

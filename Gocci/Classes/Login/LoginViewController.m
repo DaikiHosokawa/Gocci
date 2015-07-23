@@ -95,7 +95,7 @@
     _btnLogin.enabled = YES;
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
-    
+
     NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
     

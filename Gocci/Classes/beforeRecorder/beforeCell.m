@@ -19,6 +19,7 @@ NSString * const beforeCellIdentifier = @"beforeCell";
 @property (nonatomic, weak) IBOutlet UILabel *restaurantLabel;
 
 @property (nonatomic) NSUInteger restaurantIndex;
+@property (nonatomic) NSString* rest_id;
 
 @end
 
@@ -69,19 +70,7 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.background dropShadow];
-    
-
-    
-    // 「地図を見る」タップイベント
-    UITapGestureRecognizer *tapMap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMapLabel:)];
-    [self.mapLabel addGestureRecognizer:tapMap];
-    self.mapLabel.userInteractionEnabled = YES;
-    
-    // 「この店舗の詳しく見る」タップイベント
-    UITapGestureRecognizer *tapDetail = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetailLabel:)];
-    [self.detailLabel addGestureRecognizer:tapDetail];
-    self.detailLabel.userInteractionEnabled = YES;
-    
+   
     // 店名タップイベント
     //UITapGestureRecognizer *tapRestaurant = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRestaurantLabel:)];
     //[self.restaurantLabel addGestureRecognizer:tapRestaurant];
@@ -91,7 +80,7 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     // 情報を表示
     //self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];
     self.restaurantNameLabel.text = restaurant.restname;
-    
+    self.rest_id = restaurant.rest_id;
     /*
     // 店舗サムネイルの表示
     // TODO: API から取得した画像を表示

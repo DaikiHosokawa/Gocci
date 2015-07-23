@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *homepage;
 @property (nonatomic, copy) NSString *total_cheer_num;
 @property (nonatomic, copy) NSString *want_tag;
+@property (nonatomic, copy) NSString *rest_id;
 
 + (instancetype)restaurantWithDictionary:(NSDictionary *)dictionary;
 

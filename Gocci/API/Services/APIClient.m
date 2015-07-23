@@ -172,12 +172,10 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)distWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    [APIClient distWithLatitude:latitude longitude:longitude limit:limit handler:handler useCache:nil];
-}
 
-+ (void)distWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler useCache:(void (^)(id))cacheHandler
+
+
++ (void)Near:(CGFloat)latitude longitude:(CGFloat)longitude handler:(void (^)(id, NSUInteger, NSError *))handler useCache:(void (^)(id))cacheHandler
 {
     if (cacheHandler != nil) {
         NSDictionary *cachedDictionary = [[APIClient sharedClient].resultCache objectForKey:APIClientResultCacheKeyDist];
@@ -192,10 +190,9 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
-                             @"limit": [NSString stringWithFormat:@"%@", @(limit)],
                              };
     
-    [[APIClient sharedClient].manager GET:@"dist/"
+    [[APIClient sharedClient].manager GET:@"get/near"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       NSLog(@"task:%@",task);
@@ -232,16 +229,26 @@ static APIClient *_sharedInstance = nil;
                    });
 }
 
-+ (void)movieWithFilePathURL:(NSURL *)fileURL rest_id:(NSString *)rest_id cheer_flag:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSInteger)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
                              @"rest_id" : rest_id,
-                             @"cheer_flag" :@(cheertag),
-                             @"tag_id" : atmosphere,
+                             @"cheer_flag" :@(cheer_flag),
+                             @"tag_id" : tag_id,
                              @"value" :@(value),
-                             @"category_id" : category,
-                             @"memo" : comment
+                             @"category_id" : category_id,
+                             @"memo" : memo
                              };
     NSLog(@"params:%@",params);
+    [[APIClient sharedClient].manager POST:@"post/post"
+                                parameters:params
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                   }];
+}
+
+    /*
     [[APIClient sharedClient].manager POST:@"movie/"
                                 parameters:params
                  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -250,16 +257,17 @@ static APIClient *_sharedInstance = nil;
                                                 name:@"movie"
                                             fileName:[fileURL lastPathComponent]
                                             mimeType:@"video/mp4"
-                                               error:&error];
+     
                      NSLog(@"pram:%@",params);
                      if (error) LOG(@"error=%@", error);
+     
                  } success:^(NSURLSessionDataTask *task, id responseObject) {
                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                  }];
 }
-
+*/
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
 {
     NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
@@ -472,7 +480,7 @@ static APIClient *_sharedInstance = nil;
 + (void)Welcome:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"identity_id" :identity_id,
+                             @"identity_id" :@"us-east-1:718f0ae6-e859-40b9-b9ab-d624d9374a02",
                              @"sns_flag" :@"1"
                              };
     NSLog(@"Welcome param:%@",params);

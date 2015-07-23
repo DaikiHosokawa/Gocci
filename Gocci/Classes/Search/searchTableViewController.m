@@ -457,6 +457,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [weakSelf.refresh beginRefreshing];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    /*
     [APIClient distWithLatitude:coordinate.latitude
                       longitude:coordinate.longitude
                           limit:30
@@ -497,6 +498,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          
          [weakSelf _reloadRestaurants:cachedResult];
      }];
+     */
 }
 
 /**

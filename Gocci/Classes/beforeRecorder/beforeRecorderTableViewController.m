@@ -165,7 +165,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,7 +182,7 @@
     [cell configureWithRestaurant:restaurant index:indexPath.row];
     cell.delegate = self;
     
-    if(indexPath.row == 29){
+    if(indexPath.row == 9){
         cell.restaurantNameLabel.text = @"店舗がないときは。。。。";
       // [cell.cont setBackgroundColor:[UIColor orangeColor]];
         //cell.backgroundColor = [UIColor orangeColor];
@@ -200,18 +200,18 @@
 {
     NSLog(@"選択したセル：%ld",(long)indexPath.row);
     
-    if(indexPath.row <= 28){
+    if(indexPath.row <= 8){
         
         Restaurant *restaurant = self.restaurants[indexPath.row];
         // グローバル変数に保存
         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         delegate.restrantname = restaurant.restname;
-        
+        delegate.rest_id = restaurant.rest_id;
         // モーダル閉じる
         [self dismissWithTenmei];
     }
     
-    if(indexPath.row == 29){
+    if(indexPath.row == 9){
         FirstalertView = [[UIAlertView alloc] initWithTitle:@"店名を入力してください"
                                                     message:nil
                                                    delegate:self
@@ -408,10 +408,7 @@
     
     [weakSelf.refresh beginRefreshing];
     
-    [APIClient distWithLatitude:coordinate.latitude
-                      longitude:coordinate.longitude
-                          limit:30
-                        handler:^(id result, NSUInteger code, NSError *error)
+    [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
      {
          [SVProgressHUD dismiss];
         

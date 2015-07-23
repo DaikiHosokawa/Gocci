@@ -13,11 +13,9 @@
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>{
-    // グローバル変数
     NSString *restrantname;
-    //グローバル変数
+    NSString *rest_id;
     NSString *username;
-    //グローバル変数
     NSString *userpicture;
     //緯度経度取得用
     CLLocationManager *locationManager;
@@ -49,6 +47,7 @@
 
 @property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *restrantname;
+@property (nonatomic, retain) NSString *rest_id;
 @property (nonatomic, retain) NSString *postFileName;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *userpicture;
