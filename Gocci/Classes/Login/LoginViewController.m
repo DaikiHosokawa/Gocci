@@ -183,7 +183,7 @@
     
     RegistView *registView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil] lastObject];;
     [registView initComponent];
-    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 20, registView.frame.size.width, registView.frame.size.height);
+    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 80, registView.frame.size.width, registView.frame.size.height);
     [self.view addSubview:registView];
     
     return;

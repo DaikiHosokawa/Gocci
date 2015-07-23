@@ -52,30 +52,24 @@ static MoviePlayerManager *_sharedInstance = nil;
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     __weak typeof(self)weakSelf = self;
-    [APIClient downloadMovieFile:urlString
-                      completion:^(NSURL *fileURL, NSError *error) {
-                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                          
-                          NSLog(@"fileURL:%@",fileURL);
-                          
-                          if (fileURL == nil || error != nil) {
-                              [self.players removeObjectForKey:key];
-                              completion(NO);
-                              return;
-                          }
-                          
-                          MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
-                          moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
-                          [moviePlayer setContentURL:fileURL];
-                          moviePlayer.controlStyle = MPMovieControlStyleNone;
-                          moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-                          moviePlayer.repeatMode = MPMovieRepeatModeOne;
-                          moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
-                          moviePlayer.view.userInteractionEnabled = NO;
-                          weakSelf.players[key] = moviePlayer;
-                          
-                          completion(YES);
-                      }];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"fileURL:%@",url);
+    
+    
+    MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
+    moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    [moviePlayer setContentURL:url];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    moviePlayer.repeatMode = MPMovieRepeatModeOne;
+    moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
+    moviePlayer.view.userInteractionEnabled = NO;
+    weakSelf.players[key] = moviePlayer;
+    
+    
 }
 
 

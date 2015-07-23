@@ -371,9 +371,7 @@
         
         [SVProgressHUD dismiss];
         
-        
         NSLog(@"ERROR");
-        //exit(1);
         
     }];
 }
