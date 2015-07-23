@@ -87,6 +87,12 @@
 -(void)countup:(id)inSender{
  [self performSegueWithIdentifier:@"go_Rec1" sender:self];
 }
+
+- (IBAction)afterRecording:(UIStoryboardSegue *)segue
+{
+
+}
+
     /*
 #pragma mark - Navigation
 

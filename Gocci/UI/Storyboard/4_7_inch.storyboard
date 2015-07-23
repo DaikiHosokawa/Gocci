@@ -902,7 +902,7 @@
                                         </state>
                                         <connections>
                                             <action selector="onSubmit:" destination="y1g-iL-KK8" eventType="touchUpInside" id="cfR-cP-CAv"/>
-                                            <segue destination="9rq-o0-n9Q" kind="unwind" unwindAction="popViewController1:" id="LqN-fT-QZq"/>
+                                            <segue destination="9rq-o0-n9Q" kind="unwind" unwindAction="afterRecording:" id="AE5-7z-lzS"/>
                                         </connections>
                                     </button>
                                 </subviews>
