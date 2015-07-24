@@ -105,13 +105,6 @@
         
         [SVProgressHUD show];
         
-        AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        logindelegate.username = username;
-        NSString *pictureURL = avatarLink;
-        AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        picturedelegate.userpicture = pictureURL;
-        
-        
         [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
             NSLog(@"Welcome result:%@ error:%@",result,error);
            if((code = 200)){
@@ -206,11 +199,7 @@
             
             NSString *facebookID = userData[@"id"];
             NSString *name = userData[@"name"];
-            AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            logindelegate.username = name;
             NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID ];
-            AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            picturedelegate.userpicture = pictureURL;
             
             NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",name,pictureURL];
             NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
@@ -261,12 +250,7 @@
                 NSLog(@"authToken:%@",authToken);
                 NSString *screenName = [PFTwitterUtils twitter].screenName;
                 NSLog(@"screenName:%@",screenName);
-                AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                logindelegate.username = screenName;
                 NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", screenName];
-                AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                picturedelegate.userpicture = pictureURL;
-                NSLog(@"%@",pictureURL);
                 
                 NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",screenName,pictureURL];
                 NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];

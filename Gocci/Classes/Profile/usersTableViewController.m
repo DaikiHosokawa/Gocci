@@ -171,10 +171,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [self _fetchProfile];
     [self.tableView reloadData];
-    
-    
-    
-    [SVProgressHUD dismiss];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -440,6 +437,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"picture"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - Private Methods
@@ -484,7 +483,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
-        [SVProgressHUD dismiss];
         
         NSString *alertMessage = @"圏外ですので再生できません。";
         UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];

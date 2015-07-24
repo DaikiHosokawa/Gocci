@@ -787,6 +787,7 @@ static SCRecorder *_recorder;
 
 #pragma mark - RecorderSubmitPopupViewDelegate
 #pragma mark Twitter へ投稿
+/*
 - (void)recorderSubmitPopupViewOnTwitterShare
 {
     LOG_METHOD;
@@ -814,14 +815,17 @@ static SCRecorder *_recorder;
     [self presentViewController:controller animated:YES completion:nil];
     
 }
+ */
+
 #pragma mark Facebook へ投稿
+/*
 - (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller
 {
     LOG_METHOD;
     
     //注意：FacebookShareのメソッドをここに書く
     
-    /*
+
      [SVProgressHUD show];
      
      AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -956,9 +960,9 @@ static SCRecorder *_recorder;
      shareDialog.shareContent = content;
      shareDialog.delegate=self;
      [shareDialog show];
-     */
+    
 }
-
+*/
 
 
 
@@ -1342,7 +1346,7 @@ static SCRecorder *_recorder;
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         NSString *restrantname = @"none";
-        if (appDelegate.restrantname) restrantname = appDelegate.restrantname;
+        if (appDelegate.restname) restrantname = appDelegate.restname;
         int cheertag = 1;
         if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
         int valueKakaku = 0;
@@ -1371,7 +1375,7 @@ static SCRecorder *_recorder;
          }];
         
         appDelegate.stringTenmei = @"";
-        appDelegate.restrantname = nil;
+        appDelegate.restname = nil;
         appDelegate.valueHitokoto = @"";
         appDelegate.valueKakaku = 0;
         appDelegate.indexCategory = -1;

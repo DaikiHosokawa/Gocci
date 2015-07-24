@@ -185,8 +185,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    [SVProgressHUD dismiss];
-    
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
     
@@ -313,15 +311,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
     
-    [SVProgressHUD dismiss];
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LOG_METHOD;
-    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 
@@ -613,12 +608,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理
-- (void)timeline:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id
 {
     //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
+    _postUsername = user_id;
     LOG(@"postUsername:%@",_postUsername);
     // !!!:dezamisystem
     //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
@@ -649,14 +642,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理②
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id
 {
-    //user nameタップの時の処理②
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    LOG(@"postUsername:%@",_postPicture);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    LOG(@"Username is touched");
+    _postUsername = user_id;
+
 }
 
 -(void)byoga{
@@ -668,7 +657,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.categoryLabel.text = [header objectForKey:@"category"];
     NSLog(@"カテゴリー名：%@",self.restname.text);
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.restrantname = [header objectForKey:@"restname"];
+    delegate.restname = [header objectForKey:@"restname"];
     
     NSString *postLat = [header objectForKey:@"lat"];
     NSLog(@"緯度：%@",postLat);
@@ -707,7 +696,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }
     
-    
+    [SVProgressHUD dismiss];
+
 }
 
 #pragma mark - Private Methods

@@ -63,6 +63,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userspicture;
 @property (nonatomic, strong) NSString *restname;
+@property (nonatomic, strong) NSString *rest_id;
 @property (nonatomic, strong) NSString *locality;
 @property (nonatomic, strong) NSString *tell;
 @property (nonatomic, strong) NSString *category;
@@ -118,6 +119,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
     self.username = everyPost.username;
     self.userspicture = everyPost.profile_img;
     self.restname = everyPost.restname;
+    self.rest_id = everyPost.rest_id;
     self.category = everyPost.category;
     //いいねしているかどうか
     self.pushed_at = everyPost.pushed_at;
@@ -306,8 +308,8 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 - (void)tapRestautant:(UITapGestureRecognizer *)recognizer
 {
     NSLog(@"店名タップ検知");
-    if ([self.delegate respondsToSelector:@selector(everyCell:didTapRestaurant:locality:tel:homepage:category:lon:lat:total_cheer:want_tag:)]) {
-        [self.delegate everyCell:self didTapRestaurant:self.restname locality:self.locality tel:self.tell homepage:self.homepage category:self.category lon:self.lon lat:self.lat total_cheer:self.total_cheer want_tag:self.want_tag];
+    if ([self.delegate respondsToSelector:@selector(everyCell:didTapRestaurant:)]) {
+        [self.delegate everyCell:self didTapRestaurant:self.rest_id];
     }
 }
 

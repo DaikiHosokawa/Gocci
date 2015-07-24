@@ -29,19 +29,10 @@
 	   postid:(NSString*)postid;
 
 -(void)follow:(FollowTableViewController*)vc
-  username:(NSString*)username picture:(NSString*)picture
-		 flag:(NSInteger)flag;
+  username:(NSString*)user_id;
 
 -(void)follow:(FollowTableViewController*)vc
-	 restname:(NSString*)restname
-	 homepage:(NSString *)homepage
-	 locality:(NSString *)locality
-	 category:(NSString*)category
-		  lon:(NSString*)lon
-		  lat:(NSString*)lat
-		 tell:(NSString*)tell
-   totalcheer:(NSString*)totalcheer
-	  wanttag:(NSString*)wanttag;
+     rest_id:(NSString*)rest_id;
 @end
 
 @interface FollowTableViewController : UITableViewController<UIScrollViewDelegate>

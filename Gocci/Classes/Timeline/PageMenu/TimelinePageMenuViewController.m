@@ -63,11 +63,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
 	_postID = postid;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc username:(NSString *)username picture:(NSString *)picture flag:(NSInteger)flag
+-(void)allTimeline:(AllTimelineTableViewController *)vc username:(NSString *)user_id
 {
-	_postUsername = username;
-	_postPicture = picture;
-	_postFlag = flag;
+    _postUsername = user_id;
 }
 -(void)allTimeline:(AllTimelineTableViewController *)vc rest_id:(NSString *)rest_id
 {
@@ -79,23 +77,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
 	_postID = postid;
 }
--(void)follow:(FollowTableViewController *)vc username:(NSString *)username picture:(NSString *)picture flag:(NSInteger)flag
+-(void)follow:(FollowTableViewController *)vc username:(NSString *)user_id
 {
-	_postUsername = username;
-	_postPicture = picture;
-	_postFlag = flag;
+    _postUsername = user_id;
 }
--(void)follow:(FollowTableViewController *)vc restname:(NSString *)restname homepage:(NSString *)homepage locality:(NSString *)locality category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat tell:(NSString *)tell totalcheer:(NSString *)totalcheer wanttag:(NSString *)wanttag
+-(void)follow:(FollowTableViewController *)vc rest_id:(NSString *)rest_id
 {
-	_postRestname = restname;
-	_postHomepage = homepage;
-	_postLocality = locality;
-	_postCategory = category;
-	_postLat = lat;
-	_postLon = lon;
-	_postTell = tell;
-	_postTotalCheer = totalcheer;
-	_postWanttag = wanttag;
+    _postRestname = rest_id;
 }
 
 #pragma mark - ViewLoad
@@ -290,8 +278,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		//ここでパラメータを渡す
 		usersTableViewController_other *useVC = segue.destinationViewController;
 		useVC.postUsername = _postUsername;
-		useVC.postPicture = _postPicture;
-		useVC.postFlag = _postFlag;
 	}
 	else
 	//店舗画面にパラメータを渡して遷移する

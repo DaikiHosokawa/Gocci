@@ -35,7 +35,7 @@ extern NSString * const EveryCellIdentifier;
  *  @param cell
  *  @param restaurantName 店舗名
  */
-- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag;
+- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)rest_id;
 
 /**
  *  Like ボタンをタップ

@@ -50,6 +50,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *rest_id;
+@property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userspicture;
 @property (nonatomic, strong) NSString *restname;
@@ -85,13 +86,6 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 #pragma mark - Action
 
-- (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:picture:flag:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserName:self.username picture:_userspicture flag:_flag];
-    }
-}
-
 
 - (void)tapthumb:(UITapGestureRecognizer *)recognizer
 {
@@ -100,10 +94,17 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     }
 }
 
+- (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapUserName:)]) {
+        [self.delegate timelineCell:self didTapUserName:self.user_id];
+    }
+}
+
 - (void)tapAvaterImageView:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserPicture:name:flag:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserPicture:self.userspicture name:_username flag:_flag];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapPicture:)]) {
+        [self.delegate timelineCell:self didTapPicture:self.user_id];
     }
 }
 
@@ -194,6 +195,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.total_cheer = timelinePost.totalCheer;
     self.want_tag = timelinePost.want_flag;
     self.rest_id = timelinePost.rest_id;
+    self.user_id = timelinePost.userID;
+    NSLog(@"ここでは%@",self.user_id);
     
     // ユーザアイコンを円形に
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;

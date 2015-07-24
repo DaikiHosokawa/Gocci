@@ -171,7 +171,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self _fetchProfile_other];
     [self.tableView reloadData];
     
-    [SVProgressHUD dismiss];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -235,8 +234,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-    
-    [SVProgressHUD dismiss];
     
     return cell ;
 }
@@ -427,7 +424,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (profiledelegate) {}
-    NSString *picturestring = _postPicture;
+    NSString *picturestring = [header objectForKey:@"profile_img"];
     self.profilename.text = [header objectForKey:@"username"];
     [self.profilepicture setImageWithURL:[NSURL URLWithString:picturestring]
                         placeholderImage:[UIImage imageNamed:@"default.png"]
@@ -470,7 +467,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         _flashBtn.hidden = YES;
     }
     
-    
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - Private Methods
@@ -522,6 +519,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             
         }
         [self byoga];
+        
         
     }];
 }

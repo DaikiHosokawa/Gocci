@@ -28,14 +28,7 @@
 
 @implementation AppDelegate
 // !!!:dezamisystem
-@synthesize movieData;
-@synthesize jsonDic;
-@synthesize restrantname;
-@synthesize username;
-@synthesize userpicture;
-@synthesize postFileName;
-
-@synthesize jsonArray;
+@synthesize restname;
 @synthesize lifelogDate;
 @synthesize cheertag;
 

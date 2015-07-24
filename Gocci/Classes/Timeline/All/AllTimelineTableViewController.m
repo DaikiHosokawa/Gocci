@@ -337,20 +337,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
-{
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id{
     //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    _postFlag = flag;
+    _postUsername = user_id;
     
     LOG(@"postUsername:%@",_postUsername);
     
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate allTimeline:self username:userName picture:usersPicture flag:flag];
+    [self.delegate allTimeline:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif
@@ -380,20 +376,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
-{
-    //user nameタップの時の処理 2
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    _postUsername = userName;
-    _postFlag = flag;
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id{
     
-    LOG(@"postUsername:%@",_postUsername);
+    _postUsername = user_id;
+    
     
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate allTimeline:self username:userName picture:userPicture flag:flag];
+    [self.delegate allTimeline:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif

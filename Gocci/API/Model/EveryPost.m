@@ -18,7 +18,7 @@
 	obj.post_user_id = dictionary[@"post_user_id"];
 	obj.username = dictionary[@"username"];
 	obj.profile_img = dictionary[@"profile_img"];
-	obj.post_rest_id = dictionary[@"rest_id"];
+	obj.rest_id = dictionary[@"rest_id"];
 	obj.restname = dictionary[@"restname"];
 	obj.movie = dictionary[@"movie"];
 	obj.thumbnail = dictionary[@"thumbnail"];

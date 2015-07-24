@@ -129,8 +129,8 @@ NSLog(@"%s %@",__func__, NSStringFromCGRect(self.view.frame) );
 
 AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
-NSLog(@"restrantname:%@",delegate.restrantname);
-if(delegate.restrantname)
+NSLog(@"restrantname:%@",delegate.restname);
+if(delegate.restname)
 {
     NSLog(@"ある");
     _submitBtn.enabled = YES;

@@ -70,43 +70,43 @@ NSString * const beforeCellIdentifier = @"beforeCell";
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.background dropShadow];
-   
+    
     // 店名タップイベント
     //UITapGestureRecognizer *tapRestaurant = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRestaurantLabel:)];
     //[self.restaurantLabel addGestureRecognizer:tapRestaurant];
     self.restaurantLabel.userInteractionEnabled = YES;
     
-
+    
     // 情報を表示
     //self.distanceLabel.text = [NSString stringWithFormat:@"%.1f km", (restaurant.distance / 1000.0)];
     self.restaurantNameLabel.text = restaurant.restname;
     self.rest_id = restaurant.rest_id;
     /*
-    // 店舗サムネイルの表示
-    // TODO: API から取得した画像を表示
-    for (UIView *v in self.scrollView.subviews) {
-        [v removeFromSuperview];
-    }
-    
-    CGFloat thumbnailMargin = 8.0;
-    CGSize thumbnailSize = CGSizeMake(self.scrollView.frame.size.height - thumbnailMargin * 2,
-                                      self.scrollView.frame.size.height - thumbnailMargin * 2);
-    for (NSUInteger i=0; i<10; i++) {
-        UIImageView *thumbnail = [UIImageView new];
-        thumbnail.frame = CGRectMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * i,
-                                     thumbnailMargin,
-                                     thumbnailSize.width,
-                                     thumbnailSize.height);
-        thumbnail.image = [UIImage imageNamed:@"restaurant_placeholder"];
-        [self.scrollView addSubview:thumbnail];
-    }
-    
-    self.scrollView.contentSize = CGSizeMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * 10,
-                                             self.scrollView.frame.size.height);
-
+     // 店舗サムネイルの表示
+     // TODO: API から取得した画像を表示
+     for (UIView *v in self.scrollView.subviews) {
+     [v removeFromSuperview];
+     }
+     
+     CGFloat thumbnailMargin = 8.0;
+     CGSize thumbnailSize = CGSizeMake(self.scrollView.frame.size.height - thumbnailMargin * 2,
+     self.scrollView.frame.size.height - thumbnailMargin * 2);
+     for (NSUInteger i=0; i<10; i++) {
+     UIImageView *thumbnail = [UIImageView new];
+     thumbnail.frame = CGRectMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * i,
+     thumbnailMargin,
+     thumbnailSize.width,
+     thumbnailSize.height);
+     thumbnail.image = [UIImage imageNamed:@"restaurant_placeholder"];
+     [self.scrollView addSubview:thumbnail];
+     }
+     
+     self.scrollView.contentSize = CGSizeMake(thumbnailMargin + (thumbnailMargin + thumbnailSize.width) * 10,
+     self.scrollView.frame.size.height);
+     
      */
     
-     }
-    
+}
+
 
 @end

@@ -474,24 +474,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
 }
 
-- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag
+- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)rest_id
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postCategory = category;
-    _postLat = lat;
-    _postLon = lon;
-    _postTell = tel;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
-    NSLog(@"restname=%@", restaurantName);
-    NSLog(@"locality=%@", locality);
-    NSLog(@"tel=%@", tel);
-    NSLog(@"homepage=%@", homepage);
-    NSLog(@"category=%@", category);
+    _postRestname = rest_id;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 

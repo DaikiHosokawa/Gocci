@@ -29,8 +29,7 @@
 				 postid:(NSString*)postid;
 
 -(void)allTimeline:(AllTimelineTableViewController*)vc
-			   username:(NSString*)username picture:(NSString*)picture
-				   flag:(NSInteger)flag;
+			   username:(NSString*)user_id;
 
 -(void)allTimeline:(AllTimelineTableViewController*)vc
 		   rest_id:(NSString*)rest_id;

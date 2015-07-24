@@ -360,8 +360,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         usersTableViewController_other *useVC = segue.destinationViewController;
         useVC.postUsername = _postUsername;
-        useVC.postPicture = _postPicture;
-        useVC.postFlag = _postFlag;
     }
     //店舗画面にパラメータを渡して遷移する
     //	if ([segue.identifier isEqualToString:@"goRestpage"])
@@ -436,21 +434,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id
 {
-    //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    _postFlag = flag;
+    _postUsername = user_id;
     
-    LOG(@"postUsername:%@",_postUsername);
-    
+    NSLog(@"userID is %@",user_id);
     //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     // !!!:dezamisystem
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     
-    LOG(@"Username is touched");
 }
 
 -(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
@@ -475,25 +467,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
-{
-    //user nameタップの時の処理 2
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    _postUsername = userName;
-    _postFlag = flag;
-    
-    LOG(@"postUsername:%@",_postUsername);
-    
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id{
+    _postUsername = user_id;
+       //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     // !!!:dezamisystem
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     
-    LOG(@"Username is touched");
-    LOG(@"postUsername:%@",_postPicture);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    LOG(@"Username is touched");
-}
+    NSLog(@"userID is %@",user_id);
+   }
 
 - (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id
 {
