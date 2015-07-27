@@ -95,18 +95,11 @@
     _btnLogin.enabled = YES;
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
-
-    NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-    NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
-    
-    NSLog(@"usernameI:%@",username);
-    
-    if (username) {
-        
+ 
         [SVProgressHUD show];
         
-        [APIClient Welcome:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
-            NSLog(@"Welcome result:%@ error:%@",result,error);
+        [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
+            NSLog(@"Login result:%@ error:%@",result,error);
            if((code = 200)){
             NSString* username = [result objectForKey:@"username"];
             NSString* picture = [result objectForKey:@"profile_img"];
@@ -118,8 +111,6 @@
             [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
            }
        }];
-    }
-    
 }
 
 

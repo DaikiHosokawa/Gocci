@@ -248,26 +248,7 @@ static APIClient *_sharedInstance = nil;
                                    }];
 }
 
-    /*
-    [[APIClient sharedClient].manager POST:@"movie/"
-                                parameters:params
-                 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                     NSError *error = nil;
-                     [formData appendPartWithFileURL:fileURL
-                                                name:@"movie"
-                                            fileName:[fileURL lastPathComponent]
-                                            mimeType:@"video/mp4"
-     
-                     NSLog(@"pram:%@",params);
-                     if (error) LOG(@"error=%@", error);
-     
-                 } success:^(NSURLSessionDataTask *task, id responseObject) {
-                     handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                     handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                 }];
-}
-*/
+    
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
 {
     NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
@@ -477,7 +458,7 @@ static APIClient *_sharedInstance = nil;
 }
 
 
-+ (void)Welcome:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Login:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"identity_id" :@"us-east-1:718f0ae6-e859-40b9-b9ab-d624d9374a02",
@@ -493,21 +474,7 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)SNSSignUp:(NSString *)identity_id profile_img:(NSString *)profile_img handler:(void (^)(id, NSUInteger, NSError *))handler
-{
-    NSDictionary *params = @{
-                             @"identity_id" :identity_id,
-                             @"profile_img" :profile_img
-                             };
-    NSLog(@"SNS param:%@",params);
-    [[APIClient sharedClient].manager GET:@"auth/sns/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
+
 
 + (void)commentJSON:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler
 {

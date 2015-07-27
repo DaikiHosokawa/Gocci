@@ -219,22 +219,13 @@
             handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  welcome
+ *  login
  *
  *  @param post_id
  *  @param handler
  */
-+ (void)Welcome:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Login:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  SNS
- *
- *  @param post_id
- *  @param handler
- */
-+ (void)SNSSignUp:(NSString *)identity_id
-      profile_img:(NSString *)profile_img
-          handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  comment

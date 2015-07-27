@@ -218,6 +218,7 @@
     self.frame =frame;
 }
 
+/*
 - (void)updateForSessionChange
 {
     if ([FBSession activeSession].isOpen) {
@@ -269,8 +270,9 @@
         }
     }
 }
+*/
 
-
+/*
 #pragma mark - IbActions
 - (IBAction)loginWithiOSAction:(id)sender {
     
@@ -296,7 +298,8 @@
     
     [self chooseAccount];
 }
-
+*/
+/*
 - (void)loginWithiOSAccount:(ACAccount *)account {
     
     self.twitter = [STTwitterAPI twitterAPIOSWithAccount:account];
@@ -313,7 +316,9 @@
     }];
     
 }
+ */
 
+/*
 - (IBAction)reverseAuthAction:(id)sender {
     
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil consumerKey:_consumerKeyTextField consumerSecret:_consumerSecretTextField];
@@ -380,7 +385,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kActiveCancel object:nil];
     [self removeFromSuperview];
 }
+ */
 
+/*
 -(IBAction)btnFacebook_clicked:(id)sender {
     
     if (![self _validateCheckboxes]) {
@@ -439,6 +446,7 @@
     //    [self reverseAuthAction:nil];
     
 }
+ */
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
     
@@ -559,6 +567,7 @@
 }
 
 
+/*
 #pragma mark - FBLoginViewDelegate
 
 - (void)loginViewFetchedUserInfo:(id<FBGraphUser>)user
@@ -591,8 +600,8 @@
     [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
         
         // Your handler code here
-        NSLog(@"dataset:%@",dataset);
-        
+        //NSLog(@"dataset:%@",dataset);
+ 
         [APIClient SNSSignUp:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] profile_img:pictureURL handler:^(id result, NSUInteger code, NSError *error) {
             NSLog(@"SNS result:%@",result);
             NSLog(@"SNS error:%@",error);
@@ -614,12 +623,14 @@
                 
             }
         }];
+ 
         
         return nil;
     }];
     
     
 }
+*/
 
 - (IBAction)tap_link:(id)sender {
     

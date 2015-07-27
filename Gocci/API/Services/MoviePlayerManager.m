@@ -75,6 +75,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)removeAllPlayers
 {
+    NSLog(@"全プレイヤーの削除");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }

@@ -175,27 +175,55 @@
     
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     
-
     [[credentialsProvider getIdentityId] continueWithBlock:^id(AWSTask *task) {
         // Your handler code here
         NSString* identity_id = credentialsProvider.identityId;
         NSLog(@"identity_id: %@", identity_id);
-        [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
+      [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
         NSString* accessKey = credentialsProvider.accessKey;
         NSLog(@"accesskey: %@", accessKey);
+        NSLog(@"logins: %@", credentialsProvider.logins);
+         // return [self refresh];
         return nil;
     }];
-    
-    
+ 
+    /*
+ credentialsProvider.logins = @{@"login.inase.gocci": [[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]};
+    [credentialsProvider refresh];
+ */
     return YES;
         
     
 }
 
+/*
+- (AWSTask *)refresh
+{
+    // get Open ID connect Token by the API request to authentication server
+    NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (data) {
+             // retrieve identity ID and Open ID connect Token from the response.
+             NSError *jsonError = nil;
+             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+                                                                    options:NSJSONReadingMutableLeaves
+                                                                      error:&jsonError];
+             NSLog(@"result: %@", result);
+             self.identityId = result[@"identityId"];
+             self.token = result[@"token"];
+         } else {
+             NSLog(@"error: %@", error);
+         }
+     }];
+}
 
 
-
-
+*/
 
 -(void)checkGPS{
     

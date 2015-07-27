@@ -26,11 +26,6 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 @interface RegistView : UIView <UITextFieldDelegate,UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITextField *tfUsername;
-@property (nonatomic, retain) IBOutlet UITextField *tfPwd;
-@property (nonatomic, retain) IBOutlet UITextField *tfEmail;
-
-@property (nonatomic, retain) IBOutlet UIButton *btnFacebook;
-@property (nonatomic, retain) IBOutlet UIButton *btnTwitter;
 @property (nonatomic, retain) IBOutlet UIButton *btnRegist;
 
 @property (nonatomic, strong) STTwitterAPI *twitter;
@@ -47,8 +42,6 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 @property (weak, nonatomic) IBOutlet UIWebView *ruleWebView;
 
 -(IBAction)btnClose_clicked:(id)sender;
--(IBAction)btnFacebook_clicked:(id)sender;
--(IBAction)btnTwitter_clicked:(id)sender;
 -(IBAction)btnRegistLocal_clicked:(id)sender;
 -(void) initComponent;
 
