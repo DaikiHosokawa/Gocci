@@ -57,13 +57,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     NSString *_text, *_hashTag;
 }
-@synthesize postRestName = _postRestName;
-@synthesize postLocality = _postLocality;
-@synthesize postTell = _postTell;
-@synthesize postHomepage = _postHomepage;
-@synthesize postCategory = _postCategory;
-@synthesize postTotalCheer = _postTotalCheer;
-@synthesize postWanttag = _postWanttag;
+@synthesize postRestName = _postRestName;;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -118,7 +112,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
-
+    
     //_total_cheer_num.text = _postTotalCheer;
     //NSLog(@"postTotalCheer:%@",_postTotalCheer);
     
@@ -153,7 +147,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
      }
      */
     
-  
+    
     //  NSLog(@"total_cheer_num:%@",_postTotalCheer);
     
     //set notificationCenter
@@ -416,11 +410,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
-        //ここでパラメータを渡す
-        NSLog(@"ここは通った");
-        usersTableViewController_other *useVC = segue.destinationViewController;
-        useVC.postUsername = _postUsername;
-        useVC.postPicture = _postPicture;
     }
 }
 
@@ -612,7 +601,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     //user nameタップの時の処理
     _postUsername = user_id;
-    LOG(@"postUsername:%@",_postUsername);
     // !!!:dezamisystem
     //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
@@ -645,29 +633,23 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id
 {
     _postUsername = user_id;
-
+    
 }
 
 -(void)byoga{
     NSLog(@"header^:%@",header);
     
     self.restname.text = [header objectForKey:@"restname"];
-    NSLog(@"レストラン名：%@",self.restname.text);
-    //self.locality.text = _postLocality;
     self.categoryLabel.text = [header objectForKey:@"category"];
-    NSLog(@"カテゴリー名：%@",self.restname.text);
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.restname = [header objectForKey:@"restname"];
     
     NSString *postLat = [header objectForKey:@"lat"];
-    NSLog(@"緯度：%@",postLat);
     double latdo = postLat.doubleValue;
-    NSLog(@"緯度2：%f",latdo);
     _coordinate.latitude = latdo;
+    
     NSString *postLon = [header objectForKey:@"lon"];
-    NSLog(@"緯度：%@",postLon);
     double londo = postLon.doubleValue;
-    NSLog(@"経度：%f",londo);
     _coordinate.longitude = londo;
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latdo
@@ -682,10 +664,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     _map.selectedMarker = marker;
     GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
     [_map setCamera:camera];
-    NSInteger i = _postWanttag.integerValue;
-    NSLog(@"i:%ld",(long)i);
+    NSString *postWanttag = [header objectForKey:@"want_flag"];
+    NSInteger i = postWanttag.integerValue;
     int pi = (int)i;
-    NSLog(@"pi:%d",pi);
     flash_on = pi;
     
     if(flash_on == 1){
@@ -697,7 +678,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
     
     [SVProgressHUD dismiss];
-
+    
 }
 
 #pragma mark - Private Methods
@@ -735,7 +716,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         for (NSDictionary *dict in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:dict]];
         }
-    
+        
         header = restaurants;
         self.posts = [NSArray arrayWithArray:tempPosts];
         
@@ -763,11 +744,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }];
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- [self _playMovieAtCurrentCell];
- }
- */
+
 
 /**
  *  現在表示中のセルの動画を再生する

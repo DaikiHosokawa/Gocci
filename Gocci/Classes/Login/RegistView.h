@@ -27,11 +27,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 
 @property (nonatomic, retain) IBOutlet UITextField *tfUsername;
 @property (nonatomic, retain) IBOutlet UIButton *btnRegist;
-
-@property (nonatomic, strong) STTwitterAPI *twitter;
-@property (nonatomic, strong) ACAccountStore *accountStore;
-@property (nonatomic, strong) NSArray *iOSAccounts;
-@property (nonatomic, strong) accountChooserBlock_t accountChooserBlock;
+;
 
 - (IBAction)tap_link:(id)sender;
 @property (nonatomic, retain) NSString *consumerKeyTextField;

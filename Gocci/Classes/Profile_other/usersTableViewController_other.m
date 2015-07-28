@@ -48,10 +48,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @synthesize postUsername= _postUsername;
 @synthesize postPicture= _postPicture;
-@synthesize postUsername_with_profile= _postUsername_with_profile;
-@synthesize postUserPicture_with_profile= _postUserPicture_with_profile;
-@synthesize postUsername_with_profile2= _postUsername_with_profile2;
-@synthesize postUserPicture_with_profile2= _postUserPicture_with_profile2;
 
 - (void)viewDidLoad
 {

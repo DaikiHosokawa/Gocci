@@ -22,22 +22,10 @@
 
 @interface RestaurantTableViewController : UITableViewController <MKAnnotation,UIActionSheetDelegate>
 {
-    //profile_otherへの引き継ぎ
-    NSString *_postUsername;
-    NSString *_postPicture;
+   
     //from SearchTableVIew
     NSString *_postRestName;
-    //
-    NSString *_postLocality;
-    NSString *_postTell;
-    NSString *_postHomepage;
-    NSString *_headerLocality;
-    NSString *_postLat;
-    NSString *_postLon;
-    NSString *_postCategory;
-    NSString *_postTotalCheer;
-    
-    NSString *_postWanttag;
+    NSString *_postUsername;
     
     NSString *_postID;
     NSString *lat;
@@ -52,19 +40,9 @@
 @property (nonatomic, retain) UIImageView *thumbnailView;
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
-@property (nonatomic) NSString *postLocality;
-@property (nonatomic) NSString *postTell;
-@property (nonatomic) NSString *postHomepage;
-@property (nonatomic) NSString *postCategory;
-@property (nonatomic) NSString *postTotalCheer;
-@property (nonatomic) NSString *postLon;
-@property (nonatomic) NSString *postLat;
-@property (nonatomic) NSString *postWanttag;
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (weak, nonatomic) IBOutlet UILabel *restname;
-@property (weak, nonatomic) IBOutlet UILabel *locality;
 @property (weak, nonatomic) IBOutlet UIView *restview;
-@property (weak, nonatomic) IBOutlet UIButton *cheerNumBtn;
 @property (weak, nonatomic) IBOutlet UILabel *total_cheer_num;
 
 @property (weak, nonatomic) IBOutlet UIView *emptyView;

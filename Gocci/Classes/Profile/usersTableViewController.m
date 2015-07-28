@@ -46,7 +46,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, retain) NSIndexPath *nowindexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 @property (nonatomic, strong) UIRefreshControl *refresh;
@@ -261,24 +260,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
-#pragma mark - UIScrollView Delegate
-
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    // スクロール中は動画を停止する
-    // [[MoviePlayerManager sharedManager] scrolling:YES];
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // フリック操作によるスクロール終了
-    // LOG(@"scroll is stoped");
-    // [self _playMovieAtCurrentCell];
-}
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
@@ -342,8 +323,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }
      ];
     
-    // タイムラインを再読み込み
-    //[self _fetchProfile];
 }
 
 
@@ -501,11 +480,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }];
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- [self _playMovieAtCurrentCell];
- }
- */
 
 
 /**

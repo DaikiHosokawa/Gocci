@@ -28,35 +28,13 @@
     NSString *_postPicture;
     //restnameへの引き継ぎ
     NSString *_postRestname;
-    NSString *_postHomepage;
-    NSString *_postLocality;
-    NSString *_postTell;
-    NSString *_postCategory;
-    NSString *_postUsername_with_profile;
-    NSString *_postUserPicture_with_profile;
-    NSString *_postUsername_with_profile2;
-    NSString *_postUserPicture_with_profile2;
-
-    NSString *_postLat;
-    NSString *_postLon;
     
-    NSString *_postWanttag;
-    
-    NSString *_postTotalCheer;
     int flash_on;
 
 }
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
-@property (nonatomic) NSString *postUsername;
-@property (nonatomic) NSString *postPicture;
-@property (nonatomic) NSInteger postFlag;
-@property (nonatomic) NSString *postTotalCheer;
-@property (nonatomic) NSString *postUsername_with_profile;
-@property (nonatomic) NSString *postUserPicture_with_profile;
-@property (nonatomic) NSString *postUsername_with_profile2;
-@property (nonatomic) NSString *postUserPicture_with_profile2;
 
 @property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;
