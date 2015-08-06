@@ -35,6 +35,10 @@
 
 @property (nonatomic, retain) NSString *postID;
 @property (nonatomic) NSString *postRestName;
+@property (nonatomic) NSString *postUsername;
+@property (nonatomic) NSString *postPicture;
+@property (nonatomic) NSInteger postFlag;
+@property (nonatomic) NSString *postTotalCheer;
 
 @property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;

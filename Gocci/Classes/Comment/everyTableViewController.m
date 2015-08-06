@@ -317,7 +317,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         NSLog(@"sendBtn is touched");;
         
         [APIClient postComment:_dottext post_id:_postIDtext handler:^(id result, NSUInteger code, NSError *error) {
-            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            LOG(@"comment post result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 //データ再習得
                 [self perseJson];
@@ -582,23 +582,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     {
         //ここでパラメータを渡す
         usersTableViewController_other *useVC = segue.destinationViewController;
-        useVC.postUsername = _postUsername;
-        useVC.postPicture = _postPicture;
-        useVC.postFlag = _postFlag;
     }
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
-        restVC.postLocality = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
     }
     
 }

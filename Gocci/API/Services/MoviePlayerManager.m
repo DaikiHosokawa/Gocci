@@ -128,15 +128,6 @@ static MoviePlayerManager *_sharedInstance = nil;
             [self.globalPlayer play];
         }
         
-        /*
-         //再生中のとき
-         else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
-         [self.globalPlayer play];
-         NSLog(@"再生中");
-         }else if ([self.globalPlayer playbackState] == MPMoviePlaybackStateSeekingForward) {
-         NSLog(@"待機中");
-         }
-         */
     }
 }
 
@@ -153,8 +144,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (MPMoviePlayerController *)_playerAtIndex:(NSUInteger)index
 {
-    NSLog(@"start playing3");
-    
+
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     if (!self.players[key]) {
         return nil;

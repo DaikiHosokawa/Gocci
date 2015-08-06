@@ -275,10 +275,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	else
 	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
 	{
-		//ここでパラメータを渡す
-		usersTableViewController_other *useVC = segue.destinationViewController;
-		useVC.postUsername = _postUsername;
-	}
+    }
 	else
 	//店舗画面にパラメータを渡して遷移する
 	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
@@ -286,14 +283,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 		//ここでパラメータを渡す
 		RestaurantTableViewController  *restVC = segue.destinationViewController;
 		restVC.postRestName = _postRestname;
-		restVC.postHomepage = _postHomepage;
-		restVC.postLocality = _postLocality;
-		restVC.postCategory = _postCategory;
-		restVC.postLon = _postLon;
-		restVC.postLat = _postLat;
-		restVC.postTell = _postTell;
-		restVC.postTotalCheer = _postTotalCheer;
-		restVC.postWanttag = _postWanttag;
 	}
 }
 

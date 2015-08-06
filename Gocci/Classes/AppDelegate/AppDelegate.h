@@ -37,6 +37,10 @@
     
     //撮影時保存用
     NSURL *assetURL;
+    //S3アップロード用
+    NSString *accesskey;
+    NSString *secretkey;
+    NSString *sessionkey;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -59,6 +63,11 @@
 @property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
 
 @property(nonatomic,retain) NSURL *assetURL;
+
+@property(nonatomic,retain) NSString *accesskey;
+@property(nonatomic,retain) NSString *secretkey;
+@property(nonatomic,retain) NSString *sessionkey;
+
 
 -(BOOL)isFirstRun;
 -(void)checkGPS;

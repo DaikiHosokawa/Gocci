@@ -24,7 +24,13 @@
 #import "SVProgressHUD.h"
 #import "SCPostingViewController.h"
 #import "SCScrollPageView.h"
+
+#import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
+#import <AWSDynamoDB/AWSDynamoDB.h>
+#import <AWSSQS/AWSSQS.h>
+#import <AWSSNS/AWSSNS.h>
+#import <AWSCognito/AWSCognito.h>
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -50,8 +56,7 @@ static SCRecorder *_recorder;
 <RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
     //    SCRecorder *_recorder;
-    
-    UIImage *_photo;
+     UIImage *_photo;
     UIImageView *_ghostImageView;
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
@@ -62,9 +67,7 @@ static SCRecorder *_recorder;
     
     // !!!:dezamisystem・スクロールページ用
     SCScrollPageView *scrollpageview;
-    //SCFirstView *dummyfirstvuew;
-    
-    
+
 }
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -81,6 +84,9 @@ static SCRecorder *_recorder;
 @property(nonatomic,strong) SCSecondView *secondView;
 //@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
+
+
+
 
 @end
 
@@ -210,9 +216,7 @@ static SCRecorder *_recorder;
         }
     }
     
-    
 #endif
-    
     
 #if (!TARGET_IPHONE_SIMULATOR)
     [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
@@ -230,25 +234,7 @@ static SCRecorder *_recorder;
 #endif
 }
 
-// !!!:未使用
-// スクロールビューがスワイプされたとき
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    CGFloat pageWidth = _scrollView.frame.size.width;
-//    if ((NSInteger)fmod(_scrollView.contentOffset.x , pageWidth) == 0) {
-//        // ページコントロールに現在のページを設定
-//        _pageControl.currentPage = _scrollView.contentOffset.x / pageWidth;
-//    }
-//}
 
-// !!!:未使用
-// ページコントロールがタップされたとき
-//- (void)pageControl_Tapped:(id)sender
-//{
-//    CGRect frame = _scrollView.frame;
-//    frame.origin.x = frame.size.width * _pageControl.currentPage;
-//    [_scrollView scrollRectToVisible:frame animated:YES];
-//}
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -524,67 +510,7 @@ static SCRecorder *_recorder;
 #endif
 }
 
-#pragma mark Retakeイベント
-// !!!:未使用
-// retakeButtonでタップを判定し、押されたときに撮影秒数をゼロにするボタンです
-//- (void) handleRetakeButtonTapped:(id)sender
-//{
-//#if (!TARGET_IPHONE_SIMULATOR)
-//    SCRecordSession *recordSession = _recorder.recordSession;
-//
-//    if (recordSession != nil) {
-//        _recorder.recordSession = nil;
-//
-//        // If the recordSession was saved, we don't want to completely destroy it
-//        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-//            [recordSession endRecordSegment:nil];
-//        } else {
-//            [recordSession cancelSession:nil];
-//        }
-//    }
-//
-//	[self prepareCamera];
-//    [self updateTimeRecordedLabel];
-//#else
-//	[self prepareCamera];
-//	[self updateTimeRecordedLabel];
-//#endif
-//}
 
-// !!!:未使用
-//#pragma mark カメラモード切り替えイベント
-//- (IBAction)switchCameraMode:(id)sender
-//{
-//#if (!TARGET_IPHONE_SIMULATOR)
-//    if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
-//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//           // self.capturePhotoButton.alpha = 0.0;
-//            self.recordView.alpha = 1.0;
-//            self.retakeButton.alpha = 1.0;
-//           // self.stopButton.alpha = 1.0;
-//        } completion:^(BOOL finished) {
-//			_recorder.sessionPreset = kVideoPreset;
-//           // [self.switchCameraModeButton setTitle:@"Switch Photo" forState:UIControlStateNormal];
-//           // [self.flashModeButton setTitle:@"Flash : Off" forState:UIControlStateNormal];
-//            _recorder.flashMode = SCFlashModeOff;
-//        }];
-//    } else {
-//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//            self.recordView.alpha = 0.0;
-//            self.retakeButton.alpha = 0.0;
-//            //self.stopButton.alpha = 0.0;
-//            //self.capturePhotoButton.alpha = 1.0;
-//        } completion:^(BOOL finished) {
-//			_recorder.sessionPreset = AVCaptureSessionPresetPhoto;
-//            //[self.switchCameraModeButton setTitle:@"Switch Video" forState:UIControlStateNormal];
-//            //[self.flashModeButton setTitle:@"Flash : Auto" forState:UIControlStateNormal];
-//            _recorder.flashMode = SCFlashModeAuto;
-//        }];
-//    }
-//#else
-//	NSLog(@"%s",__func__);
-//#endif
-//}
 
 - (IBAction)switchFlash:(id)sender
 {
@@ -719,41 +645,6 @@ static SCRecorder *_recorder;
     [self updateTimeRecordedLabel];
 }
 
-#pragma mark 撮影イベント開始
-// !!!:dezamisystem・SCFirstView側でDelegate化して、[self recordBegan]と[self recordEnded]に移行
-// recordViewでタップの有無を判定し、押している時だけ撮影、話している時にストップで作っています。
-//- (void)handleTouchDetected:(SCTouchDetector*)touchDetector {
-//
-//
-//    if (touchDetector.state == UIGestureRecognizerStateBegan) {
-//#if (!TARGET_IPHONE_SIMULATOR)
-//        _ghostImageView.hidden = YES;
-//        [_recorder record];
-//#else
-//		if (timerRecord) {
-//			[timerRecord invalidate];
-//			timerRecord = nil;
-//		}
-//		test_timeGauge = 0.0;
-//		const NSTimeInterval interval = 1.0 / 60.0;
-//		timerRecord = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(updateTimeRecordedLabel) userInfo:nil repeats:YES];
-//#endif
-//    }
-//	else if (touchDetector.state == UIGestureRecognizerStateEnded) {
-//#if (!TARGET_IPHONE_SIMULATOR)
-//        [_recorder pause];
-//        [self updateGhostImage];
-//#else
-//		if (timerRecord) {
-//			[timerRecord invalidate];
-//			timerRecord = nil;
-//		}
-//		test_timeGauge = 0.0;
-//
-//        [self _complete];
-//#endif
-//    }
-//}
 
 - (IBAction)capturePhoto:(id)sender {
     
@@ -788,116 +679,51 @@ static SCRecorder *_recorder;
 #pragma mark - RecorderSubmitPopupViewDelegate
 #pragma mark Twitter へ投稿
 /*
-- (void)recorderSubmitPopupViewOnTwitterShare
-{
-    LOG_METHOD;
-    
-    //注意：Twitterのメソッドをここに書く
-    
-    // Twitter へ投稿
-    SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    
-    // TODO: この URL は有効？
-    //       動画を API に投稿してからじゃないとアクセスできない？
-    AppDelegate *appDelegete2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSString *urlString = [NSString stringWithFormat:@"%@movies/%@", API_BASE_URL, appDelegete2.postFileName];
-    
-    [controller setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
-    [controller addURL:[NSURL URLWithString:urlString]];
-    controller.completionHandler = ^(SLComposeViewControllerResult res) {
-        LOG(@"res=%@", @(res));
-        
-        if (res == SLComposeViewControllerResultDone) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    };
-    
-    [self presentViewController:controller animated:YES completion:nil];
-    
-}
+ - (void)recorderSubmitPopupViewOnTwitterShare
+ {
+ LOG_METHOD;
+ 
+ //注意：Twitterのメソッドをここに書く
+ 
+ // Twitter へ投稿
+ SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+ 
+ // TODO: この URL は有効？
+ //       動画を API に投稿してからじゃないとアクセスできない？
+ AppDelegate *appDelegete2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+ NSString *urlString = [NSString stringWithFormat:@"%@movies/%@", API_BASE_URL, appDelegete2.postFileName];
+ 
+ [controller setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
+ [controller addURL:[NSURL URLWithString:urlString]];
+ controller.completionHandler = ^(SLComposeViewControllerResult res) {
+ LOG(@"res=%@", @(res));
+ 
+ if (res == SLComposeViewControllerResultDone) {
+ [self dismissViewControllerAnimated:YES completion:nil];
+ }
+ };
+ 
+ [self presentViewController:controller animated:YES completion:nil];
+ 
+ }
  */
 
 #pragma mark Facebook へ投稿
-/*
+
 - (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller
 {
     LOG_METHOD;
     
-    //注意：FacebookShareのメソッドをここに書く
     
-
-     [SVProgressHUD show];
-     
-     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-     
-     delegate.session = [[FBSession alloc] init];
-     
-     [FBSession setActiveSession:delegate.session];
-     
-     [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-     // ログイン後の処理
-     }];
-     
-     
-     
-     
-     // Facebook へ投稿
-     // プライバシー (公開範囲) の設定
-     NSError *error = nil;
-     //要注意　共有範囲はSELFのまま
-     NSData *data = [NSJSONSerialization dataWithJSONObject:@{
-     @"value":@"CUSTOM",
-     @"friends":@"SELF"
-     }
-     options:2
-     error:&error];
-     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-     
-     //NSData *movieData = [[NSData alloc] initWithContentsOfURL:self.recordSession.outputUrl];
-     NSData *movieData = [[NSData alloc] initWithContentsOfURL:staticRecordSession.outputUrl];
-     
-     // パラメータの設定
-     NSMutableDictionary *params = @{
-     @"message": @"Gocciからの投稿",
-     @"privacy": jsonString,
-     @"movie.mp4": movieData,
-     @"title": delegate.restrantname,
-     }.mutableCopy;
-     
-     // リクエストの生成
-     FBRequest *request = [FBRequest requestWithGraphPath:@"me/videos"
-     parameters:params
-     HTTPMethod:@"POST"];
-     
-     //コネクションをセットしてすぐキャンセル→NSMutableURLRequestを生成するため???
-     //ここはStack Overflowの受け売り
-     FBRequestConnection *requestConnection = [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-     }];
-     [requestConnection cancel];
-     
-     // 送信
-     NSMutableURLRequest *urlRequest = requestConnection.urlRequest;
-     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-     LOG(@"success / responseObject=%@", responseObject);
-     [SVProgressHUD dismiss];
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     {
-     LOG(@"failure / error=%@", error);
-     [SVProgressHUD dismiss];
-     }];
-     [[NSOperationQueue mainQueue] addOperation:operation];
-     */
-    /*
-     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-     video.videoURL = staticRecordSession.outputUrl;
-     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
-     content.video = video;
-     [FBSDKShareDialog showFromViewController:self
-     withContent:content
-     delegate:nil];
-     */
+    NSURL *videoURL = staticRecordSession.outputUrl;
+    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
+    video.videoURL = videoURL;
+    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
+    content.video = video;
+    [FBSDKShareDialog showFromViewController:viewcontroller
+                                 withContent:content
+                                    delegate:nil];
+    
     /*
      FBSDKShareLinkContent* content = [[FBSDKShareLinkContent alloc] init];
      content.contentURL = staticRecordSession.outputUrl;
@@ -905,49 +731,6 @@ static SCRecorder *_recorder;
      content.contentTitle = @"New Post";
      BOOL ok = [[FBSDKShareAPI shareWithContent:content delegate:self] share];
      */
-    /*
-     NSURL *videoURL = staticRecordSession.outputUrl;
-     
-     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-     video.videoURL = videoURL;
-     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
-     content.video = video;
-     */
-    
-    //コールバックブロック内に任意の選択UIを実装する
-    /*
-     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-     
-     // Facebook アプリがインストールされているかの確認
-     NSDictionary *params = @{@"name"       : @"なまえ",
-     @"caption"    : @"キャプション",
-     @"description": @"説明文",
-     @"link"       : @"https://developers.facebook.com/docs/ios/share/",
-     @"video"    :  @"http://api-gocci.jp/movies/../movies/888dbd9727c959ebba0bf74767c90a89.mp4"};
-     
-     // 投稿画面をWebViewで表示
-     [FBWebDialogs presentFeedDialogModallyWithSession:nil
-     parameters:params
-     handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-     if (error) {
-     NSLog(@"エラー: %@", error.description);
-     }
-     }];
-     */
-    
-    /*
-     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-     video.videoURL = delegate.assetURL;
-     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
-     content.video = video;
-     [FBSDKShareDialog showFromViewController:viewcontroller
-     withContent:content
-     delegate:self];
-     // 遷移ロジック
-     NSLog(@"content.video:%@",content.video);
-     NSLog(@"content.video.videoURL:%@",content.video.videoURL);
-     */
-    
     /*
      FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc]init];
      shareDialog.fromViewController = viewcontroller;
@@ -960,60 +743,11 @@ static SCRecorder *_recorder;
      shareDialog.shareContent = content;
      shareDialog.delegate=self;
      [shareDialog show];
-    
+     */
 }
-*/
 
 
 
-
-#pragma mark 投稿
-// !!!:未使用
-//- (void)recorderSubmitPopupViewOnSubmit:(RecorderSubmitPopupView *)view
-//{
-//    //セッションが7秒未満の時
-//     CMTime currentRecordDuration = _recordSession.currentRecordDuration;
-//
-//   if (currentRecordDuration.timescale < 7) {
-//        NSString *alertMessage = @"まだ7秒撮れていません";
-//        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alrt show];
-//    }
-//
-//    else  {
-//        //NSLog(@"ここが通っている") ;
-//
-//    [SVProgressHUD show];
-//
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-//
-//    // サーバへデータを送信
-//    __weak typeof(self)weakSelf = self;
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//
-//    //バックグラウンドで投稿
-//
-//        // movie
-//        [APIClient movieWithFilePathURL:weakSelf.recordSession.outputUrl restname:appDelegate.restrantname star_evaluation:appDelegate.cheertag handler:^(id result, NSUInteger code, NSError *error)
-//         {
-//             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-//
-//             if (error){
-//
-//             }
-//
-//             }];
-//
-//              NSLog(@"restname:%@,star_evaluation:%@",appDelegate.restrantname,appDelegate.cheertag);
-//
-//              [SVProgressHUD dismiss];
-//              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-//
-//              // 画面を閉じる
-//              [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//
-//    }
-//}
 
 - (IBAction)popButton:(UIButton *)sender {
     //// 投稿画面を表示
@@ -1036,9 +770,9 @@ static SCRecorder *_recorder;
 
 #pragma mark - Private Methods
 
-#pragma mark Complete完了処理
+#pragma mark Complete撮影完了処理
 /**
- *  完了処理
+ *  撮影完了処理
  */
 - (void)_complete
 {
@@ -1097,59 +831,12 @@ static SCRecorder *_recorder;
          // カメラを停止
          [_recorder endRunningSession];
          
-         /*
-          NSURL *bucketFileURL = staticRecordSession.outputUrl;
-          NSString *key = [bucketFileURL lastPathComponent];
-          
-          // Initialize the Amazon Cognito credentials provider
-          
-          AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-          
-          
-          AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-          uploadRequest.bucket = @"gocci.movie.bucket";
-          uploadRequest.key = key;
-          uploadRequest.body = bucketFileURL;
-          uploadRequest.contentType = @"video/mp4";
-          
-          NSLog(@"bucket:%@,key:%@,body:%@",uploadRequest.bucket,uploadRequest.key,uploadRequest.body);
-          
-          [[transferManager upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
-          withBlock:^id(AWSTask *task) {
-          
-          
-          if (task.error) {
-          if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-          switch (task.error.code) {
-          case AWSS3TransferManagerErrorCancelled:
-          case AWSS3TransferManagerErrorPaused:
-          break;
-          
-          default:
-          NSLog(@"errorS3: %@", task.error);
-          break;
-          }
-          } else {
-          // Unknown error.
-          NSLog(@"errorS3: %@", task.error);
-          }
-          }
-          
-          if (task.result) {
-          
-          AWSS3TransferManagerUploadOutput *uploadOutput = task.result;
-          NSLog(@"sucsessS3:%@",uploadOutput);
-          // The file uploaded successfully.
-          }
-          return nil;
-          }];
-          */
-         
          // 投稿画面を表示
          [self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
      }];
 #endif
 }
+
 
 /**
  *  保存・投稿失敗アラート
@@ -1269,100 +956,71 @@ static SCRecorder *_recorder;
 
 
 #pragma mark - SCPostingViewController
-#pragma mark 投稿
+#pragma mark 投稿するボタンを押した時
 -(void)execSubmit
 {
     
-    //	//セッションが7秒未満の時
-    //	CMTime currentRecordDuration = staticRecordSession.currentRecordDuration;
-    //	if (currentRecordDuration.timescale < 7) {
-    //		NSString *alertMessage = @"まだ7秒撮れていません";
-    //		UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    //		[alrt show];
-    //	}
-    //	else
+    // 現在時間を取得する
+    NSDate *now = [NSDate date];
+    NSLog(@"%@", now);
+    
+    // 日付のフォーマット
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
+    NSString *nowString = [formatter stringFromDate:now];
+    
+    //ファイル名+user_id形式
+    NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+    
+    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //Transfermanagerの起動
+    
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+    uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
+    uploadRequest.key = movieFileForS3;
+    uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
+    uploadRequest.contentType = @"video/mp4";
+   
+    [self upload:uploadRequest];
+
+
+
     {
         NSLog(@"%s",__func__) ;
         
         [SVProgressHUD show];
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        
-        // 現在時間を取得する
-        NSDate *now = [NSDate date];
-        NSLog(@"%@", now);
-        
-        // 日付のフォーマット
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-        NSString *nowString = [formatter stringFromDate:now];
-
-        NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-        
-        //S3へのアップロード
-        
-        AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-        AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-        uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
-        uploadRequest.key = movieFileForS3;
-        uploadRequest.body = staticRecordSession.outputUrl;
-        
-         dispatch_async(dispatch_get_main_queue(), ^{
-             AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-             
-             [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
-                 if (task.error) {
-                     if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                         switch (task.error.code) {
-                             case AWSS3TransferManagerErrorCancelled:
-                             case AWSS3TransferManagerErrorPaused:
-                             {
-                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                 });
-                             }
-                                 break;
-                                 
-                             default:
-                                 NSLog(@"Upload failed: [%@]", task.error);
-                                 break;
-                         }
-                     } else {
-                         NSLog(@"Upload failed: [%@]", task.error);
-                     }
-                 }
-                 
-                 if (task.result) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
-                     });
-                 }
-                 
-                 return nil;
-             }];
-
-        
-        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-        //POST API
+       
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
+        //Restname
         NSString *restrantname = @"none";
         if (appDelegate.restname) restrantname = appDelegate.restname;
         int cheertag = 1;
+        //Value
         if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
         int valueKakaku = 0;
         if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
+        //Atmosphere
         NSString *atmosphere = @"none";
         if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
         NSString *category = @"none";
         NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
+         //Category
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
         NSString *comment = @"...";
         NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
+         //Hitokoto
         if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
         NSString *rest_id = @"...";
         if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
-        // movie
         
+        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+       
+        // POST API
         [APIClient  POST:movieFileForAPI
                  rest_id:rest_id
               cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
@@ -1374,6 +1032,7 @@ static SCRecorder *_recorder;
              }
          }];
         
+        //Init
         appDelegate.stringTenmei = @"";
         appDelegate.restname = nil;
         appDelegate.valueHitokoto = @"";
@@ -1390,56 +1049,69 @@ static SCRecorder *_recorder;
         
         [SVProgressHUD dismiss];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-         });
-    }
+    };
 }
 
 
 
--(void)cancelSubmit
-{
-    NSLog(@"%s",__func__);
-    
-    //	[self retake];
-    
-    //SCRecordSession *recordSession = _recorder.recordSession;
-    //
-    //    if (recordSession != nil) {
-    //        _recorder.recordSession = nil;
-    //
-    //        // If the recordSession was saved, we don't want to completely destroy it
-    //        if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-    //            [recordSession endRecordSegment:nil];
-    //        } else {
-    //            [recordSession cancelSession:nil];
-    //        }
-    //    }
-    //
-    //	[self prepareCamera];
-    //    [self updateTimeRecordedLabel];
-    
-}
 
 
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
-    
-    
+
     NSLog(@"%s",__func__);
     
     [self retake];
 }
+
+#pragma mark - 撮り直し
 - (IBAction)onRetake:(id)sender {
     
     [self retake];
 }
 
 
-#pragma mark - DEBUG
+#pragma mark - 撮影に戻る
 - (IBAction)onGoPosting:(id)sender {
 #ifdef DEBUG
     //	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
+
+- (void)upload:(AWSS3TransferManagerUploadRequest *)uploadRequest {
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
+        NSLog(@"upload start:%@",task);
+        if (task.error) {
+            if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
+                switch (task.error.code) {
+                    case AWSS3TransferManagerErrorCancelled:
+                    case AWSS3TransferManagerErrorPaused:
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                        });
+                    }
+                        break;
+                        
+                    default:
+                        NSLog(@"Upload failed: [%@]", task.error);
+                        break;
+                }
+            } else {
+                NSLog(@"Upload failed: [%@]", task.error);
+            }
+        }
+        
+        if (task.result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"success: [%@]", task.result);
+            });
+        }
+        
+        return nil;
+    }];
+}
+
 
 @end

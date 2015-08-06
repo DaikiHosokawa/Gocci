@@ -378,7 +378,7 @@ switch (indexPath.row) {
         break;
     case 1:
         NSLog(@"%s twitter",__func__);
-        //  [[self viewControllerSCRecorder] recorderSubmitPopupViewOnTwitterShare];
+        [[self viewControllerSCRecorder] recorderSubmitPopupViewOnTwitterShare];
         break;
 
 }

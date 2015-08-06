@@ -6,8 +6,6 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
-
-
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
 #import "CXCardView.h"
@@ -17,11 +15,10 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate>{
+@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate,NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>{
     UIAlertView *FirstalertView;
     UIAlertView *SecondalertView;
 }
-
 //@property (weak, nonatomic) IBOutlet UIView *recordView;
 //@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 //@property (weak, nonatomic) IBOutlet UIButton *retakeButton;

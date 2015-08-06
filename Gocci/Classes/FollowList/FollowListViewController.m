@@ -99,7 +99,6 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 -(void)perseJson
 {
     //test user
-    //_postIDtext = @"3024";
     [APIClient FollowList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -186,11 +185,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 {
    if ([segue.identifier isEqualToString:SEGUE_GO_PROFILE])
     {
-        //ここでパラメータを渡す
-        usersTableViewController_other *users_otherVC = segue.destinationViewController;
-        users_otherVC.postUsername = _postUsername_with_profile;
-        users_otherVC.postPicture = _postUserPicture_with_profile;
-        users_otherVC.postFlag = _postUserFlag_with_profile.integerValue;
     }
 }
 

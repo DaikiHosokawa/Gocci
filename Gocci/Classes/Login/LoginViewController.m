@@ -19,14 +19,11 @@
 #import "GUser.h"
 #import "RegistView.h"
 #import "UIImage+BlurEffect.h"
-#import <AWSCore/AWSCore.h>
-#import <AWSCognito/AWSCognito.h>
 #import "APIClient.h"
 #import "AFHTTPRequestOperation.h"
 
 
-
-#define kActiveLogin @"ActiveLogin"
+#define kActiveLogin @"kActiveLogin"
 #define kActiveCancel @"kActiveCancel"
 
 @import Social;
@@ -96,21 +93,56 @@
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
     
-    [SVProgressHUD show];
     
-    [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        NSLog(@"Login result:%@ error:%@",result,error);
-        if((code = 200)){
-            NSString* username = [result objectForKey:@"username"];
-            NSString* picture = [result objectForKey:@"profile_img"];
-            NSString* user_id = [result objectForKey:@"user_id"];
-            [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
-            [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
-            [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+    
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
+        
+        [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
+            NSLog(@"Login result:%@ error:%@",result,error);
             
-            [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+            if([result[@"code"] integerValue] == 200){
+                
+                [SVProgressHUD show];
+                
+                NSString* username = [result objectForKey:@"username"];
+                NSString* picture = [result objectForKey:@"profile_img"];
+                NSString* user_id = [result objectForKey:@"user_id"];
+                [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                
+                [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+            }
+        }];
+    }else{
+        
+        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+        
+        if (([[NSUserDefaults standardUserDefaults] valueForKey:@"picture"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
+            
+            [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"picture"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
+                
+                NSLog(@"Conversion result:%@ error:%@",result,error);
+                
+                if([result[@"code"] integerValue] == 200){
+                    [SVProgressHUD show];
+                    
+                    NSString* username = [result objectForKey:@"username"];
+                    NSString* picture = [result objectForKey:@"profile_img"];
+                    NSString* user_id = [result objectForKey:@"user_id"];
+                    NSString* identityID = [result objectForKey:@"identity_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                    [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                    [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:identityID forKey:@"identity_id"];
+                    
+                    [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+                }
+                
+            }];
+            
         }
-    }];
+    }
 }
 
 

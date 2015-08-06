@@ -357,9 +357,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
-        //ここでパラメータを渡す
-        usersTableViewController_other *useVC = segue.destinationViewController;
-        useVC.postUsername = _postUsername;
+        
     }
     //店舗画面にパラメータを渡して遷移する
     //	if ([segue.identifier isEqualToString:@"goRestpage"])

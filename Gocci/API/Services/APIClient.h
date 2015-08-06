@@ -271,4 +271,20 @@
    register_id:(NSString *)register_id
        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  Conversion
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ *  @param email email
+ */
++ (void)Conversion:(NSString *)username
+       profile_img:(NSString *)profile_img
+                os:(NSString *)os
+             model:(NSString *)model
+       register_id:(NSString *)register_id
+           handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 @end

@@ -80,6 +80,7 @@
     
     _consumerKeyTextField = kTwitterConsumerKey;
     _consumerSecretTextField = kTwitterConsumerSecret;
+
     
     
 }
@@ -245,12 +246,29 @@
              if ([result[@"code"] integerValue] == 200) {
                  
                  NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
-                 [def setObject:_tfUsername.text forKey:@"username"];
+                 [def setObject:result[@"username"] forKey:@"username"];
                  [def setObject:result[@"identity_id"] forKey:@"identity_id"];
+                 [def setObject:result[@"token"] forKey:@"token"];
                  
-                 //success
-                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"成功です。サインインしてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                 [alrt show];
+                 AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                                       initWithRegionType:AWSRegionUSEast1
+                                                                       identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
+                 
+                 AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
+                 
+                 [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+                 
+                 credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                 
+                 [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
+                     // Your handler code heredentialsProvider.identityId;
+                     NSLog(@"logins: %@", credentialsProvider.logins);
+                     // return [self refresh];
+                     return nil;
+                 }];
+                 
+
+    
                  [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
                  [self removeFromSuperview];
                  
@@ -260,6 +278,7 @@
                  UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                  [alrt show];
                  //[self removeFromSuperview];
+                 
                  
              }
              else {
@@ -297,5 +316,7 @@
 -(void)hoge:(UIButton*)button{
     self.ruleView.hidden = YES;
 }
+
+
 
 @end

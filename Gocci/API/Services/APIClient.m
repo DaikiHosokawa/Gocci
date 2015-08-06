@@ -461,7 +461,7 @@ static APIClient *_sharedInstance = nil;
 + (void)Login:(NSString *)identity_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"identity_id" :@"us-east-1:718f0ae6-e859-40b9-b9ab-d624d9374a02",
+                             @"identity_id" :identity_id,
                              @"sns_flag" :@"1"
                              };
     NSLog(@"Welcome param:%@",params);
@@ -551,7 +551,7 @@ static APIClient *_sharedInstance = nil;
     
     NSLog(@"Signup:%@",params);
     
-    [[APIClient sharedClient].manager POST:@"auth/signup/"
+    [[APIClient sharedClient].manager GET:@"auth/signup/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -561,5 +561,26 @@ static APIClient *_sharedInstance = nil;
                                    }];
 }
 
++ (void)Conversion:(NSString *)username profile_img:(NSString *)profile_img os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"username" : username,
+                             @"profile_img" : profile_img,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
+    
+    NSLog(@"Conversion:%@",params);
+    
+    [[APIClient sharedClient].manager GET:@"auth/conversion/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                      NSLog(@"%@",responseObject);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
 
 @end

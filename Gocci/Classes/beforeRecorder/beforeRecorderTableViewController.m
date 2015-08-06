@@ -138,7 +138,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 30;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,7 +155,7 @@
     [cell configureWithRestaurant:restaurant index:indexPath.row];
     cell.delegate = self;
     
-    if(indexPath.row == 9){
+    if(indexPath.row == 29){
         cell.restaurantNameLabel.text = @"店舗がないときは。。。。";
         // [cell.cont setBackgroundColor:[UIColor orangeColor]];
         //cell.backgroundColor = [UIColor orangeColor];

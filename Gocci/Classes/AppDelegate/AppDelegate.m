@@ -14,10 +14,6 @@
 #import  "TWMessageBarManager.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
-#import <AWSS3/AWSS3.h>
-#import <AWSSQS/AWSSQS.h>
-#import <AWSSNS/AWSSNS.h>
-#import <AWSCognito/AWSCognito.h>
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -106,7 +102,7 @@
     }
     
     // !!!:dezamisystem
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -167,63 +163,57 @@
     [application registerForRemoteNotificationTypes:remoteNotificationType];
 #endif
     
-    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
-                                                          initWithRegionType:AWSRegionUSEast1
-                                                          identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
+                                                                                                    identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast1
+                                                                         credentialsProvider:credentialsProvider];
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
-    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelError;
     
-    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    AppDelegate *dele = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
-    [[credentialsProvider getIdentityId] continueWithBlock:^id(AWSTask *task) {
-        // Your handler code here
-        NSString* identity_id = credentialsProvider.identityId;
-        NSLog(@"identity_id: %@", identity_id);
-      [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
-        NSString* accessKey = credentialsProvider.accessKey;
-        NSLog(@"accesskey: %@", accessKey);
-        NSLog(@"logins: %@", credentialsProvider.logins);
-         // return [self refresh];
+    [[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(AWSTask *task){
+        dele.accesskey = credentialsProvider.accessKey;
+        dele.secretkey = credentialsProvider.secretKey;
+        dele.sessionkey = credentialsProvider.sessionKey;
+        NSLog(@"accesskey:%@,secretkey:%@,sessionkey:%@",dele.accesskey,dele.secretkey,dele.sessionkey);
         return nil;
     }];
- 
-    /*
- credentialsProvider.logins = @{@"login.inase.gocci": [[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]};
-    [credentialsProvider refresh];
- */
+    
     return YES;
-        
+    
     
 }
 
 /*
-- (AWSTask *)refresh
-{
-    // get Open ID connect Token by the API request to authentication server
-    NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if (data) {
-             // retrieve identity ID and Open ID connect Token from the response.
-             NSError *jsonError = nil;
-             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
-                                                                    options:NSJSONReadingMutableLeaves
-                                                                      error:&jsonError];
-             NSLog(@"result: %@", result);
-             self.identityId = result[@"identityId"];
-             self.token = result[@"token"];
-         } else {
-             NSLog(@"error: %@", error);
-         }
-     }];
-}
-
-
-*/
+ - (AWSTask *)refresh
+ {
+ // get Open ID connect Token by the API request to authentication server
+ NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
+ NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+ AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
+ [NSURLConnection sendAsynchronousRequest:request
+ queue:[NSOperationQueue mainQueue]
+ completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+ {
+ if (data) {
+ // retrieve identity ID and Open ID connect Token from the response.
+ NSError *jsonError = nil;
+ NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+ options:NSJSONReadingMutableLeaves
+ error:&jsonError];
+ NSLog(@"result: %@", result);
+ self.identityId = result[@"identityId"];
+ self.token = result[@"token"];
+ } else {
+ NSLog(@"error: %@", error);
+ }
+ }];
+ }
+ 
+ 
+ */
 
 -(void)checkGPS{
     
@@ -257,6 +247,7 @@ void exceptionHandler(NSException *exception) {
     NSString *log = [NSString stringWithFormat:@"%@, %@, %@", exception.name, exception.reason, exception.callStackSymbols];
     [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
+
 
 
 
