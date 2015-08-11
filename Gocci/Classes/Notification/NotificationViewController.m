@@ -26,14 +26,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSMutableArray *post_id;
 }
 
-
-
 @property (nonatomic, retain) NSMutableArray *picture_;
 @property (nonatomic, retain) NSMutableArray *noticed_;
 @property (nonatomic, retain) NSMutableArray *notice_;
 @property (nonatomic, copy) NSArray *notices;
-
-
 
 @end
 
@@ -153,7 +149,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [cell configureWithNotice:post];
     cell.delegate = self;
     
-    [SVProgressHUD dismiss];
     
     //TODO:ここでアイコン画像、テキスト、時間をセットしてください。
     //CustomTableView のプロパティとして各項目を設定済みです。
@@ -181,7 +176,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         [weakSelf _reloadNotice:result];
         [weakSelf.tableView reloadData];
-        
+        [SVProgressHUD dismiss];
     }];
     
 }

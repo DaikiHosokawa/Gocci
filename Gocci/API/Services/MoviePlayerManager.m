@@ -104,8 +104,6 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
-    NSLog(@"start playing2");
-    
     if (self.globalPlayer) {
         
         [self.globalPlayer.view removeFromSuperview];

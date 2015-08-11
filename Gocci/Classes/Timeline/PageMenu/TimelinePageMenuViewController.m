@@ -2,7 +2,7 @@
 //  TimelinePageMenuViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/06/18.
+//  Created by INASE on 2015/06/18.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -275,6 +275,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 	else
 	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
 	{
+        //ここでパラメータを渡す
+        usersTableViewController_other  *user_otherVC = segue.destinationViewController;
+        user_otherVC.postUsername = _postUsername;
     }
 	else
 	//店舗画面にパラメータを渡して遷移する

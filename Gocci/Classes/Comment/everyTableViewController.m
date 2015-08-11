@@ -125,7 +125,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark viewWillAppear
 -(void)viewWillAppear:(BOOL)animated
 {
-    [SVProgressHUD show];
     
     [self perseJson];
     
@@ -133,8 +132,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
-    [SVProgressHUD dismiss];
     
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
@@ -220,18 +217,18 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark - Json
 -(void)perseJson
 {
-    //test user
-    //_postIDtext = @"3024";
-    [APIClient commentJSON:@"200" handler:^(id result, NSUInteger code, NSError *error) {
+    [SVProgressHUD show];
+    [APIClient commentJSON:_postID handler:^(id result, NSUInteger code, NSError *error) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
+      
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             
             // TODO: アラート等を掲出
+            [SVProgressHUD dismiss];
             return;
         }
         
@@ -250,6 +247,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+             [SVProgressHUD dismiss];
         });
         }
     }];
@@ -549,7 +547,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     //														 size:cell.thumbnailView.bounds.size
     //													  atIndex:indexPath.row
     //												   completion:^(BOOL f){}];
-    [SVProgressHUD dismiss];
     
     return cell;
 }

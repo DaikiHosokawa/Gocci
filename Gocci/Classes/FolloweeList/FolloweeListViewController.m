@@ -164,8 +164,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
     
     _postUsername_with_profile =  [_user_id_ objectAtIndex:indexPath.row];
-    _postUserPicture_with_profile = [_picture_ objectAtIndex:indexPath.row];
-    _postUserFlag_with_profile = [_follow_flag_ objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
 
@@ -178,8 +176,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         //ここでパラメータを渡す
         usersTableViewController_other *users_otherVC = segue.destinationViewController;
         users_otherVC.postUsername = _postUsername_with_profile;
-        users_otherVC.postPicture = _postUserPicture_with_profile;
-        users_otherVC.postFlag = _postUserFlag_with_profile.integerValue;
     }
 }
 

@@ -10,9 +10,10 @@
  */
 @interface Notice : NSObject
 
-@property (nonatomic) NSString *notice;
-@property (nonatomic) NSString *noticed;
+@property (nonatomic) NSString *noticeMessage;
+@property (nonatomic) NSString *notice_date;
 @property (nonatomic) NSString *picture;
+@property (nonatomic) NSString *username;
 
 + (instancetype)noticeWithDictionary:(NSDictionary *)dictionary;
 

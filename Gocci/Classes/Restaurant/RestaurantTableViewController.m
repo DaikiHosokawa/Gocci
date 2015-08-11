@@ -410,6 +410,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
+        usersTableViewController_other *users_other = segue.destinationViewController;
+         users_other.postUsername = _postUsername;
     }
 }
 
@@ -601,7 +603,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     //user nameタップの時の処理
     _postUsername = user_id;
-    // !!!:dezamisystem
+    NSLog(@"useridtoUsers:%@",_postUsername);
     //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     LOG(@"Username is touched");
@@ -640,7 +642,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSLog(@"header^:%@",header);
     
     self.restname.text = [header objectForKey:@"restname"];
-    self.categoryLabel.text = [header objectForKey:@"category"];
+    self.categoryLabel.text = [header objectForKey:@"rest_category"];
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.restname = [header objectForKey:@"restname"];
     

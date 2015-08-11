@@ -2,7 +2,7 @@
 //  beforeRecorderTableViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/02/06.
+//  Created by INASE on 2015/02/06.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -173,7 +173,7 @@
 {
     NSLog(@"選択したセル：%ld",(long)indexPath.row);
     
-    if(indexPath.row <= 8){
+    if(indexPath.row <= 28){
         
         Restaurant *restaurant = self.restaurants[indexPath.row];
         // グローバル変数に保存
@@ -184,7 +184,7 @@
         [self dismissWithTenmei];
     }
     
-    if(indexPath.row == 9){
+    if(indexPath.row == 29){
         FirstalertView = [[UIAlertView alloc] initWithTitle:@"店名を入力してください"
                                                     message:nil
                                                    delegate:self
@@ -212,15 +212,18 @@
         {
             [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
              {
+                 NSLog(@"入力店名：%@",textValue);
                  
                  [APIClient restInsert:textValue latitude:location.coordinate.latitude longitude:location.coordinate.longitude handler:^(id result, NSUInteger code, NSError *error) {
                      LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                      
-                     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                     delegate.restname = textValue;
-                     // モーダル閉じる
-                     [self dismissWithTenmei];
-                     
+                     if ([result[@"code"] integerValue] == 200) {
+                         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+                         delegate.restname = textValue;
+                         delegate.rest_id  = result[@"rest_id"];
+                         // モーダル閉じる
+                         [self dismissWithTenmei];
+                     }
                      
                  }];
              }];
@@ -383,7 +386,8 @@
     
     [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
      {
-         [SVProgressHUD dismiss];
+         
+         NSLog(@"before recorder result:%@",result);
          
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          
@@ -405,6 +409,7 @@
      } useCache:^(id cachedResult)
      {
          if (!cachedResult) {
+              [SVProgressHUD dismiss];
              return;
          }
          
@@ -412,6 +417,7 @@
          
          // 表示の更新
          [weakSelf.tableView reloadData];
+          [SVProgressHUD dismiss];
      }];
 }
 

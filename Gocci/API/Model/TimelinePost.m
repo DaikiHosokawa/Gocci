@@ -30,7 +30,7 @@
     obj.category = dictionary[@"category"];
     obj.pushed_at = dictionary[@"gochi_flag"];
     obj.flag  = [dictionary[@"follow_flag"] integerValue];
-    obj.tagA = dictionary[@"tag_category"];
+    obj.tagA = dictionary[@"category"];
     obj.tagB = dictionary[@"tag"];
     obj.tagC = dictionary[@"value"];
     obj.cheernum  = [dictionary[@"cheer_num"] integerValue];

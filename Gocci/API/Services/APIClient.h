@@ -176,7 +176,7 @@
  *  @param post_id
  *  @param handler
  */
-+ (void)postViolation:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)postBlock:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  favorites

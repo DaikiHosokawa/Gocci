@@ -398,7 +398,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
                 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                 if (result) {
                     NSString *alertMessage = @"違反報告をしました";
@@ -417,7 +417,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if (result) {
                 NSString *alertMessage = @"違反報告をしました";

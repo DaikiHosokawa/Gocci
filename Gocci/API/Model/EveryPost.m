@@ -40,7 +40,7 @@
     obj.lat = dictionary[@"lat"];
     obj.lon = dictionary[@"lon"];
     obj.locality = dictionary[@"locality"];
-    obj.tag_category = dictionary[@"tag_category"];
+    obj.tag_category = dictionary[@"category"];
     obj.atmosphere = dictionary[@"atmosphere"];
 
 	return obj;

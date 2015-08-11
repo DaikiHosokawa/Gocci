@@ -2,7 +2,7 @@
 //  AllTimelineTableViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/06/17.
+//  Created by INASE on 2015/06/17.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -304,7 +304,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             // API からデータを取得
-            [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
                 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                 if (result) {
                     NSString *alertMessage = @"違反報告をしました";
@@ -323,7 +323,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if (result) {
                 NSString *alertMessage = @"違反報告をしました";

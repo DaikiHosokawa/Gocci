@@ -444,6 +444,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             return;
         }
         
+        NSLog(@"users result:%@",result);
+        
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
@@ -462,10 +464,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
-        
-        NSString *alertMessage = @"圏外ですので再生できません。";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
         
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
@@ -488,7 +486,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)_playMovieAtCurrentCell
 {
     
-    
     if ( [self.posts count] == 0){
         return;
     }
@@ -499,6 +496,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
+    
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,

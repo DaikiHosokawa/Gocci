@@ -66,6 +66,7 @@
     return YES;
 }
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
@@ -165,7 +166,7 @@
     
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
                                                                                                     identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
-    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast1
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1
                                                                          credentialsProvider:credentialsProvider];
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
@@ -390,8 +391,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                    description:message
                                                           type:TWMessageBarMessageTypeSuccess
                                                       duration:4.0];
-    
-    
     
 }
 

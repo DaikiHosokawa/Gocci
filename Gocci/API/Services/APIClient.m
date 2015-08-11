@@ -231,6 +231,7 @@ static APIClient *_sharedInstance = nil;
 
 + (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSInteger)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
+                             @"movie_name" : movie_name,
                              @"rest_id" : rest_id,
                              @"cheer_flag" :@(cheer_flag),
                              @"tag_id" : tag_id,
@@ -239,7 +240,7 @@ static APIClient *_sharedInstance = nil;
                              @"memo" : memo
                              };
     NSLog(@"params:%@",params);
-    [[APIClient sharedClient].manager POST:@"post/post"
+    [[APIClient sharedClient].manager GET:@"post/post"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -350,7 +351,7 @@ static APIClient *_sharedInstance = nil;
                              };
     
     NSLog(@"paramsgoodinsert:%@",params);
-    [[APIClient sharedClient].manager POST:@"post/gochi/"
+    [[APIClient sharedClient].manager GET:@"post/gochi/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -367,7 +368,7 @@ static APIClient *_sharedInstance = nil;
                              };
     
     NSLog(@"paramsgoodinsert:%@",params);
-    [[APIClient sharedClient].manager POST:@"post/postdel/"
+    [[APIClient sharedClient].manager GET:@"post/postdel/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -377,14 +378,14 @@ static APIClient *_sharedInstance = nil;
     
 }
 
-+ (void)postViolation:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)postBlock:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"post_id" :post_id,
                              };
     
-    NSLog(@"paramsgoodinsert:%@",params);
-    [[APIClient sharedClient].manager POST:@"violation/"
+    NSLog(@"postblock params:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/postblock/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -399,8 +400,8 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"target_user_id" :target_user_id,
                              };
-    
-    [[APIClient sharedClient].manager POST:@"post/follow/"
+    NSLog(@"follow param:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/follow/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -415,8 +416,8 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"target_user_id" :target_user_id,
                              };
-    
-    [[APIClient sharedClient].manager POST:@"post/unfollow/"
+     NSLog(@"unfollow param:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/unfollow/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -429,11 +430,12 @@ static APIClient *_sharedInstance = nil;
 + (void)restInsert:(NSString *)restName latitude:(CGFloat)latitude longitude:(CGFloat)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"restname": restName,
+                             @"rest_name": restName,
                              @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
                              };
-    [[APIClient sharedClient].manager POST:@"post/restadd/"
+    NSLog(@"restinsertparam:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/restadd/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -448,7 +450,7 @@ static APIClient *_sharedInstance = nil;
                              @"comment": text,
                              @"post_id": post_id,
                              };
-    [[APIClient sharedClient].manager POST:@"post/comment/"
+    [[APIClient sharedClient].manager GET:@"post/comment/"
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -462,7 +464,6 @@ static APIClient *_sharedInstance = nil;
 {
     NSDictionary *params = @{
                              @"identity_id" :identity_id,
-                             @"sns_flag" :@"1"
                              };
     NSLog(@"Welcome param:%@",params);
     [[APIClient sharedClient].manager GET:@"auth/login/"
@@ -481,7 +482,7 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"post_id" : post_id,
                              };
-    
+    NSLog(@"commentJsonParam:%@",params);
     [[APIClient sharedClient].manager GET:@"get/comment/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

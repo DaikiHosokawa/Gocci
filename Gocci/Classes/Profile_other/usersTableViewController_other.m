@@ -33,7 +33,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, copy) NSMutableArray *status_;
+@property (nonatomic, copy) NSString *status_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 @property (nonatomic, strong) UIRefreshControl *refresh;
@@ -128,9 +128,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     if(flash_on == 0 ){
         
         // API からデータを取得
-        [APIClient User:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postFollow:[header objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-            if ((code=200)) {
+            if ([result[@"code"] integerValue] == 200) {
                 UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 1;
@@ -143,7 +143,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     }else if (flash_on == 1){
         
-        [APIClient postUnFollow:[header objectForKey:@"username"] handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postUnFollow:[header objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ((code=200)) {
                 NSLog(@"フォロー解除しました");
@@ -340,7 +340,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             
             
             // API からデータを取得
-            [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
                 LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                 if (result) {
                     NSString *alertMessage = @"違反報告をしました";
@@ -359,7 +359,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        [APIClient postViolation:postID handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if (result) {
                 NSString *alertMessage = @"違反報告をしました";
@@ -431,23 +431,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
     
+     _status_ = [header objectForKey:@"follow_flag"];
     NSLog(@"statushere:%@",_status_);
-    if (_status_) {
-        NSString *dotse = _status_[0];
-        NSLog(@"dotse:%@",dotse);
-        NSInteger i = dotse.integerValue;
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }else{
-        NSInteger i =  [[header objectForKey:@"follow_flag"] integerValue];
-        NSLog(@"postFlag:%ld",i);
-        int pi = (int)i;
-        NSLog(@"pi:%d",pi);
-        flash_on = pi;
-        NSLog(@"flash_on:%d",flash_on);
-    }
+    NSInteger i =  _status_.integerValue;
+    int pi = (int)i;
+    flash_on = pi;
     
     if(flash_on == 1){
         UIImage *img = [UIImage imageNamed:@"フォロー解除.png"];

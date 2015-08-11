@@ -983,7 +983,14 @@ static SCRecorder *_recorder;
     uploadRequest.key = movieFileForS3;
     uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
     uploadRequest.contentType = @"video/mp4";
-   
+    uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (totalBytesExpectedToSend > 0) {
+                NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
+            }
+        });
+    };
+
     [self upload:uploadRequest];
 
 
@@ -996,31 +1003,31 @@ static SCRecorder *_recorder;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
        
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        //Restname
-        NSString *restrantname = @"none";
-        if (appDelegate.restname) restrantname = appDelegate.restname;
+
+         //Cheertag
         int cheertag = 1;
-        //Value
         if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
+        //Value
         int valueKakaku = 0;
         if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
         //Atmosphere
-        NSString *atmosphere = @"none";
+        NSString *atmosphere = @"1";
         if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
-        NSString *category = @"none";
+        //Category
+        NSString *category = @"1";
         NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-         //Category
         if (appDelegate.stringCategory) category= appDelegate.stringCategory;
-        NSString *comment = @"...";
+        //Comment
+        NSString *comment = @"none";
         NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-         //Hitokoto
         if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
+        //Restid
         NSString *rest_id = @"...";
         if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
         
         NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
        
-        // POST API
+        // POST API　GETも試してみる
         [APIClient  POST:movieFileForAPI
                  rest_id:rest_id
               cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
@@ -1032,9 +1039,8 @@ static SCRecorder *_recorder;
              }
          }];
         
-        //Init
+        //Initiarize
         appDelegate.stringTenmei = @"";
-        appDelegate.restname = nil;
         appDelegate.valueHitokoto = @"";
         appDelegate.valueKakaku = 0;
         appDelegate.indexCategory = -1;
@@ -1049,6 +1055,7 @@ static SCRecorder *_recorder;
         
         [SVProgressHUD dismiss];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
     };
 }
 

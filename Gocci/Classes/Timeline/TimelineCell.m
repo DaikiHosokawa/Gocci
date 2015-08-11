@@ -196,7 +196,6 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.want_tag = timelinePost.want_flag;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
-    NSLog(@"ここでは%@",self.user_id);
     
     // ユーザアイコンを円形に
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;
