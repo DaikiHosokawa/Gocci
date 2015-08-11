@@ -246,6 +246,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // 動画データを一度全て削除
+            [[MoviePlayerManager sharedManager] removeAllPlayers];
             [self.tableView reloadData];
              [SVProgressHUD dismiss];
         });
@@ -263,11 +266,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
      if ( [self.posts count] == 0){
      return;
      }
-     */
+    */
     
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
-        NSLog(@"ここを通っている");
         return;
     }
     
@@ -290,7 +292,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     [[MoviePlayerManager sharedManager] scrolling:NO];
-    [[MoviePlayerManager sharedManager] playMovieAtIndex:currentIndexRow
+    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
                                                   inView:self.tableView
                                                    frame:movieRect];
     
@@ -541,12 +543,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [cell configureWithTimelinePost:myPost];
     cell.delegate = self;
     
-    // 動画の読み込み
-    //__weak typeof(self)weakSelf = self;
-    //[[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
-    //														 size:cell.thumbnailView.bounds.size
-    //													  atIndex:indexPath.row
-    //												   completion:^(BOOL f){}];
+    //動画の読み込み
+    __weak typeof(self)weakSelf = self;
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
+    														 size:cell.thumbnailView.bounds.size
+    													  atIndex:indexPath.row
+    												   completion:^(BOOL f){}];
     
     return cell;
 }

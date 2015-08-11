@@ -120,10 +120,8 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
     self.userspicture = everyPost.profile_img;
     self.restname = everyPost.restname;
     self.rest_id = everyPost.rest_id;
-    self.category = everyPost.category;
     //いいねしているかどうか
     self.pushed_at = everyPost.pushed_at;
-    NSLog(@"pushed_at:%@",self.pushed_at);
     
     self.lat = everyPost.lat;
     self.lon = everyPost.lon;

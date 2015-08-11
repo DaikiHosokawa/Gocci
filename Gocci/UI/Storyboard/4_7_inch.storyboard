@@ -174,7 +174,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" id="mX9-Lg-mP0">
-                                    <rect key="frame" x="70" y="25" width="256" height="300"/>
+                                    <rect key="frame" x="90" y="25" width="210" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                             </subviews>
@@ -1196,9 +1196,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="EB8-lD-Dfx"/>
-        <segue reference="ELX-A7-CBx"/>
+        <segue reference="ElI-qq-NoV"/>
+        <segue reference="oAW-Uz-WM7"/>
         <segue reference="Abr-YO-afi"/>
-        <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

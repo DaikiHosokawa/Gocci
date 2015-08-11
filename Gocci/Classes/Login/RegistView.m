@@ -218,6 +218,12 @@
     self.frame =frame;
 }
 
+-(IBAction)btnClose_clicked:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kActiveCancel object:nil];
+    [self removeFromSuperview];
+}
+
+
 -(IBAction)btnRegistLocal_clicked:(id)sender {
     
     if (![self _validateCheckboxes]) {
@@ -235,8 +241,9 @@
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+    NSLog(@"register_id:%@",[ud stringForKey:@"STRING"]);
     
-    [APIClient Singup:_tfUsername.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
+    [APIClient Signup:_tfUsername.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
      {
          [SVProgressHUD dismiss];
          //receive data
@@ -249,7 +256,7 @@
                  [def setObject:result[@"username"] forKey:@"username"];
                  [def setObject:result[@"identity_id"] forKey:@"identity_id"];
                  [def setObject:result[@"token"] forKey:@"token"];
-                 
+            
                  AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                                        initWithRegionType:AWSRegionUSEast1
                                                                        identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];

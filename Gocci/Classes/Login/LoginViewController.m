@@ -118,9 +118,14 @@
         
         NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
         
-        if (([[NSUserDefaults standardUserDefaults] valueForKey:@"picture"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
+        NSLog(@"picture:%@,username:%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"],[[NSUserDefaults standardUserDefaults] valueForKey:@"username"]);
+        
+        NSDictionary * dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+        NSLog(@"defualts:%@", dic);
+        
+        if (([[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
             
-            [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"picture"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
+            [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
                 
                 NSLog(@"Conversion result:%@ error:%@",result,error);
                 

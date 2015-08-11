@@ -465,7 +465,7 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"identity_id" :identity_id,
                              };
-    NSLog(@"Welcome param:%@",params);
+    NSLog(@"Login param:%@",params);
     [[APIClient sharedClient].manager GET:@"auth/login/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -541,7 +541,7 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)Singup:(NSString *)username os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Signup:(NSString *)username os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"username" : username,

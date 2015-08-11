@@ -67,7 +67,15 @@ static MoviePlayerManager *_sharedInstance = nil;
     moviePlayer.repeatMode = MPMovieRepeatModeOne;
     moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
     moviePlayer.view.userInteractionEnabled = NO;
-    weakSelf.players[key] = moviePlayer;
+    moviePlayer.backgroundView.opaque = NO;
+    //movieplayerのbackgroundViewの透明化
+    moviePlayer.backgroundView.backgroundColor = [UIColor clearColor];
+    for(UIView *aSubView in moviePlayer.view.subviews) {
+        aSubView.backgroundColor = [UIColor clearColor];
+    }
+    //movieplayerの透明化
+    moviePlayer.view.backgroundColor = [UIColor clearColor];
+        weakSelf.players[key] = moviePlayer;
     
     
 }
@@ -86,6 +94,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)scrolling:(BOOL)scrolling
 {
+    NSLog(@"scrolling:%@",scrolling? @"YES":@"NO");
     if (!self.globalPlayer) {
         return;
     }
@@ -104,13 +113,12 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
+    
     if (self.globalPlayer) {
         
         [self.globalPlayer.view removeFromSuperview];
         // [self.globalPlayer pause];
         self.globalPlayer = nil;
-        
-        
     }
     
     

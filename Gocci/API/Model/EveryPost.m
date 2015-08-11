@@ -22,7 +22,6 @@
 	obj.restname = dictionary[@"restname"];
 	obj.movie = dictionary[@"movie"];
 	obj.thumbnail = dictionary[@"thumbnail"];
-	obj.category = dictionary[@"category"];
 	obj.tag = dictionary[@"tag"];
 	obj.value = dictionary[@"value"];
 	obj.memo = dictionary[@"memo"];
@@ -32,13 +31,13 @@
 	obj.comment_num = [dictionary[@"comment_num"] integerValue];
 	obj.follow_flag = [dictionary[@"follow_flag"] integerValue];
 	obj.want_flag = dictionary[@"want_flag"] ;
-    obj.pushed_at = dictionary[@"pushed_at"];
+    obj.pushed_at = dictionary[@"gochi_flag"];
     obj.flag  = [dictionary[@"gochi_flag"] integerValue];
     obj.tel = dictionary[@"tell"];
     obj.homepage = dictionary[@"homepage"];
     obj.total_cheer_num = dictionary[@"total_cheer_num"];
-    obj.lat = dictionary[@"lat"];
-    obj.lon = dictionary[@"lon"];
+    obj.lat = dictionary[@"X(lon_lat)"];
+    obj.lon = dictionary[@"Y(lon_lat)"];
     obj.locality = dictionary[@"locality"];
     obj.tag_category = dictionary[@"category"];
     obj.atmosphere = dictionary[@"atmosphere"];

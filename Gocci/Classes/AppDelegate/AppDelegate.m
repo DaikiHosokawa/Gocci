@@ -69,6 +69,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
     [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
