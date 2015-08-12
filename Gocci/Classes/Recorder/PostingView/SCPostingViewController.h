@@ -23,6 +23,7 @@ typedef void (^SCPostingViewControllerCancelCallback)(void);
     SCRecorderViewController *SCRecorder;
 }
 
+-(void)afterRecording :(UIViewController *)viewController;
 
 
 @end

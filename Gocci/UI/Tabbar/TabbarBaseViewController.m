@@ -90,8 +90,12 @@
 
 - (IBAction)afterRecording:(UIStoryboardSegue *)segue
 {
-
+    if ([segue.identifier isEqualToString:@"afterRecording"]) {
+        NSLog(@"afterRecording success");
+    }
 }
+
+
 
     /*
 #pragma mark - Navigation

@@ -827,7 +827,7 @@
         <!--Posting View Controller-->
         <scene sceneID="HOh-ob-sRP">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scposting" automaticallyAdjustsScrollViewInsets="NO" id="y1g-iL-KK8" customClass="SCPostingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HiE-hz-T1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -874,7 +874,7 @@
                                         </state>
                                         <connections>
                                             <action selector="onSubmit:" destination="y1g-iL-KK8" eventType="touchUpInside" id="cfR-cP-CAv"/>
-                                            <segue destination="9rq-o0-n9Q" kind="unwind" identifier="afterRecording" unwindAction="afterRecording:" id="AE5-7z-lzS"/>
+                                            <segue destination="9rq-o0-n9Q" kind="unwind" unwindAction="afterRecording:" id="Qlt-6y-b5f"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -893,6 +893,7 @@
                         <outlet property="tableviewTubuyaki" destination="w4d-Jf-Q7q" id="dRe-eJ-N7b"/>
                         <outlet property="viewBase" destination="T5N-a0-cjY" id="GOu-vV-33L"/>
                         <segue destination="ESe-by-P85" kind="modal" identifier="goBeforeRecorder" id="EB8-lD-Dfx"/>
+                        <segue destination="9rq-o0-n9Q" kind="unwind" identifier="afterRecording" unwindAction="afterRecording:" id="hZ7-Xl-gce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wJ-zS-coC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1196,9 +1197,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="EB8-lD-Dfx"/>
-        <segue reference="ElI-qq-NoV"/>
-        <segue reference="oAW-Uz-WM7"/>
+        <segue reference="m10-Cb-1kc"/>
         <segue reference="Abr-YO-afi"/>
+        <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

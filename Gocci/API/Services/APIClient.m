@@ -206,28 +206,7 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)postRestname:(NSString *)restaurantName handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
-                   {
-                       NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@post_restname/", API_BASE_URL]];
-                       NSString *content = [NSString stringWithFormat:@"restname=%@", restaurantName];
-                       NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-                       [urlRequest setHTTPMethod:@"POST"];
-                       [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]]; NSURLResponse* response;
-                       NSError* error = nil;
-                       NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                              returningResponse:&response
-                                                                          error:&error];
-                       
-                       dispatch_sync(dispatch_get_main_queue(), ^
-                                     {
-                                         handler([[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding],
-                                                 [(NSHTTPURLResponse *)response statusCode],
-                                                 error);
-                                     });
-                   });
-}
+
 
 + (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSInteger)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler{
     NSDictionary *params = @{
@@ -283,53 +262,6 @@ static APIClient *_sharedInstance = nil;
     [downloadTask resume];
 }
 
-+ (void)registUserWithUsername:(NSString *)username
-                  withPassword:(NSString *)pwd
-                     withEmail:(NSString *)email
-                  withToken_id:(NSString *)token_id
-                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    NSDictionary *params = @{
-                             @"user_name" : username,
-                             @"password" : pwd,
-                             @"email" : email,
-                             @"token_id" : token_id
-                             };
-    
-    NSLog(@"regist_Params: %@", params);
-    
-    [[APIClient sharedClient].manager POST:@"register/test.php"
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                       NSLog(@"%@",responseObject);
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                   }];
-}
-
-+ (void)loginUserWithUsername:(NSString *)username
-                 withPassword:(NSString *)pwd
-                 WithToken_id:(NSString *)token_id
-                      handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-{
-    NSDictionary *params = @{
-                             @"user_name" :username,
-                             @"password" :pwd,
-                             @"token_id" :token_id
-                             };
-    
-    
-    NSLog(@"login_Params: %@", params);
-    
-    [[APIClient sharedClient].manager POST:@"auth/test.php"
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                   }];
-}
 
 
 + (void)Notice:(void (^)(id result, NSUInteger code, NSError *error))handler

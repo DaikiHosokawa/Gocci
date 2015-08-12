@@ -243,15 +243,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         NSDictionary *d_post = [result objectForKey:@"post"];
         NSLog(@"d_post:%@",d_post);
         myPost = [EveryPost everyPostWithJsonDictionary:d_post];
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
             
-            // 動画データを一度全て削除
-            [[MoviePlayerManager sharedManager] removeAllPlayers];
-            [self.tableView reloadData];
-             [SVProgressHUD dismiss];
-        });
+        [self.tableView reloadData];
+        [SVProgressHUD dismiss];
+
+        
+        
         }
     }];
     
@@ -538,6 +535,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     if (!cell){
         cell = [everyTableViewCell cell];
     }
+    NSLog(@"mypost:%@",myPost);
     
     // セルにデータを反映
     [cell configureWithTimelinePost:myPost];

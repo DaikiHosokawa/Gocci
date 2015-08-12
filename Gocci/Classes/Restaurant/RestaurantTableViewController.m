@@ -443,23 +443,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-                
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
+             ];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -469,22 +461,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
+         ];
     }
 }
 
@@ -649,6 +634,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSString *postLat = [header objectForKey:@"lat"];
     double latdo = postLat.doubleValue;
     _coordinate.latitude = latdo;
+    
+    self.total_cheer_num.text = [NSString stringWithFormat:@"%@", [header objectForKey:@"cheer_num"]];
     
     NSString *postLon = [header objectForKey:@"lon"];
     double londo = postLon.doubleValue;

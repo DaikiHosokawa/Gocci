@@ -287,57 +287,6 @@
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
     // [SVProgressHUD show];
-    [SVProgressHUD show];
-    
-    // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    
-    [APIClient loginUserWithUsername:_tfUsername.text withPassword:_tfPwd.text WithToken_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
-        //success
-        [SVProgressHUD dismiss];
-        //receive data
-        if (!error) {
-            NSLog(@"login user: %@", result);
-            if ([result[@"code"] integerValue] == 200) {
-                //success
-                
-                NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
-                [def setObject:_tfUsername.text forKey:@"username"];
-                [def setObject:_tfPwd.text forKey:@"pwd"];
-                [def setObject:@"local" forKey:@"type"];
-                [def setObject:@"" forKey:@"user_id"];
-                [def setObject:@"" forKey:@"email"];
-                [def setObject:result[@"picture"] forKey:@"avatarLink"];
-                [def synchronize];
-                
-                // Initialize the Cognito Sync client
-                AWSCognito *syncClient = [AWSCognito defaultCognito];
-                // Create a record in a dataset and synchronize with the server
-                AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-                [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-                NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-                [dataset setString:os forKey:@"os"];
-                [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
-                [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
-                [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-                    // Your handler code here
-                    NSLog(@"dataset:%@",dataset);
-                    return nil;
-                }];
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kActiveLogin object:self];
-                
-                // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                //[alrt show];
-                [self removeFromSuperview];
-            } else {
-                //fail
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-            }
-        }
-        
-    }];
     
 }
 

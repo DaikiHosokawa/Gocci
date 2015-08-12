@@ -144,14 +144,7 @@ static SCRecorder *_recorder;
     UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
     
-    // !!!:dezamisystem・削除
-    //    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    //	// !!!:未使用なので
-    //    //[self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    //	[self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
-    //[self.recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
-    //self.recordView.alpha = 1.0;
-    
+ 
     //	self.loadingView.hidden = YES;
     CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     //NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
@@ -159,15 +152,16 @@ static SCRecorder *_recorder;
     self.focusView.recorder = _recorder;
     [self.view addSubview:self.focusView];
     [self.view sendSubviewToBack:self.focusView];
-    //    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:previewView.bounds];
-    //    self.focusView.recorder = _recorder;
-    //    [previewView addSubview:self.focusView];
     
-    /*
-     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
-     self.focusView.insideFocusTargetImage = [UIImage imageNamed:@"capture_flip"];
-     */
+    // 現在時間を取得する
+    NSDate *now = [NSDate date];
+    NSLog(@"%@", now);
     
+    // 日付のフォーマット
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
+    NSString *nowString = [formatter stringFromDate:now];
+    [[NSUserDefaults standardUserDefaults] setValue:nowString forKey:@"post_time"];
     
 #if 1
     // !!!:dezamisystem・スクロールビュー
@@ -960,17 +954,9 @@ static SCRecorder *_recorder;
 -(void)execSubmit
 {
     
-    // 現在時間を取得する
-    NSDate *now = [NSDate date];
-    NSLog(@"%@", now);
-    
-    // 日付のフォーマット
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-    NSString *nowString = [formatter stringFromDate:now];
     
     //ファイル名+user_id形式
-    NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+    NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
     
     AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -993,70 +979,6 @@ static SCRecorder *_recorder;
 
     [self upload:uploadRequest];
 
-
-
-    {
-        NSLog(@"%s",__func__) ;
-        
-        [SVProgressHUD show];
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-       
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-         //Cheertag
-        int cheertag = 1;
-        if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
-        //Value
-        int valueKakaku = 0;
-        if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
-        //Atmosphere
-        NSString *atmosphere = @"1";
-        if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
-        //Category
-        NSString *category = @"1";
-        NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-        if (appDelegate.stringCategory) category= appDelegate.stringCategory;
-        //Comment
-        NSString *comment = @"none";
-        NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-        if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
-        //Restid
-        NSString *rest_id = @"...";
-        if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
-        
-        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",nowString,[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-       
-        // POST API　GETも試してみる
-        [APIClient  POST:movieFileForAPI
-                 rest_id:rest_id
-              cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
-         {
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-             
-             if (error){
-                 
-             }
-         }];
-        
-        //Initiarize
-        appDelegate.stringTenmei = @"";
-        appDelegate.valueHitokoto = @"";
-        appDelegate.valueKakaku = 0;
-        appDelegate.indexCategory = -1;
-        appDelegate.indexFuniki = -1;
-        
-        [secondView setKakakuValue:appDelegate.valueKakaku];
-        [secondView setTenmeiString:appDelegate.stringTenmei];
-        [secondView setCategoryIndex:appDelegate.indexCategory];
-        [secondView setFunikiIndex:appDelegate.indexFuniki];
-        [secondView setHitokotoValue:appDelegate.valueHitokoto];
-        [secondView reloadTableList];
-        
-        [SVProgressHUD dismiss];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-    };
 }
 
 
@@ -1111,13 +1033,110 @@ static SCRecorder *_recorder;
         }
         
         if (task.result) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"success: [%@]", task.result);
-            });
+            
+                    [SVProgressHUD show];
+                    
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+                   //APIに送信
+            
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    
+                    //Cheertag
+                    int cheertag = 1;
+                    if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
+                    //Value
+                    int valueKakaku = 0;
+                    if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
+                    //Atmosphere
+                    NSString *atmosphere = @"1";
+                    if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
+                    //Category
+                    NSString *category = @"1";
+                    NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
+                    if (appDelegate.stringCategory) category= appDelegate.stringCategory;
+                    //Comment
+                    NSString *comment = @"none";
+                    NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
+                    if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
+                    //Restid
+                    NSString *rest_id = @"...";
+                    if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
+                    
+                    NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+                    
+                    // POST API　GETも試してみる
+                    [APIClient  POST:movieFileForAPI
+                             rest_id:rest_id
+                          cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
+                     {
+                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                         
+                         if (error){
+                             
+                         }
+                         if ([result[@"code"] integerValue] == 200) {
+                               [[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
+                             //Initiarize
+                             appDelegate.stringTenmei = @"";
+                             appDelegate.valueHitokoto = @"";
+                             appDelegate.valueKakaku = 0;
+                             appDelegate.indexCategory = -1;
+                             appDelegate.indexFuniki = -1;
+                             
+                             [secondView setKakakuValue:appDelegate.valueKakaku];
+                             [secondView setTenmeiString:appDelegate.stringTenmei];
+                             [secondView setCategoryIndex:appDelegate.indexCategory];
+                             [secondView setFunikiIndex:appDelegate.indexFuniki];
+                             [secondView setHitokotoValue:appDelegate.valueHitokoto];
+                             [secondView reloadTableList];
+                             
+                             [SVProgressHUD dismiss];
+                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                         }
+                     }];
+
         }
         
         return nil;
     }];
+}
+
+#pragma mark - 取得
+-(SCPostingViewController*)viewControllerSCPosting
+{
+    static NSString * const namebundle = @"scposting";
+    
+    SCRecorderViewController* viewController = nil;
+    {
+        CGRect rect = [UIScreen mainScreen].bounds;
+        if (rect.size.height == 480) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+        }
+        else if (rect.size.height == 667) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+        }
+        else if (rect.size.height == 736) {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+        }
+        else {
+            // ストーリーボードを取得
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            //ビューコントローラ取得
+            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+        }
+    }
+    
+    return viewController;
 }
 
 
