@@ -211,7 +211,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //  [[MoviePlayerManager sharedManager] removeAllPlayers];
+
 }
 
 #pragma mark - Json
@@ -247,7 +248,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
 
-        
+        [[MoviePlayerManager sharedManager] removeAllPlayers];
         
         }
     }];
@@ -541,13 +542,15 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [cell configureWithTimelinePost:myPost];
     cell.delegate = self;
     
+    
+    if (myPost != NULL|| myPost != nil){
     //動画の読み込み
     __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
     														 size:cell.thumbnailView.bounds.size
     													  atIndex:indexPath.row
     												   completion:^(BOOL f){}];
-    
+    }
     return cell;
 }
 

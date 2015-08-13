@@ -33,6 +33,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     }
     
     self.players = [NSMutableDictionary dictionaryWithCapacity:0];
+
     
     return self;
 }
@@ -51,7 +52,7 @@ static MoviePlayerManager *_sharedInstance = nil;
      */
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    __weak typeof(self)weakSelf = self;
+    //__weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -73,9 +74,10 @@ static MoviePlayerManager *_sharedInstance = nil;
     for(UIView *aSubView in moviePlayer.view.subviews) {
         aSubView.backgroundColor = [UIColor clearColor];
     }
-    //movieplayerの透明化
+    
     moviePlayer.view.backgroundColor = [UIColor clearColor];
-        weakSelf.players[key] = moviePlayer;
+        self.players[key] = moviePlayer;
+    NSLog(@"addmovie段階では:%@",self.players);
     
     
 }
@@ -121,16 +123,17 @@ static MoviePlayerManager *_sharedInstance = nil;
         self.globalPlayer = nil;
     }
     
-    
     MPMoviePlayerController *player = [self _playerAtIndex:index];
+    NSLog(@"playerは%@",player);
     
     if (player && player != self.globalPlayer) {
         self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
-        
+        NSLog(@"playerは独自");
         //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
+            NSLog(@"再生中でないので再生");
             [self.globalPlayer play];
         }
         
@@ -139,10 +142,8 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)stopMovie
 {
-    if (self.globalPlayer) {
         [self.globalPlayer stop];
         self.globalPlayer = nil;
-    }
 }
 
 
@@ -152,13 +153,18 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
 
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
+    NSLog(@"再生するkey:%@",key);
+    NSLog(@"player群は%@",self.players);
+    NSLog(@"playerは%@",self.players[key]);
     if (!self.players[key]) {
+         NSLog(@"keyがない");
         return nil;
     }
     
     MPMoviePlayerController *player = self.players[key];
     
     if (!player.contentURL) {
+         NSLog(@"playerにurlがない");
         return nil;
     }
     

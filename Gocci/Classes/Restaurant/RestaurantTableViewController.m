@@ -202,7 +202,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
     

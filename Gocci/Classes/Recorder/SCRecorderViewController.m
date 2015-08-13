@@ -796,8 +796,7 @@ static SCRecorder *_recorder;
             return;
         }
         
-        // 動画をカメラロールに保存
-        [weakSelf.recordSession saveToCameraRoll];
+    
         
         // カメラを停止
         [_recorder endRunningSession];
@@ -821,6 +820,32 @@ static SCRecorder *_recorder;
          // 動画をカメラロールに保存
          //[self.recordSession saveToCameraRoll];
          [staticRecordSession saveToCameraRoll];
+         
+         
+         //S3 upload
+         //ファイル名+user_id形式
+         NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+         
+         AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+         
+         //Transfermanagerの起動
+         
+         AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+         
+         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+         uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
+         uploadRequest.key = movieFileForS3;
+         uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
+         uploadRequest.contentType = @"video/mp4";
+         uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (totalBytesExpectedToSend > 0) {
+                     NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
+                 }
+             });
+         };
+         
+         [self upload:uploadRequest];
          
          // カメラを停止
          [_recorder endRunningSession];
@@ -953,31 +978,66 @@ static SCRecorder *_recorder;
 #pragma mark 投稿するボタンを押した時
 -(void)execSubmit
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
+    //APIに送信
     
-    //ファイル名+user_id形式
-    NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //Cheertag
+    int cheertag = 1;
+    if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
+    //Value
+    int valueKakaku = 0;
+    if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
+    //Atmosphere
+    NSString *atmosphere = @"1";
+    if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
+    //Category
+    NSString *category = @"1";
+    NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
+    if (appDelegate.stringCategory) category= appDelegate.stringCategory;
+    //Comment
+    NSString *comment = @"none";
+    NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
+    if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
+    //Restid
+    NSString *rest_id = @"...";
+    if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
     
-    //Transfermanagerの起動
+    NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
     
-    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-    
-    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
-    uploadRequest.key = movieFileForS3;
-    uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
-    uploadRequest.contentType = @"video/mp4";
-    uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (totalBytesExpectedToSend > 0) {
-                NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-            }
-        });
-    };
+    // POST API　GETも試してみる
+    [APIClient  POST:movieFileForAPI
+             rest_id:rest_id
+          cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
+     {
+         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+         
+         if (error){
+             NSLog(@"post api失敗");
+         }
+         if ([result[@"code"] integerValue] == 200) {
+             [[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
+             //Initiarize
+             appDelegate.stringTenmei = @"";
+             appDelegate.valueHitokoto = @"";
+             appDelegate.valueKakaku = 0;
+             appDelegate.indexCategory = -1;
+             appDelegate.indexFuniki = -1;
+             
+             [secondView setKakakuValue:appDelegate.valueKakaku];
+             [secondView setTenmeiString:appDelegate.stringTenmei];
+             [secondView setCategoryIndex:appDelegate.indexCategory];
+             [secondView setFunikiIndex:appDelegate.indexFuniki];
+             [secondView setHitokotoValue:appDelegate.valueHitokoto];
+             [secondView reloadTableList];
+             
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             [SVProgressHUD dismiss];
+         }
+     }];
 
-    [self upload:uploadRequest];
 
 }
 
@@ -1033,68 +1093,7 @@ static SCRecorder *_recorder;
         }
         
         if (task.result) {
-            
-                    [SVProgressHUD show];
-                    
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-            
-                   //APIに送信
-            
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    
-                    //Cheertag
-                    int cheertag = 1;
-                    if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
-                    //Value
-                    int valueKakaku = 0;
-                    if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
-                    //Atmosphere
-                    NSString *atmosphere = @"1";
-                    if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
-                    //Category
-                    NSString *category = @"1";
-                    NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-                    if (appDelegate.stringCategory) category= appDelegate.stringCategory;
-                    //Comment
-                    NSString *comment = @"none";
-                    NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-                    if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
-                    //Restid
-                    NSString *rest_id = @"...";
-                    if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
-                    
-                    NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-                    
-                    // POST API　GETも試してみる
-                    [APIClient  POST:movieFileForAPI
-                             rest_id:rest_id
-                          cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
-                     {
-                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-                         
-                         if (error){
-                             
-                         }
-                         if ([result[@"code"] integerValue] == 200) {
-                               [[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
-                             //Initiarize
-                             appDelegate.stringTenmei = @"";
-                             appDelegate.valueHitokoto = @"";
-                             appDelegate.valueKakaku = 0;
-                             appDelegate.indexCategory = -1;
-                             appDelegate.indexFuniki = -1;
-                             
-                             [secondView setKakakuValue:appDelegate.valueKakaku];
-                             [secondView setTenmeiString:appDelegate.stringTenmei];
-                             [secondView setCategoryIndex:appDelegate.indexCategory];
-                             [secondView setFunikiIndex:appDelegate.indexFuniki];
-                             [secondView setHitokotoValue:appDelegate.valueHitokoto];
-                             [secondView reloadTableList];
-                             
-                             [SVProgressHUD dismiss];
-                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                         }
-                     }];
+            NSLog(@"Upload success");
 
         }
         

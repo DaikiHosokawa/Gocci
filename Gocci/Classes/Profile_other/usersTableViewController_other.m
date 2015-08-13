@@ -175,7 +175,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];

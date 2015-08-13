@@ -190,7 +190,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
     
     [super viewWillDisappear:animated];

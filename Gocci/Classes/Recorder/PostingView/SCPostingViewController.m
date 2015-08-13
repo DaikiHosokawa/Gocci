@@ -11,6 +11,7 @@
 #import "SCRecorderViewController.h"
 #import "AppDelegate.h"
 #import "BFPaperCheckbox.h"
+#import "SVProgressHUD.h"
 
 
 
@@ -183,8 +184,9 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
      [[self viewControllerSCRecorder] recorderSubmitPopupViewOnFacebookShare];
      }
      */
-    [[self viewControllerSCRecorder] execSubmit];
-}
+    [SVProgressHUD show];
+    [[self viewControllerSCRecorder]  performSelector:@selector(execSubmit) withObject:nil afterDelay:7.0];
+  }
 
 #pragma mark - 取得
 -(SCRecorderViewController*)viewControllerSCRecorder

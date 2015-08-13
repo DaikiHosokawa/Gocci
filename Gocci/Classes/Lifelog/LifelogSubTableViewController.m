@@ -153,7 +153,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+   // [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
 }
 

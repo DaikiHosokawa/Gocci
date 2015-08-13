@@ -158,7 +158,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -166,8 +165,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+  //  [[MoviePlayerManager sharedManager] removeAllPlayers];
     
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - viewDidAppear
@@ -306,6 +306,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
     
+    
+    if (post != NULL|| post != nil){
     // 動画の読み込み
     //    __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
@@ -313,7 +315,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
     //前の処理のダウンロードを止める仕組み
-    
+    }
     [SVProgressHUD dismiss];
     
     
