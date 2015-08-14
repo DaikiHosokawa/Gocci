@@ -41,6 +41,7 @@
     obj.locality = dictionary[@"locality"];
     obj.tag_category = dictionary[@"category"];
     obj.atmosphere = dictionary[@"atmosphere"];
+    obj.userID = dictionary[@"user_id"];
 
 	return obj;
 }

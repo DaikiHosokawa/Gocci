@@ -185,7 +185,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
      }
      */
     [SVProgressHUD show];
-    [[self viewControllerSCRecorder]  performSelector:@selector(execSubmit) withObject:nil afterDelay:7.0];
+    [[self viewControllerSCRecorder] execSubmit];
   }
 
 #pragma mark - 取得

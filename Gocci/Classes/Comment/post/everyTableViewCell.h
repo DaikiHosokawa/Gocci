@@ -25,9 +25,8 @@ extern NSString * const EveryCellIdentifier;
  *  @param cell
  *  @param userName タップした投稿の username
  */
-- (void)everyCell:(everyTableViewCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger )flag;
-
-- (void)everyCell:(everyTableViewCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag;
+- (void)everyCell:(everyTableViewCell *)cell didTapUserName:(NSString *)user_id;
+- (void)everyCell:(everyTableViewCell *)cell didTapPicture:(NSString *)user_id;
 
 /**
  *  店舗をタップ
@@ -64,28 +63,12 @@ extern NSString * const EveryCellIdentifier;
 
 
 /**
- *  コメントボタンをタップ
+ *  Violate ボタンをタップ
  *
  *  @param cell
  *  @param postID
  */
-- (void)timelineCell:(everyTableViewCell *)cell didTapCommentButtonWithPostID:(NSString *)Locality;
-
-/**
- *  ナビをタップ
- *
- *  @param cell
- *  @param postID
- */
-- (void)timelineCell:(everyTableViewCell *)cell didTapNaviWithLocality:(NSString *)postID;
-
-/**
- *  Delete ボタンをタップ
- *
- *  @param cell
- *  @param postID タップした投稿の username
- */
-- (void)timelineCell:(everyTableViewCell *)cell didTapDeleteWithPostID:(NSString *)postID;
+- (void)everyCell:(everyTableViewCell *)cell didTapViolateButtonWithPostID:(NSString *)postID;
 
 @end
 
@@ -98,6 +81,7 @@ extern NSString * const EveryCellIdentifier;
 @property (nonatomic,weak) id<EveryCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *ViolateView;
 
 /**
  *  TimelineCell を生成

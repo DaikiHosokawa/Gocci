@@ -212,7 +212,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     // 動画データを一度全て削除
     //  [[MoviePlayerManager sharedManager] removeAllPlayers];
-
+    
 }
 
 #pragma mark - Json
@@ -222,7 +222,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [APIClient commentJSON:_postID handler:^(id result, NSUInteger code, NSError *error) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-      
+        
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
@@ -234,22 +234,22 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         }
         
         if(result){
-        NSArray* d_comments = (NSArray*)[result valueForKey:@"comments"];
-        NSLog(@"d_comments:%@",d_comments);
-        list_comments = [[NSArray alloc] initWithArray:d_comments];
-        
-        NSArray *user_name = [d_comments valueForKey:@"username"];
-        postCommentname = [user_name mutableCopy];
-        
-        NSDictionary *d_post = [result objectForKey:@"post"];
-        NSLog(@"d_post:%@",d_post);
-        myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+            NSArray* d_comments = (NSArray*)[result valueForKey:@"comments"];
+            NSLog(@"d_comments:%@",d_comments);
+            list_comments = [[NSArray alloc] initWithArray:d_comments];
             
-        [self.tableView reloadData];
-        [SVProgressHUD dismiss];
-
-        [[MoviePlayerManager sharedManager] removeAllPlayers];
-        
+            NSArray *user_name = [d_comments valueForKey:@"username"];
+            postCommentname = [user_name mutableCopy];
+            
+            NSDictionary *d_post = [result objectForKey:@"post"];
+            NSLog(@"d_post:%@",d_post);
+            myPost = [EveryPost everyPostWithJsonDictionary:d_post];
+            
+            [self.tableView reloadData];
+            [SVProgressHUD dismiss];
+            
+            [[MoviePlayerManager sharedManager] removeAllPlayers];
+            
         }
     }];
     
@@ -264,7 +264,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
      if ( [self.posts count] == 0){
      return;
      }
-    */
+     */
     
     if (self.tabBarController.selectedIndex != 0) {
         // 画面がフォアグラウンドのときのみ再生
@@ -284,10 +284,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     everyTableViewCell *currentCell = [everyTableViewCell cell];
     [currentCell configureWithTimelinePost:myPost];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentCell.thumbnailView.frame.origin.y-5,
+                                  currentCell.thumbnailView.frame.origin.y,
                                   currentCell.thumbnailView.frame.size.width,
                                   currentCell.thumbnailView.frame.size.height);
-    
     
     [[MoviePlayerManager sharedManager] scrolling:NO];
     [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
@@ -544,12 +543,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     if (myPost != NULL|| myPost != nil){
-    //動画の読み込み
-    __weak typeof(self)weakSelf = self;
-    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
-    														 size:cell.thumbnailView.bounds.size
-    													  atIndex:indexPath.row
-    												   completion:^(BOOL f){}];
+        //動画の読み込み
+        __weak typeof(self)weakSelf = self;
+        [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
+                                                             size:cell.thumbnailView.bounds.size
+                                                          atIndex:indexPath.row
+                                                       completion:^(BOOL f){}];
     }
     return cell;
 }
@@ -581,7 +580,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         //ここでパラメータを渡す
-        usersTableViewController_other *useVC = segue.destinationViewController;
+        usersTableViewController_other *user_otherVC = segue.destinationViewController;
+        user_otherVC.postUsername = _postUsername;
     }
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
@@ -590,6 +590,74 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         restVC.postRestName = _postRestname;
     }
     
+}
+
+- (void)everyCell:(everyTableViewCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
+{
+    //違反報告ボタンの時の処理
+    LOG(@"postid=%@", postID);
+    
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class)
+    {
+        // iOS 8の時の処理
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
+            }
+             ];
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else
+    {
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
+        }
+         ];
+    }
+    
+}
+
+#pragma mark user_nameタップの時の処理
+- (void)everyCell:(everyTableViewCell *)cell didTapUserName:(NSString *)user_id
+{
+    _postUsername = user_id;
+    
+    NSLog(@"userID is %@",user_id);
+    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    // !!!:dezamisystem
+    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+    
+}
+
+#pragma mark user_nameタップの時の処理 2
+- (void)everyCell:(everyTableViewCell *)cell didTapPicture:(NSString *)user_id{
+    _postUsername = user_id;
+    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+    // !!!:dezamisystem
+    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+    
+    NSLog(@"userID is %@",user_id);
 }
 
 @end

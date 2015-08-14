@@ -34,6 +34,7 @@
 @property (nonatomic) NSInteger flag;
 @property (nonatomic) NSString* lat;
 @property (nonatomic) NSString* lon;
+@property (nonatomic,copy) NSString *userID;
 @property (nonatomic, copy) NSString *locality;
 @property (nonatomic, copy) NSString *tel;
 @property (nonatomic, copy) NSString *homepage;

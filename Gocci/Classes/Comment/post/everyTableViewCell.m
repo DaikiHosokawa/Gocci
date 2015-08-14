@@ -61,6 +61,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong)NSString *user_id;
 @property (nonatomic, strong) NSString *userspicture;
 @property (nonatomic, strong) NSString *restname;
 @property (nonatomic, strong) NSString *rest_id;
@@ -117,6 +118,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
     
     self.postID = everyPost.post_id;
     self.username = everyPost.username;
+    self.user_id = everyPost.userID;
     self.userspicture = everyPost.profile_img;
     self.restname = everyPost.restname;
     self.rest_id = everyPost.rest_id;
@@ -252,6 +254,7 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
     //	// タップイベント
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];
     [self _assignTapAction:@selector(tapAvaterImageView:) view:self.avaterImageView];
+    [self _assignTapAction:@selector(tapViolate:) view:self.ViolateView];
     //[self _assignTapAction:@selector(tapRestautant:) view:self.restaurantImageView];
     //[self _assignTapAction:@selector(tapRestautant:) view:self.restaurantAddressLabel];
     [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantNameLabel];
@@ -282,24 +285,18 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 - (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
 {
     NSLog(@"名前タップ検知");
-    if ([self.delegate respondsToSelector:@selector(everyCell:didTapNameWithUserName:picture:flag:)]) {
-        [self.delegate everyCell:self didTapNameWithUserName:self.username picture:_userspicture flag:_flag];
+    if ([self.delegate respondsToSelector:@selector(everyCell:didTapUserName:)]) {
+        [self.delegate everyCell:self didTapUserName:self.user_id];
     }
 }
 
-- (void)tapthumb:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {
-        [self.delegate timelineCell:self didTapthumb:self.thumbnailView];
-        //self.startPlaying.hidden = YES;
-    }
-}
+
 
 - (void)tapAvaterImageView:(UITapGestureRecognizer *)recognizer
 {
     NSLog(@"プロフ画像タップ検知");
-    if ([self.delegate respondsToSelector:@selector(everyCell:didTapNameWithUserPicture:name:flag:)]) {
-        [self.delegate everyCell:self didTapNameWithUserPicture:self.userspicture name:_username flag:_flag];
+    if ([self.delegate respondsToSelector:@selector(everyCell:didTapPicture:)]) {
+        [self.delegate everyCell:self didTapPicture:self.user_id];
     }
 }
 
@@ -344,34 +341,15 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
 }
 
 
-- (void)tapNavi:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNaviWithLocality:)]) {
-        [self.delegate timelineCell:self didTapNaviWithLocality:self.locality];
-    }
-}
-
-- (void)tapComment:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapCommentButtonWithPostID:)]) {
-        [self.delegate timelineCell:self didTapCommentButtonWithPostID:self.postID];
-    }
-}
-
 
 - (void)tapViolate:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapViolateButtonWithPostID:)]) {
-        [self.delegate timelineCell:self didTapViolateButtonWithPostID:self.postID];
+    if ([self.delegate respondsToSelector:@selector(everyCell:didTapViolateButtonWithPostID:)]) {
+        [self.delegate everyCell:self didTapViolateButtonWithPostID:self.postID];
     }
 }
 
-- (void)onDeleteButton:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapDeleteWithPostID:)]) {
-        [self.delegate timelineCell:self didTapDeleteWithPostID:self.postID];
-    }
-}
+
 
 #pragma mark - Initialize
 + (instancetype)cell
