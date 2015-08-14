@@ -41,6 +41,10 @@
     } else if([Notice.noticeMessage isEqualToString:@"comment"])  {
          NSLog(@"commentになる");
      self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にコメントをつけました。"];
+    } else if([Notice.noticeMessage isEqualToString:@"follow"]) {
+        self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんにフォローされました。"];
+    }else if([Notice.noticeMessage isEqualToString:@"announce"]) {
+        self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にコメントをつけました。"];
     }
     
     //self.notificationMessage.text = Notice.noticeMessage;
