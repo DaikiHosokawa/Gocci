@@ -69,7 +69,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    
     
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
@@ -341,6 +341,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 // PUSH通知の受信時に呼ばれるデリゲートメソッド
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
+    NSLog(@"通知受信:%@",userInfo);
     //APNsPHPからuserInfo(message,badge数等)を受け取る
     //log
     NSLog(@"pushInfo: %@", [userInfo description]);
@@ -357,9 +358,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     //APNsPHPからuserInfo(message,badge数等)を受け取る
-    
-    
-    NSLog(@"pushInfo in Background: %@", [userInfo description]);
+    NSLog(@"pushInfo in Background: %@", userInfo);
     
     if ( userInfo ) {
         NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
@@ -370,13 +369,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     }
     
     [self showMessageWithRemoteNotification:userInfo];
-    
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    int numberOfNewMessages = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    [ud synchronize];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
@@ -393,6 +385,15 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                    description:message
                                                           type:TWMessageBarMessageTypeSuccess
                                                       duration:4.0];
+    //ここをログインのところに追加
+    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
+    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+    UIApplication *application = [UIApplication sharedApplication];
+    application.applicationIconBadgeNumber = numberOfNewMessages;
+    [ud synchronize];
     
 }
 

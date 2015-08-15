@@ -431,7 +431,7 @@ static APIClient *_sharedInstance = nil;
                              @"target_user_id" : target_user_id,
                              };
     
-    
+    NSLog(@"FollowList pram:%@",params);
     [[APIClient sharedClient].manager GET:@"get/follow/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -447,7 +447,7 @@ static APIClient *_sharedInstance = nil;
                              @"target_user_id" : target_user_id,
                              };
     
-    
+    NSLog(@"FollowerList pram:%@",params);
     [[APIClient sharedClient].manager GET:@"get/follower/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

@@ -821,32 +821,6 @@ static SCRecorder *_recorder;
          //[self.recordSession saveToCameraRoll];
          [staticRecordSession saveToCameraRoll];
          
-         
-         //S3 upload
-         //ファイル名+user_id形式
-         NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-         
-         AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-         
-         //Transfermanagerの起動
-         
-         AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-         
-         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-         uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
-         uploadRequest.key = movieFileForS3;
-         uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
-         uploadRequest.contentType = @"video/mp4";
-         uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (totalBytesExpectedToSend > 0) {
-                     NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                 }
-             });
-         };
-         
-         [self upload:uploadRequest];
-         
          // カメラを停止
          [_recorder endRunningSession];
          
@@ -1018,7 +992,33 @@ static SCRecorder *_recorder;
              NSLog(@"post api失敗");
          }
          if ([result[@"code"] integerValue] == 200) {
-             [[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
+             //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
+             
+             //S3 upload
+             //ファイル名+user_id形式
+             NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+             
+             AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+             
+             //Transfermanagerの起動
+             
+             AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+             
+             AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+             uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
+             uploadRequest.key = movieFileForS3;
+             uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
+             uploadRequest.contentType = @"video/mp4";
+             uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (totalBytesExpectedToSend > 0) {
+                         NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
+                     }
+                 });
+             };
+             
+             [self upload:uploadRequest];
+             
              //Initiarize
              appDelegate.stringTenmei = @"";
              appDelegate.valueHitokoto = @"";
@@ -1101,6 +1101,7 @@ static SCRecorder *_recorder;
     }];
 }
 
+/*
 #pragma mark - 取得
 -(SCPostingViewController*)viewControllerSCPosting
 {
@@ -1137,6 +1138,7 @@ static SCRecorder *_recorder;
     
     return viewController;
 }
+ */
 
 
 @end

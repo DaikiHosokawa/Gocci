@@ -111,6 +111,16 @@
                 [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
                 [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
                 
+                //ここをログインのところに追加
+                // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+                int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+                UIApplication *application = [UIApplication sharedApplication];
+                application.applicationIconBadgeNumber = numberOfNewMessages;
+                [ud synchronize];
+                
                 [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
             }
         }];
