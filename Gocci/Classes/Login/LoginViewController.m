@@ -133,25 +133,6 @@
         NSDictionary * dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
         NSLog(@"defualts:%@", dic);
         
-<<<<<<< HEAD
-        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        // Initialize the Cognito Sync client
-        AWSCognito *syncClient = [AWSCognito defaultCognito];
-        // Create a record in a dataset and synchronize with the server
-        AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-        [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-        [dataset setString:os forKey:@"os"];
-        [dataset setString:[def stringForKey:@"STRING"] forKey:@"register_id"];
-        [dataset setString:[def stringForKey:@"username"] forKey:@"username"];
-        [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-            // Your handler code here
-            NSLog(@"dataset:%@",dataset);
-            return nil;
-        }];
-        
-        [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
-=======
         if (([[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
             
             [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
@@ -176,7 +157,6 @@
             }];
             
         }
->>>>>>> 5525898a2c09aff41fe3202e89428f1244da8eb4
     }
 }
 
