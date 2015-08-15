@@ -2,7 +2,7 @@
 //  TabbarBaseViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/02/02.
+//  Created by INASe on 2015/02/02.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -87,6 +87,16 @@
 -(void)countup:(id)inSender{
  [self performSegueWithIdentifier:@"go_Rec1" sender:self];
 }
+
+- (IBAction)afterRecording:(UIStoryboardSegue *)segue
+{
+    if ([segue.identifier isEqualToString:@"afterRecording"]) {
+        NSLog(@"afterRecording success");
+    }
+}
+
+
+
     /*
 #pragma mark - Navigation
 

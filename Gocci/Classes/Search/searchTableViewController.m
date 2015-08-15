@@ -360,14 +360,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         NSLog(@"params:%@",params);
         RestaurantTableViewController *restVC = segue.destinationViewController;
         restVC.postRestName = params[@"rest_name"];
-        restVC.postLocality = params[@"header_locality"];
-        restVC.postTell = params[@"tell"];
-        restVC.postHomepage = params[@"homepage"];
-        restVC.postCategory = params[@"category"];
-        restVC.postLon = params[@"post_lon"];
-        restVC.postLat = params[@"post_lat"];
-        restVC.postTotalCheer = params[@"total_cheer_num"];
-        restVC.postWanttag = params[@"want_tag"];
         NSLog(@"paramsAt:%@",params);
     }
 }
@@ -457,6 +449,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [weakSelf.refresh beginRefreshing];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    /*
     [APIClient distWithLatitude:coordinate.latitude
                       longitude:coordinate.longitude
                           limit:30
@@ -497,6 +490,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
          
          [weakSelf _reloadRestaurants:cachedResult];
      }];
+     */
 }
 
 /**

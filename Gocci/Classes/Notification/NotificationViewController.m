@@ -26,14 +26,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSMutableArray *post_id;
 }
 
-
-
 @property (nonatomic, retain) NSMutableArray *picture_;
 @property (nonatomic, retain) NSMutableArray *noticed_;
 @property (nonatomic, retain) NSMutableArray *notice_;
 @property (nonatomic, copy) NSArray *notices;
-
-
 
 @end
 
@@ -104,7 +100,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //Storyboardを特定して
     //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
     
-    if([notice_category[indexPath.row] isEqualToString:@"いいね"]||[notice_category[indexPath.row] isEqualToString:@"コメント"]){
+    if([notice_category[indexPath.row] isEqualToString:@"like"]||[notice_category[indexPath.row] isEqualToString:@"comment"]){
         NSLog(@"コメント画面に遷移");
         NSLog(@"postid:%@",post_id[indexPath.row]);
         [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
@@ -123,10 +119,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          [self.navigationController pushViewController:controller animated:YES];
          */
     }
-    else if([notice_category[indexPath.row] isEqualToString:@"お知らせ"]){
+    else if([notice_category[indexPath.row] isEqualToString:@"announce"]){
         NSLog(@"今の所、遷移なし");
     }
-    else if([notice_category[indexPath.row] isEqualToString:@"フォロー"]){
+    else if([notice_category[indexPath.row] isEqualToString:@"follow"]){
         NSLog(@"ユーザー画面遷移");
     }
     /*
@@ -153,7 +149,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [cell configureWithNotice:post];
     cell.delegate = self;
     
-    [SVProgressHUD dismiss];
     
     //TODO:ここでアイコン画像、テキスト、時間をセットしてください。
     //CustomTableView のプロパティとして各項目を設定済みです。
@@ -171,7 +166,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     __weak typeof(self)weakSelf = self;
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [APIClient notice_WithHandler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient Notice:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (!result || error) {
@@ -181,7 +176,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         [weakSelf _reloadNotice:result];
         [weakSelf.tableView reloadData];
-        
+        [SVProgressHUD dismiss];
     }];
     
 }
@@ -195,9 +190,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"resultatnotice:%@",result);
     
     for (NSDictionary *dict in (NSArray *)result) {
-        NSDictionary *categoryGet = [dict objectForKey:@"notice_category"];
+        NSDictionary *categoryGet = [dict objectForKey:@"notice"];
         [notice_category addObject:categoryGet];
-        NSDictionary *post_idGet = [dict objectForKey:@"post_id"];
+        NSDictionary *post_idGet = [dict objectForKey:@"notice_post_id"];
         [post_id addObject:post_idGet];
         [tempNotices addObject:[Notice noticeWithDictionary:dict]];
     }

@@ -49,6 +49,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 @property (nonatomic) NSInteger flag;
 
 @property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *rest_id;
+@property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userspicture;
 @property (nonatomic, strong) NSString *restname;
@@ -84,33 +86,32 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 #pragma mark - Action
 
-- (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserName:picture:flag:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserName:self.username picture:_userspicture flag:_flag];
-    }
-}
-
 
 - (void)tapthumb:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapthumb:)]) {
         [self.delegate timelineCell:self didTapthumb:self.thumbnailView];
-        //self.startPlaying.hidden = YES;
+    }
+}
+
+- (void)tapNameLabel:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapUserName:)]) {
+        [self.delegate timelineCell:self didTapUserName:self.user_id];
     }
 }
 
 - (void)tapAvaterImageView:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapNameWithUserPicture:name:flag:)]) {
-        [self.delegate timelineCell:self didTapNameWithUserPicture:self.userspicture name:_username flag:_flag];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapPicture:)]) {
+        [self.delegate timelineCell:self didTapPicture:self.user_id];
     }
 }
 
 - (void)tapRestautant:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:locality:tel:homepage:category:lon:lat:total_cheer:want_tag:)]) {
-        [self.delegate timelineCell:self didTapRestaurant:self.restname locality:self.locality tel:self.tell homepage:self.homepage category:self.category lon:self.lon lat:self.lat total_cheer:self.total_cheer want_tag:self.want_tag];
+    if ([self.delegate respondsToSelector:@selector(timelineCell:didTapRestaurant:)]) {
+        [self.delegate timelineCell:self didTapRestaurant:self.rest_id];
     }
 }
 
@@ -193,6 +194,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     self.lon = timelinePost.lon;
     self.total_cheer = timelinePost.totalCheer;
     self.want_tag = timelinePost.want_flag;
+    self.rest_id = timelinePost.rest_id;
+    self.user_id = timelinePost.userID;
     
     // ユーザアイコンを円形に
     self.avaterImageView.layer.cornerRadius = self.avaterImageView.frame.size.width / 2.0;

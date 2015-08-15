@@ -13,41 +13,33 @@
 
 
 /**
- *  timeline/
- *
- *  @param latitude
- *  @param longitude
- *  @param limit
+ *  timeline
+ 
  *  @param handler
  */
-+ (void)distTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Timeline:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
- *  gochi_rank/
+ *  popular
  *
- *  @param latitude
- *  @param longitude
- *  @param limit
  *  @param handler
  */
-+ (void)rankTimelineWithLatitudeAll:(NSUInteger)limit handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Popular:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 /**
-*  restaurant/
-*
-*  @param handler 完了イベントハンドラ
-*/
-+ (void)restaurantWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-+ (void)restaurantWithRestName:(NSString *)restName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  profile/
+ *  restaurant
  *
  *  @param handler 完了イベントハンドラ
  */
-+ (void)profileWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-+ (void)profileWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Restaurant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  profile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)User:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  lifelog/
@@ -64,8 +56,7 @@
  *
  *  @param handler 完了イベントハンドラ
  */
-+ (void)profile_otherWithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-+ (void)profile_otherWithUserName:(NSString *)userName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)User_other:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  search/
@@ -74,7 +65,7 @@
  *  @param latitude
  *  @param longitude
  *  @param limit
- *  @param handler   
+ *  @param handler
  */
 + (void)searchWithRestName:(NSString *)restName
                   latitude:(CGFloat)latitude
@@ -82,20 +73,10 @@
                      limit:(NSUInteger)limit
                    handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  dist/
- *
- *  @param latitude
- *  @param longitude
- *  @param limit
- *  @param handler
- */
-+ (void)distWithLatitude:(CGFloat)latitude
-               longitude:(CGFloat)longitude
-                   limit:(NSUInteger)limit
-                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
+
+
+/*
  *  dist/
  *
  *  @param latitude
@@ -104,11 +85,10 @@
  *  @param handler
  *  @param cacheHandler キャッシュされた結果を取得
  */
-+ (void)distWithLatitude:(CGFloat)latitude
-               longitude:(CGFloat)longitude
-                   limit:(NSUInteger)limit
-                 handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-                useCache:(void (^)(id cachedResult))cacheHandler;
++ (void)Near:(CGFloat)latitude
+   longitude:(CGFloat)longitude
+     handler:(void (^)(id result, NSUInteger code, NSError *error))handler
+    useCache:(void (^)(id cachedResult))cacheHandler;
 
 /**
  *  post_restname/
@@ -122,9 +102,9 @@
  *  movie/
  *
  *  @param fileURL
- *  @param handler 
+ *  @param handler
  */
-+ (void)movieWithFilePathURL:(NSURL *)fileURL restname:(NSString*)restaurantName star_evaluation:(NSInteger )cheertag value:(NSInteger )value category:(NSString*)category atmosphere:(NSString*)atmosphere comment:(NSString *)comment handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)POST:(NSString *)movie_name rest_id:(NSString*)rest_id cheer_flag:(NSInteger )cheer_flag value:(NSInteger )value category_id:(NSString*)category_id tag_id:(NSString*)tag_id memo:(NSString *)memo handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  ファイルのダウンロード
@@ -136,34 +116,6 @@
  */
 + (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler;
 
-/**
- *  Regist new user
- *
- *
- *
- *  @param username username
- *  @param pwd  password
- *  @param email email
- */
-+ (void)registUserWithUsername:(NSString *)username
-                  withPassword:(NSString *)pwd
-                     withEmail:(NSString *)email
-                  withToken_id:(NSString *)token_id
-                       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  Login user
- *
- *
- *
- *  @param username username
- *  @param pwd  password
- */
-+ (void)loginUserWithUsername:(NSString *)username
-                 withPassword:(NSString *)pwd
-                 WithToken_id:(NSString *)token_id
-                      handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
 
 /**
  *
@@ -171,7 +123,7 @@
  *
  *  @param handler 完了イベントハンドラ
  */
-+ (void)notice_WithHandler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)Notice:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 /**
@@ -196,23 +148,23 @@
  *  @param post_id
  *  @param handler
  */
-+ (void)postViolation:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)postBlock:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  favorites
  *
- *  @param post_id
+ *  @param target_user_id
  *  @param handler
  */
-+ (void)postFavorites:(NSString *)user_name handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)postFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  unfavorites
  *
- *  @param post_id
+ *  @param target_user_id
  *  @param handler
  */
-+ (void)postUnfavorites:(NSString *)user_name handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)postUnFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 /**
@@ -236,7 +188,75 @@
  */
 + (void)postComment:(NSString *)text
             post_id:(NSString *)post_id
-        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+            handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  login
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)Login:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
+ *  comment
+ *
+ *  @param post_id
+ *
+ */
++ (void)commentJSON:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  profile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)FollowList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  profile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)FollowerList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  profile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)CheerList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  Regist new user
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ *  @param email email
+ */
++ (void)Signup:(NSString *)username
+            os:(NSString *)os
+         model:(NSString *)model
+   register_id:(NSString *)register_id
+       handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  Conversion
+ *
+ *
+ *
+ *  @param username username
+ *  @param pwd  password
+ *  @param email email
+ */
++ (void)Conversion:(NSString *)username
+       profile_img:(NSString *)profile_img
+                os:(NSString *)os
+             model:(NSString *)model
+       register_id:(NSString *)register_id
+           handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 @end

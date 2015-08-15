@@ -2,7 +2,7 @@
 //  SCSecondView.m
 //  Gocci
 //
-//  Created by デザミ on 2015/05/06.
+//  Created by INASE on 2015/05/06.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -268,7 +268,25 @@ static NSString *stringKakaku = nil;
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
 				delegate.indexCategory = (int)buttonIndex;
-                delegate.stringCategory = [arrayCategory objectAtIndex:buttonIndex];
+                
+                if ([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"和風"]) {
+                    delegate.stringCategory = @"2";
+                } else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"洋風"])  {
+                    delegate.stringCategory = @"3";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"中華"]) {
+                    delegate.stringCategory = @"4";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カレー"]) {
+                    delegate.stringCategory = @"5";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"ラーメン"]) {
+                    delegate.stringCategory = @"6";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カフェ"]) {
+                    delegate.stringCategory = @"8";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"居酒屋"]) {
+                    delegate.stringCategory = @"9";
+                }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"その他"]) {
+                    delegate.stringCategory = @"10";
+                }
+                
 //				switch (buttonIndex) {
 //					case 0:
 //						break;
@@ -285,8 +303,13 @@ static NSString *stringKakaku = nil;
 				NSLog(@"%@",[arrayFuniki objectAtIndex:buttonIndex]);
 				selectedFuniki = buttonIndex;
 				delegate.indexFuniki = (int)buttonIndex;
-                delegate.stringFuniki = [arrayFuniki objectAtIndex:buttonIndex];
 				
+                if ([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"にぎやか"]) {
+                   delegate.stringFuniki = @"2";
+                } else if([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"ゆったり"])  {
+                    delegate.stringFuniki = @"3";
+                }
+                
 //				switch (buttonIndex) {
 //					case 0:
 //						//NSLog(@"にぎやか");

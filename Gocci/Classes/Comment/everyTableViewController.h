@@ -24,14 +24,6 @@
     NSInteger _postFlag;
     //restnameへの引き継ぎ
     NSString *_postRestname;
-    NSString *_postHomepage;
-    NSString *_postLocality;
-    NSString *_postTell;
-    NSString *_postCategory;
-    NSString *_postLat;
-    NSString *_postLon;
-    NSString *_postWanttag;
-    NSString *_postTotalCheer;
 }
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;

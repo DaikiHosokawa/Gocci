@@ -38,6 +38,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     DemoContentView *_secondContentView;
     __weak IBOutlet MKMapView *map_;
     // RestaurantPost *restaurantPost;
+    NSDictionary *header;
 }
 
 - (void)showDefaultContentView;
@@ -56,13 +57,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     NSString *_text, *_hashTag;
 }
-@synthesize postRestName = _postRestName;
-@synthesize postLocality = _postLocality;
-@synthesize postTell = _postTell;
-@synthesize postHomepage = _postHomepage;
-@synthesize postCategory = _postCategory;
-@synthesize postTotalCheer = _postTotalCheer;
-@synthesize postWanttag = _postWanttag;
+@synthesize postRestName = _postRestName;;
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
 {
@@ -117,26 +112,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
-    double latdo = _postLat.doubleValue;
-    _coordinate.latitude = latdo;
-    double londo = _postLon.doubleValue;
-    _coordinate.longitude = londo;
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latdo
-                                                            longitude:londo
-                                                                 zoom:18];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = camera.target;
-    marker.title = _postRestName;
-    marker.snippet = _postLocality;
-    marker.appearAnimation = kGMSMarkerAnimationPop;
-    marker.map  = _map;
-    _map.selectedMarker = marker;
-    //GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
-    [_map setCamera:camera];
-    
-    _total_cheer_num.text = _postTotalCheer;
-    NSLog(@"postTotalCheer:%@",_postTotalCheer);
+    //_total_cheer_num.text = _postTotalCheer;
+    //NSLog(@"postTotalCheer:%@",_postTotalCheer);
     
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -168,21 +146,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
      NSLog(@"flash_on:%d",flash_on);
      }
      */
-    NSInteger i = _postWanttag.integerValue;
-    NSLog(@"i:%ld",(long)i);
-    int pi = (int)i;
-    NSLog(@"pi:%d",pi);
-    flash_on = pi;
     
-    if(flash_on == 1){
-        UIImage *img = [UIImage imageNamed:@"notOen.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-    }else{
-        UIImage *img = [UIImage imageNamed:@"Oen.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-    }
     
-    NSLog(@"total_cheer_num:%@",_postTotalCheer);
+    //  NSLog(@"total_cheer_num:%@",_postTotalCheer);
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -213,24 +179,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
-    self.restname.text = _postRestName;
-    //self.locality.text = _postLocality;
-    self.categoryLabel.text = _postCategory;
-    NSLog(@"postCategory2:%@",_postCategory);
-    
-    NSLog(@"This Restaurant is %@",_postRestName);
-    NSLog(@"This Locality is %@",_postLocality);
-    NSLog(@"This Tell is %@",_postTell);
-    NSLog(@"This Homepage is %@",_postHomepage);
-    // lon = restaurantPost.lon;
-    // lat = restaurantPost.lat;
-    NSLog(@"This Restaurant is lat=%@ lon=%@",lat,lon);
-    // グローバル変数に保存
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.restrantname = _postRestName;
-    
-    [SVProgressHUD dismiss];
-    
     // API からタイムラインのデータを取得
     [self _fetchRestaurant];
     
@@ -244,6 +192,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([self isFirstRun]) {
         [self showDefaultContentView];
     }
+    NSLog(@"header2^:%@",header);
     
 }
 
@@ -253,7 +202,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
     
@@ -356,15 +305,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
     
-    [SVProgressHUD dismiss];
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LOG_METHOD;
-    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 
@@ -464,11 +410,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
-        //ここでパラメータを渡す
-        NSLog(@"ここは通った");
-        usersTableViewController_other *useVC = segue.destinationViewController;
-        useVC.postUsername = _postUsername;
-        useVC.postPicture = _postPicture;
+        usersTableViewController_other *users_other = segue.destinationViewController;
+         users_other.postUsername = _postUsername;
     }
 }
 
@@ -500,23 +443,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-                
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
+             ];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -526,22 +461,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
+         ];
     }
 }
 
@@ -551,9 +479,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         //スイッチオン時の処理を記述できます
         NSLog(@"行きたいしました");
-        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSString *content = [NSString stringWithFormat:@"rest_id=%@",[header objectForKey:@"restname"]];
         NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/wants/"];
+        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/want/"];
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
         [urlRequest setHTTPMethod:@"POST"];
         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -577,9 +505,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 0;
         //スイッチオフに戻った場合の処理を記述
-        NSString *content = [NSString stringWithFormat:@"restname=%@",_postRestName];
+        NSString *content = [NSString stringWithFormat:@"rest_id=%@",[header objectForKey:@"restname"]];
         NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/unwants/"];
+        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/unwant/"];
         NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
         [urlRequest setHTTPMethod:@"POST"];
         [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -596,7 +524,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (IBAction)tapTEL {
     
-    if ([_postTell isEqualToString:@"非公開"] || [_postTell isEqualToString:@"準備中"]) {
+    if ([[header objectForKey:@"tell"] isEqualToString:@"非公開"] || [[header objectForKey:@"tell"] isEqualToString:@"準備中"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
@@ -605,7 +533,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }else{
         
         NSString *number = @"tel:";
-        NSString *telstring = [NSString stringWithFormat:@"%@%@",number,_postTell];
+        NSString *telstring = [NSString stringWithFormat:@"%@%@",number,[header objectForKey:@"tell"]];
         NSLog(@"telstring:%@",telstring);
         NSURL *url = [[NSURL alloc] initWithString:telstring];
         [[UIApplication sharedApplication] openURL:url];
@@ -615,8 +543,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 - (IBAction)tapNavi:(id)sender {
-    NSString *mapText = _postRestName;
-    NSString *mapText2 = _postLocality;
+    NSString *mapText = [header objectForKey:@"restname"];
+    NSString *mapText2 = [header objectForKey:@"locality"];
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     mapText2  = [mapText2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText2];
@@ -637,8 +565,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (IBAction)tapHomepatge {
     
-    NSString *urlString = _postHomepage;
-    NSLog(@"tapHomepage:%@",_postHomepage);
+    NSString *urlString = [header objectForKey:@"homepage"];
+    NSLog(@"tapHomepage:%@",[header objectForKey:@"homepage"]);
     NSURL *url = [NSURL URLWithString:urlString];
     // ブラウザを起動する
     [[UIApplication sharedApplication] openURL:url];
@@ -656,14 +584,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理
-- (void)timeline:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id
 {
     //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    LOG(@"postUsername:%@",_postUsername);
-    // !!!:dezamisystem
+    _postUsername = user_id;
+    NSLog(@"useridtoUsers:%@",_postUsername);
     //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     LOG(@"Username is touched");
@@ -692,16 +617,58 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 #pragma mark user_nameタップの時の処理②
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id
 {
-    //user nameタップの時の処理②
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    LOG(@"postUsername:%@",_postPicture);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    LOG(@"Username is touched");
+    _postUsername = user_id;
+    
 }
 
+-(void)byoga{
+    NSLog(@"header^:%@",header);
+    
+    self.restname.text = [header objectForKey:@"restname"];
+    self.categoryLabel.text = [header objectForKey:@"rest_category"];
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.restname = [header objectForKey:@"restname"];
+    
+    NSString *postLat = [header objectForKey:@"lat"];
+    double latdo = postLat.doubleValue;
+    _coordinate.latitude = latdo;
+    
+    self.total_cheer_num.text = [NSString stringWithFormat:@"%@", [header objectForKey:@"cheer_num"]];
+    
+    NSString *postLon = [header objectForKey:@"lon"];
+    double londo = postLon.doubleValue;
+    _coordinate.longitude = londo;
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latdo
+                                                            longitude:londo
+                                                                 zoom:18];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = camera.target;
+    marker.title = [header objectForKey:@"restname"];
+    marker.snippet = [header objectForKey:@"locality"];
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.map  = _map;
+    _map.selectedMarker = marker;
+    GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
+    [_map setCamera:camera];
+    NSString *postWanttag = [header objectForKey:@"want_flag"];
+    NSInteger i = postWanttag.integerValue;
+    int pi = (int)i;
+    flash_on = pi;
+    
+    if(flash_on == 1){
+        UIImage *img = [UIImage imageNamed:@"notOen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }else{
+        UIImage *img = [UIImage imageNamed:@"Oen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+    }
+    
+    [SVProgressHUD dismiss];
+    
+}
 
 #pragma mark - Private Methods
 
@@ -712,29 +679,34 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [SVProgressHUD show];
     
-    LOG(@"restName:%@",_postRestName);
+    LOG(@"restName:%@",[header objectForKey:@"restname"]);
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient restaurantWithRestName:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        LOG(@"result=%@", result);
+        LOG(@"resultRest1=%@", result);
         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
+            
             // TODO: アラート等を掲出
             return;
         }
         
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
-            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        NSDictionary* restaurants = (NSDictionary*)[result valueForKey:@"restaurants"];
+        
+        for (NSDictionary *dict in items) {
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:dict]];
         }
-        NSLog(@"tempPosts:%@",tempPosts);
+        
+        header = restaurants;
         self.posts = [NSArray arrayWithArray:tempPosts];
         
         // 動画データを一度全て削除
@@ -756,14 +728,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];
         }
+        
+        [self byoga];
     }];
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- [self _playMovieAtCurrentCell];
- }
- */
+
 
 /**
  *  現在表示中のセルの動画を再生する
@@ -825,14 +795,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         NSLog(@"cancel");
     }else if(buttonIndex == 0) {
-        NSLog(@"%@",_postHomepage);
-        if ([_postHomepage isEqualToString:@"none"]||[_postHomepage isEqualToString:@"準備中"]) {
+        NSLog(@"%@",[header objectForKey:@"homepage"]);
+        if ([[header objectForKey:@"homepage"] isEqualToString:@"none"]||[[header objectForKey:@"homepage"] isEqualToString:@"準備中"]) {
             UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。ホームページが登録されておりません"
                                       delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
             [alert show];
         }else{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_postHomepage]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[header objectForKey:@"homepage"]]];
         }
     }
 }

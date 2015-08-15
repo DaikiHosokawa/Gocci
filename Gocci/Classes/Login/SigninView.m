@@ -287,6 +287,7 @@
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
     // [SVProgressHUD show];
+<<<<<<< HEAD
     [SVProgressHUD show];
     
     // バッジ内容の設定
@@ -338,6 +339,8 @@
         }
         
     }];
+=======
+>>>>>>> 5525898a2c09aff41fe3202e89428f1244da8eb4
     
 }
 

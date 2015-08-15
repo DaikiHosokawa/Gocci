@@ -34,8 +34,21 @@
 
 - (void)configureWithNotice:(Notice *)Notice
 {
-    self.notificationMessage.text = Notice.notice;
-    self.noticedAt.text = Notice.noticed;
+   
+    if ([Notice.noticeMessage isEqualToString:@"like"]) {
+        NSLog(@"likeになる");
+      self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にいいねをつけました。"];
+    } else if([Notice.noticeMessage isEqualToString:@"comment"])  {
+         NSLog(@"commentになる");
+     self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にコメントをつけました。"];
+    } else if([Notice.noticeMessage isEqualToString:@"follow"]) {
+        self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんにフォローされました。"];
+    }else if([Notice.noticeMessage isEqualToString:@"announce"]) {
+        self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にコメントをつけました。"];
+    }
+    
+    //self.notificationMessage.text = Notice.noticeMessage;
+    self.noticedAt.text = Notice.notice_date;
     // サムネイル画像
     [self.userIcon sd_setImageWithURL:[NSURL URLWithString:Notice.picture]
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];

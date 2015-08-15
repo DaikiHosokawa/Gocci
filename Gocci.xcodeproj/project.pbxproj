@@ -113,9 +113,6 @@
 		952D24851A9B9D3300C354DF /* LifelogSubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D241E1A9B9D3300C354DF /* LifelogSubTableViewController.m */; };
 		952D24861A9B9D3300C354DF /* LifelogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24201A9B9D3300C354DF /* LifelogViewController.m */; };
 		952D24871A9B9D3300C354DF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24231A9B9D3300C354DF /* LoginViewController.m */; };
-		952D24881A9B9D3300C354DF /* TestHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24251A9B9D3300C354DF /* TestHeader.xib */; };
-		952D24891A9B9D3300C354DF /* TestPanel2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24261A9B9D3300C354DF /* TestPanel2.xib */; };
-		952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24271A9B9D3300C354DF /* TestPanel3.xib */; };
 		952D248B1A9B9D3300C354DF /* TutorialPage1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24281A9B9D3300C354DF /* TutorialPage1.xib */; };
 		952D248C1A9B9D3300C354DF /* TutorialPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24291A9B9D3300C354DF /* TutorialPage2.xib */; };
 		952D248D1A9B9D3300C354DF /* TutorialPage3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D242A1A9B9D3300C354DF /* TutorialPage3.xib */; };
@@ -198,21 +195,6 @@
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
-		9575714A1B3E974000A10810 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571491B3E974000A10810 /* AWSCore.framework */; };
-		9575714C1B3E97FA00A10810 /* AWSCloudWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575714B1B3E97FA00A10810 /* AWSCloudWatch.framework */; };
-		957571591B3E983C00A10810 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575714D1B3E983C00A10810 /* AWSDynamoDB.framework */; };
-		9575715A1B3E983C00A10810 /* AWSEC2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575714E1B3E983C00A10810 /* AWSEC2.framework */; };
-		9575715B1B3E983C00A10810 /* AWSElasticLoadBalancing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9575714F1B3E983C00A10810 /* AWSElasticLoadBalancing.framework */; };
-		9575715C1B3E983C00A10810 /* AWSKinesis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571501B3E983C00A10810 /* AWSKinesis.framework */; };
-		9575715D1B3E983C00A10810 /* AWSLambda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571511B3E983C00A10810 /* AWSLambda.framework */; };
-		9575715E1B3E983C00A10810 /* AWSMachineLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571521B3E983C00A10810 /* AWSMachineLearning.framework */; };
-		9575715F1B3E983C00A10810 /* AWSMobileAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571531B3E983C00A10810 /* AWSMobileAnalytics.framework */; };
-		957571601B3E983C00A10810 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571541B3E983C00A10810 /* AWSS3.framework */; };
-		957571611B3E983C00A10810 /* AWSSES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571551B3E983C00A10810 /* AWSSES.framework */; };
-		957571621B3E983C00A10810 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571561B3E983C00A10810 /* AWSSimpleDB.framework */; };
-		957571631B3E983C00A10810 /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571571B3E983C00A10810 /* AWSSNS.framework */; };
-		957571641B3E983C00A10810 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571581B3E983C00A10810 /* AWSSQS.framework */; };
-		957571661B3E985C00A10810 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571651B3E985B00A10810 /* AWSCognito.framework */; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
 		958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958E31521B05899E00863EDF /* GoogleMaps.framework */; };
 		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
@@ -250,6 +232,22 @@
 		95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC961B37DA4A00B8CF44 /* RecorderSubmitPopupView.m */; };
 		95E4BCA81B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */; };
 		95E4BCAB1B37DA9800B8CF44 /* SCScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */; };
+		95E5A4801B70A0C200B9974C /* AWSAutoScaling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4701B70A0C200B9974C /* AWSAutoScaling.framework */; };
+		95E5A4811B70A0C200B9974C /* AWSCloudWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4711B70A0C200B9974C /* AWSCloudWatch.framework */; };
+		95E5A4821B70A0C200B9974C /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4721B70A0C200B9974C /* AWSCore.framework */; };
+		95E5A4831B70A0C200B9974C /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4731B70A0C200B9974C /* AWSDynamoDB.framework */; };
+		95E5A4841B70A0C200B9974C /* AWSEC2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4741B70A0C200B9974C /* AWSEC2.framework */; };
+		95E5A4851B70A0C200B9974C /* AWSElasticLoadBalancing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4751B70A0C200B9974C /* AWSElasticLoadBalancing.framework */; };
+		95E5A4861B70A0C300B9974C /* AWSKinesis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4761B70A0C200B9974C /* AWSKinesis.framework */; };
+		95E5A4871B70A0C300B9974C /* AWSLambda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4771B70A0C200B9974C /* AWSLambda.framework */; };
+		95E5A4881B70A0C300B9974C /* AWSMachineLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4781B70A0C200B9974C /* AWSMachineLearning.framework */; };
+		95E5A4891B70A0C300B9974C /* AWSMobileAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A4791B70A0C200B9974C /* AWSMobileAnalytics.framework */; };
+		95E5A48A1B70A0C300B9974C /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A47A1B70A0C200B9974C /* AWSS3.framework */; };
+		95E5A48B1B70A0C300B9974C /* AWSSES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A47B1B70A0C200B9974C /* AWSSES.framework */; };
+		95E5A48C1B70A0C300B9974C /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A47C1B70A0C200B9974C /* AWSSimpleDB.framework */; };
+		95E5A48D1B70A0C300B9974C /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A47D1B70A0C200B9974C /* AWSSNS.framework */; };
+		95E5A48E1B70A0C300B9974C /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A47E1B70A0C200B9974C /* AWSSQS.framework */; };
+		95E5A4901B70A14B00B9974C /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E5A48F1B70A14B00B9974C /* AWSCognito.framework */; };
 		95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5121AF9103B006FD54E /* FollowListCell.m */; };
 		95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5131AF9103B006FD54E /* FollowListCell.xib */; };
 		95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5151AF9103B006FD54E /* FollowListViewController.m */; };
@@ -513,9 +511,6 @@
 		952D24201A9B9D3300C354DF /* LifelogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogViewController.m; sourceTree = "<group>"; };
 		952D24221A9B9D3300C354DF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		952D24231A9B9D3300C354DF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		952D24251A9B9D3300C354DF /* TestHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestHeader.xib; sourceTree = "<group>"; };
-		952D24261A9B9D3300C354DF /* TestPanel2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel2.xib; sourceTree = "<group>"; };
-		952D24271A9B9D3300C354DF /* TestPanel3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPanel3.xib; sourceTree = "<group>"; };
 		952D24281A9B9D3300C354DF /* TutorialPage1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialPage1.xib; sourceTree = "<group>"; };
 		952D24291A9B9D3300C354DF /* TutorialPage2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialPage2.xib; sourceTree = "<group>"; };
 		952D242A1A9B9D3300C354DF /* TutorialPage3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialPage3.xib; sourceTree = "<group>"; };
@@ -639,21 +634,6 @@
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		957571471B3E5D8000A10810 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		957571491B3E974000A10810 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
-		9575714B1B3E97FA00A10810 /* AWSCloudWatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCloudWatch.framework; sourceTree = "<group>"; };
-		9575714D1B3E983C00A10810 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
-		9575714E1B3E983C00A10810 /* AWSEC2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSEC2.framework; sourceTree = "<group>"; };
-		9575714F1B3E983C00A10810 /* AWSElasticLoadBalancing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSElasticLoadBalancing.framework; sourceTree = "<group>"; };
-		957571501B3E983C00A10810 /* AWSKinesis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSKinesis.framework; sourceTree = "<group>"; };
-		957571511B3E983C00A10810 /* AWSLambda.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSLambda.framework; sourceTree = "<group>"; };
-		957571521B3E983C00A10810 /* AWSMachineLearning.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMachineLearning.framework; sourceTree = "<group>"; };
-		957571531B3E983C00A10810 /* AWSMobileAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileAnalytics.framework; sourceTree = "<group>"; };
-		957571541B3E983C00A10810 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
-		957571551B3E983C00A10810 /* AWSSES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSES.framework; sourceTree = "<group>"; };
-		957571561B3E983C00A10810 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
-		957571571B3E983C00A10810 /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSNS.framework; sourceTree = "<group>"; };
-		957571581B3E983C00A10810 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
-		957571651B3E985B00A10810 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		958E31521B05899E00863EDF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -707,6 +687,22 @@
 		95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupView.xib; sourceTree = "<group>"; };
 		95E4BCA91B37DA9800B8CF44 /* SCScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScrollPageView.h; sourceTree = "<group>"; };
 		95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScrollPageView.m; sourceTree = "<group>"; };
+		95E5A4701B70A0C200B9974C /* AWSAutoScaling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAutoScaling.framework; sourceTree = "<group>"; };
+		95E5A4711B70A0C200B9974C /* AWSCloudWatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCloudWatch.framework; sourceTree = "<group>"; };
+		95E5A4721B70A0C200B9974C /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		95E5A4731B70A0C200B9974C /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
+		95E5A4741B70A0C200B9974C /* AWSEC2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSEC2.framework; sourceTree = "<group>"; };
+		95E5A4751B70A0C200B9974C /* AWSElasticLoadBalancing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSElasticLoadBalancing.framework; sourceTree = "<group>"; };
+		95E5A4761B70A0C200B9974C /* AWSKinesis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSKinesis.framework; sourceTree = "<group>"; };
+		95E5A4771B70A0C200B9974C /* AWSLambda.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSLambda.framework; sourceTree = "<group>"; };
+		95E5A4781B70A0C200B9974C /* AWSMachineLearning.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMachineLearning.framework; sourceTree = "<group>"; };
+		95E5A4791B70A0C200B9974C /* AWSMobileAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileAnalytics.framework; sourceTree = "<group>"; };
+		95E5A47A1B70A0C200B9974C /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		95E5A47B1B70A0C200B9974C /* AWSSES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSES.framework; sourceTree = "<group>"; };
+		95E5A47C1B70A0C200B9974C /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSimpleDB.framework; sourceTree = "<group>"; };
+		95E5A47D1B70A0C200B9974C /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSNS.framework; sourceTree = "<group>"; };
+		95E5A47E1B70A0C200B9974C /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
+		95E5A48F1B70A14B00B9974C /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		95EEC5111AF9103B006FD54E /* FollowListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListCell.h; sourceTree = "<group>"; };
 		95EEC5121AF9103B006FD54E /* FollowListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowListCell.m; sourceTree = "<group>"; };
 		95EEC5131AF9103B006FD54E /* FollowListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowListCell.xib; sourceTree = "<group>"; };
@@ -792,48 +788,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9575714C1B3E97FA00A10810 /* AWSCloudWatch.framework in Frameworks */,
-				957571611B3E983C00A10810 /* AWSSES.framework in Frameworks */,
 				957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */,
-				9575715D1B3E983C00A10810 /* AWSLambda.framework in Frameworks */,
+				95E5A48D1B70A0C300B9974C /* AWSSNS.framework in Frameworks */,
 				53B9427A1AB3FE2C000150C4 /* libxml2.dylib in Frameworks */,
-				957571601B3E983C00A10810 /* AWSS3.framework in Frameworks */,
 				FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */,
-				957571591B3E983C00A10810 /* AWSDynamoDB.framework in Frameworks */,
+				95E5A4871B70A0C300B9974C /* AWSLambda.framework in Frameworks */,
+				95E5A48C1B70A0C300B9974C /* AWSSimpleDB.framework in Frameworks */,
 				95F2072B1B3C260A0074612F /* FBSDKLoginKit.framework in Frameworks */,
-				957571661B3E985C00A10810 /* AWSCognito.framework in Frameworks */,
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
+				95E5A4811B70A0C200B9974C /* AWSCloudWatch.framework in Frameworks */,
+				95E5A4881B70A0C300B9974C /* AWSMachineLearning.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
+				95E5A4891B70A0C300B9974C /* AWSMobileAnalytics.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */,
-				9575715E1B3E983C00A10810 /* AWSMachineLearning.framework in Frameworks */,
 				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
-				957571631B3E983C00A10810 /* AWSSNS.framework in Frameworks */,
+				95E5A4861B70A0C300B9974C /* AWSKinesis.framework in Frameworks */,
 				FF0BE456193ED5E9001A0053 /* libc++.dylib in Frameworks */,
-				957571641B3E983C00A10810 /* AWSSQS.framework in Frameworks */,
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
-				957571621B3E983C00A10810 /* AWSSimpleDB.framework in Frameworks */,
+				95E5A4841B70A0C200B9974C /* AWSEC2.framework in Frameworks */,
 				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
 				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
+				95E5A48E1B70A0C300B9974C /* AWSSQS.framework in Frameworks */,
+				95E5A4831B70A0C200B9974C /* AWSDynamoDB.framework in Frameworks */,
+				95E5A4821B70A0C200B9974C /* AWSCore.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
-				9575715A1B3E983C00A10810 /* AWSEC2.framework in Frameworks */,
 				FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */,
 				FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */,
+				95E5A48B1B70A0C300B9974C /* AWSSES.framework in Frameworks */,
+				95E5A4901B70A14B00B9974C /* AWSCognito.framework in Frameworks */,
+				95E5A4851B70A0C200B9974C /* AWSElasticLoadBalancing.framework in Frameworks */,
 				952D236E1A9B95E800C354DF /* libCrittercism_v4_3_7.a in Frameworks */,
 				FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */,
-				9575715F1B3E983C00A10810 /* AWSMobileAnalytics.framework in Frameworks */,
-				9575715B1B3E983C00A10810 /* AWSElasticLoadBalancing.framework in Frameworks */,
-				9575714A1B3E974000A10810 /* AWSCore.framework in Frameworks */,
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
-				9575715C1B3E983C00A10810 /* AWSKinesis.framework in Frameworks */,
+				95E5A4801B70A0C200B9974C /* AWSAutoScaling.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
 				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
+				95E5A48A1B70A0C300B9974C /* AWSS3.framework in Frameworks */,
 				95F207271B3BFAD90074612F /* FBSDKCoreKit.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
@@ -941,21 +938,22 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				957571651B3E985B00A10810 /* AWSCognito.framework */,
-				9575714D1B3E983C00A10810 /* AWSDynamoDB.framework */,
-				9575714E1B3E983C00A10810 /* AWSEC2.framework */,
-				9575714F1B3E983C00A10810 /* AWSElasticLoadBalancing.framework */,
-				957571501B3E983C00A10810 /* AWSKinesis.framework */,
-				957571511B3E983C00A10810 /* AWSLambda.framework */,
-				957571521B3E983C00A10810 /* AWSMachineLearning.framework */,
-				957571531B3E983C00A10810 /* AWSMobileAnalytics.framework */,
-				957571541B3E983C00A10810 /* AWSS3.framework */,
-				957571551B3E983C00A10810 /* AWSSES.framework */,
-				957571561B3E983C00A10810 /* AWSSimpleDB.framework */,
-				957571571B3E983C00A10810 /* AWSSNS.framework */,
-				957571581B3E983C00A10810 /* AWSSQS.framework */,
-				9575714B1B3E97FA00A10810 /* AWSCloudWatch.framework */,
-				957571491B3E974000A10810 /* AWSCore.framework */,
+				95E5A48F1B70A14B00B9974C /* AWSCognito.framework */,
+				95E5A4701B70A0C200B9974C /* AWSAutoScaling.framework */,
+				95E5A4711B70A0C200B9974C /* AWSCloudWatch.framework */,
+				95E5A4721B70A0C200B9974C /* AWSCore.framework */,
+				95E5A4731B70A0C200B9974C /* AWSDynamoDB.framework */,
+				95E5A4741B70A0C200B9974C /* AWSEC2.framework */,
+				95E5A4751B70A0C200B9974C /* AWSElasticLoadBalancing.framework */,
+				95E5A4761B70A0C200B9974C /* AWSKinesis.framework */,
+				95E5A4771B70A0C200B9974C /* AWSLambda.framework */,
+				95E5A4781B70A0C200B9974C /* AWSMachineLearning.framework */,
+				95E5A4791B70A0C200B9974C /* AWSMobileAnalytics.framework */,
+				95E5A47A1B70A0C200B9974C /* AWSS3.framework */,
+				95E5A47B1B70A0C200B9974C /* AWSSES.framework */,
+				95E5A47C1B70A0C200B9974C /* AWSSimpleDB.framework */,
+				95E5A47D1B70A0C200B9974C /* AWSSNS.framework */,
+				95E5A47E1B70A0C200B9974C /* AWSSQS.framework */,
 				95F207291B3C260A0074612F /* FBSDKLoginKit.framework */,
 				95F207241B3BFAD90074612F /* FBSDKShareKit.framework */,
 				95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */,
@@ -1284,9 +1282,6 @@
 		952D24241A9B9D3300C354DF /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				952D24251A9B9D3300C354DF /* TestHeader.xib */,
-				952D24261A9B9D3300C354DF /* TestPanel2.xib */,
-				952D24271A9B9D3300C354DF /* TestPanel3.xib */,
 				952D24281A9B9D3300C354DF /* TutorialPage1.xib */,
 				952D24291A9B9D3300C354DF /* TutorialPage2.xib */,
 				952D242A1A9B9D3300C354DF /* TutorialPage3.xib */,
@@ -1988,7 +1983,6 @@
 				952D25041A9B9EC800C354DF /* tabbaritem_profile_sel@2x.png in Resources */,
 				952D24F91A9B9EC800C354DF /* tabbaritem_lifelog.png in Resources */,
 				952D24F01A9B9EC800C354DF /* btn_capture_flip.png in Resources */,
-				952D24891A9B9D3300C354DF /* TestPanel2.xib in Resources */,
 				952D24FA1A9B9EC800C354DF /* tabbaritem_lifelog@2x.png in Resources */,
 				952D25121A9B9EC800C354DF /* Main.storyboard in Resources */,
 				952D24FD1A9B9EC800C354DF /* tabbaritem_posting.png in Resources */,
@@ -2009,7 +2003,6 @@
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
 				958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */,
 				95E4BCA31B37DA4A00B8CF44 /* SCSecondView_5_5_inch.xib in Resources */,
-				952D248A1A9B9D3300C354DF /* TestPanel3.xib in Resources */,
 				95E4BCA11B37DA4A00B8CF44 /* SCSecondView_3_5_inch.xib in Resources */,
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,
 				952D250B1A9B9EC800C354DF /* tabbaritem_timeline_sel.png in Resources */,
@@ -2041,7 +2034,6 @@
 				53B942B11AB42D1F000150C4 /* RegistView55.xib in Resources */,
 				952D24F41A9B9EC800C354DF /* btn_toukou.png in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
-				952D24881A9B9D3300C354DF /* TestHeader.xib in Resources */,
 				952D25111A9B9EC800C354DF /* 5_5_inch.storyboard in Resources */,
 				95E4BCA61B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib in Resources */,
 				95E3CD581B0DCA4200497EB9 /* icon-success.png in Resources */,
@@ -2287,7 +2279,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -2340,7 +2332,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "4f63da80-79dd-45cf-98b4-f3395ab3204b";
+				PROVISIONING_PROFILE = "56f482e0-b3b3-40fd-9160-edcab30a2f7c";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2363,8 +2355,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INASE inc. (EY9SSB5TM5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INASE inc. (EY9SSB5TM5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2377,7 +2369,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "eb1d61c0-a2df-4866-a3a8-25d2367d8d97";
+				PROVISIONING_PROFILE = "9fd56fb3-81d9-438f-a1c6-3138cb9e6a1a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2424,7 +2416,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f63da80-79dd-45cf-98b4-f3395ab3204b";
+				PROVISIONING_PROFILE = "56f482e0-b3b3-40fd-9160-edcab30a2f7c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
@@ -2438,8 +2430,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daiki Hosokawa (EY9SSB5TM5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INASE inc. (EY9SSB5TM5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INASE inc. (EY9SSB5TM5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendor",
@@ -2472,7 +2464,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb1d61c0-a2df-4866-a3a8-25d2367d8d97";
+				PROVISIONING_PROFILE = "9fd56fb3-81d9-438f-a1c6-3138cb9e6a1a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";

@@ -17,7 +17,7 @@
 - (void)dealloc
 {
     self.Locality = nil;
-    self.UsersName = nil;
+    self.RestName = nil;
 };
 
 

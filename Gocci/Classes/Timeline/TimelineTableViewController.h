@@ -31,14 +31,7 @@
     NSInteger _postFlag;
     //restnameへの引き継ぎ
     NSString *_postRestname;
-    NSString *_postHomepage;
-    NSString *_postLocality;
-    NSString *_postCategory;
-    NSString *_postLon;
-    NSString *_postLat;
-    NSString *_postTell;
-    NSString *_postTotalCheer;
-    NSString *_postWanttag;
+
     //サムネイル
     UIImageView *thumbnailView;
 }

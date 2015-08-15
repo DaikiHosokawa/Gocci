@@ -153,7 +153,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+   // [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
 }
 
@@ -430,14 +430,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
-        restVC.postLocality = _postLocality;
-        restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
     }
     
 }

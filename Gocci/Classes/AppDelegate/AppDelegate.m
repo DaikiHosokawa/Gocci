@@ -14,10 +14,6 @@
 #import  "TWMessageBarManager.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
-#import <AWSS3/AWSS3.h>
-#import <AWSSQS/AWSSQS.h>
-#import <AWSSNS/AWSSNS.h>
-#import <AWSCognito/AWSCognito.h>
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -28,14 +24,7 @@
 
 @implementation AppDelegate
 // !!!:dezamisystem
-@synthesize movieData;
-@synthesize jsonDic;
-@synthesize restrantname;
-@synthesize username;
-@synthesize userpicture;
-@synthesize postFileName;
-
-@synthesize jsonArray;
+@synthesize restname;
 @synthesize lifelogDate;
 @synthesize cheertag;
 
@@ -77,27 +66,12 @@
     return YES;
 }
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
     [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
-    /*
-     [Parse setApplicationId:@"qsmkpvh1AYaZrn1TFstVfe3Mo1llQ9Nfu6NbHcER" clientKey:@"mkjXAp9MVKUvQmRgIm7vZuPYsAtCB2cz9vCJzJve"];
-     
-     [PFUser enableAutomaticUser];
-     
-     PFACL *defaultACL = [PFACL ACL];
-     
-     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-     
-     
-     
-     // Facebook
-     [PFFacebookUtils initializeFacebook];
-     
-     // Twitter
-     [PFTwitterUtils initializeWithConsumerKey:@"co9pGQdqavnWr1lgzBwfvIG6W"
-     consumerSecret:@"lgNOyQTEA4AXrxlDsP0diEkmChm5ji2B4QoXwsldpHzI0mfJTg"];
-     */
     
     [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
     //3.5inchと4inchを読み分けする
@@ -131,7 +105,7 @@
     }
     
     // !!!:dezamisystem
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     
     //ナビゲーションバーのアイテムの色を変更
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -192,49 +166,57 @@
     [application registerForRemoteNotificationTypes:remoteNotificationType];
 #endif
     
-    /*
-     // プッシュ許可の確認を表示
-     if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1){
-     // iOS8以降
-     UIUserNotificationType types =  UIUserNotificationTypeBadge |
-     UIUserNotificationTypeSound |
-     UIUserNotificationTypeAlert;
-     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-     [application registerUserNotificationSettings:mySettings];
-     }else{
-     // iOS8以前
-     [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-     }
-     */
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
+                                                                                                    identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1
+                                                                         credentialsProvider:credentialsProvider];
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
-    // Initialize the Amazon Cognito credentials provider
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelError;
     
-    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
-                                                          initWithRegionType:AWSRegionUSEast1
-                                                          identityPoolId:@"us-east-1:a8cc1fdb-92b1-4586-ba97-9e6994a43195"];
+    AppDelegate *dele = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
-    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
-    
-    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-    
-    
-    [[credentialsProvider getIdentityId] continueWithBlock:^id(AWSTask *task) {
-        // Your handler code here
-        NSString* cognitoId = credentialsProvider.identityId;
-        NSLog(@"cognitoId: %@", cognitoId);
-        [[NSUserDefaults standardUserDefaults] setValue:cognitoId forKey:@"cognitoId"];
-        NSString* accessKey = credentialsProvider.accessKey;
-        NSLog(@"accesskey: %@", accessKey);
+    [[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(AWSTask *task){
+        dele.accesskey = credentialsProvider.accessKey;
+        dele.secretkey = credentialsProvider.secretKey;
+        dele.sessionkey = credentialsProvider.sessionKey;
+        NSLog(@"accesskey:%@,secretkey:%@,sessionkey:%@",dele.accesskey,dele.secretkey,dele.sessionkey);
         return nil;
     }];
     
     return YES;
     
+    
 }
 
-
-
-
+/*
+ - (AWSTask *)refresh
+ {
+ // get Open ID connect Token by the API request to authentication server
+ NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
+ NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+ AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
+ [NSURLConnection sendAsynchronousRequest:request
+ queue:[NSOperationQueue mainQueue]
+ completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+ {
+ if (data) {
+ // retrieve identity ID and Open ID connect Token from the response.
+ NSError *jsonError = nil;
+ NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+ options:NSJSONReadingMutableLeaves
+ error:&jsonError];
+ NSLog(@"result: %@", result);
+ self.identityId = result[@"identityId"];
+ self.token = result[@"token"];
+ } else {
+ NSLog(@"error: %@", error);
+ }
+ }];
+ }
+ 
+ 
+ */
 
 -(void)checkGPS{
     
@@ -268,6 +250,7 @@ void exceptionHandler(NSException *exception) {
     NSString *log = [NSString stringWithFormat:@"%@, %@, %@", exception.name, exception.reason, exception.callStackSymbols];
     [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
+
 
 
 
@@ -358,6 +341,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 // PUSH通知の受信時に呼ばれるデリゲートメソッド
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
+    NSLog(@"通知受信:%@",userInfo);
     //APNsPHPからuserInfo(message,badge数等)を受け取る
     //log
     NSLog(@"pushInfo: %@", [userInfo description]);
@@ -374,9 +358,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     //APNsPHPからuserInfo(message,badge数等)を受け取る
-    
-    
-    NSLog(@"pushInfo in Background: %@", [userInfo description]);
+    NSLog(@"pushInfo in Background: %@", userInfo);
     
     if ( userInfo ) {
         NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
@@ -387,13 +369,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     }
     
     [self showMessageWithRemoteNotification:userInfo];
-    
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    int numberOfNewMessages = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    [ud synchronize];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
@@ -410,8 +385,15 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                    description:message
                                                           type:TWMessageBarMessageTypeSuccess
                                                       duration:4.0];
-    
-    
+    //ここをログインのところに追加
+    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
+    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+    UIApplication *application = [UIApplication sharedApplication];
+    application.applicationIconBadgeNumber = numberOfNewMessages;
+    [ud synchronize];
     
 }
 

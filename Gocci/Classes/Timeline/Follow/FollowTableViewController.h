@@ -2,7 +2,7 @@
 //  FollowTableViewController.h
 //  Gocci
 //
-//  Created by デザミ on 2015/06/17.
+//  Created by INASE on 2015/06/17.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -29,19 +29,10 @@
 	   postid:(NSString*)postid;
 
 -(void)follow:(FollowTableViewController*)vc
-  username:(NSString*)username picture:(NSString*)picture
-		 flag:(NSInteger)flag;
+  username:(NSString*)user_id;
 
 -(void)follow:(FollowTableViewController*)vc
-	 restname:(NSString*)restname
-	 homepage:(NSString *)homepage
-	 locality:(NSString *)locality
-	 category:(NSString*)category
-		  lon:(NSString*)lon
-		  lat:(NSString*)lat
-		 tell:(NSString*)tell
-   totalcheer:(NSString*)totalcheer
-	  wanttag:(NSString*)wanttag;
+     rest_id:(NSString*)rest_id;
 @end
 
 @interface FollowTableViewController : UITableViewController<UIScrollViewDelegate>
@@ -54,14 +45,6 @@
 	NSInteger _postFlag;
 	//restnameへの引き継ぎ
 	NSString *_postRestname;
-	NSString *_postHomepage;
-	NSString *_postLocality;
-	NSString *_postCategory;
-	NSString *_postLon;
-	NSString *_postLat;
-	NSString *_postTell;
-	NSString *_postTotalCheer;
-	NSString *_postWanttag;
 	//サムネイル
 	UIImageView *thumbnailView;
 }

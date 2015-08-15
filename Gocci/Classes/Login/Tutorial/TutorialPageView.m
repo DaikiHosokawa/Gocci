@@ -23,6 +23,7 @@
 
 - (void)setup
 {
+    
     // イラストを画面上部に中央寄せで配置
     self.graphicBaseView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.width / 2.0);
     [self.graphicBaseView addSubview:self.graphicView];

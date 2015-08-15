@@ -12,24 +12,10 @@
 
 @interface CheerListViewController : UITableViewController
 {
-    NSString *_postHomepage;
-    NSString *_postLocality;
-    NSString *_postRestname;
-    NSString *_postTell;
-    NSString *_postCategory;
-    NSString *_postUsername;
-    NSString *_postTotalCheer;
-    NSString *_postWanttag;
+    NSString *_postRestID;
 }
 
+@property (nonatomic) NSString *postRestID;
 
-@property (nonatomic) NSString *postHomepage;
-@property (nonatomic) NSString *postLocality;
-@property (nonatomic) NSString *postRestname;
-@property (nonatomic) NSString *postTell;
-@property (nonatomic) NSString *postCategory;
-@property (nonatomic) NSString *postUsername;
-@property (nonatomic) NSString *postTotalCheer;
-@property (nonatomic) NSString *postWanttag;
 
 @end

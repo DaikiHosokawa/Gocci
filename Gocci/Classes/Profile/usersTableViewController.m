@@ -40,12 +40,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
+    NSDictionary *header;
 }
 
 - (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, retain) NSIndexPath *nowindexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 @property (nonatomic, strong) UIRefreshControl *refresh;
@@ -107,10 +107,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
     
-    AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.profilename.text = profiledelegate.username;
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:profiledelegate.userpicture]
-                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
@@ -174,10 +170,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [self _fetchProfile];
     [self.tableView reloadData];
-    
-    
-    
-    [SVProgressHUD dismiss];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -197,7 +190,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
     
     [super viewWillDisappear:animated];
@@ -267,24 +260,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
-#pragma mark - UIScrollView Delegate
-
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    // スクロール中は動画を停止する
-    // [[MoviePlayerManager sharedManager] scrolling:YES];
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // フリック操作によるスクロール終了
-    // LOG(@"scroll is stoped");
-    // [self _playMovieAtCurrentCell];
-}
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
@@ -348,24 +323,14 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }
      ];
     
-    // タイムラインを再読み込み
-    //[self _fetchProfile];
 }
 
 
 #pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag{
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id{
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postTell = tel;
-    _postCategory = category;
-    _postLon = lon;
-    _postLat = lat;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
+    _postRestname = rest_id;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -446,6 +411,15 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
+-(void)byoga{
+    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"picture"]]
+                        placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
+    [SVProgressHUD dismiss];
+}
+
 #pragma mark - Private Methods
 
 /**
@@ -461,7 +435,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
-    [APIClient profileWithUserName:profiledelegate.username handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
@@ -470,12 +444,19 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             return;
         }
         
+        NSLog(@"users result:%@",result);
+        
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *post in result) {
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
+        
+        
+        for (NSDictionary *post in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
         }
         
+        header = headerDic;
         self.posts = [NSArray arrayWithArray:tempPosts];
         
         // 動画データを一度全て削除
@@ -483,11 +464,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         // 表示の更新
         [weakSelf.tableView reloadData];
-        [SVProgressHUD dismiss];
-        
-        NSString *alertMessage = @"圏外ですので再生できません。";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
         
         if ([self.posts count]== 0) {
             NSLog(@"投稿がない");
@@ -498,14 +474,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         if ([weakSelf.refresh isRefreshing]) {
             [weakSelf.refresh endRefreshing];
         }
+        [self byoga];
     }];
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- [self _playMovieAtCurrentCell];
- }
- */
 
 
 /**
@@ -513,7 +485,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
  */
 - (void)_playMovieAtCurrentCell
 {
-    
     
     if ( [self.posts count] == 0){
         return;
@@ -525,6 +496,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
     }
+    
     TimelineCell *currentCell = [TimelineCell cell];
     [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
     CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
@@ -580,45 +552,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postHomepage;
-        restVC.postTell = _postTell;
-        restVC.postLocality = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
     }
     
-    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])
-    {
-        //ここでパラメータを渡す
-        FollowListViewController *followVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        followVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
-    
-    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOWEE])
-    {
-        //ここでパラメータを渡す
-        FolloweeListViewController *followeeVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        followeeVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
-    
-    if ([segue.identifier isEqualToString:SEGUE_GO_CHEER])
-    {
-        //ここでパラメータを渡す
-        CheerListViewController *cheerVC = segue.destinationViewController;
-        AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _postUsername = profiledelegate.username;
-        cheerVC.postUsername = _postUsername;
-        NSLog(@"ここでは%@",_postUsername);
-    }
 }
 
 @end

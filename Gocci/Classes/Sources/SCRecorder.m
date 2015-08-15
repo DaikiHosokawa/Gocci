@@ -155,7 +155,7 @@
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     _beginSessionConfigurationCount = 0;
     _captureSession = session;
-
+    
     [self beginSessionConfiguration];
     
     if ([session canSetSessionPreset:self.sessionPreset]) {
@@ -256,7 +256,7 @@
     CGImageRef cgImage = [_context createCGImage:ciImage fromRect:CGRectMake(0, 0, CVPixelBufferGetWidth(buffer), CVPixelBufferGetHeight(buffer))];
     
     UIImage *image = [UIImage imageWithCGImage:cgImage];
-
+    
     CGImageRelease(cgImage);
     CFRelease(sampleBuffer);
     
@@ -309,7 +309,7 @@
             if ([input.device hasMediaType:AVMediaTypeVideo]) {
                 [self removeVideoObservers:input.device];
             }
-
+            
         }
         for (AVCaptureOutput *output in _captureSession.outputs) {
             [_captureSession removeOutput:output];
@@ -438,7 +438,7 @@
     CFRetain(sampleBuffer);
     dispatch_async(_recordSessionQueue, ^{
         SCRecordSession *recordSession = _recordSession;
-
+        
         if (!(_initializeRecordSessionLazily && !_isRecording) && recordSession != nil) {
             if (recordSession != nil) {
                 if (captureOutput == _videoOutput) {
@@ -544,7 +544,7 @@
                 _needsSwitchBackToContinuousFocus = NO;
                 [self continuousFocusAtPoint:CGPointMake(0.5, 0.5)];
             }
-
+            
         }
     }
 }
@@ -631,9 +631,9 @@
 }
 
 - (void)previewViewFrameChanged {
-	
-	//NSLog(@"プレビュービュー：矩形:%@", NSStringFromCGRect(_previewView.bounds));
-
+    
+    //NSLog(@"プレビュービュー：矩形:%@", NSStringFromCGRect(_previewView.bounds));
+    
     _previewLayer.frame = _previewView.bounds;
 }
 
@@ -651,7 +651,7 @@
     }
     
     if ( [[self.previewLayer videoGravity] isEqualToString:AVLayerVideoGravityResize] ) {
-		// Scale, switch x and y, and reverse x
+        // Scale, switch x and y, and reverse x
         pointOfInterest = CGPointMake(viewCoordinates.y / frameSize.height, 1.f - (viewCoordinates.x / frameSize.width));
     } else {
         CGRect cleanAperture;
@@ -672,9 +672,9 @@
                         CGFloat x2 = frameSize.height * apertureRatio;
                         CGFloat x1 = frameSize.width;
                         CGFloat blackBar = (x1 - x2) / 2;
-						// If point is inside letterboxed area, do coordinate conversion; otherwise, don't change the default value returned (.5,.5)
+                        // If point is inside letterboxed area, do coordinate conversion; otherwise, don't change the default value returned (.5,.5)
                         if (point.x >= blackBar && point.x <= blackBar + x2) {
-							// Scale (accounting for the letterboxing on the left and right of the video preview), switch x and y, and reverse x
+                            // Scale (accounting for the letterboxing on the left and right of the video preview), switch x and y, and reverse x
                             xc = point.y / y2;
                             yc = 1.f - ((point.x - blackBar) / x2);
                         }
@@ -683,15 +683,15 @@
                         CGFloat y1 = frameSize.height;
                         CGFloat x2 = frameSize.width;
                         CGFloat blackBar = (y1 - y2) / 2;
-						// If point is inside letterboxed area, do coordinate conversion. Otherwise, don't change the default value returned (.5,.5)
+                        // If point is inside letterboxed area, do coordinate conversion. Otherwise, don't change the default value returned (.5,.5)
                         if (point.y >= blackBar && point.y <= blackBar + y2) {
-							// Scale (accounting for the letterboxing on the top and bottom of the video preview), switch x and y, and reverse x
+                            // Scale (accounting for the letterboxing on the top and bottom of the video preview), switch x and y, and reverse x
                             xc = ((point.y - blackBar) / y2);
                             yc = 1.f - (point.x / x2);
                         }
                     }
                 } else if ([[self.previewLayer videoGravity] isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
-					// Scale, switch x and y, and reverse x
+                    // Scale, switch x and y, and reverse x
                     if (viewRatio > apertureRatio) {
                         CGFloat y2 = apertureSize.width * (frameSize.width / apertureSize.height);
                         xc = (point.y + ((y2 - frameSize.height) / 2.f)) / y2; // Account for cropped height
@@ -817,15 +817,15 @@
         return nil;
     }
     
-	NSArray * videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-	
-	for (AVCaptureDevice * device in videoDevices) {
-		if (device.position == (AVCaptureDevicePosition)_device) {
-			return device;
-		}
-	}
-	
-	return nil;
+    NSArray * videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    
+    for (AVCaptureDevice * device in videoDevices) {
+        if (device.position == (AVCaptureDevicePosition)_device) {
+            return device;
+        }
+    }
+    
+    return nil;
 }
 
 - (AVCaptureVideoOrientation)actualVideoOrientation {
@@ -1005,15 +1005,15 @@
 }
 
 - (AVCaptureConnection*) getVideoConnection {
-	for (AVCaptureConnection * connection in _videoOutput.connections) {
-		for (AVCaptureInputPort * port in connection.inputPorts) {
-			if ([port.mediaType isEqual:AVMediaTypeVideo]) {
-				return connection;
-			}
-		}
-	}
-	
-	return nil;
+    for (AVCaptureConnection * connection in _videoOutput.connections) {
+        for (AVCaptureInputPort * port in connection.inputPorts) {
+            if ([port.mediaType isEqual:AVMediaTypeVideo]) {
+                return connection;
+            }
+        }
+    }
+    
+    return nil;
 }
 
 - (CMTimeScale)frameRate {

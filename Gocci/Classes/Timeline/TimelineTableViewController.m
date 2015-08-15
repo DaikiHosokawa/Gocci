@@ -158,7 +158,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -166,8 +165,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+  //  [[MoviePlayerManager sharedManager] removeAllPlayers];
     
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - viewDidAppear
@@ -244,7 +244,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // フリック操作によるスクロール終了
-   // LOG(@"scroll is stoped");
+    // LOG(@"scroll is stoped");
     
 }
 
@@ -253,13 +253,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // ドラッグ終了 かつ 加速無し
         LOG(@"scroll is stoped");
         
-        [self _playMovieAtCurrentCell];
+        //[self _playMovieAtCurrentCell];
     }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     // setContentOffset: 等によるスクロール終了
-   // NSLog(@"scroll is stoped");
+    // NSLog(@"scroll is stoped");
 }
 
 
@@ -306,6 +306,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [cell configureWithTimelinePost:post];
     cell.delegate = self;
     
+    
+    if (post != NULL|| post != nil){
     // 動画の読み込み
     //    __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
@@ -313,7 +315,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
     //前の処理のダウンロードを止める仕組み
-    
+    }
     [SVProgressHUD dismiss];
     
     
@@ -326,7 +328,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"row %ld was tapped.",(long)indexPath.row);
     _postID = [_postid_ objectAtIndex:indexPath.row];
     NSLog(@"postid:%@",_postID);
- 
+    
     [self performSegueWithIdentifier:@"showDetail" sender:self];
     
     
@@ -357,11 +359,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
-        //ここでパラメータを渡す
-        usersTableViewController_other *useVC = segue.destinationViewController;
-        useVC.postUsername = _postUsername;
-        useVC.postPicture = _postPicture;
-        useVC.postFlag = _postFlag;
+        
     }
     //店舗画面にパラメータを渡して遷移する
     //	if ([segue.identifier isEqualToString:@"goRestpage"])
@@ -370,14 +368,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
-        restVC.postHomepage = _postHomepage;
-        restVC.postLocality = _postLocality;
-        restVC.postCategory = _postCategory;
-        restVC.postLon = _postLon;
-        restVC.postLat = _postLat;
-        restVC.postTell = _postTell;
-        restVC.postTotalCheer = _postTotalCheer;
-        restVC.postWanttag = _postWanttag;
     }
 }
 
@@ -410,22 +400,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました。";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
+             ];
+            
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
@@ -435,44 +419,30 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
-        
+         ];
     }
     
 }
 
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id
 {
-    //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    _postFlag = flag;
+    _postUsername = user_id;
     
-    LOG(@"postUsername:%@",_postUsername);
-    
+    NSLog(@"userID is %@",user_id);
     //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     // !!!:dezamisystem
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     
-    LOG(@"Username is touched");
 }
 
 -(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
@@ -497,44 +467,20 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
-{
-    //user nameタップの時の処理 2
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    _postUsername = userName;
-    _postFlag = flag;
-    
-    LOG(@"postUsername:%@",_postUsername);
-    
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id{
+    _postUsername = user_id;
+       //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
     // !!!:dezamisystem
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
     
-    LOG(@"Username is touched");
-    LOG(@"postUsername:%@",_postPicture);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    LOG(@"Username is touched");
-}
+    NSLog(@"userID is %@",user_id);
+   }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postCategory = category;
-    _postLat = lat;
-    _postLon = lon;
-    _postTell = tel;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
-    NSLog(@"restname=%@", restaurantName);
-    NSLog(@"locality=%@", locality);
-    NSLog(@"tel=%@", tel);
-    NSLog(@"homepage=%@", homepage);
-    NSLog(@"category=%@", category);
+    _postRestname = rest_id;
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 }
 
@@ -569,8 +515,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [weakSelf.refresh beginRefreshing];
         
         // API からデータを取得
-        [APIClient distTimelineWithLatitudeAll:50
-                                       handler:^(id result, NSUInteger code, NSError *error)
+        [APIClient Timeline:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              
@@ -604,12 +549,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
              
-             //             BOOL isServerAvailable;
-             //
-             //
-             //             NSString *alertMessage = @"圏外ですので再生できません。";
-             //             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             
              
          }];
     };
@@ -639,12 +578,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-/*
- - (void)timelineCell:(TimelineCell *)cell didTapthumb:(UIImageView *)thumbnailView{
- 
- [self _playMovieAtCurrentCell];
- }
- */
+
 
 /**
  *  現在表示中のセルの動画を再生する
@@ -656,7 +590,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
      return;
      }
      */
-
+    
     
     
     if (self.tabBarController.selectedIndex != 0) {

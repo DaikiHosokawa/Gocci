@@ -2,7 +2,7 @@
 //  EveryPost.h
 //  Gocci
 //
-//  Created by デザミ on 2015/06/12.
+//  Created by INASE on 2015/06/12.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 @property (nonatomic,copy) NSString *post_user_id;
 @property (nonatomic,copy) NSString *username;
 @property (nonatomic,copy) NSString *profile_img;
-@property (nonatomic,copy) NSString *post_rest_id;
+@property (nonatomic,copy) NSString *rest_id;
 @property (nonatomic,copy) NSString *restname;
 @property (nonatomic,copy) NSString *movie;
 @property (nonatomic,copy) NSString *thumbnail;
@@ -34,6 +34,7 @@
 @property (nonatomic) NSInteger flag;
 @property (nonatomic) NSString* lat;
 @property (nonatomic) NSString* lon;
+@property (nonatomic,copy) NSString *userID;
 @property (nonatomic, copy) NSString *locality;
 @property (nonatomic, copy) NSString *tel;
 @property (nonatomic, copy) NSString *homepage;

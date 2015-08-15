@@ -2,7 +2,7 @@
 //  beforeRecorderTableViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/02/06.
+//  Created by INASE on 2015/02/06.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -50,33 +50,6 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
-    AppDelegate *appDelegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 飲食店名
-        NSArray *restname = [appDelegete.jsonDic valueForKey:@"restname"];
-        _restname_ = [restname mutableCopy];
-        // 店舗カテゴリー
-        NSArray *category = [appDelegete.jsonDic valueForKey:@"category"];
-        _category_ = [category mutableCopy];
-        // 距離
-        NSArray *meter = [appDelegete.jsonDic valueForKey:@"distance"];
-        _meter_ = [meter mutableCopy];
-        // 店舗住所
-        NSArray *restaddress = [appDelegete.jsonDic valueForKey:@"locality"];
-        _restaddress_ = [restaddress mutableCopy];
-        
-        //緯度
-        NSArray *jsonlat = [appDelegete.jsonDic valueForKey:@"lat"];
-        _jsonlat_ = [jsonlat mutableCopy];
-        //経度
-        NSArray *jsonlon = [appDelegete.jsonDic valueForKey:@"lon"];
-        _jsonlon_ = [jsonlon mutableCopy];
-        //dispatch_async(q2_main, ^{
-        [self.tableView reloadData];
-        //});
-    });
     
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
@@ -184,14 +157,14 @@
     
     if(indexPath.row == 29){
         cell.restaurantNameLabel.text = @"店舗がないときは。。。。";
-      // [cell.cont setBackgroundColor:[UIColor orangeColor]];
+        // [cell.cont setBackgroundColor:[UIColor orangeColor]];
         //cell.backgroundColor = [UIColor orangeColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
     
     
-
+    
 }
 
 
@@ -205,8 +178,8 @@
         Restaurant *restaurant = self.restaurants[indexPath.row];
         // グローバル変数に保存
         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        delegate.restrantname = restaurant.restname;
-        
+        delegate.restname = restaurant.restname;
+        delegate.rest_id = restaurant.rest_id;
         // モーダル閉じる
         [self dismissWithTenmei];
     }
@@ -223,7 +196,7 @@
         NSLog(@"フラグ：%ld",(long)indexPath.row);
         
     }
-  
+    
     // 選択状態の解除
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -239,15 +212,18 @@
         {
             [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
              {
+                 NSLog(@"入力店名：%@",textValue);
                  
                  [APIClient restInsert:textValue latitude:location.coordinate.latitude longitude:location.coordinate.longitude handler:^(id result, NSUInteger code, NSError *error) {
-                    LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                     LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                      
-                     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                     delegate.restrantname = textValue;
-                     // モーダル閉じる
-                     [self dismissWithTenmei];
-                     
+                     if ([result[@"code"] integerValue] == 200) {
+                         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+                         delegate.restname = textValue;
+                         delegate.rest_id  = result[@"rest_id"];
+                         // モーダル閉じる
+                         [self dismissWithTenmei];
+                     }
                      
                  }];
              }];
@@ -296,7 +272,7 @@
         }
     }
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [viewController sendTenmeiString:delegate.restrantname];
+    [viewController sendTenmeiString:delegate.restname];
     
     //モーダルを閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -330,7 +306,7 @@
     Restaurant *restaurant = self.restaurants[index];
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.restrantname = restaurant.restname;
+    delegate.restname = restaurant.restname;
     
     // モーダル閉じる
     [self dismissWithTenmei];
@@ -348,7 +324,7 @@
     Restaurant *restaurant = self.restaurants[index];
     // グローバル変数に保存
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.restrantname = restaurant.restname;
+    delegate.restname = restaurant.restname;
     
     // モーダル閉じる
     [self dismissWithTenmei];
@@ -408,13 +384,11 @@
     
     [weakSelf.refresh beginRefreshing];
     
-    [APIClient distWithLatitude:coordinate.latitude
-                      longitude:coordinate.longitude
-                          limit:30
-                        handler:^(id result, NSUInteger code, NSError *error)
+    [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
      {
-         [SVProgressHUD dismiss];
-        
+         
+         NSLog(@"before recorder result:%@",result);
+         
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          
          if ([weakSelf.refresh isRefreshing]) {
@@ -435,6 +409,7 @@
      } useCache:^(id cachedResult)
      {
          if (!cachedResult) {
+              [SVProgressHUD dismiss];
              return;
          }
          
@@ -442,6 +417,7 @@
          
          // 表示の更新
          [weakSelf.tableView reloadData];
+          [SVProgressHUD dismiss];
      }];
 }
 

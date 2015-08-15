@@ -49,11 +49,11 @@
     // ウォークスルーの各画面
     TutorialPageView *page1 = [TutorialPageView viewWithNibName:@"TutorialPage1"];
     TutorialPageView *page2 = [TutorialPageView viewWithNibName:@"TutorialPage2"];
-    TutorialPageView *page3 = [TutorialPageView viewWithNibName:@"TutorialPage3"];
+    //TutorialPageView *page3 = [TutorialPageView viewWithNibName:@"TutorialPage3"];
     TutorialPageView *page4 = [TutorialPageView viewWithNibName:@"TutorialPage4"];
     
     CGFloat contentWidth = 0.0;
-    for (TutorialPageView *page in @[page1, page2, page3, page4]) {
+    for (TutorialPageView *page in @[page1, page2,  page4]) {
         page.frame = CGRectMake(contentWidth,
                                 0.0,
                                 tutorialView.scrollView.frame.size.width,
@@ -118,7 +118,7 @@
 - (NSUInteger)_currentPageIndex:(UIScrollView*)scrollView
 {
     CGFloat width = CGRectGetWidth(scrollView.frame);
-    NSInteger maxPageIndex = 4;
+    NSInteger maxPageIndex = 3;
     CGFloat positionX = scrollView.contentOffset.x;
     CGFloat paging = round(positionX / width);
 

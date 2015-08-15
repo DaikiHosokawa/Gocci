@@ -759,7 +759,7 @@ const NSString *SCRecordSessionDateKey = @"Date";
     
     return @{
              SCRecordSessionSegmentsKey: recordSegments,
-             SCRecordSessionOutputUrlKey : self.outputUrl.path,
+             SCRecordSessionOutputUrlKey :@"test.mp4",
              SCRecordSessionDurationKey : [NSNumber numberWithDouble:CMTimeGetSeconds(self.currentRecordDuration)],
              SCRecordSessionIdentifierKey : _identifier,
              SCRecordSessionDateKey : _date

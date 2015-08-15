@@ -11,9 +11,10 @@
 {
     Notice *obj = [Notice new];
     
-    obj.notice = dictionary[@"notice"];
-    obj.noticed = dictionary[@"noticed"];
-    obj.picture = dictionary[@"picture"];
+    obj.noticeMessage = dictionary[@"notice"];
+    obj.notice_date = dictionary[@"notice_date"];
+    obj.picture = dictionary[@"profile_img"];
+    obj.username = dictionary[@"username"];
     
     return obj;
 }

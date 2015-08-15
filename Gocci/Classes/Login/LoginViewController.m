@@ -19,10 +19,11 @@
 #import "GUser.h"
 #import "RegistView.h"
 #import "UIImage+BlurEffect.h"
-#import <AWSCore/AWSCore.h>
-#import <AWSCognito/AWSCognito.h>
+#import "APIClient.h"
+#import "AFHTTPRequestOperation.h"
 
-#define kActiveLogin @"ActiveLogin"
+
+#define kActiveLogin @"kActiveLogin"
 #define kActiveCancel @"kActiveCancel"
 
 @import Social;
@@ -49,6 +50,7 @@
     
     _button.layer.borderColor = [UIColor grayColor].CGColor;
     _button.layer.borderWidth = 0.5f;
+    
     
     
     // 初回起動時のみの動作
@@ -91,36 +93,47 @@
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
     
-    NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-    NSString *avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
     
-    NSLog(@"usernameI:%@",username);
     
-    if (username) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
-        [SVProgressHUD show];
+        [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
+            NSLog(@"Login result:%@ error:%@",result,error);
+            
+            if([result[@"code"] integerValue] == 200){
+                
+                [SVProgressHUD show];
+                
+                NSString* username = [result objectForKey:@"username"];
+                NSString* picture = [result objectForKey:@"profile_img"];
+                NSString* user_id = [result objectForKey:@"user_id"];
+                [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                
+                //ここをログインのところに追加
+                // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+                int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+                UIApplication *application = [UIApplication sharedApplication];
+                application.applicationIconBadgeNumber = numberOfNewMessages;
+                [ud synchronize];
+                
+                [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+            }
+        }];
+    }else{
         
-        AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        logindelegate.username = username;
-        NSString *pictureURL = avatarLink;
-        AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        picturedelegate.userpicture = pictureURL;
+        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
         
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSLog(@"picture:%@,username:%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"],[[NSUserDefaults standardUserDefaults] valueForKey:@"username"]);
         
-        NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@&token_id=%@",username,pictureURL,[ud stringForKey:@"STRING"]];
-        NSLog(@"login_content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        NSLog(@"result:%@",result);
+        NSDictionary * dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+        NSLog(@"defualts:%@", dic);
         
+<<<<<<< HEAD
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         // Initialize the Cognito Sync client
         AWSCognito *syncClient = [AWSCognito defaultCognito];
@@ -138,8 +151,33 @@
         }];
         
         [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+=======
+        if (([[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
+            
+            [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
+                
+                NSLog(@"Conversion result:%@ error:%@",result,error);
+                
+                if([result[@"code"] integerValue] == 200){
+                    [SVProgressHUD show];
+                    
+                    NSString* username = [result objectForKey:@"username"];
+                    NSString* picture = [result objectForKey:@"profile_img"];
+                    NSString* user_id = [result objectForKey:@"user_id"];
+                    NSString* identityID = [result objectForKey:@"identity_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                    [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                    [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:identityID forKey:@"identity_id"];
+                    
+                    [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
+                }
+                
+            }];
+            
+        }
+>>>>>>> 5525898a2c09aff41fe3202e89428f1244da8eb4
     }
-    
 }
 
 
@@ -170,7 +208,7 @@
 
 #pragma mark - Action
 
-//Facebookログインを押す
+//「Gocciを始める」を押す
 - (IBAction)facebookButtonTapped:(id)sender {
     
     [self addBackgroundEffect];
@@ -196,7 +234,7 @@
     
     RegistView *registView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil] lastObject];;
     [registView initComponent];
-    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 20, registView.frame.size.width, registView.frame.size.height);
+    registView.frame = CGRectMake((self.view.frame.size.width - registView.frame.size.width)/2, 80, registView.frame.size.width, registView.frame.size.height);
     [self.view addSubview:registView];
     
     return;
@@ -204,49 +242,6 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];
-}
-
-//facebookの各種データ取得
--(void)info{
-    
-    FBRequest *request = [FBRequest requestForMe];
-    
-    // Send request to Facebook
-    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        if (!error) {
-            // result is a dictionary with the user's Facebook data
-            NSDictionary *userData = (NSDictionary *)result;
-            
-            NSString *facebookID = userData[@"id"];
-            NSString *name = userData[@"name"];
-            AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            logindelegate.username = name;
-            NSString *pictureURL = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID ];
-            AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            picturedelegate.userpicture = pictureURL;
-            
-            NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",name,pictureURL];
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response
-                                                               error:&error];
-            NSLog(@"result:%@",result);
-            
-            [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];	// !!!:dezamisystem・Segue変更
-            
-            NSLog(@"FacebookLogin is completed");
-            
-            
-            NSLog(@"name=%@",name);
-            NSLog(@"pict=%@",pictureURL);
-            [SVProgressHUD dismiss];
-        }
-    }];
 }
 
 //Twitterログインボタンを押す
@@ -261,52 +256,6 @@
     
 }
 
-
-//Twitterの各種データ取得
--(void)info2
-{
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!error) {
-            if (user) {
-                NSString *userId = [PFTwitterUtils twitter].userId;
-                NSLog(@"userId:%@",userId);
-                NSString *authToken = [PFTwitterUtils twitter].authToken;
-                NSLog(@"authToken:%@",authToken);
-                NSString *screenName = [PFTwitterUtils twitter].screenName;
-                NSLog(@"screenName:%@",screenName);
-                AppDelegate* logindelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                logindelegate.username = screenName;
-                NSString *pictureURL = [[NSString alloc] initWithFormat:@"http://www.paper-glasses.com/api/twipi/%@", screenName];
-                AppDelegate* picturedelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                picturedelegate.userpicture = pictureURL;
-                NSLog(@"%@",pictureURL);
-                
-                NSString *content = [NSString stringWithFormat:@"user_name=%@&picture=%@",screenName,pictureURL];
-                NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/login/"];
-                NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-                [urlRequest setHTTPMethod:@"POST"];
-                [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-                NSURLResponse* response;
-                NSError* error = nil;
-                NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                       returningResponse:&response
-                                                                   error:&error];
-                NSLog(@"result:%@",result);
-                //				[self performSegueWithIdentifier:@"goTimeline2" sender:self];
-                [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];	// !!!:dezamisystem・Segue変更
-                
-                NSLog(@"TwitterLogin is completed");
-                [SVProgressHUD dismiss];
-            }
-            else {
-                NSLog(@"%s USER IS NULL",__func__);
-            }
-        }
-        else {
-            NSLog(@"%s ERROR:%@",__func__, error);
-        }
-    }];
-}
 
 
 #pragma mark - TutorialView Delegate

@@ -33,6 +33,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     }
     
     self.players = [NSMutableDictionary dictionaryWithCapacity:0];
+
     
     return self;
 }
@@ -45,42 +46,46 @@ static MoviePlayerManager *_sharedInstance = nil;
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     LOG(@"players[%@]=%@", key, self.players[key]);
     /*
-    if (self.players[key]) {
-        return;
-    }
+     if (self.players[key]) {
+     return;
+     }
      */
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    __weak typeof(self)weakSelf = self;
-    [APIClient downloadMovieFile:urlString 
-                      completion:^(NSURL *fileURL, NSError *error) {
-                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                          
-                          NSLog(@"fileURL:%@",fileURL);
-                          
-                          if (fileURL == nil || error != nil) {
-                              [self.players removeObjectForKey:key];
-                              completion(NO);
-                              return;
-                          }
-                          MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] init];
-                          moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
-                          [moviePlayer setContentURL:fileURL];
-                          moviePlayer.controlStyle = MPMovieControlStyleNone;
-                          moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-                          moviePlayer.repeatMode = MPMovieRepeatModeOne;
-                          moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
-                          moviePlayer.view.userInteractionEnabled = NO;
-                          weakSelf.players[key] = moviePlayer;
-                          
-                          
-                          completion(YES);
-                      }];
+    //__weak typeof(self)weakSelf = self;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"fileURL:%@",url);
+    
+    
+    MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
+    moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    [moviePlayer setContentURL:url];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    moviePlayer.repeatMode = MPMovieRepeatModeOne;
+    moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
+    moviePlayer.view.userInteractionEnabled = NO;
+    moviePlayer.backgroundView.opaque = NO;
+    //movieplayerのbackgroundViewの透明化
+    moviePlayer.backgroundView.backgroundColor = [UIColor clearColor];
+    for(UIView *aSubView in moviePlayer.view.subviews) {
+        aSubView.backgroundColor = [UIColor clearColor];
+    }
+    
+    moviePlayer.view.backgroundColor = [UIColor clearColor];
+        self.players[key] = moviePlayer;
+    NSLog(@"addmovie段階では:%@",self.players);
+    
+    
 }
 
 
 - (void)removeAllPlayers
 {
+    NSLog(@"全プレイヤーの削除");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }
@@ -91,6 +96,7 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)scrolling:(BOOL)scrolling
 {
+    NSLog(@"scrolling:%@",scrolling? @"YES":@"NO");
     if (!self.globalPlayer) {
         return;
     }
@@ -109,48 +115,35 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
-    NSLog(@"start playing2");
     
     if (self.globalPlayer) {
- 
+        
         [self.globalPlayer.view removeFromSuperview];
-       // [self.globalPlayer pause];
+        // [self.globalPlayer pause];
         self.globalPlayer = nil;
-
-
     }
     
-    
     MPMoviePlayerController *player = [self _playerAtIndex:index];
+    NSLog(@"playerは%@",player);
     
     if (player && player != self.globalPlayer) {
         self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
-        
+        NSLog(@"playerは独自");
         //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
+            NSLog(@"再生中でないので再生");
             [self.globalPlayer play];
         }
-    
-        /*
-        //再生中のとき
-        else if ([self.globalPlayer playbackState] == MPMoviePlaybackStatePlaying) {
-            [self.globalPlayer play];
-            NSLog(@"再生中");
-        }else if ([self.globalPlayer playbackState] == MPMoviePlaybackStateSeekingForward) {
-             NSLog(@"待機中");
-        }
-         */
+        
     }
 }
 
 - (void)stopMovie
 {
-    if (self.globalPlayer) {
         [self.globalPlayer stop];
         self.globalPlayer = nil;
-    }
 }
 
 
@@ -158,16 +151,20 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (MPMoviePlayerController *)_playerAtIndex:(NSUInteger)index
 {
-    NSLog(@"start playing3");
-    
+
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
+    NSLog(@"再生するkey:%@",key);
+    NSLog(@"player群は%@",self.players);
+    NSLog(@"playerは%@",self.players[key]);
     if (!self.players[key]) {
+         NSLog(@"keyがない");
         return nil;
     }
     
     MPMoviePlayerController *player = self.players[key];
     
     if (!player.contentURL) {
+         NSLog(@"playerにurlがない");
         return nil;
     }
     

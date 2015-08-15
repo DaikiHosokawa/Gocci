@@ -10,7 +10,7 @@
 
 @interface CheerListCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *UsersName;
+@property (weak, nonatomic) IBOutlet UILabel *RestName;
 @property (weak, nonatomic) IBOutlet UILabel *Locality;
 
 @end

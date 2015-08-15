@@ -2,7 +2,7 @@
 //  AllTimelineTableViewController.m
 //  Gocci
 //
-//  Created by デザミ on 2015/06/17.
+//  Created by INASE on 2015/06/17.
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
@@ -53,6 +53,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @implementation AllTimelineTableViewController
 @synthesize thumbnailView;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,14 +72,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
     
-    /*
-     //set notificationCenter
-     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-     [notificationCenter addObserver:self
-     selector:@selector(handleRemotePushToUpdateBell:)
-     name:@"HogeNotification"
-     object:nil];
-     */
     
 }
 
@@ -112,7 +105,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark - viewDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     
     //	[[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -120,47 +112,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[MoviePlayerManager sharedManager] stopMovie];
     
     // 動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
+    
 }
 
-//#pragma mark - ナビゲーションバーアクション
-//-(void)barButtonItemPressed:(id)sender
-//{
-//	NSLog(@"badge touched");
-//
-//	self.barButton.badgeValue = nil;
-//
-//	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-//	[ud removeObjectForKey:@"numberOfNewMessages"];
-//
-//	if (!self.popover) {
-//		NotificationViewController *vc = [[NotificationViewController alloc] init];
-//		self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-//	}
-//	NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-//	[self.popover presentPopoverFromRect:CGRectMake(
-//													self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-//								  inView:self.barButton.customView
-//				permittedArrowDirections:WYPopoverArrowDirectionUp
-//								animated:YES
-//								 options:WYPopoverAnimationOptionFadeWithScale];
-//}
 
-
-//#pragma mark - Action
-//- (IBAction)pushUserTimeline:(id)sender {
-//
-//	CATransition *transition = [CATransition animation];
-//	transition.duration = 0.4;
-//	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//	transition.type = kCATransitionPush;//pushのトランジション
-//	transition.subtype = kCATransitionFromRight;//右から左へ
-//}
-//
-//- (IBAction)onProfileButton:(id)sender
-//{
-//
-//}
 
 #pragma mark - UIRefreshControl Action
 - (void)refresh:(UIRefreshControl *)sender
@@ -168,18 +124,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self _fetchTimelineUsingLocationCacheALL:YES];
 }
 
-//#pragma mark - タッチイベント
-//- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-//
-//	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-//	NSLog(@"row %ld was tapped.",(long)indexPath.row);
-//	_postID = [_postid_ objectAtIndex:indexPath.row];
-//	NSLog(@"postid:%@",_postID);
-//
-//	[self performSegueWithIdentifier:@"showDetail" sender:self];
-//
-//	NSLog(@"commentBtn is touched");
-//}
+
 
 
 #pragma mark - UIScrollView Delegate
@@ -332,25 +277,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark いいねボタン押し
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    //いいねボタンの時の処理
-    LOG(@"postid=%@", postID);
-    NSString *content = [NSString stringWithFormat:@"post_id=%@", postID];
-    NSLog(@"content:%@",content);
-    NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/goodinsert/"];
-    NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLResponse* response;
-    NSError* error = nil;
-    NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                           returningResponse:&response
-                                                       error:&error];
     
-    
+    // API からデータを取得
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+    }
+     ];
     //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
     //_currentIndexPath
-    
-    if (result) {}
     
     // タイムラインを再読み込み
     // [self _fetchTimeline];
@@ -369,24 +303,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            
-            NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-            NSLog(@"content:%@",content);
-            NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-            NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-            [urlRequest setHTTPMethod:@"POST"];
-            [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-            NSURLResponse* response;
-            NSError* error = nil;
-            NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                   returningResponse:&response                                                               error:&error];
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました。";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
+            // API からデータを取得
+            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                if (result) {
+                    NSString *alertMessage = @"違反報告をしました";
+                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alrt show];
+                }
             }
-        }]];
+             ];
+            
+                   }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
         }]];
@@ -395,42 +323,30 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     else
     {
-        NSString *content = [NSString stringWithFormat:@"post_id=%@",postID];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://api-gocci.jp/violation/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
-            NSString *alertMessage = @"違反報告をしました";
-            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alrt show];
+        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if (result) {
+                NSString *alertMessage = @"違反報告をしました";
+                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alrt show];
+            }
         }
-        
+         ];
     }
     
 }
 
 #pragma mark user_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
-{
+- (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id{
     //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    _postFlag = flag;
+    _postUsername = user_id;
     
     LOG(@"postUsername:%@",_postUsername);
     
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate allTimeline:self username:userName picture:usersPicture flag:flag];
+    [self.delegate allTimeline:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif
@@ -460,20 +376,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark user_nameタップの時の処理 2
-- (void)timelineCell:(TimelineCell *)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
-{
-    //user nameタップの時の処理 2
-    LOG(@"userspicture=%@", userPicture);
-    _postPicture = userPicture;
-    _postUsername = userName;
-    _postFlag = flag;
+- (void)timelineCell:(TimelineCell *)cell didTapPicture:(NSString *)user_id{
     
-    LOG(@"postUsername:%@",_postUsername);
+    _postUsername = user_id;
+    
     
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
 #else
-    [self.delegate allTimeline:self username:userName picture:userPicture flag:flag];
+    [self.delegate allTimeline:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
 #endif
@@ -483,28 +394,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     LOG(@"Username is touched");
 }
 
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)restaurantName locality:(NSString *)locality tel:(NSString *)tel homepage:(NSString *)homepage category:(NSString *)category lon:(NSString *)lon lat:(NSString *)lat total_cheer:(NSString *)total_cheer want_tag:(NSString *)want_tag
+- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id
 {
     NSLog(@"restname is touched");
     //rest nameタップの時の処理
-    _postRestname = restaurantName;
-    _postHomepage = homepage;
-    _postLocality = locality;
-    _postCategory = category;
-    _postLat = lat;
-    _postLon = lon;
-    _postTell = tel;
-    _postTotalCheer = total_cheer;
-    _postWanttag = want_tag;
-    NSLog(@"restname=%@", restaurantName);
-    NSLog(@"locality=%@", locality);
-    NSLog(@"tel=%@", tel);
-    NSLog(@"homepage=%@", homepage);
-    NSLog(@"category=%@", category);
 #if 0
     [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
 #else
-    [self.delegate allTimeline:self restname:restaurantName homepage:homepage locality:locality category:category lon:lon lat:lat tell:tel totalcheer:total_cheer wanttag:want_tag];
+    [self.delegate allTimeline:self rest_id:rest_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:nil];
 #endif
@@ -544,8 +441,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [weakSelf.refresh beginRefreshing];
         
         // API からデータを取得
-        [APIClient distTimelineWithLatitudeAll:50
-                                       handler:^(id result, NSUInteger code, NSError *error)
+        [APIClient Timeline:^(id result, NSUInteger code, NSError *error)
          {
              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              
@@ -614,11 +510,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //#pragma mark - Navigation
 //#pragma mark 遷移前準備
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//	
+//
 //    // Get the new view controller using [segue destinationViewController].
 //    // Pass the selected object to the new view controller.
-//	
-//	
+//
+//
 //	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
 //	{
 //		//ここでパラメータを渡す
@@ -630,7 +526,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 //#endif
 //		eveVC.postID = (NSString *)sender;
 //	}
-//	
+//
 //	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
 //	{
 //		//ここでパラメータを渡す
