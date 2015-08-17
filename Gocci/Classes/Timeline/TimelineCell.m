@@ -233,7 +233,13 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     // 店舗住所
     self.restaurantAddressLabel.text = timelinePost.locality;
     
-    self.commentLabel.text = timelinePost.comment;
+    
+    if ([timelinePost.comment isEqualToString:@"none"]) {
+        self.commentLabel.text = @"";
+    }
+    else{
+        self.commentLabel.text = timelinePost.comment;
+    }
     
     // Like 数
     self.likeCountLabel.text = [NSString stringWithFormat:@"%@", @(timelinePost.goodNum)];

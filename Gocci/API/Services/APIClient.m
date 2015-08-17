@@ -516,4 +516,36 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)postWant:(NSString *)rest_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"rest_id" :rest_id,
+                             };
+    NSLog(@"Want param:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/want/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
+}
+
++ (void)postUnWant:(NSString *)rest_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"rest_id" :rest_id,
+                             };
+    NSLog(@"UnWant param:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/unwant/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
+}
+
 @end

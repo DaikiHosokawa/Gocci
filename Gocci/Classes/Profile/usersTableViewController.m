@@ -82,6 +82,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         self.navigationItem.backBarButtonItem = barButton;
     }
     
+    
     //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];

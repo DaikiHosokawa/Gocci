@@ -477,48 +477,44 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     if(flash_on == 0 ){
         
-        //スイッチオン時の処理を記述できます
-        NSLog(@"行きたいしました");
-        NSString *content = [NSString stringWithFormat:@"rest_id=%@",[header objectForKey:@"restname"]];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/want/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        
-        if (result) {
-            UIImage *img = [UIImage imageNamed:@"notOen.png"];
-            [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-            flash_on = 1;
-            NSLog(@"result:%@",result);
+        [APIClient postWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
-        }
+            
+            if (code != 200 || error != nil) {
+                // API からのデータの取得に失敗
+                
+                // TODO: アラート等を掲出
+                return;
+            }else{
+                 NSLog(@"行きたいしました");
+                UIImage *img = [UIImage imageNamed:@"notOen.png"];
+                [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+                flash_on = 1;
+                NSLog(@"result:%@",result);
+            }
+    
+            }];
         
     }else if (flash_on == 1){
-        NSLog(@"行きたい解除しました");
-        UIImage *img = [UIImage imageNamed:@"Oen.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 0;
-        //スイッチオフに戻った場合の処理を記述
-        NSString *content = [NSString stringWithFormat:@"rest_id=%@",[header objectForKey:@"restname"]];
-        NSLog(@"content:%@",content);
-        NSURL* url = [NSURL URLWithString:@"http://test.api.gocci.me/v1/post/unwant/"];
-        NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc]initWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLResponse* response;
-        NSError* error = nil;
-        NSData* result = [NSURLConnection sendSynchronousRequest:urlRequest
-                                               returningResponse:&response
-                                                           error:&error];
-        if (result) {
+        [APIClient postUnWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
-        }
+            LOG(@"resultUnWant=%@", result);
+            
+            if (code != 200 || error != nil) {
+                // API からのデータの取得に失敗
+                
+                // TODO: アラート等を掲出
+                return;
+            }else{
+                NSLog(@"行きたい解除しました");
+                UIImage *img = [UIImage imageNamed:@"Oen.png"];
+                [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+                flash_on = 0;
+            }
+            
+        }];
     }
 }
 

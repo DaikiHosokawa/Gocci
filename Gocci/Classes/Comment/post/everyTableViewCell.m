@@ -171,7 +171,12 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
     self.restaurantNameLabel.text = everyPost.restname;
     
     //Memo
-    self.commentLabel.text = everyPost.memo;
+    if ([everyPost.memo isEqualToString:@"none"]) {
+        self.commentLabel.text = @"";
+    }
+    else{
+        self.commentLabel.text = everyPost.memo;
+    }
     
     // Like 数
     self.likeCountLabel.text = [NSString stringWithFormat:@"%@", @(everyPost.like_num)];
