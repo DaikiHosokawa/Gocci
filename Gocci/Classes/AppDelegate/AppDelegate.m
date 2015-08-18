@@ -177,6 +177,7 @@
     AppDelegate *dele = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(AWSTask *task){
+        NSLog(@"identity_id:%@",credentialsProvider.identityId);
         dele.accesskey = credentialsProvider.accessKey;
         dele.secretkey = credentialsProvider.secretKey;
         dele.sessionkey = credentialsProvider.sessionKey;

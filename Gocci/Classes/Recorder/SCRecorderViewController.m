@@ -386,7 +386,7 @@ static SCRecorder *_recorder;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         descriptionLabel.textColor = [UIColor blackColor];
         descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"7秒で飲食店を紹介してください";
+        descriptionLabel.text = @"押す→離すの計7秒でレストランを紹介してください";
         [_firstContentView addSubview:descriptionLabel];
         
         [_firstContentView setDismissHandler:^(DemoContentView *view) {

@@ -108,6 +108,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     // !!!:dezamisystem
     //	self.navigationItem.backBarButtonItem = backButton;
     
+    self.parentViewController.view.backgroundColor = [UIColor redColor];
     
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
@@ -171,7 +172,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [self _fetchProfile];
     [self.tableView reloadData];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -264,7 +265,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         // ドラッグ終了 かつ 加速無し
-       [self _playMovieAtCurrentCell];
+        [self _playMovieAtCurrentCell];
     }
 }
 
@@ -415,7 +416,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(void)byoga{
     //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"picture"]]
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
     
     [SVProgressHUD dismiss];

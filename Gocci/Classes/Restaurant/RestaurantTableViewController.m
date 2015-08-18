@@ -402,7 +402,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
 #endif
-        eveVC.postID = _postID;
+        eveVC.postID = (NSString *)sender;
     }
     
     //プロフィール画面にパラメータを渡して遷移する
@@ -520,7 +520,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (IBAction)tapTEL {
     
-    if ([[header objectForKey:@"tell"] isEqualToString:@"非公開"] || [[header objectForKey:@"tell"] isEqualToString:@"準備中"]) {
+    if ([[header objectForKey:@"tell"] isEqualToString:@"非公開"] || [[header objectForKey:@"tell"] isEqualToString:@"準備中"]|| [[header objectForKey:@"tell"] isEqualToString:@"予約不可"]|| [[header objectForKey:@"tell"] isEqualToString:@"非設置"]|| [[header objectForKey:@"tell"] isEqualToString:@"none"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
@@ -831,6 +831,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
     }
     NSLog(@"%f",self.barButton.accessibilityFrame.size.width);

@@ -21,6 +21,8 @@
 #import "UIImage+BlurEffect.h"
 #import "APIClient.h"
 #import "AFHTTPRequestOperation.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 
 #define kActiveLogin @"kActiveLogin"
@@ -104,11 +106,13 @@
                 
                 [SVProgressHUD show];
                 
+                //NSString* username = [result objectForKey:@"username"];
+                
                 NSString* username = [result objectForKey:@"username"];
                 NSString* picture = [result objectForKey:@"profile_img"];
                 NSString* user_id = [result objectForKey:@"user_id"];
                 [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
-                [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
                 [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
                 
                 //ここをログインのところに追加
@@ -147,10 +151,34 @@
                     NSString* user_id = [result objectForKey:@"user_id"];
                     NSString* identityID = [result objectForKey:@"identity_id"];
                     [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
-                    [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"picture"];
+                    [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
                     [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
                     [[NSUserDefaults standardUserDefaults] setValue:identityID forKey:@"identity_id"];
                     
+                    NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
+                    [def setObject:result[@"username"] forKey:@"username"];
+                    [def setObject:result[@"identity_id"] forKey:@"identity_id"];
+                    [def setObject:result[@"token"] forKey:@"token"];
+                    
+                    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                                          initWithRegionType:AWSRegionUSEast1
+                                                                          identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
+                    
+                    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
+                    
+                    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+                    
+                    credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                    
+                    [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
+                        // Your handler code heredentialsProvider.identityId;
+                        NSLog(@"logins: %@", credentialsProvider.logins);
+                        NSLog(@"task:%@",task);
+                        // return [self refresh];
+                        return nil;
+                    }];
+                    
+                   
                     [self performSegueWithIdentifier:@"ShowTabBarController" sender:self];
                 }
                 
