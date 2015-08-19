@@ -1005,7 +1005,7 @@ static SCRecorder *_recorder;
              AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
              
              AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-             uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
+             uploadRequest.bucket = @"gocci.movies.bucket.jp";
              uploadRequest.key = movieFileForS3;
              uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
              uploadRequest.contentType = @"video/mp4";

@@ -363,21 +363,6 @@
      };
      */
     
-    // Initialize the Cognito Sync client
-    AWSCognito *syncClient = [AWSCognito defaultCognito];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    // Create a record in a dataset and synchronize with the server
-    AWSCognitoDataset *dataset = [syncClient openOrCreateDataset:@"user_info"];
-    [dataset setString:[UIDevice currentDevice].model forKey:@"model"];
-    NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-    [dataset setString:os forKey:@"os"];
-    [dataset setString:[ud stringForKey:@"STRING"] forKey:@"register_id"];
-    [dataset setString:[ud stringForKey:@"username"] forKey:@"username"];
-    [[dataset synchronize] continueWithBlock:^id(AWSTask *task) {
-        // Your handler code here
-        NSLog(@"dataset:%@",dataset);
-        return nil;
-    }];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

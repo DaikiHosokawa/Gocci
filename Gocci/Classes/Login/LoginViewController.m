@@ -95,8 +95,6 @@
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
     
-    
-    
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
         [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
@@ -162,13 +160,13 @@
                     
                     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                                           initWithRegionType:AWSRegionUSEast1
-                                                                          identityPoolId:@"us-east-1:2ef43520-856b-4641-b4a1-e08dfc07f802"];
+                                                                          identityPoolId:@"us-east-1:b0252276-27e1-4069-be84-3383d4b3f897"];
                     
                     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
                     
                     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
                     
-                    credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                    credentialsProvider.logins = @{ @"login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
                     
                     [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
                         // Your handler code heredentialsProvider.identityId;
