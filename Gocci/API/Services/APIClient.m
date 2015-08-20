@@ -6,7 +6,7 @@
 #import "APIClient.h"
 #import "AFNetworking.h"
 
-NSString * const APIClientBaseVer2URL = API_BASE_VER2_URL;
+NSString * const APIClientBaseVer2URL = API_BASE_URL_TEST;
 NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
 
 NSString * const APIClientResultCacheKeyDist = @"dist";
@@ -41,7 +41,7 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    NSURL *baseURL = [NSURL URLWithString:API_BASE_VER2_URL];
+    NSURL *baseURL = [NSURL URLWithString:API_BASE_URL_TEST];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.manager.responseSerializer =[AFJSONResponseSerializer serializer];
     
@@ -51,13 +51,14 @@ static APIClient *_sharedInstance = nil;
                                                               @"text/javascript",
                                                               nil];
     
+    /*
     NSURL *baseURL2 = [NSURL URLWithString:API_BASE_VER2_URL];
     self.manager2 = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL2];
     NSMutableSet *newAcceptableContentTypes = [NSMutableSet setWithSet:self.manager2.responseSerializer.acceptableContentTypes] ;
     [newAcceptableContentTypes addObject:@"text/html"];
     self.manager2.responseSerializer.acceptableContentTypes = newAcceptableContentTypes;
     self.resultCache = [NSCache new];
-    
+    */
     return self;
 }
 

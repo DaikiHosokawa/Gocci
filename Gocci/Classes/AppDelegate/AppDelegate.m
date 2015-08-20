@@ -167,7 +167,9 @@
 #endif
     
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
-                                                                                                    identityPoolId:@"us-east-1:b0252276-27e1-4069-be84-3383d4b3f897"];
+                                                                                                    identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+    
+    //master PoolID:us-east-1:b0252276-27e1-4069-be84-3383d4b3f897
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1
                                                                          credentialsProvider:credentialsProvider];
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
