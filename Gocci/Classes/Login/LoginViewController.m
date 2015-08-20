@@ -90,10 +90,14 @@
 
 -(void) autoLogin {
     
+    NSLog(@"autoLogin");
     
     _btnLogin.enabled = YES;
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    [ud removeObjectForKey:@"identity_id"];  // KEY_Iを削除する
     
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
@@ -130,7 +134,7 @@
         
         NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
         
-        NSLog(@"picture:%@,username:%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"],[[NSUserDefaults standardUserDefaults] valueForKey:@"username"]);
+        NSLog(@"picture:%@,username:%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"],[[NSUserDefaults standardUserDefaults] valueForKey:@"username"]);
         
         NSDictionary * dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
         NSLog(@"defualts:%@", dic);
