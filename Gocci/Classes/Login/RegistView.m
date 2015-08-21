@@ -267,9 +267,7 @@
                  
                  [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
                  
-                 credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
-                 //master
-                 //credentialsProvider.logins = @{ @"login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                 credentialsProvider.logins = @{ @"login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
                  
                  [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
                      // Your handler code heredentialsProvider.identityId;
