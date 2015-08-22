@@ -14,6 +14,7 @@
 #import  "TWMessageBarManager.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
+#import <AWSS3/AWSS3.h>
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -189,6 +190,8 @@
         NSLog(@"accesskey:%@,secretkey:%@,sessionkey:%@",dele.accesskey,dele.secretkey,dele.sessionkey);
         return nil;
     }];
+    
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
     
@@ -401,6 +404,12 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     application.applicationIconBadgeNumber = numberOfNewMessages;
     [ud synchronize];
     
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
+  completionHandler:(void (^)())completionHandler {
+    /* Store the completion handler.*/
+    [AWSS3TransferUtility interceptApplication:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
 
 

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF54EFDE19149A1800025DC8"
-               BuildableName = "Gocci.app"
-               BlueprintName = "Gocci"
+               BuildableName = "GocciTest.app"
+               BlueprintName = "GocciTest"
                ReferencedContainer = "container:Gocci.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF54EFDE19149A1800025DC8"
-            BuildableName = "Gocci.app"
-            BlueprintName = "Gocci"
+            BuildableName = "GocciTest.app"
+            BlueprintName = "GocciTest"
             ReferencedContainer = "container:Gocci.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -77,8 +77,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF54EFDE19149A1800025DC8"
-            BuildableName = "Gocci.app"
-            BlueprintName = "Gocci"
+            BuildableName = "GocciTest.app"
+            BlueprintName = "GocciTest"
             ReferencedContainer = "container:Gocci.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -96,8 +96,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF54EFDE19149A1800025DC8"
-            BuildableName = "Gocci.app"
-            BlueprintName = "Gocci"
+            BuildableName = "GocciTest.app"
+            BlueprintName = "GocciTest"
             ReferencedContainer = "container:Gocci.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

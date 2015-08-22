@@ -1001,11 +1001,11 @@ static SCRecorder *_recorder;
              AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              
              //Transfermanagerの起動
-             
+             /*
              AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
              
              AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-             uploadRequest.bucket = @"gocci.movies.bucket.jp";
+             uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
              uploadRequest.key = movieFileForS3;
              uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
              uploadRequest.contentType = @"video/mp4";
@@ -1016,8 +1016,46 @@ static SCRecorder *_recorder;
                      }
                  });
              };
+             */
+             NSURL *fileURL = dele.assetURL;
              
-             [self upload:uploadRequest];
+             AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+             expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
+                 });
+             };
+             
+             AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     // Do something e.g. Alert a user for transfer completion.
+                     // On failed uploads, `error` contains the error object.
+                 });
+             };
+             
+             AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+             [[transferUtility uploadFile:fileURL
+                                   bucket:@"gocci.movies.bucket.jp-test"
+                                      key:movieFileForS3
+                              contentType:@"video/mp4"
+                               expression:expression
+                         completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+                 if (task.error) {
+                     NSLog(@"Error: %@", task.error);
+                 }
+                 if (task.exception) {
+                     NSLog(@"Exception: %@", task.exception);
+                 }
+                 if (task.result) {
+                     AWSS3TransferUtilityUploadTask *uploadTask = task.result;
+                     NSLog(@"success:%@",task.result);
+                     // Do something with uploadTask.
+                 }
+                 
+                 return nil;
+             }];
+             
+             //[self upload:uploadRequest];
              
              //Initiarize
              appDelegate.stringTenmei = @"";

@@ -23,6 +23,7 @@
 #import "AFHTTPRequestOperation.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
+#import <AWSS3/AWSS3.h>
 
 
 #define kActiveLogin @"kActiveLogin"
@@ -52,8 +53,6 @@
     
     _button.layer.borderColor = [UIColor grayColor].CGColor;
     _button.layer.borderWidth = 0.5f;
-    
-    
     
     // 初回起動時のみの動作
     AppDelegate *appDelegate = [[AppDelegate alloc]init];
@@ -96,8 +95,6 @@
     _btnRegist.enabled = YES;
     [bgBlur removeFromSuperview];
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"identity_id"];  // KEY_Iを削除する
     
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
