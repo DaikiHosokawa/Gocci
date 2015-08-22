@@ -101,13 +101,6 @@ typedef NS_ENUM(NSInteger, AWSDynamoDBObjectMapperSaveBehavior) {
 + (NSString *)rangeKeyAttribute;
 
 /**
- Returns the name of the attribute used for veresion control.
-
- @return A version attribute name.
- */
-+ (NSString *)versionAttribute;
-
-/**
  Returns an array of `NSString`s for the names of attributes that need to be ignored.
 
  @return An array of attribute names.
@@ -458,6 +451,13 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 @property (nonatomic, strong) NSNumber *scanIndexForward;
 
 /**
+ The hash attribute name used as hashKeyConditions. If nil, the class uses the return value of `hashKeyAttribute` in user-defined Object Mapper Class.
+ 
+ You should set this value when query a global secondary index where the index hash attribute name is different from table's hash attribute name.
+ */
+@property (nonatomic, strong) NSString *hashKeyAttribute;
+
+/**
  The value of the hash key.
  */
 @property (nonatomic, strong) id hashKeyValues;
@@ -503,6 +503,11 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  The limit.
  */
 @property (nonatomic, strong) NSNumber *limit;
+
+/**
+ The index name.
+ */
+@property (nonatomic, strong) NSString *indexName;
 
 @end
 

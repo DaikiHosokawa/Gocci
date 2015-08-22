@@ -112,6 +112,7 @@
                 [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
                 [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
                 [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+        
                 
                 //ここをログインのところに追加
                 // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
