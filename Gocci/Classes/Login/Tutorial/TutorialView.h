@@ -10,6 +10,7 @@
 @protocol TutorialViewDelegate <NSObject>
 
 - (void)tutorialDidFinish:(TutorialView *)view;
+- (void)goSNS:(TutorialView *)view;
 
 @end
 
@@ -34,5 +35,7 @@
  *  チュートリアル画面の表示を終了
  */
 - (void)dismiss;
+
+
 
 @end

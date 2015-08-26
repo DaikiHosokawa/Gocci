@@ -34,6 +34,7 @@
     tutorialView.pageControl.currentPageIndicatorTintColor = [UIColor app_tutorialLightGrayColor];
     tutorialView.pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:0.0 alpha:0.1];
     
+    /*
     // 「Gocci を始める」ボタン 見た目のカスタマイズ
     tutorialView.startButton.frame = CGRectMake(24.0,
                                                view.frame.size.height - 32.0 - 48.0,
@@ -45,20 +46,21 @@
     tutorialView.startButton.layer.borderColor = [UIColor app_tutorialDarkGrayColor].CGColor;
     tutorialView.startButton.layer.borderWidth = 1.0;
     tutorialView.startButton.layer.cornerRadius = 3.0;
+    */
     
     // ウォークスルーの各画面
     TutorialPageView *page1 = [TutorialPageView viewWithNibName:@"TutorialPage1"];
     TutorialPageView *page2 = [TutorialPageView viewWithNibName:@"TutorialPage2"];
-    //TutorialPageView *page3 = [TutorialPageView viewWithNibName:@"TutorialPage3"];
-    TutorialPageView *page4 = [TutorialPageView viewWithNibName:@"TutorialPage4"];
+    TutorialPageView *page3 = [TutorialPageView viewWithNibName:@"TutorialPage3"];
+   // TutorialPageView *page4 = [TutorialPageView viewWithNibName:@"TutorialPage4"];
     
     CGFloat contentWidth = 0.0;
-    for (TutorialPageView *page in @[page1, page2,  page4]) {
+    for (TutorialPageView *page in @[page1, page2,page3]) {
         page.frame = CGRectMake(contentWidth,
                                 0.0,
                                 tutorialView.scrollView.frame.size.width,
                                 tutorialView.pageControl.frame.origin.y);
-        [page setup];
+       [page setup];
         LOG(@"page.frame=%@", NSStringFromCGRect(page.frame));
         [tutorialView.scrollView addSubview:page];
         
@@ -67,6 +69,14 @@
     
     tutorialView.scrollView.contentSize = CGSizeMake(contentWidth, tutorialView.scrollView.frame.size.height);
     [view addSubview:tutorialView];
+    
+    // デフォルトの通知センターを取得する
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    // 通知センターに通知要求を登録する
+    // この例だと、通知センターに"Tuchi"という名前の通知がされた時に、
+    // hogeメソッドを呼び出すという通知要求の登録を行っている。
+    [nc addObserver:self selector:@selector(hoge:) name:@"Tuchi" object:nil];
     
     return tutorialView;
 }
@@ -92,9 +102,20 @@
  */
 - (IBAction)onStartButton:(id)sender
 {
+    //これはTutorialViewのtutorialDidFinishを呼ぶ(SingupとTimeline遷移の時はすべてこれ)
     if ([self.tutorialDelegate respondsToSelector:@selector(tutorialDidFinish:)]) {
         [self.tutorialDelegate tutorialDidFinish:self];
     }
+}
+
+// 通知と値を受けるhogeメソッド
+-(void)hoge{
+    //これはTutorialViewのtutorialDidFinishを呼ぶ(SingupとTimeline遷移の時はすべてこれ)
+    NSLog(@"ここは呼ばれてる");
+    if ([self.tutorialDelegate respondsToSelector:@selector(goSNS:)]) {
+        [self.tutorialDelegate goSNS:self];
+    }
+    
 }
 
 

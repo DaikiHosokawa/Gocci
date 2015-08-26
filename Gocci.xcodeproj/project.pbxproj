@@ -193,6 +193,8 @@
 		952D25121A9B9EC800C354DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952D24EB1A9B9EC800C354DF /* Main.storyboard */; };
 		952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */; };
 		952D25171A9B9F4700C354DF /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D25161A9B9F4700C354DF /* NullSafe.m */; };
+		953B1BDD1B8C349B00AEE0ED /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1BDC1B8C349B00AEE0ED /* TutorialViewController.m */; };
+		953B1BE01B8CB0E800AEE0ED /* SNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1BDF1B8CB0E800AEE0ED /* SNSViewController.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
@@ -249,6 +251,7 @@
 		95E709211B889EA1001B6EDA /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E709111B889EA1001B6EDA /* AWSSNS.framework */; };
 		95E709221B889EA1001B6EDA /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E709121B889EA1001B6EDA /* AWSSQS.framework */; };
 		95E709241B889EA7001B6EDA /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E709231B889EA7001B6EDA /* AWSCognito.framework */; };
+		95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E709751B8C0E70001B6EDA /* SplashViewController.m */; };
 		95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5121AF9103B006FD54E /* FollowListCell.m */; };
 		95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5131AF9103B006FD54E /* FollowListCell.xib */; };
 		95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5151AF9103B006FD54E /* FollowListViewController.m */; };
@@ -631,6 +634,10 @@
 		952D24ED1A9B9EC800C354DF /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		952D24EE1A9B9EC800C354DF /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
 		952D25161A9B9F4700C354DF /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		953B1BDB1B8C349B00AEE0ED /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		953B1BDC1B8C349B00AEE0ED /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		953B1BDE1B8CB0E800AEE0ED /* SNSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSViewController.h; sourceTree = "<group>"; };
+		953B1BDF1B8CB0E800AEE0ED /* SNSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSViewController.m; sourceTree = "<group>"; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -705,6 +712,8 @@
 		95E709111B889EA1001B6EDA /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSNS.framework; sourceTree = "<group>"; };
 		95E709121B889EA1001B6EDA /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSSQS.framework; sourceTree = "<group>"; };
 		95E709231B889EA7001B6EDA /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
+		95E709741B8C0E70001B6EDA /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		95E709751B8C0E70001B6EDA /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		95EEC5111AF9103B006FD54E /* FollowListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListCell.h; sourceTree = "<group>"; };
 		95EEC5121AF9103B006FD54E /* FollowListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowListCell.m; sourceTree = "<group>"; };
 		95EEC5131AF9103B006FD54E /* FollowListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowListCell.xib; sourceTree = "<group>"; };
@@ -1279,6 +1288,12 @@
 				53B942AC1AB42BE0000150C4 /* RegistView35.xib */,
 				53B942AE1AB42D11000150C4 /* RegistView47.xib */,
 				53B942B01AB42D1F000150C4 /* RegistView55.xib */,
+				95E709741B8C0E70001B6EDA /* SplashViewController.h */,
+				95E709751B8C0E70001B6EDA /* SplashViewController.m */,
+				953B1BDB1B8C349B00AEE0ED /* TutorialViewController.h */,
+				953B1BDC1B8C349B00AEE0ED /* TutorialViewController.m */,
+				953B1BDE1B8CB0E800AEE0ED /* SNSViewController.h */,
+				953B1BDF1B8CB0E800AEE0ED /* SNSViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2120,6 +2135,7 @@
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
+				953B1BDD1B8C349B00AEE0ED /* TutorialViewController.m in Sources */,
 				956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */,
 				952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */,
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
@@ -2145,6 +2161,7 @@
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
 				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
 				95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */,
+				95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */,
 				53B942A11AB40414000150C4 /* STTwitterOS.m in Sources */,
 				952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */,
 				952D25171A9B9F4700C354DF /* NullSafe.m in Sources */,
@@ -2197,6 +2214,7 @@
 				952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */,
 				952D23881A9B95E800C354DF /* SDWebImageManager.m in Sources */,
 				952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */,
+				953B1BE01B8CB0E800AEE0ED /* SNSViewController.m in Sources */,
 				95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */,
 				952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */,
 				952D23681A9B95E800C354DF /* AFSecurityPolicy.m in Sources */,

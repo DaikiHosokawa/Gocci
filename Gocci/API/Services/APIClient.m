@@ -489,7 +489,6 @@ static APIClient *_sharedInstance = nil;
                                 parameters:params
                                    success:^(NSURLSessionDataTask *task, id responseObject) {
                                        handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                       NSLog(@"%@",responseObject);
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                    }];
