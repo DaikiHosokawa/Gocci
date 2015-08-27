@@ -9,6 +9,7 @@
 #import "BFPaperCheckbox.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
+#import "SNSViewController.h"
 
 @interface TutorialPageView()<UITextFieldDelegate,BFPaperCheckboxDelegate>
 
@@ -82,19 +83,19 @@
     // キーボードを隠す
     [self endEditing:YES];
     /*
-    if (![self _validateCheckboxes]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
-    }
+     if (![self _validateCheckboxes]) {
+     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"利用規約に同意してください"
+     message:nil
+     delegate:nil
+     cancelButtonTitle:nil
+     otherButtonTitles:@"OK", nil];
+     [alert show];
+     }
      */
     [self signup];
     
     return YES;
-   
+    
 }
 
 
@@ -174,16 +175,7 @@
                      return nil;
                  }];
                  
-                 // 通知の受取側に送る値を作成する
-                 NSDictionary *dic = [NSDictionary dictionaryWithObject:@"HOGE" forKey:@"KEY"];
-                 
-                 // 通知を作成する
-                 NSNotification *n =
-                 [NSNotification notificationWithName:@"Tuchi" object:self userInfo:dic];
-                 
-                 // 通知実行！
-                 [[NSNotificationCenter defaultCenter] postNotification:n];
-
+                
              }else if([result[@"code"] integerValue] != 200) {
                  
                  //success

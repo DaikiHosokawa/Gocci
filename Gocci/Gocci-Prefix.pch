@@ -29,4 +29,4 @@
 
 /** API サーバの URL */
 #define API_BASE_URL_TEST @"http://test.api.gocci.me/v1/mobile/"
-#define API_BASE_URL @"https://test.api.gocci.me/v1/mobile/"
+//#define API_BASE_URL @"https://test.api.gocci.me/v1/mobile/"
