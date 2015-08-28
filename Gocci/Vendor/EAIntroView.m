@@ -160,7 +160,7 @@
         //to be safe, set to the biggest index
         _currentPageIndex = _pages.count - 1;
         
-        [self finishIntroductionAndRemoveSelf];
+       // [self finishIntroductionAndRemoveSelf];
     }
 }
 
@@ -185,7 +185,7 @@
 }
 
 - (void)skipIntroduction {
-    [self hideWithFadeOutDuration:0.3];
+   //[self hideWithFadeOutDuration:0.3];
 }
 
 - (void)notifyDelegateWithPreviousPage:(NSUInteger)previousPageIndex andCurrentPage:(NSUInteger)currentPageIndex {
@@ -941,6 +941,7 @@ CGFloat easeOutValue(CGFloat value) {
     }];
 }
 
+/*
 - (void)hideWithFadeOutDuration:(CGFloat)duration {
     [UIView animateWithDuration:duration animations:^{
         self.alpha = 0;
@@ -948,6 +949,7 @@ CGFloat easeOutValue(CGFloat value) {
 		[self finishIntroductionAndRemoveSelf];
 	}];
 }
+ */
 
 - (void)setCurrentPageIndex:(NSUInteger)currentPageIndex {
     [self setCurrentPageIndex:currentPageIndex animated:NO];
@@ -969,7 +971,7 @@ CGFloat easeOutValue(CGFloat value) {
         return;
     }
     if(self.currentPageIndex + 1 >= [self.pages count]) {
-        [self hideWithFadeOutDuration:0.3];
+       // [self hideWithFadeOutDuration:0.3];
     } else {
         [self setCurrentPageIndex:self.currentPageIndex + 1 animated:YES];
     }

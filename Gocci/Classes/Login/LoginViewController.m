@@ -12,7 +12,6 @@
 #import "TimelineTableViewController.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
-#import "TutorialView.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 #import "SigninView.h"
@@ -32,11 +31,10 @@
 @import Social;
 
 @interface LoginViewController ()
-<TutorialViewDelegate, FBLoginViewDelegate> {
+< FBLoginViewDelegate> {
     UIImageView *bgBlur;
 }
 
-@property (nonatomic, strong) TutorialView *tutorialView;
 
 @property (nonatomic, retain) IBOutlet UIButton *btnRegist;
 @property (nonatomic, retain) IBOutlet UIButton *btnLogin;
@@ -53,13 +51,7 @@
     
     _button.layer.borderColor = [UIColor grayColor].CGColor;
     _button.layer.borderWidth = 0.5f;
-    
-    // 初回起動時のみの動作
-    AppDelegate *appDelegate = [[AppDelegate alloc]init];
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([appDelegate isFirstRun]) {
-        self.tutorialView = [TutorialView showInView:self.view delegate:self];
-    }
+  
     
     //テスト
     //テスト
@@ -267,15 +259,6 @@
 
 #pragma mark - TutorialView Delegate
 
-- (void)tutorialDidFinish:(TutorialView *)view
-{
-    // 位置情報サービス利用の利用確認
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [appDelegate checkGPS];
-    
-    // チュートリアル終了
-    [self.tutorialView dismiss];
-}
 
 
 @end

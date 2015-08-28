@@ -7,17 +7,18 @@
 //
 
 #import "TutorialViewController.h"
-#import "TutorialView.h"
-#import "TutorialPageView.h"
+
 
 static NSString * const sampleDescription1 = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 static NSString * const sampleDescription2 = @"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.";
 static NSString * const sampleDescription3 = @"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.";
 static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.";
 
-@interface TutorialViewController ()<TutorialViewDelegate>
+@interface TutorialViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) TutorialView *tutorialView;
+
+@property (weak, nonatomic)  UITextField *usernameField;
+
 
 @end
 
@@ -33,14 +34,15 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
     [super viewDidLoad];
     
     // using self.navigationController.view - to display EAIntroView above navigation bar
-    rootView = self.navigationController.view;
+    rootView = self.view;
     
+    [self showIntroWithCustomViewFromNib];
 }
 
 -(void)viewDidAppear{
     [super viewDidAppear:YES];
     
-    [self showIntroWithCustomViewFromNib];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -49,13 +51,8 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
 
 #pragma mark - TutorialView Delegate
 
-- (void)goSignin:(TutorialView *)view
-{
-    //ここにSigninへの遷移(1ページ目)
-    [self.tutorialView dismiss];
-}
 
-- (void)goSNS:(TutorialView *)view
+- (void)goSNS
 {
     
     NSLog(@"call goSNS method");
@@ -65,6 +62,8 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
 }
 
 - (void)showIntroWithCustomViewFromNib {
+    
+    NSLog(@"showTutorial");
     
     EAIntroPage *page1 = [EAIntroPage page];
     page1.title = @"Hello world";
@@ -83,6 +82,7 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
 
     
     EAIntroView *intro = [[EAIntroView alloc] initWithFrame:rootView.bounds andPages:@[page1,page2,page3]];
+    intro.pageControlY = 250.f;
     [intro setDelegate:self];
     
     UISwitch *switchControl = (UISwitch *)[page3.pageView viewWithTag:1];
@@ -90,13 +90,35 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
         [switchControl addTarget:self action:@selector(switchFlip:) forControlEvents:UIControlEventValueChanged];
     }
     
+    _usernameField = (UITextField *)[page3.pageView viewWithTag:2];
+    if(_usernameField){
+        [_usernameField addTarget:self action:@selector(done:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    }
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn setFrame:CGRectMake(0, 0, 250, 40)];
+    [btn setTitle:@"すでにアカウントお持ちの方は..." forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.layer.borderWidth = 2.f;
+    btn.layer.cornerRadius = 10;
+    btn.layer.borderColor = [[UIColor whiteColor] CGColor];
+    intro.skipButton = btn;
+    intro.skipButtonY = 60.f;
+    intro.skipButtonAlignment = EAViewAlignmentCenter;
+    
+    [intro setDelegate:self];
     [intro showInView:rootView animateDuration:0.1];
     _intro = intro;
     
 }
 
 
+- (IBAction)tapButton:(id)sender {
+    
+    [self showIntroWithCustomViewFromNib];
+}
+
 - (IBAction)switchFlip:(id)sender {
+    
     UISwitch *switchControl = (UISwitch *) sender;
     NSLog(@"%@", switchControl.on ? @"On" : @"Off");
     
@@ -109,6 +131,19 @@ static NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta no
     } else {
         [_intro setScrollingEnabled:YES];
     }
+    
 }
 
+/**
+ * キーボードでReturnキーが押されたとき
+ * @param textField イベントが発生したテキストフィールド
+ */
+- (void)done:(id)sender
+{
+    NSLog(@"text:%@",_usernameField.text);
+    // キーボードを隠す
+    [sender resignFirstResponder];
+    
+    [self goSNS];
+}
 @end

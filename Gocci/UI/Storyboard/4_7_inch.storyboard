@@ -218,7 +218,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_topbar.png" id="UIq-9H-UmH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1334-750-g" id="UIq-9H-UmH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -249,6 +249,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hVv-iL-1Nc">
+                                <rect key="frame" x="161" y="464" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Butoon">
+                                    <color key="titleColor" red="0.1764705882" green="0.61960784310000006" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapButton:" destination="gh5-lU-fmj" eventType="touchUpInside" id="Qow-Wv-bbr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -288,23 +299,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfv-6e-s18">
-                                <rect key="frame" x="137" y="261" width="46" height="30"/>
+                                <rect key="frame" x="81" y="261" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="facebook">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.68627450980000004" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rwH-aP-ZpT">
-                                <rect key="frame" x="137" y="358" width="46" height="30"/>
+                                <rect key="frame" x="81" y="358" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="連携なし">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hFs-Df-3Ef">
-                                <rect key="frame" x="137" y="299" width="46" height="30"/>
+                                <rect key="frame" x="81" y="299" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="twitter">
+                                    <color key="titleColor" red="0.94901960780000005" green="0.23529411759999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1270,6 +1284,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1334-750-g" width="750" height="1334"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="btn_delete_white" width="30" height="30"/>
@@ -1291,7 +1306,6 @@
         <image name="tabbaritem_profile.png" width="30" height="30"/>
         <image name="tabbaritem_search.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
-        <image name="test_topbar.png" width="640" height="64"/>
         <image name="ui_black.png" width="32" height="32"/>
         <image name="その他" width="151" height="101"/>
         <image name="予約をする" width="151" height="101"/>
@@ -1304,11 +1318,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ElI-qq-NoV"/>
         <segue reference="5UA-AG-vBr"/>
-        <segue reference="hp2-GU-Cwb"/>
+        <segue reference="ElI-qq-NoV"/>
         <segue reference="f7P-xo-Phh"/>
         <segue reference="77d-3O-O9c"/>
+        <segue reference="hp2-GU-Cwb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
