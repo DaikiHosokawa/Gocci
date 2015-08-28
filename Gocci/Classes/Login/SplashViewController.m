@@ -11,7 +11,7 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 #import "SVProgressHUD.h"
-#import "TutorialViewController.h"
+#import "TutorialPageViewController.h"
 
 @implementation SplashViewController
 
@@ -112,7 +112,7 @@
         }else{
             NSLog(@"tutorialへ");
             // FirstScene と SecondScene が同じ Storyboard にある場合
-            TutorialViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
+            TutorialPageViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
             [self presentViewController:secondViewController animated:YES completion:nil];
         }
     }

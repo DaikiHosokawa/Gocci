@@ -20,6 +20,7 @@
 @implementation TutorialPageViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // instantiate the view controlles from the storyboard
@@ -31,10 +32,41 @@
     
     UIViewController *page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
     
+    self.usernameField = (UITextField *)[page3.view viewWithTag:1];
+    if(self.usernameField) {
+        [self.usernameField addTarget:self action:@selector(insertUsername:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    }
+    
+    UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
+    if(ruleButton) {
+        [ruleButton addTarget:self action:@selector(ruleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:3];
+    if(privacyButton) {
+        [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    UIButton *FacebookButton = (UIButton *)[page4.view viewWithTag:1];
+    if(FacebookButton) {
+        [FacebookButton addTarget:self action:@selector(FacebookTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    UIButton *TwitterButton = (UIButton *)[page4.view viewWithTag:2];
+    if(TwitterButton) {
+        [TwitterButton addTarget:self action:@selector(TwitterTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    UIButton *notAuthButton = (UIButton *)[page4.view viewWithTag:3];
+    if(notAuthButton) {
+        [notAuthButton addTarget:self action:@selector(unAuthTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     // load the view controllers in our pages array
     self.pages = [[NSArray alloc] initWithObjects:page1, page2, page3, page4, nil];
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+   
     [self.pageController setDelegate:self];
     [self.pageController setDataSource:self];
     
@@ -105,6 +137,32 @@
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
         
     }
+}
+
+- (void)insertUsername:(id)sender
+{
+    [sender resignFirstResponder];
+    NSLog(@"text:%@",self.usernameField.text);
+}
+
+- (void)ruleButtonTapped:(id)sender{
+    NSLog(@"rule");
+}
+
+- (void)privacyButtonTapped:(id)sender{
+   NSLog(@"privacy");
+}
+
+- (void)FacebookTapped:(id)sender{
+    NSLog(@"Facebook");
+}
+
+- (void)TwitterTapped:(id)sender{
+    NSLog(@"Twitter");
+}
+
+- (void)unAuthTapped:(id)sender{
+    NSLog(@"unAuth");
 }
 
 

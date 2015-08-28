@@ -11,6 +11,6 @@
 @interface TutorialPageViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-
+@property(weak,nonatomic) UITextField *usernameField;
 
 @end
