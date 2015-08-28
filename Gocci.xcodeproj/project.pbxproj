@@ -211,6 +211,7 @@
 		953B1C081B8EE09F00AEE0ED /* title2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 953B1BF91B8EE09F00AEE0ED /* title2@2x.png */; };
 		953B1C091B8EE09F00AEE0ED /* title3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 953B1BFA1B8EE09F00AEE0ED /* title3@2x.png */; };
 		953B1C0A1B8EE09F00AEE0ED /* title4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 953B1BFB1B8EE09F00AEE0ED /* title4@2x.png */; };
+		953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
@@ -671,6 +672,8 @@
 		953B1BF91B8EE09F00AEE0ED /* title2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title2@2x.png"; sourceTree = "<group>"; };
 		953B1BFA1B8EE09F00AEE0ED /* title3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title3@2x.png"; sourceTree = "<group>"; };
 		953B1BFB1B8EE09F00AEE0ED /* title4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title4@2x.png"; sourceTree = "<group>"; };
+		953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
+		953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -1331,6 +1334,8 @@
 				53B942B01AB42D1F000150C4 /* RegistView55.xib */,
 				95E709741B8C0E70001B6EDA /* SplashViewController.h */,
 				95E709751B8C0E70001B6EDA /* SplashViewController.m */,
+				953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */,
+				953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */,
 				953B1BDB1B8C349B00AEE0ED /* TutorialViewController.h */,
 				953B1BDC1B8C349B00AEE0ED /* TutorialViewController.m */,
 				953B1BDE1B8CB0E800AEE0ED /* SNSViewController.h */,
@@ -2259,6 +2264,7 @@
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
 				952D23991A9B95E800C354DF /* UIAlertView+AFNetworking.m in Sources */,
+				953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */,
 				952D24AF1A9B9D3300C354DF /* TimelineCell.m in Sources */,
 				952D247F1A9B9D3300C354DF /* UIColor+App.m in Sources */,
 				952D24921A9B9D3300C354DF /* usersTableViewController.m in Sources */,
