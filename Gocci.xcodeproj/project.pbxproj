@@ -40,7 +40,6 @@
 		951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5501B36B27A0057F081 /* CAPSPageMenu.m */; };
 		951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */; };
 		951AD5591B36B6180057F081 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5581B36B6180057F081 /* EveryPost.m */; };
-		951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951AD55A1B36BBDC0057F081 /* Parse.framework */; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -376,7 +375,6 @@
 		951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
 		951AD5571B36B6180057F081 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		951AD5581B36B6180057F081 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
-		951AD55A1B36BBDC0057F081 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -816,7 +814,6 @@
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
-				951AD55B1B36BBDC0057F081 /* Parse.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
 				95E7091D1B889EA1001B6EDA /* AWSMobileAnalytics.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
@@ -981,7 +978,6 @@
 				95F207291B3C260A0074612F /* FBSDKLoginKit.framework */,
 				95F207241B3BFAD90074612F /* FBSDKShareKit.framework */,
 				95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */,
-				951AD55A1B36BBDC0057F081 /* Parse.framework */,
 				959CF8E31B26CF0D00CDB492 /* WYPopoverController */,
 				95E3CD491B0DCA4200497EB9 /* Classes */,
 				958E31541B0589F300863EDF /* GoogleMaps.bundle */,

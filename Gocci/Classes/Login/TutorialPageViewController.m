@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
     // instantiate the view controlles from the storyboard
     UIViewController *page1 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
@@ -41,6 +43,11 @@
     if(ruleButton) {
         [ruleButton addTarget:self action:@selector(ruleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    self.popupView = (UIView *)[page3.view viewWithTag:4];
+    self.popupWebView = (UIWebView *)[page3.view viewWithTag:5];
+    self.popupCancel = (UIButton *)[page3.view viewWithTag:6];
+    self.popuptitle = (UILabel *)[page3.view viewWithTag:7];
     
     UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:3];
     if(privacyButton) {
@@ -139,32 +146,131 @@
     }
 }
 
+
+///////page3
+
 - (void)insertUsername:(id)sender
 {
     [sender resignFirstResponder];
     NSLog(@"text:%@",self.usernameField.text);
+    
+    if (self.usernameField.text.length == 0) {
+        
+        // Signup processing
+        
+    }
 }
+
+
+
 
 - (void)ruleButtonTapped:(id)sender{
     NSLog(@"rule");
+    
+    self.popuptitle.text = @"利用規約";
+    
+    self.popupView.hidden = NO;
+    self.popupWebView.delegate = self;
+    self.popupWebView.scalesPageToFit = YES;
+    [self.popupView addSubview:self.popupWebView];
+    
+    NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [self.popupWebView loadRequest:req];
+    
+    // 画像を指定したボタン例文
+    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];  // ボタンにする画像を生成する
+    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    // ボタンが押された時にhogeメソッドを呼び出す
+    [self.popupCancel addTarget:self
+                        action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
+
+
 
 - (void)privacyButtonTapped:(id)sender{
    NSLog(@"privacy");
+    
+    self.popuptitle.text = @"プライバシーポリシー";
+    
+    self.popupView.hidden = NO;
+    self.popupWebView.delegate = self;
+    self.popupWebView.scalesPageToFit = YES;
+    [self.popupView addSubview:self.popupWebView];
+    
+    NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/privacy/"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [self.popupWebView loadRequest:req];
+    
+    // 画像を指定したボタン例文
+    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];  // ボタンにする画像を生成する
+    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    // ボタンが押された時にhogeメソッドを呼び出す
+    [self.popupCancel addTarget:self
+                        action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
+
+///////page4
+
+
+
 
 - (void)FacebookTapped:(id)sender{
+    if  (self.usernameField.text.length != 0)
+    {
     NSLog(@"Facebook");
+        
+        //Facebook Link processing
+        
+    }else{
+        NSString *alertMessage = @"ユーザー名を入力してください";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
+    }
 }
+
+
+
 
 - (void)TwitterTapped:(id)sender{
-    NSLog(@"Twitter");
+    if  (self.usernameField.text.length != 0)
+    {
+        NSLog(@"Twitter");
+        
+        //Twitter Link processing
+        
+        
+        
+        
+    }else{
+        NSString *alertMessage = @"ユーザー名を入力してください";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
+    }
 }
+
+
 
 - (void)unAuthTapped:(id)sender{
-    NSLog(@"unAuth");
+    if  (self.usernameField.text.length != 0)
+    {
+        NSLog(@"unAuth");
+        
+        //unAuth and go Timeline processing
+        
+        
+    }else{
+        NSString *alertMessage = @"ユーザー名を入力してください";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
+    }
 }
 
+
+
+-(void)closePopupView{
+    self.popupView.hidden = YES;
+}
 
 /*
 #pragma mark - Navigation
@@ -175,5 +281,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

@@ -22,26 +22,31 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     
+        
+    //identity_id is exist
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
-        [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error) {
+        //execute Login API
+        [APIClient Login:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] handler:^(id result, NSUInteger code, NSError *error)
+        {
             NSLog(@"Login result:%@ error:%@",result,error);
             
+            //Login API success
             if([result[@"code"] integerValue] == 200){
                 
                 [SVProgressHUD show];
                 
-                //NSString* username = [result objectForKey:@"username"];
-                
+                //save user data
                 NSString* username = [result objectForKey:@"username"];
                 NSString* picture = [result objectForKey:@"profile_img"];
                 NSString* user_id = [result objectForKey:@"user_id"];
+                NSString* token = [result objectForKey:@"token"];
                 [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
                 [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
                 [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
                 
-                //ここをログインのところに追加
-                // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+                //save badge num
                 int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
                 NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
                 NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
@@ -50,42 +55,54 @@
                 application.applicationIconBadgeNumber = numberOfNewMessages;
                 [ud synchronize];
                 
+                //refresh Cognito
+                
                 [self performSegueWithIdentifier:@"goTimeline" sender:self];
             }
         }];
         
     }else{
         
+        //identity_id is empty case
+        
+        //prepare os string
         NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
         
-        NSLog(@"picture:%@,username:%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"],[[NSUserDefaults standardUserDefaults] valueForKey:@"username"]);
-        
-        NSDictionary * dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-        NSLog(@"defualts:%@", dic);
-        
+        //exist username & pic
         if (([[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
             
+            //execute Conversion API
             [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error) {
                 
                 NSLog(@"Conversion result:%@ error:%@",result,error);
                 
+                //Success
                 if([result[@"code"] integerValue] == 200){
                     [SVProgressHUD show];
                     
+                    //save user data
                     NSString* username = [result objectForKey:@"username"];
                     NSString* picture = [result objectForKey:@"profile_img"];
                     NSString* user_id = [result objectForKey:@"user_id"];
-                    NSString* identityID = [result objectForKey:@"identity_id"];
+                    NSString* identity_id = [result objectForKey:@"identity_id"];
+                    NSString* token = [result objectForKey:@"token"];
                     [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
                     [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
                     [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
-                    [[NSUserDefaults standardUserDefaults] setValue:identityID forKey:@"identity_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
+                    [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
+
+                    //save badge num
+                    int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+                    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+                    UIApplication *application = [UIApplication sharedApplication];
+                    application.applicationIconBadgeNumber = numberOfNewMessages;
+                    [ud synchronize];
                     
-                    NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
-                    [def setObject:result[@"username"] forKey:@"username"];
-                    [def setObject:result[@"identity_id"] forKey:@"identity_id"];
-                    [def setObject:result[@"token"] forKey:@"token"];
                     
+                    //refresh Cognito
                     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
                                                                                                                     identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
                     
@@ -110,10 +127,12 @@
                 
             }];
         }else{
+            
+            //Login & conversion is Failed
             NSLog(@"tutorialへ");
             // FirstScene と SecondScene が同じ Storyboard にある場合
-            TutorialPageViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
-            [self presentViewController:secondViewController animated:YES completion:nil];
+            TutorialPageViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
+            [self presentViewController:tutorialViewController animated:YES completion:nil];
         }
     }
     
