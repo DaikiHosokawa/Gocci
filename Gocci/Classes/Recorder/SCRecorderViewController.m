@@ -1001,23 +1001,6 @@ static SCRecorder *_recorder;
              
              AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              
-             //Transfermanagerの起動
-             /*
-             AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-             
-             AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-             uploadRequest.bucket = @"gocci.movies.bucket.jp-test";
-             uploadRequest.key = movieFileForS3;
-             uploadRequest.body = dele.assetURL; //日付_ユーザーID.mp4
-             uploadRequest.contentType = @"video/mp4";
-             uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     if (totalBytesExpectedToSend > 0) {
-                         NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                     }
-                 });
-             };
-             */
              NSURL *fileURL = dele.assetURL;
              
              AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];

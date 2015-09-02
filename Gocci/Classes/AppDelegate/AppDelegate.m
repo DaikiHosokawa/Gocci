@@ -165,7 +165,6 @@
     [application registerForRemoteNotificationTypes:remoteNotificationType];
 #endif
     
-    /*
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
                                                                                                     identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
     
@@ -181,13 +180,16 @@
     
     [[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(AWSTask *task){
         NSLog(@"identity_id:%@",credentialsProvider.identityId);
+        return nil;
+    }];
+    
+    [[credentialsProvider refresh] continueWithSuccessBlock:^id(AWSTask *task){
         dele.accesskey = credentialsProvider.accessKey;
         dele.secretkey = credentialsProvider.secretKey;
         dele.sessionkey = credentialsProvider.sessionKey;
         NSLog(@"accesskey:%@,secretkey:%@,sessionkey:%@",dele.accesskey,dele.secretkey,dele.sessionkey);
         return nil;
     }];
-    */
     
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
