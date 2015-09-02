@@ -19,7 +19,7 @@
     
     [super viewDidLoad];
     
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC));
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     
         
@@ -55,7 +55,26 @@
                 application.applicationIconBadgeNumber = numberOfNewMessages;
                 [ud synchronize];
                 
+                //create credentialProvider
+                AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
+                                                                                                                identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+                
+                AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
+                
+                [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+                
+                //unique provider insert
+                credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                
                 //refresh Cognito
+                [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
+                    // Your handler code heredentialsProvider.identityId;
+                    NSLog(@"logins: %@", credentialsProvider.logins);
+                    NSLog(@"task:%@",task);
+                    // return [self refresh];
+                    return nil;
+                }];
+
                 
                 [self performSegueWithIdentifier:@"goTimeline" sender:self];
             }
@@ -102,7 +121,7 @@
                     [ud synchronize];
                     
                     
-                    //refresh Cognito
+                    //create credentialProvider
                     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
                                                                                                                     identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
                     
@@ -111,8 +130,8 @@
                     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
                     
                     credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
-                    //master
-                    //credentialsProvider.logins = @{ @"login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                    
+                    //refresh and syncronize console
                     [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
                         // Your handler code heredentialsProvider.identityId;
                         NSLog(@"logins: %@", credentialsProvider.logins);

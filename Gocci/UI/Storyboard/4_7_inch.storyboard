@@ -228,7 +228,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="WtJ-63-Klv" kind="custom" identifier="goTimeline" id="5UA-AG-vBr"/>
-                        <segue destination="gUv-b3-mbV" kind="custom" id="BCY-bh-Te3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwb-Tb-s4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,6 +263,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="pageControl" destination="eYf-Ik-bM3" id="lCy-hP-XsD"/>
+                        <segue destination="ecw-Kh-kS9" kind="custom" identifier="goTimeline" id="e2P-5O-wQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aou-DN-Jnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,26 +306,33 @@
             <point key="canvasLocation" x="-4967.5" y="-2252.5"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="1zi-Bm-EBN">
+            <objects>
+                <viewController id="ecw-Kh-kS9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aYm-SJ-usy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ww9-Rh-zRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4414" y="-2239"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="vvP-DX-igN">
             <objects>
-                <viewController storyboardIdentifier="page3" id="Lav-CW-MEu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page3" hidesBottomBarWhenPushed="YES" id="Lav-CW-MEu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="icj-05-arI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザーネーム" minimumFontSize="17" id="vmn-Mr-BPS">
-                                <rect key="frame" x="39" y="430" width="296" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="vmn-Mr-BPS">
+                                <rect key="frame" x="39" y="390" width="296" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー名を入力してください" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V0z-mi-zbp">
-                                <rect key="frame" x="45" y="380" width="284" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocciへようこそ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oU0-mI-ZOJ">
                                 <rect key="frame" x="95" y="340" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

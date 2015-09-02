@@ -7,6 +7,9 @@
 //
 
 #import "TutorialPageViewController.h"
+#import "APIClient.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
 
 @interface TutorialPageViewController (){
     NSArray *pages;
@@ -34,15 +37,16 @@
     
     UIViewController *page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
     
-    self.usernameField = (UITextField *)[page3.view viewWithTag:1];
-    if(self.usernameField) {
-        [self.usernameField addTarget:self action:@selector(insertUsername:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    }
-    
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
     if(ruleButton) {
         [ruleButton addTarget:self action:@selector(ruleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    self.username = (UITextField *)[page3.view viewWithTag:3];
+    if(self.username) {
+        [self.username addTarget:self action:@selector(insertUsername:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    }
+
     
     self.popupView = (UIView *)[page3.view viewWithTag:4];
     self.popupWebView = (UIWebView *)[page3.view viewWithTag:5];
@@ -73,7 +77,7 @@
     self.pages = [[NSArray alloc] initWithObjects:page1, page2, page3, page4, nil];
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-   
+    
     [self.pageController setDelegate:self];
     [self.pageController setDataSource:self];
     
@@ -103,22 +107,26 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
-    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];                   // move the pageControl indicator to the next page
+    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];   // move the pageControl indicator to the next page
     
-    // check if we are at the end and decide if we need to present the next viewcontroller
-    if ( currentIndex < [self.pages count]-1) {
-        return [self.pages objectAtIndex:currentIndex+1];
         // return the next view controller
+        if(currentIndex==2 && [self.username.text length] == 0){
+            return  nil;
+        }
     
-        //check currentIndex==2 && username == nil → can't go index 3
+       // check if we are at the end and decide if we need to present the next viewcontroller
+       if ( currentIndex < [self.pages count]-1) {
+        return [self.pages objectAtIndex:currentIndex+1];
+    }
         //if failure return nil else return return [self.pages objectAtIndex:currentIndex+1];
-    } else {
+    else {
         return nil;                                                         // do nothing
     }
 }
 
 
 - (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
     
     NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
     [self.pageControl setCurrentPage:self.pageControl.currentPage-1];                   // move the pageControl indicator to the next page
@@ -149,19 +157,6 @@
 
 ///////page3
 
-- (void)insertUsername:(id)sender
-{
-    [sender resignFirstResponder];
-    NSLog(@"text:%@",self.usernameField.text);
-    
-    if (self.usernameField.text.length == 0) {
-        
-        // Signup processing
-        
-    }
-}
-
-
 
 
 - (void)ruleButtonTapped:(id)sender{
@@ -183,13 +178,13 @@
     [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
     // ボタンが押された時にhogeメソッドを呼び出す
     [self.popupCancel addTarget:self
-                        action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
+                         action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
 
 - (void)privacyButtonTapped:(id)sender{
-   NSLog(@"privacy");
+    NSLog(@"privacy");
     
     self.popuptitle.text = @"プライバシーポリシー";
     
@@ -207,7 +202,7 @@
     [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
     // ボタンが押された時にhogeメソッドを呼び出す
     [self.popupCancel addTarget:self
-                        action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
+                         action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 ///////page4
@@ -216,9 +211,11 @@
 
 
 - (void)FacebookTapped:(id)sender{
-    if  (self.usernameField.text.length != 0)
+    
+    
+    if  ([self.username.text length] == 0)
     {
-    NSLog(@"Facebook");
+        NSLog(@"Facebook");
         
         //Facebook Link processing
         
@@ -233,12 +230,12 @@
 
 
 - (void)TwitterTapped:(id)sender{
-    if  (self.usernameField.text.length != 0)
+    
+    if  ([self.username.text length] == 0)
     {
         NSLog(@"Twitter");
         
         //Twitter Link processing
-        
         
         
         
@@ -252,7 +249,8 @@
 
 
 - (void)unAuthTapped:(id)sender{
-    if  (self.usernameField.text.length != 0)
+    
+    if  ([self.username.text length] == 0)
     {
         NSLog(@"unAuth");
         
@@ -272,15 +270,109 @@
     self.popupView.hidden = YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(BOOL)textFieldShouldReturn:(UITextField*)textField{
+    
+    [self resignFirstResponder];
+    
+    NSLog(@"text:%@",textField.text);
+    
+    return YES;
 }
-*/
+
+-(void)insertUsername:(id)sender{
+    NSLog(@"text:%@",self.username.text);
+    
+    if (self.username.text.length != 0) {
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
+        
+        // execute Signup API
+        [APIClient Signup:self.username.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
+         {
+             
+             NSLog(@"register result: %@ error :%@", result, error);
+             
+             if (!error) {
+                 
+                 //success
+                 if ([result[@"code"] integerValue] == 200) {
+                     
+                     //save user data
+                     NSString* username = [result objectForKey:@"username"];
+                     NSString* picture = [result objectForKey:@"profile_img"];
+                     NSString* user_id = [result objectForKey:@"user_id"];
+                     NSString* identity_id = [result objectForKey:@"identity_id"];
+                     NSString* token = [result objectForKey:@"token"];
+                     [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                     [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
+                     [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
+                     [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
+                     [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
+                     
+                     //save badge num
+                     int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+                     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                     NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+                     UIApplication *application = [UIApplication sharedApplication];
+                     application.applicationIconBadgeNumber = numberOfNewMessages;
+                     [ud synchronize];
+                     
+                     
+                     //create credentialProvider
+                     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
+                                                                                                                     identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+                     
+                     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
+                     
+                     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+                     
+                     
+                     //unique provider insert
+                     credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
+                     
+                     //refresh and syncronize console
+                     [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
+                         // Your handler code heredentialsProvider.identityId;
+                         NSLog(@"logins: %@", credentialsProvider.logins);
+                         NSLog(@"task:%@",task);
+                         // return [self refresh];
+                         return nil;
+                     }];
+                     
+                     
+                 }else if([result[@"code"] integerValue] != 200) {
+                     
+                     //success
+                     UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                     [alrt show];
+                     //[self removeFromSuperview];
+                     
+                     
+                 }
+                 else {
+                     //fail
+                     UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                     [alrt show];
+                 }
+             }
+             
+         }];
+        
+    }
+}
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
