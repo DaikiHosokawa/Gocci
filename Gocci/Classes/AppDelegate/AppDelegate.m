@@ -180,6 +180,11 @@
     
     [[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(AWSTask *task){
         NSLog(@"identity_id:%@",credentialsProvider.identityId);
+        
+        return nil;
+    }];
+    
+    [[credentialsProvider refresh] continueWithSuccessBlock:^id(AWSTask *task){
         dele.accesskey = credentialsProvider.accessKey;
         dele.secretkey = credentialsProvider.secretKey;
         dele.sessionkey = credentialsProvider.sessionKey;
