@@ -276,6 +276,7 @@ static SCRecorder *_recorder;
                                       otherButtonTitles:@"OK", nil];
     FirstalertView.delegate       = self;
     FirstalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [[FirstalertView textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
     [FirstalertView show];
 }
 
