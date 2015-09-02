@@ -214,8 +214,6 @@
 		95E3CD591B0DCA4200497EB9 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E3CD501B0DCA4200497EB9 /* icon-success@2x.png */; };
 		95E3CD5A1B0DCA4200497EB9 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3CD521B0DCA4200497EB9 /* TWMessageBarManager.m */; };
 		95E3CD5B1B0DCA4200497EB9 /* TWMessageBarManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 95E3CD531B0DCA4200497EB9 /* TWMessageBarManager.podspec */; };
-		95E4BC981B37DA4A00B8CF44 /* HitokotoTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC7B1B37DA4A00B8CF44 /* HitokotoTextViewController.m */; };
-		95E4BC991B37DA4A00B8CF44 /* KakakuTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC7E1B37DA4A00B8CF44 /* KakakuTextViewController.m */; };
 		95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC811B37DA4A00B8CF44 /* SCPostingViewController.m */; };
 		95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC851B37DA4A00B8CF44 /* SCFirstView.m */; };
 		95E4BC9C1B37DA4A00B8CF44 /* SCFirstView_3_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC861B37DA4A00B8CF44 /* SCFirstView_3_5_inch.xib */; };
@@ -662,10 +660,6 @@
 		95E3CD511B0DCA4200497EB9 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		95E3CD521B0DCA4200497EB9 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
 		95E3CD531B0DCA4200497EB9 /* TWMessageBarManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWMessageBarManager.podspec; sourceTree = "<group>"; };
-		95E4BC7A1B37DA4A00B8CF44 /* HitokotoTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitokotoTextViewController.h; sourceTree = "<group>"; };
-		95E4BC7B1B37DA4A00B8CF44 /* HitokotoTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitokotoTextViewController.m; sourceTree = "<group>"; };
-		95E4BC7D1B37DA4A00B8CF44 /* KakakuTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KakakuTextViewController.h; sourceTree = "<group>"; };
-		95E4BC7E1B37DA4A00B8CF44 /* KakakuTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KakakuTextViewController.m; sourceTree = "<group>"; };
 		95E4BC801B37DA4A00B8CF44 /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
 		95E4BC811B37DA4A00B8CF44 /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
 		95E4BC841B37DA4A00B8CF44 /* SCFirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstView.h; sourceTree = "<group>"; };
@@ -1320,7 +1314,6 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				95E4BC781B37DA4A00B8CF44 /* addValue */,
 				95E4BC7F1B37DA4A00B8CF44 /* PostingView */,
 				95E4BC821B37DA4A00B8CF44 /* ScrollPage */,
 				95E4BC911B37DA4A00B8CF44 /* SubmitPopup */,
@@ -1607,33 +1600,6 @@
 				95E3CD501B0DCA4200497EB9 /* icon-success@2x.png */,
 			);
 			path = Icons;
-			sourceTree = "<group>";
-		};
-		95E4BC781B37DA4A00B8CF44 /* addValue */ = {
-			isa = PBXGroup;
-			children = (
-				95E4BC791B37DA4A00B8CF44 /* Hitokoto */,
-				95E4BC7C1B37DA4A00B8CF44 /* Kakaku */,
-			);
-			path = addValue;
-			sourceTree = "<group>";
-		};
-		95E4BC791B37DA4A00B8CF44 /* Hitokoto */ = {
-			isa = PBXGroup;
-			children = (
-				95E4BC7A1B37DA4A00B8CF44 /* HitokotoTextViewController.h */,
-				95E4BC7B1B37DA4A00B8CF44 /* HitokotoTextViewController.m */,
-			);
-			path = Hitokoto;
-			sourceTree = "<group>";
-		};
-		95E4BC7C1B37DA4A00B8CF44 /* Kakaku */ = {
-			isa = PBXGroup;
-			children = (
-				95E4BC7D1B37DA4A00B8CF44 /* KakakuTextViewController.h */,
-				95E4BC7E1B37DA4A00B8CF44 /* KakakuTextViewController.m */,
-			);
-			path = Kakaku;
 			sourceTree = "<group>";
 		};
 		95E4BC7F1B37DA4A00B8CF44 /* PostingView */ = {
@@ -2090,7 +2056,6 @@
 				952D23691A9B95E800C354DF /* AFURLConnectionOperation.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
-				95E4BC991B37DA4A00B8CF44 /* KakakuTextViewController.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
 				952D23701A9B95E800C354DF /* CXCardView.m in Sources */,
 				53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */,
@@ -2173,7 +2138,6 @@
 				952D247F1A9B9D3300C354DF /* UIColor+App.m in Sources */,
 				952D24921A9B9D3300C354DF /* usersTableViewController.m in Sources */,
 				53B9429F1AB40414000150C4 /* STTwitterHTML.m in Sources */,
-				95E4BC981B37DA4A00B8CF44 /* HitokotoTextViewController.m in Sources */,
 				535626731AB39C97009C7D12 /* SigninView.m in Sources */,
 				95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */,
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
