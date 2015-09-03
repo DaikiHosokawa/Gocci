@@ -8,12 +8,15 @@
 
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
+#import "AppDelegate.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 
 @interface TutorialPageViewController (){
     NSArray *pages;
 }
+
+
 
 @property (retain, nonatomic) NSArray *pages;
 @property (strong, nonatomic) UIPageViewController *pageController;
@@ -22,20 +25,75 @@
 
 @implementation TutorialPageViewController
 
+
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
     
-    // Do any additional setup after loading the view.
-    // instantiate the view controlles from the storyboard
-    UIViewController *page1 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+    UIViewController *page1 = nil;
+    UIViewController *page2 = nil;
+    UIViewController *page3 = nil;
+    UIViewController *page4 = nil;
     
-    UIViewController *page2 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+    //3.5inchと4inchを読み分けする
+    CGRect rect = [UIScreen mainScreen].bounds;
     
-    UIViewController *page3 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+    if (rect.size.height == 480) {
+        // Do any additional setup after loading the view.
+        // instantiate the view controlles from the storyboard
+        page1 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+        
+        page2 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+        
+        page3 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+        
+        page4 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    }
     
-    UIViewController *page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    if (rect.size.height == 568) {
+        // Do any additional setup after loading the view.
+        // instantiate the view controlles from the storyboard
+        page1 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+        
+        page2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+        
+        page3 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+        
+        page4 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    }
+    
+    //4.7inch対応
+    CGRect rect2 = [UIScreen mainScreen].bounds;
+    if (rect2.size.height == 667) {
+        // Do any additional setup after loading the view.
+        // instantiate the view controlles from the storyboard
+         page1 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+        
+         page2 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+        
+         page3 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+        
+         page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    
+    }
+    
+    //5.5inch対応
+    CGRect rect3 = [UIScreen mainScreen].bounds;
+    if (rect3.size.height == 736) {
+        // Do any additional setup after loading the view.
+        // instantiate the view controlles from the storyboard
+        page1 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+        
+        page2 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+        
+        page3 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+        
+        page4 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    
+    }
+    
     
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
     if(ruleButton) {
@@ -53,7 +111,7 @@
     self.popupCancel = (UIButton *)[page3.view viewWithTag:6];
     self.popuptitle = (UILabel *)[page3.view viewWithTag:7];
     
-    UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:3];
+    UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:8];
     if(privacyButton) {
         [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -320,26 +378,8 @@
                      [ud synchronize];
                      
                      
-                     //create credentialProvider
-                     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
-                                                                                                                     identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+                     //important!! need cognito method Developer Aunthentificated
                      
-                     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
-                     
-                     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-                     
-                     
-                     //unique provider insert
-                     credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
-                     
-                     //refresh and syncronize console
-                     [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
-                         // Your handler code heredentialsProvider.identityId;
-                         NSLog(@"logins: %@", credentialsProvider.logins);
-                         NSLog(@"task:%@",task);
-                         // return [self refresh];
-                         return nil;
-                     }];
                      
                      
                  }else if([result[@"code"] integerValue] != 200) {
@@ -362,6 +402,8 @@
         
     }
 }
+
+
 
 
 /*
