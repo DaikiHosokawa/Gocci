@@ -697,6 +697,7 @@
 		A13FB9751AB45F7E00B893F9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A13FB9771AB45F7E00B893F9 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
 		A13FB9781AB45F7E00B893F9 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
+		A2DDB0371B99A04C00CD4E52 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		AB2DDA361AB194A100A47450 /* LocationClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationClient.h; sourceTree = "<group>"; };
 		AB2DDA371AB194A100A47450 /* LocationClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1763,6 +1764,7 @@
 		FF54EFE819149A1800025DC8 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
+				A2DDB0371B99A04C00CD4E52 /* const.h */,
 				952D24C41A9B9EC800C354DF /* UI */,
 				952D24B21A9B9DE100C354DF /* API */,
 				952D24051A9B9D3300C354DF /* Classes */,

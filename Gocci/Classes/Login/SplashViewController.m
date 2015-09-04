@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
+#import "const.h"
 #import "SplashViewController.h"
 #import "APIClient.h"
 #import <AWSCore/AWSCore.h>
@@ -19,7 +20,7 @@
     
     [super viewDidLoad];
     
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0f * NSEC_PER_SEC));
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SPLASH_TIME * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     
         
@@ -56,8 +57,8 @@
                 [ud synchronize];
                 
                 //create credentialProvider
-                AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
-                                                                                                                identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+                AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION
+                                                                                                                identityPoolId:COGNITO_POOL_ID];
                 
                 AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
                 
@@ -122,8 +123,8 @@
                     
                     
                     //create credentialProvider
-                    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
-                                                                                                                    identityPoolId:@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35"];
+                    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION
+                                                                                                                    identityPoolId:COGNITO_POOL_ID];
                     
                     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
                     
