@@ -3,10 +3,11 @@
 //  Gocci
 //
 
+#import "const.h"
 #import "APIClient.h"
 #import "AFNetworking.h"
 
-NSString * const APIClientBaseVer2URL = API_BASE_URL_TEST;
+NSString * const APIClientBaseVer2URL = API_BASE_URL;
 NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
 
 NSString * const APIClientResultCacheKeyDist = @"dist";
@@ -41,7 +42,7 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    NSURL *baseURL = [NSURL URLWithString:API_BASE_URL_TEST];
+    NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.manager.responseSerializer =[AFJSONResponseSerializer serializer];
     

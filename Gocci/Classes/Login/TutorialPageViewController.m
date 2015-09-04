@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 Massara. All rights reserved.
 //
 
+#import "const.h"
+
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
@@ -304,7 +306,7 @@
      */
     
     if (!self.facebookLogin){
-        [FBSDKSettings setAppID:@"673123156062598"];
+        [FBSDKSettings setAppID:FACEBOOK_APP_ID];
         self.facebookLogin = [FBSDKLoginManager new];
     }
     
@@ -383,7 +385,7 @@
 -(void)insertUsername:(id)sender{
     NSLog(@"text:%@",self.username.text);
     
-    return; // this code throws exceptions and I don't want to debug this now
+    return; // TODO this code throws exceptions and I don't want to debug this now
     
     if (self.username.text.length != 0) {
         
