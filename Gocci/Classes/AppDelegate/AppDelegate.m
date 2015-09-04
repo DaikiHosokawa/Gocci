@@ -14,6 +14,9 @@
 #import  "TWMessageBarManager.h"
 #import <AWSS3/AWSS3.h>
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 @interface AppDelegate() {
     UITabBarController *tabBarController;
 }
@@ -34,7 +37,7 @@
 
 //@synthesize window = _window;
 
-
+/*
 //facebook認証のcallbackメソッド
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -44,6 +47,17 @@
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:self.session];
+}*/
+
+// Facebook SDK needs this
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 
@@ -70,7 +84,7 @@
 {
     
     
-    [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
+    //[Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
     
     [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
     //3.5inchと4inchを読み分けする

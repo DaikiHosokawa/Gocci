@@ -9,8 +9,12 @@
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
+
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface TutorialPageViewController (){
     NSArray *pages;
@@ -20,6 +24,9 @@
 
 @property (retain, nonatomic) NSArray *pages;
 @property (strong, nonatomic) UIPageViewController *pageController;
+
+@property (strong, nonatomic) FBSDKLoginManager *facebookLogin;
+
 
 @end
 
@@ -101,6 +108,7 @@
     }
     
     self.username = (UITextField *)[page3.view viewWithTag:3];
+    self.username.text = @"WAY TOOOOOO LAZY";
     if(self.username) {
         [self.username addTarget:self action:@selector(insertUsername:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
@@ -168,9 +176,9 @@
     [self.pageControl setCurrentPage:self.pageControl.currentPage+1];   // move the pageControl indicator to the next page
     
         // return the next view controller
-        if(currentIndex==2 && [self.username.text length] == 0){
-            return  nil;
-        }
+      //  if(currentIndex==2 && [self.username.text length] == 0){
+        //    return  nil;
+       // }
     
        // check if we are at the end and decide if we need to present the next viewcontroller
        if ( currentIndex < [self.pages count]-1) {
@@ -271,11 +279,12 @@
 - (void)FacebookTapped:(id)sender{
     
     
-    if  ([self.username.text length] == 0)
+    if  ([self.username.text length] != 0)
     {
         NSLog(@"Facebook");
         
         //Facebook Link processing
+        [self FBLogin];
         
     }else{
         NSString *alertMessage = @"ユーザー名を入力してください";
@@ -284,12 +293,46 @@
     }
 }
 
+- (void)FBLogin
+{
+    /*
+    if ([FBSDKAccessToken currentAccessToken]) {
+        //[self CompleteFBLogin];
+        // call AWS
+        return;
+    }
+     */
+    
+    if (!self.facebookLogin){
+        [FBSDKSettings setAppID:@"673123156062598"];
+        self.facebookLogin = [FBSDKLoginManager new];
+    }
+    
+    
+    [self.facebookLogin logInWithReadPermissions:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        if (error) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Error logging in with FB: %@", error.localizedDescription]);
+        } else if (result.isCancelled) {
+            // Login canceled
+            NSLog(@"User dont want to login with facefuck");
+        } else {
+            // Login Success
+            NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
+            NSLog(@"###### Facefuck Login Success!  Token: %@", token);
+        }
+        
+        NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
+        NSLog(@"%@", token);
+    }];
+    
+}
+
 
 
 
 - (void)TwitterTapped:(id)sender{
     
-    if  ([self.username.text length] == 0)
+    if  ([self.username.text length] != 0)
     {
         NSLog(@"Twitter");
         
@@ -308,7 +351,7 @@
 
 - (void)unAuthTapped:(id)sender{
     
-    if  ([self.username.text length] == 0)
+    if  ([self.username.text length] != 0)
     {
         NSLog(@"unAuth");
         
@@ -339,6 +382,8 @@
 
 -(void)insertUsername:(id)sender{
     NSLog(@"text:%@",self.username.text);
+    
+    return; // this code throws exceptions and I don't want to debug this now
     
     if (self.username.text.length != 0) {
         
