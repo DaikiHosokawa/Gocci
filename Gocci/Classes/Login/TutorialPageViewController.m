@@ -19,13 +19,15 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface TutorialPageViewController (){
-    NSArray *pages;
+    //NSArray *pages;
 }
 
 
 
-@property (retain, nonatomic) NSArray *pages;
+@property (retain, nonatomic) NSMutableArray *pages;
 @property (strong, nonatomic) UIPageViewController *pageController;
+
+@property (strong, nonatomic) UIViewController *lastPage;
 
 @property (strong, nonatomic) FBSDKLoginManager *facebookLogin;
 
@@ -40,7 +42,6 @@
     
     [super viewDidLoad];
     
-    
     UIViewController *page1 = nil;
     UIViewController *page2 = nil;
     UIViewController *page3 = nil;
@@ -50,58 +51,36 @@
     CGRect rect = [UIScreen mainScreen].bounds;
     
     if (rect.size.height == 480) {
-        // Do any additional setup after loading the view.
-        // instantiate the view controlles from the storyboard
         page1 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        
         page2 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        
         page3 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        
         page4 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
     }
     
     if (rect.size.height == 568) {
-        // Do any additional setup after loading the view.
-        // instantiate the view controlles from the storyboard
         page1 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        
         page2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        
         page3 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        
         page4 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
     }
     
     //4.7inch対応
-    CGRect rect2 = [UIScreen mainScreen].bounds;
-    if (rect2.size.height == 667) {
-        // Do any additional setup after loading the view.
-        // instantiate the view controlles from the storyboard
+    if (rect.size.height == 667) {
          page1 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        
          page2 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        
          page3 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        
          page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    
     }
     
     //5.5inch対応
-    CGRect rect3 = [UIScreen mainScreen].bounds;
-    if (rect3.size.height == 736) {
-        // Do any additional setup after loading the view.
-        // instantiate the view controlles from the storyboard
+    if (rect.size.height == 736) {
         page1 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        
         page2 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        
         page3 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        
         page4 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    
     }
+    
+    //TODO if page1 is still nil here, the programm will crash. So any new iPhone or iPad or so am BOOM
     
     
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
@@ -110,40 +89,38 @@
     }
     
     self.username = (UITextField *)[page3.view viewWithTag:3];
-    self.username.text = @"WAY TOOOOOO LAZY";
-    if(self.username) {
-        [self.username addTarget:self action:@selector(insertUsername:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    }
-
+#ifdef INDEVEL
+    self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
+#endif
     
     self.popupView = (UIView *)[page3.view viewWithTag:4];
     self.popupWebView = (UIWebView *)[page3.view viewWithTag:5];
     self.popupCancel = (UIButton *)[page3.view viewWithTag:6];
     self.popuptitle = (UILabel *)[page3.view viewWithTag:7];
     
+    UIButton *registerButton = (UIButton *)[page3.view viewWithTag:200];
+    [registerButton addTarget:self action:@selector(registerUsernameClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:8];
-    if(privacyButton) {
-        [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *FacebookButton = (UIButton *)[page4.view viewWithTag:1];
-    if(FacebookButton) {
-        [FacebookButton addTarget:self action:@selector(FacebookTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    [FacebookButton addTarget:self action:@selector(FacebookTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *TwitterButton = (UIButton *)[page4.view viewWithTag:2];
-    if(TwitterButton) {
-        [TwitterButton addTarget:self action:@selector(TwitterTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    [TwitterButton addTarget:self action:@selector(TwitterTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *notAuthButton = (UIButton *)[page4.view viewWithTag:3];
-    if(notAuthButton) {
-        [notAuthButton addTarget:self action:@selector(unAuthTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    [notAuthButton addTarget:self action:@selector(unAuthTapped:) forControlEvents:UIControlEventTouchUpInside];
+
     
     // load the view controllers in our pages array
-    self.pages = [[NSArray alloc] initWithObjects:page1, page2, page3, page4, nil];
-    
+    self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
+//#ifdef INDEVEL
+//    self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
+//#endif
+    self.lastPage = page4;
+
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     [self.pageController setDelegate:self];
@@ -152,9 +129,8 @@
     [[self.pageController view] setFrame:[[self view] bounds]];
     NSArray *viewControllers = [NSArray arrayWithObject:[self.pages objectAtIndex:0]];
     [self.pageControl setCurrentPage:0];
-    [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     
-    
+
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageController];
@@ -166,65 +142,116 @@
     [self.view sendSubviewToBack:[self.pageController view]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+#pragma mark - Username register Page
+
+
+- (void)registerUsernameClicked:(id)sender{
     
-    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
-    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];   // move the pageControl indicator to the next page
-    
-        // return the next view controller
-      //  if(currentIndex==2 && [self.username.text length] == 0){
-        //    return  nil;
-       // }
-    
-       // check if we are at the end and decide if we need to present the next viewcontroller
-       if ( currentIndex < [self.pages count]-1) {
-        return [self.pages objectAtIndex:currentIndex+1];
+    if (self.username.text.length > 0) {
+        [self registerUsername:self.username.text];
     }
-        //if failure return nil else return return [self.pages objectAtIndex:currentIndex+1];
     else {
-        return nil;                                                         // do nothing
+        // TODO mesg to the user, edit box still empty
     }
+    
+    // make the last page to the page view cont. and make it scrollable
+    NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
+    [self.pages addObject:_lastPage];
+    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
 }
 
 
-- (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+
+-(void)registerUsername:(NSString*)username {
     
+    NSLog(@"=== Trying to register with username: %@", username);
     
-    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
-    [self.pageControl setCurrentPage:self.pageControl.currentPage-1];                   // move the pageControl indicator to the next page
+    NSString *reg_id = [[NSUserDefaults standardUserDefaults] stringForKey:@"STRING"];
     
-    // check if we are at the beginning and decide if we need to present the previous viewcontroller
-    if ( currentIndex > 0) {
-        return [self.pages objectAtIndex:currentIndex-1];                   // return the previous viewcontroller
-    } else {
-        return nil;                                                         // do nothing
+#ifdef INDEVEL
+    if (!reg_id) {
+        reg_id = [[NSProcessInfo processInfo] globallyUniqueString];
+        NSLog(@"=== WARNING uniq register_id not availible. Use random string for testing purpose");
     }
+#endif
+    
+    assert(reg_id);
+    
+    // execute Signup API
+    [APIClient Signup:username
+                   os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
+                model:[UIDevice currentDevice].model
+          register_id:reg_id
+              handler:^(id result, NSUInteger code, NSError *error)
+     {
+         
+         NSLog(@"=== Register result: %@ error :%@", result, error);
+         
+         if (!error) {
+             
+             //success
+             if ([result[@"code"] integerValue] == 200) {
+                 
+                 NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                 
+                 //save user data
+                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+                 [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+                 [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+                 [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
+                 [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+                 
+                 //save badge num
+                 int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+                 NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                 [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+                 
+                 UIApplication *application = [UIApplication sharedApplication];
+                 application.applicationIconBadgeNumber = numberOfNewMessages;
+                 [ud synchronize];
+                 
+                 // some logging
+                 NSLog(@"======================================================================");
+                 NSLog(@"=================== USER REGISTRATION SUCCESSFUL =====================");
+                 NSLog(@"======================================================================");
+                 NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+                 NSLog(@"======================================================================");
+                 
+                 
+                 //important!! need cognito method Developer Aunthentificated
+                 
+                 
+                 
+             }
+             else if([result[@"code"] integerValue] != 200) {
+                 
+                 NSLog(@"===================== USER REGISTRATION FAILED =======================");
+                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                 [alrt show];
+                 //[self removeFromSuperview];
+                 
+                 
+             }
+             else {
+                 NSLog(@"============= SOMETHING HORRIBLE HAPPEND: %@", result[@"message"]);
+                 //fail
+                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                 [alrt show];
+             }
+         }
+         
+     }];
+    
 }
 
-- (void)changePage:(id)sender {
-    
-    UIViewController *visibleViewController = self.pageController.viewControllers[0];
-    NSUInteger currentIndex = [self.pages indexOfObject:visibleViewController];
-    
-    NSArray *viewControllers = [NSArray arrayWithObject:[self.pages objectAtIndex:self.pageControl.currentPage]];
-    
-    if (self.pageControl.currentPage > currentIndex) {
-        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    } else {
-        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-        
-    }
-}
 
 
-///////page3
 
+
+#pragma mark - Last SNS Page
 
 
 - (void)ruleButtonTapped:(id)sender{
@@ -331,7 +358,6 @@
 
 
 
-
 - (void)TwitterTapped:(id)sender{
     
     if  ([self.username.text length] != 0)
@@ -382,87 +408,46 @@
     return YES;
 }
 
--(void)insertUsername:(id)sender{
-    NSLog(@"text:%@",self.username.text);
+
+
+
+
+
+
+#pragma mark - PageViewController Stuff
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    return; // TODO this code throws exceptions and I don't want to debug this now
+    //TODO ugly code copied from tutorial
+    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
+    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];   // move the pageControl indicator to the next page
     
-    if (self.username.text.length != 0) {
-        
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-        
-        // execute Signup API
-        [APIClient Signup:self.username.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
-         {
-             
-             NSLog(@"register result: %@ error :%@", result, error);
-             
-             if (!error) {
-                 
-                 //success
-                 if ([result[@"code"] integerValue] == 200) {
-                     
-                     //save user data
-                     NSString* username = [result objectForKey:@"username"];
-                     NSString* picture = [result objectForKey:@"profile_img"];
-                     NSString* user_id = [result objectForKey:@"user_id"];
-                     NSString* identity_id = [result objectForKey:@"identity_id"];
-                     NSString* token = [result objectForKey:@"token"];
-                     [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
-                     [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
-                     [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
-                     [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
-                     [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
-                     
-                     //save badge num
-                     int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
-                     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                     NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-                     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-                     UIApplication *application = [UIApplication sharedApplication];
-                     application.applicationIconBadgeNumber = numberOfNewMessages;
-                     [ud synchronize];
-                     
-                     
-                     //important!! need cognito method Developer Aunthentificated
-                     
-                     
-                     
-                 }else if([result[@"code"] integerValue] != 200) {
-                     
-                     //success
-                     UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                     [alrt show];
-                     //[self removeFromSuperview];
-                     
-                     
-                 }
-                 else {
-                     //fail
-                     UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                     [alrt show];
-                 }
-             }
-             
-         }];
-        
+    // check if we are at the end and decide if we need to present the next viewcontroller
+    if ( currentIndex < [self.pages count]-1) {
+        return [self.pages objectAtIndex:currentIndex+1];
     }
+    return nil;
 }
 
 
+- (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    //TODO ugly code copied from tutorial
+    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
+    [self.pageControl setCurrentPage:self.pageControl.currentPage-1];                   // move the pageControl indicator to the next page
+    
+    // check if we are at the beginning and decide if we need to present the previous viewcontroller
+    if ( currentIndex > 0) {
+        return [self.pages objectAtIndex:currentIndex-1];                   // return the previous viewcontroller
+    }
+    return nil;
+}
 
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
 @end

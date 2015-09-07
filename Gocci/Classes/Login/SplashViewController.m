@@ -24,7 +24,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     
         
-    //identity_id is exist
+    //identity_id exists
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
         
         //execute Login API
