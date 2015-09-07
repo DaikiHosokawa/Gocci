@@ -7,9 +7,6 @@
 #import "APIClient.h"
 #import "AFNetworking.h"
 
-NSString * const APIClientBaseVer2URL = API_BASE_URL;
-NSString * const APIClientErrorDomain = @"APIClientErrorDomain";
-
 NSString * const APIClientResultCacheKeyDist = @"dist";
 
 @interface APIClient()
