@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
+#import "const.h"
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SCFilterGroup.h"
@@ -16,6 +17,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -82,11 +84,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifdef FRESH_START
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user_id"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"profile_img"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"identity_id"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"badge_num"];
+#endif
+
+#ifndef INDEVEL
+    [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
+#endif
+    [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
     
-    
-    //[Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
-    
-    [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     if (rect.size.height == 480) {

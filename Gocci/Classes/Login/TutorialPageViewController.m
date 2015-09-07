@@ -7,6 +7,7 @@
 //
 
 #import "const.h"
+#import "util.h"
 
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
@@ -17,6 +18,8 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+
 
 @interface TutorialPageViewController (){
     //NSArray *pages;
@@ -30,6 +33,7 @@
 @property (strong, nonatomic) UIViewController *lastPage;
 
 @property (strong, nonatomic) FBSDKLoginManager *facebookLogin;
+
 
 
 @end
@@ -89,6 +93,10 @@
     }
     
     self.username = (UITextField *)[page3.view viewWithTag:3];
+    [self.username addTarget:self
+                  action:@selector(usernameChanged:)
+        forControlEvents:UIControlEventEditingChanged];
+
 #ifdef INDEVEL
     self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
 #endif
@@ -116,9 +124,9 @@
     
     // load the view controllers in our pages array
     self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
-//#ifdef INDEVEL
-//    self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
-//#endif
+#ifdef INDEVEL
+   // self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
+#endif
     self.lastPage = page4;
 
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -143,24 +151,30 @@
 }
 
 
+- (void)myTextFieldDidChange:(id)sender {
+    //self.registerButton.enabled = self.username.text.length != 0;
+}
+
+
 
 #pragma mark - Username register Page
 
 
 - (void)registerUsernameClicked:(id)sender{
+
+
+    
     
     if (self.username.text.length > 0) {
         [self registerUsername:self.username.text];
     }
     else {
         // TODO mesg to the user, edit box still empty
+        // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"_____ STILL EMPTY _____" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        // [alrt show];
     }
     
-    // make the last page to the page view cont. and make it scrollable
-    NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
-    [self.pages addObject:_lastPage];
-    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
+   
 }
 
 
@@ -173,12 +187,13 @@
     
 #ifdef INDEVEL
     if (!reg_id) {
-        reg_id = [[NSProcessInfo processInfo] globallyUniqueString];
-        NSLog(@"=== WARNING uniq register_id not availible. Use random string for testing purpose");
+        reg_id = [util fakeDeviceID];
+        NSLog(@"=== WARNING uniq register_id not availible. Use random string for testing purpose:");
+        NSLog(@"%@", reg_id);
     }
 #endif
     
-    assert(reg_id);
+    assert(reg_id); // looks like a provisioning profile is needed for this...
     
     // execute Signup API
     [APIClient Signup:username
@@ -190,7 +205,7 @@
          
          NSLog(@"=== Register result: %@ error :%@", result, error);
          
-         if (!error) {
+         if (!error) { // TODO needs a msg to the user. what does happen when no connected to the internet?
              
              //success
              if ([result[@"code"] integerValue] == 200) {
@@ -206,7 +221,7 @@
                  
                  //save badge num
                  int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
-                 NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+                 NSLog(@"numberOfNewMessages:%d", numberOfNewMessages);
                  [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
                  
                  UIApplication *application = [UIApplication sharedApplication];
@@ -217,34 +232,33 @@
                  NSLog(@"======================================================================");
                  NSLog(@"=================== USER REGISTRATION SUCCESSFUL =====================");
                  NSLog(@"======================================================================");
-                 NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+                 NSLog(@"    username:    %@", [result objectForKey:@"username"]);
+                 NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
+                 NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
                  NSLog(@"======================================================================");
                  
                  
-                 //important!! need cognito method Developer Aunthentificated
-                 
-                 
+                 // user is now a developer authenticated user. cognito is handelt on the server side (thanks murata-san^^)
+                                
+                 // transition to SNS page
+                 [self.pages addObject:_lastPage];
+                 NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
+                 [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+                 [self.pageControl setCurrentPage:3];
                  
              }
-             else if([result[@"code"] integerValue] != 200) {
+             else{ // TODO would be nice to handle this not as the default case. Other server side error are possible as well...
                  
                  NSLog(@"===================== USER REGISTRATION FAILED =======================");
                  UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                  [alrt show];
-                 //[self removeFromSuperview];
-                 
-                 
+                 NSLog(@"%@", result[@"code"]);
+                
              }
-             else {
-                 NSLog(@"============= SOMETHING HORRIBLE HAPPEND: %@", result[@"message"]);
-                 //fail
-                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:result[@"message"]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                 [alrt show];
-             }
+
          }
          
      }];
-    
 }
 
 
@@ -300,58 +314,49 @@
                          action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
 
-///////page4
 
 
-
+#pragma mark - Facefuck
 
 - (void)FacebookTapped:(id)sender{
-    
-    
-    if  ([self.username.text length] != 0)
-    {
-        NSLog(@"Facebook");
-        
-        //Facebook Link processing
-        [self FBLogin];
-        
-    }else{
-        NSString *alertMessage = @"ユーザー名を入力してください";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alrt show];
-    }
-}
 
-- (void)FBLogin
-{
-    /*
-    if ([FBSDKAccessToken currentAccessToken]) {
-        //[self CompleteFBLogin];
-        // call AWS
-        return;
-    }
-     */
-    
+    NSLog(@"Facebook clicked");
+
+
     if (!self.facebookLogin){
         [FBSDKSettings setAppID:FACEBOOK_APP_ID];
         self.facebookLogin = [FBSDKLoginManager new];
     }
     
-    
+
     [self.facebookLogin logInWithReadPermissions:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             NSLog(@"%@", [NSString stringWithFormat:@"Error logging in with FB: %@", error.localizedDescription]);
-        } else if (result.isCancelled) {
+        }
+        else if (result.isCancelled) {
             // Login canceled
             NSLog(@"User dont want to login with facefuck");
-        } else {
+        }
+        else {
             // Login Success
             NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
             NSLog(@"###### Facefuck Login Success!  Token: %@", token);
+            
+            [APIClient connectWithSNS:FACEBOOK_PROVIDER_STRING
+                                token:token
+                    profilePictureURL:@"none"
+                              handler:^(id result, NSUInteger code, NSError *error)
+             {
+                 
+                 NSLog(@"=== Facefuck connection result: %@ error :%@", result, error);
+                 
+                 // TODO more error handling
+                 if (!error && [result[@"code"] integerValue] == 200){
+                     NSLog(@"##### HOLY JESUS, we have facefuck connection! Profile pic: %@", result[@"profile_img"]);
+                 }
+             }];
         }
-        
-        NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
-        NSLog(@"%@", token);
+         // TODO ugly as hell
     }];
     
 }

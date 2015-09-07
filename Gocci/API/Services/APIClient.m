@@ -39,37 +39,62 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
+
+    
     NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    self.manager.responseSerializer =[AFJSONResponseSerializer serializer];
+    //self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                               @"application/json",
                                                               @"text/html",
                                                               @"text/javascript",
                                                               nil];
-    
-    /*
-    NSURL *baseURL2 = [NSURL URLWithString:API_BASE_VER2_URL];
-    self.manager2 = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL2];
-    NSMutableSet *newAcceptableContentTypes = [NSMutableSet setWithSet:self.manager2.responseSerializer.acceptableContentTypes] ;
-    [newAcceptableContentTypes addObject:@"text/html"];
-    self.manager2.responseSerializer.acceptableContentTypes = newAcceptableContentTypes;
-    self.resultCache = [NSCache new];
-    */
+
     return self;
 }
 
 
 #pragma mark - Class Methods
 
-
-
-+ (void)Timeline:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Signup:(NSString *)username os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
+    NSDictionary *params = @{
+                             @"username" : username,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
     
-    [[APIClient sharedClient].manager GET:@"get/timeline/"
-                               parameters:nil
+    NSLog(@"Signup:%@",params);
+
+    // http://test.api.gocci.me/v1/mobile/auth/signup/?model=iPhone%20Simulator&os=iOS_8.4&register_id=C06C65B2-362D-48B3-A1CA-73874D7681F2-1714-0000042BDD345CCF&username=hhhhhhhhh
+    // /v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fp
+    ///v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fphttp://test.api.gocci.me/v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fp
+    [[APIClient sharedClient].manager GET:@"auth/signup/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+
+
++ (void)connectWithSNS:(NSString *)provider
+                 token:(NSString *)token
+     profilePictureURL:(NSString *)ppurl
+               handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"provider" : provider,
+                             @"token" : token,
+                             @"profile_img" : ppurl,
+                             };
+    
+    [[APIClient sharedClient].manager GET:@"post/sns/"
+                               parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -472,25 +497,7 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)Signup:(NSString *)username os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
-{
-    NSDictionary *params = @{
-                             @"username" : username,
-                             @"os" : os,
-                             @"model" : model,
-                             @"register_id" : register_id
-                             };
-    
-    NSLog(@"Signup:%@",params);
-    
-    [[APIClient sharedClient].manager GET:@"auth/signup/"
-                                parameters:params
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                   }];
-}
+
 
 + (void)Conversion:(NSString *)username profile_img:(NSString *)profile_img os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {

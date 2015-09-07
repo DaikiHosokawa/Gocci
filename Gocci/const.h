@@ -9,8 +9,18 @@
 #ifndef Gocci_const_h
 #define Gocci_const_h
 
-// TODO change this in the release version
+// #######################################################################################
+// Lots ob DEBUG improvments. TODO change this in the release version
 #define INDEVEL 1
+
+// #######################################################################################
+// NSUserDefaults will not be reseted on start up
+#define FRESH_START 1
+
+
+// #######################################################################################
+// #######################################################################################
+
 
 #ifdef INDEVEL
 #define SPLASH_TIME 0.5
@@ -19,12 +29,15 @@
 #endif
 
 #ifdef INDEVEL
-#define API_BASE_URL (@"https://api.gocci.me/v1/mobile/")
-#else
 #define API_BASE_URL (@"http://test.api.gocci.me/v1/mobile/")
+#else
+#define API_BASE_URL (@"https://api.gocci.me/v1/mobile/")
 #endif
 
 #define FACEBOOK_APP_ID (@"673123156062598")
+#define FACEBOOK_PROVIDER_STRING @"graph.facebook.com"
+
+//#define TWITTER_PROVIDER_STRING @"saaaaa???????"
 
 #ifdef INDEVEL
 #define COGNITO_POOL_ID (@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35")
@@ -34,7 +47,9 @@
 #define COGNITO_POOL_REGION (AWSRegionUSEast1)
 #endif
 
-//
+#define CRITTERCISM_APP_ID (@"540ab4d40729df53fc000003")
+
+#define GOOGLE_MAP_SERVICE_API_KEY (@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko")
 
 
 #endif // Gocci_const_h END
