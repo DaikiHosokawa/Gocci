@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 //page3
-@property (weak,nonatomic) UITextField *username;
+@property(weak,nonatomic) UITextField *username;
 @property(weak,nonatomic) UIView *popupView;
 @property(weak,nonatomic) UIWebView *popupWebView;
 @property(weak,nonatomic) UIButton *popupCancel;

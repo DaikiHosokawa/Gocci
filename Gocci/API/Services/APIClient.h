@@ -276,4 +276,9 @@
 + (void)postUnWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
++ (void)connectWithSNS:(NSString *)provider
+                 token:(NSString *)token
+     profilePictureURL:(NSString *)ppurl
+               handler:(void (^)(id, NSUInteger, NSError *))handler;
+
 @end
