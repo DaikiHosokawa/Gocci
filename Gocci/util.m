@@ -20,15 +20,4 @@
     return [[str stringByReplacingOccurrencesOfString:@"-" withString:@""] substringToIndex:64];
 }
 
-+ (void)saveDictToUserDefaults:(NSDictionary*)dict
-{
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    
-    [dict enumerateKeysAndObjectsUsingBlock: ^(id key, id obj, BOOL *stop) {
-        [ud setValue:obj forKey:key];
-    }];
-    
-    [ud synchronize];
-}
-
 @end

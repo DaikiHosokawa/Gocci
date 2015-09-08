@@ -35,11 +35,9 @@
 #endif
 
 #define FACEBOOK_APP_ID (@"673123156062598")
-#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
+#define FACEBOOK_PROVIDER_STRING @"graph.facebook.com"
 
-#define TWITTER_CONSUMER_KEY (@"kurJalaArRFtwhnZCoMxB2kKU")
-#define TWITTER_CONSUMER_SECRET (@"oOCDmf29DyJyfxOPAaj8tSASzSPAHNepvbxcfVLkA9dJw7inYa")
-#define TWITTER_PROVIDER_STRING (@"api.twitter.com")
+//#define TWITTER_PROVIDER_STRING @"saaaaa???????"
 
 #ifdef INDEVEL
 #define COGNITO_POOL_ID (@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35")
