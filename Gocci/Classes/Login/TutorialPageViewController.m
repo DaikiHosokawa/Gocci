@@ -19,8 +19,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-#import <TwitterKit/TwitterKit.h>
-
 
 
 @interface TutorialPageViewController (){
@@ -365,36 +363,21 @@
 
 
 
-#pragma mark - Twitter
-
 - (void)TwitterTapped:(id)sender{
     
-    [[Twitter sharedInstance] logInWithCompletion:^
-     (TWTRSession *session, NSError *error) {
-         if (session) {
-             NSString* value = [NSString stringWithFormat:@"%@;%@", session.authToken, session.authTokenSecret];
-             // Note: This overrides any existing logins
-             NSLog(@"### TWITTER LOGIN SUCCESSFUL: %@", value);
-             
-             [APIClient connectWithSNS:TWITTER_PROVIDER_STRING
-                                 token:value
-                     profilePictureURL:@"none"
-                               handler:^(id result, NSUInteger code, NSError *error)
-              {
-                  
-                  NSLog(@"=== Twitter connection result: %@ error :%@", result, error);
-                  
-                  // TODO more error handling
-                  if (!error && [result[@"code"] integerValue] == 200){
-                      NSLog(@"##### HOLY JESUS, we have twitter connection! Profile pic: %@", result[@"profile_img"]);
-                  }
-              }];
-             
-         } else {
-             NSLog(@"error: %@", [error localizedDescription]);
-         }
-     }];
-     
+    if  ([self.username.text length] != 0)
+    {
+        NSLog(@"Twitter");
+        
+        //Twitter Link processing
+        
+        
+        
+    }else{
+        NSString *alertMessage = @"ユーザー名を入力してください";
+        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alrt show];
+    }
 }
 
 

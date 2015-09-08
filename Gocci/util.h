@@ -18,7 +18,6 @@
 
 + (NSString*)fakeDeviceID;
 
-+ (void)saveDictToUserDefaults:(NSDictionary*)dict;
 
 @end
 

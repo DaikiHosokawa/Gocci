@@ -18,8 +18,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-#import <Fabric/Fabric.h>
-#import <TwitterKit/TwitterKit.h>
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -98,15 +96,6 @@
 #ifndef INDEVEL
     [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
 #endif
-    
-    // twitter aids
-    [[Twitter sharedInstance] startWithConsumerKey:TWITTER_CONSUMER_KEY consumerSecret:TWITTER_CONSUMER_SECRET];
-    [Fabric with:@[[Twitter sharedInstance]]];
-
-    
-    
-    
-    
     [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
     
     //3.5inchと4inchを読み分けする
