@@ -21,6 +21,8 @@
 
 
 
+
+
 @interface TutorialPageViewController (){
     //NSArray *pages;
 }
@@ -45,6 +47,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [[FHSTwitterEngine sharedEngine]permanentlySetConsumerKey:TWITTER_CONSUMER_KEY andSecret:TWITTER_CONSUMER_SECRET];
+    [[FHSTwitterEngine sharedEngine]setDelegate:self];
+    [[FHSTwitterEngine sharedEngine]loadAccessToken];
     
     UIViewController *page1 = nil;
     UIViewController *page2 = nil;
@@ -361,23 +367,36 @@
     
 }
 
-
+#pragma mark - Twitter
 
 - (void)TwitterTapped:(id)sender{
     
-    if  ([self.username.text length] != 0)
-    {
-        NSLog(@"Twitter");
+    UIViewController *loginController = [[FHSTwitterEngine sharedEngine]loginControllerWithCompletionHandler:^(BOOL success) {
+        NSLog(success?@"L0L success":@"O noes!!! Loggen faylur!!!");
         
-        //Twitter Link processing
+        NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedUsername %@", FHSTwitterEngine.sharedEngine.authenticatedUsername);
+        NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedID %@", FHSTwitterEngine.sharedEngine.authenticatedID);
+   
+        NSLog(@"COGNITO FORMAT 2: %@", [[FHSTwitterEngine sharedEngine] cognitoFormat]);
         
         
         
-    }else{
-        NSString *alertMessage = @"ユーザー名を入力してください";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alrt show];
-    }
+        [APIClient connectWithSNS:TWITTER_PROVIDER_STRING
+                            token:[[FHSTwitterEngine sharedEngine] cognitoFormat]
+                profilePictureURL:@"none"
+                          handler:^(id result, NSUInteger code, NSError *error)
+         {
+             
+             NSLog(@"=== TWITTER connection result: %@ error :%@", result, error);
+             
+             // TODO more error handling
+             if (!error && [result[@"code"] integerValue] == 200){
+                 NSLog(@"##### HOLY JESUS, we have TWITTER connection! Profile pic: %@", result[@"profile_img"]);
+             }
+         }];
+    }];
+    [self presentViewController:loginController animated:YES completion:nil];
+    
 }
 
 

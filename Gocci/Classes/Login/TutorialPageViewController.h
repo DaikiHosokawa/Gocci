@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TutorialPageViewController : UIViewController <UIPageViewControllerDataSource,UIWebViewDelegate,UIPageViewControllerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
+#import "FHSTwitterEngine.h"
+
+@interface TutorialPageViewController : UIViewController <FHSTwitterEngineAccessTokenDelegate,UIPageViewControllerDataSource,UIWebViewDelegate,UIPageViewControllerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 

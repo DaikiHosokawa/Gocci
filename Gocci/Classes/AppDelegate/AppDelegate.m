@@ -18,6 +18,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import "FHSTwitterEngine.h"
+
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -93,6 +95,8 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"badge_num"];
 #endif
 
+
+    
 #ifndef INDEVEL
     [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
 #endif

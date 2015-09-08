@@ -253,6 +253,8 @@
 		A13FB9791AB45F7E00B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB9741AB45F7E00B893F9 /* LICENSE.md */; };
 		A13FB97A1AB45F7E00B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB9751AB45F7E00B893F9 /* README.md */; };
 		A13FB97B1AB45F7E00B893F9 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB9781AB45F7E00B893F9 /* UIColor+BFPaperColors.m */; };
+		A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B181B9ECD0E004E7F36 /* FHSStream.m */; };
+		A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B1A1B9ECD0E004E7F36 /* FHSTwitterEngine.m */; };
 		A2DCAA951B9D82CE00E04F47 /* util.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DCAA941B9D82CE00E04F47 /* util.m */; };
 		AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2DDA371AB194A100A47450 /* LocationClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
@@ -698,6 +700,10 @@
 		A13FB9751AB45F7E00B893F9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A13FB9771AB45F7E00B893F9 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
 		A13FB9781AB45F7E00B893F9 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
+		A27A9B171B9ECD0E004E7F36 /* FHSStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSStream.h; sourceTree = "<group>"; };
+		A27A9B181B9ECD0E004E7F36 /* FHSStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSStream.m; sourceTree = "<group>"; };
+		A27A9B191B9ECD0E004E7F36 /* FHSTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSTwitterEngine.h; sourceTree = "<group>"; };
+		A27A9B1A1B9ECD0E004E7F36 /* FHSTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSTwitterEngine.m; sourceTree = "<group>"; };
 		A2DCAA941B9D82CE00E04F47 /* util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = util.m; sourceTree = "<group>"; };
 		A2DCAA961B9D82DE00E04F47 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		A2DDB0371B99A04C00CD4E52 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
@@ -907,6 +913,7 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A27A9B161B9ECD0E004E7F36 /* FHSTwitterEngine */,
 				95E709231B889EA7001B6EDA /* AWSCognito.framework */,
 				95E709031B889EA1001B6EDA /* AWSAPIGateway.framework */,
 				95E709041B889EA1001B6EDA /* AWSAutoScaling.framework */,
@@ -1682,6 +1689,17 @@
 			path = "UIColor+BFPaperColors";
 			sourceTree = "<group>";
 		};
+		A27A9B161B9ECD0E004E7F36 /* FHSTwitterEngine */ = {
+			isa = PBXGroup;
+			children = (
+				A27A9B171B9ECD0E004E7F36 /* FHSStream.h */,
+				A27A9B181B9ECD0E004E7F36 /* FHSStream.m */,
+				A27A9B191B9ECD0E004E7F36 /* FHSTwitterEngine.h */,
+				A27A9B1A1B9ECD0E004E7F36 /* FHSTwitterEngine.m */,
+			);
+			path = FHSTwitterEngine;
+			sourceTree = "<group>";
+		};
 		AB8C71861A278D8C00BF31EA /* GocciUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2003,6 +2021,7 @@
 				952D23841A9B95E800C354DF /* SDWebImageCompat.m in Sources */,
 				952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */,
 				952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */,
+				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
@@ -2020,6 +2039,7 @@
 				53B942A41AB40414000150C4 /* JSONSyntaxHighlight.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
+				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -2326,7 +2346,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "212dcfbe-cfda-4ad7-8b79-2d1b42ecc9c6";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/API/Services/GocciTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
@@ -2378,7 +2397,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b5fdda-27cc-4ca9-8cf3-fb9cfee7570d";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/API/Services/GocciTest-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
