@@ -254,6 +254,9 @@
 		A13FB97A1AB45F7E00B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB9751AB45F7E00B893F9 /* README.md */; };
 		A13FB97B1AB45F7E00B893F9 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB9781AB45F7E00B893F9 /* UIColor+BFPaperColors.m */; };
 		A2DCAA951B9D82CE00E04F47 /* util.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DCAA941B9D82CE00E04F47 /* util.m */; };
+		A2E3BDE31B9EB57200C1D64A /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E3BDE11B9EB57200C1D64A /* TwitterCore.framework */; };
+		A2E3BDE41B9EB57200C1D64A /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E3BDE21B9EB57200C1D64A /* TwitterKit.framework */; };
+		A2E3BDE61B9EB58500C1D64A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E3BDE51B9EB58500C1D64A /* Fabric.framework */; };
 		AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2DDA371AB194A100A47450 /* LocationClient.m */; };
 		AB8C71921A278F4400BF31EA /* APIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C71911A278F4400BF31EA /* APIClientTests.m */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -701,6 +704,9 @@
 		A2DCAA941B9D82CE00E04F47 /* util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = util.m; sourceTree = "<group>"; };
 		A2DCAA961B9D82DE00E04F47 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		A2DDB0371B99A04C00CD4E52 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
+		A2E3BDE11B9EB57200C1D64A /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		A2E3BDE21B9EB57200C1D64A /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		A2E3BDE51B9EB58500C1D64A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		AB2DDA361AB194A100A47450 /* LocationClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationClient.h; sourceTree = "<group>"; };
 		AB2DDA371AB194A100A47450 /* LocationClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationClient.m; sourceTree = "<group>"; };
 		AB8C71851A278D8C00BF31EA /* GocciUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GocciUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -759,6 +765,7 @@
 			files = (
 				957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */,
 				95E709211B889EA1001B6EDA /* AWSSNS.framework in Frameworks */,
+				A2E3BDE31B9EB57200C1D64A /* TwitterCore.framework in Frameworks */,
 				53B9427A1AB3FE2C000150C4 /* libxml2.dylib in Frameworks */,
 				FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */,
 				95E7091B1B889EA1001B6EDA /* AWSLambda.framework in Frameworks */,
@@ -767,6 +774,7 @@
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
 				95E709151B889EA1001B6EDA /* AWSCloudWatch.framework in Frameworks */,
+				A2E3BDE41B9EB57200C1D64A /* TwitterKit.framework in Frameworks */,
 				95E7091C1B889EA1001B6EDA /* AWSMachineLearning.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */,
@@ -797,6 +805,7 @@
 				FF79170919432CB800D351B6 /* CoreLocation.framework in Frameworks */,
 				95E709141B889EA1001B6EDA /* AWSAutoScaling.framework in Frameworks */,
 				FF8D84F619194F8200939312 /* MapKit.framework in Frameworks */,
+				A2E3BDE61B9EB58500C1D64A /* Fabric.framework in Frameworks */,
 				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				95E7091E1B889EA1001B6EDA /* AWSS3.framework in Frameworks */,
@@ -907,6 +916,9 @@
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A2E3BDE51B9EB58500C1D64A /* Fabric.framework */,
+				A2E3BDE11B9EB57200C1D64A /* TwitterCore.framework */,
+				A2E3BDE21B9EB57200C1D64A /* TwitterKit.framework */,
 				95E709231B889EA7001B6EDA /* AWSCognito.framework */,
 				95E709031B889EA1001B6EDA /* AWSAPIGateway.framework */,
 				95E709041B889EA1001B6EDA /* AWSAutoScaling.framework */,
