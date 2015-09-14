@@ -102,6 +102,22 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
+
+
++ (void)Timeline:(void (^)(id, NSUInteger, NSError *))handler
+{
+    
+    [[APIClient sharedClient].manager GET:@"get/timeline/"
+                               parameters:nil
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+
+
 + (void)Popular:(void (^)(id, NSUInteger, NSError *))handler
 {
     

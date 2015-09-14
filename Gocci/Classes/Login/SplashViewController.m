@@ -22,7 +22,10 @@
     
     [super viewDidLoad];
     
-//    [SVProgressHUD show];
+//    [self performSegueWithIdentifier:@"goTimeline" sender:self];
+//    return;
+//    
+    [SVProgressHUD show];
 
     // TODO we can do the network operations while we wait here, I will fix this later
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SPLASH_TIME * NSEC_PER_SEC));
