@@ -17,6 +17,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "SplashViewController.h"
 
 #import "FHSTwitterEngine.h"
 
@@ -182,23 +183,22 @@
     
     [application unregisterForRemoteNotifications];
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    [application registerForRemoteNotifications];
-    
-#else
-    UIRemoteNotificationType remoteNotificationType =
-    UIRemoteNotificationTypeBadge|
-    UIRemoteNotificationTypeSound|
-    UIRemoteNotificationTypeAlert|
-    UIRemoteNotificationTypeNewsstandContentAvailability;
-    [application registerForRemoteNotificationTypes:remoteNotificationType];
+#if !(TARGET_IPHONE_SIMULATOR)
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        [application registerForRemoteNotifications];
+        
+    #else
+        UIRemoteNotificationType remoteNotificationType =
+        UIRemoteNotificationTypeBadge|
+        UIRemoteNotificationTypeSound|
+        UIRemoteNotificationTypeAlert|
+        UIRemoteNotificationTypeNewsstandContentAvailability;
+        [application registerForRemoteNotificationTypes:remoteNotificationType];
+    #endif
 #endif
-    
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
-    
-    
 }
 
 /*
@@ -341,7 +341,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     NSLog(@"deviceToken: %@", token);
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:token forKey:@"STRING"];
+    [ud setObject:token forKey:@"register_id"];
 }
 
 // デバイストークン受信失敗時に呼ばれるメソッド

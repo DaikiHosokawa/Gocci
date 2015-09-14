@@ -247,6 +247,8 @@
 		95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207241B3BFAD90074612F /* FBSDKShareKit.framework */; };
 		95F207271B3BFAD90074612F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */; };
 		95F2072B1B3C260A0074612F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207291B3C260A0074612F /* FBSDKLoginKit.framework */; };
+		9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE681BA2CD350041CFD5 /* NetOp.m */; };
+		9807FE6C1BA66BA80041CFD5 /* AWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE6B1BA66BA80041CFD5 /* AWS.m */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
 		A13FB9721AB44E1500B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96F1AB44E1500B893F9 /* README.md */; };
@@ -692,6 +694,11 @@
 		95F207241B3BFAD90074612F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		95F207291B3C260A0074612F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
+		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
+		9807FE6B1BA66BA80041CFD5 /* AWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWS.m; sourceTree = "<group>"; };
+		9807FE6D1BA66BBE0041CFD5 /* AWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWS.h; sourceTree = "<group>"; };
+		98D8BC631BA270AE00613D84 /* APIClientLimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClientLimits.h; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		A13FB96E1AB44E1500B893F9 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -1380,6 +1387,10 @@
 		952D24B21A9B9DE100C354DF /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */,
+				9807FE681BA2CD350041CFD5 /* NetOp.m */,
+				9807FE6D1BA66BBE0041CFD5 /* AWS.h */,
+				9807FE6B1BA66BA80041CFD5 /* AWS.m */,
 				952D24B31A9B9DE100C354DF /* Model */,
 				952D24BA1A9B9DE100C354DF /* Services */,
 			);
@@ -1412,6 +1423,7 @@
 				952D24BE1A9B9DE100C354DF /* MoviePlayerManager.m */,
 				AB2DDA361AB194A100A47450 /* LocationClient.h */,
 				AB2DDA371AB194A100A47450 /* LocationClient.m */,
+				98D8BC631BA270AE00613D84 /* APIClientLimits.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2002,6 +2014,7 @@
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
 				95E3CD5A1B0DCA4200497EB9 /* TWMessageBarManager.m in Sources */,
 				A13FB9791AB45F7E00B893F9 /* LICENSE.md in Sources */,
+				9807FE6C1BA66BA80041CFD5 /* AWS.m in Sources */,
 				959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */,
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
 				53B9429C1AB40414000150C4 /* STHTTPRequest+STTwitter.m in Sources */,
@@ -2042,6 +2055,7 @@
 				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
+				9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
 				956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */,

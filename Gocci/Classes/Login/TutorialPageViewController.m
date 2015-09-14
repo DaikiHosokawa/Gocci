@@ -19,7 +19,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-
+#import "APIClientLimits.h"
 
 
 
@@ -112,8 +112,8 @@
     self.popupCancel = (UIButton *)[page3.view viewWithTag:6];
     self.popuptitle = (UILabel *)[page3.view viewWithTag:7];
     
-    UIButton *registerButton = (UIButton *)[page3.view viewWithTag:200];
-    [registerButton addTarget:self action:@selector(registerUsernameClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.registerButton = (UIButton *)[page3.view viewWithTag:200];
+    [self.registerButton addTarget:self action:@selector(registerUsernameClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:8];
     [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -157,7 +157,7 @@
 }
 
 
-- (void)myTextFieldDidChange:(id)sender {
+- (void)usernameChanged:(id)sender {
     //self.registerButton.enabled = self.username.text.length != 0;
 }
 
@@ -166,21 +166,14 @@
 #pragma mark - Username register Page
 
 
-- (void)registerUsernameClicked:(id)sender{
-
-
+- (void)registerUsernameClicked:(id)sender {
     
-    
-    if (self.username.text.length > 0) {
+    if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+        self.registerButton.enabled = false;
+        self.username.enabled = false;
+        
         [self registerUsername:self.username.text];
     }
-    else {
-        // TODO mesg to the user, edit box still empty
-        // UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"_____ STILL EMPTY _____" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        // [alrt show];
-    }
-    
-   
 }
 
 
@@ -189,7 +182,7 @@
     
     NSLog(@"=== Trying to register with username: %@", username);
     
-    NSString *reg_id = [[NSUserDefaults standardUserDefaults] stringForKey:@"STRING"];
+    NSString *reg_id = [[NSUserDefaults standardUserDefaults] stringForKey:@"register_id"];
     
 #ifdef INDEVEL
     if (!reg_id) {
@@ -198,9 +191,7 @@
         NSLog(@"%@", reg_id);
     }
 #endif
-    
-    assert(reg_id); // looks like a provisioning profile is needed for this...
-    
+      
     // execute Signup API
     [APIClient Signup:username
                    os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
@@ -208,62 +199,61 @@
           register_id:reg_id
               handler:^(id result, NSUInteger code, NSError *error)
      {
-         
-         NSLog(@"=== Register result: %@ error :%@", result, error);
-         
-         if (!error) { // TODO needs a msg to the user. what does happen when no connected to the internet?
-             
-             //success
-             if ([result[@"code"] integerValue] == 200) {
-                 
-                 NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                 
-                 //save user data
-                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-                 [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-                 [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-                 [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
-                 [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
-                 
-                 //save badge num
-                 int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
-                 NSLog(@"numberOfNewMessages:%d", numberOfNewMessages);
-                 [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-                 
-                 UIApplication *application = [UIApplication sharedApplication];
-                 application.applicationIconBadgeNumber = numberOfNewMessages;
-                 [ud synchronize];
-                 
-                 // some logging
-                 NSLog(@"======================================================================");
-                 NSLog(@"=================== USER REGISTRATION SUCCESSFUL =====================");
-                 NSLog(@"======================================================================");
-                 NSLog(@"    username:    %@", [result objectForKey:@"username"]);
-                 NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
-                 NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
-                 NSLog(@"======================================================================");
-                 
-                 
-                 // user is now a developer authenticated user. cognito is handelt on the server side (thanks murata-san^^)
-                                
-                 // transition to SNS page
-                 [self.pages addObject:_lastPage];
-                 NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
-                 [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-                 [self.pageControl setCurrentPage:3];
-                 
-             }
-             else{ // TODO would be nice to handle this not as the default case. Other server side error are possible as well...
-                 
-                 NSLog(@"===================== USER REGISTRATION FAILED =======================");
-                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                 [alrt show];
-                 NSLog(@"%@", result[@"code"]);
-                
-             }
-
+         if(error){
+             // TODO not network? msg to the user
+             NSLog(@"=== Register result: %@ error :%@", result, error);
+             self.registerButton.enabled = true;
+             self.username.enabled = true;
+             return;
          }
          
+         if([result[@"code"] integerValue] != 200){
+             // username already in use
+             NSLog(@"=== Username already registerd by somebody else: %@", result);
+             self.registerButton.enabled = true;
+             self.username.enabled = true;
+             
+             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             [alrt show];
+             return;
+         }
+
+         //success
+         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+         
+         //save user data
+         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
+         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+         
+         //save badge num
+         int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
+         NSLog(@"numberOfNewMessages:%d", numberOfNewMessages);
+         [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+         
+         UIApplication *application = [UIApplication sharedApplication];
+         application.applicationIconBadgeNumber = numberOfNewMessages;
+         [ud synchronize];
+         
+         // some logging
+         NSLog(@"======================================================================");
+         NSLog(@"=================== USER REGISTRATION SUCCESSFUL =====================");
+         NSLog(@"======================================================================");
+         NSLog(@"    username:    %@", [result objectForKey:@"username"]);
+         NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
+         NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
+         NSLog(@"======================================================================");
+         
+         
+         // user is now a developer authenticated user. cognito is handelt on the server side (thanks murata-san^^)
+         
+         // transition to SNS page
+         [self.pages addObject:_lastPage];
+         NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
+         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+         [self.pageControl setCurrentPage:3];
      }];
 }
 
