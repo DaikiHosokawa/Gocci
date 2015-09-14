@@ -223,6 +223,14 @@
     [self removeFromSuperview];
 }
 
+- (NSString*)fakeDeviceID
+{
+    // worst language ever...
+    NSString *r1 = [[NSProcessInfo processInfo] globallyUniqueString];
+    NSString *r2 = [[NSProcessInfo processInfo] globallyUniqueString];
+    NSString *str = [NSString stringWithFormat: @"%@%@", r1, r2];
+    return [[str stringByReplacingOccurrencesOfString:@"-" withString:@""] substringToIndex:64];
+}
 
 -(IBAction)btnRegistLocal_clicked:(id)sender {
     
@@ -243,7 +251,13 @@
     NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
     NSLog(@"register_id:%@",[ud stringForKey:@"STRING"]);
     
-    [APIClient Signup:_tfUsername.text os:os model:[UIDevice currentDevice].model register_id:[ud stringForKey:@"STRING"] handler:^(id result, NSUInteger code, NSError *error)
+    // simulator register support
+    NSString *regid = [ud stringForKey:@"STRING"];
+    if(!regid)
+        regid = [self fakeDeviceID];
+    
+    
+    [APIClient Signup:_tfUsername.text os:os model:[UIDevice currentDevice].model register_id:regid handler:^(id result, NSUInteger code, NSError *error)
      {
          [SVProgressHUD dismiss];
          //receive data
