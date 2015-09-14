@@ -15,7 +15,7 @@
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-#define FRESH_START 1
+//#define FRESH_START
 
 
 // #######################################################################################
@@ -32,6 +32,13 @@
 #define API_BASE_URL (@"http://test.api.gocci.me/v1/mobile/")
 #else
 #define API_BASE_URL (@"https://api.gocci.me/v1/mobile/")
+#endif
+
+#ifdef INDEVEL
+#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
+#else
+#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
+#error "I dont know"
 #endif
 
 #define FACEBOOK_APP_ID (@"673123156062598")

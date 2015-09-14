@@ -21,4 +21,6 @@
 @property(weak,nonatomic) UIButton *popupCancel;
 @property(weak,nonatomic) UILabel *popuptitle;
 
+@property(weak,nonatomic) UIButton *registerButton;
+
 @end

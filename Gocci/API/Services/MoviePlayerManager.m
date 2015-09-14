@@ -6,7 +6,7 @@
 /** MPMoviePlayerController を格納 */
 @property (nonatomic,strong) NSMutableDictionary *players;
 
-/** 再生用の MPMoviePlayerController */
+/* 再生用の MPMoviePlayerController */
 @property (nonatomic,strong) MPMoviePlayerController *globalPlayer;
 
 
