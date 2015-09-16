@@ -9,6 +9,8 @@
 #import "const.h"
 #import "util.h"
 
+#import "NetOp.h"
+
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
@@ -182,79 +184,37 @@
     
     NSLog(@"=== Trying to register with username: %@", username);
     
-    NSString *reg_id = [[NSUserDefaults standardUserDefaults] stringForKey:@"register_id"];
+    [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
+    {
+        switch (errorCode) {
+     
+            case NETOP_SUCCESS:
+                // transition to SNS page
+                [self.pages addObject:_lastPage];
+                [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                              direction:UIPageViewControllerNavigationDirectionForward
+                                               animated:YES
+                                             completion:nil];
+                [self.pageControl setCurrentPage:3];
+                break;
+                
+            case NETOP_USERNAME_ALREADY_IN_USE:
+                NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
+                self.registerButton.enabled = true;
+                self.username.enabled = true;
+                
+                [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+                break;
+                
+            default:
+                // TODO no internet?? msg to the user
+                NSLog(@"=== Register failed: %@", errorMsg);
+                self.registerButton.enabled = true;
+                self.username.enabled = true;
+                break;
+        }
+    }];
     
-#ifdef INDEVEL
-    if (!reg_id) {
-        reg_id = [util fakeDeviceID];
-        NSLog(@"=== WARNING uniq register_id not availible. Use random string for testing purpose:");
-        NSLog(@"%@", reg_id);
-    }
-#endif
-      
-    // execute Signup API
-    [APIClient Signup:username
-                   os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
-                model:[UIDevice currentDevice].model
-          register_id:reg_id
-              handler:^(id result, NSUInteger code, NSError *error)
-     {
-         if(error){
-             // TODO not network? msg to the user
-             NSLog(@"=== Register result: %@ error :%@", result, error);
-             self.registerButton.enabled = true;
-             self.username.enabled = true;
-             return;
-         }
-         
-         if([result[@"code"] integerValue] != 200){
-             // username already in use
-             NSLog(@"=== Username already registerd by somebody else: %@", result);
-             self.registerButton.enabled = true;
-             self.username.enabled = true;
-             
-             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             [alrt show];
-             return;
-         }
-
-         //success
-         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-         
-         //save user data
-         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
-         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
-         
-         //save badge num
-         int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
-         NSLog(@"numberOfNewMessages:%d", numberOfNewMessages);
-         [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-         
-         UIApplication *application = [UIApplication sharedApplication];
-         application.applicationIconBadgeNumber = numberOfNewMessages;
-         [ud synchronize];
-         
-         // some logging
-         NSLog(@"======================================================================");
-         NSLog(@"=================== USER REGISTRATION SUCCESSFUL =====================");
-         NSLog(@"======================================================================");
-         NSLog(@"    username:    %@", [result objectForKey:@"username"]);
-         NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
-         NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
-         NSLog(@"======================================================================");
-         
-         
-         // user is now a developer authenticated user. cognito is handelt on the server side (thanks murata-san^^)
-         
-         // transition to SNS page
-         [self.pages addObject:_lastPage];
-         NSArray *viewControllers = [NSArray arrayWithObject:[self.pages lastObject]];
-         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-         [self.pageControl setCurrentPage:3];
-     }];
 }
 
 

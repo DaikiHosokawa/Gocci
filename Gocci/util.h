@@ -18,6 +18,12 @@
 
 + (NSString*)fakeDeviceID;
 
++ (NSString*)getRegisterID;
+
++ (void)setBadgeNumber:(NSInteger)numberOfNewMessages;
+
++ (void)removeAccountSpecificDataFromUserDefaults;
+
 
 @end
 

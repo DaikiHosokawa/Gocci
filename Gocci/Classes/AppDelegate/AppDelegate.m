@@ -88,12 +88,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef FRESH_START
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user_id"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"profile_img"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"identity_id"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"badge_num"];
+    [util removeAccountSpecificDataFromUserDefaults];
 #endif
 
 
@@ -201,34 +196,7 @@
     return YES;
 }
 
-/*
- - (AWSTask *)refresh
- {
- // get Open ID connect Token by the API request to authentication server
- NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
- NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
- AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
- [NSURLConnection sendAsynchronousRequest:request
- queue:[NSOperationQueue mainQueue]
- completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
- {
- if (data) {
- // retrieve identity ID and Open ID connect Token from the response.
- NSError *jsonError = nil;
- NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
- options:NSJSONReadingMutableLeaves
- error:&jsonError];
- NSLog(@"result: %@", result);
- self.identityId = result[@"identityId"];
- self.token = result[@"token"];
- } else {
- NSLog(@"error: %@", error);
- }
- }];
- }
- 
- 
- */
+
 
 -(void)checkGPS{
     
@@ -298,7 +266,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-    NSLog(@"applicationDidBecomeActive");
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
         [locationManager startUpdatingLocation]; //測位再開
     

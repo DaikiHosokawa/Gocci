@@ -14,126 +14,91 @@
 #import "TutorialPageViewController.h"
 
 #import "NetOp.h"
+#import "util.h"
+
 
 
 @implementation SplashViewController
 
 -(void)viewDidLoad{
+    // uncomment to test the conversion API
+//    [util removeAccountSpecificDataFromUserDefaults];
+//    [[NSUserDefaults standardUserDefaults] setValue:@"conversr1" forKey:@"username"];
+//    [[NSUserDefaults standardUserDefaults] setValue:@"http://dwdwdw.dwdwdw.dww.de/img.jpg" forKey:@"avatarLink"];
     
     [super viewDidLoad];
     
-//    [self performSegueWithIdentifier:@"goTimeline" sender:self];
-//    return;
-//    
-    [SVProgressHUD show];
-
     // TODO we can do the network operations while we wait here, I will fix this later
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SPLASH_TIME * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        NSString *iid = [[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"];
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+    {
+        NSString *iid =      [[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"];
+        NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+        NSString *avatar =   [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
         
         // registerd user, already using gocci
         if (iid){
-            [NetOp loginWithIID: iid andThen:^(int ecode, NSString *errorMsg){
-            
-                if (ecode != NETOP_SUCCESS) {
-                    // TODO error to the user
-                    return;
+            [NetOp loginWithIID:iid andThen:^(NetOpResult ecode, NSString *emsg)
+            {
+                switch (ecode) {
+                    case NETOP_SUCCESS:
+                        [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                        break;
+                    case NETOP_NETWORK_ERROR:
+                        // TODO not network msg to the user?
+                        break;
+                        
+                    default:
+                        // TODO What to to if the user can't login with this id??? should never happen, but what if? How about
+                        // [util removeAccountSpecificDataFromUserDefaults];
+                        // [self goToTutorial];
+                        break;
                 }
-  
-                [self performSegueWithIdentifier:@"goTimeline" sender:self];
-
-            
             }];
+            
+            return;
+        }
+
+        // conversion API needed
+        if( username && avatar ){
+
+            [NetOp loginWithAPIV2Conversation:username
+                                       avatar:avatar
+                                      andThen:^(NetOpResult ecode, NSString *emsg)
+            {
+                switch (ecode) {
+                    case NETOP_SUCCESS:
+                        [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                        break;
+                    case NETOP_NETWORK_ERROR:
+                        // TODO not network msg to the user?
+                        break;
+                        
+                    default:
+                        // TODO What to to if the user can't login with this id??? should never happen, but what if? How about
+                        // [util removeAccountSpecificDataFromUserDefaults];
+                        // [self goToTutorial];
+                        break;
+                }
+                [self performSegueWithIdentifier:@"goTimeline" sender:self];
+            }];
+            
             return;
         }
         
         // first startup, show tutorial
-        if (![[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
-            TutorialPageViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
-            [self presentViewController:tutorialViewController animated:YES completion:nil];
-            return;
-        }
-        
-        
+        [self goToTutorial];
     });
         
 
-        
- /*
-        
-   // }else{
-        
-        //identity_id is empty case
-        
-        //prepare os string
-        NSString *os = [@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion];
-        
-        //exist username & pic
-        if (([[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"]) && ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"])){
-            
-            //execute Conversion API
-            [APIClient Conversion:[[NSUserDefaults standardUserDefaults] valueForKey:@"username"] profile_img:[[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"] os:os model:[UIDevice currentDevice].model register_id:[[NSUserDefaults standardUserDefaults] valueForKey:@"register_id"] handler:^(id result, NSUInteger code, NSError *error) {
-                
-                NSLog(@"Conversion result:%@ error:%@",result,error);
-                
-                //Success
-                if([result[@"code"] integerValue] == 200){
-                    [SVProgressHUD show];
-                    
-                    //save user data
-                    NSString* username = [result objectForKey:@"username"];
-                    NSString* picture = [result objectForKey:@"profile_img"];
-                    NSString* user_id = [result objectForKey:@"user_id"];
-                    NSString* identity_id = [result objectForKey:@"identity_id"];
-                    NSString* token = [result objectForKey:@"token"];
-                    [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
-                    [[NSUserDefaults standardUserDefaults] setValue:picture forKey:@"avatarLink"];
-                    [[NSUserDefaults standardUserDefaults] setValue:user_id forKey:@"user_id"];
-                    [[NSUserDefaults standardUserDefaults] setValue:identity_id forKey:@"identity_id"];
-                    [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
-
-                    //save badge num
-                    int numberOfNewMessages = [[result objectForKey:@"badge_num"] intValue];
-                    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-                    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-                    UIApplication *application = [UIApplication sharedApplication];
-                    application.applicationIconBadgeNumber = numberOfNewMessages;
-                    [ud synchronize];
-                    
-                    
-                    //create credentialProvider
-                    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION
-                                                                                                                    identityPoolId:COGNITO_POOL_ID];
-                    
-                    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1 credentialsProvider:credentialsProvider];
-                    
-                    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-                    
-                    credentialsProvider.logins = @{ @"test.login.gocci": [[NSUserDefaults standardUserDefaults] valueForKey:@"token"] };
-                    
-                    //refresh and syncronize console
-                    [[credentialsProvider refresh] continueWithBlock:^id(AWSTask *task) {
-                        // Your handler code heredentialsProvider.identityId;
-                        NSLog(@"logins: %@", credentialsProvider.logins);
-                        NSLog(@"task:%@",task);
-                        // return [self refresh];
-                        return nil;
-                    }];
-                    
-                    [self performSegueWithIdentifier:@"goTimeline" sender:self];
-                    
-                }
-                
-            }];
-        }
-    }
     
-        });
-  
-  */
+}
+
+
+-(void)goToTutorial{
+    
+    TutorialPageViewController *tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Tutorial"];
+    [self presentViewController:tutorialViewController animated:YES completion:nil];
     
 }
 
