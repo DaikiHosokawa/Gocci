@@ -11,11 +11,11 @@
 
 // #######################################################################################
 // Lots ob DEBUG improvments. TODO change this in the release version
-#define INDEVEL 1
+#define INDEVEL "comment this line out"
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-//#define FRESH_START
+//#define FRESH_START "comment this line out"
 
 
 // #######################################################################################
@@ -37,8 +37,7 @@
 #ifdef INDEVEL
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
 #else
-#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
-#error "I dont know"
+#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
 #define FACEBOOK_APP_ID (@"673123156062598")
