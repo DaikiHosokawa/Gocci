@@ -23,4 +23,6 @@
 
 @property(weak,nonatomic) UIButton *registerButton;
 
+//@property (weak, nonatomic) IBOutlet UILabel *page1LongLabel;
+
 @end

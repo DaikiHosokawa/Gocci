@@ -6,15 +6,16 @@
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
-#import <AWSCore/AWSIdentityProvider.h>
 
-@interface AWSGocciDeveloperAuthenticatedIdentityProvider : AWSAbstractCognitoIdentityProvider
+@interface AWSGocciIdentityProvider : AWSAbstractCognitoIdentityProvider
 
 
 - (instancetype)initWithRegionType:(AWSRegionType)regionType
-                        identityId:(NSString *)identityId
-                    identityPoolId:(NSString *)identityPoolId
+                    identityPoolID:(NSString *)identityPoolID
+                        identityID:(NSString *)identityID
+                            userID:(NSString *)userID
                             logins:(NSDictionary *)logins
                       providerName:(NSString *)providerName
+                         initToken:(NSString *)token;
 
 @end

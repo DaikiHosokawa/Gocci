@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "Crittercism.h"
-#import <AWSCore/AWSCore.h>
-#import <AWSCognito/AWSCognito.h>
+//#import <AWSCore/AWSCore.h>
+//#import <AWSCognito/AWSCognito.h>
 #import "BBBadgeBarButtonItem.h"
 
 
@@ -44,7 +44,6 @@
     NSString *secretkey;
     NSString *sessionkey;
 
-    AWSCognitoCredentialsProvider *cre;
 }
 
 @property (strong, nonatomic) FBSession *session;
@@ -71,8 +70,6 @@
 @property(nonatomic,retain) NSString *accesskey;
 @property(nonatomic,retain) NSString *secretkey;
 @property(nonatomic,retain) NSString *sessionkey;
-
-@property(nonatomic,retain)AWSCognitoCredentialsProvider *cre;
 
 
 -(BOOL)isFirstRun;

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1qw-uV-e52">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tutorial Page View Controller-->
+        <scene sceneID="EqB-hf-pay">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isA-Uh-0TK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="Tutorial" id="1qw-uV-e52" customClass="TutorialPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bdm-Zy-AKW"/>
+                        <viewControllerLayoutGuide type="bottom" id="eSF-y2-xm8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oqR-CD-zGe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRN-WG-Bot">
+                                <rect key="frame" x="47" y="686" width="321" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="すでにアカウントをお持ちの方はこちらから">
+                                    <color key="titleColor" white="0.080263283640000002" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="aWl-ur-zeO">
+                                <rect key="frame" x="153" y="651" width="109" height="37"/>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.3945670872" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="aWl-ur-zeO" id="TxA-du-5SH"/>
+                        <segue destination="N0d-Dd-195" kind="modal" identifier="goTimeline" id="P0i-QC-sFO"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-9501" y="-3342"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VYD-Ga-A3k">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unM-0J-cBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="page2" id="aFj-TL-MUq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n6A-gI-YUh"/>
+                        <viewControllerLayoutGuide type="bottom" id="3ek-GT-W7p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bjo-aj-05f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_2" translatesAutoresizingMaskIntoConstraints="NO" id="Bwr-dd-Kfl">
+                                <rect key="frame" x="87" y="87" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7秒で手軽" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-hc-Cof">
+                                <rect key="frame" x="141" y="391" width="133" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="外観、内装、料理を撮りましょう" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tm-sM-EG0">
+                                <rect key="frame" x="57" y="429" width="300" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60784313729999995" green="0.80000000000000004" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-9339" y="-2658"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VzB-To-AdR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cc3-06-6Iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="N0d-Dd-195" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hGv-nt-Soy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jbc-Eg-9E2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8xW-id-EDE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-8460" y="-3347.25"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BxL-ar-iH2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NDm-wD-pug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="page3" hidesBottomBarWhenPushed="YES" id="XTn-v3-bdN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="59x-5K-DQd"/>
+                        <viewControllerLayoutGuide type="bottom" id="uSt-H4-x9K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eeT-g1-LsC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GzA-cx-rMq">
+                                <rect key="frame" x="31" y="405" width="358" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocciへようこそ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d52-Mp-g4Z">
+                                <rect key="frame" x="98" y="361" width="218" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_7" translatesAutoresizingMaskIntoConstraints="NO" id="8BP-dk-Nbq">
+                                <rect key="frame" x="87" y="87" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登録することで" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSg-Eo-7bl">
+                                <rect key="frame" x="145" y="482" width="102" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="に同意するものとします" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPA-cO-9y9">
+                                <rect key="frame" x="117" y="538" width="159" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJL-SW-kaa">
+                                <rect key="frame" x="82" y="505" width="59" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="利用規約">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="及び" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXi-Wh-Mcg">
+                                <rect key="frame" x="149" y="505" width="34" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLJ-WI-tr2">
+                                <rect key="frame" x="180" y="510" width="142" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="プライバシーポリシー">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view hidden="YES" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-Bl-4BQ">
+                                <rect key="frame" x="21" y="20" width="373" height="621"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6p-uo-fIV">
+                                        <rect key="frame" x="88" y="17" width="196" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <webView tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDk-Bt-tJm">
+                                        <rect key="frame" x="0.0" y="55" width="373" height="566"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </webView>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-NC-1cg">
+                                        <rect key="frame" x="8" y="13" width="30" height="30"/>
+                                        <state key="normal" image="btn_delete_white">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.87843137250000003" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-8343" y="-2638.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="06y-UW-OMM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nqb-ui-X9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="page4" id="FT7-71-O1r" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lli-xn-JL6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kah-kf-zcP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cju-Re-Bxm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_3" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-hq-Oy1">
+                                <rect key="frame" x="87" y="87" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNS連携はいかが？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-LB-WsG">
+                                <rect key="frame" x="94" y="377" width="226" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-nN-qQ2">
+                                <rect key="frame" x="73" y="438" width="268" height="37"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.68627450980000004" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="facebookと連携する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBn-F8-UQv">
+                                <rect key="frame" x="73" y="495" width="268" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="twitterと連携する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEP-jL-rXK">
+                                <rect key="frame" x="73" y="557" width="268" height="39"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.23529411759999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="連携なしで始める">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59607843140000005" green="0.73333333329999995" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-7489.5" y="-2658"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CJw-wn-yqy">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCh-wg-De8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="page1" id="02j-jZ-GeX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x2M-DE-Hdj"/>
+                        <viewControllerLayoutGuide type="bottom" id="UF2-xR-grJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rCD-vm-V2S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character" translatesAutoresizingMaskIntoConstraints="NO" id="mri-zL-pZ7">
+                                <rect key="frame" x="87" y="87" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mri-zL-pZ7" secondAttribute="height" multiplier="1:1" id="7fI-gM-yON"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7fI-gM-yON"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7fI-gM-yON"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocciとは？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdb-FM-7FO">
+                                <rect key="frame" x="134" y="393" width="163" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocciは食のリアルを伝えるアプリです" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bi-6r-tgI">
+                                <rect key="frame" x="25" y="436" width="364" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.56862745100000001" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7Bi-6r-tgI" firstAttribute="centerX" secondItem="xdb-FM-7FO" secondAttribute="centerX" id="B7W-Gh-vsF"/>
+                            <constraint firstItem="mri-zL-pZ7" firstAttribute="leading" secondItem="rCD-vm-V2S" secondAttribute="leadingMargin" constant="60" id="TpO-Lq-kye"/>
+                            <constraint firstItem="xdb-FM-7FO" firstAttribute="top" secondItem="mri-zL-pZ7" secondAttribute="bottom" constant="20" id="VcN-uv-Qy8"/>
+                            <constraint firstItem="7Bi-6r-tgI" firstAttribute="top" secondItem="xdb-FM-7FO" secondAttribute="bottom" constant="16" id="Xnc-u2-4Bk"/>
+                            <constraint firstItem="mri-zL-pZ7" firstAttribute="top" secondItem="x2M-DE-Hdj" secondAttribute="bottom" constant="60" id="egL-Jb-sZQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mri-zL-pZ7" secondAttribute="trailing" constant="60" id="pFE-oo-smC"/>
+                            <constraint firstItem="xdb-FM-7FO" firstAttribute="centerX" secondItem="mri-zL-pZ7" secondAttribute="centerX" id="pMu-7w-5TF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TpO-Lq-kye"/>
+                                <exclude reference="egL-Jb-sZQ"/>
+                                <exclude reference="pFE-oo-smC"/>
+                                <exclude reference="VcN-uv-Qy8"/>
+                                <exclude reference="pMu-7w-5TF"/>
+                                <exclude reference="B7W-Gh-vsF"/>
+                                <exclude reference="Xnc-u2-4Bk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="TpO-Lq-kye"/>
+                                <include reference="egL-Jb-sZQ"/>
+                                <include reference="pFE-oo-smC"/>
+                                <include reference="VcN-uv-Qy8"/>
+                                <include reference="pMu-7w-5TF"/>
+                                <include reference="B7W-Gh-vsF"/>
+                                <include reference="Xnc-u2-4Bk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-10239" y="-2658"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_delete_white" width="30" height="30"/>
+        <image name="character" width="1024" height="1024"/>
+        <image name="character_2" width="512" height="512"/>
+        <image name="character_3" width="512" height="512"/>
+        <image name="character_7" width="512" height="512"/>
+    </resources>
+</document>

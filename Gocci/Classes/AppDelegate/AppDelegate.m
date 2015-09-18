@@ -7,6 +7,7 @@
 //
 
 #import "const.h"
+#import "util.h"
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SCFilterGroup.h"
@@ -55,15 +56,15 @@
 }*/
 
 // Facebook SDK needs this
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
-}
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation];
+//}
 
 
 - (BOOL)isFirstRun
@@ -85,7 +86,17 @@
 }
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
+    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+    self.window.rootViewController = rootViewController;
+    return YES;
+}
+
+
+- (BOOL)OFFFFFapplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef FRESH_START
     [util removeAccountSpecificDataFromUserDefaults];

@@ -15,8 +15,6 @@
 #import "APIClient.h"
 #import "AppDelegate.h"
 
-#import <AWSCore/AWSCore.h>
-#import <AWSCognito/AWSCognito.h>
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -59,6 +57,13 @@
     UIViewController *page3 = nil;
     UIViewController *page4 = nil;
     
+    page1 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
+    page2 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
+    page3 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
+    page4 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
+    
+    //self.page1LongLabel.adjustsFontSizeToFitWidth = YES;
+    /*
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     
@@ -91,6 +96,8 @@
         page3 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
         page4 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
     }
+    
+    */
     
     //TODO if page1 is still nil here, the programm will crash. So any new iPhone or iPad or so am BOOM
     
