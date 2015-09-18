@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "NetOp.h"
-//#import "AWS.h"
+#import "AWS.h"
 #import "util.h"
 
 
@@ -58,7 +58,9 @@
         NSLog(@"======================================================================");
         
         // Setup AWS credentials
-//        [AWS prepareWithIdentityID:iid andDevAuthToken:[result objectForKey:@"token"]];
+        [AWS prepareWithIdentityID:iid
+                            userID:[result objectForKey:@"user_id"]
+                          devAuthToken:[result objectForKey:@"token"]];
         
         afterBlock(NETOP_SUCCESS, nil);
         

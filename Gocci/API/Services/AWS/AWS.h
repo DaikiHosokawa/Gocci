@@ -14,8 +14,8 @@
 
 @property (strong, nonatomic) NSString *token;
 
++ (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token;
 
-+ (void)prepareWithIdentityID:(NSString*)iid andDevAuthToken:(NSString*)token;
 
 // You must call prepareWithIdentityID: before using this function
 + (instancetype)sharedInstance;

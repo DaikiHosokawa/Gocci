@@ -28,6 +28,8 @@
     
     [super viewDidLoad];
     
+    //self.navigationController.
+    
     // TODO we can do the network operations while we wait here, I will fix this later
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SPLASH_TIME * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
@@ -42,7 +44,9 @@
             {
                 switch (ecode) {
                     case NETOP_SUCCESS:
-                        [self performSegueWithIdentifier:@"goTimeline" sender:self];
+                        //[self performSegueWithIdentifier:@"goTimeline" sender:self];
+                        [self goToTutorial];
+
                         break;
                     case NETOP_NETWORK_ERROR:
                         // TODO not network msg to the user?

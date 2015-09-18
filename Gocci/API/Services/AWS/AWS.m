@@ -15,6 +15,8 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 
+#import "AWSGocciIdentityProvider.h"
+
 //#import "APIClient.h"
 
 
@@ -27,7 +29,7 @@
 
 @property (strong, atomic) AWSServiceConfiguration *configuration;
 
-
+@property (strong, atomic) AWSGocciIdentityProvider *identityProvider;
 
 
 @end
@@ -36,11 +38,11 @@ static AWS *sharedInstance = nil;
 
 @implementation AWS : NSObject
 
-+ (void)prepareWithIdentityID:(NSString*)iid andDevAuthToken:(NSString*)token
++ (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[AWS alloc] initWithIdentityID:iid andDevAuthToken:token];
+        sharedInstance = [[AWS alloc] initWithIdentityID:iid userID:userID devAuthToken:token];
     });
 }
 
@@ -52,7 +54,7 @@ static AWS *sharedInstance = nil;
 }
 
 
-- (id)initWithIdentityID:(NSString*)iid andDevAuthToken:(NSString*)token
+- (id)initWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token
 {
     self = [super init];
     
@@ -64,11 +66,30 @@ static AWS *sharedInstance = nil;
         NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
         [logins setObject:token forKey:GOCCI_DEV_AUTH_PROVIDER_STRING];
         
+
+        self.identityProvider = [[AWSGocciIdentityProvider alloc]
+                                 initWithRegionType:COGNITO_POOL_REGION
+                                 identityPoolID:COGNITO_POOL_ID
+                                 identityID:iid
+                                 userID:userID
+                                 logins:logins
+                                 providerName:GOCCI_DEV_AUTH_PROVIDER_STRING
+                                 initToken:token];
+                                 
+        
+        
         //create credentialProvider
-        self.credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION
-                                                                                  identityId:iid
-                                                                              identityPoolId:COGNITO_POOL_ID
-                                                                                      logins:logins];
+        self.credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                    initWithRegionType:COGNITO_POOL_REGION
+                                    identityProvider:self.identityProvider
+                                    unauthRoleArn:nil authRoleArn:nil];
+        
+        
+        //create credentialProvider
+//        self.credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION
+//                                                                                  identityId:iid
+//                                                                              identityPoolId:COGNITO_POOL_ID
+//                                                                                      logins:logins];
         
         self.configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION
                                                          credentialsProvider:self.credentialsProvider];
