@@ -32,8 +32,6 @@
 @property (retain, nonatomic) NSMutableArray *pages;
 @property (strong, nonatomic) UIPageViewController *pageController;
 
-@property (strong, nonatomic) UIViewController *lastPage;
-
 @property (strong, nonatomic) FBSDKLoginManager *facebookLogin;
 
 
@@ -52,55 +50,11 @@
     [[FHSTwitterEngine sharedEngine]setDelegate:self];
     [[FHSTwitterEngine sharedEngine]loadAccessToken];
     
-    UIViewController *page1 = nil;
-    UIViewController *page2 = nil;
-    UIViewController *page3 = nil;
-    UIViewController *page4 = nil;
-    
-    page1 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-    page2 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-    page3 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-    page4 = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    
-    //self.page1LongLabel.adjustsFontSizeToFitWidth = YES;
-    /*
-    //3.5inchと4inchを読み分けする
-    CGRect rect = [UIScreen mainScreen].bounds;
-    
-    if (rect.size.height == 480) {
-        page1 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        page2 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        page3 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        page4 = [[UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    }
-    
-    if (rect.size.height == 568) {
-        page1 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        page2 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        page3 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        page4 = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    }
-    
-    //4.7inch対応
-    if (rect.size.height == 667) {
-         page1 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-         page2 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-         page3 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-         page4 = [[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    }
-    
-    //5.5inch対応
-    if (rect.size.height == 736) {
-        page1 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page1"];
-        page2 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page2"];
-        page3 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page3"];
-        page4 = [[UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"page4"];
-    }
-    
-    */
-    
-    //TODO if page1 is still nil here, the programm will crash. So any new iPhone or iPad or so am BOOM
-    
+    UIViewController *page1 = [self.storyboard instantiateViewControllerWithIdentifier:@"page1"];
+    UIViewController *page2 = [self.storyboard instantiateViewControllerWithIdentifier:@"page2"];
+    UIViewController *page3 = [self.storyboard instantiateViewControllerWithIdentifier:@"page3"];
+    UIViewController *page4 = [self.storyboard instantiateViewControllerWithIdentifier:@"page4"];
+
     
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
     if(ruleButton) {
@@ -142,7 +96,6 @@
 #ifdef INDEVEL
    // self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
 #endif
-    self.lastPage = page4;
 
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
@@ -197,7 +150,7 @@
      
             case NETOP_SUCCESS:
                 // transition to SNS page
-                [self.pages addObject:_lastPage];
+                [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
                 [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
                                               direction:UIPageViewControllerNavigationDirectionForward
                                                animated:YES
@@ -329,7 +282,7 @@
 - (void)TwitterTapped:(id)sender{
     
     UIViewController *loginController = [[FHSTwitterEngine sharedEngine]loginControllerWithCompletionHandler:^(BOOL success) {
-        NSLog(success?@"L0L success":@"O noes!!! Loggen faylur!!!");
+        NSLog(success?@"L0L success":@"O noes!!! Login fail!!!");
         
         NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedUsername %@", FHSTwitterEngine.sharedEngine.authenticatedUsername);
         NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedID %@", FHSTwitterEngine.sharedEngine.authenticatedID);

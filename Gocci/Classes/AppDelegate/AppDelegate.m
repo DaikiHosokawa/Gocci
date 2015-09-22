@@ -22,6 +22,7 @@
 
 #import "FHSTwitterEngine.h"
 
+#import "GocciTest-Swift.h"
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -87,8 +88,10 @@
 
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)OFFapplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"Give her the: %@", [Util generateFakeDeviceID]);
+    
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
     UIViewController* rootViewController = [storyboard instantiateInitialViewController];
     self.window.rootViewController = rootViewController;
@@ -96,8 +99,11 @@
 }
 
 
-- (BOOL)OFFFFFapplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
 #ifdef FRESH_START
     [util removeAccountSpecificDataFromUserDefaults];
 #endif
@@ -107,8 +113,16 @@
 #ifndef INDEVEL
     [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
 #endif
+    
     [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
     
+    NSLog(@"Give her the: %@", [Util getRegisterID]);
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
+    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
+    self.window.rootViewController = rootViewController;
+    
+    /*
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     if (rect.size.height == 480) {
@@ -138,7 +152,7 @@
         _screenType = 4;
         self.window.rootViewController = rootViewController;
     }
-    
+    */
     // !!!:dezamisystem
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     
@@ -180,9 +194,10 @@
         indexFuniki = -1;
     }
     
+#if !(TARGET_IPHONE_SIMULATOR)
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    
+#endif
     
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
@@ -274,8 +289,10 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
+#if !(TARGET_IPHONE_SIMULATOR)
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+#endif
     
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
         [locationManager startUpdatingLocation]; //測位再開

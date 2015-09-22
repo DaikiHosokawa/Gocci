@@ -2,7 +2,7 @@
 //  AWS.h
 //  Gocci
 //
-//  Created by Ma Wa on 14.09.15.
+//  Created by Markus Wanke on 14.09.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
@@ -14,13 +14,17 @@
 
 @property (strong, nonatomic) NSString *token;
 
++ (void)prepareWithSNSProvider:(NSString*)provider SNStoken:(NSString*)token;
+
 + (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token;
 
 
-// You must call prepareWithIdentityID: before using this function
+// You must call a prepareWith... function before using this function
 + (instancetype)sharedInstance;
 
 - (void)refresh;
+
+- (NSString*)iid;
 
 @end
 
