@@ -10,7 +10,7 @@
 
 #import "NetOp.h"
 #import "AWS.h"
-#import "util.h"
+#import "GocciTest-Swift.h"
 
 
 
@@ -20,6 +20,11 @@
 
 
 @implementation NetOp : NSObject
+
+
+
+
+
 
 + (void)loginWithIID:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
 {
@@ -46,7 +51,7 @@
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
         
         //save badge num
-        [util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
         
         // some logging
         NSLog(@"======================================================================");
@@ -70,6 +75,74 @@
 
 
 
++ (void)loginWithSNS:(NSString *)provider SNSToken:(NSString*)token andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
+{
+    
+    if (token == nil) {
+        NSLog(@"token nil:(");
+        return;
+    }
+    
+    
+    // AWS get iid
+    
+    [AWS prepareWithSNSProvider:provider SNStoken:token];
+    
+    if ([[AWS sharedInstance] iid] == nil) {
+        NSLog(@"iid nil:(");
+        return;
+    }
+    
+    
+    [APIClient loginWithSNS:[[AWS sharedInstance] iid]
+                         os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
+                      model:[UIDevice currentDevice].model
+                register_id:[Util getRegisterID]
+                    handler:^(id result, NSUInteger code, NSError *error)
+     {
+         // TODO network errors should maybe be handelt in APIClient
+         if (!result) {
+             NSLog(@"Login result:%@ error:%@",result,error);
+             afterBlock(NETOP_NETWORK_ERROR, [error localizedDescription]);
+             return;
+         }
+         
+         if([result[@"code"] integerValue] != 200){
+             NSLog(@"Login result:%@ error:%@",result,@"unregisterd identity_id");
+             afterBlock(NETOP_IDENTIFY_ID_NOT_REGISTERD, @"unregisterd identity_id");
+             return;
+         }
+         
+         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+         
+         //save user data
+         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+         
+         //save badge num
+         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+         
+         // some logging
+         NSLog(@"======================================================================");
+         NSLog(@"====================== USER LOGIN SUCCESSFUL =========================");
+         NSLog(@"======================================================================");
+         NSLog(@"    username:    %@", [result objectForKey:@"username"]);
+         NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
+         NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
+         NSLog(@"======================================================================");
+         
+         // Setup AWS credentials
+//         [AWS prepareWithIdentityID:iid
+//                             userID:[result objectForKey:@"user_id"]
+//                       devAuthToken:[result objectForKey:@"token"]];
+         
+         afterBlock(NETOP_SUCCESS, nil);
+         
+     }];
+}
+
+
 
 + (void)registerUsername:(NSString *)username andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
 {
@@ -77,7 +150,7 @@
     [APIClient Signup:username
                    os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
                 model:[UIDevice currentDevice].model
-          register_id:[util getRegisterID]
+          register_id:[Util getRegisterID]
               handler:^(id result, NSUInteger code, NSError *error)
      {
 
@@ -105,7 +178,7 @@
          [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
          
          //save badge num
-         [util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
          
          // some logging
          NSLog(@"======================================================================");
@@ -134,7 +207,7 @@
               profile_img:avatar
                        os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
                     model:[UIDevice currentDevice].model
-              register_id:[util getRegisterID]
+              register_id:[Util getRegisterID]
                   handler:^(id result, NSUInteger code, NSError *error)
     {
             
@@ -164,7 +237,7 @@
         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
         
         //save badge num
-        [util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
         
         // some logging
         NSLog(@"======================================================================");

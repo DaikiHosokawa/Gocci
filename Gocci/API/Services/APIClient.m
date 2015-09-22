@@ -66,11 +66,6 @@ static APIClient *_sharedInstance = nil;
                              @"register_id" : register_id
                              };
     
-    NSLog(@"Signup:%@",params);
-
-    // http://test.api.gocci.me/v1/mobile/auth/signup/?model=iPhone%20Simulator&os=iOS_8.4&register_id=C06C65B2-362D-48B3-A1CA-73874D7681F2-1714-0000042BDD345CCF&username=hhhhhhhhh
-    // /v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fp
-    ///v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fphttp://test.api.gocci.me/v1/mobile/auth/signup/?username=ine_teeft001&os=android_5.02&model=c330&register_id=APA91bGeLfANj1ym_Rjfh3erTEfefefefefef6TFEw__bGZboOlgA2iDd3CfEIKYWM7gNOny-BSu-5V-qku1cTHassVwfPyZntTM3XO3ynLTFbZVk7PZ89sTv5McihOcIIaTwOe-KGHbO-Fp
     [[APIClient sharedClient].manager GET:@"auth/signup/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -439,6 +434,24 @@ static APIClient *_sharedInstance = nil;
                              };
     NSLog(@"Login param:%@",params);
     [[APIClient sharedClient].manager GET:@"auth/login/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)loginWithSNS:(NSString *)identity_id os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"identity_id" :identity_id,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
+    NSLog(@"SNS Login param:%@",params);
+    [[APIClient sharedClient].manager GET:@"auth/sns_login/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

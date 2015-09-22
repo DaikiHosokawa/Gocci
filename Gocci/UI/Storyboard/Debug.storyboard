@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jvS-zY-AAu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+    </dependencies>
+    <scenes>
+        <!--Debug View Controller-->
+        <scene sceneID="9TN-Gt-v1z">
+            <objects>
+                <viewController id="jvS-zY-AAu" customClass="DebugViewController" customModule="GocciTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x9e-w6-cPN"/>
+                        <viewControllerLayoutGuide type="bottom" id="CRj-Am-0rl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sae-4Y-7DK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gocci Debug Interface v1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQd-59-Qts">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="41" y="28" width="318" height="33"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPx-1d-mxV">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.76082708405189026" blue="0.61305158186377051" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete UserDefs"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="102" width="360" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="deleteUserDefsClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="No3-Si-MCp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-99-kda">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="SignUp as user:"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="140" width="140" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="signUpAsUserClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="m6v-bG-Uyy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPO-R7-dac">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login as user:"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="258.5" width="140" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginAsUserClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="Jhk-pm-JuI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSw-aB-w3j">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Connect with Twitter"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="19" y="178" width="172" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="signUpWithTwitterClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="Pil-Dh-Gyg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOu-DA-1lF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login with FaceB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="168" y="347" width="140" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginWithFacebookClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="AGx-ld-X8m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMO-6q-MyZ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login with Twitter"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="347" width="140" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginWithTwitterClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="uMr-Tj-Hbh"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXz-Vc-0C7">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="168" y="141" width="212" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92O-sx-krM">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="168" y="257.5" width="212" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqd-Ik-dsK">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Connect with Facebook"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="178" width="173" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="signUpWithFacebookClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="2al-ed-Lce"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.48732958845178842" blue="0.49832476871594855" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TQd-59-Qts"/>
+                                <exclude reference="CPx-1d-mxV"/>
+                                <exclude reference="dhf-99-kda"/>
+                                <exclude reference="KPO-R7-dac"/>
+                                <exclude reference="oSw-aB-w3j"/>
+                                <exclude reference="HOu-DA-1lF"/>
+                                <exclude reference="BMO-6q-MyZ"/>
+                                <exclude reference="dXz-Vc-0C7"/>
+                                <exclude reference="92O-sx-krM"/>
+                                <exclude reference="yqd-Ik-dsK"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="TQd-59-Qts"/>
+                                <include reference="CPx-1d-mxV"/>
+                                <include reference="dhf-99-kda"/>
+                                <include reference="KPO-R7-dac"/>
+                                <include reference="oSw-aB-w3j"/>
+                                <include reference="HOu-DA-1lF"/>
+                                <include reference="BMO-6q-MyZ"/>
+                                <include reference="dXz-Vc-0C7"/>
+                                <include reference="92O-sx-krM"/>
+                                <include reference="yqd-Ik-dsK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="loginEditField" destination="92O-sx-krM" id="mCc-tL-UoU"/>
+                        <outlet property="signUpEditField" destination="dXz-Vc-0C7" id="lte-OX-1Xh"/>
+                        <outlet property="topLabel" destination="TQd-59-Qts" id="obb-Ac-6WC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mzm-Sb-GJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="435" y="181"/>
+        </scene>
+    </scenes>
+</document>

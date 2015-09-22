@@ -9,6 +9,8 @@
 #ifndef NetOp_h
 #define NetOp_h
 
+#import <Foundation/Foundation.h>
+
 
 // Dirty implementation of error codes, which will be done right in API version 3
 
@@ -25,7 +27,11 @@ typedef NS_ENUM(NSInteger, NetOpResult)
 
 @interface NetOp : NSObject
 
+
+
 + (void)loginWithIID:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
+
++ (void)loginWithSNS:(NSString *)provider SNSToken:(NSString*)token andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
 + (void)registerUsername:(NSString *)username andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 

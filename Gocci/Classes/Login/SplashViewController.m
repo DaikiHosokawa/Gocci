@@ -28,6 +28,7 @@
     
     [super viewDidLoad];
     
+    
     //self.navigationController.
     
     // TODO we can do the network operations while we wait here, I will fix this later

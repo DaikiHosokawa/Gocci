@@ -198,6 +198,7 @@
  */
 + (void)Login:(NSString *)identity_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
++ (void)loginWithSNS:(NSString *)identity_id os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler;
 
 /**
  *  comment
