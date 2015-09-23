@@ -617,7 +617,7 @@
         <!--Tabbar Base View Controller-->
         <scene sceneID="tXv-n5-MBn">
             <objects>
-                <tabBarController id="WtJ-63-Klv" customClass="TabbarBaseViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="timeLineEntry" id="WtJ-63-Klv" customClass="TabbarBaseViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="PAe-ZJ-mHQ">
@@ -1156,7 +1156,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

@@ -43,7 +43,7 @@
          {
              if (ecode == NETOP_SUCCESS) {
                  UIStoryboard* secondStoryboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-                 UIViewController* secondViewController = [secondStoryboard instantiateViewControllerWithIdentifier:@"achtung"];
+                 UIViewController* secondViewController = [secondStoryboard instantiateViewControllerWithIdentifier:@"timeLineEntry"];
                  
                  [self presentViewController: secondViewController animated:YES completion: NULL];
                  

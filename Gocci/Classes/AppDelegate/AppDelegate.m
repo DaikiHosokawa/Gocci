@@ -57,15 +57,15 @@
 }*/
 
 // Facebook SDK needs this
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation {
-//    return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                          openURL:url
-//                                                sourceApplication:sourceApplication
-//                                                       annotation:annotation];
-//}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
 
 
 - (BOOL)isFirstRun
@@ -115,14 +115,12 @@
 #endif
     
     [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
-    
-    NSLog(@"Give her the: %@", [Util getRegisterID]);
-    
+
+#ifdef START_WITH_DEBUG_SCREEN
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
     UIViewController* rootViewController = [storyboard instantiateInitialViewController];
     self.window.rootViewController = rootViewController;
-    
-    /*
+#else
     //3.5inchと4inchを読み分けする
     CGRect rect = [UIScreen mainScreen].bounds;
     if (rect.size.height == 480) {
@@ -152,7 +150,7 @@
         _screenType = 4;
         self.window.rootViewController = rootViewController;
     }
-    */
+#endif
     // !!!:dezamisystem
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     

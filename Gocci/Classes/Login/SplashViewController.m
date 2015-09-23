@@ -45,9 +45,7 @@
             {
                 switch (ecode) {
                     case NETOP_SUCCESS:
-                        //[self performSegueWithIdentifier:@"goTimeline" sender:self];
-                        [self goToTutorial];
-
+                        [self performSegueWithIdentifier:@"goTimeline" sender:self];
                         break;
                     case NETOP_NETWORK_ERROR:
                         // TODO not network msg to the user?
@@ -85,7 +83,6 @@
                         // [self goToTutorial];
                         break;
                 }
-                [self performSegueWithIdentifier:@"goTimeline" sender:self];
             }];
             
             return;
