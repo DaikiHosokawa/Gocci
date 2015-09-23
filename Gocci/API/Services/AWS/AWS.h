@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) NSString *token;
 
++ (void)prepare;
+
 + (void)prepareWithSNSProvider:(NSString*)provider SNStoken:(NSString*)token;
 
 + (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token;
@@ -23,6 +25,8 @@
 + (instancetype)sharedInstance;
 
 - (void)refresh;
+
+- (void)addLoginAuthenticationProvider:(NSString*)provider authToken:(NSString*)token;
 
 - (NSString*)iid;
 

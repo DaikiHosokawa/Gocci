@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Debug View Controller-->
@@ -92,6 +93,48 @@
                                     <action selector="loginWithTwitterClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="uMr-Tj-Hbh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vo-1B-t9I">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="861-Le-VNT"/>
+                                </constraints>
+                                <state key="normal" title="Go to Timeline"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="861-Le-VNT"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="861-Le-VNT"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="gotoTimelinkeClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="3WP-qv-pbI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yK5-Dk-SUd">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="cci-JQ-xuW"/>
+                                </constraints>
+                                <state key="normal" title="Go to Tutorial"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cci-JQ-xuW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="cci-JQ-xuW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="gotoTutorialClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="6Ef-bW-rRG"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXz-Vc-0C7">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -119,8 +162,40 @@
                                     <action selector="signUpWithFacebookClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="2al-ed-Lce"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlz-u2-T0s">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="108" id="H0L-ys-9sc"/>
+                                    <constraint firstAttribute="width" constant="108" id="exj-Yb-4dk"/>
+                                </constraints>
+                                <state key="normal" title="Default Start"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="H0L-ys-9sc"/>
+                                        <exclude reference="exj-Yb-4dk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="H0L-ys-9sc"/>
+                                        <include reference="exj-Yb-4dk"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="normalStartClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="aaN-gf-fnr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.48732958845178842" blue="0.49832476871594855" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tlz-u2-T0s" firstAttribute="leading" secondItem="yK5-Dk-SUd" secondAttribute="trailing" constant="8" id="4KA-9M-kZh"/>
+                            <constraint firstItem="CRj-Am-0rl" firstAttribute="top" secondItem="yK5-Dk-SUd" secondAttribute="bottom" constant="20" id="UeZ-Pc-oq5"/>
+                            <constraint firstItem="6vo-1B-t9I" firstAttribute="leading" secondItem="sae-4Y-7DK" secondAttribute="leadingMargin" id="jaL-a5-9n3"/>
+                            <constraint firstItem="CRj-Am-0rl" firstAttribute="top" secondItem="tlz-u2-T0s" secondAttribute="bottom" constant="20" id="jm4-7M-ao5"/>
+                            <constraint firstItem="CRj-Am-0rl" firstAttribute="top" secondItem="6vo-1B-t9I" secondAttribute="bottom" constant="20" id="nOi-dt-04Y"/>
+                            <constraint firstItem="yK5-Dk-SUd" firstAttribute="leading" secondItem="6vo-1B-t9I" secondAttribute="trailing" constant="8" id="xZE-H6-Ca8"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="TQd-59-Qts"/>
@@ -130,9 +205,20 @@
                                 <exclude reference="oSw-aB-w3j"/>
                                 <exclude reference="HOu-DA-1lF"/>
                                 <exclude reference="BMO-6q-MyZ"/>
+                                <exclude reference="6vo-1B-t9I"/>
+                                <exclude reference="yK5-Dk-SUd"/>
                                 <exclude reference="dXz-Vc-0C7"/>
                                 <exclude reference="92O-sx-krM"/>
                                 <exclude reference="yqd-Ik-dsK"/>
+                                <exclude reference="tlz-u2-T0s"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="jaL-a5-9n3"/>
+                                <exclude reference="xZE-H6-Ca8"/>
+                                <exclude reference="UeZ-Pc-oq5"/>
+                                <exclude reference="jm4-7M-ao5"/>
+                                <exclude reference="nOi-dt-04Y"/>
+                                <exclude reference="4KA-9M-kZh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -144,9 +230,20 @@
                                 <include reference="oSw-aB-w3j"/>
                                 <include reference="HOu-DA-1lF"/>
                                 <include reference="BMO-6q-MyZ"/>
+                                <include reference="6vo-1B-t9I"/>
+                                <include reference="yK5-Dk-SUd"/>
                                 <include reference="dXz-Vc-0C7"/>
                                 <include reference="92O-sx-krM"/>
                                 <include reference="yqd-Ik-dsK"/>
+                                <include reference="tlz-u2-T0s"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="jaL-a5-9n3"/>
+                                <include reference="xZE-H6-Ca8"/>
+                                <include reference="UeZ-Pc-oq5"/>
+                                <include reference="jm4-7M-ao5"/>
+                                <include reference="nOi-dt-04Y"/>
+                                <include reference="4KA-9M-kZh"/>
                             </mask>
                         </variation>
                     </view>

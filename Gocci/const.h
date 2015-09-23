@@ -11,11 +11,18 @@
 
 // #######################################################################################
 // Lots ob DEBUG improvments. TODO change this in the release version
-#define INDEVEL 1
+#define INDEVEL
+
+// #######################################################################################
+// The app will start with a debug screen to test logins etc.
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-//#define FRESH_START "comment this line out"
+//#define FRESH_START 1
+
+
+
 
 
 // #######################################################################################
@@ -40,8 +47,13 @@
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
+#ifdef INDEVEL
+#define FACEBOOK_APP_ID (@"148392115499214")
+#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
+#else
 #define FACEBOOK_APP_ID (@"673123156062598")
-#define FACEBOOK_PROVIDER_STRING @"graph.facebook.com"
+#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
+#endif
 
 #define TWITTER_CONSUMER_KEY (@"kurJalaArRFtwhnZCoMxB2kKU")
 #define TWITTER_CONSUMER_SECRET (@"oOCDmf29DyJyfxOPAaj8tSASzSPAHNepvbxcfVLkA9dJw7inYa")

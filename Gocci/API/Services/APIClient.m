@@ -65,7 +65,7 @@ static APIClient *_sharedInstance = nil;
                              @"model" : model,
                              @"register_id" : register_id
                              };
-    
+      
     [[APIClient sharedClient].manager GET:@"auth/signup/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

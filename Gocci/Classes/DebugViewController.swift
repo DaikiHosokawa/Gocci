@@ -19,8 +19,11 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
     
+    //strong var facebookLogin: FBSDKLoginManager
+    
     
     override func viewDidLoad() {
+        // TODO once token
         print("============ DEBUG MODE ACTIVATED ==============")
         super.viewDidLoad()
         
@@ -93,14 +96,19 @@ class DebugViewController : UIViewController {
                 return
             }
         
-            print("=== Twitter name: \(FHSTwitterEngine.sharedEngine().authenticatedUsername)")
-            print("=== Twitter auth: \(FHSTwitterEngine.sharedEngine().authenticatedID)")
+            let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
+            let picurl: String = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal) as! String
+            print("=== Twitter name:   \(username)")
+            print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
+            print("=== Twitter avatar: \(picurl)")
+            print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
             
-            print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat)")
+            NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
+
             
             APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
                 token: FHSTwitterEngine.sharedEngine().cognitoFormat(),
-                profilePictureURL: "none",
+                profilePictureURL: picurl,
                 handler:
                 {
                     (result, code, error) -> Void in
@@ -126,9 +134,11 @@ class DebugViewController : UIViewController {
                     return
                 }
                 
-                print("=== Twitter name: \(FHSTwitterEngine.sharedEngine().authenticatedUsername)")
-                print("=== Twitter auth: \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-                
+                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
+                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
+                print("=== Twitter name:   \(username)")
+                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
+                print("=== Twitter avatar: \(pic)")
                 print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
                 
                 NetOp.loginWithSNS(TWITTER_PROVIDER_STRING, SNSToken: FHSTwitterEngine.sharedEngine().cognitoFormat(), andThen:
@@ -145,12 +155,95 @@ class DebugViewController : UIViewController {
     @IBAction func signUpWithFacebookClicked(sender: AnyObject)
     {
         print("=== SIGNUP WITH FACEBOOK")
+        
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        let facebookLogin = FBSDKLoginManager()
+        
+        facebookLogin.logInWithReadPermissions(nil)
+        {
+            (result, error) -> Void in
+            
+            if error != nil {
+                print("error")
+            }
+            else if result.isCancelled {
+                print("cancelld")
+            }
+            else {
+                print("=== Facebook login success")
+                let token = FBSDKAccessToken.currentAccessToken().tokenString
+                print("=== token: \(token)")
+            
+            
+                APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
+                    token: token,
+                    profilePictureURL: "none",
+                    handler:
+                {
+                    (result, code, error) -> Void in
+                    //             if (!error && [result[@"code"] integerValue] == 200){
 
+                    print(result)
+                })
+            }
+        }
     }
+    
+    
     @IBAction func loginWithFacebookClicked(sender: AnyObject)
     {
         print("=== LOGIN WITH FACEBOOK")
+        
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        let facebookLogin = FBSDKLoginManager()
+        
+        facebookLogin.logInWithReadPermissions(nil)
+            {
+                (result, error) -> Void in
+                
+                if error != nil {
+                    print("error")
+                }
+                else if result.isCancelled {
+                    print("cancelld")
+                }
+                else {
+                    print("=== Facebook login success")
+                    let token = FBSDKAccessToken.currentAccessToken().tokenString
+                    print("=== token: \(token)")
+                    
+                    
+                    NetOp.loginWithSNS(FACEBOOK_PROVIDER_STRING, SNSToken: token, andThen:
+                    {
+                        (result, emsg) -> Void in
+                        print(result)
+                    })
+                }
+        }
+        
 
+
+    }
+    
+    @IBAction func gotoTimelinkeClicked(sender: AnyObject)
+    {
+        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
+        let vc = stobo.instantiateViewControllerWithIdentifier("timeLineEntry")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func gotoTutorialClicked(sender: AnyObject)
+    {
+        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
+        let vc = stobo.instantiateViewControllerWithIdentifier("Tutorial")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func normalStartClicked(sender: AnyObject)
+    {
+        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
+        let vc = stobo.instantiateInitialViewController()
+        self.presentViewController(vc!, animated: true, completion: nil)
     }
 }
 

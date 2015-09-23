@@ -8,7 +8,7 @@
         <!--Tabbar Base View Controller-->
         <scene sceneID="2NA-oU-cQy">
             <objects>
-                <tabBarController storyboardIdentifier="achtung" id="zAG-Pq-b3o" customClass="TabbarBaseViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="timeLineEntry" id="zAG-Pq-b3o" customClass="TabbarBaseViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IRh-dq-bdJ">

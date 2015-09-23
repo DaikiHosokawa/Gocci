@@ -7,3 +7,8 @@
 #import "FHSTwitterEngine.h"
 #import "APIClient.h"
 #import "AWS.h"
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+

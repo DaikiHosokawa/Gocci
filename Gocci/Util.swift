@@ -56,7 +56,8 @@ import UIKit
     }
 
     
-    class func removeAccountSpecificDataFromUserDefaults() {
+    class func removeAccountSpecificDataFromUserDefaults()
+    {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("user_id")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("profile_img")
@@ -64,6 +65,18 @@ import UIKit
         NSUserDefaults.standardUserDefaults().removeObjectForKey("badge_num")
     }
     
+    class func getInchString() -> String
+    {
+        switch UIScreen.mainScreen().bounds.size.height
+        {
+            case 480: return "3_5_inch"
+            case 568: return "Main"
+            case 667: return "4_7_inch"
+            case 736: return "5_5_inch"
+
+            default: return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
+        }
+    }
 
 
     
