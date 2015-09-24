@@ -20,6 +20,9 @@
 
 + (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token;
 
++ (NSString*)getIIDforRegisterdSNSProvider:(NSString*)provider SNSToken:(NSString*)token;
+
+
 
 // You must call a prepareWith... function before using this function
 + (instancetype)sharedInstance;

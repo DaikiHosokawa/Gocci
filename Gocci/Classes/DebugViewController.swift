@@ -2,7 +2,7 @@
 //  File.swift
 //  Gocci
 //
-//  Created by Ma Wa on 21.09.15.
+//  Created by Markus Wanke on 21.09.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
@@ -19,6 +19,7 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
     
+    @IBOutlet weak var tokenEditField: UITextField!
     //strong var facebookLogin: FBSDKLoginManager
     
     
@@ -35,6 +36,9 @@ class DebugViewController : UIViewController {
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         //FHSTwitterEngine.sharedEngine().setDelegate(self)
         FHSTwitterEngine.sharedEngine().loadAccessToken()
+        
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+
         
     }
 
@@ -152,40 +156,45 @@ class DebugViewController : UIViewController {
         self.presentViewController(vc, animated: true, completion: nil)
 
     }
+    
+    
+    
     @IBAction func signUpWithFacebookClicked(sender: AnyObject)
     {
         print("=== SIGNUP WITH FACEBOOK")
-        
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-        let facebookLogin = FBSDKLoginManager()
-        
-        facebookLogin.logInWithReadPermissions(nil)
+
+        FBSDKLoginManager().logInWithReadPermissions(nil)
         {
             (result, error) -> Void in
             
             if error != nil {
+                // TODO msg to the user
                 print("error")
+                return
             }
             else if result.isCancelled {
-                print("cancelld")
+                return
             }
-            else {
-                print("=== Facebook login success")
-                let token = FBSDKAccessToken.currentAccessToken().tokenString
-                print("=== token: \(token)")
-            
-            
-                APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
-                    token: token,
-                    profilePictureURL: "none",
-                    handler:
-                {
-                    (result, code, error) -> Void in
-                    //             if (!error && [result[@"code"] integerValue] == 200){
 
-                    print(result)
-                })
-            }
+            print("=== Facebook login success")
+            let token = FBSDKAccessToken.currentAccessToken().tokenString
+            let fbid = FBSDKAccessToken.currentAccessToken().userID
+            
+            print("FBID: \(fbid)")
+            
+            let picurl = "http://graph.facebook.com/\(fbid)/picture?width=640&height=640"
+            NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
+            print("################################################################################")
+            print("Set avatar link intern to \(picurl)")
+            print("################################################################################")
+            
+            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: token, profilePictureURL: picurl, handler:
+            {
+                (result, code, error) -> Void in
+                // TODO msg to the user on fail
+                //             if (!error && [result[@"code"] integerValue] == 200){
+                print(result)
+            })
         }
     }
     
@@ -194,36 +203,76 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-        let facebookLogin = FBSDKLoginManager()
+        FBSDKLoginManager().logInWithReadPermissions(nil)
+        {
+            (result, error) -> Void in
+            
+            if error != nil {
+                print("error")
+                return
+            }
+            else if result.isCancelled {
+                print("cancelld")
+                return
+            }
         
-        facebookLogin.logInWithReadPermissions(nil)
+            print("=== Facebook login success")
+            let token = FBSDKAccessToken.currentAccessToken().tokenString
+            print("=== token: \(token)")
+            
+            NetOp.loginWithSNS(FACEBOOK_PROVIDER_STRING, SNSToken: token, andThen:
+                {
+                    (result, emsg) -> Void in
+                    print(result)
+            })
+        }
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func twitterTokentoIIDclicked(sender: AnyObject) {
+        
+//        APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: "CAACG9jtU8M4BANq1hm78P2RiXNPBNvCfjMTHPqWtBh76WeHiTdZCDeyhtx0CVwgZC344wQMcqG1fytz55zTPzN1EhF8yZAaw0wv3lfAiLOC7ykmwHqZAgARW7WoEBbZBmne2M1s7P6YEwyE9HCAnWVZCgJze6z41eFMDPB4cCHU3ZCOYwl5ZADEG2o6INWuHZAbV2bSZAlx4lqWQZDZD", profilePictureURL: "none", handler:
+//            {
+//                (result, code, error) -> Void in
+//                // TODO msg to the user on fail
+//                //             if (!error && [result[@"code"] integerValue] == 200){
+//                print(result)
+//        })
+    }
+    
+    
+    
+    @IBAction func facebookTokentoIIDclicked(sender: AnyObject) {
+        
+        if let token = tokenEditField.text where token != "" {
+            AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+        }
+        else {
+            FBSDKLoginManager().logInWithReadPermissions(nil)
             {
                 (result, error) -> Void in
                 
-                if error != nil {
-                    print("error")
-                }
-                else if result.isCancelled {
-                    print("cancelld")
-                }
-                else {
-                    print("=== Facebook login success")
-                    let token = FBSDKAccessToken.currentAccessToken().tokenString
-                    print("=== token: \(token)")
+                if error == nil && !result.isCancelled {
+                    print("=== Request IID for FBID: \(FBSDKAccessToken.currentAccessToken().userID)")
                     
-                    
-                    NetOp.loginWithSNS(FACEBOOK_PROVIDER_STRING, SNSToken: token, andThen:
-                    {
-                        (result, emsg) -> Void in
-                        print(result)
-                    })
+                    AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: FBSDKAccessToken.currentAccessToken().tokenString)
                 }
+            }
         }
-        
-
-
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func gotoTimelinkeClicked(sender: AnyObject)
     {
