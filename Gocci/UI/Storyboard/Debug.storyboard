@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -105,8 +106,7 @@
                                         <exclude reference="3rg-wn-j15"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="19" y="445" width="140" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="3rg-wn-j15"/>
                                     </mask>
@@ -127,8 +127,7 @@
                                         <exclude reference="JU3-pG-sc3"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="19" y="477" width="140" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="JU3-pG-sc3"/>
                                     </mask>
@@ -242,8 +241,7 @@
                                         <exclude reference="TQl-aL-b9M"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="167" y="463" width="97" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="TQl-aL-b9M"/>
                                     </mask>
@@ -285,18 +283,18 @@
                                 <exclude reference="qNG-Ra-6Ku"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Izx-wj-LdX"/>
-                                <exclude reference="PPk-QS-SzQ"/>
-                                <exclude reference="r58-6m-fz8"/>
-                                <exclude reference="o9l-7l-8AC"/>
-                                <exclude reference="jaL-a5-9n3"/>
-                                <exclude reference="29D-w2-oTc"/>
-                                <exclude reference="xZE-H6-Ca8"/>
                                 <exclude reference="UeZ-Pc-oq5"/>
                                 <exclude reference="jm4-7M-ao5"/>
                                 <exclude reference="nOi-dt-04Y"/>
+                                <exclude reference="o9l-7l-8AC"/>
+                                <exclude reference="jaL-a5-9n3"/>
+                                <exclude reference="PPk-QS-SzQ"/>
+                                <exclude reference="r58-6m-fz8"/>
+                                <exclude reference="Izx-wj-LdX"/>
                                 <exclude reference="4KA-9M-kZh"/>
                                 <exclude reference="ypX-oA-tAY"/>
+                                <exclude reference="29D-w2-oTc"/>
+                                <exclude reference="xZE-H6-Ca8"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -319,18 +317,18 @@
                                 <include reference="qNG-Ra-6Ku"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Izx-wj-LdX"/>
-                                <include reference="PPk-QS-SzQ"/>
-                                <include reference="r58-6m-fz8"/>
-                                <include reference="o9l-7l-8AC"/>
-                                <include reference="jaL-a5-9n3"/>
-                                <include reference="29D-w2-oTc"/>
-                                <include reference="xZE-H6-Ca8"/>
                                 <include reference="UeZ-Pc-oq5"/>
                                 <include reference="jm4-7M-ao5"/>
                                 <include reference="nOi-dt-04Y"/>
+                                <include reference="o9l-7l-8AC"/>
+                                <include reference="jaL-a5-9n3"/>
+                                <include reference="PPk-QS-SzQ"/>
+                                <include reference="r58-6m-fz8"/>
+                                <include reference="Izx-wj-LdX"/>
                                 <include reference="4KA-9M-kZh"/>
                                 <include reference="ypX-oA-tAY"/>
+                                <include reference="29D-w2-oTc"/>
+                                <include reference="xZE-H6-Ca8"/>
                             </mask>
                         </variation>
                     </view>
