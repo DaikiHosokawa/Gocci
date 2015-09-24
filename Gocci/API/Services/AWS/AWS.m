@@ -124,6 +124,36 @@ static dispatch_once_t onceToken;
     return self;
 }
 
++ (NSString*)getIIDforRegisterdSNSProvider:(NSString*)provider SNSToken:(NSString*)token
+{
+#ifdef INDEVEL
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+#endif
+    
+    NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
+    [logins setObject:token forKey:provider];
+    
+    AWSCognitoCredentialsProvider *cp = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION identityId:nil identityPoolId:COGNITO_POOL_ID logins:logins];
+    
+    //        [self.credentialsProvider clearCredentials];
+    //        [self.credentialsProvider clearKeychain];
+    
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION credentialsProvider:cp];
+    
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
+    
+    [[cp getIdentityId] waitUntilFinished];
+    
+    NSString* iid = cp.identityId;
+    
+    NSLog(@"=== AWS SNS identity_id: %@", iid);
+    NSLog(@"=== AWS SNS current credentials will expire in %f hours.", [cp.expiration timeIntervalSinceDate:[[NSDate alloc] init]] / 60 / 60);
+    
+    
+    return iid;
+}
+
 - (id)initWithSNSProvider:(NSString*)provider SNSToken:(NSString*)token
 {
     self = [super init];

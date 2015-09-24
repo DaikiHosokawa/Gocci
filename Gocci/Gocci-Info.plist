@@ -34,6 +34,14 @@
 				<string>fb673123156062598</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb148392115499214</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.2.6</string>
@@ -49,14 +57,14 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>twimg.com</key>
+			<key>gocci.me</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-			<key>gocci.me</key>
+			<key>twimg.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
