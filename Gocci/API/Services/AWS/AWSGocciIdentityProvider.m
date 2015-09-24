@@ -53,7 +53,7 @@
     // Set the identity id and token
 //    self.identityId = response.identityId;
 //    self.token = response.token;
-    [super refresh];
+    //[super refresh];
     return [AWSTask taskWithResult:self.identityId];
 }
 

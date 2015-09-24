@@ -30,6 +30,8 @@
 {
     [APIClient Login:iid handler:^(id result, NSUInteger code, NSError *error)
     {
+        NSLog(@"??????????????? %@ %lu %@", result, (unsigned long)code, error);
+        
         // TODO network errors should maybe be handelt in APIClient
         if (!result) {
             NSLog(@"Login result:%@ error:%@",result,error);
@@ -259,13 +261,4 @@
 
 @end
 
-
-
-
-//GetCredentialsForIdentity
-
-
-
-
-//      [SVProgressHUD show];
 
