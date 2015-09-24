@@ -239,6 +239,7 @@
 		98ACE0741BAC4D65002AA083 /* TutorialSubPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */; };
 		98ACE0771BAC637A002AA083 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
 		98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */; };
+		98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10631BB3CCB500468D43 /* SNSUtil.swift */; };
 		98DE2B7E1BAF902400382B75 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98DE2B7D1BAF902400382B75 /* Debug.storyboard */; };
 		98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE2B801BAFA24400382B75 /* DebugViewController.swift */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
@@ -683,6 +684,7 @@
 		98ACE0761BAC637A002AA083 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		98D8BC631BA270AE00613D84 /* APIClientLimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClientLimits.h; sourceTree = "<group>"; };
 		98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReLoginViewController.swift; sourceTree = "<group>"; };
+		98DB10631BB3CCB500468D43 /* SNSUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSUtil.swift; sourceTree = "<group>"; };
 		98DE2B7D1BAF902400382B75 /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		98DE2B801BAFA24400382B75 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
@@ -1209,6 +1211,7 @@
 				98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */,
 				989769011BACB55A002CED23 /* INAutoResizeLabel.swift */,
 				98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */,
+				98DB10631BB3CCB500468D43 /* SNSUtil.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2015,6 +2018,7 @@
 				53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
 				952D23841A9B95E800C354DF /* SDWebImageCompat.m in Sources */,
+				98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */,
 				952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */,
 				952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */,
 				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,

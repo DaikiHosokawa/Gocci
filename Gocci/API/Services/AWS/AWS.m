@@ -76,12 +76,12 @@ static dispatch_once_t onceToken;
     
     if (self) {
 #ifdef INDEVEL
-        [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+        //[AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
 #endif
         
         NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
         // TODO the token is set in the AWSGocciIdentityProvider from now on, so this should not be nessasary anymore
-        [logins setObject:token forKey:GOCCI_DEV_AUTH_PROVIDER_STRING];
+        //[logins setObject:token forKey:GOCCI_DEV_AUTH_PROVIDER_STRING];
         
 
         self.identityProvider = [[AWSGocciIdentityProvider alloc]
@@ -127,17 +127,16 @@ static dispatch_once_t onceToken;
 + (NSString*)getIIDforRegisterdSNSProvider:(NSString*)provider SNSToken:(NSString*)token
 {
 #ifdef INDEVEL
-    [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+    //[AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
 #endif
+    
+    // For more then one SNS account, we have to clear all the date or wrong old iid's will get deleiverd
+    [[AWSCognito defaultCognito] wipe];
     
     NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
     [logins setObject:token forKey:provider];
     
     AWSCognitoCredentialsProvider *cp = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION identityId:nil identityPoolId:COGNITO_POOL_ID logins:logins];
-    
-    //        [self.credentialsProvider clearCredentials];
-    //        [self.credentialsProvider clearKeychain];
-    
     
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION credentialsProvider:cp];
     
@@ -148,8 +147,6 @@ static dispatch_once_t onceToken;
     NSString* iid = cp.identityId;
     
     NSLog(@"=== AWS SNS identity_id: %@", iid);
-    NSLog(@"=== AWS SNS current credentials will expire in %f hours.", [cp.expiration timeIntervalSinceDate:[[NSDate alloc] init]] / 60 / 60);
-    
     
     return iid;
 }

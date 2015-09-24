@@ -25,6 +25,7 @@
 
 @interface TutorialPageViewController (){
     //NSArray *pages;
+    CGPoint originalCenter;
 }
 
 
@@ -62,9 +63,7 @@
     }
     
     self.username = (UITextField *)[page3.view viewWithTag:3];
-    [self.username addTarget:self
-                  action:@selector(usernameChanged:)
-        forControlEvents:UIControlEventEditingChanged];
+
 
 #ifdef INDEVEL
     self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
@@ -116,12 +115,23 @@
     [self.pageController didMoveToParentViewController:self];
     
     [self.view sendSubviewToBack:[self.pageController view]];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardAppear:) name:UIKeyboardWillShowNotification object:nil];
+
+    self->originalCenter = self.view.center;
 }
 
-
-- (void)usernameChanged:(id)sender {
-    //self.registerButton.enabled = self.username.text.length != 0;
+-(void)onKeyboardHide:(NSNotification *)notification
+{
+    self.view.center = self->originalCenter;
 }
+
+-(void)onKeyboardAppear:(NSNotification *)notification
+{
+    self.view.center = CGPointMake(self->originalCenter.x, self->originalCenter.y - 200);
+}
+
 
 
 

@@ -127,31 +127,35 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH TWITTER")
         
-        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
-            {
-                (success) -> Void in
-                
-                if !success {
-                    print("=== Twitter login failed")
-                    return
-                }
-                
-                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
-                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
-                print("=== Twitter name:   \(username)")
-                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-                print("=== Twitter avatar: \(pic)")
-                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
-                
-                NetOp.loginWithSNS(TWITTER_PROVIDER_STRING, SNSToken: FHSTwitterEngine.sharedEngine().cognitoFormat(), andThen:
-                {
-                    (result, emsg) -> Void in
-                    print(result)
-                })
-                
-        })
+        SNSUtil.loginWithTwitter(self) { (succ) -> Void in
+            print("0000000000000000000000000000000 \(succ)")
+        }
         
-        self.presentViewController(vc, animated: true, completion: nil)
+//        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
+//            {
+//                (success) -> Void in
+//                
+//                if !success {
+//                    print("=== Twitter login failed")
+//                    return
+//                }
+//                
+//                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
+//                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
+//                print("=== Twitter name:   \(username)")
+//                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
+//                print("=== Twitter avatar: \(pic)")
+//                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
+//                
+//                NetOp.loginWithSNS(TWITTER_PROVIDER_STRING, SNSToken: FHSTwitterEngine.sharedEngine().cognitoFormat(), andThen:
+//                {
+//                    (result, emsg) -> Void in
+//                    print(result)
+//                })
+//                
+//        })
+//        
+//        self.presentViewController(vc, animated: true, completion: nil)
 
     }
     
@@ -246,8 +250,19 @@ class DebugViewController : UIViewController {
     
     @IBAction func facebookTokentoIIDclicked(sender: AnyObject) {
         
+//        tokenEditField.text = "CAACG9jtU8M4BALWeCfRrAipUG68Chej01KZCufhwqV77wfwZAaHCDZC5WWsfUSfPR8d7Vh2dOAXYtXXgnxfN64TyBf3vYvzD8FhGAF0bdN1OPSYYfVmQS8PHJxtXAwzd8QPDlaAkGFR1uPvyJoL1tD9i9occtMZAnpCp3fWAZC0J1SK8F9r8bgZCEj5hBHLf1nAXR8lz8d3QZDZD"
+
         if let token = tokenEditField.text where token != "" {
-            AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+            let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+            
+            NetOp.loginWithIID(iid, andThen: { (result, msg) -> Void in
+                
+                if result != NetOpResult.NETOP_SUCCESS {
+                    print("=== FAILED: \(msg)")
+                    return
+                }
+                print("=== Looks good :)")
+            })
         }
         else {
             FBSDKLoginManager().logInWithReadPermissions(nil)
@@ -257,7 +272,16 @@ class DebugViewController : UIViewController {
                 if error == nil && !result.isCancelled {
                     print("=== Request IID for FBID: \(FBSDKAccessToken.currentAccessToken().userID)")
                     
-                    AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: FBSDKAccessToken.currentAccessToken().tokenString)
+                    let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: FBSDKAccessToken.currentAccessToken().tokenString)
+                    
+                    NetOp.loginWithIID(iid, andThen: { (result, msg) -> Void in
+                        
+                        if result != NetOpResult.NETOP_SUCCESS {
+                            print("=== FAILED: \(msg)")
+                            return
+                        }
+                        print("=== Looks good :)")
+                    })
                 }
             }
         }
