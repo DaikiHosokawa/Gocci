@@ -383,5 +383,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)ReturnTutorial:(UIStoryboardSegue *)segue
+{
+    NSLog(@"go back to tutorial");
+}
+
 
 @end
