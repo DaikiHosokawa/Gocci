@@ -31,11 +31,7 @@ class DebugViewController : UIViewController {
         signUpEditField.text = NSUserDefaults.standardUserDefaults().stringForKey("username") ?? Util.randomUsername()
         
         
-        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-        //FHSTwitterEngine.sharedEngine().setDelegate(self)
-        FHSTwitterEngine.sharedEngine().loadAccessToken()
-        
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+
 
         
     }
@@ -88,38 +84,10 @@ class DebugViewController : UIViewController {
     @IBAction func signUpWithTwitterClicked(sender: AnyObject)
     {
         print("=== SIGNUP WITH TWITTER")
-        
-        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
-        {
-            (success) -> Void in
-            
-            if !success {
-                print("=== Twitter login failed")
-                return
-            }
-        
-            let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
-            let picurl: String = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal) as! String
-            print("=== Twitter name:   \(username)")
-            print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-            print("=== Twitter avatar: \(picurl)")
-            print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
-            
-            NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
 
-            
-            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
-                token: FHSTwitterEngine.sharedEngine().cognitoFormat(),
-                profilePictureURL: picurl,
-                handler:
-                {
-                    (result, code, error) -> Void in
-                    print(result)
-                })
-        })
-
-        self.presentViewController(vc, animated: true, completion: nil)
-
+        SNSUtil.singelton.connectWithTwitter(self) { (result) -> Void in
+            print("Result: \(result)")
+        }
     }
         
         
@@ -127,76 +95,18 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH TWITTER")
         
-        SNSUtil.loginWithTwitter(self) { (succ) -> Void in
-            print("0000000000000000000000000000000 \(succ)")
+        SNSUtil.singelton.loginWithTwitter(self) { (result) -> Void in
+            print("=== Result: \(result)")
         }
-        
-//        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
-//            {
-//                (success) -> Void in
-//                
-//                if !success {
-//                    print("=== Twitter login failed")
-//                    return
-//                }
-//                
-//                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
-//                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
-//                print("=== Twitter name:   \(username)")
-//                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-//                print("=== Twitter avatar: \(pic)")
-//                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
-//                
-//                NetOp.loginWithSNS(TWITTER_PROVIDER_STRING, SNSToken: FHSTwitterEngine.sharedEngine().cognitoFormat(), andThen:
-//                {
-//                    (result, emsg) -> Void in
-//                    print(result)
-//                })
-//                
-//        })
-//        
-//        self.presentViewController(vc, animated: true, completion: nil)
-
     }
-    
     
     
     @IBAction func signUpWithFacebookClicked(sender: AnyObject)
     {
         print("=== SIGNUP WITH FACEBOOK")
-
-        FBSDKLoginManager().logInWithReadPermissions(nil)
-        {
-            (result, error) -> Void in
-            
-            if error != nil {
-                // TODO msg to the user
-                print("error")
-                return
-            }
-            else if result.isCancelled {
-                return
-            }
-
-            print("=== Facebook login success")
-            let token = FBSDKAccessToken.currentAccessToken().tokenString
-            let fbid = FBSDKAccessToken.currentAccessToken().userID
-            
-            print("FBID: \(fbid)")
-            
-            let picurl = "http://graph.facebook.com/\(fbid)/picture?width=640&height=640"
-            NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
-            print("################################################################################")
-            print("Set avatar link intern to \(picurl)")
-            print("################################################################################")
-            
-            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: token, profilePictureURL: picurl, handler:
-            {
-                (result, code, error) -> Void in
-                // TODO msg to the user on fail
-                //             if (!error && [result[@"code"] integerValue] == 200){
-                print(result)
-            })
+        
+        SNSUtil.singelton.connectWithFacebook { (result) -> Void in
+            print("=== Result: \(result)")
         }
     }
     
@@ -205,28 +115,8 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        FBSDKLoginManager().logInWithReadPermissions(nil)
-        {
-            (result, error) -> Void in
-            
-            if error != nil {
-                print("error")
-                return
-            }
-            else if result.isCancelled {
-                print("cancelld")
-                return
-            }
-        
-            print("=== Facebook login success")
-            let token = FBSDKAccessToken.currentAccessToken().tokenString
-            print("=== token: \(token)")
-            
-            NetOp.loginWithSNS(FACEBOOK_PROVIDER_STRING, SNSToken: token, andThen:
-                {
-                    (result, emsg) -> Void in
-                    print(result)
-            })
+        SNSUtil.singelton.loginWithFacebook { (result) -> Void in
+            print("=== Result: \(result)")
         }
     }
     

@@ -240,6 +240,7 @@
 		98ACE0771BAC637A002AA083 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
 		98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */; };
 		98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10631BB3CCB500468D43 /* SNSUtil.swift */; };
+		98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10651BB521C500468D43 /* SNSConnectViewController.swift */; };
 		98DE2B7E1BAF902400382B75 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98DE2B7D1BAF902400382B75 /* Debug.storyboard */; };
 		98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE2B801BAFA24400382B75 /* DebugViewController.swift */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
@@ -685,6 +686,7 @@
 		98D8BC631BA270AE00613D84 /* APIClientLimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClientLimits.h; sourceTree = "<group>"; };
 		98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReLoginViewController.swift; sourceTree = "<group>"; };
 		98DB10631BB3CCB500468D43 /* SNSUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSUtil.swift; sourceTree = "<group>"; };
+		98DB10651BB521C500468D43 /* SNSConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSConnectViewController.swift; sourceTree = "<group>"; };
 		98DE2B7D1BAF902400382B75 /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		98DE2B801BAFA24400382B75 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
@@ -1212,6 +1214,7 @@
 				989769011BACB55A002CED23 /* INAutoResizeLabel.swift */,
 				98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */,
 				98DB10631BB3CCB500468D43 /* SNSUtil.swift */,
+				98DB10651BB521C500468D43 /* SNSConnectViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2133,6 +2136,7 @@
 				958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */,
 				AB2DDA381AB194A100A47450 /* LocationClient.m in Sources */,
 				952D24861A9B9D3300C354DF /* LifelogViewController.m in Sources */,
+				98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */,
 				951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */,
 				A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */,
 				53B942A01AB40414000150C4 /* STTwitterOAuth.m in Sources */,
