@@ -30,8 +30,6 @@
 {
     [APIClient Login:iid handler:^(id result, NSUInteger code, NSError *error)
     {
-        NSLog(@"??????????????? %@ %lu %@", result, (unsigned long)code, error);
-        
         // TODO network errors should maybe be handelt in APIClient
         if (!result) {
             NSLog(@"Login result:%@ error:%@",result,error);
@@ -77,23 +75,8 @@
 
 
 
-+ (void)loginWithSNS:(NSString *)provider SNSToken:(NSString*)token andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
++ (void)loginWithSNS:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
 {
-    
-    // AWS get iid
-    
-    [AWS prepareWithSNSProvider:provider SNStoken:token];
-    //[AWS prepare];
-    //[[AWS sharedInstance] addLoginAuthenticationProvider:provider authToken:token];
-    
-    NSString *iid = [[AWS sharedInstance] iid];
-    
-    if (iid == nil) {
-        NSLog(@"iid nil:(");
-        return;
-    }
-    
-    
     [APIClient loginWithSNS:iid
                          os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
                       model:[UIDevice currentDevice].model
@@ -132,9 +115,10 @@
          NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
          NSLog(@"======================================================================");
          
-         // AWS setup not nessery because it was already setup earlier to retrieve the iid
-         NSLog(@"XXXXXXXXXXXXXXXXXX %@", result);
-
+         // Setup AWS credentials
+         [AWS prepareWithIdentityID:iid
+                             userID:[result objectForKey:@"user_id"]
+                       devAuthToken:[result objectForKey:@"token"]];
          
          afterBlock(NETOP_SUCCESS, nil);
          

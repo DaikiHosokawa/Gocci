@@ -516,23 +516,14 @@
             </objects>
             <point key="canvasLocation" x="-4967.5" y="-1493.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Connect View Controller-->
         <scene sceneID="leb-LQ-MVn">
             <objects>
-                <viewController storyboardIdentifier="page4" id="pvq-fY-hXk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page4" id="pvq-fY-hXk" customClass="SNSConnectViewController" customModule="GocciTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CP5-Hz-YJZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wBS-j9-wRU">
-                                <rect key="frame" x="53" y="370" width="268" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.68627450980000004" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="facebookと連携する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HVC-xz-Qww">
                                 <rect key="frame" x="53" y="427" width="268" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -541,6 +532,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="twitterConnectClicked:" destination="pvq-fY-hXk" eventType="touchUpInside" id="PA6-He-cUv"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_3" id="dYT-2T-2ke">
                                 <rect key="frame" x="60" y="42" width="248" height="248"/>
@@ -554,6 +548,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nashideClicked:" destination="pvq-fY-hXk" eventType="touchUpInside" id="lEh-QR-KAs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNS連携はいかが？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HeN-qw-TuN">
                                 <rect key="frame" x="82" y="314" width="226" height="30"/>
@@ -562,6 +559,18 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wBS-j9-wRU">
+                                <rect key="frame" x="53" y="370" width="268" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.68627450980000004" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="facebookと連携する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookConnectClicked:" destination="pvq-fY-hXk" eventType="touchUpInside" id="TFh-2L-EMi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59607843137254901" green="0.73333333333333328" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     </view>

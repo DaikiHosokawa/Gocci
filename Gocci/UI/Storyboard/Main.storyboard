@@ -194,7 +194,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -232,7 +232,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="whW-QS-wZZ" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whW-QS-wZZ" id="xmg-b5-SEd">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -265,7 +265,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="FLI-7N-ZFZ" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLI-7N-ZFZ" id="h5r-Uz-WQP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -439,7 +439,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tcf-Uk-jys">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tcf-Uk-jys" id="T8m-kH-Enx">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -531,7 +531,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SampleTableViewCell" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="335" width="320" height="47"/>
+                                <rect key="frame" x="0.0" y="399" width="320" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="46.5"/>
@@ -848,7 +848,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RSz-fH-zHG">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSz-fH-zHG" id="ikv-xf-iej">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -889,7 +889,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="XIt-3D-4hP" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIt-3D-4hP" id="8xZ-p4-Cpr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -1306,10 +1306,10 @@
             </objects>
             <point key="canvasLocation" x="-5296" y="-2678"/>
         </scene>
-        <!--View Controller-->
+        <!--Connect View Controller-->
         <scene sceneID="nzy-0h-tCL">
             <objects>
-                <viewController storyboardIdentifier="page4" id="Iyw-VA-jy4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page4" id="Iyw-VA-jy4" customClass="SNSConnectViewController" customModule="GocciTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sen-Bc-1TA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1333,6 +1333,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookConnectClicked:" destination="Iyw-VA-jy4" eventType="touchUpInside" id="KA2-o5-p6r"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XGv-YX-vGs">
                                 <rect key="frame" x="26" y="383" width="268" height="40"/>
@@ -1342,6 +1345,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="twitterConnectClicked:" destination="Iyw-VA-jy4" eventType="touchUpInside" id="156-s5-iHs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ovf-W3-bNu">
                                 <rect key="frame" x="26" y="445" width="268" height="39"/>
@@ -1351,6 +1357,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nashideClicked:" destination="Iyw-VA-jy4" eventType="touchUpInside" id="1bP-nb-djY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59607843140000005" green="0.73333333329999995" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1535,9 +1544,9 @@
         <image name="応援" width="168" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SDs-PX-5V3"/>
+        <segue reference="tk5-fM-XTh"/>
         <segue reference="mxO-EZ-B49"/>
         <segue reference="Rhk-9Y-XzF"/>
-        <segue reference="5vL-6n-Sjz"/>
+        <segue reference="VA4-l9-LEh"/>
     </inferredMetricsTieBreakers>
 </document>
