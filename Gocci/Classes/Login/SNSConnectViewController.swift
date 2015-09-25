@@ -28,18 +28,18 @@ class SNSConnectViewController : UIViewController {
         SNSUtil.singelton.connectWithFacebook { (result) -> Void in
             switch result {
                 case .SNS_CONNECTION_SUCCESS:
-                    Util.popup("facebook account connected!!")
+                    Util.popup("Facebook連携が完了しました")
                     self.facebookConnectionSuccessful = true
                     self.facebookButton.enabled = false
                     self.transit()
                     break
                 case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                    Util.popup("something really bad happend")
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
                     break
                 case .SNS_CONNECTION_CANCELED:
                     break
                 case .SNS_PROVIDER_FAIL:
-                    Util.popup("facebook is down")
+                    Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
                     break
             }
             print("=== RESUTLT: \(result)")
@@ -50,19 +50,19 @@ class SNSConnectViewController : UIViewController {
         SNSUtil.singelton.connectWithTwitter(self) { (result) -> Void in
             switch result {
                 case .SNS_CONNECTION_SUCCESS:
-                    Util.popup("twitter account connected!!")
+                    Util.popup("Twitter連携が完了しました")
                     self.twitterConnectionSuccessful = true
                     self.twitterButton.enabled = false
                     self.transit()
                     break
                 
                 case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                    Util.popup("something really bad happend")
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
                     break
                 case .SNS_CONNECTION_CANCELED:
                     break
                 case .SNS_PROVIDER_FAIL:
-                    Util.popup("twitter down")
+                    Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
                     break
             }
             print("=== RESUTLT: \(result)")
