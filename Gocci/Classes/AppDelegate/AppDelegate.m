@@ -103,9 +103,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
 
 #ifdef FRESH_START
-    [util removeAccountSpecificDataFromUserDefaults];
+    [Util removeAccountSpecificDataFromUserDefaults];
 #endif
 
 

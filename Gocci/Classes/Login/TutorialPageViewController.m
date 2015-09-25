@@ -15,11 +15,9 @@
 #import "APIClient.h"
 #import "AppDelegate.h"
 
-
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-
 #import "APIClientLimits.h"
+
+#import "GocciTest-Swift.h"
 
 
 
@@ -33,9 +31,6 @@
 @property (retain, nonatomic) NSMutableArray *pages;
 @property (strong, nonatomic) UIPageViewController *pageController;
 
-@property (strong, nonatomic) FBSDKLoginManager *facebookLogin;
-
-
 
 @end
 
@@ -47,14 +42,9 @@
     
     [super viewDidLoad];
     
-    [[FHSTwitterEngine sharedEngine]permanentlySetConsumerKey:TWITTER_CONSUMER_KEY andSecret:TWITTER_CONSUMER_SECRET];
-    [[FHSTwitterEngine sharedEngine]setDelegate:self];
-    [[FHSTwitterEngine sharedEngine]loadAccessToken];
-    
     UIViewController *page1 = [self.storyboard instantiateViewControllerWithIdentifier:@"page1"];
     UIViewController *page2 = [self.storyboard instantiateViewControllerWithIdentifier:@"page2"];
     UIViewController *page3 = [self.storyboard instantiateViewControllerWithIdentifier:@"page3"];
-    UIViewController *page4 = [self.storyboard instantiateViewControllerWithIdentifier:@"page4"];
 
     
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
@@ -80,14 +70,6 @@
     UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:8];
     [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *FacebookButton = (UIButton *)[page4.view viewWithTag:1];
-    [FacebookButton addTarget:self action:@selector(FacebookTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *TwitterButton = (UIButton *)[page4.view viewWithTag:2];
-    [TwitterButton addTarget:self action:@selector(TwitterTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *notAuthButton = (UIButton *)[page4.view viewWithTag:3];
-    [notAuthButton addTarget:self action:@selector(unAuthTapped:) forControlEvents:UIControlEventTouchUpInside];
 
     
     // load the view controllers in our pages array
@@ -116,9 +98,11 @@
     
     [self.view sendSubviewToBack:[self.pageController view]];
     
+    // Keyboard event appear and hide
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardAppear:) name:UIKeyboardWillShowNotification object:nil];
 
+    // safe center to return here after the keyboard has appeard
     self->originalCenter = self.view.center;
 }
 
@@ -242,115 +226,20 @@
 
 
 
-#pragma mark - Facefuck
-
-- (void)FacebookTapped:(id)sender{
-
-    NSLog(@"Facebook clicked");
 
 
-    if (!self.facebookLogin){
-        [FBSDKSettings setAppID:FACEBOOK_APP_ID];
-        self.facebookLogin = [FBSDKLoginManager new];
-    }
-    
-
-    [self.facebookLogin logInWithReadPermissions:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-        if (error) {
-            NSLog(@"%@", [NSString stringWithFormat:@"Error logging in with FB: %@", error.localizedDescription]);
-        }
-        else if (result.isCancelled) {
-            // Login canceled
-            NSLog(@"User dont want to login with facefuck");
-        }
-        else {
-            // Login Success
-            NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
-            NSLog(@"###### Facefuck Login Success!  Token: %@", token);
-            
-            [APIClient connectWithSNS:FACEBOOK_PROVIDER_STRING
-                                token:token
-                    profilePictureURL:@"none"
-                              handler:^(id result, NSUInteger code, NSError *error)
-             {
-                 
-                 NSLog(@"=== Facefuck connection result: %@ error :%@", result, error);
-                 
-                 // TODO more error handling
-                 if (!error && [result[@"code"] integerValue] == 200){
-                     NSLog(@"##### HOLY JESUS, we have facefuck connection! Profile pic: %@", result[@"profile_img"]);
-                 }
-             }];
-        }
-         // TODO ugly as hell
-    }];
-    
-}
-
-#pragma mark - Twitter
-
-- (void)TwitterTapped:(id)sender{
-    
-    UIViewController *loginController = [[FHSTwitterEngine sharedEngine]loginControllerWithCompletionHandler:^(BOOL success) {
-        NSLog(success?@"L0L success":@"O noes!!! Login fail!!!");
-        
-        NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedUsername %@", FHSTwitterEngine.sharedEngine.authenticatedUsername);
-        NSLog(@"FHSTwitterEngine.sharedEngine.authenticatedID %@", FHSTwitterEngine.sharedEngine.authenticatedID);
-   
-        NSLog(@"COGNITO FORMAT 2: %@", [[FHSTwitterEngine sharedEngine] cognitoFormat]);
-        
-        
-        
-        [APIClient connectWithSNS:TWITTER_PROVIDER_STRING
-                            token:[[FHSTwitterEngine sharedEngine] cognitoFormat]
-                profilePictureURL:@"none"
-                          handler:^(id result, NSUInteger code, NSError *error)
-         {
-             
-             NSLog(@"=== TWITTER connection result: %@ error :%@", result, error);
-             
-             // TODO more error handling
-             if (!error && [result[@"code"] integerValue] == 200){
-                 NSLog(@"##### HOLY JESUS, we have TWITTER connection! Profile pic: %@", result[@"profile_img"]);
-             }
-         }];
-    }];
-    [self presentViewController:loginController animated:YES completion:nil];
-    
-}
-
-
-
-- (void)unAuthTapped:(id)sender{
-    
-    if  ([self.username.text length] != 0)
-    {
-        NSLog(@"unAuth");
-        
-        //unAuth and go Timeline processing
-        
-        
-    }else{
-        NSString *alertMessage = @"ユーザー名を入力してください";
-        UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alrt show];
-    }
-}
-
-
-
--(void)closePopupView{
+-(void)closePopupView {
     self.popupView.hidden = YES;
 }
 
--(BOOL)textFieldShouldReturn:(UITextField*)textField{
-    
-    [self resignFirstResponder];
-    
-    NSLog(@"text:%@",textField.text);
-    
-    return YES;
-}
+//-(BOOL)textFieldShouldReturn:(UITextField*)textField {
+//    
+//    [self resignFirstResponder];
+//    
+//    NSLog(@"text:%@",textField.text);
+//    
+//    return YES;
+//}
 
 
 
@@ -388,10 +277,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)ReturnTutorial:(UIStoryboardSegue *)segue
 {
