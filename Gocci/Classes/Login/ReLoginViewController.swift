@@ -15,6 +15,7 @@ class ReLoginViewController : UIViewController {
     
     @IBOutlet weak var passwordEditField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,6 +34,8 @@ class ReLoginViewController : UIViewController {
             // TODO msg to the user
             switch result {
             case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
+
+                
                 break
             case SNSUtil.LoginResult.SNS_LOGIN_UNKNOWN_FAILURE:
                 break
@@ -53,6 +56,7 @@ class ReLoginViewController : UIViewController {
             // TODO msg to the user
             switch result {
                 case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
+                    twitterLoginSuccessful = true
                     break
                 case SNSUtil.LoginResult.SNS_LOGIN_UNKNOWN_FAILURE:
                     break
