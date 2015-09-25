@@ -14,8 +14,14 @@ import UIKit
 
 @objc class Util : NSObject {
 
+    class func popup(msg: String, title: String = "", buttonText: String = "OK")
+    {
+        UIAlertView.init(title: title, message: msg, delegate: nil, cancelButtonTitle: buttonText).show()
+//        [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegatIe:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    }
     
-    class func setBadgeNumber(numberOfNewMessages: Int) {
+    class func setBadgeNumber(numberOfNewMessages: Int)
+    {
     
         // TODO I don't see a reason this has to got to user defaults, however it is read in over 20 places from ud,
         // so this will be fixed in the next version of gocci

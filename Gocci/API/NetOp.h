@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, NetOpResult)
 
 + (void)loginWithIID:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
-+ (void)loginWithSNS:(NSString *)provider SNSToken:(NSString*)token andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
++ (void)loginWithSNS:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
 + (void)registerUsername:(NSString *)username andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
