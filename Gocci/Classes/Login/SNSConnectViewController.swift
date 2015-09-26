@@ -75,10 +75,10 @@ class SNSConnectViewController : UIViewController {
             self.presentViewController(tutorialViewController, animated: true, completion: nil)
         }
         else if twitterConnectionSuccessful {
-            continueButtonCaption.setTitle("continue without facebook connection", forState: UIControlState.Normal)
+            continueButtonCaption.setTitle("Facebook連携なしで始める", forState: UIControlState.Normal)
         }
         else if facebookConnectionSuccessful {
-            continueButtonCaption.setTitle("continue without twitter connection", forState: UIControlState.Normal)
+            continueButtonCaption.setTitle("Twitter連携なしで始める", forState: UIControlState.Normal)
         }
     }
     
