@@ -57,6 +57,20 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>facebook.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>inase-inc.jp</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>gocci.me</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
