@@ -52,6 +52,7 @@ class ReLoginViewController : UIViewController {
 
     @IBAction func facebookLoginClicked(sender: AnyObject) {
         SNSUtil.singelton.loginWithFacebook() { (result) -> Void in
+            print("Result: " + String(result))
             switch result {
                 case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
                     let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
@@ -70,6 +71,7 @@ class ReLoginViewController : UIViewController {
     
     @IBAction func twitterLoginClicked(sender: AnyObject) {
         SNSUtil.singelton.loginWithTwitter(self) { (result) -> Void in
+            print("Result: " + String(result))
             switch result {
                 case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
                     let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
@@ -86,5 +88,4 @@ class ReLoginViewController : UIViewController {
             }
         }
     }
-
 }

@@ -189,7 +189,7 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)searchWithRestName:(NSString *)restName latitude:(CGFloat)latitude longitude:(CGFloat)longitude limit:(NSUInteger)limit handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)searchWithRestName:(NSString *)restName latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude limit:(NSUInteger)limit handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"restname": restName,
@@ -462,24 +462,8 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)loginWithPassword:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
-{
-    NSDictionary *params = @{
-                             @"username" :username,
-                             @"pass" :pass,
-                             @"os" : os,
-                             @"model" : model,
-                             @"register_id" : register_id
-                             };
-    NSLog(@"SNS Login param:%@",params);
-    [[APIClient sharedClient].manager GET:@"auth/pass_login/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
+
+
 
 + (void)setPassword:(NSString *)pass handler:(void (^)(id, NSUInteger, NSError *))handler
 {
@@ -488,6 +472,25 @@ static APIClient *_sharedInstance = nil;
                              };
     NSLog(@"SNS Login param:%@",params);
     [[APIClient sharedClient].manager GET:@"post/password/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
+
++ (void)loginWithSNS:(NSString *)identity_id os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"identity_id" :identity_id,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
+    NSLog(@"SNS Login param:%@",params);
+    [[APIClient sharedClient].manager GET:@"auth/sns_login/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);

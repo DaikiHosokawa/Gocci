@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 /**
  *  API 通信クラス
@@ -68,12 +69,10 @@
  *  @param handler
  */
 + (void)searchWithRestName:(NSString *)restName
-                  latitude:(CGFloat)latitude
-                 longitude:(CGFloat)longitude
+                  latitude:(CLLocationDegrees)latitude
+                 longitude:(CLLocationDegrees)longitude
                      limit:(NSUInteger)limit
                    handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-
 
 
 /*
