@@ -443,6 +443,25 @@ static APIClient *_sharedInstance = nil;
 }
 
 
++ (void)loginWithUsername:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"username" :username,
+                             @"pass" :pass,
+                             @"os" : os,
+                             @"model" : model,
+                             @"register_id" : register_id
+                             };
+    NSLog(@"SNS Login param:%@",params);
+    [[APIClient sharedClient].manager GET:@"auth/pass_login/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 + (void)loginWithPassword:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
@@ -453,7 +472,7 @@ static APIClient *_sharedInstance = nil;
                              @"register_id" : register_id
                              };
     NSLog(@"SNS Login param:%@",params);
-    [[APIClient sharedClient].manager GET:@"auth/sns_login/"
+    [[APIClient sharedClient].manager GET:@"auth/pass_login/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -462,16 +481,13 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)loginWithSNS:(NSString *)identity_id os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)setPassword:(NSString *)pass handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"identity_id" :identity_id,
-                             @"os" : os,
-                             @"model" : model,
-                             @"register_id" : register_id
+                             @"pass": pass
                              };
     NSLog(@"SNS Login param:%@",params);
-    [[APIClient sharedClient].manager GET:@"auth/sns_login/"
+    [[APIClient sharedClient].manager GET:@"post/password/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
