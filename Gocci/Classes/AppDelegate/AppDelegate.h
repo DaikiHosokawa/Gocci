@@ -6,15 +6,17 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Crittercism.h"
 //#import <AWSCore/AWSCore.h>
 //#import <AWSCognito/AWSCognito.h>
 #import "BBBadgeBarButtonItem.h"
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate,CLLocationManagerDelegate>{
+@interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>{
     NSString *restname;
     NSString *rest_id;
     NSString *username;
@@ -46,7 +48,7 @@
 
 }
 
-@property (strong, nonatomic) FBSession *session;
+//@property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *restname;
 @property (nonatomic, retain) NSString *rest_id;
 @property(nonatomic) NSString *lifelogDate;

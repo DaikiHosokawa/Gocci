@@ -51,7 +51,6 @@ class ReLoginViewController : UIViewController {
     }
     
     @IBAction func twitterLoginClicked(sender: AnyObject) {
-        print("twit")
         SNSUtil.singelton.loginWithTwitter(self) { (result) -> Void in
             // TODO msg to the user
             switch result {
