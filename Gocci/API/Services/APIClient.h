@@ -268,6 +268,8 @@
  */
 + (void)postWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+
+
 /**
  *  Unwant
  *
@@ -281,5 +283,9 @@
                  token:(NSString *)token
      profilePictureURL:(NSString *)ppurl
                handler:(void (^)(id, NSUInteger, NSError *))handler;
+
++ (void)loginWithUsername:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler;
+
++ (void)setPassword:(NSString *)pass handler:(void (^)(id, NSUInteger, NSError *))handler;
 
 @end

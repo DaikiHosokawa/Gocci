@@ -73,6 +73,64 @@
 }
 
 
++ (void)loginWithUsername:(NSString *)username password:(NSString*)pass andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
+{
+    //[APIClient Login:iid handler:^(id result, NSUInteger code, NSError *error)
+    [APIClient loginWithUsername:username password:pass
+                              os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
+                           model:[UIDevice currentDevice].model
+                     register_id:[Util getRegisterID]
+                         handler:^(id result, NSUInteger code, NSError *error)
+    {
+        NSLog(@"======================================================================");
+        
+        NSLog(@"%@%", result);
+        NSLog(@"======================================================================");
+        
+        
+        // TODO network errors should maybe be handelt in APIClient
+        if (!result) {
+            NSLog(@"Login result:%@ error:%@",result,error);
+            afterBlock(NETOP_NETWORK_ERROR, [error localizedDescription]);
+            return;
+        }
+        
+        if([result[@"code"] integerValue] != 200){
+            NSLog(@"Login result:%@ error:%@",result,@"Username + Password combination wrong");
+            afterBlock(NETOP_USERNAME_PASSWORD_WRONG, @"Username + Password combination wrong");
+            return;
+        }
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        
+        //save user data
+        [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+        [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+        [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+        [ud setValue:[result objectForKey:@"identify_id"] forKey:@"identify_id"];
+        
+        
+        //save badge num
+        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        
+        // some logging
+        NSLog(@"======================================================================");
+        NSLog(@"====================== USER LOGIN SUCCESSFUL =========================");
+        NSLog(@"======================================================================");
+        NSLog(@"    username:    %@", [result objectForKey:@"username"]);
+        NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
+        NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
+        NSLog(@"======================================================================");
+        
+        // Setup AWS credentials
+        [AWS prepareWithIdentityID:[result objectForKey:@"identity_id"]
+                            userID:[result objectForKey:@"user_id"]
+                      devAuthToken:[result objectForKey:@"token"]];
+        
+        afterBlock(NETOP_SUCCESS, nil);
+        
+     }];
+}
 
 
 + (void)loginWithSNS:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
