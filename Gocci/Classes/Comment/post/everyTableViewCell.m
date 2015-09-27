@@ -333,13 +333,6 @@ NSString * const EveryCellIdentifier = @"everyTableViewCell";
             });
         }else{
             
-            UIImage *img = [UIImage imageNamed:@"gocci_new.png"];
-            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
-            int minus1 = self.likeCountLabel.text.floatValue-1;
-            [_likeCountLabel setText:[NSString stringWithFormat:@"%d", minus1]];
-            flash_on = 0;
-            //スイッチオン時の処理を記述できます
-            NSLog(@"button not selected");
         }
         
     }
