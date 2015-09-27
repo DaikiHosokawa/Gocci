@@ -297,8 +297,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
         [locationManager startUpdatingLocation]; //測位再開
     
     // Facebook
-    [FBAppEvents activateApp];
-    [FBAppCall handleDidBecomeActiveWithSession:self.session];
+//    [FBAppEvents activateApp];
+//    [FBAppCall handleDidBecomeActiveWithSession:self.session];
     
 }
 
@@ -317,7 +317,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [self.session close];
+    //[self.session close];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

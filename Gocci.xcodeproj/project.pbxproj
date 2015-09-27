@@ -52,7 +52,6 @@
 		952D236E1A9B95E800C354DF /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D22FD1A9B95E800C354DF /* libCrittercism_v4_3_7.a */; };
 		952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23001A9B95E800C354DF /* CXCardContainerView.m */; };
 		952D23701A9B95E800C354DF /* CXCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23021A9B95E800C354DF /* CXCardView.m */; };
-		952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D23061A9B95E800C354DF /* FacebookSDK.framework */; };
 		952D23741A9B95E800C354DF /* JTCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230A1A9B95E800C354DF /* JTCalendar.m */; };
 		952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230C1A9B95E800C354DF /* JTCalendarAppearance.m */; };
 		952D23761A9B95E800C354DF /* JTCalendarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230E1A9B95E800C354DF /* JTCalendarContentView.m */; };
@@ -225,15 +224,15 @@
 		95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC52D1AF91A20006FD54E /* CheerListCell.m */; };
 		95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC52E1AF91A20006FD54E /* CheerListCell.xib */; };
 		95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5301AF91A20006FD54E /* CheerListViewController.m */; };
-		95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207241B3BFAD90074612F /* FBSDKShareKit.framework */; };
-		95F207271B3BFAD90074612F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */; };
-		95F2072B1B3C260A0074612F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F207291B3C260A0074612F /* FBSDKLoginKit.framework */; };
 		9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE681BA2CD350041CFD5 /* NetOp.m */; };
 		9843E9201BA993EB0015350D /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91D1BA993EB0015350D /* AWSCognito.framework */; };
 		9843E9211BA993EB0015350D /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91E1BA993EB0015350D /* AWSCore.framework */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
 		9843E9281BA9955D0015350D /* AWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9843E9251BA9955D0015350D /* AWS.m */; };
 		9843E9291BA9955D0015350D /* AWSGocciIdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */; };
+		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
+		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
+		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
 		989769021BACB55A002CED23 /* INAutoResizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989769011BACB55A002CED23 /* INAutoResizeLabel.swift */; };
 		98ACE0711BAC4733002AA083 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98ACE0701BAC4733002AA083 /* Tutorial.storyboard */; };
 		98ACE0741BAC4D65002AA083 /* TutorialSubPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */; };
@@ -379,7 +378,6 @@
 		952D23001A9B95E800C354DF /* CXCardContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardContainerView.m; sourceTree = "<group>"; };
 		952D23011A9B95E800C354DF /* CXCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardView.h; sourceTree = "<group>"; };
 		952D23021A9B95E800C354DF /* CXCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardView.m; sourceTree = "<group>"; };
-		952D23061A9B95E800C354DF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		952D23091A9B95E800C354DF /* JTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendar.h; sourceTree = "<group>"; };
 		952D230A1A9B95E800C354DF /* JTCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendar.m; sourceTree = "<group>"; };
 		952D230B1A9B95E800C354DF /* JTCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarAppearance.h; sourceTree = "<group>"; };
@@ -665,9 +663,6 @@
 		95EEC52E1AF91A20006FD54E /* CheerListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheerListCell.xib; sourceTree = "<group>"; };
 		95EEC52F1AF91A20006FD54E /* CheerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheerListViewController.h; sourceTree = "<group>"; };
 		95EEC5301AF91A20006FD54E /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
-		95F207241B3BFAD90074612F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		95F207291B3C260A0074612F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
 		9843E91D1BA993EB0015350D /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
@@ -677,6 +672,9 @@
 		9843E9251BA9955D0015350D /* AWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWS.m; sourceTree = "<group>"; };
 		9843E9261BA9955D0015350D /* AWSGocciIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGocciIdentityProvider.h; sourceTree = "<group>"; };
 		9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSGocciIdentityProvider.m; sourceTree = "<group>"; };
+		987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Gocci/Vendor/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
+		987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		989769011BACB55A002CED23 /* INAutoResizeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INAutoResizeLabel.swift; sourceTree = "<group>"; };
 		98ACE0701BAC4733002AA083 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		98ACE0721BAC4D10002AA083 /* TutorialSubPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialSubPageViewController.h; sourceTree = "<group>"; };
@@ -760,16 +758,16 @@
 			files = (
 				957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */,
 				53B9427A1AB3FE2C000150C4 /* libxml2.dylib in Frameworks */,
+				987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */,
+				987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */,
 				FFA0E2E819AED457006269B4 /* QuartzCore.framework in Frameworks */,
-				95F2072B1B3C260A0074612F /* FBSDKLoginKit.framework in Frameworks */,
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
-				95F207261B3BFAD90074612F /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
+				987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */,
 				FF0BE458193ED5F8001A0053 /* libicucore.dylib in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
-				952D23721A9B95E800C354DF /* FacebookSDK.framework in Frameworks */,
 				FF0BE45A193ED61E001A0053 /* libz.dylib in Frameworks */,
 				FF0BE456193ED5E9001A0053 /* libc++.dylib in Frameworks */,
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
@@ -787,7 +785,6 @@
 				958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */,
 				FF54EFE519149A1800025DC8 /* CoreGraphics.framework in Frameworks */,
 				9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */,
-				95F207271B3BFAD90074612F /* FBSDKCoreKit.framework in Frameworks */,
 				FF54EFE719149A1800025DC8 /* UIKit.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
 			);
@@ -897,10 +894,10 @@
 				9843E91E1BA993EB0015350D /* AWSCore.framework */,
 				9843E91D1BA993EB0015350D /* AWSCognito.framework */,
 				9843E91F1BA993EB0015350D /* AWSS3.framework */,
+				987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */,
+				987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */,
+				987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */,
 				A27A9B161B9ECD0E004E7F36 /* FHSTwitterEngine */,
-				95F207291B3C260A0074612F /* FBSDKLoginKit.framework */,
-				95F207241B3BFAD90074612F /* FBSDKShareKit.framework */,
-				95F207251B3BFAD90074612F /* FBSDKCoreKit.framework */,
 				959CF8E31B26CF0D00CDB492 /* WYPopoverController */,
 				95E3CD491B0DCA4200497EB9 /* Classes */,
 				958E31541B0589F300863EDF /* GoogleMaps.bundle */,
@@ -913,7 +910,6 @@
 				952D22E41A9B95E800C354DF /* AFNetworking */,
 				952D22F81A9B95E800C354DF /* CrittercismSDK */,
 				952D22FE1A9B95E800C354DF /* CXCardView */,
-				952D23061A9B95E800C354DF /* FacebookSDK.framework */,
 				952D23081A9B95E800C354DF /* JTCalendar */,
 				952D231E1A9B95E800C354DF /* MYBlurIntroductionView */,
 				952D23241A9B95E800C354DF /* SDWebImage */,
