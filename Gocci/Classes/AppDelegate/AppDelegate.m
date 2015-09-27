@@ -353,9 +353,11 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     NSLog(@"pushInfo: %@", [userInfo description]);
     
     // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
+    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+    application.applicationIconBadgeNumber = numberOfNewMessages;
     [ud synchronize];
 }
 
