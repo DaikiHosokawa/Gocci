@@ -32,7 +32,7 @@
 #ifdef INDEVEL
 #define SPLASH_TIME 0.5
 #else
-#define SPLASH_TIME 10.0    // TODO Discuss: too long in my opinion
+#define SPLASH_TIME 5.0    // TODO Discuss: too long in my opinion
 #endif
 
 #ifdef INDEVEL
