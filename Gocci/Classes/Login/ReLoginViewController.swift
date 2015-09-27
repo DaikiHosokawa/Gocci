@@ -22,11 +22,32 @@ class ReLoginViewController : UIViewController {
     
     
     @IBAction func loginClicked(sender: AnyObject) {
-        print("login clicked")
-        print("username: \(usernameEditFiled.text)")
-        print("password: \(passwordEditField.text)")
+
+        guard let un = usernameEditFiled.text where !un.isEmpty else {
+            // TRANSLATE
+            Util.popup("Please enter a valid username")
+            return
+        }
         
-        Util.popup(usernameEditFiled.text ?? "nil")
+        guard let pw = passwordEditField.text where !pw.isEmpty else {
+            // TRANSLATE
+            Util.popup("Please enter a password")
+            return
+        }
+        
+        NetOp.loginWithUsername(un, password: passwordEditField.text) { (result, emsg) -> Void in
+            
+            switch result {
+                case .NETOP_SUCCESS:
+                    let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
+                    self.presentViewController(tutorialViewController, animated: true, completion: nil)
+                case .NETOP_USERNAME_PASSWORD_WRONG:
+                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+                default:
+                    // TRANSLATE
+                    Util.popup("Unknown Error")
+            }
+        }
     }
 
     @IBAction func facebookLoginClicked(sender: AnyObject) {

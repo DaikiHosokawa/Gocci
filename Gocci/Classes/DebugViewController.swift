@@ -21,6 +21,9 @@ class DebugViewController : UIViewController {
     //strong var facebookLogin: FBSDKLoginManager
     
     
+    @IBOutlet weak var usernameEditField: UITextField!
+    @IBOutlet weak var passwordEditField: UITextField!
+    
     override func viewDidLoad() {
         // TODO once token
         print("============ DEBUG MODE ACTIVATED ==============")
@@ -31,11 +34,27 @@ class DebugViewController : UIViewController {
         signUpEditField.text = NSUserDefaults.standardUserDefaults().stringForKey("username") ?? Util.randomUsername()
         
         
-
+        usernameEditField.text = signUpEditField.text
 
         
     }
 
+    @IBAction func loginWithPasswordClicked(sender: AnyObject) {
+        NetOp.loginWithUsername(usernameEditField.text, password: passwordEditField.text) { (res, msg) -> Void in
+            print(res)
+            //print(msg)
+        }
+    }
+    
+    
+    @IBAction func setPasswordClicked(sender: AnyObject) {
+        APIClient.setPassword(passwordEditField.text) { (result, code, error) -> Void in
+            
+            print("code: ", code)
+        }
+    }
+    
+    
     @IBAction func deleteUserDefsClicked(sender: AnyObject)
     {
         print("=== DELETE userdefs")

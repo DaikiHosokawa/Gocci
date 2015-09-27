@@ -94,6 +94,50 @@
                                     <action selector="loginWithTwitterClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="uMr-Tj-Hbh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jW6-2K-hqv">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="3rg-wn-j15"/>
+                                </constraints>
+                                <state key="normal" title="Twitter Token to ID"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3rg-wn-j15"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="167" y="288" width="140" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="3rg-wn-j15"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="twitterTokentoIIDclicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="ieT-PN-3id"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9s-qe-DkN">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="JU3-pG-sc3"/>
+                                </constraints>
+                                <state key="normal" title="Faceb Token to ID"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JU3-pG-sc3"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="167" y="320" width="140" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="JU3-pG-sc3"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="facebookTokentoIIDclicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="q7p-4T-gcA"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vo-1B-t9I">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -187,50 +231,6 @@
                                     <action selector="signUpWithFacebookClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="2al-ed-Lce"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jW6-2K-hqv">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="3rg-wn-j15"/>
-                                </constraints>
-                                <state key="normal" title="Twitter Token to ID"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3rg-wn-j15"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="167" y="288" width="140" height="30"/>
-                                    <mask key="constraints">
-                                        <include reference="3rg-wn-j15"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="twitterTokentoIIDclicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="ieT-PN-3id"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9s-qe-DkN">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="JU3-pG-sc3"/>
-                                </constraints>
-                                <state key="normal" title="Faceb Token to ID"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="JU3-pG-sc3"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="167" y="320" width="140" height="30"/>
-                                    <mask key="constraints">
-                                        <include reference="JU3-pG-sc3"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="facebookTokentoIIDclicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="q7p-4T-gcA"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNG-Ra-6Ku">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <constraints>
@@ -248,6 +248,44 @@
                                     <mask key="constraints">
                                         <include reference="TQl-aL-b9M"/>
                                     </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq8-ae-9yA">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="378" width="112" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="loginWithPasswordClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="zgv-5z-YAA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-NS-sEQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Set Password"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="416" width="112" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="setPasswordClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="IcG-GW-RoK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-2g-Jzg">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="378" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KM7-TS-Dq8">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="416" width="97" height="30"/>
                                 </variation>
                             </textField>
                         </subviews>
@@ -275,15 +313,19 @@
                                 <exclude reference="oSw-aB-w3j"/>
                                 <exclude reference="HOu-DA-1lF"/>
                                 <exclude reference="BMO-6q-MyZ"/>
+                                <exclude reference="jW6-2K-hqv"/>
+                                <exclude reference="X9s-qe-DkN"/>
                                 <exclude reference="6vo-1B-t9I"/>
                                 <exclude reference="yK5-Dk-SUd"/>
                                 <exclude reference="tlz-u2-T0s"/>
                                 <exclude reference="dXz-Vc-0C7"/>
                                 <exclude reference="92O-sx-krM"/>
                                 <exclude reference="yqd-Ik-dsK"/>
-                                <exclude reference="jW6-2K-hqv"/>
-                                <exclude reference="X9s-qe-DkN"/>
                                 <exclude reference="qNG-Ra-6Ku"/>
+                                <exclude reference="pq8-ae-9yA"/>
+                                <exclude reference="ihd-NS-sEQ"/>
+                                <exclude reference="KVh-2g-Jzg"/>
+                                <exclude reference="KM7-TS-Dq8"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UeZ-Pc-oq5"/>
@@ -309,15 +351,19 @@
                                 <include reference="oSw-aB-w3j"/>
                                 <include reference="HOu-DA-1lF"/>
                                 <include reference="BMO-6q-MyZ"/>
+                                <include reference="jW6-2K-hqv"/>
+                                <include reference="X9s-qe-DkN"/>
                                 <include reference="6vo-1B-t9I"/>
                                 <include reference="yK5-Dk-SUd"/>
                                 <include reference="tlz-u2-T0s"/>
                                 <include reference="dXz-Vc-0C7"/>
                                 <include reference="92O-sx-krM"/>
                                 <include reference="yqd-Ik-dsK"/>
-                                <include reference="jW6-2K-hqv"/>
-                                <include reference="X9s-qe-DkN"/>
                                 <include reference="qNG-Ra-6Ku"/>
+                                <include reference="pq8-ae-9yA"/>
+                                <include reference="ihd-NS-sEQ"/>
+                                <include reference="KVh-2g-Jzg"/>
+                                <include reference="KM7-TS-Dq8"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UeZ-Pc-oq5"/>
@@ -337,9 +383,11 @@
                     </view>
                     <connections>
                         <outlet property="loginEditField" destination="92O-sx-krM" id="mCc-tL-UoU"/>
+                        <outlet property="passwordEditField" destination="KM7-TS-Dq8" id="kcE-X4-9vv"/>
                         <outlet property="signUpEditField" destination="dXz-Vc-0C7" id="lte-OX-1Xh"/>
                         <outlet property="tokenEditField" destination="qNG-Ra-6Ku" id="puU-pm-Mcn"/>
                         <outlet property="topLabel" destination="TQd-59-Qts" id="obb-Ac-6WC"/>
+                        <outlet property="usernameEditField" destination="KVh-2g-Jzg" id="JLX-wO-9to"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzm-Sb-GJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
