@@ -19,7 +19,7 @@
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-#define FRESH_START
+//#define FRESH_START 1
 
 
 
