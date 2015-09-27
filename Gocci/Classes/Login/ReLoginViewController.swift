@@ -34,19 +34,18 @@ class ReLoginViewController : UIViewController {
             // TODO msg to the user
             switch result {
             case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
-
-                
-                break
+                let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
+                self.presentViewController(tutorialViewController, animated: true, completion: nil)
             case SNSUtil.LoginResult.SNS_LOGIN_UNKNOWN_FAILURE:
-                break
+                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
             case SNSUtil.LoginResult.SNS_LOGIN_CANCELED:
                 break
             case SNSUtil.LoginResult.SNS_USER_NOT_REGISTERD:
-                break
+                // FIXME JAPANESE NEEDED HOSOKAWA
+                Util.popup("You dont have a registerd gocci account connected with that FACEBOOK account")
             case SNSUtil.LoginResult.SNS_PROVIDER_FAIL:
-                break
+                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
             }
-            print("=== RESUTLT: \(result)")
         }
     }
     
@@ -55,17 +54,19 @@ class ReLoginViewController : UIViewController {
             // TODO msg to the user
             switch result {
                 case SNSUtil.LoginResult.SNS_LOGIN_SUCCESS:
-                    break
+                    let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
+                    self.presentViewController(tutorialViewController, animated: true, completion: nil)
                 case SNSUtil.LoginResult.SNS_LOGIN_UNKNOWN_FAILURE:
-                    break
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
                 case SNSUtil.LoginResult.SNS_LOGIN_CANCELED:
                     break
                 case SNSUtil.LoginResult.SNS_USER_NOT_REGISTERD:
-                    break
+                    // FIXME JAPANESE NEEDED HOSOKAWA
+                    Util.popup("You dont have a registerd gocci account connected with that TWITTER account")
                 case SNSUtil.LoginResult.SNS_PROVIDER_FAIL:
-                    break
+                    Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+
             }
-            print("=== RESUTLT: \(result)")
         }
     }
 
