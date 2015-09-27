@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, NetOpResult)
     NETOP_SUCCESS = 0,
     NETOP_NETWORK_ERROR,
     NETOP_IDENTIFY_ID_NOT_REGISTERD,
-    NETOP_USERNAME_ALREADY_IN_USE
+    NETOP_USERNAME_ALREADY_IN_USE,
+    NETOP_USERNAME_PASSWORD_WRONG
 };
 
 
@@ -30,6 +31,8 @@ typedef NS_ENUM(NSInteger, NetOpResult)
 
 
 + (void)loginWithIID:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
+
++ (void)loginWithUsername:(NSString *)username password:(NSString*)pass andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
 + (void)loginWithSNS:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock;
 
