@@ -488,10 +488,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 return;
             }else{
                  NSLog(@"行きたいしました");
-                UIImage *img = [UIImage imageNamed:@"notOen.png"];
+                NSLog(@"result:%@",result);
+                UIImage *img = [UIImage imageNamed:@"Oen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 1;
-                NSLog(@"result:%@",result);
+                
             }
     
             }];
@@ -509,9 +510,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 return;
             }else{
                 NSLog(@"行きたい解除しました");
-                UIImage *img = [UIImage imageNamed:@"Oen.png"];
+                UIImage *img = [UIImage imageNamed:@"notOen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 0;
+               
             }
             
         }];
@@ -655,10 +657,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     flash_on = pi;
     
     if(flash_on == 1){
-        UIImage *img = [UIImage imageNamed:@"notOen.png"];
-        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
-    }else{
+        
         UIImage *img = [UIImage imageNamed:@"Oen.png"];
+        [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
+        
+    }else{
+        
+        UIImage *img = [UIImage imageNamed:@"notOen.png"];
         [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
     }
     
