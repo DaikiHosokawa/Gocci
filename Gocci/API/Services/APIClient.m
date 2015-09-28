@@ -87,7 +87,8 @@ static APIClient *_sharedInstance = nil;
                              @"token" : token,
                              @"profile_img" : ppurl,
                              };
-    
+    NSLog(@"SNS connectWithSNS param:%@",params);
+
     [[APIClient sharedClient].manager GET:@"post/sns/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -470,7 +471,7 @@ static APIClient *_sharedInstance = nil;
     NSDictionary *params = @{
                              @"pass": pass
                              };
-    NSLog(@"SNS Login param:%@",params);
+    NSLog(@"SNS setPassword:%@",params);
     [[APIClient sharedClient].manager GET:@"post/password/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

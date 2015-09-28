@@ -106,8 +106,7 @@
                                         <exclude reference="3rg-wn-j15"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="167" y="288" width="140" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="3rg-wn-j15"/>
                                     </mask>
@@ -128,8 +127,7 @@
                                         <exclude reference="JU3-pG-sc3"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="167" y="320" width="140" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="JU3-pG-sc3"/>
                                     </mask>
@@ -243,8 +241,7 @@
                                         <exclude reference="TQl-aL-b9M"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="315" y="306" width="65" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="TQl-aL-b9M"/>
                                     </mask>
@@ -259,6 +256,28 @@
                                 </variation>
                                 <connections>
                                     <action selector="loginWithPasswordClicked:" destination="jvS-zY-AAu" eventType="touchUpInside" id="zgv-5z-YAA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgS-El-7wJ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="EXPLODE"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="260" width="112" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="explode:" destination="jvS-zY-AAu" eventType="touchUpInside" id="0fL-fr-x6d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-3A-fmf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Fast reg. FB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="237" y="298" width="112" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="fastRegFB:" destination="jvS-zY-AAu" eventType="touchUpInside" id="bUM-OJ-avf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-NS-sEQ">
@@ -288,6 +307,17 @@
                                     <rect key="frame" x="20" y="416" width="97" height="30"/>
                                 </variation>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2r-HO-xlq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Fast login FB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="237" y="336" width="112" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="fastLoginFB:" destination="jvS-zY-AAu" eventType="touchUpInside" id="nrs-nH-4uo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.48732958845178842" blue="0.49832476871594855" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -323,9 +353,12 @@
                                 <exclude reference="yqd-Ik-dsK"/>
                                 <exclude reference="qNG-Ra-6Ku"/>
                                 <exclude reference="pq8-ae-9yA"/>
+                                <exclude reference="WgS-El-7wJ"/>
+                                <exclude reference="e1K-3A-fmf"/>
                                 <exclude reference="ihd-NS-sEQ"/>
                                 <exclude reference="KVh-2g-Jzg"/>
                                 <exclude reference="KM7-TS-Dq8"/>
+                                <exclude reference="X2r-HO-xlq"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UeZ-Pc-oq5"/>
@@ -361,9 +394,12 @@
                                 <include reference="yqd-Ik-dsK"/>
                                 <include reference="qNG-Ra-6Ku"/>
                                 <include reference="pq8-ae-9yA"/>
+                                <include reference="WgS-El-7wJ"/>
+                                <include reference="e1K-3A-fmf"/>
                                 <include reference="ihd-NS-sEQ"/>
                                 <include reference="KVh-2g-Jzg"/>
                                 <include reference="KM7-TS-Dq8"/>
+                                <include reference="X2r-HO-xlq"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UeZ-Pc-oq5"/>

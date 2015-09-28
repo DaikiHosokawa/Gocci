@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc class SNSUtil : NSObject
+class SNSUtil : NSObject
 {
     static let singelton = SNSUtil()
     
@@ -21,9 +21,10 @@ import UIKit
         case SNS_PROVIDER_FAIL
     }
     
-    @objc enum ConnectionResult: Int {
+    enum ConnectionResult {
         case SNS_CONNECTION_SUCCESS
         case SNS_CONNECTION_UNKNOWN_FAILURE
+        case SNS_CONNECTION_UN_AUTH
         case SNS_CONNECTION_CANCELED
         case SNS_PROVIDER_FAIL
     }
@@ -42,7 +43,7 @@ import UIKit
     }
     
 
-    @objc func connectWithTwitter(currentViewController: UIViewController, andThen:(ConnectionResult)->Void)
+    func connectWithTwitter(currentViewController: UIViewController, andThen:(ConnectionResult)->Void)
     {
         let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
         {
@@ -75,8 +76,14 @@ import UIKit
                 if error != nil || code != 200 {
                     andThen(ConnectionResult.SNS_CONNECTION_UNKNOWN_FAILURE)
                 }
-                else {
+                else if result["code"] as! Int == 401 {
+                    andThen(ConnectionResult.SNS_CONNECTION_UN_AUTH)
+                }
+                else if result["code"] as! Int == 200 {
                     andThen(ConnectionResult.SNS_CONNECTION_SUCCESS)
+                }
+                else {
+                    andThen(ConnectionResult.SNS_CONNECTION_UNKNOWN_FAILURE)
                 }
                 
             })
@@ -86,9 +93,9 @@ import UIKit
     }
     
     
-    func connectWithFacebook(andThen:(ConnectionResult)->Void)
+    func connectWithFacebook(currentViewController vc: UIViewController, andThen:(ConnectionResult)->Void)
     {
-        FBSDKLoginManager().logInWithReadPermissions(nil)
+        FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: vc)
         {
             (result, error) -> Void in
             
@@ -117,8 +124,14 @@ import UIKit
                 if error != nil || code != 200 {
                     andThen(ConnectionResult.SNS_CONNECTION_UNKNOWN_FAILURE)
                 }
-                else {
+                else if result["code"] as! Int == 401 {
+                    andThen(ConnectionResult.SNS_CONNECTION_UN_AUTH)
+                }
+                else if result["code"] as! Int == 200 {
                     andThen(ConnectionResult.SNS_CONNECTION_SUCCESS)
+                }
+                else {
+                    andThen(ConnectionResult.SNS_CONNECTION_UNKNOWN_FAILURE)
                 }
             })
         }
@@ -167,12 +180,12 @@ import UIKit
         currentViewController.presentViewController(vc, animated: true, completion: nil)
     }
     
+
     
-    
-    func loginWithFacebook(andThen:(LoginResult)->Void)
+    func loginWithFacebook(currentViewController vc: UIViewController, andThen:(LoginResult)->Void)
     {
         // maybe reset the keychain here
-        FBSDKLoginManager().logInWithReadPermissions(nil)
+        FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: vc)
         {
             (result, error) -> Void in
             
