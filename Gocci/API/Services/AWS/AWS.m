@@ -41,19 +41,6 @@ static dispatch_once_t onceToken;
 
 @implementation AWS : NSObject
 
-+ (void)prepare
-{
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[AWS alloc] init];
-    });
-}
-
-+ (void)prepareWithSNSProvider:(NSString*)provider SNStoken:(NSString*)token
-{
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[AWS alloc] initWithSNSProvider:provider SNSToken:token];
-    });
-}
 
 + (void)prepareWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token
 {
@@ -70,6 +57,17 @@ static dispatch_once_t onceToken;
 }
 
 
+
+// This is an example implementation of the selector
+-(void)identityIdDidChange:(NSNotification*)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    NSLog(@"XXXXXXXXXXXXX identity changed from %@ to %@",
+          [userInfo objectForKey:AWSCognitoNotificationPreviousId],
+          [userInfo objectForKey:AWSCognitoNotificationNewId]);
+    
+    // your application logic here to handle the identity change.
+}
+
 - (id)initWithIdentityID:(NSString*)iid userID:(NSString*)userID devAuthToken:(NSString*)token
 {
     self = [super init];
@@ -78,6 +76,11 @@ static dispatch_once_t onceToken;
 #ifdef INDEVEL
         //[AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
 #endif
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(identityIdDidChange:)
+         name:AWSCognitoIdentityIdChangedNotification object:nil];
         
         NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
         // TODO the token is set in the AWSGocciIdentityProvider from now on, so this should not be nessasary anymore
@@ -130,13 +133,21 @@ static dispatch_once_t onceToken;
     //[AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
 #endif
     
+    NSLog(@"=== AWS SNS getIIDforRegisterdSNSProvider: %@", provider);
+    NSLog(@"=== AWS SNS TOKEN: %@", token);
+
+
+    
     // For more then one SNS account, we have to clear all the date or wrong old iid's will get deleiverd
-    [[AWSCognito defaultCognito] wipe];
+    //[[AWSCognito defaultCognito] wipe];
+    
     
     NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
     [logins setObject:token forKey:provider];
     
     AWSCognitoCredentialsProvider *cp = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION identityId:nil identityPoolId:COGNITO_POOL_ID logins:logins];
+    
+    //[cp clearKeychain];
     
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION credentialsProvider:cp];
     
@@ -151,66 +162,7 @@ static dispatch_once_t onceToken;
     return iid;
 }
 
-- (id)initWithSNSProvider:(NSString*)provider SNSToken:(NSString*)token
-{
-    self = [super init];
-    
-    if (self) {
-#ifdef INDEVEL
-        [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
-#endif
-        
-        NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
-        [logins setObject:token forKey:provider];
 
-        self.credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION identityId:nil identityPoolId:COGNITO_POOL_ID logins:logins];
-        
-//        [self.credentialsProvider clearCredentials];
-//        [self.credentialsProvider clearKeychain];
-        
-        
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION credentialsProvider:self.credentialsProvider];
-        
-        AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
-        
-
-        NSLog(@"=== AWS Layer: Setup complete for identity_id: %@", [self.credentialsProvider getIdentityId]);
-        NSLog(@"=== AWS Layer: Current credentials will expire in %f hours.", [self.credentialsProvider.expiration timeIntervalSinceDate:[[NSDate alloc] init]] / 60 / 60);
-        
-        
-        
- 
-    }
-    
-    return self;
-
-}
-
-- (id)init
-{
-    self = [super init];
-    
-    if (self) {
-#ifdef INDEVEL
-        [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
-#endif
-        
-        NSMutableDictionary *logins = [[NSMutableDictionary alloc] init];
-        
-        self.credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:COGNITO_POOL_REGION identityId:nil identityPoolId:COGNITO_POOL_ID logins:logins];
-        
-        //        [self.credentialsProvider clearCredentials];
-        //        [self.credentialsProvider clearKeychain];
-        
-        
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION credentialsProvider:self.credentialsProvider];
-        
-        AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
-    }
-    
-    return self;
-    
-}
 
 
 - (NSString*)iid

@@ -25,24 +25,23 @@ class SNSConnectViewController : UIViewController {
     
     
     @IBAction func facebookConnectClicked(sender: AnyObject) {
-        SNSUtil.singelton.connectWithFacebook { (result) -> Void in
+        SNSUtil.singelton.connectWithFacebook(currentViewController: self) { (result) -> Void in
             switch result {
                 case .SNS_CONNECTION_SUCCESS:
                     Util.popup("Facebook連携が完了しました")
                     self.facebookConnectionSuccessful = true
                     self.facebookButton.enabled = false
                     self.transit()
-                    break
                 case .SNS_CONNECTION_UNKNOWN_FAILURE:
                     Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                    break
+                case .SNS_CONNECTION_UN_AUTH:
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
                 case .SNS_CONNECTION_CANCELED:
                     break
                 case .SNS_PROVIDER_FAIL:
                     Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
-                    break
             }
-            print("=== RESUTLT: \(result)")
+            print("=== RESULT: \(String(result))")
         }
     }
     
@@ -54,16 +53,14 @@ class SNSConnectViewController : UIViewController {
                     self.twitterConnectionSuccessful = true
                     self.twitterButton.enabled = false
                     self.transit()
-                    break
-                
+                case .SNS_CONNECTION_UN_AUTH:
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
                 case .SNS_CONNECTION_UNKNOWN_FAILURE:
                     Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                    break
                 case .SNS_CONNECTION_CANCELED:
                     break
                 case .SNS_PROVIDER_FAIL:
                     Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
-                    break
             }
             print("=== RESUTLT: \(result)")
         }

@@ -13,6 +13,19 @@ import Foundation
 import UIKit
 
 @objc class Util : NSObject {
+    
+    class func thisKillsTheFacebook() {
+        let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
+        deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in
+            print("the delete permission is \(result)")
+            
+        })
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        FBSDKProfile.setCurrentProfile(nil)
+        
+        FBSDKLoginManager().logOut()
+        
+    }
 
     class func popup(msg: String, title: String = "", buttonText: String = "OK")
     {
@@ -50,6 +63,10 @@ import UIKit
     }
     
     class func getRegisterID() -> String {
+        
+        return generateFakeDeviceID()
+        
+        return "7777777777777777777777777777777777777777777777777777777777777777"
         
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         

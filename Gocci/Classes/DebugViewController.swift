@@ -105,7 +105,7 @@ class DebugViewController : UIViewController {
         print("=== SIGNUP WITH TWITTER")
 
         SNSUtil.singelton.connectWithTwitter(self) { (result) -> Void in
-            print("Result: \(result)")
+            print("=== Result: \(result)")
         }
     }
         
@@ -124,7 +124,7 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH FACEBOOK")
         
-        SNSUtil.singelton.connectWithFacebook { (result) -> Void in
+        SNSUtil.singelton.connectWithFacebook(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -134,7 +134,9 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        SNSUtil.singelton.loginWithFacebook { (result) -> Void in
+        Util.thisKillsTheFacebook()
+        
+        SNSUtil.singelton.loginWithFacebook(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -199,8 +201,63 @@ class DebugViewController : UIViewController {
     
     
     
+    @IBAction func fastRegFB(sender: AnyObject) {
+        let token = "CAACG9jtU8M4BAAjJaajO0ZBBXZBNOZA5vMacZAgOjJzQLP55DgYhv0EudyXU5mzlwX8xYb4P4F3hznQZCZBqArM0dVPbvT2a5cdfTXlcrxQXCZBoOA12MZAbqo8n9QfpMZAp0KDXllb9QEDOVcczib8r7bbM5pUkWTH8TZBXeY5qqosR5C4QL01iD80vwHYWL3Tme1iscJrGayQQZDZD"
+        
     
+        
+        APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: token, profilePictureURL: "none", handler:
+        {
+            (result, code, error) -> Void in
+            
+            if error != nil || code != 200 || !(result is NSDictionary) || result["code"] == nil{
+                print("SNS_CONNECTION_UNKNOWN_FAILURE " + String(error ?? "nil"))
+            }
+            //print("SNS_CONNECTION_UNKNOWN_FAILURE, result %@", result)
+
+//            else if result["code"] as! String == "401" {
+//                print("SNS_CONNECTION_UN_AUTH")
+//            }
+            else if result["code"] as! Int == 200 {
+                print("SNS_CONNECTION_SUCCESS")
+            }
+            else {
+                print("SNS_CONNECTION_UNKNOWN_FAILURE, result %@", result)
+            }
+        })
+    }
     
+    @IBAction func fastLoginFB(sender: AnyObject) {
+        
+        let token = "CAACG9jtU8M4BAAjJaajO0ZBBXZBNOZA5vMacZAgOjJzQLP55DgYhv0EudyXU5mzlwX8xYb4P4F3hznQZCZBqArM0dVPbvT2a5cdfTXlcrxQXCZBoOA12MZAbqo8n9QfpMZAp0KDXllb9QEDOVcczib8r7bbM5pUkWTH8TZBXeY5qqosR5C4QL01iD80vwHYWL3Tme1iscJrGayQQZDZD"
+        var iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print("!!! GOT IID: \(iid)")
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
+            print("login Result: \(res)")
+        }
+    }
+    
+    @IBAction func explode(sender: AnyObject) {
+        
+        let token = "CAACG9jtU8M4BAOmtzZBZCXDIkk9MLBMpOiD7ZCEu9IgrApPzmrBUElQ8LCNrFHUYt2IwmA6y6qlXMA2mJWylbriGFhL9qETZAAeG46uA5o92DoS0ZCxOZAWp3ZClHpdn8SZCNmDBnteWeFmXwysCGr62nnEb9ZCzeC8FDKp1qDBMK10oUpLcTnJutU8ZAP4BsL84ztStWWLs1cEwZDZD"
+        var iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print("!!! GOT IID: \(iid)")
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
+            print("login Result: \(res)")
+        }
+         iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print("!!! GOT IID: \(iid)")
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
+            print("login Result: \(res)")
+        }
+
+    }
     
     
     
