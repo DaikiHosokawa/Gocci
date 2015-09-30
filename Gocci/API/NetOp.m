@@ -50,6 +50,10 @@
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
         
+        // TODO remove this
+        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+
+        
         //save badge num
         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
         
@@ -63,9 +67,9 @@
         NSLog(@"======================================================================");
         
         // Setup AWS credentials
-        [AWS prepareWithIdentityID:iid
-                            userID:[result objectForKey:@"user_id"]
-                          devAuthToken:[result objectForKey:@"token"]];
+//        [AWS prepareWithIdentityID:iid
+//                            userID:[result objectForKey:@"user_id"]
+//                          devAuthToken:[result objectForKey:@"token"]];
         
         afterBlock(NETOP_SUCCESS, nil);
         
@@ -83,7 +87,6 @@
                          handler:^(id result, NSUInteger code, NSError *error)
     {
         NSLog(@"======================================================================");
-        
         NSLog(@"%@%", result);
         NSLog(@"======================================================================");
         
@@ -123,9 +126,9 @@
         NSLog(@"======================================================================");
         
         // Setup AWS credentials
-        [AWS prepareWithIdentityID:[result objectForKey:@"identity_id"]
-                            userID:[result objectForKey:@"user_id"]
-                      devAuthToken:[result objectForKey:@"token"]];
+//        [AWS prepareWithIdentityID:[result objectForKey:@"identity_id"]
+//                            userID:[result objectForKey:@"user_id"]
+//                      devAuthToken:[result objectForKey:@"token"]];
         
         afterBlock(NETOP_SUCCESS, nil);
         
@@ -174,9 +177,9 @@
          NSLog(@"======================================================================");
          
          // Setup AWS credentials
-         [AWS prepareWithIdentityID:iid
-                             userID:[result objectForKey:@"user_id"]
-                       devAuthToken:[result objectForKey:@"token"]];
+//         [AWS prepareWithIdentityID:iid
+//                             userID:[result objectForKey:@"user_id"]
+//                       devAuthToken:[result objectForKey:@"token"]];
          
          afterBlock(NETOP_SUCCESS, nil);
          
@@ -218,6 +221,10 @@
          [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
          [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
          
+         // TODO for AWS2 test. remove this, do it in the identity proider
+         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+
+         
          //save badge num
          [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
          
@@ -233,6 +240,8 @@
          // Setup AWS credentials
 //         [AWS prepareWithIdentityID:[result objectForKey:@"identity_id"]
 //                    andDevAuthToken:[result objectForKey:@"token"]];
+         
+         
          
          afterBlock(NETOP_SUCCESS, nil);
 

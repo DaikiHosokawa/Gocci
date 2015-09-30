@@ -67,13 +67,23 @@ class DebugViewController : UIViewController {
     @IBAction func signUpAsUserClicked(sender: AnyObject)
     {
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
-        NetOp.registerUsername(signUpEditField.text)
-        {
+        
+        NetOp.registerUsername(signUpEditField.text) {
             (code, emsg) -> Void in
             
             print("NetOpCode: \(code)  " + (emsg ?? ""))
+            
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
+                
+                let uid: String = Util.getUserDefString("user_id")!
+                let iid: String = Util.getUserDefString("identity_id")!
+                let tok: String = Util.getUserDefString("token")!
+                
+                AWS2.connectWithBackend(iid, userID: uid, token: tok)
+                AWS2.printIID()
+                AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "noname")
+                
             }
         }
         
@@ -81,6 +91,7 @@ class DebugViewController : UIViewController {
 
     @IBAction func loginAsUserClicked(sender: AnyObject)
     {
+        NSUserDefaults.standardUserDefaults().setObject("us-east-1:5403c205-8a2b-474e-b1c7-1a94663d9115", forKey: "identity_id")
         guard let iid = NSUserDefaults.standardUserDefaults().stringForKey("identity_id") else
         {
             print("ERROR: iid not set in user defs")
@@ -95,6 +106,12 @@ class DebugViewController : UIViewController {
             print("NetOpCode: \(code)  " + (emsg ?? ""))
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
+                let uid: String = Util.getUserDefString("user_id")!
+                let iid: String = Util.getUserDefString("identity_id")!
+                let tok: String = Util.getUserDefString("token")!
+                
+                AWS2.connectWithBackend(iid, userID: uid, token: tok)
+                AWS2.printIID()
             }
         }
     }
@@ -202,7 +219,7 @@ class DebugViewController : UIViewController {
     
     
     @IBAction func fastRegFB(sender: AnyObject) {
-        let token = "CAACG9jtU8M4BAAjJaajO0ZBBXZBNOZA5vMacZAgOjJzQLP55DgYhv0EudyXU5mzlwX8xYb4P4F3hznQZCZBqArM0dVPbvT2a5cdfTXlcrxQXCZBoOA12MZAbqo8n9QfpMZAp0KDXllb9QEDOVcczib8r7bbM5pUkWTH8TZBXeY5qqosR5C4QL01iD80vwHYWL3Tme1iscJrGayQQZDZD"
+        let token = "CAACG9jtU8M4BANN5ZAGOhjWoZAscCjrvdt1855kVH874OJ4LK9vGJs7ZBCSIFSinncGQUg4OjU7lh08weqTUOxAQj4w5tNwJQp6OPstojaFVUeVDGjHw7GmIy4oIcZADHv49w19Gx6TMnae7bxcFry8gJ4aXzRsZA2m5Tkn2sIAlkLLwC58R6XtBZBXVLPaRa6kH0mCaYrNgZDZD"
         
     
         
@@ -219,7 +236,7 @@ class DebugViewController : UIViewController {
 //                print("SNS_CONNECTION_UN_AUTH")
 //            }
             else if result["code"] as! Int == 200 {
-                print("SNS_CONNECTION_SUCCESS")
+                print("SNS_CONNECTION_SUCCESS, result %@", result)
             }
             else {
                 print("SNS_CONNECTION_UNKNOWN_FAILURE, result %@", result)
@@ -229,34 +246,24 @@ class DebugViewController : UIViewController {
     
     @IBAction func fastLoginFB(sender: AnyObject) {
         
-        let token = "CAACG9jtU8M4BAAjJaajO0ZBBXZBNOZA5vMacZAgOjJzQLP55DgYhv0EudyXU5mzlwX8xYb4P4F3hznQZCZBqArM0dVPbvT2a5cdfTXlcrxQXCZBoOA12MZAbqo8n9QfpMZAp0KDXllb9QEDOVcczib8r7bbM5pUkWTH8TZBXeY5qqosR5C4QL01iD80vwHYWL3Tme1iscJrGayQQZDZD"
-        var iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print("!!! GOT IID: \(iid)")
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
-            print("login Result: \(res)")
-        }
+        let token = "CAACG9jtU8M4BANN5ZAGOhjWoZAscCjrvdt1855kVH874OJ4LK9vGJs7ZBCSIFSinncGQUg4OjU7lh08weqTUOxAQj4w5tNwJQp6OPstojaFVUeVDGjHw7GmIy4oIcZADHv49w19Gx6TMnae7bxcFry8gJ4aXzRsZA2m5Tkn2sIAlkLLwC58R6XtBZBXVLPaRa6kH0mCaYrNgZDZD"
+        
+        AWS2.addSNSProvider(FACEBOOK_PROVIDER_STRING, token: token)
+        
+        
+//        let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
+//        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//        print("!!! GOT IID: \(iid)")
+//        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
+//            print("login Result: \(res)")
+//        }
     }
     
     @IBAction func explode(sender: AnyObject) {
         
-        let token = "CAACG9jtU8M4BAOmtzZBZCXDIkk9MLBMpOiD7ZCEu9IgrApPzmrBUElQ8LCNrFHUYt2IwmA6y6qlXMA2mJWylbriGFhL9qETZAAeG46uA5o92DoS0ZCxOZAWp3ZClHpdn8SZCNmDBnteWeFmXwysCGr62nnEb9ZCzeC8FDKp1qDBMK10oUpLcTnJutU8ZAP4BsL84ztStWWLs1cEwZDZD"
-        var iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print("!!! GOT IID: \(iid)")
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
-            print("login Result: \(res)")
-        }
-         iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print("!!! GOT IID: \(iid)")
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        NetOp.loginWithIID(iid) { (res, emsg) -> Void in
-            print("login Result: \(res)")
-        }
 
+        
     }
     
     
