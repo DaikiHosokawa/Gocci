@@ -111,7 +111,7 @@ static dispatch_once_t onceToken;
 //                                                                              identityPoolId:COGNITO_POOL_ID
 //                                                                                      logins:logins];
         
-        self.configuration = [[AWSServiceConfiguration alloc] initWithRegion:COGNITO_POOL_REGION
+        self.configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPNortheast1
                                                          credentialsProvider:self.credentialsProvider];
         
         [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = self.configuration;
