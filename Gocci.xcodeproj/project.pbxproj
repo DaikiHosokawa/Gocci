@@ -2264,7 +2264,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "212dcfbe-cfda-4ad7-8b79-2d1b42ecc9c6";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2301,7 +2301,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "55b5fdda-27cc-4ca9-8cf3-fb9cfee7570d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2350,7 +2350,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d3bdc34-efdb-4313-9202-299b9533d49d";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/GocciTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2366,7 +2366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -2402,7 +2402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d3bdc34-efdb-4313-9202-299b9533d49d";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/GocciTest-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
