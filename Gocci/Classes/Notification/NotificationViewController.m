@@ -97,6 +97,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
     //Storyboardを特定して
     //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
     
@@ -104,6 +106,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         NSLog(@"コメント画面に遷移");
         NSLog(@"postid:%@",post_id[indexPath.row]);
         [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
+       
         //[self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:post_id[indexPath.row]];
         
         /*
@@ -136,14 +139,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    /*
-     NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-     // Here we use the new provided setImageWithURL: method to load the web image
-     [cell.userIcon setImageWithURL:[NSURL URLWithString:dottext]
-     placeholderImage:[UIImage imageNamed:@"default.png"]];
-     cell.noticedAt.text = [_noticed_ objectAtIndex:indexPath.row];
-     cell.notificationMessage.text = [_notice_ objectAtIndex:indexPath.row];
-     */
     // セルにデータを反映
     Notice *post = self.notices[indexPath.row];
     [cell configureWithNotice:post];
@@ -198,6 +193,19 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     
     self.notices = [NSArray arrayWithArray:tempNotices];
+    
+    NSLog(@"count:%lu",(unsigned long)[self.notices count]);
+    
+    if ([self.notices count] == 0){
+        // 画像表示例文
+        UIImage *img = [UIImage imageNamed:@"sad_notice.png"];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+        CGSize boundsSize = self.view.bounds.size;
+        iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+        [self.view addSubview:iv];
+        
+    }
+    
     [self.tableView reloadData];
     NSLog(@"noticeCategory:%@",notice_category);
      NSLog(@"postid:%@",post_id);

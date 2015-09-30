@@ -419,8 +419,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
 #endif
         eveVC.postID = _postID;
+        [self.popover dismissPopoverAnimated:YES];
     }
     //店舗画面にパラメータを渡して遷移する
     // !!!:dezamisystem

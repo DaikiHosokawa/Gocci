@@ -584,8 +584,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
 #endif
         eveVC.postID = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
     
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])

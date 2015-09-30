@@ -105,8 +105,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-    // !!!:dezamisystem
-    //	self.navigationItem.backBarButtonItem = backButton;
+    self.navigationItem.backBarButtonItem = backButton;
     
     self.parentViewController.view.backgroundColor = [UIColor redColor];
     
@@ -543,8 +542,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
 #endif
         eveVC.postID = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
     //店舗画面にパラメータを渡して遷移する
     // !!!:dezamisystem
