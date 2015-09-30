@@ -54,6 +54,7 @@
 //    self.identityId = response.identityId;
 //    self.token = response.token;
     //[super refresh];
+    NSLog(@"refresh got actually called");
     return [AWSTask taskWithResult:self.identityId];
 }
 
@@ -63,9 +64,9 @@
  */
 - (AWSTask *)getIdentityId {
     // already cached the identity id, return it
-//    if (self.identityId) {
-//        return [AWSTask taskWithResult:nil];
-//    }
+    if (self.identityId) {
+        return [AWSTask taskWithResult:self.identityId];
+    }
     // otherwise call your backend to get identityId
     return [AWSTask taskWithResult:self.identityId];
 }

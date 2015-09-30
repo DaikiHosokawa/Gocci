@@ -225,6 +225,7 @@
 		95EEC5321AF91A20006FD54E /* CheerListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC52E1AF91A20006FD54E /* CheerListCell.xib */; };
 		95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5301AF91A20006FD54E /* CheerListViewController.m */; };
 		9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE681BA2CD350041CFD5 /* NetOp.m */; };
+		9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820AFE71BB972FF008A6963 /* AWSManager.swift */; settings = {ASSET_TAGS = (); }; };
 		9843E9201BA993EB0015350D /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91D1BA993EB0015350D /* AWSCognito.framework */; };
 		9843E9211BA993EB0015350D /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91E1BA993EB0015350D /* AWSCore.framework */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
@@ -665,6 +666,7 @@
 		95EEC5301AF91A20006FD54E /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
+		9820AFE71BB972FF008A6963 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		9843E91D1BA993EB0015350D /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		9843E91E1BA993EB0015350D /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
@@ -1632,6 +1634,7 @@
 				9843E9251BA9955D0015350D /* AWS.m */,
 				9843E9261BA9955D0015350D /* AWSGocciIdentityProvider.h */,
 				9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */,
+				9820AFE71BB972FF008A6963 /* AWSManager.swift */,
 			);
 			path = AWS;
 			sourceTree = "<group>";
@@ -2026,6 +2029,7 @@
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
 				952D23901A9B95E800C354DF /* UIView+WebCacheOperation.m in Sources */,
 				951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */,
+				9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,
 				95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */,
 				53B942A31AB40414000150C4 /* BAVPlistNode.m in Sources */,
