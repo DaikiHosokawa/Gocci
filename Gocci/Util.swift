@@ -64,9 +64,9 @@ import UIKit
     
     class func getRegisterID() -> String {
         
-        return generateFakeDeviceID()
+        //return generateFakeDeviceID()
         
-        return "7777777777777777777777777777777777777777777777777777777777777777"
+        //return "7777777777777777777777777777777777777777777777777777777777777777"
         
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         
