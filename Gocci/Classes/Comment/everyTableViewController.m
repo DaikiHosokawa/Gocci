@@ -136,7 +136,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
     
-    
     // キーボードの表示・非表示がNotificationCenterから通知される
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
