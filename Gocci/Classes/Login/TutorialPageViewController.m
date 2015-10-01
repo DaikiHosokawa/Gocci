@@ -19,11 +19,14 @@
 
 #import "GocciTest-Swift.h"
 
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface TutorialPageViewController (){
+@interface TutorialPageViewController ()<CLLocationManagerDelegate,UIAlertViewDelegate>{
     //NSArray *pages;
     CGPoint originalCenter;
+    // ロケーションマネージャー
+    CLLocationManager* locationManager;
 }
 
 
@@ -45,7 +48,7 @@
     UIViewController *page1 = [self.storyboard instantiateViewControllerWithIdentifier:@"page1"];
     UIViewController *page2 = [self.storyboard instantiateViewControllerWithIdentifier:@"page2"];
     UIViewController *page3 = [self.storyboard instantiateViewControllerWithIdentifier:@"page3"];
-
+    
     
     UIButton *ruleButton = (UIButton *)[page3.view viewWithTag:2];
     if(ruleButton) {
@@ -53,8 +56,8 @@
     }
     
     self.username = (UITextField *)[page3.view viewWithTag:3];
-
-
+    
+    
 #ifdef INDEVEL
     self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
 #endif
@@ -70,14 +73,14 @@
     UIButton *privacyButton = (UIButton *)[page3.view viewWithTag:8];
     [privacyButton addTarget:self action:@selector(privacyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-
+    
     
     // load the view controllers in our pages array
     self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
 #ifdef INDEVEL
-   // self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
+    // self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
 #endif
-
+    
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     [self.pageController setDelegate:self];
@@ -87,7 +90,7 @@
     NSArray *viewControllers = [NSArray arrayWithObject:[self.pages objectAtIndex:0]];
     [self.pageControl setCurrentPage:0];
     
-
+    
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageController];
@@ -101,9 +104,21 @@
     // Keyboard event appear and hide
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardAppear:) name:UIKeyboardWillShowNotification object:nil];
-
+    
     // safe center to return here after the keyboard has appeard
     self->originalCenter = self.view.center;
+    
+    // launch CLLocationManager
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲート設定
+        locationManager.delegate = self;
+        // 精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 更新頻度
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
 }
 
 -(void)onKeyboardHide:(NSNotification *)notification
@@ -124,11 +139,51 @@
 
 - (void)registerUsernameClicked:(id)sender {
     
-    if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-        self.registerButton.enabled = false;
-        self.username.enabled = false;
+    
+    //GPS is ON
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+        if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+            self.registerButton.enabled = false;
+            self.username.enabled = false;
+            
+            [self registerUsername:self.username.text];
+        }
+      
+     //GPS is OFF
+    }else{
         
-        [self registerUsername:self.username.text];
+        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            switch ([CLLocationManager authorizationStatus]) {
+                
+                case kCLAuthorizationStatusNotDetermined:
+                    [locationManager requestWhenInUseAuthorization];
+                    break;
+                    
+                case kCLAuthorizationStatusAuthorizedAlways:
+                case kCLAuthorizationStatusAuthorizedWhenInUse:
+                    [locationManager startUpdatingLocation];
+                    
+                    break;
+                    
+                    //GPS request was denied
+                case kCLAuthorizationStatusDenied:
+                case kCLAuthorizationStatusRestricted:
+                    NSLog(@"位置情報が許可されていません2");
+                    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ){
+                        UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+                        requestAgain.tag=121;
+                        [requestAgain show];
+                    }else{
+                        UIAlertView *requestAgain2 =[[UIAlertView alloc] initWithTitle:@"設定->アプリ一覧「Gocci」->位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                        [requestAgain2 show];
+                    }
+                    break;
+            }
+        }
+        // iOS7未満
+        else {
+            [locationManager startUpdatingLocation];
+        }
     }
 }
 
@@ -139,35 +194,35 @@
     NSLog(@"=== Trying to register with username: %@", username);
     
     [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
-    {
-        switch (errorCode) {
-     
-            case NETOP_SUCCESS:
-                // transition to SNS page
-                [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
-                [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
-                                              direction:UIPageViewControllerNavigationDirectionForward
-                                               animated:YES
-                                             completion:nil];
-                [self.pageControl setCurrentPage:3];
-                break;
-                
-            case NETOP_USERNAME_ALREADY_IN_USE:
-                NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
-                self.registerButton.enabled = true;
-                self.username.enabled = true;
-                
-                [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-                break;
-                
-            default:
-                // TODO no internet?? msg to the user
-                NSLog(@"=== Register failed: %@", errorMsg);
-                self.registerButton.enabled = true;
-                self.username.enabled = true;
-                break;
-        }
-    }];
+     {
+         switch (errorCode) {
+                 
+             case NETOP_SUCCESS:
+                 // transition to SNS page
+                 [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+                 [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                               direction:UIPageViewControllerNavigationDirectionForward
+                                                animated:YES
+                                              completion:nil];
+                 [self.pageControl setCurrentPage:3];
+                 break;
+                 
+             case NETOP_USERNAME_ALREADY_IN_USE:
+                 NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
+                 self.registerButton.enabled = true;
+                 self.username.enabled = true;
+                 
+                 [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+                 break;
+                 
+             default:
+                 // TODO no internet?? msg to the user
+                 NSLog(@"=== Register failed: %@", errorMsg);
+                 self.registerButton.enabled = true;
+                 self.username.enabled = true;
+                 break;
+         }
+     }];
     
 }
 
@@ -233,17 +288,13 @@
 }
 
 //-(BOOL)textFieldShouldReturn:(UITextField*)textField {
-//    
+//
 //    [self resignFirstResponder];
-//    
+//
 //    NSLog(@"text:%@",textField.text);
-//    
+//
 //    return YES;
 //}
-
-
-
-
 
 
 
@@ -282,6 +333,48 @@
 - (IBAction)ReturnTutorial:(UIStoryboardSegue *)segue
 {
     NSLog(@"go back to tutorial");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    
+    
+    UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+    requestAgain.tag=121;
+    
+    UIAlertView *requestAgain2 =[[UIAlertView alloc] initWithTitle:@"設定->アプリ一覧「Gocci」->位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            [locationManager startUpdatingLocation];
+            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+                self.registerButton.enabled = false;
+                self.username.enabled = false;
+                
+                [self registerUsername:self.username.text];
+            }
+            break;
+        case kCLAuthorizationStatusDenied:
+        case kCLAuthorizationStatusRestricted:
+            if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ){
+                [requestAgain show];
+            }else{
+                [requestAgain2 show];
+            }
+            break;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 121 && buttonIndex == 0)
+    {
+        //code for opening settings app in iOS 8
+        [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
+    }
 }
 
 

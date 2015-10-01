@@ -174,22 +174,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 #pragma mark - タッチイベント
-//- (void)handleTouchButton:(UIButton *)sender event:(UIEvent *)event {
-//
-//	NSIndexPath *indexPath = [self indexPathForControlEvent:event];
-//	NSLog(@"row %ld was tapped.",(long)indexPath.row);
-//	_postID = [_postid_ objectAtIndex:indexPath.row];
-//	NSLog(@"postid:%@",_postID);
-//
-//#if 0
-//	[self performSegueWithIdentifier:@"showDetail" sender:self];
-//#else
-//
-//#endif
-//
-//
-//	NSLog(@"commentBtn is touched");
-//}
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -493,10 +477,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [SVProgressHUD show];
-    
     __weak typeof(self)weakSelf = self;
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [weakSelf.refresh beginRefreshing];
@@ -536,35 +517,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
              
-             //			 BOOL isServerAvailable;
-             //			 NSString *alertMessage = @"圏外ですので再生できません。";
-             //			 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             
          }];
-    };
-    
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        return;
-    }
-    
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         LOG(@"location=%@, error=%@", location, error);
-         
-         if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
-             return;
-         }
-         
-         fetchAPI(location.coordinate);
-     }];
     
 }
 
