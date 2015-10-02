@@ -204,19 +204,27 @@
     [application unregisterForRemoteNotifications];
     
 #if !(TARGET_IPHONE_SIMULATOR)
-    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-        [application registerForRemoteNotifications];
+    //メソッドの有無でOSを判別
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         
-    #else
-        UIRemoteNotificationType remoteNotificationType =
-        UIRemoteNotificationTypeBadge|
-        UIRemoteNotificationTypeSound|
-        UIRemoteNotificationTypeAlert|
-        UIRemoteNotificationTypeNewsstandContentAvailability;
-        [application registerForRemoteNotificationTypes:remoteNotificationType];
-    #endif
+        //iOS8
+        //デバイストークの取得
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+        //許可アラートの表示
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        
+        //iOS7
+        UIRemoteNotificationType types =UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
+    }
 #endif
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     
     return YES;
 }
@@ -295,7 +303,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     
     if (nil == locationManager && [CLLocationManager locationServicesEnabled])
         [locationManager startUpdatingLocation]; //測位再開
-    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     // Facebook
 //    [FBAppEvents activateApp];
 //    [FBAppCall handleDidBecomeActiveWithSession:self.session];
@@ -344,13 +352,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     NSLog(@"deviceToken error: %@", [error description]);
 }
 
-// PUSH通知の受信時に呼ばれるデリゲートメソッド
+//Before iOS6 call this method
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    NSLog(@"通知受信:%@",userInfo);
-    //APNsPHPからuserInfo(message,badge数等)を受け取る
-    //log
-    NSLog(@"pushInfo: %@", [userInfo description]);
     
     // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -359,14 +362,29 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
     application.applicationIconBadgeNumber = numberOfNewMessages;
     [ud synchronize];
+    
+    // App in background & active from push notice
+    if (application.applicationState == UIApplicationStateInactive)
+    {
+        NSLog(@"receeive notice background");
+    }
+    // アプリが起動中のときにプッシュ通知を受信した場合
+    else{
+        NSLog(@"receeive notice foreground");
+        [self showMessageWithRemoteNotification:userInfo];
+    }
+
 }
 
-// BackgroundFetchによってバックグラウンドでPUSH通知を受けたとき呼ばれるデリゲートメソッド
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
 
+//After iOS7 call this method
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    //APNsPHPからuserInfo(message,badge数等)を受け取る
-    NSLog(@"pushInfo in Background: %@", userInfo);
+    NSLog(@"userinfo:%@",userInfo);
     
     if ( userInfo ) {
         NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
@@ -374,9 +392,17 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                                    userInfo:userInfo];
         NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
         [queue enqueueNotification:notification postingStyle:NSPostWhenIdle];
+    
+        [self showMessageWithRemoteNotification:userInfo];
+        // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
+        NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
+        [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
+        application.applicationIconBadgeNumber = numberOfNewMessages;
+        [ud synchronize];
     }
     
-    [self showMessageWithRemoteNotification:userInfo];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
@@ -393,16 +419,6 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                                    description:message
                                                           type:TWMessageBarMessageTypeSuccess
                                                       duration:4.0];
-    //ここをログインのところに追加
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
-    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    UIApplication *application = [UIApplication sharedApplication];
-    application.applicationIconBadgeNumber = numberOfNewMessages;
-    [ud synchronize];
-    
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
