@@ -82,9 +82,7 @@ import UIKit
     }
     
     class func getRegisterID() -> String {
-        
-        return generateFakeDeviceID()
-        
+                
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         
 // Only Fake IDs in the simulator
@@ -101,7 +99,7 @@ import UIKit
         NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("user_id")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("profile_img")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("identity_id")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("iid")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("badge_num")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
 

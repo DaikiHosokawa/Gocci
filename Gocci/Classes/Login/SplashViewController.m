@@ -38,7 +38,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SPLASH_TIME * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
     {
-        NSString *iid =      [[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"];
+        NSString *iid =      [[NSUserDefaults standardUserDefaults] valueForKey:@"iid"];
         NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
         NSString *avatar =   [[NSUserDefaults standardUserDefaults] valueForKey:@"avatarLink"];
         

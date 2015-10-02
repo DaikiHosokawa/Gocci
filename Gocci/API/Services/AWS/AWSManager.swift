@@ -200,7 +200,6 @@ class EnhancedGocciIdentityProvider : AWSAbstractIdentityProvider
         self.backEndToken = token
         super.identityId = iid
         super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
-        //self.refresh()
     }
 }
 
@@ -219,15 +218,13 @@ class AWSManager {
     static let sharedInstance = AWSManager(poolID: COGNITO_POOL_ID, cognitoRegion: AWSRegionType.USEast1, S3Region: AWSRegionType.APNortheast1)
     
     let credentialsProvider: AWSCognitoCredentialsProvider
-
-    
     
     init(poolID:String, cognitoRegion:AWSRegionType, S3Region:AWSRegionType) {
 
 //        AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
 //
 //        let uid: String = Util.getUserDefString("user_id")!
-//        let iid: String = Util.getUserDefString("identity_id")!
+//        let iid: String = Util.getUserDefString("iid")!
 //        let tok: String = Util.getUserDefString("token")!
         
         let ip = EnhancedGocciIdentityProvider(poolID: poolID, iid: nil, userID: nil, token: nil)
@@ -241,13 +238,6 @@ class AWSManager {
         // config for S3 uploads (different region!)
         let config2 = AWSServiceConfiguration(region: S3Region, credentialsProvider: credentialsProvider)
         AWSS3TransferUtility.registerS3TransferUtilityWithConfiguration(config2, forKey: "gocci_up_north_east_1")
-        
-        //print("WIPING ALL COGNITO DATA")
-        //AWSCognito.defaultCognito().wipe()
-        
-        // if we disable unAuth users one day, 0000.... will be used
-//        unAuthIID = credentialsProvider.identityId ?? "nowhere:00000000-0000-0000-0000-000000000000"
-//        print("======= THE UNAUTH IID: \(unAuthIID)")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "identityDidChange:",
             name: AWSCognitoIdentityIdChangedNotification, object: nil)
@@ -275,7 +265,7 @@ class AWSManager {
         let ip = SNSIIDRetrieverIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID, iid: nil, logins: [provider:token])
         
         return ip.refresh().continueWithBlock({ (task) -> AnyObject! in
-            return AWSTask.init(result: ip.identityId == nil || ip.identityId == nil ? nil : ip.identityId)
+            return AWSTask.init(result: ip.identityId == nil ? nil : ip.identityId)
         })
     }
     
@@ -299,34 +289,16 @@ class AWSManager {
     
     func connectToBackEndWithUserDefData() -> AWSTask {
         let uid: String = Util.getUserDefString("user_id")!
-        let iid: String = Util.getUserDefString("identity_id")!
+        let iid: String = Util.getUserDefString("iid")!
         let tok: String = Util.getUserDefString("token")!
         
         return AWS2.connectWithBackend(iid, userID: uid, token: tok)
     }
     
 //    func connectWithSNSProvider(provider: String, token: String) -> AWSTask {
-//        
 //
-//        let tmpip = AWSEnhancedCognitoIdentityProvider(regionType: AWSRegionType.USEast1, identityId: nil, identityPoolId: COGNITO_POOL_ID, logins: [provider: token])
-//        
-//        credentialsProvider.identityProvider = tmpip
-//        
-//      //  identityProvider.logins = [provider: token];
-//        print("=== Logins before CP: \(credentialsProvider.logins)")
 //        print("=== Logins before IP: \(identityProvider.logins)")
-//
-////        let d = identityProvider.connectWithSNSProvider(provider, token:token)
-//        
-//        if var logins = credentialsProvider.logins {
-//            logins[provider] = token
-//            credentialsProvider.logins = logins
-//        }
-//        else {
-//            credentialsProvider.logins = [provider: token]
-//        }
-//
-//        print("=== Logins before CP: \(credentialsProvider.logins)")
+//        let d = identityProvider.connectWithSNSProvider(provider, token:token)
 //        print("=== Logins before IP: \(identityProvider.logins)")
 //        return refresh()
 //    }
@@ -393,23 +365,3 @@ class AWSManager {
     
 }
 
-
-
-
-// THIS ONE WORKS WITH FACEBOOK TOKENS !!!!!!!!!!!!!!
-
-//class GocciDevAuthIdentityProvider : AWSAbstractCognitoIdentityProvider
-//{
-//    var backEndToken: String!
-//    
-//    override var token: String! {
-//        return backEndToken
-//    }
-//    
-//    init(region:AWSRegionType, poolID: String, iid:String!, logins:[NSObject : AnyObject]!) {
-//        super.init(regionType: region, identityId: iid, accountId: nil, identityPoolId: poolID, logins:logins)
-//        
-//    }
-//    
-//    
-//}

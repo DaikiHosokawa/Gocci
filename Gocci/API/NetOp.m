@@ -48,7 +48,7 @@
         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identify_id"] forKey:@"identify_id"]; // not sure, but its nice if we can update the IID on the server side
+        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"]; // not sure, but its nice if we can update the IID on the server side
 
         
         // TODO remove this
@@ -111,7 +111,7 @@
         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identify_id"] forKey:@"identify_id"];
+        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
         
         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
 
@@ -169,7 +169,7 @@
          [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
          
          
-         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];   // SUPER IMPORTAND !!!
+         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];   // SUPER IMPORTAND !!!
 
          
          //save badge num
@@ -223,7 +223,7 @@
          [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
          [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
          [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
+         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
          
          // TODO for AWS2 test. remove this, do it in the identity proider
          [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
@@ -239,7 +239,7 @@
          NSLog(@"    username:    %@", [result objectForKey:@"username"]);
          NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
          NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
-         NSLog(@"    register_id: %@", register_id);         
+         NSLog(@"    register_id: %@", register_id);
          NSLog(@"======================================================================");
          
          // Setup AWS credentials
@@ -289,7 +289,7 @@
         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
+        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
         
         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
 
