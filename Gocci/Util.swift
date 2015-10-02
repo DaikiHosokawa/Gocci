@@ -14,6 +14,22 @@ import UIKit
 
 @objc class Util : NSObject {
     
+    // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
+    class func dirtyBackEndLoginWithUserDefData() -> AWSTask {
+        return AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
+            AWS2.storeTimeInLoginDataSet()
+            return nil
+        })
+    }
+    
+    // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
+    class func dirtyBackEndSignUpWithUserDefData() -> AWSTask {
+        return AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
+            AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+            return nil
+        })
+    }
+    
     class func getUserDefString(key:String) -> String? {
         return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
     }
@@ -60,17 +76,14 @@ import UIKit
     class func generateFakeDeviceID() -> String
     {
         // very cool language
-        let s1 = NSProcessInfo.processInfo().globallyUniqueString.characters.filter(){$0 != "-"}
-        let s2 = NSProcessInfo.processInfo().globallyUniqueString.characters.filter(){$0 != "-"}
+        let s = NSProcessInfo.processInfo().globallyUniqueString.characters.filter(){$0 != "-"}
         
-        return String(s1[0..<32] + s2[0..<32])
+        return "00000000" + String(s[0..<48]) + "00000000"
     }
     
     class func getRegisterID() -> String {
         
         return generateFakeDeviceID()
-        
-        return "7777777777777777777777777777777777777777777777777777777777777777"
         
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         
@@ -90,6 +103,8 @@ import UIKit
         NSUserDefaults.standardUserDefaults().removeObjectForKey("profile_img")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("identity_id")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("badge_num")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
+
     }
     
     class func getInchString() -> String

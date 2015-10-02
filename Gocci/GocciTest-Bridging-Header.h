@@ -6,7 +6,6 @@
 #import "NetOp.h"
 #import "FHSTwitterEngine.h"
 #import "APIClient.h"
-#import "AWS.h"
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -16,5 +15,3 @@
 #import <AWSCognito/AWSCognito.h>
 #import <AWSS3/AWSS3.h>
 
-
-#import "AWSGocciIdentityProvider.h"

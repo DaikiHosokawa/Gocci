@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "NetOp.h"
-#import "AWS.h"
 #import "GocciTest-Swift.h"
 
 
@@ -49,6 +48,8 @@
         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+        [ud setValue:[result objectForKey:@"identify_id"] forKey:@"identify_id"]; // not sure, but its nice if we can update the IID on the server side
+
         
         // TODO remove this
         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
@@ -112,6 +113,8 @@
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
         [ud setValue:[result objectForKey:@"identify_id"] forKey:@"identify_id"];
         
+        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+
         
         //save badge num
         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
@@ -163,6 +166,11 @@
          [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
          [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
          [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
+         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+         
+         
+         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];   // SUPER IMPORTAND !!!
+
          
          //save badge num
          [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
@@ -176,11 +184,6 @@
          NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
          NSLog(@"======================================================================");
          
-         // Setup AWS credentials
-//         [AWS prepareWithIdentityID:iid
-//                             userID:[result objectForKey:@"user_id"]
-//                       devAuthToken:[result objectForKey:@"token"]];
-         
          afterBlock(NETOP_SUCCESS, nil);
          
      }];
@@ -190,11 +193,12 @@
 
 + (void)registerUsername:(NSString *)username andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
 {
-
+    NSString* register_id = [Util getRegisterID];
+    
     [APIClient Signup:username
                    os:[@"iOS_" stringByAppendingString:[UIDevice currentDevice].systemVersion]
                 model:[UIDevice currentDevice].model
-          register_id:[Util getRegisterID]
+          register_id:register_id
               handler:^(id result, NSUInteger code, NSError *error)
      {
 
@@ -235,6 +239,7 @@
          NSLog(@"    username:    %@", [result objectForKey:@"username"]);
          NSLog(@"    user id:     %@", [result objectForKey:@"user_id"]);
          NSLog(@"    identity_id: %@", [result objectForKey:@"identity_id"]);
+         NSLog(@"    register_id: %@", register_id);         
          NSLog(@"======================================================================");
          
          // Setup AWS credentials
@@ -285,6 +290,9 @@
         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"identity_id"];
+        
+        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+
         
         //save badge num
         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];

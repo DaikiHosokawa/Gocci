@@ -210,7 +210,7 @@
                                     <rect key="frame" x="168" y="141" width="212" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92O-sx-krM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="identify_id not set in user defs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92O-sx-krM">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -318,6 +318,15 @@
                                     <action selector="fastLoginFB:" destination="jvS-zY-AAu" eventType="touchUpInside" id="nrs-nH-4uo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greatest Work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRS-Zw-sQP">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="143" y="62" width="114" height="25"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.48732958845178842" blue="0.49832476871594855" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -359,6 +368,7 @@
                                 <exclude reference="KVh-2g-Jzg"/>
                                 <exclude reference="KM7-TS-Dq8"/>
                                 <exclude reference="X2r-HO-xlq"/>
+                                <exclude reference="BRS-Zw-sQP"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UeZ-Pc-oq5"/>
@@ -400,6 +410,7 @@
                                 <include reference="KVh-2g-Jzg"/>
                                 <include reference="KM7-TS-Dq8"/>
                                 <include reference="X2r-HO-xlq"/>
+                                <include reference="BRS-Zw-sQP"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UeZ-Pc-oq5"/>
