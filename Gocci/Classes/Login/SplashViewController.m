@@ -16,6 +16,9 @@
 #import "NetOp.h"
 #import "util.h"
 
+#import "GocciTest-Swift.h"
+
+
 
 
 @implementation SplashViewController
@@ -43,10 +46,16 @@
         if (iid){
             [NetOp loginWithIID:iid andThen:^(NetOpResult ecode, NSString *emsg)
             {
-                switch (ecode) {
-                    case NETOP_SUCCESS:
+                // there is a reason this is not in the switch stament down there.... fuck objc
+                if (ecode == NETOP_SUCCESS) {
+                    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
                         [self performSegueWithIdentifier:@"goTimeline" sender:self];
-                        break;
+                        return nil;
+                    }];
+                    return;
+                }
+                
+                switch (ecode) {
                     case NETOP_NETWORK_ERROR:
                         // TODO not network msg to the user?
                         break;
