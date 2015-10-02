@@ -22,6 +22,8 @@
 #import "TimelineCell.h"
 #import "NotificationViewController.h"
 
+#import "STCustomCollectionViewCell.h"
+
 @import QuartzCore;
 
 #import "everyBaseNavigationController.h"
@@ -38,9 +40,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @interface usersTableViewController ()
 <TimelineCellDelegate>
 {
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
     NSDictionary *header;
+    NSMutableArray *thumb;
+    IBOutlet __weak UICollectionView *_collectionView;
+    __weak IBOutlet UIButton *editButton;
+    __strong NSMutableArray *_items;
+    __weak IBOutlet UISegmentedControl *segmentControll;
 }
 
 - (void)showDefaultContentView;
@@ -58,14 +63,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @implementation usersTableViewController
 
 #pragma mark - アイテム名登録用
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -109,6 +107,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     self.parentViewController.view.backgroundColor = [UIColor redColor];
     
+    editButton.layer.cornerRadius = 10; // this value vary as per your desire
+    editButton.clipsToBounds = YES;
+    
+    [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
+    /*
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -120,6 +123,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
+    */
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -127,6 +131,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
+    
+    UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
+    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -170,18 +179,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     [self _fetchProfile];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
-        [self showDefaultContentView];
-    }
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -215,103 +216,30 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.posts count];
+    return 1;
 }
 
+ 
 //1セルあたりの高さ
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = TimelineCellIdentifier;
-    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [TimelineCell cell];
-    }
-    cell.deleteBtn.hidden = NO;
-    cell.ViolateView.hidden = YES;
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    //cell.ViolateView.hidden = YES;
-    // セルにデータを反映
-    TimelinePost *post = self.posts[indexPath.row];
-    [cell configureWithTimelinePost:post];
-    cell.delegate = self;
-    
-    // 動画の読み込み
-    LOG(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
-    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
-                                                         size:cell.thumbnailView.bounds.size
-                                                      atIndex:indexPath.row
-                                                   completion:^(BOOL f){}];
-    
-    [SVProgressHUD dismiss];
-    return cell ;
-}
-
-// UIControlEventからタッチ位置のindexPathを取得する
-- (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint p = [touch locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    return indexPath;
-}
-
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if(!decelerate) {
-        // ドラッグ終了 かつ 加速無し
-        [self _playMovieAtCurrentCell];
-    }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    // setContentOffset: 等によるスクロール終了
-    NSLog(@"scroll is stoped");
-    
-}
-
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate4"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate4"];
-    // 保存
-    [userDefaults synchronize];
-    // 初回起動
-    return YES;
-}
-
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"あなたの画面です";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
+    // セルが作成されていないか?
+    if (!cell) { // yes
+        // セルを作成
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    [CXCardView showWithView:_firstContentView draggable:YES];
+    // セルにテキストを設定
+    // セルの内容はNSArray型の「items」にセットされているものとする
+    
+    return cell;
 }
+
 
 
 #pragma mark - TimelineCellDelegate
@@ -449,14 +377,21 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+        thumb = [NSMutableArray arrayWithCapacity:0];
+        _postid_ = [NSMutableArray arrayWithCapacity:0];
         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
         
-        
         for (NSDictionary *post in items) {
             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+            NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
+            NSDictionary *postidGet = [post objectForKey:@"post_id"];
+            NSLog(@"thumbGet:%@",thumbGet);
+            [thumb addObject:thumbGet];
+            [_postid_ addObject:postidGet];
         }
         
+        NSLog(@"thumb:%@",thumb);
         header = headerDic;
         self.posts = [NSArray arrayWithArray:tempPosts];
         
@@ -476,56 +411,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             [weakSelf.refresh endRefreshing];
         }
         [self byoga];
+        [_collectionView reloadData];
     }];
 }
 
 
-
-/**
- *  現在表示中のセルの動画を再生する
- */
-- (void)_playMovieAtCurrentCell
-{
-    
-    if ( [self.posts count] == 0){
-        return;
-    }
-    
-    CGFloat currentHeight = 0.0;
-    for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
-        if ([self.posts count] <= i) continue;
-        
-        currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
-    }
-    
-    TimelineCell *currentCell = [TimelineCell cell];
-    [currentCell configureWithTimelinePost:self.posts[[self _currentIndexPath].row]];
-    CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentHeight + currentCell.thumbnailView.frame.origin.y+250,
-                                  currentCell.thumbnailView.frame.size.width,
-                                  currentCell.thumbnailView.frame.size.height);
-    
-    [[MoviePlayerManager sharedManager] scrolling:NO];
-    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                  inView:self.tableView
-                                                   frame:movieRect];
-    
-}
-
-
-/**
- *  現在表示中の indexPath を取得
- *
- *  @return
- */
-- (NSIndexPath *)_currentIndexPath
-{
-    CGPoint point = CGPointMake(self.tableView.contentOffset.x,
-                                self.tableView.contentOffset.y + self.tableView.frame.size.height/2);
-    NSIndexPath *currentIndexPath = [self.tableView indexPathForRowAtPoint:point];
-    
-    return currentIndexPath;
-}
 
 #pragma mark - Segue
 #pragma mark 遷移前準備
@@ -558,5 +448,31 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }
     
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSLog(@"数:%lu",(unsigned long)[thumb count]);
+    return [thumb count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
+    
+   
+    [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
+                            placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
+    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
+    
+}
+
 
 @end
