@@ -39,8 +39,13 @@ class ReLoginViewController : UIViewController {
             
             switch result {
                 case .NETOP_SUCCESS:
-                    let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
-                    self.presentViewController(tutorialViewController, animated: true, completion: nil)
+
+                    AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
+                        let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
+                        self.presentViewController(tutorialViewController, animated: true, completion: nil)
+                        return nil
+                    })
+
                 case .NETOP_USERNAME_PASSWORD_WRONG:
                     Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
                 default:

@@ -38,8 +38,8 @@
     
     
     // registerd user, already using gocci
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"]){
-        [NetOp loginWithIID:[[NSUserDefaults standardUserDefaults] valueForKey:@"identity_id"] andThen:^(NetOpResult ecode, NSString *emsg)
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"iid"]){
+        [NetOp loginWithIID:[[NSUserDefaults standardUserDefaults] valueForKey:@"iid"] andThen:^(NetOpResult ecode, NSString *emsg)
          {
              if (ecode == NETOP_SUCCESS) {
                  UIStoryboard* secondStoryboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
