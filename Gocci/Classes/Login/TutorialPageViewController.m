@@ -188,41 +188,57 @@
 }
 
 
+-(void)loginAndTransit {
+    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
+        // transition to SNS page
+        [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+        [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES
+                                     completion:nil];
+        [self.pageControl setCurrentPage:3];
+        return nil;
+    }];
+}
+
+
 
 -(void)registerUsername:(NSString*)username {
     
     NSLog(@"=== Trying to register with username: %@", username);
     
     [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
-     {
-         switch (errorCode) {
-                 
-             case NETOP_SUCCESS:
-                 // transition to SNS page
-                 [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
-                 [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
-                                               direction:UIPageViewControllerNavigationDirectionForward
-                                                animated:YES
-                                              completion:nil];
-                 [self.pageControl setCurrentPage:3];
-                 break;
-                 
-             case NETOP_USERNAME_ALREADY_IN_USE:
-                 NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
-                 self.registerButton.enabled = true;
-                 self.username.enabled = true;
-                 
-                 [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-                 break;
-                 
-             default:
-                 // TODO no internet?? msg to the user
-                 NSLog(@"=== Register failed: %@", errorMsg);
-                 self.registerButton.enabled = true;
-                 self.username.enabled = true;
-                 break;
-         }
-     }];
+
+    {
+        if ( errorCode == NETOP_SUCCESS){
+            [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+            [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:YES
+                                         completion:nil];
+            [self.pageControl setCurrentPage:3];
+            [Util dirtyBackEndSignUpWithUserDefData];
+            return;
+        }
+        
+        switch (errorCode) {
+                
+            case NETOP_USERNAME_ALREADY_IN_USE:
+                NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
+                self.registerButton.enabled = true;
+                self.username.enabled = true;
+                
+                [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+                break;
+                
+            default:
+                // TODO no internet?? msg to the user
+                NSLog(@"=== Register failed: %@", errorMsg);
+                self.registerButton.enabled = true;
+                self.username.enabled = true;
+                break;
+        }
+    }];
     
 }
 

@@ -19,8 +19,7 @@
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-//#define FRESH_START 1
-
+//#define FRESH_START
 
 
 
@@ -32,7 +31,7 @@
 #ifdef INDEVEL
 #define SPLASH_TIME 0.5
 #else
-#define SPLASH_TIME 5.0    // TODO Discuss: too long in my opinion
+#define SPLASH_TIME 5.0
 #endif
 
 #ifdef INDEVEL
@@ -62,9 +61,11 @@
 #ifdef INDEVEL
 #define COGNITO_POOL_ID (@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35")
 #define COGNITO_POOL_REGION (AWSRegionUSEast1)
+#define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
 #else
 #define COGNITO_POOL_ID (@"us-east-1:b0252276-27e1-4069-be84-3383d4b3f897")
 #define COGNITO_POOL_REGION (AWSRegionUSEast1)
+#define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
 #endif
 
 #define CRITTERCISM_APP_ID (@"540ab4d40729df53fc000003")
