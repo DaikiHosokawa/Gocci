@@ -10,7 +10,9 @@ import Foundation
 
 let AWS2 = AWSManager.sharedInstance
 
-class GocciDevAuthIdentityProvider : AWSAbstractIdentityProvider
+
+
+class AAA : AWSAbstractIdentityProvider
 {
     
     var backEndToken: String!
@@ -22,7 +24,7 @@ class GocciDevAuthIdentityProvider : AWSAbstractIdentityProvider
     override var identityPoolId: String! {
         return poolID
     }
-
+    
     
     //let token: String!
     
@@ -30,7 +32,7 @@ class GocciDevAuthIdentityProvider : AWSAbstractIdentityProvider
         
         self.backEndToken = token
         self.poolID = poolID
-
+        
         super.init()
         super.identityId = iid
         if userID != nil {
@@ -42,77 +44,196 @@ class GocciDevAuthIdentityProvider : AWSAbstractIdentityProvider
         self.init(poolID: poolID, iid: nil, userID: nil, token: nil)
     }
     
-    func connectWithBackEnd(iid:String!, userID:String!, token:String!) {
+    func connectWithBackEnd(iid:String!, userID:String!, token:String!){
         self.backEndToken = token
         super.identityId = iid
         super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
         self.refresh()
     }
     
-    override func getIdentityId() -> AWSTask! {
-        
-        return AWSTask.init(result: self.identityId)
-
-        
+//    override func getIdentityId() -> AWSTask! {
+//        
+//        return AWSTask.init(result: self.identityId)
+//        
+//        
+//        //        return [[BFTask taskWithResult:nil] continueWithBlock:^id(BFTask *task) {
+//        //            if (!self.identityId) {
+//        //            return [self refresh];
+//        //            }
+//        //            return [BFTask taskWithResult:self.identityId];
+//        //            }];
+//    }
+//    
+//    override func refresh() -> AWSTask! {
+//        /*
+//        * Get the identityId and token by making a call to your backend
+//        */
+//        // Call to your backend
+//        
+//        // Set the identity id and token
+//        //    self.identityId = response.identityId;
+//        //    self.token = response.token;
+//        super.refresh()
+//        print("refresh got actually called");
+//        return AWSTask.init(result: self.identityId)
+//        
+//        /*
+//        // already cached the identity id, return it
+//        if (self.identityId) {
+//        return [BFTask taskWithResult:nil];
+//        }
+//        // not authenticated with our developer provider
+//        else if (![self authenticatedWithProvider]) {
+//        return [super getIdentityId];
+//        }
+//        // authenticated with our developer provider, use refresh logic to get id/token pair
+//        else {
 //        return [[BFTask taskWithResult:nil] continueWithBlock:^id(BFTask *task) {
-//            if (!self.identityId) {
-//            return [self refresh];
-//            }
-//            return [BFTask taskWithResult:self.identityId];
-//            }];
+//        if (!self.identityId) {
+//        return [self refresh];
+//        }
+//        return [BFTask taskWithResult:self.identityId];
+//        }];
+//        }
+//        */
+//    }
+}
+
+
+
+
+
+class GocciDevAuthIdentityProvider : AWSAbstractCognitoIdentityProvider
+{
+    var backEndToken: String!
+    var backEndProviderString: String!
+
+    
+    override var token: String! {
+        return backEndToken
+    }
+    override var providerName: String! {
+        return backEndProviderString
     }
     
-    override func refresh() -> AWSTask! {
-            /*
-            * Get the identityId and token by making a call to your backend
-            */
-            // Call to your backend
-            
-            // Set the identity id and token
-            //    self.identityId = response.identityId;
-            //    self.token = response.token;
-        super.refresh()
-        print("refresh got actually called");
-        return AWSTask.init(result: self.identityId)
+    init(region:AWSRegionType, poolID: String, iid:String!, logins:[NSObject : AnyObject]!) {
+        backEndProviderString = GOCCI_DEV_AUTH_PROVIDER_STRING
+        super.init(regionType: region, identityId: iid, accountId: nil, identityPoolId: poolID, logins:logins)
+    }
+    
+    convenience init(region:AWSRegionType, poolID: String!) {
+        self.init(region:region, poolID: poolID, iid:nil, logins:nil)
+    }
+    
+    func connectWithSNSProvider(prov:String, token:String) -> AWSTask {
+        addLogin(prov, token: token)
+        return refresh()
+    }
+    
+    
+    func connectWithBackEnd(iid:String!, userID:String!, token:String!) {
+
+        addLogin(GOCCI_DEV_AUTH_PROVIDER_STRING, token: userID) // yes this is correct. userID has to be the token
+        //addLogin("cognito-identity.amazonaws.com", token: token)
+        backEndToken = token
+        identityId = iid
         
-        /*
-            // already cached the identity id, return it
-            if (self.identityId) {
-                return [BFTask taskWithResult:nil];
-            }
-            // not authenticated with our developer provider
-            else if (![self authenticatedWithProvider]) {
-                return [super getIdentityId];
-            }
-            // authenticated with our developer provider, use refresh logic to get id/token pair
-            else {
-                return [[BFTask taskWithResult:nil] continueWithBlock:^id(BFTask *task) {
-                    if (!self.identityId) {
-                        return [self refresh];
-                    }
-                    return [BFTask taskWithResult:self.identityId];
-                }];
-            }
-            */
+        super.refresh().waitUntilFinished()
+        //return refresh()
+    }
+    
+    func addLogin(provider:String, token:String) {
+        if logins != nil {
+            logins[provider] = token
+        }
+        else {
+            logins = [provider: token]
+        }
+    }
+    
+//    override func getIdentityId() -> AWSTask! {
+//        
+//        return AWSTask.init(result: self.identityId)
+//        
+//    }
+//    
+    override func refresh() -> AWSTask! {
+        print("refresh got actually called");
+        
+        
+        return super.refresh()
+        
+
     }
 }
+
+
+
+
+class EnhancedGocciIdentityProvider : AWSAbstractIdentityProvider
+{
+    
+    var backEndToken: String!
+    var poolID: String!
+    
+    override var token: String! {
+        return backEndToken
+    }
+    override var identityPoolId: String! {
+        return poolID
+    }
+    
+    
+    init(poolID: String!, iid:String!, userID:String!, token:String!) {
+        
+        self.backEndToken = token
+        self.poolID = poolID
+        
+        super.init()
+        super.identityId = iid
+        if userID != nil {
+            super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
+        }
+    }
+    
+    func connectWithBackEnd(iid:String!, userID:String!, token:String!){
+        self.backEndToken = token
+        super.identityId = iid
+        super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
+        //self.refresh()
+    }
+}
+
+
+
+
+class SNSIIDRetrieverIdentityProvider : AWSAbstractCognitoIdentityProvider
+{
+    init(region:AWSRegionType, poolID: String, iid:String!, logins:[NSObject : AnyObject]!) {
+        super.init(regionType: region, identityId: iid, accountId: nil, identityPoolId: poolID, logins:logins)
+    }
+}
+
 
 class AWSManager {
     static let sharedInstance = AWSManager(poolID: COGNITO_POOL_ID, cognitoRegion: AWSRegionType.USEast1, S3Region: AWSRegionType.APNortheast1)
     
     let credentialsProvider: AWSCognitoCredentialsProvider
-    let identityProvider: GocciDevAuthIdentityProvider
-    let unAuthIID: String
+
+    
     
     init(poolID:String, cognitoRegion:AWSRegionType, S3Region:AWSRegionType) {
-        
-        identityProvider = GocciDevAuthIdentityProvider(poolID: poolID)
 
+//        AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
+//
+//        let uid: String = Util.getUserDefString("user_id")!
+//        let iid: String = Util.getUserDefString("identity_id")!
+//        let tok: String = Util.getUserDefString("token")!
         
-        //credentialsProvider = AWSCognitoCredentialsProvider(regionType: cognitoRegion, identityPoolId: poolID)
-        
-        credentialsProvider = AWSCognitoCredentialsProvider(regionType: cognitoRegion, identityProvider: identityProvider, unauthRoleArn: nil, authRoleArn: nil)
+        let ip = EnhancedGocciIdentityProvider(poolID: poolID, iid: nil, userID: nil, token: nil)
 
+        credentialsProvider = AWSCognitoCredentialsProvider(regionType: cognitoRegion, identityProvider: ip, unauthRoleArn: nil, authRoleArn: nil)
+        
         // config for cognito datasets
         let config1 = AWSServiceConfiguration(region: cognitoRegion, credentialsProvider: credentialsProvider)
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = config1
@@ -121,59 +242,133 @@ class AWSManager {
         let config2 = AWSServiceConfiguration(region: S3Region, credentialsProvider: credentialsProvider)
         AWSS3TransferUtility.registerS3TransferUtilityWithConfiguration(config2, forKey: "gocci_up_north_east_1")
         
+        //print("WIPING ALL COGNITO DATA")
+        //AWSCognito.defaultCognito().wipe()
+        
         // if we disable unAuth users one day, 0000.... will be used
-        unAuthIID = credentialsProvider.identityId ?? "nowhere:00000000-0000-0000-0000-000000000000"
-        print("======= THE UNAUTH IID: \(unAuthIID)")
+//        unAuthIID = credentialsProvider.identityId ?? "nowhere:00000000-0000-0000-0000-000000000000"
+//        print("======= THE UNAUTH IID: \(unAuthIID)")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "identityDidChange:",
+            name: AWSCognitoIdentityIdChangedNotification, object: nil)
     }
     
-    func successfullyLogedIn() -> Bool {
-        return credentialsProvider.identityId != unAuthIID
+    
+    @objc func identityDidChange(not:NSNotification) {
+        
+        if let ud = not.userInfo as? Dictionary<String,String> {
+            let old = ud[AWSCognitoNotificationPreviousId] ?? "Notification Fail"
+            let new = ud[AWSCognitoNotificationNewId] ?? "Notification Fail"
+            
+            print("===================================================================================================")
+            print("===================================================================================================")
+            print("=== IDENTITY ID CHANGED FROM: \(old)")
+            print("                          TO: \(new)")
+            print("===================================================================================================")
+            print("===================================================================================================")
+        }
     }
     
-    func connectWithBackend(iid:String, userID:String, token:String) {
-        printIID()
-        identityProvider.connectWithBackEnd(iid, userID: userID, token: token)
-        printIID()
+    
+    class func getIIDforSNSLogin(provider:String, token:String) -> AWSTask{
+        
+        let ip = SNSIIDRetrieverIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID, iid: nil, logins: [provider:token])
+        
+        return ip.refresh().continueWithBlock({ (task) -> AnyObject! in
+            return AWSTask.init(result: ip.identityId == nil || ip.identityId == nil ? nil : ip.identityId)
+        })
     }
+    
+
+    
+//    func successfullyLogedIn() -> Bool {
+//        return credentialsProvider.identityId != unAuthIID
+//    }
+    
+    func refresh() -> AWSTask {
+        return credentialsProvider.refresh()
+    }
+    
+    func connectWithBackend(iid:String, userID:String, token:String) -> AWSTask {
+
+        // TODO there is noverification that the backend login worked. The only sane check that I know of is upload somethin in a daaset, redownload it 
+        // and compare. There must be a better method, but AWS is a huge pile of shit and nowhere do they even consider that there server could be down.
+        (credentialsProvider.identityProvider as! EnhancedGocciIdentityProvider).connectWithBackEnd(iid, userID: userID, token: token)
+        return credentialsProvider.refresh()
+    }
+    
+    func connectToBackEndWithUserDefData() -> AWSTask {
+        let uid: String = Util.getUserDefString("user_id")!
+        let iid: String = Util.getUserDefString("identity_id")!
+        let tok: String = Util.getUserDefString("token")!
+        
+        return AWS2.connectWithBackend(iid, userID: uid, token: tok)
+    }
+    
+//    func connectWithSNSProvider(provider: String, token: String) -> AWSTask {
+//        
+//
+//        let tmpip = AWSEnhancedCognitoIdentityProvider(regionType: AWSRegionType.USEast1, identityId: nil, identityPoolId: COGNITO_POOL_ID, logins: [provider: token])
+//        
+//        credentialsProvider.identityProvider = tmpip
+//        
+//      //  identityProvider.logins = [provider: token];
+//        print("=== Logins before CP: \(credentialsProvider.logins)")
+//        print("=== Logins before IP: \(identityProvider.logins)")
+//
+////        let d = identityProvider.connectWithSNSProvider(provider, token:token)
+//        
+//        if var logins = credentialsProvider.logins {
+//            logins[provider] = token
+//            credentialsProvider.logins = logins
+//        }
+//        else {
+//            credentialsProvider.logins = [provider: token]
+//        }
+//
+//        print("=== Logins before CP: \(credentialsProvider.logins)")
+//        print("=== Logins before IP: \(identityProvider.logins)")
+//        return refresh()
+//    }
     
     func storeSignUpDataInCognito(username:String) {
         let dataset = AWSCognito.defaultCognito().openOrCreateDataset("signup_data")
-        
-        if let uid: String = identityProvider.logins?[GOCCI_DEV_AUTH_PROVIDER_STRING] as? String {
-            dataset.setString(uid, forKey: "user_id")
-        }
 
-        dataset.setString(username, forKey: "username")
+        dataset.setString(Util.getUserDefString("user_id") ?? "user_id not set", forKey: "user_id")
+        dataset.setString(Util.getUserDefString("username") ?? "username not set", forKey: "username")
         dataset.setString(Util.getRegisterID(), forKey: "register_id")
         dataset.setString(UIDevice.currentDevice().systemName, forKey: "system_name")
         dataset.setString(UIDevice.currentDevice().systemVersion, forKey: "system_version")
         dataset.setString(UIDevice.currentDevice().model, forKey: "model")
-        dataset.setString(UIDevice.currentDevice().name, forKey: "other_name")
+        dataset.setString(UIDevice.currentDevice().name, forKey: "name")
         dataset.setString(credentialsProvider.identityId, forKey: "first_identity_id")
         
-        dataset.synchronize().continueWithBlock { (task) -> AnyObject! in
-            print("Uploaded a lot of user data to cognito...")
-            return nil
-        }
-        
+        dataset.synchronize()
     }
 
-//    func addGocciIdentityProvider(giip: AWSAbstractIdentityProvider) {
-//        printIID()
-//        credentialsProvider.identityProvider = giip
-//        printIID()
-//        credentialsProvider.refresh()
-//        printIID()
-//    }
     
-    func addSNSProvider(provider: String, token: String) {
-        printIID()
-        credentialsProvider.logins = [provider: token]
-        printIID()
-        credentialsProvider.refresh()
-        printIID()
-
+    func storeTimeInLoginDataSet() {
+        let dataset = AWSCognito.defaultCognito().openOrCreateDataset("login_data")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd  H:mm"
+        
+        dataset.setString(dateFormatter.stringFromDate(NSDate()), forKey: "time")
+        
+        dataset.synchronize()
     }
+    
+    func storeSNSTokenInDataSet(provider:String, token:String) {
+        let dataset = AWSCognito.defaultCognito().openOrCreateDataset("sns_tokens")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd  H:mm"
+        
+        dataset.setString(token, forKey: provider)
+        
+        dataset.synchronize()
+    }
+    
     
     func printIID() {
         let currentIID = credentialsProvider.identityId
@@ -196,7 +391,25 @@ class AWSManager {
         return AWSS3TransferUtility.S3TransferUtilityForKey("gocci_up_north_east_1")!
     }
     
-
-    
 }
 
+
+
+
+// THIS ONE WORKS WITH FACEBOOK TOKENS !!!!!!!!!!!!!!
+
+//class GocciDevAuthIdentityProvider : AWSAbstractCognitoIdentityProvider
+//{
+//    var backEndToken: String!
+//    
+//    override var token: String! {
+//        return backEndToken
+//    }
+//    
+//    init(region:AWSRegionType, poolID: String, iid:String!, logins:[NSObject : AnyObject]!) {
+//        super.init(regionType: region, identityId: iid, accountId: nil, identityPoolId: poolID, logins:logins)
+//        
+//    }
+//    
+//    
+//}

@@ -137,6 +137,47 @@ class SNSUtil : NSObject
         }
     }
     
+    
+    
+    func loginInWithProviderToken(provider:String, token:String, andThen:(LoginResult)->Void)
+    {
+        AWSManager.getIIDforSNSLogin(provider, token: token).continueWithBlock { (task) -> AnyObject! in
+            if task.result == nil {
+                andThen(LoginResult.SNS_USER_NOT_REGISTERD)
+                return nil
+            }
+            
+            NetOp.loginWithSNS(task.result as! String, andThen: {
+                (code, emsg) -> Void in
+                
+                if code == NetOpResult.NETOP_SUCCESS {
+                    
+                    // TODO dirty implementation. Fix this one day
+                    let uid: String = Util.getUserDefString("user_id")!
+                    let iid: String = Util.getUserDefString("identity_id")!
+                    let tok: String = Util.getUserDefString("token")!
+                    
+                    AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+                        AWS2.storeSNSTokenInDataSet(provider, token: token)
+                        return nil
+                    })
+                    
+                    andThen(LoginResult.SNS_LOGIN_SUCCESS)
+                }
+                else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
+                    andThen(LoginResult.SNS_USER_NOT_REGISTERD)
+                }
+                else {
+                    print("WARNING, should never happen: " + emsg)
+                    andThen(LoginResult.SNS_LOGIN_UNKNOWN_FAILURE)
+                }
+                
+            })
+            
+            return nil
+        }
+    }
+    
     func loginWithTwitter(currentViewController: UIViewController, andThen:(LoginResult)->Void)
     {
         let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
@@ -156,24 +197,7 @@ class SNSUtil : NSObject
             print("=== Twitter avatar: \(pic)")
             print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
             
-            let iid = AWS.getIIDforRegisterdSNSProvider(TWITTER_PROVIDER_STRING, SNSToken: token)
-            
-            NetOp.loginWithSNS(iid, andThen:
-            {
-                (code, emsg) -> Void in
-                
-                if code == NetOpResult.NETOP_SUCCESS {
-                    andThen(LoginResult.SNS_LOGIN_SUCCESS)
-                }
-                else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
-                    andThen(LoginResult.SNS_USER_NOT_REGISTERD)
-                }
-                else {
-                    print("WARNING, should never happen: " + emsg)
-                    andThen(LoginResult.SNS_LOGIN_UNKNOWN_FAILURE)
-                }
-                
-            })
+            self.loginInWithProviderToken(TWITTER_PROVIDER_STRING, token: token, andThen: andThen)
             
         })
         
@@ -202,23 +226,8 @@ class SNSUtil : NSObject
             let token = FBSDKAccessToken.currentAccessToken().tokenString
             print("=== Facebook token: \(token)")
             
-            let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
-            
-            NetOp.loginWithSNS(iid, andThen:
-            {
-                (code, emsg) -> Void in
-                
-                if code == NetOpResult.NETOP_SUCCESS {
-                    andThen(LoginResult.SNS_LOGIN_SUCCESS)
-                }
-                else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
-                    andThen(LoginResult.SNS_USER_NOT_REGISTERD)
-                }
-                else {
-                    print("WARNING, should never happen: " + emsg)
-                    andThen(LoginResult.SNS_LOGIN_UNKNOWN_FAILURE)
-                }
-            })
+            self.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token, andThen: andThen)
+
         }
     }
 }

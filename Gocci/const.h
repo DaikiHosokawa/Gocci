@@ -15,12 +15,11 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
 // NSUserDefaults will not be reseted on start up
-//#define FRESH_START 1
-
+//#define FRESH_START
 
 
 
@@ -32,7 +31,7 @@
 #ifdef INDEVEL
 #define SPLASH_TIME 0.5
 #else
-#define SPLASH_TIME 5.0    // TODO Discuss: too long in my opinion
+#define SPLASH_TIME 5.0
 #endif
 
 #ifdef INDEVEL

@@ -133,6 +133,20 @@
 }
 
 
+-(void)loginAndTransit {
+    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
+        // transition to SNS page
+        [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+        [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES
+                                     completion:nil];
+        [self.pageControl setCurrentPage:3];
+        return nil;
+    }];
+}
+
+
 
 -(void)registerUsername:(NSString*)username {
     
@@ -140,17 +154,18 @@
     
     [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
     {
+        if ( errorCode == NETOP_SUCCESS){
+            [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+            [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:YES
+                                         completion:nil];
+            [self.pageControl setCurrentPage:3];
+            [Util dirtyBackEndSignUpWithUserDefData];
+            return;
+        }
+        
         switch (errorCode) {
-     
-            case NETOP_SUCCESS:
-                // transition to SNS page
-                [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
-                [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
-                                              direction:UIPageViewControllerNavigationDirectionForward
-                                               animated:YES
-                                             completion:nil];
-                [self.pageControl setCurrentPage:3];
-                break;
                 
             case NETOP_USERNAME_ALREADY_IN_USE:
                 NSLog(@"=== Username '%@'already registerd by somebody else :(", username);

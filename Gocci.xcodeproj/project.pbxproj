@@ -229,8 +229,6 @@
 		9843E9201BA993EB0015350D /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91D1BA993EB0015350D /* AWSCognito.framework */; };
 		9843E9211BA993EB0015350D /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91E1BA993EB0015350D /* AWSCore.framework */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
-		9843E9281BA9955D0015350D /* AWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9843E9251BA9955D0015350D /* AWS.m */; };
-		9843E9291BA9955D0015350D /* AWSGocciIdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */; };
 		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
 		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
 		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
@@ -670,10 +668,6 @@
 		9843E91D1BA993EB0015350D /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		9843E91E1BA993EB0015350D /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
-		9843E9241BA9955D0015350D /* AWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWS.h; sourceTree = "<group>"; };
-		9843E9251BA9955D0015350D /* AWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWS.m; sourceTree = "<group>"; };
-		9843E9261BA9955D0015350D /* AWSGocciIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGocciIdentityProvider.h; sourceTree = "<group>"; };
-		9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSGocciIdentityProvider.m; sourceTree = "<group>"; };
 		987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Gocci/Vendor/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
 		987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -1630,10 +1624,6 @@
 		9843E9231BA9955D0015350D /* AWS */ = {
 			isa = PBXGroup;
 			children = (
-				9843E9241BA9955D0015350D /* AWS.h */,
-				9843E9251BA9955D0015350D /* AWS.m */,
-				9843E9261BA9955D0015350D /* AWSGocciIdentityProvider.h */,
-				9843E9271BA9955D0015350D /* AWSGocciIdentityProvider.m */,
 				9820AFE71BB972FF008A6963 /* AWSManager.swift */,
 			);
 			path = AWS;
@@ -2001,9 +1991,7 @@
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
 				95E3CD5A1B0DCA4200497EB9 /* TWMessageBarManager.m in Sources */,
 				A13FB9791AB45F7E00B893F9 /* LICENSE.md in Sources */,
-				9843E9281BA9955D0015350D /* AWS.m in Sources */,
 				959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */,
-				9843E9291BA9955D0015350D /* AWSGocciIdentityProvider.m in Sources */,
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
 				53B9429C1AB40414000150C4 /* STHTTPRequest+STTwitter.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
