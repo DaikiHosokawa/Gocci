@@ -1015,6 +1015,7 @@ static SCRecorder *_recorder;
                  dispatch_async(dispatch_get_main_queue(), ^{
                      // Do something e.g. Alert a user for transfer completion.
                      // On failed uploads, `error` contains the error object.
+                     NSLog(@"error");
                  });
              };
              

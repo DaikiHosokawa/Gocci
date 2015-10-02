@@ -94,6 +94,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
     
     // Table View の設定
     self.tableView.allowsSelection = NO;
@@ -294,8 +295,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
 #endif
         eveVC.postID = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
     
     //店舗画面にパラメータを渡して遷移する

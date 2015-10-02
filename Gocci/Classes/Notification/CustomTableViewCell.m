@@ -29,7 +29,7 @@
 
 + (CGFloat)rowHeight
 {
-    return 60.0f;
+    return 78.0f;
 }
 
 - (void)configureWithNotice:(Notice *)Notice

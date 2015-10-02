@@ -106,6 +106,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
         
+        
+        
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -401,8 +403,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
 #endif
         eveVC.postID = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
     
     //プロフィール画面にパラメータを渡して遷移する

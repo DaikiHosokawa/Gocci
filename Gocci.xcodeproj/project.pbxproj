@@ -182,6 +182,8 @@
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
 		958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958E31521B05899E00863EDF /* GoogleMaps.framework */; };
 		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
+		959466571BBDFB1B00F3222F /* STCustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9594664F1BBDFB1B00F3222F /* STCustomCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		959466581BBDFB1B00F3222F /* STCustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959466501BBDFB1B00F3222F /* STCustomCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		959CF8DC1B26CDD200CDB492 /* TableViewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959CF8DB1B26CDD200CDB492 /* TableViewCustomCell.xib */; };
 		959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8DE1B26CE6F00CDB492 /* CustomTableViewCell.m */; };
 		959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E01B26CE6F00CDB492 /* NotificationViewController.m */; };
@@ -600,6 +602,9 @@
 		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		958E31521B05899E00863EDF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		958E31541B0589F300863EDF /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		9594664E1BBDFB1B00F3222F /* STCustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCustomCollectionViewCell.h; sourceTree = "<group>"; };
+		9594664F1BBDFB1B00F3222F /* STCustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCustomCollectionViewCell.m; sourceTree = "<group>"; };
+		959466501BBDFB1B00F3222F /* STCustomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STCustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		959CF8DB1B26CDD200CDB492 /* TableViewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCustomCell.xib; sourceTree = "<group>"; };
 		959CF8DD1B26CE6F00CDB492 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		959CF8DE1B26CE6F00CDB492 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
@@ -1216,6 +1221,7 @@
 			children = (
 				952D24321A9B9D3300C354DF /* usersTableViewController.h */,
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
+				959466471BBDFB1B00F3222F /* Colloction */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1477,6 +1483,16 @@
 				958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */,
 			);
 			path = BBBadgeBarButtonItem;
+			sourceTree = "<group>";
+		};
+		959466471BBDFB1B00F3222F /* Colloction */ = {
+			isa = PBXGroup;
+			children = (
+				9594664E1BBDFB1B00F3222F /* STCustomCollectionViewCell.h */,
+				9594664F1BBDFB1B00F3222F /* STCustomCollectionViewCell.m */,
+				959466501BBDFB1B00F3222F /* STCustomCollectionViewCell.xib */,
+			);
+			path = Colloction;
 			sourceTree = "<group>";
 		};
 		959CF8DA1B26CDD200CDB492 /* Notification */ = {
@@ -1954,6 +1970,7 @@
 				952D25111A9B9EC800C354DF /* 5_5_inch.storyboard in Resources */,
 				95E4BCA61B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib in Resources */,
 				95E3CD581B0DCA4200497EB9 /* icon-success.png in Resources */,
+				959466581BBDFB1B00F3222F /* STCustomCollectionViewCell.xib in Resources */,
 				95EEC5291AF914A7006FD54E /* FolloweeListCell.xib in Resources */,
 				952D24FC1A9B9EC800C354DF /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				952D24F11A9B9EC800C354DF /* btn_capture_flip@2x.png in Resources */,
@@ -2056,6 +2073,7 @@
 				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */,
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
+				959466571BBDFB1B00F3222F /* STCustomCollectionViewCell.m in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
 				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
@@ -2256,7 +2274,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "212dcfbe-cfda-4ad7-8b79-2d1b42ecc9c6";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2293,7 +2311,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "55b5fdda-27cc-4ca9-8cf3-fb9cfee7570d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2306,8 +2324,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendor",
@@ -2342,7 +2360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/GocciTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2358,7 +2376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -2394,7 +2412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/GocciTest-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
