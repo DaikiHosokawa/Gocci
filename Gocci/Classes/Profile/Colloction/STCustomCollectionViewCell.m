@@ -23,9 +23,5 @@
     return self;
 }
 
-- (void)awakeFromNib
-{
-    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
-}
 
 @end

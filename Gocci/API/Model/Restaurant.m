@@ -22,7 +22,6 @@
     obj.total_cheer_num = dictionary[@"total_cheer_num"];
     obj.want_tag = dictionary[@"want_flag"];
     obj.rest_id = dictionary[@"rest_id"];
-    NSLog(@"want_tag:%@",obj.want_tag);
     
     return obj;
 }

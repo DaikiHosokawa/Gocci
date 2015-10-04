@@ -84,8 +84,8 @@
  *  @param handler
  *  @param cacheHandler キャッシュされた結果を取得
  */
-+ (void)Near:(CGFloat)latitude
-   longitude:(CGFloat)longitude
++ (void)Near:(double)latitude
+   longitude:(double)longitude
      handler:(void (^)(id result, NSUInteger code, NSError *error))handler
     useCache:(void (^)(id cachedResult))cacheHandler;
 
@@ -175,8 +175,8 @@
  *  @param handler
  */
 + (void)restInsert:(NSString *)restName
-          latitude:(CGFloat)latitude
-         longitude:(CGFloat)longitude
+          latitude:(double)latitude
+         longitude:(double)longitude
            handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
