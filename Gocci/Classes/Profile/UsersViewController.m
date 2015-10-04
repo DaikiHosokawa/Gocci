@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
-#import "usersTableViewController.h"
+#import "UsersViewController.h"
 #import "everyTableViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
@@ -27,6 +27,7 @@
 @import QuartzCore;
 
 #import "everyBaseNavigationController.h"
+#import "CollectionViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -37,14 +38,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController ()
-<TimelineCellDelegate>
+@interface UsersViewController ()
 {
     NSDictionary *header;
-    NSMutableArray *thumb;
-    /*
-    IBOutlet __weak UICollectionView *_collectionView;
-     */
     __weak IBOutlet UIButton *editButton;
     __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
@@ -53,60 +49,30 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSArray *viewControllers_;
 }
 
-- (void)showDefaultContentView;
-
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
-@property (nonatomic, strong) UIRefreshControl *refresh;
 
-/** タイムラインのデータ */
-@property (nonatomic,strong) NSArray *posts;
 
 @end
 
-@implementation usersTableViewController
+@implementation UsersViewController
 
-#pragma mark - アイテム名登録用
 
-- (void)setupViewControllers
+-(void)viewWillAppear:(BOOL)animated
 {
-    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-    UIViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
-    viewControllers_ = @[firstViewController, secondViewController];
-}
-
-- (void)changeSegmentedControlValue
-{
-    if(currentViewController_){
-        NSLog(@"今のビューコンあり");
-        [currentViewController_ willMoveToParentViewController:nil];
-        [currentViewController_.view removeFromSuperview];
-        [currentViewController_ removeFromParentViewController];
-    }
     
-    UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
-    
-    [self addChildViewController:nextViewController];
-    nextViewController.view.frame = changeView.bounds;
-    [changeView addSubview:nextViewController.view];
-    [nextViewController didMoveToParentViewController:self];
-    
-    currentViewController_ = nextViewController;
-}
-
-- (IBAction)changeSegmentValue:(id)sender {
-    [self changeSegmentedControlValue];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    [self _fetchProfile];
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+
     
-    [self setupViewControllers];
-    
-    [self changeSegmentedControlValue];
-    
-    //ナビゲーションバーに画像
+    //navigationbar
     {
         //タイトル画像設定
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
@@ -124,7 +90,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    // BBBadgeBarButtonItemオブジェクトの作成
+    //badge button
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
@@ -133,35 +99,27 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
     
-    // バッジ内容の設定
+    //badge num
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
     
+    //BackButton
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-    self.navigationItem.backBarButtonItem = backButton;
     
+    self.navigationItem.backBarButtonItem = backButton;
     self.parentViewController.view.backgroundColor = [UIColor redColor];
     
+    //editButton
     editButton.layer.cornerRadius = 10; // this value vary as per your desire
     editButton.clipsToBounds = YES;
     
+    //segmentControll
     [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
-    /*
-    // Table View の設定
-    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = YES;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
-         forCellReuseIdentifier:TimelineCellIdentifier];
-    
-    // Pull to refresh
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
-    */
+    [self setupViewControllers];
+    [self changeSegmentedControlValue];
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -170,12 +128,55 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                name:@"HogeNotification"
                              object:nil];
     
-    /* collec
-    UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
-    _collectionView.dataSource = self;
-    _collectionView.delegate = self;
-     */
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // 画面が隠れた際に再生中の動画を停止させる
+    [[MoviePlayerManager sharedManager] stopMovie];
+    
+    [super viewWillDisappear:animated];
+}
+
+
+
+//segmentcontroll
+- (void)setupViewControllers
+{
+    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    UIViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+    viewControllers_ = @[firstViewController, secondViewController];
+}
+
+- (void)changeSegmentedControlValue
+{
+    if(currentViewController_){
+        [currentViewController_ willMoveToParentViewController:nil];
+        [currentViewController_.view removeFromSuperview];
+        [currentViewController_ removeFromParentViewController];
+        
+        CollectionViewController *vc = [[CollectionViewController alloc] init];
+        vc.supervc = self;
+    }
+    
+    UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
+    
+    [self addChildViewController:nextViewController];
+    nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height-60);
+    [changeView addSubview:nextViewController.view];
+    [nextViewController didMoveToParentViewController:self];
+    
+    currentViewController_ = nextViewController;
+    
+}
+
+
+//notification
+
+- (IBAction)changeSegmentValue:(id)sender {
+    [self changeSegmentedControlValue];
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -210,30 +211,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    
-    [super viewWillAppear:animated];
-    
-    // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-}
-
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    // 画面が隠れた際に再生中の動画を停止させる
-    [[MoviePlayerManager sharedManager] stopMovie];
-    
-    
-    // 動画データを一度全て削除
-    //[[MoviePlayerManager sharedManager] removeAllPlayers];
-    
-    
-    [super viewWillDisappear:animated];
-}
-
 
 #pragma mark - Action
 
@@ -251,20 +228,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
-
--(void)byoga{
-    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
-                        placeholderImage:[UIImage imageNamed:@"default.png"]];
-    
-    [SVProgressHUD dismiss];
-}
-
 #pragma mark - Private Methods
-
-
-
 
 
 #pragma mark - Segue
@@ -299,31 +263,40 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
 }
 
-/* collec
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    NSLog(@"数:%lu",(unsigned long)[thumb count]);
-    return [thumb count];
-}
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)_fetchProfile
 {
-    STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-   
-    [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
-                            placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    return cell;
+    __weak typeof(self)weakSelf = self;
+    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        if (code != 200 || error != nil) {
+            // API からのデータの取得に失敗
+            // TODO: アラート等を掲出
+            return;
+        }
+        
+        NSLog(@"users result:%@",result);
+        
+        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
+        header = headerDic;
+        NSLog(@"header:%@",header);
+        
+    
+        [self byoga];
+    }];
 }
 
-#pragma mark - UICollectionViewDelegate
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
-    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
+-(void)byoga{
+    
+    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
+                        placeholderImage:[UIImage imageNamed:@"default.png"]];
     
 }
-*/
 
 @end

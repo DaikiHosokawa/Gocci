@@ -179,6 +179,8 @@
 		953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
+		958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958ACEE91BC0CC5F006EEA75 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958ACEF01BC0E327006EEA75 /* UsersViewController.m */; settings = {ASSET_TAGS = (); }; };
 		958E31511B040BDE00863EDF /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */; };
 		958E31531B05899E00863EDF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958E31521B05899E00863EDF /* GoogleMaps.framework */; };
 		958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958E31541B0589F300863EDF /* GoogleMaps.bundle */; };
@@ -598,6 +600,10 @@
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		957571471B3E5D8000A10810 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		958ACEE81BC0CC5F006EEA75 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		958ACEE91BC0CC5F006EEA75 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		958ACEEF1BC0E327006EEA75 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
+		958ACEF01BC0E327006EEA75 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		958E314F1B040BDE00863EDF /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		958E31501B040BDE00863EDF /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		958E31521B05899E00863EDF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -1221,6 +1227,8 @@
 			children = (
 				952D24321A9B9D3300C354DF /* usersTableViewController.h */,
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
+				958ACEEF1BC0E327006EEA75 /* UsersViewController.h */,
+				958ACEF01BC0E327006EEA75 /* UsersViewController.m */,
 				959466471BBDFB1B00F3222F /* Colloction */,
 			);
 			path = Profile;
@@ -1491,6 +1499,8 @@
 				9594664E1BBDFB1B00F3222F /* STCustomCollectionViewCell.h */,
 				9594664F1BBDFB1B00F3222F /* STCustomCollectionViewCell.m */,
 				959466501BBDFB1B00F3222F /* STCustomCollectionViewCell.xib */,
+				958ACEE81BC0CC5F006EEA75 /* CollectionViewController.h */,
+				958ACEE91BC0CC5F006EEA75 /* CollectionViewController.m */,
 			);
 			path = Colloction;
 			sourceTree = "<group>";
@@ -2005,6 +2015,7 @@
 				951AD5531B36B27A0057F081 /* AllTimelineTableViewController.m in Sources */,
 				952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */,
 				98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */,
+				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
 				95E3CD5A1B0DCA4200497EB9 /* TWMessageBarManager.m in Sources */,
 				A13FB9791AB45F7E00B893F9 /* LICENSE.md in Sources */,
@@ -2047,6 +2058,7 @@
 				53B942A41AB40414000150C4 /* JSONSyntaxHighlight.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
+				958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */,
 				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
