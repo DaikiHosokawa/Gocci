@@ -211,7 +211,7 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)Near:(CGFloat)latitude longitude:(CGFloat)longitude handler:(void (^)(id, NSUInteger, NSError *))handler useCache:(void (^)(id))cacheHandler
++ (void)Near:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler useCache:(void (^)(id))cacheHandler
 {
     if (cacheHandler != nil) {
         NSDictionary *cachedDictionary = [[APIClient sharedClient].resultCache objectForKey:APIClientResultCacheKeyDist];
