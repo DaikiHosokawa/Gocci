@@ -82,7 +82,9 @@ import UIKit
     }
     
     class func getRegisterID() -> String {
-                
+        
+        //return generateFakeDeviceID()
+        
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         
 // Only Fake IDs in the simulator

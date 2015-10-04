@@ -17,9 +17,7 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
     
-    @IBOutlet weak var tokenEditField: UITextField!
-    //strong var facebookLogin: FBSDKLoginManager
-    
+    @IBOutlet weak var tokenEditField: UITextField!    
     
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
@@ -49,7 +47,7 @@ class DebugViewController : UIViewController {
         
         print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
         
-        let token = "CAACG9jtU8M4BAPjIoOEyAsJhJkZAQhkeW0z5jRntMPLw0JoYeSZCj9UEDS5gG1ud0X5Yy0xBZAKuuWjL3t9wplUlViYaDFJxUXfNvnA9yJ55ZCkJlUl69FsbCegais9q2xpOlHoaJo7VbFyHvODtvt80njZCm0emz4TeddVducAvDdZB8OoB5Hr20BioewPfOcl5aakYoDpwZDZD"
+        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
         
         SNSUtil.singelton.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
             print("Result: \(res)")
@@ -181,7 +179,7 @@ class DebugViewController : UIViewController {
     
     
     @IBAction func fastRegFB(sender: AnyObject) {
-        let token = "CAACG9jtU8M4BANBYEhMXF0G2TbBEZCbmN1nhQTKibb93PuBw53LAa4FZAc9PcuWLE3a898SvX832Exm4TmzjPrquV9YQ1Yp4WYwWZAq6ptPMlDZBhuk9D7MeGxNIZADbx8ZCZAQtHJCmmlUWnfkgQlZANWkxaE8L3DOIAxkGpTLTZAztQY707lmusZC6boR3lqd5JTanvmZAFTM0wZDZD"
+        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
         
     
         
