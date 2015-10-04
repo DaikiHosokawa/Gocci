@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.h
+//  TableViewController.h
 //  Gocci
 //
 //  Created by Castela on 2015/10/04.
@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UsersViewController.h"
 
-@interface CollectionViewController : UICollectionViewController
+@interface TableViewController : UITableViewController
 
-@property id supervc; //親
+@property id supervc;
 
 @end

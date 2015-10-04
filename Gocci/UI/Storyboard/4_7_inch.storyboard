@@ -137,7 +137,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="edG-z8-pmg">
-                                        <rect key="frame" x="0.0" y="171" width="375" height="426"/>
+                                        <rect key="frame" x="0.0" y="159" width="375" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,23 +273,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I2-L6-eeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1653.5" y="-1933.5"/>
+            <point key="canvasLocation" x="-1731.5" y="-1921.5"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="BhL-Pe-Mew">
             <objects>
                 <tableViewController storyboardIdentifier="TableViewController" id="LLH-sv-GGn" customClass="TableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cuz-8f-0Fo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0vy-fL-2yn">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="0vy-fL-2yn" customClass="TableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vy-fL-2yn" id="6ZE-qE-X9z">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -301,6 +301,7 @@
                             <outlet property="delegate" destination="LLH-sv-GGn" id="N98-Mh-f6l"/>
                         </connections>
                     </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyh-bD-HZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1441,7 +1442,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1694,11 +1695,15 @@
                             <outlet property="delegate" destination="mzZ-Tl-THx" id="ZIk-WR-pQ7"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="BvL-sh-GY9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="J9W-eO-UF1" kind="modal" identifier="goEveryComment" id="nwU-vJ-SDD"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="858-8g-dXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1099.5" y="-1559.5"/>
+            <point key="canvasLocation" x="-1091.5" y="-1613.5"/>
         </scene>
         <!--Cheer List View Controller-->
         <scene sceneID="XlQ-cf-Luv">
@@ -1728,9 +1733,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Ikm-jv-1e6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <segue destination="7Ul-L7-bNU" kind="push" identifier="goRestpage" id="6vJ-uD-CoV"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVW-it-ziC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1768,7 +1770,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="hp2-GU-Cwb"/>
         <segue reference="ren-zg-h6h"/>
-        <segue reference="wZe-RH-qBh"/>
+        <segue reference="nwU-vJ-SDD"/>
         <segue reference="plP-IR-nwD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
