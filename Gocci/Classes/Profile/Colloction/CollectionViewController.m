@@ -37,6 +37,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,5 +104,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"postid:%@",postid_[indexPath.row]);
+    [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
 }
+
+
+
 @end

@@ -28,6 +28,7 @@
 
 #import "everyBaseNavigationController.h"
 #import "CollectionViewController.h"
+#import "TableViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -70,7 +71,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
     
     //navigationbar
     {
@@ -117,7 +117,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     editButton.clipsToBounds = YES;
     
     //segmentControll
-    [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
+   // [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
     [self setupViewControllers];
     [self changeSegmentedControlValue];
     
@@ -145,8 +145,22 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 //segmentcontroll
 - (void)setupViewControllers
 {
-    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-    UIViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+    UIViewController *firstViewController;
+    TableViewController *vc = [[TableViewController  alloc] init];
+    vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    vc.supervc = self;
+    firstViewController = vc;
+    /*
+    CollectionViewController *vc = [[CollectionViewController alloc] init];
+    vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    firstViewController = vc;
+    */
+    UIViewController *secondViewController;
+    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
+    vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+    vc2.supervc = self;
+    secondViewController = vc2;
+   
     viewControllers_ = @[firstViewController, secondViewController];
 }
 
@@ -156,9 +170,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         [currentViewController_ willMoveToParentViewController:nil];
         [currentViewController_.view removeFromSuperview];
         [currentViewController_ removeFromParentViewController];
-        
-        CollectionViewController *vc = [[CollectionViewController alloc] init];
-        vc.supervc = self;
     }
     
     UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
