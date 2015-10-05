@@ -43,7 +43,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSDictionary *header;
     NSMutableArray *thumb;
     /*
-    IBOutlet __weak UICollectionView *_collectionView;
+     IBOutlet __weak UICollectionView *_collectionView;
      */
     __weak IBOutlet UIButton *editButton;
     __strong NSMutableArray *_items;
@@ -150,18 +150,18 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
     /*
-    // Table View の設定
-    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = YES;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
-         forCellReuseIdentifier:TimelineCellIdentifier];
-    
-    // Pull to refresh
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
-    */
+     // Table View の設定
+     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+     self.tableView.bounces = YES;
+     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+     forCellReuseIdentifier:TimelineCellIdentifier];
+     
+     // Pull to refresh
+     self.refresh = [UIRefreshControl new];
+     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+     [self.tableView addSubview:self.refresh];
+     */
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -171,10 +171,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                              object:nil];
     
     /* collec
-    UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
-    _collectionView.dataSource = self;
-    _collectionView.delegate = self;
+     UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
+     [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
+     _collectionView.dataSource = self;
+     _collectionView.delegate = self;
      */
 }
 
@@ -300,30 +300,30 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 /* collec
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    NSLog(@"数:%lu",(unsigned long)[thumb count]);
-    return [thumb count];
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
-    
-   
-    [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
-                            placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    return cell;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
-    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
-    
-}
-*/
+ - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+ {
+ NSLog(@"数:%lu",(unsigned long)[thumb count]);
+ return [thumb count];
+ }
+ 
+ - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+ {
+ STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
+ 
+ 
+ [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
+ placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+ return cell;
+ }
+ 
+ #pragma mark - UICollectionViewDelegate
+ 
+ - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+ {
+ NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
+ [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
+ 
+ }
+ */
 
 @end

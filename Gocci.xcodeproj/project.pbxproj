@@ -195,6 +195,7 @@
 		959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E01B26CE6F00CDB492 /* NotificationViewController.m */; };
 		959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E51B26CF0D00CDB492 /* WYPopoverController.m */; };
 		959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */; };
+		95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DA1BC2AF3D002A95CD /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		95DFDC2B1B244808004B3F3F /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFDC2A1B244808004B3F3F /* Notice.m */; };
 		95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5BE1AF4572F001599EE /* LifelogCell.m */; };
 		95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BF1AF4572F001599EE /* LifelogCell.xib */; };
@@ -631,6 +632,8 @@
 		959CF8E51B26CF0D00CDB492 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		959CF8E61B26CF0D00CDB492 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		95B118D91BC2AF3D002A95CD /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		95B118DA1BC2AF3D002A95CD /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		95DFDC291B244808004B3F3F /* Notice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notice.h; sourceTree = "<group>"; };
 		95DFDC2A1B244808004B3F3F /* Notice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notice.m; sourceTree = "<group>"; };
 		95E3C5BD1AF4572F001599EE /* LifelogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogCell.h; sourceTree = "<group>"; };
@@ -1236,6 +1239,7 @@
 		952D24311A9B9D3300C354DF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				95B118D81BC2AF14002A95CD /* Setting */,
 				952D24321A9B9D3300C354DF /* usersTableViewController.h */,
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
 				958ACEEF1BC0E327006EEA75 /* UsersViewController.h */,
@@ -1560,6 +1564,15 @@
 				959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */,
 			);
 			path = WYPopoverController;
+			sourceTree = "<group>";
+		};
+		95B118D81BC2AF14002A95CD /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				95B118D91BC2AF3D002A95CD /* SettingViewController.h */,
+				95B118DA1BC2AF3D002A95CD /* SettingViewController.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		95E3CD491B0DCA4200497EB9 /* Classes */ = {
@@ -2111,6 +2124,7 @@
 				952D23831A9B95E800C354DF /* SDImageCache.m in Sources */,
 				95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */,
 				95E4BCA51B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m in Sources */,
+				95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */,
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				953901871BC1651B00842FFF /* TableViewController.m in Sources */,
