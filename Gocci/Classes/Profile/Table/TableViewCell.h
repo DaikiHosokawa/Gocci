@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thumb;
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UILabel *postDate;
+@property (weak, nonatomic) IBOutlet UIView *background;
 
 @end

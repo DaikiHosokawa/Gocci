@@ -179,6 +179,7 @@
 		953901871BC1651B00842FFF /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953901861BC1651B00842FFF /* TableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9539018B1BC1654D00842FFF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953901891BC1654D00842FFF /* TableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		9539018C1BC1654D00842FFF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9539018A1BC1654D00842FFF /* TableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		953901901BC2171500842FFF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9539018F1BC2171500842FFF /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
@@ -602,6 +603,8 @@
 		953901881BC1654D00842FFF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		953901891BC1654D00842FFF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		9539018A1BC1654D00842FFF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		9539018E1BC2171500842FFF /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		9539018F1BC2171500842FFF /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
 		953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -1237,6 +1240,7 @@
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
 				958ACEEF1BC0E327006EEA75 /* UsersViewController.h */,
 				958ACEF01BC0E327006EEA75 /* UsersViewController.m */,
+				9539018D1BC216F400842FFF /* Map */,
 				953901841BC164FA00842FFF /* Table */,
 				959466471BBDFB1B00F3222F /* Colloction */,
 			);
@@ -1503,6 +1507,15 @@
 				9539018A1BC1654D00842FFF /* TableViewCell.xib */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		9539018D1BC216F400842FFF /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9539018E1BC2171500842FFF /* MapViewController.h */,
+				9539018F1BC2171500842FFF /* MapViewController.m */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */ = {
@@ -2058,6 +2071,7 @@
 				952D23701A9B95E800C354DF /* CXCardView.m in Sources */,
 				53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
+				953901901BC2171500842FFF /* MapViewController.m in Sources */,
 				952D23841A9B95E800C354DF /* SDWebImageCompat.m in Sources */,
 				98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */,
 				952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */,

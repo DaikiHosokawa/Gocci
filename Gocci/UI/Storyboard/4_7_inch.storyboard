@@ -15,7 +15,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tvf-ba-ViT">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                            <rect key="frame" x="0.0" y="64" width="375" height="230"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exeBar" id="HOB-kW-wKj">
@@ -202,7 +202,6 @@
                                                     <segment title="四角"/>
                                                     <segment title="テーブル"/>
                                                     <segment title="地図"/>
-                                                    <segment title="お気に入り"/>
                                                 </segments>
                                                 <color key="tintColor" red="0.80000000000000004" green="0.23921568630000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -305,7 +304,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyh-bD-HZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="-2302"/>
+            <point key="canvasLocation" x="-1132.5" y="-2582.5"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="cXe-zQ-XuJ">
@@ -933,7 +932,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="VyH-GT-WtD" customClass="SampleTableViewCell">
-                                <rect key="frame" x="0.0" y="401" width="375" height="47"/>
+                                <rect key="frame" x="0.0" y="337" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyH-GT-WtD" id="YRh-wM-puF">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="46"/>
@@ -1150,7 +1149,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -1244,7 +1243,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mOa-YO-F62">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mOa-YO-F62" id="vuL-em-pRa">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1442,7 +1441,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cj2-bt-Iqd">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cj2-bt-Iqd" id="MYc-Uu-i0f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1697,13 +1696,10 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="BvL-sh-GY9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <segue destination="J9W-eO-UF1" kind="modal" identifier="goEveryComment" id="nwU-vJ-SDD"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="858-8g-dXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1091.5" y="-1613.5"/>
+            <point key="canvasLocation" x="-1107.5" y="-1845.5"/>
         </scene>
         <!--Cheer List View Controller-->
         <scene sceneID="XlQ-cf-Luv">
@@ -1738,6 +1734,22 @@
             </objects>
             <point key="canvasLocation" x="-1543.5" y="-401.5"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Hbu-ub-JNz">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="J8v-Ws-g8G" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ri9-m8-wTp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7v-rW-PRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1107.5" y="-1058.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1334-750-g" width="750" height="1334"/>
@@ -1770,8 +1782,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="hp2-GU-Cwb"/>
         <segue reference="ren-zg-h6h"/>
-        <segue reference="nwU-vJ-SDD"/>
-        <segue reference="plP-IR-nwD"/>
+        <segue reference="Abr-YO-afi"/>
+        <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
