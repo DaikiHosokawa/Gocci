@@ -104,12 +104,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-
 #ifdef FRESH_START
     [Util removeAccountSpecificDataFromUserDefaults];
 #endif
-
-
     
 #ifndef INDEVEL
     [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
