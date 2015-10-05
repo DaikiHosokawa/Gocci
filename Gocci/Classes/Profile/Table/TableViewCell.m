@@ -7,6 +7,7 @@
 //
 
 #import "TableViewCell.h"
+#import "UIView+DropShadow.h"
 
 @implementation TableViewCell
 
@@ -14,7 +15,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    
+     [self.background dropShadow];
 }
 
 - (void)dealloc

@@ -29,6 +29,7 @@
 #import "everyBaseNavigationController.h"
 #import "CollectionViewController.h"
 #import "TableViewController.h"
+#import "MapViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -160,8 +161,14 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
     vc2.supervc = self;
     secondViewController = vc2;
+    
+    UIViewController *thirdViewController;
+    MapViewController *vc3 = [[MapViewController alloc] init];
+    vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    vc3.supervc = self;
+    thirdViewController = vc3;
    
-    viewControllers_ = @[firstViewController, secondViewController];
+    viewControllers_ = @[firstViewController, secondViewController, thirdViewController];
 }
 
 - (void)changeSegmentedControlValue
