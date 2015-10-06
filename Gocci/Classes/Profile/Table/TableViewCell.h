@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *thumb;
-@property (weak, nonatomic) IBOutlet UILabel *restname;
-@property (weak, nonatomic) IBOutlet UILabel *postDate;
-@property (weak, nonatomic) IBOutlet UIView *background;
+
+@property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end

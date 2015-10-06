@@ -244,6 +244,14 @@
        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  postFeedback
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)postFeedback:(NSString *)feedback handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
  *  Conversion
  *
  *

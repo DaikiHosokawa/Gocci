@@ -15,8 +15,12 @@
 #import "AFNetworking.h"
 #import "everyTableViewController.h"
 #import "UsersViewController.h"
+#import "STCustomCollectionViewCell.h"
 
-@interface CollectionViewController ()
+static NSString * const reuseIdentifier = @"Cell";
+static const CGFloat kCellMargin = 5;
+
+@interface CollectionViewController ()<UICollectionViewDelegateFlowLayout>
 
 @end
 
@@ -25,18 +29,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @implementation CollectionViewController{
     NSMutableArray *thumb;
     NSMutableArray *postid_;
+    NSMutableArray *restname;
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self _fetchProfile];
+    [self setupData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
+     self.clearsSelectionOnViewWillAppear = NO;
     
 }
 
@@ -45,15 +49,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // Dispose of any resources that can be recreated.
 }
 
-/**
- *  API からタイムラインのデータを取得
- */
-- (void)_fetchProfile
+- (void)setupData
 {
-    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    __weak typeof(self)weakSelf = self;
     [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
@@ -63,11 +62,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             return;
         }
         
-        NSLog(@"users result:%@",result);
-        
         // 取得したデータを self.posts に格納
         thumb = [NSMutableArray arrayWithCapacity:0];
         postid_ = [NSMutableArray arrayWithCapacity:0];
+        restname = [NSMutableArray arrayWithCapacity:0];
         
         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
         
@@ -77,24 +75,33 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [thumb addObject:thumbGet];
             NSDictionary *postidGet = [post objectForKey:@"post_id"];
             [postid_ addObject:postidGet];
+            NSDictionary *restnameGet = [post objectForKey:@"restname"];
+            [restname addObject:restnameGet];
         }
+        NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
         [self.collectionView reloadData];
+
+        
     }];
 }
 
 
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [thumb count];
+    return [postid_ count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellId = @"CellId";
-    STCustomCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
-    [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
+    STCustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
                   placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    cell.title.text = restname[indexPath.row];
+    
     
     return cell;
 }
@@ -107,6 +114,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0, kCellMargin, kCellMargin, kCellMargin);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL isPad = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+    CGFloat length = (CGRectGetWidth(self.view.frame) / 2) - (kCellMargin * 2);
+    if (isPad) {
+        // fixed size for iPad in landscape and portrait
+        length = 256 - (kCellMargin * 2);
+    }
+    return CGSizeMake(length, length);
+}
 
 
 @end

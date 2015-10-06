@@ -11,18 +11,13 @@
 
 @implementation TableViewCell
 
-@synthesize thumb = _thumb;
 
 - (void)awakeFromNib {
-    // Initialization code
-     [self.background dropShadow];
+    // Initialization cod
 }
 
 - (void)dealloc
 {
-    self.thumb = nil;
-    self.restname = nil;
-    self.postDate = nil;
 };
 
 @end

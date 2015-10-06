@@ -10,10 +10,6 @@
 
 @implementation STCustomCollectionViewCell
 
-//
-// readonly property still need to define synthesize.
-//
-@synthesize thumb = _thumb;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
