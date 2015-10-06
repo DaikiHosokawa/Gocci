@@ -136,12 +136,6 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="edG-z8-pmg">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="438"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <view contentMode="scaleToFill" id="NbN-XE-lB7">
                                         <rect key="frame" x="0.0" y="-8" width="375" height="171"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -245,6 +239,9 @@
                                                 <state key="normal" title="Edit Profile">
                                                     <color key="titleColor" red="0.79215686269999996" green="0.2156862745" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="kCC-1w-zr5" kind="push" id="ZEF-Ta-l4E"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CyI-LQ-5Mm">
                                                 <rect key="frame" x="19" y="99" width="171" height="21"/>
@@ -257,6 +254,12 @@
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.76720696389999998" blue="0.71787294420000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="edG-z8-pmg">
+                                        <rect key="frame" x="0.0" y="159" width="375" height="438"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <animations/>
@@ -1672,6 +1675,29 @@
             </objects>
             <point key="canvasLocation" x="65.5" y="-1381.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="mvv-oz-aCO">
+            <objects>
+                <viewController id="wR5-uK-0af" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yhn-jf-r41">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="d18-bY-pd8">
+                                <rect key="frame" x="0.0" y="29" width="320" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYu-JK-uu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="-1258"/>
+        </scene>
         <!--Cheer List View Controller-->
         <scene sceneID="XlQ-cf-Luv">
             <objects>
@@ -1707,6 +1733,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVW-it-ziC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="107.5" y="-491.5"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="VAb-Vk-Kz3">
+            <objects>
+                <viewController id="kCC-1w-zr5" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kVy-zb-wit">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="aim-rb-eEg">
+                                <rect key="frame" x="0.0" y="101" width="375" height="217"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="v2M-sp-ajv">
+                                        <rect key="frame" x="230" y="83" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" id="p1V-TM-Lo1">
+                                        <rect key="frame" x="44" y="108" width="132" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="変更したい方をタップしてください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q8w-nR-Ayh">
+                                        <rect key="frame" x="51" y="33" width="272" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94470509383378021" green="0.94470509383378021" blue="0.94470509383378021" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Olc-0f-48Y"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="username" destination="p1V-TM-Lo1" id="Ba1-mE-raS"/>
+                        <outlet property="userpicture" destination="v2M-sp-ajv" id="soc-US-XDs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgs-Y4-S67" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.5" y="-452.5"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Hbu-ub-JNz">
