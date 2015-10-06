@@ -104,7 +104,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
+    
+    UIBarButtonItem *settingBtn = [[UIBarButtonItem alloc]
+                                  initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                  target:self
+                                  action:@selector(eventSettingBtn)];
+    settingBtn.tintColor = [UIColor whiteColor];
+    
+    
+    self.navigationItem.rightBarButtonItems =
+    [NSArray arrayWithObjects:self.barButton, settingBtn, nil];
     
     //BackButton
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -301,8 +310,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
         header = headerDic;
         NSLog(@"header:%@",header);
-        
-    
         [self byoga];
     }];
 }
@@ -315,6 +322,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
     
+}
+
+-(void)eventSettingBtn{
+    [self performSegueWithIdentifier:@"goSetting" sender:self];
 }
 
 @end
