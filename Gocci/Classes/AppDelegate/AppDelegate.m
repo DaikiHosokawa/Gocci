@@ -32,6 +32,7 @@
 
 
 @implementation AppDelegate
+
 // !!!:dezamisystem
 @synthesize restname;
 @synthesize lifelogDate;

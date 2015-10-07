@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CXCardView.h"
 #import "DemoContentView.h"
 #import "LocationClient.h"
 

@@ -352,7 +352,6 @@ static SCRecorder *_recorder;
     
     static BOOL isPassed = NO;
     if (!isPassed) {
-        [self showDefaultContentView];
         
     }
     isPassed = YES;
@@ -376,29 +375,7 @@ static SCRecorder *_recorder;
     return YES;
 }
 
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"押す→離すの計7秒でレストランを紹介してください";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
-    }
-    
-    [CXCardView showWithView:_firstContentView draggable:YES];
-}
+
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
     NSLog(@"Reconfigured audio input: error = %@", audioInputError);

@@ -35,7 +35,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @interface TimelineTableViewController ()
 <CLLocationManagerDelegate, TimelineCellDelegate>
 
-//- (void)showDefaultContentView;
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (nonatomic, copy) NSMutableArray *postid_;

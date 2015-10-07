@@ -17,7 +17,6 @@
 #import "Restaurant.h"
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
-#import "CXCardView.h"
 #import "LocationClient.h"
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -28,13 +27,12 @@
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 @interface SearchTableViewController ()
-<UISearchBarDelegate, UISearchBarDelegate, MKMapViewDelegate, SearchCellDelegate>
+<UISearchBarDelegate, MKMapViewDelegate, SearchCellDelegate>
 {
     DemoContentView *_firstContentView;
     DemoContentView *_secondContentView;
 }
 
-- (void)showDefaultContentView;
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -201,7 +199,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     [super viewDidAppear:animated];
     if ([self isFirstRun]) {
-        [self showDefaultContentView];
     }
 }
 
@@ -235,29 +232,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     return YES;
 }
 
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"近くの美味しいお店が探せます";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
-    }
-    
-    [CXCardView showWithView:_firstContentView draggable:YES];
-}
 
 #pragma mark - MKMapViewDelegate
 

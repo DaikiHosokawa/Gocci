@@ -26,6 +26,8 @@
 
 #import "TimelinePageMenuViewController.h"
 
+#import "GocciTest-Swift.h"
+
 // 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -72,6 +74,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
     
+
     
 }
 
@@ -143,12 +146,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //	}
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    //	// フリック操作によるスクロール終了
-    //	LOG(@"scroll is stoped");
-    //
-    //	// [self _playMovieAtCurrentCell];
-}
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {

@@ -12,7 +12,6 @@
 
 #import "AppDelegate.h"
 
-#import "CXCardView.h"
 #import "DemoContentView.h"
 #import "WYPopoverController.h"
 #import "WYStoryboardPopoverSegue.h"
