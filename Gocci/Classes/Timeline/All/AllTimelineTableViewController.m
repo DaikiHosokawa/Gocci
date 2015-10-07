@@ -74,7 +74,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
     
-
+　　
     
 }
 
