@@ -27,6 +27,7 @@
 		950881C81BC501A200BF06B1 /* LiquittableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */; settings = {ASSET_TAGS = (); }; };
 		950881C91BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */; settings = {ASSET_TAGS = (); }; };
 		950881CA1BC501A200BF06B1 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C11BC501A200BF06B1 /* UIColorEx.swift */; settings = {ASSET_TAGS = (); }; };
+		950881CE1BC5165100BF06B1 /* TempLiquidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */; settings = {ASSET_TAGS = (); }; };
 		950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 950A8B6B1B217C1400BD66BD /* ui_nav.png */; };
 		951AD53B1B36B0A90057F081 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5381B36B0A90057F081 /* everyTableViewCell.m */; };
 		951AD53C1B36B0A90057F081 /* everyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951AD5391B36B0A90057F081 /* everyTableViewCell.xib */; };
@@ -329,6 +330,7 @@
 		950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquittableCircle.swift; sourceTree = "<group>"; };
 		950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCircleLiquidEngine.swift; sourceTree = "<group>"; };
 		950881C11BC501A200BF06B1 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
+		950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempLiquidButton.swift; sourceTree = "<group>"; };
 		950A8B6B1B217C1400BD66BD /* ui_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_nav.png; sourceTree = "<group>"; };
 		951AD5371B36B0A90057F081 /* everyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewCell.h; sourceTree = "<group>"; };
 		951AD5381B36B0A90057F081 /* everyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewCell.m; sourceTree = "<group>"; };
@@ -879,6 +881,7 @@
 			children = (
 				951AD5491B36B27A0057F081 /* AllTimelineTableViewController.h */,
 				951AD54A1B36B27A0057F081 /* AllTimelineTableViewController.m */,
+				950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -2069,6 +2072,7 @@
 				952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */,
 				951AD5531B36B27A0057F081 /* AllTimelineTableViewController.m in Sources */,
 				952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */,
+				950881CE1BC5165100BF06B1 /* TempLiquidButton.swift in Sources */,
 				98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */,
 				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
