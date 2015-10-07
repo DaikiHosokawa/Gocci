@@ -286,6 +286,21 @@
 + (void)postUnWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
+/**
+ *  updateProfile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)updateProfileBoth:(NSString *)username profile_img:(NSString *)profile_img handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  updateProfile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)updateProfileOnlyUsername:(NSString *)username  handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
 + (void)connectWithSNS:(NSString *)provider
                  token:(NSString *)token
      profilePictureURL:(NSString *)ppurl

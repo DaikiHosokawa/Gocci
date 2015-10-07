@@ -41,7 +41,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSDictionary *header;
 }
 
-- (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, strong) UIRefreshControl *refresh;
@@ -192,7 +191,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewDidAppear:animated];
     if ([self isFirstRun]) {
-        [self showDefaultContentView];
     }
     NSLog(@"header2^:%@",header);
     
@@ -239,29 +237,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     return YES;
 }
 
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"レストランの疑似体験ができます";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
-    }
-    
-    [CXCardView showWithView:_firstContentView draggable:YES];
-}
 
 - (IBAction)unwindToTop:(UIStoryboardSegue *)segue
 {

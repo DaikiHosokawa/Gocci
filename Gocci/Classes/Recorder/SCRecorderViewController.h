@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
-#import "CXCardView.h"
 #import "DemoContentView.h"
 #import "SCFirstView.h"
 #import "SCSecondView.h"

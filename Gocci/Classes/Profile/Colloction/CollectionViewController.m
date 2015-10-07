@@ -79,7 +79,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [restname addObject:restnameGet];
         }
         NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
-        [self.collectionView reloadData];
+        if ([thumb count] == 0) {
+            // 画像表示例文
+            UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+            UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+            CGSize boundsSize = self.view.bounds.size;
+            iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+            [self.view addSubview:iv];
+        }else{
+            [self.collectionView reloadData];
+        }
 
         
     }];

@@ -55,6 +55,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
 
+@property (weak, nonatomic) IBOutlet UILabel *FollowNum;
+@property (weak, nonatomic) IBOutlet UILabel *FolloweeNum;
+@property (weak, nonatomic) IBOutlet UILabel *CheerNum;
 
 @end
 
@@ -137,6 +140,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
+    _FollowNum.userInteractionEnabled = YES;
+    _FollowNum.tag = 100;
+    _FolloweeNum.userInteractionEnabled = YES;
+    _FolloweeNum.tag = 101;
+    _CheerNum.userInteractionEnabled = YES;
+    _CheerNum.tag = 102;
     
 }
 
@@ -318,14 +327,33 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(void)byoga{
     
     //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.profilename.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    [self.profilepicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
+    self.profilename.text = [header objectForKey:@"username"];
+    [self.profilepicture setImageWithURL:[NSURL URLWithString:[header objectForKey:@"profile_img"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
+    self.FolloweeNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follower_num"]];
+    self.FollowNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follow_num"]];
+    //[header objectForKey:@"follow_num"];
+    self.CheerNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"cheer_num"]];
+    //[header objectForKey:@"cheer_num"];
     
 }
 
 -(void)eventSettingBtn{
     [self performSegueWithIdentifier:@"goSetting" sender:self];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if ( touch.view.tag == _FollowNum.tag ){
+    [self performSegueWithIdentifier:@"goFollow" sender:self];
+    }
+    else if ( touch.view.tag == _FolloweeNum.tag ){
+    [self performSegueWithIdentifier:@"goFollowee" sender:self];
+    }
+    else if ( touch.view.tag == _CheerNum.tag){
+     [self performSegueWithIdentifier:@"goCheer" sender:self];
+    }
 }
 
 @end

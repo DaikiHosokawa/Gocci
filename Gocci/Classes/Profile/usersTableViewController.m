@@ -53,7 +53,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSArray *viewControllers_;
 }
 
-- (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;

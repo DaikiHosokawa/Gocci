@@ -14,21 +14,19 @@
 		37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37D66AC91AFD858100767114 /* image_sample00.jpg */; };
 		53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
 		53B9427A1AB3FE2C000150C4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B942791AB3FE2C000150C4 /* libxml2.dylib */; };
-		53B942991AB40414000150C4 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9427D1AB40414000150C4 /* NSDateFormatter+STTwitter.m */; };
-		53B9429A1AB40414000150C4 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9427F1AB40414000150C4 /* NSError+STTwitter.m */; };
-		53B9429B1AB40414000150C4 /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942811AB40414000150C4 /* NSString+STTwitter.m */; };
-		53B9429C1AB40414000150C4 /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942831AB40414000150C4 /* STHTTPRequest+STTwitter.m */; };
-		53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942861AB40414000150C4 /* STTwitterAPI.m */; };
-		53B9429E1AB40414000150C4 /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942881AB40414000150C4 /* STTwitterAppOnly.m */; };
-		53B9429F1AB40414000150C4 /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9428A1AB40414000150C4 /* STTwitterHTML.m */; };
-		53B942A01AB40414000150C4 /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9428C1AB40414000150C4 /* STTwitterOAuth.m */; };
-		53B942A11AB40414000150C4 /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9428E1AB40414000150C4 /* STTwitterOS.m */; };
-		53B942A21AB40414000150C4 /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942901AB40414000150C4 /* STTwitterOSRequest.m */; };
-		53B942A31AB40414000150C4 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942941AB40414000150C4 /* BAVPlistNode.m */; };
-		53B942A41AB40414000150C4 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942961AB40414000150C4 /* JSONSyntaxHighlight.m */; };
-		53B942A51AB40414000150C4 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942981AB40414000150C4 /* STHTTPRequest.m */; };
 		53B942AB1AB423FE000150C4 /* UIImage+BlurEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B942AA1AB423FE000150C4 /* UIImage+BlurEffect.m */; };
 		9501A18C1BC4032700E3BE8E /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9501A18B1BC4032700E3BE8E /* EditProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		950881B41BC4F6B100BF06B1 /* UserSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950881B31BC4F6B100BF06B1 /* UserSearchController.m */; settings = {ASSET_TAGS = (); }; };
+		950881B71BC4FC4000BF06B1 /* UserSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950881B61BC4FC4000BF06B1 /* UserSearchTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		950881C21BC501A200BF06B1 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 950881B91BC501A200BF06B1 /* .gitkeep */; settings = {ASSET_TAGS = (); }; };
+		950881C31BC501A200BF06B1 /* ArrayEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BA1BC501A200BF06B1 /* ArrayEx.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C41BC501A200BF06B1 /* CGPointEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BB1BC501A200BF06B1 /* CGPointEx.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C51BC501A200BF06B1 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BC1BC501A200BF06B1 /* CGRectEx.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C61BC501A200BF06B1 /* LiquidFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BD1BC501A200BF06B1 /* LiquidFloatingActionButton.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C71BC501A200BF06B1 /* LiquidUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BE1BC501A200BF06B1 /* LiquidUtil.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C81BC501A200BF06B1 /* LiquittableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */; settings = {ASSET_TAGS = (); }; };
+		950881C91BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */; settings = {ASSET_TAGS = (); }; };
+		950881CA1BC501A200BF06B1 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C11BC501A200BF06B1 /* UIColorEx.swift */; settings = {ASSET_TAGS = (); }; };
 		950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 950A8B6B1B217C1400BD66BD /* ui_nav.png */; };
 		951AD53B1B36B0A90057F081 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5381B36B0A90057F081 /* everyTableViewCell.m */; };
 		951AD53C1B36B0A90057F081 /* everyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951AD5391B36B0A90057F081 /* everyTableViewCell.xib */; };
@@ -51,8 +49,6 @@
 		952D236B1A9B95E800C354DF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22F51A9B95E800C354DF /* AFURLResponseSerialization.m */; };
 		952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22F71A9B95E800C354DF /* AFURLSessionManager.m */; };
 		952D236E1A9B95E800C354DF /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 952D22FD1A9B95E800C354DF /* libCrittercism_v4_3_7.a */; };
-		952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23001A9B95E800C354DF /* CXCardContainerView.m */; };
-		952D23701A9B95E800C354DF /* CXCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23021A9B95E800C354DF /* CXCardView.m */; };
 		952D23741A9B95E800C354DF /* JTCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230A1A9B95E800C354DF /* JTCalendar.m */; };
 		952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230C1A9B95E800C354DF /* JTCalendarAppearance.m */; };
 		952D23761A9B95E800C354DF /* JTCalendarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D230E1A9B95E800C354DF /* JTCalendarContentView.m */; };
@@ -63,8 +59,6 @@
 		952D237B1A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23181A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m */; };
 		952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D231B1A9B95E800C354DF /* JTCalendarWeekView.m */; };
 		952D237D1A9B95E800C354DF /* JTCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D231D1A9B95E800C354DF /* JTCircleView.m */; };
-		952D237E1A9B95E800C354DF /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23201A9B95E800C354DF /* MYBlurIntroductionView.m */; };
-		952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23221A9B95E800C354DF /* MYIntroductionPanel.m */; };
 		952D23811A9B95E800C354DF /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23261A9B95E800C354DF /* MKAnnotationView+WebCache.m */; };
 		952D23821A9B95E800C354DF /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23281A9B95E800C354DF /* NSData+ImageContentType.m */; };
 		952D23831A9B95E800C354DF /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D232A1A9B95E800C354DF /* SDImageCache.m */; };
@@ -318,38 +312,23 @@
 		37D66AC91AFD858100767114 /* image_sample00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_sample00.jpg; sourceTree = "<group>"; };
 		53A267C31AB3CF4A00CD759A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		53B942791AB3FE2C000150C4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		53B9427C1AB40414000150C4 /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+STTwitter.h"; sourceTree = "<group>"; };
-		53B9427D1AB40414000150C4 /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+STTwitter.m"; sourceTree = "<group>"; };
-		53B9427E1AB40414000150C4 /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+STTwitter.h"; sourceTree = "<group>"; };
-		53B9427F1AB40414000150C4 /* NSError+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+STTwitter.m"; sourceTree = "<group>"; };
-		53B942801AB40414000150C4 /* NSString+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STTwitter.h"; sourceTree = "<group>"; };
-		53B942811AB40414000150C4 /* NSString+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STTwitter.m"; sourceTree = "<group>"; };
-		53B942821AB40414000150C4 /* STHTTPRequest+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STHTTPRequest+STTwitter.h"; sourceTree = "<group>"; };
-		53B942831AB40414000150C4 /* STHTTPRequest+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STHTTPRequest+STTwitter.m"; sourceTree = "<group>"; };
-		53B942841AB40414000150C4 /* STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitter.h; sourceTree = "<group>"; };
-		53B942851AB40414000150C4 /* STTwitterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAPI.h; sourceTree = "<group>"; };
-		53B942861AB40414000150C4 /* STTwitterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAPI.m; sourceTree = "<group>"; };
-		53B942871AB40414000150C4 /* STTwitterAppOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAppOnly.h; sourceTree = "<group>"; };
-		53B942881AB40414000150C4 /* STTwitterAppOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAppOnly.m; sourceTree = "<group>"; };
-		53B942891AB40414000150C4 /* STTwitterHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterHTML.h; sourceTree = "<group>"; };
-		53B9428A1AB40414000150C4 /* STTwitterHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterHTML.m; sourceTree = "<group>"; };
-		53B9428B1AB40414000150C4 /* STTwitterOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOAuth.h; sourceTree = "<group>"; };
-		53B9428C1AB40414000150C4 /* STTwitterOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOAuth.m; sourceTree = "<group>"; };
-		53B9428D1AB40414000150C4 /* STTwitterOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOS.h; sourceTree = "<group>"; };
-		53B9428E1AB40414000150C4 /* STTwitterOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOS.m; sourceTree = "<group>"; };
-		53B9428F1AB40414000150C4 /* STTwitterOSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOSRequest.h; sourceTree = "<group>"; };
-		53B942901AB40414000150C4 /* STTwitterOSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOSRequest.m; sourceTree = "<group>"; };
-		53B942911AB40414000150C4 /* STTwitterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterProtocol.h; sourceTree = "<group>"; };
-		53B942931AB40414000150C4 /* BAVPlistNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAVPlistNode.h; sourceTree = "<group>"; };
-		53B942941AB40414000150C4 /* BAVPlistNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAVPlistNode.m; sourceTree = "<group>"; };
-		53B942951AB40414000150C4 /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSyntaxHighlight.h; sourceTree = "<group>"; };
-		53B942961AB40414000150C4 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
-		53B942971AB40414000150C4 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
-		53B942981AB40414000150C4 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
 		53B942A91AB423FE000150C4 /* UIImage+BlurEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BlurEffect.h"; sourceTree = "<group>"; };
 		53B942AA1AB423FE000150C4 /* UIImage+BlurEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurEffect.m"; sourceTree = "<group>"; };
 		9501A18A1BC4032700E3BE8E /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		9501A18B1BC4032700E3BE8E /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		950881B21BC4F6B100BF06B1 /* UserSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearchController.h; sourceTree = "<group>"; };
+		950881B31BC4F6B100BF06B1 /* UserSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearchController.m; sourceTree = "<group>"; };
+		950881B51BC4FC4000BF06B1 /* UserSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearchTableViewCell.h; sourceTree = "<group>"; };
+		950881B61BC4FC4000BF06B1 /* UserSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearchTableViewCell.m; sourceTree = "<group>"; };
+		950881B91BC501A200BF06B1 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		950881BA1BC501A200BF06B1 /* ArrayEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEx.swift; sourceTree = "<group>"; };
+		950881BB1BC501A200BF06B1 /* CGPointEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointEx.swift; sourceTree = "<group>"; };
+		950881BC1BC501A200BF06B1 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
+		950881BD1BC501A200BF06B1 /* LiquidFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquidFloatingActionButton.swift; sourceTree = "<group>"; };
+		950881BE1BC501A200BF06B1 /* LiquidUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquidUtil.swift; sourceTree = "<group>"; };
+		950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquittableCircle.swift; sourceTree = "<group>"; };
+		950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCircleLiquidEngine.swift; sourceTree = "<group>"; };
+		950881C11BC501A200BF06B1 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		950A8B6B1B217C1400BD66BD /* ui_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_nav.png; sourceTree = "<group>"; };
 		951AD5371B36B0A90057F081 /* everyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewCell.h; sourceTree = "<group>"; };
 		951AD5381B36B0A90057F081 /* everyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewCell.m; sourceTree = "<group>"; };
@@ -393,10 +372,6 @@
 		952D22FA1A9B95E800C354DF /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		952D22FB1A9B95E800C354DF /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		952D22FD1A9B95E800C354DF /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
-		952D22FF1A9B95E800C354DF /* CXCardContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardContainerView.h; sourceTree = "<group>"; };
-		952D23001A9B95E800C354DF /* CXCardContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardContainerView.m; sourceTree = "<group>"; };
-		952D23011A9B95E800C354DF /* CXCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCardView.h; sourceTree = "<group>"; };
-		952D23021A9B95E800C354DF /* CXCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCardView.m; sourceTree = "<group>"; };
 		952D23091A9B95E800C354DF /* JTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendar.h; sourceTree = "<group>"; };
 		952D230A1A9B95E800C354DF /* JTCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendar.m; sourceTree = "<group>"; };
 		952D230B1A9B95E800C354DF /* JTCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarAppearance.h; sourceTree = "<group>"; };
@@ -418,10 +393,6 @@
 		952D231B1A9B95E800C354DF /* JTCalendarWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarWeekView.m; sourceTree = "<group>"; };
 		952D231C1A9B95E800C354DF /* JTCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCircleView.h; sourceTree = "<group>"; };
 		952D231D1A9B95E800C354DF /* JTCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCircleView.m; sourceTree = "<group>"; };
-		952D231F1A9B95E800C354DF /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
-		952D23201A9B95E800C354DF /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
-		952D23211A9B95E800C354DF /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
-		952D23221A9B95E800C354DF /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
 		952D23251A9B95E800C354DF /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		952D23261A9B95E800C354DF /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		952D23271A9B95E800C354DF /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -844,49 +815,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		53B9427B1AB40414000150C4 /* STTwitter */ = {
-			isa = PBXGroup;
-			children = (
-				53B9427C1AB40414000150C4 /* NSDateFormatter+STTwitter.h */,
-				53B9427D1AB40414000150C4 /* NSDateFormatter+STTwitter.m */,
-				53B9427E1AB40414000150C4 /* NSError+STTwitter.h */,
-				53B9427F1AB40414000150C4 /* NSError+STTwitter.m */,
-				53B942801AB40414000150C4 /* NSString+STTwitter.h */,
-				53B942811AB40414000150C4 /* NSString+STTwitter.m */,
-				53B942821AB40414000150C4 /* STHTTPRequest+STTwitter.h */,
-				53B942831AB40414000150C4 /* STHTTPRequest+STTwitter.m */,
-				53B942841AB40414000150C4 /* STTwitter.h */,
-				53B942851AB40414000150C4 /* STTwitterAPI.h */,
-				53B942861AB40414000150C4 /* STTwitterAPI.m */,
-				53B942871AB40414000150C4 /* STTwitterAppOnly.h */,
-				53B942881AB40414000150C4 /* STTwitterAppOnly.m */,
-				53B942891AB40414000150C4 /* STTwitterHTML.h */,
-				53B9428A1AB40414000150C4 /* STTwitterHTML.m */,
-				53B9428B1AB40414000150C4 /* STTwitterOAuth.h */,
-				53B9428C1AB40414000150C4 /* STTwitterOAuth.m */,
-				53B9428D1AB40414000150C4 /* STTwitterOS.h */,
-				53B9428E1AB40414000150C4 /* STTwitterOS.m */,
-				53B9428F1AB40414000150C4 /* STTwitterOSRequest.h */,
-				53B942901AB40414000150C4 /* STTwitterOSRequest.m */,
-				53B942911AB40414000150C4 /* STTwitterProtocol.h */,
-				53B942921AB40414000150C4 /* Vendor */,
-			);
-			path = STTwitter;
-			sourceTree = "<group>";
-		};
-		53B942921AB40414000150C4 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				53B942931AB40414000150C4 /* BAVPlistNode.h */,
-				53B942941AB40414000150C4 /* BAVPlistNode.m */,
-				53B942951AB40414000150C4 /* JSONSyntaxHighlight.h */,
-				53B942961AB40414000150C4 /* JSONSyntaxHighlight.m */,
-				53B942971AB40414000150C4 /* STHTTPRequest.h */,
-				53B942981AB40414000150C4 /* STHTTPRequest.m */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
 		9501A17B1BC3FC4A00E3BE8E /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,6 +822,33 @@
 				9501A18B1BC4032700E3BE8E /* EditProfileViewController.m */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		950881B11BC4F67F00BF06B1 /* UserSearch */ = {
+			isa = PBXGroup;
+			children = (
+				950881B21BC4F6B100BF06B1 /* UserSearchController.h */,
+				950881B31BC4F6B100BF06B1 /* UserSearchController.m */,
+				950881B51BC4FC4000BF06B1 /* UserSearchTableViewCell.h */,
+				950881B61BC4FC4000BF06B1 /* UserSearchTableViewCell.m */,
+			);
+			path = UserSearch;
+			sourceTree = "<group>";
+		};
+		950881B81BC501A200BF06B1 /* LiquidFloatingActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				950881B91BC501A200BF06B1 /* .gitkeep */,
+				950881BA1BC501A200BF06B1 /* ArrayEx.swift */,
+				950881BB1BC501A200BF06B1 /* CGPointEx.swift */,
+				950881BC1BC501A200BF06B1 /* CGRectEx.swift */,
+				950881BD1BC501A200BF06B1 /* LiquidFloatingActionButton.swift */,
+				950881BE1BC501A200BF06B1 /* LiquidUtil.swift */,
+				950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */,
+				950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */,
+				950881C11BC501A200BF06B1 /* UIColorEx.swift */,
+			);
+			path = LiquidFloatingActionButton;
 			sourceTree = "<group>";
 		};
 		951AD5341B36B0A90057F081 /* post */ = {
@@ -966,13 +921,11 @@
 				958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */,
 				A13FB9731AB45F7E00B893F9 /* BFPaperColors */,
 				A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */,
-				53B9427B1AB40414000150C4 /* STTwitter */,
 				952D23EA1A9B9C6100C354DF /* PopUp */,
 				952D22E41A9B95E800C354DF /* AFNetworking */,
 				952D22F81A9B95E800C354DF /* CrittercismSDK */,
-				952D22FE1A9B95E800C354DF /* CXCardView */,
+				950881B81BC501A200BF06B1 /* LiquidFloatingActionButton */,
 				952D23081A9B95E800C354DF /* JTCalendar */,
-				952D231E1A9B95E800C354DF /* MYBlurIntroductionView */,
 				952D23241A9B95E800C354DF /* SDWebImage */,
 				952D23461A9B95E800C354DF /* SVProgressHUD */,
 				952D234A1A9B95E800C354DF /* UIImage+Dummy */,
@@ -1018,17 +971,6 @@
 			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
-		952D22FE1A9B95E800C354DF /* CXCardView */ = {
-			isa = PBXGroup;
-			children = (
-				952D22FF1A9B95E800C354DF /* CXCardContainerView.h */,
-				952D23001A9B95E800C354DF /* CXCardContainerView.m */,
-				952D23011A9B95E800C354DF /* CXCardView.h */,
-				952D23021A9B95E800C354DF /* CXCardView.m */,
-			);
-			path = CXCardView;
-			sourceTree = "<group>";
-		};
 		952D23081A9B95E800C354DF /* JTCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1055,17 +997,6 @@
 				952D231D1A9B95E800C354DF /* JTCircleView.m */,
 			);
 			path = JTCalendar;
-			sourceTree = "<group>";
-		};
-		952D231E1A9B95E800C354DF /* MYBlurIntroductionView */ = {
-			isa = PBXGroup;
-			children = (
-				952D231F1A9B95E800C354DF /* MYBlurIntroductionView.h */,
-				952D23201A9B95E800C354DF /* MYBlurIntroductionView.m */,
-				952D23211A9B95E800C354DF /* MYIntroductionPanel.h */,
-				952D23221A9B95E800C354DF /* MYIntroductionPanel.m */,
-			);
-			path = MYBlurIntroductionView;
 			sourceTree = "<group>";
 		};
 		952D23241A9B95E800C354DF /* SDWebImage */ = {
@@ -1176,6 +1107,7 @@
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				950881B11BC4F67F00BF06B1 /* UserSearch */,
 				98DE2B7F1BAF906800382B75 /* Debug */,
 				959CF8DA1B26CDD200CDB492 /* Notification */,
 				95EEC52B1AF91A20006FD54E /* CheerList */,
@@ -2050,6 +1982,7 @@
 				952D250C1A9B9EC800C354DF /* tabbaritem_timeline_sel@2x.png in Resources */,
 				952D25021A9B9EC800C354DF /* tabbaritem_profile@2x.png in Resources */,
 				952D24F21A9B9EC800C354DF /* btn_delete_black.png in Resources */,
+				950881C21BC501A200BF06B1 /* .gitkeep in Resources */,
 				952D23911A9B95E800C354DF /* SVProgressHUD.bundle in Resources */,
 				98DE2B7E1BAF902400382B75 /* Debug.storyboard in Resources */,
 				952D25041A9B9EC800C354DF /* tabbaritem_profile_sel@2x.png in Resources */,
@@ -2140,34 +2073,33 @@
 				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
 				95B118E91BC360B2002A95CD /* STPopupLeftBarItem.m in Sources */,
+				950881C61BC501A200BF06B1 /* LiquidFloatingActionButton.swift in Sources */,
 				95E3CD5A1B0DCA4200497EB9 /* TWMessageBarManager.m in Sources */,
 				A13FB9791AB45F7E00B893F9 /* LICENSE.md in Sources */,
 				9539018B1BC1654D00842FFF /* TableViewCell.m in Sources */,
 				959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */,
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
-				53B9429C1AB40414000150C4 /* STHTTPRequest+STTwitter.m in Sources */,
 				95B118EF1BC39FE3002A95CD /* rulePopup.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
 				951AD5541B36B27A0057F081 /* FollowTableViewController.m in Sources */,
 				952D237A1A9B95E800C354DF /* JTCalendarMonthView.m in Sources */,
-				53B9429E1AB40414000150C4 /* STTwitterAppOnly.m in Sources */,
 				952D236B1A9B95E800C354DF /* AFURLResponseSerialization.m in Sources */,
 				952D238D1A9B95E800C354DF /* UIImage+WebP.m in Sources */,
+				950881B41BC4F6B100BF06B1 /* UserSearchController.m in Sources */,
 				952D23691A9B95E800C354DF /* AFURLConnectionOperation.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
-				952D23701A9B95E800C354DF /* CXCardView.m in Sources */,
-				53B9429D1AB40414000150C4 /* STTwitterAPI.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
+				950881C71BC501A200BF06B1 /* LiquidUtil.swift in Sources */,
 				953901901BC2171500842FFF /* MapViewController.m in Sources */,
 				952D23841A9B95E800C354DF /* SDWebImageCompat.m in Sources */,
 				98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */,
 				9501A18C1BC4032700E3BE8E /* EditProfileViewController.m in Sources */,
-				952D237F1A9B95E800C354DF /* MYIntroductionPanel.m in Sources */,
 				952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */,
 				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,
 				95B118E81BC360B2002A95CD /* STPopupController.m in Sources */,
+				950881C91BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
@@ -2176,21 +2108,20 @@
 				9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,
 				95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */,
-				53B942A31AB40414000150C4 /* BAVPlistNode.m in Sources */,
+				950881B71BC4FC4000BF06B1 /* UserSearchTableViewCell.m in Sources */,
 				95B118EC1BC360B2002A95CD /* UIViewController+STPopup.m in Sources */,
 				A13FB97B1AB45F7E00B893F9 /* UIColor+BFPaperColors.m in Sources */,
 				952D24A91A9B9D3300C354DF /* SCRecorderFocusView.m in Sources */,
 				952D236A1A9B95E800C354DF /* AFURLRequestSerialization.m in Sources */,
 				952D23ED1A9B9C6100C354DF /* DemoContentView.m in Sources */,
 				952D24981A9B9D3300C354DF /* SCTouchDetector.m in Sources */,
-				53B9429A1AB40414000150C4 /* NSError+STTwitter.m in Sources */,
-				53B942A41AB40414000150C4 /* JSONSyntaxHighlight.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
 				958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */,
 				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
+				950881C31BC501A200BF06B1 /* ArrayEx.swift in Sources */,
 				9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */,
 				95B118FC1BC3C00F002A95CD /* PrivacyPopup.m in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -2200,7 +2131,6 @@
 				952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */,
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
 				98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */,
-				952D236F1A9B95E800C354DF /* CXCardContainerView.m in Sources */,
 				952D23831A9B95E800C354DF /* SDImageCache.m in Sources */,
 				95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */,
 				95E4BCA51B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m in Sources */,
@@ -2209,6 +2139,7 @@
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
+				950881C41BC501A200BF06B1 /* CGPointEx.swift in Sources */,
 				953901871BC1651B00842FFF /* TableViewController.m in Sources */,
 				951AD53B1B36B0A90057F081 /* everyTableViewCell.m in Sources */,
 				952D24C31A9B9DE100C354DF /* MoviePlayerManager.m in Sources */,
@@ -2227,7 +2158,6 @@
 				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
 				95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */,
 				95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */,
-				53B942A11AB40414000150C4 /* STTwitterOS.m in Sources */,
 				952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */,
 				952D25171A9B9F4700C354DF /* NullSafe.m in Sources */,
 				951AD5461B36B0B20057F081 /* Sample4TableViewCell.m in Sources */,
@@ -2243,10 +2173,10 @@
 				952D249E1A9B9D3300C354DF /* CIImageRendererUtils.m in Sources */,
 				952D238B1A9B95E800C354DF /* UIImage+GIF.m in Sources */,
 				952D23791A9B95E800C354DF /* JTCalendarMenuView.m in Sources */,
-				53B942A21AB40414000150C4 /* STTwitterOSRequest.m in Sources */,
 				95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */,
 				95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
+				950881C81BC501A200BF06B1 /* LiquittableCircle.swift in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
 				952D23991A9B95E800C354DF /* UIAlertView+AFNetworking.m in Sources */,
@@ -2255,12 +2185,11 @@
 				952D24AF1A9B9D3300C354DF /* TimelineCell.m in Sources */,
 				952D247F1A9B9D3300C354DF /* UIColor+App.m in Sources */,
 				952D24921A9B9D3300C354DF /* usersTableViewController.m in Sources */,
-				53B9429F1AB40414000150C4 /* STTwitterHTML.m in Sources */,
 				95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */,
+				950881C51BC501A200BF06B1 /* CGRectEx.swift in Sources */,
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,
-				53B942A51AB40414000150C4 /* STHTTPRequest.m in Sources */,
 				959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */,
 				951AD5441B36B0B20057F081 /* commentTableViewCell.m in Sources */,
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
@@ -2280,10 +2209,10 @@
 				952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */,
 				95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */,
 				952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */,
+				950881CA1BC501A200BF06B1 /* UIColorEx.swift in Sources */,
 				952D23681A9B95E800C354DF /* AFSecurityPolicy.m in Sources */,
 				952D24A11A9B9D3300C354DF /* SCAudioTools.m in Sources */,
 				53B942AB1AB423FE000150C4 /* UIImage+BlurEffect.m in Sources */,
-				53B942991AB40414000150C4 /* NSDateFormatter+STTwitter.m in Sources */,
 				952D24A71A9B9D3300C354DF /* SCRecorder.m in Sources */,
 				952D23981A9B95E800C354DF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				952D24991A9B9D3300C354DF /* RestaurantTableViewController.m in Sources */,
@@ -2293,9 +2222,6 @@
 				98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */,
 				951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */,
 				A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */,
-				53B942A01AB40414000150C4 /* STTwitterOAuth.m in Sources */,
-				952D237E1A9B95E800C354DF /* MYBlurIntroductionView.m in Sources */,
-				53B9429B1AB40414000150C4 /* NSString+STTwitter.m in Sources */,
 				952D23771A9B95E800C354DF /* JTCalendarDayView.m in Sources */,
 				95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */,
 				952D237B1A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m in Sources */,

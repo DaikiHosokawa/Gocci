@@ -33,7 +33,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     NSMutableArray *postCommentname;
 }
 
-- (void)showDefaultContentView;
 @property (nonatomic, retain) NSMutableArray *picture_;
 @property (nonatomic, readwrite) NSMutableArray *comment_;
 @property (nonatomic, retain) NSMutableArray *user_name_;
@@ -147,7 +146,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [super viewDidAppear:animated];
     if ([self isFirstRun]) {
         //Calling this methods builds the intro and adds it to the screen. See below.
-        [self showDefaultContentView];
+       
     }
 }
 - (BOOL)isFirstRun
@@ -164,29 +163,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     // 初回起動
     return YES;
 }
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"投稿者と会話ができます。";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
-    }
-    
-    [CXCardView showWithView:_firstContentView draggable:YES];
-}
+
 
 #pragma mark viewWillDisappear
 -(void)viewWillDisappear:(BOOL)animated

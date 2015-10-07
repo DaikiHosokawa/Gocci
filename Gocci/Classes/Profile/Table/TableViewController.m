@@ -87,7 +87,18 @@ static NSString * const reuseIdentifier = @"Cell";
                 [restname addObject:restnameGet];
             }
             NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
+            
+            if ([thumb count] == 0) {
+                // 画像表示例文
+                UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+                UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+                CGSize boundsSize = self.view.bounds.size;
+                iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+                [self.view addSubview:iv];
+                self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+            }else{
             [self.tableView reloadData];
+            }
         }
     }];
 }
