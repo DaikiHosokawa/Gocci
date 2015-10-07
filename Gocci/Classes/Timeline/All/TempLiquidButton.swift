@@ -13,11 +13,11 @@ import Foundation
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
 
-    func addLiquidButton(vc: UIViewController) {
+    func addLiquidButton(vc: UIViewController, x:CGFloat, y:CGFloat) {
         
         //        self.view.backgroundColor = UIColor(red: 55 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
 
-        let floatingActionButton = LiquidFloatingActionButton(frame: CGRect(x: 116, y: 116, width: 56, height: 56))
+        let floatingActionButton = LiquidFloatingActionButton(frame: CGRect(x: x, y: y, width: 56, height: 56))
         floatingActionButton.animateStyle = LiquidFloatingActionButtonAnimateStyle.Up
         floatingActionButton.dataSource = self
         floatingActionButton.delegate = self

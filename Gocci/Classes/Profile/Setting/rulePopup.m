@@ -43,7 +43,7 @@
     [self.view addSubview:_webView];
     
     //TODO change URL rule
-    NSURL *url = [NSURL URLWithString:@"https://www.facebook.com/?_rdr=p"];
+    NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/"];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:req];
 }
