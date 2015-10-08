@@ -29,9 +29,9 @@
 
 
 #ifdef INDEVEL
-#define SPLASH_TIME 0.5
+#define SPLASH_TIME 1
 #else
-#define SPLASH_TIME 5.0
+#define SPLASH_TIME 5
 #endif
 
 #ifdef INDEVEL

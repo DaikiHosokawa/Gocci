@@ -30,6 +30,12 @@ import UIKit
         })
     }
     
+    class func sleep(seconds: Int, and:()->Void) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds) * Int64(NSEC_PER_SEC) )
+
+        dispatch_after(popTime, dispatch_get_main_queue(), and)
+    }
+    
     class func getUserDefString(key:String) -> String? {
         return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
     }
