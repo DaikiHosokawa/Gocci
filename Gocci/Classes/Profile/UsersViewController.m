@@ -43,6 +43,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @interface UsersViewController ()
 {
     NSDictionary *header;
+    NSDictionary *post;
     __weak IBOutlet UIButton *editButton;
     __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
@@ -131,8 +132,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     //segmentControll
    // [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
-    [self setupViewControllers];
-    [self changeSegmentedControlValue];
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -168,22 +167,23 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     TableViewController *vc = [[TableViewController  alloc] init];
     vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
     vc.supervc = self;
+    vc.receiveDic = post;
     firstViewController = vc;
-    /*
-    CollectionViewController *vc = [[CollectionViewController alloc] init];
-    vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
-    firstViewController = vc;
-    */
+    
     UIViewController *secondViewController;
     CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
     vc2.supervc = self;
+    vc2.receiveDic2 = post;
     secondViewController = vc2;
     
     UIViewController *thirdViewController;
     MapViewController *vc3 = [[MapViewController alloc] init];
     vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    vc3.receiveDic3 = post;
+    NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
+
     thirdViewController = vc3;
    
     viewControllers_ = @[firstViewController, secondViewController, thirdViewController];
@@ -304,8 +304,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    __weak typeof(self)weakSelf = self;
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+     [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {
@@ -313,13 +312,15 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             // TODO: アラート等を掲出
             return;
         }
-        
         NSLog(@"users result:%@",result);
         
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
+        NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
         header = headerDic;
-        NSLog(@"header:%@",header);
+        post = postDic;
         [self byoga];
+         [self setupViewControllers];
+         [self changeSegmentedControlValue];
     }];
 }
 
@@ -335,7 +336,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     //[header objectForKey:@"follow_num"];
     self.CheerNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"cheer_num"]];
     //[header objectForKey:@"cheer_num"];
-    
+
 }
 
 -(void)eventSettingBtn{

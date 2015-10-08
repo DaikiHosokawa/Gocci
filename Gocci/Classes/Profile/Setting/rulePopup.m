@@ -34,8 +34,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"閉じる" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
-    
     _webView = [[UIWebView alloc] init];
     _webView.delegate = self;
     _webView.frame = self.view.frame;
@@ -58,9 +56,5 @@
     _label.frame = CGRectMake(20, 10, self.view.frame.size.width - 40, self.view.frame.size.height - 20);
 }
 
-- (void)nextBtnDidTap
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

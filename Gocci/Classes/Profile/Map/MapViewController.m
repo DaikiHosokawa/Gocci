@@ -49,7 +49,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                      camera:cameraPosition];
     self.mapView.delegate = self;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:self.mapView];
     
 
 }
@@ -65,45 +64,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    __weak typeof(self)weakSelf = self;
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        
-        NSLog(@"users result:%@",result);
-        
-        // 取得したデータを self.posts に格納
-        thumb = [NSMutableArray arrayWithCapacity:0];
-        postid_ = [NSMutableArray arrayWithCapacity:0];
-        restname = [NSMutableArray arrayWithCapacity:0];
-        lat = [NSMutableArray arrayWithCapacity:0];
-        lon = [NSMutableArray arrayWithCapacity:0];
-        category = [NSMutableArray arrayWithCapacity:0];
-        
-        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
-        thats  = (NSArray*)[result valueForKey:@"posts"];
-        
-        for (NSDictionary *post in items) {
-            
-            NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
-            [thumb addObject:thumbGet];
-            NSDictionary *postidGet = [post objectForKey:@"post_id"];
-            [postid_ addObject:postidGet];
-            NSDictionary *restnameGet = [post objectForKey:@"restname"];
-            [restname addObject:restnameGet];
-            NSDictionary *latGet = [post objectForKey:@"Y(lon_lat)"];
-            [lat addObject:latGet];
-            NSDictionary *lonGet = [post objectForKey:@"X(lon_lat)"];
-            [lon addObject:lonGet];
-            NSDictionary *categoryGet = [post objectForKey:@"category"];
-            [category addObject:categoryGet];
-        }
-        if ([thumb count] == 0) {
+        thats  = (NSArray*)_receiveDic3;
+        NSLog(@"thats:%@",thats);
+        if ([thats count] == 0) {
             // 画像表示例文
             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
@@ -111,24 +74,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
             [self.view addSubview:iv];
         }else{
+            [self.view addSubview:self.mapView];
             [self addMarkersToMap];
-        }
-    }];
+ }
 }
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    
-    [self.mapView removeFromSuperview];
-    self.mapView = nil;
-}
-
-
 
 - (void)addMarkersToMap {
     
     NSArray *markerInfos = thats;
-    
     
     for (NSDictionary *markerInfo in markerInfos) {
         

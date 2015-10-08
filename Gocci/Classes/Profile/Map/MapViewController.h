@@ -14,4 +14,6 @@
 
 @property id supervc;
 
+@property (nonatomic, strong) NSDictionary *receiveDic3;
+
 @end
