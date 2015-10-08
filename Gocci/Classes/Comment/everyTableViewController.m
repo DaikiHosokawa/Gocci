@@ -7,7 +7,6 @@
 //
 
 #import "everyTableViewController.h"
-#import "TimelineTableViewController.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
