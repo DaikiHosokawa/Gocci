@@ -129,7 +129,6 @@
 		952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24711A9B9D3300C354DF /* SCVideoPlayerView.m */; };
 		952D24AF1A9B9D3300C354DF /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24771A9B9D3300C354DF /* TimelineCell.m */; };
 		952D24B01A9B9D3300C354DF /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D24781A9B9D3300C354DF /* TimelineCell.xib */; };
-		952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D247A1A9B9D3300C354DF /* TimelineTableViewController.m */; };
 		952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24B51A9B9DE100C354DF /* Restaurant.m */; };
 		952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24B91A9B9DE100C354DF /* TimelinePost.m */; };
 		952D24C21A9B9DE100C354DF /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24BC1A9B9DE100C354DF /* APIClient.m */; };
@@ -176,6 +175,8 @@
 		9539018B1BC1654D00842FFF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953901891BC1654D00842FFF /* TableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		953901901BC2171500842FFF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9539018F1BC2171500842FFF /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */; };
+		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
+		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
 		958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958ACEE91BC0CC5F006EEA75 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -189,6 +190,10 @@
 		959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E01B26CE6F00CDB492 /* NotificationViewController.m */; };
 		959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E51B26CF0D00CDB492 /* WYPopoverController.m */; };
 		959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */; };
+		95A39E941BC61D8A00FB3150 /* AddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A39E931BC61D8A00FB3150 /* AddressController.m */; settings = {ASSET_TAGS = (); }; };
+		95A39E981BC61DEB00FB3150 /* FacebookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A39E971BC61DEB00FB3150 /* FacebookController.m */; settings = {ASSET_TAGS = (); }; };
+		95A39E9D1BC61E2F00FB3150 /* TwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A39E9C1BC61E2F00FB3150 /* TwitterController.m */; settings = {ASSET_TAGS = (); }; };
+		95A39EA01BC61E5400FB3150 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A39E9F1BC61E5400FB3150 /* DetailController.m */; settings = {ASSET_TAGS = (); }; };
 		95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DA1BC2AF3D002A95CD /* SettingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		95B118E81BC360B2002A95CD /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DF1BC360B2002A95CD /* STPopupController.m */; settings = {ASSET_TAGS = (); }; };
 		95B118E91BC360B2002A95CD /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E11BC360B2002A95CD /* STPopupLeftBarItem.m */; settings = {ASSET_TAGS = (); }; };
@@ -303,7 +308,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		302F477AE49444819704F22A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		373BB8371AFE59A300F7AC77 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
 		373BB8381AFE59A300F7AC77 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		377063251AFC6DBA00CD891D /* icon_record_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_cam.png; sourceTree = "<group>"; };
@@ -534,8 +538,6 @@
 		952D24761A9B9D3300C354DF /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
 		952D24771A9B9D3300C354DF /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		952D24781A9B9D3300C354DF /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
-		952D24791A9B9D3300C354DF /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
-		952D247A1A9B9D3300C354DF /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		952D24B41A9B9DE100C354DF /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		952D24B51A9B9DE100C354DF /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		952D24B81A9B9DE100C354DF /* TimelinePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePost.h; sourceTree = "<group>"; };
@@ -591,6 +593,8 @@
 		9539018F1BC2171500842FFF /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
 		953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
+		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -614,6 +618,14 @@
 		959CF8E51B26CF0D00CDB492 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		959CF8E61B26CF0D00CDB492 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		95A39E921BC61D8A00FB3150 /* AddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressController.h; sourceTree = "<group>"; };
+		95A39E931BC61D8A00FB3150 /* AddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressController.m; sourceTree = "<group>"; };
+		95A39E961BC61DEB00FB3150 /* FacebookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookController.h; sourceTree = "<group>"; };
+		95A39E971BC61DEB00FB3150 /* FacebookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookController.m; sourceTree = "<group>"; };
+		95A39E9B1BC61E2F00FB3150 /* TwitterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterController.h; sourceTree = "<group>"; };
+		95A39E9C1BC61E2F00FB3150 /* TwitterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterController.m; sourceTree = "<group>"; };
+		95A39E9E1BC61E5400FB3150 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
+		95A39E9F1BC61E5400FB3150 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
 		95B118D91BC2AF3D002A95CD /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		95B118DA1BC2AF3D002A95CD /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		95B118DD1BC360B2002A95CD /* STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopup.h; sourceTree = "<group>"; };
@@ -780,6 +792,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */,
+				954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */,
 				957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */,
 				53B9427A1AB3FE2C000150C4 /* libxml2.dylib in Frameworks */,
 				987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */,
@@ -1110,6 +1124,7 @@
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				95A39DF11BC6168D00FB3150 /* FriendAdd */,
 				950881B11BC4F67F00BF06B1 /* UserSearch */,
 				98DE2B7F1BAF906800382B75 /* Debug */,
 				959CF8DA1B26CDD200CDB492 /* Notification */,
@@ -1342,8 +1357,6 @@
 				952D24761A9B9D3300C354DF /* TimelineCell.h */,
 				952D24771A9B9D3300C354DF /* TimelineCell.m */,
 				952D24781A9B9D3300C354DF /* TimelineCell.xib */,
-				952D24791A9B9D3300C354DF /* TimelineTableViewController.h */,
-				952D247A1A9B9D3300C354DF /* TimelineTableViewController.m */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1538,6 +1551,53 @@
 				959CF8E71B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m */,
 			);
 			path = WYPopoverController;
+			sourceTree = "<group>";
+		};
+		95A39DF11BC6168D00FB3150 /* FriendAdd */ = {
+			isa = PBXGroup;
+			children = (
+				95A39E911BC61D8A00FB3150 /* Address */,
+				95A39E951BC61DCC00FB3150 /* Facebook */,
+				95A39E9A1BC61E1C00FB3150 /* Twitter */,
+				95A39E991BC61E1400FB3150 /* Detail */,
+			);
+			path = FriendAdd;
+			sourceTree = "<group>";
+		};
+		95A39E911BC61D8A00FB3150 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				95A39E921BC61D8A00FB3150 /* AddressController.h */,
+				95A39E931BC61D8A00FB3150 /* AddressController.m */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		95A39E951BC61DCC00FB3150 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				95A39E961BC61DEB00FB3150 /* FacebookController.h */,
+				95A39E971BC61DEB00FB3150 /* FacebookController.m */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		95A39E991BC61E1400FB3150 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				95A39E9E1BC61E5400FB3150 /* DetailController.h */,
+				95A39E9F1BC61E5400FB3150 /* DetailController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		95A39E9A1BC61E1C00FB3150 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				95A39E9B1BC61E2F00FB3150 /* TwitterController.h */,
+				95A39E9C1BC61E2F00FB3150 /* TwitterController.m */,
+			);
+			path = Twitter;
 			sourceTree = "<group>";
 		};
 		95B118D81BC2AF14002A95CD /* Setting */ = {
@@ -1817,6 +1877,8 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				954A74681BC65D8600BD5573 /* Contacts.framework */,
+				954A74691BC65D8600BD5573 /* ContactsUI.framework */,
 				957571471B3E5D8000A10810 /* libsqlite3.dylib */,
 				53B942791AB3FE2C000150C4 /* libxml2.dylib */,
 				53A267C31AB3CF4A00CD759A /* Social.framework */,
@@ -1847,7 +1909,6 @@
 				FF54EFE219149A1800025DC8 /* Foundation.framework */,
 				FF54EFE419149A1800025DC8 /* CoreGraphics.framework */,
 				FF54EFE619149A1800025DC8 /* UIKit.framework */,
-				302F477AE49444819704F22A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2091,6 +2152,7 @@
 				952D238D1A9B95E800C354DF /* UIImage+WebP.m in Sources */,
 				950881B41BC4F6B100BF06B1 /* UserSearchController.m in Sources */,
 				952D23691A9B95E800C354DF /* AFURLConnectionOperation.m in Sources */,
+				95A39E941BC61D8A00FB3150 /* AddressController.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
@@ -2159,7 +2221,7 @@
 				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
-				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
+				95A39E981BC61DEB00FB3150 /* FacebookController.m in Sources */,
 				95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */,
 				95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */,
 				952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */,
@@ -2192,6 +2254,7 @@
 				95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */,
 				950881C51BC501A200BF06B1 /* CGRectEx.swift in Sources */,
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
+				95A39EA01BC61E5400FB3150 /* DetailController.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,
 				959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */,
@@ -2235,6 +2298,7 @@
 				952D23861A9B95E800C354DF /* SDWebImageDownloader.m in Sources */,
 				95E4BCAB1B37DA9800B8CF44 /* SCScrollPageView.m in Sources */,
 				952D23761A9B95E800C354DF /* JTCalendarContentView.m in Sources */,
+				95A39E9D1BC61E2F00FB3150 /* TwitterController.m in Sources */,
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				952D24C21A9B9DE100C354DF /* APIClient.m in Sources */,
 				952D249B1A9B9D3300C354DF /* SearchCell.m in Sources */,

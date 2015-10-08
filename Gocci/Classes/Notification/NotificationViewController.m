@@ -14,7 +14,6 @@
 #import "AppDelegate.h"
 #import "Notice.h"
 #import "everyTableViewController.h"
-#import "TimelineTableViewController.h"
 #import "usersTableViewController_other.h"
 #import "usersTableViewController.h"
 
