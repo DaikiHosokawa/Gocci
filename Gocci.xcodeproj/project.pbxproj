@@ -227,7 +227,6 @@
 		95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC961B37DA4A00B8CF44 /* RecorderSubmitPopupView.m */; };
 		95E4BCA81B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */; };
 		95E4BCAB1B37DA9800B8CF44 /* SCScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */; };
-		95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E709751B8C0E70001B6EDA /* SplashViewController.m */; };
 		95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5121AF9103B006FD54E /* FollowListCell.m */; };
 		95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5131AF9103B006FD54E /* FollowListCell.xib */; };
 		95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5151AF9103B006FD54E /* FollowListViewController.m */; };
@@ -242,12 +241,10 @@
 		9843E9201BA993EB0015350D /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91D1BA993EB0015350D /* AWSCognito.framework */; };
 		9843E9211BA993EB0015350D /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91E1BA993EB0015350D /* AWSCore.framework */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
+		9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDCB1BC6906D00B1651E /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
 		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
 		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
-		989769021BACB55A002CED23 /* INAutoResizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989769011BACB55A002CED23 /* INAutoResizeLabel.swift */; };
-		98ACE0711BAC4733002AA083 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98ACE0701BAC4733002AA083 /* Tutorial.storyboard */; };
-		98ACE0741BAC4D65002AA083 /* TutorialSubPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */; };
 		98ACE0771BAC637A002AA083 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
 		98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */; };
 		98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10631BB3CCB500468D43 /* SNSUtil.swift */; };
@@ -673,8 +670,6 @@
 		95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupView.xib; sourceTree = "<group>"; };
 		95E4BCA91B37DA9800B8CF44 /* SCScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScrollPageView.h; sourceTree = "<group>"; };
 		95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScrollPageView.m; sourceTree = "<group>"; };
-		95E709741B8C0E70001B6EDA /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		95E709751B8C0E70001B6EDA /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		95EEC5111AF9103B006FD54E /* FollowListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListCell.h; sourceTree = "<group>"; };
 		95EEC5121AF9103B006FD54E /* FollowListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowListCell.m; sourceTree = "<group>"; };
 		95EEC5131AF9103B006FD54E /* FollowListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowListCell.xib; sourceTree = "<group>"; };
@@ -696,13 +691,10 @@
 		9843E91D1BA993EB0015350D /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		9843E91E1BA993EB0015350D /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		9874BDCB1BC6906D00B1651E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Gocci/Vendor/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
 		987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		989769011BACB55A002CED23 /* INAutoResizeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INAutoResizeLabel.swift; sourceTree = "<group>"; };
-		98ACE0701BAC4733002AA083 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
-		98ACE0721BAC4D10002AA083 /* TutorialSubPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialSubPageViewController.h; sourceTree = "<group>"; };
-		98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialSubPageViewController.m; sourceTree = "<group>"; };
 		98ACE0751BAC6379002AA083 /* GocciTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GocciTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		98ACE0761BAC637A002AA083 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		98D8BC631BA270AE00613D84 /* APIClientLimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClientLimits.h; sourceTree = "<group>"; };
@@ -1199,13 +1191,9 @@
 		952D24211A9B9D3300C354DF /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				95E709741B8C0E70001B6EDA /* SplashViewController.h */,
-				95E709751B8C0E70001B6EDA /* SplashViewController.m */,
+				9874BDCB1BC6906D00B1651E /* SplashViewController.swift */,
 				953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */,
 				953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */,
-				98ACE0721BAC4D10002AA083 /* TutorialSubPageViewController.h */,
-				98ACE0731BAC4D65002AA083 /* TutorialSubPageViewController.m */,
-				989769011BACB55A002CED23 /* INAutoResizeLabel.swift */,
 				98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */,
 				98DB10631BB3CCB500468D43 /* SNSUtil.swift */,
 				98DB10651BB521C500468D43 /* SNSConnectViewController.swift */,
@@ -1462,7 +1450,6 @@
 				952D24E91A9B9EC800C354DF /* 4_7_inch.storyboard */,
 				952D24EA1A9B9EC800C354DF /* 5_5_inch.storyboard */,
 				952D24EB1A9B9EC800C354DF /* Main.storyboard */,
-				98ACE0701BAC4733002AA083 /* Tutorial.storyboard */,
 				98DE2B7D1BAF902400382B75 /* Debug.storyboard */,
 			);
 			path = Storyboard;
@@ -2007,7 +1994,6 @@
 				95E3CD571B0DCA4200497EB9 /* icon-info@2x.png in Resources */,
 				95E4BC9E1B37DA4A00B8CF44 /* SCFirstView_5_5_inch.xib in Resources */,
 				952D25051A9B9EC800C354DF /* tabbaritem_search.png in Resources */,
-				98ACE0711BAC4733002AA083 /* Tutorial.storyboard in Resources */,
 				958E31551B0589F300863EDF /* GoogleMaps.bundle in Resources */,
 				95E4BCA31B37DA4A00B8CF44 /* SCSecondView_5_5_inch.xib in Resources */,
 				95E4BCA11B37DA4A00B8CF44 /* SCSecondView_3_5_inch.xib in Resources */,
@@ -2130,7 +2116,6 @@
 				95B118FC1BC3C00F002A95CD /* PrivacyPopup.m in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
-				989769021BACB55A002CED23 /* INAutoResizeLabel.swift in Sources */,
 				956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */,
 				952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */,
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
@@ -2155,13 +2140,13 @@
 				959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */,
 				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
 				959466571BBDFB1B00F3222F /* STCustomCollectionViewCell.m in Sources */,
+				9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */,
 				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
 				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
 				952D24B11A9B9D3300C354DF /* TimelineTableViewController.m in Sources */,
 				95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */,
-				95E709761B8C0E70001B6EDA /* SplashViewController.m in Sources */,
 				952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */,
 				952D25171A9B9F4700C354DF /* NullSafe.m in Sources */,
 				951AD5461B36B0B20057F081 /* Sample4TableViewCell.m in Sources */,
@@ -2229,7 +2214,6 @@
 				952D23771A9B95E800C354DF /* JTCalendarDayView.m in Sources */,
 				95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */,
 				952D237B1A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m in Sources */,
-				98ACE0741BAC4D65002AA083 /* TutorialSubPageViewController.m in Sources */,
 				952D24A51A9B9D3300C354DF /* SCImageView.m in Sources */,
 				952D249A1A9B9D3300C354DF /* CustomAnnotation.m in Sources */,
 				952D23861A9B95E800C354DF /* SDWebImageDownloader.m in Sources */,
