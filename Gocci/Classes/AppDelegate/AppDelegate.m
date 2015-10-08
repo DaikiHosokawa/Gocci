@@ -18,7 +18,6 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "SplashViewController.h"
 
 #import "FHSTwitterEngine.h"
 

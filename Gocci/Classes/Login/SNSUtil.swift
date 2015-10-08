@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SNSUtil : NSObject
+class SNSUtil
 {
     static let singelton = SNSUtil()
     
@@ -29,7 +29,7 @@ class SNSUtil : NSObject
         case SNS_PROVIDER_FAIL
     }
     
-    override init()
+    init()
     {
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         //FHSTwitterEngine.sharedEngine().setDelegate(self)
@@ -154,15 +154,15 @@ class SNSUtil : NSObject
                     
                     // TODO dirty implementation. Fix this one day
                     let uid: String = Util.getUserDefString("user_id")!
-                    let iid: String = Util.getUserDefString("identity_id")!
+                    let iid: String = Util.getUserDefString("iid")!
                     let tok: String = Util.getUserDefString("token")!
                     
                     AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+                        andThen(LoginResult.SNS_LOGIN_SUCCESS)
                         AWS2.storeSNSTokenInDataSet(provider, token: token)
                         return nil
                     })
                     
-                    andThen(LoginResult.SNS_LOGIN_SUCCESS)
                 }
                 else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
                     andThen(LoginResult.SNS_USER_NOT_REGISTERD)
