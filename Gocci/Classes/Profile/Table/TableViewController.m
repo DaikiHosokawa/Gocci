@@ -58,24 +58,15 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)setupData
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        else{
-            NSLog(@"users result:%@",result);
-            
+   
             // 取得したデータを self.posts に格納
             thumb = [NSMutableArray arrayWithCapacity:0];
             postid_ = [NSMutableArray arrayWithCapacity:0];
             restname = [NSMutableArray arrayWithCapacity:0];
-            
-            NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+    
+    NSLog(@"ここでは:%@",_receiveDic);
+    
+            NSArray* items = (NSArray*)_receiveDic;
             
             for (NSDictionary *post in items) {
                 
@@ -99,8 +90,6 @@ static NSString * const reuseIdentifier = @"Cell";
             }else{
             [self.tableView reloadData];
             }
-        }
-    }];
 }
 
 
@@ -112,7 +101,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [postid_ count];
+    return [_receiveDic count];
 }
 
 

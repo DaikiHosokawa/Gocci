@@ -52,22 +52,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)setupData
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        
+   
         // 取得したデータを self.posts に格納
         thumb = [NSMutableArray arrayWithCapacity:0];
         postid_ = [NSMutableArray arrayWithCapacity:0];
         restname = [NSMutableArray arrayWithCapacity:0];
         
-        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        NSArray* items = (NSArray*)_receiveDic2;
         
         for (NSDictionary *post in items) {
             
@@ -78,6 +69,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             NSDictionary *restnameGet = [post objectForKey:@"restname"];
             [restname addObject:restnameGet];
         }
+    
         NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
         if ([thumb count] == 0) {
             // 画像表示例文
@@ -89,9 +81,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         }else{
             [self.collectionView reloadData];
         }
-
-        
-    }];
 }
 
 
@@ -99,7 +88,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [postid_ count];
+    return [_receiveDic2 count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

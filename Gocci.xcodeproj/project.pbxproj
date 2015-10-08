@@ -1220,9 +1220,9 @@
 				952D24331A9B9D3300C354DF /* usersTableViewController.m */,
 				958ACEEF1BC0E327006EEA75 /* UsersViewController.h */,
 				958ACEF01BC0E327006EEA75 /* UsersViewController.m */,
-				9539018D1BC216F400842FFF /* Map */,
 				953901841BC164FA00842FFF /* Table */,
 				959466471BBDFB1B00F3222F /* Colloction */,
+				9539018D1BC216F400842FFF /* Map */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

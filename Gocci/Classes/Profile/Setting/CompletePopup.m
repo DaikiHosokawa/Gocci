@@ -32,7 +32,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"閉じる" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
     
     label = [UILabel new];
     label.numberOfLines = 0;
@@ -49,9 +48,5 @@
     label.frame = CGRectMake(20, 10, self.view.frame.size.width - 40, self.view.frame.size.height - 20);
 }
 
-- (void)nextBtnDidTap
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

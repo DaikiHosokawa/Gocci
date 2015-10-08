@@ -13,4 +13,6 @@
 
 @property id supervc; //親
 
+@property (nonatomic, strong) NSDictionary *receiveDic2;
+
 @end

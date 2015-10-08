@@ -38,8 +38,15 @@
     NSLog(@"username:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]);
     username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     username.delegate = self;
-    [userpicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
-                placeholderImage:[UIImage imageNamed:@"default.png"]];
+   // [userpicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
+     //           placeholderImage:[UIImage imageNamed:@"default.png"]];
+    
+    // 画像の作成3．Web上の画像を作成
+    NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    userpicture.image = image;
+    NSLog(@"picturein:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]);
     userpicture.userInteractionEnabled = YES;
     userpicture.tag = 101;
     
@@ -164,6 +171,17 @@
                  // TODO: アラート等を掲出
                  return;
              }
+             
+             //API success case
+             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+             NSString *response_user = [result objectForKey:@"username"];
+             NSString *response_img = [result objectForKey:@"profile_img"];
+             if(![response_user isEqualToString:@"変更に失敗しました"])
+             {
+                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+             }
+             
+             
              AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
              expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -177,6 +195,13 @@
                  dispatch_async(dispatch_get_main_queue(), ^{
                      // Do something e.g. Alert a user for transfer completion.
                      // On failed uploads, `error` contains the error object.
+                     
+                     if (![response_img isEqualToString:@"変更に失敗しました"])
+                     {
+                         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+                         [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
+                         
+                     }
                  });
              };
              
@@ -198,24 +223,9 @@
                      AWSS3TransferUtilityUploadTask *uploadTask = task.result;
                      NSLog(@"success:%@",task.result);
                      // Do something with uploadTask.
-                    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
                  }
                  return nil;
              }];
-             //API success case
-             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-             NSString *response_user = [result objectForKey:@"username"];
-             NSString *response_img = [result objectForKey:@"profile_img"];
-             if(![response_user isEqualToString:@"変更に失敗しました"])
-             {
-                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-             }
-             else if (![response_img isEqualToString:@"変更に失敗しました"])
-             {
-                 [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-                 
-             }
-             
              
          }];
     }else{
