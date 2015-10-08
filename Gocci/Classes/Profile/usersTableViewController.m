@@ -42,13 +42,17 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     NSDictionary *header;
     NSMutableArray *thumb;
-    IBOutlet __weak UICollectionView *_collectionView;
+    /*
+     IBOutlet __weak UICollectionView *_collectionView;
+     */
     __weak IBOutlet UIButton *editButton;
     __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
+    __weak IBOutlet UIView *changeView;
+    UIViewController *currentViewController_;
+    NSArray *viewControllers_;
 }
 
-- (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
@@ -64,9 +68,42 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 #pragma mark - アイテム名登録用
 
+- (void)setupViewControllers
+{
+    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    UIViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+    viewControllers_ = @[firstViewController, secondViewController];
+}
+
+- (void)changeSegmentedControlValue
+{
+    if(currentViewController_){
+        NSLog(@"今のビューコンあり");
+        [currentViewController_ willMoveToParentViewController:nil];
+        [currentViewController_.view removeFromSuperview];
+        [currentViewController_ removeFromParentViewController];
+    }
+    
+    UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
+    
+    [self addChildViewController:nextViewController];
+    nextViewController.view.frame = changeView.bounds;
+    [changeView addSubview:nextViewController.view];
+    [nextViewController didMoveToParentViewController:self];
+    
+    currentViewController_ = nextViewController;
+}
+
+- (IBAction)changeSegmentValue:(id)sender {
+    [self changeSegmentedControlValue];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupViewControllers];
+    
+    [self changeSegmentedControlValue];
     
     //ナビゲーションバーに画像
     {
@@ -112,18 +149,18 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
     /*
-    // Table View の設定
-    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-    self.tableView.bounces = YES;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
-         forCellReuseIdentifier:TimelineCellIdentifier];
-    
-    // Pull to refresh
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
-    */
+     // Table View の設定
+     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+     self.tableView.bounces = YES;
+     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
+     forCellReuseIdentifier:TimelineCellIdentifier];
+     
+     // Pull to refresh
+     self.refresh = [UIRefreshControl new];
+     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+     [self.tableView addSubview:self.refresh];
+     */
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -132,10 +169,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
                                name:@"HogeNotification"
                              object:nil];
     
-    UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
-    _collectionView.dataSource = self;
-    _collectionView.delegate = self;
+    /* collec
+     UINib *nib = [UINib nibWithNibName:@"STCustomCollectionViewCell" bundle:nil];
+     [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CellId"];
+     _collectionView.dataSource = self;
+     _collectionView.delegate = self;
+     */
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -177,10 +216,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
-    [self _fetchProfile];
-    //[self.tableView reloadData];
-    
 }
 
 
@@ -201,11 +236,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 #pragma mark - Action
 
-- (void)refresh:(UIRefreshControl *)sender
-{
-    [self _fetchProfile];
-}
-
 
 #pragma mark - Table view data source
 
@@ -219,125 +249,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     return 1;
 }
 
- 
-//1セルあたりの高さ
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    // セルが作成されていないか?
-    if (!cell) { // yes
-        // セルを作成
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    // セルにテキストを設定
-    // セルの内容はNSArray型の「items」にセットされているものとする
-    
-    return cell;
-}
-
-
-
-#pragma mark - TimelineCellDelegate
-#pragma mark いいねボタンの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{
-    // API からデータを取得
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-    }
-     ];
-    
-}
-
-
-#pragma mark rest_nameタップの時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapRestaurant:(NSString *)rest_id{
-    NSLog(@"restname is touched");
-    //rest nameタップの時の処理
-    _postRestname = rest_id;
-    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
-}
-
--(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
-{
-    NSString *mapText = Locality;
-    mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText];
-    NSLog(@"URLSchemes:%@",directions);
-    if ([[UIApplication sharedApplication] canOpenURL:
-         [NSURL URLWithString:@"comgooglemaps://"]]) {
-        [[UIApplication sharedApplication] openURL:
-         [NSURL URLWithString:directions]];
-    } else {
-        NSLog(@"Can't use comgooglemaps://");
-        //アラート出す
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
-                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-        [alert show];
-        
-    }
-}
-
-#pragma mark コメントボタン押下時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
-{
-    // コメントボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-    
-    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
-}
-
-// TODO: 削除機能の実装
-//#pragma mark 削除ボタン押下時の処理
-- (void)timelineCell:(TimelineCell *)cell didTapDeleteWithPostID:(NSString *)postID
-{
-    // 削除ボタン押下時の処理
-    LOG(@"postid=%@", postID);
-    _postID = postID;
-    Class class = NSClassFromString(@"UIAlertController");
-    if(class)
-    {
-        // iOS 8の時の処理
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除してもいいですか？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        // addActionした順に左から右にボタンが配置されます
-        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            
-            // API からデータを取得
-            [APIClient postDelete:postID handler:^(id result, NSUInteger code, NSError *error) {
-                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-            }
-             ];
-            
-            [self _fetchProfile];
-            [self.tableView reloadData];
-            
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else
-    {
-        // API からデータを取得
-        [APIClient postDelete:postID handler:^(id result, NSUInteger code, NSError *error) {
-            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-        }
-         ];
-        [self _fetchProfile];
-        [self.tableView reloadData];
-    }
-}
 
 
 -(void)byoga{
@@ -351,69 +262,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 #pragma mark - Private Methods
 
-/**
- *  API からタイムラインのデータを取得
- */
-- (void)_fetchProfile
-{
-    [SVProgressHUD show];
-    
-    AppDelegate* profiledelegate = [[UIApplication sharedApplication] delegate];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self.refresh beginRefreshing];
-    
-    __weak typeof(self)weakSelf = self;
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        
-        NSLog(@"users result:%@",result);
-        
-        // 取得したデータを self.posts に格納
-        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-        thumb = [NSMutableArray arrayWithCapacity:0];
-        _postid_ = [NSMutableArray arrayWithCapacity:0];
-        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
-        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
-        
-        for (NSDictionary *post in items) {
-            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-            NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
-            NSDictionary *postidGet = [post objectForKey:@"post_id"];
-            NSLog(@"thumbGet:%@",thumbGet);
-            [thumb addObject:thumbGet];
-            [_postid_ addObject:postidGet];
-        }
-        
-        NSLog(@"thumb:%@",thumb);
-        header = headerDic;
-        self.posts = [NSArray arrayWithArray:tempPosts];
-        
-        // 動画データを一度全て削除
-        [[MoviePlayerManager sharedManager] removeAllPlayers];
-        
-        // 表示の更新
-        [weakSelf.tableView reloadData];
-        
-        if ([self.posts count]== 0) {
-            NSLog(@"投稿がない");
-            _emptyView.hidden = NO;
-            [SVProgressHUD dismiss];
-        }
-        
-        if ([weakSelf.refresh isRefreshing]) {
-            [weakSelf.refresh endRefreshing];
-        }
-        [self byoga];
-        [_collectionView reloadData];
-    }];
-}
+
 
 
 
@@ -449,30 +298,31 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    NSLog(@"数:%lu",(unsigned long)[thumb count]);
-    return [thumb count];
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
-    
-   
-    [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
-                            placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    return cell;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
-    [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
-    
-}
-
+/* collec
+ - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+ {
+ NSLog(@"数:%lu",(unsigned long)[thumb count]);
+ return [thumb count];
+ }
+ 
+ - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+ {
+ STCustomCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"CellId" forIndexPath:indexPath];
+ 
+ 
+ [cell.thumb sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
+ placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+ return cell;
+ }
+ 
+ #pragma mark - UICollectionViewDelegate
+ 
+ - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+ {
+ NSLog(@"選んだのは:%@",_postid_[indexPath.row]);
+ [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:_postid_[indexPath.row]];
+ 
+ }
+ */
 
 @end

@@ -26,6 +26,8 @@
 
 #import "TimelinePageMenuViewController.h"
 
+#import "GocciTest-Swift.h"
+
 // 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -47,6 +49,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (nonatomic, strong) UIRefreshControl *refresh;
 
 @property (nonatomic,strong) NSArray *posts;	// タイムラインのデータ
+
+@property (strong, nonatomic) LiquidButtonWrapper *lbw;
+
 
 @end
 
@@ -71,6 +76,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
+    
+    self.lbw = [[LiquidButtonWrapper alloc] init];
+    [self.lbw addLiquidButton:self];
     
     
 }
@@ -143,12 +151,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //	}
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    //	// フリック操作によるスクロール終了
-    //	LOG(@"scroll is stoped");
-    //
-    //	// [self _playMovieAtCurrentCell];
-}
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {

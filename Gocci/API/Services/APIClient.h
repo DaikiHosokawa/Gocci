@@ -175,8 +175,8 @@
  *  @param handler
  */
 + (void)restInsert:(NSString *)restName
-          latitude:(CGFloat)latitude
-         longitude:(CGFloat)longitude
+          latitude:(double)latitude
+         longitude:(double)longitude
            handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
@@ -244,6 +244,14 @@
        handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  postFeedback
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)postFeedback:(NSString *)feedback handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
  *  Conversion
  *
  *
@@ -276,6 +284,21 @@
  *  @param handler
  */
 + (void)postUnWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
+ *  updateProfile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)updateProfileBoth:(NSString *)username profile_img:(NSString *)profile_img handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  updateProfile
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)updateProfileOnlyUsername:(NSString *)username  handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 + (void)connectWithSNS:(NSString *)provider

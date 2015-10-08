@@ -25,8 +25,6 @@
     DemoContentView *_secondContentView;
 }
 
-- (void)showDefaultContentView;
-
 @property (nonatomic, strong) NSMutableArray *restname_;
 @property (nonatomic, strong) NSMutableArray *category_;
 @property (nonatomic, strong) NSMutableArray *meter_;
@@ -114,7 +112,7 @@
     [super viewDidAppear:animated];
     if ([self isFirstRun]) {
         //Calling this methods builds the intro and adds it to the screen. See below.
-        [self showDefaultContentView];
+        
     }
     
     
@@ -455,30 +453,7 @@
 }
 
 
-#pragma mark -
-- (void)showDefaultContentView
-{
-    if (!_firstContentView) {
-        _firstContentView = [DemoContentView defaultView];
-        
-        UILabel *descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.frame = CGRectMake(20, 8, 260, 100);
-        descriptionLabel.numberOfLines = 0.;
-        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-        descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.textColor = [UIColor blackColor];
-        descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.];
-        descriptionLabel.text = @"投稿したい店を選びましょう！";
-        [_firstContentView addSubview:descriptionLabel];
-        
-        [_firstContentView setDismissHandler:^(DemoContentView *view) {
-            // to dismiss current cardView. Also you could call the `dismiss` method.
-            [CXCardView dismissCurrent];
-        }];
-    }
-    
-    [CXCardView showWithView:_firstContentView draggable:YES];
-}
+
 
 - (IBAction)onBack:(id)sender {
     
