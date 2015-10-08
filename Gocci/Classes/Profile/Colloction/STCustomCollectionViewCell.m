@@ -10,10 +10,6 @@
 
 @implementation STCustomCollectionViewCell
 
-//
-// readonly property still need to define synthesize.
-//
-@synthesize thumb = _thumb;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -23,9 +19,5 @@
     return self;
 }
 
-- (void)awakeFromNib
-{
-    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
-}
 
 @end

@@ -35,7 +35,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @interface LifelogSubTableViewController()
 <TimelineCellDelegate>
 
-- (void)showDefaultContentView;
 
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (nonatomic, retain) NSIndexPath *nowindexPath;

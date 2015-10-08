@@ -12,7 +12,6 @@
 #import <Foundation/Foundation.h>
 #import "usersTableViewController_other.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "CXCardView.h"
 #import "DemoContentView.h"
 #import <MapKit/MapKit.h>
 #import <GoogleMaps/GoogleMaps.h>
