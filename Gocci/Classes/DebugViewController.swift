@@ -17,9 +17,7 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
     
-    @IBOutlet weak var tokenEditField: UITextField!
-    //strong var facebookLogin: FBSDKLoginManager
-    
+    @IBOutlet weak var tokenEditField: UITextField!    
     
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
@@ -31,7 +29,7 @@ class DebugViewController : UIViewController {
         
         topLabel.text = topLabel.text! + ".4"
         
-        if let iid = Util.getUserDefString("identity_id") {
+        if let iid = Util.getUserDefString("iid") {
             loginEditField.text = iid
         }
         signUpEditField.text = NSUserDefaults.standardUserDefaults().stringForKey("username") ?? Util.randomUsername()
@@ -49,117 +47,11 @@ class DebugViewController : UIViewController {
         
         print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
         
-        let token = "CAACG9jtU8M4BALGTI8ADZB3p4xssI2sxms5fnQbKBEztmMsrB8CuUOsKE0p4wNgJ6DGUkWrGYrkyjZAvDb4m5ZA4jx0RozMCuvTsm8cKp7QAMwI5F2Hxm2vkB4OvxOgaaeRr0V0zWlkizTI5jsebWoZBbQGaMv3UuaOZCHha2nKE44BebKL7xciFVHjV49DlSnh7n8oGYQAZDZD"
+        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
         
-      //  let l = [FACEBOOK_PROVIDER_STRING: token];
-        
-        
-        AWSManager.getIIDforSNSLogin(FACEBOOK_PROVIDER_STRING, token: token).continueWithBlock { (task) -> AnyObject! in
-            if task.result == nil {
-                print("Invalid login token. Expired or account is not linked to Gocci")
-            }
-            else {
-                print("================================ We got an IID \(task.result)")
-                
-                
-                NetOp.loginWithSNS(task.result as! String, andThen: { (code, emsg) -> Void in
-                    
-                    let uid: String = Util.getUserDefString("user_id")!
-                    let iid: String = Util.getUserDefString("identity_id")!
-                    let tok: String = Util.getUserDefString("token")!
-                    
-                    if code == NetOpResult.NETOP_SUCCESS {
-                        AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                            AWS2.storeSNSTokenInDataSet(FACEBOOK_PROVIDER_STRING, token: token)
-                            return nil
-                        })
-                    }
-                    else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
-                        print("user not registerded :(")
-                    }
-                    else {
-                        print("WTF? no internet?")
-                    }
-
-                })
-            }
-
-            return nil
+        SNSUtil.singelton.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
+            print("Result: \(res)")
         }
-        
-        
-//        let tmpip = AWSEnhancedCognitoIdentityProvider(regionType: AWSRegionType.USEast1, identityId: nil, identityPoolId: COGNITO_POOL_ID, logins: nil)
-        
-        //let tmpip = GocciDevAuthIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID)
-        
-        
-//        let tmpip = SNSIIDRetrieverIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID, iid: "fuck", logins: nil)
-//        
-//        tmpip.refresh().continueWithBlock { (task) -> AnyObject! in
-//            tmpip.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-//                print("WE GOT BEF: \(tmpip.identityId)")
-//                
-//                tmpip.logins = l
-//                
-//                tmpip.refresh().continueWithBlock { (task) -> AnyObject! in
-//                    tmpip.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-//                        print("WE GOT AFT: \(tmpip.identityId)")
-//                        return nil
-//                    })
-//                }
-//                return nil
-//            })
-//        }
-        
-//        tmpip.refresh().continueWithBlock { (task) -> AnyObject! in
-//            tmpip.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-//                print("WE GOT BEF: \(tmpip.identityId)")
-//                
-//                tmpip.connectWithSNSProvider(FACEBOOK_PROVIDER_STRING, token: token).continueWithBlock { (task) -> AnyObject! in
-//                    tmpip.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-//                        print("WE GOT AFT: \(tmpip.identityId)")
-//                        return nil
-//                    })
-//                }
-//                return nil
-//            })
-//        }
-        
-        
-//        let iid = "us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca"
-//
-//        NetOp.loginWithIID(iid)
-//        {
-//            (code, emsg) -> Void in
-//            
-//            print("NetOpCode: \(code)  " + (emsg ?? ""))
-//            if code == NetOpResult.NETOP_SUCCESS {
-//                self.loginEditField.text = self.signUpEditField.text
-//                let uid: String = Util.getUserDefString("user_id")!
-// //               let iid: String = Util.getUserDefString("identity_id")!
-//                let tok: String = Util.getUserDefString("token")!
-//                
-////                tmpip.connectWithBackEnd(iid, userID: uid, token: tok).continueWithBlock { (task) -> AnyObject! in
-////                    tmpip.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-////                        print("WE GOT AFT: \(tmpip.identityId)")
-////                        print("LOGINS: \(tmpip.logins)")
-////                        return nil
-////                    })
-////                }
-//
-//                let a = AWSGocciIdentityProvider(regionType: AWSRegionType.USEast1, identityPoolID: COGNITO_POOL_ID, identityID: iid, userID: uid, logins: [GOCCI_DEV_AUTH_PROVIDER_STRING: uid], providerName: GOCCI_DEV_AUTH_PROVIDER_STRING, initToken: tok)
-//                a.refresh().continueWithBlock({ (task) -> AnyObject! in
-//                    a.getIdentityId().continueWithBlock({ (task) -> AnyObject! in
-//                        print("WE GOT AFT: \(tmpip.identityId)")
-//                        print("LOGINS: \(tmpip.logins)")
-//                        return nil
-//                    })
-//                    return nil
-//                })
-//
-//            }
-//        }
-//        
     }
 
 
@@ -180,30 +72,13 @@ class DebugViewController : UIViewController {
                 self.loginEditField.text = self.signUpEditField.text
                 
                 let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("identity_id")!
+                let iid: String = Util.getUserDefString("iid")!
                 let tok: String = Util.getUserDefString("token")!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
                     AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
                     return nil
                 })
-                //AWS2.printIID()
-                
-//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock(){
-//                    (task) -> AnyObject! in
-//                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "noname")
-//                    return nil
-//                }
-//
-
-//                
-//                let ip = AWSGocciIdentityProvider(regionType: AWSRegionType.USEast1, identityPoolID: COGNITO_POOL_ID, identityID: iid, userID: uid, logins: [GOCCI_DEV_AUTH_PROVIDER_STRING: uid], providerName: GOCCI_DEV_AUTH_PROVIDER_STRING, initToken: tok)
-//                
-//                ip
-//                
-//                
-//                ip.refresh().waitUntilFinished()
-//                print("hhhhhhhhhhhdwdww: \(ip.identityId)")
             }
         }
         
@@ -211,9 +86,9 @@ class DebugViewController : UIViewController {
 
     @IBAction func loginAsUserClicked(sender: AnyObject)
     {
-        //NSUserDefaults.standardUserDefaults().setObject("us-east-1:5403c205-8a2b-474e-b1c7-1a94663d9115", forKey: "identity_id")
+        //NSUserDefaults.standardUserDefaults().setObject("us-east-1:5403c205-8a2b-474e-b1c7-1a94663d9115", forKey: "iid")
         
-        guard let iid = NSUserDefaults.standardUserDefaults().stringForKey("identity_id") else
+        guard let iid = NSUserDefaults.standardUserDefaults().stringForKey("iid") else
         {
             print("ERROR: iid not set in user defs")
             return
@@ -229,7 +104,7 @@ class DebugViewController : UIViewController {
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
                 let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("identity_id")!
+                let iid: String = Util.getUserDefString("iid")!
                 let tok: String = Util.getUserDefString("token")!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
@@ -278,8 +153,6 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        Util.thisKillsTheFacebook()
-        
         SNSUtil.singelton.loginWithFacebook(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
@@ -292,61 +165,21 @@ class DebugViewController : UIViewController {
     
     @IBAction func twitterTokentoIIDclicked(sender: AnyObject) {
         
-//        APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: "CAACG9jtU8M4BANq1hm78P2RiXNPBNvCfjMTHPqWtBh76WeHiTdZCDeyhtx0CVwgZC344wQMcqG1fytz55zTPzN1EhF8yZAaw0wv3lfAiLOC7ykmwHqZAgARW7WoEBbZBmne2M1s7P6YEwyE9HCAnWVZCgJze6z41eFMDPB4cCHU3ZCOYwl5ZADEG2o6INWuHZAbV2bSZAlx4lqWQZDZD", profilePictureURL: "none", handler:
-//            {
-//                (result, code, error) -> Void in
-//                // TODO msg to the user on fail
-//                //             if (!error && [result[@"code"] integerValue] == 200){
-//                print(result)
-//        })
+
     }
     
     
     
     @IBAction func facebookTokentoIIDclicked(sender: AnyObject) {
         
-//        tokenEditField.text = "CAACG9jtU8M4BALWeCfRrAipUG68Chej01KZCufhwqV77wfwZAaHCDZC5WWsfUSfPR8d7Vh2dOAXYtXXgnxfN64TyBf3vYvzD8FhGAF0bdN1OPSYYfVmQS8PHJxtXAwzd8QPDlaAkGFR1uPvyJoL1tD9i9occtMZAnpCp3fWAZC0J1SK8F9r8bgZCEj5hBHLf1nAXR8lz8d3QZDZD"
 
-//        if let token = tokenEditField.text where token != "" {
-//            let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: token)
-//            
-//            NetOp.loginWithIID(iid, andThen: { (result, msg) -> Void in
-//                
-//                if result != NetOpResult.NETOP_SUCCESS {
-//                    print("=== FAILED: \(msg)")
-//                    return
-//                }
-//                print("=== Looks good :)")
-//            })
-//        }
-//        else {
-//            FBSDKLoginManager().logInWithReadPermissions(nil)
-//            {
-//                (result, error) -> Void in
-//                
-//                if error == nil && !result.isCancelled {
-//                    print("=== Request IID for FBID: \(FBSDKAccessToken.currentAccessToken().userID)")
-//                    
-//                    let iid = AWS.getIIDforRegisterdSNSProvider(FACEBOOK_PROVIDER_STRING, SNSToken: FBSDKAccessToken.currentAccessToken().tokenString)
-//                    
-//                    NetOp.loginWithIID(iid, andThen: { (result, msg) -> Void in
-//                        
-//                        if result != NetOpResult.NETOP_SUCCESS {
-//                            print("=== FAILED: \(msg)")
-//                            return
-//                        }
-//                        print("=== Looks good :)")
-//                    })
-//                }
-//            }
-//        }
     }
     
     
     
     
     @IBAction func fastRegFB(sender: AnyObject) {
-        let token = "CAACG9jtU8M4BANBYEhMXF0G2TbBEZCbmN1nhQTKibb93PuBw53LAa4FZAc9PcuWLE3a898SvX832Exm4TmzjPrquV9YQ1Yp4WYwWZAq6ptPMlDZBhuk9D7MeGxNIZADbx8ZCZAQtHJCmmlUWnfkgQlZANWkxaE8L3DOIAxkGpTLTZAztQY707lmusZC6boR3lqd5JTanvmZAFTM0wZDZD"
+        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
         
     
         
