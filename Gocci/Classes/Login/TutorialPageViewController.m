@@ -365,13 +365,14 @@
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            [locationManager startUpdatingLocation];
-            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-                self.registerButton.enabled = false;
-                self.username.enabled = false;
-                
-                [self registerUsername:self.username.text];
-            }
+            // what is that? in the simulator this has horriable consequnses...
+//            [locationManager startUpdatingLocation];
+//            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+//                self.registerButton.enabled = false;
+//                self.username.enabled = false;
+//                
+//                [self registerUsername:self.username.text];
+//            }
             break;
         case kCLAuthorizationStatusDenied:
         case kCLAuthorizationStatusRestricted:
