@@ -147,9 +147,9 @@ static NSString *stringKakaku = nil;
 {
 	switch (indexBackColor) {
 		case 0:
-			cell.backgroundColor = [UIColor blackColor];
-			cell.textLabel.textColor = [UIColor whiteColor];
-			cell.detailTextLabel.textColor = [UIColor whiteColor];
+			cell.backgroundColor = [UIColor whiteColor];
+			cell.textLabel.textColor = [UIColor blackColor];
+			cell.detailTextLabel.textColor = [UIColor blackColor];
 			break;
 			
 		default:

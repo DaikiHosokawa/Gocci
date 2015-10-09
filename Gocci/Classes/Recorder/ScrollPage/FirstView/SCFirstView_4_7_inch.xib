@@ -16,15 +16,15 @@
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZQ-KD-WxU">
-                    <rect key="frame" x="286" y="65" width="45" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf1-eU-fwh">
+                    <rect key="frame" x="300" y="78" width="38" height="24"/>
                     <animations/>
-                    <state key="normal" image="capture_flip">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="reverseCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="y92-mT-mXK"/>
-                    </connections>
+                    <state key="normal" image="ic_check"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-CK-06r">
+                    <rect key="frame" x="42" y="71" width="27" height="27"/>
+                    <animations/>
+                    <state key="normal" image="ic_close"/>
                 </button>
             </subviews>
             <animations/>
@@ -35,11 +35,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="recordView" destination="Mw1-X3-isV" id="hZW-hb-XXM"/>
-                <outlet property="reverseCamera" destination="WZQ-KD-WxU" id="SeT-TD-CIW"/>
             </connections>
         </view>
     </objects>
     <resources>
-        <image name="capture_flip" width="50" height="41"/>
+        <image name="ic_check" width="24" height="24"/>
+        <image name="ic_close" width="24" height="24"/>
     </resources>
 </document>
