@@ -1697,11 +1697,8 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="had-LT-zY9"/>
-=======
         <segue reference="jr3-37-9ka"/>
->>>>>>> 04e9910325c46a566ea40b6e8380f0e89e43ac03
         <segue reference="hp2-GU-Cwb"/>
         <segue reference="ren-zg-h6h"/>
         <segue reference="plP-IR-nwD"/>
