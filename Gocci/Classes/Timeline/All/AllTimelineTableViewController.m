@@ -445,7 +445,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // API からデータを取得
         [APIClient Timeline:^(id result, NSUInteger code, NSError *error)
          {
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+             //LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
              
              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              
