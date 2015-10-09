@@ -270,24 +270,19 @@
                     <view key="view" contentMode="scaleToFill" id="Syk-Qg-J8u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1334-750-g" id="UIq-9H-UmH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                            </imageView>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="WtJ-63-Klv" kind="modal" identifier="goTimeline" id="5UA-AG-vBr"/>
+                        <segue destination="gUv-b3-mbV" kind="modal" identifier="goTutorial" id="iXs-qD-ENh"/>
+                        <segue destination="cYs-UW-Ra8" kind="modal" identifier="goRelogin" id="BQI-vf-HeQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwb-Tb-s4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6087.5" y="-2807.5"/>
+            <point key="canvasLocation" x="-5583.5" y="-2816.5"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="lvV-YR-UTi">
@@ -328,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aou-DN-Jnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5543.5" y="-2343.5"/>
+            <point key="canvasLocation" x="-4975.5" y="-2208.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oaE-O3-Y38">
@@ -367,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08B-Mj-gss" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4967.5" y="-2252.5"/>
+            <point key="canvasLocation" x="-4891.5" y="-1493.5"/>
         </scene>
         <!--Re Login View Controller-->
         <scene sceneID="Yqx-4o-acE">
@@ -475,7 +470,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ntq-iF-3C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="50e-Rm-avE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-4442.5" y="-2218.5"/>
+            <point key="canvasLocation" x="-4354.5" y="-2215.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vvP-DX-igN">
@@ -601,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6b-hM-2Ep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4967.5" y="-1493.5"/>
+            <point key="canvasLocation" x="-4491.5" y="-1493.5"/>
         </scene>
         <!--Connect View Controller-->
         <scene sceneID="leb-LQ-MVn">
@@ -676,7 +671,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UvJ-Md-aFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4967.5" y="-684.5"/>
+            <point key="canvasLocation" x="-4087.5" y="-1493.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pyg-JI-IHk">
@@ -715,7 +710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ3-0O-xlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4967.5" y="-3005.5"/>
+            <point key="canvasLocation" x="-5307.5" y="-1502.5"/>
         </scene>
         <!--BaseTimeline-->
         <scene sceneID="twi-CO-anf">
@@ -967,7 +962,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45.5"/>
@@ -1313,7 +1308,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="iZ2-A9-906" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iZ2-A9-906" id="YdG-PO-9SA">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1410,7 +1405,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="xtj-fv-F3D" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtj-fv-F3D" id="DVt-E1-vg9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1446,7 +1441,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="4XJ-qA-NLM" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XJ-qA-NLM" id="U1h-SU-AUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1664,7 +1659,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1334-750-g" width="750" height="1334"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="backButton-2" width="30" height="50"/>
@@ -1693,6 +1687,7 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jr3-37-9ka"/>
         <segue reference="hp2-GU-Cwb"/>
         <segue reference="ren-zg-h6h"/>
         <segue reference="FOa-6V-u96"/>

@@ -247,6 +247,7 @@
 		9843E9211BA993EB0015350D /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91E1BA993EB0015350D /* AWSCore.framework */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
 		9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDCB1BC6906D00B1651E /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9874BDCF1BC7C1E200B1651E /* splash_tmp_sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */; settings = {ASSET_TAGS = (); }; };
 		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
 		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
 		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
@@ -704,6 +705,7 @@
 		9843E91E1BA993EB0015350D /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		9874BDCB1BC6906D00B1651E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash_tmp_sample.mp4; path = Video/splash_tmp_sample.mp4; sourceTree = "<group>"; };
 		987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Gocci/Vendor/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
 		987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -1395,6 +1397,7 @@
 		952D24C41A9B9EC800C354DF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9874BDCD1BC7C18500B1651E /* Video */,
 				952D24C51A9B9EC800C354DF /* Image */,
 				952D24E71A9B9EC800C354DF /* Storyboard */,
 				952D24EC1A9B9EC800C354DF /* Tabbar */,
@@ -1760,6 +1763,14 @@
 			path = AWS;
 			sourceTree = "<group>";
 		};
+		9874BDCD1BC7C18500B1651E /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		98DE2B7F1BAF906800382B75 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -2061,6 +2072,7 @@
 				952D25091A9B9EC800C354DF /* tabbaritem_timeline.png in Resources */,
 				952D250B1A9B9EC800C354DF /* tabbaritem_timeline_sel.png in Resources */,
 				950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */,
+				9874BDCF1BC7C1E200B1651E /* splash_tmp_sample.mp4 in Resources */,
 				959CF8DC1B26CDD200CDB492 /* TableViewCustomCell.xib in Resources */,
 				952D25101A9B9EC800C354DF /* 4_7_inch.storyboard in Resources */,
 				952D24EF1A9B9EC800C354DF /* Images.xcassets in Resources */,
@@ -2398,7 +2410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
@@ -2435,7 +2447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
@@ -2468,7 +2480,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2520,7 +2532,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

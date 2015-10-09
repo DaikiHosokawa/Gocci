@@ -97,10 +97,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Sample5TableViewCell_other" id="2FL-al-ONx" customClass="Sample5TableViewCell_other">
-                                <rect key="frame" x="0.0" y="316" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="252" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FL-al-ONx" id="0Um-8x-zzT">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -234,10 +234,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample5TableViewCell" id="omE-Zo-xI0" customClass="Sample5TableViewCell">
-                                <rect key="frame" x="0.0" y="336" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omE-Zo-xI0" id="V2U-B6-5Cc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -275,10 +275,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FollowListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowListCell" id="QGl-wi-0dd" customClass="FollowListCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QGl-wi-0dd" id="q5n-P0-33C">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -528,10 +528,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -593,10 +593,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buU-Ca-aI8">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buU-Ca-aI8" id="iSI-EU-uBM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -637,10 +637,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FolloweeListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FolloweeListCell" id="Frb-OG-Kof" customClass="FolloweeListCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Frb-OG-Kof" id="Cba-Jk-L35">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -673,10 +673,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CheerListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheerListCell" id="74o-Ga-cjY" customClass="CheerListCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74o-Ga-cjY" id="8Qn-AQ-ZAV">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -926,7 +926,7 @@
                                 <rect key="frame" x="0.0" y="86" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -969,28 +969,23 @@
         <!--Splash View Controller-->
         <scene sceneID="hJc-3Y-0w0">
             <objects>
-                <viewController id="dmR-R3-BTu" customClass="SplashViewController" sceneMemberID="viewController">
+                <viewController id="dmR-R3-BTu" customClass="SplashViewController" customModule="GocciTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PJB-J6-bjy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1334-750-g" id="KG3-bl-kOG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <animations/>
-                            </imageView>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="zAG-Pq-b3o" kind="modal" identifier="goTimeline" id="8vk-28-dgQ"/>
+                        <segue destination="5cg-Yg-QNf" kind="modal" identifier="goTutorial" id="pPD-YX-Qnk"/>
+                        <segue destination="1O6-J7-6M2" kind="modal" identifier="goRelogin" id="FvM-0D-wSo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbr-YB-VAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7037" y="-3171"/>
+            <point key="canvasLocation" x="-6409" y="-3743"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="xDO-z8-wg5">
@@ -1031,7 +1026,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MH-8N-TN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6500" y="-3171"/>
+            <point key="canvasLocation" x="-6048" y="-2959"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ASY-Gd-KJB">
@@ -1070,7 +1065,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5l1-PP-dyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5736" y="-3595"/>
+            <point key="canvasLocation" x="-5892" y="-2404"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uhz-R9-lGd">
@@ -1196,7 +1191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCG-kJ-rds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5736" y="-2836"/>
+            <point key="canvasLocation" x="-5512" y="-2404"/>
         </scene>
         <!--Connect View Controller-->
         <scene sceneID="B1l-aS-98p">
@@ -1272,7 +1267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fj8-la-OIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5736" y="-2027"/>
+            <point key="canvasLocation" x="-5144" y="-2404"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Isc-bb-UjJ">
@@ -1311,7 +1306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X07-7D-Yff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5736" y="-4348"/>
+            <point key="canvasLocation" x="-6272" y="-2404"/>
         </scene>
         <!--Re Login View Controller-->
         <scene sceneID="dzK-Vq-sVK">
@@ -1426,11 +1421,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Or-Om-KWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7Zz-lS-KZM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-5240" y="-3248"/>
+            <point key="canvasLocation" x="-5504" y="-2967"/>
         </scene>
     </scenes>
     <resources>
-        <image name="1334-750-g" width="750" height="1334"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="backButton-2" width="30" height="50"/>
         <image name="btn_delete_white" width="30" height="30"/>
@@ -1462,9 +1456,10 @@
         <image name="応援" width="168" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mqM-qI-glM"/>
-        <segue reference="xol-bB-B1F"/>
         <segue reference="E8I-Ul-lW0"/>
+        <segue reference="xol-bB-B1F"/>
+        <segue reference="FvM-0D-wSo"/>
+        <segue reference="mqM-qI-glM"/>
         <segue reference="VOA-w9-eWb"/>
     </inferredMetricsTieBreakers>
 </document>

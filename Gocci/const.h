@@ -29,12 +29,6 @@
 
 
 #ifdef INDEVEL
-#define SPLASH_TIME 1
-#else
-#define SPLASH_TIME 3  // SplashVievController now loads in viewDidAppear and not in viewDidLoad like before. That is slower so I set the splashtime to 3 for compensation
-#endif
-
-#ifdef INDEVEL
 #define API_BASE_URL (@"http://test.api.gocci.me/v1/mobile/")
 #else
 #define API_BASE_URL (@"https://api.gocci.me/v1/mobile/")
