@@ -89,6 +89,15 @@
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat width_record = recordView.frame.size.width * 0.95 + 20; // 90;
+        CGFloat height_record = width_record +20;
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+        pieChartTimer.frame = CGRectMake(0, 0, width_record, height_record);
+        [UIView commitAnimations];
+    });
 	percentPieChart = now / max;
 	if (percentPieChart > 1.0) percentPieChart = 1.0;
 	[pieChartTimer reloadData];

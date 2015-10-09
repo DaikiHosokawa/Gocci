@@ -142,9 +142,9 @@
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.91372549020000005" green="0.71372549019999998" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                 <segments>
-                                                    <segment title="四角"/>
-                                                    <segment title="テーブル"/>
-                                                    <segment title="地図"/>
+                                                    <segment title="" image="ic_apps_white"/>
+                                                    <segment title="" image="ic_list_white"/>
+                                                    <segment title="" image="ic_location_on_white"/>
                                                 </segments>
                                                 <color key="tintColor" red="0.80000000000000004" green="0.23921568630000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -220,15 +220,6 @@
                                                 <color key="textColor" red="0.80392156862745101" green="0.2196078431372549" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6IE-5i-MX2">
-                                                <rect key="frame" x="295" y="96" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <animations/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <segue destination="TBg-bb-Lnv" kind="push" id="zlW-Hr-qpW"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.76720696389999998" blue="0.71787294420000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,6 +256,7 @@
                         <segue destination="H10-d4-zm9" kind="push" identifier="goFollow" id="hGv-8z-0ZJ"/>
                         <segue destination="bni-34-er3" kind="push" identifier="goFollowee" id="L0G-no-fLl"/>
                         <segue destination="Pil-yP-ffM" kind="push" identifier="goCheer" id="Ofb-Gs-yfz"/>
+                        <segue destination="TBg-bb-Lnv" kind="push" identifier="goUserAdd" id="QiZ-ZX-OdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I2-L6-eeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,7 +266,7 @@
         <!--Splash View Controller-->
         <scene sceneID="cXe-zQ-XuJ">
             <objects>
-                <viewController id="KPm-xE-1aO" customClass="SplashViewController" sceneMemberID="viewController">
+                <viewController id="KPm-xE-1aO" customClass="SplashViewController" customModule="GocciTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Syk-Qg-J8u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1037,17 +1029,6 @@
                                     <action selector="onRetake:" destination="QUa-W4-V2E" eventType="touchUpInside" id="eSH-8h-lFb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N86-vH-lvu">
-                                <rect key="frame" x="13" y="25" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" image="btn_delete_white">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onBackbutton:" destination="QUa-W4-V2E" eventType="touchUpInside" id="Oos-rf-VW7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1695,7 +1676,10 @@
         <image name="empty" width="250" height="280"/>
         <image name="exeBar" width="640" height="256"/>
         <image name="gradation" width="640" height="225"/>
+        <image name="ic_apps_white" width="24" height="24"/>
         <image name="ic_empty" width="1000" height="1000"/>
+        <image name="ic_list_white" width="24" height="24"/>
+        <image name="ic_location_on_white" width="24" height="24"/>
         <image name="ic_userpicture" width="100" height="100"/>
         <image name="postingBack" width="20" height="20"/>
         <image name="sampleBar" width="414" height="322"/>
@@ -1709,10 +1693,10 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wZe-RH-qBh"/>
-        <segue reference="EB8-lD-Dfx"/>
-        <segue reference="m10-Cb-1kc"/>
-        <segue reference="fVk-vW-ACc"/>
+        <segue reference="hp2-GU-Cwb"/>
+        <segue reference="ren-zg-h6h"/>
+        <segue reference="had-LT-zY9"/>
+        <segue reference="Abr-YO-afi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

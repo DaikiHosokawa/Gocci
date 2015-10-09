@@ -75,7 +75,7 @@
 	// ページングスクロールビューの下にページコントロールを配置
 	CGFloat height_pc = 20;
 	pager = [[UIPageControl alloc] initWithFrame:CGRectMake(0,y_page, width_page,height_pc)];
-	//pager.backgroundColor = [UIColor blackColor];
+	pager.backgroundColor = [UIColor blackColor];
 	pager.numberOfPages = 2;		// ページ数を指定
 	pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
 	pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
