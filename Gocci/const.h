@@ -31,7 +31,7 @@
 #ifdef INDEVEL
 #define SPLASH_TIME 1
 #else
-#define SPLASH_TIME 5
+#define SPLASH_TIME 3  // SplashVievController now loads in viewDidAppear and not in viewDidLoad like before. That is slower so I set the splashtime to 3 for compensation
 #endif
 
 #ifdef INDEVEL
