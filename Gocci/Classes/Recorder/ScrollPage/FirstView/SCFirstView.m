@@ -29,7 +29,7 @@
 	//撮影ボタン
 	{
         
-		CGFloat width_record = recordView.frame.size.width * 0.95; // 90;
+		CGFloat width_record = recordView.frame.size.width * 1; // 90;
 		CGFloat height_record = width_record;
 		//CGFloat x_record = self.frame.size.width /2 - width_record /2;
 		//CGFloat y_record = self.frame.origin.y;
@@ -84,20 +84,20 @@
 }
 
 
+- (IBAction)DeleteDraft:(id)sender {
+    if (percentPieChart == 0.0){
+        [self.delegate DeleteDraft];
+    }else {
+        NSLog(@"だじたほうがいい");
+    }
+}
+
 
 
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CGFloat width_record = recordView.frame.size.width * 0.95 + 20; // 90;
-        CGFloat height_record = width_record +20;
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
-        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-        pieChartTimer.frame = CGRectMake(0, 0, width_record, height_record);
-        [UIView commitAnimations];
-    });
+   
 	percentPieChart = now / max;
 	if (percentPieChart > 1.0) percentPieChart = 1.0;
 	[pieChartTimer reloadData];
@@ -140,16 +140,6 @@
 	return [UIColor lightGrayColor];
 }
 
-//#pragma mark - カメラ反転
-//- (IBAction)onCameraFlip:(id)sender {
-//	
-//	[self.delegate flipCamera];
-//}
-//
-//- (IBAction)onRetake:(id)sender {
-//	
-//	[self.delegate retake];
-//}
 
 #pragma mark 生成
 + (instancetype)create

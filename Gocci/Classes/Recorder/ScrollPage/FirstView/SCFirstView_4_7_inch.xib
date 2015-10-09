@@ -25,6 +25,9 @@
                     <rect key="frame" x="42" y="71" width="27" height="27"/>
                     <animations/>
                     <state key="normal" image="ic_close"/>
+                    <connections>
+                        <action selector="DeleteDraft:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbg-i9-pGq"/>
+                    </connections>
                 </button>
             </subviews>
             <animations/>

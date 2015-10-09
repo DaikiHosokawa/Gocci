@@ -90,7 +90,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     self.barButton.badgeTextColor    = color_custom;
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
@@ -154,15 +154,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0
                                  //CAPSPageMenuOptionMenuItemSeparatorWidth : @(0.5),		//アイテム間隔 default = 0.5
-                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: color_custom,	//メニュー背景色
                                  CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
                                  CAPSPageMenuOptionBottomMenuHairlineColor : [UIColor lightGrayColor],	//アンダーライン色
-                                 CAPSPageMenuOptionSelectionIndicatorColor: color_custom,	//選択マーク色
+                                 CAPSPageMenuOptionSelectionIndicatorColor: [UIColor whiteColor],	//選択マーク色
                                  //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
                                  //CAPSPageMenuOptionMenuMargin : @(15.f),	// ???:default = 15.f
                                  CAPSPageMenuOptionMenuHeight : @(height_item),	//メニュー高さ
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : color_custom,	//選択時文字色
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : color_custom,	//非選択文字色
+                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : [UIColor whiteColor],	//選択時文字色
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor whiteColor],	//非選択文字色
                                  CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
                                  CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(NO),	//角に丸みを付けるか？
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],	//タイトルフォント

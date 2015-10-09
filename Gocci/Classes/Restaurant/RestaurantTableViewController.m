@@ -178,9 +178,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [super viewWillAppear:animated];
     
     // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
-    // API からタイムラインのデータを取得
+    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
+  // API からタイムラインのデータを取得
     [self _fetchRestaurant];
     
 }
