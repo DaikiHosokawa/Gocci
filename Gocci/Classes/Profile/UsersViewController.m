@@ -90,12 +90,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }
     
     
-    //右ナビゲーションアイテム(通知)の実装
+    //badge button
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
+    [customButton setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //badge button
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
@@ -104,20 +103,25 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
     
-    //badge num
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     
-    UIBarButtonItem *settingBtn = [[UIBarButtonItem alloc]
-                                  initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
-                                  target:self
-                                  action:@selector(eventSettingBtn)];
-    settingBtn.tintColor = [UIColor whiteColor];
-    
+    //setting button
+    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [settingBtn setImage:[UIImage imageNamed:@"ic_settings_white"] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(eventSettingBtn) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButton2 = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:settingBtn];
     
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:self.barButton, settingBtn, nil];
+    [NSArray arrayWithObjects:self.barButton, barButton2, nil];
+    
+    //userAddButton
+    UIButton *userAddBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [userAddBtn setImage:[UIImage imageNamed:@"ic_person_add_white"] forState:UIControlStateNormal];
+    [userAddBtn addTarget:self action:@selector(eventUserAddBtn) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButton3 = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:userAddBtn];
+    self.navigationItem.leftBarButtonItem = barButton3;
     
     //BackButton
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
@@ -341,6 +345,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)eventSettingBtn{
     [self performSegueWithIdentifier:@"goSetting" sender:self];
+}
+
+-(void)eventUserAddBtn{
+    [self performSegueWithIdentifier:@"goUserAdd" sender:self];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
