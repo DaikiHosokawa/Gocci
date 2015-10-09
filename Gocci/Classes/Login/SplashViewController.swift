@@ -12,8 +12,16 @@ import UIKit
 class SplashViewController : UIViewController {
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        // TODO Download an prebuffer first video. warning: you are not logged in here
+        
+    }
+    
+        
+    override func viewDidAppear(animated: Bool) {
+
+        
+        super.viewDidAppear(animated)
         
         let handleNetOpResult: (NetOpResult, String!) -> Void = { (code, msg) -> Void in
             switch code {
@@ -46,8 +54,10 @@ class SplashViewController : UIViewController {
             NetOp.loginWithAPIV2Conversation(un, avatar: ava, andThen: handleNetOpResult)
         }
         else {
-            let twc = self.storyboard?.instantiateViewControllerWithIdentifier("Tutorial")
-            self.presentViewController(twc!, animated: true, completion: nil)
+            Util.sleep(Int(SPLASH_TIME)) {
+                let twc = self.storyboard!.instantiateViewControllerWithIdentifier("Tutorial")
+                self.presentViewController(twc, animated: true, completion: nil)
+            }
         }
 
     }
