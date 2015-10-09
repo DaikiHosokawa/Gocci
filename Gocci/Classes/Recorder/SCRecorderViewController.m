@@ -448,12 +448,7 @@ static SCRecorder *_recorder;
     [self performSegueWithIdentifier:@"Photo" sender:self];
 }
 
-// !!!:未使用
-- (void) handleReverseCameraTapped {
-    
-    [_recorder switchCaptureDevices];
-    
-}
+
 
 // !!!:未使用
 //- (void) handleStopButtonTapped:(id)sender {
@@ -654,71 +649,17 @@ static SCRecorder *_recorder;
 /*
  - (void)recorderSubmitPopupViewOnTwitterShare
  {
- LOG_METHOD;
- 
- //注意：Twitterのメソッドをここに書く
- 
- // Twitter へ投稿
- SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
- 
- // TODO: この URL は有効？
- //       動画を API に投稿してからじゃないとアクセスできない？
- AppDelegate *appDelegete2 = (AppDelegate*)[[UIApplication sharedApplication] delegate];
- NSString *urlString = [NSString stringWithFormat:@"%@movies/%@", API_BASE_URL, appDelegete2.postFileName];
- 
- [controller setInitialText:@"グルメ動画アプリ「Gocci」からの投稿"];
- [controller addURL:[NSURL URLWithString:urlString]];
- controller.completionHandler = ^(SLComposeViewControllerResult res) {
- LOG(@"res=%@", @(res));
- 
- if (res == SLComposeViewControllerResultDone) {
- [self dismissViewControllerAnimated:YES completion:nil];
- }
- };
- 
- [self presentViewController:controller animated:YES completion:nil];
- 
+
  }
  */
 
 #pragma mark Facebook へ投稿
-
+/*
 - (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller
 {
-    LOG_METHOD;
     
-    
-    NSURL *videoURL = staticRecordSession.outputUrl;
-    FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-    video.videoURL = videoURL;
-    FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
-    content.video = video;
-    [FBSDKShareDialog showFromViewController:viewcontroller
-                                 withContent:content
-                                    delegate:nil];
-    
-    /*
-     FBSDKShareLinkContent* content = [[FBSDKShareLinkContent alloc] init];
-     content.contentURL = staticRecordSession.outputUrl;
-     content.contentDescription = @"test";
-     content.contentTitle = @"New Post";
-     BOOL ok = [[FBSDKShareAPI shareWithContent:content delegate:self] share];
-     */
-    /*
-     FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc]init];
-     shareDialog.fromViewController = viewcontroller;
-     NSURL *videoURL= delegate.assetURL;
-     NSLog(@"assetURL:%@",delegate.assetURL);
-     FBSDKShareVideo *video = [[FBSDKShareVideo alloc] init];
-     video.videoURL = videoURL;
-     FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
-     content.video = video;
-     shareDialog.shareContent = content;
-     shareDialog.delegate=self;
-     [shareDialog show];
-     */
 }
-
+*/
 
 
 
@@ -862,6 +803,11 @@ static SCRecorder *_recorder;
 -(void)flipCamera
 {
     [_recorder switchCaptureDevices];
+}
+-(void)DeleteDraft
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 -(void)retake
 {
@@ -1060,6 +1006,9 @@ static SCRecorder *_recorder;
     [self retake];
 }
 
+- (IBAction)onReverse:(id)sender {
+    [_recorder switchCaptureDevices];
+}
 
 #pragma mark - 撮影に戻る
 - (IBAction)onGoPosting:(id)sender {
@@ -1067,79 +1016,4 @@ static SCRecorder *_recorder;
     //	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
-
-- (void)upload:(AWSS3TransferManagerUploadRequest *)uploadRequest {
-    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-    
-    [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
-        NSLog(@"upload start:%@",task);
-        if (task.error) {
-            if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                switch (task.error.code) {
-                    case AWSS3TransferManagerErrorCancelled:
-                    case AWSS3TransferManagerErrorPaused:
-                    {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                        });
-                    }
-                        break;
-                        
-                    default:
-                        NSLog(@"Upload failed: [%@]", task.error);
-                        break;
-                }
-            } else {
-                NSLog(@"Upload failed: [%@]", task.error);
-            }
-        }
-        
-        if (task.result) {
-            NSLog(@"Upload success");
-
-        }
-        
-        return nil;
-    }];
-}
-
-/*
-#pragma mark - 取得
--(SCPostingViewController*)viewControllerSCPosting
-{
-    static NSString * const namebundle = @"scposting";
-    
-    SCRecorderViewController* viewController = nil;
-    {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        if (rect.size.height == 480) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 667) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 736) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-    }
-    
-    return viewController;
-}
- */
-
-
 @end

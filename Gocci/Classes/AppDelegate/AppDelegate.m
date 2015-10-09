@@ -152,16 +152,10 @@
     // !!!:dezamisystem
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     
-    //ナビゲーションバーのアイテムの色を変更
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    //ナビゲーションバーの色を変更
     [UINavigationBar appearance].barTintColor = color_custom;
-    
-    //ナビゲーションバーのタイトルの色を変更
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    
+    [[UINavigationBar appearance] setTranslucent:NO];
     
     // !!!:dezamisystem・タブバー設定
     {
