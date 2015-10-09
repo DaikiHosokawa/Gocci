@@ -18,8 +18,8 @@
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Fetch Timeline"];
     
-    NSString *limit = @"50";
- [APIClient timelineWithHandler:(NSString *)limit  handler:^(id result, NSUInteger code, NSError *error) {
+    
+    [APIClient Timeline:^(id result, NSUInteger code, NSError *error) {
         NSLog(@"result=%@", result);
         NSLog(@"code=%@", @(code));
         NSLog(@"error=%@", error);
