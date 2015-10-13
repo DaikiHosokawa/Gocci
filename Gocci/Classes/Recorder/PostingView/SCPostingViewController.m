@@ -25,7 +25,6 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 {
     
     __weak IBOutlet UIImageView *imageview_samnail;
-    
     SCSecondView *secondView;
     UITableView *tableviewSocial;
     __weak IBOutlet UIView *viewBase;
@@ -130,8 +129,8 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    NSLog(@"restrantname:%@",delegate.restname);
-    if(delegate.restname)
+    NSLog(@"restrantname:%@",delegate.stringTenmei);
+    if(delegate.stringTenmei != nil && [delegate.stringTenmei length] > 0)
     {
         NSLog(@"ある");
         _submitBtn.enabled = YES;

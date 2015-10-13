@@ -9,6 +9,7 @@
 #import "SCImageView.h"
 #import "CIImageRendererUtils.h"
 #import "SCSampleBufferHolder.h"
+#import "SCContext.h"
 
 @interface SCImageView() {
     CIContext *_CIContext;
@@ -40,63 +41,96 @@
 }
 
 - (void)commonInit {
-    EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    
-    NSDictionary *options = @{ kCIContextWorkingColorSpace : [NSNull null] };
-    _CIContext = [CIContext contextWithEAGLContext:context options:options];
-    
-    self.context = context;
+    self.preferredCIImageTransform = CGAffineTransformIdentity;
     
     _sampleBufferHolder = [SCSampleBufferHolder new];
 }
 
+- (void)_loadContext {
+    if (_CIContext == nil) {
+        SCContext *context = [SCContext context];
+        _CIContext = context.CIContext;
+        self.context = context.EAGLContext;
+    }
+}
+
 - (void)drawRect:(CGRect)rect {
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
     CIImage *newImage = [CIImageRendererUtils generateImageFromSampleBufferHolder:_sampleBufferHolder];
     
     if (newImage != nil) {
         _CIImage = newImage;
     }
     
-    CIImage *image = _CIImage;
+    CIImage *image = [self processedCIImage];
+    
     if (image != nil) {
         CGRect extent = [image extent];
         
-        if (_filterGroup != nil) {
-            image = [_filterGroup imageByProcessingImage:image];
-        }
-        CGRect outputRect = [CIImageRendererUtils processRect:rect withImageSize:extent.size contentScale:self.contentScaleFactor contentMode:self.contentMode];
+        CGRect outputRect = [CIImageRendererUtils processRect:self.bounds withImageSize:extent.size contentScale:self.contentScaleFactor contentMode:self.contentMode];
         
         [_CIContext drawImage:image inRect:outputRect fromRect:extent];
     }
 }
 
+- (CIImage *)processedCIImage {
+    CIImage *image = _CIImage;
+    
+    if (image != nil) {
+        image = [image imageByApplyingTransform:self.preferredCIImageTransform];
+        
+        if (_filter != nil) {
+            image = [_filter imageByProcessingImage:image atTime:_CIImageTime];
+        }
+        
+        return image;
+    }
+    
+    return image;
+}
+
+- (UIImage *)processedUIImage {
+    CIImage *image = [self processedCIImage];
+    
+    if (image != nil) {
+        CGImageRef CGImage = [_CIContext createCGImage:image fromRect:[image extent]];
+        
+        UIImage *uiImage = [UIImage imageWithCGImage:CGImage scale:self.contentScaleFactor orientation:UIImageOrientationUp];
+        
+        CGImageRelease(CGImage);
+        
+        return uiImage;
+    } else {
+        return nil;
+    }
+}
+
 - (void)setImageBySampleBuffer:(CMSampleBufferRef)sampleBuffer {
     _sampleBufferHolder.sampleBuffer = sampleBuffer;
+    
     [self setNeedsDisplay];
 }
 
-- (void)setImage:(CIImage *)image {
-    self.CIImage = image;
-}
-
-- (CIImage *)image {
-    return self.CIImage;
+- (void)setImageByUIImage:(UIImage *)image {
+    [CIImageRendererUtils putUIImage:image toRenderer:self];
 }
 
 - (void)setCIImage:(CIImage *)CIImage {
     _CIImage = CIImage;
     
-    [self setNeedsDisplay];
-}
-
-- (void)setFilterGroup:(SCFilterGroup *)filterGroup {
-    _filterGroup = filterGroup;
+    if (CIImage != nil) {
+        [self _loadContext];
+    }
     
     [self setNeedsDisplay];
 }
 
-- (void)setPreferredCIImageTransform:(CGAffineTransform)preferredCIImageTransform {
-    self.transform = preferredCIImageTransform;
+- (void)setFilter:(SCFilter *)filter {
+    _filter = filter;
+    
+    [self setNeedsDisplay];
 }
 
 @end

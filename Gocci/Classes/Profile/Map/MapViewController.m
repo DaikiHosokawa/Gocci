@@ -34,13 +34,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    [self _fetchProfile];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+
     //ここをどうするか
     GMSCameraPosition *cameraPosition = [GMSCameraPosition cameraWithLatitude:35.689521
                                                                     longitude:139.691704
@@ -49,6 +48,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                      camera:cameraPosition];
     self.mapView.delegate = self;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    
+    [self.view addSubview:self.mapView];
+    [self addMarkersToMap];
     
 
 }
@@ -59,29 +61,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 
-- (void)_fetchProfile
-{
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-        thats  = (NSArray*)_receiveDic3;
-        NSLog(@"thats:%@",thats);
-        if ([thats count] == 0) {
-            // 画像表示例文
-            UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-            UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-            CGSize boundsSize = self.view.bounds.size;
-            iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
-            [self.view addSubview:iv];
-        }else{
-            [self.view addSubview:self.mapView];
-            [self addMarkersToMap];
- }
-}
-
 - (void)addMarkersToMap {
     
-    NSArray *markerInfos = thats;
+     NSArray* items = (NSArray*)_receiveDic3;
+    
+    if ([items count] == 0) {
+        // 画像表示例文
+        UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+        CGSize boundsSize = self.view.bounds.size;
+        iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+        [self.view addSubview:iv];
+    
+    }else{
+    
+    NSArray *markerInfos = items    ;
     
     for (NSDictionary *markerInfo in markerInfos) {
         
@@ -106,6 +100,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         marker.groundAnchor = CGPointMake(0.5, 1.0);
         
         marker.map = self.mapView;
+    }
     }
 }
 

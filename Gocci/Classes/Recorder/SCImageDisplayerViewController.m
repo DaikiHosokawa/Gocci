@@ -49,7 +49,7 @@
 //	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStylePlain target:self action:@selector(saveToCameraRoll)];
 	
     self.filterSwitcherView.contentMode = UIViewContentModeScaleAspectFit;
-    
+    /*
     self.filterSwitcherView.filterGroups = @[
                                              [NSNull null],
                                              [SCFilterGroup filterGroupWithFilter:[SCFilter filterWithName:@"CIPhotoEffectNoir"]],
@@ -58,7 +58,7 @@
                                              [SCFilterGroup filterGroupWithFilter:[SCFilter filterWithName:@"CIPhotoEffectTonal"]],
                                              [SCFilterGroup filterGroupWithFilter:[SCFilter filterWithName:@"CIPhotoEffectFade"]]
                                              ];
-
+*/
 	// Do any additional setup after loading the view.
 }
 

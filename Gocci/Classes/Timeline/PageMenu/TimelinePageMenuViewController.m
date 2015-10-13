@@ -110,23 +110,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     label.textColor = [UIColor whiteColor];
     label.text = @"Gocci";
     
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-    
-    //ナビゲーションバーに画像
-    {
-        //タイトル画像設定
-        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        //CGFloat width_image = height_image;
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView = navigationTitle;
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-    }
+
     
     //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -233,8 +221,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+   [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+
 }
 
 - (void)viewDidAppear:(BOOL)animated

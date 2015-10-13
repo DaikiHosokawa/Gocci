@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
-#import "SCFilterGroup.h"
+#import "SCFilter.h"
 #import "CIImageRenderer.h"
 
 /**
@@ -25,19 +25,24 @@
  If you want to show an empty filter (no processing), just add a [NSNull null]
  entry instead of an instance of SCFilterGroup
  */
-@property (strong, nonatomic) NSArray *filterGroups;
+@property (strong, nonatomic) NSArray *__nullable filters;
 
 /**
  The CIImage to render.
  */
-@property (strong, nonatomic) CIImage *CIImage;
+@property (strong, nonatomic) CIImage *__nullable CIImage;
+
+/**
+ The timestamp of the CIImage
+ */
+@property (assign, nonatomic) CFTimeInterval CIImageTime;
 
 /**
  The currently selected filter group.
  This changes when scrolling in the underlying UIScrollView.
  This value is Key-Value observable.
  */
-@property (readonly, nonatomic) SCFilterGroup *selectedFilterGroup;
+@property (strong, nonatomic) SCFilter *__nullable selectedFilter;
 
 /**
  The preferred transform for rendering the CIImage
@@ -45,16 +50,30 @@
 @property (assign, nonatomic) CGAffineTransform preferredCIImageTransform;
 
 /**
- Generates an UIImage from the currently displayed CIImage. The current selected
- filterGroup will be applied to this image if applicable.
+ A filter that is applied before applying the selected filter
  */
-- (UIImage *)currentlyDisplayedImageWithScale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
+@property (strong, nonatomic) SCFilter *__nullable preprocessingFilter;
 
 /**
  Set the CIImage using a sampleBuffer. The CIImage will be automatically generated
  when needed. This avoids creating multiple CIImage if the SCImageView can't render them
  as fast.
  */
-- (void)setImageBySampleBuffer:(CMSampleBufferRef)sampleBuffer;
+- (void)setImageBySampleBuffer:(__nonnull CMSampleBufferRef)sampleBuffer;
+
+/**
+ Set the CIImage using an UIImage
+ */
+- (void)setImageByUIImage:(UIImage *__nullable)image;
+
+/**
+ Creates and returns the processed image as UIImage
+ */
+- (UIImage *__nullable)processedUIImage;
+
+/**
+ Creates and returns the processed image as CIImage
+ */
+- (CIImage *__nullable)processedCIImage;
 
 @end

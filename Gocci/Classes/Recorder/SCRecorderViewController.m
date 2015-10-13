@@ -8,30 +8,24 @@
 
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "SCTouchDetector.h"
 #import "SCRecorderViewController.h"
-#import "SCAudioTools.h"
-#import "SCRecorderFocusView.h"
+#import "EditVideoController.h"
 #import "SCImageDisplayerViewController.h"
-#import "SCRecorder.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+//#import "SCSessionListViewController.h"
 #import "SCRecordSessionManager.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "RestaurantTableViewController.h"
-//#import "GaugeView.h"
-#import "RecorderSubmitPopupView.h"
-#import "RecorderSubmitPopupAdditionView.h"
+//#import "GaugeView.h"¥
 #import "APIClient.h"
 #import "SCPostingViewController.h"
 #import "SVProgressHUD.h"
-#import "SCPostingViewController.h"
 #import "SCScrollPageView.h"
 
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
-// TODO not used below here?
-//#import <AWSDynamoDB/AWSDynamoDB.h>
-//#import <AWSSQS/AWSSQS.h>
-//#import <AWSSNS/AWSSNS.h>
-//#import <AWSCognito/AWSCognito.h>
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -42,27 +36,16 @@ static NSString * const SEGUE_GO_POSTING = @"goPosting";
 static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";
 
 static SCRecordSession *staticRecordSession;	// !!!:開放を避けるためにスタティック化
-static SCRecorder *_recorder;
-
-
-@import AVFoundation;
-@import AssetsLibrary;
-
 
 ////////////////////////////////////////////////////////////
 // PRIVATE DEFINITION
 /////////////////////
 
 @interface SCRecorderViewController ()
-<RecorderSubmitPopupViewDelegate ,RecorderSubmitPopupAdditionViewDelegate>
 {
-    //    SCRecorder *_recorder;
-     UIImage *_photo;
-    UIImageView *_ghostImageView;
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
+    SCRecorder *_recorder;
+    SCRecordSession *_recordSession;
     
-    //	GaugeView *gaugeViewTimer;
     NSTimer *timerRecord;
     NSTimeInterval test_timeGauge;
     
@@ -71,13 +54,10 @@ static SCRecorder *_recorder;
 
 }
 
-@property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIView *viewPageBase;
 
 
-@property (strong, nonatomic) SCRecorderFocusView *focusView;
-@property (nonatomic, strong) RecorderSubmitPopupView *submitView;
-@property (nonatomic, strong) RecorderSubmitPopupAdditionView *AdditionView;
+@property (strong, nonatomic) SCRecorderToolsView *focusView;
 
 // !!!:dezamisystem・スクロールページ用
 //@property (nonatomic,strong) UIScrollView *pageingScrollView;
@@ -86,8 +66,9 @@ static SCRecorder *_recorder;
 //@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
 
+@property (weak, nonatomic) IBOutlet UIButton *retakeBtn;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *reverseBtn;
 
 @end
 
@@ -132,27 +113,30 @@ static SCRecorder *_recorder;
      */
     
     _recorder = [SCRecorder recorder];
-    _recorder.sessionPreset = AVCaptureSessionPreset640x480;
-    _recorder.audioEnabled = YES;
+    _recorder.captureSessionPreset = AVCaptureSessionPreset640x480;
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     
     // On iOS 8 and iPhone 5S, enabling this seems to be slow
-    _recorder.initializeRecordSessionLazily = NO;
+    _recorder.initializeSessionLazily = NO;
     
     //	[self updateTimeRecordedLabel];
+    
+    _recorder.maxRecordDuration = CMTimeMake(4200, 600);
     
     UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
     
  
     //	self.loadingView.hidden = YES;
-    CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    //CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     //NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
-    self.focusView = [[SCRecorderFocusView alloc] initWithFrame:rect_focus];
+    self.focusView = [[SCRecorderToolsView alloc] initWithFrame:previewView.bounds];
+    self.focusView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     self.focusView.recorder = _recorder;
-    [self.view addSubview:self.focusView];
-    [self.view sendSubviewToBack:self.focusView];
+    [previewView addSubview:self.focusView];
+    [self.focusView addSubview:self.retakeBtn];
+    [self.focusView addSubview:self.reverseBtn];
     
     // 現在時間を取得する
     NSDate *now = [NSDate date];
@@ -179,8 +163,8 @@ static SCRecorder *_recorder;
         [secondView reloadTableList];
         
         // !!!:ゲージ再描画
-        [self updateTimeRecordedLabel];
-        
+        //[self updateTimeRecordedLabel];
+
         {
             CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
             //画面サイズから場合分け
@@ -214,18 +198,7 @@ static SCRecorder *_recorder;
 #endif
     
 #if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder openSession:^(NSError *sessionError, NSError *audioError, NSError *videoError, NSError *photoError) {
-        NSError *error = nil;
-        NSLog(@"%@", error);
-        
-        NSLog(@"==== Opened session ====");
-        NSLog(@"Session error: %@", sessionError.description);
-        NSLog(@"Audio error : %@", audioError.description);
-        NSLog(@"Video error: %@", videoError.description);
-        NSLog(@"Photo error: %@", photoError.description);
-        NSLog(@"=======================");
-        [self prepareCamera];
-    }];
+    
 #endif
 }
 
@@ -260,11 +233,14 @@ static SCRecorder *_recorder;
     [secondView setFunikiIndex:delegate.indexFuniki];
     [secondView setHitokotoValue:delegate.valueHitokoto];
     [secondView reloadTableList];
+   
+    [self prepareSession];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    // !!!:ゲージ再描画
-    [self updateTimeRecordedLabel];
-    
-    
+    [_recorder stopRunning];
 }
 
 
@@ -334,7 +310,9 @@ static SCRecorder *_recorder;
     }
 }
 
-
+- (void)recorder:(SCRecorder *)recorder didAppendVideoSampleBufferInSession:(SCRecordSession *)recordSession {
+    [self updateTimeRecordedLabel];
+}
 
 
 
@@ -344,20 +322,12 @@ static SCRecorder *_recorder;
     [super viewDidAppear:animated];
     
 #if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder startRunningSession];
-    [_recorder focusCenter];
+    
+    [_recorder startRunning];
+
 #else
     //	[self.viewIndicator stopAnimating];
 #endif
-    
-    static BOOL isPassed = NO;
-    if (!isPassed) {
-        
-    }
-    isPassed = YES;
-    
-    // !!!:ゲージ再描画
-    [self updateTimeRecordedLabel];
 }
 
 - (BOOL)isFirstRun
@@ -386,14 +356,18 @@ static SCRecorder *_recorder;
 }
 
 #pragma mark 退避開始前
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
+
+
+- (void)prepareSession {
+    if (_recorder.session == nil) {
+        
+        SCRecordSession *session = [SCRecordSession recordSession];
+        session.fileType = AVFileTypeQuickTimeMovie;
+        
+        _recorder.session = session;
+    }
     
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder endRunningSession];
-#endif
+    [self updateTimeRecordedLabel];
 }
 
 #pragma mark 退避完了後
@@ -409,6 +383,7 @@ static SCRecorder *_recorder;
     [self.focusView showFocusAnimation];
 #endif
 }
+
 
 - (void)recorderDidEndFocus:(SCRecorder *)recorder {
     
@@ -435,18 +410,23 @@ static SCRecorder *_recorder;
 #pragma mark 遷移前準備
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[SCImageDisplayerViewController class]]) {
-        SCImageDisplayerViewController *imageDisplayer = segue.destinationViewController;
-        imageDisplayer.photo = _photo;
-        _photo = nil;
+    if ([segue.destinationViewController isKindOfClass:[EditVideoController class]]) {
+        EditVideoController  *videoPlayer = segue.destinationViewController;
+        videoPlayer.recordSession = _recordSession;
     }
 }
 
-#pragma mark フォト画面へ遷移
-- (void)showPhoto:(UIImage *)photo {
-    _photo = photo;
-    [self performSegueWithIdentifier:@"Photo" sender:self];
+-(void)recordBegan
+{
+    [_recorder record];
+    NSLog(@"おささる");
 }
+-(void)recordEnded
+{
+    [_recorder pause];
+    NSLog(@"お刺さらない");
+}
+
 
 
 
@@ -463,114 +443,23 @@ static SCRecorder *_recorder;
 //}
 
 #pragma mark 撮影完了
-- (void)finishSession:(SCRecordSession *)recordSession {
+
+//importの時の仕組み
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSURL *url = info[UIImagePickerControllerMediaURL];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     
-#if (!TARGET_IPHONE_SIMULATOR)
+    SCRecordSessionSegment *segment = [SCRecordSessionSegment segmentWithURL:url info:nil];
     
-    [recordSession endRecordSegment:^(NSInteger segmentIndex, NSError *error) {
-        [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
-        
-        //   self.recordSession = recordSession;
-        staticRecordSession = recordSession;
-        [self _complete];
-        [self prepareCamera];
-    }];
-#endif
-}
-
-
-
-- (IBAction)switchFlash:(id)sender
-{
-#if (!TARGET_IPHONE_SIMULATOR)
-    NSString *flashModeString = nil;
-    if ([_recorder.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
-        switch (_recorder.flashMode) {
-            case SCFlashModeAuto:
-                flashModeString = @"Flash : Off";
-                _recorder.flashMode = SCFlashModeOff;
-                break;
-            case SCFlashModeOff:
-                flashModeString = @"Flash : On";
-                _recorder.flashMode = SCFlashModeOn;
-                break;
-            case SCFlashModeOn:
-                flashModeString = @"Flash : Light";
-                _recorder.flashMode = SCFlashModeLight;
-                break;
-            case SCFlashModeLight:
-                flashModeString = @"Flash : Auto";
-                _recorder.flashMode = SCFlashModeAuto;
-                break;
-            default:
-                break;
-        }
-    } else {
-        switch (_recorder.flashMode) {
-            case SCFlashModeOff:
-                flashModeString = @"Flash : On";
-                _recorder.flashMode = SCFlashModeLight;
-                break;
-            case SCFlashModeLight:
-                flashModeString = @"Flash : Off";
-                _recorder.flashMode = SCFlashModeOff;
-                break;
-            default:
-                break;
-        }
-    }
+    [_recorder.session addSegment:segment];
+    _recordSession = [SCRecordSession recordSession];
+    [_recordSession addSegment:segment];
     
-    //[self.flashModeButton setTitle:flashModeString forState:UIControlStateNormal];
-#else
-    NSLog(@"%s",__func__);
-#endif
+    [self showVideo];
 }
 
-#pragma mark - カメラ準備
-- (void) prepareCamera
-{
-#if (!TARGET_IPHONE_SIMULATOR)
-    //if (_recorder.recordSession == nil)
-    {
-        SCRecordSession *session = [SCRecordSession recordSession];
-        //最大秒数
-        session.suggestedMaxRecordDuration = CMTimeMakeWithSeconds(7, 10000);
-        
-        _recorder.recordSession = session;
-    }
-#else
-#endif
-}
 
-- (void)recorder:(SCRecorder *)recorder didCompleteRecordSession:(SCRecordSession *)recordSession {
-    
-    [self finishSession:recordSession];
-}
 
-- (void)recorder:(SCRecorder *)recorder didInitializeAudioInRecordSession:(SCRecordSession *)recordSession error:(NSError *)error {
-    if (error == nil) {
-        NSLog(@"Initialized audio in record session");
-    } else {
-        NSLog(@"Failed to initialize audio in record session: %@", error.localizedDescription);
-    }
-}
-
-- (void)recorder:(SCRecorder *)recorder didInitializeVideoInRecordSession:(SCRecordSession *)recordSession error:(NSError *)error {
-    if (error == nil) {
-        NSLog(@"Initialized video in record session");
-    } else {
-        NSLog(@"Failed to initialize video in record session: %@", error.localizedDescription);
-    }
-}
-
-- (void)recorder:(SCRecorder *)recorder didBeginRecordSegment:(SCRecordSession *)recordSession error:(NSError *)error {
-    NSLog(@"Began record segment: error = %@", error);
-}
-
-//セグメントを保存している(トリミングするならここ)
-- (void)recorder:(SCRecorder *)recorder didEndRecordSegment:(SCRecordSession *)recordSession segmentIndex:(NSInteger)segmentIndex error:(NSError *)error {
-    NSLog(@"End record segment %d at %@: error = %@", (int)segmentIndex, segmentIndex >= 0 ? [recordSession.recordSegments objectAtIndex:segmentIndex] : nil, error);
-}
 
 - (void)updateTimeRecordedLabel {
     
@@ -579,15 +468,11 @@ static SCRecorder *_recorder;
     CMTime currentTime = kCMTimeZero;
     
     NSTimeInterval time_now = 0.0;
-    NSTimeInterval time_max = 8.0;
+    NSTimeInterval time_max = 7.0;
 #if (!TARGET_IPHONE_SIMULATOR)
-    if (_recorder.recordSession != nil) {
-        currentTime = _recorder.recordSession.currentRecordDuration;
-        
+    if (_recorder.session != nil) {
+        currentTime = _recorder.session.duration;
         time_now = CMTimeGetSeconds(currentTime);
-        
-        CMTime cmMaxTime = _recorder.recordSession.suggestedMaxRecordDuration;
-        time_max = CMTimeGetSeconds(cmMaxTime);
     }
 #else
     const NSTimeInterval interval = 1.0 / 60.0;
@@ -603,45 +488,14 @@ static SCRecorder *_recorder;
     //currentTimelをラベルに表示する
     //    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
     
+    NSLog(@"now:%f,max:%f",time_now,time_max);
     // !!!:・円グラフゲージ
     [firstView updatePieChartWith:time_now MAX:time_max];
     
 }
 
-- (void)recorder:(SCRecorder *)recorder didAppendVideoSampleBuffer:(SCRecordSession *)recordSession {
-    
-    [self updateTimeRecordedLabel];
-}
 
 
-- (IBAction)capturePhoto:(id)sender {
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder capturePhoto:^(NSError *error, UIImage *image) {
-        if (image != nil) {
-            [self showPhoto:image];
-        } else {
-            [self showAlertViewWithTitle:@"Failed to capture photo" message:error.localizedDescription];
-        }
-    }];
-#endif
-}
-
-- (void)updateGhostImage {
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    _ghostImageView.image = [_recorder snapshotOfLastAppendedVideoBuffer];
-    //_ghostImageView.hidden = !_ghostModeButton.selected;
-#endif
-}
-
-- (IBAction)switchGhostMode:(id)sender {
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    // _ghostModeButton.selected = !_ghostModeButton.selected;
-    // _ghostImageView.hidden = !_ghostModeButton.selected;
-#endif
-}
 
 
 #pragma mark - RecorderSubmitPopupViewDelegate
@@ -662,32 +516,14 @@ static SCRecorder *_recorder;
 */
 
 
-
-- (IBAction)popButton:(UIButton *)sender {
-    //// 投稿画面を表示
-    __weak typeof(self)weakSelf = self;
-    
-    // 投稿画面を設定
-    self.AdditionView = [RecorderSubmitPopupAdditionView view];
-    self.AdditionView.delegate = self;
-    self.AdditionView.cancelCallback = ^{
-        // 投稿画面を閉じる
-        [weakSelf.AdditionView dismiss];
-        
-        // 動画撮影画面を閉じる
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    };
-    // 投稿画面を表示
-    [weakSelf.AdditionView showInView:weakSelf.view];
-}
-
-
 #pragma mark - Private Methods
 
 #pragma mark Complete撮影完了処理
+
 /**
  *  撮影完了処理
  */
+/*
 - (void)_complete
 {
     [SVProgressHUD show];
@@ -749,7 +585,7 @@ static SCRecorder *_recorder;
      }];
 #endif
 }
-
+*/
 
 /**
  *  保存・投稿失敗アラート
@@ -790,16 +626,7 @@ static SCRecorder *_recorder;
 //}
 
 #pragma mark - SCFirstView
--(void)recordBegan
-{
-    _ghostImageView.hidden = YES;
-    [_recorder record];
-}
--(void)recordEnded
-{
-    [_recorder pause];
-    [self updateGhostImage];
-}
+
 -(void)flipCamera
 {
     [_recorder switchCaptureDevices];
@@ -811,21 +638,20 @@ static SCRecorder *_recorder;
 }
 -(void)retake
 {
-    SCRecordSession *recordSession = _recorder.recordSession;
+    SCRecordSession *recordSession = _recorder.session;
     
     if (recordSession != nil) {
-        _recorder.recordSession = nil;
+        _recorder.session = nil;
         
         // If the recordSession was saved, we don't want to completely destroy it
         if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
-            [recordSession endRecordSegment:nil];
+            [recordSession endSegmentWithInfo:nil completionHandler:nil];
         } else {
             [recordSession cancelSession:nil];
         }
     }
     
-    [self prepareCamera];
-    [self updateTimeRecordedLabel];
+    [self prepareSession];
 }
 
 #pragma mark - SCSecondView
@@ -875,6 +701,7 @@ static SCRecorder *_recorder;
 
 #pragma mark - SCPostingViewController
 #pragma mark 投稿するボタンを押した時
+
 -(void)execSubmit
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -946,7 +773,7 @@ static SCRecorder *_recorder;
              [[transferUtility uploadFile:fileURL
                                    bucket:@"gocci.movies.bucket.jp-test"
                                       key:movieFileForS3
-                              contentType:@"video/mp4"
+                              contentType:@"video/quicktime"
                                expression:expression
                          completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
                  if (task.error) {
@@ -991,23 +818,61 @@ static SCRecorder *_recorder;
 
 
 
-
-#pragma mark - 戻る
-- (IBAction)popViewController1:(UIStoryboardSegue *)segue {
-
-    NSLog(@"%s",__func__);
-    
-    [self retake];
-}
-
 #pragma mark - 撮り直し
 - (IBAction)onRetake:(id)sender {
-    
+    NSLog(@"osareteru1");
     [self retake];
 }
 
 - (IBAction)onReverse:(id)sender {
+   NSLog(@"osareteru2");
     [_recorder switchCaptureDevices];
+}
+
+- (void) handleStopButtonTapped:(id)sender {
+    [_recorder pause:^{
+        [self saveAndShowSession:_recorder.session];
+    }];
+}
+
+- (void)saveAndShowSession:(SCRecordSession *)recordSession {
+    [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
+    
+    _recordSession = recordSession;
+    [self showVideo];
+}
+
+- (void)showVideo {
+    [self performSegueWithIdentifier:@"Video" sender:self];
+}
+
+- (void)recorder:(SCRecorder *)recorder didCompleteSession:(SCRecordSession *)recordSession {
+    NSLog(@"didCompleteSession:");
+    [self saveAndShowSession:recordSession];
+}
+
+- (void)recorder:(SCRecorder *)recorder didInitializeAudioInSession:(SCRecordSession *)recordSession error:(NSError *)error {
+    if (error == nil) {
+        NSLog(@"Initialized audio in record session");
+    } else {
+        NSLog(@"Failed to initialize audio in record session: %@", error.localizedDescription);
+    }
+}
+
+- (void)recorder:(SCRecorder *)recorder didInitializeVideoInSession:(SCRecordSession *)recordSession error:(NSError *)error {
+    if (error == nil) {
+        NSLog(@"Initialized video in record session");
+    } else {
+        NSLog(@"Failed to initialize video in record session: %@", error.localizedDescription);
+    }
+}
+
+- (void)recorder:(SCRecorder *)recorder didBeginSegmentInSession:(SCRecordSession *)recordSession error:(NSError *)error {
+    NSLog(@"Began record segment: %@", error);
+}
+
+- (void)recorder:(SCRecorder *)recorder didCompleteSegment:(SCRecordSessionSegment *)segment inSession:(SCRecordSession *)recordSession error:(NSError *)error {
+    NSLog(@"Completed record segment at %@: %@ (frameRate: %f)", segment.url, error, segment.frameRate);
 }
 
 #pragma mark - 撮影に戻る

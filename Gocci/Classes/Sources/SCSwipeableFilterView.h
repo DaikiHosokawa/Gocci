@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SCPlayer.h"
-#import "SCFilterGroup.h"
 #import "CIImageRendererUtils.h"
 #import "SCFilterSelectorView.h"
+
+@class SCSwipeableFilterView;
+@protocol SCSwipeableFilterViewDelegate <NSObject>
+
+- (void)swipeableFilterView:(SCSwipeableFilterView *__nonnull)swipeableFilterView didScrollToFilter:(SCFilter *__nullable)filter;
+
+@end
 
 /**
  A filter selector view that works like the Snapchat presentation of the available filters.
@@ -19,10 +25,15 @@
 @interface SCSwipeableFilterView : SCFilterSelectorView<UIScrollViewDelegate>
 
 /**
+ The delegate that will receive messages
+ */
+@property (weak, nonatomic) id<SCSwipeableFilterViewDelegate> __nullable delegate;
+
+/**
  The underlying scrollView used for scrolling between filterGroups.
  You can freely add your views inside.
  */
-@property (readonly, nonatomic) UIScrollView *selectFilterScrollView;
+@property (readonly, nonatomic) UIScrollView *__nonnull selectFilterScrollView;
 
 /**
  Whether the current image should be redraw with the new contentOffset
@@ -33,5 +44,10 @@
  Default is YES
  */
 @property (assign, nonatomic) BOOL refreshAutomaticallyWhenScrolling;
+
+/**
+ Scrolls to a specific filter
+ */
+- (void)scrollToFilter:(SCFilter *__nonnull)filter animated:(BOOL)animated;
 
 @end

@@ -34,12 +34,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self setupData];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupData];
      self.clearsSelectionOnViewWillAppear = NO;
     
 }

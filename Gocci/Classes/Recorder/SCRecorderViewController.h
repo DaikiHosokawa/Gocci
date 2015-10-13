@@ -14,7 +14,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate,NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>{
+@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate,NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,UIImagePickerControllerDelegate>{
     UIAlertView *FirstalertView;
     UIAlertView *SecondalertView;
 }

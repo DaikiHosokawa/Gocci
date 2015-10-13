@@ -69,6 +69,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     
     [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     [self _fetchProfile];
 }
@@ -311,6 +312,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
      [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
+         NSLog(@"叩かれてるよ");
+         
         if (code != 200 || error != nil) {
             // API からのデータの取得に失敗
             // TODO: アラート等を掲出
