@@ -14,10 +14,7 @@
     EAGLContext *_EAGLContext;
     GLKView *_glkView;
     SCSampleBufferHolder *_sampleBufferHolder;
-    CIFilter *_imageTransformFilter;
 }
-
-@property (strong, nonatomic) SCFilterGroup *selectedFilterGroup;
 
 /**
  Called when init. Don't forget to call super

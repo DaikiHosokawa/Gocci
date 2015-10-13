@@ -10,8 +10,6 @@
 #import "util.h"
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
-#import "SCFilterGroup.h"
-#import "SCVideoPlayerView.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import  "TWMessageBarManager.h"
 #import <AWSS3/AWSS3.h>
@@ -150,12 +148,11 @@
     }
 #endif
     // !!!:dezamisystem
+    
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     
     [UINavigationBar appearance].barTintColor = color_custom;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    [[UINavigationBar appearance] setTranslucent:NO];
     
     // !!!:dezamisystem・タブバー設定
     {
@@ -177,6 +174,9 @@
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];
     }
+    
+    self.window.layer.masksToBounds = YES; // ビューをマスクで切り取る
+    self.window.layer.cornerRadius = 4.0; // 角丸マスクを設定(数値は角丸の大きさ)
     
     // !!!:dezamisystem・初期化
     {

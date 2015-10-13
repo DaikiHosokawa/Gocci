@@ -43,10 +43,12 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [[UIView alloc] init];
+
+    [self setupData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self setupData];
+
 }
 
 - (void)didReceiveMemoryWarning {

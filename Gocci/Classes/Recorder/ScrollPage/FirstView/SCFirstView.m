@@ -7,6 +7,7 @@
 //
 
 #import "SCFirstView.h"
+#import "SCRecorder.h"
 
 #import "SCTouchDetector.h"
 
@@ -89,9 +90,20 @@
         [self.delegate DeleteDraft];
     }else {
         NSLog(@"だじたほうがいい");
+        UIAlertView *checkDelete  =[[UIAlertView alloc] initWithTitle:@"終了してよろしいですか？" message:@"撮影中の動画が削除されてしまいます" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        checkDelete.tag=121;
+        [checkDelete show];
     }
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 121 && buttonIndex == 0)
+    {
+        //code for opening settings app in iOS 8
+        [self.delegate DeleteDraft];
+    }
+}
 
 
 #pragma mark - 円グラフ
@@ -165,6 +177,7 @@
     
 	return view;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

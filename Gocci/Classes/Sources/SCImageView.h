@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <GLKit/GLKit.h>
-#import "SCFilterGroup.h"
+#import "SCFilter.h"
 #import "CIImageRenderer.h"
 
 /**
@@ -21,22 +21,45 @@
 @interface SCImageView : GLKView<CIImageRenderer>
 
 /**
- The filterGroup to apply when rendering. If nil is set, no filter will be applied
+ The filter to apply when rendering. If nil is set, no filter will be applied
  */
-@property (strong, nonatomic) SCFilterGroup *filterGroup;
+@property (strong, nonatomic) SCFilter *__nullable filter;
 
 /**
  The CIImage to render.
  */
-@property (strong, nonatomic) CIImage *CIImage;
+@property (strong, nonatomic) CIImage *__nullable CIImage;
+
+/**
+ The timestamp of the CIImage
+ */
+@property (assign, nonatomic) CFTimeInterval CIImageTime;
+
+/**
+ The preferred transform for rendering the CIImage
+ */
+@property (assign, nonatomic) CGAffineTransform preferredCIImageTransform;
 
 /**
  Set the CIImage using a sampleBuffer. The CIImage will be automatically generated
  when needed. This avoids creating multiple CIImage if the SCImageView can't render them
  as fast.
  */
-- (void)setImageBySampleBuffer:(CMSampleBufferRef)sampleBuffer;
+- (void)setImageBySampleBuffer:(__nonnull CMSampleBufferRef)sampleBuffer;
 
-@property (strong, nonatomic) CIImage *image DEPRECATED_MSG_ATTRIBUTE("Replaced by the CIImage property");
+/**
+ Set the CIImage using an UIImage
+ */
+- (void)setImageByUIImage:(UIImage *__nullable)image;
+
+/**
+ Creates and returns the processed image as UIImage
+ */
+- (UIImage *__nullable)processedUIImage;
+
+/**
+ Creates and returns the processed image as CIImage
+ */
+- (CIImage *__nullable)processedCIImage;
 
 @end
