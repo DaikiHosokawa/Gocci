@@ -24,8 +24,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 @interface everyTableViewController ()<EveryCellDelegate>
 {
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
     
     NSArray *list_comments;
     EveryPost *myPost;

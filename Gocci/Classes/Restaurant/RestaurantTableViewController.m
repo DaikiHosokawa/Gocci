@@ -34,8 +34,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @interface RestaurantTableViewController ()
 <TimelineCellDelegate,MKMapViewDelegate>
 {
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
     __weak IBOutlet MKMapView *map_;
     // RestaurantPost *restaurantPost;
     NSDictionary *header;
@@ -178,7 +176,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [super viewWillAppear:animated];
     
     // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
   // API からタイムラインのデータを取得
     [self _fetchRestaurant];
     

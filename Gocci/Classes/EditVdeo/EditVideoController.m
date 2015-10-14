@@ -177,11 +177,17 @@
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
     if (error == nil) {
+        NSLog(@"contextInfo:%@,videopath:%@",contextInfo,videoPath);
         [[[UIAlertView alloc] initWithTitle:@"保存完了しました" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *dir = paths.firstObject;
+        
+        NSLog(@"%@", dir);
     } else {
         [[[UIAlertView alloc] initWithTitle:@"保存失敗しました" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
+
 
 /*
 - (void)assetExportSessionDidProgress:(SCAssetExportSession *)assetExportSession {

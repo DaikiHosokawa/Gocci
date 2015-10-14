@@ -83,7 +83,7 @@
     controller2.delegate = self;
     
     TwitterController *controller3 = [[TwitterController alloc] initWithNibName:nil bundle:nil];
-    controller3.title = @"Twitterk";
+    controller3.title = @"Twitter";
     controller3.delegate = self;
     
     DetailController *controller4 = [[DetailController alloc] initWithNibName:nil bundle:nil];
@@ -124,7 +124,7 @@
     
     //PageMenu確保
     // CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
-    CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height);
+    CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height+30);
     _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
                                                         frame:rect_pagemenu
                                                       options:parameters];

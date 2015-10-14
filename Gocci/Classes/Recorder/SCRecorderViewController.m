@@ -763,9 +763,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
              
              AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
                  dispatch_async(dispatch_get_main_queue(), ^{
-                     // Do something e.g. Alert a user for transfer completion.
-                     // On failed uploads, `error` contains the error object.
-                     NSLog(@"error");
+                    // [self deleteTmpCaptureDir];
                  });
              };
         
@@ -815,7 +813,35 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 }
 
-
+/*
+- (void)deleteTmpCaptureDir
+{
+    
+    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSURL *fileURL = dele.assetURL;
+    NSString *fileName = [fileURL lastPathComponent];
+    
+    NSLog(@"filename :%@",fileName);
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    // ~/tmpディレクトリの取得
+    NSString *tmpDir = NSTemporaryDirectory();
+    // tmpディレクトリ内の一覧取得
+    NSArray *list = [manager contentsOfDirectoryAtPath:tmpDir error:&error];
+    NSLog(@"list:%@",list);
+    // 一覧の中から「capture」を含むディレクトリ・ファイルを検索
+    for (NSString *path in list) {
+        NSRange range = [path rangeOfString:fileName];
+        // 存在したならば削除
+        if (NSNotFound != range.location) {
+            NSLog(@"存在");
+            NSString *target = [tmpDir stringByAppendingPathComponent:path];
+            [manager removeItemAtPath:target error:&error];
+        }
+    }
+}
+ */
 
 
 #pragma mark - 撮り直し

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DemoContentView.h"
 #import "LocationClient.h"
 
 @interface beforeRecorderTableViewController : UITableViewController<UIAlertViewDelegate>{

@@ -12,7 +12,6 @@
 #import "CustomAnnotation.h"
 #import "AppDelegate.h"
 #import "MoviePlayerManager.h"
-#import "DemoContentView.h"
 #import "APIClient.h"
 #import "Restaurant.h"
 #import "SVProgressHUD.h"
@@ -29,8 +28,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @interface SearchTableViewController ()
 <UISearchBarDelegate, MKMapViewDelegate, SearchCellDelegate>
 {
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
 }
 
 
