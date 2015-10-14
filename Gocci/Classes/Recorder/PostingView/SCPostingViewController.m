@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "BFPaperCheckbox.h"
 #import "SVProgressHUD.h"
+#import "Swift.h"
 
 
 
@@ -191,38 +192,10 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 #pragma mark - 取得
 -(SCRecorderViewController*)viewControllerSCRecorder
 {
-    static NSString * const namebundle = @"screcorder";
-    
-    SCRecorderViewController* viewController = nil;
-    {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        if (rect.size.height == 480) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 667) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 736) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-    }
-    
-    return viewController;
+    // ストーリーボードを取得
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    //ビューコントローラ取得
+    return [storyboard instantiateViewControllerWithIdentifier:@"screcorder"];
 }
 
 #pragma mark - SCSecondView
