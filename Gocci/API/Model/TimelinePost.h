@@ -18,6 +18,7 @@
 @property (nonatomic,copy) NSString *postID;
 @property (nonatomic,copy) NSString *rest_id;
 @property (nonatomic,copy) NSString *restname;
+@property (nonatomic,copy) NSString *distance;
 @property (nonatomic) NSUInteger starEvaluation;
 @property (nonatomic,copy) NSString *thumbnail;
 @property (nonatomic,copy) NSString *userID;

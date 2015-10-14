@@ -136,13 +136,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     controller2.title = @"フォロー";
     controller2.delegate = self;
     
-    FollowTableViewController *controller3 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller3.title = @"リコメンド";
-    controller3.delegate = self;
+    NearViewController *vc1 = [[NearViewController alloc] init];
+    vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
+    vc1.title = @"近くの店";
     
     //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
-    NSArray *controllerArray = @[controller1, controller2, controller3 /*controller4*/];
+    NSArray *controllerArray = @[vc1,controller1, controller2 /*controller4*/];
     NSInteger count_item = 3;	//画面数
     // !!!:高さは画面高さの10%
     CGFloat height_item = rect_screen.size.height * 0.08; //40.f;	//高さ
@@ -150,15 +150,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0
                                  //CAPSPageMenuOptionMenuItemSeparatorWidth : @(0.5),		//アイテム間隔 default = 0.5
-                                 CAPSPageMenuOptionScrollMenuBackgroundColor: color_custom,	//メニュー背景色
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
                                  CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
                                  CAPSPageMenuOptionBottomMenuHairlineColor : [UIColor lightGrayColor],	//アンダーライン色
-                                 CAPSPageMenuOptionSelectionIndicatorColor: [UIColor whiteColor],	//選択マーク色
+                                 CAPSPageMenuOptionSelectionIndicatorColor: color_custom,	//選択マーク色
                                  //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
                                  //CAPSPageMenuOptionMenuMargin : @(15.f),	// ???:default = 15.f
                                  CAPSPageMenuOptionMenuHeight : @(height_item),	//メニュー高さ
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : [UIColor whiteColor],	//選択時文字色
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor whiteColor],	//非選択文字色
+                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : color_custom,	//選択時文字色
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : color_custom,	//非選択文字色
                                  CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
                                  CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(NO),	//角に丸みを付けるか？
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],	//タイトルフォント

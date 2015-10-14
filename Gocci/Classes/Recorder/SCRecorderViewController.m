@@ -12,7 +12,6 @@
 #import "SCTouchDetector.h"
 #import "SCRecorderViewController.h"
 #import "EditVideoController.h"
-#import "SCImageDisplayerViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 //#import "SCSessionListViewController.h"
 #import "SCRecordSessionManager.h"
