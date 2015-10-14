@@ -42,12 +42,32 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
-        
-        //let url = NSURL(string: "http://test.mp4-movies.gocci.me/2015/10/2015-10-05-14-42-26_473_movie.mp4")!
-        
-        SNSUtil.shareVideoOnFacebook(self, videoURL: url)
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
 
+        
+//        FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: self)
+//        {
+//            (result, error) -> Void in
+//            
+//            if error != nil {
+//                print("fuck!@#$")
+//                return
+//            }
+//            else if result.isCancelled {
+//                print("canceled!@#$")
+//                return
+//            }
+//            
+//            print("=== Facebook login success")
+        
+            let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
+            
+            //let url = NSURL(string: "http://test.mp4-movies.gocci.me/2015/10/2015-10-05-14-42-26_473_movie.mp4")!
+            
+            SNSUtil.shareVideoOnFacebook(self, videoURL: url)
+                
+      //  }
+        
     }
 
     

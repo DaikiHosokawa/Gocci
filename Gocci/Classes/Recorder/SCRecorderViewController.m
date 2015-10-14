@@ -1102,44 +1102,6 @@ static SCRecorder *_recorder;
     }];
 }
 
-/*
-#pragma mark - 取得
--(SCPostingViewController*)viewControllerSCPosting
-{
-    static NSString * const namebundle = @"scposting";
-    
-    SCRecorderViewController* viewController = nil;
-    {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        if (rect.size.height == 480) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 667) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else if (rect.size.height == 736) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-        else {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-        }
-    }
-    
-    return viewController;
-}
- */
 
 
 @end

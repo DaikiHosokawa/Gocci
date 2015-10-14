@@ -12,7 +12,17 @@
 import Foundation
 import UIKit
 
+
+
 @objc class Util : NSObject {
+    
+//    class func delme() {
+//        let dataFromString = "{wdwdwdw}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+//        
+//        let json = JSON(data: dataFromString!)
+//        print(json)
+//        
+//    }
     
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
     class func dirtyBackEndLoginWithUserDefData() -> AWSTask {
@@ -115,11 +125,13 @@ import UIKit
         switch UIScreen.mainScreen().bounds.size.height
         {
             case 480: return "3_5_inch"
-            case 568: return "Main"
+            case 568: return "4_0_inch"
             case 667: return "4_7_inch"
             case 736: return "5_5_inch"
-
-            default: return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
+            
+            default:
+                NSLog("no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height")
+                return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
         }
     }
 }

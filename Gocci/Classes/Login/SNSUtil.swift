@@ -100,12 +100,18 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
 //            [properties setObject:[photo] forKey:"og:image"];
 //        }
         
-        let properties = ["og:type": "app-namespace:tour", "og:title": "Example tour", "og:description": "Some description lorem ipsum dolor"]
+        let properties = [
+            "og:type": "article",
+            "og:url": "http://inase-inc.jp/gocci/",
+            "og:title": "Es geht um die Wurst",
+            "og:description": "Some description lorem ipsum dolor kjdkjkd ej ej ei eiefiefj sl ls ejslfjsiljflisjfslj",
+            "og:image": "https://techcrunchjp.files.wordpress.com/2015/08/gocci.png",
+        ]
         
         let object = FBSDKShareOpenGraphObject(properties: properties)
         
         // Create the action
-        let action = FBSDKShareOpenGraphAction(type: "gocci:share", object: object, key: "foodwars")
+        let action = FBSDKShareOpenGraphAction(type: "gocci_test:share", object: object, key: "restaurant")
         action.setString("true", forKey: "fb:explicitly_shared")
         
         // Create the content
@@ -113,12 +119,14 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
         content.action = action
         content.previewPropertyName = "foodwars"
         
-        // Share the content
-        let shareAPI = FBSDKShareAPI()
-        shareAPI.shareContent = content
-        shareAPI.delegate = self
+        FBSDKShareDialog.showFromViewController(currentViewController, withContent: content, delegate: self)
         
-        shareAPI.share()
+        // Share the content
+//        let shareAPI = FBSDKShareAPI()
+//        shareAPI.shareContent = content
+//        shareAPI.delegate = self
+//        
+//        shareAPI.share()
         
     }
     

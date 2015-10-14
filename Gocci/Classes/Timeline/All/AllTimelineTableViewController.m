@@ -26,7 +26,7 @@
 
 #import "TimelinePageMenuViewController.h"
 
-#import "GocciTest-Swift.h"
+#import "Swift.h"
 
 // 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
