@@ -8,6 +8,7 @@
 
 #import "CategoryViewController.h"
 #import "STPopup.h"
+#import "AllTimelineTableViewController.h"
 
 @interface CategoryViewController ()
 
@@ -18,9 +19,9 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = @"TableView";
-        self.contentSizeInPopup = CGSizeMake(300, 500);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 400);
+        self.title = @"お好きなカテゴリーから";
+        self.contentSizeInPopup = CGSizeMake(300, 400);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 300);
     }
     return self;
 }
@@ -51,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 20;
+  return 10;
 }
 
 
@@ -59,20 +60,38 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Identifier"];
     
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"カレー";
-    }else if(indexPath.row == 1) {
-        cell.textLabel.text = @"ラーメン";
-    }else if(indexPath.row == 2) {
         cell.textLabel.text = @"和食";
-    }else if(indexPath.row == 3) {
+    }else if(indexPath.row == 1) {
         cell.textLabel.text = @"洋食";
-    }else if(indexPath.row == 4) {
+    }else if(indexPath.row == 2) {
         cell.textLabel.text = @"中華";
+    }else if(indexPath.row == 3) {
+        cell.textLabel.text = @"カレー";
+    }else if(indexPath.row == 4) {
+        cell.textLabel.text = @"ラーメン";
     }else {
         cell.textLabel.text = @"ざっす";
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+    [self.popupController dismiss];
+    }else if(indexPath.row == 1) {
+    [self.popupController dismiss];
+    }else if(indexPath.row == 2) {
+    [self.popupController dismiss];
+    }else if(indexPath.row == 3) {
+    [self.popupController dismiss];
+    }else if(indexPath.row == 4) {
+    [self.popupController dismiss];
+    }else {
+    [self.popupController dismiss];       
+    }
+  
 }
 /*
 // Override to support conditional editing of the table view.

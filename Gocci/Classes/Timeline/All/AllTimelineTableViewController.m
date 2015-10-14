@@ -28,9 +28,6 @@
 
 #import "GocciTest-Swift.h"
 
-#import "STPopup.h"
-#import "SortViewController.h"
-#import "PasswordPopup.h"
 
 // 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -84,19 +81,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
-{
-    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
-    popupController.cornerRadius = 4;
-    popupController.transitionStyle = transitionStyle;
-    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
-    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
-    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
-    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Cochin" size:17] } forState:UIControlStateNormal];
-    [popupController presentInViewController:self];
-}
 
 
 //- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
@@ -294,18 +278,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark いいねボタン押し
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[SortViewController new]];
     
     // API からデータを取得
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
     }
      ];
-    //[self.view performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
-    //_currentIndexPath
-    
-    // タイムラインを再読み込み
-    // [self _fetchTimeline];
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
@@ -496,51 +474,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
   
 }
 
-//#pragma mark - Navigation
-//#pragma mark 遷移前準備
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//
-//
-//	if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
-//	{
-//		//ここでパラメータを渡す
-//#if 0
-//		everyTableViewController *eveVC = segue.destinationViewController;
-//#else
-//		everyBaseNavigationController *eveNC = segue.destinationViewController;
-//		everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-//#endif
-//		eveVC.postID = (NSString *)sender;
-//	}
-//
-//	if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
-//	{
-//		//ここでパラメータを渡す
-//		usersTableViewController_other *useVC = segue.destinationViewController;
-//		useVC.postUsername = _postUsername;
-//		useVC.postPicture = _postPicture;
-//		useVC.postFlag = _postFlag;
-//	}
-//	//店舗画面にパラメータを渡して遷移する
-//	//	if ([segue.identifier isEqualToString:@"goRestpage"])
-//	if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-//	{
-//		//ここでパラメータを渡す
-//		RestaurantTableViewController  *restVC = segue.destinationViewController;
-//		restVC.postRestName = _postRestname;
-//		restVC.postHomepage = _postHomepage;
-//		restVC.postLocality = _postLocality;
-//		restVC.postCategory = _postCategory;
-//		restVC.postLon = _postLon;
-//		restVC.postLat = _postLat;
-//		restVC.postTell = _postTell;
-//		restVC.postTotalCheer = _postTotalCheer;
-//		restVC.postWanttag = _postWanttag;
-//	}
-//
-//}
-//
+
+
 @end

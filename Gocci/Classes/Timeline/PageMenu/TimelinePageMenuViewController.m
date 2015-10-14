@@ -17,6 +17,8 @@
 #import "everyTableViewController.h"
 #import "GocciTest-Swift.h"
 
+#import "STPopup.h"
+#import "SortViewController.h"
 
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -182,11 +184,36 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
     
-    
-    self.lbw = [[LiquidButtonWrapper alloc] init];
-    [self.lbw addLiquidButton:self x:self.view.frame.size.width - 72 y:self.view.frame.size.height - 110];
+    UIImage *img = [UIImage imageNamed:@"ic_userpicture.png"];  // ボタンにする画像を生成する
+    UIButton *btn = [[UIButton alloc]
+                      initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 56, 56)];  // ボタンのサイズを指定する
+    [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    [self.view addSubview:btn];
+    // ボタンが押された時にhogeメソッドを呼び出す
+    [btn addTarget:self
+            action:@selector(hoge) forControlEvents:UIControlEventTouchUpInside];
     
 }
+
+-(void)hoge{
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[SortViewController new]];
+    
+}
+
+- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
+{
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
+    popupController.cornerRadius = 4;
+    popupController.transitionStyle = transitionStyle;
+    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Cochin" size:17] } forState:UIControlStateNormal];
+    [popupController presentInViewController:self];
+}
+
 
 #pragma mark - NavigationBarItemAction
 -(void)barButtonItemPressed:(id)sender
