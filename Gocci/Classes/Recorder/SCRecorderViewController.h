@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
-#import "DemoContentView.h"
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>

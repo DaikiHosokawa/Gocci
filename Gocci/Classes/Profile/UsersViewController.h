@@ -13,7 +13,6 @@
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
-#import "DemoContentView.h"
 
 
 @interface UsersViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>

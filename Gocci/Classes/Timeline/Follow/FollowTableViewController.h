@@ -15,7 +15,6 @@
 #import "usersTableViewController_other.h"
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
-#import "DemoContentView.h"
 #import "WYPopoverController.h"
 #import "WYStoryboardPopoverSegue.h"
 #import "BBBadgeBarButtonItem.h"

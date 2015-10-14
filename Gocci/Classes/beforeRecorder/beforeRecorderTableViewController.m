@@ -21,8 +21,6 @@
 
 @interface beforeRecorderTableViewController ()<beforeCellDelegate>
 {
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
 }
 
 @property (nonatomic, strong) NSMutableArray *restname_;

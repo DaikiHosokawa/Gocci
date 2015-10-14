@@ -78,7 +78,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     
     //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
@@ -125,17 +125,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     //PageMenu登録
     AllTimelineTableViewController *controller1 = [[AllTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller1.title = @"全体";
+    controller1.title = @"近い";
     controller1.delegate = self;
     
     FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller2.title = @"人気";
+    controller2.title = @"フォロー";
     controller2.delegate = self;
+    
+    FollowTableViewController *controller3 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
+    controller3.title = @"リコメンド";
+    controller3.delegate = self;
     
     //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
-    NSArray *controllerArray = @[controller1, controller2, /*controller3, controller4*/];
-    NSInteger count_item = 2;	//画面数
+    NSArray *controllerArray = @[controller1, controller2, controller3 /*controller4*/];
+    NSInteger count_item = 3;	//画面数
     // !!!:高さは画面高さの10%
     CGFloat height_item = rect_screen.size.height * 0.08; //40.f;	//高さ
     CGFloat width_item = self.view.frame.size.width / count_item; //幅
@@ -221,7 +225,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 
 }
 

@@ -453,8 +453,8 @@ static NSMutableSet *_retainedPopupControllers;
 - (void)setupBackgroundView
 {
     _bgView = [UIView new];
-    _bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+  _bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
+    _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     [_bgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgViewDidTap)]];
     [_containerViewController.view addSubview:_bgView];
 }

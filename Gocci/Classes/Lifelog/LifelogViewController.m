@@ -20,8 +20,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 {
     JTCalendarMenuView *calendarMenuView;
     NSLayoutConstraint *calendarContentViewHeight;
-    DemoContentView *_firstContentView;
-    DemoContentView *_secondContentView;
     
 }
 @property(nonatomic,strong) NSArray *array_year;

@@ -28,6 +28,10 @@
 
 #import "GocciTest-Swift.h"
 
+#import "STPopup.h"
+#import "SortViewController.h"
+#import "PasswordPopup.h"
+
 // 遷移
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -81,8 +85,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.lbw = [[LiquidButtonWrapper alloc] init];
     [self.lbw addLiquidButton:self x:300 y:300];
     
-    
 }
+
+- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
+{
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
+    popupController.cornerRadius = 4;
+    popupController.transitionStyle = transitionStyle;
+    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Cochin" size:17] } forState:UIControlStateNormal];
+    [popupController presentInViewController:self];
+}
+
 
 //- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
 //
@@ -279,6 +297,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 #pragma mark いいねボタン押し
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[SortViewController new]];
     
     // API からデータを取得
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
