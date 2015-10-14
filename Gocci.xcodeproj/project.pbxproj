@@ -27,7 +27,6 @@
 		950881C81BC501A200BF06B1 /* LiquittableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */; settings = {ASSET_TAGS = (); }; };
 		950881C91BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */; settings = {ASSET_TAGS = (); }; };
 		950881CA1BC501A200BF06B1 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881C11BC501A200BF06B1 /* UIColorEx.swift */; settings = {ASSET_TAGS = (); }; };
-		950881CE1BC5165100BF06B1 /* TempLiquidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */; settings = {ASSET_TAGS = (); }; };
 		950A8B6C1B217C1400BD66BD /* ui_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 950A8B6B1B217C1400BD66BD /* ui_nav.png */; };
 		951AD53B1B36B0A90057F081 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5381B36B0A90057F081 /* everyTableViewCell.m */; };
 		951AD53C1B36B0A90057F081 /* everyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951AD5391B36B0A90057F081 /* everyTableViewCell.xib */; };
@@ -248,6 +247,7 @@
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
 		9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDCB1BC6906D00B1651E /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9874BDCF1BC7C1E200B1651E /* splash_tmp_sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */; settings = {ASSET_TAGS = (); }; };
+		9874BDD11BCDF3EF00B1651E /* LiquidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDD01BCDF3EF00B1651E /* LiquidButton.swift */; settings = {ASSET_TAGS = (); }; };
 		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
 		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
 		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
@@ -332,7 +332,6 @@
 		950881BF1BC501A200BF06B1 /* LiquittableCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquittableCircle.swift; sourceTree = "<group>"; };
 		950881C01BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCircleLiquidEngine.swift; sourceTree = "<group>"; };
 		950881C11BC501A200BF06B1 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
-		950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempLiquidButton.swift; sourceTree = "<group>"; };
 		950A8B6B1B217C1400BD66BD /* ui_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_nav.png; sourceTree = "<group>"; };
 		951AD5371B36B0A90057F081 /* everyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewCell.h; sourceTree = "<group>"; };
 		951AD5381B36B0A90057F081 /* everyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewCell.m; sourceTree = "<group>"; };
@@ -706,6 +705,7 @@
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		9874BDCB1BC6906D00B1651E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash_tmp_sample.mp4; path = Video/splash_tmp_sample.mp4; sourceTree = "<group>"; };
+		9874BDD01BCDF3EF00B1651E /* LiquidButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquidButton.swift; sourceTree = "<group>"; };
 		987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Gocci/Vendor/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
 		987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -889,7 +889,6 @@
 			children = (
 				951AD5491B36B27A0057F081 /* AllTimelineTableViewController.h */,
 				951AD54A1B36B27A0057F081 /* AllTimelineTableViewController.m */,
-				950881CD1BC5165100BF06B1 /* TempLiquidButton.swift */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -906,6 +905,7 @@
 		951AD54E1B36B27A0057F081 /* PageMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9874BDD01BCDF3EF00B1651E /* LiquidButton.swift */,
 				951AD54F1B36B27A0057F081 /* CAPSPageMenu.h */,
 				951AD5501B36B27A0057F081 /* CAPSPageMenu.m */,
 				951AD5511B36B27A0057F081 /* TimelinePageMenuViewController.h */,
@@ -2131,7 +2131,6 @@
 				952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */,
 				951AD5531B36B27A0057F081 /* AllTimelineTableViewController.m in Sources */,
 				952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */,
-				950881CE1BC5165100BF06B1 /* TempLiquidButton.swift in Sources */,
 				98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */,
 				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
@@ -2260,6 +2259,7 @@
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,
+				9874BDD11BCDF3EF00B1651E /* LiquidButton.swift in Sources */,
 				952D238C1A9B95E800C354DF /* UIImage+MultiFormat.m in Sources */,
 				952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */,
 				95B118F21BC3A16E002A95CD /* PasswordPopup.m in Sources */,
