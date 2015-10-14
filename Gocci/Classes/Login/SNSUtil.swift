@@ -2,16 +2,21 @@
 //  SNSUtil.swift
 //  Gocci
 //
-//  Created by Ma Wa on 24.09.15.
+//  Created by Markus Wanke on 24.09.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
 import Foundation
 import UIKit
+import AVFoundation
+import FBSDKShareKit
 
-class SNSUtil
+
+let SNSUtil = SNSUtilSingelton.sharedInstance
+
+class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
 {
-    static let singelton = SNSUtil()
+    static let sharedInstance = SNSUtilSingelton()
     
     enum LoginResult {
         case SNS_LOGIN_SUCCESS
@@ -29,7 +34,7 @@ class SNSUtil
         case SNS_PROVIDER_FAIL
     }
     
-    init()
+    override init()
     {
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         //FHSTwitterEngine.sharedEngine().setDelegate(self)
@@ -38,8 +43,83 @@ class SNSUtil
         FBSDKSettings.setAppID(FACEBOOK_APP_ID)
     }
     
-    class func si() -> SNSUtil {
-        return singelton
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        //print("worked")
+     //   print(results)
+        NSLog("====== Facebook sharing completed: ", results)
+    }
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        print("failed")
+    //    print(error)
+//        NSLog("====== Facebook sharing failed: \(error)")
+    }
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        
+    }
+    
+    func shareVideoOnFacebook(currentViewController: UIViewController, videoURL: NSURL) {
+        
+        var logopt = Set<String>()
+        logopt.insert(FBSDKLoggingBehaviorAccessTokens)
+        logopt.insert(FBSDKLoggingBehaviorAppEvents)
+        logopt.insert(FBSDKLoggingBehaviorInformational)
+        logopt.insert(FBSDKLoggingBehaviorUIControlErrors)
+        logopt.insert(FBSDKLoggingBehaviorGraphAPIDebugWarning)
+        logopt.insert(FBSDKLoggingBehaviorGraphAPIDebugInfo)
+        logopt.insert(FBSDKLoggingBehaviorNetworkRequests)
+        logopt.insert(FBSDKLoggingBehaviorDeveloperErrors)
+        FBSDKSettings.setLoggingBehavior(logopt)
+
+
+        print("URL  : \(videoURL)")
+        let asset = AVURLAsset(URL: videoURL)
+        print("ASSET: \(asset.URL)")
+        
+        
+        let fbvideo = FBSDKShareVideo(videoURL: asset.URL)
+        let fbcontend = FBSDKShareVideoContent()
+        fbcontend.video = fbvideo
+        
+       // FBSDKShareDialog.showFromViewController(currentViewController, withContent: fbcontend, delegate: nil)
+        
+
+        
+        // Create the object
+//        NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary: {
+//            "og:type": "mynamespace:article",
+//            "og:title": myModel.title,
+//            "og:description": "myModel.description",
+//            "og:url": "http://mywebsite.com"
+//        }];
+//        
+//        
+//        NSURL *imageURL = [myModel getImageURL];
+//        if (imageURL) {
+//            
+//            FBSDKSharePhoto *photo = [FBSDKSharePhoto photoWithImageURL:imageURL userGenerated:NO];
+//            [properties setObject:[photo] forKey:"og:image"];
+//        }
+        
+        let properties = ["og:type": "app-namespace:tour", "og:title": "Example tour", "og:description": "Some description lorem ipsum dolor"]
+        
+        let object = FBSDKShareOpenGraphObject(properties: properties)
+        
+        // Create the action
+        let action = FBSDKShareOpenGraphAction(type: "gocci:share", object: object, key: "foodwars")
+        action.setString("true", forKey: "fb:explicitly_shared")
+        
+        // Create the content
+        let content = FBSDKShareOpenGraphContent()
+        content.action = action
+        content.previewPropertyName = "foodwars"
+        
+        // Share the content
+        let shareAPI = FBSDKShareAPI()
+        shareAPI.shareContent = content
+        shareAPI.delegate = self
+        
+        shareAPI.share()
+        
     }
     
 

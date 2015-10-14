@@ -29,6 +29,7 @@ import Foundation
         cells.append(LiquidFloatingCell(icon: UIImage(named: "icon_record_cam")!))
 
         vc.view.addSubview(floatingActionButton)
+        vc.view.bringSubviewToFront(floatingActionButton)
     }
     
     func numberOfCells(liquidFloatingActionButton: LiquidFloatingActionButton) -> Int {

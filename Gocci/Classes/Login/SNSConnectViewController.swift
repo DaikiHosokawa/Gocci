@@ -24,7 +24,7 @@ class SNSConnectViewController : UIViewController {
     
     
     @IBAction func facebookConnectClicked(sender: AnyObject) {
-        SNSUtil.singelton.connectWithFacebook(currentViewController: self) { (result) -> Void in
+        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
             switch result {
                 case .SNS_CONNECTION_SUCCESS:
                     Util.popup("Facebook連携が完了しました")
@@ -45,7 +45,7 @@ class SNSConnectViewController : UIViewController {
     }
     
     @IBAction func twitterConnectClicked(sender: AnyObject) {
-        SNSUtil.singelton.connectWithTwitter(self) { (result) -> Void in
+        SNSUtil.connectWithTwitter(self) { (result) -> Void in
             switch result {
                 case .SNS_CONNECTION_SUCCESS:
                     Util.popup("Twitter連携が完了しました")
