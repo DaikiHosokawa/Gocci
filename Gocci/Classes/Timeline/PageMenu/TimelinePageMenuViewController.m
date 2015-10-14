@@ -15,6 +15,7 @@
 #import "CAPSPageMenu.h"
 #import "everyBaseNavigationController.h"
 #import "everyTableViewController.h"
+#import "GocciTest-Swift.h"
 
 
 
@@ -38,6 +39,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
+
+@property (strong, nonatomic) LiquidButtonWrapper *lbw;
+
 
 //ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
@@ -185,6 +189,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
+    
+    
+    self.lbw = [[LiquidButtonWrapper alloc] init];
+    [self.lbw addLiquidButton:self x:self.view.frame.size.width - 72 y:self.view.frame.size.height - 110];
     
 }
 

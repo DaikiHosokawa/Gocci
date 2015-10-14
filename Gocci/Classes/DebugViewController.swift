@@ -42,17 +42,29 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
+        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
+        
+        //let url = NSURL(string: "http://test.mp4-movies.gocci.me/2015/10/2015-10-05-14-42-26_473_movie.mp4")!
+        
+        SNSUtil.shareVideoOnFacebook(self, videoURL: url)
 
-        
-        print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
-        
-        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
-        
-        SNSUtil.singelton.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
-            print("Result: \(res)")
-        }
     }
+
+    
+    
+//    @IBAction func explode(sender: AnyObject) {
+//        
+//        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
+//
+//        
+//        print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
+//        
+//        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
+//        
+//        SNSUtil.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
+//            print("Result: \(res)")
+//        }
+//    }
 
 
 
@@ -123,7 +135,7 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH TWITTER")
 
-        SNSUtil.singelton.connectWithTwitter(self) { (result) -> Void in
+        SNSUtil.connectWithTwitter(self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -133,7 +145,7 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH TWITTER")
         
-        SNSUtil.singelton.loginWithTwitter(self) { (result) -> Void in
+        SNSUtil.loginWithTwitter(self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -143,7 +155,7 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH FACEBOOK")
         
-        SNSUtil.singelton.connectWithFacebook(currentViewController: self) { (result) -> Void in
+        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -153,7 +165,7 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        SNSUtil.singelton.loginWithFacebook(currentViewController: self) { (result) -> Void in
+        SNSUtil.loginWithFacebook(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }

@@ -50,7 +50,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @property (nonatomic,strong) NSArray *posts;	// タイムラインのデータ
 
-@property (strong, nonatomic) LiquidButtonWrapper *lbw;
 
 
 @end
@@ -77,9 +76,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     // API からタイムラインのデータを取得
     [self _fetchTimelineUsingLocationCacheALL:YES];
     
-    
-    self.lbw = [[LiquidButtonWrapper alloc] init];
-    [self.lbw addLiquidButton:self x:300 y:300];
+
     
     
 }
