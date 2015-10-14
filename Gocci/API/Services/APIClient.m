@@ -112,6 +112,23 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)Distance:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"order_id" : @"1",
+                             @"lat" :  [NSString stringWithFormat:@"%@", @(latitude)],
+                             @"lon" :  [NSString stringWithFormat:@"%@", @(longitude)],
+                             };
+    NSLog(@"Distance:%@",params);
+    [[APIClient sharedClient].manager GET:@"get/timeline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 
 + (void)Popular:(void (^)(id, NSUInteger, NSError *))handler

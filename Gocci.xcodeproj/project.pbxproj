@@ -87,7 +87,6 @@
 		952D239C1A9B95E800C354DF /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D235F1A9B95E800C354DF /* UIProgressView+AFNetworking.m */; };
 		952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23611A9B95E800C354DF /* UIRefreshControl+AFNetworking.m */; };
 		952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23631A9B95E800C354DF /* UIWebView+AFNetworking.m */; };
-		952D23ED1A9B9C6100C354DF /* DemoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23EC1A9B9C6100C354DF /* DemoContentView.m */; };
 		952D247B1A9B9D3300C354DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24081A9B9D3300C354DF /* AppDelegate.m */; };
 		952D247C1A9B9D3300C354DF /* beforeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D240B1A9B9D3300C354DF /* beforeCell.m */; };
 		952D247D1A9B9D3300C354DF /* beforeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D240C1A9B9D3300C354DF /* beforeCell.xib */; };
@@ -101,7 +100,6 @@
 		952D24921A9B9D3300C354DF /* usersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24331A9B9D3300C354DF /* usersTableViewController.m */; };
 		952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24361A9B9D3300C354DF /* usersTableViewController_other.m */; };
 		952D24941A9B9D3300C354DF /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24391A9B9D3300C354DF /* GaugeView.m */; };
-		952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D243B1A9B9D3300C354DF /* SCImageDisplayerViewController.m */; };
 		952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */; };
 		952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D243F1A9B9D3300C354DF /* SCRecordSessionManager.m */; };
 		952D24981A9B9D3300C354DF /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24411A9B9D3300C354DF /* SCTouchDetector.m */; };
@@ -111,17 +109,14 @@
 		952D249C1A9B9D3300C354DF /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D244B1A9B9D3300C354DF /* SearchCell.xib */; };
 		952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D244D1A9B9D3300C354DF /* searchTableViewController.m */; };
 		952D249E1A9B9D3300C354DF /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24511A9B9D3300C354DF /* CIImageRendererUtils.m */; };
-		952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24531A9B9D3300C354DF /* SCArchivedVector.m */; };
 		952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24551A9B9D3300C354DF /* SCAssetExportSession.m */; };
 		952D24A11A9B9D3300C354DF /* SCAudioTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24571A9B9D3300C354DF /* SCAudioTools.m */; };
 		952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D245A1A9B9D3300C354DF /* SCFilter.m */; };
-		952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D245C1A9B9D3300C354DF /* SCFilterGroup.m */; };
 		952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D245E1A9B9D3300C354DF /* SCFilterSelectorView.m */; };
 		952D24A51A9B9D3300C354DF /* SCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24611A9B9D3300C354DF /* SCImageView.m */; };
 		952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24631A9B9D3300C354DF /* SCPlayer.m */; };
 		952D24A71A9B9D3300C354DF /* SCRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24651A9B9D3300C354DF /* SCRecorder.m */; };
 		952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24671A9B9D3300C354DF /* SCRecorderFocusTargetView.m */; };
-		952D24A91A9B9D3300C354DF /* SCRecorderFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D24691A9B9D3300C354DF /* SCRecorderFocusView.m */; };
 		952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D246B1A9B9D3300C354DF /* SCRecordSession.m */; };
 		952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D246D1A9B9D3300C354DF /* SCSampleBufferHolder.m */; };
 		952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D246F1A9B9D3300C354DF /* SCSwipeableFilterView.m */; };
@@ -174,6 +169,23 @@
 		9539018B1BC1654D00842FFF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953901891BC1654D00842FFF /* TableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		953901901BC2171500842FFF /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9539018F1BC2171500842FFF /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */; };
+		95446D891BCDF61F00540781 /* EditVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D881BCDF61F00540781 /* EditVideoController.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA41BCDF67A00540781 /* SCAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D8B1BCDF67A00540781 /* SCAudioConfiguration.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA51BCDF67A00540781 /* SCContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D8D1BCDF67A00540781 /* SCContext.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA61BCDF67A00540781 /* SCFilterAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D8F1BCDF67A00540781 /* SCFilterAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA71BCDF67A00540781 /* SCIOPixelBuffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D911BCDF67A00540781 /* SCIOPixelBuffers.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA81BCDF67A00540781 /* SCMediaTypeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D931BCDF67A00540781 /* SCMediaTypeConfiguration.m */; settings = {ASSET_TAGS = (); }; };
+		95446DA91BCDF67A00540781 /* SCPhotoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D951BCDF67A00540781 /* SCPhotoConfiguration.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAA1BCDF67A00540781 /* SCProcessingQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D971BCDF67A00540781 /* SCProcessingQueue.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAB1BCDF67A00540781 /* SCRecorderTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D9A1BCDF67A00540781 /* SCRecorderTools.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAC1BCDF67A00540781 /* SCRecorderToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D9C1BCDF67A00540781 /* SCRecorderToolsView.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAD1BCDF67A00540781 /* SCRecordSessionSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446D9F1BCDF67A00540781 /* SCRecordSessionSegment.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAE1BCDF67A00540781 /* SCVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DA11BCDF67A00540781 /* SCVideoConfiguration.m */; settings = {ASSET_TAGS = (); }; };
+		95446DAF1BCDF67A00540781 /* SCWeakSelectorTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DA31BCDF67A00540781 /* SCWeakSelectorTarget.m */; settings = {ASSET_TAGS = (); }; };
+		95446DBB1BCDF6B100540781 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DB21BCDF6B100540781 /* CategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		95446DBC1BCDF6B100540781 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DB41BCDF6B100540781 /* SortViewController.m */; settings = {ASSET_TAGS = (); }; };
+		95446DC91BCE098C00540781 /* NearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DC51BCE098C00540781 /* NearViewController.m */; settings = {ASSET_TAGS = (); }; };
+		95446DCA1BCE098C00540781 /* NearViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95446DC71BCE098C00540781 /* NearViewControllerCell.m */; settings = {ASSET_TAGS = (); }; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
@@ -226,10 +238,6 @@
 		95E4BCA21B37DA4A00B8CF44 /* SCSecondView_4_7_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC8E1B37DA4A00B8CF44 /* SCSecondView_4_7_inch.xib */; };
 		95E4BCA31B37DA4A00B8CF44 /* SCSecondView_5_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC8F1B37DA4A00B8CF44 /* SCSecondView_5_5_inch.xib */; };
 		95E4BCA41B37DA4A00B8CF44 /* SCSecondViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC901B37DA4A00B8CF44 /* SCSecondViewMain.xib */; };
-		95E4BCA51B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC931B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m */; };
-		95E4BCA61B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC941B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib */; };
-		95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC961B37DA4A00B8CF44 /* RecorderSubmitPopupView.m */; };
-		95E4BCA81B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */; };
 		95E4BCAB1B37DA9800B8CF44 /* SCScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */; };
 		95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5121AF9103B006FD54E /* FollowListCell.m */; };
 		95EEC5171AF9103B006FD54E /* FollowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95EEC5131AF9103B006FD54E /* FollowListCell.xib */; };
@@ -453,8 +461,6 @@
 		952D23611A9B95E800C354DF /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		952D23621A9B95E800C354DF /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		952D23631A9B95E800C354DF /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		952D23EB1A9B9C6100C354DF /* DemoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoContentView.h; sourceTree = "<group>"; };
-		952D23EC1A9B9C6100C354DF /* DemoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoContentView.m; sourceTree = "<group>"; };
 		952D24071A9B9D3300C354DF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		952D24081A9B9D3300C354DF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		952D240A1A9B9D3300C354DF /* beforeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beforeCell.h; sourceTree = "<group>"; };
@@ -480,8 +486,6 @@
 		952D24361A9B9D3300C354DF /* usersTableViewController_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController_other.m; sourceTree = "<group>"; };
 		952D24381A9B9D3300C354DF /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaugeView.h; sourceTree = "<group>"; };
 		952D24391A9B9D3300C354DF /* GaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaugeView.m; sourceTree = "<group>"; };
-		952D243A1A9B9D3300C354DF /* SCImageDisplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageDisplayerViewController.h; sourceTree = "<group>"; };
-		952D243B1A9B9D3300C354DF /* SCImageDisplayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageDisplayerViewController.m; sourceTree = "<group>"; };
 		952D243C1A9B9D3300C354DF /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
 		952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
 		952D243E1A9B9D3300C354DF /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
@@ -500,8 +504,6 @@
 		952D244F1A9B9D3300C354DF /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
 		952D24501A9B9D3300C354DF /* CIImageRendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRendererUtils.h; sourceTree = "<group>"; };
 		952D24511A9B9D3300C354DF /* CIImageRendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIImageRendererUtils.m; sourceTree = "<group>"; };
-		952D24521A9B9D3300C354DF /* SCArchivedVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCArchivedVector.h; sourceTree = "<group>"; };
-		952D24531A9B9D3300C354DF /* SCArchivedVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCArchivedVector.m; sourceTree = "<group>"; };
 		952D24541A9B9D3300C354DF /* SCAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAssetExportSession.h; sourceTree = "<group>"; };
 		952D24551A9B9D3300C354DF /* SCAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAssetExportSession.m; sourceTree = "<group>"; };
 		952D24561A9B9D3300C354DF /* SCAudioTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioTools.h; sourceTree = "<group>"; };
@@ -509,8 +511,6 @@
 		952D24581A9B9D3300C354DF /* SCAudioVideoRecorder-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCAudioVideoRecorder-Prefix.pch"; sourceTree = "<group>"; };
 		952D24591A9B9D3300C354DF /* SCFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilter.h; sourceTree = "<group>"; };
 		952D245A1A9B9D3300C354DF /* SCFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilter.m; sourceTree = "<group>"; };
-		952D245B1A9B9D3300C354DF /* SCFilterGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterGroup.h; sourceTree = "<group>"; };
-		952D245C1A9B9D3300C354DF /* SCFilterGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilterGroup.m; sourceTree = "<group>"; };
 		952D245D1A9B9D3300C354DF /* SCFilterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterSelectorView.h; sourceTree = "<group>"; };
 		952D245E1A9B9D3300C354DF /* SCFilterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilterSelectorView.m; sourceTree = "<group>"; };
 		952D245F1A9B9D3300C354DF /* SCFilterSelectorViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterSelectorViewInternal.h; sourceTree = "<group>"; };
@@ -522,8 +522,6 @@
 		952D24651A9B9D3300C354DF /* SCRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorder.m; sourceTree = "<group>"; };
 		952D24661A9B9D3300C354DF /* SCRecorderFocusTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderFocusTargetView.h; sourceTree = "<group>"; };
 		952D24671A9B9D3300C354DF /* SCRecorderFocusTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderFocusTargetView.m; sourceTree = "<group>"; };
-		952D24681A9B9D3300C354DF /* SCRecorderFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderFocusView.h; sourceTree = "<group>"; };
-		952D24691A9B9D3300C354DF /* SCRecorderFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderFocusView.m; sourceTree = "<group>"; };
 		952D246A1A9B9D3300C354DF /* SCRecordSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSession.h; sourceTree = "<group>"; };
 		952D246B1A9B9D3300C354DF /* SCRecordSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSession.m; sourceTree = "<group>"; };
 		952D246C1A9B9D3300C354DF /* SCSampleBufferHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSampleBufferHolder.h; sourceTree = "<group>"; };
@@ -590,6 +588,42 @@
 		9539018F1BC2171500842FFF /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		953B1C111B9060FE00AEE0ED /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
 		953B1C121B9060FE00AEE0ED /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
+		95446D871BCDF61F00540781 /* EditVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditVideoController.h; sourceTree = "<group>"; };
+		95446D881BCDF61F00540781 /* EditVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditVideoController.m; sourceTree = "<group>"; };
+		95446D8A1BCDF67A00540781 /* SCAudioConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioConfiguration.h; sourceTree = "<group>"; };
+		95446D8B1BCDF67A00540781 /* SCAudioConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioConfiguration.m; sourceTree = "<group>"; };
+		95446D8C1BCDF67A00540781 /* SCContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCContext.h; sourceTree = "<group>"; };
+		95446D8D1BCDF67A00540781 /* SCContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCContext.m; sourceTree = "<group>"; };
+		95446D8E1BCDF67A00540781 /* SCFilterAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFilterAnimation.h; sourceTree = "<group>"; };
+		95446D8F1BCDF67A00540781 /* SCFilterAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFilterAnimation.m; sourceTree = "<group>"; };
+		95446D901BCDF67A00540781 /* SCIOPixelBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIOPixelBuffers.h; sourceTree = "<group>"; };
+		95446D911BCDF67A00540781 /* SCIOPixelBuffers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIOPixelBuffers.m; sourceTree = "<group>"; };
+		95446D921BCDF67A00540781 /* SCMediaTypeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMediaTypeConfiguration.h; sourceTree = "<group>"; };
+		95446D931BCDF67A00540781 /* SCMediaTypeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMediaTypeConfiguration.m; sourceTree = "<group>"; };
+		95446D941BCDF67A00540781 /* SCPhotoConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPhotoConfiguration.h; sourceTree = "<group>"; };
+		95446D951BCDF67A00540781 /* SCPhotoConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPhotoConfiguration.m; sourceTree = "<group>"; };
+		95446D961BCDF67A00540781 /* SCProcessingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCProcessingQueue.h; sourceTree = "<group>"; };
+		95446D971BCDF67A00540781 /* SCProcessingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCProcessingQueue.m; sourceTree = "<group>"; };
+		95446D981BCDF67A00540781 /* SCRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderDelegate.h; sourceTree = "<group>"; };
+		95446D991BCDF67A00540781 /* SCRecorderTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderTools.h; sourceTree = "<group>"; };
+		95446D9A1BCDF67A00540781 /* SCRecorderTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderTools.m; sourceTree = "<group>"; };
+		95446D9B1BCDF67A00540781 /* SCRecorderToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderToolsView.h; sourceTree = "<group>"; };
+		95446D9C1BCDF67A00540781 /* SCRecorderToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderToolsView.m; sourceTree = "<group>"; };
+		95446D9D1BCDF67A00540781 /* SCRecordSession_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSession_Internal.h; sourceTree = "<group>"; };
+		95446D9E1BCDF67A00540781 /* SCRecordSessionSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionSegment.h; sourceTree = "<group>"; };
+		95446D9F1BCDF67A00540781 /* SCRecordSessionSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionSegment.m; sourceTree = "<group>"; };
+		95446DA01BCDF67A00540781 /* SCVideoConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoConfiguration.h; sourceTree = "<group>"; };
+		95446DA11BCDF67A00540781 /* SCVideoConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoConfiguration.m; sourceTree = "<group>"; };
+		95446DA21BCDF67A00540781 /* SCWeakSelectorTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWeakSelectorTarget.h; sourceTree = "<group>"; };
+		95446DA31BCDF67A00540781 /* SCWeakSelectorTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWeakSelectorTarget.m; sourceTree = "<group>"; };
+		95446DB11BCDF6B100540781 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
+		95446DB21BCDF6B100540781 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
+		95446DB31BCDF6B100540781 /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		95446DB41BCDF6B100540781 /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
+		95446DC41BCE098C00540781 /* NearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewController.h; sourceTree = "<group>"; };
+		95446DC51BCE098C00540781 /* NearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewController.m; sourceTree = "<group>"; };
+		95446DC61BCE098C00540781 /* NearViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewControllerCell.h; sourceTree = "<group>"; };
+		95446DC71BCE098C00540781 /* NearViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewControllerCell.m; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -674,12 +708,6 @@
 		95E4BC8E1B37DA4A00B8CF44 /* SCSecondView_4_7_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondView_4_7_inch.xib; sourceTree = "<group>"; };
 		95E4BC8F1B37DA4A00B8CF44 /* SCSecondView_5_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondView_5_5_inch.xib; sourceTree = "<group>"; };
 		95E4BC901B37DA4A00B8CF44 /* SCSecondViewMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCSecondViewMain.xib; sourceTree = "<group>"; };
-		95E4BC921B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupAdditionView.h; sourceTree = "<group>"; };
-		95E4BC931B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupAdditionView.m; sourceTree = "<group>"; };
-		95E4BC941B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupAdditionView.xib; sourceTree = "<group>"; };
-		95E4BC951B37DA4A00B8CF44 /* RecorderSubmitPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderSubmitPopupView.h; sourceTree = "<group>"; };
-		95E4BC961B37DA4A00B8CF44 /* RecorderSubmitPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderSubmitPopupView.m; sourceTree = "<group>"; };
-		95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecorderSubmitPopupView.xib; sourceTree = "<group>"; };
 		95E4BCA91B37DA9800B8CF44 /* SCScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScrollPageView.h; sourceTree = "<group>"; };
 		95E4BCAA1B37DA9800B8CF44 /* SCScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScrollPageView.m; sourceTree = "<group>"; };
 		95EEC5111AF9103B006FD54E /* FollowListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowListCell.h; sourceTree = "<group>"; };
@@ -932,7 +960,6 @@
 				958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */,
 				A13FB9731AB45F7E00B893F9 /* BFPaperColors */,
 				A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */,
-				952D23EA1A9B9C6100C354DF /* PopUp */,
 				952D22E41A9B95E800C354DF /* AFNetworking */,
 				952D22F81A9B95E800C354DF /* CrittercismSDK */,
 				950881B81BC501A200BF06B1 /* LiquidFloatingActionButton */,
@@ -1106,18 +1133,10 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
-		952D23EA1A9B9C6100C354DF /* PopUp */ = {
-			isa = PBXGroup;
-			children = (
-				952D23EB1A9B9C6100C354DF /* DemoContentView.h */,
-				952D23EC1A9B9C6100C354DF /* DemoContentView.m */,
-			);
-			path = PopUp;
-			sourceTree = "<group>";
-		};
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				95446D861BCDF61F00540781 /* EditVdeo */,
 				95A39DF11BC6168D00FB3150 /* FriendAdd */,
 				950881B11BC4F67F00BF06B1 /* UserSearch */,
 				98DE2B7F1BAF906800382B75 /* Debug */,
@@ -1246,7 +1265,6 @@
 			children = (
 				95E4BC7F1B37DA4A00B8CF44 /* PostingView */,
 				95E4BC821B37DA4A00B8CF44 /* ScrollPage */,
-				95E4BC911B37DA4A00B8CF44 /* SubmitPopup */,
 				373BB8371AFE59A300F7AC77 /* DummyViewController.h */,
 				373BB8381AFE59A300F7AC77 /* DummyViewController.m */,
 				377063391AFC6F9F00CD891D /* XYPieChart.h */,
@@ -1255,8 +1273,6 @@
 				952D243D1A9B9D3300C354DF /* SCRecorderViewController.m */,
 				952D24381A9B9D3300C354DF /* GaugeView.h */,
 				952D24391A9B9D3300C354DF /* GaugeView.m */,
-				952D243A1A9B9D3300C354DF /* SCImageDisplayerViewController.h */,
-				952D243B1A9B9D3300C354DF /* SCImageDisplayerViewController.m */,
 				952D243E1A9B9D3300C354DF /* SCRecordSessionManager.h */,
 				952D243F1A9B9D3300C354DF /* SCRecordSessionManager.m */,
 				952D24401A9B9D3300C354DF /* SCTouchDetector.h */,
@@ -1299,11 +1315,35 @@
 		952D244E1A9B9D3300C354DF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				95446D8A1BCDF67A00540781 /* SCAudioConfiguration.h */,
+				95446D8B1BCDF67A00540781 /* SCAudioConfiguration.m */,
+				95446D8C1BCDF67A00540781 /* SCContext.h */,
+				95446D8D1BCDF67A00540781 /* SCContext.m */,
+				95446D8E1BCDF67A00540781 /* SCFilterAnimation.h */,
+				95446D8F1BCDF67A00540781 /* SCFilterAnimation.m */,
+				95446D901BCDF67A00540781 /* SCIOPixelBuffers.h */,
+				95446D911BCDF67A00540781 /* SCIOPixelBuffers.m */,
+				95446D921BCDF67A00540781 /* SCMediaTypeConfiguration.h */,
+				95446D931BCDF67A00540781 /* SCMediaTypeConfiguration.m */,
+				95446D941BCDF67A00540781 /* SCPhotoConfiguration.h */,
+				95446D951BCDF67A00540781 /* SCPhotoConfiguration.m */,
+				95446D961BCDF67A00540781 /* SCProcessingQueue.h */,
+				95446D971BCDF67A00540781 /* SCProcessingQueue.m */,
+				95446D981BCDF67A00540781 /* SCRecorderDelegate.h */,
+				95446D991BCDF67A00540781 /* SCRecorderTools.h */,
+				95446D9A1BCDF67A00540781 /* SCRecorderTools.m */,
+				95446D9B1BCDF67A00540781 /* SCRecorderToolsView.h */,
+				95446D9C1BCDF67A00540781 /* SCRecorderToolsView.m */,
+				95446D9D1BCDF67A00540781 /* SCRecordSession_Internal.h */,
+				95446D9E1BCDF67A00540781 /* SCRecordSessionSegment.h */,
+				95446D9F1BCDF67A00540781 /* SCRecordSessionSegment.m */,
+				95446DA01BCDF67A00540781 /* SCVideoConfiguration.h */,
+				95446DA11BCDF67A00540781 /* SCVideoConfiguration.m */,
+				95446DA21BCDF67A00540781 /* SCWeakSelectorTarget.h */,
+				95446DA31BCDF67A00540781 /* SCWeakSelectorTarget.m */,
 				952D244F1A9B9D3300C354DF /* CIImageRenderer.h */,
 				952D24501A9B9D3300C354DF /* CIImageRendererUtils.h */,
 				952D24511A9B9D3300C354DF /* CIImageRendererUtils.m */,
-				952D24521A9B9D3300C354DF /* SCArchivedVector.h */,
-				952D24531A9B9D3300C354DF /* SCArchivedVector.m */,
 				952D24541A9B9D3300C354DF /* SCAssetExportSession.h */,
 				952D24551A9B9D3300C354DF /* SCAssetExportSession.m */,
 				952D24561A9B9D3300C354DF /* SCAudioTools.h */,
@@ -1311,8 +1351,6 @@
 				952D24581A9B9D3300C354DF /* SCAudioVideoRecorder-Prefix.pch */,
 				952D24591A9B9D3300C354DF /* SCFilter.h */,
 				952D245A1A9B9D3300C354DF /* SCFilter.m */,
-				952D245B1A9B9D3300C354DF /* SCFilterGroup.h */,
-				952D245C1A9B9D3300C354DF /* SCFilterGroup.m */,
 				952D245D1A9B9D3300C354DF /* SCFilterSelectorView.h */,
 				952D245E1A9B9D3300C354DF /* SCFilterSelectorView.m */,
 				952D245F1A9B9D3300C354DF /* SCFilterSelectorViewInternal.h */,
@@ -1324,8 +1362,6 @@
 				952D24651A9B9D3300C354DF /* SCRecorder.m */,
 				952D24661A9B9D3300C354DF /* SCRecorderFocusTargetView.h */,
 				952D24671A9B9D3300C354DF /* SCRecorderFocusTargetView.m */,
-				952D24681A9B9D3300C354DF /* SCRecorderFocusView.h */,
-				952D24691A9B9D3300C354DF /* SCRecorderFocusView.m */,
 				952D246A1A9B9D3300C354DF /* SCRecordSession.h */,
 				952D246B1A9B9D3300C354DF /* SCRecordSession.m */,
 				952D246C1A9B9D3300C354DF /* SCSampleBufferHolder.h */,
@@ -1341,6 +1377,8 @@
 		952D24751A9B9D3300C354DF /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				95446DC31BCE098C00540781 /* Colloction */,
+				95446DB01BCDF6B100540781 /* Popup */,
 				951AD5481B36B27A0057F081 /* All */,
 				951AD54B1B36B27A0057F081 /* Follow */,
 				951AD54E1B36B27A0057F081 /* PageMenu */,
@@ -1498,6 +1536,45 @@
 				9539018F1BC2171500842FFF /* MapViewController.m */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		95446D861BCDF61F00540781 /* EditVdeo */ = {
+			isa = PBXGroup;
+			children = (
+				95446D871BCDF61F00540781 /* EditVideoController.h */,
+				95446D881BCDF61F00540781 /* EditVideoController.m */,
+			);
+			path = EditVdeo;
+			sourceTree = "<group>";
+		};
+		95446DB01BCDF6B100540781 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				95446DB11BCDF6B100540781 /* CategoryViewController.h */,
+				95446DB21BCDF6B100540781 /* CategoryViewController.m */,
+				95446DB31BCDF6B100540781 /* SortViewController.h */,
+				95446DB41BCDF6B100540781 /* SortViewController.m */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		95446DC31BCE098C00540781 /* Colloction */ = {
+			isa = PBXGroup;
+			children = (
+				95446DC61BCE098C00540781 /* NearViewControllerCell.h */,
+				95446DC71BCE098C00540781 /* NearViewControllerCell.m */,
+				95446DC41BCE098C00540781 /* NearViewController.h */,
+				95446DC51BCE098C00540781 /* NearViewController.m */,
+				95446DC81BCE098C00540781 /* Table */,
+			);
+			path = Colloction;
+			sourceTree = "<group>";
+		};
+		95446DC81BCE098C00540781 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 		958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */ = {
@@ -1704,19 +1781,6 @@
 				95E4BC901B37DA4A00B8CF44 /* SCSecondViewMain.xib */,
 			);
 			path = SecondView;
-			sourceTree = "<group>";
-		};
-		95E4BC911B37DA4A00B8CF44 /* SubmitPopup */ = {
-			isa = PBXGroup;
-			children = (
-				95E4BC921B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.h */,
-				95E4BC931B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m */,
-				95E4BC941B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib */,
-				95E4BC951B37DA4A00B8CF44 /* RecorderSubmitPopupView.h */,
-				95E4BC961B37DA4A00B8CF44 /* RecorderSubmitPopupView.m */,
-				95E4BC971B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib */,
-			);
-			path = SubmitPopup;
 			sourceTree = "<group>";
 		};
 		95EEC5101AF9103B006FD54E /* FollowList */ = {
@@ -2082,7 +2146,6 @@
 				952D24F31A9B9EC800C354DF /* btn_delete_black@2x.png in Resources */,
 				952D24F51A9B9EC800C354DF /* btn_toukou@2x.png in Resources */,
 				952D25061A9B9EC800C354DF /* tabbaritem_search@2x.png in Resources */,
-				95E4BCA81B37DA4A00B8CF44 /* RecorderSubmitPopupView.xib in Resources */,
 				952D24F61A9B9EC800C354DF /* ic_userpicture.png in Resources */,
 				952D25031A9B9EC800C354DF /* tabbaritem_profile_sel.png in Resources */,
 				951AD53C1B36B0A90057F081 /* everyTableViewCell.xib in Resources */,
@@ -2096,7 +2159,6 @@
 				952D24F41A9B9EC800C354DF /* btn_toukou.png in Resources */,
 				FF54EFED19149A1800025DC8 /* InfoPlist.strings in Resources */,
 				952D25111A9B9EC800C354DF /* 5_5_inch.storyboard in Resources */,
-				95E4BCA61B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.xib in Resources */,
 				95E3CD581B0DCA4200497EB9 /* icon-success.png in Resources */,
 				95EEC5291AF914A7006FD54E /* FolloweeListCell.xib in Resources */,
 				952D24FC1A9B9EC800C354DF /* tabbaritem_lifelog_sel@2x.png in Resources */,
@@ -2128,9 +2190,10 @@
 			files = (
 				952D239C1A9B95E800C354DF /* UIProgressView+AFNetworking.m in Sources */,
 				377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */,
+				95446DAE1BCDF67A00540781 /* SCVideoConfiguration.m in Sources */,
 				952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */,
 				951AD5531B36B27A0057F081 /* AllTimelineTableViewController.m in Sources */,
-				952D24A31A9B9D3300C354DF /* SCFilterGroup.m in Sources */,
+				95446DA61BCDF67A00540781 /* SCFilterAnimation.m in Sources */,
 				98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */,
 				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
@@ -2142,6 +2205,7 @@
 				959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */,
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
 				95B118EF1BC39FE3002A95CD /* rulePopup.m in Sources */,
+				95446DAB1BCDF67A00540781 /* SCRecorderTools.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
 				951AD5541B36B27A0057F081 /* FollowTableViewController.m in Sources */,
 				952D237A1A9B95E800C354DF /* JTCalendarMonthView.m in Sources */,
@@ -2151,6 +2215,7 @@
 				952D23691A9B95E800C354DF /* AFURLConnectionOperation.m in Sources */,
 				95A39E941BC61D8A00FB3150 /* AddressController.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
+				95446DA71BCDF67A00540781 /* SCIOPixelBuffers.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
@@ -2163,6 +2228,7 @@
 				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,
 				95B118E81BC360B2002A95CD /* STPopupController.m in Sources */,
 				950881C91BC501A200BF06B1 /* SimpleCircleLiquidEngine.swift in Sources */,
+				95446DBB1BCDF6B100540781 /* CategoryViewController.m in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
@@ -2173,10 +2239,10 @@
 				95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */,
 				950881B71BC4FC4000BF06B1 /* UserSearchTableViewCell.m in Sources */,
 				95B118EC1BC360B2002A95CD /* UIViewController+STPopup.m in Sources */,
+				95446DAF1BCDF67A00540781 /* SCWeakSelectorTarget.m in Sources */,
 				A13FB97B1AB45F7E00B893F9 /* UIColor+BFPaperColors.m in Sources */,
-				952D24A91A9B9D3300C354DF /* SCRecorderFocusView.m in Sources */,
+				95446D891BCDF61F00540781 /* EditVideoController.m in Sources */,
 				952D236A1A9B95E800C354DF /* AFURLRequestSerialization.m in Sources */,
-				952D23ED1A9B9C6100C354DF /* DemoContentView.m in Sources */,
 				952D24981A9B9D3300C354DF /* SCTouchDetector.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
@@ -2185,20 +2251,23 @@
 				952D237C1A9B95E800C354DF /* JTCalendarWeekView.m in Sources */,
 				A13FB9721AB44E1500B893F9 /* README.md in Sources */,
 				950881C31BC501A200BF06B1 /* ArrayEx.swift in Sources */,
+				95446DAD1BCDF67A00540781 /* SCRecordSessionSegment.m in Sources */,
 				9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */,
 				95B118FC1BC3C00F002A95CD /* PrivacyPopup.m in Sources */,
+				95446DA81BCDF67A00540781 /* SCMediaTypeConfiguration.m in Sources */,
 				952D239D1A9B95E800C354DF /* UIRefreshControl+AFNetworking.m in Sources */,
 				952D23891A9B95E800C354DF /* SDWebImagePrefetcher.m in Sources */,
 				956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */,
 				952D24A81A9B9D3300C354DF /* SCRecorderFocusTargetView.m in Sources */,
 				952D24A61A9B9D3300C354DF /* SCPlayer.m in Sources */,
+				95446DC91BCE098C00540781 /* NearViewController.m in Sources */,
 				98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */,
 				952D23831A9B95E800C354DF /* SDImageCache.m in Sources */,
 				95EEC5161AF9103B006FD54E /* FollowListCell.m in Sources */,
-				95E4BCA51B37DA4A00B8CF44 /* RecorderSubmitPopupAdditionView.m in Sources */,
 				95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */,
 				95B118FB1BC3C00F002A95CD /* AdvicePopup.m in Sources */,
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
+				95446DAC1BCDF67A00540781 /* SCRecorderToolsView.m in Sources */,
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				950881C41BC501A200BF06B1 /* CGPointEx.swift in Sources */,
@@ -2211,10 +2280,8 @@
 				98ACE0771BAC637A002AA083 /* Util.swift in Sources */,
 				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */,
-				952D24951A9B9D3300C354DF /* SCImageDisplayerViewController.m in Sources */,
 				959466571BBDFB1B00F3222F /* STCustomCollectionViewCell.m in Sources */,
 				9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */,
-				952D249F1A9B9D3300C354DF /* SCArchivedVector.m in Sources */,
 				373BB8391AFE59A300F7AC77 /* DummyViewController.m in Sources */,
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
@@ -2224,7 +2291,9 @@
 				952D25171A9B9F4700C354DF /* NullSafe.m in Sources */,
 				951AD5461B36B0B20057F081 /* Sample4TableViewCell.m in Sources */,
 				BFA1DA6F1AB2A20C00B4F63A /* GUser.m in Sources */,
+				95446DA51BCDF67A00540781 /* SCContext.m in Sources */,
 				952D23871A9B95E800C354DF /* SDWebImageDownloaderOperation.m in Sources */,
+				95446DCA1BCE098C00540781 /* NearViewControllerCell.m in Sources */,
 				952D24801A9B9D3300C354DF /* UIView+DropShadow.m in Sources */,
 				952D23931A9B95E800C354DF /* UIColor+HexString.m in Sources */,
 				95E4BCA01B37DA4A00B8CF44 /* SCSecondView.m in Sources */,
@@ -2232,6 +2301,8 @@
 				952D23971A9B95E800C354DF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				952D237D1A9B95E800C354DF /* JTCircleView.m in Sources */,
 				952D23941A9B95E800C354DF /* UIImage+Dummy.m in Sources */,
+				95446DAA1BCDF67A00540781 /* SCProcessingQueue.m in Sources */,
+				95446DBC1BCDF6B100540781 /* SortViewController.m in Sources */,
 				952D249E1A9B9D3300C354DF /* CIImageRendererUtils.m in Sources */,
 				952D238B1A9B95E800C354DF /* UIImage+GIF.m in Sources */,
 				952D23791A9B95E800C354DF /* JTCalendarMenuView.m in Sources */,
@@ -2264,6 +2335,7 @@
 				952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */,
 				95B118F21BC3A16E002A95CD /* PasswordPopup.m in Sources */,
 				952D23781A9B95E800C354DF /* JTCalendarMenuMonthView.m in Sources */,
+				95446DA41BCDF67A00540781 /* SCAudioConfiguration.m in Sources */,
 				952D23671A9B95E800C354DF /* AFNetworkReachabilityManager.m in Sources */,
 				952D23851A9B95E800C354DF /* SDWebImageDecoder.m in Sources */,
 				952D24851A9B9D3300C354DF /* LifelogSubTableViewController.m in Sources */,
@@ -2271,6 +2343,7 @@
 				952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */,
 				952D23881A9B95E800C354DF /* SDWebImageManager.m in Sources */,
 				952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */,
+				95446DA91BCDF67A00540781 /* SCPhotoConfiguration.m in Sources */,
 				95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */,
 				952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */,
 				950881CA1BC501A200BF06B1 /* UIColorEx.swift in Sources */,
@@ -2287,7 +2360,6 @@
 				951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */,
 				A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */,
 				952D23771A9B95E800C354DF /* JTCalendarDayView.m in Sources */,
-				95E4BCA71B37DA4A00B8CF44 /* RecorderSubmitPopupView.m in Sources */,
 				952D237B1A9B95E800C354DF /* JTCalendarMonthWeekDaysView.m in Sources */,
 				952D24A51A9B9D3300C354DF /* SCImageView.m in Sources */,
 				952D249A1A9B9D3300C354DF /* CustomAnnotation.m in Sources */,

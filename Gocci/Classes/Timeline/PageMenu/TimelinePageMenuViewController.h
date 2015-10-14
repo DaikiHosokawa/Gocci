@@ -10,6 +10,7 @@
 
 #import "AllTimelineTableViewController.h"
 #import "FollowTableViewController.h"
+#import "NearViewController.h"
 
 @interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
 

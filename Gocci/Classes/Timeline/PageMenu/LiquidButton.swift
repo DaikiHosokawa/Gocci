@@ -21,10 +21,7 @@ import Foundation
         floatingActionButton.animateStyle = LiquidFloatingActionButtonAnimateStyle.Up
         floatingActionButton.dataSource = self
         floatingActionButton.delegate = self
-        floatingActionButton.color = UIColor(red: 155 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
-
-        cells.append(LiquidFloatingCell(icon: UIImage(named: "icon_record_cam")!))
-        cells.append(LiquidFloatingCell(icon: UIImage(named: "icon_record_cam")!))
+        floatingActionButton.color = UIColor(red: 247 / 255.0, green: 85 / 255.0, blue: 51 / 255.0, alpha: 1.0)
         cells.append(LiquidFloatingCell(icon: UIImage(named: "icon_record_cam")!))
         cells.append(LiquidFloatingCell(icon: UIImage(named: "icon_record_cam")!))
 

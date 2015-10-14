@@ -21,6 +21,14 @@
 + (void)Timeline:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  distance
+ 
+ *  @param handler
+ */
++ (void)Distance:(double)latitude
+       longitude:(double)longitude handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
  *  popular
  *
  *  @param handler
