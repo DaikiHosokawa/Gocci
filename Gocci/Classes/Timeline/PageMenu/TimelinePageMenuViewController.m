@@ -193,6 +193,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     self.lbw = [[LiquidButtonWrapper alloc] init];
     [self.lbw addLiquidButton:self x:self.view.frame.size.width - 72 y:self.view.frame.size.height - 110];
+
     
 }
 
