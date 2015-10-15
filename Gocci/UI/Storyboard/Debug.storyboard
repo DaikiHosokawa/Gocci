@@ -290,6 +290,51 @@
                                     <action selector="explode:" destination="jvS-zY-AAu" eventType="touchUpInside" id="0fL-fr-x6d"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBZ-Fw-Hf8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="A"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="260" width="112" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="460" width="57" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="a:" destination="jvS-zY-AAu" eventType="touchUpInside" id="mJR-8x-LnH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdX-k2-XaK">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="260" width="112" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="77" y="460" width="57" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b:" destination="jvS-zY-AAu" eventType="touchUpInside" id="viO-78-3Ru"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUA-j0-xxt">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="C"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="260" width="112" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="134" y="460" width="57" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="c:" destination="jvS-zY-AAu" eventType="touchUpInside" id="WBh-aa-gK1"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-3A-fmf">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
@@ -357,6 +402,21 @@
                                     <rect key="frame" x="41" y="62" width="319" height="25"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxr-9A-L6u">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.7608270841" blue="0.61305158189999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="D"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="260" width="112" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="188" y="460" width="57" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="d:" destination="jvS-zY-AAu" eventType="touchUpInside" id="v05-rb-3EW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.48732958845178842" blue="0.49832476871594855" alpha="1" colorSpace="calibratedRGB"/>
@@ -394,12 +454,16 @@
                                 <exclude reference="qNG-Ra-6Ku"/>
                                 <exclude reference="pq8-ae-9yA"/>
                                 <exclude reference="WgS-El-7wJ"/>
+                                <exclude reference="BBZ-Fw-Hf8"/>
+                                <exclude reference="VdX-k2-XaK"/>
+                                <exclude reference="wUA-j0-xxt"/>
                                 <exclude reference="e1K-3A-fmf"/>
                                 <exclude reference="ihd-NS-sEQ"/>
                                 <exclude reference="KVh-2g-Jzg"/>
                                 <exclude reference="KM7-TS-Dq8"/>
                                 <exclude reference="X2r-HO-xlq"/>
                                 <exclude reference="BRS-Zw-sQP"/>
+                                <exclude reference="zxr-9A-L6u"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UeZ-Pc-oq5"/>
@@ -456,6 +520,14 @@
                                 <include reference="ypX-oA-tAY"/>
                                 <include reference="29D-w2-oTc"/>
                                 <include reference="xZE-H6-Ca8"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="BBZ-Fw-Hf8"/>
+                                <include reference="VdX-k2-XaK"/>
+                                <include reference="wUA-j0-xxt"/>
+                                <include reference="zxr-9A-L6u"/>
                             </mask>
                         </variation>
                     </view>

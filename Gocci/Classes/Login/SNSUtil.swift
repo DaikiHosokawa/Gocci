@@ -34,6 +34,11 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
         case SNS_PROVIDER_FAIL
     }
     
+    enum VideoShareResult {
+        case SUCCESS
+        case FAIL
+    }
+    
     override init()
     {
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
@@ -41,6 +46,8 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
         FHSTwitterEngine.sharedEngine().loadAccessToken()
         
         FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        
+
     }
     
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
@@ -57,8 +64,7 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
         
     }
     
-    func shareVideoOnFacebook(currentViewController: UIViewController, videoURL: NSURL) {
-        
+    func enableFullDebugOutput() {
         var logopt = Set<String>()
         logopt.insert(FBSDKLoggingBehaviorAccessTokens)
         logopt.insert(FBSDKLoggingBehaviorAppEvents)
@@ -69,65 +75,97 @@ class SNSUtilSingelton : NSObject, FBSDKSharingDelegate
         logopt.insert(FBSDKLoggingBehaviorNetworkRequests)
         logopt.insert(FBSDKLoggingBehaviorDeveloperErrors)
         FBSDKSettings.setLoggingBehavior(logopt)
+    }
 
-
-        print("URL  : \(videoURL)")
-        let asset = AVURLAsset(URL: videoURL)
-        print("ASSET: \(asset.URL)")
+    
+    func shareVideoOnFacebook(mp4URL: String, title: String, description: String, and:(VideoShareResult, String)->Void) {
         
+        // TODO check if logged in
         
-        let fbvideo = FBSDKShareVideo(videoURL: asset.URL)
-        let fbcontend = FBSDKShareVideoContent()
-        fbcontend.video = fbvideo
-        
-       // FBSDKShareDialog.showFromViewController(currentViewController, withContent: fbcontend, delegate: nil)
-        
-
-        
-        // Create the object
-//        NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary: {
-//            "og:type": "mynamespace:article",
-//            "og:title": myModel.title,
-//            "og:description": "myModel.description",
-//            "og:url": "http://mywebsite.com"
-//        }];
-//        
-//        
-//        NSURL *imageURL = [myModel getImageURL];
-//        if (imageURL) {
-//            
-//            FBSDKSharePhoto *photo = [FBSDKSharePhoto photoWithImageURL:imageURL userGenerated:NO];
-//            [properties setObject:[photo] forKey:"og:image"];
-//        }
-        
-        let properties = [
-            "og:type": "article",
-            "og:url": "http://inase-inc.jp/gocci/",
-            "og:title": "Es geht um die Wurst",
-            "og:description": "Some description lorem ipsum dolor kjdkjkd ej ej ei eiefiefj sl ls ejslfjsiljflisjfslj",
-            "og:image": "https://techcrunchjp.files.wordpress.com/2015/08/gocci.png",
+        let params = [
+            "title": title,
+            "description": description,
+            // "thumb": ""
+            "file_url": mp4URL,
+            // "source": use this if you want to upload from the app direct. must be encoded video data (encoding: form-data)
         ]
+        
+        
+        
+        // API reference: https://developers.facebook.com/docs/graph-api/video-uploads
+        let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params, HTTPMethod: "POST")
+        
+        rq.startWithCompletionHandler { (conn, result, error) -> Void in
+            if error != nil {
+                NSLog(String(error));
+                and(VideoShareResult.FAIL, String(error))
+            }
+            else {
+                NSLog("Post id : " + (result as! [String:String])["id"]!);
+                and(VideoShareResult.SUCCESS, (result as! [String:String])["id"]!)
+            }
+        }
+    }
+    
+    
+    func shareGocchiVideoStoryOnFacebook(clickURL: String, thumbURL: String, mp4URL:String, title:String, description: String, dialog:UIViewController? = nil) {
+
+        // TODO check if logged in
+
+
+        let properties = [
+            "og:type": "video.other",
+            "og:title": title,
+            "og:description": description,
+            "og:url": clickURL,
+            "og:video": mp4URL,
+            "og:image": thumbURL,
+            "og:locale": "ja_JP", // TODO [[NSLocale preferredLanguages] objectAtIndex:0];
+            "og:site_name": "Gocci",
+        ]
+
+
+//        al:ios
+//        IosApplink	Yes	Optional
+//        al:iphone
+//        IosApplink	Yes	Optional
+//        al:ipad
+//        IosApplink	Yes	Optional
+//        al:android
+//        Android	Yes	Optional
+//        al:windows_phone
+//        Windows Phone	Yes	Optional
+//        al:windows
+//        Windows	Yes	Optional	
+//        al:windows_universal
+//        Windows Universal	Yes	Optional	
+//        al:web
+//        Web	No	Optional	
+
         
         let object = FBSDKShareOpenGraphObject(properties: properties)
         
-        // Create the action
-        let action = FBSDKShareOpenGraphAction(type: "gocci_test:share", object: object, key: "restaurant")
+        let action = FBSDKShareOpenGraphAction(type: "gocci_test:record", object: object, key: "other")
         action.setString("true", forKey: "fb:explicitly_shared")
-        
-        // Create the content
+
         let content = FBSDKShareOpenGraphContent()
-        content.action = action
-        content.previewPropertyName = "foodwars"
+        content.action = action;
+        content.previewPropertyName = "other";
         
-        FBSDKShareDialog.showFromViewController(currentViewController, withContent: content, delegate: self)
-        
-        // Share the content
-//        let shareAPI = FBSDKShareAPI()
-//        shareAPI.shareContent = content
-//        shareAPI.delegate = self
-//        
-//        shareAPI.share()
-        
+        if dialog == nil {
+            let shareAPI = FBSDKShareAPI()
+            shareAPI.delegate = self
+            shareAPI.shareContent = content
+            shareAPI.share()
+        }
+        else {
+            let shareDialog = FBSDKShareDialog()
+            shareDialog.shareContent = content
+            shareDialog.delegate = self
+            shareDialog.fromViewController = dialog
+            shareDialog.show()
+        }
+
     }
     
 
