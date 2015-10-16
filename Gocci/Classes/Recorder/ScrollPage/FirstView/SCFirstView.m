@@ -96,6 +96,10 @@
     }
 }
 
+- (IBAction)openEdit:(id)sender {
+     [self.delegate openEdit];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 121 && buttonIndex == 0)

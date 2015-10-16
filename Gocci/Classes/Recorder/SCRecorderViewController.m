@@ -26,6 +26,9 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 
+#import "STPopup.h"
+
+
 #define kVideoPreset AVCaptureSessionPresetHigh
 
 // !!!:dezamisystem
@@ -635,6 +638,15 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+-(void)openEdit
+{
+    NSLog(@"zoff");
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"BottomSheet"]];
+    popupController.style = STPopupStyleBottomSheet;
+    [popupController presentInViewController:self];
+}
+
 -(void)retake
 {
     SCRecordSession *recordSession = _recorder.session;

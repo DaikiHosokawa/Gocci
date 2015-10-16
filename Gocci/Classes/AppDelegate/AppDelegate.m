@@ -153,6 +153,8 @@
     
     [UINavigationBar appearance].barTintColor = color_custom;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].titleTextAttributes
+    = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     // !!!:dezamisystem・タブバー設定
     {

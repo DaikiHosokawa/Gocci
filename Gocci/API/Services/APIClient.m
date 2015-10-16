@@ -112,9 +112,10 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)Distance:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Distance:(double)latitude longitude:(double)longitude call:(NSString *)call handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
+                             @"call" : call,
                              @"order_id" : @"1",
                              @"lat" :  [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon" :  [NSString stringWithFormat:@"%@", @(longitude)],
@@ -228,17 +229,9 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)Near:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler useCache:(void (^)(id))cacheHandler
++ (void)Near:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
 {
-    if (cacheHandler != nil) {
-        NSDictionary *cachedDictionary = [[APIClient sharedClient].resultCache objectForKey:APIClientResultCacheKeyDist];
-        
-        if (cachedDictionary) {
-            cacheHandler(cachedDictionary);
-        } else {
-            cacheHandler(nil);
-        }
-    }
+    
     
     NSDictionary *params = @{
                              @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
@@ -250,12 +243,7 @@ static APIClient *_sharedInstance = nil;
     [[APIClient sharedClient].manager GET:@"get/near"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      NSLog(@"task:%@",task);
-                                      // 結果をキャッシュ
-                                      [[APIClient sharedClient].resultCache setObject:responseObject forKey:APIClientResultCacheKeyDist];
-                                      
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                      
                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];

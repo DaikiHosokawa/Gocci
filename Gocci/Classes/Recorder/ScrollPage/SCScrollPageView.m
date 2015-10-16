@@ -40,7 +40,7 @@
 	
 	scrollviewPage = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, width_page, height_page)];
 	scrollviewPage.delegate = self;
-	scrollviewPage.contentSize = CGSizeMake(width_page * 2, height_page);
+	scrollviewPage.contentSize = CGSizeMake(width_page, height_page);
 	scrollviewPage.pagingEnabled = YES;
 	scrollviewPage.showsHorizontalScrollIndicator = NO;
 	scrollviewPage.showsVerticalScrollIndicator = NO;
@@ -49,10 +49,7 @@
 	//pageingScrollView.backgroundColor = [UIColor lightGrayColor];
 	[self addSubview:scrollviewPage];
 
-	[viewfirst showInView:scrollviewPage];
-	[viewsecond showInView:scrollviewPage offset:CGPointMake(width_page, 0) back:0];
-
-	//画面サイズから場合分け
+	[viewfirst showInView:scrollviewPage];	//画面サイズから場合分け
 	CGRect rect = [UIScreen mainScreen].bounds;
 	CGFloat y_page = 35 + 105;
 	//画面サイズから場合分け
@@ -74,14 +71,17 @@
 	// ページコントロール
 	// ページングスクロールビューの下にページコントロールを配置
 	CGFloat height_pc = 20;
-	pager = [[UIPageControl alloc] initWithFrame:CGRectMake(0,y_page, width_page,height_pc)];
+	/*
+    pager = [[UIPageControl alloc] initWithFrame:CGRectMake(0,y_page, width_page,height_pc)];
 	pager.backgroundColor = [UIColor whiteColor];
     pager.pageIndicatorTintColor = [UIColor grayColor];
     pager.currentPageIndicatorTintColor = [UIColor blackColor];
 	pager.numberOfPages = 2;		// ページ数を指定
 	pager.currentPage = 0;		// ページ番号は0ページを指定(1にするとこの場合真ん中のページが指定される)
 	pager.hidesForSinglePage = NO;		// ページが1ページのみの場合は現在ページを示す点を表示しない
-	pager.userInteractionEnabled = NO;
+	*/
+     pager.userInteractionEnabled = NO;
+     
 	[self addSubview:pager];
 }
 
