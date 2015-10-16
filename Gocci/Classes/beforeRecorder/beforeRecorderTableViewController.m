@@ -379,7 +379,7 @@
     __weak typeof(self)weakSelf = self;
     
     [weakSelf.refresh beginRefreshing];
-    
+    /*
     [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
      {
          
@@ -415,6 +415,7 @@
          [weakSelf.tableView reloadData];
           [SVProgressHUD dismiss];
      }];
+     */
 }
 
 

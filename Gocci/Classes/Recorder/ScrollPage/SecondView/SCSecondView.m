@@ -310,17 +310,6 @@ static NSString *stringKakaku = nil;
                     delegate.stringFuniki = @"3";
                 }
                 
-//				switch (buttonIndex) {
-//					case 0:
-//						//NSLog(@"にぎやか");
-//						break;
-//					case 1:
-//						//NSLog(@"しずか");
-//						break;
-//					case 2:
-//						//NSLog(@"おしゃれ");
-//						break;
-//				}
 				break;
 		}
 		[tableviewList reloadData];

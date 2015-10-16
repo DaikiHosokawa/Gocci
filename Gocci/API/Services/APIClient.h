@@ -26,7 +26,7 @@
  *  @param handler
  */
 + (void)Distance:(double)latitude
-       longitude:(double)longitude handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+       longitude:(double)longitude call:(NSString *)call handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  popular
@@ -93,10 +93,7 @@
  *  @param cacheHandler キャッシュされた結果を取得
  */
 + (void)Near:(double)latitude
-   longitude:(double)longitude
-     handler:(void (^)(id result, NSUInteger code, NSError *error))handler
-    useCache:(void (^)(id cachedResult))cacheHandler;
-
+   longitude:(double)longitude handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 /**
  *  post_restname/
  *

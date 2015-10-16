@@ -42,8 +42,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
-@property (strong, nonatomic) LiquidButtonWrapper *lbw;
-
 
 //ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;

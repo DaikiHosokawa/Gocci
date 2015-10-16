@@ -48,7 +48,8 @@ class SplashViewController : UIViewController {
         view.sendSubviewToBack(moviePlayer.view)
         
         self.moviePlayer.player = AVPlayer(URL: url)
-        self.moviePlayer.player?.volume = 1.0 // remove the audio stream from the file: ffmpeg -i splash.mp4 -vcodec copy -an splash_with_no_sound.mp4
+        self.moviePlayer.player?.volume = 1.0
+        // remove the audio stream from the file: ffmpeg -i splash.mp4 -vcodec copy -an splash_with_no_sound.mp4
         
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "playerItemDidReachEnd",

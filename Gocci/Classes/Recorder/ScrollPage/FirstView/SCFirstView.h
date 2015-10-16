@@ -17,6 +17,7 @@
 -(void)handleReverseCameraTapped;
 -(void)retake;
 -(void)DeleteDraft;
+-(void)openEdit;
 @end
 
 @interface SCFirstView : UIView<XYPieChartDelegate,XYPieChartDataSource>

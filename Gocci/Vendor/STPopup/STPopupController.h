@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "STPopupNavigationBar.h"
 
+typedef NS_ENUM(NSUInteger, STPopupStyle) {
+    STPopupStyleFormSheet,
+    STPopupStyleBottomSheet
+};
+
 typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
     STPopupTransitionStyleSlideVertical,
     STPopupTransitionStyleFade
@@ -16,10 +21,12 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
 
 @interface STPopupController : NSObject
 
+@property (nonatomic, assign) STPopupStyle style;
 @property (nonatomic, assign) STPopupTransitionStyle transitionStyle;
 @property (nonatomic, assign) CGFloat cornerRadius;
 @property (nonatomic, assign) BOOL navigationBarHidden;
 @property (nonatomic, strong, readonly) STPopupNavigationBar *navigationBar;
+@property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, assign, readonly) BOOL presented;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController;
