@@ -76,6 +76,8 @@
     return cell;
 }
 
+
+//1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
