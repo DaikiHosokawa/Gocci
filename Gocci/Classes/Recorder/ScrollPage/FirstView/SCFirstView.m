@@ -113,10 +113,27 @@
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max
 {
-   
 	percentPieChart = now / max;
 	if (percentPieChart > 1.0) percentPieChart = 1.0;
 	[pieChartTimer reloadData];
+}
+
+-(void)expand{
+
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         pieChartTimer.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                     }
+     ];
+    
+}
+
+-(void)shrink{
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         pieChartTimer.transform = CGAffineTransformIdentity;
+                         
+                     }];
 }
 
 #pragma mark - XYPieChart

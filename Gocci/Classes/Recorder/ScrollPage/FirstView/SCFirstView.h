@@ -29,6 +29,11 @@
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max;
 
+-(void)expand;
+
+-(void)shrink;
+
+
 #pragma mark
 + (instancetype)create;
 
