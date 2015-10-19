@@ -233,6 +233,8 @@
 		95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEC5301AF91A20006FD54E /* CheerListViewController.m */; };
 		9807FE691BA2CD350041CFD5 /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE681BA2CD350041CFD5 /* NetOp.m */; };
 		9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820AFE71BB972FF008A6963 /* AWSManager.swift */; settings = {ASSET_TAGS = (); }; };
+		983A994F1BD0E66B005E34DC /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A994E1BD0E66B005E34DC /* FacebookSharing.swift */; settings = {ASSET_TAGS = (); }; };
+		984003F51BD099D200D91BE6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984003F41BD099D200D91BE6 /* Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
 		9874BDCC1BC6906D00B1651E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDCB1BC6906D00B1651E /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9874BDCF1BC7C1E200B1651E /* splash_tmp_sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */; settings = {ASSET_TAGS = (); }; };
@@ -725,6 +727,8 @@
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
 		9820AFE71BB972FF008A6963 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
+		983A994E1BD0E66B005E34DC /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookSharing.swift; path = Services/Facebook/FacebookSharing.swift; sourceTree = "<group>"; };
+		984003F41BD099D200D91BE6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		9874BDCB1BC6906D00B1651E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash_tmp_sample.mp4; path = Video/splash_tmp_sample.mp4; sourceTree = "<group>"; };
@@ -1776,6 +1780,38 @@
 			path = CheerList;
 			sourceTree = "<group>";
 		};
+		983A994A1BD0E5BB005E34DC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				983A994C1BD0E5EB005E34DC /* Amazon */,
+				983A994D1BD0E5FE005E34DC /* Twitter */,
+				983A994B1BD0E5D8005E34DC /* Facebook */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		983A994B1BD0E5D8005E34DC /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				983A994E1BD0E66B005E34DC /* FacebookSharing.swift */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		983A994C1BD0E5EB005E34DC /* Amazon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Amazon;
+			sourceTree = "<group>";
+		};
+		983A994D1BD0E5FE005E34DC /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
 		9843E9231BA9955D0015350D /* AWS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1935,7 +1971,9 @@
 			children = (
 				A2DDB0371B99A04C00CD4E52 /* const.h */,
 				98ACE0761BAC637A002AA083 /* Util.swift */,
+				984003F41BD099D200D91BE6 /* Extensions.swift */,
 				952D24C41A9B9EC800C354DF /* UI */,
+				983A994A1BD0E5BB005E34DC /* Services */,
 				952D24B21A9B9DE100C354DF /* API */,
 				952D24051A9B9D3300C354DF /* Classes */,
 				952D22E31A9B95E800C354DF /* Vendor */,
@@ -2249,6 +2287,7 @@
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				950881C41BC501A200BF06B1 /* CGPointEx.swift in Sources */,
+				984003F51BD099D200D91BE6 /* Extensions.swift in Sources */,
 				953901871BC1651B00842FFF /* TableViewController.m in Sources */,
 				951AD53B1B36B0A90057F081 /* everyTableViewCell.m in Sources */,
 				952D24C31A9B9DE100C354DF /* MoviePlayerManager.m in Sources */,
@@ -2317,6 +2356,7 @@
 				952D23821A9B95E800C354DF /* NSData+ImageContentType.m in Sources */,
 				952D24961A9B9D3300C354DF /* SCRecorderViewController.m in Sources */,
 				952D23881A9B95E800C354DF /* SDWebImageManager.m in Sources */,
+				983A994F1BD0E66B005E34DC /* FacebookSharing.swift in Sources */,
 				952D24931A9B9D3300C354DF /* usersTableViewController_other.m in Sources */,
 				95EEC52A1AF914A7006FD54E /* FolloweeListViewController.m in Sources */,
 				952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */,
