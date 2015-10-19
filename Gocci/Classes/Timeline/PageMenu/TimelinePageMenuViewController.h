@@ -16,4 +16,10 @@
 
 @property id supervc;
 
+@property (strong, nonatomic) NearViewController *nearViewController;
+@property (strong, nonatomic) FollowTableViewController *followTableViewController;
+@property (strong, nonatomic) AllTimelineTableViewController *allTimelineTableViewController;
+
+
+
 @end

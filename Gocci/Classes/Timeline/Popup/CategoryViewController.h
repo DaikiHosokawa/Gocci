@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TimelinePageMenuViewController.h"
+
 @interface CategoryViewController : UITableViewController
+
+@property (weak, nonatomic) TimelinePageMenuViewController *timelinePageMenuViewController;
+
 
 @end

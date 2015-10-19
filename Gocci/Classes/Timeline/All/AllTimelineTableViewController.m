@@ -81,6 +81,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
+- (void)deleteThisFunction {
+    NSLog(@"calling a function in the AllTimelineTableViewController");
+}
 
 
 //- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
