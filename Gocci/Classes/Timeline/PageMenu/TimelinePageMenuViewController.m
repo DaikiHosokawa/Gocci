@@ -15,7 +15,6 @@
 #import "CAPSPageMenu.h"
 #import "everyBaseNavigationController.h"
 #import "everyTableViewController.h"
-#import "GocciTest-Swift.h"
 
 #import "STPopup.h"
 #import "SortViewController.h"

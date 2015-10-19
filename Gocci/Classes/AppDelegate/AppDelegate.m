@@ -19,7 +19,7 @@
 
 #import "FHSTwitterEngine.h"
 
-#import "GocciTest-Swift.h"
+#import "Swift.h"
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -86,21 +86,17 @@
 
 
 
-- (BOOL)OFFapplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    NSLog(@"Give her the: %@", [Util generateFakeDeviceID]);
-    
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
-    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-    self.window.rootViewController = rootViewController;
-    return YES;
-}
-
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // No default storyboard anymore = we need to setup the window 
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    
+    [FBSDKSettings setAppID:FACEBOOK_APP_ID];
+    
     
 #ifdef FRESH_START
     [Util removeAccountSpecificDataFromUserDefaults];
@@ -110,43 +106,18 @@
     [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
 #endif
     
+#ifndef STRIPPED
     [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
-
-#ifdef START_WITH_DEBUG_SCREEN
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
-    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-    self.window.rootViewController = rootViewController;
-#else
-    //3.5inchと4inchを読み分けする
-    CGRect rect = [UIScreen mainScreen].bounds;
-    if (rect.size.height == 480) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"3.5inch");
-        _screenType = 2;
-        self.window.rootViewController = rootViewController;
-    }
-    
-    //4.7inch対応
-    CGRect rect2 = [UIScreen mainScreen].bounds;
-    if (rect2.size.height == 667) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"4.7inch");
-        _screenType = 3;
-        self.window.rootViewController = rootViewController;
-    }
-    
-    //5.5inch対応
-    CGRect rect3 = [UIScreen mainScreen].bounds;
-    if (rect3.size.height == 736) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"5.5inch");
-        _screenType = 4;
-        self.window.rootViewController = rootViewController;
-    }
 #endif
+    
+#if defined(START_WITH_DEBUG_SCREEN) || defined(STRIPPED)
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+#else
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+#endif
+    
     // !!!:dezamisystem
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];

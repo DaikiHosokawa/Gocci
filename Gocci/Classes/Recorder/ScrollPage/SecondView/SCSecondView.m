@@ -10,6 +10,7 @@
 #import "SCPostingViewController.h"
 #import "SCRecorderViewController.h"
 #import "AppDelegate.h"
+#import "Swift.h"
 
 
 static NSString * const CellIdentifier = @"SCSecondCell";
@@ -169,41 +170,11 @@ static NSString *stringKakaku = nil;
 {
 	//NSLog(@"%s Row=%ld",__func__,(long)indexPath.row);
 	
-	//static NSString * const namebundle = @"";
-	//
-	
-	UIViewController* rootViewController = nil;
-	{
-		CGRect rect = [UIScreen mainScreen].bounds;
-		if (rect.size.height == 480) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 667) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 736) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-	}
+    // ストーリーボードを取得
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    //ビューコントローラ取得
+    //viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
 
 	//__weak typeof(self)weakSelf = self;
 	UIActionSheet *actionsheet = nil;

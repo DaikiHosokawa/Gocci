@@ -17,7 +17,7 @@
 
 #import "APIClientLimits.h"
 
-#import "GocciTest-Swift.h"
+#import "Swift.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -150,39 +150,28 @@
         }
       
      //GPS is OFF
-    }else{
-        
-        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            switch ([CLLocationManager authorizationStatus]) {
+    }
+    else {
+        switch ([CLLocationManager authorizationStatus]) {
                 
-                case kCLAuthorizationStatusNotDetermined:
-                    [locationManager requestWhenInUseAuthorization];
-                    break;
-                    
-                case kCLAuthorizationStatusAuthorizedAlways:
-                case kCLAuthorizationStatusAuthorizedWhenInUse:
-                    [locationManager startUpdatingLocation];
-                    
-                    break;
-                    
-                    //GPS request was denied
-                case kCLAuthorizationStatusDenied:
-                case kCLAuthorizationStatusRestricted:
-                    NSLog(@"位置情報が許可されていません2");
-                    if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ){
-                        UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
-                        requestAgain.tag=121;
-                        [requestAgain show];
-                    }else{
-                        UIAlertView *requestAgain2 =[[UIAlertView alloc] initWithTitle:@"設定->アプリ一覧「Gocci」->位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [requestAgain2 show];
-                    }
-                    break;
-            }
-        }
-        // iOS7未満
-        else {
-            [locationManager startUpdatingLocation];
+            case kCLAuthorizationStatusNotDetermined:
+                [locationManager requestWhenInUseAuthorization];
+                break;
+                
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+                [locationManager startUpdatingLocation];
+                
+                break;
+                
+                //GPS request was denied
+            case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusRestricted:
+                NSLog(@"位置情報が許可されていません2");
+                UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+                requestAgain.tag=121;
+                [requestAgain show];
+                break;
         }
     }
 }
@@ -303,15 +292,6 @@
     self.popupView.hidden = YES;
 }
 
-//-(BOOL)textFieldShouldReturn:(UITextField*)textField {
-//
-//    [self resignFirstResponder];
-//
-//    NSLog(@"text:%@",textField.text);
-//
-//    return YES;
-//}
-
 
 
 #pragma mark - PageViewController Stuff
@@ -358,29 +338,24 @@
     UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
     requestAgain.tag=121;
     
-    UIAlertView *requestAgain2 =[[UIAlertView alloc] initWithTitle:@"設定->アプリ一覧「Gocci」->位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    
     switch (status) {
         case kCLAuthorizationStatusNotDetermined:
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            // what is that? in the simulator this has horriable consequnses...
-//            [locationManager startUpdatingLocation];
-//            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-//                self.registerButton.enabled = false;
-//                self.username.enabled = false;
-//                
-//                [self registerUsername:self.username.text];
-//            }
+#if TARGET_IPHONE_SIMULATOR
+            [locationManager startUpdatingLocation];
+            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+                self.registerButton.enabled = false;
+                self.username.enabled = false;
+                
+                [self registerUsername:self.username.text];
+            }
+#endif
             break;
         case kCLAuthorizationStatusDenied:
         case kCLAuthorizationStatusRestricted:
-            if( [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ){
-                [requestAgain show];
-            }else{
-                [requestAgain2 show];
-            }
+            [requestAgain show];
             break;
     }
 }

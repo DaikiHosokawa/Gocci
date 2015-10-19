@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "NetOp.h"
-#import "GocciTest-Swift.h"
+#import "Swift.h"
 
 
 
@@ -88,7 +88,7 @@
                          handler:^(id result, NSUInteger code, NSError *error)
     {
         NSLog(@"======================================================================");
-        NSLog(@"%@%", result);
+        NSLog(@"%@", result);
         NSLog(@"======================================================================");
         
         

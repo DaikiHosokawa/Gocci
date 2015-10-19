@@ -15,6 +15,8 @@
 #import "Restaurant.h"
 #import "LocationClient.h"
 
+#import "Swift.h"
+
 //static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 @import CoreLocation;
@@ -233,40 +235,11 @@
 -(void)dismissWithTenmei
 {
     //SCRecorderViewControllerに送信→SCSecondViewに送信
-    static NSString * const namebundle = @"screcorder";
-    
-    SCRecorderViewController* viewController = nil;
-    {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        if (rect.size.height == 480) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-            //rootViewController = [storyboard instantiateInitialViewController];
-        }
-        else if (rect.size.height == 667) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-            //rootViewController = [storyboard instantiateInitialViewController];
-        }
-        else if (rect.size.height == 736) {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-            //rootViewController = [storyboard instantiateInitialViewController];
-        }
-        else {
-            // ストーリーボードを取得
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //ビューコントローラ取得
-            viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-            //rootViewController = [storyboard instantiateInitialViewController];
-        }
-    }
+    // ストーリーボードを取得
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    //ビューコントローラ取得
+    SCRecorderViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:@"screcorder"];
+
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [viewController sendTenmeiString:delegate.restname];
     
