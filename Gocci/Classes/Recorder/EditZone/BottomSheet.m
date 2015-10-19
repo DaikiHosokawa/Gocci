@@ -8,11 +8,12 @@
 
 #import "BottomSheet.h"
 #import "MultiSelectionViewController.h"
-#import "CommentPopup.h"
+#import "ValuePopup.h"
 #import "STPopup.h"
 #import "APIClient.h"
 #import "Restaurant.h"
 #import "LocationClient.h"
+#import "AppDelegate.h"
 
 NSString * const BottomSheetRestaurant = @"店名";
 NSString * const BottomSheetCategory = @"カテゴリー";
@@ -56,14 +57,14 @@ NSString * const BottomSheetComment = @"一言";
         
         buttonX += button.frame.size.width + 10;
     }
-    self.scrollView.contentSize = CGSizeMake(buttonX, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     
     _buttons = [NSArray arrayWithArray:buttons];
 }
 
 @end
 
-@interface BottomSheet () <MultiSelectionViewControllerDelegate,CommentPopupDelegate>
+@interface BottomSheet () <MultiSelectionViewControllerDelegate,ValuePopupDelegate>
 
 @end
 
@@ -72,35 +73,39 @@ NSString * const BottomSheetComment = @"一言";
     NSArray *_CategorySelections;
     NSArray *_RestnameSelections;
     NSArray *_ValueSelections;
+    //引き渡し
     NSArray *_CommentSelections;
+    NSArray *_Rest_id;
+    NSArray *_Category_id;
+    //API
     NSMutableArray *restaurant;
+    NSMutableArray *rest_id;
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.contentSizeInPopup = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
-    self.landscapeContentSizeInPopup = CGSizeMake([UIScreen mainScreen].bounds.size.height, 300);
+    self.contentSizeInPopup = CGSizeMake([UIScreen mainScreen].bounds.size.width, 250);
+    self.landscapeContentSizeInPopup = CGSizeMake([UIScreen mainScreen].bounds.size.height, 250);
     [self _getRestaurant:YES];
 }
 
-- (void)multiSelectionViewController:(MultiSelectionViewController *)vc didFinishWithSelections:(NSArray *)selections
+- (void)multiSelectionViewController:(MultiSelectionViewController *)vc didFinishWithSelections:(NSArray *)selections post_param:(NSArray*)post_param
 {
    if ([vc.title isEqualToString:BottomSheetCategory]) {
         _CategorySelections = selections;
-       NSLog(@"selections%@",selections);
+        _Category_id = post_param;
     }
     else if ([vc.title isEqualToString:BottomSheetRestaurant]) {
         _RestnameSelections = selections;
-    }else if ([vc.title isEqualToString:BottomSheetValue]) {
-        _ValueSelections = selections;
+        _Rest_id = post_param;
     }
     [self.tableView reloadData];
 }
 
-- (void)commentPopup:(CommentPopup *)vc didFinishWithSelections:(NSArray *)selections{
-    if ([vc.title isEqualToString:BottomSheetComment]) {
-        _CommentSelections = selections;
+- (void)valuePopup:(ValuePopup *)vc didFinishWithSelections:(NSArray *)selections{
+    if ([vc.title isEqualToString:BottomSheetValue]) {
+        _ValueSelections = selections;
         NSLog(@"selections%@",selections);
     }
     [self.tableView reloadData];
@@ -109,35 +114,41 @@ NSString * const BottomSheetComment = @"一言";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     if ([cell isKindOfClass:[BottomSheetCell class]]) {
         BottomSheetCell *selectionCell = (BottomSheetCell *)cell;
         selectionCell.selections = [[[[NSArray arrayWithArray:_CategorySelections] arrayByAddingObjectsFromArray:_RestnameSelections] arrayByAddingObjectsFromArray:_ValueSelections ] arrayByAddingObjectsFromArray:_CommentSelections];
+        NSLog(@"selectionCell:%@",selectionCell.selections);
+        NSLog(@"category:%@",[_Category_id objectAtIndex:0]);
+        NSLog(@"restid:%@",[_Rest_id objectAtIndex:0]);
     }
     return cell;
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    CommentPopup *Comment = (CommentPopup *)segue.destinationViewController;
-    Comment.delegate = self;
+    ValuePopup *Value = (ValuePopup *)segue.destinationViewController;
+    Value.delegate = self;
     MultiSelectionViewController *destinationViewController = (MultiSelectionViewController *)segue.destinationViewController;
     destinationViewController.delegate = self;
     
     if ([segue.identifier isEqualToString:@"Category"]) {
         destinationViewController.title = BottomSheetCategory;
-        destinationViewController.items = @[ @"和食", @"洋食", @"中華", @"カレー", @"ラーメン", @"居酒屋" ];
+        destinationViewController.items = @[ @"和食", @"洋食", @"中華", @"カレー", @"ラーメン", @"カフェ" ,@"居酒屋" ];
+        destinationViewController.post_param = @[ @"2", @"3", @"4", @"5", @"6", @"8",@"9" ];
         destinationViewController.defaultSelections = _CategorySelections;
     }
     else if ([segue.identifier isEqualToString:@"Restname"]) {
         destinationViewController.title = BottomSheetRestaurant;
         destinationViewController.items = restaurant;
+        destinationViewController.post_param = rest_id;
         destinationViewController.defaultSelections = _RestnameSelections;
     }else if ([segue.identifier isEqualToString:@"Value"]) {
-        Comment.title = BottomSheetValue;
-        Comment.defaultSelections = _ValueSelections;
-    }else if ([segue.identifier isEqualToString:@"Comment"]) {
-        Comment.title = BottomSheetComment;
-        Comment.defaultSelections = _CommentSelections;
+        Value.title = BottomSheetValue;
+        Value.defaultSelections = _ValueSelections;
 //[self.popupController pushViewController:[CommentPopup new] animated:YES];
     }
 }
@@ -157,10 +168,13 @@ NSString * const BottomSheetComment = @"一言";
          NSLog(@"before recorder result:%@",result);
          
           restaurant = [NSMutableArray arrayWithCapacity:0];
+         rest_id = [NSMutableArray arrayWithCapacity:0];
          
          for (NSDictionary *dict in (NSArray *)result) {
              NSDictionary *restnameGet = [dict objectForKey:@"restname"];
              [restaurant addObject:restnameGet];
+             NSDictionary *restidGet = [dict objectForKey:@"rest_id"];
+             [rest_id addObject:restidGet];
          }
          
          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
