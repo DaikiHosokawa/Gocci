@@ -24,6 +24,9 @@ import UIKit
 //        
 //    }
     
+
+
+    
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
     class func dirtyBackEndLoginWithUserDefData() -> AWSTask {
         return AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
@@ -108,7 +111,15 @@ import UIKit
         return regid ?? "CANT_DETERMINE_DEVICE_ID"
 #endif
     }
-
+    
+    class func runInBackground(block: ()->Void ) {
+        let backgroundQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
+        dispatch_async(backgroundQueue, block)
+    }
+    
+    class func runOnMainThread(block: ()->Void ) {
+        dispatch_async(dispatch_get_main_queue(), block)
+    }
     
     class func removeAccountSpecificDataFromUserDefaults()
     {
@@ -135,3 +146,8 @@ import UIKit
         }
     }
 }
+
+
+
+
+

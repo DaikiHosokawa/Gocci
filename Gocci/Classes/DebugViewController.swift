@@ -55,110 +55,64 @@ class DebugViewController : UIViewController {
     
     @IBAction func a(sender: AnyObject) {
         
-        
-        
-        
-        let gurl = "http://inase-inc.jp/gocci/" + "id832948/"
-        let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
         let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
 
+        let sharer = FacebookSharing(fromViewController: self)
+        sharer.onSuccess = { print($0) }
+        sharer.onFailure = { print($0) }
+        sharer.onCancel = { print("canceld :(") }
         
+        sharer.shareVideoOnFacebook(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
         
-        //  let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
-        
-        
-        SNSUtil.shareGocchiVideoStoryOnFacebook(gurl, thumbURL: imgurl, mp4URL: mp4url, title: "jjjj", description: "kkkkk", dialog:self)
+        print("Programmflow continues...")
+
     }
     
     @IBAction func b(sender: AnyObject) {
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        let gurl = "http://inase-inc.jp/gocci/" + "id832948/"
+        let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
+        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
         
-        //        let token = "CAACG9jtU8M4BAFMC8AySV1JA5a06F4mOZBq0LL1SDRfo5ZArBSTSxZAO0giGn88El5OwujRxpR9yXOwDwvRy3FEC383zLMxZBnEUHWdlcS0057Uor7iIXpTBZBQmnOpY6DwA0s6XUuy1eRhleZBqVZAHBZA51YfWEbZCKYl0jpPNAZA8GRzcC1mqK04cnxQ59FvI8OZBwNejlqFngZDZD"
-        //
-        //        let fbtoken = FBSDKAccessToken(tokenString: token, permissions: ["public_profile", "publish_actions"], declinedPermissions: [], appID: FACEBOOK_APP_ID, userID: "115686842121983", expirationDate: nil, refreshDate: nil)
-        //
-        //        FBSDKAccessToken.setCurrentAccessToken(fbtoken)
+        let sharer = FacebookSharing(fromViewController: self)
+        sharer.onSuccess = { print($0) }
+        sharer.onFailure = { print($0) }
+        sharer.onCancel = { print("canceld :(") }
         
-        FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: self)
-            {
-                (result, error) -> Void in
-                
-                if error != nil {
-                    print("fuck!@#$")
-                    return
-                }
-                else if result.isCancelled {
-                    print("canceled!@#$")
-                    return
-                }
-                
-                print("=== Facebook login success")
-                
-        }
+        sharer.enableFullDebugOutput()
+        
+        sharer.shareGocchiVideoStoryOnFacebookDirect(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Direct", description: "kkkkk")
+
+        print("Programmflow continues...")
+
     }
     
     @IBAction func c(sender: AnyObject) {
         
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        let gurl = "http://inase-inc.jp/gocci/" + "id832948/"
+        let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
+        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
         
+        let sharer = FacebookSharing(fromViewController: self)
+        sharer.onSuccess = { print($0) }
+        sharer.onFailure = { print($0) }
+        sharer.onCancel = { print("canceld :(") }
+    
         
-        let token = "CAACG9jtU8M4BAGE8wAEJZCeSOpZAPBc5luLpHQCsTvcAD4uSQixlPwzuVbTl7oMTDYEProOVwdneIDvYDEfZCah0TjbCB8IpYwvQTje11kffiKjVYgGYyhj1db3fsX19fy2e1RVF04dJggZCaZAI9v30XlBJAVcKIQ1rBf0WYHYbkEn3DHY20oBTLGYCZC1l9ZBJvsjRkG8fgZDZD"
-        
-        // let rq = FBSDKGraphRequest(graphPath: "me/feed", parameters: ["message": "posting on my life invader"], HTTPMethod: "POST")
-        let rq = FBSDKGraphRequest(graphPath: "me/feed", parameters: ["message": Util.generateFakeDeviceID() ], tokenString: token, version: "v2.5", HTTPMethod: "POST")
-        
-        
-        
-        rq.startWithCompletionHandler { (conn, result, error) -> Void in
-            if error != nil {
-                NSLog(String(error));
-                
-            }
-            else {
-                NSLog("Post id: " + (result as! [String:String])["id"]!);
-                
-            }
-            
-        }
+        sharer.shareGocchiVideoStoryOnFacebookWithDialog(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Dialog", description: "kkkkk")
+        print("Programmflow continues...")
+
     }
     
     @IBAction func d(sender: AnyObject) {
-        
-        let url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
 
+        let sharer = FacebookSharing(fromViewController: self)
+        sharer.onSuccess = { print($0) }
+        sharer.onFailure = { print($0) }
+        sharer.onCancel = { print("canceld :(") }
         
-        //SNSUtil.shareVideoOnFacebook(url, title: "ヘッドラインですよ", description: "この店によく行きます。いつもとても美味しいけど、ジャガイモは硬すぎ＾＾",
-
         
-        
-//        let url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
-//        
-//        let token = "CAACG9jtU8M4BAOiQYB3AAcqtuLryg7Oz4kO27L3snE24G0WLF6rIfZC7w9S6FAEZBPPJ3SzD9NapKR1Ex0bVcW5VtFgriLMICUeeVldjZBMdjWzhLKs3WQFiyIFh2tl9gdsu2cyDqT1KyvPHMiZBsc3eZBiK0UqZCorMolceGuVn6gMlILFIZBDUSBDmRYGPXKpXGGsrcoquwZDZD"
-//        
-//        let params = [
-//            "title": "ヘッドラインですよ",
-//            "description": "この店によく行きます。いつもとても美味しいけど、ジャガイモは硬すぎ＾＾",
-//            // "thumb": ""
-//            "file_url": url,
-//            // "source": use this if you want to upload from the app direct. must be encoded video data (encoding: form-data)
-//        ]
-//        
-//        
-//        
-//        // API reference: https://developers.facebook.com/docs/graph-api/video-uploads
-//        let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params, tokenString: token, version: "v2.5", HTTPMethod: "POST")
-//        
-//        
-//        rq.startWithCompletionHandler { (conn, result, error) -> Void in
-//            if error != nil {
-//                NSLog(String(error));
-//                
-//            }
-//            else {
-//                NSLog("Post id : " + (result as! [String:String])["id"]!);
-//            }
-//            
-//        }
+        sharer.upgradeFacebookTokenToDefaultRights()
+        print("Programmflow continues...")
         
     }
     

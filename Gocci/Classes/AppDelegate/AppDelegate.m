@@ -97,6 +97,9 @@
     [self.window makeKeyAndVisible];
     
     
+    [FBSDKSettings setAppID:FACEBOOK_APP_ID];
+    
+    
 #ifdef FRESH_START
     [Util removeAccountSpecificDataFromUserDefaults];
 #endif
