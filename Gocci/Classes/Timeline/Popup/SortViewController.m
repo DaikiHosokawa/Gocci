@@ -68,7 +68,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 0){
-       [self.popupController pushViewController:[CategoryViewController new] animated:YES];
+        CategoryViewController* cvc = [CategoryViewController new];
+        cvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
+       [self.popupController pushViewController:cvc animated:YES];
     }else{
         
     }

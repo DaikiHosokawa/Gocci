@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimelinePageMenuViewController.h"
 
 @interface SortViewController : UITableViewController
+
+@property (weak, nonatomic) TimelinePageMenuViewController *timelinePageMenuViewController;
+
 
 @end

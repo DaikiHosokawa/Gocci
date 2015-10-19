@@ -79,6 +79,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        //self.timelinePageMenuViewController.nearViewController.
+        //self.timelinePageMenuViewController.followTableViewController
+        [self.timelinePageMenuViewController.allTimelineTableViewController deleteThisFunction];
     [self.popupController dismiss];
     }else if(indexPath.row == 1) {
     [self.popupController dismiss];
