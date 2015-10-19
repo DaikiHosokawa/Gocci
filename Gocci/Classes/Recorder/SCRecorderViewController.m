@@ -177,7 +177,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
             }
             else if (rect.size.height == 667) {
                 //4.7inch
-                rect_page = CGRectMake(0, 467, 375, 200);
+                rect_page = CGRectMake(0, 437, 375, 230);
             }
             else if (rect.size.height == 736) {
                 //5.5inch
@@ -420,11 +420,13 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 -(void)recordBegan
 {
+    [firstView expand];
     [_recorder record];
     NSLog(@"おささる");
 }
 -(void)recordEnded
 {
+     [firstView shrink];
     [_recorder pause];
     NSLog(@"お刺さらない");
 }
