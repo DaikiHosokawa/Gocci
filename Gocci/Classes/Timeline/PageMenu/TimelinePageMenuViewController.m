@@ -42,6 +42,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
 
+
+
 //ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
@@ -130,14 +132,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     AllTimelineTableViewController *controller1 = [[AllTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
     controller1.title = @"近い";
     controller1.delegate = self;
+    self.allTimelineTableViewController = controller1;
     
     FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
     controller2.title = @"フォロー";
     controller2.delegate = self;
+    self.followTableViewController = controller2;
+    
     
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
     vc1.title = @"近くの店";
+    self.nearViewController = vc1;
     
     //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
@@ -193,7 +199,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)hoge{
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[SortViewController new]];
+    SortViewController* svc = [SortViewController new];
+    svc.timelinePageMenuViewController = self;
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:svc];
     
 }
 

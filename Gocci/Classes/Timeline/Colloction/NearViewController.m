@@ -43,10 +43,20 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     [self setupData:YES];
      self.clearsSelectionOnViewWillAppear = NO;
+    UIImage *img = [UIImage imageNamed:@"ic_userpicture.png"];  // ボタンにする画像を生成する
+    UIButton *btn = [[UIButton alloc]
+                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 90, 56, 56)];  // ボタンのサイズを指定する
+    [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    [self.parentViewController.parentViewController.view addSubview:btn];
+    // ボタンが押された時にhogeメソッドを呼び出す
+    [btn addTarget:self
+            action:@selector(hoge) forControlEvents:UIControlEventTouchUpInside];
+    
     
 }
 
