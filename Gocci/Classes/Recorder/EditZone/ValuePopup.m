@@ -51,10 +51,15 @@
     self.textField.delegate = self;
     [self.view addSubview:self.textField];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
-                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                            [[UIBarButtonItem alloc]initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
+    //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)];
+    button1.tintColor = [UIColor blackColor];
+    UIBarButtonItem *button2 =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *button3 = [[UIBarButtonItem alloc]initWithTitle:@"OK" style:UIBarButtonItemStyleBordered target:self action:@selector(doneWithNumberPad)];
+    button3.tintColor = [UIColor blackColor];
+    button2.tintColor = [UIColor blackColor];
+    numberToolbar.items = @[button1,button2, button3];
     [numberToolbar sizeToFit];
     self.textField.inputAccessoryView = numberToolbar;
 }

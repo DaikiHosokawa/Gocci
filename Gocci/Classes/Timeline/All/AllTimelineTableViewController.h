@@ -55,4 +55,6 @@
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 
+- (void)deleteThisFunction ;
+
 @end
