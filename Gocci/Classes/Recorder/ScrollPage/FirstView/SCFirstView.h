@@ -33,6 +33,8 @@
 
 -(void)shrink;
 
+-(void)complete;
+
 
 #pragma mark
 + (instancetype)create;

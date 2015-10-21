@@ -238,7 +238,7 @@ static NSString *stringKakaku = nil;
 				//カテゴリー
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
-				delegate.indexCategory = (int)buttonIndex;
+		//		delegate.indexCategory = (int)buttonIndex;
                 
                 if ([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"和風"]) {
                     delegate.stringCategory = @"2";
@@ -273,12 +273,12 @@ static NSString *stringKakaku = nil;
 				//雰囲気
 				NSLog(@"%@",[arrayFuniki objectAtIndex:buttonIndex]);
 				selectedFuniki = buttonIndex;
-				delegate.indexFuniki = (int)buttonIndex;
+			//	delegate.indexFuniki = (int)buttonIndex;
 				
                 if ([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"にぎやか"]) {
-                   delegate.stringFuniki = @"2";
+             //      delegate.stringFuniki = @"2";
                 } else if([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"ゆったり"])  {
-                    delegate.stringFuniki = @"3";
+               //     delegate.stringFuniki = @"3";
                 }
                 
 				break;

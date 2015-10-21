@@ -136,6 +136,22 @@
                      }];
 }
 
+-(void)complete{
+    /*
+    [UIView animateWithDuration:0.1f
+                     animations:^{
+                         recordView.transform = CGAffineTransformMakeScale(0, 0);
+                     } completion:^(BOOL finished) {
+                         // 画像を表示する
+                         UIImage *image = [UIImage imageNamed:@"test1.png"];
+                         UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+                         imageView.center = recordView.center;
+                         [recordView addSubview:imageView];
+                         // アニメーションが終わった後実行する処理
+                     }];
+     */
+}
+
 #pragma mark - XYPieChart
 #pragma mark スライスの数
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart

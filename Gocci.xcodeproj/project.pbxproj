@@ -30,6 +30,9 @@
 		951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5501B36B27A0057F081 /* CAPSPageMenu.m */; };
 		951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */; };
 		951AD5591B36B6180057F081 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5581B36B6180057F081 /* EveryPost.m */; };
+		9520898D1BD77E9B00DCF969 /* ValuePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		952089901BD788A000DCF969 /* CategoryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		952089931BD788B900DCF969 /* RestPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952089921BD788B900DCF969 /* RestPopupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -383,6 +386,12 @@
 		951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
 		951AD5571B36B6180057F081 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		951AD5581B36B6180057F081 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
+		9520898B1BD77E9B00DCF969 /* ValuePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopupViewController.h; sourceTree = "<group>"; };
+		9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopupViewController.m; sourceTree = "<group>"; };
+		9520898E1BD788A000DCF969 /* CategoryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPopupViewController.h; sourceTree = "<group>"; };
+		9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPopupViewController.m; sourceTree = "<group>"; };
+		952089911BD788B900DCF969 /* RestPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestPopupViewController.h; sourceTree = "<group>"; };
+		952089921BD788B900DCF969 /* RestPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestPopupViewController.m; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -969,6 +978,19 @@
 				951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */,
 			);
 			path = PageMenu;
+			sourceTree = "<group>";
+		};
+		9520898A1BD77E8300DCF969 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				9520898B1BD77E9B00DCF969 /* ValuePopupViewController.h */,
+				9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */,
+				9520898E1BD788A000DCF969 /* CategoryPopupViewController.h */,
+				9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */,
+				952089911BD788B900DCF969 /* RestPopupViewController.h */,
+				952089921BD788B900DCF969 /* RestPopupViewController.m */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		952D22E31A9B95E800C354DF /* Vendor */ = {
@@ -1601,6 +1623,7 @@
 		954D91501BD49DE500C44033 /* EditVdeo */ = {
 			isa = PBXGroup;
 			children = (
+				9520898A1BD77E8300DCF969 /* Popup */,
 				954D91511BD49DE500C44033 /* EditVideoController.h */,
 				954D91521BD49DE500C44033 /* EditVideoController.m */,
 			);
@@ -2353,6 +2376,7 @@
 				95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */,
 				95B118FB1BC3C00F002A95CD /* AdvicePopup.m in Sources */,
 				954D914F1BD49CC000C44033 /* SortViewController.m in Sources */,
+				952089901BD788A000DCF969 /* CategoryPopupViewController.m in Sources */,
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
@@ -2416,9 +2440,11 @@
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
+				952089931BD788B900DCF969 /* RestPopupViewController.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,
 				952D238C1A9B95E800C354DF /* UIImage+MultiFormat.m in Sources */,
 				952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */,
+				9520898D1BD77E9B00DCF969 /* ValuePopupViewController.m in Sources */,
 				95B118F21BC3A16E002A95CD /* PasswordPopup.m in Sources */,
 				952D23781A9B95E800C354DF /* JTCalendarMenuMonthView.m in Sources */,
 				952D23671A9B95E800C354DF /* AFNetworkReachabilityManager.m in Sources */,
