@@ -153,10 +153,10 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
     [self.view addSubview:tableviewSocial];
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [secondView setKakakuValue:delegate.valueKakaku];
+   // [secondView setKakakuValue:delegate.valueKakaku];
     [secondView setTenmeiString:delegate.stringTenmei];
     [secondView setCategoryIndex:delegate.indexCategory];
-    [secondView setFunikiIndex:delegate.indexFuniki];
+   // [secondView setFunikiIndex:delegate.indexFuniki];
     [secondView setHitokotoValue:delegate.valueHitokoto];
     [secondView reloadTableList];
 }
@@ -387,7 +387,7 @@ static NSString * const CellIdentifier = @"CellIdentifierSocial";
 -(void)sendKakakuValue:(int)value
 {
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.valueKakaku = value;
+   // delegate.valueKakaku = value;
 }
 
 -(void)sendHitokotoValue:(NSString *)value

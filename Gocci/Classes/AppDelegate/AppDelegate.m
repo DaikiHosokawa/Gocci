@@ -30,7 +30,7 @@
 
 @implementation AppDelegate
 
-// !!!:dezamisystem
+
 @synthesize restname;
 @synthesize lifelogDate;
 @synthesize cheertag;
@@ -38,7 +38,6 @@
 @synthesize valueKakaku;
 @synthesize stringTenmei;
 @synthesize indexCategory;
-@synthesize indexFuniki;
 
 //@synthesize window = _window;
 
@@ -153,8 +152,8 @@
     
     // !!!:dezamisystem・初期化
     {
-        indexCategory = -1;
-        indexFuniki = -1;
+        //indexCategory = -1;
+        //indexFuniki = -1;
     }
     
 #if !(TARGET_IPHONE_SIMULATOR)

@@ -251,13 +251,14 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSInteger)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler{
++ (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSString *)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler
+{
     NSDictionary *params = @{
                              @"movie_name" : movie_name,
                              @"rest_id" : rest_id,
                              @"cheer_flag" :@(cheer_flag),
-                             @"tag_id" : tag_id,
-                             @"value" :@(value),
+                             @"tag_id" : @"1",
+                             @"value" :value,
                              @"category_id" : category_id,
                              @"memo" : memo
                              };

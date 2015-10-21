@@ -156,13 +156,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     {
         // !!!:dezamisystem・パラメータ
         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [secondView setKakakuValue:delegate.valueKakaku];
-        [secondView setTenmeiString:delegate.stringTenmei];
-        [secondView setCategoryIndex:delegate.indexCategory];
-        [secondView setFunikiIndex:delegate.indexFuniki];
-        [secondView setHitokotoValue:delegate.valueHitokoto];
-        
-        [secondView reloadTableList];
+    
         
         // !!!:ゲージ再描画
         //[self updateTimeRecordedLabel];
@@ -226,16 +220,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     
     // NavigationBar 非表示
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self retake];
     
-    // !!!:dezamisystem・パラメータ
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [secondView setKakakuValue:delegate.valueKakaku];
-    [secondView setTenmeiString:delegate.stringTenmei];
-    [secondView setCategoryIndex:delegate.indexCategory];
-    [secondView setFunikiIndex:delegate.indexFuniki];
-    [secondView setHitokotoValue:delegate.valueHitokoto];
-    [secondView reloadTableList];
-   
     [self prepareSession];
 }
 
@@ -430,7 +416,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [_recorder pause];
     NSLog(@"お刺さらない");
 }
-
 
 
 
@@ -643,7 +628,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 -(void)openEdit
 {
-    NSLog(@"zoff");
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"BottomSheet"]];
     popupController.style = STPopupStyleBottomSheet;
     [popupController presentInViewController:self];
@@ -688,28 +672,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     //[self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
 }
 
-#pragma mark - beforeRecorderViewController
--(void)sendTenmeiString:(NSString*)str
-{
-    if (!str) return;
-    
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    delegate.stringTenmei = [NSString stringWithString:str];
-}
-
-#pragma mark - KakakuTextViewController
--(void)sendKakakuValue:(int)value
-{
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.valueKakaku = value;
-}
-
--(void)sendHitokotoValue:(NSString *)value
-{
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.valueHitokoto = value;
-}
 
 
 #pragma mark - SCPostingViewController
@@ -729,12 +691,14 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     //Value
     int valueKakaku = 0;
     if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
+    /*
     //Atmosphere
     NSString *atmosphere = @"1";
     if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
+    */
     //Category
     NSString *category = @"1";
-    NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
+   // NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
     if (appDelegate.stringCategory) category= appDelegate.stringCategory;
     //Comment
     NSString *comment = @"none";
@@ -746,7 +710,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     
     NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
     
-    // POST API　GETも試してみる
+    //TODO change post api client
+    /*
     [APIClient  POST:movieFileForAPI
              rest_id:rest_id
           cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
@@ -822,7 +787,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
              [SVProgressHUD dismiss];
          }
      }];
-
+*/
 
 }
 

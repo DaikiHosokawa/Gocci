@@ -24,14 +24,6 @@
                         <action selector="DeleteDraft:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbg-i9-pGq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zI1-TC-rbJ">
-                    <rect key="frame" x="309" y="85" width="38" height="38"/>
-                    <animations/>
-                    <state key="normal" image="ic_mode_edit"/>
-                    <connections>
-                        <action selector="openEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="rL2-6d-H0L"/>
-                    </connections>
-                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,6 +39,5 @@
     </objects>
     <resources>
         <image name="ic_close" width="24" height="24"/>
-        <image name="ic_mode_edit" width="24" height="24"/>
     </resources>
 </document>

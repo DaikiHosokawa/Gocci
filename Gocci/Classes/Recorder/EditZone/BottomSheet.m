@@ -34,8 +34,30 @@ NSString * const BottomSheetComment = @"一言";
 
 - (void)setSelections:(NSArray *)selections
 {
-    selections = [selections sortedArrayUsingSelector:@selector(localizedCompare:)];
-    _selections = selections;
+    
+    //TODO:保存
+    
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    if ([selections count] > 0) {
+        selections = [selections sortedArrayUsingSelector:@selector(localizedCompare:)];
+        _selections = selections;
+        delegate.selectionArray = [selections copy];
+        NSLog(@"追加あり:%@",delegate.selectionArray);
+    }else{
+        if ([delegate.selectionArray count] > 0) {
+            NSLog(@"追加なし:2回目起動");
+            NSArray *array = [delegate.selectionArray copy];
+            selections = [array sortedArrayUsingSelector:@selector(localizedCompare:)];
+            _selections = selections;
+            
+        }else{
+            NSLog(@"追加なし:初回起動");
+            selections = [selections sortedArrayUsingSelector:@selector(localizedCompare:)];
+            _selections = selections;
+        }
+    }
+    
     [_buttons makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     self.placeholderLabel.hidden = selections.count > 0;
@@ -92,7 +114,7 @@ NSString * const BottomSheetComment = @"一言";
 
 - (void)multiSelectionViewController:(MultiSelectionViewController *)vc didFinishWithSelections:(NSArray *)selections post_param:(NSArray*)post_param
 {
-   if ([vc.title isEqualToString:BottomSheetCategory]) {
+    if ([vc.title isEqualToString:BottomSheetCategory]) {
         _CategorySelections = selections;
         _Category_id = post_param;
     }
@@ -120,9 +142,22 @@ NSString * const BottomSheetComment = @"一言";
     if ([cell isKindOfClass:[BottomSheetCell class]]) {
         BottomSheetCell *selectionCell = (BottomSheetCell *)cell;
         selectionCell.selections = [[[[NSArray arrayWithArray:_CategorySelections] arrayByAddingObjectsFromArray:_RestnameSelections] arrayByAddingObjectsFromArray:_ValueSelections ] arrayByAddingObjectsFromArray:_CommentSelections];
-        NSLog(@"selectionCell:%@",selectionCell.selections);
-        NSLog(@"category:%@",[_Category_id objectAtIndex:0]);
-        NSLog(@"restid:%@",[_Rest_id objectAtIndex:0]);
+        
+        if([_Category_id objectAtIndex:0] != nil && [_Category_id objectAtIndex:0] > 0){
+            NSLog(@"add category_id to appdelegate");
+            delegate.indexCategory = [_Category_id objectAtIndex:0];
+            delegate.stringCategory = [_CategorySelections objectAtIndex:0];
+        }
+        if([_Rest_id objectAtIndex:0] != nil && [_Rest_id objectAtIndex:0] > 0){
+            NSLog(@"add restid & restname to appdelegate ");
+            delegate.indexTenmei = [_Rest_id objectAtIndex:0];
+            delegate.stringTenmei = [_RestnameSelections objectAtIndex:0];
+        }
+        if([_ValueSelections objectAtIndex:0] != nil && [_ValueSelections objectAtIndex:0] > 0){
+            NSLog(@"add value to appdelegate ");
+            delegate.valueKakaku = [_ValueSelections objectAtIndex:0];
+        }
+        
     }
     return cell;
 }
@@ -149,7 +184,7 @@ NSString * const BottomSheetComment = @"一言";
     }else if ([segue.identifier isEqualToString:@"Value"]) {
         Value.title = BottomSheetValue;
         Value.defaultSelections = _ValueSelections;
-//[self.popupController pushViewController:[CommentPopup new] animated:YES];
+        //[self.popupController pushViewController:[CommentPopup new] animated:YES];
     }
 }
 
@@ -159,28 +194,26 @@ NSString * const BottomSheetComment = @"一言";
  *  @param coordinate 検索する緯度・軽度
  */
 - (void)_getRestaurant:(BOOL)usingLocationCache{
-
+    
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-   {
-    [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
-     {
-         
-         NSLog(@"before recorder result:%@",result);
-         
-          restaurant = [NSMutableArray arrayWithCapacity:0];
-         rest_id = [NSMutableArray arrayWithCapacity:0];
-         
-         for (NSDictionary *dict in (NSArray *)result) {
-             NSDictionary *restnameGet = [dict objectForKey:@"restname"];
-             [restaurant addObject:restnameGet];
-             NSDictionary *restidGet = [dict objectForKey:@"rest_id"];
-             [rest_id addObject:restidGet];
-         }
-         
-         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-     }];
+    {
+        [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
+         {
+             
+             restaurant = [NSMutableArray arrayWithCapacity:0];
+             rest_id = [NSMutableArray arrayWithCapacity:0];
+             
+             for (NSDictionary *dict in (NSArray *)result) {
+                 NSDictionary *restnameGet = [dict objectForKey:@"restname"];
+                 [restaurant addObject:restnameGet];
+                 NSDictionary *restidGet = [dict objectForKey:@"rest_id"];
+                 [rest_id addObject:restidGet];
+             }
+             
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         }];
     };
-
+    
     // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
     // キャッシュされた位置情報を利用して API からデータを取得する
     CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
@@ -205,8 +238,8 @@ NSString * const BottomSheetComment = @"一言";
          fetchAPI(location.coordinate);
          
      }];
-
-
+    
+    
 }
 
 @end

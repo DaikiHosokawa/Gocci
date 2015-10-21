@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
 
-@interface EditVideoController : UIViewController<SCPlayerDelegate, SCAssetExportSessionDelegate>
+@interface EditVideoController : UIViewController<SCPlayerDelegate, SCAssetExportSessionDelegate, UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) SCRecordSession *recordSession;
 @property (weak, nonatomic) IBOutlet SCSwipeableFilterView *filterSwitcherView;
