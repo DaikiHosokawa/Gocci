@@ -303,6 +303,8 @@
 		98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10651BB521C500468D43 /* SNSConnectViewController.swift */; };
 		98DE2B7E1BAF902400382B75 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98DE2B7D1BAF902400382B75 /* Debug.storyboard */; };
 		98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE2B801BAFA24400382B75 /* DebugViewController.swift */; };
+		98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F21BD8B3880014DEB2 /* APISupport.swift */; settings = {ASSET_TAGS = (); }; };
+		98F8C3F51BD8B4080014DEB2 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F41BD8B4080014DEB2 /* API3.swift */; settings = {ASSET_TAGS = (); }; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
 		A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96E1AB44E1500B893F9 /* LICENSE.md */; };
 		A13FB9721AB44E1500B893F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96F1AB44E1500B893F9 /* README.md */; };
@@ -765,6 +767,8 @@
 		98DB10651BB521C500468D43 /* SNSConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSConnectViewController.swift; sourceTree = "<group>"; };
 		98DE2B7D1BAF902400382B75 /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		98DE2B801BAFA24400382B75 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		98F8C3F21BD8B3880014DEB2 /* APISupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISupport.swift; path = Services/Gocci/APISupport.swift; sourceTree = "<group>"; };
+		98F8C3F41BD8B4080014DEB2 /* API3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API3.swift; path = Services/Gocci/API3.swift; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		A13FB96E1AB44E1500B893F9 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -1834,6 +1838,7 @@
 		983A994A1BD0E5BB005E34DC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C3F11BD8B34C0014DEB2 /* Gocci */,
 				983A994C1BD0E5EB005E34DC /* Amazon */,
 				983A994D1BD0E5FE005E34DC /* Twitter */,
 				983A994B1BD0E5D8005E34DC /* Facebook */,
@@ -1885,6 +1890,15 @@
 				98DE2B801BAFA24400382B75 /* DebugViewController.swift */,
 			);
 			name = Debug;
+			sourceTree = "<group>";
+		};
+		98F8C3F11BD8B34C0014DEB2 /* Gocci */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C3F41BD8B4080014DEB2 /* API3.swift */,
+				98F8C3F21BD8B3880014DEB2 /* APISupport.swift */,
+			);
+			name = Gocci;
 			sourceTree = "<group>";
 		};
 		A13FB96A1AB44E1500B893F9 /* BFPaperCheckbox */ = {
@@ -2312,6 +2326,7 @@
 				954D914F1BD49CC000C44033 /* SortViewController.m in Sources */,
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
+				98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
 				954D914E1BD49CC000C44033 /* CategoryViewController.m in Sources */,
 				984003F51BD099D200D91BE6 /* Extensions.swift in Sources */,
@@ -2414,6 +2429,7 @@
 				952D249B1A9B9D3300C354DF /* SearchCell.m in Sources */,
 				95B118EB1BC360B2002A95CD /* UIResponder+STPopup.m in Sources */,
 				952D238E1A9B95E800C354DF /* UIImageView+HighlightedWebCache.m in Sources */,
+				98F8C3F51BD8B4080014DEB2 /* API3.swift in Sources */,
 				952D247B1A9B9D3300C354DF /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
