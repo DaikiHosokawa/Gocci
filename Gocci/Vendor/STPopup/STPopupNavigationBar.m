@@ -42,7 +42,6 @@
         [super touchesMoved:touches withEvent:event];
         return;
     }
-    
     if (_moving) {
         UITouch *touch = [touches anyObject];
         float offset = [touch locationInView:self.window].y - _movingStartY;

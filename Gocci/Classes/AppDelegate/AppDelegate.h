@@ -28,19 +28,25 @@
     
     int cheertag;
     
-    //価格,コメント,カテゴリー保存用変数
-    int valueKakaku;
+    //for posting
+    //value
+    NSString *valueKakaku;
+    //hitokoto
     NSString *valueHitokoto;
+    //restname
     NSString *stringTenmei;
-    NSString *stringFuniki;
+    NSString *indexTenmei;
+    //category
     NSString *stringCategory;
-    int indexCategory;
-    int indexFuniki;
+    NSString *indexCategory;
+    //EditZone
+    NSMutableArray *selectionArray;
     
     BBBadgeBarButtonItem *barButton;
     
     //撮影時保存用
     NSURL *assetURL;
+    
     //S3アップロード用
     NSString *accesskey;
     NSString *secretkey;
@@ -57,13 +63,13 @@
 
 @property (nonatomic, assign) int cheertag;
 
-@property(nonatomic,assign) int valueKakaku;
+@property(nonatomic,retain) NSString *valueKakaku;
 @property(nonatomic,retain) NSString *stringTenmei;
-@property(nonatomic,assign) int indexCategory;
-@property(nonatomic,assign) int indexFuniki;
+@property(nonatomic,retain) NSString *indexTenmei;
+@property(nonatomic,retain) NSString *indexCategory;
 @property(nonatomic,retain) NSString *valueHitokoto;
-@property(nonatomic,retain) NSString *stringFuniki;
 @property(nonatomic,retain) NSString *stringCategory;
+@property(nonatomic,retain) NSMutableArray *selectionArray;
 
 @property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
 
