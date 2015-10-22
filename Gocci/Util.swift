@@ -53,6 +53,11 @@ import UIKit
         return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
     }
     
+    class func setUserDefString(key:String, value:String) {
+        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
     class func thisKillsTheFacebook() {
         let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
         deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in

@@ -12,6 +12,8 @@ import UIKit
 
 class DebugViewController : UIViewController {
     
+    var real_register_id: String = ""
+    
     @IBOutlet weak var topLabel: UILabel!
     
     @IBOutlet weak var signUpEditField: UITextField!
@@ -27,7 +29,8 @@ class DebugViewController : UIViewController {
         print("============ DEBUG MODE ACTIVATED ==============")
         super.viewDidLoad()
         
-        topLabel.text = topLabel.text! + ".4"
+        
+        topLabel.text = topLabel.text! + " v2.1"
         
         if let iid = Util.getUserDefString("iid") {
             loginEditField.text = iid
@@ -42,15 +45,7 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-        
-        //        FBSDKAccessToken
-        //
-        //        CAACG9jtU8M4BAKZCMkw9MIZCLZBETgqsYdcSi894U9Tacv3xyoEmSf47Ji4gk6TukWSR8ZBtHgrMJfMckwV3HlMpCg7h9hJSxDD5ySNZB7Uk1Og5cJhW3bGwnysIWvMUJWuZCfPO4LeQnCcC0mdZCXSzGIvZB7ZAZA9lxV6vj0uW8yDtFrvfxZBuKlbVx6WQ31WBBZC61WvUNA0ruAZDZD
-        
-        
-        
-        
+
     }
     
     @IBAction func a(sender: AnyObject) {
@@ -116,29 +111,16 @@ class DebugViewController : UIViewController {
         
     }
     
-    
-    //    @IBAction func explode(sender: AnyObject) {
-    //
-    //        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
-    //
-    //
-    //        print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
-    //
-    //        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
-    //
-    //        SNSUtil.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
-    //            print("Result: \(res)")
-    //        }
-    //    }
-    
+
     
     
     @IBAction func signUpAsUserClicked(sender: AnyObject)
     {
-        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
-        
-        
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
+        
+        if real_register_id != "" {
+            Util.setUserDefString("register_id", value: real_register_id)
+        }
         
         NetOp.registerUsername(signUpEditField.text) {
             (code, emsg) -> Void in
@@ -159,6 +141,33 @@ class DebugViewController : UIViewController {
             }
         }
         
+    }
+    @IBAction func signUpAsUserFakeClicked(sender: AnyObject) {
+        print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
+        
+        if real_register_id == "" {
+            real_register_id = Util.getRegisterID()
+        }
+        Util.setUserDefString("register_id", value: Util.generateFakeDeviceID())
+        
+        NetOp.registerUsername(signUpEditField.text) {
+            (code, emsg) -> Void in
+            
+            print("NetOpCode: \(code)  " + (emsg ?? ""))
+            
+            if code == NetOpResult.NETOP_SUCCESS {
+                self.loginEditField.text = self.signUpEditField.text
+                
+                let uid: String = Util.getUserDefString("user_id")!
+                let iid: String = Util.getUserDefString("iid")!
+                let tok: String = Util.getUserDefString("token")!
+                
+                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    return nil
+                })
+            }
+        }
     }
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
