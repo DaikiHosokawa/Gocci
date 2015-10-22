@@ -472,11 +472,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              [weakSelf.tableView reloadData];
              [SVProgressHUD dismiss];
              
-             
          }];
-  
 }
 
+-(void)test1009{
+    [self.tableView reloadData];
+}
 
 
 @end

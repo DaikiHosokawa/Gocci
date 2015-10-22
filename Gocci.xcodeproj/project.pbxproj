@@ -30,6 +30,9 @@
 		951AD5551B36B27A0057F081 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5501B36B27A0057F081 /* CAPSPageMenu.m */; };
 		951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */; };
 		951AD5591B36B6180057F081 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 951AD5581B36B6180057F081 /* EveryPost.m */; };
+		9520898D1BD77E9B00DCF969 /* ValuePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		952089901BD788A000DCF969 /* CategoryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		952089931BD788B900DCF969 /* RestPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952089921BD788B900DCF969 /* RestPopupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -186,6 +189,11 @@
 		954D91621BD4A08700C44033 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 954D915A1BD4A08700C44033 /* icon-success.png */; settings = {ASSET_TAGS = (); }; };
 		954D91631BD4A08700C44033 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 954D915B1BD4A08700C44033 /* icon-success@2x.png */; settings = {ASSET_TAGS = (); }; };
 		954D91641BD4A08700C44033 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D915D1BD4A08700C44033 /* TWMessageBarManager.m */; settings = {ASSET_TAGS = (); }; };
+		954D916C1BD4A5E500C44033 /* BottomSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91671BD4A5E500C44033 /* BottomSheet.m */; settings = {ASSET_TAGS = (); }; };
+		954D916E1BD4A5E500C44033 /* MultiSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		954D91711BD4A62100C44033 /* FriendAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91701BD4A62100C44033 /* FriendAddViewController.m */; settings = {ASSET_TAGS = (); }; };
+		954D91741BD4DCFF00C44033 /* ValuePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91721BD4DCFF00C44033 /* ValuePopup.m */; settings = {ASSET_TAGS = (); }; };
+		954D91781BD4E35800C44033 /* SingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91771BD4E35800C44033 /* SingleLineTextField.m */; settings = {ASSET_TAGS = (); }; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		957571481B3E5D8000A10810 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957571471B3E5D8000A10810 /* libsqlite3.dylib */; };
 		958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958ACEE91BC0CC5F006EEA75 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -380,6 +388,12 @@
 		951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
 		951AD5571B36B6180057F081 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		951AD5581B36B6180057F081 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
+		9520898B1BD77E9B00DCF969 /* ValuePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopupViewController.h; sourceTree = "<group>"; };
+		9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopupViewController.m; sourceTree = "<group>"; };
+		9520898E1BD788A000DCF969 /* CategoryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPopupViewController.h; sourceTree = "<group>"; };
+		9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPopupViewController.m; sourceTree = "<group>"; };
+		952089911BD788B900DCF969 /* RestPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestPopupViewController.h; sourceTree = "<group>"; };
+		952089921BD788B900DCF969 /* RestPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestPopupViewController.m; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -654,6 +668,16 @@
 		954D915B1BD4A08700C44033 /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		954D915C1BD4A08700C44033 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		954D915D1BD4A08700C44033 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		954D91661BD4A5E500C44033 /* BottomSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheet.h; sourceTree = "<group>"; };
+		954D91671BD4A5E500C44033 /* BottomSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheet.m; sourceTree = "<group>"; };
+		954D916A1BD4A5E500C44033 /* MultiSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectionViewController.h; sourceTree = "<group>"; };
+		954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectionViewController.m; sourceTree = "<group>"; };
+		954D916F1BD4A62100C44033 /* FriendAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendAddViewController.h; sourceTree = "<group>"; };
+		954D91701BD4A62100C44033 /* FriendAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendAddViewController.m; sourceTree = "<group>"; };
+		954D91721BD4DCFF00C44033 /* ValuePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopup.m; sourceTree = "<group>"; };
+		954D91731BD4DCFF00C44033 /* ValuePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopup.h; sourceTree = "<group>"; };
+		954D91761BD4E35800C44033 /* SingleLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLineTextField.h; sourceTree = "<group>"; };
+		954D91771BD4E35800C44033 /* SingleLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLineTextField.m; sourceTree = "<group>"; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		956DE4A91AEF234500053CE3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -960,6 +984,19 @@
 			path = PageMenu;
 			sourceTree = "<group>";
 		};
+		9520898A1BD77E8300DCF969 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				9520898B1BD77E9B00DCF969 /* ValuePopupViewController.h */,
+				9520898C1BD77E9B00DCF969 /* ValuePopupViewController.m */,
+				9520898E1BD788A000DCF969 /* CategoryPopupViewController.h */,
+				9520898F1BD788A000DCF969 /* CategoryPopupViewController.m */,
+				952089911BD788B900DCF969 /* RestPopupViewController.h */,
+				952089921BD788B900DCF969 /* RestPopupViewController.m */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1190,7 @@
 		952D24051A9B9D3300C354DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				954D91751BD4E35800C44033 /* SimpleText */,
 				954D91501BD49DE500C44033 /* EditVdeo */,
 				95A39DF11BC6168D00FB3150 /* FriendAdd */,
 				950881B11BC4F67F00BF06B1 /* UserSearch */,
@@ -1280,6 +1318,7 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				954D91651BD4A5E500C44033 /* EditZone */,
 				95E4BC7F1B37DA4A00B8CF44 /* PostingView */,
 				95E4BC821B37DA4A00B8CF44 /* ScrollPage */,
 				373BB8371AFE59A300F7AC77 /* DummyViewController.h */,
@@ -1588,6 +1627,7 @@
 		954D91501BD49DE500C44033 /* EditVdeo */ = {
 			isa = PBXGroup;
 			children = (
+				9520898A1BD77E8300DCF969 /* Popup */,
 				954D91511BD49DE500C44033 /* EditVideoController.h */,
 				954D91521BD49DE500C44033 /* EditVideoController.m */,
 			);
@@ -1615,6 +1655,28 @@
 				954D915B1BD4A08700C44033 /* icon-success@2x.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		954D91651BD4A5E500C44033 /* EditZone */ = {
+			isa = PBXGroup;
+			children = (
+				954D91721BD4DCFF00C44033 /* ValuePopup.m */,
+				954D91731BD4DCFF00C44033 /* ValuePopup.h */,
+				954D91661BD4A5E500C44033 /* BottomSheet.h */,
+				954D91671BD4A5E500C44033 /* BottomSheet.m */,
+				954D916A1BD4A5E500C44033 /* MultiSelectionViewController.h */,
+				954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */,
+			);
+			path = EditZone;
+			sourceTree = "<group>";
+		};
+		954D91751BD4E35800C44033 /* SimpleText */ = {
+			isa = PBXGroup;
+			children = (
+				954D91761BD4E35800C44033 /* SingleLineTextField.h */,
+				954D91771BD4E35800C44033 /* SingleLineTextField.m */,
+			);
+			path = SimpleText;
 			sourceTree = "<group>";
 		};
 		958E314E1B040BDE00863EDF /* BBBadgeBarButtonItem */ = {
@@ -1663,6 +1725,8 @@
 		95A39DF11BC6168D00FB3150 /* FriendAdd */ = {
 			isa = PBXGroup;
 			children = (
+				954D916F1BD4A62100C44033 /* FriendAddViewController.h */,
+				954D91701BD4A62100C44033 /* FriendAddViewController.m */,
 				95A39E911BC61D8A00FB3150 /* Address */,
 				95A39E951BC61DCC00FB3150 /* Facebook */,
 				95A39E9A1BC61E1C00FB3150 /* Twitter */,
@@ -2266,6 +2330,7 @@
 				95B118EF1BC39FE3002A95CD /* rulePopup.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
 				951AD5541B36B27A0057F081 /* FollowTableViewController.m in Sources */,
+				954D91781BD4E35800C44033 /* SingleLineTextField.m in Sources */,
 				952D237A1A9B95E800C354DF /* JTCalendarMonthView.m in Sources */,
 				952D236B1A9B95E800C354DF /* AFURLResponseSerialization.m in Sources */,
 				952D238D1A9B95E800C354DF /* UIImage+WebP.m in Sources */,
@@ -2275,6 +2340,7 @@
 				95A39E941BC61D8A00FB3150 /* AddressController.m in Sources */,
 				952D24971A9B9D3300C354DF /* SCRecordSessionManager.m in Sources */,
 				952D23921A9B95E800C354DF /* SVProgressHUD.m in Sources */,
+				954D91711BD4A62100C44033 /* FriendAddViewController.m in Sources */,
 				952D24A21A9B9D3300C354DF /* SCFilter.m in Sources */,
 				952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */,
 				954D913D1BD49C8000C44033 /* SCRecorderToolsView.m in Sources */,
@@ -2324,6 +2390,7 @@
 				95B118DB1BC2AF3D002A95CD /* SettingViewController.m in Sources */,
 				95B118FB1BC3C00F002A95CD /* AdvicePopup.m in Sources */,
 				954D914F1BD49CC000C44033 /* SortViewController.m in Sources */,
+				952089901BD788A000DCF969 /* CategoryPopupViewController.m in Sources */,
 				95EEC5311AF91A20006FD54E /* CheerListCell.m in Sources */,
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */,
@@ -2337,6 +2404,7 @@
 				951AD5591B36B6180057F081 /* EveryPost.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
 				98ACE0771BAC637A002AA083 /* Util.swift in Sources */,
+				954D916E1BD4A5E500C44033 /* MultiSelectionViewController.m in Sources */,
 				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */,
 				959466571BBDFB1B00F3222F /* STCustomCollectionViewCell.m in Sources */,
@@ -2366,6 +2434,7 @@
 				95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */,
 				95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
+				954D91741BD4DCFF00C44033 /* ValuePopup.m in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
 				952D23991A9B95E800C354DF /* UIAlertView+AFNetworking.m in Sources */,
@@ -2378,6 +2447,7 @@
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
 				954D91531BD49DE500C44033 /* EditVideoController.m in Sources */,
 				95A39EA01BC61E5400FB3150 /* DetailController.m in Sources */,
+				954D916C1BD4A5E500C44033 /* BottomSheet.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,
 				959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */,
@@ -2385,9 +2455,11 @@
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
+				952089931BD788B900DCF969 /* RestPopupViewController.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,
 				952D238C1A9B95E800C354DF /* UIImage+MultiFormat.m in Sources */,
 				952D249D1A9B9D3300C354DF /* searchTableViewController.m in Sources */,
+				9520898D1BD77E9B00DCF969 /* ValuePopupViewController.m in Sources */,
 				95B118F21BC3A16E002A95CD /* PasswordPopup.m in Sources */,
 				952D23781A9B95E800C354DF /* JTCalendarMenuMonthView.m in Sources */,
 				952D23671A9B95E800C354DF /* AFNetworkReachabilityManager.m in Sources */,

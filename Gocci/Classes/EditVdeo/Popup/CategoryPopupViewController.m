@@ -1,27 +1,27 @@
 //
-//  CategoryViewController.m
+//  CategoryPopupViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/13.
+//  Created by Castela on 2015/10/21.
 //  Copyright © 2015年 Massara. All rights reserved.
 //
 
-#import "CategoryViewController.h"
+#import "CategoryPopupViewController.h"
 #import "STPopup.h"
-#import "AllTimelineTableViewController.h"
+#import "AppDelegate.h"
 
-@interface CategoryViewController ()
+@interface CategoryPopupViewController ()
 
 @end
 
-@implementation CategoryViewController
+@implementation CategoryPopupViewController
 
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = @"お好きなカテゴリーから";
-        self.contentSizeInPopup = CGSizeMake(300, 400);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 300);
+        self.title = @"カテゴリー";
+        self.contentSizeInPopup = CGSizeMake(300, 300);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
     return self;
 }
@@ -32,7 +32,7 @@
     
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
     
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,11 +48,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-   return 1;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 10;
+    return 6;
 }
 
 
@@ -69,8 +69,10 @@
         cell.textLabel.text = @"カレー";
     }else if(indexPath.row == 4) {
         cell.textLabel.text = @"ラーメン";
-    }else {
-        cell.textLabel.text = @"ざっす";
+    }else if(indexPath.row == 5){
+        cell.textLabel.text = @"カフェ";
+    }else if(indexPath.row == 6){
+        cell.textLabel.text = @"居酒屋";
     }
     
     return cell;
@@ -80,58 +82,39 @@
 //1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
     if (indexPath.row == 0) {
-        //self.timelinePageMenuViewController.nearViewController.
-        //self.timelinePageMenuViewController.followTableViewController
-        [self.timelinePageMenuViewController.allTimelineTableViewController deleteThisFunction];
-    [self.popupController dismiss];
+       delegate.stringCategory = @"和食";
+       delegate.indexCategory = @"2";
+        [self.popupController dismiss];
     }else if(indexPath.row == 1) {
-    [self.popupController dismiss];
+        delegate.stringCategory = @"洋食";
+        delegate.indexCategory = @"3";
+        [self.popupController dismiss];
     }else if(indexPath.row == 2) {
-    [self.popupController dismiss];
+        delegate.stringCategory = @"中華";
+        delegate.indexCategory = @"4";
+        [self.popupController dismiss];
     }else if(indexPath.row == 3) {
-    [self.popupController dismiss];
+        delegate.stringCategory = @"カレー";
+        delegate.indexCategory = @"5";
+        [self.popupController dismiss];
     }else if(indexPath.row == 4) {
-    [self.popupController dismiss];
-    }else {
-    [self.popupController dismiss];       
+        delegate.stringCategory = @"ラーメン";
+        delegate.indexCategory = @"6";
+        [self.popupController dismiss];
+    }else if(indexPath.row == 5){
+        delegate.stringCategory = @"カフェ";
+        delegate.indexCategory = @"8";
+        [self.popupController dismiss];
+    }else if(indexPath.row == 6){
+        delegate.stringCategory = @"居酒屋";
+        delegate.indexCategory = @"9";
+        [self.popupController dismiss];
     }
-  
+    
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 /*
 #pragma mark - Navigation
 

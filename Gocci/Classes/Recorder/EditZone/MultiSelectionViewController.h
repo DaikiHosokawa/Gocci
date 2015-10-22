@@ -12,7 +12,7 @@
 
 @protocol MultiSelectionViewControllerDelegate <NSObject>
 
-- (void)multiSelectionViewController:(MultiSelectionViewController *)vc didFinishWithSelections:(NSArray *)selections;
+- (void)multiSelectionViewController:(MultiSelectionViewController *)vc didFinishWithSelections:(NSArray *)selections post_param:(NSArray*)post_param;
 
 @end
 
@@ -20,6 +20,7 @@
 
 @property (nonatomic, weak) id<MultiSelectionViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray *post_param;
 @property (nonatomic, strong) NSArray *defaultSelections;
 
 @end
