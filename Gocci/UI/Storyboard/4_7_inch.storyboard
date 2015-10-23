@@ -969,7 +969,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="452" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="516" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -1346,7 +1346,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="204487C7-6651-4B4D-AD9F-A4B2670598FB" id="N8A-eA-Pjv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AF3E7317-CFEB-44F4-A634-0A5299BEA163" id="N8A-eA-Pjv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
@@ -1384,7 +1384,7 @@
                                         <rect key="frame" x="57" y="608" width="260" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
-                                        <state key="normal" image="0BAA2E9F-33AD-434B-A1C0-65F79065B63F">
+                                        <state key="normal" image="6B590BAB-3D64-41FC-9122-2FA9F2CDB1A3">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1866,6 +1866,18 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
+                                        <view alpha="0.20000000000000001" contentMode="scaleToFill" id="ngI-vy-4LS">
+                                            <rect key="frame" x="0.0" y="128" width="179" height="51"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_more_vert_white" id="kpJ-tj-7Yq">
                                             <rect key="frame" x="150" y="140" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2025,9 +2037,23 @@
             </objects>
             <point key="canvasLocation" x="-1663.5" y="-773.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MpL-Ro-pIU">
+            <objects>
+                <viewController id="SwE-ZW-Rph" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K5K-Zw-TGL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVi-9d-zrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
-        <image name="0BAA2E9F-33AD-434B-A1C0-65F79065B63F" width="659" height="92">
+        <image name="6B590BAB-3D64-41FC-9122-2FA9F2CDB1A3" width="659" height="92">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -6141,7 +6167,7 @@ xAADwckAA8HLAAPBzQADwdIAA8HaAAPB3QADweIAA8HqAAPB7QADwf8AA8ICAAPCBwAAAAAAAAQBAAAA
 AAAAAD4AAAAAAAAAAAAAAAAAA8IJA
 </mutableData>
         </image>
-        <image name="204487C7-6651-4B4D-AD9F-A4B2670598FB" width="414" height="322">
+        <image name="AF3E7317-CFEB-44F4-A634-0A5299BEA163" width="414" height="322">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

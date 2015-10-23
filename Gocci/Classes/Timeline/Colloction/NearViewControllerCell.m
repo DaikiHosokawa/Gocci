@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *movieURL;
 @property (nonatomic) NSUInteger index;
 
+
 @end
 
 

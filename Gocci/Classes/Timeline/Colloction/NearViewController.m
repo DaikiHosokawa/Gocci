@@ -18,14 +18,19 @@
 #import "MoviePlayerManager.h"
 #import "APIClient.h"
 #import "TimelinePageMenuViewController.h"
+#import "RHRefreshControl.h"
 
 static NSString * const reuseIdentifier = @"Cell";
 static const CGFloat kCellMargin = 5;
 
-@interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate>
+@interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
 
 
 @property (copy, nonatomic) NSMutableArray *posts;
+
+//refresh control
+@property (nonatomic, strong) RHRefreshControl *refreshControl;
+@property (nonatomic, assign, getter = isLoading) BOOL loading;
 
 @end
 
@@ -64,16 +69,20 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self setupData:YES category_id:@"" value_id:@""];
     self.clearsSelectionOnViewWillAppear = NO;
-    UIImage *img = [UIImage imageNamed:@"ic_userpicture.png"];  // ボタンにする画像を生成する
-    UIButton *btn = [[UIButton alloc]
-                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 90, 56, 56)];  // ボタンのサイズを指定する
-    [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
-    [self.parentViewController.parentViewController.view addSubview:btn];
-    // ボタンが押された時にhogeメソッドを呼び出す
-    [btn addTarget:self
-            action:@selector(hoge) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.collectionView setBounces:YES];
     
+    RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
+    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
+    
+    RHRefreshControlConfiguration *refreshConfiguration2 = [[RHRefreshControlConfiguration alloc] init];
+    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
+    
+    //  refreshConfiguration.minimumForStart = @0;
+    //  refreshConfiguration.maximumForPull = @120;
+    self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
+    self.refreshControl.delegate = self;
+    [self.refreshControl attachToScrollView:self.collectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +121,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [self.view addSubview:iv];
              }else{
                  [self.collectionView reloadData];
+                 [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
              }
              
          }];
@@ -146,6 +156,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)addBottom:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
+    
+    [self refreshFeed];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     __weak typeof(self)weakSelf = self;
@@ -255,17 +267,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];
     cell.delegate = self;
-    /*
-     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
-     size:cell.imageView.bounds.size
-     atIndex:indexPath.row
-     completion:^(BOOL f){}];
-     */
+    
     return cell;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    [self.refreshControl refreshScrollViewDidScroll:scrollView];
+    
     //一番下までスクロールしたかどうか
     if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height))
     {
@@ -285,6 +295,47 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         }
     }
 }
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    [self.refreshControl refreshScrollViewDidEndDragging:scrollView];
+    
+}
+
+#pragma mark - RHRefreshControl Delegate
+- (void)refreshDidTriggerRefresh:(RHRefreshControl *)refreshControl {
+    
+    self.loading = YES;
+    
+    if([category_flag length]>0 && [value_flag length]>0){
+        
+        [self setupData:YES category_id:category_flag value_id:value_flag];
+    }else{
+        
+        if ([category_flag length]>0) {
+            [self setupData:YES category_id:category_flag value_id:@""];
+        }else if ([value_flag length]>0){
+            [self setupData:YES category_id:@"" value_id:value_flag];
+        }else{
+            //一番下
+            [self setupData:YES category_id:@"" value_id:@""];
+        }
+    }
+    
+}
+
+- (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
+    return self.isLoading; // should return if data source model is reloading
+    
+}
+
+- (void) _fakeLoadComplete {
+    self.loading = NO;
+    [self.refreshControl refreshScrollViewDataSourceDidFinishedLoading:self.collectionView];
+}
+
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -389,6 +440,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [self setupData:YES category_id:category_flag value_id:value];
     }
     [self setupData:YES category_id:@"" value_id:value];
+}
+
+- (void)refreshFeed {
+    
+    
 }
 
 

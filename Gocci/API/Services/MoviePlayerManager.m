@@ -79,6 +79,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     
     moviePlayer.view.backgroundColor = [UIColor clearColor];
     self.players[key] = moviePlayer;
+
 }
 
 
@@ -140,6 +141,7 @@ static MoviePlayerManager *_sharedInstance = nil;
         
     }
 }
+
 
 - (void)stopMovie
 {
