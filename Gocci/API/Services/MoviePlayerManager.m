@@ -61,6 +61,8 @@ static MoviePlayerManager *_sharedInstance = nil;
     
     
     MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
+    moviePlayer.view.layer.cornerRadius = 5;
+    moviePlayer.view.clipsToBounds = true;
     moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
     [moviePlayer setContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -76,20 +78,16 @@ static MoviePlayerManager *_sharedInstance = nil;
     }
     
     moviePlayer.view.backgroundColor = [UIColor clearColor];
-        self.players[key] = moviePlayer;
-    NSLog(@"addmovie段階では:%@",self.players);
-    
-    
+    self.players[key] = moviePlayer;
 }
 
 
 - (void)removeAllPlayers
 {
-    NSLog(@"全プレイヤーの削除");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }
-    
+    [self.globalPlayer stop];
     [self.players removeAllObjects];
     self.globalPlayer = nil;
 }
@@ -124,17 +122,20 @@ static MoviePlayerManager *_sharedInstance = nil;
     }
     
     MPMoviePlayerController *player = [self _playerAtIndex:index];
-    NSLog(@"playerは%@",player);
     
     if (player && player != self.globalPlayer) {
         self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
-        NSLog(@"playerは独自");
+        
         //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
             NSLog(@"再生中でないので再生");
             [self.globalPlayer play];
+            
+        }else{
+            NSLog(@"再生中");
+            [self.globalPlayer pause];
         }
         
     }

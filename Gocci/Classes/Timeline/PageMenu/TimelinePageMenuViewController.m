@@ -42,8 +42,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
 
-
-
 //ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
@@ -75,6 +73,20 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     _postUsername = user_id;
 }
 -(void)follow:(FollowTableViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
+#pragma mark - ALlTimelneTableViewControllerDelegate
+-(void)near:(NearViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+-(void)near:(NearViewController *)vc username:(NSString *)user_id
+{
+    _postUsername = user_id;
+}
+-(void)near:(NearViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
@@ -143,6 +155,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
     vc1.title = @"近くの店";
+    vc1.delegate = self;
     self.nearViewController = vc1;
     
     //PageMenuアイテム
@@ -215,7 +228,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
     [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Cochin" size:17] } forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
     [popupController presentInViewController:self];
 }
 

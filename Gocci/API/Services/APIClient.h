@@ -26,7 +26,7 @@
  *  @param handler
  */
 + (void)Distance:(double)latitude
-       longitude:(double)longitude call:(NSString *)call handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+       longitude:(double)longitude call:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  popular
@@ -108,7 +108,7 @@
  *  @param fileURL
  *  @param handler
  */
-+ (void)POST:(NSString *)movie_name rest_id:(NSString*)rest_id cheer_flag:(NSInteger )cheer_flag value:(NSString *)value category_id:(NSString*)category_id tag_id:(NSString*)tag_id memo:(NSString *)memo handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
++ (void)POST:(NSString *)movie_name rest_id:(NSString*)rest_id cheer_flag:(NSString *)cheer_flag value:(NSString *)value category_id:(NSString*)category_id tag_id:(NSString*)tag_id memo:(NSString *)memo handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  ファイルのダウンロード

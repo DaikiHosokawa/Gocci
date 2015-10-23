@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
 
+@protocol EditVideoDelegate <NSObject>
+-(void)retake;
+@end
+
 @interface EditVideoController : UIViewController<SCPlayerDelegate, SCAssetExportSessionDelegate, UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic,strong) id<EditVideoDelegate> delegate;
 @property (strong, nonatomic) SCRecordSession *recordSession;
 @property (weak, nonatomic) IBOutlet SCSwipeableFilterView *filterSwitcherView;
-//@property (weak, nonatomic) IBOutlet UILabel *filterNameLabel;
-//@property (weak, nonatomic) IBOutlet UIView *exportView;
-//@property (weak, nonatomic) IBOutlet UIView *progressView;
+@property (weak, nonatomic) IBOutlet UIView *coverView;
 
 @end

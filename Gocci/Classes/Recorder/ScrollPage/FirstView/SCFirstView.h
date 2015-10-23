@@ -21,6 +21,7 @@
 @end
 
 @interface SCFirstView : UIView<XYPieChartDelegate,XYPieChartDataSource>
+
 @property(nonatomic,strong) id<SCFirstViewDelegate> delegate;
 
 #pragma mark - addsubview

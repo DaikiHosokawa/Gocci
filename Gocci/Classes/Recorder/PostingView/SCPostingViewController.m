@@ -14,8 +14,6 @@
 #import "SVProgressHUD.h"
 #import "Swift.h"
 
-
-
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
 static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";

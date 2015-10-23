@@ -112,10 +112,12 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)Distance:(double)latitude longitude:(double)longitude call:(NSString *)call handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Distance:(double)latitude longitude:(double)longitude call:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id  handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"call" : call,
+                             @"category_id" : category_id,
+                             @"value_id" : value_id,
                              @"order_id" : @"1",
                              @"lat" :  [NSString stringWithFormat:@"%@", @(latitude)],
                              @"lon" :  [NSString stringWithFormat:@"%@", @(longitude)],
@@ -251,18 +253,18 @@ static APIClient *_sharedInstance = nil;
 
 
 
-+ (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSInteger)cheer_flag value:(NSString *)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)POST:(NSString *)movie_name rest_id:(NSString *)rest_id cheer_flag:(NSString*)cheer_flag value:(NSString *)value category_id:(NSString *)category_id tag_id:(NSString *)tag_id memo:(NSString *)memo handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
                              @"movie_name" : movie_name,
                              @"rest_id" : rest_id,
-                             @"cheer_flag" :@(cheer_flag),
+                             @"cheer_flag" :cheer_flag,
                              @"tag_id" : @"1",
                              @"value" :value,
                              @"category_id" : category_id,
                              @"memo" : memo
                              };
-    NSLog(@"params:%@",params);
+    NSLog(@"POST:%@",params);
     [[APIClient sharedClient].manager GET:@"post/post"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

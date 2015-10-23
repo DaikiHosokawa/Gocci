@@ -147,6 +147,7 @@
         [[UITabBar appearance] setTintColor:color_custom];
     }
     
+    
     self.window.layer.masksToBounds = YES; // ビューをマスクで切り取る
     self.window.layer.cornerRadius = 4.0; // 角丸マスクを設定(数値は角丸の大きさ)
     

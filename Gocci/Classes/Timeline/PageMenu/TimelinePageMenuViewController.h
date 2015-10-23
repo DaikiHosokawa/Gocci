@@ -12,7 +12,7 @@
 #import "FollowTableViewController.h"
 #import "NearViewController.h"
 
-@interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
+@interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate,NearViewControllerDelegate>
 
 @property id supervc;
 

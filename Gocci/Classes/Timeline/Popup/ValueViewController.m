@@ -1,28 +1,26 @@
 //
-//  SortViewController.m
+//  ValueViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/13.
+//  Created by Castela on 2015/10/22.
 //  Copyright © 2015年 Massara. All rights reserved.
 //
 
-#import "SortViewController.h"
-#import "STPopup.h"
-#import "CategoryViewController.h"
 #import "ValueViewController.h"
+#import "STPopup.h"
 
-@interface SortViewController ()
+@interface ValueViewController ()
 
 @end
 
-@implementation SortViewController
+@implementation ValueViewController
 
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = @"絞り込み";
-        self.contentSizeInPopup = CGSizeMake(300, 100);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 40);
+        self.title = @"値段";
+        self.contentSizeInPopup = CGSizeMake(300, 200);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 100);
     }
     return self;
 }
@@ -30,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
     
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -46,37 +44,56 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 5;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Identifier"];
-    
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"カテゴリー";
-    }else{
-         cell.textLabel.text = @"価格";
+      cell.textLabel.text = @"指定なし";
+    }else if (indexPath.row == 1) {
+        cell.textLabel.text = @"¥1~700";
+    }else if(indexPath.row == 2) {
+        cell.textLabel.text = @"￥500~1500";
+    }else if(indexPath.row == 3) {
+        cell.textLabel.text = @"￥1500~5000";
+    }else if(indexPath.row == 4) {
+        cell.textLabel.text = @"￥3000~";
     }
     
     return cell;
 }
 
+
+//1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 0){
-        CategoryViewController* cvc = [CategoryViewController new];
-        cvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
-       [self.popupController pushViewController:cvc animated:YES];
-    }else{
-        ValueViewController* vvc = [ValueViewController new];
-        vvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
-        [self.popupController pushViewController:vvc animated:YES];
+    if (indexPath.row == 0) {
+        [self.timelinePageMenuViewController.nearViewController sortValue:@""];
+        [self.popupController dismiss];
     }
+    else if (indexPath.row == 1) {
+        [self.timelinePageMenuViewController.nearViewController sortValue:@"1"];
+        [self.popupController dismiss];
+    }else if(indexPath.row == 2) {
+        [self.timelinePageMenuViewController.nearViewController sortValue:@"2"];
+        [self.popupController dismiss];
+    }else if(indexPath.row == 3) {
+        [self.timelinePageMenuViewController.nearViewController sortValue:@"3"];
+        [self.popupController dismiss];
+    }else if(indexPath.row == 4) {
+        [self.timelinePageMenuViewController.nearViewController sortValue:@"4"];
+        [self.popupController dismiss];
+    }
+    
 }
 
 /*
