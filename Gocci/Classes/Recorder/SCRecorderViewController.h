@@ -11,23 +11,20 @@
 #import "SCFirstView.h"
 #import "SCSecondView.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "EditVideoController.h"
 
 
-@interface SCRecorderViewController : UIViewController<SCRecorderDelegate, SCFirstViewDelegate,SCSecondViewDelegate,UIAlertViewDelegate,NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,UIImagePickerControllerDelegate>{
+@interface SCRecorderViewController : UIViewController<EditVideoDelegate,SCRecorderDelegate, SCFirstViewDelegate,EditVideoDelegate,UIAlertViewDelegate,NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,UIImagePickerControllerDelegate>{
     UIAlertView *FirstalertView;
     UIAlertView *SecondalertView;
 }
 
 
 #pragma mark - beforeRecorderViewController
--(void)sendTenmeiString:(NSString*)str;
--(void)sendKakakuValue:(int)value;
--(void)sendHitokotoValue:(NSString *)value;
-
-
 
 
 -(void)execSubmit;
+-(void)onRetake;
 -(void)cancelSubmit;
 -(void)updatePieChartWith:(double)now MAX:(double)max;
 - (void)recorderSubmitPopupViewOnTwitterShare;

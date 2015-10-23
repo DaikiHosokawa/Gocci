@@ -51,7 +51,7 @@
             [pieChartTimer reloadData];
             
 			//アイコン
-			CGFloat width_icon = width_record * 0.65; // 75;
+			CGFloat width_icon = width_record * 0.80; // 75;
 			CGFloat height_icon = width_icon;
 			UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_icon, height_icon)];
 			UIImage *image = [UIImage imageNamed:@"icon_record_cam.png"];
@@ -122,7 +122,7 @@
 
     [UIView animateWithDuration:0.1
                      animations:^{
-                         pieChartTimer.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                         pieChartTimer.transform = CGAffineTransformMakeScale(1.5, 1.5);
                      }
      ];
     

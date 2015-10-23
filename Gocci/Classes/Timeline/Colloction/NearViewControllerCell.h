@@ -18,7 +18,9 @@
 
 - (void)nearViewCell:(NearViewControllerCell *)cell didTapRestname:(NSString *)rest_id;
 
-- (void)nearViewCell:(NearViewControllerCell *)cell didTapOptions:(NSString *)rest_id;
+- (void)nearViewCell:(NearViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
+
+- (void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
 
 @end
 
@@ -37,6 +39,22 @@
  *
  *  @param timelinePost
  */
-- (void)configureWithTimelinePost:(TimelinePost *)timelinePost;
+- (void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath;
+
+/**
+ *  TimelineCell を生成
+ *
+ *  @return
+ */
++ (instancetype)cell;
+
+/**
+ *  データを反映した場合のセルの高さを計算
+ *
+ *  @param post
+ *
+ *  @return
+ */
++ (CGRect)cellHeightWithTimelinePost:(TimelinePost *)post;
 
 @end

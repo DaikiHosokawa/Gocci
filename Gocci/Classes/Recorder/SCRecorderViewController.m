@@ -23,6 +23,8 @@
 #import "SVProgressHUD.h"
 #import "SCScrollPageView.h"
 
+#import "EditTableViewController.h"
+
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 
@@ -51,22 +53,15 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     NSTimer *timerRecord;
     NSTimeInterval test_timeGauge;
     
-    // !!!:dezamisystem・スクロールページ用
     SCScrollPageView *scrollpageview;
 
 }
 
-@property (weak, nonatomic) IBOutlet UIView *viewPageBase;
-
 
 @property (strong, nonatomic) SCRecorderToolsView *focusView;
 
-// !!!:dezamisystem・スクロールページ用
-//@property (nonatomic,strong) UIScrollView *pageingScrollView;
 @property(nonatomic,strong) SCFirstView *firstView;
 @property(nonatomic,strong) SCSecondView *secondView;
-//@property (nonatomic, strong) SCRecordSession *recordSession;	// !!!:開放を避けるためにスタティック化
-//@property (weak, nonatomic) IBOutlet UIScrollView *scrollviewPage;
 
 @property (weak, nonatomic) IBOutlet UIButton *retakeBtn;
 
@@ -79,7 +74,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 /////////////////////
 
 @implementation SCRecorderViewController
-//@synthesize pageingScrollView;
 @synthesize firstView;
 @synthesize secondView;
 
@@ -99,20 +93,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [super viewDidLoad];
     
     
-    // ???:ずれを解消出来る？
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    //self.capturePhotoButton.alpha = 0.0;
-    
-    // ???:hiddenのまま
-    /*
-     _ghostImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-     _ghostImageView.contentMode = UIViewContentModeScaleAspectFill;
-     _ghostImageView.alpha = 0.2;
-     _ghostImageView.userInteractionEnabled = NO;
-     _ghostImageView.hidden = YES;
-     [self.view insertSubview:_ghostImageView aboveSubview:self.previewView];
-     */
     
     _recorder = [SCRecorder recorder];
     _recorder.captureSessionPreset = AVCaptureSessionPreset640x480;
@@ -214,13 +195,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     
     [super viewWillAppear:animated];
     
-    //NSLog(@"撮影画面矩形：%@", NSStringFromCGRect(self.view.frame) );
-    
-    //[self prepareCamera];
-    
     // NavigationBar 非表示
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self retake];
     
     [self prepareSession];
 }
@@ -231,72 +207,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [_recorder stopRunning];
 }
 
-
-- (void)showAlert
-{
-    FirstalertView = [[UIAlertView alloc] initWithTitle:@"価格を入力してください"
-                                                message:nil
-                                               delegate:self
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:@"OK", nil];
-    FirstalertView.delegate       = self;
-    FirstalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [[FirstalertView textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
-    [FirstalertView show];
-}
-
-
-- (void)showAlert2
-{
-    SecondalertView = [[UIAlertView alloc] initWithTitle:@"一言を入力してください"
-                                                 message:nil
-                                                delegate:self
-                                       cancelButtonTitle:@"Cancel"
-                                       otherButtonTitles:@"OK", nil];
-    SecondalertView.delegate       = self;
-    SecondalertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [SecondalertView show];
-}
-
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    
-    if(FirstalertView == alertView){
-        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
-        
-        NSString* textValue = [[alertView textFieldAtIndex:0] text];
-        if( [textValue length] > 0 )
-        {
-            // 入力内容を利用した処理
-            NSLog(@"入力内容:%@",textValue);
-            [self sendKakakuValue:[textValue intValue]];
-            
-            // !!!:dezamisystem・パラメータ
-            AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            [secondView setKakakuValue:delegate.valueKakaku];
-            [secondView reloadTableList];
-        }
-    }
-    if(SecondalertView == alertView){
-        
-        if( buttonIndex == alertView.cancelButtonIndex ) { return; }
-        
-        NSString* textValue = [[alertView textFieldAtIndex:0] text];
-        if( [textValue length] > 0 )
-        {
-            // 入力内容を利用した処理
-            NSLog(@"入力内容2:%@",textValue);
-            [self sendHitokotoValue:textValue];
-            
-            // !!!:dezamisystem・パラメータ
-            AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            [secondView setHitokotoValue:delegate.valueHitokoto];
-            [secondView reloadTableList];
-            
-        }
-    }
-}
 
 - (void)recorder:(SCRecorder *)recorder didAppendVideoSampleBufferInSession:(SCRecordSession *)recordSession {
     [self updateTimeRecordedLabel];
@@ -400,6 +310,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 {
     if ([segue.destinationViewController isKindOfClass:[EditVideoController class]]) {
         EditVideoController  *videoPlayer = segue.destinationViewController;
+        videoPlayer.delegate = self;
         videoPlayer.recordSession = _recordSession;
     }
 }
@@ -418,18 +329,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 }
 
 
-
-// !!!:未使用
-//- (void) handleStopButtonTapped:(id)sender {
-//
-//#if (!TARGET_IPHONE_SIMULATOR)
-//    SCRecordSession *recordSession = _recorder.recordSession;
-//
-//    if (recordSession != nil) {
-//        [self finishSession:recordSession];
-//    }
-//#endif
-//}
 
 #pragma mark 撮影完了
 
@@ -474,9 +373,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     time_now = test_timeGauge;
 #endif
     
-    //currentTimelをラベルに表示する
-    //    self.timeRecordedLabel.text = [NSString stringWithFormat:@"%.1f 秒", time_now];
-    
     NSLog(@"now:%f,max:%f",time_now,time_max);
     // !!!:・円グラフゲージ
     [firstView updatePieChartWith:time_now MAX:time_max];
@@ -509,72 +405,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 #pragma mark Complete撮影完了処理
 
-/**
- *  撮影完了処理
- */
-/*
-- (void)_complete
-{
-    [SVProgressHUD show];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    //__weak typeof(self)weakSelf = self;
-    
-#if 0
-    // 投稿画面を設定
-    self.submitView = [RecorderSubmitPopupView view];
-    self.submitView.delegate = self;
-    self.submitView.cancelCallback = ^{
-        // 投稿画面を閉じる
-        [weakSelf.submitView dismiss];
-        
-        // 動画撮影画面を閉じる
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    };
-    
-    // 動画を書き出し・保存
-    [self.recordSession mergeRecordSegments:^(NSError *error) {
-        [SVProgressHUD dismiss];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if (error) {
-            [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
-            return;
-        }
-        
-    
-        
-        // カメラを停止
-        [_recorder endRunningSession];
-        
-        // 投稿画面を表示
-        [weakSelf.submitView showInView:weakSelf.view];
-    }];
-#else
-    // 動画を書き出し・保存
-    //[self.recordSession mergeRecordSegments:^(NSError *error)
-    [staticRecordSession mergeRecordSegments:^(NSError *error)
-     {
-         [SVProgressHUD dismiss];
-         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-         
-         if (error) {
-             [self _showUploadErrorAlertWithMessage:error.localizedDescription];
-             return;
-         }
-         
-         // 動画をカメラロールに保存
-         //[self.recordSession saveToCameraRoll];
-         [staticRecordSession saveToCameraRoll];
-         
-         // カメラを停止
-         [_recorder endRunningSession];
-         
-         // 投稿画面を表示
-         [self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
-     }];
-#endif
-}
-*/
 
 /**
  *  保存・投稿失敗アラート
@@ -595,31 +425,13 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #pragma mark - バックボタン
 - (IBAction)onBackbutton:(id)sender {
     
-    // !!!:dezamisystem・タブ間を移動、タイムラインへ
-    //self.tabBarController.selectedIndex = 0;
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //    [self dismissViewControllerAnimated:YES completion:^{
-    //        //
-    //    }];
+   [self dismissViewControllerAnimated:YES completion:nil];
+  
 }
-
-//#pragma mark - UIScrollViewDelegate
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//	// UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-////	pager.currentPage = self.scrollviewPage.contentOffset.x / self.view.frame.size.width;
-//}
-
-//#pragma mark - UIPageControle
-//- (void)changePageControl:(id)sender {
-//}
 
 #pragma mark - SCFirstView
 
--(void)flipCamera
-{
-    [_recorder switchCaptureDevices];
-}
+
 -(void)DeleteDraft
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -628,13 +440,15 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 -(void)openEdit
 {
-    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil] instantiateViewControllerWithIdentifier:@"BottomSheet"]];
-    popupController.style = STPopupStyleBottomSheet;
-    [popupController presentInViewController:self];
+    EditTableViewController* evc = [EditTableViewController new];
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:evc];
+    
 }
 
 -(void)retake
 {
+    NSLog(@"retake called");
+    
     SCRecordSession *recordSession = _recorder.session;
     
     if (recordSession != nil) {
@@ -651,181 +465,18 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [self prepareSession];
 }
 
-#pragma mark - SCSecondView
--(void)goBeforeRecorder
-{
-    //遷移：beforeRecorderTableViewController
-    [self performSegueWithIdentifier:SEGUE_GO_BEFORE_RECORDER sender:self];
-}
--(void)goKakakuText
-{
-    
-    [self showAlert];
-    //遷移：SCRecorderVideoController
-    //[self performSegueWithIdentifier:SEGUE_GO_KAKAKUTEXT sender:self];
-}
 
--(void)goHitokotoText
-{
-    [self showAlert2];
-    //遷移：SCRecorderVideoController
-    //[self performSegueWithIdentifier:SEGUE_GO_HITOKOTO sender:self];
-}
 
 
 
 #pragma mark - SCPostingViewController
 #pragma mark 投稿するボタンを押した時
 
--(void)execSubmit
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    //APIに送信
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //Cheertag
-    int cheertag = 1;
-    if (appDelegate.cheertag) cheertag = appDelegate.cheertag;
-    //Value
-    int valueKakaku = 0;
-    if (appDelegate.valueKakaku) valueKakaku = appDelegate.valueKakaku;
-    /*
-    //Atmosphere
-    NSString *atmosphere = @"1";
-    if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
-    */
-    //Category
-    NSString *category = @"1";
-   // NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-    if (appDelegate.stringCategory) category= appDelegate.stringCategory;
-    //Comment
-    NSString *comment = @"none";
-    NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-    if (appDelegate.valueHitokoto) comment = appDelegate.valueHitokoto;
-    //Restid
-    NSString *rest_id = @"...";
-    if (appDelegate.rest_id) rest_id = appDelegate.rest_id;
-    
-    NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-    
-    //TODO change post api client
-    /*
-    [APIClient  POST:movieFileForAPI
-             rest_id:rest_id
-          cheer_flag:cheertag value:valueKakaku category_id:category tag_id:atmosphere memo:comment handler:^(id result, NSUInteger code, NSError *error)
-     {
-         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-         
-         if (error){
-             NSLog(@"post api失敗");
-         }
-         if ([result[@"code"] integerValue] == 200) {
-             //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
-             
-             //S3 upload
-             //ファイル名+user_id形式
-             NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
-             
-             AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-             
-             NSURL *fileURL = dele.assetURL;
-             
-             AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
-             expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                 });
-             };
-             
-             AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                    // [self deleteTmpCaptureDir];
-                 });
-             };
-        
-             AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"gocci_up_north_east_1"];
-             [[transferUtility uploadFile:fileURL
-                                   bucket:@"gocci.movies.bucket.jp-test"
-                                      key:movieFileForS3
-                              contentType:@"video/quicktime"
-                               expression:expression
-                         completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
-                 if (task.error) {
-                     NSLog(@"Error: %@", task.error);
-                 }
-                 if (task.exception) {
-                     NSLog(@"Exception: %@", task.exception);
-                 }
-                 if (task.result) {
-                     AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-                     NSLog(@"success:%@",task.result);
-                     // Do something with uploadTask.
-                 }
-                 
-                 return nil;
-             }];
-             
-             //[self upload:uploadRequest];
-             
-             //Initiarize
-             appDelegate.stringTenmei = @"";
-             appDelegate.valueHitokoto = @"";
-             appDelegate.valueKakaku = 0;
-             appDelegate.indexCategory = -1;
-             appDelegate.indexFuniki = -1;
-             
-             [secondView setKakakuValue:appDelegate.valueKakaku];
-             [secondView setTenmeiString:appDelegate.stringTenmei];
-             [secondView setCategoryIndex:appDelegate.indexCategory];
-             [secondView setFunikiIndex:appDelegate.indexFuniki];
-             [secondView setHitokotoValue:appDelegate.valueHitokoto];
-             [secondView reloadTableList];
-             
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             [SVProgressHUD dismiss];
-         }
-     }];
-*/
-
-}
-
-/*
-- (void)deleteTmpCaptureDir
-{
-    
-    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSURL *fileURL = dele.assetURL;
-    NSString *fileName = [fileURL lastPathComponent];
-    
-    NSLog(@"filename :%@",fileName);
-    
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSError *error = nil;
-    // ~/tmpディレクトリの取得
-    NSString *tmpDir = NSTemporaryDirectory();
-    // tmpディレクトリ内の一覧取得
-    NSArray *list = [manager contentsOfDirectoryAtPath:tmpDir error:&error];
-    NSLog(@"list:%@",list);
-    // 一覧の中から「capture」を含むディレクトリ・ファイルを検索
-    for (NSString *path in list) {
-        NSRange range = [path rangeOfString:fileName];
-        // 存在したならば削除
-        if (NSNotFound != range.location) {
-            NSLog(@"存在");
-            NSString *target = [tmpDir stringByAppendingPathComponent:path];
-            [manager removeItemAtPath:target error:&error];
-        }
-    }
-}
- */
-
 
 #pragma mark - 撮り直し
 - (IBAction)onRetake:(id)sender {
-    NSLog(@"osareteru1");
     [self retake];
+    NSLog(@"呼ばれてはいる");
 }
 
 - (IBAction)onReverse:(id)sender {
@@ -877,6 +528,19 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 - (void)recorder:(SCRecorder *)recorder didCompleteSegment:(SCRecordSessionSegment *)segment inSession:(SCRecordSession *)recordSession error:(NSError *)error {
     NSLog(@"Completed record segment at %@: %@ (frameRate: %f)", segment.url, error, segment.frameRate);
+}
+- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
+{
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
+    popupController.cornerRadius = 4;
+    popupController.transitionStyle = transitionStyle;
+    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
+    [popupController presentInViewController:self];
 }
 
 #pragma mark - 撮影に戻る

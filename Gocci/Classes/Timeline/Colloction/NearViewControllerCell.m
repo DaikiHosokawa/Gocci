@@ -9,17 +9,25 @@
 #import "NearViewControllerCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "MoviePlayerManager.h"
 
 @interface NearViewControllerCell()
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *rest_id;
 @property (nonatomic, strong) NSString *user_id;
+@property (nonatomic, strong) NSString *movieURL;
+@property (nonatomic) NSUInteger index;
 
 @end
 
 
 @implementation NearViewControllerCell
+
++ (instancetype)cell
+{
+    return [[NSBundle mainBundle] loadNibNamed:@"TimelineCell" owner:self options:nil][0];
+}
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -34,20 +42,28 @@
     return self;
 }
 
--(void)configureWithTimelinePost:(TimelinePost *)timelinePost{
+-(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
 
     self.postID = timelinePost.postID;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
                       placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    self.imageView.layer.cornerRadius = 5;
+    self.imageView.clipsToBounds = true;
     self.title.text = timelinePost.restname;
     NSString *str1 = [NSString stringWithFormat:@"%@", timelinePost.distance];
     self.distance.text =  [str1 stringByAppendingString:@"m"];
-    
+    self.movieURL = timelinePost.movie;
+    self.index = indexPath;
+    NSLog(@"index:%lu",(unsigned long)self.index);
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
-    
+    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:self.movieURL
+                                                         size:self.imageView.bounds.size
+                                                        atIndex:self.index
+                                                   completion:^(BOOL f){}];
+    [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
 }
 
 /**
@@ -75,11 +91,17 @@
 
 - (void)tapOption:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(nearViewCell:didTapOptions:)]) {
-        [self.delegate nearViewCell:self didTapOptions:self.rest_id];
+    if ([self.delegate respondsToSelector:@selector(nearViewCell:didTapOptions:post_id:user_id:)]) {
+        [self.delegate nearViewCell:self didTapOptions:self.rest_id post_id:self.postID user_id:self.user_id];
     }
 }
 
-
+- (void)tapThumb:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(nearViewCell:didTapThumb:)]) {
+        [self.delegate nearViewCell:self didTapThumb:self.rest_id];
+        [[MoviePlayerManager sharedManager] playMovieAtIndex:self.index inView:self.imageView  frame:self.imageView.frame];
+    }
+}
 
 @end
