@@ -36,6 +36,11 @@
 		952ABD101BD8DA620067EFB7 /* ValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD0F1BD8DA620067EFB7 /* ValueViewController.m */; };
 		952ABD131BD9C1390067EFB7 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD121BD9C1390067EFB7 /* EditTableViewController.m */; };
 		952ABD161BD9E03A0067EFB7 /* FullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD151BD9E03A0067EFB7 /* FullScreenViewController.m */; };
+		952ABD241BDA12940067EFB7 /* RHAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD191BDA12940067EFB7 /* RHAnimator.m */; };
+		952ABD251BDA12940067EFB7 /* RHRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD1B1BDA12940067EFB7 /* RHRefreshControl.m */; };
+		952ABD261BDA12940067EFB7 /* RHRefreshControlConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD1D1BDA12940067EFB7 /* RHRefreshControlConfiguration.m */; };
+		952ABD271BDA12940067EFB7 /* RHRefreshControlViewPinterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD211BDA12940067EFB7 /* RHRefreshControlViewPinterest.m */; };
+		952ABD281BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 952ABD231BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.m */; };
 		952D23641A9B95E800C354DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */; };
 		952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22E81A9B95E800C354DF /* AFHTTPRequestOperationManager.m */; };
 		952D23661A9B95E800C354DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22EA1A9B95E800C354DF /* AFHTTPSessionManager.m */; };
@@ -398,6 +403,17 @@
 		952ABD121BD9C1390067EFB7 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewController.m; sourceTree = "<group>"; };
 		952ABD141BD9E03A0067EFB7 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
 		952ABD151BD9E03A0067EFB7 /* FullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenViewController.m; sourceTree = "<group>"; };
+		952ABD181BDA12940067EFB7 /* RHAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHAnimator.h; sourceTree = "<group>"; };
+		952ABD191BDA12940067EFB7 /* RHAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHAnimator.m; sourceTree = "<group>"; };
+		952ABD1A1BDA12940067EFB7 /* RHRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHRefreshControl.h; sourceTree = "<group>"; };
+		952ABD1B1BDA12940067EFB7 /* RHRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHRefreshControl.m; sourceTree = "<group>"; };
+		952ABD1C1BDA12940067EFB7 /* RHRefreshControlConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHRefreshControlConfiguration.h; sourceTree = "<group>"; };
+		952ABD1D1BDA12940067EFB7 /* RHRefreshControlConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHRefreshControlConfiguration.m; sourceTree = "<group>"; };
+		952ABD1E1BDA12940067EFB7 /* RHRefreshControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHRefreshControlView.h; sourceTree = "<group>"; };
+		952ABD201BDA12940067EFB7 /* RHRefreshControlViewPinterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHRefreshControlViewPinterest.h; sourceTree = "<group>"; };
+		952ABD211BDA12940067EFB7 /* RHRefreshControlViewPinterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHRefreshControlViewPinterest.m; sourceTree = "<group>"; };
+		952ABD221BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHRefreshControlViewSequenceImages.h; sourceTree = "<group>"; };
+		952ABD231BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHRefreshControlViewSequenceImages.m; sourceTree = "<group>"; };
 		952D22E51A9B95E800C354DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		952D22E61A9B95E800C354DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		952D22E71A9B95E800C354DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -994,9 +1010,36 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
+		952ABD171BDA12940067EFB7 /* RHRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				952ABD181BDA12940067EFB7 /* RHAnimator.h */,
+				952ABD191BDA12940067EFB7 /* RHAnimator.m */,
+				952ABD1A1BDA12940067EFB7 /* RHRefreshControl.h */,
+				952ABD1B1BDA12940067EFB7 /* RHRefreshControl.m */,
+				952ABD1C1BDA12940067EFB7 /* RHRefreshControlConfiguration.h */,
+				952ABD1D1BDA12940067EFB7 /* RHRefreshControlConfiguration.m */,
+				952ABD1E1BDA12940067EFB7 /* RHRefreshControlView.h */,
+				952ABD1F1BDA12940067EFB7 /* RHRefreshControlViewStyle */,
+			);
+			path = RHRefreshControl;
+			sourceTree = "<group>";
+		};
+		952ABD1F1BDA12940067EFB7 /* RHRefreshControlViewStyle */ = {
+			isa = PBXGroup;
+			children = (
+				952ABD201BDA12940067EFB7 /* RHRefreshControlViewPinterest.h */,
+				952ABD211BDA12940067EFB7 /* RHRefreshControlViewPinterest.m */,
+				952ABD221BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.h */,
+				952ABD231BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.m */,
+			);
+			path = RHRefreshControlViewStyle;
+			sourceTree = "<group>";
+		};
 		952D22E31A9B95E800C354DF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				952ABD171BDA12940067EFB7 /* RHRefreshControl */,
 				954D91541BD4A08700C44033 /* TWMessageBarManager */,
 				98D3831D1BCE6AD200839043 /* AWSCore.framework */,
 				9843E91F1BA993EB0015350D /* AWSS3.framework */,
@@ -2298,6 +2341,7 @@
 				377063461AFC6F9F00CD891D /* XYPieChart.m in Sources */,
 				952D24BF1A9B9DE100C354DF /* Restaurant.m in Sources */,
 				951AD5531B36B27A0057F081 /* AllTimelineTableViewController.m in Sources */,
+				952ABD251BDA12940067EFB7 /* RHRefreshControl.m in Sources */,
 				98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */,
 				958ACEF11BC0E327006EEA75 /* UsersViewController.m in Sources */,
 				952D24AD1A9B9D3300C354DF /* SCVideoPlayerView.m in Sources */,
@@ -2328,6 +2372,7 @@
 				952D23841A9B95E800C354DF /* SDWebImageCompat.m in Sources */,
 				98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */,
 				9501A18C1BC4032700E3BE8E /* EditProfileViewController.m in Sources */,
+				952ABD281BDA12940067EFB7 /* RHRefreshControlViewSequenceImages.m in Sources */,
 				954D914D1BD49CC000C44033 /* NearViewControllerCell.m in Sources */,
 				954D91641BD4A08700C44033 /* TWMessageBarManager.m in Sources */,
 				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,
@@ -2398,6 +2443,7 @@
 				BFA1DA6F1AB2A20C00B4F63A /* GUser.m in Sources */,
 				952D23871A9B95E800C354DF /* SDWebImageDownloaderOperation.m in Sources */,
 				952D24801A9B9D3300C354DF /* UIView+DropShadow.m in Sources */,
+				952ABD241BDA12940067EFB7 /* RHAnimator.m in Sources */,
 				952D23931A9B95E800C354DF /* UIColor+HexString.m in Sources */,
 				95E4BCA01B37DA4A00B8CF44 /* SCSecondView.m in Sources */,
 				959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */,
@@ -2416,6 +2462,7 @@
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
 				952D23991A9B95E800C354DF /* UIAlertView+AFNetworking.m in Sources */,
+				952ABD271BDA12940067EFB7 /* RHRefreshControlViewPinterest.m in Sources */,
 				95B118EA1BC360B2002A95CD /* STPopupNavigationBar.m in Sources */,
 				953B1C131B9060FE00AEE0ED /* TutorialPageViewController.m in Sources */,
 				952D24AF1A9B9D3300C354DF /* TimelineCell.m in Sources */,
@@ -2424,6 +2471,7 @@
 				95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */,
 				952D25131A9B9EC800C354DF /* TabbarBaseViewController.m in Sources */,
 				954D91531BD49DE500C44033 /* EditVideoController.m in Sources */,
+				952ABD261BDA12940067EFB7 /* RHRefreshControlConfiguration.m in Sources */,
 				95A39EA01BC61E5400FB3150 /* DetailController.m in Sources */,
 				954D916C1BD4A5E500C44033 /* BottomSheet.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
