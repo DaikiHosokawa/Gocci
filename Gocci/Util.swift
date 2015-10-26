@@ -1,3 +1,4 @@
+
 //
 //  Util.swift
 //  Gocci
@@ -16,16 +17,16 @@ import UIKit
 
 @objc class Util : NSObject {
     
-//    class func delme() {
-//        let dataFromString = "{wdwdwdw}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-//        
-//        let json = JSON(data: dataFromString!)
-//        print(json)
-//        
-//    }
+    //    class func delme() {
+    //        let dataFromString = "{wdwdwdw}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+    //
+    //        let json = JSON(data: dataFromString!)
+    //        print(json)
+    //
+    //    }
     
-
-
+    
+    
     
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
     class func dirtyBackEndLoginWithUserDefData() -> AWSTask {
@@ -45,7 +46,7 @@ import UIKit
     
     class func sleep(seconds: Int, and:()->Void) {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds) * Int64(NSEC_PER_SEC) )
-
+        
         dispatch_after(popTime, dispatch_get_main_queue(), and)
     }
     
@@ -55,6 +56,13 @@ import UIKit
     
     class func setUserDefString(key:String, value:String) {
         NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    class func setUserDefStrings(pairs: [String: String]) {
+        for (k, v) in pairs {
+            NSUserDefaults.standardUserDefaults().setValue(v, forKey: k )
+        }
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
@@ -70,7 +78,7 @@ import UIKit
         FBSDKLoginManager().logOut()
         
     }
-
+    
     class func popup(msg: String, title: String = "", buttonText: String = "OK")
     {
         UIAlertView.init(title: title, message: msg, delegate: nil, cancelButtonTitle: buttonText).show()
@@ -93,7 +101,7 @@ import UIKit
         
         return String(s1[0..<5])
     }
-
+    
     
     class func generateFakeDeviceID() -> String
     {
@@ -109,12 +117,12 @@ import UIKit
         
         let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
         
-// Only Fake IDs in the simulator
-#if arch(i386) || arch(x86_64)
-        return regid ?? generateFakeDeviceID()
-#else
-        return regid ?? "CANT_DETERMINE_DEVICE_ID"
-#endif
+        // Only Fake IDs in the simulator
+        #if arch(i386) || arch(x86_64)
+            return regid ?? generateFakeDeviceID()
+        #else
+            return regid ?? "CANT_DETERMINE_DEVICE_ID"
+        #endif
     }
     
     class func runInBackground(block: ()->Void ) {
@@ -140,19 +148,25 @@ import UIKit
     {
         switch UIScreen.mainScreen().bounds.size.height
         {
-            case 480: return "3_5_inch"
-            case 568: return "4_0_inch"
-            case 667: return "4_7_inch"
-            case 736: return "5_5_inch"
+        case 480: return "3_5_inch"
+        case 568: return "4_0_inch"
+        case 667: return "4_7_inch"
+        case 736: return "5_5_inch"
             
-            default:
-                NSLog("no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height")
-                return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
+        default:
+            NSLog("no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height")
+            return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
         }
     }
+    
+    class func getGocciVersionString() -> String {
+        let dictionary = NSBundle.mainBundle().infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as? String
+        let build = dictionary["CFBundleVersion"] as? String
+        return "\(version) build \(build)"
+    }
+    
+    
+    
 }
-
-
-
-
 
