@@ -338,26 +338,25 @@ class DebugViewController : UIViewController {
     }
     
     
+    
     @IBAction func gotoTimelinkeClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateViewControllerWithIdentifier("timeLineEntry")
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToViewControllerWithName("timeLineEntry")
     }
     
     @IBAction func gotoTutorialClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateViewControllerWithIdentifier("Tutorial")
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToViewControllerWithName("Tutorial")
     }
     
     @IBAction func normalStartClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateInitialViewController()
-        self.presentViewController(vc!, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToInitialController()
     }
+    
+//    @IBAction func gotoSettingsClicked(sender: AnyObject) {
+//        self.ignoreCommonSenseAndGoToViewControllerWithName("SettingViewController")
+//    }
 }
 
 
