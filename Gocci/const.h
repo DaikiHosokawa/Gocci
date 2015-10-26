@@ -21,11 +21,17 @@
 // NSUserDefaults will not be reseted on start up
 //#define FRESH_START
 
+// #######################################################################################
+#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
+//#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
 
 
 
 // #######################################################################################
 // #######################################################################################
+
+#define INASE_PRIVACY_URL (@"http://inase-inc.jp/rules/privacy/")
+#define INASE_RULES_URL (@"http://inase-inc.jp/rules/")
 
 
 #ifdef INDEVEL
