@@ -15,6 +15,8 @@ class DebugViewController : UIViewController {
     var real_register_id: String = ""
     
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var subLabel: UILabel!
+
     
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
@@ -31,6 +33,7 @@ class DebugViewController : UIViewController {
         
         
         topLabel.text = topLabel.text! + " v2.1"
+        subLabel.text = "Greatest Work - Gocci v" + (Util.getGocciVersionString() ?? "?.?.?")
         
         if let iid = Util.getUserDefString("iid") {
             loginEditField.text = iid
@@ -209,7 +212,7 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH TWITTER")
         
-        SNSUtil.connectWithTwitter(self) { (result) -> Void in
+        SNSUtil.connectWithTwitter(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -354,9 +357,11 @@ class DebugViewController : UIViewController {
         self.ignoreCommonSenseAndGoToInitialController()
     }
     
-//    @IBAction func gotoSettingsClicked(sender: AnyObject) {
-//        self.ignoreCommonSenseAndGoToViewControllerWithName("SettingViewController")
-//    }
+    @IBAction func gotoSettingsClicked(sender: AnyObject) {
+        self.ignoreCommonSenseAndGoToViewControllerWithName("jumpSettingsTableViewController")
+    }
+    
+
 }
 
 
