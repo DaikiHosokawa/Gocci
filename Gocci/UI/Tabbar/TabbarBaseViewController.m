@@ -16,6 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGRect tabFrame = self.tabBar.frame; //self.TabBar is IBOutlet of your TabBar
+    tabFrame.size.height = 40;
+    tabFrame.origin.y = self.view.frame.size.height - 40;
+    self.tabBar.frame = tabFrame;
+    
     // Do any additional setup after loading the view.
 	
 //	// !!!:dezamisystem・タブバー設定
@@ -66,7 +72,7 @@
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     
-    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height-9;
     if (heightDifference < 0)
         button.center = self.tabBar.center;
     else

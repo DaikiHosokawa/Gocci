@@ -44,10 +44,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     GMSCameraPosition *cameraPosition = [GMSCameraPosition cameraWithLatitude:35.689521
                                                                     longitude:139.691704
                                                                          zoom:12.0f];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds
+    self.view.frame = _soda;
+    self.mapView = [GMSMapView mapWithFrame:_soda
                                      camera:cameraPosition];
     self.mapView.delegate = self;
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    //self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     [self.view addSubview:self.mapView];
     [self addMarkersToMap];
@@ -69,7 +70,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         // 画像表示例文
         UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
         UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-        CGSize boundsSize = self.view.bounds.size;
+        CGSize boundsSize = _soda.size;
         iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
         [self.view addSubview:iv];
     

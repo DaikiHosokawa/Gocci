@@ -45,6 +45,7 @@
     NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/privacy/"];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:req];
+    
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     //   ページのロードが開始されたので、ステータスバーのロード中インジケータを表示する。

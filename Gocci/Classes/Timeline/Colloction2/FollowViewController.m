@@ -1,18 +1,18 @@
 //
-//  CollectionViewController.m
+//  FollowViewController.m
 //  Gocci
 //
 //  Created by Castela on 2015/10/04.
 //  Copyright © 2015年 Massara. All rights reserved.
 //
 
-#import "NearViewController.h"
+#import "FollowViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "AFNetworking.h"
 #import "everyTableViewController.h"
 #import "UsersViewController.h"
-#import "NearViewControllerCell.h"
+#import "FollowViewControllerCell.h"
 #import "LocationClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
@@ -23,7 +23,7 @@
 static NSString * const reuseIdentifier = @"Cell";
 static const CGFloat kCellMargin = 5;
 
-@interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
+@interface FollowViewController ()<UICollectionViewDelegateFlowLayout,FollowViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
 
 
 @property (copy, nonatomic) NSMutableArray *posts;
@@ -38,7 +38,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
-@implementation NearViewController{
+@implementation FollowViewController{
     NSMutableArray *thumb;
     NSMutableArray *postid_;
     NSMutableArray *restname;
@@ -101,7 +101,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
         
-        [APIClient Distance:coordinate.latitude longitude:coordinate.longitude call:@"" category_id:category_id value_id:value_id handler:^(id result, NSUInteger code, NSError *error)
+       [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
              NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
              
@@ -165,7 +165,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
         NSString *str = [NSString stringWithFormat:@"%d",call];
-        [APIClient Distance:coordinate.latitude longitude:coordinate.longitude call:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
+       [APIClient Follow:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
              NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
              
@@ -225,14 +225,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
--(void)nearViewCell:(NearViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
+-(void)followViewCell:(FollowViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
-    [self.delegate near:self rest_id:rest_id];
+    [self.delegate follow:self rest_id:rest_id];
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
 }
 
--(void)nearViewCell:(NearViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
+-(void)followViewCell:(FollowViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
     UIActionSheet *actionsheet = nil;
     
@@ -251,7 +251,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
--(void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
+-(void)followViewCell:(FollowViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
 }
 
@@ -263,7 +263,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NearViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    FollowViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
@@ -369,12 +369,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 break;
             case 4:
                 NSLog(@"User");
-                [self.delegate near:self username:u_id];
+                [self.delegate follow:self username:u_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                 break;
             case 5:
                 NSLog(@"Rest");
-                [self.delegate near:self rest_id:r_id];
+                [self.delegate follow:self rest_id:r_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                 break;
             case 6:

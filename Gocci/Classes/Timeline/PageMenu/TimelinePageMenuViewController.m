@@ -19,6 +19,9 @@
 #import "STPopup.h"
 #import "SortViewController.h"
 
+#import "TLYShyNavBarManager.h"
+//#import "GTScrollNavigationBar.h"
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -49,30 +52,32 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @implementation TimelinePageMenuViewController
 
+
+
 #pragma mark - ALlTimelneTableViewControllerDelegate
--(void)allTimeline:(AllTimelineTableViewController *)vc postid:(NSString *)postid
+-(void)reco:(RecoViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc username:(NSString *)user_id
+-(void)reco:(RecoViewController *)vc username:(NSString *)user_id
 {
     _postUsername = user_id;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc rest_id:(NSString *)rest_id
+-(void)reco:(RecoViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
 
 #pragma mark - FollowTableViewController
--(void)follow:(FollowTableViewController *)vc postid:(NSString *)postid
+-(void)follow:(FollowViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
 }
--(void)follow:(FollowTableViewController *)vc username:(NSString *)user_id
+-(void)follow:(FollowViewController *)vc username:(NSString *)user_id
 {
     _postUsername = user_id;
 }
--(void)follow:(FollowTableViewController *)vc rest_id:(NSString *)rest_id
+-(void)follow:(FollowViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
@@ -93,40 +98,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 #pragma mark - ViewLoad
 - (void)viewDidLoad {
+    
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
+  
 
-    
-    //右ナビゲーションアイテム(通知)の実装
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    // BBBadgeBarButtonItemオブジェクトの作成
-    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-    
-    self.barButton.badgeBGColor      = [UIColor whiteColor];
-    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
-    self.barButton.badgeTextColor    = color_custom;
-    self.barButton.badgeOriginX = 10;
-    self.barButton.badgeOriginY = 10;
-    
-    // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
-    
-    CGRect frame = CGRectMake(0, 0, 500, 44);
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = @"Gocci";
-    
+   // self.navigationController.navigationBar.tintColor = color_custom;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -134,59 +114,74 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
     
     //set notificationCenter
+    /*
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(handleRemotePushToUpdateBell:)
                                name:@"HogeNotification"
                              object:nil];
-    
+    */
+   
     //PageMenu登録
-    AllTimelineTableViewController *controller1 = [[AllTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller1.title = @"近い";
-    controller1.delegate = self;
-    self.allTimelineTableViewController = controller1;
-    
-    FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller2.title = @"フォロー";
-    controller2.delegate = self;
-    self.followTableViewController = controller2;
-    
-    
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
     vc1.title = @"近くの店";
     vc1.delegate = self;
     self.nearViewController = vc1;
     
+    RecoViewController *vc2 = [[RecoViewController alloc] init];
+    vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
+    vc2.title = @"リコメンド";
+    vc2.delegate = self;
+    self.recoViewController = vc2;
+    
+    FollowViewController *vc3 = [[FollowViewController alloc] init];
+    vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowViewController"];
+    vc3.title = @"フォロー";
+    vc3.delegate = self;
+    self.followViewController = vc3;
+    
+    {
+        //タイトル画像設定
+        
+        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        navigationTitle.image = image;
+         
+        self.navigationItem.titleView =navigationTitle;
+    }
+
+    
     //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
-    NSArray *controllerArray = @[vc1,controller1, controller2 /*controller4*/];
+    NSArray *controllerArray = @[vc1,vc2, vc3];
     NSInteger count_item = 3;	//画面数
     // !!!:高さは画面高さの10%
-    CGFloat height_item = rect_screen.size.height * 0.08; //40.f;	//高さ
-    CGFloat width_item = self.view.frame.size.width / count_item; //幅
+  //  CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
+    CGFloat width_item = rect_screen.size.width / count_item; //幅
     NSDictionary *parameters = @{
-                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0
-                                 //CAPSPageMenuOptionMenuItemSeparatorWidth : @(0.5),		//アイテム間隔 default = 0.5
+                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),	//選択マーク高さ default = 3.0
+                                 CAPSPageMenuOptionMenuItemSeparatorWidth : @(4.3),		//アイテム間隔 default = 0.5
                                  CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
                                  CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
-                                 CAPSPageMenuOptionBottomMenuHairlineColor : [UIColor lightGrayColor],	//アンダーライン色
-                                 CAPSPageMenuOptionSelectionIndicatorColor: color_custom,	//選択マーク色
+                                 CAPSPageMenuOptionBottomMenuHairlineColor :  [UIColor blackColor],	//アンダーライン色
+                                 CAPSPageMenuOptionSelectionIndicatorColor:
+                                 color_custom,		//選択マーク色
                                  //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
-                                 //CAPSPageMenuOptionMenuMargin : @(15.f),	// ???:default = 15.f
-                                 CAPSPageMenuOptionMenuHeight : @(height_item),	//メニュー高さ
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : color_custom,	//選択時文字色
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : color_custom,	//非選択文字色
+                                 CAPSPageMenuOptionMenuMargin : @(20.0),	// ???:default = 15.f
+                                 CAPSPageMenuOptionMenuHeight : @(40.0),	//メニュー高さ
+                                 CAPSPageMenuOptionSelectedMenuItemLabelColor :color_custom,	//選択時文字色
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor colorWithRed:40.0/255. green:40.0/255. blue:40.0/255. alpha:1.0],	//非選択文字色
                                  CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
-                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(NO),	//角に丸みを付けるか？
-                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],	//タイトルフォント
-                                 //CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.2),	// ???:default = 0.2
-                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
+                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(YES),	//角に丸みを付けるか？
+                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0],	//タイトルフォント
+                                 CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.1),	// ???:default = 0.2
+                                CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
                                  //CAPSPageMenuOptionEnableHorizontalBounce : @(YES), // ???:default = YES
-                                 //CAPSPageMenuOptionAddBottomMenuHairline : @(YES),	// ???:default = YES
+                                 CAPSPageMenuOptionAddBottomMenuHairline : @(NO),	// ???:default = YES
                                  //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth : @(NO),	// ???:default = NO
                                  CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),	//アニメーション時間[ms] default = 500
-                                 CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
+//                               CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
                                  //CAPSPageMenuOptionHideTopMenuBar : @(NO),//メニューを隠した状態にするか？
                                  };
     
@@ -233,6 +228,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 
+/*
 #pragma mark - NavigationBarItemAction
 -(void)barButtonItemPressed:(id)sender
 {
@@ -259,7 +255,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                 animated:YES
                                  options:WYPopoverAnimationOptionFadeWithScale];
 }
+*/
 
+/*
 #pragma mark - Notification
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
@@ -268,6 +266,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
 }
+ 
+ */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -278,7 +278,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

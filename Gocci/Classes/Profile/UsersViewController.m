@@ -30,6 +30,7 @@
 #import "CollectionViewController.h"
 #import "TableViewController.h"
 #import "MapViewController.h"
+#import "Swift.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -77,7 +78,17 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    /*
+    FacebookSharing *sharer = [[FacebookSharing alloc]initFromViewController:self];
     
+    [sharer enableFullDebugOutput];
+    
+    [sharer shareGocchiVideoStoryOnFacebookWithDialogWithClickURL:@"http://gocci.me/" thumbURL:@"http://test.thumbnails.gocci.me/2015/10/00002_2015-10-23-12-03-47_655_img.png" mp4URL:@"http://test.mp4-movies.gocci.me/2015/10/2015-10-21-19-28-30_623_movie.mp4" title:@"タイトル" description:@"美味しかった！"];
+    
+    NSLog(@"success:%@/cancel:%@/failure:%@",sharer.onSuccess,sharer.onCancel,sharer.onFailure);
+    
+    sharer.onFailure = ^(NSString *msg){NSLog(@"msg:%@",msg);};
+    */
     //navigationbar
     {
         //タイトル画像設定
@@ -174,13 +185,15 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc.supervc = self;
     vc.receiveDic = post;
     firstViewController = vc;
-    
+    vc.soda = changeView.frame;
+
     UIViewController *secondViewController;
     CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
     vc2.supervc = self;
     vc2.receiveDic2 = post;
     secondViewController = vc2;
+    vc2.soda = changeView.frame;
     
     UIViewController *thirdViewController;
     MapViewController *vc3 = [[MapViewController alloc] init];
@@ -188,6 +201,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc3.receiveDic3 = post;
     NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
+    vc3.soda = changeView.frame;
 
     thirdViewController = vc3;
    
@@ -205,7 +219,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
     
     [self addChildViewController:nextViewController];
-    nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height-60);
+    nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
     [changeView addSubview:nextViewController.view];
     [nextViewController didMoveToParentViewController:self];
     

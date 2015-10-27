@@ -15,5 +15,7 @@
 @property id supervc;
 
 @property (nonatomic, strong) NSDictionary *receiveDic3;
+@property (nonatomic) CGRect soda;
+
 
 @end
