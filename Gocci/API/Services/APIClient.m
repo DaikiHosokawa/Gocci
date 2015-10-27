@@ -132,6 +132,42 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)Reco:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id  handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"call" : call,
+                             @"category_id" : category_id,
+                             @"value_id" : value_id,
+                             @"order_id" : @"0"
+                             };
+    NSLog(@"Distance:%@",params);
+    [[APIClient sharedClient].manager GET:@"get/timeline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
++ (void)Follow:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id  handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"call" : call,
+                             @"category_id" : category_id,
+                             @"value_id" : value_id,
+                             @"order_id" : @"0"
+                             };
+    NSLog(@"Distance:%@",params);
+    [[APIClient sharedClient].manager GET:@"get/followline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 
 + (void)Popular:(void (^)(id, NSUInteger, NSError *))handler

@@ -10,7 +10,9 @@ import Foundation
 import FBSDKShareKit
 
 
-class FacebookSharing {
+
+
+@ objc class FacebookSharing: NSObject {
     
     
     private enum LoginResult {

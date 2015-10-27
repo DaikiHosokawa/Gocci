@@ -120,12 +120,13 @@
     // !!!:dezamisystem
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
-    
+   
     [UINavigationBar appearance].barTintColor = color_custom;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].titleTextAttributes
     = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
+   
+   
     // !!!:dezamisystem・タブバー設定
     {
         //UIColor *color_selected = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];
@@ -142,7 +143,7 @@
         
         //背景色
         [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
-        [UITabBar appearance].translucent = NO;
+        [UITabBar appearance].translucent = YES;
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];
     }
@@ -228,6 +229,19 @@ void exceptionHandler(NSException *exception) {
     [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
 }
 
+// UIColorから1x1のUIImageを作成
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    UIView *__view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1.0f, 1.0f)];
+    __view.backgroundColor = color;
+    UIGraphicsBeginImageContext(__view.frame.size);
+    CGContextRef __context = UIGraphicsGetCurrentContext();
+    [__view.layer renderInContext: __context];
+    UIImage *__image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return __image;
+}
 
 
 

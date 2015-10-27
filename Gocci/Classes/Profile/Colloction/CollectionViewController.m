@@ -40,9 +40,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupData];
      self.clearsSelectionOnViewWillAppear = NO;
-    
+    self.view.frame = _soda;
+     [self setupData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +76,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             // 画像表示例文
             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-            CGSize boundsSize = self.view.bounds.size;
+            CGSize boundsSize = _soda.size;
             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
             [self.view addSubview:iv];
         }else{

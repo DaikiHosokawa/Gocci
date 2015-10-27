@@ -29,6 +29,20 @@
        longitude:(double)longitude call:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  recommend
+ 
+ *  @param handler
+ */
++ (void)Reco:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  Follow
+ 
+ *  @param handler
+ */
++ (void)Follow:(NSString *)call category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
  *  popular
  *
  *  @param handler

@@ -11,14 +11,17 @@
 #import "AllTimelineTableViewController.h"
 #import "FollowTableViewController.h"
 #import "NearViewController.h"
+#import "FollowViewController.h"
+#import "RecoViewController.h"
 
-@interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate,NearViewControllerDelegate>
+@interface TimelinePageMenuViewController : UIViewController<NearViewControllerDelegate,UIScrollViewDelegate,FollowViewControllerDelegate,RecoViewControllerDelegate>
 
 @property id supervc;
 
 @property (strong, nonatomic) NearViewController *nearViewController;
-@property (strong, nonatomic) FollowTableViewController *followTableViewController;
-@property (strong, nonatomic) AllTimelineTableViewController *allTimelineTableViewController;
+@property (strong, nonatomic) FollowViewController *followViewController;
+@property (strong, nonatomic) RecoViewController *recoViewController;
+
 
 
 
