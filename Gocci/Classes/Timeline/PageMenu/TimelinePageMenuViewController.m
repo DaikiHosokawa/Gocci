@@ -191,6 +191,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                         frame:rect_pagemenu
                                                       options:parameters];
     
+    _pageMenu.delegate = self;
+    
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
     
@@ -203,6 +205,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [btn addTarget:self
             action:@selector(hoge) forControlEvents:UIControlEventTouchUpInside];
     
+}
+
+
+- (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {
+    
+    if ([controller conformsToProtocol:@protocol(SortableTimeLineSubView)]) {
+        self.currentVisibleSortableSubViewController = (UIViewController <SortableTimeLineSubView> *)controller;
+    }
 }
 
 -(void)hoge{

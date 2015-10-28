@@ -91,30 +91,30 @@
 {
     
     if (indexPath.row == 0) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"1"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"1"];
         [self.popupController dismiss];
     }
     else if (indexPath.row == 1) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"2"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"2"];
         
         [self.popupController dismiss];
     }else if(indexPath.row == 2) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"3"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"3"];
         [self.popupController dismiss];
     }else if(indexPath.row == 3) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"4"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"4"];
         [self.popupController dismiss];
     }else if(indexPath.row == 4) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"5"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"5"];
         [self.popupController dismiss];
     }else if(indexPath.row == 5) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"6"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"6"];
         [self.popupController dismiss];
     }else if(indexPath.row == 6) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"8"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"8"];
         [self.popupController dismiss];
     }else if(indexPath.row == 7) {
-        [self.timelinePageMenuViewController.nearViewController sortFunc:@"9"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"9"];
         [self.popupController dismiss];
     }
     

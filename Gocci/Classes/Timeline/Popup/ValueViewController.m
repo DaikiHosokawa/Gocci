@@ -77,20 +77,20 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [self.timelinePageMenuViewController.nearViewController sortValue:@""];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@""];
         [self.popupController dismiss];
     }
     else if (indexPath.row == 1) {
-        [self.timelinePageMenuViewController.nearViewController sortValue:@"1"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"1"];
         [self.popupController dismiss];
     }else if(indexPath.row == 2) {
-        [self.timelinePageMenuViewController.nearViewController sortValue:@"2"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"2"];
         [self.popupController dismiss];
     }else if(indexPath.row == 3) {
-        [self.timelinePageMenuViewController.nearViewController sortValue:@"3"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"3"];
         [self.popupController dismiss];
     }else if(indexPath.row == 4) {
-        [self.timelinePageMenuViewController.nearViewController sortValue:@"4"];
+        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"4"];
         [self.popupController dismiss];
     }
     

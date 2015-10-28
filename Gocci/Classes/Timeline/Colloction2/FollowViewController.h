@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SortableTimeLineSubViewProtocol.h"
+
 
 @class FollowViewController;
 
@@ -23,7 +25,7 @@
 
 @end
 
-@interface FollowViewController : UICollectionViewController
+@interface FollowViewController : UICollectionViewController <SortableTimeLineSubView>
 
 @property id supervc; //親
 @property(nonatomic,strong) id<FollowViewControllerDelegate> delegate;

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SortableTimeLineSubViewProtocol.h"
+
 
 @class RecoViewController;
 
@@ -23,7 +25,7 @@
 
 @end
 
-@interface RecoViewController : UICollectionViewController
+@interface RecoViewController : UICollectionViewController <SortableTimeLineSubView>
 
 @property id supervc; //親
 @property(nonatomic,strong) id<RecoViewControllerDelegate> delegate;
