@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AllTimelineTableViewController.h"
-#import "FollowTableViewController.h"
 #import "NearViewController.h"
 #import "FollowViewController.h"
 #import "RecoViewController.h"
@@ -22,7 +20,10 @@
 @property (strong, nonatomic) FollowViewController *followViewController;
 @property (strong, nonatomic) RecoViewController *recoViewController;
 
+@property (strong, nonatomic) UIViewController *activeSubViewController;
 
+- (void)sortFunc:(NSString *)category;
+- (void)sortValue:(NSString *)value;
 
 
 @end

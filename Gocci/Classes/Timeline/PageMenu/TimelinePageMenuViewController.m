@@ -19,9 +19,6 @@
 #import "STPopup.h"
 #import "SortViewController.h"
 
-#import "TLYShyNavBarManager.h"
-//#import "GTScrollNavigationBar.h"
-
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -43,6 +40,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
+
+
 
 
 //ページメニューを載せるビュー
@@ -226,6 +225,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
     [popupController presentInViewController:self];
 }
+
 
 
 /*
