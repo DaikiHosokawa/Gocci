@@ -55,6 +55,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)viewWillAppear:(BOOL)animated{
     call = 1;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -74,10 +75,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
-    
-    RHRefreshControlConfiguration *refreshConfiguration2 = [[RHRefreshControlConfiguration alloc] init];
-    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
-    
+
     //  refreshConfiguration.minimumForStart = @0;
     //  refreshConfiguration.maximumForPull = @120;
     self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];

@@ -8,7 +8,10 @@
 
 #import "CategoryViewController.h"
 #import "STPopup.h"
-#import "AllTimelineTableViewController.h"
+
+#define CASE(str) if ([__s__ isEqualToString:(str)])
+#define SWITCH(s) for (NSString *__s__ = (s); __s__; __s__ = nil)
+#define DEFAULT
 
 @interface CategoryViewController ()
 
@@ -31,7 +34,9 @@
     
     
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
-    
+    UIViewController *vc;
+
+   
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -84,12 +89,14 @@
 //1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row == 0) {
         [self.timelinePageMenuViewController.nearViewController sortFunc:@"1"];
         [self.popupController dismiss];
     }
     else if (indexPath.row == 1) {
         [self.timelinePageMenuViewController.nearViewController sortFunc:@"2"];
+        
         [self.popupController dismiss];
     }else if(indexPath.row == 2) {
         [self.timelinePageMenuViewController.nearViewController sortFunc:@"3"];
