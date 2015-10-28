@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SortableTimeLineSubViewProtocol.h"
 
 @class NearViewController;
 
@@ -23,7 +24,7 @@
 
 @end
 
-@interface NearViewController : UICollectionViewController
+@interface NearViewController : UICollectionViewController <SortableTimeLineSubView>
 
 @property id supervc; //親
 @property(nonatomic,strong) id<NearViewControllerDelegate> delegate;

@@ -788,6 +788,7 @@
 		95EEC5301AF91A20006FD54E /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
+		9820703B1BE06C7200715E38 /* SortableTimeLineSubViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortableTimeLineSubViewProtocol.h; sourceTree = "<group>"; };
 		9820AFE71BB972FF008A6963 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		983A994E1BD0E66B005E34DC /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookSharing.swift; path = Services/Facebook/FacebookSharing.swift; sourceTree = "<group>"; };
 		984003F41BD099D200D91BE6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -1000,6 +1001,7 @@
 				951AD5501B36B27A0057F081 /* CAPSPageMenu.m */,
 				951AD5511B36B27A0057F081 /* TimelinePageMenuViewController.h */,
 				951AD5521B36B27A0057F081 /* TimelinePageMenuViewController.m */,
+				9820703B1BE06C7200715E38 /* SortableTimeLineSubViewProtocol.h */,
 			);
 			path = PageMenu;
 			sourceTree = "<group>";
@@ -2743,8 +2745,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendor",
@@ -2784,7 +2786,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
-				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
@@ -2801,7 +2803,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -2841,7 +2843,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
-				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
