@@ -18,7 +18,6 @@
 
 #import "STPopup.h"
 #import "AdvicePopup.h"
-#import "PasswordPopup.h"
 #import "CompletePopup.h"
 
 

@@ -58,11 +58,17 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    
+    NSLog(@"Was called with: %@/n", url);
+    NSLog(@"SOurce Application: %@/n", sourceApplication);
+    
+    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
+
 
 
 - (BOOL)isFirstRun

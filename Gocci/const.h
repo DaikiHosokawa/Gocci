@@ -18,7 +18,7 @@
 #define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
-// NSUserDefaults will not be reseted on start up
+// NSUserDefaults will be deleted everytime the app starts
 //#define FRESH_START
 
 // #######################################################################################

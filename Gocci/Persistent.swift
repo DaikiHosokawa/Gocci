@@ -34,7 +34,7 @@ class PersistentDataStorage {
         set(v) { cache.userIsConnectedViaTwitter = v ; sud.setBool(v, forKey: "userIsConnectedViaTwitter") }
     }
     
-    var identity_id: String {
+    var identity_id: String? {
         get { return cache.identity_id ?? defaults.identity_id }
         set(v) { cache.identity_id = v ; sud.setString(v, forKey: "identity_id") }
     }
@@ -78,8 +78,8 @@ class PersistentDataStorage {
     
 
     
-    /// you can't continue the application flow after calling this method. You must start with the tutorial again
-    /// because these will be no account data stored
+    /// You can't continue the application flow after calling this method. You must start with the tutorial again
+    /// because there will be no account data stored anymore
     func resetGocciToInitialState() {
         
         let defaultDomain = NSBundle.mainBundle().bundleIdentifier!

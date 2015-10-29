@@ -175,7 +175,7 @@
 
 @end
 
-
+/*
 
 
 #import "AdvicePopup.h"
@@ -260,29 +260,32 @@
 }
 
 @end
-decadeaf ~/Documents/ios %
 
 
 
 
 
+/*
 
 
+//
+//  PopupViewController3.m
+//  STPopup
+//
+//  Created by Kevin Lin on 13/9/15.
+//  Copyright (c) 2015 Sth4Me. All rights reserved.
+//
 
+#import "AdvicePopup.h"
+#import "STPopup.h"
+#import "CompletePopup.h"
+#import "APIClient.h"
 
-
-
-
-
-
-
-
-
-@interface PasswordPopup () <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
+@interface AdvicePopup () <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 @end
 
 
-@implementation PasswordPopup
+@implementation AdvicePopup
 {
     UILabel *_label;
     UIView *_separatorView;
@@ -305,7 +308,7 @@ decadeaf ~/Documents/ios %
     
     _label = [UILabel new];
     _label.numberOfLines = 0;
-    _label.text = @"パスワードを設定します";
+    _label.text = @"下に意見/要望をご入力ください";
     _label.textColor = [UIColor colorWithWhite:0.2 alpha:1];
     _label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_label];
@@ -338,7 +341,7 @@ decadeaf ~/Documents/ios %
     
     if([textField.text length] > 0 ){
         
-        [APIClient setPassword:textField.text handler:^(id result, NSUInteger code, NSError *error) {
+        [APIClient postFeedback:textField.text handler:^(id result, NSUInteger code, NSError *error) {
             if (code == 200){
                 [textField resignFirstResponder];
                 [self.popupController pushViewController:[CompletePopup new] animated:YES];
@@ -355,3 +358,5 @@ decadeaf ~/Documents/ios %
 }
 
 @end
+decadeaf ~/Documents/ios %
+*/
