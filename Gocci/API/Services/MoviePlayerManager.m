@@ -44,21 +44,13 @@ static MoviePlayerManager *_sharedInstance = nil;
 - (void)addPlayerWithMovieURL:(NSString *)urlString size:(CGSize)size atIndex:(NSUInteger)index completion:(void (^)(BOOL))completion
 {
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
-    LOG(@"players[%@]=%@", key, self.players[key]);
-    /*
+    
      if (self.players[key]) {
      return;
      }
-     */
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    //__weak typeof(self)weakSelf = self;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSURL *url = [NSURL URLWithString:urlString];
-    
     NSLog(@"fileURL:%@",url);
-    
     
     MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
     moviePlayer.view.layer.cornerRadius = 5;
@@ -131,11 +123,11 @@ static MoviePlayerManager *_sharedInstance = nil;
         
         //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
-            NSLog(@"再生中でないので再生");
+            NSLog(@"再生");
             [self.globalPlayer play];
             
         }else{
-            NSLog(@"再生中");
+            NSLog(@"停止");
             [self.globalPlayer pause];
         }
         
@@ -156,11 +148,8 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
 
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
-    NSLog(@"再生するkey:%@",key);
-    NSLog(@"player群は%@",self.players);
-    NSLog(@"playerは%@",self.players[key]);
+ 
     if (!self.players[key]) {
-         NSLog(@"keyがない");
         return nil;
     }
     

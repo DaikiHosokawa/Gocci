@@ -210,7 +210,6 @@ NSString * const BottomSheetComment = @"一言";
                  [rest_id addObject:restidGet];
              }
              
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          }];
     };
     

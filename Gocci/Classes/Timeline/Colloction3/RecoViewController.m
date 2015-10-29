@@ -92,8 +92,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
+
     __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
@@ -155,8 +154,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [self refreshFeed];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
@@ -242,7 +239,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                               delegate:self
                                      cancelButtonTitle:@"Cancel"
                                 destructiveButtonTitle:nil
-                                     otherButtonTitles:@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",@"ユーザーページへ移動",@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
+                                     otherButtonTitles:@"ユーザーページへ移動",@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
+    //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
     actionsheet.tag = 1;
     [actionsheet showInView:self.view];
     
@@ -353,28 +351,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         switch (buttonIndex) {
             case 0:
-                NSLog(@"質問");
-                break;
-            case 1:
-                NSLog(@"Facebook");
-                break;
-            case 2:
-                NSLog(@"Twitter");
-                break;
-            case 3:
-                NSLog(@"Instagram");
-                break;
-            case 4:
                 NSLog(@"User");
                 [self.delegate reco:self username:u_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                 break;
-            case 5:
+            case 1:
                 NSLog(@"Rest");
                 [self.delegate reco:self rest_id:r_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                 break;
-            case 6:
+            case 2:
                 NSLog(@"Problem");
                 
                 Class class = NSClassFromString(@"UIAlertController");

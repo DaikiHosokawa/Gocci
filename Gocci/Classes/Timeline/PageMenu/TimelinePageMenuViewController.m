@@ -130,7 +130,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     RecoViewController *vc2 = [[RecoViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
-    vc2.title = @"リコメンド";
+    vc2.title = @"新着";
     vc2.delegate = self;
     self.recoViewController = vc2;
     
