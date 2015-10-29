@@ -16,7 +16,7 @@ extension String {
 }
 
 extension NSUserDefaults {
-    func setString(string: String, forKey: String) {
+    func setString(string: String!, forKey: String) {
         self.setValue(string, forKey: forKey)
     }
 }

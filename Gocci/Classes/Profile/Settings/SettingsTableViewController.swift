@@ -32,10 +32,12 @@ class SettingsTableViewController: UITableViewController {
                     {
                         $0.textLabel?.text = "パスワードを設定する"
                         $0.detailTextLabel?.text = Persistent.passwordWasSetByTheUser ? "" : "set an account password"
-                        $0.detailTextLabel?.textColor = Persistent.passwordWasSetByTheUser ? UIColor.blueColor() : UIColor.orangeColor()
+                        $0.detailTextLabel?.textColor = Persistent.passwordWasSetByTheUser ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
-                        Popup.show(from:self, content: PasswordPopup2())
+                        let popup = ConfirmationPopup(from: self, title:"AAAAAAAA", widthRatio:90, heightRatio:30)
+                        
+                        popup.pop()
                     }
                 ),
             ],
@@ -46,7 +48,7 @@ class SettingsTableViewController: UITableViewController {
                         let isCon = Persistent.userIsConnectedViaFacebook
                         $0.textLabel?.text = "Facebook"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.blueColor() : UIColor.orangeColor()
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
                         if !Persistent.userIsConnectedViaFacebook {
@@ -63,19 +65,14 @@ class SettingsTableViewController: UITableViewController {
                         let isCon = Persistent.userIsConnectedViaTwitter
                         $0.textLabel?.text = "Twitter"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.blueColor() : UIColor.orangeColor()
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
                         self.connectWithTwitter()
                     }
                 ),
-//                (
-//                    {
-//                        $0.textLabel?.text = "Google+"
-//                    },
-//                    {
-//                    }
-//                ),
+                ( { $0.textLabel?.text = "Google+"; return }, nil),
+                ( { $0.textLabel?.text = "Line"; return }, {}),
             ],
             // お知らせ =====================================================================
             [
@@ -92,7 +89,7 @@ class SettingsTableViewController: UITableViewController {
             [
                 (
                     { $0.textLabel?.text = "アドバイスを送る" },
-                    { }
+                    nil //{ Popup.show(from:self, content: AdvicePopup()) }
                 ),
                 (
                     { $0.textLabel?.text = "利用規約" },
@@ -103,18 +100,10 @@ class SettingsTableViewController: UITableViewController {
                     { self.popupWebsite(INASE_PRIVACY_URL) }
                 ),
                 (
-                    { $0.textLabel?.text = "バージョン" },
+                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
                     { }
                 ),
             ],
-            
-            
-//            [
-//                ("アドバイスを送る", nil, nil),
-//                ("利用規約", nil, {  }),
-//                ("プライバシーポリシー", nil, { self.popupWebsite(INASE_PRIVACY_URL) }),
-//                ("バージョン", nil, nil),
-//            ],
         ]
 
     }
@@ -165,7 +154,7 @@ class SettingsTableViewController: UITableViewController {
     func popupWebsite(url: String) {
         let content = PopupReadyWebView()
         content.url = url
-        Popup.show(from:self, content: content)
+        //Popup.show(from:self, content: content)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -195,27 +184,11 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        print("section: \(indexPath.section)  row: \(indexPath.row)")
         sectionMapping[indexPath.section][indexPath.row].action?()
     }
 }
 
-
-class Popup {
-    class func show(from from: UIViewController, content: UIViewController) {
-        let popup = STPopupController(rootViewController: content)
-        popup.cornerRadius = 4
-        popup.transitionStyle = STPopupTransitionStyle.Fade
-        STPopupNavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 85.0/255.0, blue: 51.0/255.0, alpha: 1.0)
-        STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
-        STPopupNavigationBar.appearance().barStyle = UIBarStyle.Default
-        //        STPopupNavigationBar.appearance().titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
-        
-        //
-        //            [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil, nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
-        
-        popup.presentInViewController(from)
-    }
-}
 
 class PopupReadyWebView: UIViewController, UIWebViewDelegate {
     
@@ -248,7 +221,7 @@ class PopupReadyWebView: UIViewController, UIWebViewDelegate {
     
 }
 
-class PasswordPopup2: UIViewController, UITextFieldDelegate {
+class PasswordPopup: UIViewController, UITextFieldDelegate {
     
     let label = UILabel()
     let textField = UITextField()
@@ -261,7 +234,7 @@ class PasswordPopup2: UIViewController, UITextFieldDelegate {
         self.contentSizeInPopup = CGSizeMake(300, 100)
         self.landscapeContentSizeInPopup = CGSizeMake(300, 200)
         
-        label.numberOfLines = 0;
+        //label.numberOfLines = 0;
         label.text = "パスワードを設定します";
         label.textColor = UIColor(white: 0.2, alpha: 1)
         label.textAlignment = NSTextAlignment.Center;
@@ -275,6 +248,14 @@ class PasswordPopup2: UIViewController, UITextFieldDelegate {
         //textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
         //textField.leftViewMode = UITextFieldViewModeAlways;
         self.view.addSubview(textField)
+    }
+    
+    override func viewDidLayoutSubviews()
+    {   // TODO ugly
+        super.viewDidLayoutSubviews()
+        textField.frame = CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)
+        separatorView.frame = CGRectMake(0, self.textField.frame.origin.y - 0.5, self.view.frame.size.width, 0.5)
+        label.frame = CGRectMake(20, 10, self.view.frame.size.width - 40, self.view.frame.size.height - 20 - textField.frame.size.height)
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -292,7 +273,10 @@ class PasswordPopup2: UIViewController, UITextFieldDelegate {
             }
         }
 
-        return true
+        return false
     }
 }
+
+
+
 

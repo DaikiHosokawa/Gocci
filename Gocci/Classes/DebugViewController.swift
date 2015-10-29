@@ -27,12 +27,8 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var passwordEditField: UITextField!
     
     override func viewDidLoad() {
-        // TODO once token
-        print("============ DEBUG MODE ACTIVATED ==============")
         super.viewDidLoad()
         
-        
-        topLabel.text = topLabel.text! + " v2.1"
         subLabel.text = "Greatest Work - Gocci v" + (Util.getGocciVersionString() ?? "?.?.?")
         
         if let iid = Util.getUserDefString("iid") {
@@ -42,8 +38,6 @@ class DebugViewController : UIViewController {
         
         
         usernameEditField.text = signUpEditField.text
-        
-        
     }
     
     @IBAction func explode(sender: AnyObject) {
@@ -335,6 +329,7 @@ class DebugViewController : UIViewController {
     {
         print("=== DELETE userdefs")
         Util.removeAccountSpecificDataFromUserDefaults()
+        Persistent.resetGocciToInitialState()
         
         signUpEditField.text = Util.randomUsername()
         loginEditField.text = ""
