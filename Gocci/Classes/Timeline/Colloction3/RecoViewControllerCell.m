@@ -22,6 +22,8 @@
 
 @end
 
+#define METERS_CUTOFF   1000
+
 
 @implementation RecoViewControllerCell
 
@@ -44,7 +46,7 @@
 }
 
 -(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
-
+    
     self.postID = timelinePost.postID;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
@@ -53,17 +55,14 @@
     self.imageView.layer.cornerRadius = 5;
     self.imageView.clipsToBounds = true;
     self.title.text = timelinePost.restname;
-    NSString *str1 = [NSString stringWithFormat:@"%@", timelinePost.distance];
-    self.distance.text =  [str1 stringByAppendingString:@"m"];
+    double lat= [timelinePost.distance doubleValue];
+    NSString *str1 = [self stringWithDistance:lat];
+    self.distance.text = str1;
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
     NSLog(@"index:%lu",(unsigned long)self.index);
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
-    [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:self.movieURL
-                                                         size:self.imageView.bounds.size
-                                                        atIndex:self.index
-                                                   completion:^(BOOL f){}];
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
 }
 
@@ -101,8 +100,39 @@
 {
     if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapThumb:)]) {
         [self.delegate recoViewCell:self didTapThumb:self.rest_id];
+        [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:self.movieURL
+                                                             size:self.imageView.bounds.size
+                                                          atIndex:self.index
+                                                       completion:^(BOOL f){
+                                                       }];
         [[MoviePlayerManager sharedManager] playMovieAtIndex:self.index inView:self.imageView  frame:self.imageView.frame];
     }
+}
+
+- (NSString *)stringWithDistance:(double)distance {
+    BOOL isMetric = [[[NSLocale currentLocale] objectForKey:NSLocaleUsesMetricSystem] boolValue];
+    
+    NSString *format;
+    
+    if (isMetric) {
+        if (distance < METERS_CUTOFF) {
+            format = @"%@ m";
+        } else {
+            format = @"%@ km";
+            distance = distance / 1000;
+        }
+    }
+    
+    return [NSString stringWithFormat:format, [self stringWithDouble:distance]];
+}
+
+// Return a string of the number to one decimal place and with commas & periods based on the locale.
+- (NSString *)stringWithDouble:(double)value {
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[NSLocale currentLocale]];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setMaximumFractionDigits:1];
+    return [numberFormatter stringFromNumber:[NSNumber numberWithDouble:value]];
 }
 
 @end

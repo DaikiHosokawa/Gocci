@@ -140,7 +140,7 @@ static APIClient *_sharedInstance = nil;
                              @"value_id" : value_id,
                              @"order_id" : @"0"
                              };
-    NSLog(@"Distance:%@",params);
+    NSLog(@"Reco:%@",params);
     [[APIClient sharedClient].manager GET:@"get/timeline/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {

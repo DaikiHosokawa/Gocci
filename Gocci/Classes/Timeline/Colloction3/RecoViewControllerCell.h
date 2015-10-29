@@ -48,13 +48,5 @@
  */
 + (instancetype)cell;
 
-/**
- *  データを反映した場合のセルの高さを計算
- *
- *  @param post
- *
- *  @return
- */
-+ (CGRect)cellHeightWithTimelinePost:(TimelinePost *)post;
 
 @end
