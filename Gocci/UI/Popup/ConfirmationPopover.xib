@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationPopup" customModule="Gocci" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationPopover">
             <connections>
                 <outlet property="label" destination="ZFm-kv-41E" id="SkI-a9-E1a"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q1h-8E-53y"/>
@@ -23,13 +23,36 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-GL-iml">
+                    <rect key="frame" x="8" y="562" width="288" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Confirm"/>
+                    <connections>
+                        <action selector="confirmClicked:" destination="-1" eventType="touchUpInside" id="RaP-NH-HPO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSk-Wi-UcT">
+                    <rect key="frame" x="544" y="562" width="48" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancelClicked:" destination="-1" eventType="touchUpInside" id="tVa-wE-RhN"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="uSk-Wi-UcT" secondAttribute="bottom" constant="8" id="0c6-x1-Pes"/>
+                <constraint firstAttribute="trailing" secondItem="uSk-Wi-UcT" secondAttribute="trailing" constant="8" id="7cD-HA-dB6"/>
+                <constraint firstItem="LgA-GL-iml" firstAttribute="width" secondItem="uSk-Wi-UcT" secondAttribute="width" id="BGu-ho-qq0"/>
                 <constraint firstItem="ZFm-kv-41E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Cpc-ue-lrh"/>
                 <constraint firstItem="ZFm-kv-41E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Dzj-43-dDo"/>
+                <constraint firstItem="uSk-Wi-UcT" firstAttribute="leading" secondItem="LgA-GL-iml" secondAttribute="trailing" constant="8" id="Frp-kb-VmC"/>
                 <constraint firstAttribute="trailing" secondItem="ZFm-kv-41E" secondAttribute="trailing" constant="8" id="OMl-RI-b1x"/>
+                <constraint firstItem="uSk-Wi-UcT" firstAttribute="leading" secondItem="LgA-GL-iml" secondAttribute="trailing" constant="8" id="Spw-7B-pLJ"/>
+                <constraint firstAttribute="bottom" secondItem="LgA-GL-iml" secondAttribute="bottom" constant="8" id="bM1-1K-a7R"/>
+                <constraint firstItem="LgA-GL-iml" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="h3T-E6-3Oj"/>
             </constraints>
         </view>
     </objects>

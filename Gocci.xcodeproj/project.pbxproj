@@ -251,12 +251,12 @@
 		982070371BDF21E300715E38 /* AdvicePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118F71BC3C00F002A95CD /* AdvicePopup.m */; };
 		982070391BDF3F7000715E38 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070381BDF3F7000715E38 /* Persistent.swift */; };
 		9820703A1BDF625900715E38 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070381BDF3F7000715E38 /* Persistent.swift */; };
-		982070411BE23ADB00715E38 /* ConfirmationPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopup.xib */; };
-		982070421BE23ADB00715E38 /* ConfirmationPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopup.xib */; };
-		982070441BE23B0A00715E38 /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopup.swift */; };
-		982070451BE23B0A00715E38 /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopup.swift */; };
-		982070471BE24EDB00715E38 /* AbstractPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopup.swift */; };
-		982070481BE24EDB00715E38 /* AbstractPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopup.swift */; };
+		982070411BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopover.xib */; };
+		982070421BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopover.xib */; };
+		982070441BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopover.swift */; };
+		982070451BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopover.swift */; };
+		982070471BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
+		982070481BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
 		9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820AFE71BB972FF008A6963 /* AWSManager.swift */; };
 		983A994F1BD0E66B005E34DC /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A994E1BD0E66B005E34DC /* FacebookSharing.swift */; };
 		984003F51BD099D200D91BE6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984003F41BD099D200D91BE6 /* Extensions.swift */; };
@@ -299,12 +299,6 @@
 		987D793F1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
 		987D79421BB77ED200BAEEB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
 		987D79431BB77ED200BAEEB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
-		987E97061BDE562300401C26 /* STPopup.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DD1BC360B2002A95CD /* STPopup.h */; };
-		987E97081BDE562300401C26 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DF1BC360B2002A95CD /* STPopupController.m */; };
-		987E970A1BDE562300401C26 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E11BC360B2002A95CD /* STPopupLeftBarItem.m */; };
-		987E970C1BDE562300401C26 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E31BC360B2002A95CD /* STPopupNavigationBar.m */; };
-		987E970E1BDE562300401C26 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E51BC360B2002A95CD /* UIResponder+STPopup.m */; };
-		987E97101BDE562300401C26 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E71BC360B2002A95CD /* UIViewController+STPopup.m */; };
 		98ACE0771BAC637A002AA083 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
 		98D3831E1BCE6AD200839043 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D3831C1BCE6AD200839043 /* AWSCognito.framework */; };
 		98D3831F1BCE6AD200839043 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D3831D1BCE6AD200839043 /* AWSCore.framework */; };
@@ -320,13 +314,6 @@
 		98D383321BCE6F0E00839043 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22F51A9B95E800C354DF /* AFURLResponseSerialization.m */; };
 		98D383341BCE6F0E00839043 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D22F71A9B95E800C354DF /* AFURLSessionManager.m */; };
 		98D383361BCE6F0E00839043 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23541A9B95E800C354DF /* AFNetworkActivityIndicatorManager.m */; };
-		98D383381BCE6F0E00839043 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23561A9B95E800C354DF /* UIActivityIndicatorView+AFNetworking.m */; };
-		98D3833A1BCE6F0E00839043 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23581A9B95E800C354DF /* UIAlertView+AFNetworking.m */; };
-		98D3833C1BCE6F0E00839043 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D235A1A9B95E800C354DF /* UIButton+AFNetworking.m */; };
-		98D3833E1BCE6F0E00839043 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D235C1A9B95E800C354DF /* UIImageView+AFNetworking.m */; };
-		98D383411BCE6F0E00839043 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D235F1A9B95E800C354DF /* UIProgressView+AFNetworking.m */; };
-		98D383431BCE6F0E00839043 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23611A9B95E800C354DF /* UIRefreshControl+AFNetworking.m */; };
-		98D383451BCE6F0E00839043 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D23631A9B95E800C354DF /* UIWebView+AFNetworking.m */; };
 		98DB10621BB3A6CA00468D43 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10611BB3A6CA00468D43 /* ReLoginViewController.swift */; };
 		98DB10641BB3CCB500468D43 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10631BB3CCB500468D43 /* SNSUtil.swift */; };
 		98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10651BB521C500468D43 /* SNSConnectViewController.swift */; };
@@ -792,9 +779,9 @@
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
 		982070381BDF3F7000715E38 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
-		982070401BE23ADB00715E38 /* ConfirmationPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmationPopup.xib; path = Popup/ConfirmationPopup.xib; sourceTree = "<group>"; };
-		982070431BE23B0A00715E38 /* ConfirmationPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
-		982070461BE24EDB00715E38 /* AbstractPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopup.swift; path = Popup/AbstractPopup.swift; sourceTree = "<group>"; };
+		982070401BE23ADB00715E38 /* ConfirmationPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmationPopover.xib; path = Popup/ConfirmationPopover.xib; sourceTree = "<group>"; };
+		982070431BE23B0A00715E38 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationPopover.swift; sourceTree = "<group>"; };
+		982070461BE24EDB00715E38 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopover.swift; path = Popup/AbstractPopover.swift; sourceTree = "<group>"; };
 		9820AFE71BB972FF008A6963 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		983A994E1BD0E66B005E34DC /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookSharing.swift; path = Services/Facebook/FacebookSharing.swift; sourceTree = "<group>"; };
 		984003F41BD099D200D91BE6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -1930,9 +1917,9 @@
 		9820703C1BE2396F00715E38 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				982070461BE24EDB00715E38 /* AbstractPopup.swift */,
-				982070401BE23ADB00715E38 /* ConfirmationPopup.xib */,
-				982070431BE23B0A00715E38 /* ConfirmationPopup.swift */,
+				982070461BE24EDB00715E38 /* AbstractPopover.swift */,
+				982070401BE23ADB00715E38 /* ConfirmationPopover.xib */,
+				982070431BE23B0A00715E38 /* ConfirmationPopover.swift */,
 			);
 			name = Popup;
 			sourceTree = "<group>";
@@ -2233,7 +2220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9850CE011BDE276B001634EA /* 4_7_inch.storyboard in Resources */,
-				982070421BE23ADB00715E38 /* ConfirmationPopup.xib in Resources */,
+				982070421BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */,
 				9874BEB51BCE143600B1651E /* Debug.storyboard in Resources */,
 				9874BED21BCE143600B1651E /* Images.xcassets in Resources */,
 				9874BED51BCE143600B1651E /* Cancel.png in Resources */,
@@ -2291,7 +2278,7 @@
 				952D24EF1A9B9EC800C354DF /* Images.xcassets in Resources */,
 				95E4BCA21B37DA4A00B8CF44 /* SCSecondView_4_7_inch.xib in Resources */,
 				BFA1DA781AB2BA7F00B4F63A /* Cancel.png in Resources */,
-				982070411BE23ADB00715E38 /* ConfirmationPopup.xib in Resources */,
+				982070411BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */,
 				952D24F31A9B9EC800C354DF /* btn_delete_black@2x.png in Resources */,
 				952D24F51A9B9EC800C354DF /* btn_toukou@2x.png in Resources */,
 				952D25061A9B9EC800C354DF /* tabbaritem_search@2x.png in Resources */,
@@ -2331,18 +2318,12 @@
 				9820703A1BDF625900715E38 /* Persistent.swift in Sources */,
 				982070351BDF21E300715E38 /* CompletePopup.m in Sources */,
 				982070371BDF21E300715E38 /* AdvicePopup.m in Sources */,
-				987E97061BDE562300401C26 /* STPopup.h in Sources */,
-				987E97081BDE562300401C26 /* STPopupController.m in Sources */,
-				987E970A1BDE562300401C26 /* STPopupLeftBarItem.m in Sources */,
-				982070481BE24EDB00715E38 /* AbstractPopup.swift in Sources */,
-				987E970C1BDE562300401C26 /* STPopupNavigationBar.m in Sources */,
-				987E970E1BDE562300401C26 /* UIResponder+STPopup.m in Sources */,
-				987E97101BDE562300401C26 /* UIViewController+STPopup.m in Sources */,
+				982070481BE24EDB00715E38 /* AbstractPopover.swift in Sources */,
 				9850CE021BDE2E6B001634EA /* SettingsTableViewController.swift in Sources */,
 				9850CE001BDE26D7001634EA /* TWMessageBarManager.m in Sources */,
 				9850CDFE1BDE1FCA001634EA /* FacebookSharing.swift in Sources */,
 				9850CDFD1BDE1FBE001634EA /* Extensions.swift in Sources */,
-				982070451BE23B0A00715E38 /* ConfirmationPopup.swift in Sources */,
+				982070451BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */,
 				98D383231BCE6F0E00839043 /* AFHTTPRequestOperation.m in Sources */,
 				98D383251BCE6F0E00839043 /* AFHTTPRequestOperationManager.m in Sources */,
 				98D383271BCE6F0E00839043 /* AFHTTPSessionManager.m in Sources */,
@@ -2353,13 +2334,6 @@
 				98D383321BCE6F0E00839043 /* AFURLResponseSerialization.m in Sources */,
 				98D383341BCE6F0E00839043 /* AFURLSessionManager.m in Sources */,
 				98D383361BCE6F0E00839043 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				98D383381BCE6F0E00839043 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				98D3833A1BCE6F0E00839043 /* UIAlertView+AFNetworking.m in Sources */,
-				98D3833C1BCE6F0E00839043 /* UIButton+AFNetworking.m in Sources */,
-				98D3833E1BCE6F0E00839043 /* UIImageView+AFNetworking.m in Sources */,
-				98D383411BCE6F0E00839043 /* UIProgressView+AFNetworking.m in Sources */,
-				98D383431BCE6F0E00839043 /* UIRefreshControl+AFNetworking.m in Sources */,
-				98D383451BCE6F0E00839043 /* UIWebView+AFNetworking.m in Sources */,
 				9874BF371BCE216400B1651E /* FHSStream.m in Sources */,
 				9874BF041BCE1D8800B1651E /* FHSTwitterEngine.m in Sources */,
 				9874BF021BCE1D6D00B1651E /* BBBadgeBarButtonItem.m in Sources */,
@@ -2433,7 +2407,7 @@
 				952D236A1A9B95E800C354DF /* AFURLRequestSerialization.m in Sources */,
 				952D24981A9B9D3300C354DF /* SCTouchDetector.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
-				982070471BE24EDB00715E38 /* AbstractPopup.swift in Sources */,
+				982070471BE24EDB00715E38 /* AbstractPopover.swift in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
 				958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */,
 				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
@@ -2486,7 +2460,7 @@
 				952D23871A9B95E800C354DF /* SDWebImageDownloaderOperation.m in Sources */,
 				952D24801A9B9D3300C354DF /* UIView+DropShadow.m in Sources */,
 				952D23931A9B95E800C354DF /* UIColor+HexString.m in Sources */,
-				982070441BE23B0A00715E38 /* ConfirmationPopup.swift in Sources */,
+				982070441BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */,
 				95E4BCA01B37DA4A00B8CF44 /* SCSecondView.m in Sources */,
 				959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */,
 				952D23971A9B95E800C354DF /* AFNetworkActivityIndicatorManager.m in Sources */,

@@ -131,7 +131,12 @@ import UIKit
     }
     
     class func runOnMainThread(block: ()->Void ) {
-        dispatch_async(dispatch_get_main_queue(), block)
+        if NSThread.isMainThread() {
+            block()
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), block)
+        }
     }
     
     class func removeAccountSpecificDataFromUserDefaults()
