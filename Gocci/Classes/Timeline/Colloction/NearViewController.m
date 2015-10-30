@@ -349,17 +349,23 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
         
-        
+      
         switch (buttonIndex) {
            case 0:
+                [vc performSegueWithIdentifier:@"testUser" sender:nil];
+               // [vc.navigationController pushViewController:tabViewCon animated:YES];
+                //[vc performSegueWithIdentifier:@"testUser" sender:nil];
+                break;
+                /*
                 NSLog(@"User");
                 [self.delegate near:self username:u_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                 break;
+                 */
             case 1:
                 NSLog(@"Rest");
                 [self.delegate near:self rest_id:r_id];
-                [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
+                //[vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                 break;
             case 2:
                 NSLog(@"Problem");

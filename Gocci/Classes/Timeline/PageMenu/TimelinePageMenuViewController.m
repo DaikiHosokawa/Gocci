@@ -19,6 +19,8 @@
 #import "STPopup.h"
 #import "SortViewController.h"
 
+#import "TabbarBaseViewController.h"
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -141,8 +143,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.followViewController = vc3;
     
     {
-        //タイトル画像設定
-        
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
