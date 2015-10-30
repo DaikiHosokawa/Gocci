@@ -282,8 +282,8 @@ class AWSManager {
     
     func connectWithBackend(iid:String, userID:String, token:String) -> AWSTask {
 
-        // TODO there is noverification that the backend login worked. The only sane check that I know of is upload somethin in a daaset, redownload it 
-        // and compare. There must be a better method, but AWS is a huge pile of shit and nowhere do they even consider that there server could be down.
+        // TODO there is noverification that the backend login worked. The only sane check that I know of is upload somethin in a dataset, redownload it 
+        // and compare. There must be a better method, but AWS is a huge pile of shit and nowhere do they even consider that their server could be down.
         (credentialsProvider.identityProvider as! EnhancedGocciIdentityProvider).connectWithBackEnd(iid, userID: userID, token: token)
         return credentialsProvider.refresh()
     }
