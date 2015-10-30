@@ -21,7 +21,9 @@
     tabFrame.size.height = 40;
     tabFrame.origin.y = self.view.frame.size.height - 40;
     self.tabBar.frame = tabFrame;
-    
+    [self.tabBar setFrame:CGRectMake(self.tabBar.frame.origin.x,self.view.frame.size.height-40,self.tabBar.frame.size.width,40)];
+    [self.view setBounds:self.tabBar.bounds];
+    tabBarheight = 40;
     // Do any additional setup after loading the view.
 	
 //	// !!!:dezamisystem・タブバー設定
@@ -56,7 +58,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self createRaisedCenterButton];
+   [self createRaisedCenterButton];
     //背景色
     
 }
@@ -93,6 +95,7 @@
 -(void)countup:(id)inSender{
  [self performSegueWithIdentifier:@"go_Rec1" sender:self];
 }
+
 
 - (IBAction)afterRecording:(UIStoryboardSegue *)segue
 {

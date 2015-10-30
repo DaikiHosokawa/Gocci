@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Crittercism.h"
 //#import <AWSCore/AWSCore.h>
 //#import <AWSCognito/AWSCognito.h>
 #import "BBBadgeBarButtonItem.h"
