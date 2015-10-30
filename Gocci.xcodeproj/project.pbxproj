@@ -257,7 +257,10 @@
 		982070451BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopover.swift */; };
 		982070471BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
 		982070481BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
-		9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820AFE71BB972FF008A6963 /* AWSManager.swift */; };
+		9820704A1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070491BE35D2A00715E38 /* FacebookAuthentication.swift */; };
+		9820704B1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070491BE35D2A00715E38 /* FacebookAuthentication.swift */; };
+		9820704D1BE365E600715E38 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820704C1BE365E600715E38 /* AWSManager.swift */; };
+		9820704E1BE365E600715E38 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820704C1BE365E600715E38 /* AWSManager.swift */; };
 		983A994F1BD0E66B005E34DC /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A994E1BD0E66B005E34DC /* FacebookSharing.swift */; };
 		984003F51BD099D200D91BE6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984003F41BD099D200D91BE6 /* Extensions.swift */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
@@ -271,7 +274,6 @@
 		9874BDCF1BC7C1E200B1651E /* splash_tmp_sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9874BDCE1BC7C1E200B1651E /* splash_tmp_sample.mp4 */; };
 		9874BDD91BCE143600B1651E /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE2B801BAFA24400382B75 /* DebugViewController.swift */; };
 		9874BDF31BCE143600B1651E /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10631BB3CCB500468D43 /* SNSUtil.swift */; };
-		9874BDFE1BCE143600B1651E /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820AFE71BB972FF008A6963 /* AWSManager.swift */; };
 		9874BE0F1BCE143600B1651E /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807FE681BA2CD350041CFD5 /* NetOp.m */; };
 		9874BE261BCE143600B1651E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
 		9874BE2B1BCE143600B1651E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9874BDCB1BC6906D00B1651E /* SplashViewController.swift */; };
@@ -782,7 +784,8 @@
 		982070401BE23ADB00715E38 /* ConfirmationPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmationPopover.xib; path = Popup/ConfirmationPopover.xib; sourceTree = "<group>"; };
 		982070431BE23B0A00715E38 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationPopover.swift; sourceTree = "<group>"; };
 		982070461BE24EDB00715E38 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopover.swift; path = Popup/AbstractPopover.swift; sourceTree = "<group>"; };
-		9820AFE71BB972FF008A6963 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
+		982070491BE35D2A00715E38 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
+		9820704C1BE365E600715E38 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSManager.swift; path = Services/Amazon/AWSManager.swift; sourceTree = "<group>"; };
 		983A994E1BD0E66B005E34DC /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookSharing.swift; path = Services/Facebook/FacebookSharing.swift; sourceTree = "<group>"; };
 		984003F41BD099D200D91BE6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
@@ -1490,7 +1493,6 @@
 		952D24BA1A9B9DE100C354DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9843E9231BA9955D0015350D /* AWS */,
 				952D24BB1A9B9DE100C354DF /* APIClient.h */,
 				952D24BC1A9B9DE100C354DF /* APIClient.m */,
 				952D24BD1A9B9DE100C354DF /* MoviePlayerManager.h */,
@@ -1939,6 +1941,7 @@
 			isa = PBXGroup;
 			children = (
 				983A994E1BD0E66B005E34DC /* FacebookSharing.swift */,
+				982070491BE35D2A00715E38 /* FacebookAuthentication.swift */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -1946,6 +1949,7 @@
 		983A994C1BD0E5EB005E34DC /* Amazon */ = {
 			isa = PBXGroup;
 			children = (
+				9820704C1BE365E600715E38 /* AWSManager.swift */,
 			);
 			name = Amazon;
 			sourceTree = "<group>";
@@ -1955,14 +1959,6 @@
 			children = (
 			);
 			name = Twitter;
-			sourceTree = "<group>";
-		};
-		9843E9231BA9955D0015350D /* AWS */ = {
-			isa = PBXGroup;
-			children = (
-				9820AFE71BB972FF008A6963 /* AWSManager.swift */,
-			);
-			path = AWS;
 			sourceTree = "<group>";
 		};
 		9850CDFA1BDE038C001634EA /* Settings */ = {
@@ -2332,14 +2328,15 @@
 				98D3832E1BCE6F0E00839043 /* AFURLConnectionOperation.m in Sources */,
 				98D383301BCE6F0E00839043 /* AFURLRequestSerialization.m in Sources */,
 				98D383321BCE6F0E00839043 /* AFURLResponseSerialization.m in Sources */,
+				9820704B1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */,
 				98D383341BCE6F0E00839043 /* AFURLSessionManager.m in Sources */,
 				98D383361BCE6F0E00839043 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9874BF371BCE216400B1651E /* FHSStream.m in Sources */,
 				9874BF041BCE1D8800B1651E /* FHSTwitterEngine.m in Sources */,
+				9820704E1BE365E600715E38 /* AWSManager.swift in Sources */,
 				9874BF021BCE1D6D00B1651E /* BBBadgeBarButtonItem.m in Sources */,
 				9874BDD91BCE143600B1651E /* DebugViewController.swift in Sources */,
 				9874BDF31BCE143600B1651E /* SNSUtil.swift in Sources */,
-				9874BDFE1BCE143600B1651E /* AWSManager.swift in Sources */,
 				9874BE0F1BCE143600B1651E /* NetOp.m in Sources */,
 				9874BE261BCE143600B1651E /* Util.swift in Sources */,
 				9874BE2B1BCE143600B1651E /* SplashViewController.swift in Sources */,
@@ -2397,7 +2394,6 @@
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
 				952D23901A9B95E800C354DF /* UIView+WebCacheOperation.m in Sources */,
 				951AD5561B36B27A0057F081 /* TimelinePageMenuViewController.m in Sources */,
-				9820AFE81BB972FF008A6963 /* AWSManager.swift in Sources */,
 				952D24821A9B9D3300C354DF /* everyTableViewController.m in Sources */,
 				954D914C1BD49CC000C44033 /* NearViewController.m in Sources */,
 				95EEC5331AF91A20006FD54E /* CheerListViewController.m in Sources */,
@@ -2474,6 +2470,7 @@
 				95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */,
 				95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
+				9820704A1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */,
 				954D91741BD4DCFF00C44033 /* ValuePopup.m in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
@@ -2541,6 +2538,7 @@
 				FF54EFEF19149A1800025DC8 /* main.m in Sources */,
 				952D24C21A9B9DE100C354DF /* APIClient.m in Sources */,
 				952D249B1A9B9D3300C354DF /* SearchCell.m in Sources */,
+				9820704D1BE365E600715E38 /* AWSManager.swift in Sources */,
 				95B118EB1BC360B2002A95CD /* UIResponder+STPopup.m in Sources */,
 				952D238E1A9B95E800C354DF /* UIImageView+HighlightedWebCache.m in Sources */,
 				98F8C3F51BD8B4080014DEB2 /* API3.swift in Sources */,

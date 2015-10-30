@@ -98,6 +98,25 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
++ (void)disconnectWithSNS:(NSString *)provider
+                 token:(NSString *)token
+               handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"provider" : provider,
+                             @"token" : token,
+                             };
+    NSLog(@"SNS connectWithSNS param:%@",params);
+    
+    [[APIClient sharedClient].manager GET:@"post/sns_unlink/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+}
+
 
 
 + (void)Timeline:(void (^)(id, NSUInteger, NSError *))handler

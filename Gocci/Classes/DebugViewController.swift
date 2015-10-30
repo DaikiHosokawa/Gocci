@@ -70,7 +70,7 @@ class DebugViewController : UIViewController {
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
         
-        sharer.enableFullDebugOutput()
+        FacebookAuthentication.enableFullDebugOutput()
         
         sharer.shareGocchiVideoStoryOnFacebookDirect(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Direct", description: "kkkkk")
 
@@ -103,7 +103,7 @@ class DebugViewController : UIViewController {
         sharer.onCancel = { print("canceld :(") }
         
         
-        sharer.upgradeFacebookTokenToDefaultRights()
+        FacebookAuthentication.enableFullDebugOutput()
         print("Programmflow continues...")
         
     }
