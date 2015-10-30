@@ -184,7 +184,7 @@ class FacebookSharing {
         }
     }
     
-    private func prepareFacebookDialogPost(clickURL: String, _ thumbURL: String, _ mp4URL:String, _ title:String, _ description: String) -> FBSDKShareOpenGraphContent {
+    private func prepareFacebookStoryPost(clickURL: String, _ thumbURL: String, _ mp4URL:String, _ title:String, _ description: String) -> FBSDKShareOpenGraphContent {
         let properties = [
             "og:type": "video.other",
             "og:title": title,
@@ -194,12 +194,12 @@ class FacebookSharing {
             "og:image": thumbURL,
             "og:locale": "ja_JP", // TODO [[NSLocale preferredLanguages] objectAtIndex:0];
             "og:site_name": "Gocci",
-
-            "al:ios" : "aaaaaaaaa",
-            "al:iphone" : "bbbbbbbbbbb",
-            "al:ipad" : "ccccccccccc",
-            "al:android" : "dddddddd",
-            "al:web" : "eeeeeeeeeee",
+//
+//            "al:ios" : "aaaaaaaaa",
+//            "al:iphone" : "bbbbbbbbbbb",
+//            "al:ipad" : "ccccccccccc",
+//            "al:android" : "dddddddd",
+//            "al:web" : "eeeeeeeeeee",
         ]
         
         let object = FBSDKShareOpenGraphObject(properties: properties)
@@ -226,7 +226,7 @@ class FacebookSharing {
                 self.onFailure?(errorMessage: "ERROR: Facebook Down")
             case LoginResult.FB_LOGIN_SUCCESS:
                 let shareDialog = FBSDKShareDialog()
-                shareDialog.shareContent = self.prepareFacebookDialogPost(clickURL, thumbURL, mp4URL, title, description)
+                shareDialog.shareContent = self.prepareFacebookStoryPost(clickURL, thumbURL, mp4URL, title, description)
                 self.dummyDelegate.master = self // keeps this and the dummy in memory until the delegate call (ARC hack)
                 shareDialog.delegate = self.dummyDelegate
                 shareDialog.fromViewController = self.fromViewController
@@ -248,7 +248,7 @@ class FacebookSharing {
                 let shareAPI = FBSDKShareAPI()
                 self.dummyDelegate.master = self // keeps this and the dummy in memory until the delegate call (ARC hack)
                 shareAPI.delegate = self.dummyDelegate
-                shareAPI.shareContent = self.prepareFacebookDialogPost(clickURL, thumbURL, mp4URL, title, description)
+                shareAPI.shareContent = self.prepareFacebookStoryPost(clickURL, thumbURL, mp4URL, title, description)
                 shareAPI.share()
             }
         }

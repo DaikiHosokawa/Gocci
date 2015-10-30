@@ -222,7 +222,12 @@ static NSMutableSet *_retainedPopupControllers;
     [self setupObservers];
     
     [_retainedPopupControllers addObject:self];
-    [viewController presentViewController:_containerViewController animated:YES completion:completion];
+//    if([NSThread isMainThread])
+//        [viewController presentViewController:_containerViewController animated:YES completion:completion];
+//    else
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [viewController presentViewController:_containerViewController animated:YES completion:completion];
+        });
 }
 
 - (void)dismiss
