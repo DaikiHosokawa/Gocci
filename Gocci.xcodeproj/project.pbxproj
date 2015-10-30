@@ -251,16 +251,22 @@
 		982070371BDF21E300715E38 /* AdvicePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118F71BC3C00F002A95CD /* AdvicePopup.m */; };
 		982070391BDF3F7000715E38 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070381BDF3F7000715E38 /* Persistent.swift */; };
 		9820703A1BDF625900715E38 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070381BDF3F7000715E38 /* Persistent.swift */; };
-		982070411BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopover.xib */; };
-		982070421BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070401BE23ADB00715E38 /* ConfirmationPopover.xib */; };
-		982070441BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopover.swift */; };
-		982070451BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070431BE23B0A00715E38 /* ConfirmationPopover.swift */; };
-		982070471BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
-		982070481BE24EDB00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070461BE24EDB00715E38 /* AbstractPopover.swift */; };
 		9820704A1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070491BE35D2A00715E38 /* FacebookAuthentication.swift */; };
 		9820704B1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070491BE35D2A00715E38 /* FacebookAuthentication.swift */; };
 		9820704D1BE365E600715E38 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820704C1BE365E600715E38 /* AWSManager.swift */; };
 		9820704E1BE365E600715E38 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820704C1BE365E600715E38 /* AWSManager.swift */; };
+		982070551BE3690E00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070521BE3690E00715E38 /* AbstractPopover.swift */; };
+		982070561BE3690E00715E38 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070521BE3690E00715E38 /* AbstractPopover.swift */; };
+		982070571BE3690E00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070531BE3690E00715E38 /* ConfirmationPopover.swift */; };
+		982070581BE3690E00715E38 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070531BE3690E00715E38 /* ConfirmationPopover.swift */; };
+		982070591BE3690E00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070541BE3690E00715E38 /* ConfirmationPopover.xib */; };
+		9820705A1BE3690E00715E38 /* ConfirmationPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982070541BE3690E00715E38 /* ConfirmationPopover.xib */; };
+		9820705C1BE3693F00715E38 /* AbstractPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820705B1BE3693F00715E38 /* AbstractPopup.swift */; };
+		9820705D1BE3693F00715E38 /* AbstractPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820705B1BE3693F00715E38 /* AbstractPopup.swift */; };
+		9820705F1BE369C100715E38 /* WebViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9820705E1BE369C100715E38 /* WebViewPopup.xib */; };
+		982070601BE369C100715E38 /* WebViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9820705E1BE369C100715E38 /* WebViewPopup.xib */; };
+		982070621BE36A5100715E38 /* WebViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070611BE36A5100715E38 /* WebViewPopup.swift */; };
+		982070631BE36A5100715E38 /* WebViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070611BE36A5100715E38 /* WebViewPopup.swift */; };
 		983A994F1BD0E66B005E34DC /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A994E1BD0E66B005E34DC /* FacebookSharing.swift */; };
 		984003F51BD099D200D91BE6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984003F41BD099D200D91BE6 /* Extensions.swift */; };
 		9843E9221BA993EB0015350D /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
@@ -321,6 +327,11 @@
 		98DB10661BB521C500468D43 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB10651BB521C500468D43 /* SNSConnectViewController.swift */; };
 		98DE2B7E1BAF902400382B75 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98DE2B7D1BAF902400382B75 /* Debug.storyboard */; };
 		98DE2B811BAFA24400382B75 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE2B801BAFA24400382B75 /* DebugViewController.swift */; };
+		98E149071BE36F3900C03B67 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DF1BC360B2002A95CD /* STPopupController.m */; };
+		98E149081BE36F3900C03B67 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E11BC360B2002A95CD /* STPopupLeftBarItem.m */; };
+		98E149091BE36F3900C03B67 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E31BC360B2002A95CD /* STPopupNavigationBar.m */; };
+		98E1490A1BE36F3900C03B67 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E51BC360B2002A95CD /* UIResponder+STPopup.m */; };
+		98E1490B1BE36F3900C03B67 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E71BC360B2002A95CD /* UIViewController+STPopup.m */; };
 		98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F21BD8B3880014DEB2 /* APISupport.swift */; };
 		98F8C3F51BD8B4080014DEB2 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F41BD8B4080014DEB2 /* API3.swift */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
@@ -781,11 +792,14 @@
 		9807FE681BA2CD350041CFD5 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9807FE6A1BA2CDAF0041CFD5 /* NetOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
 		982070381BDF3F7000715E38 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
-		982070401BE23ADB00715E38 /* ConfirmationPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmationPopover.xib; path = Popup/ConfirmationPopover.xib; sourceTree = "<group>"; };
-		982070431BE23B0A00715E38 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationPopover.swift; sourceTree = "<group>"; };
-		982070461BE24EDB00715E38 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopover.swift; path = Popup/AbstractPopover.swift; sourceTree = "<group>"; };
 		982070491BE35D2A00715E38 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		9820704C1BE365E600715E38 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSManager.swift; path = Services/Amazon/AWSManager.swift; sourceTree = "<group>"; };
+		982070521BE3690E00715E38 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopover.swift; path = Popover/AbstractPopover.swift; sourceTree = "<group>"; };
+		982070531BE3690E00715E38 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmationPopover.swift; path = Popover/ConfirmationPopover.swift; sourceTree = "<group>"; };
+		982070541BE3690E00715E38 /* ConfirmationPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmationPopover.xib; path = Popover/ConfirmationPopover.xib; sourceTree = "<group>"; };
+		9820705B1BE3693F00715E38 /* AbstractPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractPopup.swift; path = Popup/AbstractPopup.swift; sourceTree = "<group>"; };
+		9820705E1BE369C100715E38 /* WebViewPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebViewPopup.xib; path = Popup/WebViewPopup.xib; sourceTree = "<group>"; };
+		982070611BE36A5100715E38 /* WebViewPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewPopup.swift; path = Popup/WebViewPopup.swift; sourceTree = "<group>"; };
 		983A994E1BD0E66B005E34DC /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookSharing.swift; path = Services/Facebook/FacebookSharing.swift; sourceTree = "<group>"; };
 		984003F41BD099D200D91BE6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9843E91F1BA993EB0015350D /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
@@ -1507,7 +1521,8 @@
 		952D24C41A9B9EC800C354DF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9820703C1BE2396F00715E38 /* Popup */,
+				982070511BE368F500715E38 /* Popup */,
+				982070501BE368EC00715E38 /* Popover */,
 				9874BDCD1BC7C18500B1651E /* Video */,
 				952D24C51A9B9EC800C354DF /* Image */,
 				952D24E71A9B9EC800C354DF /* Storyboard */,
@@ -1916,12 +1931,22 @@
 			path = CheerList;
 			sourceTree = "<group>";
 		};
-		9820703C1BE2396F00715E38 /* Popup */ = {
+		982070501BE368EC00715E38 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
-				982070461BE24EDB00715E38 /* AbstractPopover.swift */,
-				982070401BE23ADB00715E38 /* ConfirmationPopover.xib */,
-				982070431BE23B0A00715E38 /* ConfirmationPopover.swift */,
+				982070521BE3690E00715E38 /* AbstractPopover.swift */,
+				982070531BE3690E00715E38 /* ConfirmationPopover.swift */,
+				982070541BE3690E00715E38 /* ConfirmationPopover.xib */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		982070511BE368F500715E38 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				9820705B1BE3693F00715E38 /* AbstractPopup.swift */,
+				9820705E1BE369C100715E38 /* WebViewPopup.xib */,
+				982070611BE36A5100715E38 /* WebViewPopup.swift */,
 			);
 			name = Popup;
 			sourceTree = "<group>";
@@ -2216,10 +2241,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9850CE011BDE276B001634EA /* 4_7_inch.storyboard in Resources */,
-				982070421BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */,
 				9874BEB51BCE143600B1651E /* Debug.storyboard in Resources */,
+				982070601BE369C100715E38 /* WebViewPopup.xib in Resources */,
 				9874BED21BCE143600B1651E /* Images.xcassets in Resources */,
 				9874BED51BCE143600B1651E /* Cancel.png in Resources */,
+				9820705A1BE3690E00715E38 /* ConfirmationPopover.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2274,7 +2300,6 @@
 				952D24EF1A9B9EC800C354DF /* Images.xcassets in Resources */,
 				95E4BCA21B37DA4A00B8CF44 /* SCSecondView_4_7_inch.xib in Resources */,
 				BFA1DA781AB2BA7F00B4F63A /* Cancel.png in Resources */,
-				982070411BE23ADB00715E38 /* ConfirmationPopover.xib in Resources */,
 				952D24F31A9B9EC800C354DF /* btn_delete_black@2x.png in Resources */,
 				952D24F51A9B9EC800C354DF /* btn_toukou@2x.png in Resources */,
 				952D25061A9B9EC800C354DF /* tabbaritem_search@2x.png in Resources */,
@@ -2299,7 +2324,9 @@
 				952D249C1A9B9D3300C354DF /* SearchCell.xib in Resources */,
 				952D247D1A9B9D3300C354DF /* beforeCell.xib in Resources */,
 				954D915E1BD4A08700C44033 /* icon-error.png in Resources */,
+				9820705F1BE369C100715E38 /* WebViewPopup.xib in Resources */,
 				95E4BC9D1B37DA4A00B8CF44 /* SCFirstView_4_7_inch.xib in Resources */,
+				982070591BE3690E00715E38 /* ConfirmationPopover.xib in Resources */,
 				37D66ACA1AFD858100767114 /* image_sample00.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2311,21 +2338,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E149071BE36F3900C03B67 /* STPopupController.m in Sources */,
+				98E149081BE36F3900C03B67 /* STPopupLeftBarItem.m in Sources */,
+				98E149091BE36F3900C03B67 /* STPopupNavigationBar.m in Sources */,
+				98E1490A1BE36F3900C03B67 /* UIResponder+STPopup.m in Sources */,
+				98E1490B1BE36F3900C03B67 /* UIViewController+STPopup.m in Sources */,
 				9820703A1BDF625900715E38 /* Persistent.swift in Sources */,
 				982070351BDF21E300715E38 /* CompletePopup.m in Sources */,
 				982070371BDF21E300715E38 /* AdvicePopup.m in Sources */,
-				982070481BE24EDB00715E38 /* AbstractPopover.swift in Sources */,
 				9850CE021BDE2E6B001634EA /* SettingsTableViewController.swift in Sources */,
+				982070561BE3690E00715E38 /* AbstractPopover.swift in Sources */,
 				9850CE001BDE26D7001634EA /* TWMessageBarManager.m in Sources */,
+				9820705D1BE3693F00715E38 /* AbstractPopup.swift in Sources */,
 				9850CDFE1BDE1FCA001634EA /* FacebookSharing.swift in Sources */,
 				9850CDFD1BDE1FBE001634EA /* Extensions.swift in Sources */,
-				982070451BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */,
+				982070581BE3690E00715E38 /* ConfirmationPopover.swift in Sources */,
 				98D383231BCE6F0E00839043 /* AFHTTPRequestOperation.m in Sources */,
 				98D383251BCE6F0E00839043 /* AFHTTPRequestOperationManager.m in Sources */,
 				98D383271BCE6F0E00839043 /* AFHTTPSessionManager.m in Sources */,
 				98D3832A1BCE6F0E00839043 /* AFNetworkReachabilityManager.m in Sources */,
 				98D3832C1BCE6F0E00839043 /* AFSecurityPolicy.m in Sources */,
 				98D3832E1BCE6F0E00839043 /* AFURLConnectionOperation.m in Sources */,
+				982070631BE36A5100715E38 /* WebViewPopup.swift in Sources */,
 				98D383301BCE6F0E00839043 /* AFURLRequestSerialization.m in Sources */,
 				98D383321BCE6F0E00839043 /* AFURLResponseSerialization.m in Sources */,
 				9820704B1BE35D2A00715E38 /* FacebookAuthentication.swift in Sources */,
@@ -2362,6 +2396,7 @@
 				9539018B1BC1654D00842FFF /* TableViewCell.m in Sources */,
 				959CF8E11B26CE6F00CDB492 /* CustomTableViewCell.m in Sources */,
 				A13FB9711AB44E1500B893F9 /* LICENSE.md in Sources */,
+				982070621BE36A5100715E38 /* WebViewPopup.swift in Sources */,
 				95B118EF1BC39FE3002A95CD /* rulePopup.m in Sources */,
 				952D24A41A9B9D3300C354DF /* SCFilterSelectorView.m in Sources */,
 				951AD5541B36B27A0057F081 /* FollowTableViewController.m in Sources */,
@@ -2389,6 +2424,7 @@
 				954D91641BD4A08700C44033 /* TWMessageBarManager.m in Sources */,
 				A27A9B1B1B9ECD0E004E7F36 /* FHSStream.m in Sources */,
 				95B118E81BC360B2002A95CD /* STPopupController.m in Sources */,
+				982070571BE3690E00715E38 /* ConfirmationPopover.swift in Sources */,
 				952D247E1A9B9D3300C354DF /* beforeRecorderTableViewController.m in Sources */,
 				952D239A1A9B95E800C354DF /* UIButton+AFNetworking.m in Sources */,
 				95DFDC2B1B244808004B3F3F /* Notice.m in Sources */,
@@ -2403,7 +2439,6 @@
 				952D236A1A9B95E800C354DF /* AFURLRequestSerialization.m in Sources */,
 				952D24981A9B9D3300C354DF /* SCTouchDetector.m in Sources */,
 				952D239E1A9B95E800C354DF /* UIWebView+AFNetworking.m in Sources */,
-				982070471BE24EDB00715E38 /* AbstractPopover.swift in Sources */,
 				A13FB97A1AB45F7E00B893F9 /* README.md in Sources */,
 				958ACEEA1BC0CC5F006EEA75 /* CollectionViewController.m in Sources */,
 				A27A9B1C1B9ECD0E004E7F36 /* FHSTwitterEngine.m in Sources */,
@@ -2430,6 +2465,7 @@
 				95B118F51BC3A9A9002A95CD /* CompletePopup.m in Sources */,
 				98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */,
 				952D24AA1A9B9D3300C354DF /* SCRecordSession.m in Sources */,
+				982070551BE3690E00715E38 /* AbstractPopover.swift in Sources */,
 				954D914E1BD49CC000C44033 /* CategoryViewController.m in Sources */,
 				984003F51BD099D200D91BE6 /* Extensions.swift in Sources */,
 				953901871BC1651B00842FFF /* TableViewController.m in Sources */,
@@ -2456,7 +2492,6 @@
 				952D23871A9B95E800C354DF /* SDWebImageDownloaderOperation.m in Sources */,
 				952D24801A9B9D3300C354DF /* UIView+DropShadow.m in Sources */,
 				952D23931A9B95E800C354DF /* UIColor+HexString.m in Sources */,
-				982070441BE23B0A00715E38 /* ConfirmationPopover.swift in Sources */,
 				95E4BCA01B37DA4A00B8CF44 /* SCSecondView.m in Sources */,
 				959CF8E21B26CE6F00CDB492 /* NotificationViewController.m in Sources */,
 				952D23971A9B95E800C354DF /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -2490,6 +2525,7 @@
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,
 				959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */,
+				9820705C1BE3693F00715E38 /* AbstractPopup.swift in Sources */,
 				951AD5441B36B0B20057F081 /* commentTableViewCell.m in Sources */,
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,

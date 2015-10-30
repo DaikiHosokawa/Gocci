@@ -13,7 +13,7 @@ class SettingsTableViewController: UITableViewController {
     
     let sectionList = ["アカウント", "ソーシャルネットワーク", "お知らせ", "サポート"]
     
-    var sectionMapping: [[(setCell:(UITableViewCell->())?, action:((UITableViewCell)->())? )]] = []
+    var sectionMapping: [[(setCell:(UITableViewCell->())?, action:(UITableViewCell->())? )]] = []
 
     
 
@@ -99,24 +99,32 @@ class SettingsTableViewController: UITableViewController {
                 )
             ],
             // サポート =====================================================================             
-//            [
+            [
 //                (
 //                    { $0.textLabel?.text = "アドバイスを送る" },
 //                    nil //{ Popup.show(from:self, content: AdvicePopup()) }
 //                ),
-//                (
-//                    { $0.textLabel?.text = "利用規約" },
-//                    { self.popupWebsite(INASE_RULES_URL) }
-//                ),
-//                (
-//                    { $0.textLabel?.text = "プライバシーポリシー" },
-//                    { self.popupWebsite(INASE_PRIVACY_URL) }
-//                ),
+                (
+                    { $0.textLabel?.text = "利用規約" },
+                    { _ in
+                        let popup = WebViewPopup(from: self, title: "利用規約", widthRatio: 92, heightRatio: 80)
+                        popup.url = INASE_RULES_URL
+                        popup.pop()
+                    }
+                ),
+                (
+                    { $0.textLabel?.text = "プライバシーポリシー" },
+                    { _ in
+                        let popup = WebViewPopup(from: self, title: "プライバシーポリシー", widthRatio: 92, heightRatio: 80)
+                        popup.url = INASE_PRIVACY_URL
+                        popup.pop()
+                    }
+                ),
 //                (
 //                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
 //                    { }
 //                ),
-//            ],
+            ],
         ]
 
     }
@@ -160,15 +168,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     
-    
-
-    
-    func popupWebsite(url: String) {
-        let content = PopupReadyWebView()
-        content.url = url
-        //Popup.show(from:self, content: content)
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionMapping.count
     }
@@ -198,36 +197,36 @@ class SettingsTableViewController: UITableViewController {
 }
 
 
-class PopupReadyWebView: UIViewController, UIWebViewDelegate {
-    
-    var web: UIWebView!
-    var url: String?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = "利用規約"
-        self.contentSizeInPopup = self.view.frame.size.makeScale(widthDiff: -40, heightDiff: -140)
-        
-        web = UIWebView()
-        web.delegate = self
-        web.frame = self.view.frame.makeScale(widthDiff: -40, heightDiff: 0)
-        web.scalesPageToFit = true
-        self.view.addSubview(web)
-        if url != nil {
-            web.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
-        }
-    }
-    
-    func webViewDidStartLoad(webView: UIWebView) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    }
-    
-    func webViewDidFinishLoad(webView: UIWebView) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    }
-    
-}
+//class PopupReadyWebView: UIViewController, UIWebViewDelegate {
+//    
+//    var web: UIWebView!
+//    var url: String?
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        self.title = "利用規約"
+//        self.contentSizeInPopup = self.view.frame.size.makeScale(widthDiff: -40, heightDiff: -140)
+//        
+//        web = UIWebView()
+//        web.delegate = self
+//        web.frame = self.view.frame.makeScale(widthDiff: -40, heightDiff: 0)
+//        web.scalesPageToFit = true
+//        self.view.addSubview(web)
+//        if url != nil {
+//            web.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
+//        }
+//    }
+//    
+//    func webViewDidStartLoad(webView: UIWebView) {
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//    }
+//    
+//    func webViewDidFinishLoad(webView: UIWebView) {
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//    }
+//    
+//}
 
 class PasswordPopup: UIViewController, UITextFieldDelegate {
     
