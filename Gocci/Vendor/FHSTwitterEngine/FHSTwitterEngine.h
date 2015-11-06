@@ -320,7 +320,17 @@ extern NSString * const FHSErrorDomain;
 - (void)clearAccessToken;
 - (void)loadAccessToken;
 - (BOOL)isAuthorized;
+
+//
+// Direct Access stuff
+//
+- (NSString* )getOAuthToken;
+- (NSString* )getOAuthSecret;
 - (NSString* )cognitoFormat;
+- (NSError *)sendPOSTRequestForURL:(NSURL *)url andParams:(NSDictionary *)params;
+- (void)rawLoginWithToken:(NSString *)token secret:(NSString *)secret userID:(NSString *)userID username:(NSString *)username;
+- (void)signRequest:(NSMutableURLRequest *)request;
+
 
 // API Key management
 - (void)clearConsumer;

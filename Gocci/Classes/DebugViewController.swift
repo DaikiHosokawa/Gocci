@@ -40,10 +40,203 @@ class DebugViewController : UIViewController {
         usernameEditField.text = signUpEditField.text
     }
     
+    /*
+    NSLog(@"req: %@\n\n", request.allHTTPHeaderFields);
+    //    NSLog(@"body: %@", request.HTTPBody);
+    NSLog(@"body %@", [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding]);
+    
+    
+
+    
+    id parsed = removeNull([NSJSONSerialization JSONObjectWithData:(NSData *)retobj options:NSJSONReadingMutableContainers error:nil]);
+    
+    NSError *error = [self checkError:parsed];
+    
+    if (error) {
+    return error;
+    }
+    
+    return nil; // eventually return the parsed response
+    }
+    */
+    
+
+    
+
+//    func tweet(mediaID: String) -> NSError? {
+//        let baseURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
+//        
+//        let params = [
+//            "media_ids": mediaID, //"601491637433475073"]
+//            "status": "kyoukoso :( " + Util.randomUsername()]
+//        
+//        return FHSTwitterEngine.sharedEngine().sendPOSTRequestForURL(baseURL, andParams: params)
+//    }
+    
     @IBAction func explode(sender: AnyObject) {
         
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
 
+    
+        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+        
+        
+        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+        
+        let sharer = TwitterSharing(fromViewController: self)
+//        sharer.tweetVideo(Util.generateFakeDeviceID(), videoMediaID: "bejfejesfsefs")
+        sharer.onSuccess = { print("Post ID: " + $0) }
+        sharer.tweetMessage(Util.generateFakeDeviceID())
+        
     }
+        /*
+        tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
+  
+        return
+        return
+     
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("short_vid", ofType: "mp4")!)
+        
+        let onLogin: STTwitterAPI->() = { engine in
+            
+            engine.postMediaUploadThreeStepsWithVideoURL(videoURL, uploadProgressBlock:{print($0, $1, $2)}, successBlock:
+                { (mediaID, size, expiresAfter, videoType) -> Void in
+               
+                    print("mediaID: \(mediaID), size: \(size), expiresAfter: \(expiresAfter), videoType: \(videoType)")
+                
+                    self.tweet_video("http://gocci.me = \(mediaID)", video_media_id: mediaID)
+                },
+                errorBlock: {print("ERROR: \($0)")}
+            )
+        }
+        
+        
+        let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
+        
+        
+        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
+            { (username, userID) -> Void in
+                print("Succ: \(username)    ID: \(userID)")
+                onLogin(twit)
+            },
+            errorBlock: { print("Twitter fail: \($0)") }
+        )
+        
+    }
+        
+        */
+        
+        
+//        let error = FHSTwitterEngine.sharedEngine().postTweet("raw login hhh " + Util.randomUsername())
+//        let error = tweet("4367825638453953")
+//        
+//        if let error = error {
+//            print("Zannen: \(error)")
+//        }
+//        else {
+//            print("looks good to me")
+//        }
+        
+        //tweet_video("measssaggggggge", video_media_id: "87234695237852")
+        
+//    }
+        /*
+        TwitterAuthentication.authenticateWithTwitter(self) {
+            (suc, key, sec) in
+            
+            print(key, "   ", sec)
+            let error = FHSTwitterEngine.sharedEngine().postTweet("raw login hhh " + Util.randomUsername())
+            
+            if let error = error {
+                print("Zannen: \(error)")
+            }
+            else {
+                print("loks good to me")
+            }
+            //
+            
+        }
+        return
+        
+        
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("short_vid", ofType: "mp4")!)
+        
+        let onLogin: STTwitterAPI->() = { engine in
+            
+            engine.postMediaUploadThreeStepsWithVideoURL(videoURL, uploadProgressBlock:{print($0, $1, $2)}, successBlock: { (mediaID, size, expiresAfter, videoType) -> Void in
+                print("mediaID: \(mediaID), size: \(size), expiresAfter: \(expiresAfter), videoType: \(videoType)")
+                
+                
+                self.tweet_video("tilltheendddw", video_media_id: mediaID)
+//                    let error = self.tweet(mediaID)
+//                    
+//                    if let error = error {
+//                        print("Zannen: \(error)")
+//                    }
+//                    else {
+//                        print("loks good to me")
+//                    }
+                
+                    return
+                },
+                errorBlock: {print("ERROR: \($0)")}
+            )
+        }
+        
+        
+        let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
+        
+        
+        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
+            { (username, userID) -> Void in
+                print("Succ: \(username)    ID: \(userID)")
+                onLogin(twit)
+            },
+            errorBlock: { print("Twitter fail: \($0)") }
+            )
+                
+        
+                
+                
+                
+                
+                
+                
+        return
+        
+        
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+        //FHSTwitterEngine.sharedEngine().setDelegate(self)
+        FHSTwitterEngine.sharedEngine().loadAccessToken()
+
+
+        TwitterAuthentication.authenticateWithTwitter(self) {
+            (suc, key, sec) in
+            
+            if(!suc) {
+                print("login failed")
+            }
+            else {
+                print("key: \(key), sec: \(sec)")
+                
+                let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: key, oauthTokenSecret: sec)
+                
+                twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
+                    { (username, userID) -> Void in
+                        print("Succ: \(username)    ID: \(userID)")
+                    },
+                    errorBlock:
+                    { (err) -> Void in
+                        print("Twitter fail: \(err)")
+                        
+                })
+                
+            }
+        }
+    
+    }
+*/
     
     @IBAction func a(sender: AnyObject) {
         
