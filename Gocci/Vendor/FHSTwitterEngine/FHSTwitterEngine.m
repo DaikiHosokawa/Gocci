@@ -210,6 +210,13 @@ id removeNull(id rootObject) {
     return [[[self class]alloc]initWithHTTPResponseBody:body];
 }
 
++ (FHSToken *)tokenWithKey:(NSString *)key andSecret:(NSString *)secret {
+    FHSToken *res = [[[self class]alloc]init];
+    res.key = key;
+    res.secret = secret;
+    return res;
+}
+
 - (id)initWithHTTPResponseBody:(NSString *)body {
     self = [super init];
 	if (self) {
@@ -1757,6 +1764,9 @@ id removeNull(id rootObject) {
         return authError;
     }
     
+    //url = [[NSURL alloc] initWithString:@"http://localhost:8080/1.1/statuses/update.json"];
+    
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
     [request setHTTPMethod:@"POST"];
     [request setHTTPShouldHandleCookies:NO];
@@ -1771,6 +1781,8 @@ id removeNull(id rootObject) {
     NSData *body = [self POSTBodyWithParams:params boundary:boundary];
     [request setValue:@(body.length).stringValue forHTTPHeaderField:@"Content-Length"];
     request.HTTPBody = body;
+    
+    NSLog(@"%@", request.allHTTPHeaderFields);
     
     id retobj = [self sendRequest:request];
     
@@ -1975,6 +1987,13 @@ id removeNull(id rootObject) {
 // Access Token Management
 //
 
+
+- (void)rawLoginWithToken:(NSString *)token secret:(NSString *)secret userID:(NSString *)userID username:(NSString *)username{
+    self.accessToken = [FHSToken tokenWithKey:token andSecret:secret];
+    self.authenticatedUsername = username;
+    self.authenticatedID = userID;
+}
+
 - (void)loadAccessToken {
     
     NSString *savedHttpBody = nil;
@@ -2044,6 +2063,34 @@ id removeNull(id rootObject) {
     }
     
 	return NO;
+}
+
+- (NSString* )getOAuthToken {
+    if (!self.consumer) {
+        return nil;
+    }
+    
+    if (self.accessToken.key) {
+        if (self.accessToken.key.length > 0) {
+            return self.accessToken.key;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString* )getOAuthSecret {
+    if (!self.consumer) {
+        return nil;
+    }
+    
+    if (self.accessToken.secret) {
+        if (self.accessToken.secret.length > 0) {
+            return self.accessToken.secret;
+        }
+    }
+    
+    return nil;
 }
 
 - (NSString* )cognitoFormat {

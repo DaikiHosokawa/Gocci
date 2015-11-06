@@ -15,7 +15,7 @@ class ConfirmationPopover: AbstractPopover {
 
     @IBOutlet weak var label: UILabel!
     
-    var confirmationText = "Persistent Persistent Persistent Persistent Persistent Persistent Persistent Persistent Persistent"
+    var confirmationText = "Confirmation Text"
     var onCancel: ()->() = {}
     var onConfirm: ()->() = {}
  

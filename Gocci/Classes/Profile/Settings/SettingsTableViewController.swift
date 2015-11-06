@@ -9,18 +9,16 @@
 import UIKit
 
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController
+{
     
     let sectionList = ["アカウント", "ソーシャルネットワーク", "お知らせ", "サポート"]
     
     var sectionMapping: [[(setCell:(UITableViewCell->())?, action:(UITableViewCell->())? )]] = []
 
-    
-
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -36,8 +34,8 @@ class SettingsTableViewController: UITableViewController {
                         $0.detailTextLabel?.textColor = Persistent.passwordWasSetByTheUser ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
-                        let popup = ConfirmationPopover(from: self, position: $0.frame, widthRatio:90, heightRatio:30)
-                        popup.pop()
+                        let popover = ConfirmationPopover(from: self, position: $0.frame, widthRatio:90, heightRatio:30)
+                        popover.pop()
                     }
                 ),
             ],
@@ -50,28 +48,7 @@ class SettingsTableViewController: UITableViewController {
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
                     },
-                    { cell in
-                        if !Persistent.userIsConnectedViaFacebook {
-                            Persistent.userIsConnectedViaFacebook = true
-                            cell.detailTextLabel?.text = "connected!"
-                            cell.detailTextLabel?.textColor = UIColor.greenColor()
-
-//                            self.connectWithFacebook{
-//                                cell.detailTextLabel?.text = "connected!"
-//                            }
-                        }
-                        else {
-                            let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio:90, heightRatio:30)
-                            popup.confirmationText = "Do you really want to disconnect you account from Facebook?"
-                            popup.onConfirm = {
-                                // TODO disconnect call
-                                Persistent.userIsConnectedViaFacebook = false
-                                cell.detailTextLabel?.text = "not connected :("
-                                cell.detailTextLabel?.textColor = UIColor.redColor()
-                            }
-                            popup.pop()
-                        }
-                    }
+                    handleFacebook
                 ),
                 (
                     {
@@ -80,9 +57,7 @@ class SettingsTableViewController: UITableViewController {
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
                     },
-                    { _ in
-                        self.connectWithTwitter()
-                    }
+                    handleTwitter
                 ),
                 ( { $0.textLabel?.text = "Google+"; return }, nil),
                 ( { $0.textLabel?.text = "Line"; return }, nil),
@@ -92,18 +67,20 @@ class SettingsTableViewController: UITableViewController {
                 (
                     {
                         $0.textLabel?.text = "通知を設定する"
-                        $0.detailTextLabel?.text = Util.randomUsername()
+                        $0.detailTextLabel?.text = "TODO"
                     },
-                    { _ in
-                    }
+                    nil
                 )
             ],
             // サポート =====================================================================             
             [
-//                (
-//                    { $0.textLabel?.text = "アドバイスを送る" },
-//                    nil //{ Popup.show(from:self, content: AdvicePopup()) }
-//                ),
+                (
+                    {
+                        $0.textLabel?.text = "アドバイスを送る"
+                        $0.detailTextLabel?.text = "TODO"
+                    },
+                    nil
+                ),
                 (
                     { $0.textLabel?.text = "利用規約" },
                     { _ in
@@ -120,41 +97,41 @@ class SettingsTableViewController: UITableViewController {
                         popup.pop()
                     }
                 ),
-//                (
-//                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
-//                    { }
-//                ),
+                (
+                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
+                    nil
+                ),
             ],
         ]
 
     }
-
-    func connectWithFacebook(andOnSucc:()->()) {
-        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
-            switch result {
-            case .SNS_CONNECTION_SUCCESS:
-                Persistent.userIsConnectedViaFacebook = true
-                andOnSucc()
-                //Util.popup("Facebook連携が完了しました")
-            case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_UN_AUTH:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_CANCELED:
-                break
-            case .SNS_PROVIDER_FAIL:
-                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
-            }
-        }
-    }
     
-    func connectWithTwitter() {
+    func handleTwitter(cell: UITableViewCell)
+    {
+        if Persistent.userIsConnectedViaTwitter {
+            let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
+            popup.confirmationText = "Do you really want to disconnect your account from Twitter?"
+            popup.onConfirm = {
+                // TODO disconnect call
+                Persistent.userIsConnectedViaTwitter = false
+                cell.detailTextLabel?.text = "not connected :("
+                cell.detailTextLabel?.textColor = UIColor.redColor()
+            }
+            popup.pop()
+            return
+        }
+        
+        let onSuccess = {
+            Persistent.userIsConnectedViaTwitter = true
+            cell.detailTextLabel?.text = "connected!"
+            cell.detailTextLabel?.textColor = UIColor.greenColor()
+        }
+        
         SNSUtil.connectWithTwitter(currentViewController:self) { (result) -> Void in
             switch result {
             case .SNS_CONNECTION_SUCCESS:
-                Persistent.userIsConnectedViaTwitter = true
-                self.tableView.reloadData()
-                Util.popup("Twitter連携が完了しました")
+                onSuccess()
+                //Util.popup("Twitter連携が完了しました")
             case .SNS_CONNECTION_UN_AUTH:
                 Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
             case .SNS_CONNECTION_UNKNOWN_FAILURE:
@@ -168,31 +145,73 @@ class SettingsTableViewController: UITableViewController {
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func handleFacebook(cell: UITableViewCell)
+    {
+        if Persistent.userIsConnectedViaFacebook {
+            let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
+            popup.confirmationText = "Do you really want to disconnect your account from Facebook?"
+            popup.onConfirm = {
+                // TODO disconnect call
+                Persistent.userIsConnectedViaFacebook = false
+                cell.detailTextLabel?.text = "not connected :("
+                cell.detailTextLabel?.textColor = UIColor.redColor()
+            }
+            popup.pop()
+            return
+        }
+        
+        let onSuccess = {
+            Persistent.userIsConnectedViaFacebook = true
+            cell.detailTextLabel?.text = "connected!"
+            cell.detailTextLabel?.textColor = UIColor.greenColor()
+        }
+        
+        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
+            switch result {
+            case .SNS_CONNECTION_SUCCESS:
+                onSuccess()
+                //Util.popup("Facebook連携が完了しました")
+            case .SNS_CONNECTION_UNKNOWN_FAILURE:
+                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+            case .SNS_CONNECTION_UN_AUTH:
+                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+            case .SNS_CONNECTION_CANCELED:
+                break
+            case .SNS_PROVIDER_FAIL:
+                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+            }
+        }
+    }
+    
+
+    
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return self.sectionMapping.count
     }
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
         return sectionList[section] ?? "fail"
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return sectionMapping[section].count ?? 0
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         sectionMapping[indexPath.section][indexPath.row].action?(tableView.cellForRowAtIndexPath(indexPath)!)
-        sectionMapping[indexPath.section][indexPath.row].setCell?(tableView.cellForRowAtIndexPath(indexPath)!)
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
         cell.detailTextLabel?.textColor = UIColor.blueColor()
         cell.detailTextLabel?.font = cell.detailTextLabel?.font.fontWithSize(14)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        //cell.backgroundColor = UIColor.clearColor()
 
         sectionMapping[indexPath.section][indexPath.row].setCell?(cell)
         return cell
     }
-    
 
 }
 
@@ -233,6 +252,8 @@ class PasswordPopup: UIViewController, UITextFieldDelegate {
     let label = UILabel()
     let textField = UITextField()
     let separatorView = UIView()
+    
+    var onUserInputComplete: ()->() = {}
 
     
     override func viewDidLoad() {
@@ -275,7 +296,7 @@ class PasswordPopup: UIViewController, UITextFieldDelegate {
                 if code == 200 {
                     Persistent.passwordWasSetByTheUser = true
                     textField.resignFirstResponder()
-                    self.popupController?.pushViewController(CompletePopup(), animated: true)
+                    //self.popupController?.pushViewController(CompletePopup(), animated: true)
                 }
             }
         }
