@@ -23,9 +23,25 @@ extension String {
         return self.dataUsingEncoding(NSUTF8StringEncoding) ?? "ERROR: immpossible to convert to utf8 data".dataUsingEncoding(NSUTF8StringEncoding)!
     }
     
+    func brackify() -> String {
+        return "\"" + self + "\""
+    }
+    
+    func percentEncodingSane() -> String {
+        let betterSafeThanSorry = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzyz"
+        let secureSet = NSCharacterSet(charactersInString:betterSafeThanSorry)
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(secureSet)! // ?? "ERROR: unescapeable"
+    }
+    
     func percentEncodingHTML5Style() -> String {
         // HTML5 standart escaping
         let betterSafeThanSorry = ".-_*ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzyz"
+        let secureSet = NSCharacterSet(charactersInString:betterSafeThanSorry)
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(secureSet)! // ?? "ERROR: unescapeable"
+    }
+    
+    func percentEncodingOAuthStyle() -> String {
+        let betterSafeThanSorry = ".-_~ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzyz"
         let secureSet = NSCharacterSet(charactersInString:betterSafeThanSorry)
         return self.stringByAddingPercentEncodingWithAllowedCharacters(secureSet)! // ?? "ERROR: unescapeable"
     }
@@ -34,6 +50,25 @@ extension String {
 extension NSData {
     func asUTF8String() -> String {
         return String(data: self, encoding: NSUTF8StringEncoding) ?? "ERROR: immpossible to convert to utf8 data"
+    }
+    
+    func splitIntoChunksWithSize(chunkSize: Int) -> [NSData] {
+        
+        assert(chunkSize > 0, "can't split NSData to chunks with zero or negative size")
+        
+        var ranges: [NSRange] = []
+        
+        var processedBytes = 0
+        while(processedBytes < self.length) {
+            var over = self.length - processedBytes
+            if over > chunkSize {
+                over = chunkSize
+            }
+            ranges.append(NSMakeRange(processedBytes, over))
+            processedBytes += over
+        }
+        
+        return ranges.map{ range in self.subdataWithRange(range) }
     }
 }
 

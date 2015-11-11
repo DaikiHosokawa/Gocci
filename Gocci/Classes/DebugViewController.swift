@@ -76,27 +76,42 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-
-    
         let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
         let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
-        
-        
         FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
+
         
+        
+      //          let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
+       // twit.postMediaUploadINITWithVideoURL(videoURL, successBlock: {print($0, "  ", $1)}, errorBlock: {print($0)})
+        
+//        twit.postMediaUploadAPPENDWithVideoURL(videoURL, mediaID: "72398472942", uploadProgressBlock: nil, successBlock: nil, errorBlock: nil)
+        
+       // let ddd = FHSTwitterEngine.sharedEngine().getDetailsForTweet("664377329167151104")
+        
+        //NSLog("%@", ddd as! NSDictionary)
         let sharer = TwitterSharing(fromViewController: self)
-//        sharer.tweetVideo(Util.generateFakeDeviceID(), videoMediaID: "bejfejesfsefs")
         sharer.onSuccess = { print("Post ID: " + $0) }
-        sharer.tweetMessage(Util.generateFakeDeviceID())
+        sharer.onFailure = { print("FUCK: \($0)") }
         
+//        let msg = "1234567890" + Util.randomKanjiStringWithLength(130)
+        let msg = Util.randomKanjiStringWithLength(115)
+//        let msg = "あああ日本語ひらがなカタカナ~!@#$%^&()_+-="
+        
+        print(msg)
+        print("Is this over 140? : " + String(msg.length) + "   Pecentage encode: \(msg.percentEncodingSane().length)")
+       // sharer.tweetMessage(msg)
+//        sharer.videoUploadINIT(videoURL)
+        sharer.tweetVideo(mp4URL: videoURL, message: msg)
+
     }
-        /*
-        tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
+    /*
+        //tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
   
-        return
-        return
-     
-        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("short_vid", ofType: "mp4")!)
+    https://api.twitter.com/1.1/statuses/show.json?id=664377329167151104
+
+    
         
         let onLogin: STTwitterAPI->() = { engine in
             
@@ -105,27 +120,29 @@ class DebugViewController : UIViewController {
                
                     print("mediaID: \(mediaID), size: \(size), expiresAfter: \(expiresAfter), videoType: \(videoType)")
                 
-                    self.tweet_video("http://gocci.me = \(mediaID)", video_media_id: mediaID)
+                    let sharer = TwitterSharing(fromViewController: self)
+                    sharer.onSuccess = { print("Post ID: " + $0) }
+                    sharer.onFailure = { print("FUCK: \($0)") }
+                    sharer.tweetVideo("http://gocci.me = \(mediaID)", videoMediaID: mediaID)
                 },
                 errorBlock: {print("ERROR: \($0)")}
             )
         }
         
-        
-        let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
-        
-        
-        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
-            { (username, userID) -> Void in
-                print("Succ: \(username)    ID: \(userID)")
-                onLogin(twit)
-            },
-            errorBlock: { print("Twitter fail: \($0)") }
-        )
-        
-    }
-        
+        onLogin(twit)
         */
+        
+        
+//        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
+//            { (username, userID) -> Void in
+//                print("Succ: \(username)    ID: \(userID)")
+//                onLogin(twit)
+//            },
+//            errorBlock: { print("Twitter fail: \($0)") }
+//        )
+    
+        
+
         
         
 //        let error = FHSTwitterEngine.sharedEngine().postTweet("raw login hhh " + Util.randomUsername())

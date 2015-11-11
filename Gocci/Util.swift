@@ -86,7 +86,7 @@ import UIKit
     
     class func setBadgeNumber(numberOfNewMessages: Int)
     {
-        // TODO I don't see a reason this has to got to user defaults, however it is read in over 20 places from ud,
+        // TODO I don"t see a reason this has to got to user defaults, however it is read in over 20 places from ud,
         // so this will be fixed in the next version of gocci
         NSUserDefaults.standardUserDefaults().setInteger(numberOfNewMessages, forKey: "numberOfNewMessages")
         
@@ -94,6 +94,33 @@ import UIKit
             UIApplication.sharedApplication().applicationIconBadgeNumber = numberOfNewMessages
         }
     }
+    
+    class func randomKanjiStringWithLength(len : Int) -> String {
+        var res: [Character] = []
+        res.reserveCapacity(len)
+
+        for (var i = 0; i < len; i++){
+            let rand = UInt16(0x4e00 + arc4random_uniform(UInt32(0x9faf - 0x4e00)))
+            res.append(Character(UnicodeScalar(rand)))
+        }
+        
+        return String(res)
+    }
+    
+    class func randomAlphaNumericStringWithLength(len : Int) -> String {
+        
+        let letters: [Character] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        var res: [Character] = []
+        res.reserveCapacity(len)
+        
+        for (var i = 0; i < len; i++){
+            let rand = Int(arc4random_uniform(UInt32(letters.count)))
+            res.append(letters[rand])
+        }
+        
+        return String(res)
+    }
+    
     
     class func randomUsername() -> String
     {

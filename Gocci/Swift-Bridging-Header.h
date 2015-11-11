@@ -18,5 +18,6 @@
 
 #import "STPopup.h"
 
-#import "STTwitter.h"
+// for twitter HMAC OAuth
+#import <CommonCrypto/CommonCrypto.h>
 
