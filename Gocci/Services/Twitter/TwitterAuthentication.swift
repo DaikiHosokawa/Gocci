@@ -8,6 +8,16 @@
 
 import Foundation
 
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
+//https://dev.twitter.com/rest/reference/get/account/verify_credentials
 
 
 class TwitterAuthentication {

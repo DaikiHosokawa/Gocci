@@ -13,6 +13,7 @@ import Foundation
 func actualCode() {
     
     let req = API3.auth.signup()
+    
     req.parameters.model = "iPhone9"
     req.parameters.os = "iOS"
     req.parameters.register_id = Util.generateFakeDeviceID()
@@ -22,7 +23,7 @@ func actualCode() {
     //req.on_ERROR_IDENTITY_ID_NOT_REGISTERD { print( $0, ": ", $1) }
     
     req.perform { (payload) -> () in
-        print(payload.user_id)
+        print(payload.username)
     }
     
     //
