@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 stack3.net. All rights reserved.
 //
 
-#import "STCustomCollectionViewCell.h"
+#import "CollectionViewCell.h"
 
-@implementation STCustomCollectionViewCell
+@implementation CollectionViewCell
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+       
     }
     return self;
 }

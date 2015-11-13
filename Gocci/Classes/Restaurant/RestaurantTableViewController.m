@@ -160,11 +160,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    // 初回に現在地に移動している場合は再度移動しないようにする
-    
-    CLLocationCoordinate2D centerCoordinate = userLocation.coordinate;
-    
-    // 表示倍率の設定
+ 
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
     MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
     [map_ setRegion:region animated:NO];

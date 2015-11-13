@@ -288,8 +288,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
 }
 
 - (void)viewDidAppear:(BOOL)animated

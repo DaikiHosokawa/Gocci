@@ -172,6 +172,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 {
     _menuScrollView       = [UIScrollView new];
     _controllerScrollView = [UIScrollView new];
+    //_controllerScrollView.delegate = self;
+    NSLog(@"delegate:%@",_controllerScrollView.delegate);
     _mutableMenuItems       = [NSMutableArray array];
     _mutableMenuItemWidths  = [NSMutableArray array];
     
@@ -233,6 +235,7 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     _controllerScrollView.bounces                = _enableHorizontalBounce;
     
     _controllerScrollView.frame = CGRectMake(0.0, _menuHeight, self.view.frame.size.width, self.view.frame.size.height - _menuHeight);
+    _controllerScrollView.delegate = self;
     
     [self.view addSubview:_controllerScrollView];
     
@@ -292,7 +295,6 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     [_menuScrollView addGestureRecognizer:menuItemTapGestureRecognizer];
     
     // Set delegate for controller scroll view
-    _controllerScrollView.delegate = self;
     
     // When the user taps the status bar, the scroll view beneath the touch which is closest to the status bar will be scrolled to top,
     // but only if its `scrollsToTop` property is YES, its delegate does not return NO from `shouldScrollViewScrollToTop`, and it is not already at the top.
@@ -945,5 +947,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 {
     return _mutableMenuItemWidths;
 }
+
+
+
 
 @end
