@@ -336,6 +336,37 @@
 		98E149151BE37A5D00C03B67 /* SingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E149131BE37A5D00C03B67 /* SingleLineTextField.m */; };
 		98E149541BE7102600C03B67 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E149531BE7102600C03B67 /* FacebookAuthentication.swift */; };
 		98E149551BE7102600C03B67 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E149531BE7102600C03B67 /* FacebookAuthentication.swift */; };
+		98EC1AC01BF583ED009A5263 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC1ABF1BF583ED009A5263 /* TestUtil.swift */; };
+		98EC1AC11BF584A0009A5263 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACE0761BAC637A002AA083 /* Util.swift */; };
+		98EC1AC21BF584A9009A5263 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984003F41BD099D200D91BE6 /* Extensions.swift */; };
+		98EC1AC31BF584A9009A5263 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982070381BDF3F7000715E38 /* Persistent.swift */; };
+		98EC1AC41BF586C2009A5263 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
+		98EC1AC51BF586CA009A5263 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
+		98EC1AC61BF58741009A5263 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D3831C1BCE6AD200839043 /* AWSCognito.framework */; };
+		98EC1AC71BF58741009A5263 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D3831D1BCE6AD200839043 /* AWSCore.framework */; };
+		98EC1AC81BF58741009A5263 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9843E91F1BA993EB0015350D /* AWSS3.framework */; };
+		98EC1AC91BF58741009A5263 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D793E1BB77EBD00BAEEB9 /* FBSDKCoreKit.framework */; };
+		98EC1ACA1BF58741009A5263 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79401BB77ED200BAEEB9 /* FBSDKLoginKit.framework */; };
+		98EC1ACB1BF58741009A5263 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D79411BB77ED200BAEEB9 /* FBSDKShareKit.framework */; };
+		98EC1ACC1BF587A1009A5263 /* STPopup.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DD1BC360B2002A95CD /* STPopup.h */; };
+		98EC1ACD1BF587A1009A5263 /* STPopupController.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DE1BC360B2002A95CD /* STPopupController.h */; };
+		98EC1ACE1BF587A1009A5263 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118DF1BC360B2002A95CD /* STPopupController.m */; };
+		98EC1ACF1BF587A1009A5263 /* STPopupLeftBarItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E01BC360B2002A95CD /* STPopupLeftBarItem.h */; };
+		98EC1AD01BF587A1009A5263 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E11BC360B2002A95CD /* STPopupLeftBarItem.m */; };
+		98EC1AD11BF587A1009A5263 /* STPopupNavigationBar.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E21BC360B2002A95CD /* STPopupNavigationBar.h */; };
+		98EC1AD21BF587A1009A5263 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E31BC360B2002A95CD /* STPopupNavigationBar.m */; };
+		98EC1AD31BF587A1009A5263 /* UIResponder+STPopup.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E41BC360B2002A95CD /* UIResponder+STPopup.h */; };
+		98EC1AD41BF587A1009A5263 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E51BC360B2002A95CD /* UIResponder+STPopup.m */; };
+		98EC1AD51BF587A1009A5263 /* UIViewController+STPopup.h in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E61BC360B2002A95CD /* UIViewController+STPopup.h */; };
+		98EC1AD61BF587A1009A5263 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B118E71BC360B2002A95CD /* UIViewController+STPopup.m */; };
+		98EC1AD71BF587A1009A5263 /* FHSStream.h in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B171B9ECD0E004E7F36 /* FHSStream.h */; };
+		98EC1AD81BF587A1009A5263 /* FHSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B181B9ECD0E004E7F36 /* FHSStream.m */; };
+		98EC1AD91BF587A1009A5263 /* FHSTwitterEngine.h in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B191B9ECD0E004E7F36 /* FHSTwitterEngine.h */; };
+		98EC1ADA1BF587A1009A5263 /* FHSTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A27A9B1A1B9ECD0E004E7F36 /* FHSTwitterEngine.m */; };
+		98EC1ADB1BF58A56009A5263 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820704C1BE365E600715E38 /* AWSManager.swift */; };
+		98EC1AE41BF5DE31009A5263 /* CompletePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC1AE31BF5DE31009A5263 /* CompletePopup.m */; };
+		98EC1AE51BF5DE31009A5263 /* CompletePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC1AE31BF5DE31009A5263 /* CompletePopup.m */; };
+		98EC1AE61BF5DE31009A5263 /* CompletePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC1AE31BF5DE31009A5263 /* CompletePopup.m */; };
 		98F8C3F31BD8B3880014DEB2 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F21BD8B3880014DEB2 /* APISupport.swift */; };
 		98F8C3F51BD8B4080014DEB2 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C3F41BD8B4080014DEB2 /* API3.swift */; };
 		A13FB9701AB44E1500B893F9 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = A13FB96D1AB44E1500B893F9 /* BFPaperCheckbox.m */; };
@@ -374,6 +405,16 @@
 		FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98EC1ABA1BF580EB009A5263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF54EFD719149A1800025DC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9874BDD21BCE143600B1651E;
+			remoteInfo = StrippedDown;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		373BB8371AFE59A300F7AC77 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
@@ -817,6 +858,11 @@
 		98E149121BE37A5D00C03B67 /* SingleLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleLineTextField.h; path = SingleLineTextField/SingleLineTextField.h; sourceTree = "<group>"; };
 		98E149131BE37A5D00C03B67 /* SingleLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleLineTextField.m; path = SingleLineTextField/SingleLineTextField.m; sourceTree = "<group>"; };
 		98E149531BE7102600C03B67 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookAuthentication.swift; path = Services/Facebook/FacebookAuthentication.swift; sourceTree = "<group>"; };
+		98EC1AB51BF580EB009A5263 /* Testing.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Testing.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98EC1AB91BF580EB009A5263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98EC1ABF1BF583ED009A5263 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
+		98EC1AE21BF5DE31009A5263 /* CompletePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompletePopup.h; path = Settings/CompletePopup.h; sourceTree = "<group>"; };
+		98EC1AE31BF5DE31009A5263 /* CompletePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompletePopup.m; path = Settings/CompletePopup.m; sourceTree = "<group>"; };
 		98F8C3F21BD8B3880014DEB2 /* APISupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISupport.swift; path = Services/Gocci/APISupport.swift; sourceTree = "<group>"; };
 		98F8C3F41BD8B4080014DEB2 /* API3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API3.swift; path = Services/Gocci/API3.swift; sourceTree = "<group>"; };
 		A13FB96C1AB44E1500B893F9 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
@@ -892,6 +938,21 @@
 				9874BEA21BCE143600B1651E /* AWSS3.framework in Frameworks */,
 				9874BEA31BCE143600B1651E /* UIKit.framework in Frameworks */,
 				9874BEA41BCE143600B1651E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC1AB21BF580EB009A5263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC1AC61BF58741009A5263 /* AWSCognito.framework in Frameworks */,
+				98EC1AC71BF58741009A5263 /* AWSCore.framework in Frameworks */,
+				98EC1AC81BF58741009A5263 /* AWSS3.framework in Frameworks */,
+				98EC1AC91BF58741009A5263 /* FBSDKCoreKit.framework in Frameworks */,
+				98EC1ACA1BF58741009A5263 /* FBSDKLoginKit.framework in Frameworks */,
+				98EC1ACB1BF58741009A5263 /* FBSDKShareKit.framework in Frameworks */,
+				98EC1AC51BF586CA009A5263 /* Foundation.framework in Frameworks */,
+				98EC1AC41BF586C2009A5263 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1951,6 +2012,8 @@
 		9850CDFA1BDE038C001634EA /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				98EC1AE21BF5DE31009A5263 /* CompletePopup.h */,
+				98EC1AE31BF5DE31009A5263 /* CompletePopup.m */,
 				9850CDFB1BDE039D001634EA /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
@@ -1987,6 +2050,15 @@
 				98E149131BE37A5D00C03B67 /* SingleLineTextField.m */,
 			);
 			name = SingleLineTextField;
+			sourceTree = "<group>";
+		};
+		98EC1AB61BF580EB009A5263 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				98EC1ABF1BF583ED009A5263 /* TestUtil.swift */,
+				98EC1AB91BF580EB009A5263 /* Info.plist */,
+			);
+			path = Testing;
 			sourceTree = "<group>";
 		};
 		98F8C3F11BD8B34C0014DEB2 /* Gocci */ = {
@@ -2051,6 +2123,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54EFE819149A1800025DC8 /* Gocci */,
+				98EC1AB61BF580EB009A5263 /* Testing */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
 			);
@@ -2061,6 +2134,7 @@
 			children = (
 				FF54EFDF19149A1800025DC8 /* GocciTest.app */,
 				9874BEF61BCE143600B1651E /* StrippedDown.app */,
+				98EC1AB51BF580EB009A5263 /* Testing.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2155,6 +2229,24 @@
 			productReference = 9874BEF61BCE143600B1651E /* StrippedDown.app */;
 			productType = "com.apple.product-type.application";
 		};
+		98EC1AB41BF580EB009A5263 /* Testing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98EC1ABE1BF580EB009A5263 /* Build configuration list for PBXNativeTarget "Testing" */;
+			buildPhases = (
+				98EC1AB11BF580EB009A5263 /* Sources */,
+				98EC1AB21BF580EB009A5263 /* Frameworks */,
+				98EC1AB31BF580EB009A5263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98EC1ABB1BF580EB009A5263 /* PBXTargetDependency */,
+			);
+			name = Testing;
+			productName = Testing;
+			productReference = 98EC1AB51BF580EB009A5263 /* Testing.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FF54EFDE19149A1800025DC8 /* GocciTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */;
@@ -2185,6 +2277,10 @@
 					9874BDD21BCE143600B1651E = {
 						DevelopmentTeam = EY9SSB5TM5;
 					};
+					98EC1AB41BF580EB009A5263 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 9874BDD21BCE143600B1651E;
+					};
 					FF54EFDE19149A1800025DC8 = {
 						DevelopmentTeam = EY9SSB5TM5;
 						SystemCapabilities = {
@@ -2210,6 +2306,7 @@
 			targets = (
 				FF54EFDE19149A1800025DC8 /* GocciTest */,
 				9874BDD21BCE143600B1651E /* StrippedDown */,
+				98EC1AB41BF580EB009A5263 /* Testing */,
 			);
 		};
 /* End PBXProject section */
@@ -2226,6 +2323,13 @@
 				9874BED21BCE143600B1651E /* Images.xcassets in Resources */,
 				9874BED51BCE143600B1651E /* Cancel.png in Resources */,
 				9820705A1BE3690E00715E38 /* ConfirmationPopover.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC1AB31BF580EB009A5263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2346,6 +2450,7 @@
 				98E149151BE37A5D00C03B67 /* SingleLineTextField.m in Sources */,
 				98D383301BCE6F0E00839043 /* AFURLRequestSerialization.m in Sources */,
 				98D383321BCE6F0E00839043 /* AFURLResponseSerialization.m in Sources */,
+				98EC1AE51BF5DE31009A5263 /* CompletePopup.m in Sources */,
 				98D383341BCE6F0E00839043 /* AFURLSessionManager.m in Sources */,
 				98D383361BCE6F0E00839043 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9874BF371BCE216400B1651E /* FHSStream.m in Sources */,
@@ -2362,6 +2467,34 @@
 				9874BE7D1BCE143600B1651E /* main.m in Sources */,
 				9874BE7E1BCE143600B1651E /* APIClient.m in Sources */,
 				9874BE821BCE143600B1651E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC1AB11BF580EB009A5263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC1ADB1BF58A56009A5263 /* AWSManager.swift in Sources */,
+				98EC1ACC1BF587A1009A5263 /* STPopup.h in Sources */,
+				98EC1ACD1BF587A1009A5263 /* STPopupController.h in Sources */,
+				98EC1ACE1BF587A1009A5263 /* STPopupController.m in Sources */,
+				98EC1ACF1BF587A1009A5263 /* STPopupLeftBarItem.h in Sources */,
+				98EC1AD01BF587A1009A5263 /* STPopupLeftBarItem.m in Sources */,
+				98EC1AD11BF587A1009A5263 /* STPopupNavigationBar.h in Sources */,
+				98EC1AD21BF587A1009A5263 /* STPopupNavigationBar.m in Sources */,
+				98EC1AD31BF587A1009A5263 /* UIResponder+STPopup.h in Sources */,
+				98EC1AD41BF587A1009A5263 /* UIResponder+STPopup.m in Sources */,
+				98EC1AD51BF587A1009A5263 /* UIViewController+STPopup.h in Sources */,
+				98EC1AD61BF587A1009A5263 /* UIViewController+STPopup.m in Sources */,
+				98EC1AD71BF587A1009A5263 /* FHSStream.h in Sources */,
+				98EC1AD81BF587A1009A5263 /* FHSStream.m in Sources */,
+				98EC1AD91BF587A1009A5263 /* FHSTwitterEngine.h in Sources */,
+				98EC1ADA1BF587A1009A5263 /* FHSTwitterEngine.m in Sources */,
+				98EC1AC21BF584A9009A5263 /* Extensions.swift in Sources */,
+				98EC1AC31BF584A9009A5263 /* Persistent.swift in Sources */,
+				98EC1AC11BF584A0009A5263 /* Util.swift in Sources */,
+				98EC1AE61BF5DE31009A5263 /* CompletePopup.m in Sources */,
+				98EC1AC01BF583ED009A5263 /* TestUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2510,6 +2643,7 @@
 				951AD5441B36B0B20057F081 /* commentTableViewCell.m in Sources */,
 				952D24941A9B9D3300C354DF /* GaugeView.m in Sources */,
 				952D23741A9B95E800C354DF /* JTCalendar.m in Sources */,
+				98EC1AE41BF5DE31009A5263 /* CompletePopup.m in Sources */,
 				952D24A01A9B9D3300C354DF /* SCAssetExportSession.m in Sources */,
 				952089931BD788B900DCF969 /* RestPopupViewController.m in Sources */,
 				952D23751A9B95E800C354DF /* JTCalendarAppearance.m in Sources */,
@@ -2566,6 +2700,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98EC1ABB1BF580EB009A5263 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9874BDD21BCE143600B1651E /* StrippedDown */;
+			targetProxy = 98EC1ABA1BF580EB009A5263 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF54EFEB19149A1800025DC8 /* InfoPlist.strings */ = {
@@ -2679,6 +2821,58 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		98EC1ABC1BF580EB009A5263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gocci/Vendor",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Testing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = IN.Testing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StrippedDown.app/StrippedDown";
+			};
+			name = Debug;
+		};
+		98EC1ABD1BF580EB009A5263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gocci/Vendor",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Testing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = IN.Testing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StrippedDown.app/StrippedDown";
 			};
 			name = Release;
 		};
@@ -2889,6 +3083,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		98EC1ABE1BF580EB009A5263 /* Build configuration list for PBXNativeTarget "Testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98EC1ABC1BF580EB009A5263 /* Debug */,
+				98EC1ABD1BF580EB009A5263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		FF54EFDA19149A1800025DC8 /* Build configuration list for PBXProject "Gocci" */ = {
 			isa = XCConfigurationList;

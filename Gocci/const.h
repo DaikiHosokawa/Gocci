@@ -15,7 +15,7 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
 // NSUserDefaults will be deleted everytime the app starts
@@ -47,15 +47,15 @@
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
-#ifdef INDEVEL
-#define FACEBOOK_APP_ID (@"148392115499214")
-#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
-#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
-#else
+//#ifdef INDEVEL
+//#define FACEBOOK_APP_ID (@"148392115499214")
+//#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
+//#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
+//#else
 #define FACEBOOK_APP_ID (@"673123156062598")
 #define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
 #define FACEBOOK_STORY_ACTION_ID (@"gocci:record")
-#endif
+//#endif
 
 #define TWITTER_CONSUMER_KEY (@"kurJalaArRFtwhnZCoMxB2kKU")
 #define TWITTER_CONSUMER_SECRET (@"oOCDmf29DyJyfxOPAaj8tSASzSPAHNepvbxcfVLkA9dJw7inYa")
