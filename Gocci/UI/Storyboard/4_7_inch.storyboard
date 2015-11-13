@@ -182,11 +182,33 @@
                         <segue destination="H10-d4-zm9" kind="show" identifier="goFollow" id="hGv-8z-0ZJ"/>
                         <segue destination="bni-34-er3" kind="show" identifier="goFollowee" id="L0G-no-fLl"/>
                         <segue destination="Pil-yP-ffM" kind="show" identifier="goCheer" id="Ofb-Gs-yfz"/>
+                        <segue destination="rCy-xb-CpD" kind="show" identifier="goMap" id="COL-zP-4tE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I2-L6-eeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3297.5" y="-2919.5"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="GWC-zd-giS">
+            <objects>
+                <viewController id="rCy-xb-CpD" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3AC-xb-Lou"/>
+                        <viewControllerLayoutGuide type="bottom" id="dn2-DI-Yzn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hlu-cC-du9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cv0-UY-4YB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2746" y="-2925"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="cXe-zQ-XuJ">
@@ -1339,7 +1361,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pJh-hx-rc3">
-                            <rect key="frame" x="0.0" y="112" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
                             <items>
@@ -1362,7 +1384,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="m96-gN-BSX" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -2229,13 +2251,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr3-37-9ka"/>
+        <segue reference="ren-zg-h6h"/>
         <segue reference="hGv-8z-0ZJ"/>
-        <segue reference="30a-Oz-nKe"/>
+        <segue reference="L0G-no-fLl"/>
+        <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="FOa-6V-u96"/>
         <segue reference="pGd-UE-f06"/>
-        <segue reference="MKp-Ou-neg"/>
-        <segue reference="Jx8-B4-NT3"/>
-        <segue reference="4ab-y8-Qck"/>
+        <segue reference="jr3-37-9ka"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

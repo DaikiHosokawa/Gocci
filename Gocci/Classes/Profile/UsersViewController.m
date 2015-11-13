@@ -36,6 +36,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_FOLLOW = @"goFollow";
 static NSString * const SEGUE_GO_FOLLOWEE = @"goFollowee";
 static NSString * const SEGUE_GO_CHEER = @"goCheer";
+static NSString * const SEGUE_GO_MAP = @"goMap";
+
 
 @protocol MovieViewDelegate;
 
@@ -134,7 +136,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc2.receiveDic2 = post;
     secondViewController = vc2;
     vc2.soda = changeView.frame;
-    
+    /*
     UIViewController *thirdViewController;
     MapViewController *vc3 = [[MapViewController alloc] init];
     vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
@@ -142,14 +144,18 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
     vc3.soda = changeView.frame;
-
-    thirdViewController = vc3;
+    */
+    // thirdViewController = vc3;
    
-    viewControllers_ = @[firstViewController, secondViewController, thirdViewController];
+    viewControllers_ = @[firstViewController, secondViewController, /*thirdViewController*/];
 }
 
 - (void)changeSegmentedControlValue
 {
+    if(segmentControll.selectedSegmentIndex == 2){
+        NSLog(@"mapを選んだ");
+         [self performSegueWithIdentifier:SEGUE_GO_MAP sender:self];
+    }else{
     if(currentViewController_){
         [currentViewController_ willMoveToParentViewController:nil];
         [currentViewController_.view removeFromSuperview];
@@ -164,7 +170,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [nextViewController didMoveToParentViewController:self];
     
     currentViewController_ = nextViewController;
-    
+    }
 }
 
 
@@ -249,6 +255,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+    }
+    if ([segue.identifier isEqualToString:SEGUE_GO_MAP])
+    {
+        MapViewController *vc3 = segue.destinationViewController;
+        vc3.receiveDic3 = post;
     }
     
 }
