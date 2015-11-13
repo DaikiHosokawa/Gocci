@@ -2230,12 +2230,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jr3-37-9ka"/>
-        <segue reference="RUh-hP-jrK"/>
-        <segue reference="Jx8-B4-NT3"/>
+        <segue reference="hGv-8z-0ZJ"/>
         <segue reference="30a-Oz-nKe"/>
-        <segue reference="g3n-kx-BDj"/>
-        <segue reference="4ab-y8-Qck"/>
+        <segue reference="pGd-UE-f06"/>
         <segue reference="MKp-Ou-neg"/>
+        <segue reference="Jx8-B4-NT3"/>
+        <segue reference="4ab-y8-Qck"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
