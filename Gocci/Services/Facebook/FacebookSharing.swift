@@ -47,18 +47,21 @@ class FacebookSharing {
             //master = nil // breaks the strong reference cycle and releases both this instane and the master
         }
     }
-    
-
 
     
     func shareVideoOnFacebook(mp4URL mp4URL: String, title: String, description: String) {
+        
+//        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
+//        let rawData = NSData(contentsOfURL: videoURL)!
+//        print("video length: " + String(rawData.length))
+
         
         let honban = { ()->Void in
             let params = [
                 "title": title,
                 "description": description,
                 "file_url": mp4URL,
-                // "source": use this if you want to upload from the app direct. must be encoded video data (encoding: form-data)
+//                    "source": data
             ]
             
 //            if let thumbnailURL = thumbnailURL{
