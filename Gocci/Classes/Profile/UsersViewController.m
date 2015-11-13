@@ -22,8 +22,6 @@
 #import "TimelineCell.h"
 #import "NotificationViewController.h"
 
-#import "STCustomCollectionViewCell.h"
-
 @import QuartzCore;
 
 #import "everyBaseNavigationController.h"
@@ -60,6 +58,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @property (weak, nonatomic) IBOutlet UILabel *FollowNum;
 @property (weak, nonatomic) IBOutlet UILabel *FolloweeNum;
 @property (weak, nonatomic) IBOutlet UILabel *CheerNum;
+@property (weak, nonatomic) IBOutlet UIButton *badgeButton;
 
 @end
 
@@ -70,78 +69,24 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    NSLog(@"隠す");
+    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
     [self _fetchProfile];
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    /*
-    FacebookSharing *sharer = [[FacebookSharing alloc]initFromViewController:self];
     
-    [sharer enableFullDebugOutput];
+    [self.badgeButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [sharer shareGocchiVideoStoryOnFacebookWithDialogWithClickURL:@"http://gocci.me/" thumbURL:@"http://test.thumbnails.gocci.me/2015/10/00002_2015-10-23-12-03-47_655_img.png" mp4URL:@"http://test.mp4-movies.gocci.me/2015/10/2015-10-21-19-28-30_623_movie.mp4" title:@"タイトル" description:@"美味しかった！"];
-    
-    NSLog(@"success:%@/cancel:%@/failure:%@",sharer.onSuccess,sharer.onCancel,sharer.onFailure);
-    
-    sharer.onFailure = ^(NSString *msg){NSLog(@"msg:%@",msg);};
-    */
-    //navigationbar
-    {
-        //タイトル画像設定
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView =navigationTitle;
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-    }
-    
-    
-    //badge button
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-    
-    self.barButton.badgeBGColor      = [UIColor whiteColor];
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
-    self.barButton.badgeTextColor    = color_custom;
-    self.barButton.badgeOriginX = 10;
-    self.barButton.badgeOriginY = 10;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    
-    //setting button
-    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [settingBtn setImage:[UIImage imageNamed:@"ic_settings_white"] forState:UIControlStateNormal];
-    [settingBtn addTarget:self action:@selector(eventSettingBtn) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barButton2 = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:settingBtn];
-    
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:self.barButton, barButton2, nil];
-    
-    //userAddButton
-    UIButton *userAddBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [userAddBtn setImage:[UIImage imageNamed:@"ic_person_add_white"] forState:UIControlStateNormal];
-    [userAddBtn addTarget:self action:@selector(eventUserAddBtn) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barButton3 = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:userAddBtn];
-    self.navigationItem.leftBarButtonItem = barButton3;
     
     //BackButton
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
     self.navigationItem.backBarButtonItem = backButton;
-    self.parentViewController.view.backgroundColor = [UIColor redColor];
-    
+
     //editButton
     editButton.layer.cornerRadius = 10; // this value vary as per your desire
     editButton.clipsToBounds = YES;
@@ -149,13 +94,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     //segmentControll
    // [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
     
-    //set notificationCenter
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self
-                           selector:@selector(handleRemotePushToUpdateBell:)
-                               name:@"HogeNotification"
-                             object:nil];
-    _FollowNum.userInteractionEnabled = YES;
+     _FollowNum.userInteractionEnabled = YES;
     _FollowNum.tag = 100;
     _FolloweeNum.userInteractionEnabled = YES;
     _FolloweeNum.tag = 101;
@@ -170,6 +109,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
+    //[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     [super viewWillDisappear:animated];
 }
@@ -245,21 +185,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)barButtonItemPressed:(id)sender{
     
-    self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
-    
-    NSLog(@"badge touched");
+  
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
         vc.supervc = self;
         self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
     }
-    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
+    
     [self.popover presentPopoverFromRect:CGRectMake(
-                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-                                  inView:self.barButton.customView
+                                                    self.badgeButton.accessibilityFrame.origin.x + 15, self.badgeButton.accessibilityFrame.origin.y + 30, self.badgeButton.accessibilityFrame.size.width, self.badgeButton.accessibilityFrame.size.height)
+                                  inView:self.badgeButton
                 permittedArrowDirections:WYPopoverArrowDirectionUp
                                 animated:YES
                                  options:WYPopoverAnimationOptionFadeWithScale];
@@ -381,5 +316,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
      [self performSegueWithIdentifier:@"goCheer" sender:self];
     }
 }
+
+
+
 
 @end

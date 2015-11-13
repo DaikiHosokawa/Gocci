@@ -24,7 +24,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 @interface everyTableViewController ()<EveryCellDelegate>
 {
-    
     NSArray *list_comments;
     EveryPost *myPost;
     NSMutableArray *postCommentname;
@@ -126,7 +125,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     [super viewWillAppear:animated];
     
-    // !!!:dezamisystem
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
     _postIDtext = _postID;
@@ -179,6 +177,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                            object:nil];
     
     [super viewWillDisappear:animated];
+    
+    // !!!:dezamisystem
+   // [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
     
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];

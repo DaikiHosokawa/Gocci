@@ -44,7 +44,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSMutableArray *restname;
     NSMutableArray *distance;
     NSMutableDictionary *optionDic;
-    
     //flag
     NSString *category_flag;
     NSString *value_flag;
@@ -352,9 +351,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
       
         switch (buttonIndex) {
            case 0:
-                [vc performSegueWithIdentifier:@"testUser" sender:nil];
+              //  [vc performSegueWithIdentifier:@"testUser" sender:nil];
                // [vc.navigationController pushViewController:tabViewCon animated:YES];
-                //[vc performSegueWithIdentifier:@"testUser" sender:nil];
+                //[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+                [self.delegate near:self username:u_id];
+                [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                 break;
                 /*
                 NSLog(@"User");
@@ -438,6 +439,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     
 }
+
+
 
 
 #pragma mark - UICollectionViewDelegate

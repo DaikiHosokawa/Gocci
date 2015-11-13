@@ -278,6 +278,13 @@
     [popupController presentInViewController:self];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    // !!!:dezamisystem
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
+}
+
 
 
 @end

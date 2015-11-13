@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <CoreLocation/CoreLocation.h>
 
-
-@interface MapViewController : UIViewController<GMSMapViewDelegate>
+@interface MapViewController : UIViewController<GMSMapViewDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
 
 @property id supervc;
 

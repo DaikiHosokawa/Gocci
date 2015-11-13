@@ -15,6 +15,7 @@
 
 @interface SettingViewController ()
 
+
 @end
 
 @implementation SettingViewController
@@ -26,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //ナビゲーションバーに画像
+    self.title = @"設定";
     
     // セクション名を設定する
     sectionList =  [NSArray arrayWithObjects:@"アカウント", @"ソーシャルネットワーク", @"お知らせ", @"サポート", nil];
@@ -59,6 +62,13 @@
     
     [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
     [popupController presentInViewController:self];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    // !!!:dezamisystem
+     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    
 }
 
 

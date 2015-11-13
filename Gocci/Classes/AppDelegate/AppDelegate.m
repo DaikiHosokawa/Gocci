@@ -143,7 +143,7 @@
         
         //背景色
         [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
-        [UITabBar appearance].translucent = YES;
+        //[UITabBar appearance].translucent = YES;
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];
     }

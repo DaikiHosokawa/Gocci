@@ -18,6 +18,7 @@
 #import "LocationClient.h"
 #import "BFPaperCheckbox.h"
 #import "FullScreenViewController.h"
+#import "UCZProgressView.h"
 
 @interface EditVideoController ()<BFPaperCheckboxDelegate>{
     NSString * cheertag_update;
@@ -25,7 +26,7 @@
 
 @property (strong, nonatomic) SCAssetExportSession *exportSession;
 @property (strong, nonatomic) SCPlayer *player;
-@property (weak, nonatomic) IBOutlet UILabel *timeZone;
+
 @property (weak, nonatomic) IBOutlet UILabel *restName;
 @property (weak, nonatomic) IBOutlet UILabel *category;
 @property (weak, nonatomic) IBOutlet UILabel *value;
@@ -35,6 +36,7 @@
 @property (weak,nonatomic)NSString *category_id;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *checkbox;
 @property (nonatomic, copy) NSArray *checkboxes;
+@property (weak, nonatomic) IBOutlet UCZProgressView *progressView;
 
 
 @end
@@ -60,10 +62,6 @@
 {
     [super viewDidLoad];
     
-    /*
-     self.exportView.clipsToBounds = YES;
-     self.exportView.layer.cornerRadius = 20;
-     */
     
     UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 70)];
     //do something like background color, title, etc you self
@@ -78,38 +76,12 @@
     
     _player = [SCPlayer player];
     
-    
-    // button.frame = CGRectMake(0, 0, 30, 30);
-    //  button.backgroundColor = [UIColor clearColor];
     self.checkbox.delegate = self;
     self.checkbox.rippleFromTapLocation = NO;
     self.checkbox.tapCirclePositiveColor = [UIColor yellowColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     self.checkbox.tapCircleNegativeColor = [UIColor redColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     self.checkbox.checkmarkColor = [UIColor blueColor];
-    /*
-     if ([[NSProcessInfo processInfo] activeProcessorCount] > 1) {
-     self.filterSwitcherView.refreshAutomaticallyWhenScrolling = NO;
-     self.filterSwitcherView.contentMode = UIViewContentModeScaleAspectFill;
-     
-     SCFilter *emptyFilter = [SCFilter emptyFilter];
-     emptyFilter.name = @"#nofilter";
-     
-     self.filterSwitcherView.filters = @[
-     emptyFilter,
-     [SCFilter filterWithCIFilterName:@"CIPhotoEffectNoir"],
-     [SCFilter filterWithCIFilterName:@"CIPhotoEffectChrome"],
-     [SCFilter filterWithCIFilterName:@"CIPhotoEffectInstant"],
-     [SCFilter filterWithCIFilterName:@"CIPhotoEffectTonal"],
-     [SCFilter filterWithCIFilterName:@"CIPhotoEffectFade"],
-     // Adding a filter created using CoreImageShop
-     [SCFilter filterWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"a_filter" withExtension:@"cisf"]],
-     [self createAnimatedFilter]
-     ];
-     _player.CIImageRenderer = self.filterSwitcherView;
-     [self.filterSwitcherView addObserver:self forKeyPath:@"selectedFilter" options:NSKeyValueObservingOptionNew context:nil];
-     } else {
-     */
-    SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
+       SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     playerView.frame = self.filterSwitcherView.frame;
     // playerView.autoresizingMask = self.filterSwitcherView.autoresizingMask;
@@ -149,8 +121,14 @@
     _textView.returnKeyType = UIReturnKeyDone;
     
     self.view.userInteractionEnabled = YES;
-
     
+    self.progressView.hidden = YES;
+    //self.progressView.progress = 0.0;
+    self.progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+  self.progressView.showsText = YES;
+    self.progressView.tintColor = [UIColor blackColor];
+    self.progressView.usesVibrancyEffect = NO;
+    self.progressView.textColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -191,38 +169,10 @@
     
 }
 
-/*
- - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
- if (object == self.filterSwitcherView) {
- self.filterNameLabel.hidden = NO;
- self.filterNameLabel.text = self.filterSwitcherView.selectedFilter.name;
- self.filterNameLabel.alpha = 0;
- [UIView animateWithDuration:0.3 animations:^{
- self.filterNameLabel.alpha = 1;
- } completion:^(BOOL finished) {
- if (finished) {
- [UIView animateWithDuration:0.3 delay:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
- self.filterNameLabel.alpha = 0;
- } completion:^(BOOL finished) {
- 
- }];
- }
- }];
- }
- }
- */
-
-/*
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- if ([segue.destinationViewController isKindOfClass:[SCEditVideoViewController class]]) {
- SCEditVideoViewController *editVideo = segue.destinationViewController;
- editVideo.recordSession = self.recordSession;
- }
- }
- */
-
-
 - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+    
+    self.progressView.hidden = NO;
+    self.progressView.progress = 0.0;
     
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
@@ -238,11 +188,7 @@
         //Value
         NSString *valueKakaku = @"";
         if ([appDelegate.valueKakaku length]>0) valueKakaku = appDelegate.valueKakaku;
-        /*
-         //Atmosphere
-         NSString *atmosphere = @"1";
-         if (appDelegate.stringFuniki) atmosphere = appDelegate.stringFuniki;
-         */
+        
         //Category
         NSString *category = @"1";
         // NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
@@ -268,6 +214,7 @@
              
              if (error){
                  NSLog(@"post api失敗");
+                 self.progressView.progress = 1.0;
              }
              if ([result[@"code"] integerValue] == 200) {
                  //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
@@ -287,6 +234,13 @@
                  expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
+                         self.progressView.progress = (float)((double) totalBytesSent / totalBytesExpectedToSend);
+                        
+                         if (self.progressView.progress >= 1) {
+                             NSLog(@"完了");
+                             [self dismissViewControllerAnimated:YES completion:nil];
+                         }
+
                      });
                  };
                  
@@ -305,14 +259,18 @@
                              completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
                      if (task.error) {
                          NSLog(@"Error: %@", task.error);
+                         self.progressView.progress = 1.0;
+                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                      }
                      if (task.exception) {
                          NSLog(@"Exception: %@", task.exception);
+                         self.progressView.progress = 1.0;
+                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                      }
                      if (task.result) {
                          AWSS3TransferUtilityUploadTask *uploadTask = task.result;
                          NSLog(@"success:%@",uploadTask);
-                         // Do something with uploadTask.
+                                                  // Do something with uploadTask.
                      }
                      
                      return nil;
@@ -327,13 +285,14 @@
                  appDelegate.indexCategory = @"";
                  appDelegate.valueKakaku = @"";
                  
+             }else{
+                 self.progressView.progress = 1.0;
+                 [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
              }
          }];
         
     } else {
-        /*
-         [[[UIAlertView alloc] initWithTitle:@"保存失敗しました" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-         */
+        [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -394,17 +353,8 @@
     [self.textView resignFirstResponder];
 }
 
-/*
- - (void)assetExportSessionDidProgress:(SCAssetExportSession *)assetExportSession {
- dispatch_async(dispatch_get_main_queue(), ^{
- float progress = assetExportSession.progress;
- 
- CGRect frame =  self.progressView.frame;
- frame.size.width = self.progressView.superview.frame.size.width * progress;
- self.progressView.frame = frame;
- });
- }
- */
+
+
 
 - (void)cancelSaveToCameraRoll
 {
@@ -436,46 +386,14 @@
     NSLog(@"urlは%@",exportSession.outputUrl);
     AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     dele.assetURL = exportSession.outputUrl;
-    
-    //  [self performSegueWithIdentifier:@"Posting" sender:self];
-    
-    /*
-     self.exportView.hidden = NO;
-     self.exportView.alpha = 0;
-     CGRect frame =  self.progressView.frame;
-     frame.size.width = 0;
-     self.progressView.frame = frame;
-     
-     [UIView animateWithDuration:0.3 animations:^{
-     self.exportView.alpha = 1;
-     }];
-     
-     SCWatermarkOverlayView *overlay = [SCWatermarkOverlayView new];
-     overlay.date = self.recordSession.date;
-     exportSession.videoConfiguration.overlay = overlay;
-     NSLog(@"Starting exporting");
-     
-     CFTimeInterval time = CACurrentMediaTime();
-     __weak typeof(self) wSelf = self;
-     */
+   
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
         //__strong typeof(self) strongSelf = wSelf;
         
         if (!exportSession.cancelled) {
             //  NSLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
         }
-        /*
-         if (strongSelf != nil) {
-         
-         [strongSelf.player play];
-         strongSelf.exportSession = nil;
-         strongSelf.navigationItem.rightBarButtonItem.enabled = YES;
-         
-         [UIView animateWithDuration:0.3 animations:^{
-         strongSelf.exportView.alpha = 0;
-         }];
-         }
-         */
+   
         
         NSError *error = exportSession.error;
         if (exportSession.cancelled) {

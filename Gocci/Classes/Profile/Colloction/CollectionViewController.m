@@ -9,13 +9,12 @@
 #import "CollectionViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
-#import "STCustomCollectionViewCell.h"
+#import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "everyTableViewController.h"
 #import "UsersViewController.h"
-#import "STCustomCollectionViewCell.h"
 
 static NSString * const reuseIdentifier = @"Cell";
 static const CGFloat kCellMargin = 5;
@@ -56,12 +55,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.frame = self.soda;
     self.clearsSelectionOnViewWillAppear = NO;
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
     [self.collectionView setFrame:self.view.bounds];
-    self.collectionView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height- self.tabBarController.tabBar.bounds.size.height);
+    //self.collectionView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height- self.tabBarController.tabBar.bounds.size.height);
     NSLog(@"height:%f",self.tabBarController.tabBar.bounds.size.height);
     [self.view addSubview:self.collectionView];
      [self setupData];
@@ -97,7 +96,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             // 画像表示例文
             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-            CGSize boundsSize = self.view.bounds.size;
+            CGSize boundsSize = self.soda.size;
             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
             [self.view addSubview:iv];
         }else{
@@ -115,11 +114,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    STCustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
                   placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    cell.imageView.layer.cornerRadius = 5;
+    cell.imageView.clipsToBounds = true;
     cell.title.text = restname[indexPath.row];
     
     
