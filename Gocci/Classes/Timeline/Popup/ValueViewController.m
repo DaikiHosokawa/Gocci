@@ -19,7 +19,7 @@
 {
     if (self = [super init]) {
         self.title = @"値段";
-        self.contentSizeInPopup = CGSizeMake(300, 200);
+        self.contentSizeInPopup = CGSizeMake(300, 220);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 100);
     }
     return self;

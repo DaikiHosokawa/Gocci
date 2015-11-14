@@ -1684,10 +1684,10 @@
             </objects>
             <point key="canvasLocation" x="-3119.0625" y="-32.218309859154928"/>
         </scene>
-        <!--Image Collection Push-->
+        <!--Near-->
         <scene sceneID="3dZ-WE-DLl">
             <objects>
-                <collectionViewController storyboardIdentifier="NearViewController" title="Image Collection Push" id="gHT-nX-Hhs" customClass="NearViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="NearViewController" title="Near" id="gHT-nX-Hhs" customClass="NearViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="1YM-f2-kEq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1711,6 +1711,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrw-0P-jdx">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngI-vy-4LS">
                                             <rect key="frame" x="0.0" y="128" width="179" height="51"/>
                                             <animations/>
@@ -1749,6 +1753,7 @@
                                 <connections>
                                     <outlet property="distance" destination="Xu3-bZ-YeL" id="ObT-Rp-S7O"/>
                                     <outlet property="imageView" destination="SBy-Si-svk" id="JMH-WK-z1e"/>
+                                    <outlet property="likeBtn" destination="xrw-0P-jdx" id="DZt-TN-kFo"/>
                                     <outlet property="option" destination="kpJ-tj-7Yq" id="6ul-6L-Md0"/>
                                     <outlet property="title" destination="opp-bF-6Gv" id="LAp-Di-AuX"/>
                                 </connections>
@@ -1921,6 +1926,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jb7-dZ-BIl">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5q7-f0-b71">
                                             <rect key="frame" x="0.0" y="128" width="179" height="51"/>
                                             <animations/>
@@ -1959,6 +1968,7 @@
                                 <connections>
                                     <outlet property="distance" destination="G7f-JQ-4cE" id="j7K-H2-Dzg"/>
                                     <outlet property="imageView" destination="TzA-FQ-T7B" id="hXH-y7-DsY"/>
+                                    <outlet property="likeBtn" destination="Jb7-dZ-BIl" id="gQQ-Yi-hhD"/>
                                     <outlet property="option" destination="ABo-rE-st0" id="Kdi-If-m0N"/>
                                     <outlet property="title" destination="4Qh-E7-sLe" id="7gM-Ex-cNd"/>
                                 </connections>
@@ -1976,12 +1986,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NoS-qm-jtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6486.5625" y="-6223.4154929577462"/>
+            <point key="canvasLocation" x="-6483.5" y="-6162.5"/>
         </scene>
-        <!--Image Collection Push-->
+        <!--Reco-->
         <scene sceneID="Zi7-DW-b7R">
             <objects>
-                <collectionViewController storyboardIdentifier="RecoViewController" title="Image Collection Push" id="8UO-qP-ri9" customClass="RecoViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="RecoViewController" title="Reco" id="8UO-qP-ri9" customClass="RecoViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="Cai-62-J51">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2005,6 +2015,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEq-XO-7YU">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2rs-YZ-nCH">
                                             <rect key="frame" x="0.0" y="128" width="179" height="51"/>
                                             <animations/>
@@ -2043,6 +2057,7 @@
                                 <connections>
                                     <outlet property="distance" destination="bzG-Jf-aov" id="Nsy-ce-DUt"/>
                                     <outlet property="imageView" destination="gtL-jX-aVI" id="FXO-Uh-OR7"/>
+                                    <outlet property="likeBtn" destination="LEq-XO-7YU" id="cMI-I0-LI0"/>
                                     <outlet property="option" destination="e36-Lw-NEQ" id="ivB-hZ-vvh"/>
                                     <outlet property="title" destination="Hox-Pj-WuE" id="UAv-Vp-jmJ"/>
                                 </connections>
@@ -2060,7 +2075,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4N7-Yq-xVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6477.1875" y="-5406.8661971830979"/>
+            <point key="canvasLocation" x="-6656.5" y="-5425.5"/>
         </scene>
         <!--Users Table View Controller other-->
         <scene sceneID="n5w-7m-91w">

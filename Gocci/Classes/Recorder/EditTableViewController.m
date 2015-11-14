@@ -22,7 +22,7 @@
 {
     if (self = [super init]) {
         self.title = @"詳細入力";
-        self.contentSizeInPopup = CGSizeMake(300, 200);
+        self.contentSizeInPopup = CGSizeMake(300, 135);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 140);
     }
     return self;
