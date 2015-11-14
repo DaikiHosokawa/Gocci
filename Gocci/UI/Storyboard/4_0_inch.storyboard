@@ -872,6 +872,25 @@
                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dR9-3g-eKm">
+                                    <rect key="frame" x="259" y="8" width="43" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                            <real key="value" value="0.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="ayer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -910,6 +929,7 @@
                         <outlet property="map" destination="Ol1-od-VwU" id="PtY-mb-yXh"/>
                         <outlet property="restname" destination="U53-x0-cfC" id="tXN-St-QyC"/>
                         <outlet property="restview" destination="0Hk-qN-ysy" id="U11-9y-Bnl"/>
+                        <outlet property="total_cheer_num" destination="dR9-3g-eKm" id="JD2-pd-WAu"/>
                         <segue destination="MNm-aH-f4p" kind="presentation" identifier="goEveryComment" id="t14-t6-omj"/>
                         <segue destination="qW0-L8-oPW" kind="show" identifier="goUsersOthers" id="6pK-Ls-lJu">
                             <nil key="action"/>
@@ -1276,7 +1296,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="agF-Nl-m63">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agF-Nl-m63" id="dDe-Wj-q8P">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2291,12 +2311,12 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3hC-c7-Otz"/>
-        <segue reference="upe-j2-7LO"/>
-        <segue reference="UsF-fz-dpG"/>
-        <segue reference="zNa-cd-7M5"/>
-        <segue reference="UjS-k3-cIb"/>
-        <segue reference="R4c-MQ-ZOO"/>
-        <segue reference="tqw-Xw-XIw"/>
+        <segue reference="t14-t6-omj"/>
+        <segue reference="cAJ-bL-F0X"/>
+        <segue reference="6pK-Ls-lJu"/>
+        <segue reference="pjl-L3-6fH"/>
+        <segue reference="t6E-Xj-Ity"/>
+        <segue reference="XEw-Zi-bfV"/>
+        <segue reference="Kth-Ev-KZE"/>
     </inferredMetricsTieBreakers>
 </document>
