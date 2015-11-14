@@ -199,10 +199,7 @@
 		954D91621BD4A08700C44033 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 954D915A1BD4A08700C44033 /* icon-success.png */; };
 		954D91631BD4A08700C44033 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 954D915B1BD4A08700C44033 /* icon-success@2x.png */; };
 		954D91641BD4A08700C44033 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D915D1BD4A08700C44033 /* TWMessageBarManager.m */; };
-		954D916C1BD4A5E500C44033 /* BottomSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91671BD4A5E500C44033 /* BottomSheet.m */; };
-		954D916E1BD4A5E500C44033 /* MultiSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */; };
 		954D91711BD4A62100C44033 /* FriendAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91701BD4A62100C44033 /* FriendAddViewController.m */; };
-		954D91741BD4DCFF00C44033 /* ValuePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91721BD4DCFF00C44033 /* ValuePopup.m */; };
 		954D91781BD4E35800C44033 /* SingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D91771BD4E35800C44033 /* SingleLineTextField.m */; };
 		956DE4AA1AEF234500053CE3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 956DE4A81AEF234500053CE3 /* SVIndefiniteAnimatedView.m */; };
 		9575683E1BF42A6600711A7E /* UCZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9575683D1BF42A6600711A7E /* UCZProgressView.m */; };
@@ -229,7 +226,6 @@
 		95DFDC2B1B244808004B3F3F /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFDC2A1B244808004B3F3F /* Notice.m */; };
 		95E3C5C01AF4572F001599EE /* LifelogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E3C5BE1AF4572F001599EE /* LifelogCell.m */; };
 		95E3C5C11AF4572F001599EE /* LifelogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E3C5BF1AF4572F001599EE /* LifelogCell.xib */; };
-		95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC811B37DA4A00B8CF44 /* SCPostingViewController.m */; };
 		95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E4BC851B37DA4A00B8CF44 /* SCFirstView.m */; };
 		95E4BC9C1B37DA4A00B8CF44 /* SCFirstView_3_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC861B37DA4A00B8CF44 /* SCFirstView_3_5_inch.xib */; };
 		95E4BC9D1B37DA4A00B8CF44 /* SCFirstView_4_7_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E4BC871B37DA4A00B8CF44 /* SCFirstView_4_7_inch.xib */; };
@@ -685,14 +681,8 @@
 		954D915B1BD4A08700C44033 /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		954D915C1BD4A08700C44033 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		954D915D1BD4A08700C44033 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
-		954D91661BD4A5E500C44033 /* BottomSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheet.h; sourceTree = "<group>"; };
-		954D91671BD4A5E500C44033 /* BottomSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheet.m; sourceTree = "<group>"; };
-		954D916A1BD4A5E500C44033 /* MultiSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectionViewController.h; sourceTree = "<group>"; };
-		954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectionViewController.m; sourceTree = "<group>"; };
 		954D916F1BD4A62100C44033 /* FriendAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendAddViewController.h; sourceTree = "<group>"; };
 		954D91701BD4A62100C44033 /* FriendAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendAddViewController.m; sourceTree = "<group>"; };
-		954D91721BD4DCFF00C44033 /* ValuePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopup.m; sourceTree = "<group>"; };
-		954D91731BD4DCFF00C44033 /* ValuePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopup.h; sourceTree = "<group>"; };
 		954D91761BD4E35800C44033 /* SingleLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLineTextField.h; sourceTree = "<group>"; };
 		954D91771BD4E35800C44033 /* SingleLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLineTextField.m; sourceTree = "<group>"; };
 		956DE4A71AEF234500053CE3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -743,8 +733,6 @@
 		95E3C5BD1AF4572F001599EE /* LifelogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifelogCell.h; sourceTree = "<group>"; };
 		95E3C5BE1AF4572F001599EE /* LifelogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogCell.m; sourceTree = "<group>"; };
 		95E3C5BF1AF4572F001599EE /* LifelogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifelogCell.xib; sourceTree = "<group>"; };
-		95E4BC801B37DA4A00B8CF44 /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
-		95E4BC811B37DA4A00B8CF44 /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
 		95E4BC841B37DA4A00B8CF44 /* SCFirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstView.h; sourceTree = "<group>"; };
 		95E4BC851B37DA4A00B8CF44 /* SCFirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstView.m; sourceTree = "<group>"; };
 		95E4BC861B37DA4A00B8CF44 /* SCFirstView_3_5_inch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstView_3_5_inch.xib; sourceTree = "<group>"; };
@@ -1335,8 +1323,6 @@
 		952D24371A9B9D3300C354DF /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				954D91651BD4A5E500C44033 /* EditZone */,
-				95E4BC7F1B37DA4A00B8CF44 /* PostingView */,
 				95E4BC821B37DA4A00B8CF44 /* ScrollPage */,
 				373BB8371AFE59A300F7AC77 /* DummyViewController.h */,
 				373BB8381AFE59A300F7AC77 /* DummyViewController.m */,
@@ -1672,19 +1658,6 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		954D91651BD4A5E500C44033 /* EditZone */ = {
-			isa = PBXGroup;
-			children = (
-				954D91721BD4DCFF00C44033 /* ValuePopup.m */,
-				954D91731BD4DCFF00C44033 /* ValuePopup.h */,
-				954D91661BD4A5E500C44033 /* BottomSheet.h */,
-				954D91671BD4A5E500C44033 /* BottomSheet.m */,
-				954D916A1BD4A5E500C44033 /* MultiSelectionViewController.h */,
-				954D916B1BD4A5E500C44033 /* MultiSelectionViewController.m */,
-			);
-			path = EditZone;
-			sourceTree = "<group>";
-		};
 		954D91751BD4E35800C44033 /* SimpleText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1811,15 +1784,6 @@
 				95B118E71BC360B2002A95CD /* UIViewController+STPopup.m */,
 			);
 			path = STPopup;
-			sourceTree = "<group>";
-		};
-		95E4BC7F1B37DA4A00B8CF44 /* PostingView */ = {
-			isa = PBXGroup;
-			children = (
-				95E4BC801B37DA4A00B8CF44 /* SCPostingViewController.h */,
-				95E4BC811B37DA4A00B8CF44 /* SCPostingViewController.m */,
-			);
-			path = PostingView;
 			sourceTree = "<group>";
 		};
 		95E4BC821B37DA4A00B8CF44 /* ScrollPage */ = {
@@ -2412,7 +2376,6 @@
 				951AD5591B36B6180057F081 /* EveryPost.m in Sources */,
 				952D238F1A9B95E800C354DF /* UIImageView+WebCache.m in Sources */,
 				98ACE0771BAC637A002AA083 /* Util.swift in Sources */,
-				954D916E1BD4A5E500C44033 /* MultiSelectionViewController.m in Sources */,
 				95EEC5181AF9103B006FD54E /* FollowListViewController.m in Sources */,
 				959CF8E81B26CF0D00CDB492 /* WYPopoverController.m in Sources */,
 				959466571BBDFB1B00F3222F /* CollectionViewCell.m in Sources */,
@@ -2421,7 +2384,6 @@
 				952D236C1A9B95E800C354DF /* AFURLSessionManager.m in Sources */,
 				952D24811A9B9D3300C354DF /* everyBaseNavigationController.m in Sources */,
 				95A39E981BC61DEB00FB3150 /* FacebookController.m in Sources */,
-				95E4BC9A1B37DA4A00B8CF44 /* SCPostingViewController.m in Sources */,
 				95003FC61BDF5FAD00B80123 /* FollowViewController.m in Sources */,
 				952D23651A9B95E800C354DF /* AFHTTPRequestOperationManager.m in Sources */,
 				952D25171A9B9F4700C354DF /* NullSafe.m in Sources */,
@@ -2444,7 +2406,6 @@
 				95E4BC9B1B37DA4A00B8CF44 /* SCFirstView.m in Sources */,
 				95EEC5281AF914A7006FD54E /* FolloweeListCell.m in Sources */,
 				952D24C11A9B9DE100C354DF /* TimelinePost.m in Sources */,
-				954D91741BD4DCFF00C44033 /* ValuePopup.m in Sources */,
 				952D239B1A9B95E800C354DF /* UIImageView+AFNetworking.m in Sources */,
 				952D24AC1A9B9D3300C354DF /* SCSwipeableFilterView.m in Sources */,
 				95003FC81BDF5FAD00B80123 /* RecoViewController.m in Sources */,
@@ -2458,7 +2419,6 @@
 				954D91531BD49DE500C44033 /* EditVideoController.m in Sources */,
 				95003FED1BE27BD700B80123 /* rulePopup.m in Sources */,
 				95A39EA01BC61E5400FB3150 /* DetailController.m in Sources */,
-				954D916C1BD4A5E500C44033 /* BottomSheet.m in Sources */,
 				952D238A1A9B95E800C354DF /* UIButton+WebCache.m in Sources */,
 				952D24AB1A9B9D3300C354DF /* SCSampleBufferHolder.m in Sources */,
 				959CF8E91B26CF0D00CDB492 /* WYStoryboardPopoverSegue.m in Sources */,

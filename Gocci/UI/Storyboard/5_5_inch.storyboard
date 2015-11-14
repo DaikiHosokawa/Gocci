@@ -917,7 +917,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="7U8-m7-6y4" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="414" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7U8-m7-6y4" id="eHx-o2-gOS">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="45"/>
@@ -1317,7 +1317,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o16-GD-sxO">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o16-GD-sxO" id="YSd-6X-re0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1754,6 +1754,11 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OFj-ah-2im">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" id="SGX-yq-KXs">
                                             <rect key="frame" x="0.0" y="147" width="198" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1796,6 +1801,7 @@
                                 <connections>
                                     <outlet property="distance" destination="lqI-vM-yLM" id="Hfo-yI-aSO"/>
                                     <outlet property="imageView" destination="Fcj-Dg-VU2" id="57u-ee-Abk"/>
+                                    <outlet property="likeBtn" destination="OFj-ah-2im" id="H1J-zI-GWY"/>
                                     <outlet property="option" destination="AI9-fd-66u" id="ndm-FM-bNA"/>
                                     <outlet property="title" destination="FAW-jb-9G5" id="E2E-Xp-1ep"/>
                                 </connections>
@@ -2120,10 +2126,10 @@
             </objects>
             <point key="canvasLocation" x="1650" y="-4077"/>
         </scene>
-        <!--Image Collection Push-->
+        <!--Follow-->
         <scene sceneID="We2-1B-2Bf">
             <objects>
-                <collectionViewController storyboardIdentifier="RecoViewController" title="Image Collection Push" id="Peo-ma-mRI" customClass="RecoViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FollowViewController" title="Follow" id="Peo-ma-mRI" customClass="FollowViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="HwE-1D-2ZX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2136,7 +2142,7 @@
                             <inset key="sectionInset" minX="6" minY="6" maxX="6" maxY="6"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="icy-qb-4cs" customClass="NearViewControllerCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="icy-qb-4cs" customClass="FollowViewControllerCell">
                                 <rect key="frame" x="6" y="6" width="198" height="198"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2148,6 +2154,11 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0jg-WB-UDz">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" id="Ap9-By-Ttg">
                                             <rect key="frame" x="0.0" y="147" width="198" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2190,6 +2201,7 @@
                                 <connections>
                                     <outlet property="distance" destination="Fkm-vi-NRC" id="8OS-OR-Gjk"/>
                                     <outlet property="imageView" destination="WGp-4F-Cpl" id="6FK-DF-vrA"/>
+                                    <outlet property="likeBtn" destination="0jg-WB-UDz" id="yDf-sm-qgB"/>
                                     <outlet property="option" destination="Esc-yv-czt" id="kxY-gg-PfG"/>
                                     <outlet property="title" destination="9tE-gN-WCd" id="hg6-Jn-Ad0"/>
                                 </connections>
@@ -2209,10 +2221,10 @@
             </objects>
             <point key="canvasLocation" x="-6724" y="-6419"/>
         </scene>
-        <!--Image Collection Push-->
+        <!--Reco-->
         <scene sceneID="Mbm-7l-vzz">
             <objects>
-                <collectionViewController storyboardIdentifier="FollowViewController" title="Image Collection Push" id="0Zf-WL-U0y" customClass="FollowViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="RecoViewController" title="Reco" id="0Zf-WL-U0y" customClass="RecoViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="wQM-I2-vcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2225,7 +2237,7 @@
                             <inset key="sectionInset" minX="6" minY="6" maxX="6" maxY="6"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7um-CN-Vtb" customClass="NearViewControllerCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7um-CN-Vtb" customClass="RecoViewControllerCell">
                                 <rect key="frame" x="6" y="6" width="198" height="198"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2237,6 +2249,11 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3WN-aP-CUg">
+                                            <rect key="frame" x="10" y="10" width="25" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                        </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" id="Hef-fo-62a">
                                             <rect key="frame" x="0.0" y="147" width="198" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2279,6 +2296,7 @@
                                 <connections>
                                     <outlet property="distance" destination="kk2-Gv-1uG" id="wJV-Ky-RS7"/>
                                     <outlet property="imageView" destination="Rnm-My-axo" id="Zj1-3E-3WV"/>
+                                    <outlet property="likeBtn" destination="3WN-aP-CUg" id="1Jw-EO-gpg"/>
                                     <outlet property="option" destination="15J-pi-2nl" id="4su-K6-Z8O"/>
                                     <outlet property="title" destination="5e9-ZA-Fzj" id="zaM-GW-wSy"/>
                                 </connections>

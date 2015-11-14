@@ -7,7 +7,6 @@
 //
 
 #import "SCSecondView.h"
-#import "SCPostingViewController.h"
 #import "SCRecorderViewController.h"
 #import "AppDelegate.h"
 #import "Swift.h"
@@ -38,8 +37,6 @@ static NSString *stringKakaku = nil;
 	NSInteger selectedFuniki;
 	
 	NSInteger indexBackColor;
-    
-    SCPostingViewController *postingView;
 }
 //@property(nonatomic,strong) NSString *stringTenmei;
 

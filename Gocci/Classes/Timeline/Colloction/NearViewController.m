@@ -90,8 +90,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-   
-    __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -153,7 +151,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [self refreshFeed];
-  
+    
     __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
@@ -249,6 +247,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
 }
+
+-(void)nearViewCell:(NearViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        if (result) {
+            NSLog(@"result:%@",result);
+        }
+    }
+     ];
+}
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -348,20 +356,20 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
         
-      
+        
         switch (buttonIndex) {
-           case 0:
-              //  [vc performSegueWithIdentifier:@"testUser" sender:nil];
-               // [vc.navigationController pushViewController:tabViewCon animated:YES];
+            case 0:
+                //  [vc performSegueWithIdentifier:@"testUser" sender:nil];
+                // [vc.navigationController pushViewController:tabViewCon animated:YES];
                 //[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
                 [self.delegate near:self username:u_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                 break;
                 /*
-                NSLog(@"User");
-                [self.delegate near:self username:u_id];
-                [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
-                break;
+                 NSLog(@"User");
+                 [self.delegate near:self username:u_id];
+                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
+                 break;
                  */
             case 1:
                 NSLog(@"Rest");
