@@ -13,13 +13,9 @@
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
-#import "FollowListViewController.h"
-#import "FolloweeListViewController.h"
-#import "WYPopoverController.h"
-#import "WYStoryboardPopoverSegue.h"
-#import "BBBadgeBarButtonItem.h"
 
-@interface usersTableViewController_other : UITableViewController
+
+@interface usersTableViewController_other :  UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSString *_postUsername;
     NSInteger _postFlag;
@@ -42,6 +38,5 @@
 
 @property IBOutlet UIButton *flashBtn;
 @property (nonatomic, retain) UIImageView *thumbnailView;
-@property (strong, nonatomic) WYPopoverController *popover;
-@property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
+
 @end

@@ -8,18 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AllTimelineTableViewController.h"
-#import "FollowTableViewController.h"
 #import "NearViewController.h"
+#import "FollowViewController.h"
+#import "RecoViewController.h"
 
-@interface TimelinePageMenuViewController : UIViewController<AllTimelineTableViewControllerDelegate,FollowTableViewControllerDelegate>
+#import "SortableTimeLineSubViewProtocol.h"
+
+
+@interface TimelinePageMenuViewController : UIViewController<NearViewControllerDelegate,UIScrollViewDelegate,FollowViewControllerDelegate,RecoViewControllerDelegate>
 
 @property id supervc;
 
 @property (strong, nonatomic) NearViewController *nearViewController;
-@property (strong, nonatomic) FollowTableViewController *followTableViewController;
-@property (strong, nonatomic) AllTimelineTableViewController *allTimelineTableViewController;
+@property (strong, nonatomic) FollowViewController *followViewController;
+@property (strong, nonatomic) RecoViewController *recoViewController;
 
+@property (strong, nonatomic) UIViewController *activeSubViewController;
+
+@property (weak, nonatomic) id<SortableTimeLineSubView> currentVisibleSortableSubViewController;
+
+
+- (void)sortFunc:(NSString *)category;
+- (void)sortValue:(NSString *)value;
 
 
 @end

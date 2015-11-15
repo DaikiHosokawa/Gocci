@@ -1,0 +1,17 @@
+//
+//  STCustomCollectionViewCell.h
+//  UICollectionViewSample
+//
+//  Created by EIMEI on 2013/06/20.
+//  Copyright (c) 2013 stack3.net. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CollectionViewCell : UICollectionViewCell
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+
+@end

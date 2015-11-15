@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SCFirstView">
+        <view contentMode="scaleToFill" id="Rrs-ds-Mlj" customClass="SCFirstView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2W-Y7-9FU">
-                    <rect key="frame" x="105" y="25" width="110" height="110"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-zE-Vex">
+                    <rect key="frame" x="110" y="35" width="100" height="100"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWB-aQ-puy">
-                    <rect key="frame" x="257" y="68" width="41" height="34"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6M-be-Wse">
+                    <rect key="frame" x="23" y="64" width="41" height="41"/>
                     <animations/>
-                    <state key="normal" image="capture_flip">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <state key="normal" image="ic_close"/>
                     <connections>
-                        <action selector="reverseCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="zpu-UD-zbS"/>
+                        <action selector="DeleteDraft:" destination="Rrs-ds-Mlj" eventType="touchUpInside" id="KC4-LQ-jZy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b75-cv-QzF">
+                    <rect key="frame" x="256" y="64" width="41" height="41"/>
+                    <animations/>
+                    <state key="normal" image="ic_mode_edit"/>
+                    <connections>
+                        <action selector="openEdit:" destination="Rrs-ds-Mlj" eventType="touchUpInside" id="bSM-ul-0VV"/>
                     </connections>
                 </button>
             </subviews>
@@ -34,12 +40,13 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="recordView" destination="X2W-Y7-9FU" id="DUW-bp-hRA"/>
-                <outlet property="reverseCamera" destination="JWB-aQ-puy" id="vdz-u0-80X"/>
+                <outlet property="recordView" destination="YP2-zE-Vex" id="XwQ-yd-VTR"/>
             </connections>
+            <point key="canvasLocation" x="322.5" y="406"/>
         </view>
     </objects>
     <resources>
-        <image name="capture_flip" width="50" height="41"/>
+        <image name="ic_close" width="24" height="24"/>
+        <image name="ic_mode_edit" width="24" height="24"/>
     </resources>
 </document>
