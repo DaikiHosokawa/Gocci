@@ -38,7 +38,7 @@
 {
     if (self = [super init]) {
         self.title = @"店名";
-        self.contentSizeInPopup = CGSizeMake(300, 300);
+        self.contentSizeInPopup = CGSizeMake(300, 310);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
     return self;

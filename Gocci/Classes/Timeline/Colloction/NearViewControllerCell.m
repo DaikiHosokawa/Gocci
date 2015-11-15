@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *movieURL;
 @property (nonatomic) NSUInteger index;
+@property (nonatomic) NSString *pushed_at;
 
 
 @end
@@ -46,7 +47,7 @@
 }
 
 -(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
-
+    
     self.postID = timelinePost.postID;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
@@ -57,14 +58,29 @@
     self.title.text = timelinePost.restname;
     double lat= [timelinePost.distance doubleValue];
     NSString *str1 = [self stringWithDistance:lat];
-        self.distance.text = str1;
+    self.distance.text = str1;
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
-    NSLog(@"index:%lu",(unsigned long)self.index);
+    self.pushed_at = timelinePost.pushed_at;
+    
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
-    
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
+    [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
+    
+    NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
+    if ([string isEqualToString:@"0"])
+    {
+        UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
+        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 0;
+        
+    }else{
+        UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
+        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 1;
+    }
+    
 }
 
 /**
@@ -133,6 +149,25 @@
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [numberFormatter setMaximumFractionDigits:1];
     return [numberFormatter stringFromNumber:[NSNumber numberWithDouble:value]];
+}
+
+- (void)tapLike:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(nearViewCell:didTapLikeButton:)]) {
+        
+        if(flash_on == 0 ){
+            UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
+            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 1;
+            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+            dispatch_sync(globalQueue, ^{
+                [self.delegate nearViewCell:self didTapLikeButton:self.postID];
+            });
+        }else{
+            
+        }
+        
+    }
 }
 
 @end
