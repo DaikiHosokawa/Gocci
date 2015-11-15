@@ -38,6 +38,7 @@
 @property (nonatomic) NSInteger cheernum;
 @property (nonatomic) NSString* totalCheer;
 @property (nonatomic) NSString *want_flag;
+@property (nonatomic) NSUInteger index;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

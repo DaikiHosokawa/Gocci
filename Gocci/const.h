@@ -71,8 +71,6 @@
 #define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
 #endif
 
-#define CRITTERCISM_APP_ID (@"540ab4d40729df53fc000003")
-
 #define GOOGLE_MAP_SERVICE_API_KEY (@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko")
 
 

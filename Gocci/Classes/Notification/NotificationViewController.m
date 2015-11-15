@@ -15,7 +15,6 @@
 #import "Notice.h"
 #import "everyTableViewController.h"
 #import "usersTableViewController_other.h"
-#import "usersTableViewController.h"
 
 
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";

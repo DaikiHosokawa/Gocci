@@ -9,7 +9,7 @@
 #import "TableViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
-#import "STCustomCollectionViewCell.h"
+#import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
@@ -31,8 +31,21 @@ static NSString * const reuseIdentifier = @"Cell";
     NSMutableArray *thumb;
     NSMutableArray *postid_;
     NSMutableArray *restname;
+    CGSize *changeViewSize;
 }
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        UIImage *selectedImage  = [[UIImage imageNamed:@"selected_image"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        UIImage *normalImage    = [[UIImage imageNamed:@"normal_image"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.tabBarItem.selectedImage = selectedImage;
+        self.tabBarItem.image = normalImage;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +56,8 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [[UIView alloc] init];
-
+    [self.tableView setFrame:self.view.bounds];
+    self.tableView.bounces = NO;
     [self setupData];
 }
 
@@ -85,7 +99,7 @@ static NSString * const reuseIdentifier = @"Cell";
                 // 画像表示例文
                 UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-                CGSize boundsSize = self.view.bounds.size;
+                CGSize boundsSize = self.soda.size;
                 iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
                 [self.view addSubview:iv];
                 self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

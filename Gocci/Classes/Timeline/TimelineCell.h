@@ -118,6 +118,8 @@ extern NSString * const TimelineCellIdentifier;
  */
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost;
 
+
+
 /**
  *  データを反映した場合のセルの高さを計算
  *

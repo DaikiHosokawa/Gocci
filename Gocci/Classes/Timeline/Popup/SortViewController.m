@@ -9,6 +9,7 @@
 #import "SortViewController.h"
 #import "STPopup.h"
 #import "CategoryViewController.h"
+#import "ValueViewController.h"
 
 @interface SortViewController ()
 
@@ -72,7 +73,9 @@
         cvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
        [self.popupController pushViewController:cvc animated:YES];
     }else{
-        
+        ValueViewController* vvc = [ValueViewController new];
+        vvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
+        [self.popupController pushViewController:vvc animated:YES];
     }
 }
 

@@ -40,6 +40,7 @@
     obj.totalCheer = dictionary[@"total_cheer_num"];
     obj.want_flag = dictionary[@"want_flag"];
     obj.distance = dictionary[@"distance"];
+    obj.index = 1;
     return obj;
 }
 

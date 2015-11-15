@@ -103,9 +103,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     //test user
     //_postIDtext = @"3024";
     [APIClient CheerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
+                
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
