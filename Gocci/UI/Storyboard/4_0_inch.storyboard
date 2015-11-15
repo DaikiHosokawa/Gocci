@@ -1464,10 +1464,10 @@
             </objects>
             <point key="canvasLocation" x="-1337.8125" y="-2992.077464788732"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Settings Table View Controller-->
         <scene sceneID="mPl-Lg-S0c">
             <objects>
-                <tableViewController id="K9b-86-b8f" customClass="SettingViewController" sceneMemberID="viewController">
+                <tableViewController id="K9b-86-b8f" customClass="SettingsTableViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6NY-kx-gdv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
