@@ -12,7 +12,11 @@ import UIKit
 
 class DebugViewController : UIViewController {
     
+    var real_register_id: String = ""
+    
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var subLabel: UILabel!
+
     
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
@@ -23,11 +27,9 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var passwordEditField: UITextField!
     
     override func viewDidLoad() {
-        // TODO once token
-        print("============ DEBUG MODE ACTIVATED ==============")
         super.viewDidLoad()
         
-        topLabel.text = topLabel.text! + ".4"
+        subLabel.text = "Greatest Work - Gocci v" + (Util.getGocciVersionString() ?? "?.?.?")
         
         if let iid = Util.getUserDefString("iid") {
             loginEditField.text = iid
@@ -36,24 +38,115 @@ class DebugViewController : UIViewController {
         
         
         usernameEditField.text = signUpEditField.text
-        
-        
     }
+    
+    /*
+    NSLog(@"req: %@\n\n", request.allHTTPHeaderFields);
+    //    NSLog(@"body: %@", request.HTTPBody);
+    NSLog(@"body %@", [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding]);
+    
+    
+
+    
+    id parsed = removeNull([NSJSONSerialization JSONObjectWithData:(NSData *)retobj options:NSJSONReadingMutableContainers error:nil]);
+    
+    NSError *error = [self checkError:parsed];
+    
+    if (error) {
+    return error;
+    }
+    
+    return nil; // eventually return the parsed response
+    }
+    */
+    
+
+    
+
+//    func tweet(mediaID: String) -> NSError? {
+//        let baseURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
+//        
+//        let params = [
+//            "media_ids": mediaID, //"601491637433475073"]
+//            "status": "kyoukoso :( " + Util.randomUsername()]
+//        
+//        return FHSTwitterEngine.sharedEngine().sendPOSTRequestForURL(baseURL, andParams: params)
+//    }
     
     @IBAction func explode(sender: AnyObject) {
         
-        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
+
         
-        //        FBSDKAccessToken
-        //
-        //        CAACG9jtU8M4BAKZCMkw9MIZCLZBETgqsYdcSi894U9Tacv3xyoEmSf47Ji4gk6TukWSR8ZBtHgrMJfMckwV3HlMpCg7h9hJSxDD5ySNZB7Uk1Og5cJhW3bGwnysIWvMUJWuZCfPO4LeQnCcC0mdZCXSzGIvZB7ZAZA9lxV6vj0uW8yDtFrvfxZBuKlbVx6WQ31WBBZC61WvUNA0ruAZDZD
         
+      //          let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
+       // twit.postMediaUploadINITWithVideoURL(videoURL, successBlock: {print($0, "  ", $1)}, errorBlock: {print($0)})
         
+//        twit.postMediaUploadAPPENDWithVideoURL(videoURL, mediaID: "72398472942", uploadProgressBlock: nil, successBlock: nil, errorBlock: nil)
         
+       // let ddd = FHSTwitterEngine.sharedEngine().getDetailsForTweet("664377329167151104")
         
+        //NSLog("%@", ddd as! NSDictionary)
+        let sharer = TwitterSharing(fromViewController: self)
+        sharer.onSuccess = { print("Post ID: " + $0) }
+        sharer.onFailure = { print("FUCK: \($0)") }
+        
+//        let msg = "1234567890" + Util.randomKanjiStringWithLength(130)
+        let msg = Util.randomKanjiStringWithLength(115)
+//        let msg = "あああ日本語ひらがなカタカナ~!@#$%^&()_+-="
+        
+        print(msg)
+        print("Is this over 140? : " + String(msg.length) + "   Pecentage encode: \(msg.percentEncodingSane().length)")
+       // sharer.tweetMessage(msg)
+//        sharer.videoUploadINIT(videoURL)
+        sharer.tweetVideo(mp4URL: videoURL, message: msg)
+
     }
+    /*
+        //tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
+  
+    https://api.twitter.com/1.1/statuses/show.json?id=664377329167151104
+
+    
+        
+        let onLogin: STTwitterAPI->() = { engine in
+            
+            engine.postMediaUploadThreeStepsWithVideoURL(videoURL, uploadProgressBlock:{print($0, $1, $2)}, successBlock:
+                { (mediaID, size, expiresAfter, videoType) -> Void in
+               
+                    print("mediaID: \(mediaID), size: \(size), expiresAfter: \(expiresAfter), videoType: \(videoType)")
+                
+                    let sharer = TwitterSharing(fromViewController: self)
+                    sharer.onSuccess = { print("Post ID: " + $0) }
+                    sharer.onFailure = { print("FUCK: \($0)") }
+                    sharer.tweetVideo("http://gocci.me = \(mediaID)", videoMediaID: mediaID)
+                },
+                errorBlock: {print("ERROR: \($0)")}
+            )
+        }
+        
+        onLogin(twit)
+        */
+        
+        
+//        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
+//            { (username, userID) -> Void in
+//                print("Succ: \(username)    ID: \(userID)")
+//                onLogin(twit)
+//            },
+//            errorBlock: { print("Twitter fail: \($0)") }
+//        )
+    
+        
+
     
     @IBAction func a(sender: AnyObject) {
+        
+        FacebookAuthentication.enableFullDebugOutput()
         
         let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
 
@@ -78,7 +171,7 @@ class DebugViewController : UIViewController {
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
         
-        sharer.enableFullDebugOutput()
+        FacebookAuthentication.enableFullDebugOutput()
         
         sharer.shareGocchiVideoStoryOnFacebookDirect(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Direct", description: "kkkkk")
 
@@ -111,34 +204,21 @@ class DebugViewController : UIViewController {
         sharer.onCancel = { print("canceld :(") }
         
         
-        sharer.upgradeFacebookTokenToDefaultRights()
+        FacebookAuthentication.enableFullDebugOutput()
         print("Programmflow continues...")
         
     }
     
-    
-    //    @IBAction func explode(sender: AnyObject) {
-    //
-    //        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
-    //
-    //
-    //        print("WE AIM FOR: us-east-1:e28d3906-240b-4f8b-bd9e-d456f967a6ca")
-    //
-    //        let token = "CAACG9jtU8M4BACZB1xFVuAaAXiv0jqoZBO4FdkhUW3HfOSKkZCQQQQ0RRSeePbsOcwT93pmth0ZABiloZAVwDjBfz1NJTMb5j26sUHYzG2m7EfyD7ncemkSBLF1RBPrFggmZAevjBTA3JPkhYnZBJIS5WQzbTDZBjfOKA7FIDtFSBI3Xd4oI7fnmDFFSiotc0TQVGqjGBs1tkAZDZD"
-    //
-    //        SNSUtil.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token) { (res) -> Void in
-    //            print("Result: \(res)")
-    //        }
-    //    }
-    
+
     
     
     @IBAction func signUpAsUserClicked(sender: AnyObject)
     {
-        //AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
-        
-        
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
+        
+        if real_register_id != "" {
+            Util.setUserDefString("register_id", value: real_register_id)
+        }
         
         NetOp.registerUsername(signUpEditField.text) {
             (code, emsg) -> Void in
@@ -159,6 +239,33 @@ class DebugViewController : UIViewController {
             }
         }
         
+    }
+    @IBAction func signUpAsUserFakeClicked(sender: AnyObject) {
+        print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
+        
+        if real_register_id == "" {
+            real_register_id = Util.getRegisterID()
+        }
+        Util.setUserDefString("register_id", value: Util.generateFakeDeviceID())
+        
+        NetOp.registerUsername(signUpEditField.text) {
+            (code, emsg) -> Void in
+            
+            print("NetOpCode: \(code)  " + (emsg ?? ""))
+            
+            if code == NetOpResult.NETOP_SUCCESS {
+                self.loginEditField.text = self.signUpEditField.text
+                
+                let uid: String = Util.getUserDefString("user_id")!
+                let iid: String = Util.getUserDefString("iid")!
+                let tok: String = Util.getUserDefString("token")!
+                
+                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    return nil
+                })
+            }
+        }
     }
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
@@ -200,7 +307,7 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH TWITTER")
         
-        SNSUtil.connectWithTwitter(self) { (result) -> Void in
+        SNSUtil.connectWithTwitter(currentViewController: self) { (result) -> Void in
             print("=== Result: \(result)")
         }
     }
@@ -323,32 +430,34 @@ class DebugViewController : UIViewController {
     {
         print("=== DELETE userdefs")
         Util.removeAccountSpecificDataFromUserDefaults()
+        Persistent.resetGocciToInitialState()
         
         signUpEditField.text = Util.randomUsername()
         loginEditField.text = ""
     }
     
     
+    
     @IBAction func gotoTimelinkeClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateViewControllerWithIdentifier("timeLineEntry")
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToViewControllerWithName("timeLineEntry")
     }
     
     @IBAction func gotoTutorialClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateViewControllerWithIdentifier("Tutorial")
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToViewControllerWithName("Tutorial")
     }
     
     @IBAction func normalStartClicked(sender: AnyObject)
     {
-        let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
-        let vc = stobo.instantiateInitialViewController()
-        self.presentViewController(vc!, animated: true, completion: nil)
+        self.ignoreCommonSenseAndGoToInitialController()
     }
+    
+    @IBAction func gotoSettingsClicked(sender: AnyObject) {
+        self.ignoreCommonSenseAndGoToViewControllerWithName("jumpSettingsTableViewController")
+    }
+    
+
 }
 
 

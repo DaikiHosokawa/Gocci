@@ -58,11 +58,17 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    
+//    NSLog(@"Was called with: %@/n", url);
+//    NSLog(@"SOurce Application: %@/n", sourceApplication);
+//    
+//    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
+
 
 
 - (BOOL)isFirstRun
@@ -101,10 +107,6 @@
     [Util removeAccountSpecificDataFromUserDefaults];
 #endif
     
-#ifndef INDEVEL
-    [Crittercism enableWithAppID: CRITTERCISM_APP_ID];
-#endif
-    
 #ifndef STRIPPED
     [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
 #endif
@@ -115,6 +117,13 @@
 #else
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
     self.window.rootViewController = [storyboard instantiateInitialViewController];
+#endif
+    
+#if defined(START_WITH_DEBUG_SCREEN) && defined(ENTRY_POINT_JUMP)
+    storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
+#elif defined(ENTRY_POINT_JUMP)
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
 #endif
     
     // !!!:dezamisystem

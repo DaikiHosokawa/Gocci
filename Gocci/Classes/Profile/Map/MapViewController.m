@@ -41,7 +41,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [super viewDidLoad];
 
     
-    //self.view.frame = self.soda;
+    self.view.frame = self.soda;
     
     
     //ここをどうするか

@@ -21,8 +21,8 @@
 {
     if (self = [super init]) {
         self.title = @"絞り込み";
-        self.contentSizeInPopup = CGSizeMake(300, 90);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 30);
+        self.contentSizeInPopup = CGSizeMake(300, 100);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 40);
     }
     return self;
 }

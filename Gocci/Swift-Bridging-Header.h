@@ -3,6 +3,7 @@
 //
 
 #import "const.h"
+
 #import "NetOp.h"
 #import "FHSTwitterEngine.h"
 #import "APIClient.h"
@@ -14,4 +15,9 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 #import <AWSS3/AWSS3.h>
+
+#import "STPopup.h"
+
+// for twitter HMAC OAuth
+#import <CommonCrypto/CommonCrypto.h>
 

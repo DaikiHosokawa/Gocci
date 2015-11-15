@@ -325,6 +325,10 @@
      profilePictureURL:(NSString *)ppurl
                handler:(void (^)(id, NSUInteger, NSError *))handler;
 
++ (void)disconnectWithSNS:(NSString *)provider
+                 token:(NSString *)token
+                  handler:(void (^)(id, NSUInteger, NSError *))handler;
+
 + (void)loginWithUsername:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler;
 
 + (void)setPassword:(NSString *)pass handler:(void (^)(id, NSUInteger, NSError *))handler;

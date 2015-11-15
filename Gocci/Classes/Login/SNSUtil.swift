@@ -43,14 +43,12 @@ class SNSUtilSingelton
         FHSTwitterEngine.sharedEngine().loadAccessToken()
         
         FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-        
-        
     }
 
     
     
     
-    func connectWithTwitter(currentViewController: UIViewController, andThen:(ConnectionResult)->Void)
+    func connectWithTwitter(currentViewController from: UIViewController, andThen:(ConnectionResult)->Void)
     {
         let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
             {
@@ -96,7 +94,13 @@ class SNSUtilSingelton
                 })
         })
         
-        currentViewController.presentViewController(vc, animated: true, completion: nil)
+        from.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    
+    func disconnectWithFacebook(currentViewController vc: UIViewController, andThen:(ConnectionResult)->Void)
+    {
+        
     }
     
     

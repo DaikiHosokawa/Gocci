@@ -15,17 +15,24 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
-// NSUserDefaults will not be reseted on start up
+// NSUserDefaults will be deleted everytime the app starts
 //#define FRESH_START
 
+// #######################################################################################
+//#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
+//#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
 
 
 
 // #######################################################################################
 // #######################################################################################
+
+
+#define INASE_PRIVACY_URL (@"http://inase-inc.jp/rules/privacy/")
+#define INASE_RULES_URL (@"http://inase-inc.jp/rules/")
 
 
 #ifdef INDEVEL
@@ -40,15 +47,15 @@
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
-#ifdef INDEVEL
-#define FACEBOOK_APP_ID (@"148392115499214")
-#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
-#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
-#else
+//#ifdef INDEVEL
+//#define FACEBOOK_APP_ID (@"148392115499214")
+//#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
+//#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
+//#else
 #define FACEBOOK_APP_ID (@"673123156062598")
 #define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
 #define FACEBOOK_STORY_ACTION_ID (@"gocci:record")
-#endif
+//#endif
 
 #define TWITTER_CONSUMER_KEY (@"kurJalaArRFtwhnZCoMxB2kKU")
 #define TWITTER_CONSUMER_SECRET (@"oOCDmf29DyJyfxOPAaj8tSASzSPAHNepvbxcfVLkA9dJw7inYa")
@@ -63,8 +70,6 @@
 #define COGNITO_POOL_REGION (AWSRegionUSEast1)
 #define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
 #endif
-
-#define CRITTERCISM_APP_ID (@"540ab4d40729df53fc000003")
 
 #define GOOGLE_MAP_SERVICE_API_KEY (@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko")
 

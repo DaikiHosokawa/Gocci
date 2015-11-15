@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *movieURL;
 @property (nonatomic) NSUInteger index;
-@property (nonatomic) NSString *pushed_at;
 
 
 @end
@@ -62,24 +61,9 @@
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
     NSLog(@"index:%lu",(unsigned long)self.index);
-     self.pushed_at = timelinePost.pushed_at;
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
-    [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
-    
-    NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
-    if ([string isEqualToString:@"0"])
-    {
-        UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
-        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 0;
-        
-    }else{
-        UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
-        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 1;
-    }
 }
 
 /**
@@ -149,25 +133,5 @@
     [numberFormatter setMaximumFractionDigits:1];
     return [numberFormatter stringFromNumber:[NSNumber numberWithDouble:value]];
 }
-
-- (void)tapLike:(UITapGestureRecognizer *)recognizer
-{
-    if ([self.delegate respondsToSelector:@selector(followViewCell:didTapLikeButton:)]) {
-        
-        if(flash_on == 0 ){
-            UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
-            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
-            flash_on = 1;
-            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-            dispatch_sync(globalQueue, ^{
-                [self.delegate followViewCell:self didTapLikeButton:self.postID];
-            });
-        }else{
-            
-        }
-        
-    }
-}
-
 
 @end

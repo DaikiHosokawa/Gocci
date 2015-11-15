@@ -23,7 +23,7 @@
 {
     if (self = [super init]) {
         self.title = @"カテゴリー";
-        self.contentSizeInPopup = CGSizeMake(300, 305);
+        self.contentSizeInPopup = CGSizeMake(300, 300);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
     return self;
@@ -77,9 +77,9 @@
     }else if(indexPath.row == 5) {
         cell.textLabel.text = @"ラーメン";
     }else if(indexPath.row == 6){
-        cell.textLabel.text = @"カフェ";
-    }else if(indexPath.row == 7){
         cell.textLabel.text = @"居酒屋";
+    }else if(indexPath.row == 7){
+        cell.textLabel.text = @"カフェ";
     }
     
     return cell;

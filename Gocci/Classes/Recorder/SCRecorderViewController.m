@@ -19,6 +19,7 @@
 #import "RestaurantTableViewController.h"
 //#import "GaugeView.h"¥
 #import "APIClient.h"
+#import "SCPostingViewController.h"
 #import "SVProgressHUD.h"
 #import "SCScrollPageView.h"
 
