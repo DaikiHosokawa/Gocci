@@ -1441,10 +1441,10 @@
             </objects>
             <point key="canvasLocation" x="-1337.8125" y="-2992.077464788732"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Settings Table View Controller-->
         <scene sceneID="ITa-IX-DVW">
             <objects>
-                <tableViewController id="LUq-yX-o4i" customClass="SettingViewController" sceneMemberID="viewController">
+                <tableViewController id="LUq-yX-o4i" customClass="SettingsTableViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aKC-eW-dfa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
