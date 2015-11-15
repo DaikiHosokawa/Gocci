@@ -255,16 +255,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"restid:%@",rest_id);
 }
 
--(void)followViewCell:(FollowViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
-        }
-    }
-     ];
-}
-
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.posts count];

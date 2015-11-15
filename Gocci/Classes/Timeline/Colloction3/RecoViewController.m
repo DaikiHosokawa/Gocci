@@ -228,8 +228,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
-    NSLog(@"アクション");
-    
     UIActionSheet *actionsheet = nil;
     
     optionDic = [NSMutableDictionary dictionary];
@@ -250,15 +248,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
-}
-
--(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
-        }
-    }
-     ];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

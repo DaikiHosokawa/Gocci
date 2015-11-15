@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationPopover">
+            <connections>
+                <outlet property="label" destination="ZFm-kv-41E" id="SkI-a9-E1a"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Q1h-8E-53y"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFm-kv-41E">
+                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-GL-iml">
+                    <rect key="frame" x="8" y="562" width="288" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Confirm"/>
+                    <connections>
+                        <action selector="confirmClicked:" destination="-1" eventType="touchUpInside" id="RaP-NH-HPO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSk-Wi-UcT">
+                    <rect key="frame" x="304" y="562" width="288" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancelClicked:" destination="-1" eventType="touchUpInside" id="tVa-wE-RhN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="uSk-Wi-UcT" secondAttribute="bottom" constant="8" id="0c6-x1-Pes"/>
+                <constraint firstAttribute="trailing" secondItem="uSk-Wi-UcT" secondAttribute="trailing" constant="8" id="7cD-HA-dB6"/>
+                <constraint firstItem="LgA-GL-iml" firstAttribute="width" secondItem="uSk-Wi-UcT" secondAttribute="width" id="BGu-ho-qq0"/>
+                <constraint firstItem="ZFm-kv-41E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Cpc-ue-lrh"/>
+                <constraint firstItem="ZFm-kv-41E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Dzj-43-dDo"/>
+                <constraint firstItem="uSk-Wi-UcT" firstAttribute="leading" secondItem="LgA-GL-iml" secondAttribute="trailing" constant="8" id="Frp-kb-VmC"/>
+                <constraint firstAttribute="trailing" secondItem="ZFm-kv-41E" secondAttribute="trailing" constant="8" id="OMl-RI-b1x"/>
+                <constraint firstItem="uSk-Wi-UcT" firstAttribute="leading" secondItem="LgA-GL-iml" secondAttribute="trailing" constant="8" id="Spw-7B-pLJ"/>
+                <constraint firstAttribute="bottom" secondItem="LgA-GL-iml" secondAttribute="bottom" constant="8" id="bM1-1K-a7R"/>
+                <constraint firstItem="LgA-GL-iml" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="h3T-E6-3Oj"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

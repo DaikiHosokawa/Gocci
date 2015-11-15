@@ -21,22 +21,16 @@
 - (void)followViewCell:(FollowViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
 
 - (void)followViewCell:(FollowViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
-- (void)followViewCell:(FollowViewControllerCell *)cell didTapLikeButton:(NSString*)postID;
-
 
 @end
 
 @interface FollowViewControllerCell : UICollectionViewCell
-{
-    int flash_on;
-}
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *distance;
 @property (weak, nonatomic) IBOutlet UIImageView *option;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 @property (nonatomic,weak) id<FollowViewCellDelegate> delegate;
 
