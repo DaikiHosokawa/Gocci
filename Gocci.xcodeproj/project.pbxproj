@@ -291,8 +291,6 @@
 		9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA061BF83E4C00430942 /* UIWebView+AFNetworking.m */; };
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
-		959560141BF8436C002E245C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959560121BF8436C002E245C /* Info.plist */; };
-		959560151BF8436C002E245C /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959560131BF8436C002E245C /* TestUtil.swift */; };
 		9874BE8B1BCE143600B1651E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */; };
 		9874BE8C1BCE143600B1651E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
 		9874BE8D1BCE143600B1651E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -790,8 +788,6 @@
 		9550DA091BF83E4C00430942 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		9550DA0A1BF83E4C00430942 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
-		959560121BF8436C002E245C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		959560131BF8436C002E245C /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		9874BEF61BCE143600B1651E /* StrippedDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrippedDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -2059,20 +2055,10 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		959560111BF8436C002E245C /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				959560121BF8436C002E245C /* Info.plist */,
-				959560131BF8436C002E245C /* TestUtil.swift */,
-			);
-			path = Testing;
-			sourceTree = "<group>";
-		};
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
 				9550D7D31BF83E4B00430942 /* Gocci */,
-				959560111BF8436C002E245C /* Testing */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
 			);
@@ -2246,7 +2232,6 @@
 				9550DA581BF83E4C00430942 /* SCFirstView_5_5_inch.xib in Resources */,
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
 				9550DAC11BF83E4C00430942 /* tabbaritem_timeline_sel@2x.png in Resources */,
-				959560141BF8436C002E245C /* Info.plist in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
 				9550DAA51BF83E4C00430942 /* Cancel.png in Resources */,
@@ -2399,7 +2384,6 @@
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,
 				9550DA131BF83E4C00430942 /* LocationClient.m in Sources */,
 				9550DAEB1BF83E4C00430942 /* JTCalendarDayView.m in Sources */,
-				959560151BF8436C002E245C /* TestUtil.swift in Sources */,
 				9550DA7C1BF83E4C00430942 /* SCSwipeableFilterView.m in Sources */,
 				9550DAD71BF83E4C00430942 /* AFSecurityPolicy.m in Sources */,
 				9550DB041BF83E4C00430942 /* UIImageView+HighlightedWebCache.m in Sources */,
