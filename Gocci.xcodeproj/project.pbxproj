@@ -80,11 +80,7 @@
 		9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8671BF83E4B00430942 /* usersTableViewController_other.m */; };
 		9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86A1BF83E4B00430942 /* DummyViewController.m */; };
 		9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86C1BF83E4B00430942 /* EditTableViewController.m */; };
-		9550DA4D1BF83E4C00430942 /* BottomSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86F1BF83E4B00430942 /* BottomSheet.m */; };
-		9550DA4E1BF83E4C00430942 /* MultiSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8711BF83E4B00430942 /* MultiSelectionViewController.m */; };
-		9550DA4F1BF83E4C00430942 /* ValuePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8731BF83E4B00430942 /* ValuePopup.m */; };
 		9550DA501BF83E4C00430942 /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8751BF83E4B00430942 /* GaugeView.m */; };
-		9550DA511BF83E4C00430942 /* SCPostingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8781BF83E4B00430942 /* SCPostingViewController.m */; };
 		9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */; };
 		9550DA531BF83E4C00430942 /* SCRecorderViewController.m.orig in Resources */ = {isa = PBXBuildFile; fileRef = 9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */; };
 		9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */; };
@@ -446,16 +442,8 @@
 		9550D86A1BF83E4B00430942 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		9550D86B1BF83E4B00430942 /* EditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewController.h; sourceTree = "<group>"; };
 		9550D86C1BF83E4B00430942 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewController.m; sourceTree = "<group>"; };
-		9550D86E1BF83E4B00430942 /* BottomSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheet.h; sourceTree = "<group>"; };
-		9550D86F1BF83E4B00430942 /* BottomSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheet.m; sourceTree = "<group>"; };
-		9550D8701BF83E4B00430942 /* MultiSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectionViewController.h; sourceTree = "<group>"; };
-		9550D8711BF83E4B00430942 /* MultiSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectionViewController.m; sourceTree = "<group>"; };
-		9550D8721BF83E4B00430942 /* ValuePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopup.h; sourceTree = "<group>"; };
-		9550D8731BF83E4B00430942 /* ValuePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopup.m; sourceTree = "<group>"; };
 		9550D8741BF83E4B00430942 /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaugeView.h; sourceTree = "<group>"; };
 		9550D8751BF83E4B00430942 /* GaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaugeView.m; sourceTree = "<group>"; };
-		9550D8771BF83E4B00430942 /* SCPostingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPostingViewController.h; sourceTree = "<group>"; };
-		9550D8781BF83E4B00430942 /* SCPostingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPostingViewController.m; sourceTree = "<group>"; };
 		9550D8791BF83E4B00430942 /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
 		9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
 		9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SCRecorderViewController.m.orig; sourceTree = "<group>"; };
@@ -643,7 +631,7 @@
 		9550D9511BF83E4B00430942 /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		9550D9521BF83E4B00430942 /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
 		9550D9541BF83E4B00430942 /* splash_tmp_sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash_tmp_sample.mp4; sourceTree = "<group>"; };
-		9550D9551BF83E4B00430942 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ../Util.swift; sourceTree = "<group>"; };
+		9550D9551BF83E4B00430942 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		9550D9581BF83E4B00430942 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		9550D9591BF83E4B00430942 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		9550D95A1BF83E4B00430942 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -888,19 +876,20 @@
 		9550D7D31BF83E4B00430942 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
+				9550D9011BF83E4B00430942 /* const.h */,
+				9550D9041BF83E4B00430942 /* Extensions.swift */,
+				9550D9551BF83E4B00430942 /* Util.swift */,
+				9550D9091BF83E4B00430942 /* Persistent.swift */,
+				9550D9181BF83E4B00430942 /* UI */,
 				9550D7D41BF83E4B00430942 /* API */,
 				9550D7EA1BF83E4B00430942 /* Classes */,
-				9550D9011BF83E4B00430942 /* const.h */,
 				9550D9021BF83E4B00430942 /* InfoPlist.strings */,
-				9550D9041BF83E4B00430942 /* Extensions.swift */,
 				9550D9051BF83E4B00430942 /* Gocci-Info.plist */,
 				9550D9061BF83E4B00430942 /* Gocci-Prefix.pch */,
 				9550D9071BF83E4B00430942 /* main.m */,
 				9550D9081BF83E4B00430942 /* NullSafe.m */,
-				9550D9091BF83E4B00430942 /* Persistent.swift */,
 				9550D90A1BF83E4B00430942 /* Services */,
 				9550D9171BF83E4B00430942 /* Swift-Bridging-Header.h */,
-				9550D9181BF83E4B00430942 /* UI */,
 				9550D9561BF83E4B00430942 /* Vendor */,
 			);
 			path = Gocci;
@@ -909,9 +898,9 @@
 		9550D7D41BF83E4B00430942 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				9550D7D51BF83E4B00430942 /* Model */,
 				9550D7E01BF83E4B00430942 /* NetOp.h */,
 				9550D7E11BF83E4B00430942 /* NetOp.m */,
+				9550D7D51BF83E4B00430942 /* Model */,
 				9550D7E21BF83E4B00430942 /* Services */,
 			);
 			path = API;
@@ -1307,20 +1296,18 @@
 		9550D8681BF83E4B00430942 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				9550D87E1BF83E4B00430942 /* ScrollPage */,
 				9550D8691BF83E4B00430942 /* DummyViewController.h */,
 				9550D86A1BF83E4B00430942 /* DummyViewController.m */,
 				9550D86B1BF83E4B00430942 /* EditTableViewController.h */,
 				9550D86C1BF83E4B00430942 /* EditTableViewController.m */,
-				9550D86D1BF83E4B00430942 /* EditZone */,
 				9550D8741BF83E4B00430942 /* GaugeView.h */,
 				9550D8751BF83E4B00430942 /* GaugeView.m */,
-				9550D8761BF83E4B00430942 /* PostingView */,
 				9550D8791BF83E4B00430942 /* SCRecorderViewController.h */,
 				9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */,
 				9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */,
 				9550D87C1BF83E4B00430942 /* SCRecordSessionManager.h */,
 				9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */,
-				9550D87E1BF83E4B00430942 /* ScrollPage */,
 				9550D88F1BF83E4B00430942 /* SCTouchDetector.h */,
 				9550D8901BF83E4B00430942 /* SCTouchDetector.m */,
 				9550D8911BF83E4B00430942 /* XYPieChart.h */,
@@ -1329,35 +1316,13 @@
 			path = Recorder;
 			sourceTree = "<group>";
 		};
-		9550D86D1BF83E4B00430942 /* EditZone */ = {
-			isa = PBXGroup;
-			children = (
-				9550D86E1BF83E4B00430942 /* BottomSheet.h */,
-				9550D86F1BF83E4B00430942 /* BottomSheet.m */,
-				9550D8701BF83E4B00430942 /* MultiSelectionViewController.h */,
-				9550D8711BF83E4B00430942 /* MultiSelectionViewController.m */,
-				9550D8721BF83E4B00430942 /* ValuePopup.h */,
-				9550D8731BF83E4B00430942 /* ValuePopup.m */,
-			);
-			path = EditZone;
-			sourceTree = "<group>";
-		};
-		9550D8761BF83E4B00430942 /* PostingView */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8771BF83E4B00430942 /* SCPostingViewController.h */,
-				9550D8781BF83E4B00430942 /* SCPostingViewController.m */,
-			);
-			path = PostingView;
-			sourceTree = "<group>";
-		};
 		9550D87E1BF83E4B00430942 /* ScrollPage */ = {
 			isa = PBXGroup;
 			children = (
 				9550D87F1BF83E4B00430942 /* FirstView */,
+				9550D8881BF83E4B00430942 /* SecondView */,
 				9550D8861BF83E4B00430942 /* SCScrollPageView.h */,
 				9550D8871BF83E4B00430942 /* SCScrollPageView.m */,
-				9550D8881BF83E4B00430942 /* SecondView */,
 			);
 			path = ScrollPage;
 			sourceTree = "<group>";
@@ -1583,7 +1548,6 @@
 		9550D90A1BF83E4B00430942 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9550D9551BF83E4B00430942 /* Util.swift */,
 				9550D9131BF83E4B00430942 /* ServiceUtil.swift */,
 				9550D90B1BF83E4B00430942 /* Amazon */,
 				9550D90D1BF83E4B00430942 /* Facebook */,
@@ -1631,12 +1595,12 @@
 		9550D9181BF83E4B00430942 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9550D9191BF83E4B00430942 /* Image */,
-				9550D9421BF83E4B00430942 /* Popover */,
 				9550D9461BF83E4B00430942 /* Popup */,
+				9550D9421BF83E4B00430942 /* Popover */,
+				9550D9531BF83E4B00430942 /* Video */,
+				9550D9191BF83E4B00430942 /* Image */,
 				9550D94A1BF83E4B00430942 /* Storyboard */,
 				9550D9501BF83E4B00430942 /* Tabbar */,
-				9550D9531BF83E4B00430942 /* Video */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1754,7 +1718,6 @@
 				9550D96E1BF83E4B00430942 /* BBBadgeBarButtonItem */,
 				9550D9711BF83E4B00430942 /* BFPaperCheckbox */,
 				9550D9751BF83E4B00430942 /* BFPaperColors */,
-				9550D9791BF83E4B00430942 /* BLKFlexibleHeightBar */,
 				9550D97A1BF83E4B00430942 /* FBSDKCoreKit.framework */,
 				9550D97B1BF83E4B00430942 /* FBSDKLoginKit.framework */,
 				9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */,
@@ -1845,13 +1808,6 @@
 				9550D9781BF83E4B00430942 /* UIColor+BFPaperColors.m */,
 			);
 			path = "UIColor+BFPaperColors";
-			sourceTree = "<group>";
-		};
-		9550D9791BF83E4B00430942 /* BLKFlexibleHeightBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BLKFlexibleHeightBar;
 			sourceTree = "<group>";
 		};
 		9550D97D1BF83E4B00430942 /* FHSTwitterEngine */ = {
@@ -2380,7 +2336,6 @@
 				9550DAC51BF83E4C00430942 /* AbstractPopover.swift in Sources */,
 				9550DA711BF83E4C00430942 /* SCMediaTypeConfiguration.m in Sources */,
 				9550DA111BF83E4C00430942 /* NetOp.m in Sources */,
-				9550DA4D1BF83E4C00430942 /* BottomSheet.m in Sources */,
 				9550DA6A1BF83E4C00430942 /* SCAudioTools.m in Sources */,
 				9550DA3A1BF83E4C00430942 /* ReLoginViewController.swift in Sources */,
 				9550DA731BF83E4C00430942 /* SCPlayer.m in Sources */,
@@ -2449,7 +2404,6 @@
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
-				9550DA4E1BF83E4C00430942 /* MultiSelectionViewController.m in Sources */,
 				9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */,
 				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
@@ -2513,13 +2467,11 @@
 				9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */,
 				9550DA391BF83E4C00430942 /* LifelogViewController.m in Sources */,
 				9550DA311BF83E4C00430942 /* AddressController.m in Sources */,
-				9550DA4F1BF83E4C00430942 /* ValuePopup.m in Sources */,
 				9550DA941BF83E4C00430942 /* NullSafe.m in Sources */,
 				9550DAF91BF83E4C00430942 /* SDImageCache.m in Sources */,
 				9550DA741BF83E4C00430942 /* SCProcessingQueue.m in Sources */,
 				9550DA331BF83E4C00430942 /* FacebookController.m in Sources */,
 				9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */,
-				9550DA511BF83E4C00430942 /* SCPostingViewController.m in Sources */,
 				9550DA281BF83E4C00430942 /* CategoryPopupViewController.m in Sources */,
 				9550DA321BF83E4C00430942 /* DetailController.m in Sources */,
 				9550DA791BF83E4C00430942 /* SCRecordSession.m in Sources */,
