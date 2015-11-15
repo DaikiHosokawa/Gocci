@@ -1317,7 +1317,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o16-GD-sxO">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o16-GD-sxO" id="YSd-6X-re0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1399,7 +1399,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dPi-0Z-WsG">
-                            <rect key="frame" x="0.0" y="112" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="132" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
                             <items>
@@ -2350,12 +2350,12 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TeR-by-P1o"/>
+        <segue reference="Fvs-4k-dBf"/>
+        <segue reference="LdH-9F-OGI"/>
         <segue reference="hGf-pJ-NP9"/>
         <segue reference="JBx-nY-feb"/>
-        <segue reference="LdH-9F-OGI"/>
+        <segue reference="TeR-by-P1o"/>
         <segue reference="ZNT-8G-Vh8"/>
         <segue reference="KPO-WA-zUK"/>
-        <segue reference="Fvs-4k-dBf"/>
     </inferredMetricsTieBreakers>
 </document>

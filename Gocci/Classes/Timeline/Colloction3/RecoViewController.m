@@ -75,7 +75,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
     
-     
+    
     //  refreshConfiguration.minimumForStart = @0;
     //  refreshConfiguration.maximumForPull = @120;
     self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
@@ -92,7 +92,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-
+    
     __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
@@ -228,6 +228,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
+    NSLog(@"アクション");
+    
     UIActionSheet *actionsheet = nil;
     
     optionDic = [NSMutableDictionary dictionary];
@@ -248,6 +250,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
+}
+
+-(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        if (result) {
+            NSLog(@"result:%@",result);
+        }
+    }
+     ];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
