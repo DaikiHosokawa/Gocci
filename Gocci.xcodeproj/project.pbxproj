@@ -13,6 +13,9 @@
 		950045FE1BE2807700B80123 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FD1BE2807700B80123 /* libxml2.tbd */; };
 		950046001BE280A900B80123 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FF1BE280A900B80123 /* libz.tbd */; };
 		950046021BE280C400B80123 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950046011BE280C400B80123 /* libc++.tbd */; };
+		951347611BF9A47100EC14DB /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347601BF9A47100EC14DB /* GoogleMaps.framework */; };
+		951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 951347641BF9A63000EC14DB /* GoogleMaps.bundle */; };
+		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
@@ -323,6 +326,9 @@
 		950045FD1BE2807700B80123 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		950045FF1BE280A900B80123 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		950046011BE280C400B80123 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		951347601BF9A47100EC14DB /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		951347641BF9A63000EC14DB /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../test/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
@@ -835,6 +841,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */,
+				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
+				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
 				950046021BE280C400B80123 /* libc++.tbd in Frameworks */,
 				950046001BE280A900B80123 /* libz.tbd in Frameworks */,
 				9550DAE31BF83E4C00430942 /* FBSDKLoginKit.framework in Frameworks */,
@@ -852,8 +861,7 @@
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
-				FF0BE450193ED5C5001A0053 /* CoreText.framework in Frameworks */,
-				FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */,
+				951347611BF9A47100EC14DB /* GoogleMaps.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
 				FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */,
 				FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */,
@@ -1181,12 +1189,9 @@
 			isa = PBXGroup;
 			children = (
 				9550D84C1BF83E4B00430942 /* Colloction */,
-				9550D8521BF83E4B00430942 /* HEADER_TEST */,
 				9550D8531BF83E4B00430942 /* Map */,
 				9550D8561BF83E4B00430942 /* Settings */,
 				9550D85A1BF83E4B00430942 /* Table */,
-				9550D85F1BF83E4B00430942 /* TEST */,
-				9550D8621BF83E4B00430942 /* TestUI */,
 				9550D8631BF83E4B00430942 /* UsersViewController.h */,
 				9550D8641BF83E4B00430942 /* UsersViewController.m */,
 			);
@@ -1210,13 +1215,6 @@
 			children = (
 			);
 			path = Table;
-			sourceTree = "<group>";
-		};
-		9550D8521BF83E4B00430942 /* HEADER_TEST */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HEADER_TEST;
 			sourceTree = "<group>";
 		};
 		9550D8531BF83E4B00430942 /* Map */ = {
@@ -1247,36 +1245,6 @@
 				9550D85E1BF83E4B00430942 /* TableViewController.m */,
 			);
 			path = Table;
-			sourceTree = "<group>";
-		};
-		9550D85F1BF83E4B00430942 /* TEST */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8601BF83E4B00430942 /* MXSegmentedPager */,
-				9550D8611BF83E4B00430942 /* VGParallaxHeader */,
-			);
-			path = TEST;
-			sourceTree = "<group>";
-		};
-		9550D8601BF83E4B00430942 /* MXSegmentedPager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MXSegmentedPager;
-			sourceTree = "<group>";
-		};
-		9550D8611BF83E4B00430942 /* VGParallaxHeader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VGParallaxHeader;
-			sourceTree = "<group>";
-		};
-		9550D8621BF83E4B00430942 /* TestUI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TestUI;
 			sourceTree = "<group>";
 		};
 		9550D8651BF83E4B00430942 /* Profile_other */ = {
@@ -2076,6 +2044,7 @@
 		FF54EFE119149A1800025DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				951347661BF9A77C00EC14DB /* CoreBluetooth.framework */,
 				950046011BE280C400B80123 /* libc++.tbd */,
 				950045FF1BE280A900B80123 /* libz.tbd */,
 				950045FD1BE2807700B80123 /* libxml2.tbd */,
@@ -2083,6 +2052,8 @@
 				950045FA1BE2801900B80123 /* libsqlite3.tbd */,
 				9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */,
 				954A74681BC65D8600BD5573 /* Contacts.framework */,
+				951347601BF9A47100EC14DB /* GoogleMaps.framework */,
+				951347641BF9A63000EC14DB /* GoogleMaps.bundle */,
 				954A74691BC65D8600BD5573 /* ContactsUI.framework */,
 				53A267C31AB3CF4A00CD759A /* Social.framework */,
 				BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */,
@@ -2207,6 +2178,7 @@
 				9550DAA21BF83E4C00430942 /* btn_delete_black@2x.png in Resources */,
 				9550DB141BF83E4C00430942 /* icon-info@2x.png in Resources */,
 				9550DA921BF83E4C00430942 /* Gocci-Info.plist in Resources */,
+				951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */,
 				9550DB131BF83E4C00430942 /* icon-info.png in Resources */,
 				9550DAC01BF83E4C00430942 /* tabbaritem_timeline_sel.png in Resources */,
 				9550DA5E1BF83E4C00430942 /* SCSecondView_5_5_inch.xib in Resources */,
@@ -2742,7 +2714,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
@@ -2796,7 +2768,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.inase.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";

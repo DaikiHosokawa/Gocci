@@ -126,21 +126,24 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)changeSegmentedControlValue
 {
-    if(currentViewController_){
-        [currentViewController_ willMoveToParentViewController:nil];
-        [currentViewController_.view removeFromSuperview];
-        [currentViewController_ removeFromParentViewController];
+    if(segmentControll.selectedSegmentIndex == 2){
+        [self performSegueWithIdentifier:@"goMap" sender:self];
+    }else{
+        if(currentViewController_){
+            [currentViewController_ willMoveToParentViewController:nil];
+            [currentViewController_.view removeFromSuperview];
+            [currentViewController_ removeFromParentViewController];
+        }
+        
+        UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
+        
+        [self addChildViewController:nextViewController];
+        nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
+        [changeView addSubview:nextViewController.view];
+        [nextViewController didMoveToParentViewController:self];
+        
+        currentViewController_ = nextViewController;
     }
-    
-    UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
-    
-    [self addChildViewController:nextViewController];
-    nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
-    [changeView addSubview:nextViewController.view];
-    [nextViewController didMoveToParentViewController:self];
-    
-    currentViewController_ = nextViewController;
-    
 }
 
 
@@ -190,6 +193,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
    
     [self _fetchProfile_other];
+    [segmentControll setSelectedSegmentIndex:0];
     
 }
 
@@ -275,6 +279,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = [header objectForKey:@"user_id"];
     }
+    
+    if ([segue.identifier isEqualToString:@"goMap"])
+    {
+        //ここでパラメータを渡す
+        MapViewController  *mapVC = segue.destinationViewController;
+        mapVC.receiveDic3 = post;
+    }
 }
 
 
@@ -343,11 +354,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (IBAction) back:(id)sender
 {
-    [UIView transitionWithView:self.navigationController.view
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{ [self.navigationController popViewControllerAnimated:NO]; }
-                    completion:NULL];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
