@@ -205,31 +205,12 @@
                         <segue destination="VMK-6R-9Bt" kind="show" identifier="goCheer" id="Foo-dB-2J8">
                             <nil key="action"/>
                         </segue>
-                        <segue destination="hCy-KS-u3E" kind="show" identifier="goMap" id="6zW-ga-DUW">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="EBL-U9-xrm" kind="push" identifier="goMap" id="JPF-GG-2Lt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGg-wC-S6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3298" y="-2920"/>
-        </scene>
-        <!--Map View Controller-->
-        <scene sceneID="N7O-3E-HT2">
-            <objects>
-                <viewController id="hCy-KS-u3E" customClass="MapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DgB-qz-471">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydt-SQ-Ro2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2746" y="-2925"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="MWr-zQ-WVd">
@@ -1317,7 +1298,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o16-GD-sxO">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o16-GD-sxO" id="YSd-6X-re0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1399,7 +1380,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dPi-0Z-WsG">
-                            <rect key="frame" x="0.0" y="132" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="112" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
                             <items>
@@ -2120,11 +2101,12 @@
                         <segue destination="VMK-6R-9Bt" kind="show" identifier="goCheer" id="ZNT-8G-Vh8">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="coo-Og-tVj" kind="push" identifier="goMap" id="c0g-82-fzf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bm0-0q-d8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="-4077"/>
+            <point key="canvasLocation" x="1690" y="-4102"/>
         </scene>
         <!--Follow-->
         <scene sceneID="We2-1B-2Bf">
@@ -2316,9 +2298,92 @@
             </objects>
             <point key="canvasLocation" x="-6724" y="-5599"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="VCE-FL-2Of">
+            <objects>
+                <viewController id="coo-Og-tVj" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lw3-Gj-A3G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="lDX-pe-DW8" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qB5-K4-hGc">
+                                <rect key="frame" x="15" y="20" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="coo-Og-tVj" eventType="touchUpInside" id="kgp-Aw-Gjf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TJM-HB-qbJ"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="backButton" destination="qB5-K4-hGc" id="FuR-3o-Qjc"/>
+                        <outlet property="map" destination="lDX-pe-DW8" id="rpG-bF-6mQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3CW-4Z-pis" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="-4102"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="tYQ-ZR-ES5">
+            <objects>
+                <viewController id="EBL-U9-xrm" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QPW-HH-Gs7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="nh4-p7-8Rg" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="682"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QWP-8i-qmV">
+                                <rect key="frame" x="15" y="20" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="EBL-U9-xrm" eventType="touchUpInside" id="U5y-sy-16h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cw0-2d-Fej"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="backButton" destination="QWP-8i-qmV" id="2Yo-Jy-3eg"/>
+                        <outlet property="map" destination="nh4-p7-8Rg" id="6lE-gj-n8v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1i-uw-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2767" y="-2929"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton" width="60" height="60"/>
+        <image name="Backbutton_map" width="60" height="60"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="backButton-2" width="30" height="50"/>
@@ -2351,11 +2416,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fvs-4k-dBf"/>
-        <segue reference="LdH-9F-OGI"/>
+        <segue reference="qh1-2C-pXX"/>
+        <segue reference="aMt-WG-BmS"/>
+        <segue reference="YMD-DR-Sl9"/>
+        <segue reference="knF-4T-ZwF"/>
+        <segue reference="Foo-dB-2J8"/>
         <segue reference="hGf-pJ-NP9"/>
-        <segue reference="JBx-nY-feb"/>
-        <segue reference="TeR-by-P1o"/>
-        <segue reference="ZNT-8G-Vh8"/>
-        <segue reference="KPO-WA-zUK"/>
     </inferredMetricsTieBreakers>
 </document>

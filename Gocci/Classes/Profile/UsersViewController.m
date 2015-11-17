@@ -69,9 +69,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     
     [super viewWillAppear:animated];
-    NSLog(@"隠す");
     [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
     [self _fetchProfile];
+    [segmentControll setSelectedSegmentIndex:0];
 }
 
 - (void)viewDidLoad {
@@ -150,6 +150,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)changeSegmentedControlValue
 {
+    if(segmentControll.selectedSegmentIndex == 2){
+       [self performSegueWithIdentifier:@"goMap" sender:self];
+    }else{
     if(currentViewController_){
         [currentViewController_ willMoveToParentViewController:nil];
         [currentViewController_.view removeFromSuperview];
@@ -164,7 +167,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [nextViewController didMoveToParentViewController:self];
     
     currentViewController_ = nextViewController;
-    
+    }
 }
 
 
@@ -249,6 +252,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+    }
+    
+    if ([segue.identifier isEqualToString:@"goMap"])
+    {
+        //ここでパラメータを渡す
+        MapViewController  *mapVC = segue.destinationViewController;
+        mapVC.receiveDic3 = post;
     }
     
 }

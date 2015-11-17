@@ -20,5 +20,7 @@
 @property (nonatomic, strong) NSDictionary *receiveDic3;
 @property (nonatomic) CGRect soda;
 
+@property (weak, nonatomic) IBOutlet GMSMapView *map;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @end

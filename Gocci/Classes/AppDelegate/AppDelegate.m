@@ -205,28 +205,6 @@
 
 
 
--(void)checkGPS{
-    
-    NSLog(@"open checkGPS");
-    // CLLocationManagerのインスタンスを作成
-    locationManager = [[CLLocationManager alloc] init];
-    // デリゲートを設定
-    locationManager.delegate = self;
-    // 更新頻度(メートル)
-    locationManager.distanceFilter = 100;
-    // 取得精度
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    // iOS8の対応
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) { // iOS8以降
-        // 位置情報測位の許可を求めるメッセージを表示する
-        [locationManager requestWhenInUseAuthorization]; // 使用中だけ
-        
-    } else { // iOS7以前
-        // 測位開始
-        [locationManager startUpdatingLocation];
-    }
-}
-
 // 異常終了を検知した場合に呼び出されるメソッド
 void exceptionHandler(NSException *exception) {
     NSLog(@"%@", exception.name);
@@ -253,47 +231,12 @@ void exceptionHandler(NSException *exception) {
 }
 
 
-
-- (void)locationManager:(CLLocationManager *)manager
-didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{//iOS8対応
-    if (status == kCLAuthorizationStatusAuthorizedAlways ||
-        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        // 位置測位スタート
-        [locationManager startUpdatingLocation];
-        
-        if (status == kCLAuthorizationStatusNotDetermined) {
-            // ユーザが位置情報の使用を許可していない
-            [locationManager requestWhenInUseAuthorization]; // 常に許可
-            
-        }
-    }
-}
-
-
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"applicationWillResignActive");
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager stopUpdatingLocation]; //測位停止
-}
-
-
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
 #if !(TARGET_IPHONE_SIMULATOR)
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 #endif
-    
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    // Facebook
-//    [FBAppEvents activateApp];
-//    [FBAppCall handleDidBecomeActiveWithSession:self.session];
     
 }
 

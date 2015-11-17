@@ -24,18 +24,17 @@
 	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>gocci</string>
-                <string>fb673123156062598</string>
-                <string>fb148392115499214</string>
-
-            </array>
-        </dict>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gocci</string>
+				<string>fb673123156062598</string>
+				<string>fb148392115499214</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>2.0.0</string>
 	<key>FacebookAppID</key>
@@ -119,6 +118,13 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>twimg.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -126,19 +132,14 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-            <key>localhost</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-            </dict>
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>常に許可</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>アプリ使用中のみ許可</string>
+	<key>Set View controller-based status bar appearance</key>
+	<false/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -146,8 +147,6 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
-	<key>Set View controller-based status bar appearance</key>
-	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -137,7 +137,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75g-q7-lO4">
-                                        <rect key="frame" x="8" y="18" width="33" height="24"/>
+                                        <rect key="frame" x="15" y="33" width="33" height="24"/>
                                         <animations/>
                                         <state key="normal" image="ic_settings_white"/>
                                         <connections>
@@ -145,7 +145,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1v-hl-lKO">
-                                        <rect key="frame" x="337" y="18" width="30" height="24"/>
+                                        <rect key="frame" x="327" y="33" width="30" height="24"/>
                                         <animations/>
                                         <state key="normal" image="ic_notifications_active_white"/>
                                     </button>
@@ -200,15 +200,36 @@
                     <view key="view" contentMode="scaleToFill" id="hlu-cC-du9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inH-8Z-qwm" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWy-yc-vTj">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <animations/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="rCy-xb-CpD" eventType="touchUpInside" id="MwC-6Y-Klw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backButton" destination="fWy-yc-vTj" id="vWG-KR-qKH"/>
+                        <outlet property="map" destination="inH-8Z-qwm" id="wW4-rc-nOK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv0-UY-4YB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2746" y="-2925"/>
+            <point key="canvasLocation" x="-2786.5" y="-3003.5"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="cXe-zQ-XuJ">
@@ -762,7 +783,7 @@
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleAspectFit" id="JTR-Lc-xze">
-                            <rect key="frame" x="0.0" y="64" width="375" height="430"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exeBar" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-WF-A89">
@@ -900,7 +921,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample3TableViewCell" rowHeight="46" id="Gl6-iD-fGT" customClass="Sample3TableViewCell">
-                                <rect key="frame" x="0.0" y="516" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="452" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gl6-iD-fGT" id="N1F-g2-Gcs">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -2182,14 +2203,6 @@
                                             <action selector="light:" destination="IgD-Ad-4hs" eventType="touchUpInside" id="SZU-Sg-65v"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-Bt-hBS">
-                                        <rect key="frame" x="15" y="20" width="30" height="30"/>
-                                        <animations/>
-                                        <state key="normal" image="Backbutton"/>
-                                        <connections>
-                                            <action selector="back:" destination="IgD-Ad-4hs" eventType="touchUpInside" id="s0o-aE-YjF"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qS2-vf-cmy">
                                         <rect key="frame" x="147" y="26" width="80" height="74"/>
                                         <animations/>
@@ -2200,6 +2213,14 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-Bt-hBS">
+                                        <rect key="frame" x="17" y="26" width="33" height="33"/>
+                                        <animations/>
+                                        <state key="normal" image="Backbutton"/>
+                                        <connections>
+                                            <action selector="back:" destination="IgD-Ad-4hs" eventType="touchUpInside" id="s0o-aE-YjF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.91030746698379517" green="0.47067314386367798" blue="0.34517484903335571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2226,15 +2247,59 @@
                         <segue destination="H10-d4-zm9" kind="show" identifier="goFollow" id="g3n-kx-BDj"/>
                         <segue destination="bni-34-er3" kind="show" identifier="goFollowee" id="4ab-y8-Qck"/>
                         <segue destination="Pil-yP-ffM" kind="show" identifier="goCheer" id="Jx8-B4-NT3"/>
+                        <segue destination="OwK-r9-yBH" kind="show" identifier="goMap" id="1I9-Uj-tqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jdd-Uf-TV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1650.5" y="-4076.5"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="wHs-Pw-OYq">
+            <objects>
+                <viewController id="OwK-r9-yBH" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ngf-Tt-yz5"/>
+                        <viewControllerLayoutGuide type="bottom" id="PrR-ZF-Rsz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZxK-xJ-x0q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nla-6D-Dxc" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ9-Lp-Fjm">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <animations/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="OwK-r9-yBH" eventType="touchUpInside" id="GzC-lu-XQc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backButton" destination="QZ9-Lp-Fjm" id="jVV-dB-Thu"/>
+                        <outlet property="map" destination="Nla-6D-Dxc" id="SQI-yD-vZ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFS-t1-h4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2151.5" y="-4076.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton" width="60" height="60"/>
+        <image name="Backbutton_map" width="60" height="60"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="backButton-2" width="30" height="50"/>
@@ -2266,13 +2331,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m10-Cb-1kc"/>
-        <segue reference="FOa-6V-u96"/>
-        <segue reference="pGd-UE-f06"/>
-        <segue reference="Jx8-B4-NT3"/>
-        <segue reference="hGv-8z-0ZJ"/>
-        <segue reference="L0G-no-fLl"/>
         <segue reference="jr3-37-9ka"/>
+        <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="had-LT-zY9"/>
+        <segue reference="hGv-8z-0ZJ"/>
+        <segue reference="ren-zg-h6h"/>
+        <segue reference="L0G-no-fLl"/>
+        <segue reference="pGd-UE-f06"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
