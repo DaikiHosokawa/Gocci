@@ -11,6 +11,38 @@ import Foundation
 
 class ServiceUtil {
     
+    class func performRequest(
+        request: NSURLRequest,
+        onSuccess: ((statusCode: Int, data: NSData)->())?,
+        onFailure: ((errorMessage: String)->())? )
+    {
+        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        config.allowsCellularAccess = true
+        // WARNING! ephemeral means nothing to disk. also NO COOKIES!!
+        let session = NSURLSession(configuration: config)
+        
+        let urlsessiontask = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            
+            guard error == nil else {
+                onFailure?(errorMessage: error?.localizedDescription ?? "No error message")
+                return
+            }
+            
+            guard let resp = response as? NSHTTPURLResponse else {
+                onFailure?(errorMessage: "Response is not an HTTP Response")
+                return
+            }
+            
+            guard let data = data else {
+                onFailure?(errorMessage: "No json data recieved")
+                return
+            }
+            
+            onSuccess?(statusCode: resp.statusCode, data: data)
+        }
+        
+        urlsessiontask.resume()
+    }
     
     private class func generateOAuthNonce() -> String
     {

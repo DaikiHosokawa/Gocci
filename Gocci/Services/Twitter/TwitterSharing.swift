@@ -44,15 +44,14 @@ class TwitterSharing {
         return 140 - overhead - msg.length
     }
     
-    // unlike facebook, this only works with local files
-    func tweetVideo(mp4URL mp4URL: NSURL, message: String) {
+    func tweetVideo(localVideoFileURL localVideoFileURL: NSURL, message: String) {
         
         guard videoTweetMessageRemainingCharacters(message) >= 0 else {
             self.onFailure?(error: .ERROR_TWITTER_API("Tweet is over 140 chars. Video tweets need an extra 25 chars :("))
             return
         }
         
-        self.videoUploadINIT(mp4URL) { mediaID in
+        self.videoUploadINIT(localVideoFileURL) { mediaID in
             self.tweetWithMediaIDs(message, mediaMediaIDs: [mediaID])
         }
     }

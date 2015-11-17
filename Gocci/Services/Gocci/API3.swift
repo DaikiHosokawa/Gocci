@@ -1749,6 +1749,7 @@ class API3 {
                 var badge_num: String!
                 var cognito_token: String!
             }
+
             
             static let localErrorMessageTable: [LocalCode: String] = {
                 var res: [LocalCode: String] = [:]
