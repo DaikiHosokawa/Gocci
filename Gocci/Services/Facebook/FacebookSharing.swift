@@ -12,17 +12,21 @@ import FBSDKShareKit
 
 
 
-@ objc class FacebookSharing: NSObject {
-    
-
+@objc class FacebookSharing: NSObject {
     
     let fromViewController: UIViewController
     let dummyDelegate = FaceBookShareDelegateDummyWrapper()
 
 
-    var onSuccess: ((fbPostID: String)->Void)? = nil
-    var onFailure: ((errorMessage: String)->Void)? = nil
+    var onSuccess: ((facebookPostID: String)->Void)? = nil
+    var onFailure: ((error: FacebookSharingError)->Void)? = nil
     var onCancel: (()->Void)? = nil
+    
+    enum FacebookSharingError: ErrorType {
+        case ERROR_FACEBOOK_API(String)
+        case ERROR_NETWORK(String)
+        case ERROR_LOGIN_TOKEN_EXPIRED
+    }
     
 
 
@@ -37,11 +41,11 @@ import FBSDKShareKit
 
         func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
             let postid = (results as? [String:String])?["postId"]
-            master?.onSuccess?(fbPostID: postid ?? "dialog share = no post id")
+            master?.onSuccess?(facebookPostID: postid ?? "dialog share = no post id")
             //master = nil // breaks the strong reference cycle and releases both this instane and the master
         }
         func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
-            master?.onFailure?(errorMessage: error.localizedDescription)
+            master?.onFailure?(error: .ERROR_FACEBOOK_API(error.localizedDescription))
             //master = nil // breaks the strong reference cycle and releases both this instane and the master
         }
         func sharerDidCancel(sharer: FBSDKSharing!) {
@@ -51,12 +55,106 @@ import FBSDKShareKit
     }
 
     
-    func shareVideoOnFacebook(mp4URL mp4URL: String, title: String, description: String) {
+    // TODO title
+    // the thumbnail does not work, not my fault, facebooks fault. They don't support their own API...
+    func shareVideoOnFacebook(fbtoken: String, localVideoFileURL: NSURL, description: String, thumbnail: NSURL?) {
         
-//        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
-//        let rawData = NSData(contentsOfURL: videoURL)!
-//        print("video length: " + String(rawData.length))
+        // copies the behaviour of:
+        // curl -F "access_token=$TOKEN" -F 'source=@/tmp/twosec.mp4' -F "description=Test $RANDOM" 'https://graph-video.facebook.com/me/videos'
 
+        let url = NSURL(string: "https://graph-video.facebook.com/me/videos")!
+        
+        guard let rawVideoData = NSData(contentsOfURL: localVideoFileURL) else {
+            onFailure?(error: .ERROR_FACEBOOK_API("Could not open video file and turn it into NSData"))
+            return
+        }
+        
+        var rawThumbData: NSData? = nil
+        if thumbnail != nil {
+            rawThumbData = NSData(contentsOfURL: thumbnail!)
+        }
+        
+        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 30.0)
+        request.HTTPMethod = "POST"
+        request.HTTPShouldHandleCookies = false
+        
+        
+        /* HAS TO LOOK LIKE THIS:
+        
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="access_token"
+
+        CAAJkM7KbcYYBA......
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="source"; filename="twosec.mp4"
+        Content-Type: application/octet-stream
+
+        VIDEO_DATA
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="description"
+
+        Test 13918
+        --------------------------a2ecb5ac777fef89--
+        */
+        
+        let boundary = Util.randomAlphaNumericStringWithLength(32)
+        request.setValue("multipart/form-data; boundary=" + boundary, forHTTPHeaderField: "Content-Type")
+        
+        let bodydata = NSMutableData()
+        
+        var tmp = ""
+        tmp += "--" + boundary + "\r\n"
+        tmp += "Content-Disposition: form-data; name=\"access_token\""  + "\r\n\r\n" + fbtoken
+        tmp += "\r\n--" + boundary + "\r\n"
+        tmp += "Content-Disposition: form-data; name=\"source\"; filename=\"gocci.mp4\"" + "\r\n"
+        tmp += "Content-Type: application/octet-stream" + "\r\n\r\n"
+        bodydata.appendData(tmp.asUTF8Data())
+        
+        bodydata.appendData(rawVideoData)
+        
+        if rawThumbData != nil {
+            tmp = ""
+            tmp += "\r\n--" + boundary + "\r\n"
+            tmp += "Content-Disposition: form-data; name=\"thumb\"; filename=\"thumb.jpg\"" + "\r\n"
+            tmp += "Content-Type: application/octet-stream" + "\r\n\r\n"
+//            tmp += "Content-Type: image/jpeg" + "\r\n\r\n"
+            bodydata.appendData(tmp.asUTF8Data())
+            bodydata.appendData(rawThumbData!)
+        }
+
+        tmp = ""
+        tmp += "\r\n--" + boundary + "\r\n"
+        tmp += "Content-Disposition: form-data; name=\"description\""  + "\r\n\r\n" + description
+        tmp += "\r\n--" + boundary + "--\r\n"
+        bodydata.appendData(tmp.asUTF8Data())
+
+        request.setValue(String(bodydata.length), forHTTPHeaderField: "Content-Length")
+        request.HTTPBody = bodydata
+        
+        ServiceUtil.performRequest(request,
+            onSuccess: { (statusCode, data) -> () in
+                if statusCode == 200 {
+                    self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
+                }
+                else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
+                    self.onFailure?(error: .ERROR_LOGIN_TOKEN_EXPIRED)
+                }
+                else {
+                 //   print(JSON(data: data).rawString() ?? "json unparseable")
+                    let fberr = JSON(data: data)["error"]["message"].string ?? "no error message"
+                    self.onFailure?(error: .ERROR_FACEBOOK_API("HTTP Code: \(statusCode). FACEBOOK ERROR: \(fberr)"))
+                }
+            },
+            onFailure: { errorMessage in
+                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
+            }
+        )
+        
+    }
+    
+
+    
+    func shareVideoOnFacebookIndirect(mp4URL mp4URL: String, title: String, description: String) {
         
         let honban = { ()->Void in
             let params = [
@@ -76,11 +174,11 @@ import FBSDKShareKit
             
             rq.startWithCompletionHandler { (conn, result, error) -> Void in
                 if error != nil {
-                    self.onFailure?(errorMessage: error.localizedDescription)
+                    self.onFailure?(error: .ERROR_FACEBOOK_API(error.localizedDescription))
                 }
                 else {
                     let postid = (result as? [String:String])?["id"]
-                    self.onSuccess?(fbPostID: postid ?? "Posting successful, but no postid")
+                    self.onSuccess?(facebookPostID: postid ?? "Posting successful, but no postid")
                 }
             }
             
@@ -91,7 +189,7 @@ import FBSDKShareKit
             case .FB_LOGIN_CANCELED:
                 self.onCancel?()
             case .FB_PROVIDER_FAIL:
-                self.onFailure?(errorMessage: "ERROR: Facebook Down")
+                self.onFailure?(error: .ERROR_NETWORK("Facebook Down"))
             case .FB_LOGIN_SUCCESS:
                 honban()
             }
@@ -137,7 +235,7 @@ import FBSDKShareKit
             case .FB_LOGIN_CANCELED:
                 self.onCancel?()
             case .FB_PROVIDER_FAIL:
-                self.onFailure?(errorMessage: "ERROR: Facebook Down")
+                self.onFailure?(error: .ERROR_NETWORK("Facebook Down"))
             case .FB_LOGIN_SUCCESS:
                 let shareDialog = FBSDKShareDialog()
                 shareDialog.shareContent = self.prepareFacebookStoryPost(clickURL, thumbURL, mp4URL, title, description)
@@ -157,7 +255,7 @@ import FBSDKShareKit
             case .FB_LOGIN_CANCELED:
                 self.onCancel?()
             case .FB_PROVIDER_FAIL:
-                self.onFailure?(errorMessage: "ERROR: Facebook Down")
+                self.onFailure?(error: .ERROR_NETWORK("Facebook Down"))
             case .FB_LOGIN_SUCCESS:
                 let shareAPI = FBSDKShareAPI()
                 self.dummyDelegate.master = self // keeps this and the dummy in memory until the delegate call (ARC hack)
