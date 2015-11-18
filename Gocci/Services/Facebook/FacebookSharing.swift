@@ -60,7 +60,7 @@ import FBSDKShareKit
     func shareVideoOnFacebook(fbtoken: String, localVideoFileURL: NSURL, description: String, thumbnail: NSURL?) {
         
         // copies the behaviour of:
-        // curl -F "access_token=$TOKEN" -F 'source=@/tmp/twosec.mp4' -F "description=Test $RANDOM" 'https://graph-video.facebook.com/me/videos'
+        // curl -F "access_token=$TOKEN" -F 'source=@videofile.mp4' -F "description=" 'https://graph-video.facebook.com/me/videos'
 
         let url = NSURL(string: "https://graph-video.facebook.com/me/videos")!
         
@@ -96,40 +96,19 @@ import FBSDKShareKit
         Test 13918
         --------------------------a2ecb5ac777fef89--
         */
-        
-        let boundary = Util.randomAlphaNumericStringWithLength(32)
-        request.setValue("multipart/form-data; boundary=" + boundary, forHTTPHeaderField: "Content-Type")
-        
-        let bodydata = NSMutableData()
-        
-        var tmp = ""
-        tmp += "--" + boundary + "\r\n"
-        tmp += "Content-Disposition: form-data; name=\"access_token\""  + "\r\n\r\n" + fbtoken
-        tmp += "\r\n--" + boundary + "\r\n"
-        tmp += "Content-Disposition: form-data; name=\"source\"; filename=\"gocci.mp4\"" + "\r\n"
-        tmp += "Content-Type: application/octet-stream" + "\r\n\r\n"
-        bodydata.appendData(tmp.asUTF8Data())
-        
-        bodydata.appendData(rawVideoData)
-        
+        let formdata = ServiceUtil.FormData()
+        request.setValue("multipart/form-data; boundary=" + formdata.boundary, forHTTPHeaderField: "Content-Type")
+
+        formdata.appendDisposition(name: "access_token", value: fbtoken)
+        formdata.appendFileDisposition(name: "source", filename: "gocci.mp4", data: rawVideoData)
         if rawThumbData != nil {
-            tmp = ""
-            tmp += "\r\n--" + boundary + "\r\n"
-            tmp += "Content-Disposition: form-data; name=\"thumb\"; filename=\"thumb.jpg\"" + "\r\n"
-            tmp += "Content-Type: application/octet-stream" + "\r\n\r\n"
-//            tmp += "Content-Type: image/jpeg" + "\r\n\r\n"
-            bodydata.appendData(tmp.asUTF8Data())
-            bodydata.appendData(rawThumbData!)
+            formdata.appendFileDisposition(name: "thumb", filename: "thumb.jpg", data: rawThumbData!)
         }
-
-        tmp = ""
-        tmp += "\r\n--" + boundary + "\r\n"
-        tmp += "Content-Disposition: form-data; name=\"description\""  + "\r\n\r\n" + description
-        tmp += "\r\n--" + boundary + "--\r\n"
-        bodydata.appendData(tmp.asUTF8Data())
-
-        request.setValue(String(bodydata.length), forHTTPHeaderField: "Content-Length")
-        request.HTTPBody = bodydata
+        
+        formdata.appendDisposition(name: "description", value: description)
+        
+        request.HTTPBody = formdata.generateRequestBody()
+        request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
         
         ServiceUtil.performRequest(request,
             onSuccess: { (statusCode, data) -> () in

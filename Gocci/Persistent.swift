@@ -35,8 +35,18 @@ class PersistentDataStorage {
     }
     
     var identity_id: String? {
-        get { return cache.identity_id ?? defaults.identity_id }
+        get { return cache.identity_id }
         set(v) { cache.identity_id = v ; sud.setString(v, forKey: "identity_id") }
+    }
+    
+    var twitter_key: String? {
+        get { return cache.twitter_key }
+        set(v) { cache.twitter_key = v ; sud.setString(v, forKey: "twitter_key") }
+    }
+    
+    var twitter_secret: String? {
+        get { return cache.twitter_secret }
+        set(v) { cache.twitter_secret = v ; sud.setString(v, forKey: "twitter_secret") }
     }
     
     func reloadAllDataFromDisk() {
@@ -44,6 +54,8 @@ class PersistentDataStorage {
         cache.userIsConnectedViaFacebook = sud.boolForKey("userIsConnectedViaFacebook")
         cache.userIsConnectedViaTwitter = sud.boolForKey("userIsConnectedViaTwitter")
         cache.identity_id = sud.stringForKey("identity_id")
+        cache.twitter_key = sud.stringForKey("twitter_key")
+        cache.twitter_secret = sud.stringForKey("twitter_secret")
     }
     
     
@@ -52,13 +64,14 @@ class PersistentDataStorage {
         var userIsConnectedViaFacebook: Bool?
         var userIsConnectedViaTwitter: Bool?
         var identity_id: String?
+        var twitter_key: String?
+        var twitter_secret: String?
     }
     
     struct InternalDefaults {
         let passwordWasSetByTheUser: Bool = false
         let userIsConnectedViaFacebook: Bool = false
         let userIsConnectedViaTwitter: Bool = false
-        var identity_id: String = "identity_id is undefined"
     }
     
     var cache = InternalCache()
@@ -72,11 +85,6 @@ class PersistentDataStorage {
         sud.synchronize()
     }
     
-    private func storeBool(key: String, val: Bool) {
-        sud.setBool(val, forKey: key)
-    }
-    
-
     
     /// You can't continue the application flow after calling this method. You must start with the tutorial again
     /// because there will be no account data stored anymore
