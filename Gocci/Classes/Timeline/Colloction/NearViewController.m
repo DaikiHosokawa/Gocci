@@ -378,7 +378,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             case 1:
                 NSLog(@"Rest");
                 [self.delegate near:self rest_id:r_id];
-                //[vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
+                [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                 break;
             case 2:
                 NSLog(@"Problem");

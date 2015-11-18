@@ -13,9 +13,9 @@
 #import <Foundation/Foundation.h>
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
+#import "CollectionViewController.h"
 
-
-@interface UsersViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UsersViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSString *_postID;
     NSString *_postRestname;
