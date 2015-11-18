@@ -75,6 +75,103 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
+        let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
+        
+//        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+//        let token = "CAAJkM7KbcYYBAAnTZBzCuP1LIdxMdkqgZCkdbNwqZCY8zDOBZAMEJBDUmyYFkWq9IpZBD4iuLagNrEgZC1jIZCiWjAkGjPcBRXKW8QZBL30WiPP2ACeVJg8IdbzoATMZCfjyoerOJXk6wgfQGjgAJrf5LswGXE8pVMcLVeQJUGpDm9kqj4Wxk4DyFzNiGT0zQPBNN8PwWShaO8QZDZD"
+//
+//
+//
+//        let sharer = FacebookSharing(fromViewController: self)
+//        sharer.onSuccess = { print("Post ID: " + $0) }
+//        sharer.onFailure = { print("FUCK: \($0)") }
+//        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
+    
+        
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+
+        
+        let sharer = TwitterSharing(fromViewController: self)
+        sharer.onSuccess = { print("Post ID: " + $0) }
+        sharer.onFailure = { print("FUCK: \($0)") }
+        
+        let msg = Util.randomKanjiStringWithLength(115)
+        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
+    }
+        /*
+    
+        FacebookAuthentication.enableFullDebugOutput()
+
+        let token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+        
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+        let rawData = NSData(contentsOfURL: videoURL)!
+        print("video length: " + String(rawData.length))
+        
+//        NSMutableString* resultAsHexBytes = [NSMutableString string];
+        
+//        [data enumerateByteRangesUsingBlock:^(const void *bytes,
+//            NSRange byteRange,
+//            BOOL *stop) {
+//            
+//            //To print raw byte values as hex
+//            for (NSUInteger i = 0; i < byteRange.length; ++i) {
+//            [resultAsHexBytes appendFormat:@"%02x", ((uint8_t*)bytes)[i]];
+//            }
+//            
+//            }];
+        
+
+        var encoded: String = ""
+        
+        rawData.enumerateByteRangesUsingBlock { (buffer, range, stop) -> Void in
+
+            let bytes = UnsafePointer<UInt8>(buffer)
+            
+            var i: Int
+            for i = range.location; i < range.length; ++i {
+                encoded += String(format:"%%%02X", bytes[i])
+            }
+        }
+        
+     //   print(encoded)
+        
+        let params = [
+//            "title": Util.randomAlphaNumericStringWithLength(30),
+//            "description": Util.randomAlphaNumericStringWithLength(50),
+//            "source": encoded.asUTF8Data()
+//            "source": ("%7B" + encoded + "%7D")
+//            "source": encoded.asUTF8Data()
+//            "file_url": "http://btest.api.gocci.me/movie/twosec.mp4"
+            "source": "Dwd"
+        ]
+        
+        let params2: NSDictionary = [ "source": encoded]
+//        params.setValue(rawData, forKey: "source")[NSObject : AnyObject]
+        
+        // API reference: https://developers.facebook.com/docs/graph-api/video-uploads
+        //            let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params, HTTPMethod: "POST")
+        let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params as [NSObject : AnyObject], tokenString: token, version: "v2.5", HTTPMethod: "POST")
+        
+        rq.startWithCompletionHandler { (conn, result, error) -> Void in
+            if error != nil {
+                print(error.localizedDescription)
+            }
+            else {
+                let postid = (result as? [String:String])?["id"]
+                print(postid ?? "Posting successful, but no postid")
+            }
+        }
+        
+    }
+    
+    */
+    
+     /*
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
         let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
@@ -105,7 +202,7 @@ class DebugViewController : UIViewController {
 //        sharer.videoUploadINIT(videoURL)
         sharer.tweetVideo(mp4URL: videoURL, message: msg)
 
-    }
+    }*/
     /*
         //tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
   
@@ -155,7 +252,7 @@ class DebugViewController : UIViewController {
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
         
-        sharer.shareVideoOnFacebook(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
+        sharer.shareVideoOnFacebookIndirect(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
         
         print("Programmflow continues...")
 
