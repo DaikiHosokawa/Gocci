@@ -19,16 +19,18 @@
 static NSString * const reuseIdentifier = @"Cell";
 static const CGFloat kCellMargin = 5;
 
-@interface CollectionViewController ()<UICollectionViewDelegateFlowLayout>
+@interface CollectionViewController ()<UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,UIActionSheetDelegate,CollectionViewCellDelegate>
 
 @end
 
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 @implementation CollectionViewController{
     NSMutableArray *thumb;
     NSMutableArray *postid_;
     NSMutableArray *restname;
+    NSMutableDictionary *optionDic;
 }
 
 
@@ -56,14 +58,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = self.soda;
+    
     self.clearsSelectionOnViewWillAppear = NO;
-    [self.collectionView setDataSource:self];
-    [self.collectionView setDelegate:self];
-    [self.collectionView setFrame:self.view.bounds];
-    //self.collectionView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height- self.tabBarController.tabBar.bounds.size.height);
-    NSLog(@"height:%f",self.tabBarController.tabBar.bounds.size.height);
-    [self.view addSubview:self.collectionView];
-     [self setupData];
+    
+    [self.collectionView setBounces:YES];
+   
+    [self setupData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,25 +74,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)setupData
 {
    
-        // 取得したデータを self.posts に格納
-        thumb = [NSMutableArray arrayWithCapacity:0];
-        postid_ = [NSMutableArray arrayWithCapacity:0];
-        restname = [NSMutableArray arrayWithCapacity:0];
-        
-        NSArray* items = (NSArray*)_receiveDic2;
-        
-        for (NSDictionary *post in items) {
-            
-            NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
-            [thumb addObject:thumbGet];
-            NSDictionary *postidGet = [post objectForKey:@"post_id"];
-            [postid_ addObject:postidGet];
-            NSDictionary *restnameGet = [post objectForKey:@"restname"];
-            [restname addObject:restnameGet];
-        }
-    
-        NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
-        if ([thumb count] == 0) {
+    if ([_receiveDic2 count] == 0) {
             // 画像表示例文
             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
@@ -104,6 +86,46 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         }
 }
 
+-(void)collection:(CollectionViewCell *)cell didTapRestname:(NSString *)rest_id{
+    NSLog(@"restid:%@",rest_id);
+    UsersViewController *vc = (UsersViewController*)self.delegate;
+    [self.delegate collection:self rest_id:rest_id];
+    [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
+}
+
+-(void)collection:(CollectionViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
+    
+    UIActionSheet *actionsheet = nil;
+    
+    optionDic = [NSMutableDictionary dictionary];
+    [optionDic setObject:post_id forKey:@"POSTID"];
+    [optionDic setObject:rest_id forKey:@"RESTID"];
+    
+    actionsheet = [[UIActionSheet alloc] initWithTitle:@"アクション"
+                                              delegate:self
+                                     cancelButtonTitle:@"Cancel"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
+    //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
+    actionsheet.tag = 1;
+    [actionsheet showInView:self.view];
+    
+}
+
+-(void)collection:(CollectionViewCell *)cell didTapThumb:(NSString *)rest_id{
+    NSLog(@"restid:%@",rest_id);
+}
+
+-(void)collection:(CollectionViewCell *)cell didTapLikeButton:(NSString *)postID{
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        if (result) {
+            NSLog(@"result:%@",result);
+        }
+    }
+     ];
+}
+
+
 
 
 
@@ -114,16 +136,90 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
-                  placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    cell.imageView.layer.cornerRadius = 5;
-    cell.imageView.clipsToBounds = true;
-    cell.title.text = restname[indexPath.row];
-    
+    // セルにデータを反映
+    TimelinePost *post = self.receiveDic2[indexPath.row];
+    [cell configureWithTimelinePost:post indexPath:indexPath.row];
+    cell.delegate = self;
     
     return cell;
+}
+
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //NSLog(@"%s sheet = %ld",__func__, (long)buttonIndex);
+    
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        NSLog(@"cancel");
+    }
+    else {
+        NSString *r_id = [optionDic objectForKey:@"RESTID"];
+        NSString *p_id = [optionDic objectForKey:@"POSTID"];
+        
+        UsersViewController *vc = ( UsersViewController*)self.delegate;
+        
+        
+        switch (buttonIndex) {
+            case 0:
+                //  [vc performSegueWithIdentifier:@"testUser" sender:nil];
+                // [vc.navigationController pushViewController:tabViewCon animated:YES];
+                //[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
+                [self.delegate collection:self rest_id:r_id];
+                [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
+                break;
+           
+            case 1:
+                NSLog(@"Problem");
+                
+                Class class = NSClassFromString(@"UIAlertController");
+                if(class)
+                {
+                    // iOS 8の時の処理
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    // addActionした順に左から右にボタンが配置されます
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        // API からデータを取得
+                        [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                            if (result) {
+                                NSString *alertMessage = @"違反報告をしました";
+                                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                [alrt show];
+                            }
+                        }
+                         ];
+                        
+                    }]];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+                else
+                {
+                    [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                        if (result) {
+                            NSString *alertMessage = @"違反報告をしました";
+                            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                            [alrt show];
+                        }
+                    }
+                     ];
+                }
+                
+                break;
+            default:
+                break;
+        }
+        
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -133,49 +229,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"postid:%@",postid_[indexPath.row]);
     [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
 }
-
-- (void)_fetchProfile
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    
-    NSLog(@"3です");
-    
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        NSLog(@"4です");
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
-            return;
-        }
-        NSLog(@"users result:%@",result);
-        
-        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
-        NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
-        
-        // 取得したデータを self.posts に格納
-        thumb = [NSMutableArray arrayWithCapacity:0];
-        postid_ = [NSMutableArray arrayWithCapacity:0];
-        restname = [NSMutableArray arrayWithCapacity:0];
-        
-        NSArray* items = (NSArray*)_receiveDic2;
-        
-        for (NSDictionary *post in items) {
-            
-            NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
-            [thumb addObject:thumbGet];
-            NSDictionary *postidGet = [post objectForKey:@"post_id"];
-            [postid_ addObject:postidGet];
-            NSDictionary *restnameGet = [post objectForKey:@"restname"];
-            [restname addObject:restnameGet];
-        }
-        
-    }];
-}
-
 
 /*
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

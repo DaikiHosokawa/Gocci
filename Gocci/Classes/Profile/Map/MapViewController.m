@@ -60,8 +60,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     
-    [self.map animateToLocation : [newLocation coordinate]];
-    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:newLocation.coordinate.latitude
                                                             longitude:newLocation.coordinate.longitude
                                                                  zoom:16.0];

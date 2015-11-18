@@ -25,7 +25,6 @@
 @import QuartzCore;
 
 #import "everyBaseNavigationController.h"
-#import "CollectionViewController.h"
 #import "TableViewController.h"
 #import "MapViewController.h"
 #import "Swift.h"
@@ -39,10 +38,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface UsersViewController ()
+@interface UsersViewController ()<CollectionViewControllerDelegate1>
 {
     NSDictionary *header;
     NSDictionary *post;
+    NSMutableArray *post1;
     __weak IBOutlet UIButton *editButton;
     __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
@@ -63,6 +63,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @end
 
 @implementation UsersViewController
+
+-(void)collection:(CollectionViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+
+-(void)collection:(CollectionViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
 
 
 -(void)viewWillAppear:(BOOL)animated
@@ -131,7 +141,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
     vc2.supervc = self;
-    vc2.receiveDic2 = post;
+    vc2.receiveDic2 = post1;
+    vc2.delegate = self;
     secondViewController = vc2;
     vc2.soda = changeView.frame;
     
@@ -279,11 +290,20 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             return;
         }
         NSLog(@"users result:%@",result);
+         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+         
+         for (NSDictionary *post2 in items) {
+             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post2]];
+         }
+         post1 = tempPosts;
         
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
         NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
+    //     NSMutableArray* postArray = [result valueForKey:@"posts"];
         header = headerDic;
         post = postDic;
+         
         [self byoga];
          [self setupViewControllers];
          [self changeSegmentedControlValue];
