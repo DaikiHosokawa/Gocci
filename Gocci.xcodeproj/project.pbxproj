@@ -13,6 +13,9 @@
 		950045FE1BE2807700B80123 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FD1BE2807700B80123 /* libxml2.tbd */; };
 		950046001BE280A900B80123 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FF1BE280A900B80123 /* libz.tbd */; };
 		950046021BE280C400B80123 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950046011BE280C400B80123 /* libc++.tbd */; };
+		950593861BFB19E600328449 /* Gocci-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950593811BFB19E600328449 /* Gocci-Info.plist */; };
+		950593871BFB19E600328449 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593831BFB19E600328449 /* main.m */; };
+		950593881BFB19E600328449 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593841BFB19E600328449 /* NullSafe.m */; };
 		951347611BF9A47100EC14DB /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347601BF9A47100EC14DB /* GoogleMaps.framework */; };
 		951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 951347641BF9A63000EC14DB /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
@@ -147,9 +150,6 @@
 		9550DA8F1BF83E4C00430942 /* UserSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9001BF83E4B00430942 /* UserSearchTableViewCell.m */; };
 		9550DA901BF83E4C00430942 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9021BF83E4B00430942 /* InfoPlist.strings */; };
 		9550DA911BF83E4C00430942 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9041BF83E4B00430942 /* Extensions.swift */; };
-		9550DA921BF83E4C00430942 /* Gocci-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9051BF83E4B00430942 /* Gocci-Info.plist */; };
-		9550DA931BF83E4C00430942 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9071BF83E4B00430942 /* main.m */; };
-		9550DA941BF83E4C00430942 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9081BF83E4B00430942 /* NullSafe.m */; };
 		9550DA951BF83E4C00430942 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9091BF83E4B00430942 /* Persistent.swift */; };
 		9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90C1BF83E4B00430942 /* AWSManager.swift */; };
 		9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
@@ -326,6 +326,11 @@
 		950045FD1BE2807700B80123 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		950045FF1BE280A900B80123 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		950046011BE280C400B80123 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		950593811BFB19E600328449 /* Gocci-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gocci-Info.plist"; sourceTree = "<group>"; };
+		950593821BFB19E600328449 /* Gocci-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gocci-Prefix.pch"; sourceTree = "<group>"; };
+		950593831BFB19E600328449 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		950593841BFB19E600328449 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		950593851BFB19E600328449 /* Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		951347601BF9A47100EC14DB /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		951347641BF9A63000EC14DB /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../test/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -570,10 +575,6 @@
 		9550D9011BF83E4B00430942 /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		9550D9031BF83E4B00430942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9550D9041BF83E4B00430942 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		9550D9051BF83E4B00430942 /* Gocci-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Gocci-Info.plist"; path = "../Gocci-Info.plist"; sourceTree = "<group>"; };
-		9550D9061BF83E4B00430942 /* Gocci-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Gocci-Prefix.pch"; path = "../Gocci-Prefix.pch"; sourceTree = "<group>"; };
-		9550D9071BF83E4B00430942 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
-		9550D9081BF83E4B00430942 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = ../NullSafe.m; sourceTree = "<group>"; };
 		9550D9091BF83E4B00430942 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		9550D90C1BF83E4B00430942 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
@@ -583,7 +584,6 @@
 		9550D9131BF83E4B00430942 /* ServiceUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceUtil.swift; sourceTree = "<group>"; };
 		9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuthentication.swift; sourceTree = "<group>"; };
 		9550D9161BF83E4B00430942 /* TwitterSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSharing.swift; sourceTree = "<group>"; };
-		9550D9171BF83E4B00430942 /* Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Swift-Bridging-Header.h"; path = "../Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9550D91A1BF83E4B00430942 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9550D91C1BF83E4B00430942 /* btn_capture_flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_capture_flip.png; sourceTree = "<group>"; };
 		9550D91D1BF83E4B00430942 /* btn_capture_flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_capture_flip@2x.png"; sourceTree = "<group>"; };
@@ -2013,12 +2013,12 @@
 		959560101BF842B6002E245C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				950593811BFB19E600328449 /* Gocci-Info.plist */,
+				950593821BFB19E600328449 /* Gocci-Prefix.pch */,
+				950593831BFB19E600328449 /* main.m */,
+				950593841BFB19E600328449 /* NullSafe.m */,
+				950593851BFB19E600328449 /* Swift-Bridging-Header.h */,
 				9550D9021BF83E4B00430942 /* InfoPlist.strings */,
-				9550D9051BF83E4B00430942 /* Gocci-Info.plist */,
-				9550D9061BF83E4B00430942 /* Gocci-Prefix.pch */,
-				9550D9071BF83E4B00430942 /* main.m */,
-				9550D9171BF83E4B00430942 /* Swift-Bridging-Header.h */,
-				9550D9081BF83E4B00430942 /* NullSafe.m */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -2177,7 +2177,6 @@
 			files = (
 				9550DAA21BF83E4C00430942 /* btn_delete_black@2x.png in Resources */,
 				9550DB141BF83E4C00430942 /* icon-info@2x.png in Resources */,
-				9550DA921BF83E4C00430942 /* Gocci-Info.plist in Resources */,
 				951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */,
 				9550DB131BF83E4C00430942 /* icon-info.png in Resources */,
 				9550DAC01BF83E4C00430942 /* tabbaritem_timeline_sel.png in Resources */,
@@ -2203,6 +2202,7 @@
 				9550DAAC1BF83E4C00430942 /* naviIcon.png in Resources */,
 				9550DA581BF83E4C00430942 /* SCFirstView_5_5_inch.xib in Resources */,
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
+				950593861BFB19E600328449 /* Gocci-Info.plist in Resources */,
 				9550DAC11BF83E4C00430942 /* tabbaritem_timeline_sel@2x.png in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
@@ -2286,7 +2286,6 @@
 				9550DA911BF83E4C00430942 /* Extensions.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
-				9550DA931BF83E4C00430942 /* main.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
 				9550DAD51BF83E4C00430942 /* AFHTTPSessionManager.m in Sources */,
 				9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */,
@@ -2371,6 +2370,7 @@
 				9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */,
 				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
+				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				9550DA6D1BF83E4C00430942 /* SCFilterAnimation.m in Sources */,
 				9550DA421BF83E4C00430942 /* CollectionViewCell.m in Sources */,
 				9550DAC91BF83E4C00430942 /* WebViewPopup.swift in Sources */,
@@ -2398,6 +2398,7 @@
 				9550DA551BF83E4C00430942 /* SCFirstView.m in Sources */,
 				9550DAFC1BF83E4C00430942 /* SDWebImageDownloader.m in Sources */,
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
+				950593871BFB19E600328449 /* main.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,
 				9550DA0D1BF83E4C00430942 /* GUser.m in Sources */,
 				9550DAF71BF83E4C00430942 /* MKAnnotationView+WebCache.m in Sources */,
@@ -2431,7 +2432,6 @@
 				9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */,
 				9550DA391BF83E4C00430942 /* LifelogViewController.m in Sources */,
 				9550DA311BF83E4C00430942 /* AddressController.m in Sources */,
-				9550DA941BF83E4C00430942 /* NullSafe.m in Sources */,
 				9550DAF91BF83E4C00430942 /* SDImageCache.m in Sources */,
 				9550DA741BF83E4C00430942 /* SCProcessingQueue.m in Sources */,
 				9550DA331BF83E4C00430942 /* FacebookController.m in Sources */,
@@ -2690,13 +2690,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
+				GCC_PREFIX_HEADER = "Gocci/Supporting Files/Gocci-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SDKROOT)/usr/include/libxml2",
 				);
-				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
+				INFOPLIST_FILE = "Gocci/Supporting Files/Gocci-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2719,7 +2719,7 @@
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2745,13 +2745,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
+				GCC_PREFIX_HEADER = "Gocci/Supporting Files/Gocci-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SDKROOT)/usr/include/libxml2",
 				);
-				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
+				INFOPLIST_FILE = "Gocci/Supporting Files/Gocci-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2773,7 +2773,7 @@
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";

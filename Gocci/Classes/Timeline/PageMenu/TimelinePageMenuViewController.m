@@ -126,7 +126,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //PageMenu登録
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
-    vc1.title = @"近くの店";
+    vc1.title = @"現在地周辺";
     vc1.delegate = self;
     self.nearViewController = vc1;
     
