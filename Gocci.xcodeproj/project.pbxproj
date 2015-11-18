@@ -16,8 +16,8 @@
 		950593861BFB19E600328449 /* Gocci-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950593811BFB19E600328449 /* Gocci-Info.plist */; };
 		950593871BFB19E600328449 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593831BFB19E600328449 /* main.m */; };
 		950593881BFB19E600328449 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593841BFB19E600328449 /* NullSafe.m */; };
-		951347611BF9A47100EC14DB /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347601BF9A47100EC14DB /* GoogleMaps.framework */; };
-		951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 951347641BF9A63000EC14DB /* GoogleMaps.bundle */; };
+		9505938A1BFC1FC000328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 950593891BFC1FC000328449 /* GoogleMaps.framework */; };
+		9505938B1BFC201E00328449 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 951347641BF9A63000EC14DB /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
@@ -232,7 +232,6 @@
 		9550DAE41BF83E4C00430942 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */; };
 		9550DAE51BF83E4C00430942 /* FHSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D97F1BF83E4B00430942 /* FHSStream.m */; };
 		9550DAE61BF83E4C00430942 /* FHSTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9811BF83E4B00430942 /* FHSTwitterEngine.m */; };
-		9550DAE71BF83E4C00430942 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D9831BF83E4B00430942 /* GoogleMaps.framework */; };
 		9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9861BF83E4B00430942 /* JTCalendar.m */; };
 		9550DAE91BF83E4C00430942 /* JTCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9881BF83E4B00430942 /* JTCalendarAppearance.m */; };
 		9550DAEA1BF83E4C00430942 /* JTCalendarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D98A1BF83E4B00430942 /* JTCalendarContentView.m */; };
@@ -336,6 +335,7 @@
 		950593831BFB19E600328449 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		950593841BFB19E600328449 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		950593851BFB19E600328449 /* Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		950593891BFC1FC000328449 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		951347601BF9A47100EC14DB /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		951347641BF9A63000EC14DB /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../test/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -678,7 +678,6 @@
 		9550D97F1BF83E4B00430942 /* FHSStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSStream.m; sourceTree = "<group>"; };
 		9550D9801BF83E4B00430942 /* FHSTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSTwitterEngine.h; sourceTree = "<group>"; };
 		9550D9811BF83E4B00430942 /* FHSTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSTwitterEngine.m; sourceTree = "<group>"; };
-		9550D9831BF83E4B00430942 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		9550D9851BF83E4B00430942 /* JTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendar.h; sourceTree = "<group>"; };
 		9550D9861BF83E4B00430942 /* JTCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendar.m; sourceTree = "<group>"; };
 		9550D9871BF83E4B00430942 /* JTCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarAppearance.h; sourceTree = "<group>"; };
@@ -868,9 +867,9 @@
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
+				9505938A1BFC1FC000328449 /* GoogleMaps.framework in Frameworks */,
 				FF0BE45C193ED626001A0053 /* OpenGLES.framework in Frameworks */,
 				FF0BE452193ED5CD001A0053 /* GLKit.framework in Frameworks */,
-				951347611BF9A47100EC14DB /* GoogleMaps.framework in Frameworks */,
 				FF0BE45E193ED63E001A0053 /* SystemConfiguration.framework in Frameworks */,
 				FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */,
 				FFA1769D199133EE005BEE41 /* Security.framework in Frameworks */,
@@ -882,7 +881,6 @@
 				9550DADE1BF83E4C00430942 /* AWSS3.framework in Frameworks */,
 				9550DADC1BF83E4C00430942 /* AWSCognito.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
-				9550DAE71BF83E4C00430942 /* GoogleMaps.framework in Frameworks */,
 				9550DADD1BF83E4C00430942 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1694,7 +1692,6 @@
 				9550D97B1BF83E4B00430942 /* FBSDKLoginKit.framework */,
 				9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */,
 				9550D97D1BF83E4B00430942 /* FHSTwitterEngine */,
-				9550D9831BF83E4B00430942 /* GoogleMaps.framework */,
 				9550D9841BF83E4B00430942 /* JTCalendar */,
 				9550D99A1BF83E4B00430942 /* RHRefreshControl */,
 				9550D9A71BF83E4B00430942 /* SDWebImage */,
@@ -2086,6 +2083,7 @@
 				FFD5C865196A6A7E009E4F5A /* AudioToolbox.framework */,
 				FFD5C862196A6A5B009E4F5A /* CoreMedia.framework */,
 				FFD5C860196A6A3D009E4F5A /* CoreAudio.framework */,
+				950593891BFC1FC000328449 /* GoogleMaps.framework */,
 				FFF16B9919554D37002FC793 /* Accelerate.framework */,
 				FF4BF521194847B90099B01D /* MediaPlayer.framework */,
 				FF0BE45D193ED63E001A0053 /* SystemConfiguration.framework */,
@@ -2197,9 +2195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9505938B1BFC201E00328449 /* GoogleMaps.bundle in Resources */,
 				9550DAA21BF83E4C00430942 /* btn_delete_black@2x.png in Resources */,
 				9550DB141BF83E4C00430942 /* icon-info@2x.png in Resources */,
-				951347651BF9A63000EC14DB /* GoogleMaps.bundle in Resources */,
 				9550DB131BF83E4C00430942 /* icon-info.png in Resources */,
 				9550DAC01BF83E4C00430942 /* tabbaritem_timeline_sel.png in Resources */,
 				987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */,
