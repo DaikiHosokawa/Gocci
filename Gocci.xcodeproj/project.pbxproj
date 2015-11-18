@@ -292,6 +292,26 @@
 		9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA061BF83E4C00430942 /* UIWebView+AFNetworking.m */; };
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
+		981A93351BFC5142007B3BF6 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96B1BF83E4B00430942 /* AWSCognito.framework */; };
+		981A93361BFC5142007B3BF6 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96C1BF83E4B00430942 /* AWSCore.framework */; };
+		981A93371BFC5142007B3BF6 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96D1BF83E4B00430942 /* AWSS3.framework */; };
+		981A93381BFC5142007B3BF6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97A1BF83E4B00430942 /* FBSDKCoreKit.framework */; };
+		981A93391BFC5142007B3BF6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97B1BF83E4B00430942 /* FBSDKLoginKit.framework */; };
+		981A933A1BFC5159007B3BF6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */; };
+		981A933B1BFC5159007B3BF6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
+		981A933C1BFC5186007B3BF6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9551BF83E4B00430942 /* Util.swift */; };
+		981A933D1BFC518C007B3BF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9041BF83E4B00430942 /* Extensions.swift */; };
+		981A933E1BFC51BF007B3BF6 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9091BF83E4B00430942 /* Persistent.swift */; };
+		981A933F1BFC51BF007B3BF6 /* ServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9131BF83E4B00430942 /* ServiceUtil.swift */; };
+		981A93401BFC51BF007B3BF6 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90C1BF83E4B00430942 /* AWSManager.swift */; };
+		981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
+		981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90F1BF83E4B00430942 /* FacebookSharing.swift */; };
+		981A93431BFC51BF007B3BF6 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9111BF83E4B00430942 /* API3.swift */; };
+		981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9121BF83E4B00430942 /* APISupport.swift */; };
+		981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */; };
+		981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9161BF83E4B00430942 /* TwitterSharing.swift */; };
+		981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9E11BF83E4B00430942 /* SwiftyJSON.swift */; };
+		981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93481BFC5239007B3BF6 /* TestUtil.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -314,6 +334,16 @@
 		FFA1769F199133FE005BEE41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA1769E199133FE005BEE41 /* MobileCoreServices.framework */; };
 		FFD5C86A196A6F91009E4F5A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		981A93301BFC5063007B3BF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF54EFD719149A1800025DC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF54EFDE19149A1800025DC8;
+			remoteInfo = GocciTest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		53A267C31AB3CF4A00CD759A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -789,6 +819,9 @@
 		9550DA091BF83E4C00430942 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		9550DA0A1BF83E4C00430942 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		981A932B1BFC5063007B3BF6 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		981A932F1BFC5063007B3BF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		981A93481BFC5239007B3BF6 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -822,6 +855,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		981A93281BFC5063007B3BF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				981A93391BFC5142007B3BF6 /* FBSDKLoginKit.framework in Frameworks */,
+				981A93381BFC5142007B3BF6 /* FBSDKCoreKit.framework in Frameworks */,
+				981A933A1BFC5159007B3BF6 /* FBSDKShareKit.framework in Frameworks */,
+				981A933B1BFC5159007B3BF6 /* GoogleMaps.framework in Frameworks */,
+				981A93351BFC5142007B3BF6 /* AWSCognito.framework in Frameworks */,
+				981A93361BFC5142007B3BF6 /* AWSCore.framework in Frameworks */,
+				981A93371BFC5142007B3BF6 /* AWSS3.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDC19149A1800025DC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2008,6 +2055,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				981A93481BFC5239007B3BF6 /* TestUtil.swift */,
+				981A932F1BFC5063007B3BF6 /* Info.plist */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		987E51EB1BF9C32900339285 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -2026,6 +2082,7 @@
 				9550D7D31BF83E4B00430942 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
 				FF54EFE019149A1800025DC8 /* Products */,
+				981A932C1BFC5063007B3BF6 /* UnitTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2033,6 +2090,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54EFDF19149A1800025DC8 /* GocciTest.app */,
+				981A932B1BFC5063007B3BF6 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2081,6 +2139,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		981A932A1BFC5063007B3BF6 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 981A93321BFC5063007B3BF6 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				981A93271BFC5063007B3BF6 /* Sources */,
+				981A93281BFC5063007B3BF6 /* Frameworks */,
+				981A93291BFC5063007B3BF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				981A93311BFC5063007B3BF6 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 981A932B1BFC5063007B3BF6 /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FF54EFDE19149A1800025DC8 /* GocciTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */;
@@ -2108,6 +2184,10 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Massara;
 				TargetAttributes = {
+					981A932A1BFC5063007B3BF6 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = FF54EFDE19149A1800025DC8;
+					};
 					FF54EFDE19149A1800025DC8 = {
 						DevelopmentTeam = EY9SSB5TM5;
 						SystemCapabilities = {
@@ -2132,11 +2212,19 @@
 			projectRoot = "";
 			targets = (
 				FF54EFDE19149A1800025DC8 /* GocciTest */,
+				981A932A1BFC5063007B3BF6 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		981A93291BFC5063007B3BF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDD19149A1800025DC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2226,6 +2314,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		981A93271BFC5063007B3BF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
+				981A933E1BFC51BF007B3BF6 /* Persistent.swift in Sources */,
+				981A933F1BFC51BF007B3BF6 /* ServiceUtil.swift in Sources */,
+				981A93401BFC51BF007B3BF6 /* AWSManager.swift in Sources */,
+				981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */,
+				981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */,
+				981A93431BFC51BF007B3BF6 /* API3.swift in Sources */,
+				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
+				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
+				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
+				981A933D1BFC518C007B3BF6 /* Extensions.swift in Sources */,
+				981A933C1BFC5186007B3BF6 /* Util.swift in Sources */,
+				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF54EFDB19149A1800025DC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2429,6 +2537,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		981A93311BFC5063007B3BF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF54EFDE19149A1800025DC8 /* GocciTest */;
+			targetProxy = 981A93301BFC5063007B3BF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9550D9021BF83E4B00430942 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -2442,6 +2558,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		981A93331BFC5063007B3BF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gocci/Vendor",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = IN.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GocciTest.app/GocciTest";
+			};
+			name = Debug;
+		};
+		981A93341BFC5063007B3BF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gocci/Vendor",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = IN.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GocciTest.app/GocciTest";
+			};
+			name = Release;
+		};
 		FF54F00F19149A1900025DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2607,6 +2773,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		981A93321BFC5063007B3BF6 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				981A93331BFC5063007B3BF6 /* Debug */,
+				981A93341BFC5063007B3BF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		FF54EFDA19149A1800025DC8 /* Build configuration list for PBXProject "Gocci" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
