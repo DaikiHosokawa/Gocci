@@ -74,17 +74,33 @@ class DebugViewController : UIViewController {
 //    }
     
     @IBAction func explode(sender: AnyObject) {
-        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
-        let token = "CAAJkM7KbcYYBAAnTZBzCuP1LIdxMdkqgZCkdbNwqZCY8zDOBZAMEJBDUmyYFkWq9IpZBD4iuLagNrEgZC1jIZCiWjAkGjPcBRXKW8QZBL30WiPP2ACeVJg8IdbzoATMZCfjyoerOJXk6wgfQGjgAJrf5LswGXE8pVMcLVeQJUGpDm9kqj4Wxk4DyFzNiGT0zQPBNN8PwWShaO8QZDZD"
         
         let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
         let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
+        
+//        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+//        let token = "CAAJkM7KbcYYBAAnTZBzCuP1LIdxMdkqgZCkdbNwqZCY8zDOBZAMEJBDUmyYFkWq9IpZBD4iuLagNrEgZC1jIZCiWjAkGjPcBRXKW8QZBL30WiPP2ACeVJg8IdbzoATMZCfjyoerOJXk6wgfQGjgAJrf5LswGXE8pVMcLVeQJUGpDm9kqj4Wxk4DyFzNiGT0zQPBNN8PwWShaO8QZDZD"
+//
+//
+//
+//        let sharer = FacebookSharing(fromViewController: self)
+//        sharer.onSuccess = { print("Post ID: " + $0) }
+//        sharer.onFailure = { print("FUCK: \($0)") }
+//        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
+    
+        
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
 
-
-        let sharer = FacebookSharing(fromViewController: self)
+        
+        let sharer = TwitterSharing(fromViewController: self)
         sharer.onSuccess = { print("Post ID: " + $0) }
         sharer.onFailure = { print("FUCK: \($0)") }
-        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
+        
+        let msg = Util.randomKanjiStringWithLength(115)
+        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
     }
         /*
     

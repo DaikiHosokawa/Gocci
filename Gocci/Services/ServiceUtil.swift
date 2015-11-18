@@ -11,6 +11,48 @@ import Foundation
 
 class ServiceUtil {
     
+    class FormData {
+        static let NL = "\r\n"
+        
+        let boundary = Util.randomAlphaNumericStringWithLength(32)
+        
+        let bodydata = NSMutableData()
+
+        func appendDisposition(name name: String, value: String, header:[String: String]? = nil) {
+            var head = "--" + boundary + FormData.NL
+            head += "Content-Disposition: form-data; name=\"\(name)\""  + FormData.NL
+            if let header = header {
+                for (k, v)in header {
+                    head += "\(k): \(v)" + FormData.NL
+                }
+            }
+            head += FormData.NL + value + FormData.NL
+            bodydata.appendData(head.asUTF8Data())
+        }
+        
+        func appendFileDisposition(name name: String, filename: String, data:NSData, header:[String: String]? = nil) {
+            var head = "--" + boundary + FormData.NL
+            head += "Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(filename)\"" + FormData.NL
+            head += "Content-Type: application/octet-stream" + FormData.NL
+            if let header = header {
+                for (k, v)in header {
+                    head += "\(k): \(v)" + FormData.NL
+                }
+            }
+            head += FormData.NL
+            bodydata.appendData(head.asUTF8Data())
+            bodydata.appendData(data)
+            bodydata.appendData(FormData.NL.asUTF8Data())
+        }
+        
+        func generateRequestBody() -> NSData {
+            let finalBoundary = "--" + boundary + "--" + FormData.NL
+            bodydata.appendData(finalBoundary.asUTF8Data())
+            return bodydata
+        }
+        
+    }
+    
     class func performRequest(
         request: NSURLRequest,
         onSuccess: ((statusCode: Int, data: NSData)->())?,

@@ -22,6 +22,24 @@ import Foundation
 
 class TwitterAuthentication {
     
+    struct Token {
+        var user_key: String
+        var user_secret: String
+        var gocci_key: String { return TWITTER_CONSUMER_KEY }
+        var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
+        
+        init(key: String, secret: String) {
+            user_key = key
+            user_secret = secret
+        }
+    }
+    
+    static var token: TwitterAuthentication.Token? = nil
+    
+    class func sessionIsReadyToInteract() -> Bool {
+        return false
+    }
+    
     
     // class disconnectFromCognito
     

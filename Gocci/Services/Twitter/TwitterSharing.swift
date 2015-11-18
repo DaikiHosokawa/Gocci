@@ -231,30 +231,16 @@ class TwitterSharing {
         ------------kStHtTpReQuEsTbOuNdArY--
         */
         
-        let boundary = Util.randomAlphaNumericStringWithLength(32)
+        let formdata = ServiceUtil.FormData()
+        request.setValue("multipart/form-data; boundary=" + formdata.boundary, forHTTPHeaderField: "Content-Type")
         
-        request.setValue("multipart/form-data; boundary=" + boundary, forHTTPHeaderField: "Content-Type")
+        formdata.appendFileDisposition(name: "media", filename: "gocci.mp4", data: rawData)
+        formdata.appendDisposition(name: "command", value: "APPEND")
+        formdata.appendDisposition(name: "media_id", value: mediaID)
+        formdata.appendDisposition(name: "segment_index", value: String(segmentIndex))
         
-        var prefix = "--" + boundary + "\r\n"
-        prefix += "Content-Disposition: form-data; name=\"media\"; filename=\"gocci.mp4\"" + "\r\n"
-        prefix += "Content-Type: application/octet-stream" + "\r\n\r\n"
-        
-        var postfix = "\r\n--" + boundary + "\r\n"
-        postfix += "Content-Disposition: form-data; name=\"command\""  + "\r\n\r\n" + "APPEND"
-        postfix += "\r\n--" + boundary + "\r\n"
-        postfix += "Content-Disposition: form-data; name=\"media_id\""  + "\r\n\r\n" + mediaID
-        postfix += "\r\n--" + boundary + "\r\n"
-        postfix += "Content-Disposition: form-data; name=\"segment_index\""  + "\r\n\r\n" + String(segmentIndex)
-        postfix += "\r\n--" + boundary + "--\r\n"
-            
-        let data = NSMutableData()
-        data.appendData(prefix.asUTF8Data())
-        data.appendData(rawData)
-        data.appendData(postfix.asUTF8Data())
-        
-        
-        request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
-        request.HTTPBody = data
+        request.HTTPBody = formdata.generateRequestBody()
+        request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
         
         // TODO test if FHSTwitterEngine is logged in!
         let key = FHSTwitterEngine.sharedEngine().accessToken.key
@@ -265,8 +251,15 @@ class TwitterSharing {
         //print("Authorization: " + auth)
         request.setValue(auth, forHTTPHeaderField: "Authorization")
         
-        performRequest(request, onSucc, onFail)
-
+        ServiceUtil.performRequest(request,
+            onSuccess: { (statusCode, data) -> () in
+                let handler = (statusCode >= 200 && statusCode < 300) ? onSucc : onFail
+                handler(jsonResponse: JSON(data: data))
+            },
+            onFailure: { errorMessage in
+                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
+            }
+        )
     }
     
     private func makeFormdataStringFromDictonary(dict: [String: String]) -> String {
@@ -305,7 +298,6 @@ class TwitterSharing {
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
         let formdata = makeFormdataStringFromDictonary(formdataParameters)
-//        print("Formdata: " + formdata)
         
         guard let data = formdata.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
             onFailure?(error: .ERROR_NETWORK("Formdata conversion failed"))
@@ -315,49 +307,18 @@ class TwitterSharing {
         request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
         request.HTTPBody = data
         
-
-        
         let auth = ServiceUtil.createOAuthSignatureHeaderEntry(key, userSecret: secret, HTTPMethod: "POST", baseURL: url, unencodedPOSTParameters: formdataParameters)
         
-        //print("Authorization: " + auth)
         request.setValue(auth, forHTTPHeaderField: "Authorization")
         
-        performRequest(request, onSucc, onFail)
+        ServiceUtil.performRequest(request,
+            onSuccess: { (statusCode, data) -> () in
+                let handler = (statusCode >= 200 && statusCode < 300) ? onSucc : onFail
+                handler(jsonResponse: JSON(data: data))
+            },
+            onFailure: { errorMessage in
+                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
+            }
+        )
     }
-
-    private func performRequest(request: NSURLRequest,
-        _ onSucc: (jsonResponse: JSON)->(),
-        _ onFail: (jsonResponse: JSON)->())
-    {
-    
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.allowsCellularAccess = true
-        // WARNING! ephemeral means nothing to disk. also NO COOKIES!!
-        let session = NSURLSession(configuration: config)
-        
-        let urlsessiontask = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            
-            guard error == nil else {
-                self.onFailure?(error: .ERROR_NETWORK(error?.localizedDescription ?? "No error message"))
-                return
-            }
-            
-            guard let resp = response as? NSHTTPURLResponse else {
-                self.onFailure?(error: .ERROR_NETWORK("Response is not an HTTP Response"))
-                return
-            }
-            
-            guard let data = data else {
-                self.onFailure?(error: .ERROR_NETWORK("No json data recieved"))
-                return
-            }
-            
-            let handler = (resp.statusCode >= 200 && resp.statusCode < 300) ? onSucc : onFail
-            handler(jsonResponse: JSON(data: data))
-        }
-        
-        urlsessiontask.resume()
-    }
-    
-    
 }
