@@ -13,7 +13,6 @@
 		950045FE1BE2807700B80123 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FD1BE2807700B80123 /* libxml2.tbd */; };
 		950046001BE280A900B80123 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950045FF1BE280A900B80123 /* libz.tbd */; };
 		950046021BE280C400B80123 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 950046011BE280C400B80123 /* libc++.tbd */; };
-		950593861BFB19E600328449 /* Gocci-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950593811BFB19E600328449 /* Gocci-Info.plist */; };
 		950593871BFB19E600328449 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593831BFB19E600328449 /* main.m */; };
 		950593881BFB19E600328449 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593841BFB19E600328449 /* NullSafe.m */; };
 		9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
@@ -293,14 +292,7 @@
 		9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA061BF83E4C00430942 /* UIWebView+AFNetworking.m */; };
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
-		9874BE8B1BCE143600B1651E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */; };
-		9874BE8C1BCE143600B1651E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A267C31AB3CF4A00CD759A /* Social.framework */; };
-		9874BE8D1BCE143600B1651E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
-		9874BE9C1BCE143600B1651E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C869196A6F91009E4F5A /* AssetsLibrary.framework */; };
-		9874BEA31BCE143600B1651E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE619149A1800025DC8 /* UIKit.framework */; };
-		9874BEA41BCE143600B1651E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF54EFE219149A1800025DC8 /* Foundation.framework */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
-		987E51EE1BF9C34D00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
 		987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F51BFB37AD00339285 /* thumbnail.jpg */; };
@@ -797,7 +789,6 @@
 		9550DA091BF83E4C00430942 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		9550DA0A1BF83E4C00430942 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
-		9874BEF61BCE143600B1651E /* StrippedDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrippedDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -831,19 +822,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9874BE831BCE143600B1651E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9874BE8B1BCE143600B1651E /* Accounts.framework in Frameworks */,
-				9874BE8C1BCE143600B1651E /* Social.framework in Frameworks */,
-				9874BE8D1BCE143600B1651E /* Twitter.framework in Frameworks */,
-				9874BE9C1BCE143600B1651E /* AssetsLibrary.framework in Frameworks */,
-				9874BEA31BCE143600B1651E /* UIKit.framework in Frameworks */,
-				9874BEA41BCE143600B1651E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF54EFDC19149A1800025DC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2055,7 +2033,6 @@
 			isa = PBXGroup;
 			children = (
 				FF54EFDF19149A1800025DC8 /* GocciTest.app */,
-				9874BEF61BCE143600B1651E /* StrippedDown.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2104,23 +2081,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9874BDD21BCE143600B1651E /* StrippedDown */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9874BEF31BCE143600B1651E /* Build configuration list for PBXNativeTarget "StrippedDown" */;
-			buildPhases = (
-				9874BDD31BCE143600B1651E /* Sources */,
-				9874BE831BCE143600B1651E /* Frameworks */,
-				9874BEA51BCE143600B1651E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = StrippedDown;
-			productName = Gocci;
-			productReference = 9874BEF61BCE143600B1651E /* StrippedDown.app */;
-			productType = "com.apple.product-type.application";
-		};
 		FF54EFDE19149A1800025DC8 /* GocciTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */;
@@ -2148,9 +2108,6 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Massara;
 				TargetAttributes = {
-					9874BDD21BCE143600B1651E = {
-						DevelopmentTeam = EY9SSB5TM5;
-					};
 					FF54EFDE19149A1800025DC8 = {
 						DevelopmentTeam = EY9SSB5TM5;
 						SystemCapabilities = {
@@ -2175,20 +2132,11 @@
 			projectRoot = "";
 			targets = (
 				FF54EFDE19149A1800025DC8 /* GocciTest */,
-				9874BDD21BCE143600B1651E /* StrippedDown */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9874BEA51BCE143600B1651E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				987E51EE1BF9C34D00339285 /* testvid.mp4 in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF54EFDD19149A1800025DC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2222,7 +2170,6 @@
 				9550DAAC1BF83E4C00430942 /* naviIcon.png in Resources */,
 				9550DA581BF83E4C00430942 /* SCFirstView_5_5_inch.xib in Resources */,
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
-				950593861BFB19E600328449 /* Gocci-Info.plist in Resources */,
 				9550DAC11BF83E4C00430942 /* tabbaritem_timeline_sel@2x.png in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
@@ -2279,13 +2226,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9874BDD31BCE143600B1651E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF54EFDB19149A1800025DC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2502,117 +2442,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9874BEF41BCE143600B1651E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Gocci/Vendor",
-					/Users/daikihosokawa/Documents/FacebookSDK,
-					/Users/daikihosokawa/Desktop,
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"STRIPPED=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SDKROOT)/usr/include/libxml2",
-				);
-				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_MAP_FILE_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Gocci/CrittercismSDK",
-					"$(PROJECT_DIR)/Vendor/CrittercismSDK",
-					"$(PROJECT_DIR)/Gocci/Vendor/CrittercismSDK",
-					"$(PROJECT_DIR)/Gocci/Vendor/Twitter+OAuth/Libraries",
-					"&",
-					Headers,
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"STRIPPED\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.StrippedDown;
-				PRODUCT_NAME = "$(TARGETNAME)";
-				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
-				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6 armv7";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		9874BEF51BCE143600B1651E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Gocci/Vendor",
-					/Users/daikihosokawa/Documents/FacebookSDK,
-					/Users/daikihosokawa/Desktop,
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gocci/Gocci-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SDKROOT)/usr/include/libxml2",
-				);
-				INFOPLIST_FILE = "Gocci/Gocci-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_MAP_FILE_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Gocci/CrittercismSDK",
-					"$(PROJECT_DIR)/Vendor/CrittercismSDK",
-					"$(PROJECT_DIR)/Gocci/Vendor/CrittercismSDK",
-					"$(PROJECT_DIR)/Gocci/Vendor/Twitter+OAuth/Libraries",
-					"&",
-					Headers,
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"STRIPPED\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.StrippedDown;
-				PRODUCT_NAME = "$(TARGETNAME)";
-				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
-				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Swift-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
-				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7s arm64 armv6 armv7";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		FF54F00F19149A1900025DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2703,14 +2532,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Gocci/Vendor",
-					/Users/daikihosokawa/Documents/FacebookSDK,
-					/Users/daikihosokawa/Desktop,
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Gocci/Vendor";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Supporting Files/Gocci-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2723,12 +2545,7 @@
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[arch=*]" = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Gocci/Vendor/",
-					"&",
-					Headers,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2758,14 +2575,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Gocci/Vendor",
-					/Users/daikihosokawa/Documents/FacebookSDK,
-					/Users/daikihosokawa/Desktop,
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Gocci/Vendor";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gocci/Supporting Files/Gocci-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2777,12 +2587,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_MAP_FILE_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Gocci/Vendor/",
-					"&",
-					Headers,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2806,15 +2611,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9874BEF31BCE143600B1651E /* Build configuration list for PBXNativeTarget "StrippedDown" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9874BEF41BCE143600B1651E /* Debug */,
-				9874BEF51BCE143600B1651E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		FF54EFDA19149A1800025DC8 /* Build configuration list for PBXProject "Gocci" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
