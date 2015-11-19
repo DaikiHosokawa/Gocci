@@ -162,7 +162,6 @@
         
         [APIClient updateProfileBoth:username.text profile_img:imgFileForAPI handler:^(id result, NSUInteger code, NSError *error)
          {
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              
              NSLog(@"result:%@",result);
              
@@ -234,8 +233,6 @@
         
         [APIClient updateProfileOnlyUsername:username.text handler:^(id result, NSUInteger code, NSError *error)
          {
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             
              NSLog(@"result:%@",result);
              
              if (code != 200 || error != nil) {

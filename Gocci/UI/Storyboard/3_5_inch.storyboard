@@ -2016,7 +2016,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m2l-w2-ae2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m2l-w2-ae2">
                                             <rect key="frame" x="8" y="129" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2044,7 +2044,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="m2l-w2-ae2" id="l48-O6-Y4y"/>
+                                    <outlet property="date" destination="m2l-w2-ae2" id="bpF-90-fJ2"/>
                                     <outlet property="imageView" destination="ogt-Z0-iJB" id="r7u-Lc-tP0"/>
                                     <outlet property="likeBtn" destination="t1O-UE-bJG" id="aQl-in-0sG"/>
                                     <outlet property="option" destination="ohO-sA-KLl" id="J9n-aZ-OLg"/>
@@ -2288,7 +2288,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8n5-tD-wrZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8n5-tD-wrZ">
                                             <rect key="frame" x="8" y="129" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>

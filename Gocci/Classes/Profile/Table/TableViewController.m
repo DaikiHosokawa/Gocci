@@ -73,7 +73,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setupData
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   // [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
    
             // 取得したデータを self.posts に格納
             thumb = [NSMutableArray arrayWithCapacity:0];

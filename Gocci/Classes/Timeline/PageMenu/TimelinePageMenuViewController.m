@@ -196,9 +196,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
     
-    UIImage *img = [UIImage imageNamed:@"ic_userpicture.png"];  // ボタンにする画像を生成する
+    UIImage *img = [UIImage imageNamed:@"sort.png"];  // ボタンにする画像を生成する
     UIButton *btn = [[UIButton alloc]
-                      initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 56, 56)];  // ボタンのサイズを指定する
+                      initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];  // ボタンのサイズを指定する
     [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
     [self.view addSubview:btn];
     // ボタンが押された時にhogeメソッドを呼び出す
@@ -212,6 +212,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if ([controller conformsToProtocol:@protocol(SortableTimeLineSubView)]) {
         self.currentVisibleSortableSubViewController = (UIViewController <SortableTimeLineSubView> *)controller;
+        [[MoviePlayerManager sharedManager] stopMovie];
+        [[MoviePlayerManager sharedManager] removeAllPlayers];
     }
 }
 

@@ -1984,7 +1984,7 @@
                                             <rect key="frame" x="150" y="140" width="23" height="23"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzG-Jf-aov">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzG-Jf-aov">
                                             <rect key="frame" x="8" y="151" width="98" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
@@ -2005,7 +2005,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="bzG-Jf-aov" id="Nsy-ce-DUt"/>
+                                    <outlet property="date" destination="bzG-Jf-aov" id="GBe-7E-kAA"/>
                                     <outlet property="imageView" destination="gtL-jX-aVI" id="FXO-Uh-OR7"/>
                                     <outlet property="likeBtn" destination="LEq-XO-7YU" id="cMI-I0-LI0"/>
                                     <outlet property="option" destination="e36-Lw-NEQ" id="ivB-hZ-vvh"/>

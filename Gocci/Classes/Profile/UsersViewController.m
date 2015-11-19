@@ -119,8 +119,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-    //[self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
 }
 
@@ -277,10 +276,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)_fetchProfile
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
      [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+     //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
          NSLog(@"叩かれてるよ");
          
