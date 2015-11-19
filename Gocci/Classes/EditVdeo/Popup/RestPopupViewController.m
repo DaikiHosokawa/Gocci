@@ -109,7 +109,7 @@
              }
              [self.tableView reloadData];
              
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            // [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          }];
         
         

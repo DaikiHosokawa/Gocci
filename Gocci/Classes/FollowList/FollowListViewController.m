@@ -96,7 +96,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     //test user
     [APIClient FollowList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
         
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+     //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         LOG(@"resultComment=%@", result);
         

@@ -1298,7 +1298,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o16-GD-sxO">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o16-GD-sxO" id="YSd-6X-re0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -2179,7 +2179,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kk2-Gv-1uG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kk2-Gv-1uG">
                                             <rect key="frame" x="8" y="170" width="161" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2202,7 +2202,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="kk2-Gv-1uG" id="wJV-Ky-RS7"/>
+                                    <outlet property="date" destination="kk2-Gv-1uG" id="VCl-Mz-L2i"/>
                                     <outlet property="imageView" destination="Rnm-My-axo" id="Zj1-3E-3WV"/>
                                     <outlet property="likeBtn" destination="3WN-aP-CUg" id="1Jw-EO-gpg"/>
                                     <outlet property="option" destination="15J-pi-2nl" id="4su-K6-Z8O"/>

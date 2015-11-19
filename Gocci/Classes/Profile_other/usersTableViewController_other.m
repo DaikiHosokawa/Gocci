@@ -42,10 +42,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController_other ()
+@interface usersTableViewController_other ()<CollectionViewControllerDelegate1>
 {
     NSDictionary *header;
     NSDictionary *post;
+    NSMutableArray *post1;
     __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
     __weak IBOutlet UIView *changeView;
@@ -69,7 +70,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @implementation usersTableViewController_other
 
 @synthesize postUsername= _postUsername;
-@synthesize postPicture= _postPicture;
+
+-(void)collection:(CollectionViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+
+-(void)collection:(CollectionViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
 
 - (void)viewDidLoad
 {
@@ -107,7 +117,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
     vc2.supervc = self;
-    vc2.receiveDic2 = post;
+    vc2.receiveDic2 = post1;
+    vc2.delegate = self;
     secondViewController = vc2;
     vc2.soda = changeView.frame;
     
@@ -190,8 +201,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     
     [super viewWillAppear:animated];
-    [[self navigationController] setNavigationBarHidden:YES animated:NO];
-   
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self _fetchProfile_other];
     [segmentControll setSelectedSegmentIndex:0];
     
@@ -201,10 +211,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-    
-    // 動画データを一度全て削除
-    //[[MoviePlayerManager sharedManager] removeAllPlayers];
-    //[[self navigationController] setNavigationBarHidden:NO animated:YES];
+     [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -256,20 +263,19 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSLog(@"scroll is stoped");
 }
 
+#pragma mark - Segue
+#pragma mark 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
+    //2つ目の画面にパラメータを渡して遷移する
+    // !!!:dezamisystem
+    //    if ([segue.identifier isEqualToString:@"showDetail2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
         //ここでパラメータを渡す
-#if 0
         everyTableViewController *eveVC = segue.destinationViewController;
-#else
-        everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-#endif
         eveVC.postID = (NSString *)sender;
     }
-    
     //店舗画面にパラメータを渡して遷移する
     // !!!:dezamisystem
     //    if ([segue.identifier isEqualToString:@"goRestpage"])
@@ -277,7 +283,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     {
         //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
-        restVC.postRestName = [header objectForKey:@"user_id"];
+        restVC.postRestName = _postRestname;
     }
     
     if ([segue.identifier isEqualToString:@"goMap"])
@@ -286,8 +292,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         MapViewController  *mapVC = segue.destinationViewController;
         mapVC.receiveDic3 = post;
     }
+    
 }
-
 
 #pragma mark - TimelineCellDelegate
 
@@ -328,10 +334,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
  */
 - (void)_fetchProfile_other
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+  //  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     [APIClient User:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   //     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         NSLog(@"叩かれてるよ");
         
@@ -340,7 +346,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
             // TODO: アラート等を掲出
             return;
         }
-        NSLog(@"users result:%@",result);
+        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        
+        for (NSDictionary *post2 in items) {
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post2]];
+        }
+        post1 = tempPosts;
         
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
         NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];

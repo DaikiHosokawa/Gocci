@@ -450,7 +450,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if(flash_on == 0 ){
         
         [APIClient postWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+       //     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
             
             if (code != 200 || error != nil) {
@@ -471,7 +471,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }else if (flash_on == 1){
         [APIClient postUnWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
             LOG(@"resultUnWant=%@", result);
             
@@ -654,12 +654,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     LOG(@"restName:%@",[header objectForKey:@"restname"]);
     
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+  //  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
     [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         LOG(@"resultRest1=%@", result);
         

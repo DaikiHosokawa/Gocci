@@ -1379,7 +1379,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xVr-q7-YJP">
-                            <rect key="frame" x="0.0" y="112" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="132" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
                             <items>
@@ -1402,7 +1402,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="knc-92-vZ2" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="knc-92-vZ2" id="2nN-tB-7ZO">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
@@ -2078,7 +2078,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1tH-Vh-pOD">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1tH-Vh-pOD">
                                             <rect key="frame" x="8" y="129" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2106,7 +2106,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="1tH-Vh-pOD" id="r7A-3c-pvv"/>
+                                    <outlet property="date" destination="1tH-Vh-pOD" id="8Nu-Kx-ZRy"/>
                                     <outlet property="imageView" destination="fge-Yh-Ovt" id="3vA-7w-dCI"/>
                                     <outlet property="likeBtn" destination="ZZk-8C-xkX" id="spb-S0-ZON"/>
                                     <outlet property="option" destination="NzJ-o8-5NC" id="WQv-3n-Ji6"/>

@@ -60,6 +60,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewWillDisappear:(BOOL)animated{
     call = 0;
     category_flag = @"";
+    NSLog(@"called viewwill dissa");
+    // 画面が隠れた際に再生中の動画を停止させる
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
 
@@ -118,6 +121,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }else{
                  [self.collectionView reloadData];
                  [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
+                 // 画面が隠れた際に再生中の動画を停止させる
+                 [[MoviePlayerManager sharedManager] stopMovie];
              }
              
          }];
@@ -182,11 +187,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [self.view addSubview:iv];
              }else{
                  [self.collectionView reloadData];
-                 // 動画データを一度全て削除
-                 [[MoviePlayerManager sharedManager] removeAllPlayers];
-                 
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                  call++;
-             }
+                 // 動画データを一度全て削除
+                 // 画面が隠れた際に再生中の動画を停止させる
+                 [[MoviePlayerManager sharedManager] stopMovie];             }
              
          }];
         
@@ -287,21 +292,27 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     //一番下までスクロールしたかどうか
     if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height))
     {
-        if([category_flag length]>0 && [value_flag length]>0){
+        NSLog(@"Requesting API ? %@", [UIApplication         sharedApplication].networkActivityIndicatorVisible ? @"YES" : @"NO");
+        if (![UIApplication sharedApplication].networkActivityIndicatorVisible ) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             
-            [self addBottom:YES category_id:category_flag value_id:value_flag];
-        }else{
-            
-            if ([category_flag length]>0) {
-                [self addBottom:YES category_id:category_flag value_id:@""];
-            }else if ([value_flag length]>0){
-                [self addBottom:YES category_id:@"" value_id:value_flag];
+            if([category_flag length]>0 && [value_flag length]>0){
+                
+                [self addBottom:YES category_id:category_flag value_id:value_flag];
             }else{
-                //一番下
-                [self addBottom:YES category_id:@"" value_id:@""];
+                
+                if ([category_flag length]>0) {
+                    [self addBottom:YES category_id:category_flag value_id:@""];
+                }else if ([value_flag length]>0){
+                    [self addBottom:YES category_id:@"" value_id:value_flag];
+                }else{
+                    //一番下
+                    [self addBottom:YES category_id:@"" value_id:@""];
+                }
             }
         }
     }
+    
 }
 
 

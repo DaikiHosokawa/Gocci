@@ -942,7 +942,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 - (void)_complete
 {
 	[SVProgressHUD show];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   // [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //__weak typeof(self)weakSelf = self;
 	
 #if 0
@@ -960,7 +960,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     // 動画を書き出し・保存
     [self.recordSession mergeRecordSegments:^(NSError *error) {
         [SVProgressHUD dismiss];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+     //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (error) {
             [weakSelf _showUploadErrorAlertWithMessage:error.localizedDescription];
@@ -982,7 +982,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 	[staticRecordSession mergeRecordSegments:^(NSError *error)
 	 {
 		[SVProgressHUD dismiss];
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	//	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 		
 		if (error) {
 			[self _showUploadErrorAlertWithMessage:error.localizedDescription];
@@ -1135,7 +1135,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		
 		[SVProgressHUD show];
 		
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+		//[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 		
 		// サーバへデータを送信
 		//__weak typeof(self)weakSelf = self;
@@ -1164,7 +1164,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 		 }];
 		
 		[SVProgressHUD dismiss];
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		//[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	}
 }
 

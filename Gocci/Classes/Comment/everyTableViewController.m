@@ -195,8 +195,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [SVProgressHUD show];
     [APIClient commentJSON:_postID handler:^(id result, NSUInteger code, NSError *error) {
         
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
+       
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {

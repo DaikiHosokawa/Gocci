@@ -56,9 +56,7 @@
     self.imageView.layer.cornerRadius = 5;
     self.imageView.clipsToBounds = true;
     self.title.text = timelinePost.restname;
-    double lat= [timelinePost.distance doubleValue];
-    NSString *str1 = [self stringWithDistance:lat];
-    self.distance.text = str1;
+    self.date.text = timelinePost.timelabel;
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
     NSLog(@"index:%lu",(unsigned long)self.index);
