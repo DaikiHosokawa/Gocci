@@ -21,7 +21,6 @@
 #import "CustomAnnotation.h"
 #import "NotificationViewController.h"
 
-// !!!:dezamisystem
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
@@ -35,7 +34,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 <TimelineCellDelegate,MKMapViewDelegate>
 {
     __weak IBOutlet MKMapView *map_;
-    // RestaurantPost *restaurantPost;
     NSDictionary *header;
 }
 
@@ -73,12 +71,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewDidLoad];
     
-    //右ナビゲーションアイテム(通知)の実装
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    // BBBadgeBarButtonItemオブジェクトの作成
     self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
@@ -87,17 +83,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
     
-    // バッジ内容の設定
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
     
     
-    //ナビゲーションバーに画像
     {
-        //タイトル画像設定
-        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        //CGFloat width_image = height_image;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
@@ -111,45 +102,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }
     
-    
-    //_total_cheer_num.text = _postTotalCheer;
-    //NSLog(@"postTotalCheer:%@",_postTotalCheer);
-    
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
     
-    // Pull to refresh
     self.refresh = [UIRefreshControl new];
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
     
-    /*
-     if (_status_) {
-     NSString *dotse = _status_[1];
-     NSLog(@"dotse:%@",dotse);
-     NSInteger i = dotse.integerValue;
-     int pi = (int)i;
-     NSLog(@"pi:%d",pi);
-     //NSLog(@"postFlag:%ld",(long)_postFlag);
-     flash_on = pi;
-     NSLog(@"flash_on:%d",flash_on);
-     }else{
-     NSInteger i = _postFlag;
-     int pi = (int)i;
-     NSLog(@"pi:%d",pi);
-     //NSLog(@"postFlag:%ld",(long)_postFlag);
-     flash_on = pi;
-     NSLog(@"flash_on:%d",flash_on);
-     }
-     */
-    
-    
-    //  NSLog(@"total_cheer_num:%@",_postTotalCheer);
-    
-    //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(handleRemotePushToUpdateBell:)
@@ -171,9 +133,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewWillAppear:animated];
     
-    // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-  // API からタイムラインのデータを取得
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self _fetchRestaurant];
     
 }
@@ -183,19 +143,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-    }
-    NSLog(@"header2^:%@",header);
+   
     
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-    
-    // 動画データを一度全て削除
-    //[[MoviePlayerManager sharedManager] removeAllPlayers];
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [super viewWillDisappear:animated];
     
@@ -211,24 +166,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self _fetchRestaurant];
 }
 
-
-
-
-
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate5"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate5"];
-    // 保存
-    [userDefaults synchronize];
-    // 初回起動
-    return YES;
-}
 
 
 - (IBAction)unwindToTop:(UIStoryboardSegue *)segue
@@ -247,7 +184,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     return [self.posts count];
 }
 
-//1セルあたりの高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [TimelineCell cellHeightWithTimelinePost:self.posts[indexPath.row]];
@@ -263,13 +199,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     cell.delegate = self;
     
-    // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post];
     
-    // 動画の読み込み
-    LOG(@"読み込み完了");
-    //__weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
@@ -283,18 +215,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
-
-//セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.85];
 }
 
 
-//Twitterのアクティビティ投稿の基準
 -(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
 {
-    // Twitterの時だけハッシュタグをつける
     if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
         return [NSString stringWithFormat:@"%@ #%@", _text, _hashTag];
     }
@@ -308,7 +236,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 
-//ナビゲーションのアクションボタンを押した時の動作
 - (IBAction)share:(id)sender
 {
     RestaurantTableViewController *text = [[RestaurantTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
@@ -317,40 +244,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    // スクロール中は動画を停止する
-    // [[MoviePlayerManager sharedManager] scrolling:YES];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-}
-
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // [moviePlayer play];
-    //[self _playMovieAtCurrentCell];
-    NSLog(@"scroll is stoped");
-}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
         [self _playMovieAtCurrentCell];
-        //   NSLog(@"scroll is stoped");
     }
 }
 
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    
-    NSLog(@"scroll is stoped");
-}
-
-
-
-
-// UIControlEventからタッチ位置のindexPathを取得する
 - (NSIndexPath *)indexPathForControlEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint p = [touch locationInView:self.tableView];
@@ -360,12 +260,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    //2つ目の画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //    if ([segue.identifier isEqualToString:@"showDetail2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        //ここでパラメータを渡す
 #if 0
         everyTableViewController *eveVC = segue.destinationViewController;
 #else
@@ -377,9 +273,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [self.popover dismissPopoverAnimated:YES];
     }
     
-    //プロフィール画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //	if ([segue.identifier isEqualToString:@"goOthersTimeline2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         usersTableViewController_other *users_other = segue.destinationViewController;
@@ -387,8 +280,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
 }
 
-#pragma mark - Cell Event
-//#pragma mark いいねボタンの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
 {    // API からデータを取得
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
@@ -396,23 +287,17 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     }
      ];
     
-    // タイムラインを再読み込み
-    //[self _fetchRestaurant];
 }
 
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
-    //違反報告ボタンの時の処理
-    LOG(@"postid=%@", postID);
     
     Class class = NSClassFromString(@"UIAlertController");
     if(class)
     {
-        // iOS 8の時の処理
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
         
-        // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
@@ -450,13 +335,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if(flash_on == 0 ){
         
         [APIClient postWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
-       //     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            
             
             if (code != 200 || error != nil) {
-                // API からのデータの取得に失敗
-                
-                // TODO: アラート等を掲出
                 return;
             }else{
                  NSLog(@"行きたいしました");
@@ -471,14 +351,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
     }else if (flash_on == 1){
         [APIClient postUnWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
-         //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            
-            LOG(@"resultUnWant=%@", result);
             
             if (code != 200 || error != nil) {
-                // API からのデータの取得に失敗
                 
-                // TODO: アラート等を掲出
                 return;
             }else{
                 NSLog(@"行きたい解除しました");
@@ -652,25 +527,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [SVProgressHUD show];
     
-    LOG(@"restName:%@",[header objectForKey:@"restname"]);
-    
-  //  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.refresh beginRefreshing];
     
     __weak typeof(self)weakSelf = self;
     [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
-    //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        LOG(@"resultRest1=%@", result);
         
         if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            
-            // TODO: アラート等を掲出
             return;
         }
         
-        // 取得したデータを self.posts に格納
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
         NSDictionary* restaurants = (NSDictionary*)[result valueForKey:@"restaurants"];
@@ -681,21 +546,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         header = restaurants;
         self.posts = [NSArray arrayWithArray:tempPosts];
-        
-        // 動画データを一度全て削除
         [[MoviePlayerManager sharedManager] removeAllPlayers];
-        
-        
-        // 表示の更新
         [weakSelf.tableView reloadData];
         
-        
-        
         if ([self.posts count]== 0) {
-            NSLog(@"投稿がない");
             _emptyView.hidden = NO;
             [SVProgressHUD dismiss];
-            
         }
         
         if ([weakSelf.refresh isRefreshing]) {

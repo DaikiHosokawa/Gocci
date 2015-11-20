@@ -102,28 +102,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     
     [super viewDidLoad];
-   
+    
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
-  
-
-   // self.navigationController.navigationBar.tintColor = color_custom;
+    
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
-
     
-    //set notificationCenter
-    /*
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self
-                           selector:@selector(handleRemotePushToUpdateBell:)
-                               name:@"HogeNotification"
-                             object:nil];
-    */
-   
-    //PageMenu登録
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
     vc1.title = @"現在地周辺";
@@ -146,17 +133,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
-         
+        
         self.navigationItem.titleView =navigationTitle;
     }
-
+    
     
     //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
     NSArray *controllerArray = @[vc1,vc2, vc3];
     NSInteger count_item = 3;	//画面数
     // !!!:高さは画面高さの10%
-  //  CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
+    //  CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
     CGFloat width_item = rect_screen.size.width / count_item; //幅
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),	//選択マーク高さ default = 3.0
@@ -165,7 +152,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                  CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
                                  CAPSPageMenuOptionBottomMenuHairlineColor :  [UIColor blackColor],	//アンダーライン色
                                  CAPSPageMenuOptionSelectionIndicatorColor:
-                                 color_custom,		//選択マーク色
+                                     color_custom,		//選択マーク色
                                  //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
                                  CAPSPageMenuOptionMenuMargin : @(20.0),	// ???:default = 15.f
                                  CAPSPageMenuOptionMenuHeight : @(40.0),	//メニュー高さ
@@ -175,12 +162,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                  CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(YES),	//角に丸みを付けるか？
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0],	//タイトルフォント
                                  CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.1),	// ???:default = 0.2
-                                CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
+                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
                                  //CAPSPageMenuOptionEnableHorizontalBounce : @(YES), // ???:default = YES
                                  CAPSPageMenuOptionAddBottomMenuHairline : @(NO),	// ???:default = YES
                                  //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth : @(NO),	// ???:default = NO
                                  CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),	//アニメーション時間[ms] default = 500
-//                               CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
+                                 //                               CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
                                  //CAPSPageMenuOptionHideTopMenuBar : @(NO),//メニューを隠した状態にするか？
                                  };
     
@@ -191,14 +178,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                                         frame:rect_pagemenu
                                                       options:parameters];
     
-    _pageMenu.delegate = self;
-    
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
     
     UIImage *img = [UIImage imageNamed:@"sort.png"];  // ボタンにする画像を生成する
     UIButton *btn = [[UIButton alloc]
-                      initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];  // ボタンのサイズを指定する
+                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];  // ボタンのサイズを指定する
     [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
     [self.view addSubview:btn];
     // ボタンが押された時にhogeメソッドを呼び出す
@@ -237,49 +222,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
     [popupController presentInViewController:self];
 }
-
-
-
-/*
-#pragma mark - NavigationBarItemAction
--(void)barButtonItemPressed:(id)sender
-{
-    NSLog(@"badge touched");
-    
-    self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
-    
-    if (!self.popover) {
-        NotificationViewController *vc = [[NotificationViewController alloc] init];
-        vc.supervc = self;
-        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-    }
-    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-    [self.popover presentPopoverFromRect:CGRectMake(
-                                                    self.barButton.accessibilityFrame.origin.x + 15,
-                                                    self.barButton.accessibilityFrame.origin.y + 30,
-                                                    self.barButton.accessibilityFrame.size.width,
-                                                    self.barButton.accessibilityFrame.size.height)
-                                  inView:self.barButton.customView
-                permittedArrowDirections:WYPopoverArrowDirectionUp
-                                animated:YES
-                                 options:WYPopoverAnimationOptionFadeWithScale];
-}
-*/
-
-/*
-#pragma mark - Notification
-- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
-}
- 
- */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

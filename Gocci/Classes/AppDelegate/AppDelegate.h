@@ -53,9 +53,7 @@
 
 }
 
-//@property (strong, nonatomic) FBSession *session;
 @property (nonatomic, retain) NSString *restname;
-@property (nonatomic, retain) NSString *rest_id;
 @property(nonatomic) NSString *lifelogDate;
 @property (nonatomic, assign) NSInteger screenType;
 @property (strong, nonatomic) UIWindow *window;

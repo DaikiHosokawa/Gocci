@@ -39,30 +39,12 @@
 @synthesize stringTenmei;
 @synthesize indexCategory;
 
-//@synthesize window = _window;
 
-/*
-//facebook認証のcallbackメソッド
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    // attempt to extract a token from the url
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication
-                        withSession:self.session];
-}*/
-
-// Facebook SDK needs this
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-//    NSLog(@"Was called with: %@/n", url);
-//    NSLog(@"SOurce Application: %@/n", sourceApplication);
-//    
-//    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
@@ -161,12 +143,7 @@
     self.window.layer.masksToBounds = YES; // ビューをマスクで切り取る
     self.window.layer.cornerRadius = 4.0; // 角丸マスクを設定(数値は角丸の大きさ)
     
-    // !!!:dezamisystem・初期化
-    {
-        //indexCategory = -1;
-        //indexFuniki = -1;
-    }
-    
+
 #if !(TARGET_IPHONE_SIMULATOR)
     //badge数を解放
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -243,20 +220,15 @@ void exceptionHandler(NSException *exception) {
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    //[self.session close];
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 //APNsサーバーよりデバイストークン受信成功したときに呼ばれるメソッド

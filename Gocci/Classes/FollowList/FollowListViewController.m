@@ -35,8 +35,6 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    //ナビゲーションバーに画像
     {
         self.title = @"フォロー";
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
@@ -44,15 +42,9 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
         self.navigationItem.backBarButtonItem = barButton;
     }
     
-    // !!!:dezamisystem
-    //	self.navigationItem.title = @"コメント画面";
-    
     UINib *nib = [UINib nibWithNibName:@"FollowListCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"FollowListCell"];
     
-    //背景にイメージを追加したい
-    // UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -60,69 +52,38 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     
     self.tableView.bounces = NO;
     self.tableView.allowsSelection = NO;
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.allowsSelection = YES;
     self.tableView.allowsSelectionDuringEditing = YES;
-    
-#if 0
-    // タブの中身（UIViewController）をインスタンス化
-    UIViewController *item01 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    UIViewController *item02 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    NSArray *views = [NSArray arrayWithObjects:item01,item02, nil];
-    
-    // タブコントローラをインスタンス化
-    UITabBarController *tbc = [[UITabBarController alloc] init];
-    tbc.delegate = self;
-    
-    // タブコントローラにタブの中身をセット
-    [tbc setViewControllers:views animated:NO];
-    [self.view addSubview:tbc.view];
-    
-    // １つめのタブのタイトルを"hoge"に設定する
-    UITabBarItem *tbi = [tbc.tabBar.items objectAtIndex:0];
-    tbi.title = @"hoge";
-    tbi = [tbc.tabBar.items objectAtIndex:1];
-    tbi.title = @"ABCDEFG";
-#endif
-    
     
 }
 
 
 -(void)perseJson
 {
-    //test user
     [APIClient FollowList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        
-     //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
+     
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
             
-            // TODO: アラート等を掲出
             return;
         }
         
         if(result){
             
-            // ユーザー名
             NSArray *user_name = [result valueForKey:@"username"];
             _user_name_ = [user_name mutableCopy];
-            NSLog(@"user_name:%@",_user_name_);
-            // プロフ画像
+           
             NSArray *picture = [result valueForKey:@"profile_img"];
             _picture_ = [picture mutableCopy];
-            // フォローしてるか
+            
             NSArray *follow_flag = [result valueForKey:@"follow_flag"];
             _follow_flag_ = [follow_flag mutableCopy];
-            // User_id
+           
             NSArray *user_id = [result valueForKey:@"user_id"];
             _user_id_ = [user_id mutableCopy];
-            
             
             if([_user_name_ count] ==0){
                     // 画像表示例文
@@ -148,12 +109,8 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     
     [SVProgressHUD show];
     [super viewWillAppear:animated];
-    
-    // !!!:dezamisystem
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [SVProgressHUD dismiss];
-    
     [self perseJson];
     
 }
@@ -165,9 +122,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     _postUsername_with_profile =  [_user_id_ objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
 
@@ -176,7 +131,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -223,15 +177,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
     
     if([_picture_ objectAtIndex:indexPath.row] != nil){
-        //ユーザーの画像を取得
         NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-        // Here we use the new provided setImageWithURL: method to load the web image
         [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
                            placeholderImage:[UIImage imageNamed:@"default.png"]];
     }
     
     [SVProgressHUD dismiss];
-    
     return _cell;
 }
 
