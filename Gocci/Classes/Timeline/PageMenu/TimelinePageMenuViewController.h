@@ -30,8 +30,4 @@
 @property (weak, nonatomic) id<SortableTimeLineSubView> currentVisibleSortableSubViewController;
 
 
-- (void)sortFunc:(NSString *)category;
-- (void)sortValue:(NSString *)value;
-
-
 @end

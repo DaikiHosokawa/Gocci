@@ -74,14 +74,6 @@
 
 
 /**
- *
- *  profile_other
- *
- *  @param handler 完了イベントハンドラ
- */
-+ (void)User_other:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
  *  search/
  *
  *  @param restName
@@ -108,13 +100,6 @@
  */
 + (void)Near:(double)latitude
    longitude:(double)longitude handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-/**
- *  post_restname/
- *
- *  @param restaurantName
- *  @param handler
- */
-+ (void)postRestname:(NSString *)restaurantName handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  movie/
@@ -293,16 +278,6 @@
  *  @param handler
  */
 + (void)postWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-
-
-/**
- *  Unwant
- *
- *  @param rest_id
- *  @param handler
- */
-+ (void)postUnWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 
 /**

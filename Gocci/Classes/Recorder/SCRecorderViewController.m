@@ -98,21 +98,12 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     _recorder.captureSessionPreset = AVCaptureSessionPreset640x480;
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
-    
-    // On iOS 8 and iPhone 5S, enabling this seems to be slow
     _recorder.initializeSessionLazily = NO;
-    
-    //	[self updateTimeRecordedLabel];
-    
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
     
     UIView *previewView = self.view; // self.previewView;
     _recorder.previewView = previewView;
-    
- 
-    //	self.loadingView.hidden = YES;
-    //CGRect rect_focus = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    //NSLog(@"フォーカス矩形：%@", NSStringFromCGRect(rect_focus) );
+
     self.focusView = [[SCRecorderToolsView alloc] initWithFrame:previewView.bounds];
     self.focusView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     self.focusView.recorder = _recorder;
@@ -122,25 +113,13 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     
     // 現在時間を取得する
     NSDate *now = [NSDate date];
-    NSLog(@"%@", now);
-    
-    // 日付のフォーマット
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
     NSString *nowString = [formatter stringFromDate:now];
     [[NSUserDefaults standardUserDefaults] setValue:nowString forKey:@"post_time"];
     
 #if 1
-    // !!!:dezamisystem・スクロールビュー
-    
     {
-        // !!!:dezamisystem・パラメータ
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-        
-        // !!!:ゲージ再描画
-        //[self updateTimeRecordedLabel];
-
         {
             CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
             //画面サイズから場合分け
@@ -162,10 +141,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
             {
                 firstView = [SCFirstView create];
                 firstView.delegate = self;
-                //[pageingScrollView addSubview:firstView];
                 secondView = [SCSecondView create];
-                secondView.delegate = self;
-                //[pageingScrollView addSubview:secondView];
             }
             [scrollpageview showInView:self.view first:firstView second:secondView];
         }
@@ -193,10 +169,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    
-    // NavigationBar 非表示
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
     [self prepareSession];
 }
 
@@ -223,23 +196,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [_recorder startRunning];
 
 #else
-    //	[self.viewIndicator stopAnimating];
 #endif
-}
-
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate6"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate6"];
-    // 保存
-    [userDefaults synchronize];
-    // 初回起動
-    return YES;
 }
 
 
@@ -373,43 +330,12 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #endif
     
     NSLog(@"now:%f,max:%f",time_now,time_max);
-    // !!!:・円グラフゲージ
     [firstView updatePieChartWith:time_now MAX:time_max];
     
 }
 
 
 
-
-
-#pragma mark - RecorderSubmitPopupViewDelegate
-#pragma mark Twitter へ投稿
-/*
- - (void)recorderSubmitPopupViewOnTwitterShare
- {
-
- }
- */
-
-#pragma mark Facebook へ投稿
-/*
-- (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller
-{
-    
-}
-*/
-
-
-#pragma mark - Private Methods
-
-#pragma mark Complete撮影完了処理
-
-
-/**
- *  保存・投稿失敗アラート
- *
- *  @param message
- */
 - (void)_showUploadErrorAlertWithMessage:(NSString *)message
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存失敗しました！撮り直してください"
@@ -475,11 +401,9 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #pragma mark - 撮り直し
 - (IBAction)onRetake:(id)sender {
     [self retake];
-    NSLog(@"呼ばれてはいる");
 }
 
 - (IBAction)onReverse:(id)sender {
-   NSLog(@"osareteru2");
     [_recorder switchCaptureDevices];
 }
 

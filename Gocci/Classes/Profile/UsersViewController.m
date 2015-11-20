@@ -44,7 +44,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     NSDictionary *post;
     NSMutableArray *post1;
     __weak IBOutlet UIButton *editButton;
-    __strong NSMutableArray *_items;
     __weak IBOutlet UISegmentedControl *segmentControll;
     __weak IBOutlet UIView *changeView;
     UIViewController *currentViewController_;
@@ -77,9 +76,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self _fetchProfile];
     [segmentControll setSelectedSegmentIndex:0];
 }
@@ -149,7 +147,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     MapViewController *vc3 = [[MapViewController alloc] init];
     vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     vc3.receiveDic3 = post;
-    NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
     vc3.soda = changeView.frame;
 
@@ -189,8 +186,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];
     NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
     self.navigationItem.rightBarButtonItem = self.barButton;
     
@@ -215,10 +212,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 
-#pragma mark - Action
-
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -231,19 +224,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
-#pragma mark - Private Methods
-
-
-#pragma mark - Segue
-#pragma mark 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    //2つ目の画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //    if ([segue.identifier isEqualToString:@"showDetail2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        //ここでパラメータを渡す
 #if 0
         everyTableViewController *eveVC = segue.destinationViewController;
 #else
@@ -254,9 +238,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         eveVC.postID = (NSString *)sender;
         [self.popover dismissPopoverAnimated:YES];
     }
-    //店舗画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //    if ([segue.identifier isEqualToString:@"goRestpage"])
+    
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
         //ここでパラメータを渡す
@@ -276,16 +258,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)_fetchProfile
 {
-    //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-     [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-     //   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-         NSLog(@"叩かれてるよ");
-         
+    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+
         if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
             return;
         }
         NSLog(@"users result:%@",result);
@@ -298,11 +273,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
          post1 = tempPosts;
         
         NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
-        NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
-    //     NSMutableArray* postArray = [result valueForKey:@"posts"];
         header = headerDic;
-        post = postDic;
-         
         [self byoga];
          [self setupViewControllers];
          [self changeSegmentedControlValue];
@@ -311,17 +282,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 -(void)byoga{
-    
-    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = [header objectForKey:@"username"];
     [self.profilepicture setImageWithURL:[NSURL URLWithString:[header objectForKey:@"profile_img"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
     self.FolloweeNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follower_num"]];
     self.FollowNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follow_num"]];
-    //[header objectForKey:@"follow_num"];
     self.CheerNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"cheer_num"]];
-    //[header objectForKey:@"cheer_num"];
-
 }
 
 -(void)eventSettingBtn{

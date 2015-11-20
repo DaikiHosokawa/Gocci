@@ -87,7 +87,6 @@
 		9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86C1BF83E4B00430942 /* EditTableViewController.m */; };
 		9550DA501BF83E4C00430942 /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8751BF83E4B00430942 /* GaugeView.m */; };
 		9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */; };
-		9550DA531BF83E4C00430942 /* SCRecorderViewController.m.orig in Resources */ = {isa = PBXBuildFile; fileRef = 9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */; };
 		9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */; };
 		9550DA551BF83E4C00430942 /* SCFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8811BF83E4B00430942 /* SCFirstView.m */; };
 		9550DA561BF83E4C00430942 /* SCFirstView_3_5_inch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D8821BF83E4B00430942 /* SCFirstView_3_5_inch.xib */; };
@@ -483,7 +482,6 @@
 		9550D8751BF83E4B00430942 /* GaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaugeView.m; sourceTree = "<group>"; };
 		9550D8791BF83E4B00430942 /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
 		9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecorderViewController.m; sourceTree = "<group>"; };
-		9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SCRecorderViewController.m.orig; sourceTree = "<group>"; };
 		9550D87C1BF83E4B00430942 /* SCRecordSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecordSessionManager.h; sourceTree = "<group>"; };
 		9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionManager.m; sourceTree = "<group>"; };
 		9550D8801BF83E4B00430942 /* SCFirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstView.h; sourceTree = "<group>"; };
@@ -1299,7 +1297,6 @@
 				9550D8751BF83E4B00430942 /* GaugeView.m */,
 				9550D8791BF83E4B00430942 /* SCRecorderViewController.h */,
 				9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */,
-				9550D87B1BF83E4B00430942 /* SCRecorderViewController.m.orig */,
 				9550D87C1BF83E4B00430942 /* SCRecordSessionManager.h */,
 				9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */,
 				9550D88F1BF83E4B00430942 /* SCTouchDetector.h */,
@@ -2263,7 +2260,6 @@
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
 				9550DAA51BF83E4C00430942 /* Cancel.png in Resources */,
 				9550DA2C1BF83E4C00430942 /* FolloweeListCell.xib in Resources */,
-				9550DA531BF83E4C00430942 /* SCRecorderViewController.m.orig in Resources */,
 				9550DA901BF83E4C00430942 /* InfoPlist.strings in Resources */,
 				9550DA561BF83E4C00430942 /* SCFirstView_3_5_inch.xib in Resources */,
 				9550DB161BF83E4C00430942 /* icon-success@2x.png in Resources */,
@@ -2780,6 +2776,7 @@
 				981A93341BFC5063007B3BF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF54EFDA19149A1800025DC8 /* Build configuration list for PBXProject "Gocci" */ = {
 			isa = XCConfigurationList;

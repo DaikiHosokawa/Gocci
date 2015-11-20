@@ -21,7 +21,5 @@
 
 @property (nonatomic) NSString *postUsername;
 @property (nonatomic) NSString *postUsername_with_profile;
-@property (nonatomic) NSString *postUserPicture_with_profile;
-@property (nonatomic) NSString *_postUserFlag_with_profile;
 
 @end
