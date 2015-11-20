@@ -2111,7 +2111,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6B2-Tj-nEk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6B2-Tj-nEk">
                                             <rect key="frame" x="8" y="129" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2139,7 +2139,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="6B2-Tj-nEk" id="dQB-6c-xej"/>
+                                    <outlet property="date" destination="6B2-Tj-nEk" id="HdH-NH-sf2"/>
                                     <outlet property="imageView" destination="clE-3M-JnR" id="3dU-4d-ORc"/>
                                     <outlet property="likeBtn" destination="gUa-10-gCf" id="67H-af-dbl"/>
                                     <outlet property="option" destination="XnK-NA-tDD" id="eGV-C3-dF4"/>

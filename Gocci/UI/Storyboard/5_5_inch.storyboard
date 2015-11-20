@@ -2084,7 +2084,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fkm-vi-NRC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fkm-vi-NRC">
                                             <rect key="frame" x="8" y="170" width="161" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2107,7 +2107,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="Fkm-vi-NRC" id="8OS-OR-Gjk"/>
+                                    <outlet property="date" destination="Fkm-vi-NRC" id="qdf-qL-92C"/>
                                     <outlet property="imageView" destination="WGp-4F-Cpl" id="6FK-DF-vrA"/>
                                     <outlet property="likeBtn" destination="0jg-WB-UDz" id="yDf-sm-qgB"/>
                                     <outlet property="option" destination="Esc-yv-czt" id="kxY-gg-PfG"/>

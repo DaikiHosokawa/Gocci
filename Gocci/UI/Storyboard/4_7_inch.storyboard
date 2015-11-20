@@ -1112,7 +1112,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="for-gv-he5">
-                                <rect key="frame" x="0.0" y="101" width="375" height="125"/>
+                                <rect key="frame" x="0.0" y="118" width="375" height="125"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qt0-wp-EHv">
                                         <rect key="frame" x="131" y="17" width="216" height="92"/>
@@ -1154,7 +1154,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="※タップで全画面再生します" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSQ-qQ-4RE">
-                                <rect key="frame" x="10" y="226" width="168" height="21"/>
+                                <rect key="frame" x="10" y="243" width="168" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1169,25 +1169,32 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Und-6B-Rjw">
-                                <rect key="frame" x="0.0" y="487" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="471" width="375" height="89"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guk-WY-U5T">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="1"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9x2-fO-kKa">
-                                        <rect key="frame" x="0.0" y="79" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="1"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCM-kv-1uU">
-                                        <rect key="frame" x="14" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="14" y="27" width="52" height="52"/>
                                         <animations/>
                                         <state key="normal" title="Button" image="facebook_share"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SNSでシェアする" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zg-5F-1au">
+                                        <rect key="frame" x="14" y="6" width="97" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cce-iP-kzQ">
-                                        <rect key="frame" x="95" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="81" y="27" width="52" height="52"/>
                                         <animations/>
                                         <state key="normal" title="test2" image="twitter_share"/>
                                     </button>
@@ -1895,7 +1902,7 @@
                                             <rect key="frame" x="150" y="140" width="23" height="23"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7f-JQ-4cE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7f-JQ-4cE">
                                             <rect key="frame" x="8" y="151" width="98" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
@@ -1916,7 +1923,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="G7f-JQ-4cE" id="j7K-H2-Dzg"/>
+                                    <outlet property="date" destination="G7f-JQ-4cE" id="HSj-PZ-jIp"/>
                                     <outlet property="imageView" destination="TzA-FQ-T7B" id="hXH-y7-DsY"/>
                                     <outlet property="likeBtn" destination="Jb7-dZ-BIl" id="gQQ-Yi-hhD"/>
                                     <outlet property="option" destination="ABo-rE-st0" id="Kdi-If-m0N"/>

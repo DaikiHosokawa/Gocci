@@ -1102,7 +1102,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="U5c-iR-QNz">
-                                <rect key="frame" x="0.0" y="101" width="320" height="109"/>
+                                <rect key="frame" x="-1" y="109" width="320" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="rFa-mb-FuH">
@@ -1151,10 +1151,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※タップで全画面再生します" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="84f-8v-7sV">
-                                <rect key="frame" x="5" y="212" width="168" height="21"/>
+                                <rect key="frame" x="4" y="220" width="168" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1167,30 +1167,38 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" id="jqd-UZ-Gmv">
-                                <rect key="frame" x="0.0" y="440" width="320" height="69"/>
+                            <view contentMode="scaleToFill" id="8jQ-bR-Eyw">
+                                <rect key="frame" x="-1" y="432" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="3xh-ca-ZWl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    <view contentMode="scaleToFill" id="LGY-Sb-IMs">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="aed-iy-hdM">
-                                        <rect key="frame" x="0.0" y="68" width="320" height="1"/>
+                                    <view contentMode="scaleToFill" id="joe-Kh-HHS">
+                                        <rect key="frame" x="0.0" y="79" width="320" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="90t-Hj-cGP">
-                                        <rect key="frame" x="14" y="9" width="50" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNSでシェアする" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSw-aG-uhg">
+                                        <rect key="frame" x="14" y="6" width="97" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q5w-Wv-ga7">
+                                        <rect key="frame" x="14" y="27" width="43" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <state key="normal" title="Button" image="facebook_share"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPC-2k-PWj">
-                                        <rect key="frame" x="80" y="9" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0lB-XH-oCT">
+                                        <rect key="frame" x="68" y="27" width="43" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <state key="normal" title="test2" image="twitter_share"/>
@@ -2173,7 +2181,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R9d-DW-inl">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R9d-DW-inl">
                                             <rect key="frame" x="8" y="129" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -2201,7 +2209,7 @@
                                 </view>
                                 <animations/>
                                 <connections>
-                                    <outlet property="distance" destination="R9d-DW-inl" id="oMh-yn-ObH"/>
+                                    <outlet property="date" destination="R9d-DW-inl" id="YYh-g9-Dlm"/>
                                     <outlet property="imageView" destination="HPh-Dt-JQf" id="Msr-0y-2Nf"/>
                                     <outlet property="likeBtn" destination="8Gc-cz-vr5" id="olq-EL-cM6"/>
                                     <outlet property="option" destination="L17-3x-FNN" id="0dQ-Uw-Nyb"/>

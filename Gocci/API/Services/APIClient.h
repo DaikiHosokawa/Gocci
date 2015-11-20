@@ -279,6 +279,13 @@
  */
 + (void)postWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
+/**
+ *  Unwant
+ *
+ *  @param rest_id
+ *  @param handler
+ */
++ (void)postUnWant:(NSString *)rest_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  updateProfile

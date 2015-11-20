@@ -83,7 +83,6 @@
 		9550DA481BF83E4C00430942 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D85E1BF83E4B00430942 /* TableViewController.m */; };
 		9550DA491BF83E4C00430942 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8641BF83E4B00430942 /* UsersViewController.m */; };
 		9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8671BF83E4B00430942 /* usersTableViewController_other.m */; };
-		9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86A1BF83E4B00430942 /* DummyViewController.m */; };
 		9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86C1BF83E4B00430942 /* EditTableViewController.m */; };
 		9550DA501BF83E4C00430942 /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8751BF83E4B00430942 /* GaugeView.m */; };
 		9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */; };
@@ -474,8 +473,6 @@
 		9550D8641BF83E4B00430942 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		9550D8661BF83E4B00430942 /* usersTableViewController_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController_other.h; sourceTree = "<group>"; };
 		9550D8671BF83E4B00430942 /* usersTableViewController_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController_other.m; sourceTree = "<group>"; };
-		9550D8691BF83E4B00430942 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
-		9550D86A1BF83E4B00430942 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		9550D86B1BF83E4B00430942 /* EditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewController.h; sourceTree = "<group>"; };
 		9550D86C1BF83E4B00430942 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewController.m; sourceTree = "<group>"; };
 		9550D8741BF83E4B00430942 /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaugeView.h; sourceTree = "<group>"; };
@@ -1289,8 +1286,6 @@
 			isa = PBXGroup;
 			children = (
 				9550D87E1BF83E4B00430942 /* ScrollPage */,
-				9550D8691BF83E4B00430942 /* DummyViewController.h */,
-				9550D86A1BF83E4B00430942 /* DummyViewController.m */,
 				9550D86B1BF83E4B00430942 /* EditTableViewController.h */,
 				9550D86C1BF83E4B00430942 /* EditTableViewController.m */,
 				9550D8741BF83E4B00430942 /* GaugeView.h */,
@@ -2433,7 +2428,6 @@
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
-				9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */,
 				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
