@@ -20,14 +20,5 @@
 }
 
 
-#pragma mark - beforeRecorderViewController
-
-
--(void)execSubmit;
--(void)onRetake;
--(void)cancelSubmit;
--(void)updatePieChartWith:(double)now MAX:(double)max;
-- (void)recorderSubmitPopupViewOnTwitterShare;
-- (void)recorderSubmitPopupViewOnFacebookShare:(UIViewController *)viewcontroller;
 
 @end

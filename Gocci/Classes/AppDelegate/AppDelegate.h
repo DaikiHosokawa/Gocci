@@ -77,7 +77,6 @@
 @property(nonatomic,retain) NSString *sessionkey;
 
 
--(BOOL)isFirstRun;
 -(void)checkGPS;
 
 @end

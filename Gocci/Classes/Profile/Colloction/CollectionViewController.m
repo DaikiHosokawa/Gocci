@@ -17,7 +17,6 @@
 #import "UsersViewController.h"
 
 static NSString * const reuseIdentifier = @"Cell";
-static const CGFloat kCellMargin = 5;
 
 @interface CollectionViewController ()<UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,UIActionSheetDelegate,CollectionViewCellDelegate>
 

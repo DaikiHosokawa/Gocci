@@ -118,8 +118,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     
     //ナビゲーションバーに画像
     {
-        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        CGFloat width_image = height_image;
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
@@ -311,8 +309,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 {
     [SVProgressHUD show];
     
-    __weak typeof(self)weakSelf = self;
-    {
+     {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
         // API からデータを取得

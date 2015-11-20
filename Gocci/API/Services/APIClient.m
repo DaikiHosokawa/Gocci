@@ -685,6 +685,22 @@ static APIClient *_sharedInstance = nil;
     
 }
 
++ (void)postUnWant:(NSString *)rest_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"rest_id" :rest_id,
+                             };
+    NSLog(@"Want param:%@",params);
+    [[APIClient sharedClient].manager GET:@"post/unwant/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
+}
+
 
 + (void)updateProfileBoth:(NSString *)username profile_img:(NSString *)profile_img handler:(void (^)(id, NSUInteger, NSError *))handler
 {

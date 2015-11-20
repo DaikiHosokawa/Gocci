@@ -71,23 +71,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewDidLoad];
     
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-    
-    self.barButton.badgeBGColor      = [UIColor whiteColor];
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
-    self.barButton.badgeTextColor    = color_custom;
-    self.barButton.badgeOriginX = 10;
-    self.barButton.badgeOriginY = 10;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    self.navigationItem.rightBarButtonItem = self.barButton;
-    
-    
     {
         UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -496,7 +479,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     marker.appearAnimation = kGMSMarkerAnimationPop;
     marker.map  = _map;
     _map.selectedMarker = marker;
-    GMSMapView* mapView = [GMSMapView mapWithFrame:map_.bounds camera:camera];
     [_map setCamera:camera];
     NSString *postWanttag = [header objectForKey:@"want_flag"];
     NSInteger i = postWanttag.integerValue;
@@ -644,36 +626,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     //[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
 
-- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
-    
-}
 
 
--(void)barButtonItemPressed:(id)sender{
-    NSLog(@"badge touched");
-    
-    self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
-    
-    if (!self.popover) {
-        NotificationViewController *vc = [[NotificationViewController alloc] init];
-        vc.supervc = self;
-        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
-    }
-    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-    [self.popover presentPopoverFromRect:CGRectMake(
-                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
-                                  inView:self.barButton.customView
-                permittedArrowDirections:WYPopoverArrowDirectionUp
-                                animated:YES
-                                 options:WYPopoverAnimationOptionFadeWithScale];
-}
 
 @end

@@ -21,8 +21,6 @@
 #import "RHRefreshControl.h"
 
 static NSString * const reuseIdentifier = @"Cell";
-static const CGFloat kCellMargin = 5;
-
 @interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
 
 
@@ -95,7 +93,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
     
-    __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -160,8 +157,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [self refreshFeed];
-    
-    __weak typeof(self)weakSelf = self;
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
         NSString *str = [NSString stringWithFormat:@"%d",call];
