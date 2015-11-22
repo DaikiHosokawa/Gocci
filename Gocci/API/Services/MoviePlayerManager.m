@@ -160,7 +160,6 @@ static MoviePlayerManager *_sharedInstance = nil;
         return nil;
     }
     
-    // 指定されたもの以外の再生を停止状態にする
     for (MPMoviePlayerController *p in [self.players allValues]) {
         if (p == player) {
             continue;

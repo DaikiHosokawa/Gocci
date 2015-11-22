@@ -29,13 +29,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 @interface TimelinePageMenuViewController ()
 {
-    //commentへの引き継ぎ
     NSString *_postID;
-    
-    //profile_otherへの引き継ぎ
     NSString *_postUsername;
-    
-    //restnameへの引き継ぎ
     NSString *_postRestname;
     
 }
@@ -44,9 +39,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
 
-
-
-//ページメニューを載せるビュー
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
 @end
@@ -106,7 +98,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
     
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
@@ -138,12 +129,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
     
     
-    //PageMenuアイテム
     CGRect rect_screen = [UIScreen mainScreen].bounds;
     NSArray *controllerArray = @[vc1,vc2, vc3];
-    NSInteger count_item = 3;	//画面数
-    // !!!:高さは画面高さの10%
-    //  CGFloat height_item = rect_screen.size.height * 0.1; //40.f;	//高さ
+    NSInteger count_item = 3;
     CGFloat width_item = rect_screen.size.width / count_item; //幅
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),	//選択マーク高さ default = 3.0
@@ -184,11 +172,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     UIImage *img = [UIImage imageNamed:@"sort.png"];  // ボタンにする画像を生成する
     UIButton *btn = [[UIButton alloc]
                      initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];  // ボタンのサイズを指定する
-    [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
-    [self.view addSubview:btn];
-    // ボタンが押された時にhogeメソッドを呼び出す
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
     [btn addTarget:self
-            action:@selector(hoge) forControlEvents:UIControlEventTouchUpInside];
+            action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -202,7 +188,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 }
 
--(void)hoge{
+-(void)SortLaunch{
     SortViewController* svc = [SortViewController new];
     svc.timelinePageMenuViewController = self;
     [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:svc];
@@ -225,14 +211,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark viewAppear
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -241,7 +225,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-#pragma mark viewDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -249,12 +232,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        //ここでパラメータを渡す
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
         eveVC.postID = (NSString *)sender;
@@ -263,15 +244,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     else
         if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
         {
-            //ここでパラメータを渡す
             usersTableViewController_other  *user_otherVC = segue.destinationViewController;
             user_otherVC.postUsername = _postUsername;
         }
         else
-            //店舗画面にパラメータを渡して遷移する
             if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
             {
-                //ここでパラメータを渡す
                 RestaurantTableViewController  *restVC = segue.destinationViewController;
                 restVC.postRestName = _postRestname;
             }

@@ -43,6 +43,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @protocol MovieViewDelegate;
 
 @interface usersTableViewController_other ()<CollectionViewControllerDelegate1>
+
 {
     NSDictionary *header;
     NSDictionary *post;
@@ -53,6 +54,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     UIViewController *currentViewController_;
     NSArray *viewControllers_;
 }
+
 @property (nonatomic, copy) NSMutableArray *postid_;
 @property (weak, nonatomic) IBOutlet UIImageView *profilepicture;
 @property (weak, nonatomic) IBOutlet UILabel *profilename;
@@ -358,6 +360,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
         header = headerDic;
         post = postDic;
+        
         [self byoga];
         [self setupViewControllers];
         [self changeSegmentedControlValue];

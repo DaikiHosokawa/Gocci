@@ -101,10 +101,6 @@
 		9550DA601BF83E4C00430942 /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8901BF83E4B00430942 /* SCTouchDetector.m */; };
 		9550DA611BF83E4C00430942 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8921BF83E4B00430942 /* XYPieChart.m */; };
 		9550DA621BF83E4C00430942 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8951BF83E4B00430942 /* RestaurantTableViewController.m */; };
-		9550DA631BF83E4C00430942 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8991BF83E4B00430942 /* CustomAnnotation.m */; };
-		9550DA641BF83E4C00430942 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D89B1BF83E4B00430942 /* SearchCell.m */; };
-		9550DA651BF83E4C00430942 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D89C1BF83E4B00430942 /* SearchCell.xib */; };
-		9550DA661BF83E4C00430942 /* searchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D89E1BF83E4B00430942 /* searchTableViewController.m */; };
 		9550DA671BF83E4C00430942 /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8A41BF83E4B00430942 /* CIImageRendererUtils.m */; };
 		9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8A61BF83E4B00430942 /* SCAssetExportSession.m */; };
 		9550DA691BF83E4C00430942 /* SCAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8A81BF83E4B00430942 /* SCAudioConfiguration.m */; };
@@ -501,13 +497,6 @@
 		9550D8921BF83E4B00430942 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		9550D8941BF83E4B00430942 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
 		9550D8951BF83E4B00430942 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
-		9550D8981BF83E4B00430942 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
-		9550D8991BF83E4B00430942 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
-		9550D89A1BF83E4B00430942 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
-		9550D89B1BF83E4B00430942 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
-		9550D89C1BF83E4B00430942 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
-		9550D89D1BF83E4B00430942 /* searchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTableViewController.h; sourceTree = "<group>"; };
-		9550D89E1BF83E4B00430942 /* searchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTableViewController.m; sourceTree = "<group>"; };
 		9550D8A21BF83E4B00430942 /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
 		9550D8A31BF83E4B00430942 /* CIImageRendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRendererUtils.h; sourceTree = "<group>"; };
 		9550D8A41BF83E4B00430942 /* CIImageRendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIImageRendererUtils.m; sourceTree = "<group>"; };
@@ -986,8 +975,6 @@
 				9550D8651BF83E4B00430942 /* Profile_other */,
 				9550D8681BF83E4B00430942 /* Recorder */,
 				9550D8931BF83E4B00430942 /* Restaurant */,
-				9550D8961BF83E4B00430942 /* Search */,
-				9550D89F1BF83E4B00430942 /* Setting */,
 				9550D8A11BF83E4B00430942 /* Sources */,
 				9550D8DC1BF83E4B00430942 /* Timeline */,
 				9550D8FC1BF83E4B00430942 /* UserSearch */,
@@ -1346,43 +1333,6 @@
 				9550D8951BF83E4B00430942 /* RestaurantTableViewController.m */,
 			);
 			path = Restaurant;
-			sourceTree = "<group>";
-		};
-		9550D8961BF83E4B00430942 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8971BF83E4B00430942 /* Annotation */,
-				9550D89A1BF83E4B00430942 /* SearchCell.h */,
-				9550D89B1BF83E4B00430942 /* SearchCell.m */,
-				9550D89C1BF83E4B00430942 /* SearchCell.xib */,
-				9550D89D1BF83E4B00430942 /* searchTableViewController.h */,
-				9550D89E1BF83E4B00430942 /* searchTableViewController.m */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		9550D8971BF83E4B00430942 /* Annotation */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8981BF83E4B00430942 /* CustomAnnotation.h */,
-				9550D8991BF83E4B00430942 /* CustomAnnotation.m */,
-			);
-			path = Annotation;
-			sourceTree = "<group>";
-		};
-		9550D89F1BF83E4B00430942 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8A01BF83E4B00430942 /* Popup */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		9550D8A01BF83E4B00430942 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		9550D8A11BF83E4B00430942 /* Sources */ = {
@@ -2284,7 +2234,6 @@
 				9550DAA61BF83E4C00430942 /* Cancel@2x.png in Resources */,
 				9550DA1D1BF83E4C00430942 /* commentTableViewCell.xib in Resources */,
 				9550DAB41BF83E4C00430942 /* tabbaritem_posting_sel.png in Resources */,
-				9550DA651BF83E4C00430942 /* SearchCell.xib in Resources */,
 				9550DB151BF83E4C00430942 /* icon-success.png in Resources */,
 				9550DA5C1BF83E4C00430942 /* SCSecondView_3_5_inch.xib in Resources */,
 				9550DAB61BF83E4C00430942 /* tabbaritem_profile.png in Resources */,
@@ -2331,7 +2280,6 @@
 			files = (
 				9550DB1D1BF83E4C00430942 /* UIAlertView+AFNetworking.m in Sources */,
 				9550DA8F1BF83E4C00430942 /* UserSearchTableViewCell.m in Sources */,
-				9550DA661BF83E4C00430942 /* searchTableViewController.m in Sources */,
 				9550DA301BF83E4C00430942 /* FollowListViewController.m in Sources */,
 				9550DB101BF83E4C00430942 /* SwiftyJSON.swift in Sources */,
 				9550DB1B1BF83E4C00430942 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -2389,7 +2337,6 @@
 				9550DAEA1BF83E4C00430942 /* JTCalendarContentView.m in Sources */,
 				9550DA121BF83E4C00430942 /* APIClient.m in Sources */,
 				9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */,
-				9550DA641BF83E4C00430942 /* SearchCell.m in Sources */,
 				9550DADB1BF83E4C00430942 /* AFURLSessionManager.m in Sources */,
 				9550DA221BF83E4C00430942 /* everyTableViewCell.m in Sources */,
 				9550DB011BF83E4C00430942 /* UIImage+GIF.m in Sources */,
@@ -2508,7 +2455,6 @@
 				9550DA161BF83E4C00430942 /* UIColor+App.m in Sources */,
 				9550DB071BF83E4C00430942 /* SingleLineTextField.m in Sources */,
 				9550DA2E1BF83E4C00430942 /* FollowListCell.m in Sources */,
-				9550DA631BF83E4C00430942 /* CustomAnnotation.m in Sources */,
 				9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */,
 				9550DAD61BF83E4C00430942 /* AFNetworkReachabilityManager.m in Sources */,
 				9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */,

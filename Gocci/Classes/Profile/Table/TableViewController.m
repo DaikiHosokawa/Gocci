@@ -49,15 +49,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self.tableView setFrame:self.view.bounds];
-    self.tableView.bounces = NO;
+    self.tableView.bounces = YES;
     [self setupData];
 }
 
@@ -73,9 +68,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setupData
 {
-   // [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-   
-            // 取得したデータを self.posts に格納
             thumb = [NSMutableArray arrayWithCapacity:0];
             postid_ = [NSMutableArray arrayWithCapacity:0];
             restname = [NSMutableArray arrayWithCapacity:0];
