@@ -7,7 +7,6 @@
 //
 
 #import "RestaurantTableViewController.h"
-#import "searchTableViewController.h"
 #import "everyTableViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
@@ -18,7 +17,6 @@
 #import "UIImageView+WebCache.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
-#import "CustomAnnotation.h"
 #import "NotificationViewController.h"
 
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -53,16 +51,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSString *_text, *_hashTag;
 }
 @synthesize postRestName = _postRestName;;
-
--(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag
-{
-    self = [super init];
-    if (self) {
-        _text = text;
-        _hashTag = hashTag;
-    }
-    return self;
-}
 
 
 #pragma mark - View Lifecycle
@@ -219,14 +207,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 
-- (IBAction)share:(id)sender
-{
-    RestaurantTableViewController *text = [[RestaurantTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
-    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
-    [self presentViewController:avc animated:YES completion:nil];
-    
-}
-
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(!decelerate) {
@@ -264,9 +244,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{    // API からデータを取得
+{   
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
     }
      ];
     
@@ -284,7 +263,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                 if (result) {
                     NSString *alertMessage = @"違反報告をしました";
                     UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -302,7 +280,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     else
     {
         [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if (result) {
                 NSString *alertMessage = @"違反報告をしました";
                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -322,8 +299,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
             if (code != 200 || error != nil) {
                 return;
             }else{
-                 NSLog(@"行きたいしました");
-                NSLog(@"result:%@",result);
                 UIImage *img = [UIImage imageNamed:@"Oen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 1;
@@ -339,7 +314,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 
                 return;
             }else{
-                NSLog(@"行きたい解除しました");
                 UIImage *img = [UIImage imageNamed:@"notOen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 0;
@@ -362,7 +336,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         NSString *number = @"tel:";
         NSString *telstring = [NSString stringWithFormat:@"%@%@",number,[header objectForKey:@"tell"]];
-        NSLog(@"telstring:%@",telstring);
         NSURL *url = [[NSURL alloc] initWithString:telstring];
         [[UIApplication sharedApplication] openURL:url];
         
@@ -376,14 +349,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     mapText2  = [mapText2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText2];
-    NSLog(@"URLSchemes:%@",directions);
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:directions]];
     } else {
-        NSLog(@"Can't use comgooglemaps://");
-        //アラート出す
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
@@ -394,19 +364,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (IBAction)tapHomepatge {
     
     NSString *urlString = [header objectForKey:@"homepage"];
-    NSLog(@"tapHomepage:%@",[header objectForKey:@"homepage"]);
     NSURL *url = [NSURL URLWithString:urlString];
-    // ブラウザを起動する
     [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark コメントボタン押下時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapCommentButtonWithPostID:(NSString *)postID
 {
-    // コメントボタン押下時の処理
-    LOG(@"postid=%@", postID);
     _postID = postID;
-    
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
 }
 
@@ -414,12 +379,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 #pragma mark user_nameタップの時の処理
 - (void)timelineCell:(TimelineCell *)cell didTapUserName:(NSString *)user_id
 {
-    //user nameタップの時の処理
     _postUsername = user_id;
-    NSLog(@"useridtoUsers:%@",_postUsername);
-    //    [self performSegueWithIdentifier:@"goOthersTimeline2" sender:self];
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-    LOG(@"Username is touched");
 }
 
 -(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
@@ -427,14 +388,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     NSString *mapText = Locality;
     mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText];
-    NSLog(@"URLSchemes:%@",directions);
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:directions]];
     } else {
-        NSLog(@"Can't use comgooglemaps://");
-        //アラート出す
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
@@ -452,22 +410,18 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 -(void)byoga{
-    NSLog(@"header^:%@",header);
-    
     self.restname.text = [header objectForKey:@"restname"];
     self.categoryLabel.text = [header objectForKey:@"rest_category"];
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.restname = [header objectForKey:@"restname"];
     
     NSString *postLat = [header objectForKey:@"lat"];
     double latdo = postLat.doubleValue;
     _coordinate.latitude = latdo;
     
-    self.total_cheer_num.text = [NSString stringWithFormat:@"%@", [header objectForKey:@"cheer_num"]];
-    
     NSString *postLon = [header objectForKey:@"lon"];
     double londo = postLon.doubleValue;
     _coordinate.longitude = londo;
+    
+    self.total_cheer_num.text = [NSString stringWithFormat:@"%@", [header objectForKey:@"cheer_num"]];
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latdo
                                                             longitude:londo
@@ -480,6 +434,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     marker.map  = _map;
     _map.selectedMarker = marker;
     [_map setCamera:camera];
+    
     NSString *postWanttag = [header objectForKey:@"want_flag"];
     NSInteger i = postWanttag.integerValue;
     int pi = (int)i;
@@ -502,9 +457,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 #pragma mark - Private Methods
 
-/**
- *  API からタイムラインのデータを取得
- */
+
 - (void)_fetchRestaurant
 {
     [SVProgressHUD show];
@@ -532,7 +485,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         [weakSelf.tableView reloadData];
         
         if ([self.posts count]== 0) {
-            _emptyView.hidden = NO;
             [SVProgressHUD dismiss];
         }
         
@@ -545,10 +497,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 
-
-/**
- *  現在表示中のセルの動画を再生する
- */
 - (void)_playMovieAtCurrentCell
 {
     
@@ -575,11 +523,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
-/**
- *  現在表示中の indexPath を取得
- *
- *  @return
- */
+
 - (NSIndexPath *)_currentIndexPath
 {
     CGPoint point = CGPointMake(self.tableView.contentOffset.x,
@@ -604,9 +548,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.cancelButtonIndex) {
-        NSLog(@"cancel");
     }else if(buttonIndex == 0) {
-        NSLog(@"%@",[header objectForKey:@"homepage"]);
         if ([[header objectForKey:@"homepage"] isEqualToString:@"none"]||[[header objectForKey:@"homepage"] isEqualToString:@"準備中"]) {
             UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。ホームページが登録されておりません"
@@ -623,7 +565,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     self.tabBarController.selectedIndex = 2;
     
-    //[self performSegueWithIdentifier:SEGUE_GO_SC_RECORDER sender:self];
 }
 
 

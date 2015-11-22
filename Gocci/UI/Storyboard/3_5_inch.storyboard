@@ -853,11 +853,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="HPZ-UI-hmq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="lkm-bz-cfq">
-                            <connections>
-                                <action selector="share:" destination="Okg-1a-oZr" id="Khf-ec-yed"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="lkm-bz-cfq"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -2375,10 +2371,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="zJs-Rn-L9N"/>
         <segue reference="rNq-Mh-OBs"/>
-        <segue reference="rUH-6e-3YE"/>
-        <segue reference="CyQ-bD-Iym"/>
         <segue reference="fnp-gF-feY"/>
         <segue reference="XlR-eb-tum"/>
-        <segue reference="Cnx-2T-Ilp"/>
+        <segue reference="rUH-6e-3YE"/>
+        <segue reference="Y4D-AG-nuH"/>
+        <segue reference="YI7-O5-vBa"/>
     </inferredMetricsTieBreakers>
 </document>

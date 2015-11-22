@@ -939,11 +939,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xMf-ns-bYZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99">
-                            <connections>
-                                <action selector="share:" destination="7Ul-L7-bNU" id="0IQ-76-DVM"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -2356,13 +2352,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr3-37-9ka"/>
         <segue reference="Ofb-Gs-yfz"/>
-        <segue reference="had-LT-zY9"/>
+        <segue reference="jr3-37-9ka"/>
         <segue reference="hGv-8z-0ZJ"/>
         <segue reference="ren-zg-h6h"/>
         <segue reference="L0G-no-fLl"/>
         <segue reference="pGd-UE-f06"/>
+        <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

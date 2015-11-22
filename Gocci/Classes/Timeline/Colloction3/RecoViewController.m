@@ -2,8 +2,8 @@
 //  CollectionViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa.
+//  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
 #import "RecoViewController.h"
@@ -21,14 +21,12 @@
 #import "RHRefreshControl.h"
 
 static NSString * const reuseIdentifier = @"Cell";
-static const CGFloat kCellMargin = 5;
 
 @interface RecoViewController ()<UICollectionViewDelegateFlowLayout,RecoViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
 
 
 @property (copy, nonatomic) NSMutableArray *posts;
 
-//refresh control
 @property (nonatomic, strong) RHRefreshControl *refreshControl;
 @property (nonatomic, assign, getter = isLoading) BOOL loading;
 
@@ -45,7 +43,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSMutableArray *distance;
     NSMutableDictionary *optionDic;
     
-    //flag
     NSString *category_flag;
     NSString *value_flag;
     int call;
@@ -60,8 +57,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewWillDisappear:(BOOL)animated{
     call = 0;
     category_flag = @"";
-    NSLog(@"called viewwill dissa");
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
@@ -77,10 +72,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
-    
-    
-    //  refreshConfiguration.minimumForStart = @0;
-    //  refreshConfiguration.maximumForPull = @120;
     self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
     self.refreshControl.delegate = self;
     [self.refreshControl attachToScrollView:self.collectionView];
@@ -88,15 +79,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-    
-    __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -112,7 +100,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              NSLog(@"temposts:%@",tempPosts);
              
              if ([self.posts count] == 0) {
-                 // 画像表示例文
                  UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                  UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                  CGSize boundsSize = self.view.bounds.size;
@@ -121,7 +108,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }else{
                  [self.collectionView reloadData];
                  [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
-                 // 画面が隠れた際に再生中の動画を停止させる
                  [[MoviePlayerManager sharedManager] stopMovie];
              }
              
@@ -129,8 +115,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     };
     
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
     CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
     if (usingLocationCache && cachedLocation != nil) {
         fetchAPI(cachedLocation.coordinate);
@@ -138,14 +122,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         return;
     }
     
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
          
          if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
              return;
          }
          fetchAPI(location.coordinate);
@@ -159,7 +139,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     [self refreshFeed];
-    __weak typeof(self)weakSelf = self;
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -179,7 +158,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              self.posts = newArray;
              
              if ([self.posts count] == 0) {
-                 // 画像表示例文
                  UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                  UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                  CGSize boundsSize = self.view.bounds.size;
@@ -189,33 +167,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [self.collectionView reloadData];
                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                  call++;
-                 // 動画データを一度全て削除
-                 // 画面が隠れた際に再生中の動画を停止させる
                  [[MoviePlayerManager sharedManager] stopMovie];             }
              
          }];
         
     };
     
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
     CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
     if (usingLocationCache && cachedLocation != nil) {
         fetchAPI(cachedLocation.coordinate);
-        NSLog(@"ここ通ったよ2");
         return;
     }
     
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
-         NSLog(@"ここ通ったよ3");
-         LOG(@"location=%@, error=%@", location, error);
          
          if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
              return;
          }
          fetchAPI(location.coordinate);
@@ -247,7 +214,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                      cancelButtonTitle:@"Cancel"
                                 destructiveButtonTitle:nil
                                      otherButtonTitles:@"ユーザーページへ移動",@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
-    //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
     actionsheet.tag = 1;
     [actionsheet showInView:self.view];
     
@@ -275,8 +241,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     RecoViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];
     cell.delegate = self;
@@ -289,7 +253,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self.refreshControl refreshScrollViewDidScroll:scrollView];
     
-    //一番下までスクロールしたかどうか
     if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height))
     {
         NSLog(@"Requesting API ? %@", [UIApplication         sharedApplication].networkActivityIndicatorVisible ? @"YES" : @"NO");
@@ -306,7 +269,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 }else if ([value_flag length]>0){
                     [self addBottom:YES category_id:@"" value_id:value_flag];
                 }else{
-                    //一番下
                     [self addBottom:YES category_id:@"" value_id:@""];
                 }
             }
@@ -337,7 +299,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         }else if ([value_flag length]>0){
             [self setupData:YES category_id:@"" value_id:value_flag];
         }else{
-            //一番下
             [self setupData:YES category_id:@"" value_id:@""];
         }
     }
@@ -345,7 +306,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
-    return self.isLoading; // should return if data source model is reloading
+    return self.isLoading;
     
 }
 
@@ -358,8 +319,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    //NSLog(@"%s sheet = %ld",__func__, (long)buttonIndex);
-    
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         NSLog(@"cancel");
     }
@@ -388,12 +347,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 Class class = NSClassFromString(@"UIAlertController");
                 if(class)
                 {
-                    // iOS 8の時の処理
                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    // addActionした順に左から右にボタンが配置されます
                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                        // API からデータを取得
                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                             if (result) {

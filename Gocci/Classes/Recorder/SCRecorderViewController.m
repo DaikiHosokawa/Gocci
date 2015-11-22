@@ -2,8 +2,8 @@
 //   VRViewController.m
 //  Gocci
 //
-//  Created by Daiki Hosokawa on 2014/05/10.
-//  Copyright (c) 2014年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa.
+//  Copyright (c) 2014年 INASE,inc. All rights reserved.
 //
 
 
@@ -13,11 +13,9 @@
 #import "SCRecorderViewController.h"
 #import "EditVideoController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-//#import "SCSessionListViewController.h"
 #import "SCRecordSessionManager.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "RestaurantTableViewController.h"
-//#import "GaugeView.h"¥
 #import "APIClient.h"
 #import "SVProgressHUD.h"
 #import "SCScrollPageView.h"
@@ -32,17 +30,14 @@
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
-// !!!:dezamisystem
+// define Segue name
 static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
 static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
 static NSString * const SEGUE_GO_POSTING = @"goPosting";
 static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";
 
-static SCRecordSession *staticRecordSession;	// !!!:開放を避けるためにスタティック化
+static SCRecordSession *staticRecordSession;
 
-////////////////////////////////////////////////////////////
-// PRIVATE DEFINITION
-/////////////////////
 
 @interface SCRecorderViewController ()
 {
@@ -68,9 +63,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 
 @end
 
-////////////////////////////////////////////////////////////
-// IMPLEMENTATION
-/////////////////////
 
 @implementation SCRecorderViewController
 @synthesize firstView;
@@ -100,8 +92,7 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
-    
-    UIView *previewView = self.view; // self.previewView;
+    UIView *previewView = self.view;
     _recorder.previewView = previewView;
 
     self.focusView = [[SCRecorderToolsView alloc] initWithFrame:previewView.bounds];
@@ -111,7 +102,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     [self.focusView addSubview:self.retakeBtn];
     [self.focusView addSubview:self.reverseBtn];
     
-    // 現在時間を取得する
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
@@ -121,8 +111,8 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #if 1
     {
         {
-            CGRect rect_page = CGRectMake(0, 398, 320, 170);	// 4inch
-            //画面サイズから場合分け
+            CGRect rect_page = CGRectMake(0, 398, 320, 170);
+            // 4inch
             CGRect rect = [UIScreen mainScreen].bounds;
             if (rect.size.height == 480) {
                 //3.5inch
@@ -137,7 +127,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
                 rect_page = CGRectMake(0, 516, 414, 220);
             }
             scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
-            //スクロールビューの上ビュー
             {
                 firstView = [SCFirstView create];
                 firstView.delegate = self;
@@ -379,7 +368,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     if (recordSession != nil) {
         _recorder.session = nil;
         
-        // If the recordSession was saved, we don't want to completely destroy it
         if ([[SCRecordSessionManager sharedInstance] isSaved:recordSession]) {
             [recordSession endSegmentWithInfo:nil completionHandler:nil];
         } else {
@@ -389,9 +377,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
     
     [self prepareSession];
 }
-
-
-
 
 
 #pragma mark - SCPostingViewController
@@ -469,7 +454,6 @@ static SCRecordSession *staticRecordSession;	// !!!:開放を避けるために�
 #pragma mark - 撮影に戻る
 - (IBAction)onGoPosting:(id)sender {
 #ifdef DEBUG
-    //	[self performSegueWithIdentifier:SEGUE_GO_POSTING sender:self];
 #endif
 }
 @end

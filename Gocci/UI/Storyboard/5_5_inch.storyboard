@@ -916,11 +916,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qvu-Gz-FJd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="i89-ob-uRA">
-                            <connections>
-                                <action selector="share:" destination="c7F-Do-L3S" id="Sxl-3y-Doo"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="i89-ob-uRA"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -2437,11 +2433,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fvs-4k-dBf"/>
-        <segue reference="qh1-2C-pXX"/>
-        <segue reference="aMt-WG-BmS"/>
-        <segue reference="YMD-DR-Sl9"/>
         <segue reference="knF-4T-ZwF"/>
+        <segue reference="YMD-DR-Sl9"/>
         <segue reference="Foo-dB-2J8"/>
-        <segue reference="hGf-pJ-NP9"/>
+        <segue reference="qh1-2C-pXX"/>
+        <segue reference="zpe-5c-LEZ"/>
+        <segue reference="pXi-gB-BGB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,35 +1,30 @@
 //
-//  usersTableViewController.m
+//  UsersViewController.m
 //  Gocci
 //
-//  Created by Ometeotl on 2014/10/09.
-//  Copyright (c) 2014年 Massara. All rights reserved.
-//
+//  Created by Daiki Hosokawa
+//  Copyright (c) 2015年 INASE,inc. All rights reserved.
 
 #import "UsersViewController.h"
 #import "everyTableViewController.h"
-#import "AppDelegate.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
-#import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
-#import "TimelineCell.h"
 #import "NotificationViewController.h"
-
-@import QuartzCore;
-
 #import "everyBaseNavigationController.h"
 #import "TableViewController.h"
 #import "MapViewController.h"
 #import "Swift.h"
 
-// !!!:dezamisystem
+@import QuartzCore;
+
+//define Segue name
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_FOLLOW = @"goFollow";
@@ -88,19 +83,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [self.badgeButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    //BackButton
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
     self.navigationItem.backBarButtonItem = backButton;
 
-    //editButton
-    editButton.layer.cornerRadius = 10; // this value vary as per your desire
+    editButton.layer.cornerRadius = 10;
     editButton.clipsToBounds = YES;
-    
-    //segmentControll
-   // [segmentControll setFrame:CGRectMake(-6, 137, 387, 40)];
     
      _FollowNum.userInteractionEnabled = YES;
     _FollowNum.tag = 100;
@@ -115,7 +104,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
@@ -123,7 +111,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 
-//segmentcontroll
 - (void)setupViewControllers
 {
     UIViewController *firstViewController;
@@ -177,8 +164,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     }
 }
 
-
-//notification
 
 - (IBAction)changeSegmentValue:(id)sender {
     [self changeSegmentedControlValue];
@@ -241,14 +226,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
-        //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
     }
     
     if ([segue.identifier isEqualToString:@"goMap"])
     {
-        //ここでパラメータを渡す
         MapViewController  *mapVC = segue.destinationViewController;
         mapVC.receiveDic3 = post;
     }
@@ -272,8 +255,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
          }
          post1 = tempPosts;
         
-        NSDictionary* headerDic = (NSDictionary*)[result valueForKey:@"header"];
-        header = headerDic;
+        NSDictionary* headerInUserPage = (NSDictionary*)[result valueForKey:@"header"];
+        header = headerInUserPage;
+        NSDictionary* postInUserPage = (NSDictionary*)[result valueForKey:@"posts"];
+        post = postInUserPage;
+        
         [self byoga];
          [self setupViewControllers];
          [self changeSegmentedControlValue];

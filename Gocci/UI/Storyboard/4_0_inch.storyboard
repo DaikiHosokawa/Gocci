@@ -916,11 +916,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7Zi-d8-llD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="0Lb-4p-YrH">
-                            <connections>
-                                <action selector="share:" destination="Owk-1r-GFB" id="kN9-xR-a1S"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="0Lb-4p-YrH"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
