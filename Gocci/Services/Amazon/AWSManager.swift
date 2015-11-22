@@ -193,7 +193,7 @@ class EnhancedGocciIdentityProvider : AWSAbstractIdentityProvider
         super.init()
         super.identityId = iid
         if userID != nil {
-            super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
+        super.logins = [ GOCCI_DEV_AUTH_PROVIDER_STRING: userID]
         }
     }
     

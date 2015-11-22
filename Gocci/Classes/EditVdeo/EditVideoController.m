@@ -252,7 +252,7 @@
                  };
                  AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"gocci_up_north_east_1"];
                  [[transferUtility uploadFile:fileURL
-                                       bucket:@"gocci.movies.bucket.jp-test"
+                                       bucket:@"gocci.movies.bucket.jp"
                                           key:movieFileForS3
                                   contentType:@"video/quicktime"
                                    expression:expression

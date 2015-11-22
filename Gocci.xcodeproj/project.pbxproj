@@ -822,7 +822,7 @@
 		FF0BE45B193ED626001A0053 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FF0BE45D193ED63E001A0053 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		FF54EFDF19149A1800025DC8 /* GocciTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GocciTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FF54EFE619149A1800025DC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2031,7 +2031,7 @@
 		FF54EFE019149A1800025DC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF54EFDF19149A1800025DC8 /* GocciTest.app */,
+				FF54EFDF19149A1800025DC8 /* Gocci.app */,
 				981A932B1BFC5063007B3BF6 /* UnitTests.xctest */,
 			);
 			name = Products;
@@ -2099,9 +2099,9 @@
 			productReference = 981A932B1BFC5063007B3BF6 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FF54EFDE19149A1800025DC8 /* GocciTest */ = {
+		FF54EFDE19149A1800025DC8 /* Gocci */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */;
+			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */;
 			buildPhases = (
 				FF54EFDB19149A1800025DC8 /* Sources */,
 				FF54EFDC19149A1800025DC8 /* Frameworks */,
@@ -2111,9 +2111,9 @@
 			);
 			dependencies = (
 			);
-			name = GocciTest;
+			name = Gocci;
 			productName = Gocci;
-			productReference = FF54EFDF19149A1800025DC8 /* GocciTest.app */;
+			productReference = FF54EFDF19149A1800025DC8 /* Gocci.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2153,7 +2153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF54EFDE19149A1800025DC8 /* GocciTest */,
+				FF54EFDE19149A1800025DC8 /* Gocci */,
 				981A932A1BFC5063007B3BF6 /* UnitTests */,
 			);
 		};
@@ -2476,7 +2476,7 @@
 /* Begin PBXTargetDependency section */
 		981A93311BFC5063007B3BF6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF54EFDE19149A1800025DC8 /* GocciTest */;
+			target = FF54EFDE19149A1800025DC8 /* Gocci */;
 			targetProxy = 981A93301BFC5063007B3BF6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2660,7 +2660,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
@@ -2695,7 +2695,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
@@ -2727,7 +2727,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */ = {
+		FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF54F01219149A1900025DC8 /* Debug */,

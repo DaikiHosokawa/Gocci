@@ -43,8 +43,6 @@ static APIClient *_sharedInstance = nil;
     
     NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
     self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    //self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                               @"application/json",
                                                               @"text/html",
