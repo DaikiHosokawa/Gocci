@@ -104,7 +104,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                               delegate:self
                                      cancelButtonTitle:@"Cancel"
                                 destructiveButtonTitle:nil
-                                     otherButtonTitles:@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
+                                     otherButtonTitles:@"レストランページへ移動",@"この投稿を削除" ,nil];
     //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
     actionsheet.tag = 1;
     [actionsheet showInView:self.view];
@@ -177,22 +177,17 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                 Class class = NSClassFromString(@"UIAlertController");
                 if(class)
                 {
-                    // iOS 8の時の処理
                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
                     
-                    // addActionした順に左から右にボタンが配置されます
                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                        // API からデータを取得
-                        [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
-                            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                        [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                             if (result) {
-                                NSString *alertMessage = @"違反報告をしました";
-                                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                                [alrt show];
+                                NSLog(@"result:%@",result);
                             }
                         }
                          ];
-                        
+    
+
                     }]];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                         
@@ -202,12 +197,9 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                 }
                 else
                 {
-                    [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
-                        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                    [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                         if (result) {
-                            NSString *alertMessage = @"違反報告をしました";
-                            UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                            [alrt show];
+                            NSLog(@"result:%@",result);
                         }
                     }
                      ];
