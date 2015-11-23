@@ -860,6 +860,7 @@
                     <connections>
                         <outlet property="categoryLabel" destination="5rm-Vd-OZE" id="LMz-0e-IHM"/>
                         <outlet property="flashBtn" destination="zEV-J3-TwF" id="1ly-8v-0mH"/>
+                        <outlet property="headerView" destination="qZb-mv-26i" id="bXc-gl-Uko"/>
                         <outlet property="map" destination="YcM-v6-ZAd" id="d2v-OA-v7K"/>
                         <outlet property="restname" destination="kRG-RY-sLb" id="sjJ-dO-3pz"/>
                         <outlet property="restview" destination="qZb-mv-26i" id="MDY-JD-siC"/>

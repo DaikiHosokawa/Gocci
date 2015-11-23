@@ -923,6 +923,7 @@
                     <connections>
                         <outlet property="categoryLabel" destination="T3z-Q1-Nvh" id="bzU-Qr-JpR"/>
                         <outlet property="flashBtn" destination="Svf-nn-68h" id="dg7-cV-IMX"/>
+                        <outlet property="headerView" destination="0Hk-qN-ysy" id="Z01-Aw-Dzs"/>
                         <outlet property="map" destination="Ol1-od-VwU" id="PtY-mb-yXh"/>
                         <outlet property="restname" destination="U53-x0-cfC" id="tXN-St-QyC"/>
                         <outlet property="restview" destination="0Hk-qN-ysy" id="U11-9y-Bnl"/>
