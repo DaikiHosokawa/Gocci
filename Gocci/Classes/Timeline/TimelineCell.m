@@ -25,18 +25,13 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 
 @property (nonatomic, weak) IBOutlet UIView *restaurantView;
-@property (nonatomic, weak) IBOutlet UIImageView *restaurantImageView;
 @property (nonatomic, weak) IBOutlet UILabel *restaurantNameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *restaurantAddressLabel;
 
 @property (nonatomic, weak) IBOutlet UIView *likeView;
 @property (nonatomic, weak) IBOutlet UILabel *likeCountLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *cheerView;
 
 @property (nonatomic, weak) IBOutlet UIView *commentView;
 @property (nonatomic, weak) IBOutlet UILabel *commentCountLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *restaurantNaviview;
-@property (weak, nonatomic) IBOutlet UIImageView *startPlaying;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewTopConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *thumbnailViewBottomConstraint;
@@ -206,11 +201,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     [self.thumbnailView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     
-    self.restaurantImageView.image = [UIImage imageNamed:@"ic_userpicture.png"];
     
     self.restaurantNameLabel.text = timelinePost.restname;
-    
-    self.restaurantAddressLabel.text = timelinePost.locality;
     
     
     if ([timelinePost.comment isEqualToString:@"none"]) {
@@ -287,10 +279,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     [self _assignTapAction:@selector(tapNameLabel:) view:self.userNameLabel];
     [self _assignTapAction:@selector(tapAvaterImageView:) view:self.avaterImageView];
-    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantImageView];
-    [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantAddressLabel];
     [self _assignTapAction:@selector(tapRestautant:) view:self.restaurantNameLabel];
-    [self _assignTapAction:@selector(tapNavi:) view:self.restaurantNaviview];
     [self _assignTapAction:@selector(tapLike:) view:self.likeView];
     [self _assignTapAction:@selector(tapthumb:) view:self.thumbnailView];
     [self _assignTapAction:@selector(tapComment:) view:self.commentView];
