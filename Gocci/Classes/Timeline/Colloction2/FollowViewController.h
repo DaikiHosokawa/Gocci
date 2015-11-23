@@ -1,10 +1,8 @@
 //
-//  CollectionViewController.h
-//  Gocci
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "SortableTimeLineSubViewProtocol.h"

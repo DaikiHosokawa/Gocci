@@ -2,8 +2,8 @@
 //  CollectionViewController.h
 //  Gocci
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2015/10/04.
+//  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -31,9 +31,7 @@
     int flash_on;
 }
 
-
-
-@property id supervc; //親
+@property id supervc;
 @property(nonatomic,strong) id<CollectionViewCellDelegate> delegate;
 
 @property (nonatomic, strong) NSDictionary *receiveDic2;
@@ -45,18 +43,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 
-/**
- *  セルの表示の更新
- *
- *  @param timelinePost
- */
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath;
 
-/**
- *  TimelineCell を生成
- *
- *  @return
- */
 + (instancetype)cell;
 
 @end

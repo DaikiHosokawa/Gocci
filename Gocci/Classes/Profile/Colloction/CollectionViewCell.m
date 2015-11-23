@@ -2,8 +2,8 @@
 //  STCustomCollectionViewCell.m
 //  UICollectionViewSample
 //
-//  Created by EIMEI on 2013/06/20.
-//  Copyright (c) 2013 stack3.net. All rights reserved.
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
 
 #import "CollectionViewCell.h"
@@ -54,8 +54,6 @@
     self.imageView.layer.cornerRadius = 5;
     self.imageView.clipsToBounds = true;
     self.title.text = timelinePost.restname;
-    //double lat= [timelinePost.distance doubleValue];
-    //NSString *str1 = [self stringWithDistance:lat];
     self.date.text = timelinePost.timelabel;
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
@@ -81,12 +79,6 @@
     
 }
 
-/**
- *  View にタップイベントを設定
- *
- *  @param selector タップイベント時に呼び出されるメソッド
- *  @param view     設定先の View
- */
 - (void)_assignTapAction:(SEL)selector view:(UIView *)view
 {
     for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {
@@ -141,7 +133,6 @@
     return [NSString stringWithFormat:format, [self stringWithDouble:distance]];
 }
 
-// Return a string of the number to one decimal place and with commas & periods based on the locale.
 - (NSString *)stringWithDouble:(double)value {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setLocale:[NSLocale currentLocale]];
