@@ -213,8 +213,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-
+#if 0
         everyTableViewController *eveVC = segue.destinationViewController;
+#else
+        everyBaseNavigationController *eveNC = segue.destinationViewController;
+        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        [self.popover dismissPopoverAnimated:YES];
+#endif
         eveVC.postID = (NSString *)sender;
         [self.popover dismissPopoverAnimated:YES];
     }
