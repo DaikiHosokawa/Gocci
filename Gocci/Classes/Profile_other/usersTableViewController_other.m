@@ -2,8 +2,8 @@
 //  usersTableViewController.m
 //  Gocci
 //
-//  Created by Ometeotl on 2014/10/09.
-//  Copyright (c) 2014年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2014/10/09.
+//  Copyright (c) 2014年 INASE,inc. All rights reserved.
 //
 
 #import "usersTableViewController_other.h"
@@ -64,9 +64,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @property (weak, nonatomic) IBOutlet UILabel *CheerNum;
 
 
-/** タイムラインのデータ */
-@property (nonatomic,strong) NSArray *posts;
-
 @end
 
 @implementation usersTableViewController_other
@@ -86,11 +83,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    // !!!:dezamisystem
-    //	self.navigationItem.title = _postUsername;
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
@@ -101,7 +93,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _FolloweeNum.tag = 101;
     _CheerNum.userInteractionEnabled = YES;
     _CheerNum.tag = 102;
-
+    
 }
 
 //segmentcontroll
@@ -160,8 +152,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 
-//notification
-
 - (IBAction)changeSegmentValue:(id)sender {
     [self changeSegmentedControlValue];
 }
@@ -169,8 +159,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(IBAction)light:(id)sender {
     
     if(flash_on == 0 ){
-        
-        // API からデータを取得
         [APIClient postFollow:[header objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
             if ([result[@"code"] integerValue] == 200) {
@@ -211,9 +199,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
-     [[MoviePlayerManager sharedManager] removeAllPlayers];
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -253,15 +240,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    // スクロール中は動画を停止する
-    // [[MoviePlayerManager sharedManager] scrolling:YES];
     
 }
 
 
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    // setContentOffset: 等によるスクロール終了
     NSLog(@"scroll is stoped");
 }
 
@@ -269,28 +253,19 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 #pragma mark 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    //2つ目の画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //    if ([segue.identifier isEqualToString:@"showDetail2"])
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        //ここでパラメータを渡す
         everyTableViewController *eveVC = segue.destinationViewController;
         eveVC.postID = (NSString *)sender;
     }
-    //店舗画面にパラメータを渡して遷移する
-    // !!!:dezamisystem
-    //    if ([segue.identifier isEqualToString:@"goRestpage"])
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {
-        //ここでパラメータを渡す
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
     }
     
     if ([segue.identifier isEqualToString:@"goMap"])
     {
-        //ここでパラメータを渡す
         MapViewController  *mapVC = segue.destinationViewController;
         mapVC.receiveDic3 = post;
     }
@@ -303,17 +278,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)byoga{
     
-    //AppDelegate* profiledelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.profilename.text = [header objectForKey:@"username"];
     [self.profilepicture setImageWithURL:[NSURL URLWithString:[header objectForKey:@"profile_img"]]
                         placeholderImage:[UIImage imageNamed:@"default.png"]];
     self.FolloweeNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follower_num"]];
     self.FollowNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"follow_num"]];
-    //[header objectForKey:@"follow_num"];
     self.CheerNum.text = [NSString stringWithFormat:@"%@",[header objectForKey:@"cheer_num"]];
-    //[header objectForKey:@"cheer_num"];
-    //_status_ = [header objectForKey:@"follow_flag"];
-    //NSLog(@"statushere:%@",_status_);
     NSString *status = [header objectForKey:@"follow_flag"];
     NSInteger i =  status.integerValue;
     int pi = (int)i;
@@ -336,16 +306,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
  */
 - (void)_fetchProfile_other
 {
-  //  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     [APIClient User:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
-   //     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         NSLog(@"叩かれてるよ");
         
         if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            // TODO: アラート等を掲出
             return;
         }
         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];

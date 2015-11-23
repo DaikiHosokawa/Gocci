@@ -1,10 +1,8 @@
 //
-//  STCustomCollectionViewCell.h
-//  UICollectionViewSample
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by EIMEI on 2013/06/20.
-//  Copyright (c) 2013 stack3.net. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "TimelinePost.h"
@@ -40,18 +38,10 @@
 
 @property (nonatomic,weak) id<RecoViewCellDelegate> delegate;
 
-/**
- *  セルの表示の更新
- *
- *  @param timelinePost
- */
+
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath;
 
-/**
- *  TimelineCell を生成
- *
- *  @return
- */
+
 + (instancetype)cell;
 
 

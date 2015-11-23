@@ -87,11 +87,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     backButton.title = @"";
     
     self.navigationItem.backBarButtonItem = backButton;
-
+    
     editButton.layer.cornerRadius = 10;
     editButton.clipsToBounds = YES;
     
-     _FollowNum.userInteractionEnabled = YES;
+    _FollowNum.userInteractionEnabled = YES;
     _FollowNum.tag = 100;
     _FolloweeNum.userInteractionEnabled = YES;
     _FolloweeNum.tag = 101;
@@ -120,7 +120,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc.receiveDic = post;
     firstViewController = vc;
     vc.soda = changeView.frame;
-
+    
     UIViewController *secondViewController;
     CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
@@ -136,31 +136,31 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc3.receiveDic3 = post;
     vc3.supervc = self;
     vc3.soda = changeView.frame;
-
+    
     thirdViewController = vc3;
-   
+    
     viewControllers_ = @[firstViewController, secondViewController, thirdViewController];
 }
 
 - (void)changeSegmentedControlValue
 {
     if(segmentControll.selectedSegmentIndex == 2){
-       [self performSegueWithIdentifier:@"goMap" sender:self];
+        [self performSegueWithIdentifier:@"goMap" sender:self];
     }else{
-    if(currentViewController_){
-        [currentViewController_ willMoveToParentViewController:nil];
-        [currentViewController_.view removeFromSuperview];
-        [currentViewController_ removeFromParentViewController];
-    }
-    
-    UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
-    
-    [self addChildViewController:nextViewController];
-    nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
-    [changeView addSubview:nextViewController.view];
-    [nextViewController didMoveToParentViewController:self];
-    
-    currentViewController_ = nextViewController;
+        if(currentViewController_){
+            [currentViewController_ willMoveToParentViewController:nil];
+            [currentViewController_.view removeFromSuperview];
+            [currentViewController_ removeFromParentViewController];
+        }
+        
+        UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
+        
+        [self addChildViewController:nextViewController];
+        nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
+        [changeView addSubview:nextViewController.view];
+        [nextViewController didMoveToParentViewController:self];
+        
+        currentViewController_ = nextViewController;
     }
 }
 
@@ -180,7 +180,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)barButtonItemPressed:(id)sender{
     
-  
+    
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
         vc.supervc = self;
@@ -237,18 +237,18 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)_fetchProfile
 {
     [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-
+        
         if (code != 200 || error != nil) {
             return;
         }
         NSLog(@"users result:%@",result);
-         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-         NSArray* items = (NSArray*)[result valueForKey:@"posts"];
-         
-         for (NSDictionary *post2 in items) {
-             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post2]];
-         }
-         post1 = tempPosts;
+        NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+        NSArray* items = (NSArray*)[result valueForKey:@"posts"];
+        
+        for (NSDictionary *post2 in items) {
+            [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post2]];
+        }
+        post1 = tempPosts;
         
         NSDictionary* headerInUserPage = (NSDictionary*)[result valueForKey:@"header"];
         header = headerInUserPage;
@@ -256,8 +256,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         post = postInUserPage;
         
         [self byoga];
-         [self setupViewControllers];
-         [self changeSegmentedControlValue];
+        [self setupViewControllers];
+        [self changeSegmentedControlValue];
     }];
 }
 
@@ -283,13 +283,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     UITouch *touch = [[event allTouches] anyObject];
     if ( touch.view.tag == _FollowNum.tag ){
-    [self performSegueWithIdentifier:@"goFollow" sender:self];
+        [self performSegueWithIdentifier:@"goFollow" sender:self];
     }
     else if ( touch.view.tag == _FolloweeNum.tag ){
-    [self performSegueWithIdentifier:@"goFollowee" sender:self];
+        [self performSegueWithIdentifier:@"goFollowee" sender:self];
     }
     else if ( touch.view.tag == _CheerNum.tag){
-     [self performSegueWithIdentifier:@"goCheer" sender:self];
+        [self performSegueWithIdentifier:@"goCheer" sender:self];
     }
 }
 

@@ -1,10 +1,8 @@
 //
-//  CollectionViewController.h
-//  Gocci
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "SortableTimeLineSubViewProtocol.h"
@@ -13,7 +11,7 @@
 @class RecoViewController;
 
 @protocol RecoViewControllerDelegate <NSObject>
-//@optional
+
 -(void)reco:(RecoViewController*)vc
             postid:(NSString*)postid;
 
@@ -27,7 +25,8 @@
 
 @interface RecoViewController : UICollectionViewController <SortableTimeLineSubView>
 
-@property id supervc; //親
+@property id supervc;
+
 @property(nonatomic,strong) id<RecoViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) NSDictionary *receiveDic2;
