@@ -2,8 +2,8 @@
 //  TableViewCell.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2015/10/04.
+//  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
 #import "TableViewCell.h"
@@ -13,7 +13,6 @@
 
 
 - (void)awakeFromNib {
-    // Initialization cod
 }
 
 - (void)dealloc

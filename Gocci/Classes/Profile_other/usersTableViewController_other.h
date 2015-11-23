@@ -2,8 +2,8 @@
 //  usersTableViewController_other.h
 //  Gocci
 //
-//  Created by Ometeotl on 2014/10/09.
-//  Copyright (c) 2014年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2014/10/09.
+//  Copyright (c) 2014年 INASE,inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,7 +19,6 @@
 {
     NSString *_postUsername;
     NSString *_postID;
-    //restnameへの引き継ぎ
     NSString *_postRestname;
     
     int flash_on;

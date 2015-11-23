@@ -1,10 +1,8 @@
 //
-//  CollectionViewController.m
-//  Gocci
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by Daiki Hosokawa.
-//  Copyright © 2015年 INASE,inc. All rights reserved.
-//
+
 
 #import "RecoViewController.h"
 #import "AppDelegate.h"
