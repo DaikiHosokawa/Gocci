@@ -1,10 +1,8 @@
 //
-//  TimelinePageMenuViewController.m
-//  Gocci
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by INASE on 2015/06/18.
-//  Copyright (c) 2015年 Massara. All rights reserved.
-//
+
 
 #import "TimelinePageMenuViewController.h"
 

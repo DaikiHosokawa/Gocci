@@ -23,7 +23,7 @@
 
 @interface CollectionViewController : UICollectionViewController
 
-@property id supervc; //親
+@property id supervc; 
 
 @property(nonatomic,strong) id<CollectionViewControllerDelegate1> delegate;
 

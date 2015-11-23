@@ -1218,16 +1218,8 @@
 				9550D84E1BF83E4B00430942 /* CollectionViewCell.m */,
 				9550D84F1BF83E4B00430942 /* CollectionViewController.h */,
 				9550D8501BF83E4B00430942 /* CollectionViewController.m */,
-				9550D8511BF83E4B00430942 /* Table */,
 			);
 			path = Colloction;
-			sourceTree = "<group>";
-		};
-		9550D8511BF83E4B00430942 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Table;
 			sourceTree = "<group>";
 		};
 		9550D8531BF83E4B00430942 /* Map */ = {

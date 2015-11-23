@@ -22,9 +22,6 @@
 
 
 
-
-
-
 + (void)loginWithIID:(NSString *)iid andThen:(void (^)(NetOpResult errorCode, NSString *errorMsg))afterBlock
 {
     [APIClient Login:iid handler:^(id result, NSUInteger code, NSError *error)

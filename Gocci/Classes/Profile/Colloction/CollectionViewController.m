@@ -2,8 +2,8 @@
 //  CollectionViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/04.
-//  Copyright © 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2015/10/04.
+//  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
 #import "CollectionViewController.h"
@@ -57,24 +57,19 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = self.soda;
-    
     self.clearsSelectionOnViewWillAppear = NO;
-    
     [self.collectionView setBounces:YES];
-   
     [self setupData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)setupData
 {
    
     if ([_receiveDic2 count] == 0) {
-            // 画像表示例文
             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
             CGSize boundsSize = self.soda.size;
@@ -105,7 +100,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                      cancelButtonTitle:@"Cancel"
                                 destructiveButtonTitle:nil
                                      otherButtonTitles:@"レストランページへ移動",@"この投稿を削除" ,nil];
-    //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
     actionsheet.tag = 1;
     [actionsheet showInView:self.view];
     
@@ -163,9 +157,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         
         switch (buttonIndex) {
             case 0:
-                //  [vc performSegueWithIdentifier:@"testUser" sender:nil];
-                // [vc.navigationController pushViewController:tabViewCon animated:YES];
-                //[vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:nil];
                 [self.delegate collection:self rest_id:r_id];
                 [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                 break;
@@ -220,22 +211,5 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
 }
 
-/*
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(0, kCellMargin, kCellMargin, kCellMargin);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    BOOL isPad = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
-    CGFloat length = (CGRectGetWidth(self.view.frame) / 2) - (kCellMargin * 2);
-    if (isPad) {
-        // fixed size for iPad in landscape and portrait
-        length = 256 - (kCellMargin * 2);
-    }
-    return CGSizeMake(length, length);
-}
-*/
 
 @end

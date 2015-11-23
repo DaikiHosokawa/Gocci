@@ -1,10 +1,8 @@
 //
-//  STCustomCollectionViewCell.m
-//  UICollectionViewSample
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by EIMEI on 2013/06/20.
-//  Copyright (c) 2013 stack3.net. All rights reserved.
-//
+
 
 #import "NearViewControllerCell.h"
 #import "UIImageView+AFNetworking.h"
@@ -142,7 +140,6 @@
     return [NSString stringWithFormat:format, [self stringWithDouble:distance]];
 }
 
-// Return a string of the number to one decimal place and with commas & periods based on the locale.
 - (NSString *)stringWithDouble:(double)value {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setLocale:[NSLocale currentLocale]];

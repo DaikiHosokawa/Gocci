@@ -2,8 +2,8 @@
 //  SortViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/13.
-//  Copyright © 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2015/10/13.
+//  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
 #import "EditTableViewController.h"
@@ -37,7 +37,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
