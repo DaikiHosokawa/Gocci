@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -195,10 +195,6 @@
                             <constraint firstAttribute="height" constant="302" id="xJ2-yo-HSs"/>
                         </constraints>
                     </imageView>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startPlaying" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-02-jt5">
-                        <rect key="frame" x="119" y="183" width="80" height="82"/>
-                        <animations/>
-                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-Aw-YJt">
                         <rect key="frame" x="275" y="465" width="30" height="20"/>
                         <subviews>
@@ -323,7 +319,6 @@
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="XCG-79-oul" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="0Ff-em-JDC"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="3jS-02-jt5" secondAttribute="trailing" constant="111" id="0nz-3b-PW0"/>
                     <constraint firstItem="hND-ON-WcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="74" id="4Vh-hT-1QK"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="top" secondItem="YSl-cf-iOp" secondAttribute="bottom" constant="10" id="CxS-1U-Xnd"/>
                     <constraint firstItem="WEP-Aw-YJt" firstAttribute="top" secondItem="pJp-Tg-6h0" secondAttribute="bottom" constant="6" id="DKD-3R-0aJ"/>
@@ -335,7 +330,6 @@
                     <constraint firstAttribute="trailing" secondItem="XCG-79-oul" secondAttribute="trailing" constant="90" id="Q3E-q8-RcL"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="W11-XA-rhy"/>
                     <constraint firstAttribute="centerX" secondItem="hND-ON-WcS" secondAttribute="centerX" id="X4G-PT-9Y5"/>
-                    <constraint firstItem="3jS-02-jt5" firstAttribute="top" secondItem="F7J-7N-gdB" secondAttribute="bottom" constant="119" id="ZLW-um-yr6"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="43" id="Zc5-xh-Eil"/>
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="cfl-94-Sfa"/>
@@ -343,8 +337,6 @@
                     <constraint firstItem="ohQ-nj-eFT" firstAttribute="leading" secondItem="zpK-2i-P20" secondAttribute="trailing" constant="4" id="f69-jS-ALI"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="12" id="gFL-RK-jQe"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="lB1-bO-TlV"/>
-                    <constraint firstItem="YSl-cf-iOp" firstAttribute="top" secondItem="3jS-02-jt5" secondAttribute="bottom" constant="123" id="o9T-yH-8EC"/>
-                    <constraint firstItem="3jS-02-jt5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="111" id="qaM-Yq-FWy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="WEP-Aw-YJt" secondAttribute="trailing" constant="5" id="rLn-5G-i0T"/>
                     <constraint firstItem="zpK-2i-P20" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="reO-ph-QOU"/>
                     <constraint firstAttribute="bottom" secondItem="hND-ON-WcS" secondAttribute="bottom" priority="999" constant="136" id="s0V-rO-n5Y"/>
@@ -391,7 +383,6 @@
         <image name="etc_new" width="30" height="20"/>
         <image name="gocci_new" width="34" height="31"/>
         <image name="gocci_new_selected" width="34" height="31"/>
-        <image name="startPlaying" width="209" height="209"/>
         <image name="tag-A" width="128" height="28"/>
         <image name="tag-B" width="128" height="28"/>
         <image name="tag-C" width="128" height="28"/>
