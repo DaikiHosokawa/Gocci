@@ -101,7 +101,7 @@ class ServiceUtil {
         unencodedPOSTParameters: [String: String]) -> String
     {
         // everything what happens here: https://dev.twitter.com/oauth/overview/creating-signatures
-        // this needs #import <CommonCrypto/CommonCrypto.h> in the brifging header
+        // this needs #import <CommonCrypto/CommonCrypto.h> in the bridging header
         
         var oAuthParameters: [String: String] = [
             "oauth_consumer_key":     TWITTER_CONSUMER_KEY,
@@ -138,7 +138,7 @@ class ServiceUtil {
         let digestLen = Int(CC_SHA1_DIGEST_LENGTH)
         let buf = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
         CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), signingKey, signingKey.length, signatureBaseString, signatureBaseString.length, buf)
-        let data = NSData(bytes: buf, length: digestLen)
+        let data = NSData(bytesNoCopy: buf, length: digestLen, freeWhenDone: true)
         
         let signature = data.base64Encode()
         
