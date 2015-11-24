@@ -306,6 +306,9 @@
 		981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9161BF83E4B00430942 /* TwitterSharing.swift */; };
 		981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9E11BF83E4B00430942 /* SwiftyJSON.swift */; };
 		981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93481BFC5239007B3BF6 /* TestUtil.swift */; };
+		981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */; };
+		981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */; };
+		981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934D1BFC840A007B3BF6 /* TestTwitter.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -806,6 +809,8 @@
 		981A932B1BFC5063007B3BF6 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		981A932F1BFC5063007B3BF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		981A93481BFC5239007B3BF6 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
+		981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLowLevel.swift; sourceTree = "<group>"; };
+		981A934D1BFC840A007B3BF6 /* TestTwitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTwitter.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -1516,6 +1521,7 @@
 			children = (
 				9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */,
 				9550D9161BF83E4B00430942 /* TwitterSharing.swift */,
+				981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -1992,6 +1998,7 @@
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				981A934D1BFC840A007B3BF6 /* TestTwitter.swift */,
 				981A93481BFC5239007B3BF6 /* TestUtil.swift */,
 				981A932F1BFC5063007B3BF6 /* Info.plist */,
 			);
@@ -2257,8 +2264,10 @@
 				981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */,
 				981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */,
 				981A93431BFC51BF007B3BF6 /* API3.swift in Sources */,
+				981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */,
 				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
+				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
 				981A933D1BFC518C007B3BF6 /* Extensions.swift in Sources */,
 				981A933C1BFC5186007B3BF6 /* Util.swift in Sources */,
@@ -2439,6 +2448,7 @@
 				9550DA321BF83E4C00430942 /* DetailController.m in Sources */,
 				9550DA791BF83E4C00430942 /* SCRecordSession.m in Sources */,
 				9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */,
+				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
 				9550DADF1BF83E4C00430942 /* BBBadgeBarButtonItem.m in Sources */,
 				9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */,

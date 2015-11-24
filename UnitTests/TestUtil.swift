@@ -2,7 +2,7 @@
 //  TestUtil.swift
 //  Gocci
 //
-//  Created by Ma Wa on 18.11.15.
+//  Created by Markus Wanke on 18.11.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
@@ -24,6 +24,10 @@ class TestUtil: XCTestCase {
         let rus = Util.randomUsername()
         XCTAssert(rus.length > 0, "username is empty string")
         XCTAssert(rus.length < 20, "username is too long")
+    }
+    
+    func testIfRandomRegisterHasTheRightLengthOf64() {
+        XCTAssertEqual(Util.generateFakeDeviceID().length, 64)
     }
     
     
