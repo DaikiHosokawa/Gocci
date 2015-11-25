@@ -75,6 +75,23 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        
+//        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+//        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+//        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+//        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+//        
+//        let x = FHSTwitterEngine.sharedEngine().verifyCredentials()
+//        
+//        print(x)
+//        return;
+        
+//        TwitterAuthentication.authenticadedAndReadyToUse { ok in
+//            print("res: \(ok)")
+//        }
+//        
+//        return;
+        
         let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
         let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
         
@@ -89,18 +106,35 @@ class DebugViewController : UIViewController {
 //        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
     
         
-        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
-        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
-        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+//        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+//        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
+//        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
+//        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
+//        
+        
 
-        
-        let sharer = TwitterSharing(fromViewController: self)
-        sharer.onSuccess = { print("Post ID: " + $0) }
-        sharer.onFailure = { print("FUCK: \($0)") }
-        
-        let msg = Util.randomKanjiStringWithLength(115)
-        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
+//        TwitterAuthentication.authenticate(currentViewController: self,
+//            onSuccess: { (token) -> () in
+                let sharer = TwitterSharing()
+                sharer.onSuccess = { print("Post ID: " + $0) }
+                sharer.onFailure = { print("FUCK: \($0)") }
+                
+                let msg = Util.randomKanjiStringWithLength(115)
+                sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
+//            },
+//            onFailure: {
+//                print("twitter login failed")
+//            }
+//        )
+    
+
+    
+//        let sharer = TwitterSharing(fromViewController: self)
+//        sharer.onSuccess = { print("Post ID: " + $0) }
+//        sharer.onFailure = { print("FUCK: \($0)") }
+//        
+//        let msg = Util.randomKanjiStringWithLength(115)
+//        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
     }
         /*
     

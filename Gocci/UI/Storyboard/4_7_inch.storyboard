@@ -938,14 +938,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="xMf-ns-bYZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="FvA-Ol-w99"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xMf-ns-bYZ"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="categoryLabel" destination="SXQ-Cy-r6l" id="7HV-op-Mwz"/>
                         <outlet property="flashBtn" destination="J8a-I5-WcS" id="yKp-TK-4Gq"/>
+                        <outlet property="headerView" destination="JTR-Lc-xze" id="zE4-NF-3Eq"/>
                         <outlet property="map" destination="lBn-qq-tre" id="P6L-Ne-lyl"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
                         <outlet property="restview" destination="JTR-Lc-xze" id="9Km-xp-kt6"/>

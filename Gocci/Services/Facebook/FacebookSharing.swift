@@ -25,7 +25,7 @@ import FBSDKShareKit
     enum FacebookSharingError: ErrorType {
         case ERROR_FACEBOOK_API(String)
         case ERROR_NETWORK(String)
-        case ERROR_LOGIN_TOKEN_EXPIRED
+        case ERROR_AUTHENTICATION
     }
     
 
@@ -116,7 +116,7 @@ import FBSDKShareKit
                     self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
                 }
                 else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
-                    self.onFailure?(error: .ERROR_LOGIN_TOKEN_EXPIRED)
+                    self.onFailure?(error: .ERROR_AUTHENTICATION)
                 }
                 else {
                  //   print(JSON(data: data).rawString() ?? "json unparseable")

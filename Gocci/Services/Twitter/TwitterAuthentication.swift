@@ -34,32 +34,69 @@ class TwitterAuthentication {
         }
     }
     
-    static var token: TwitterAuthentication.Token? = nil
+    static var token: TwitterAuthentication.Token? = {
+        let key = Persistent.twitter_key
+        let sec = Persistent.twitter_secret
+        
+        if let key = key, sec = sec {
+            return Token(key: key, secret: sec)
+        }
+        
+        return nil
+    }()
     
-    class func sessionIsReadyToInteract() -> Bool {
-        return false
+    class func authenticadedAndReadyToUse(cb: Bool->()) {
+        
+        let url = NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")!
+        
+//        TwitterLowLevel.performGETRequest(url, parameters: [:],
+        TwitterLowLevel.performGETRequest(url, parameters: ["skip_status": "true", "include_entities": "false"],
+            onSuccess: { json in
+                print(json.rawString() ?? "häh")
+                cb(true)
+            },
+            onFailure: {
+                print($0)
+                cb(false)
+            }
+        )
     }
     
     
     // class disconnectFromCognito
     
-    
-    class func authenticateWithTwitter(currentViewController: UIViewController, andThen:(success:Bool, key:String!, secret:String!)->())
+    class func authenticate(currentViewController cvc: UIViewController,
+        onSuccess: (token: Token)->(),
+        onFailure: ()->())
     {
-        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
-            {
-                (success) -> Void in
-                
-                if !success {
-                    andThen(success:false, key:nil, secret:nil)
-                    return
-                }
-                
-                let key = FHSTwitterEngine.sharedEngine().getOAuthToken()
-                let sec = FHSTwitterEngine.sharedEngine().getOAuthSecret()
-                
-                andThen(success:true, key:key, secret:sec)
-                
+        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
+        
+        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler { success in
+            
+            guard success else {
+                onFailure()
+                return
+            }
+            
+            let key = FHSTwitterEngine.sharedEngine().getOAuthToken()
+            let sec = FHSTwitterEngine.sharedEngine().getOAuthSecret()
+            
+            Persistent.twitter_key = key
+            Persistent.twitter_secret = sec
+            Persistent.immediatelySaveToDisk()
+            
+            token = Token(key: key, secret: sec)
+            
+            onSuccess(token: token!)
+        }
+        
+        cvc.presentViewController(vc, animated: true, completion: nil)
+    }
+}
+
+
+
+
 //                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
 //                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
 //                let token = FHSTwitterEngine.sharedEngine().cognitoFormat()
@@ -67,9 +104,3 @@ class TwitterAuthentication {
 //                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
 //                print("=== Twitter avatar: \(pic)")
 //                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
-                
-        })
-        
-        currentViewController.presentViewController(vc, animated: true, completion: nil)
-    }
-}
