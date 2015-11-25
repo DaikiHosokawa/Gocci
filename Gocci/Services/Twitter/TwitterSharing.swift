@@ -10,15 +10,12 @@ import Foundation
 
 class TwitterSharing {
     
-    let fromViewController: UIViewController
-    let key: String
-    let secret: String
-    
     enum TwitterSharingError: ErrorType {
         case ERROR_VIDEO_FILE_IO(String)
         case ERROR_NETWORK(String)
         case ERROR_TWITTER_API(String)
         case ERROR_TWEET_MESSAGE_OVER_140(String)
+        case ERROR_AUTHENTICATION
     }
 
     
@@ -26,14 +23,6 @@ class TwitterSharing {
     var onFailure: ((error: TwitterSharingError)->Void)? = nil
     
     private var finalSuccedCallback: ((mediaID: String)->Void)? = nil
-    
-    init(fromViewController: UIViewController) {
-        self.fromViewController = fromViewController
-        
-        // TODO test if FHSTwitterEngine is logged in!
-        key = FHSTwitterEngine.sharedEngine().accessToken.key
-        secret = FHSTwitterEngine.sharedEngine().accessToken.secret
-    }
     
     // if return value is negative -> you cant tweet!
     func videoTweetMessageRemainingCharacters(msg: String) -> Int {
@@ -47,7 +36,7 @@ class TwitterSharing {
     func tweetVideo(localVideoFileURL localVideoFileURL: NSURL, message: String) {
         
         guard videoTweetMessageRemainingCharacters(message) >= 0 else {
-            self.onFailure?(error: .ERROR_TWITTER_API("Tweet is over 140 chars. Video tweets need an extra 25 chars :("))
+            self.onFailure?(error: .ERROR_TWEET_MESSAGE_OVER_140("Tweet is over 140 chars. Video tweets need an extra 25 chars :("))
             return
         }
         
@@ -59,7 +48,7 @@ class TwitterSharing {
     func tweetMessage(message: String) {
         
         guard message.length <= 140 else {
-            self.onFailure?(error: .ERROR_TWITTER_API("Tweet is over 140 chars."))
+            self.onFailure?(error: .ERROR_TWEET_MESSAGE_OVER_140("Tweet is over 140 chars."))
             return
         }
         
@@ -70,6 +59,16 @@ class TwitterSharing {
 //        tweetWithMediaIDs(message, mediaMediaIDs: photoMediaIDs)
 //    }
     
+    private static func translateLowLevelError(llerr: TwitterLowLevel.TwitterLowLevelError) -> TwitterSharingError {
+        switch (llerr) {
+        case .ERROR_NETWORK(let emsg):
+            return .ERROR_NETWORK(emsg)
+        case .ERROR_TWITTER_API(let emsg):
+            return .ERROR_TWITTER_API(emsg)
+        case .ERROR_AUTHENTICATION:
+            return .ERROR_AUTHENTICATION
+        }
+    }
 
     private func tweetWithMediaIDs(message: String, mediaMediaIDs: [String]) {
         // https://dev.twitter.com/rest/reference/post/statuses/update
@@ -83,15 +82,14 @@ class TwitterSharing {
         if !mediaMediaIDs.isEmpty {
             params["media_ids"] = ",".join(mediaMediaIDs)
         }
-
-        twitterAPICallURLEncodedFormPOST(url, formdataParameters: params,
-            onSucc: { jsonResponse in
+        
+        TwitterLowLevel.performPOSTRequest(url, parameters: params,
+            onSuccess: { jsonResponse in
                 let postID = jsonResponse["id_str"].string
                 self.onSuccess?(twitterPostID: postID ?? "post_id_missing")
             },
-            onFail: { jsonResponse in
-                let emsg = self.twitterErrorJSONtoString(jsonResponse)
-                self.onFailure?(error: .ERROR_TWITTER_API(emsg))
+            onFailure: { error in
+                self.onFailure?(error: TwitterSharing.translateLowLevelError(error))
             }
         )
     }
@@ -116,20 +114,16 @@ class TwitterSharing {
             "total_bytes": String(data.length),
         ]
         
-        twitterAPICallURLEncodedFormPOST(url, formdataParameters: params,
-            onSucc: { jsonResponse in
+        TwitterLowLevel.performPOSTRequest(url, parameters: params,
+            onSuccess: { jsonResponse in
                 guard let mediaID = jsonResponse["media_id_string"].string else {
-                    self.onFailure?(error: .ERROR_TWITTER_API("Upload success but no media_id in JSON response"))
+                    self.onFailure?(error: .ERROR_TWITTER_API("INIT success but no media_id in JSON response"))
                     return
                 }
-                print("INIT sucessfull> media_id: \(mediaID)")
-                
                 self.videoUploadAPPENDLoop(mediaID, data: data)
             },
-            onFail: { jsonResponse in
-//                print(jsonResponse.rawString()!)
-                let emsg = self.twitterErrorJSONtoString(jsonResponse)
-                self.onFailure?(error: .ERROR_TWITTER_API(emsg))
+            onFailure: { error in
+                self.onFailure?(error: TwitterSharing.translateLowLevelError(error))
             }
         )
         
@@ -140,19 +134,17 @@ class TwitterSharing {
         
         let url = NSURL(string: "https://upload.twitter.com/1.1/media/upload.json")!
         
-        
         let params = [
             "command": "FINALIZE",
             "media_id": mediaID
         ]
         
-        twitterAPICallURLEncodedFormPOST(url, formdataParameters: params,
-            onSucc: { jsonResponse in
+        TwitterLowLevel.performPOSTRequest(url, parameters: params,
+            onSuccess: { jsonResponse in
                 self.finalSuccedCallback?(mediaID: mediaID)
             },
-            onFail: { jsonResponse in
-                let emsg = self.twitterErrorJSONtoString(jsonResponse)
-                self.onFailure?(error: .ERROR_TWITTER_API(emsg))
+            onFailure: { error in
+                self.onFailure?(error: TwitterSharing.translateLowLevelError(error))
             }
         )
         
@@ -194,7 +186,7 @@ class TwitterSharing {
                 }
             },
             onFail: { jsonResponse in
-                let emsg = self.twitterErrorJSONtoString(jsonResponse)
+                let emsg = TwitterLowLevel.twitterErrorJSONtoString(jsonResponse)
                 self.onFailure?(error: .ERROR_TWITTER_API(emsg))
             }
         )
@@ -242,9 +234,10 @@ class TwitterSharing {
         request.HTTPBody = formdata.generateRequestBody()
         request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
         
-        // TODO test if FHSTwitterEngine is logged in!
-        let key = FHSTwitterEngine.sharedEngine().accessToken.key
-        let secret = FHSTwitterEngine.sharedEngine().accessToken.secret
+        guard let key = TwitterAuthentication.token?.user_key, secret = TwitterAuthentication.token?.user_secret else {
+            onFailure?(error: .ERROR_AUTHENTICATION)
+            return
+        }
         
         let auth = ServiceUtil.createOAuthSignatureHeaderEntry(key, userSecret: secret, HTTPMethod: "POST", baseURL: url, unencodedPOSTParameters: [:])
         
@@ -262,63 +255,11 @@ class TwitterSharing {
         )
     }
     
-    private func makeFormdataStringFromDictonary(dict: [String: String]) -> String {
-        // WARNING: The order of the parameters has to be alphabetically!! media_ids BEFORE status!!
-        let sortedDict = dict.sort { $0.0 < $1.0 }
-        
-        let pairs = sortedDict.map { $0.0 + "=" + $0.1.percentEncodingSane() }
-        return "&".join(pairs)
-    }
-    
-    private func twitterErrorJSONtoString(json: JSON) -> String {
-        // EXPECT {"errors":[{"code":44,"message":"media_ids parameter is invalid."}]}
-        var emsgs: [String] = []
-        for (_, err):(String, JSON) in json["errors"] {
-            if let e = err["message"].string { emsgs.append(e) }
-        }
-        let res = ", ".join(emsgs)
-        
-        if !res.isEmpty {
-            return res
-        }
-        
-        return json["error"].string ?? json.rawString() ?? "JSON Unparsable"
-    }
-    
-    
-    
-    
-    private func twitterAPICallURLEncodedFormPOST(url: NSURL, formdataParameters: [String: String],
-        onSucc: (jsonResponse: JSON)->(),
-        onFail: (jsonResponse: JSON)->())
-    {
-        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 30.0)
-        request.HTTPMethod = "POST"
-        request.HTTPShouldHandleCookies = false
-        request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
-        let formdata = makeFormdataStringFromDictonary(formdataParameters)
-        
-        guard let data = formdata.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
-            onFailure?(error: .ERROR_NETWORK("Formdata conversion failed"))
-            return
-        }
-        
-        request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
-        request.HTTPBody = data
-        
-        let auth = ServiceUtil.createOAuthSignatureHeaderEntry(key, userSecret: secret, HTTPMethod: "POST", baseURL: url, unencodedPOSTParameters: formdataParameters)
-        
-        request.setValue(auth, forHTTPHeaderField: "Authorization")
-        
-        ServiceUtil.performRequest(request,
-            onSuccess: { (statusCode, data) -> () in
-                let handler = (statusCode >= 200 && statusCode < 300) ? onSucc : onFail
-                handler(jsonResponse: JSON(data: data))
-            },
-            onFailure: { errorMessage in
-                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
-            }
-        )
-    }
+
+    
+    
+    
+    
+  
 }

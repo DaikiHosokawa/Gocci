@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *restname;
 @property (weak, nonatomic) IBOutlet UIView *restview;
 @property (weak, nonatomic) IBOutlet UILabel *total_cheer_num;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) WYPopoverController *popover;
 
 @end

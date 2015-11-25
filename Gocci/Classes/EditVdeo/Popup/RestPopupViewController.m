@@ -11,6 +11,7 @@
 #import "LocationClient.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
+#import "SVProgressHUD.h"
 
 @interface RestPopupViewController (){
     //API
@@ -93,6 +94,8 @@
  */
 - (void)_getRestaurant:(BOOL)usingLocationCache{
     
+    [SVProgressHUD show];
+    
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
         [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
@@ -108,24 +111,14 @@
                  [rest_id addObject:restidGet];
              }
              [self.tableView reloadData];
+             [SVProgressHUD dismiss];
              
-            // [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          }];
         
         
     };
     
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        NSLog(@"ここ通ったよ2");
-        return;
-    }
     
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
          NSLog(@"ここ通ったよ3");
@@ -134,6 +127,7 @@
          if (error) {
              // 位置情報の取得に失敗
              // TODO: アラート等を掲出
+             [SVProgressHUD dismiss];
              return;
          }
          fetchAPI(location.coordinate);

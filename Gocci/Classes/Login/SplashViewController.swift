@@ -25,40 +25,54 @@ enum ContinueConclusion {
 class SplashViewController : UIViewController {
     
     let moviePlayer = AVPlayerViewController()
-    var conclusion = ContinueConclusion.NOT_SURE_YET
+    var conclusion = ContinueConclusion.NOT_SURE_YET {
+        didSet {
+            Util.runOnMainThread {
+                self.handleEvent()
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO Download an prebuffer first video. warning: you are not logged in here
         
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
-        moviePlayer.view.frame = view.frame
-        moviePlayer.showsPlaybackControls = false
-        moviePlayer.view.userInteractionEnabled = false
+//        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
+//        moviePlayer.view.frame = view.frame
+//        moviePlayer.showsPlaybackControls = false
+//        moviePlayer.view.userInteractionEnabled = false
+//        
+//        //moviePlayer.videoGravity = AVLayerVideoGravityResize
+//        //moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
+//        moviePlayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+//        
+//        //moviePlayer.view.alpha = 0.7
+//        //view.backgroundColor = UIColor.blackColor()
+//        
+//        view.addSubview(moviePlayer.view)
+//        view.sendSubviewToBack(moviePlayer.view)
+//        
+//        self.moviePlayer.player = AVPlayer(URL: url)
+//        self.moviePlayer.player?.volume = 1.0
+//        // remove the audio stream from the file: ffmpeg -i splash.mp4 -vcodec copy -an splash_with_no_sound.mp4
+//        
+//        NSNotificationCenter.defaultCenter().addObserver(self,
+//            selector: "playerItemDidReachEnd",
+//            name: AVPlayerItemDidPlayToEndTimeNotification,
+//            object: nil)
+//
+//        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tabToSkipVideo:"))
+//        view.addGestureRecognizer(tapGesture)
         
-        //moviePlayer.videoGravity = AVLayerVideoGravityResize
-        //moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
-        moviePlayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
-        //moviePlayer.view.alpha = 0.7
-        //view.backgroundColor = UIColor.blackColor()
+        // remove this if you use video splash again
+        let bg = UIImage(named: "1334-750-g")!
         
-        view.addSubview(moviePlayer.view)
-        view.sendSubviewToBack(moviePlayer.view)
-        
-        self.moviePlayer.player = AVPlayer(URL: url)
-        self.moviePlayer.player?.volume = 1.0
-        // remove the audio stream from the file: ffmpeg -i splash.mp4 -vcodec copy -an splash_with_no_sound.mp4
-        
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "playerItemDidReachEnd",
-            name: AVPlayerItemDidPlayToEndTimeNotification,
-            object: nil)
-
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tabToSkipVideo:"))
-        view.addGestureRecognizer(tapGesture)
+        let iv = UIImageView(image: bg)
+        iv.frame = self.view.frame
+        self.view.insertSubview(iv, atIndex: 0)
     }
     
     
@@ -66,7 +80,7 @@ class SplashViewController : UIViewController {
 
         super.viewDidAppear(animated)
         
-        self.moviePlayer.player?.play()
+        //self.moviePlayer.player?.play()
         
         self.login()
     }
@@ -97,9 +111,7 @@ class SplashViewController : UIViewController {
         }
         else {
             self.conclusion = ContinueConclusion.GO_TO_TUTORIAL
-
         }
-        
     }
 
     
@@ -126,7 +138,6 @@ class SplashViewController : UIViewController {
         handleEvent()
     }
     
-    // "TRANSLATION NEEDED"
     func handleEvent() -> Bool {
         switch self.conclusion {
             case .GO_TO_TIMELINE:
@@ -138,12 +149,15 @@ class SplashViewController : UIViewController {
                 return false
             
             case .NO_INTERNET:
+                // TODO TRANSLATION
                 Util.popup("You need internet for Gocci :(")
             
             case .BACKEND_CONNECTION_FAILED:
+                // TODO TRANSLATION
                 Util.popup("Gocci server are currently under maintance :(")
 
             case .USER_DATA_MALFORMED:
+                // TODO TRANSLATION
                 Util.popup("Your userdate is malformed, this should never happen. Please login with username and password, or use an SNS service.")
                 self.performSegueWithIdentifier("goRelogin", sender: self)
                 return false
