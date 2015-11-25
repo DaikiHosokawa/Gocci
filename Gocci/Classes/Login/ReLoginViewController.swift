@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ReLoginViewController : UIViewController {
+class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var usernameEditFiled: UITextField!
     
@@ -18,9 +18,17 @@ class ReLoginViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard:"))
+        tapGesture.delegate = self
+        self.view.addGestureRecognizer(tapGesture)
     }
+
     
-    
+    func hideKeyboard(sender: UITapGestureRecognizer) {
+        usernameEditFiled.resignFirstResponder()
+        passwordEditField.resignFirstResponder()
+    }
+
     @IBAction func loginClicked(sender: AnyObject) {
 
         guard let un = usernameEditFiled.text where !un.isEmpty else {
