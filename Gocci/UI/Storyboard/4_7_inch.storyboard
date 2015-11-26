@@ -225,6 +225,7 @@
                     <connections>
                         <outlet property="backButton" destination="fWy-yc-vTj" id="vWG-KR-qKH"/>
                         <outlet property="map" destination="inH-8Z-qwm" id="wW4-rc-nOK"/>
+                        <segue destination="7Ul-L7-bNU" kind="show" identifier="goRestaurant" id="IJa-Ht-LFl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv0-UY-4YB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2221,6 +2222,7 @@
                     <connections>
                         <outlet property="backButton" destination="QZ9-Lp-Fjm" id="jVV-dB-Thu"/>
                         <outlet property="map" destination="Nla-6D-Dxc" id="SQI-yD-vZ0"/>
+                        <segue destination="7Ul-L7-bNU" kind="show" identifier="goRestaurant" id="57k-Xl-h05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFS-t1-h4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2351,12 +2353,12 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ofb-Gs-yfz"/>
         <segue reference="jr3-37-9ka"/>
         <segue reference="hGv-8z-0ZJ"/>
-        <segue reference="ren-zg-h6h"/>
         <segue reference="L0G-no-fLl"/>
+        <segue reference="Ofb-Gs-yfz"/>
         <segue reference="pGd-UE-f06"/>
+        <segue reference="57k-Xl-h05"/>
         <segue reference="FOa-6V-u96"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

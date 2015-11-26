@@ -178,14 +178,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     [super viewWillDisappear:animated];
     
-    // !!!:dezamisystem
-   // [self.navigationController setNavigationBarHidden:YES animated:NO]; // ナビゲーションバー表示
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] stopMovie];
     
-    // 動画データを一度全て削除
-    //  [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //動画データを一度全て削除
+    [[MoviePlayerManager sharedManager] removeAllPlayers];
     
 }
 
@@ -541,9 +540,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark ＜＝Modal Close
 - (IBAction)onReturn:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        //
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

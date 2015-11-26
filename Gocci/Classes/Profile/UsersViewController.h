@@ -14,6 +14,7 @@
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
 #import "CollectionViewController.h"
+#import "MapViewController.h"
 
 @interface UsersViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {

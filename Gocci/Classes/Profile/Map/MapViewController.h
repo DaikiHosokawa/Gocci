@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
+#import "UsersViewController.h"
+
+@class  MapViewController;
+
+@protocol  MapViewControllerDelegate <NSObject>
+//@optional
+-(void)map:(MapViewController *)vc
+           restid:(NSString*)restid;
+
+@end
 
 @interface MapViewController : UIViewController<GMSMapViewDelegate,CLLocationManagerDelegate>
 {
@@ -22,5 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet GMSMapView *map;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+
+@property(nonatomic,strong) id<MapViewControllerDelegate> delegate;
+
 
 @end
