@@ -21,9 +21,7 @@
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
-
 #import "CollectionViewCell.h"
-
 #import "everyBaseNavigationController.h"
 #import "CollectionViewController.h"
 #import "TableViewController.h"
@@ -117,8 +115,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc2.soda = changeView.frame;
     
     UIViewController *thirdViewController;
-    MapViewController *vc3 = [[MapViewController alloc] init];
-    vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    MapViewController *vc3 = [[MapViewController alloc] init];z
     vc3.receiveDic3 = post;
     NSLog(@"ここでは:%@",post);
     vc3.supervc = self;

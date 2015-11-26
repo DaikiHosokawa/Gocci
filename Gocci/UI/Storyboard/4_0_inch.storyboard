@@ -1300,7 +1300,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="agF-Nl-m63">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agF-Nl-m63" id="dDe-Wj-q8P">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1382,7 +1382,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xVr-q7-YJP">
-                            <rect key="frame" x="0.0" y="132" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="112" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
                             <items>
@@ -1405,7 +1405,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="knc-92-vZ2" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="knc-92-vZ2" id="2nN-tB-7ZO">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
@@ -1692,22 +1692,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aD4-fr-zcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1403" y="-386"/>
-        </scene>
-        <!--Map View Controller-->
-        <scene sceneID="5R7-gQ-dBg">
-            <objects>
-                <viewController storyboardIdentifier="MapViewController" id="dkF-qQ-Cv5" customClass="MapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zEd-lp-1fN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4B4-Wp-yIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3119.0625" y="-32.218309859154928"/>
         </scene>
         <!--Near-->
         <scene sceneID="jkw-Ys-E9a">
@@ -2261,11 +2245,12 @@
                     <connections>
                         <outlet property="backButton" destination="tWS-sQ-ki4" id="buu-ig-0ZA"/>
                         <outlet property="map" destination="RQD-KR-nX2" id="M7I-yT-TJZ"/>
+                        <segue destination="Owk-1r-GFB" kind="push" identifier="goRestaurant" id="pXT-07-iJK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2X-FY-1fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="-4077"/>
+            <point key="canvasLocation" x="2195" y="-4397"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="9vS-Kx-rJE">
@@ -2302,11 +2287,12 @@
                     <connections>
                         <outlet property="backButton" destination="eKK-97-5To" id="uZ2-k5-pJo"/>
                         <outlet property="map" destination="LOT-lj-hCE" id="58B-rn-sUa"/>
+                        <segue destination="Owk-1r-GFB" kind="push" identifier="goRestaurant" id="jxB-Ur-R8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jC7-DW-Pix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2861" y="-2896"/>
+            <point key="canvasLocation" x="-2421" y="-3280"/>
         </scene>
         <!--Follow-->
         <scene sceneID="A7M-RS-Uch">
@@ -2401,7 +2387,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iV4-Ff-HcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2750" y="-857"/>
+            <point key="canvasLocation" x="-3108" y="-911"/>
         </scene>
     </scenes>
     <resources>
@@ -2438,12 +2424,12 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cAJ-bL-F0X"/>
-        <segue reference="6pK-Ls-lJu"/>
-        <segue reference="XEw-Zi-bfV"/>
         <segue reference="t6E-Xj-Ity"/>
+        <segue reference="6pK-Ls-lJu"/>
+        <segue reference="pXT-07-iJK"/>
         <segue reference="pjl-L3-6fH"/>
-        <segue reference="t14-t6-omj"/>
+        <segue reference="XEw-Zi-bfV"/>
+        <segue reference="TRb-wK-Rdp"/>
         <segue reference="upe-j2-7LO"/>
     </inferredMetricsTieBreakers>
 </document>

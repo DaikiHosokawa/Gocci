@@ -2191,6 +2191,7 @@
                     <connections>
                         <outlet property="backButton" destination="27T-FP-Vz0" id="9NZ-C4-Vbn"/>
                         <outlet property="map" destination="0iS-e3-Jb0" id="fla-4V-wD7"/>
+                        <segue destination="Okg-1a-oZr" kind="push" identifier="goRestaurant" id="P2U-gK-bL8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydn-0a-mon" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2232,6 +2233,7 @@
                     <connections>
                         <outlet property="backButton" destination="Wbx-RV-77N" id="hOV-ay-ZnZ"/>
                         <outlet property="map" destination="pCH-zT-tCl" id="j97-O2-ylC"/>
+                        <segue destination="Okg-1a-oZr" kind="push" identifier="goRestaurant" id="3um-cR-Gf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5V-Cz-E3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2369,11 +2371,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zJs-Rn-L9N"/>
-        <segue reference="rNq-Mh-OBs"/>
-        <segue reference="fnp-gF-feY"/>
-        <segue reference="XlR-eb-tum"/>
-        <segue reference="rUH-6e-3YE"/>
+        <segue reference="8T8-jw-6Im"/>
         <segue reference="Y4D-AG-nuH"/>
-        <segue reference="YI7-O5-vBa"/>
+        <segue reference="3um-cR-Gf5"/>
+        <segue reference="PS9-iE-reK"/>
+        <segue reference="wfL-dJ-5Im"/>
+        <segue reference="1UT-fM-ge6"/>
     </inferredMetricsTieBreakers>
 </document>

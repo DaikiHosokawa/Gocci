@@ -8,8 +8,12 @@
 
 #import "MapViewController.h"
 #import "APIClient.h"
+#import "InfoView.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Dummy.h"
+#import "everyTableViewController.h"
 
-static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 @interface MapViewController (){
     
@@ -27,6 +31,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
+    
     
     locationManager = [[CLLocationManager alloc]init];
     
@@ -84,25 +93,40 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([markerInfo[@"Y(lon_lat)"] doubleValue], [markerInfo[@"X(lon_lat)"] doubleValue]);
-            marker.title = markerInfo[@"restname"];
-            marker.snippet = markerInfo[@"post_date"];
-            marker.userData = markerInfo[@"post_id"];
-            marker.infoWindowAnchor = CGPointMake(0.5, 0.25);
-            marker.groundAnchor = CGPointMake(0.5, 1.0);
+            marker.userData = markerInfo;
+            marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
             marker.map = self.map;
             
         }
     }
 }
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    InfoView *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoView" owner:self options:nil] objectAtIndex:0];
+    [view.thumbnail sd_setImageWithURL:[NSURL URLWithString:marker.userData[@"thumbnail"]]
+                            placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    view.restname.text = marker.userData[@"restname"];
+    view.timelabel.text = marker.userData[@"post_date"];
+    return view;
+}
+
 
 
 - (IBAction)tapBackButton:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:marker.userData[@"rest_id"]];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:marker.userData];
+    if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
+        RestaurantTableViewController *restVC = segue.destinationViewController;
+        restVC.postRestName = (NSString *)sender;
+    }
     
 }
 @end
