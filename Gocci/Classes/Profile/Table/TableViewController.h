@@ -9,11 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "UsersViewController.h"
 
+@class  TableViewController;
+
+@protocol  TableViewControllerDelegate <NSObject>
+//@optional
+-(void)table:(TableViewController *)vc
+           postid:(NSString*)postid;
+
+-(void)table:(TableViewController *)vc
+          rest_id:(NSString*)rest_id;
+
+@end
+
 @interface TableViewController : UITableViewController
 
 @property id supervc;
 
-@property (nonatomic, strong) NSDictionary *receiveDic;
+@property (nonatomic, strong) NSMutableArray *receiveDic;
 @property (nonatomic) CGRect soda;
+
+@property(nonatomic,strong) id<TableViewControllerDelegate> delegate;
 
 @end

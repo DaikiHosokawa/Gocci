@@ -40,7 +40,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController_other ()<CollectionViewControllerDelegate1>
+@interface usersTableViewController_other ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate>
 
 {
     NSDictionary *header;
@@ -78,6 +78,21 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postRestname = rest_id;
 }
 
+-(void)table:(TableViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+
+-(void)table:(TableViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
+-(void)map:(MapViewController *)vc postid:(NSString *)postid{
+    _postID = postid;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -101,7 +116,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     TableViewController *vc = [[TableViewController  alloc] init];
     vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
     vc.supervc = self;
-    vc.receiveDic = post;
+    vc.receiveDic = post1;
+    vc.delegate = self;
     firstViewController = vc;
     vc.soda = changeView.frame;
     

@@ -83,12 +83,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refresh];
     
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self
-                           selector:@selector(handleRemotePushToUpdateBell:)
-                               name:@"HogeNotification"
-                             object:nil];
-    
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
