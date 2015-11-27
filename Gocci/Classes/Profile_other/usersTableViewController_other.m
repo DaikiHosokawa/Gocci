@@ -115,7 +115,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc2.soda = changeView.frame;
     
     UIViewController *thirdViewController;
-    MapViewController *vc3 = [[MapViewController alloc] init];z
+    MapViewController *vc3 = [[MapViewController alloc] init];
     vc3.receiveDic3 = post;
     NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
