@@ -14,13 +14,13 @@
 #import "RestaurantTableViewController.h"
 #import "AppDelegate.h"
 #import "CollectionViewController.h"
+#import "MapViewController.h"
 
 @interface UsersViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSString *_postID;
     NSString *_postRestname;
     int flash_on;
-    
 }
 
 

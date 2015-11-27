@@ -33,7 +33,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface UsersViewController ()<CollectionViewControllerDelegate1>
+@interface UsersViewController ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate>
 {
     NSDictionary *header;
     NSDictionary *post;
@@ -58,6 +58,16 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @implementation UsersViewController
 
+-(void)table:(TableViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+
+-(void)table:(TableViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
 -(void)collection:(CollectionViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
@@ -66,6 +76,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 -(void)collection:(CollectionViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
+}
+
+-(void)map:(MapViewController *)vc postid:(NSString *)postid{
+    _postID = postid;
 }
 
 
@@ -117,7 +131,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     TableViewController *vc = [[TableViewController  alloc] init];
     vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
     vc.supervc = self;
-    vc.receiveDic = post;
+    vc.receiveDic = post1;
+    vc.delegate = self;
     firstViewController = vc;
     vc.soda = changeView.frame;
     
@@ -132,7 +147,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     UIViewController *thirdViewController;
     MapViewController *vc3 = [[MapViewController alloc] init];
-    vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     vc3.receiveDic3 = post;
     vc3.supervc = self;
     vc3.soda = changeView.frame;

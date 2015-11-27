@@ -205,11 +205,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 #pragma mark - UICollectionViewDelegate
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"postid:%@",postid_[indexPath.row]);
-    [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
-}
 
 
 @end
