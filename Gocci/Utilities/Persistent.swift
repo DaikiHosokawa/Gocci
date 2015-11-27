@@ -49,6 +49,11 @@ class PersistentDataStorage {
         set(v) { cache.twitter_secret = v ; sud.setString(v, forKey: "twitter_secret") }
     }
     
+    var facebook_token: String? {
+        get { return cache.facebook_token }
+        set(v) { cache.facebook_token = v ; sud.setString(v, forKey: "facebook_token") }
+    }
+    
     func reloadAllDataFromDisk() {
         cache.passwordWasSetByTheUser = sud.boolForKey("passwordWasSetByTheUser")
         cache.userIsConnectedViaFacebook = sud.boolForKey("userIsConnectedViaFacebook")
@@ -56,6 +61,7 @@ class PersistentDataStorage {
         cache.identity_id = sud.stringForKey("identity_id")
         cache.twitter_key = sud.stringForKey("twitter_key")
         cache.twitter_secret = sud.stringForKey("twitter_secret")
+        cache.facebook_token = sud.stringForKey("facebook_token")
     }
     
     
@@ -66,6 +72,7 @@ class PersistentDataStorage {
         var identity_id: String?
         var twitter_key: String?
         var twitter_secret: String?
+        var facebook_token: String?
     }
     
     struct InternalDefaults {

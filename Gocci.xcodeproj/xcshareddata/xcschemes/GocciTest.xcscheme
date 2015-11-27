@@ -61,6 +61,17 @@
                BlueprintName = "UnitTests"
                ReferencedContainer = "container:Gocci.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TestFacebook">
+               </Test>
+               <Test
+                  Identifier = "TestTwitter">
+               </Test>
+               <Test
+                  Identifier = "TestUtil">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

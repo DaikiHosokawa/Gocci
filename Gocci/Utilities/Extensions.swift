@@ -48,14 +48,19 @@ extension String {
     }
 }
 
+
 extension NSData {
     func asUTF8String() -> String {
         return String(data: self, encoding: NSUTF8StringEncoding) ?? "ERROR: immpossible to convert to utf8 data"
     }
     
+    func ppJSON() -> String {
+        return JSON(data: self).rawString() ?? "Can't decode NSData to pretty JSON string"
+    }
+    
     func splitIntoChunksWithSize(chunkSize: Int) -> [NSData] {
         
-        assert(chunkSize > 0, "can't split NSData to chunks with zero or negative size")
+        assert(chunkSize > 0, "Can't split NSData to chunks with zero or negative size")
         
         var ranges: [NSRange] = []
         

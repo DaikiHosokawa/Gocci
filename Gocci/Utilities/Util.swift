@@ -13,19 +13,52 @@
 import Foundation
 import UIKit
 
+//@objc class Error : NSObject, CustomStringConvertible, ErrorType {
+//    let type : String
+//    let code : Int?
+//
+//    let nserror: NSError?
+//
+//    init(
+//
+//
+//
+//    var description: String {
+//        return "ERROR: \( code == nil ? "" : "("+code+") ")\(msg)"
+//    }
+//}
+
 
 
 @objc class Util : NSObject {
     
-    //    class func delme() {
-    //        let dataFromString = "{wdwdwdw}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-    //
-    //        let json = JSON(data: dataFromString!)
-    //        print(json)
-    //
-    //    }
+    class func createTaskThatWillEvenRunIfTheAppIsPutInBackground(id: String, queue: dispatch_queue_t, task: ()->(), expirationHandler: ()->()) -> ()->() {
+        
+        var bgTask = UIBackgroundTaskInvalid
+        
+        bgTask = UIApplication.sharedApplication().beginBackgroundTaskWithName(id, expirationHandler: {
+            
+            expirationHandler()
+            UIApplication.sharedApplication().endBackgroundTask(bgTask)
+            bgTask = UIBackgroundTaskInvalid
+        })
+        
+        return {
+            dispatch_async(queue) {
+                task()
+                UIApplication.sharedApplication().endBackgroundTask(bgTask)
+                bgTask = UIBackgroundTaskInvalid
+            }
+        }
+    }
     
+    class func sleep(secFraction: Double) {
+        NSThread.sleepForTimeInterval(secFraction)
+    }
     
+    class func timestamp1970() -> Int {
+        return Int(NSDate().timeIntervalSince1970)
+    }
     
     
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
@@ -166,6 +199,11 @@ import UIKit
         }
     }
     
+    class func documentsDirectory() -> String {
+        let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        return f.first ?? "shouldNeverHappen"
+    }
+    
     class func removeAccountSpecificDataFromUserDefaults()
     {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
@@ -178,17 +216,23 @@ import UIKit
     
     class func getInchString() -> String
     {
-        switch UIScreen.mainScreen().bounds.size.height
-        {
-        case 480: return "3_5_inch"
-        case 568: return "4_0_inch"
-        case 667: return "4_7_inch"
-        case 736: return "5_5_inch"
-            
-        default:
-            NSLog("no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height")
-            return "no known inch size for \(UIScreen.mainScreen().bounds.size.height) pixels height"
+        let height: Int = Int(UIScreen.mainScreen().bounds.size.height)
+        
+        let mappings = [
+             480:  "3_5_inch",
+             568:  "4_0_inch",
+             667:  "4_7_inch",
+             736:  "5_5_inch",
+        ]
+        
+        if let correctFitting = mappings[height] {
+            return correctFitting
         }
+        
+        // now we take the best alternative
+        let closest = Algorithms.findNearestNumber(height, set: Array(mappings.keys))
+        
+        return mappings[closest!]!
     }
     
     class func getGocciVersionString() -> String? {

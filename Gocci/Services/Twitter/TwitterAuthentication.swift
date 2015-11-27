@@ -22,6 +22,14 @@ import Foundation
 
 class TwitterAuthentication {
     
+    enum LoginResult {
+        case SNS_LOGIN_SUCCESS
+        case SNS_LOGIN_UNKNOWN_FAILURE
+        case SNS_LOGIN_CANCELED
+        case SNS_USER_NOT_REGISTERD
+        case SNS_PROVIDER_FAIL
+    }
+    
     struct Token {
         var user_key: String
         var user_secret: String
@@ -64,6 +72,32 @@ class TwitterAuthentication {
     
     
     // class disconnectFromCognito
+    
+//    func loginWithTwitter(currentViewController: UIViewController, andThen:(LoginResult)->Void)
+//    {
+//        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
+//            {
+//                (success) -> Void in
+//                
+//                if !success {
+//                    andThen(LoginResult.SNS_PROVIDER_FAIL)
+//                    return
+//                }
+//                
+//                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
+//                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
+//                let token = FHSTwitterEngine.sharedEngine().cognitoFormat()
+//                print("=== Twitter name:   \(username)")
+//                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
+//                print("=== Twitter avatar: \(pic)")
+//                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
+//                
+//                self.loginInWithProviderToken(TWITTER_PROVIDER_STRING, token: token, andThen: andThen)
+//                
+//        })
+//        
+//        currentViewController.presentViewController(vc, animated: true, completion: nil)
+//    }
     
     class func authenticate(currentViewController cvc: UIViewController,
         onSuccess: (token: Token)->(),
