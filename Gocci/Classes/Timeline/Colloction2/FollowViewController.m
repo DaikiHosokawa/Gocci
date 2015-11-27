@@ -94,8 +94,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
+  
         
         [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
@@ -123,32 +122,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
          }];
-        
-    };
-    
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        
-        return;
-    }
-    
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         
-         if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
-             return;
-         }
-         fetchAPI(location.coordinate);
-         
-     }];
-    
 }
 
 
@@ -157,8 +130,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self refreshFeed];
     
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
         NSString *str = [NSString stringWithFormat:@"%d",call];
         [APIClient Follow:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
@@ -193,34 +164,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
          }];
-        
-    };
-    
-    // 位置情報キャッシュを使う場合で、位置情報キャッシュが存在する場合、
-    // キャッシュされた位置情報を利用して API からデータを取得する
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        NSLog(@"ここ通ったよ2");
-        return;
-    }
-    
-    // 位置情報キャッシュを使わない、あるいはキャッシュが存在しない場合、
-    // 位置情報を取得してから API へアクセスする
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         NSLog(@"ここ通ったよ3");
-         LOG(@"location=%@, error=%@", location, error);
-         
-         if (error) {
-             // 位置情報の取得に失敗
-             // TODO: アラート等を掲出
-             return;
-         }
-         fetchAPI(location.coordinate);
-         
-     }];
-    
 }
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
@@ -274,6 +217,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     FollowViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    for (UIView *subview in [cell.imageView subviews]) {
+        [subview removeFromSuperview];
+    }
     
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];

@@ -51,7 +51,7 @@
   CALayer *layer = [CALayer layer];
   layer.frame = CGRectMake(0, 0, 24.0f, 24.0f);
   layer.contentsGravity = kCAGravityCenter;
-  layer.contents = (id)[UIImage imageNamed:@"pinterest_pin"].CGImage;
+  layer.contents = (id)[UIImage imageNamed:@"refresh"].CGImage;
   layer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
   [[self layer] addSublayer:layer];
   self.iconLayer=layer;

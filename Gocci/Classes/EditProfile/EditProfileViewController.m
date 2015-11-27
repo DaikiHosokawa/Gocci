@@ -38,10 +38,7 @@
     NSLog(@"username:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]);
     username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     username.delegate = self;
-   // [userpicture setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]]
-     //           placeholderImage:[UIImage imageNamed:@"default.png"]];
     
-    // 画像の作成3．Web上の画像を作成
     NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [[UIImage alloc] initWithData:data];

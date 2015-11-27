@@ -260,6 +260,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     NearViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    for (UIView *subview in [cell.imageView subviews]) {
+        [subview removeFromSuperview];
+    }
+    
     // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];

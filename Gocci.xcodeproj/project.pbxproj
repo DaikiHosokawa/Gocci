@@ -18,6 +18,7 @@
 		9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
+		954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
@@ -359,6 +360,8 @@
 		9505939E1BFC2B7100328449 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAddPopupViewController.m; sourceTree = "<group>"; };
+		954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAddPopupViewController.h; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
@@ -832,7 +835,7 @@
 		FF0BE45B193ED626001A0053 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FF0BE45D193ED63E001A0053 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FF4BF521194847B90099B01D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		FF54EFDF19149A1800025DC8 /* Gocci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gocci.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF54EFDF19149A1800025DC8 /* GocciTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GocciTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF54EFE219149A1800025DC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF54EFE419149A1800025DC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FF54EFE619149A1800025DC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1092,6 +1095,8 @@
 				9550D8181BF83E4B00430942 /* RestPopupViewController.m */,
 				9550D8191BF83E4B00430942 /* ValuePopupViewController.h */,
 				9550D81A1BF83E4B00430942 /* ValuePopupViewController.m */,
+				954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */,
+				954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1211,12 +1216,12 @@
 		9550D84B1BF83E4B00430942 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9550D8631BF83E4B00430942 /* UsersViewController.h */,
+				9550D8641BF83E4B00430942 /* UsersViewController.m */,
+				9550D85A1BF83E4B00430942 /* Table */,
 				9550D84C1BF83E4B00430942 /* Colloction */,
 				9550D8531BF83E4B00430942 /* Map */,
 				9550D8561BF83E4B00430942 /* Settings */,
-				9550D85A1BF83E4B00430942 /* Table */,
-				9550D8631BF83E4B00430942 /* UsersViewController.h */,
-				9550D8641BF83E4B00430942 /* UsersViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1405,9 +1410,9 @@
 		9550D8DC1BF83E4B00430942 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				9550D8DD1BF83E4B00430942 /* Colloction */,
-				9550D8E21BF83E4B00430942 /* Colloction2 */,
-				9550D8E71BF83E4B00430942 /* Colloction3 */,
+				9550D8DD1BF83E4B00430942 /* Near */,
+				9550D8E21BF83E4B00430942 /* Follow */,
+				9550D8E71BF83E4B00430942 /* Recomend */,
 				9550D8EC1BF83E4B00430942 /* PageMenu */,
 				9550D8F21BF83E4B00430942 /* Popup */,
 				9550D8F91BF83E4B00430942 /* TimelineCell.h */,
@@ -1417,7 +1422,7 @@
 			path = Timeline;
 			sourceTree = "<group>";
 		};
-		9550D8DD1BF83E4B00430942 /* Colloction */ = {
+		9550D8DD1BF83E4B00430942 /* Near */ = {
 			isa = PBXGroup;
 			children = (
 				9550D8DE1BF83E4B00430942 /* NearViewController.h */,
@@ -1425,10 +1430,11 @@
 				9550D8E01BF83E4B00430942 /* NearViewControllerCell.h */,
 				9550D8E11BF83E4B00430942 /* NearViewControllerCell.m */,
 			);
+			name = Near;
 			path = Colloction;
 			sourceTree = "<group>";
 		};
-		9550D8E21BF83E4B00430942 /* Colloction2 */ = {
+		9550D8E21BF83E4B00430942 /* Follow */ = {
 			isa = PBXGroup;
 			children = (
 				9550D8E31BF83E4B00430942 /* FollowViewController.h */,
@@ -1436,10 +1442,11 @@
 				9550D8E51BF83E4B00430942 /* FollowViewControllerCell.h */,
 				9550D8E61BF83E4B00430942 /* FollowViewControllerCell.m */,
 			);
+			name = Follow;
 			path = Colloction2;
 			sourceTree = "<group>";
 		};
-		9550D8E71BF83E4B00430942 /* Colloction3 */ = {
+		9550D8E71BF83E4B00430942 /* Recomend */ = {
 			isa = PBXGroup;
 			children = (
 				9550D8E81BF83E4B00430942 /* RecoViewController.h */,
@@ -1447,6 +1454,7 @@
 				9550D8EA1BF83E4B00430942 /* RecoViewControllerCell.h */,
 				9550D8EB1BF83E4B00430942 /* RecoViewControllerCell.m */,
 			);
+			name = Recomend;
 			path = Colloction3;
 			sourceTree = "<group>";
 		};
@@ -2038,7 +2046,7 @@
 		FF54EFE019149A1800025DC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF54EFDF19149A1800025DC8 /* Gocci.app */,
+				FF54EFDF19149A1800025DC8 /* GocciTest.app */,
 				981A932B1BFC5063007B3BF6 /* UnitTests.xctest */,
 			);
 			name = Products;
@@ -2106,9 +2114,9 @@
 			productReference = 981A932B1BFC5063007B3BF6 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FF54EFDE19149A1800025DC8 /* Gocci */ = {
+		FF54EFDE19149A1800025DC8 /* GocciTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */;
+			buildConfigurationList = FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */;
 			buildPhases = (
 				FF54EFDB19149A1800025DC8 /* Sources */,
 				FF54EFDC19149A1800025DC8 /* Frameworks */,
@@ -2118,9 +2126,9 @@
 			);
 			dependencies = (
 			);
-			name = Gocci;
+			name = GocciTest;
 			productName = Gocci;
-			productReference = FF54EFDF19149A1800025DC8 /* Gocci.app */;
+			productReference = FF54EFDF19149A1800025DC8 /* GocciTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2160,7 +2168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF54EFDE19149A1800025DC8 /* Gocci */,
+				FF54EFDE19149A1800025DC8 /* GocciTest */,
 				981A932A1BFC5063007B3BF6 /* UnitTests */,
 			);
 		};
@@ -2383,6 +2391,7 @@
 				9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */,
 				9550DA461BF83E4C00430942 /* SettingsTableViewController.swift in Sources */,
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
+				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
 				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
@@ -2488,7 +2497,7 @@
 /* Begin PBXTargetDependency section */
 		981A93311BFC5063007B3BF6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF54EFDE19149A1800025DC8 /* Gocci */;
+			target = FF54EFDE19149A1800025DC8 /* GocciTest */;
 			targetProxy = 981A93301BFC5063007B3BF6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2672,7 +2681,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
@@ -2707,7 +2716,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
@@ -2739,7 +2748,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "Gocci" */ = {
+		FF54F01119149A1900025DC8 /* Build configuration list for PBXNativeTarget "GocciTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF54F01219149A1900025DC8 /* Debug */,

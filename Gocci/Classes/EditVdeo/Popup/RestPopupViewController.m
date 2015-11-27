@@ -8,6 +8,7 @@
 
 #import "RestPopupViewController.h"
 #import "STPopup.h"
+#import "RestAddPopupViewController.h"
 #import "LocationClient.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
@@ -26,14 +27,14 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (instancetype)init
 {
@@ -60,28 +61,46 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [restaurant count];
+    return [restaurant count]+1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Identifier"];
-     NSString *restname = restaurant[indexPath.row];
-    cell.textLabel.text = restname;
-       return cell;
+    
+    if (indexPath.row < 30) {
+        NSString *restname = restaurant[indexPath.row];
+        cell.textLabel.text = restname;
+    }
+    
+    else {
+        cell.textLabel.text = @"お店がない時は...";
+    }
+    return  cell;
+
 }
 
 
 //1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *restname = restaurant[indexPath.row];
-    NSString *restid = rest_id[indexPath.row];
+    if (indexPath.row < 30) {
+        
+        NSString *restname = restaurant[indexPath.row];
+        NSString *restid = rest_id[indexPath.row];
+        
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        delegate.stringTenmei = restname;
+        delegate.indexTenmei = restid;
+        [self.popupController dismiss];
+    }
     
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    delegate.stringTenmei = restname;
-    delegate.indexTenmei = restid;
-    [self.popupController dismiss];
+    else{
+        [self.popupController pushViewController:[RestAddPopupViewController new] animated:YES];
+        
+    }
+    
     
 }
 
