@@ -132,6 +132,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    for (UIView *subview in [cell.imageView subviews]) {
+        [subview removeFromSuperview];
+    }
+    
     // セルにデータを反映
     TimelinePost *post = self.receiveDic2[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];

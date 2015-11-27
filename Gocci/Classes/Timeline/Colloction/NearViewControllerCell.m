@@ -46,6 +46,7 @@
 
 -(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
     
+    
     self.postID = timelinePost.postID;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;

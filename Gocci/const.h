@@ -11,7 +11,7 @@
 
 // #######################################################################################
 // Lots ob DEBUG improvments. TODO change this in the release version
-//define INDEVEL
+#define INDEVEL
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.

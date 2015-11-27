@@ -239,6 +239,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     RecoViewControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    for (UIView *subview in [cell.imageView subviews]) {
+        [subview removeFromSuperview];
+    }
+    
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];
     cell.delegate = self;
