@@ -116,12 +116,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [[MoviePlayerManager sharedManager] stopMovie];
     [[MoviePlayerManager sharedManager] removeAllPlayers];
-    
     [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-    
+ //   [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 

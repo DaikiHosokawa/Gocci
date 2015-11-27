@@ -24,7 +24,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @implementation MapViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
