@@ -94,7 +94,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([markerInfo[@"Y(lon_lat)"] doubleValue], [markerInfo[@"X(lon_lat)"] doubleValue]);
             marker.userData = markerInfo;
-            marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
+            marker.infoWindowAnchor = CGPointMake(0.44f, -0.5f);
+            marker.icon = [UIImage imageNamed:@"pin"];
             marker.map = self.map;
             
         }

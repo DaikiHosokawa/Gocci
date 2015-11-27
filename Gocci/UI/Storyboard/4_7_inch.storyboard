@@ -1801,7 +1801,7 @@
         <scene sceneID="QJ0-bT-Lh3">
             <objects>
                 <tableViewController storyboardIdentifier="TableViewController" id="JVS-lN-V1g" userLabel="Image Table Push" customClass="TableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="8hd-ri-JGs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="121" sectionHeaderHeight="22" sectionFooterHeight="22" id="8hd-ri-JGs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1811,24 +1811,40 @@
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="dd4-w4-NU8" customClass="TableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="70"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="121" id="dd4-w4-NU8" customClass="TableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="375" height="121"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dd4-w4-NU8" id="SDv-QU-WWf">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-JI-May">
-                                            <rect key="frame" x="69" y="24" width="218" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sn4-JC-fmK">
-                                            <rect key="frame" x="8" y="8" width="53" height="53"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="infoView" translatesAutoresizingMaskIntoConstraints="NO" id="RsF-mI-Q0P">
+                                            <rect key="frame" x="-6" y="-4" width="373" height="128"/>
                                             <animations/>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sn4-JC-fmK">
+                                            <rect key="frame" x="8" y="5" width="353" height="107"/>
+                                            <animations/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqD-6o-aOl">
+                                            <rect key="frame" x="323" y="47" width="24" height="24"/>
+                                            <animations/>
+                                            <state key="normal" image="ic_more_vert_white"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restname" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-JI-May">
+                                            <rect key="frame" x="41" y="28" width="274" height="33"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timelabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLH-xp-P0n">
+                                            <rect key="frame" x="41" y="69" width="267" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1836,7 +1852,9 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="option" destination="dqD-6o-aOl" id="iDQ-Xy-Hye"/>
                                     <outlet property="thumbImageView" destination="Sn4-JC-fmK" id="NdZ-8q-Zsb"/>
+                                    <outlet property="timeLabel" destination="cLH-xp-P0n" id="cqy-Az-wbf"/>
                                     <outlet property="titleLabel" destination="LMx-JI-May" id="Wf6-IL-2pq"/>
                                 </connections>
                             </tableViewCell>
@@ -1850,7 +1868,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIC-wk-0nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3107.8125" y="-1617.7816901408451"/>
+            <point key="canvasLocation" x="-3108.5" y="-1618.5"/>
         </scene>
         <!--Image Collection Push-->
         <scene sceneID="T0R-be-Hoc">
@@ -2342,6 +2360,7 @@
         <image name="ic_notifications_active_white" width="24" height="24"/>
         <image name="ic_settings_white" width="24" height="24"/>
         <image name="ic_undo_white" width="24" height="24"/>
+        <image name="infoView" width="231" height="69"/>
         <image name="postingBack" width="20" height="20"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
         <image name="tabbaritem_profile.png" width="30" height="30"/>

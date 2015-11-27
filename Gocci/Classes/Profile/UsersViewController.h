@@ -21,7 +21,6 @@
     NSString *_postID;
     NSString *_postRestname;
     int flash_on;
-    
 }
 
 
