@@ -18,11 +18,12 @@
 #import "TableViewCell.h"
 #import "TimelinePost.h"
 
-@interface TableViewController ()
+@interface TableViewController ()<TableViewCellDelegate,UIActionSheetDelegate>
 
 
 @end
 
+static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -31,6 +32,8 @@ static NSString * const reuseIdentifier = @"Cell";
     NSMutableArray *thumb;
     NSMutableArray *postid_;
     NSMutableArray *restname;
+    NSMutableArray *timelabel;
+    NSMutableDictionary *optionDic;
     CGSize *changeViewSize;
 }
 
@@ -67,35 +70,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setupData
 {
-            thumb = [NSMutableArray arrayWithCapacity:0];
-            postid_ = [NSMutableArray arrayWithCapacity:0];
-            restname = [NSMutableArray arrayWithCapacity:0];
-    
-    NSLog(@"ここでは:%@",_receiveDic);
-    
-            NSArray* items = (NSArray*)_receiveDic;
-            
-            for (NSDictionary *post in items) {
-                
-                NSDictionary *thumbGet = [post objectForKey:@"thumbnail"];
-                [thumb addObject:thumbGet];
-                NSDictionary *postidGet = [post objectForKey:@"post_id"];
-                [postid_ addObject:postidGet];
-                NSDictionary *restnameGet = [post objectForKey:@"restname"];
-                [restname addObject:restnameGet];
-            }
-            NSLog(@"thumb:%@,id:%@,restname:%@",thumb,postid_,restname);
-            
-            if ([thumb count] == 0) {
-                UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-                UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-                CGSize boundsSize = self.soda.size;
-                iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
-                [self.view addSubview:iv];
-                self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-            }else{
-            [self.tableView reloadData];
-            }
+    if ([_receiveDic count] == 0) {
+        UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+        CGSize boundsSize = self.soda.size;
+        iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+        [self.view addSubview:iv];
+    }else{
+        [self.tableView reloadData];
+    }
 }
 
 
@@ -117,15 +100,41 @@ static NSString * const reuseIdentifier = @"Cell";
     
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    [cell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:thumb[indexPath.row]]
-                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    
-    NSLog(@"title:%@",cell.titleLabel.text);
-    cell.titleLabel.text = restname[indexPath.row];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    // セルにデータを反映
+    TimelinePost *post = self.receiveDic[indexPath.row];
+    [cell configureWithTimelinePost:post indexPath:indexPath.row];
+    cell.delegate = self;
     
     return cell;
+}
+
+-(void)table:(CollectionViewCell *)cell didTapRestname:(NSString *)rest_id{
+    NSLog(@"restid:%@",rest_id);
+    UsersViewController *vc = (UsersViewController*)self.delegate;
+    [self.delegate table:self rest_id:rest_id];
+    [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
+}
+
+-(void)table:(CollectionViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
+    
+    UIActionSheet *actionsheet = nil;
+    
+    optionDic = [NSMutableDictionary dictionary];
+    [optionDic setObject:post_id forKey:@"POSTID"];
+    [optionDic setObject:rest_id forKey:@"RESTID"];
+    
+    actionsheet = [[UIActionSheet alloc] initWithTitle:@"アクション"
+                                              delegate:self
+                                     cancelButtonTitle:@"Cancel"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@"レストランページへ移動",@"この投稿を削除" ,nil];
+    actionsheet.tag = 1;
+    [actionsheet showInView:self.view];
+    
+}
+
+-(void)table:(CollectionViewCell *)cell didTapThumb:(NSString *)rest_id{
+    NSLog(@"restid:%@",rest_id);
 }
 
 
@@ -133,6 +142,69 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //NSLog(@"%s sheet = %ld",__func__, (long)buttonIndex);
+    
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        NSLog(@"cancel");
+    }
+    else {
+        NSString *r_id = [optionDic objectForKey:@"RESTID"];
+        NSString *p_id = [optionDic objectForKey:@"POSTID"];
+        
+        UsersViewController *vc = ( UsersViewController*)self.delegate;
+        
+        
+        switch (buttonIndex) {
+            case 0:
+                [self.delegate table:self rest_id:r_id];
+                [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
+                break;
+                
+            case 1:
+                NSLog(@"Problem");
+                
+                Class class = NSClassFromString(@"UIAlertController");
+                if(class)
+                {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                            if (result) {
+                                NSLog(@"result:%@",result);
+                            }
+                        }
+                         ];
+                        
+                        
+                    }]];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+                else
+                {
+                    [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                        if (result) {
+                            NSLog(@"result:%@",result);
+                        }
+                    }
+                     ];
+                }
+                
+                break;
+            default:
+                break;
+        }
+        
+    }
+}
+
 
 
 @end
