@@ -133,8 +133,9 @@
         [[UITabBarItem appearance] setTitleTextAttributes:attributesNormal forState:UIControlStateNormal];
         
         //背景色
-        [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
-        //[UITabBar appearance].translucent = YES;
+        [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+       // [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
+        [UITabBar appearance].translucent = NO;
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];
     }

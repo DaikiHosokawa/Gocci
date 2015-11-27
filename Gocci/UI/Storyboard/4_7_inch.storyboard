@@ -940,7 +940,6 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xMf-ns-bYZ"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="categoryLabel" destination="SXQ-Cy-r6l" id="7HV-op-Mwz"/>
@@ -2373,12 +2372,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jr3-37-9ka"/>
-        <segue reference="L0G-no-fLl"/>
-        <segue reference="hGv-8z-0ZJ"/>
-        <segue reference="Ofb-Gs-yfz"/>
-        <segue reference="RUh-hP-jrK"/>
-        <segue reference="m10-Cb-1kc"/>
-        <segue reference="wZe-RH-qBh"/>
+        <segue reference="g3n-kx-BDj"/>
+        <segue reference="pGd-UE-f06"/>
+        <segue reference="f7P-xo-Phh"/>
+        <segue reference="FOa-6V-u96"/>
+        <segue reference="4ab-y8-Qck"/>
+        <segue reference="Jx8-B4-NT3"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

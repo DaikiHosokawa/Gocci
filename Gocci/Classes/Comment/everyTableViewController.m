@@ -539,8 +539,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark - ツールバー
 #pragma mark ＜＝Modal Close
 - (IBAction)onReturn:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
