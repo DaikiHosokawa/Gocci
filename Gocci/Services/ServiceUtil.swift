@@ -9,6 +9,8 @@
 
 import Foundation
 
+
+
 class ServiceUtil {
     
     class FormData {
@@ -53,38 +55,13 @@ class ServiceUtil {
         
     }
     
-    class func performRequest(
-        request: NSURLRequest,
-        onSuccess: ((statusCode: Int, data: NSData)->())?,
-        onFailure: ((errorMessage: String)->())? )
-    {
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.allowsCellularAccess = true
-        // WARNING! ephemeral means nothing to disk. also NO COOKIES!!
-        let session = NSURLSession(configuration: config)
-        
-        let urlsessiontask = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            
-            guard error == nil else {
-                onFailure?(errorMessage: error?.localizedDescription ?? "No error message")
-                return
-            }
-            
-            guard let resp = response as? NSHTTPURLResponse else {
-                onFailure?(errorMessage: "Response is not an HTTP Response")
-                return
-            }
-            
-            guard let data = data else {
-                onFailure?(errorMessage: "No json data recieved")
-                return
-            }
-            
-            onSuccess?(statusCode: resp.statusCode, data: data)
-        }
-        
-        urlsessiontask.resume()
-    }
+    
+
+        class func performRequest(
+            request: NSURLRequest,
+            onSuccess: ((statusCode: Int, data: NSData)->())?,
+            onFailure: ((errorMessage: String)->())? ) { fatalError() }
+
     
     private class func generateOAuthNonce() -> String
     {
@@ -107,7 +84,7 @@ class ServiceUtil {
             "oauth_consumer_key":     TWITTER_CONSUMER_KEY,
             "oauth_nonce":            generateOAuthNonce(),
             "oauth_signature_method": "HMAC-SHA1",
-            "oauth_timestamp":        String(Int(NSDate().timeIntervalSince1970)),
+            "oauth_timestamp":        String(Util.timestamp1970()),
             "oauth_token":            userKey,
             "oauth_version":          "1.0"
         ]
