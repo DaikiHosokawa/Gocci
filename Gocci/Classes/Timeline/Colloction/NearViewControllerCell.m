@@ -52,7 +52,7 @@
     self.user_id = timelinePost.userID;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
                       placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    self.imageView.layer.cornerRadius = 5;
+    self.imageView.layer.cornerRadius = 2;
     self.imageView.clipsToBounds = true;
     self.title.text = timelinePost.restname;
     double lat= [timelinePost.distance doubleValue];

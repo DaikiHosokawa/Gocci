@@ -298,12 +298,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    //TODO ugly code copied from tutorial
-    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
-    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];   // move the pageControl indicator to the next page
-    
-    // check if we are at the end and decide if we need to present the next viewcontroller
-    if ( currentIndex < [self.pages count]-1) {
+    NSUInteger currentIndex = [self.pages indexOfObject:viewController];        [self.pageControl setCurrentPage:self.pageControl.currentPage+1];      if ( currentIndex < [self.pages count]-1) {
         return [self.pages objectAtIndex:currentIndex+1];
     }
     return nil;
@@ -312,14 +307,8 @@
 
 - (UIViewController *) pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    //TODO ugly code copied from tutorial
-    NSUInteger currentIndex = [self.pages indexOfObject:viewController];    // get the index of the current view controller on display
-    [self.pageControl setCurrentPage:self.pageControl.currentPage-1];                   // move the pageControl indicator to the next page
-    
-    // check if we are at the beginning and decide if we need to present the previous viewcontroller
-    if ( currentIndex > 0) {
-        return [self.pages objectAtIndex:currentIndex-1];                   // return the previous viewcontroller
-    }
+    NSUInteger currentIndex = [self.pages indexOfObject:viewController];       [self.pageControl setCurrentPage:self.pageControl.currentPage-1];                      if ( currentIndex > 0) {
+        return [self.pages objectAtIndex:currentIndex-1];                }
     return nil;
 }
 

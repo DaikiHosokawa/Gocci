@@ -722,36 +722,13 @@
                         <outlet property="viewBasePageMenu" destination="Tfz-Ik-oJf" id="nSE-mM-5WQ"/>
                         <segue destination="J9W-eO-UF1" kind="presentation" identifier="goEveryComment" id="wZe-RH-qBh"/>
                         <segue destination="7Ul-L7-bNU" kind="show" identifier="goRestaurant" id="m10-Cb-1kc"/>
-                        <segue destination="kE4-aW-qum" kind="push" identifier="test" id="1Dx-Cs-sp7"/>
                         <segue destination="IgD-Ad-4hs" kind="show" identifier="goUsersOthers" id="RUh-hP-jrK"/>
+                        <segue destination="MBR-yw-NGU" kind="show" identifier="goHeatmap" id="7nN-PJ-emo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udM-sK-yVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4060.5" y="-5091.5"/>
-        </scene>
-        <!--Square Cash Style View Controller-->
-        <scene sceneID="kGC-Fr-jEj">
-            <objects>
-                <viewController id="kE4-aW-qum" customClass="SquareCashStyleViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vAQ-W2-Jp2"/>
-                        <viewControllerLayoutGuide type="bottom" id="TDU-ck-HPh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PBt-M3-fXw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="7Se-kb-l6u"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MsU-nH-G5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3172.5" y="-5599.5"/>
         </scene>
         <!--Tabbar Base View Controller-->
         <scene sceneID="tXv-n5-MBn">
@@ -1744,7 +1721,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
+                                                    <integer key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
@@ -1844,6 +1821,10 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqS-0v-2cq">
+                                            <rect key="frame" x="18" y="15" width="25" height="23"/>
+                                            <animations/>
+                                        </button>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1851,6 +1832,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="likeBtn" destination="TqS-0v-2cq" id="7iM-Ng-13j"/>
                                     <outlet property="option" destination="dqD-6o-aOl" id="iDQ-Xy-Hye"/>
                                     <outlet property="thumbImageView" destination="Sn4-JC-fmK" id="NdZ-8q-Zsb"/>
                                     <outlet property="timeLabel" destination="cLH-xp-P0n" id="cqy-Az-wbf"/>
@@ -1906,7 +1888,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
+                                                    <integer key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
@@ -1995,7 +1977,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
+                                                    <integer key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
@@ -2046,6 +2028,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4N7-Yq-xVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6704.5" y="-5363.5"/>
+        </scene>
+        <!--RequestGPS View Controller-->
+        <scene sceneID="4vh-u2-E4v">
+            <objects>
+                <viewController storyboardIdentifier="RequestGPSViewController" id="PNr-1Q-QIM" customClass="RequestGPSViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jxh-qB-RcL"/>
+                        <viewControllerLayoutGuide type="bottom" id="su8-BA-Jf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JWV-YO-RyP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="requestGPS" translatesAutoresizingMaskIntoConstraints="NO" id="uFI-Wi-RZw">
+                                <rect key="frame" x="96" y="192" width="155" height="128"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="requestGPS" translatesAutoresizingMaskIntoConstraints="NO" id="J1D-or-cak">
+                                <rect key="frame" x="93" y="98" width="188" height="179"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-hh-ZgW">
+                                <rect key="frame" x="90" y="345" width="194" height="54"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.49789276469999999" blue="0.4732028492" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="GPSを許可する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonAction:" destination="PNr-1Q-QIM" eventType="touchUpInside" id="FQy-oT-1p2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="近くのグルメ動画を取得しよう！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egq-fX-dO0">
+                                <rect key="frame" x="58" y="290" width="259" height="47"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="uFI-Wi-RZw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5N-tQ-kYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6907.5" y="-4653.5"/>
         </scene>
         <!--Users Table View Controller other-->
         <scene sceneID="n5w-7m-91w">
@@ -2283,7 +2319,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
+                                                    <integer key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
@@ -2335,6 +2371,48 @@
             </objects>
             <point key="canvasLocation" x="-3108.5" y="-854.5"/>
         </scene>
+        <!--Heat Map View Controller-->
+        <scene sceneID="Igo-2X-wpa">
+            <objects>
+                <viewController id="MBR-yw-NGU" customClass="HeatMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Agf-rv-8Vm"/>
+                        <viewControllerLayoutGuide type="bottom" id="egD-ER-rgw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d1D-3P-yD9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-zM-uTY" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brQ-Ky-PSs">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <animations/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="MBR-yw-NGU" eventType="touchUpInside" id="qRp-cq-x4V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backButton" destination="brQ-Ky-PSs" id="13G-cR-buV"/>
+                        <outlet property="map" destination="GcO-zM-uTY" id="ggX-dD-shP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcu-Mf-KUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3450.5" y="-5710.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton" width="60" height="60"/>
@@ -2361,6 +2439,7 @@
         <image name="ic_undo_white" width="24" height="24"/>
         <image name="infoView" width="231" height="69"/>
         <image name="postingBack" width="20" height="20"/>
+        <image name="requestGPS" width="80" height="80"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
         <image name="tabbaritem_profile.png" width="30" height="30"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
@@ -2372,12 +2451,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jr3-37-9ka"/>
+        <segue reference="RUh-hP-jrK"/>
+        <segue reference="m10-Cb-1kc"/>
+        <segue reference="wZe-RH-qBh"/>
         <segue reference="g3n-kx-BDj"/>
-        <segue reference="pGd-UE-f06"/>
-        <segue reference="f7P-xo-Phh"/>
-        <segue reference="FOa-6V-u96"/>
-        <segue reference="4ab-y8-Qck"/>
         <segue reference="Jx8-B4-NT3"/>
+        <segue reference="4ab-y8-Qck"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

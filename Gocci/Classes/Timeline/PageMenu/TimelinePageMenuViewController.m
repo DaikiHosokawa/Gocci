@@ -23,14 +23,15 @@
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
-
-@interface TimelinePageMenuViewController ()
+@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate>
 {
     NSString *_postID;
     NSString *_postUsername;
     NSString *_postRestname;
-    
+    // ロケーションマネージャー
+    CLLocationManager* locationManager;
 }
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @property (strong, nonatomic) WYPopoverController *popover;
@@ -100,6 +101,23 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
+    // 画像を指定した生成例
+    UIBarButtonItem *heatmapBtn =
+    [[UIBarButtonItem alloc]
+     initWithImage:[UIImage imageNamed:@"ic_location_on_white.png"]  // 画像を指定
+     style:UIBarButtonItemStylePlain
+     target:self
+     action:@selector(hoge)
+     ];
+    
+    self.navigationItem.rightBarButtonItem = heatmapBtn;
+    
+    RequestGPSViewController *vc0 = [[RequestGPSViewController alloc] init];
+    vc0 = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
+    vc0.title = @"現在地周辺";
+    //vc0.delegate = self;
+    self.requestGPSViewController = vc0;
+    
     NearViewController *vc1 = [[NearViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
     vc1.title = @"現在地周辺";
@@ -128,7 +146,40 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     
     CGRect rect_screen = [UIScreen mainScreen].bounds;
-    NSArray *controllerArray = @[vc1,vc2, vc3];
+    
+    
+    // launch CLLocationManager
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲート設定
+        locationManager.delegate = self;
+        // 精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 更新頻度
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
+    NSArray *controllerArray;
+    
+    //GPS is ON
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[vc1,vc2, vc3];
+        
+    }
+    else {
+        switch ([CLLocationManager authorizationStatus]) {
+                
+            case kCLAuthorizationStatusNotDetermined:
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusRestricted:
+                NSLog(@"not permitted");
+                controllerArray = @[vc0,vc2, vc3];
+                
+                
+        }
+    }
+    
     NSInteger count_item = 3;
     CGFloat width_item = rect_screen.size.width / count_item; //幅
     NSDictionary *parameters = @{
@@ -251,6 +302,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                 RestaurantTableViewController  *restVC = segue.destinationViewController;
                 restVC.postRestName = _postRestname;
             }
+}
+
+-(void)hoge{
+    [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
 }
 
 @end

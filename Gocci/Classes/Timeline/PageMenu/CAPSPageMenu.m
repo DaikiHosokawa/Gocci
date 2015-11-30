@@ -172,8 +172,6 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 {
     _menuScrollView       = [UIScrollView new];
     _controllerScrollView = [UIScrollView new];
-    //_controllerScrollView.delegate = self;
-    NSLog(@"delegate:%@",_controllerScrollView.delegate);
     _mutableMenuItems       = [NSMutableArray array];
     _mutableMenuItemWidths  = [NSMutableArray array];
     

@@ -54,6 +54,25 @@
     }
 }
 
+- (void)tapLike:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(table:didTapLikeButton:)]) {
+        
+        if(flash_on == 0 ){
+            UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
+            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 1;
+            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+            dispatch_sync(globalQueue, ^{
+                [self.delegate table:self didTapLikeButton:self.postID];
+            });
+        }else{
+            
+        }
+        
+    }
+}
+
 -(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
     
     self.postID = timelinePost.postID;
@@ -71,9 +90,9 @@
     [self _assignTapAction:@selector(tapOption:) view:self.option];
     [self _assignTapAction:@selector(tapThumb:) view:self.thumbImageView];
     
-    //[self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
+    [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
    
-    /*
+    
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
     {
@@ -86,7 +105,7 @@
         [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 1;
     }
-    */
+
 }
 
 - (void)_assignTapAction:(SEL)selector view:(UIView *)view

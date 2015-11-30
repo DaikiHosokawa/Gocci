@@ -26,11 +26,15 @@
 @end
 
 @interface TableViewCell : UITableViewCell
+{
+    int flash_on;
+}
 
 @property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *option;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 @property(nonatomic,strong) id<TableViewCellDelegate> delegate;
 

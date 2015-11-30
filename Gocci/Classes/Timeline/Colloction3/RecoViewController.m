@@ -84,8 +84,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
     
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
         [APIClient Reco:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
              NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
@@ -110,25 +108,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
          }];
-        
-    };
     
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        
-        return;
-    }
-    
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         
-         if (error) {
-             return;
-         }
-         fetchAPI(location.coordinate);
-         
-     }];
+   
     
 }
 
@@ -138,8 +119,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self refreshFeed];
     
-    void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
-    {
         NSString *str = [NSString stringWithFormat:@"%d",call];
         [APIClient Reco:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
@@ -168,24 +147,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [[MoviePlayerManager sharedManager] stopMovie];             }
              
          }];
-        
-    };
-    
-    CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
-    if (usingLocationCache && cachedLocation != nil) {
-        fetchAPI(cachedLocation.coordinate);
-        return;
-    }
-    
-    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
-     {
-         
-         if (error) {
-             return;
-         }
-         fetchAPI(location.coordinate);
-         
-     }];
     
 }
 

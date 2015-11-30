@@ -11,13 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-zE-Vex">
-                    <rect key="frame" x="110" y="35" width="100" height="100"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6M-be-Wse">
-                    <rect key="frame" x="23" y="64" width="41" height="41"/>
+                    <rect key="frame" x="23" y="59" width="41" height="41"/>
                     <animations/>
                     <state key="normal" image="ic_close"/>
                     <connections>
@@ -25,13 +20,18 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b75-cv-QzF">
-                    <rect key="frame" x="256" y="64" width="41" height="41"/>
+                    <rect key="frame" x="256" y="59" width="41" height="41"/>
                     <animations/>
                     <state key="normal" image="ic_mode_edit"/>
                     <connections>
                         <action selector="openEdit:" destination="Rrs-ds-Mlj" eventType="touchUpInside" id="bSM-ul-0VV"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-zE-Vex">
+                    <rect key="frame" x="110" y="30" width="100" height="100"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
