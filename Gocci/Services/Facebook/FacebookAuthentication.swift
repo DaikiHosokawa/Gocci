@@ -15,6 +15,22 @@ import Foundation
 
 class FacebookAuthentication {
     
+    struct Token {
+        var user_token: String
+        var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
+        
+        init(token: String) {
+            user_token = token
+        }
+    }
+    
+    static var token: FacebookAuthentication.Token? = {
+        if let token = Persistent.facebook_token {
+            return Token(token: token)
+        }
+        return nil
+    }()
+    
     
     enum LoginResult {
         case FB_LOGIN_SUCCESS
@@ -35,6 +51,35 @@ class FacebookAuthentication {
         FBSDKSettings.setLoggingBehavior(logopt)
     }
     
+    class func setTokenDirect(facebookTokenString fbt: String) {
+        token = Token(token: fbt)
+    }
+    
+    
+    // WARNING. Callback is only called when a connection to Facebook is possible or not token exists.
+    // That means in case of no internet or network errors, nothing happens.
+    class func authenticadedAndReadyToUse(cb: Bool->()) {
+        
+        guard token != nil else {
+            cb(false)
+            return
+        }
+        
+        let url = NSURL(string: "https://graph.facebook.com/me?access_token=\(token!.user_token)")!
+        
+        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 30.0)
+        request.HTTPShouldHandleCookies = false
+        
+        ServiceUtil.performRequest(request,
+            onSuccess: { (statusCode, data) -> () in
+                cb(statusCode == 200)
+            },
+            onFailure: { errorMessage in
+                cb(false)
+            }
+        )
+        
+    }
     
     
     

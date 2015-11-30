@@ -12,6 +12,8 @@ import UIKit
 
 class DebugViewController : UIViewController {
     
+    var cnt: Int = 0
+    
     var real_register_id: String = ""
     
     @IBOutlet weak var topLabel: UILabel!
@@ -38,6 +40,9 @@ class DebugViewController : UIViewController {
         
         
         usernameEditField.text = signUpEditField.text
+        
+        
+
     }
     
     /*
@@ -76,6 +81,100 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        
+        // TODO
+        let mp4URL = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+
+        Bridge.scheduleTwitterVideoSharingTask(Util.randomKanjiStringWithLength(10), mp4VideoFilePath: mp4URL)
+        
+        
+        return;
+        
+        
+        
+        
+        
+        //NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "kNetworkReachabilityChangedNotification", object: nil))
+        
+//        for i in 10...13 {
+        let i = 88
+            let dummy = DummyPlugTask(msg: "t\(i)", sleepSec: 1, finalState: .DONE)
+            dummy.timeNextTry = dummy.timeNextTry + 10000
+            dummy.schedule()
+//        }
+        
+
+        
+        return ;
+        
+        
+        
+        
+        
+        
+        OverlayWindow.show { (viewController, hideAgain) -> () in
+            
+//            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: viewController) {
+//                (result, error) -> Void in
+//                hideAgain()
+//            }
+            TwitterAuthentication.authenticate(currentViewController: viewController,
+                onSuccess: { (token) -> () in
+                    hideAgain()
+                },
+                onFailure: {
+                    hideAgain()
+                }
+            )
+//
+//            let alert = UIAlertController(title: "Hello!", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+//            
+//            alert.addAction(UIAlertAction(title: "OK!", style: UIAlertActionStyle.Destructive) { _ in
+//                hideAgain()
+//                })
+//            
+//            viewController.presentViewController(alert, animated: true) { () -> Void in }
+        }
+        
+        return;
+        
+        
+//        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+//        
+//        let sharer = TwitterSharing()
+//                        sharer.onSuccess = { print("Post ID: " + $0) }
+//                        sharer.onFailure = { print("FUCK: \($0)") }
+//        let msg = Util.randomKanjiStringWithLength(100)
+//        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
+//        
+//        return;
+        
+//        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"お知らせ"
+//        description:message
+//        type:TWMessageBarMessageTypeSuccess
+//        duration:4.0];
+        
+        TWMessageBarManager.sharedInstance().showMessageWithTitle("TTTTTTTT", description: "DDDDDDDDDDDD", type: TWMessageBarMessageType.Success, duration: 5.0)
+        
+        //Pop.show("Dwdw", "Dwdw")
+        return;
+        
+        let valid_token = "CAAJkM7KbcYYBAK0nvxGmOGpckyJvJZCAhAMTGNk1tTVhq89wHKxKfTbTba6rVeZAEOGHwiw3ZB5MsLrIrZAvZAaDOap29ZBM4iUvgEAuWY81g4dSq7uMha0Qsb68GMGNhFn4DAoSB5c6r1QM8h7c1ktMrvsNbm6HPSnMTdPjd6KFCTZA2eXjxhVFkP7FcUOrUGewkwEeTQKAAZDZD"
+        
+        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+        
+        let invalid_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZXXXXD3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+
+        
+        FacebookAuthentication.setTokenDirect(facebookTokenString: invalid_token)
+        
+        FacebookAuthentication.authenticadedAndReadyToUse { (succ) -> () in
+            print(succ)
+        }
+        
+        return ;
+        
+        
 //        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
 //        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
 //        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
@@ -92,19 +191,19 @@ class DebugViewController : UIViewController {
 //        
 //        return;
         
-        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!)
-        let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
-        
-//        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
+        //let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+//        let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
+//        
+////        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
 //        let token = "CAAJkM7KbcYYBAAnTZBzCuP1LIdxMdkqgZCkdbNwqZCY8zDOBZAMEJBDUmyYFkWq9IpZBD4iuLagNrEgZC1jIZCiWjAkGjPcBRXKW8QZBL30WiPP2ACeVJg8IdbzoATMZCfjyoerOJXk6wgfQGjgAJrf5LswGXE8pVMcLVeQJUGpDm9kqj4Wxk4DyFzNiGT0zQPBNN8PwWShaO8QZDZD"
-//
-//
-//
+////
+////
+////
 //        let sharer = FacebookSharing(fromViewController: self)
 //        sharer.onSuccess = { print("Post ID: " + $0) }
 //        sharer.onFailure = { print("FUCK: \($0)") }
 //        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
-    
+//        return;
         
 //        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
 //        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
@@ -115,12 +214,12 @@ class DebugViewController : UIViewController {
 
 //        TwitterAuthentication.authenticate(currentViewController: self,
 //            onSuccess: { (token) -> () in
-                let sharer = TwitterSharing()
-                sharer.onSuccess = { print("Post ID: " + $0) }
-                sharer.onFailure = { print("FUCK: \($0)") }
-                
-                let msg = Util.randomKanjiStringWithLength(115)
-                sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
+//                let sharer = TwitterSharing()
+//                sharer.onSuccess = { print("Post ID: " + $0) }
+//                sharer.onFailure = { print("FUCK: \($0)") }
+//                
+//                let msg = Util.randomKanjiStringWithLength(115)
+//                sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
 //            },
 //            onFailure: {
 //                print("twitter login failed")
@@ -201,7 +300,7 @@ class DebugViewController : UIViewController {
             }
         }
         
-    }
+    } 
     
     */
     
@@ -277,18 +376,20 @@ class DebugViewController : UIViewController {
     
     @IBAction func a(sender: AnyObject) {
         
-        FacebookAuthentication.enableFullDebugOutput()
+        TaskScheduler.nudge()
         
-        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
-
-        let sharer = FacebookSharing(fromViewController: self)
-        sharer.onSuccess = { print($0) }
-        sharer.onFailure = { print($0) }
-        sharer.onCancel = { print("canceld :(") }
-        
-        sharer.shareVideoOnFacebookIndirect(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
-        
-        print("Programmflow continues...")
+//        FacebookAuthentication.enableFullDebugOutput()
+//        
+//        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
+//
+//        let sharer = FacebookSharing(fromViewController: self)
+//        sharer.onSuccess = { print($0) }
+//        sharer.onFailure = { print($0) }
+//        sharer.onCancel = { print("canceld :(") }
+//        
+//        sharer.shareVideoOnFacebookIndirect(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
+//        
+//        print("Programmflow continues...")
 
     }
     

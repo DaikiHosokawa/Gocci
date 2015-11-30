@@ -9,6 +9,8 @@
 
 import Foundation
 
+
+
 class ServiceUtil {
     
     class FormData {
@@ -53,6 +55,7 @@ class ServiceUtil {
         
     }
     
+    
     class func performRequest(
         request: NSURLRequest,
         onSuccess: ((statusCode: Int, data: NSData)->())?,
@@ -85,6 +88,7 @@ class ServiceUtil {
         
         urlsessiontask.resume()
     }
+
     
     private class func generateOAuthNonce() -> String
     {
@@ -107,7 +111,7 @@ class ServiceUtil {
             "oauth_consumer_key":     TWITTER_CONSUMER_KEY,
             "oauth_nonce":            generateOAuthNonce(),
             "oauth_signature_method": "HMAC-SHA1",
-            "oauth_timestamp":        String(Int(NSDate().timeIntervalSince1970)),
+            "oauth_timestamp":        String(Util.timestamp1970()),
             "oauth_token":            userKey,
             "oauth_version":          "1.0"
         ]
