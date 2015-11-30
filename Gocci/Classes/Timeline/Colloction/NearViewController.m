@@ -19,7 +19,7 @@
 #import "RHRefreshControl.h"
 
 static NSString * const reuseIdentifier = @"Cell";
-@interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate>
+@interface NearViewController ()<UICollectionViewDelegateFlowLayout,NearViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,RHRefreshControlDelegate,UIAlertViewDelegate>
 
 
 @property (copy, nonatomic) NSMutableArray *posts;
@@ -44,12 +44,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSString *category_flag;
     NSString *value_flag;
     int call;
-    
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     call = 1;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -66,19 +66,15 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [super viewDidLoad];
     
-    [self setupData:YES category_id:@"" value_id:@""];
-    self.clearsSelectionOnViewWillAppear = NO;
+        self.clearsSelectionOnViewWillAppear = NO;
+        [self.collectionView setBounces:YES];
+        RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
+        refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
+        self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
+        self.refreshControl.delegate = self;
+        [self.refreshControl attachToScrollView:self.collectionView];
+        [self setupData:YES category_id:@"" value_id:@""];
     
-    [self.collectionView setBounces:YES];
-    
-    RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
-    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
-    
-    //  refreshConfiguration.minimumForStart = @0;
-    //  refreshConfiguration.maximumForPull = @120;
-    self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
-    self.refreshControl.delegate = self;
-    [self.refreshControl attachToScrollView:self.collectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -448,7 +444,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     
 }
-
 
 
 

@@ -19,8 +19,11 @@
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */; };
+		954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883E81C0C026100BB533D /* RequestGPSViewController.m */; };
+		954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
+		954A9B481C0C380C00D415A0 /* HeatMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954A9B471C0C380C00D415A0 /* HeatMapViewController.m */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
 		9550DA0D1BF83E4C00430942 /* GUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D91BF83E4B00430942 /* GUser.m */; };
 		9550DA0E1BF83E4C00430942 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DB1BF83E4B00430942 /* Notice.m */; };
@@ -362,8 +365,14 @@
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAddPopupViewController.m; sourceTree = "<group>"; };
 		954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAddPopupViewController.h; sourceTree = "<group>"; };
+		954883E71C0C026100BB533D /* RequestGPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGPSViewController.h; sourceTree = "<group>"; };
+		954883E81C0C026100BB533D /* RequestGPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGPSViewController.m; sourceTree = "<group>"; };
+		954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestGPSPopupViewController.m; sourceTree = "<group>"; };
+		954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestGPSPopupViewController.h; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		954A9B461C0C380C00D415A0 /* HeatMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeatMapViewController.h; sourceTree = "<group>"; };
+		954A9B471C0C380C00D415A0 /* HeatMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeatMapViewController.m; sourceTree = "<group>"; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		9550D7D71BF83E4B00430942 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
 		9550D7D81BF83E4B00430942 /* GUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUser.h; sourceTree = "<group>"; };
@@ -909,6 +918,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		954883E61C0C022600BB533D /* RequestGPS */ = {
+			isa = PBXGroup;
+			children = (
+				954883E71C0C026100BB533D /* RequestGPSViewController.h */,
+				954883E81C0C026100BB533D /* RequestGPSViewController.m */,
+			);
+			path = RequestGPS;
+			sourceTree = "<group>";
+		};
+		954A9B451C0C37FA00D415A0 /* HeatMap */ = {
+			isa = PBXGroup;
+			children = (
+				954A9B461C0C380C00D415A0 /* HeatMapViewController.h */,
+				954A9B471C0C380C00D415A0 /* HeatMapViewController.m */,
+			);
+			path = HeatMap;
+			sourceTree = "<group>";
+		};
 		9550D7D31BF83E4B00430942 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1124,8 @@
 				9550D81A1BF83E4B00430942 /* ValuePopupViewController.m */,
 				954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */,
 				954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */,
+				954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */,
+				954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1410,6 +1439,7 @@
 		9550D8DC1BF83E4B00430942 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				954883E61C0C022600BB533D /* RequestGPS */,
 				9550D8DD1BF83E4B00430942 /* Near */,
 				9550D8E21BF83E4B00430942 /* Follow */,
 				9550D8E71BF83E4B00430942 /* Recomend */,
@@ -1429,6 +1459,7 @@
 				9550D8DF1BF83E4B00430942 /* NearViewController.m */,
 				9550D8E01BF83E4B00430942 /* NearViewControllerCell.h */,
 				9550D8E11BF83E4B00430942 /* NearViewControllerCell.m */,
+				954A9B451C0C37FA00D415A0 /* HeatMap */,
 			);
 			name = Near;
 			path = Colloction;
@@ -2309,6 +2340,7 @@
 				9550DAD01BF83E4C00430942 /* TabbarBaseViewController.m in Sources */,
 				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
+				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
 				9550DA481BF83E4C00430942 /* TableViewController.m in Sources */,
 				9550DA911BF83E4C00430942 /* Extensions.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
@@ -2416,6 +2448,7 @@
 				9550DB171BF83E4C00430942 /* TWMessageBarManager.m in Sources */,
 				9550DA191BF83E4C00430942 /* CheerListCell.m in Sources */,
 				9550DAF61BF83E4C00430942 /* RHRefreshControlViewSequenceImages.m in Sources */,
+				954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
 				9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */,
 				9550DA211BF83E4C00430942 /* everyTableViewController.m in Sources */,
@@ -2423,6 +2456,7 @@
 				9550DA7B1BF83E4C00430942 /* SCSampleBufferHolder.m in Sources */,
 				9550DA551BF83E4C00430942 /* SCFirstView.m in Sources */,
 				9550DAFC1BF83E4C00430942 /* SDWebImageDownloader.m in Sources */,
+				954A9B481C0C380C00D415A0 /* HeatMapViewController.m in Sources */,
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
 				950593871BFB19E600328449 /* main.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,

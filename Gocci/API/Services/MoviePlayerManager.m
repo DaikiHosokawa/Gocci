@@ -53,7 +53,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     NSLog(@"fileURL:%@",url);
     
     MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
-    moviePlayer.view.layer.cornerRadius = 5;
+    moviePlayer.view.layer.cornerRadius = 2;
     moviePlayer.view.clipsToBounds = true;
     moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
     [moviePlayer setContentURL:url];

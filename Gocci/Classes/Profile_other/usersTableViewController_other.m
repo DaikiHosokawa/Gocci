@@ -27,6 +27,7 @@
 #import "TableViewController.h"
 #import "MapViewController.h"
 #import "Swift.h"
+#import "requestGPSPopupViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -40,7 +41,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController_other ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate>
+@interface usersTableViewController_other ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate,CLLocationManagerDelegate>
 
 {
     NSDictionary *header;
@@ -51,6 +52,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     __weak IBOutlet UIView *changeView;
     UIViewController *currentViewController_;
     NSArray *viewControllers_;
+    // ロケーションマネージャー
+    CLLocationManager* locationManager;
 }
 
 @property (nonatomic, copy) NSMutableArray *postid_;
@@ -107,6 +110,17 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _CheerNum.userInteractionEnabled = YES;
     _CheerNum.tag = 102;
     
+    // launch CLLocationManager
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        // デリゲート設定
+        locationManager.delegate = self;
+        // 精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 更新頻度
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
 }
 
 //segmentcontroll
@@ -145,7 +159,25 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)changeSegmentedControlValue
 {
     if(segmentControll.selectedSegmentIndex == 2){
-        [self performSegueWithIdentifier:@"goMap" sender:self];
+        
+        //GPS is ON
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+            [self performSegueWithIdentifier:@"goMap" sender:self];
+        }
+        else {
+            switch ([CLLocationManager authorizationStatus]) {
+                    
+                case kCLAuthorizationStatusNotDetermined:
+                case kCLAuthorizationStatusAuthorizedAlways:
+                case kCLAuthorizationStatusAuthorizedWhenInUse:
+                case kCLAuthorizationStatusDenied:
+                case kCLAuthorizationStatusRestricted:
+                    NSLog(@"not permitted");
+                    [segmentControll setSelectedSegmentIndex:0];
+                    requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+                    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
+            }
+        }
     }else{
         if(currentViewController_){
             [currentViewController_ willMoveToParentViewController:nil];
@@ -363,6 +395,21 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         [self performSegueWithIdentifier:@"goCheer" sender:self];
     }
 }
+
+- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
+{
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
+    popupController.cornerRadius = 4;
+    popupController.transitionStyle = transitionStyle;
+    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
+    [popupController presentInViewController:self];
+}
+
 
 
 @end

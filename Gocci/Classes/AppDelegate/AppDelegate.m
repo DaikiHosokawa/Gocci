@@ -153,35 +153,8 @@
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
-    [application unregisterForRemoteNotifications];
-    
-#if !(TARGET_IPHONE_SIMULATOR)
-    //メソッドの有無でOSを判別
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
-        
-        //iOS8
-        //デバイストークの取得
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-        //許可アラートの表示
-        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        
-    } else {
-        
-        //iOS7
-        UIRemoteNotificationType types =UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert| UIRemoteNotificationTypeSound;
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
-    }
-#endif
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    
-    
     return YES;
 }
-
-
 
 // 異常終了を検知した場合に呼び出されるメソッド
 void exceptionHandler(NSException *exception) {
@@ -232,33 +205,26 @@ void exceptionHandler(NSException *exception) {
 {
 }
 
-//APNsサーバーよりデバイストークン受信成功したときに呼ばれるメソッド
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSString *token = deviceToken.description;
     
-    //deveceTokenから"<"と">"を消す
     token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    //このトークンをサーバ側で管理する。取り合えず、ログで出す
-    NSLog(@"deviceToken: %@", token);
+   NSLog(@"deviceToken: %@", token);
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:token forKey:@"register_id"];
 }
 
-// デバイストークン受信失敗時に呼ばれるメソッド
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //エラー内容をlogに
     NSLog(@"deviceToken error: %@", [error description]);
 }
 
-//Before iOS6 call this method
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
     NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
@@ -266,12 +232,10 @@ void exceptionHandler(NSException *exception) {
     application.applicationIconBadgeNumber = numberOfNewMessages;
     [ud synchronize];
     
-    // App in background & active from push notice
     if (application.applicationState == UIApplicationStateInactive)
     {
         NSLog(@"receeive notice background");
     }
-    // アプリが起動中のときにプッシュ通知を受信した場合
     else{
         NSLog(@"receeive notice foreground");
         [self showMessageWithRemoteNotification:userInfo];

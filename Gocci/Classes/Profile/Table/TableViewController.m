@@ -138,6 +138,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
+-(void)table:(TableViewCell *)cell didTapLikeButton:(NSString *)postID{
+    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
+        if (result) {
+            NSLog(@"result:%@",result);
+        }
+    }
+     ];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.supervc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postid_[indexPath.row]];

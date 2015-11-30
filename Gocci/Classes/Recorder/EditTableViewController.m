@@ -11,8 +11,9 @@
 #import "ValuePopupViewController.h"
 #import "RestPopupViewController.h"
 #import "CategoryPopupViewController.h"
+#import "requestGPSPopupViewController.h"
 
-@interface EditTableViewController ()
+@interface EditTableViewController ()<CLLocationManagerDelegate>
 
 @end
 
@@ -63,8 +64,25 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 0){
-        RestPopupViewController* rvc = [RestPopupViewController new];
-        [self.popupController pushViewController:rvc animated:YES];
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+            RestPopupViewController* rvc = [RestPopupViewController new];
+            [self.popupController pushViewController:rvc animated:YES];
+        }
+        else {
+            switch ([CLLocationManager authorizationStatus]) {
+                    
+                case kCLAuthorizationStatusNotDetermined:
+                case kCLAuthorizationStatusAuthorizedAlways:
+                case kCLAuthorizationStatusAuthorizedWhenInUse:
+                case kCLAuthorizationStatusDenied:
+                case kCLAuthorizationStatusRestricted:
+                    NSLog(@"not permitted");
+                   requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+                    [self.popupController pushViewController:rvc animated:YES];
+                    
+            }
+        }
+
     }else if(indexPath.row == 1){
         CategoryPopupViewController* cvc = [CategoryPopupViewController new];
         [self.popupController pushViewController:cvc animated:YES];

@@ -14,7 +14,8 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
 
-@interface RestPopupViewController (){
+@interface RestPopupViewController ()<CLLocationManagerDelegate>
+{
     //API
     NSMutableArray *restaurant;
     NSMutableArray *rest_id;
@@ -48,9 +49,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self _getRestaurant:YES];
     
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
+    [self _getRestaurant:YES];
+        
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -155,5 +157,15 @@
     
     
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 121 && buttonIndex == 0)
+    {
+        //code for opening settings app in iOS 8
+        [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
+    }
+}
+
 
 @end
