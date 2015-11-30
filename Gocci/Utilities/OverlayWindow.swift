@@ -22,17 +22,19 @@ class OverlayWindow {
     
     class func show(fromOverlay: (viewController: UIViewController, hideAgain: ()->() ) -> () ) {
         
-        var window: UIWindow? = UIWindow(frame: UIScreen.mainScreen().bounds)
+        Util.runOnMainThread {
+            var window: UIWindow? = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
+            window!.windowLevel = UIWindowLevelAlert + 1
+            window!.rootViewController = UIViewController(nibName: nil, bundle: nil)
+            window!.makeKeyAndVisible()
         
-        window!.windowLevel = UIWindowLevelAlert + 1
-        window!.rootViewController = UIViewController(nibName: nil, bundle: nil)
-        window!.makeKeyAndVisible()
-        
-        
-        fromOverlay(viewController: window!.rootViewController!) {
-            window!.hidden = true
-            window = nil
+            fromOverlay(viewController: window!.rootViewController!) {
+                window!.hidden = true
+                window = nil
+            }
         }
+        
     }
         
 }

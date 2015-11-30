@@ -92,6 +92,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Handle bg task in the scheduler.
+    [TaskSchedulerWrapper start];
+    
     // No default storyboard anymore = we need to setup the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

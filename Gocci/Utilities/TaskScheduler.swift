@@ -15,8 +15,12 @@ var TaskScheduler = SingletonTaskScheduler()
 class PersistentClassReflexion {
     class func createPersistentTaskFromString(className: String, data: NSDictionary) -> PersistentBaseTask? {
         switch(className) {
-        case "DummyPlugTask": return DummyPlugTask(dict: data)
-        default: return nil
+            case "DummyPlugTask":
+                return DummyPlugTask(dict: data)
+            case "TwitterVideoSharingTask":
+                return TwitterVideoSharingTask(dict: data)
+            default:
+                return nil
         }
     }
 }
@@ -25,6 +29,10 @@ class PersistentClassReflexion {
 @objc class TaskSchedulerWrapper: NSObject {
     class func nudge() {
         TaskScheduler.nudge()
+    }
+    
+    class func start() {
+        TaskScheduler.startScheduler()
     }
 }
 
@@ -363,7 +371,7 @@ class PersistentBaseTask: CustomStringConvertible {
         return false
     }
     
-    func run(fished: State->()) {
+    func run(finished: State->()) {
         // override
         fatalError()
     }
@@ -413,11 +421,11 @@ class DummyPlugTask: PersistentBaseTask {
         return false
     }
     
-    override func run(fished: State->()) {
+    override func run(finished: State->()) {
         print("*** Running : \(String(self.dynamicType)) \(msg). Will sleepSec for: \(sleepSec)")
         Util.sleep(sleepSec)
         print("*** Finished: \(String(self.dynamicType)) \(msg). Slept for: \(sleepSec). now in '\(res)' mode")
-        fished(res)
+        finished(res)
     }
     
     override var description: String {
