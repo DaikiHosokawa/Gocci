@@ -146,8 +146,6 @@
 		9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8FE1BF83E4B00430942 /* UserSearchController.m */; };
 		9550DA8F1BF83E4C00430942 /* UserSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9001BF83E4B00430942 /* UserSearchTableViewCell.m */; };
 		9550DA901BF83E4C00430942 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9021BF83E4B00430942 /* InfoPlist.strings */; };
-		9550DA911BF83E4C00430942 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9041BF83E4B00430942 /* Extensions.swift */; };
-		9550DA951BF83E4C00430942 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9091BF83E4B00430942 /* Persistent.swift */; };
 		9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90C1BF83E4B00430942 /* AWSManager.swift */; };
 		9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
 		9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90F1BF83E4B00430942 /* FacebookSharing.swift */; };
@@ -208,7 +206,6 @@
 		9550DACF1BF83E4C00430942 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9550D94F1BF83E4B00430942 /* Debug.storyboard */; };
 		9550DAD01BF83E4C00430942 /* TabbarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9521BF83E4B00430942 /* TabbarBaseViewController.m */; };
 		9550DAD11BF83E4C00430942 /* splash_tmp_sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9541BF83E4B00430942 /* splash_tmp_sample.mp4 */; };
-		9550DAD21BF83E4C00430942 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9551BF83E4B00430942 /* Util.swift */; };
 		9550DAD31BF83E4C00430942 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9591BF83E4B00430942 /* AFHTTPRequestOperation.m */; };
 		9550DAD41BF83E4C00430942 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D95B1BF83E4B00430942 /* AFHTTPRequestOperationManager.m */; };
 		9550DAD51BF83E4C00430942 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D95D1BF83E4B00430942 /* AFHTTPSessionManager.m */; };
@@ -292,6 +289,25 @@
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
 		95AA20F11C069B9C002F4E3E /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AA20F01C069B9C002F4E3E /* InfoView.m */; };
 		95AA20F31C069BD1002F4E3E /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AA20F21C069BD1002F4E3E /* InfoView.xib */; };
+		9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
+		9801BF0B1C080677001F4D3C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
+		9801BF0C1C080677001F4D3C /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
+		9801BF0D1C080677001F4D3C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809869F1BFF0AD7009BD0E3 /* Extensions.swift */; };
+		9801BF0E1C080677001F4D3C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986B01BFF3FDA009BD0E3 /* Toast.swift */; };
+		9801BF0F1C080677001F4D3C /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A01BFF0AD7009BD0E3 /* Persistent.swift */; };
+		9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AD1C0458B000EFFC8F /* OverlayWindow.swift */; };
+		9801BF111C080677001F4D3C /* TaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */; };
+		9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
+		9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
+		9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF161C0C6EE3001F4D3C /* Bridge.swift */; };
+		980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809869F1BFF0AD7009BD0E3 /* Extensions.swift */; };
+		980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A01BFF0AD7009BD0E3 /* Persistent.swift */; };
+		980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
+		980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
+		980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986B01BFF3FDA009BD0E3 /* Toast.swift */; };
+		981979AE1C0458B000EFFC8F /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AD1C0458B000EFFC8F /* OverlayWindow.swift */; };
+		981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */; };
+		981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */; };
 		981A93351BFC5142007B3BF6 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96B1BF83E4B00430942 /* AWSCognito.framework */; };
 		981A93361BFC5142007B3BF6 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96C1BF83E4B00430942 /* AWSCore.framework */; };
 		981A93371BFC5142007B3BF6 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96D1BF83E4B00430942 /* AWSS3.framework */; };
@@ -299,9 +315,6 @@
 		981A93391BFC5142007B3BF6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97B1BF83E4B00430942 /* FBSDKLoginKit.framework */; };
 		981A933A1BFC5159007B3BF6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */; };
 		981A933B1BFC5159007B3BF6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
-		981A933C1BFC5186007B3BF6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9551BF83E4B00430942 /* Util.swift */; };
-		981A933D1BFC518C007B3BF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9041BF83E4B00430942 /* Extensions.swift */; };
-		981A933E1BFC51BF007B3BF6 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9091BF83E4B00430942 /* Persistent.swift */; };
 		981A933F1BFC51BF007B3BF6 /* ServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9131BF83E4B00430942 /* ServiceUtil.swift */; };
 		981A93401BFC51BF007B3BF6 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90C1BF83E4B00430942 /* AWSManager.swift */; };
 		981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
@@ -315,10 +328,14 @@
 		981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */; };
 		981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */; };
 		981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934D1BFC840A007B3BF6 /* TestTwitter.swift */; };
+		981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */; };
+		981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
 		987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F51BFB37AD00339285 /* thumbnail.jpg */; };
+		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
+		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
 		BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -601,8 +618,6 @@
 		9550D9001BF83E4B00430942 /* UserSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearchTableViewCell.m; sourceTree = "<group>"; };
 		9550D9011BF83E4B00430942 /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		9550D9031BF83E4B00430942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9550D9041BF83E4B00430942 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		9550D9091BF83E4B00430942 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		9550D90C1BF83E4B00430942 /* AWSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		9550D90F1BF83E4B00430942 /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSharing.swift; sourceTree = "<group>"; };
@@ -664,7 +679,6 @@
 		9550D9511BF83E4B00430942 /* TabbarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarBaseViewController.h; sourceTree = "<group>"; };
 		9550D9521BF83E4B00430942 /* TabbarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarBaseViewController.m; sourceTree = "<group>"; };
 		9550D9541BF83E4B00430942 /* splash_tmp_sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash_tmp_sample.mp4; sourceTree = "<group>"; };
-		9550D9551BF83E4B00430942 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		9550D9581BF83E4B00430942 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		9550D9591BF83E4B00430942 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		9550D95A1BF83E4B00430942 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -823,16 +837,32 @@
 		95AA20EF1C069B9C002F4E3E /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		95AA20F01C069B9C002F4E3E /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
 		95AA20F21C069BD1002F4E3E /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTasks.swift; sourceTree = "<group>"; };
+		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
+		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
+		9809869F1BFF0AD7009BD0E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utilities/Extensions.swift; sourceTree = "<group>"; };
+		980986A01BFF0AD7009BD0E3 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistent.swift; path = Utilities/Persistent.swift; sourceTree = "<group>"; };
+		980986A11BFF0AD7009BD0E3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Utilities/Util.swift; sourceTree = "<group>"; };
+		980986AF1BFF3FDA009BD0E3 /* Pop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pop.swift; path = Utilities/Pop.swift; sourceTree = "<group>"; };
+		980986B01BFF3FDA009BD0E3 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Utilities/Toast.swift; sourceTree = "<group>"; };
+		981979AD1C0458B000EFFC8F /* OverlayWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayWindow.swift; path = Utilities/OverlayWindow.swift; sourceTree = "<group>"; };
+		981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskScheduler.swift; path = Utilities/TaskScheduler.swift; sourceTree = "<group>"; };
+		981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTaskScheduler.swift; sourceTree = "<group>"; };
 		981A932B1BFC5063007B3BF6 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		981A932F1BFC5063007B3BF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		981A93481BFC5239007B3BF6 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLowLevel.swift; sourceTree = "<group>"; };
 		981A934D1BFC840A007B3BF6 /* TestTwitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTwitter.swift; sourceTree = "<group>"; };
+		981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFacebook.swift; sourceTree = "<group>"; };
+		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
 		987E51F41BFB37AD00339285 /* restaurantlatlon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = restaurantlatlon.json; path = Gocci/Debug/restaurantlatlon.json; sourceTree = "<group>"; };
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
+		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FF0BE423193CAB31001A0053 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -940,9 +970,7 @@
 			isa = PBXGroup;
 			children = (
 				9550D9011BF83E4B00430942 /* const.h */,
-				9550D9041BF83E4B00430942 /* Extensions.swift */,
-				9550D9551BF83E4B00430942 /* Util.swift */,
-				9550D9091BF83E4B00430942 /* Persistent.swift */,
+				9809869E1BFF0A5A009BD0E3 /* Utilities */,
 				9550D90A1BF83E4B00430942 /* Services */,
 				9550D7EA1BF83E4B00430942 /* Classes */,
 				9550D9181BF83E4B00430942 /* UI */,
@@ -1528,6 +1556,7 @@
 		9550D90A1BF83E4B00430942 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				981A93511BFEF3CA007B3BF6 /* Network.swift */,
 				9550D9131BF83E4B00430942 /* ServiceUtil.swift */,
 				9550D90B1BF83E4B00430942 /* Amazon */,
 				9550D90D1BF83E4B00430942 /* Facebook */,
@@ -1550,6 +1579,7 @@
 			children = (
 				9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */,
 				9550D90F1BF83E4B00430942 /* FacebookSharing.swift */,
+				9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */,
 			);
 			path = Facebook;
 			sourceTree = "<group>";
@@ -1569,6 +1599,7 @@
 				9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */,
 				9550D9161BF83E4B00430942 /* TwitterSharing.swift */,
 				981A934A1BFC5588007B3BF6 /* TwitterLowLevel.swift */,
+				9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -1692,6 +1723,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				98B1FCEF1C06D5B9006CA013 /* Reachability */,
 				950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */,
 				9505939E1BFC2B7100328449 /* GoogleMaps.framework */,
 				9550D9571BF83E4B00430942 /* AFNetworking */,
@@ -2042,9 +2074,27 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9809869E1BFF0A5A009BD0E3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				98B1FCF71C0804B4006CA013 /* Algorithms.swift */,
+				980986A11BFF0AD7009BD0E3 /* Util.swift */,
+				980986AF1BFF3FDA009BD0E3 /* Pop.swift */,
+				9809869F1BFF0AD7009BD0E3 /* Extensions.swift */,
+				980986B01BFF3FDA009BD0E3 /* Toast.swift */,
+				980986A01BFF0AD7009BD0E3 /* Persistent.swift */,
+				981979AD1C0458B000EFFC8F /* OverlayWindow.swift */,
+				981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */,
+				9801BF161C0C6EE3001F4D3C /* Bridge.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */,
+				981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */,
 				981A934D1BFC840A007B3BF6 /* TestTwitter.swift */,
 				981A93481BFC5239007B3BF6 /* TestUtil.swift */,
 				981A932F1BFC5063007B3BF6 /* Info.plist */,
@@ -2061,6 +2111,15 @@
 				987E51EC1BF9C33A00339285 /* testvid.mp4 */,
 			);
 			name = Debug;
+			sourceTree = "<group>";
+		};
+		98B1FCEF1C06D5B9006CA013 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				98B1FCF01C06D5B9006CA013 /* Reachability.h */,
+				98B1FCF11C06D5B9006CA013 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		FF54EFD619149A1800025DC8 = {
@@ -2306,19 +2365,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
-				981A933E1BFC51BF007B3BF6 /* Persistent.swift in Sources */,
+				9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */,
+				9801BF111C080677001F4D3C /* TaskScheduler.swift in Sources */,
+				9801BF0D1C080677001F4D3C /* Extensions.swift in Sources */,
 				981A933F1BFC51BF007B3BF6 /* ServiceUtil.swift in Sources */,
+				9801BF0E1C080677001F4D3C /* Toast.swift in Sources */,
 				981A93401BFC51BF007B3BF6 /* AWSManager.swift in Sources */,
+				9801BF0B1C080677001F4D3C /* Util.swift in Sources */,
 				981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */,
+				9801BF0C1C080677001F4D3C /* Pop.swift in Sources */,
 				981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */,
 				981A93431BFC51BF007B3BF6 /* API3.swift in Sources */,
+				981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */,
 				981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */,
+				9801BF0F1C080677001F4D3C /* Persistent.swift in Sources */,
+				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
 				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
-				981A933D1BFC518C007B3BF6 /* Extensions.swift in Sources */,
-				981A933C1BFC5186007B3BF6 /* Util.swift in Sources */,
+				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2334,6 +2400,8 @@
 				9550DB1B1BF83E4C00430942 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */,
 				9550DAFD1BF83E4C00430942 /* SDWebImageDownloaderOperation.m in Sources */,
+				981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */,
+				98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */,
 				9550DB0D1BF83E4C00430942 /* SVIndefiniteAnimatedView.m in Sources */,
 				9550DAF81BF83E4C00430942 /* NSData+ImageContentType.m in Sources */,
 				9550DA6E1BF83E4C00430942 /* SCFilterSelectorView.m in Sources */,
@@ -2342,7 +2410,6 @@
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
 				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
 				9550DA481BF83E4C00430942 /* TableViewController.m in Sources */,
-				9550DA911BF83E4C00430942 /* Extensions.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
@@ -2396,7 +2463,6 @@
 				9550DA7F1BF83E4C00430942 /* SCWeakSelectorTarget.m in Sources */,
 				9550DAE61BF83E4C00430942 /* FHSTwitterEngine.m in Sources */,
 				9550DAFE1BF83E4C00430942 /* SDWebImageManager.m in Sources */,
-				9550DAD21BF83E4C00430942 /* Util.swift in Sources */,
 				9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */,
 				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
@@ -2413,8 +2479,10 @@
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,
 				9550DA131BF83E4C00430942 /* LocationClient.m in Sources */,
 				9550DAEB1BF83E4C00430942 /* JTCalendarDayView.m in Sources */,
+				9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */,
 				9550DA7C1BF83E4C00430942 /* SCSwipeableFilterView.m in Sources */,
 				9550DAD71BF83E4C00430942 /* AFSecurityPolicy.m in Sources */,
+				981979AE1C0458B000EFFC8F /* OverlayWindow.swift in Sources */,
 				9550DB041BF83E4C00430942 /* UIImageView+HighlightedWebCache.m in Sources */,
 				9550DA2D1BF83E4C00430942 /* FolloweeListViewController.m in Sources */,
 				9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */,
@@ -2427,6 +2495,7 @@
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
 				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
+				9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				9550DA6D1BF83E4C00430942 /* SCFilterAnimation.m in Sources */,
@@ -2436,6 +2505,7 @@
 				9550DA851BF83E4C00430942 /* RecoViewController.m in Sources */,
 				9550DA781BF83E4C00430942 /* SCRecorderToolsView.m in Sources */,
 				9550DAD41BF83E4C00430942 /* AFHTTPRequestOperationManager.m in Sources */,
+				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
@@ -2451,6 +2521,7 @@
 				954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
 				9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */,
+				9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */,
 				9550DA211BF83E4C00430942 /* everyTableViewController.m in Sources */,
 				9550DA821BF83E4C00430942 /* NearViewControllerCell.m in Sources */,
 				9550DA7B1BF83E4C00430942 /* SCSampleBufferHolder.m in Sources */,
@@ -2478,6 +2549,7 @@
 				9550DAFA1BF83E4C00430942 /* SDWebImageCompat.m in Sources */,
 				9550DA5A1BF83E4C00430942 /* SCScrollPageView.m in Sources */,
 				9550DA431BF83E4C00430942 /* CollectionViewController.m in Sources */,
+				980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */,
 				9550DA831BF83E4C00430942 /* FollowViewController.m in Sources */,
 				9550DAEC1BF83E4C00430942 /* JTCalendarMenuMonthView.m in Sources */,
 				9550DAE01BF83E4C00430942 /* BFPaperCheckbox.m in Sources */,
@@ -2500,6 +2572,7 @@
 				9550DA281BF83E4C00430942 /* CategoryPopupViewController.m in Sources */,
 				9550DA321BF83E4C00430942 /* DetailController.m in Sources */,
 				9550DA791BF83E4C00430942 /* SCRecordSession.m in Sources */,
+				980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */,
 				9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */,
 				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
@@ -2507,14 +2580,18 @@
 				9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */,
 				9550DA471BF83E4C00430942 /* TableViewCell.m in Sources */,
 				9550DAD31BF83E4C00430942 /* AFHTTPRequestOperation.m in Sources */,
+				980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */,
 				9550DA161BF83E4C00430942 /* UIColor+App.m in Sources */,
+				980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */,
 				9550DB071BF83E4C00430942 /* SingleLineTextField.m in Sources */,
 				9550DA2E1BF83E4C00430942 /* FollowListCell.m in Sources */,
 				9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */,
 				9550DAD61BF83E4C00430942 /* AFNetworkReachabilityManager.m in Sources */,
 				9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */,
 				9550DA181BF83E4C00430942 /* UIView+DropShadow.m in Sources */,
+				980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */,
 				9550DA811BF83E4C00430942 /* NearViewController.m in Sources */,
+				9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */,
 				9550DA611BF83E4C00430942 /* XYPieChart.m in Sources */,
 				9550DB181BF83E4C00430942 /* UCZProgressView.m in Sources */,
 				9550DAF11BF83E4C00430942 /* JTCircleView.m in Sources */,
@@ -2522,6 +2599,7 @@
 				9550DA3C1BF83E4C00430942 /* SNSUtil.swift in Sources */,
 				9550DAD91BF83E4C00430942 /* AFURLRequestSerialization.m in Sources */,
 				9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */,
+				98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */,
 				9550DA861BF83E4C00430942 /* RecoViewControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

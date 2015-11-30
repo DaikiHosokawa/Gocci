@@ -72,11 +72,12 @@
 }
 
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // No default storyboard anymore = we need to setup the window 
+    // Handle bg task in the scheduler.
+    [TaskSchedulerWrapper start];
+    
+    // No default storyboard anymore = we need to setup the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -182,7 +183,11 @@ void exceptionHandler(NSException *exception) {
 }
 
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Tell the scheduler to check for tasks. The app became active again,
+    // so maybe this is a good time to upload heavy stuff again.
+    [TaskSchedulerWrapper nudge];
     
 #if !(TARGET_IPHONE_SIMULATOR)
     //badge数を解放
@@ -191,6 +196,12 @@ void exceptionHandler(NSException *exception) {
     
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    // Tell the scheduler to check for tasks. The app will enter bg
+    // so maybe this is a good time to upload heavy stuff that failed erlier.
+    [TaskSchedulerWrapper nudge];
+}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {

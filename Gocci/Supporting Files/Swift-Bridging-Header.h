@@ -16,7 +16,11 @@
 #import <AWSCognito/AWSCognito.h>
 #import <AWSS3/AWSS3.h>
 
+#import "TWMessageBarManager.h"
+
 #import "STPopup.h"
+
+#import "Reachability.h"
 
 // for twitter HMAC OAuth
 #import <CommonCrypto/CommonCrypto.h>
