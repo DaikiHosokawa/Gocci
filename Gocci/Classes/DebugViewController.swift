@@ -82,6 +82,17 @@ class DebugViewController : UIViewController {
         
         
         
+        // TODO
+        let mp4URL = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+
+        Bridge.scheduleTwitterVideoSharingTask(Util.randomKanjiStringWithLength(10), mp4VideoFilePath: mp4URL)
+        
+        
+        return;
+        
+        
+        
+        
         
         //NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "kNetworkReachabilityChangedNotification", object: nil))
         
@@ -365,18 +376,20 @@ class DebugViewController : UIViewController {
     
     @IBAction func a(sender: AnyObject) {
         
-        FacebookAuthentication.enableFullDebugOutput()
+        TaskScheduler.nudge()
         
-        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
-
-        let sharer = FacebookSharing(fromViewController: self)
-        sharer.onSuccess = { print($0) }
-        sharer.onFailure = { print($0) }
-        sharer.onCancel = { print("canceld :(") }
-        
-        sharer.shareVideoOnFacebookIndirect(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
-        
-        print("Programmflow continues...")
+//        FacebookAuthentication.enableFullDebugOutput()
+//        
+//        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
+//
+//        let sharer = FacebookSharing(fromViewController: self)
+//        sharer.onSuccess = { print($0) }
+//        sharer.onFailure = { print($0) }
+//        sharer.onCancel = { print("canceld :(") }
+//        
+//        sharer.shareVideoOnFacebookIndirect(mp4URL: mp4url, title: "Video", description: Util.generateFakeDeviceID())
+//        
+//        print("Programmflow continues...")
 
     }
     
