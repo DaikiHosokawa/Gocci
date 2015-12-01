@@ -14,7 +14,7 @@
 #import "EveryPost.h"
 #import "MoviePlayerManager.h"
 #import "commentTableViewCell.h"
-#import "usersTableViewController_other.h"
+#import "UserpageViewController.h"
 #import "RestaurantTableViewController.h"
 #import "APIClient.h"
 
@@ -549,8 +549,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         //ここでパラメータを渡す
-        usersTableViewController_other *user_otherVC = segue.destinationViewController;
-        user_otherVC.postUsername = _postUsername;
+        UserpageViewController *userVC = segue.destinationViewController;
+        userVC.postUsername = _postUsername;
     }
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {

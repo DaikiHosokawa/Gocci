@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UsersViewController.h"
+#import "MypageViewController.h"
 
 @class  TableViewController;
 
 @protocol  TableViewControllerDelegate <NSObject>
 //@optional
 -(void)table:(TableViewController *)vc
-           postid:(NSString*)postid;
+      postid:(NSString*)postid;
 
 -(void)table:(TableViewController *)vc
-          rest_id:(NSString*)rest_id;
+     rest_id:(NSString*)rest_id;
 
 @end
 

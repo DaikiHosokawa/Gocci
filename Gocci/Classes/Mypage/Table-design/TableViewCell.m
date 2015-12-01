@@ -45,11 +45,11 @@
     if ([self.delegate respondsToSelector:@selector(table:didTapThumb:)]) {
         /*
          [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:self.movieURL
-                                                             size:self.imageView.bounds.size
-                                                          atIndex:self.index
-                                                       completion:^(BOOL f){
-                                                       }];
-        [[MoviePlayerManager sharedManager] playMovieAtIndex:self.index inView:self.imageView  frame:self.imageView.frame];
+         size:self.imageView.bounds.size
+         atIndex:self.index
+         completion:^(BOOL f){
+         }];
+         [[MoviePlayerManager sharedManager] playMovieAtIndex:self.index inView:self.imageView  frame:self.imageView.frame];
          */
     }
 }
@@ -79,7 +79,7 @@
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
     [self.thumbImageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
-                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     self.titleLabel.text = timelinePost.restname;
     self.timeLabel.text = timelinePost.timelabel;
     self.movieURL = timelinePost.movie;
@@ -91,7 +91,7 @@
     [self _assignTapAction:@selector(tapThumb:) view:self.thumbImageView];
     
     [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
-   
+    
     
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
@@ -105,7 +105,7 @@
         [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 1;
     }
-
+    
 }
 
 - (void)_assignTapAction:(SEL)selector view:(UIView *)view

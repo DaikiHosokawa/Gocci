@@ -1,31 +1,28 @@
 //
-//  usersTableViewController.m
+//  UserpageViewController.m
 //  Gocci
 //
 //  Created by Daiki Hosokawa on 2014/10/09.
 //  Copyright (c) 2014年 INASE,inc. All rights reserved.
 //
 
-#import "usersTableViewController_other.h"
+#import "UserpageViewController.h"
 #import "everyTableViewController.h"
-#import "AppDelegate.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "everyBaseNavigationController.h"
 #import "SVProgressHUD.h"
-#import "TimelineCell.h"
-#import "BBBadgeBarButtonItem.h"
-#import "NotificationViewController.h"
 #import "everyTableViewController.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
-#import "CollectionViewCell.h"
+#import "CollectionViewCell_2.h"
 #import "everyBaseNavigationController.h"
-#import "CollectionViewController.h"
-#import "TableViewController.h"
+#import "CollectionViewController_2.h"
+#import "TableViewController_2.h"
 #import "MapViewController.h"
+#import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
 
@@ -41,7 +38,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface usersTableViewController_other ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate,CLLocationManagerDelegate>
+@interface UserpageViewController ()<CollectionViewController_2Delegate,MapViewControllerDelegate,TableViewController_2Delegate,CLLocationManagerDelegate>
 
 {
     NSDictionary *header;
@@ -67,7 +64,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @end
 
-@implementation usersTableViewController_other
+@implementation UserpageViewController
 
 @synthesize postUsername= _postUsername;
 
@@ -81,12 +78,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postRestname = rest_id;
 }
 
--(void)table:(TableViewController *)vc postid:(NSString *)postid
+-(void)table:(TableViewController_2 *)vc postid:(NSString *)postid
 {
     _postID = postid;
 }
 
--(void)table:(TableViewController *)vc rest_id:(NSString *)rest_id
+-(void)table:(TableViewController_2 *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
@@ -127,8 +124,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)setupViewControllers
 {
     UIViewController *firstViewController;
-    TableViewController *vc = [[TableViewController  alloc] init];
-    vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController"];
+    TableViewController_2 *vc = [[TableViewController_2  alloc] init];
+    vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController_2"];
     vc.supervc = self;
     vc.receiveDic = post1;
     vc.delegate = self;
@@ -136,8 +133,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     vc.soda = changeView.frame;
     
     UIViewController *secondViewController;
-    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
-    vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController"];
+    CollectionViewController_2 *vc2 = [[CollectionViewController_2 alloc] init];
+    vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionViewController_2"];
     vc2.supervc = self;
     vc2.receiveDic2 = post1;
     vc2.delegate = self;

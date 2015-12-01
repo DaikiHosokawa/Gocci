@@ -23,7 +23,6 @@
 		954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
-		954A9B481C0C380C00D415A0 /* HeatMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954A9B471C0C380C00D415A0 /* HeatMapViewController.m */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
 		9550DA0D1BF83E4C00430942 /* GUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D91BF83E4B00430942 /* GUser.m */; };
 		9550DA0E1BF83E4C00430942 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DB1BF83E4B00430942 /* Notice.m */; };
@@ -78,15 +77,6 @@
 		9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8471BF83E4B00430942 /* CustomTableViewCell.m */; };
 		9550DA401BF83E4C00430942 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8491BF83E4B00430942 /* NotificationViewController.m */; };
 		9550DA411BF83E4C00430942 /* TableViewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D84A1BF83E4B00430942 /* TableViewCustomCell.xib */; };
-		9550DA421BF83E4C00430942 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D84E1BF83E4B00430942 /* CollectionViewCell.m */; };
-		9550DA431BF83E4C00430942 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8501BF83E4B00430942 /* CollectionViewController.m */; };
-		9550DA441BF83E4C00430942 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8551BF83E4B00430942 /* MapViewController.m */; };
-		9550DA451BF83E4C00430942 /* CompletePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8581BF83E4B00430942 /* CompletePopup.m */; };
-		9550DA461BF83E4C00430942 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8591BF83E4B00430942 /* SettingsTableViewController.swift */; };
-		9550DA471BF83E4C00430942 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D85C1BF83E4B00430942 /* TableViewCell.m */; };
-		9550DA481BF83E4C00430942 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D85E1BF83E4B00430942 /* TableViewController.m */; };
-		9550DA491BF83E4C00430942 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8641BF83E4B00430942 /* UsersViewController.m */; };
-		9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8671BF83E4B00430942 /* usersTableViewController_other.m */; };
 		9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86C1BF83E4B00430942 /* EditTableViewController.m */; };
 		9550DA501BF83E4C00430942 /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8751BF83E4B00430942 /* GaugeView.m */; };
 		9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */; };
@@ -130,12 +120,6 @@
 		9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8D41BF83E4B00430942 /* SCVideoConfiguration.m */; };
 		9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8D61BF83E4B00430942 /* SCVideoPlayerView.m */; };
 		9550DA7F1BF83E4C00430942 /* SCWeakSelectorTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8D81BF83E4B00430942 /* SCWeakSelectorTarget.m */; };
-		9550DA811BF83E4C00430942 /* NearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8DF1BF83E4B00430942 /* NearViewController.m */; };
-		9550DA821BF83E4C00430942 /* NearViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8E11BF83E4B00430942 /* NearViewControllerCell.m */; };
-		9550DA831BF83E4C00430942 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8E41BF83E4B00430942 /* FollowViewController.m */; };
-		9550DA841BF83E4C00430942 /* FollowViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8E61BF83E4B00430942 /* FollowViewControllerCell.m */; };
-		9550DA851BF83E4C00430942 /* RecoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8E91BF83E4B00430942 /* RecoViewController.m */; };
-		9550DA861BF83E4C00430942 /* RecoViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8EB1BF83E4B00430942 /* RecoViewControllerCell.m */; };
 		9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8EE1BF83E4B00430942 /* CAPSPageMenu.m */; };
 		9550DA881BF83E4C00430942 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F11BF83E4B00430942 /* TimelinePageMenuViewController.m */; };
 		9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F41BF83E4B00430942 /* CategoryViewController.m */; };
@@ -287,13 +271,33 @@
 		9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA061BF83E4C00430942 /* UIWebView+AFNetworking.m */; };
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
-		95AA20F11C069B9C002F4E3E /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AA20F01C069B9C002F4E3E /* InfoView.m */; };
-		95AA20F31C069BD1002F4E3E /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AA20F21C069BD1002F4E3E /* InfoView.xib */; };
 		95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92921C0D48DA00D822E8 /* SGActionView.m */; };
 		95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */; };
 		95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */; };
 		95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92981C0D48DA00D822E8 /* SGGridMenu.m */; };
 		95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */; };
+		95FD92CA1C0D783100D822E8 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92BA1C0D783100D822E8 /* FollowViewController.m */; };
+		95FD92CB1C0D783100D822E8 /* FollowViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92BC1C0D783100D822E8 /* FollowViewControllerCell.m */; };
+		95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C01C0D783100D822E8 /* HeatMapViewController.m */; };
+		95FD92CD1C0D783100D822E8 /* NearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C21C0D783100D822E8 /* NearViewController.m */; };
+		95FD92CE1C0D783100D822E8 /* NearViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C41C0D783100D822E8 /* NearViewControllerCell.m */; };
+		95FD92CF1C0D783100D822E8 /* RecoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C71C0D783100D822E8 /* RecoViewController.m */; };
+		95FD92D01C0D783100D822E8 /* RecoViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C91C0D783100D822E8 /* RecoViewControllerCell.m */; };
+		95FD92E91C0D79F200D822E8 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92D41C0D79F200D822E8 /* CollectionViewCell.m */; };
+		95FD92EA1C0D79F200D822E8 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92D61C0D79F200D822E8 /* CollectionViewController.m */; };
+		95FD92EB1C0D79F200D822E8 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92DA1C0D79F200D822E8 /* InfoView.m */; };
+		95FD92EC1C0D79F200D822E8 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FD92DB1C0D79F200D822E8 /* InfoView.xib */; };
+		95FD92ED1C0D79F200D822E8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92DD1C0D79F200D822E8 /* MapViewController.m */; };
+		95FD92EE1C0D79F200D822E8 /* MypageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92DF1C0D79F200D822E8 /* MypageViewController.m */; };
+		95FD92EF1C0D79F200D822E8 /* CompletePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92E21C0D79F200D822E8 /* CompletePopup.m */; };
+		95FD92F01C0D79F200D822E8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92E31C0D79F200D822E8 /* SettingsTableViewController.swift */; };
+		95FD92F11C0D79F200D822E8 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92E61C0D79F200D822E8 /* TableViewCell.m */; };
+		95FD92F21C0D79F200D822E8 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92E81C0D79F200D822E8 /* TableViewController.m */; };
+		95FD93011C0D7AB600D822E8 /* CollectionViewCell_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92F61C0D7AB600D822E8 /* CollectionViewCell_2.m */; };
+		95FD93021C0D7AB600D822E8 /* CollectionViewController_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92F81C0D7AB600D822E8 /* CollectionViewController_2.m */; };
+		95FD93031C0D7AB600D822E8 /* TableViewCell_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92FC1C0D7AB600D822E8 /* TableViewCell_2.m */; };
+		95FD93041C0D7AB600D822E8 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92FE1C0D7AB600D822E8 /* TableViewController.m */; };
+		95FD93051C0D7AB600D822E8 /* UserpageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD93001C0D7AB600D822E8 /* UserpageViewController.m */; };
 		9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		9801BF0B1C080677001F4D3C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
 		9801BF0C1C080677001F4D3C /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
@@ -393,8 +397,6 @@
 		954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestGPSPopupViewController.h; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
-		954A9B461C0C380C00D415A0 /* HeatMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeatMapViewController.h; sourceTree = "<group>"; };
-		954A9B471C0C380C00D415A0 /* HeatMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeatMapViewController.m; sourceTree = "<group>"; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		9550D7D71BF83E4B00430942 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
 		9550D7D81BF83E4B00430942 /* GUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUser.h; sourceTree = "<group>"; };
@@ -491,23 +493,6 @@
 		9550D8481BF83E4B00430942 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		9550D8491BF83E4B00430942 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		9550D84A1BF83E4B00430942 /* TableViewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCustomCell.xib; sourceTree = "<group>"; };
-		9550D84D1BF83E4B00430942 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		9550D84E1BF83E4B00430942 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
-		9550D84F1BF83E4B00430942 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		9550D8501BF83E4B00430942 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		9550D8541BF83E4B00430942 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		9550D8551BF83E4B00430942 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		9550D8571BF83E4B00430942 /* CompletePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePopup.h; sourceTree = "<group>"; };
-		9550D8581BF83E4B00430942 /* CompletePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePopup.m; sourceTree = "<group>"; };
-		9550D8591BF83E4B00430942 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		9550D85B1BF83E4B00430942 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		9550D85C1BF83E4B00430942 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
-		9550D85D1BF83E4B00430942 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		9550D85E1BF83E4B00430942 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		9550D8631BF83E4B00430942 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
-		9550D8641BF83E4B00430942 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
-		9550D8661BF83E4B00430942 /* usersTableViewController_other.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usersTableViewController_other.h; sourceTree = "<group>"; };
-		9550D8671BF83E4B00430942 /* usersTableViewController_other.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usersTableViewController_other.m; sourceTree = "<group>"; };
 		9550D86B1BF83E4B00430942 /* EditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewController.h; sourceTree = "<group>"; };
 		9550D86C1BF83E4B00430942 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewController.m; sourceTree = "<group>"; };
 		9550D8741BF83E4B00430942 /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaugeView.h; sourceTree = "<group>"; };
@@ -591,18 +576,6 @@
 		9550D8D61BF83E4B00430942 /* SCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerView.m; sourceTree = "<group>"; };
 		9550D8D71BF83E4B00430942 /* SCWeakSelectorTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWeakSelectorTarget.h; sourceTree = "<group>"; };
 		9550D8D81BF83E4B00430942 /* SCWeakSelectorTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWeakSelectorTarget.m; sourceTree = "<group>"; };
-		9550D8DE1BF83E4B00430942 /* NearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewController.h; sourceTree = "<group>"; };
-		9550D8DF1BF83E4B00430942 /* NearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewController.m; sourceTree = "<group>"; };
-		9550D8E01BF83E4B00430942 /* NearViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewControllerCell.h; sourceTree = "<group>"; };
-		9550D8E11BF83E4B00430942 /* NearViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewControllerCell.m; sourceTree = "<group>"; };
-		9550D8E31BF83E4B00430942 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
-		9550D8E41BF83E4B00430942 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
-		9550D8E51BF83E4B00430942 /* FollowViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewControllerCell.h; sourceTree = "<group>"; };
-		9550D8E61BF83E4B00430942 /* FollowViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewControllerCell.m; sourceTree = "<group>"; };
-		9550D8E81BF83E4B00430942 /* RecoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoViewController.h; sourceTree = "<group>"; };
-		9550D8E91BF83E4B00430942 /* RecoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoViewController.m; sourceTree = "<group>"; };
-		9550D8EA1BF83E4B00430942 /* RecoViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoViewControllerCell.h; sourceTree = "<group>"; };
-		9550D8EB1BF83E4B00430942 /* RecoViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoViewControllerCell.m; sourceTree = "<group>"; };
 		9550D8ED1BF83E4B00430942 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
 		9550D8EE1BF83E4B00430942 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
 		9550D8EF1BF83E4B00430942 /* SortableTimeLineSubViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortableTimeLineSubViewProtocol.h; sourceTree = "<group>"; };
@@ -839,9 +812,6 @@
 		9550DA091BF83E4C00430942 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		9550DA0A1BF83E4C00430942 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
-		95AA20EF1C069B9C002F4E3E /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
-		95AA20F01C069B9C002F4E3E /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
-		95AA20F21C069BD1002F4E3E /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		95FD92911C0D48DA00D822E8 /* SGActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionView.h; sourceTree = "<group>"; };
 		95FD92921C0D48DA00D822E8 /* SGActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionView.m; sourceTree = "<group>"; };
 		95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertMenu.h; sourceTree = "<group>"; };
@@ -852,6 +822,48 @@
 		95FD92981C0D48DA00D822E8 /* SGGridMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGridMenu.m; sourceTree = "<group>"; };
 		95FD92991C0D48DA00D822E8 /* SGSheetMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSheetMenu.h; sourceTree = "<group>"; };
 		95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSheetMenu.m; sourceTree = "<group>"; };
+		95FD92B91C0D783100D822E8 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
+		95FD92BA1C0D783100D822E8 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
+		95FD92BB1C0D783100D822E8 /* FollowViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewControllerCell.h; sourceTree = "<group>"; };
+		95FD92BC1C0D783100D822E8 /* FollowViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewControllerCell.m; sourceTree = "<group>"; };
+		95FD92BF1C0D783100D822E8 /* HeatMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeatMapViewController.h; sourceTree = "<group>"; };
+		95FD92C01C0D783100D822E8 /* HeatMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeatMapViewController.m; sourceTree = "<group>"; };
+		95FD92C11C0D783100D822E8 /* NearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewController.h; sourceTree = "<group>"; };
+		95FD92C21C0D783100D822E8 /* NearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewController.m; sourceTree = "<group>"; };
+		95FD92C31C0D783100D822E8 /* NearViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewControllerCell.h; sourceTree = "<group>"; };
+		95FD92C41C0D783100D822E8 /* NearViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewControllerCell.m; sourceTree = "<group>"; };
+		95FD92C61C0D783100D822E8 /* RecoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoViewController.h; sourceTree = "<group>"; };
+		95FD92C71C0D783100D822E8 /* RecoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoViewController.m; sourceTree = "<group>"; };
+		95FD92C81C0D783100D822E8 /* RecoViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoViewControllerCell.h; sourceTree = "<group>"; };
+		95FD92C91C0D783100D822E8 /* RecoViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoViewControllerCell.m; sourceTree = "<group>"; };
+		95FD92D31C0D79F200D822E8 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		95FD92D41C0D79F200D822E8 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		95FD92D51C0D79F200D822E8 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		95FD92D61C0D79F200D822E8 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		95FD92D91C0D79F200D822E8 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
+		95FD92DA1C0D79F200D822E8 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
+		95FD92DB1C0D79F200D822E8 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		95FD92DC1C0D79F200D822E8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		95FD92DD1C0D79F200D822E8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		95FD92DE1C0D79F200D822E8 /* MypageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MypageViewController.h; sourceTree = "<group>"; };
+		95FD92DF1C0D79F200D822E8 /* MypageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MypageViewController.m; sourceTree = "<group>"; };
+		95FD92E11C0D79F200D822E8 /* CompletePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePopup.h; sourceTree = "<group>"; };
+		95FD92E21C0D79F200D822E8 /* CompletePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePopup.m; sourceTree = "<group>"; };
+		95FD92E31C0D79F200D822E8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		95FD92E51C0D79F200D822E8 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		95FD92E61C0D79F200D822E8 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		95FD92E71C0D79F200D822E8 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		95FD92E81C0D79F200D822E8 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		95FD92F51C0D7AB600D822E8 /* CollectionViewCell_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell_2.h; sourceTree = "<group>"; };
+		95FD92F61C0D7AB600D822E8 /* CollectionViewCell_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell_2.m; sourceTree = "<group>"; };
+		95FD92F71C0D7AB600D822E8 /* CollectionViewController_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController_2.h; sourceTree = "<group>"; };
+		95FD92F81C0D7AB600D822E8 /* CollectionViewController_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController_2.m; sourceTree = "<group>"; };
+		95FD92FB1C0D7AB600D822E8 /* TableViewCell_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_2.h; sourceTree = "<group>"; };
+		95FD92FC1C0D7AB600D822E8 /* TableViewCell_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_2.m; sourceTree = "<group>"; };
+		95FD92FD1C0D7AB600D822E8 /* TableViewController_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController_2.h; sourceTree = "<group>"; };
+		95FD92FE1C0D7AB600D822E8 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		95FD92FF1C0D7AB600D822E8 /* UserpageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserpageViewController.h; sourceTree = "<group>"; };
+		95FD93001C0D7AB600D822E8 /* UserpageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserpageViewController.m; sourceTree = "<group>"; };
 		9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTasks.swift; sourceTree = "<group>"; };
 		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
 		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
@@ -972,15 +984,6 @@
 			path = RequestGPS;
 			sourceTree = "<group>";
 		};
-		954A9B451C0C37FA00D415A0 /* HeatMap */ = {
-			isa = PBXGroup;
-			children = (
-				954A9B461C0C380C00D415A0 /* HeatMapViewController.h */,
-				954A9B471C0C380C00D415A0 /* HeatMapViewController.m */,
-			);
-			path = HeatMap;
-			sourceTree = "<group>";
-		};
 		9550D7D31BF83E4B00430942 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,8 +1057,8 @@
 				9550D8361BF83E4B00430942 /* Lifelog */,
 				9550D83E1BF83E4B00430942 /* Login */,
 				9550D8451BF83E4B00430942 /* Notification */,
-				9550D84B1BF83E4B00430942 /* Profile */,
-				9550D8651BF83E4B00430942 /* Profile_other */,
+				95FD92F31C0D7AB600D822E8 /* Userpage */,
+				95FD92D11C0D79F200D822E8 /* Mypage */,
 				9550D8681BF83E4B00430942 /* Recorder */,
 				9550D8931BF83E4B00430942 /* Restaurant */,
 				9550D8A11BF83E4B00430942 /* Sources */,
@@ -1285,72 +1288,6 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
-		9550D84B1BF83E4B00430942 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8631BF83E4B00430942 /* UsersViewController.h */,
-				9550D8641BF83E4B00430942 /* UsersViewController.m */,
-				9550D85A1BF83E4B00430942 /* Table */,
-				9550D84C1BF83E4B00430942 /* Colloction */,
-				9550D8531BF83E4B00430942 /* Map */,
-				9550D8561BF83E4B00430942 /* Settings */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		9550D84C1BF83E4B00430942 /* Colloction */ = {
-			isa = PBXGroup;
-			children = (
-				9550D84D1BF83E4B00430942 /* CollectionViewCell.h */,
-				9550D84E1BF83E4B00430942 /* CollectionViewCell.m */,
-				9550D84F1BF83E4B00430942 /* CollectionViewController.h */,
-				9550D8501BF83E4B00430942 /* CollectionViewController.m */,
-			);
-			path = Colloction;
-			sourceTree = "<group>";
-		};
-		9550D8531BF83E4B00430942 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8541BF83E4B00430942 /* MapViewController.h */,
-				9550D8551BF83E4B00430942 /* MapViewController.m */,
-				95AA20EF1C069B9C002F4E3E /* InfoView.h */,
-				95AA20F01C069B9C002F4E3E /* InfoView.m */,
-				95AA20F21C069BD1002F4E3E /* InfoView.xib */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		9550D8561BF83E4B00430942 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8571BF83E4B00430942 /* CompletePopup.h */,
-				9550D8581BF83E4B00430942 /* CompletePopup.m */,
-				9550D8591BF83E4B00430942 /* SettingsTableViewController.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		9550D85A1BF83E4B00430942 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				9550D85B1BF83E4B00430942 /* TableViewCell.h */,
-				9550D85C1BF83E4B00430942 /* TableViewCell.m */,
-				9550D85D1BF83E4B00430942 /* TableViewController.h */,
-				9550D85E1BF83E4B00430942 /* TableViewController.m */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		9550D8651BF83E4B00430942 /* Profile_other */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8661BF83E4B00430942 /* usersTableViewController_other.h */,
-				9550D8671BF83E4B00430942 /* usersTableViewController_other.m */,
-			);
-			path = Profile_other;
-			sourceTree = "<group>";
-		};
 		9550D8681BF83E4B00430942 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1482,10 +1419,10 @@
 		9550D8DC1BF83E4B00430942 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				95FD92B81C0D783100D822E8 /* Follow */,
+				95FD92BD1C0D783100D822E8 /* Near */,
+				95FD92C51C0D783100D822E8 /* Recommend */,
 				954883E61C0C022600BB533D /* RequestGPS */,
-				9550D8DD1BF83E4B00430942 /* Near */,
-				9550D8E21BF83E4B00430942 /* Follow */,
-				9550D8E71BF83E4B00430942 /* Recomend */,
 				9550D8EC1BF83E4B00430942 /* PageMenu */,
 				9550D8F21BF83E4B00430942 /* Popup */,
 				9550D8F91BF83E4B00430942 /* TimelineCell.h */,
@@ -1493,43 +1430,6 @@
 				9550D8FB1BF83E4B00430942 /* TimelineCell.xib */,
 			);
 			path = Timeline;
-			sourceTree = "<group>";
-		};
-		9550D8DD1BF83E4B00430942 /* Near */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8DE1BF83E4B00430942 /* NearViewController.h */,
-				9550D8DF1BF83E4B00430942 /* NearViewController.m */,
-				9550D8E01BF83E4B00430942 /* NearViewControllerCell.h */,
-				9550D8E11BF83E4B00430942 /* NearViewControllerCell.m */,
-				954A9B451C0C37FA00D415A0 /* HeatMap */,
-			);
-			name = Near;
-			path = Colloction;
-			sourceTree = "<group>";
-		};
-		9550D8E21BF83E4B00430942 /* Follow */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8E31BF83E4B00430942 /* FollowViewController.h */,
-				9550D8E41BF83E4B00430942 /* FollowViewController.m */,
-				9550D8E51BF83E4B00430942 /* FollowViewControllerCell.h */,
-				9550D8E61BF83E4B00430942 /* FollowViewControllerCell.m */,
-			);
-			name = Follow;
-			path = Colloction2;
-			sourceTree = "<group>";
-		};
-		9550D8E71BF83E4B00430942 /* Recomend */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8E81BF83E4B00430942 /* RecoViewController.h */,
-				9550D8E91BF83E4B00430942 /* RecoViewController.m */,
-				9550D8EA1BF83E4B00430942 /* RecoViewControllerCell.h */,
-				9550D8EB1BF83E4B00430942 /* RecoViewControllerCell.m */,
-			);
-			name = Recomend;
-			path = Colloction3;
 			sourceTree = "<group>";
 		};
 		9550D8EC1BF83E4B00430942 /* PageMenu */ = {
@@ -2107,6 +2007,139 @@
 			path = SGActionView;
 			sourceTree = "<group>";
 		};
+		95FD92B81C0D783100D822E8 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92B91C0D783100D822E8 /* FollowViewController.h */,
+				95FD92BA1C0D783100D822E8 /* FollowViewController.m */,
+				95FD92BB1C0D783100D822E8 /* FollowViewControllerCell.h */,
+				95FD92BC1C0D783100D822E8 /* FollowViewControllerCell.m */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		95FD92BD1C0D783100D822E8 /* Near */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92BE1C0D783100D822E8 /* HeatMap */,
+				95FD92C11C0D783100D822E8 /* NearViewController.h */,
+				95FD92C21C0D783100D822E8 /* NearViewController.m */,
+				95FD92C31C0D783100D822E8 /* NearViewControllerCell.h */,
+				95FD92C41C0D783100D822E8 /* NearViewControllerCell.m */,
+			);
+			path = Near;
+			sourceTree = "<group>";
+		};
+		95FD92BE1C0D783100D822E8 /* HeatMap */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92BF1C0D783100D822E8 /* HeatMapViewController.h */,
+				95FD92C01C0D783100D822E8 /* HeatMapViewController.m */,
+			);
+			path = HeatMap;
+			sourceTree = "<group>";
+		};
+		95FD92C51C0D783100D822E8 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92C61C0D783100D822E8 /* RecoViewController.h */,
+				95FD92C71C0D783100D822E8 /* RecoViewController.m */,
+				95FD92C81C0D783100D822E8 /* RecoViewControllerCell.h */,
+				95FD92C91C0D783100D822E8 /* RecoViewControllerCell.m */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		95FD92D11C0D79F200D822E8 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92DE1C0D79F200D822E8 /* MypageViewController.h */,
+				95FD92DF1C0D79F200D822E8 /* MypageViewController.m */,
+				95FD92D21C0D79F200D822E8 /* Grid-design */,
+				95FD92D81C0D79F200D822E8 /* Map-design */,
+				95FD92E01C0D79F200D822E8 /* Settings */,
+				95FD92E41C0D79F200D822E8 /* Table-design */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		95FD92D21C0D79F200D822E8 /* Grid-design */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92D31C0D79F200D822E8 /* CollectionViewCell.h */,
+				95FD92D41C0D79F200D822E8 /* CollectionViewCell.m */,
+				95FD92D51C0D79F200D822E8 /* CollectionViewController.h */,
+				95FD92D61C0D79F200D822E8 /* CollectionViewController.m */,
+			);
+			path = "Grid-design";
+			sourceTree = "<group>";
+		};
+		95FD92D81C0D79F200D822E8 /* Map-design */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92D91C0D79F200D822E8 /* InfoView.h */,
+				95FD92DA1C0D79F200D822E8 /* InfoView.m */,
+				95FD92DB1C0D79F200D822E8 /* InfoView.xib */,
+				95FD92DC1C0D79F200D822E8 /* MapViewController.h */,
+				95FD92DD1C0D79F200D822E8 /* MapViewController.m */,
+			);
+			path = "Map-design";
+			sourceTree = "<group>";
+		};
+		95FD92E01C0D79F200D822E8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92E11C0D79F200D822E8 /* CompletePopup.h */,
+				95FD92E21C0D79F200D822E8 /* CompletePopup.m */,
+				95FD92E31C0D79F200D822E8 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		95FD92E41C0D79F200D822E8 /* Table-design */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92E51C0D79F200D822E8 /* TableViewCell.h */,
+				95FD92E61C0D79F200D822E8 /* TableViewCell.m */,
+				95FD92E71C0D79F200D822E8 /* TableViewController.h */,
+				95FD92E81C0D79F200D822E8 /* TableViewController.m */,
+			);
+			path = "Table-design";
+			sourceTree = "<group>";
+		};
+		95FD92F31C0D7AB600D822E8 /* Userpage */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92FF1C0D7AB600D822E8 /* UserpageViewController.h */,
+				95FD93001C0D7AB600D822E8 /* UserpageViewController.m */,
+				95FD92F41C0D7AB600D822E8 /* Grid-design */,
+				95FD92FA1C0D7AB600D822E8 /* Table-design */,
+			);
+			path = Userpage;
+			sourceTree = "<group>";
+		};
+		95FD92F41C0D7AB600D822E8 /* Grid-design */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92F51C0D7AB600D822E8 /* CollectionViewCell_2.h */,
+				95FD92F61C0D7AB600D822E8 /* CollectionViewCell_2.m */,
+				95FD92F71C0D7AB600D822E8 /* CollectionViewController_2.h */,
+				95FD92F81C0D7AB600D822E8 /* CollectionViewController_2.m */,
+			);
+			path = "Grid-design";
+			sourceTree = "<group>";
+		};
+		95FD92FA1C0D7AB600D822E8 /* Table-design */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92FB1C0D7AB600D822E8 /* TableViewCell_2.h */,
+				95FD92FC1C0D7AB600D822E8 /* TableViewCell_2.m */,
+				95FD92FD1C0D7AB600D822E8 /* TableViewController_2.h */,
+				95FD92FE1C0D7AB600D822E8 /* TableViewController.m */,
+			);
+			path = "Table-design";
+			sourceTree = "<group>";
+		};
 		9809869E1BFF0A5A009BD0E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -2337,6 +2370,7 @@
 				9550DAA71BF83E4C00430942 /* Cancel@3x.png in Resources */,
 				9550DAAC1BF83E4C00430942 /* naviIcon.png in Resources */,
 				9550DA581BF83E4C00430942 /* SCFirstView_5_5_inch.xib in Resources */,
+				95FD92EC1C0D79F200D822E8 /* InfoView.xib in Resources */,
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
 				9550DAC11BF83E4C00430942 /* tabbaritem_timeline_sel@2x.png in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
@@ -2369,7 +2403,6 @@
 				9550DABA1BF83E4C00430942 /* tabbaritem_search.png in Resources */,
 				9550DA8D1BF83E4C00430942 /* TimelineCell.xib in Resources */,
 				9550DAB51BF83E4C00430942 /* tabbaritem_posting_sel@2x.png in Resources */,
-				95AA20F31C069BD1002F4E3E /* InfoView.xib in Resources */,
 				9550DAA61BF83E4C00430942 /* Cancel@2x.png in Resources */,
 				9550DA1D1BF83E4C00430942 /* commentTableViewCell.xib in Resources */,
 				9550DAB41BF83E4C00430942 /* tabbaritem_posting_sel.png in Resources */,
@@ -2427,6 +2460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9550DB1D1BF83E4C00430942 /* UIAlertView+AFNetworking.m in Sources */,
+				95FD92CF1C0D783100D822E8 /* RecoViewController.m in Sources */,
 				95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */,
 				9550DA8F1BF83E4C00430942 /* UserSearchTableViewCell.m in Sources */,
 				9550DA301BF83E4C00430942 /* FollowListViewController.m in Sources */,
@@ -2443,7 +2477,6 @@
 				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
 				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
-				9550DA481BF83E4C00430942 /* TableViewController.m in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
@@ -2453,7 +2486,6 @@
 				9550DA6F1BF83E4C00430942 /* SCImageView.m in Sources */,
 				9550DB191BF83E4C00430942 /* UIColor+HexString.m in Sources */,
 				9550DA701BF83E4C00430942 /* SCIOPixelBuffers.m in Sources */,
-				9550DA451BF83E4C00430942 /* CompletePopup.m in Sources */,
 				9550DA341BF83E4C00430942 /* FriendAddViewController.m in Sources */,
 				9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */,
 				9550DAC51BF83E4C00430942 /* AbstractPopover.swift in Sources */,
@@ -2468,13 +2500,13 @@
 				9550DAF51BF83E4C00430942 /* RHRefreshControlViewPinterest.m in Sources */,
 				9550DAE91BF83E4C00430942 /* JTCalendarAppearance.m in Sources */,
 				9550DA9D1BF83E4C00430942 /* TwitterSharing.swift in Sources */,
+				95FD92CD1C0D783100D822E8 /* NearViewController.m in Sources */,
 				9550DAD81BF83E4C00430942 /* AFURLConnectionOperation.m in Sources */,
 				9550DA621BF83E4C00430942 /* RestaurantTableViewController.m in Sources */,
-				9550DA441BF83E4C00430942 /* MapViewController.m in Sources */,
-				9550DA491BF83E4C00430942 /* UsersViewController.m in Sources */,
 				9550DA6B1BF83E4C00430942 /* SCContext.m in Sources */,
 				9550DAE51BF83E4C00430942 /* FHSStream.m in Sources */,
 				9550DB0B1BF83E4C00430942 /* UIResponder+STPopup.m in Sources */,
+				95FD92CA1C0D783100D822E8 /* FollowViewController.m in Sources */,
 				9550DA5B1BF83E4C00430942 /* SCSecondView.m in Sources */,
 				9550DB211BF83E4C00430942 /* UIRefreshControl+AFNetworking.m in Sources */,
 				9550DA351BF83E4C00430942 /* TwitterController.m in Sources */,
@@ -2513,7 +2545,9 @@
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,
 				95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */,
 				9550DA131BF83E4C00430942 /* LocationClient.m in Sources */,
+				95FD92F11C0D79F200D822E8 /* TableViewCell.m in Sources */,
 				9550DAEB1BF83E4C00430942 /* JTCalendarDayView.m in Sources */,
+				95FD92EF1C0D79F200D822E8 /* CompletePopup.m in Sources */,
 				9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */,
 				9550DA7C1BF83E4C00430942 /* SCSwipeableFilterView.m in Sources */,
 				9550DAD71BF83E4C00430942 /* AFSecurityPolicy.m in Sources */,
@@ -2521,23 +2555,21 @@
 				9550DB041BF83E4C00430942 /* UIImageView+HighlightedWebCache.m in Sources */,
 				9550DA2D1BF83E4C00430942 /* FolloweeListViewController.m in Sources */,
 				9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */,
+				95FD92CB1C0D783100D822E8 /* FollowViewControllerCell.m in Sources */,
 				9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */,
 				9550DA9A1BF83E4C00430942 /* APISupport.swift in Sources */,
 				95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */,
-				9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */,
-				9550DA461BF83E4C00430942 /* SettingsTableViewController.swift in Sources */,
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
 				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
+				95FD92EB1C0D79F200D822E8 /* InfoView.m in Sources */,
 				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				9550DA6D1BF83E4C00430942 /* SCFilterAnimation.m in Sources */,
-				9550DA421BF83E4C00430942 /* CollectionViewCell.m in Sources */,
 				9550DAC91BF83E4C00430942 /* WebViewPopup.swift in Sources */,
 				9550DB031BF83E4C00430942 /* UIImage+WebP.m in Sources */,
-				9550DA851BF83E4C00430942 /* RecoViewController.m in Sources */,
 				9550DA781BF83E4C00430942 /* SCRecorderToolsView.m in Sources */,
 				9550DAD41BF83E4C00430942 /* AFHTTPRequestOperationManager.m in Sources */,
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
@@ -2546,23 +2578,27 @@
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
 				9550DAC61BF83E4C00430942 /* ConfirmationPopover.swift in Sources */,
 				9550DA1C1BF83E4C00430942 /* commentTableViewCell.m in Sources */,
+				95FD92ED1C0D79F200D822E8 /* MapViewController.m in Sources */,
 				9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */,
 				9550DA361BF83E4C00430942 /* LifelogCell.m in Sources */,
 				9550DB1C1BF83E4C00430942 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				9550DA721BF83E4C00430942 /* SCPhotoConfiguration.m in Sources */,
+				95FD93021C0D7AB600D822E8 /* CollectionViewController_2.m in Sources */,
 				9550DB171BF83E4C00430942 /* TWMessageBarManager.m in Sources */,
 				9550DA191BF83E4C00430942 /* CheerListCell.m in Sources */,
 				9550DAF61BF83E4C00430942 /* RHRefreshControlViewSequenceImages.m in Sources */,
+				95FD92EE1C0D79F200D822E8 /* MypageViewController.m in Sources */,
 				954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */,
+				95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
+				95FD92D01C0D783100D822E8 /* RecoViewControllerCell.m in Sources */,
 				9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */,
 				9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */,
 				9550DA211BF83E4C00430942 /* everyTableViewController.m in Sources */,
-				9550DA821BF83E4C00430942 /* NearViewControllerCell.m in Sources */,
 				9550DA7B1BF83E4C00430942 /* SCSampleBufferHolder.m in Sources */,
+				95FD92F21C0D79F200D822E8 /* TableViewController.m in Sources */,
 				9550DA551BF83E4C00430942 /* SCFirstView.m in Sources */,
 				9550DAFC1BF83E4C00430942 /* SDWebImageDownloader.m in Sources */,
-				954A9B481C0C380C00D415A0 /* HeatMapViewController.m in Sources */,
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
 				950593871BFB19E600328449 /* main.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,
@@ -2571,33 +2607,35 @@
 				9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */,
 				9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */,
 				9550DA9C1BF83E4C00430942 /* TwitterAuthentication.swift in Sources */,
+				95FD93031C0D7AB600D822E8 /* TableViewCell_2.m in Sources */,
+				95FD93051C0D7AB600D822E8 /* UserpageViewController.m in Sources */,
 				9550DB1A1BF83E4C00430942 /* UIImage+Dummy.m in Sources */,
 				9550DA7A1BF83E4C00430942 /* SCRecordSessionSegment.m in Sources */,
+				95FD93011C0D7AB600D822E8 /* CollectionViewCell_2.m in Sources */,
 				9550DB1E1BF83E4C00430942 /* UIButton+AFNetworking.m in Sources */,
 				9550DA3B1BF83E4C00430942 /* SNSConnectViewController.swift in Sources */,
 				9550DA761BF83E4C00430942 /* SCRecorderFocusTargetView.m in Sources */,
 				9550DA671BF83E4C00430942 /* CIImageRendererUtils.m in Sources */,
-				95AA20F11C069B9C002F4E3E /* InfoView.m in Sources */,
-				9550DA841BF83E4C00430942 /* FollowViewControllerCell.m in Sources */,
 				9550DA241BF83E4C00430942 /* DebugViewController.swift in Sources */,
 				9550DA691BF83E4C00430942 /* SCAudioConfiguration.m in Sources */,
 				9550DAFA1BF83E4C00430942 /* SDWebImageCompat.m in Sources */,
 				9550DA5A1BF83E4C00430942 /* SCScrollPageView.m in Sources */,
-				9550DA431BF83E4C00430942 /* CollectionViewController.m in Sources */,
 				980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */,
-				9550DA831BF83E4C00430942 /* FollowViewController.m in Sources */,
 				9550DAEC1BF83E4C00430942 /* JTCalendarMenuMonthView.m in Sources */,
 				9550DAE01BF83E4C00430942 /* BFPaperCheckbox.m in Sources */,
 				9550DAE11BF83E4C00430942 /* UIColor+BFPaperColors.m in Sources */,
 				9550DA381BF83E4C00430942 /* LifelogSubTableViewController.m in Sources */,
 				9550DAFF1BF83E4C00430942 /* SDWebImagePrefetcher.m in Sources */,
 				9550DA1B1BF83E4C00430942 /* CheerListViewController.m in Sources */,
+				95FD93041C0D7AB600D822E8 /* TableViewController.m in Sources */,
 				9550DB021BF83E4C00430942 /* UIImage+MultiFormat.m in Sources */,
+				95FD92EA1C0D79F200D822E8 /* CollectionViewController.m in Sources */,
 				9550DA991BF83E4C00430942 /* API3.swift in Sources */,
 				9550DAF21BF83E4C00430942 /* RHAnimator.m in Sources */,
 				9550DB001BF83E4C00430942 /* UIButton+WebCache.m in Sources */,
 				9550DB0C1BF83E4C00430942 /* UIViewController+STPopup.m in Sources */,
 				9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */,
+				95FD92CE1C0D783100D822E8 /* NearViewControllerCell.m in Sources */,
 				9550DA391BF83E4C00430942 /* LifelogViewController.m in Sources */,
 				9550DA311BF83E4C00430942 /* AddressController.m in Sources */,
 				9550DAF91BF83E4C00430942 /* SDImageCache.m in Sources */,
@@ -2614,10 +2652,11 @@
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
 				9550DADF1BF83E4C00430942 /* BBBadgeBarButtonItem.m in Sources */,
 				9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */,
-				9550DA471BF83E4C00430942 /* TableViewCell.m in Sources */,
+				95FD92E91C0D79F200D822E8 /* CollectionViewCell.m in Sources */,
 				9550DAD31BF83E4C00430942 /* AFHTTPRequestOperation.m in Sources */,
 				980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */,
 				9550DA161BF83E4C00430942 /* UIColor+App.m in Sources */,
+				95FD92F01C0D79F200D822E8 /* SettingsTableViewController.swift in Sources */,
 				980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */,
 				9550DB071BF83E4C00430942 /* SingleLineTextField.m in Sources */,
 				9550DA2E1BF83E4C00430942 /* FollowListCell.m in Sources */,
@@ -2626,7 +2665,6 @@
 				9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */,
 				9550DA181BF83E4C00430942 /* UIView+DropShadow.m in Sources */,
 				980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */,
-				9550DA811BF83E4C00430942 /* NearViewController.m in Sources */,
 				9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */,
 				9550DA611BF83E4C00430942 /* XYPieChart.m in Sources */,
 				9550DB181BF83E4C00430942 /* UCZProgressView.m in Sources */,
@@ -2636,7 +2674,6 @@
 				9550DAD91BF83E4C00430942 /* AFURLRequestSerialization.m in Sources */,
 				9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */,
 				98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */,
-				9550DA861BF83E4C00430942 /* RecoViewControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
