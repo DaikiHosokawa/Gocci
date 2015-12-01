@@ -289,6 +289,11 @@
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
 		95AA20F11C069B9C002F4E3E /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AA20F01C069B9C002F4E3E /* InfoView.m */; };
 		95AA20F31C069BD1002F4E3E /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AA20F21C069BD1002F4E3E /* InfoView.xib */; };
+		95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92921C0D48DA00D822E8 /* SGActionView.m */; };
+		95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */; };
+		95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */; };
+		95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92981C0D48DA00D822E8 /* SGGridMenu.m */; };
+		95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */; };
 		9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		9801BF0B1C080677001F4D3C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
 		9801BF0C1C080677001F4D3C /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
@@ -837,6 +842,16 @@
 		95AA20EF1C069B9C002F4E3E /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		95AA20F01C069B9C002F4E3E /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
 		95AA20F21C069BD1002F4E3E /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		95FD92911C0D48DA00D822E8 /* SGActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionView.h; sourceTree = "<group>"; };
+		95FD92921C0D48DA00D822E8 /* SGActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionView.m; sourceTree = "<group>"; };
+		95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertMenu.h; sourceTree = "<group>"; };
+		95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlertMenu.m; sourceTree = "<group>"; };
+		95FD92951C0D48DA00D822E8 /* SGBaseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBaseMenu.h; sourceTree = "<group>"; };
+		95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBaseMenu.m; sourceTree = "<group>"; };
+		95FD92971C0D48DA00D822E8 /* SGGridMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGridMenu.h; sourceTree = "<group>"; };
+		95FD92981C0D48DA00D822E8 /* SGGridMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGridMenu.m; sourceTree = "<group>"; };
+		95FD92991C0D48DA00D822E8 /* SGSheetMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSheetMenu.h; sourceTree = "<group>"; };
+		95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSheetMenu.m; sourceTree = "<group>"; };
 		9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTasks.swift; sourceTree = "<group>"; };
 		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
 		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
@@ -1723,6 +1738,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				95FD92901C0D48DA00D822E8 /* SGActionView */,
 				98B1FCEF1C06D5B9006CA013 /* Reachability */,
 				950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */,
 				9505939E1BFC2B7100328449 /* GoogleMaps.framework */,
@@ -2074,6 +2090,23 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		95FD92901C0D48DA00D822E8 /* SGActionView */ = {
+			isa = PBXGroup;
+			children = (
+				95FD92911C0D48DA00D822E8 /* SGActionView.h */,
+				95FD92921C0D48DA00D822E8 /* SGActionView.m */,
+				95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */,
+				95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */,
+				95FD92951C0D48DA00D822E8 /* SGBaseMenu.h */,
+				95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */,
+				95FD92971C0D48DA00D822E8 /* SGGridMenu.h */,
+				95FD92981C0D48DA00D822E8 /* SGGridMenu.m */,
+				95FD92991C0D48DA00D822E8 /* SGSheetMenu.h */,
+				95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */,
+			);
+			path = SGActionView;
+			sourceTree = "<group>";
+		};
 		9809869E1BFF0A5A009BD0E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -2394,6 +2427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9550DB1D1BF83E4C00430942 /* UIAlertView+AFNetworking.m in Sources */,
+				95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */,
 				9550DA8F1BF83E4C00430942 /* UserSearchTableViewCell.m in Sources */,
 				9550DA301BF83E4C00430942 /* FollowListViewController.m in Sources */,
 				9550DB101BF83E4C00430942 /* SwiftyJSON.swift in Sources */,
@@ -2477,6 +2511,7 @@
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
 				9550DAEE1BF83E4C00430942 /* JTCalendarMonthView.m in Sources */,
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,
+				95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */,
 				9550DA131BF83E4C00430942 /* LocationClient.m in Sources */,
 				9550DAEB1BF83E4C00430942 /* JTCalendarDayView.m in Sources */,
 				9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */,
@@ -2488,14 +2523,14 @@
 				9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */,
 				9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */,
 				9550DA9A1BF83E4C00430942 /* APISupport.swift in Sources */,
+				95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */,
 				9550DA4A1BF83E4C00430942 /* usersTableViewController_other.m in Sources */,
 				9550DA461BF83E4C00430942 /* SettingsTableViewController.swift in Sources */,
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
+				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
 				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				9550DAFB1BF83E4C00430942 /* SDWebImageDecoder.m in Sources */,
 				9550DA681BF83E4C00430942 /* SCAssetExportSession.m in Sources */,
-				9550DA951BF83E4C00430942 /* Persistent.swift in Sources */,
-				9550DA4B1BF83E4C00430942 /* DummyViewController.m in Sources */,
 				9550DB061BF83E4C00430942 /* UIView+WebCacheOperation.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				9550DA6D1BF83E4C00430942 /* SCFilterAnimation.m in Sources */,
@@ -2573,6 +2608,7 @@
 				9550DA321BF83E4C00430942 /* DetailController.m in Sources */,
 				9550DA791BF83E4C00430942 /* SCRecordSession.m in Sources */,
 				980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */,
+				95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */,
 				9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */,
 				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
