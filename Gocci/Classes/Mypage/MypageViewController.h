@@ -1,5 +1,5 @@
 //
-//  usersTableViewController.h
+//  MypageViewController.h
 //  Gocci
 //
 //  Created by Ometeotl on 2014/10/09.
@@ -17,7 +17,7 @@
 #import "MapViewController.h"
 
 
-@interface UsersViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MypageViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSString *_postID;
     NSString *_postRestname;

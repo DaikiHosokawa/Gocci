@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 
 
-@interface usersTableViewController_other :  UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UserpageViewController :  UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSString *_postUsername;
     NSString *_postID;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
-#import "UsersViewController.h"
+#import "MypageViewController.h"
 
 @class  MapViewController;
 

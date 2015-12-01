@@ -60,6 +60,7 @@ static SCRecordSession *staticRecordSession;
 @property (weak, nonatomic) IBOutlet UIButton *retakeBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *reverseBtn;
+@property (weak, nonatomic) IBOutlet UIView *preview;
 
 @end
 
@@ -87,12 +88,13 @@ static SCRecordSession *staticRecordSession;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     _recorder = [SCRecorder recorder];
-    _recorder.captureSessionPreset = AVCaptureSessionPreset640x480;
+    _recorder.captureSessionPreset = [SCRecorderTools bestCaptureSessionPresetCompatibleWithAllDevices];
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
-    UIView *previewView = self.view;
+    _recorder.videoConfiguration.sizeAsSquare = YES;
+    UIView *previewView = self.preview;
     _recorder.previewView = previewView;
 
     self.focusView = [[SCRecorderToolsView alloc] initWithFrame:previewView.bounds];

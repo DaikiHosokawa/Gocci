@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "usersTableViewController_other.h"
+#import "UserpageViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MapKit/MapKit.h>
 #import <GoogleMaps/GoogleMaps.h>

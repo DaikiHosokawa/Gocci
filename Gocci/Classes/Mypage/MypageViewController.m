@@ -1,11 +1,11 @@
 //
-//  UsersViewController.m
+//  MypageViewController.m
 //  Gocci
 //
 //  Created by Daiki Hosokawa
 //  Copyright (c) 2015年 INASE,inc. All rights reserved.
 
-#import "UsersViewController.h"
+#import "MypageViewController.h"
 #import "everyTableViewController.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
@@ -34,7 +34,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @protocol MovieViewDelegate;
 
-@interface UsersViewController ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate,CLLocationManagerDelegate>
+@interface MypageViewController ()<CollectionViewControllerDelegate1,MapViewControllerDelegate,TableViewControllerDelegate,CLLocationManagerDelegate>
 {
     NSDictionary *header;
     NSDictionary *post;
@@ -60,7 +60,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @end
 
-@implementation UsersViewController
+@implementation MypageViewController
 
 -(void)table:(TableViewController *)vc postid:(NSString *)postid
 {

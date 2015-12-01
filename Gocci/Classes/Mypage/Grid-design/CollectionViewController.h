@@ -7,23 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UsersViewController.h"
+#import "MypageViewController.h"
 
 @class  CollectionViewController;
 
 @protocol  CollectionViewControllerDelegate1 <NSObject>
 //@optional
 -(void)collection:(CollectionViewController *)vc
-     postid:(NSString*)postid;
+           postid:(NSString*)postid;
 
 -(void)collection:(CollectionViewController *)vc
-    rest_id:(NSString*)rest_id;
+          rest_id:(NSString*)rest_id;
 
 @end
 
 @interface CollectionViewController : UICollectionViewController
 
-@property id supervc; 
+@property id supervc;
 
 @property(nonatomic,strong) id<CollectionViewControllerDelegate1> delegate;
 

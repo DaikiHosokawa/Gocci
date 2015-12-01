@@ -230,8 +230,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
-        usersTableViewController_other *users_other = segue.destinationViewController;
-         users_other.postUsername = _postUsername;
+        UserpageViewController *userVC = segue.destinationViewController;
+         userVC.postUsername = _postUsername;
     }
 }
 

@@ -54,7 +54,7 @@
 			CGFloat width_icon = width_record * 0.80; // 75;
 			CGFloat height_icon = width_icon;
 			UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_icon, height_icon)];
-			UIImage *image = [UIImage imageNamed:@"icon_record_cam.png"];
+			UIImage *image = [UIImage imageNamed:@"recordBtn"];
 			imageview.image = image;
 			imageview.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
 			[recordView addSubview:imageview];
@@ -89,7 +89,6 @@
     if (percentPieChart == 0.0){
         [self.delegate DeleteDraft];
     }else {
-        NSLog(@"だじたほうがいい");
         UIAlertView *checkDelete  =[[UIAlertView alloc] initWithTitle:@"終了してよろしいですか？" message:@"撮影中の動画が削除されてしまいます" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         checkDelete.tag=121;
         [checkDelete show];
