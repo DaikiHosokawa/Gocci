@@ -19,6 +19,8 @@
 
 #import "TabbarBaseViewController.h"
 
+#import "requestGPSPopupViewController.h"
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -107,7 +109,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
      initWithImage:[UIImage imageNamed:@"ic_location_on_white.png"]  // 画像を指定
      style:UIBarButtonItemStylePlain
      target:self
-     action:@selector(hoge)
+     action:@selector(goHeatmap)
      ];
     
     self.navigationItem.rightBarButtonItem = heatmapBtn;
@@ -224,7 +226,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     [btn setBackgroundImage:img forState:UIControlStateNormal];
     [btn addTarget:self
             action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.view addSubview:btn];
 }
 
 
@@ -304,8 +306,25 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
             }
 }
 
--(void)hoge{
-    [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
+-(void)goHeatmap{
+    //GPS is ON
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+        [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
+    }
+    else {
+        switch ([CLLocationManager authorizationStatus]) {
+                
+            case kCLAuthorizationStatusNotDetermined:
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusRestricted:
+                NSLog(@"not permitted");
+                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
+        }
+    }
+    
 }
 
 @end

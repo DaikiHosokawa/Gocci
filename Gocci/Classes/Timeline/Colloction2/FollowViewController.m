@@ -19,6 +19,7 @@
 #import "APIClient.h"
 #import "TimelinePageMenuViewController.h"
 #import "RHRefreshControl.h"
+#import "SGActionView.h"
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -70,7 +71,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [super viewDidLoad];
     
-    [self setupData:YES category_id:@"" value_id:@""];
+    [self setupData:@"" value_id:@""];
     self.clearsSelectionOnViewWillAppear = NO;
     
     [self.collectionView setBounces:YES];
@@ -92,7 +93,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 
 
-- (void)setupData:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
+- (void)setupData:(NSString *)category_id value_id:(NSString*)value_id
 {
   
         
@@ -175,23 +176,89 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
-    UIActionSheet *actionsheet = nil;
-    
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:rest_id forKey:@"RESTID"];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:user_id forKey:@"USERID"];
+
     
-    actionsheet = [[UIActionSheet alloc] initWithTitle:@"アクション"
-                                              delegate:self
-                                     cancelButtonTitle:@"Cancel"
-                                destructiveButtonTitle:nil
-                                     otherButtonTitles:@"ユーザーページへ移動",@"レストランページへ移動",@"この投稿を問題として報告" ,nil];
-    //@"このユーザーに質問する",@"Facebookでシェアする",@"Twitterでシェアする",@"Instagramでシェアする",
-    
-    actionsheet.tag = 1;
-    [actionsheet showInView:self.view];
-    
+    [SGActionView showGridMenuWithTitle:@"アクション"
+                             itemTitles:@[ @"Facebook", @"Twitter", @"店舗", @"ユーザー",
+                                           @"違反報告" ]
+                                 images:@[ [UIImage imageNamed:@"pin"],
+                                           [UIImage imageNamed:@"pin"],
+                                           [UIImage imageNamed:@"pin"],
+                                           [UIImage imageNamed:@"pin"],
+                                           [UIImage imageNamed:@"pin"]]
+                         selectedHandle:^(NSInteger index){
+                             
+                             NSString *u_id = [optionDic objectForKey:@"USERID"];
+                             NSString *r_id = [optionDic objectForKey:@"RESTID"];
+                             NSString *p_id = [optionDic objectForKey:@"POSTID"];
+                             
+                             TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+                             
+                             
+                             if(index == 1){
+                                 NSLog(@"Facebook");
+                             }
+                             else if(index == 2){
+                             NSLog(@"Twitter");
+                             }
+                             else if(index == 3){
+                                 NSLog(@"Rest");
+                                 [self.delegate follow:self rest_id:r_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
+                             }
+                             else if(index == 4){
+                                 NSLog(@"User");
+                                 [self.delegate follow:self username:u_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
+                             }
+                             else if(index == 5){
+                                 NSLog(@"Problem");
+                                 
+                                 Class class = NSClassFromString(@"UIAlertController");
+                                 if(class)
+                                 {
+                                     // iOS 8の時の処理
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     
+                                     // addActionした順に左から右にボタンが配置されます
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         // API からデータを取得
+                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                             if (result) {
+                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alrt show];
+                                             }
+                                         }
+                                          ];
+                                         
+                                     }]];
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         
+                                     }]];
+                                     
+                                     [self presentViewController:alertController animated:YES completion:nil];
+                                 }
+                                 else
+                                 {
+                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                         if (result) {
+                                             NSString *alertMessage = @"違反報告をしました";
+                                             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                             [alrt show];
+                                         }
+                                     }
+                                      ];
+                                 }
+                             }
+               }];
+
 }
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
@@ -275,16 +342,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     if([category_flag length]>0 && [value_flag length]>0){
         
-        [self setupData:YES category_id:category_flag value_id:value_flag];
+        [self setupData:category_flag value_id:value_flag];
     }else{
         
         if ([category_flag length]>0) {
-            [self setupData:YES category_id:category_flag value_id:@""];
+            [self setupData:category_flag value_id:@""];
         }else if ([value_flag length]>0){
-            [self setupData:YES category_id:@"" value_id:value_flag];
+            [self setupData:@"" value_id:value_flag];
         }else{
             //一番下
-            [self setupData:YES category_id:@"" value_id:@""];
+            [self setupData:@"" value_id:@""];
         }
     }
     
@@ -379,20 +446,21 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (void)sortFunc:(NSString *)category {
+    
     category_flag = category;
     if ([value_flag length]>0) {
-        [self setupData:YES category_id:category value_id:value_flag];
+        [self setupData:category value_id:value_flag];
     }else{
-        [self setupData:YES category_id:category value_id:@""];
+        [self setupData:category value_id:@""];
     }
 }
 
 - (void)sortValue:(NSString *)value {
     value_flag = value;
     if ([category_flag length]>0) {
-        [self setupData:YES category_id:category_flag value_id:value];
+        [self setupData:category_flag value_id:value];
     }
-    [self setupData:YES category_id:@"" value_id:value];
+    [self setupData:@"" value_id:value];
 }
 
 - (void)refreshFeed {
