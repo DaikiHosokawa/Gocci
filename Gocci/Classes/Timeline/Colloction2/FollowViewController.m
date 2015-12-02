@@ -95,34 +95,41 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(NSString *)category_id value_id:(NSString*)value_id
 {
-  
-        
-        [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
-         {
-             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
-             
-             for (NSDictionary *post in result) {
-                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-             }
-             
-             self.posts = tempPosts;
-             NSLog(@"temposts:%@",tempPosts);
-             
-             if ([self.posts count] == 0) {
-                 // 画像表示例文
-                 UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-                 CGSize boundsSize = self.view.bounds.size;
-                 iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
-                 [self.view addSubview:iv];
-             }else{
-                 [self.collectionView reloadData];
-                 [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
-                 // 画面が隠れた際に再生中の動画を停止させる
-                 [[MoviePlayerManager sharedManager] stopMovie];
-             }
-             
-         }];
+    [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
+     {
+         if (error) {
+             NSLog(@"ERROR: Network communication: %@",error);
+             return;
+         }
+         if (!result || [result[@"code"] integerValue] != 200) {
+             NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
+             return;
+         }
+         
+         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+         
+         for (NSDictionary *post in result) {
+             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+         }
+         
+         self.posts = tempPosts;
+         NSLog(@"temposts:%@",tempPosts);
+         
+         if ([self.posts count] == 0) {
+             // 画像表示例文
+             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+             CGSize boundsSize = self.view.bounds.size;
+             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+             [self.view addSubview:iv];
+         }else{
+             [self.collectionView reloadData];
+             [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
+             // 画面が隠れた際に再生中の動画を停止させる
+             [[MoviePlayerManager sharedManager] stopMovie];
+         }
+         
+     }];
 }
 
 
