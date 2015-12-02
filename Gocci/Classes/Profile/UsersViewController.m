@@ -203,6 +203,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
         
+        // TODO This is a hack so it does not crash. I have no idea what this code does so it should be fixed in a proper way
+        if (!nextViewController) {
+            return;
+        }
+        
         [self addChildViewController:nextViewController];
         nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
         [changeView addSubview:nextViewController.view];

@@ -22,6 +22,8 @@
 
 #import "Reachability.h"
 
+#import "AFNetworking.h" // remove this when API3 is complete
+
 // for twitter HMAC OAuth
 #import <CommonCrypto/CommonCrypto.h>
 

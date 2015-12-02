@@ -45,6 +45,17 @@ class DebugViewController : UIViewController {
 
     }
     
+    @IBAction func clearAllCookiesClikced(sender: AnyObject) {
+        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        if cookieStorage.cookies != nil {
+            for coo in cookieStorage.cookies! {
+                print("Deleting Cookie: \(coo)")
+                cookieStorage.deleteCookie(coo)
+            }
+        }
+    }
+
+    
     /*
     NSLog(@"req: %@\n\n", request.allHTTPHeaderFields);
     //    NSLog(@"body: %@", request.HTTPBody);
