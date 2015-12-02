@@ -124,10 +124,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [SGActionView showGridMenuWithTitle:@"アクション"
                              itemTitles:@[ @"Facebook", @"Twitter", @"店舗",                                           @"違反報告" ]
-                                 images:@[ [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"]]
+                                 images:@[ [UIImage imageNamed:@"facebook"],
+                                           [UIImage imageNamed:@"twitter"],
+                                           [UIImage imageNamed:@"restaurant"],
+                                           [UIImage imageNamed:@"warning"]]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];

@@ -21,13 +21,15 @@
 
 #import "requestGPSPopupViewController.h"
 
+#import "Swift.h"
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
-@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate>
+@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate,CAPSPageMenuDelegate>
 {
     NSString *_postID;
     NSString *_postUsername;
@@ -95,7 +97,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     
     [super viewDidLoad];
-    
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
     
@@ -213,9 +214,11 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     //PageMenu確保
     // CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
     CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height);
+
     _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
                                                         frame:rect_pagemenu
                                                       options:parameters];
+     _pageMenu.delegate = self;
     
     //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
@@ -233,6 +236,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 - (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {
     
     if ([controller conformsToProtocol:@protocol(SortableTimeLineSubView)]) {
+        
         self.currentVisibleSortableSubViewController = (UIViewController <SortableTimeLineSubView> *)controller;
         [[MoviePlayerManager sharedManager] stopMovie];
         [[MoviePlayerManager sharedManager] removeAllPlayers];

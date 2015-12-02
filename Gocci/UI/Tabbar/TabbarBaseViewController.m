@@ -42,21 +42,6 @@
 //		//背景色
 //		[UITabBar appearance].barTintColor = [UIColor whiteColor];
 //	}
-    
-    {
-        		UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f];
-        		//タブ選択時のフォントとカラー
-        		UIColor *colorSelected = [UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
-        		NSDictionary *selectedAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorSelected};
-        		[[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
-        	//通常時のフォントとカラー
-        		UIColor *colorNormal = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
-        		NSDictionary *attributesNormal = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorNormal};
-        		[[UITabBarItem appearance] setTitleTextAttributes:attributesNormal forState:UIControlStateNormal];
-        
-        		//背景色
-        		[UITabBar appearance].barTintColor = [UIColor whiteColor];
-        	}
 
 }
 
@@ -81,8 +66,8 @@
 - (void)createRaisedCenterButton {
     
     // Load Image
-    UIImage *buttonImage = [UIImage imageNamed:@"rec_1"];
-    UIImage *highlightImage = [UIImage imageNamed:@"rec_1"];
+    UIImage *buttonImage = [UIImage imageNamed:@"recordTab"];
+    UIImage *highlightImage = [UIImage imageNamed:@"recordTab"];
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);

@@ -57,7 +57,6 @@
     self.date.text = timelinePost.timelabel;
     self.movieURL = timelinePost.movie;
     self.index = indexPath;
-    NSLog(@"index:%lu",(unsigned long)self.index);
     self.pushed_at = timelinePost.pushed_at;
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
