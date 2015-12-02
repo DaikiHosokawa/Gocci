@@ -88,8 +88,6 @@ class SingletonTaskScheduler {
             }
             return
         }
-
-        print("=== ERROR cant read file from disk")
     }
     
     private func safeTasksToDisk() {

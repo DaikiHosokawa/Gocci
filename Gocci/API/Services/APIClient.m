@@ -7,12 +7,14 @@
 #import "APIClient.h"
 #import "AFNetworking.h"
 
+#import "Swift.h"
+
 NSString * const APIClientResultCacheKeyDist = @"dist";
 
 @interface APIClient()
 
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic, strong) AFHTTPSessionManager *manager2;
+//@property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) ReAuthFilterHack *manager;
 @property (nonatomic, strong) NSCache *resultCache;
 
 @end
@@ -39,15 +41,17 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    
-    
     NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
-    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
-                                                              @"application/json",
-                                                              @"text/html",
-                                                              @"text/javascript",
-                                                              nil];
+    
+    
+    self.manager = [[ReAuthFilterHack alloc] initWithBaseURL:baseURL];
+
+//    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+//    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+//                                                              @"application/json",
+//                                                              @"text/html",
+//                                                              @"text/javascript",
+//                                                              nil];
     
     return self;
 }

@@ -306,6 +306,7 @@
 		9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF161C0C6EE3001F4D3C /* Bridge.swift */; };
 		9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
+		9805CA961C0E9B9900094858 /* ReAuthFilterHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */; };
 		980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809869F1BFF0AD7009BD0E3 /* Extensions.swift */; };
 		980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A01BFF0AD7009BD0E3 /* Persistent.swift */; };
 		980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
@@ -856,6 +857,7 @@
 		9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTasks.swift; sourceTree = "<group>"; };
 		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
 		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
+		9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReAuthFilterHack.swift; sourceTree = "<group>"; };
 		9809869F1BFF0AD7009BD0E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utilities/Extensions.swift; sourceTree = "<group>"; };
 		980986A01BFF0AD7009BD0E3 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistent.swift; path = Utilities/Persistent.swift; sourceTree = "<group>"; };
 		980986A11BFF0AD7009BD0E3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Utilities/Util.swift; sourceTree = "<group>"; };
@@ -1030,6 +1032,7 @@
 			children = (
 				9550D7E31BF83E4B00430942 /* APIClient.h */,
 				9550D7E41BF83E4B00430942 /* APIClient.m */,
+				9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */,
 				9550D7E51BF83E4B00430942 /* APIClientLimits.h */,
 				9550D7E61BF83E4B00430942 /* LocationClient.h */,
 				9550D7E71BF83E4B00430942 /* LocationClient.m */,
@@ -2451,6 +2454,7 @@
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
 				9550DAD51BF83E4C00430942 /* AFHTTPSessionManager.m in Sources */,
 				9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */,
+				9805CA961C0E9B9900094858 /* ReAuthFilterHack.swift in Sources */,
 				9550DA6C1BF83E4C00430942 /* SCFilter.m in Sources */,
 				9550DA6F1BF83E4C00430942 /* SCImageView.m in Sources */,
 				9550DB191BF83E4C00430942 /* UIColor+HexString.m in Sources */,
