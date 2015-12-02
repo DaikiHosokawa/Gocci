@@ -74,6 +74,9 @@ class SingletonTaskScheduler {
                 if let dict = dict as? NSDictionary {
                     if let cn = dict["classname"] as? String {
                         if let t = PersistentClassReflexion.createPersistentTaskFromString(cn, data: dict) {
+                            if t.state == .RUNNING {
+                                t.state = .SUSPENDED
+                            }
                             tmp.append(t)
                         }
                     }
@@ -290,12 +293,23 @@ class SingletonTaskScheduler {
             }
         }
         
+        // only one scheduler thread double protection.
+        if self.schedulerThread != nil && self.schedulerThread!.executing {
+            return
+        }
+        
+        self.loadTasksFromDisk()
+        
+        
         // we only want one scheduler active. This thread should never disappear. We hope for the best. If it disappears ever
         // we have to find a way that this thread restarts. But for now it seems there is no problem.
         dispatch_once(&self.onceToken) {
             
             // the scheduler has its own threaad. (actually that schould have higher priority than everything else, but its not that important
             dispatch_async(self.schedulerQueue) {
+                
+                
+                self.schedulerThread = NSThread.currentThread()
                 
                 self.internetReachability.startNotifier()
                 
@@ -437,46 +451,6 @@ class DummyPlugTask: PersistentBaseTask {
 
 
 
-
-//class TwitterVideoSharingTask: PersistentBaseTask {
-//    let tweetMessage: String
-//    let mp4filename: String
-//    
-//    init(tweetMessage: String, mp4filename: String) {
-//        self.tweetMessage = tweetMessage
-//        self.mp4filename = mp4filename
-//        super.init(identifier: String(self.dynamicType))
-//    }
-//    
-//    override init?(dict: NSDictionary) {
-//        self.tweetMessage = dict["tweetMessage"] as? String ?? ""
-//        self.mp4filename = dict["mp4filename"] as? String ?? ""
-//        super.init(dict: dict)
-//    }
-//    
-//    override func dictonaryRepresentation() -> NSMutableDictionary {
-//        let dict = super.dictonaryRepresentation()
-//        dict["tweetMessage"] = tweetMessage
-//        dict["mp4filename"] = mp4filename
-//        return dict
-//    }
-//    
-//    override func equals(task: PersistentBaseTask) -> Bool {
-//        if let task = task as? TwitterVideoSharingTask {
-//            return task.tweetMessage == tweetMessage && task.mp4filename == mp4filename
-//        }
-//        return false
-//    }
-//    
-//    override func run() {
-//        print("Running: \(tweetMessage)")
-//        sleepSec(2)
-//        print("Done   : \(tweetMessage)")
-//        
-//        state = .DONE
-//    }
-//    
-//}
 
 
 

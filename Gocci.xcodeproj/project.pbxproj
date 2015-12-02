@@ -305,6 +305,7 @@
 		9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
 		9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF161C0C6EE3001F4D3C /* Bridge.swift */; };
+		9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
 		980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809869F1BFF0AD7009BD0E3 /* Extensions.swift */; };
 		980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A01BFF0AD7009BD0E3 /* Persistent.swift */; };
 		980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
@@ -2414,6 +2415,7 @@
 				9801BF0F1C080677001F4D3C /* Persistent.swift in Sources */,
 				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
 				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
+				9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
