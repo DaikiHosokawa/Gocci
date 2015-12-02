@@ -786,6 +786,12 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     // Configure controller scroll view content size
     _controllerScrollView.contentSize = CGSizeMake(self.view.frame.size.width * (CGFloat)_controllerArray.count, self.view.frame.size.height - _menuHeight);
     
+    UIViewController *currentController = _controllerArray[_currentPageIndex];
+    if ([_delegate respondsToSelector:@selector(didMoveToPage:index:)]) {
+        [_delegate didMoveToPage:currentController index:_currentPageIndex];
+    }
+
+    
     BOOL oldCurrentOrientationIsPortrait = _currentOrientationIsPortrait;
     
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];

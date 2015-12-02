@@ -18,9 +18,9 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = @"値段";
-        self.contentSizeInPopup = CGSizeMake(300, 200);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 100);
+        self.title = @"価格";
+        self.contentSizeInPopup = CGSizeMake(300, 220);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 130);
     }
     return self;
 }

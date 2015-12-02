@@ -19,8 +19,8 @@
 {
     if (self = [super init]) {
         self.title = @"カテゴリー";
-        self.contentSizeInPopup = CGSizeMake(300, 300);
-        self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
+        self.contentSizeInPopup = CGSizeMake(300, 310);
+        self.landscapeContentSizeInPopup = CGSizeMake(400, 220);
     }
     return self;
 }

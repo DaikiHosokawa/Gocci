@@ -106,7 +106,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
              self.posts = tempPosts;
-             NSLog(@"temposts:%@",tempPosts);
              
              if ([self.posts count] == 0) {
                  // 画像表示例文
@@ -185,11 +184,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [SGActionView showGridMenuWithTitle:@"アクション"
                              itemTitles:@[ @"Facebook", @"Twitter", @"店舗", @"ユーザー",
                                            @"違反報告" ]
-                                 images:@[ [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"],
-                                           [UIImage imageNamed:@"pin"]]
+                                 images:@[ [UIImage imageNamed:@"facebook"],
+                                           [UIImage imageNamed:@"twitter"],
+                                           [UIImage imageNamed:@"restaurant"],
+                                           [UIImage imageNamed:@"man"],
+                                           [UIImage imageNamed:@"warning"]]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *u_id = [optionDic objectForKey:@"USERID"];
