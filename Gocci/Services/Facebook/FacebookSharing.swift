@@ -185,12 +185,6 @@ import FBSDKShareKit
             "og:image": thumbURL,
             "og:locale": "ja_JP", // TODO [[NSLocale preferredLanguages] objectAtIndex:0];
             "og:site_name": "Gocci",
-//
-//            "al:ios" : "aaaaaaaaa",
-//            "al:iphone" : "bbbbbbbbbbb",
-//            "al:ipad" : "ccccccccccc",
-//            "al:android" : "dddddddd",
-//            "al:web" : "eeeeeeeeeee",
         ]
         
         let object = FBSDKShareOpenGraphObject(properties: properties)

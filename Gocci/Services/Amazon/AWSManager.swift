@@ -225,7 +225,7 @@ class AWSManager {
 //        AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
 //
 //        let uid: String = Util.getUserDefString("user_id")!
-//        let iid: String = Util.getUserDefString("iid")!
+//        let iid: String = Util.getUserDefString("identity_id")!
 //        let tok: String = Util.getUserDefString("token")!
         
         let ip = EnhancedGocciIdentityProvider(poolID: poolID, iid: nil, userID: nil, token: nil)
@@ -289,9 +289,9 @@ class AWSManager {
     }
     
     func connectToBackEndWithUserDefData() -> AWSTask {
-        let uid: String = Util.getUserDefString("user_id")!
-        let iid: String = Util.getUserDefString("iid")!
-        let tok: String = Util.getUserDefString("token")!
+        let uid: String = Persistent.user_id!
+        let iid: String = Persistent.identity_id!
+        let tok: String = Persistent.cognito_token!
         
         return AWS2.connectWithBackend(iid, userID: uid, token: tok)
     }
@@ -307,9 +307,9 @@ class AWSManager {
     func storeSignUpDataInCognito(username:String) {
         let dataset = AWSCognito.defaultCognito().openOrCreateDataset("signup_data")
 
-        dataset.setString(Util.getUserDefString("user_id") ?? "user_id not set", forKey: "user_id")
-        dataset.setString(Util.getUserDefString("username") ?? "username not set", forKey: "username")
-        dataset.setString(Util.getRegisterID(), forKey: "register_id")
+        dataset.setString(Persistent.user_id ?? "user_id not set", forKey: "user_id")
+        dataset.setString(Persistent.user_name ?? "username not set", forKey: "username")
+        dataset.setString(Persistent.device_token ?? "no device_token", forKey: "device_token")
         dataset.setString(UIDevice.currentDevice().systemName, forKey: "system_name")
         dataset.setString(UIDevice.currentDevice().systemVersion, forKey: "system_version")
         dataset.setString(UIDevice.currentDevice().model, forKey: "model")

@@ -104,7 +104,7 @@ class SplashViewController : UIViewController {
         }
         
         
-        if let iid = Util.getUserDefString("iid") {            NetOp.loginWithIID(iid, andThen: handleNetOpResult)
+        if let iid = Persistent.identity_id {            NetOp.loginWithIID(iid, andThen: handleNetOpResult)
         }
         else if let un = Util.getUserDefString("username"), ava = Util.getUserDefString("avatarLink") {
             NetOp.loginWithAPIV2Conversation(un, avatar: ava, andThen: handleNetOpResult)

@@ -38,7 +38,7 @@ import Foundation
         }
         
         
-        if let iid = Util.getUserDefString("iid") {            NetOp.loginWithIID(iid, andThen: handleNetOpResult)
+        if let iid = Persistent.identity_id {            NetOp.loginWithIID(iid, andThen: handleNetOpResult)
         }
         else {
             andThen(false)

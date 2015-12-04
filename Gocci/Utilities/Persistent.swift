@@ -11,100 +11,174 @@
 import Foundation
 
 // Singelton
-let Persistent = PersistentDataStorage()
+//let Persistent = PersistentDataStorage()
 
-//@objc class PersistentDataStorage: NSObject {
-class PersistentDataStorage {
+@objc class Persistent: NSObject {
     
-    // this will survive app deinstalltion
-    let sud = NSUserDefaults(suiteName: "com.inase.gocci")!
     
-    var passwordWasSetByTheUser: Bool {
-        get { return cache.passwordWasSetByTheUser ?? defaults.passwordWasSetByTheUser }
-        set(v) { cache.passwordWasSetByTheUser = v ; sud.setBool(v, forKey: "passwordWasSetByTheUser") }
+    class func setupAndCacheAllDataFromDisk() {
+        // this will survive app deinstalltion
+        KeychainWrapper.serviceName = "com.inase.gocci"
+        
+        cache.password_was_set_by_the_user = boolForKey("password_was_set_by_the_user")
+        cache.user_registerd_for_push_messages = boolForKey("user_registerd_for_push_messages")
+        cache.user_is_connected_via_facebook = boolForKey("user_is_connected_via_facebook")
+        cache.user_is_connected_via_twitter = boolForKey("user_is_connected_via_twitter")
+        
+        cache.identity_id = stringForKey("identity_id")
+        cache.cognito_token = stringForKey("cognito_token")
+        cache.device_token = stringForKey("device_token")
+        cache.twitter_key = stringForKey("twitter_key")
+        cache.twitter_secret = stringForKey("twitter_secret")
+        cache.facebook_token = stringForKey("facebook_token")
+        
+        cache.user_id = stringForKey("user_id")
+        cache.user_name = stringForKey("user_name")
+        cache.user_profile_image_url = stringForKey("user_profile_image_url")
+        
     }
-    
-    var userIsConnectedViaFacebook: Bool {
-        get { return cache.userIsConnectedViaFacebook ?? defaults.userIsConnectedViaFacebook }
-        set(v) { cache.userIsConnectedViaFacebook = v ; sud.setBool(v, forKey: "userIsConnectedViaFacebook") }
-    }
-    
-    var userIsConnectedViaTwitter: Bool {
-        get { return cache.userIsConnectedViaTwitter ?? defaults.userIsConnectedViaTwitter }
-        set(v) { cache.userIsConnectedViaTwitter = v ; sud.setBool(v, forKey: "userIsConnectedViaTwitter") }
-    }
-    
-    var identity_id: String? {
-        get { return cache.identity_id }
-        set(v) { cache.identity_id = v ; sud.setString(v, forKey: "identity_id") }
-    }
-    
-    var twitter_key: String? {
-        get { return cache.twitter_key }
-        set(v) { cache.twitter_key = v ; sud.setString(v, forKey: "twitter_key") }
-    }
-    
-    var twitter_secret: String? {
-        get { return cache.twitter_secret }
-        set(v) { cache.twitter_secret = v ; sud.setString(v, forKey: "twitter_secret") }
-    }
-    
-    var facebook_token: String? {
-        get { return cache.facebook_token }
-        set(v) { cache.facebook_token = v ; sud.setString(v, forKey: "facebook_token") }
-    }
-    
-    func reloadAllDataFromDisk() {
-        cache.passwordWasSetByTheUser = sud.boolForKey("passwordWasSetByTheUser")
-        cache.userIsConnectedViaFacebook = sud.boolForKey("userIsConnectedViaFacebook")
-        cache.userIsConnectedViaTwitter = sud.boolForKey("userIsConnectedViaTwitter")
-        cache.identity_id = sud.stringForKey("identity_id")
-        cache.twitter_key = sud.stringForKey("twitter_key")
-        cache.twitter_secret = sud.stringForKey("twitter_secret")
-        cache.facebook_token = sud.stringForKey("facebook_token")
-    }
-    
     
     struct InternalCache {
-        var passwordWasSetByTheUser: Bool?
-        var userIsConnectedViaFacebook: Bool?
-        var userIsConnectedViaTwitter: Bool?
+        var password_was_set_by_the_user: Bool?
+        var user_registerd_for_push_messages: Bool?
+        var user_is_connected_via_facebook: Bool?
+        var user_is_connected_via_twitter: Bool?
+        
         var identity_id: String?
+        var cognito_token: String?
+        var device_token: String?
         var twitter_key: String?
         var twitter_secret: String?
         var facebook_token: String?
+        
+        var user_id: String?
+        var user_name: String?
+        var user_profile_image_url: String?
     }
     
     struct InternalDefaults {
-        let passwordWasSetByTheUser: Bool = false
-        let userIsConnectedViaFacebook: Bool = false
-        let userIsConnectedViaTwitter: Bool = false
+        let password_was_set_by_the_user: Bool = false
+        let user_registerd_for_push_messages: Bool = false
+        let user_is_connected_via_facebook: Bool = false
+        let user_is_connected_via_twitter: Bool = false
     }
     
-    var cache = InternalCache()
-    let defaults = InternalDefaults()
-    
-    init() {
-        reloadAllDataFromDisk()
+    class var password_was_set_by_the_user: Bool {
+        get { return cache.password_was_set_by_the_user ?? defaults.password_was_set_by_the_user }
+        set(v) { cache.password_was_set_by_the_user = v ; setBool(v, forKey: "password_was_set_by_the_user") }
     }
     
-    func immediatelySaveToDisk() {
-        sud.synchronize()
+    class var user_registerd_for_push_messages: Bool {
+        get { return cache.user_registerd_for_push_messages ?? defaults.user_registerd_for_push_messages }
+        set(v) { cache.user_registerd_for_push_messages = v ; setBool(v, forKey: "user_registerd_for_push_messages") }
     }
     
+    class var user_is_connected_via_facebook: Bool {
+        get { return cache.user_is_connected_via_facebook ?? defaults.user_is_connected_via_facebook }
+        set(v) { cache.user_is_connected_via_facebook = v ; setBool(v, forKey: "user_is_connected_via_facebook") }
+    }
+    
+    class var user_is_connected_via_twitter: Bool {
+        get { return cache.user_is_connected_via_twitter ?? defaults.user_is_connected_via_twitter }
+        set(v) { cache.user_is_connected_via_twitter = v ; setBool(v, forKey: "user_is_connected_via_twitter") }
+    }
+    
+    class var identity_id: String? {
+        get { return cache.identity_id }
+        set(v) { cache.identity_id = v ; setString(v!, forKey: "identity_id") }
+    }
+    
+    class var cognito_token: String? {
+        get { return cache.cognito_token }
+        set(v) { cache.cognito_token = v ; setString(v!, forKey: "cognito_token") }
+    }
+    
+    class var device_token: String? {
+        get { return cache.device_token }
+        set(v) { cache.device_token = v ; setString(v!, forKey: "device_token") }
+    }
+    
+    class var twitter_key: String? {
+        get { return cache.twitter_key }
+        set(v) { cache.twitter_key = v ; setString(v!, forKey: "twitter_key") }
+    }
+    
+    class var twitter_secret: String? {
+        get { return cache.twitter_secret }
+        set(v) { cache.twitter_secret = v ; setString(v!, forKey: "twitter_secret") }
+    }
+    
+    class var facebook_token: String? {
+        get { return cache.facebook_token }
+        set(v) { cache.facebook_token = v ; setString(v!, forKey: "facebook_token") }
+    }
+    
+    class var user_id: String? {
+        get { return cache.user_id }
+        set(v) { cache.user_id = v ; setString(v!, forKey: "user_id") }
+    }
+    
+    class var user_name: String? {
+        get { return cache.user_name }
+        set(v) { cache.user_name = v ; setString(v!, forKey: "user_name") }
+    }
+ 
+    class var user_profile_image_url: String? {
+        get { return cache.user_profile_image_url }
+        set(v) { cache.user_profile_image_url = v ; setString(v!, forKey: "user_profile_image_url") }
+    }
+
+    
+    private class func setBool(value: Bool, forKey key: String) {
+        KeychainWrapper.setObject(value, forKey: key)
+    }
+    
+    private class func setString(value: String, forKey key: String) {
+        KeychainWrapper.setString(value, forKey: key)
+    }
+    
+    private class func boolForKey(key: String) -> Bool? {
+        return KeychainWrapper.objectForKey(key) as? Bool
+    }
+    
+    private class func stringForKey(key: String) -> String? {
+        return KeychainWrapper.stringForKey(key)
+    }
+    
+
+    
+    private static var cache = InternalCache()
+    private static let defaults = InternalDefaults()
+
     
     /// You can't continue the application flow after calling this method. You must start with the tutorial again
     /// because there will be no account data stored anymore
-    func resetGocciToInitialState() {
+    class func resetGocciToInitialState() {
         
-        let defaultDomain = NSBundle.mainBundle().bundleIdentifier!
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(defaultDomain)
-        sud.removePersistentDomainForName(defaultDomain)
-        sud.removePersistentDomainForName("com.inase.gocci")
+        KeychainWrapper.removeObjectForKey("password_was_set_by_the_user")
+        KeychainWrapper.removeObjectForKey("user_registerd_for_push_messages")
+        KeychainWrapper.removeObjectForKey("user_is_connected_via_facebook")
+        KeychainWrapper.removeObjectForKey("user_is_connected_via_twitter")
+        
+        KeychainWrapper.removeObjectForKey("identity_id")
+        KeychainWrapper.removeObjectForKey("cognito_token")
+        KeychainWrapper.removeObjectForKey("device_token")
+        KeychainWrapper.removeObjectForKey("twitter_key")
+        KeychainWrapper.removeObjectForKey("twitter_secret")
+        KeychainWrapper.removeObjectForKey("facebook_token")
+        
+        KeychainWrapper.removeObjectForKey("user_id")
+        KeychainWrapper.removeObjectForKey("user_name")
+        KeychainWrapper.removeObjectForKey("user_profile_image_url")
+        
+        
+        // TODO delete other stuff as well
+        // - scheduler task file
+        // - avatar
         cache = InternalCache()
     }
     
-    func resetGocciButKeepAccount() {
+    class func resetGocciButKeepAccount() {
         let iid = self.identity_id
         resetGocciToInitialState()
         self.identity_id = iid

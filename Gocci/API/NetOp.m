@@ -39,21 +39,16 @@
             return;
         }
         
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        
         //save user data
-        [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-        [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-        [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"]; // not sure, but its nice if we can update the IID on the server side
-
         
-        // TODO remove this
-        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
-
+        Persistent.user_id = [result objectForKey:@"user_id"];
+        Persistent.user_name = [result objectForKey:@"username"];
+        Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+        Persistent.identity_id = [result objectForKey:@"identity_id"];
+        Persistent.cognito_token = [result objectForKey:@"token"];
         
         //save badge num
-        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
         
         // some logging
         NSLog(@"======================================================================");
@@ -102,19 +97,15 @@
             return;
         }
         
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        
         //save user data
-        [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-        [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-        [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
-        
-        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
-
+        Persistent.user_id = [result objectForKey:@"user_id"];
+        Persistent.user_name = [result objectForKey:@"username"];
+        Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+        Persistent.identity_id = [result objectForKey:@"identity_id"];
+        Persistent.cognito_token = [result objectForKey:@"token"];
         
         //save badge num
-        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
         
         // some logging
         NSLog(@"======================================================================");
@@ -156,21 +147,17 @@
              afterBlock(NETOP_IDENTIFY_ID_NOT_REGISTERD, @"unregisterd identity_id");
              return;
          }
-         
-         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-         
+                  
          //save user data
-         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
-         
-         
-         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];   // SUPER IMPORTAND !!!
+         Persistent.user_id = [result objectForKey:@"user_id"];
+         Persistent.user_name = [result objectForKey:@"username"];
+         Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+         Persistent.identity_id = [result objectForKey:@"identity_id"];
+         Persistent.cognito_token = [result objectForKey:@"token"];
 
          
          //save badge num
-         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+         [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
          
          // some logging
          NSLog(@"======================================================================");
@@ -213,21 +200,17 @@
          }
          
          
-         //success, user is now a developer authenticated user. cognito is handeld on the server side (thanks murata-san^^)
-         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
          
          //save user data
-         [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-         [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-         [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
-         
-         // TODO for AWS2 test. remove this, do it in the identity proider
-         [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+         Persistent.user_id = [result objectForKey:@"user_id"];
+         Persistent.user_name = [result objectForKey:@"username"];
+         Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+         Persistent.identity_id = [result objectForKey:@"identity_id"];
+         Persistent.cognito_token = [result objectForKey:@"token"];
 
          
          //save badge num
-         [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+         [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
          
          // some logging
          NSLog(@"======================================================================");
@@ -279,20 +262,16 @@
             return;
         }
         
-        //success, user is now a developer authenticated user. cognito is handeld on the server side (thanks murata-san^^)
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        
         //save user data
-        [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
-        [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-        [ud setValue:[result objectForKey:@"user_id"] forKey:@"user_id"];
-        [ud setValue:[result objectForKey:@"identity_id"] forKey:@"iid"];
-        
-        [ud setValue:[result objectForKey:@"token"] forKey:@"token"];
+        Persistent.user_id = [result objectForKey:@"user_id"];
+        Persistent.user_name = [result objectForKey:@"username"];
+        Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+        Persistent.identity_id = [result objectForKey:@"identity_id"];
+        Persistent.cognito_token = [result objectForKey:@"token"];
 
         
         //save badge num
-        [Util setBadgeNumber:[[result objectForKey:@"badge_num"] intValue]];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
         
         // some logging
         NSLog(@"======================================================================");

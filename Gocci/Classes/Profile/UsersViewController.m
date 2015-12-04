@@ -223,10 +223,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];
     self.navigationItem.rightBarButtonItem = self.barButton;
     
 }
@@ -294,7 +292,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)_fetchProfile
 {
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
         
         if (code != 200 || error != nil) {
             return;

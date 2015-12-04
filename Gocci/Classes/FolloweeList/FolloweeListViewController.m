@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "usersTableViewController_other.h"
 #import "APIClient.h"
+#import "Swift.h"
 
 
 @interface FolloweeListViewController ()
@@ -95,7 +96,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 {
     //test user
     //_postIDtext = @"3024";
-    [APIClient FollowerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient FollowerList:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
         
        // [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         

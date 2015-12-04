@@ -12,6 +12,11 @@ import UIKit
 
 extension String {
     
+    func matches(re: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: re, options: [])
+        return regex.firstMatchInString(self, options:[], range: NSMakeRange(0, self.characters.count)) != nil
+    }
+    
     var length : Int {
         return self.characters.count
     }

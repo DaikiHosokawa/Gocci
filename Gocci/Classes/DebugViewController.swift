@@ -33,65 +33,27 @@ class DebugViewController : UIViewController {
         
         subLabel.text = "Greatest Work - Gocci v" + (Util.getGocciVersionString() ?? "?.?.?")
         
-        if let iid = Util.getUserDefString("iid") {
+        if let iid = Persistent.identity_id {
             loginEditField.text = iid
         }
-        signUpEditField.text = NSUserDefaults.standardUserDefaults().stringForKey("username") ?? Util.randomUsername()
         
-        
+        signUpEditField.text = Persistent.user_name ?? Util.randomUsername()
         usernameEditField.text = signUpEditField.text
-        
-        
-
     }
     
-    @IBAction func clearAllCookiesClikced(sender: AnyObject) {
-        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        if cookieStorage.cookies != nil {
-            for coo in cookieStorage.cookies! {
-                print("Deleting Cookie: \(coo)")
-                cookieStorage.deleteCookie(coo)
-            }
-        }
-    }
 
-    
-    /*
-    NSLog(@"req: %@\n\n", request.allHTTPHeaderFields);
-    //    NSLog(@"body: %@", request.HTTPBody);
-    NSLog(@"body %@", [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding]);
-    
-    
-
-    
-    id parsed = removeNull([NSJSONSerialization JSONObjectWithData:(NSData *)retobj options:NSJSONReadingMutableContainers error:nil]);
-    
-    NSError *error = [self checkError:parsed];
-    
-    if (error) {
-    return error;
-    }
-    
-    return nil; // eventually return the parsed response
-    }
-    */
-    
 
     
 
-//    func tweet(mediaID: String) -> NSError? {
-//        let baseURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
-//        
-//        let params = [
-//            "media_ids": mediaID, //"601491637433475073"]
-//            "status": "kyoukoso :( " + Util.randomUsername()]
-//        
-//        return FHSTwitterEngine.sharedEngine().sendPOSTRequestForURL(baseURL, andParams: params)
-//    }
     
     @IBAction func explode(sender: AnyObject) {
         
+        KeychainWrapper.setString("hallo", forKey:"aaa")
         
+        print(KeychainWrapper.stringForKey("aaa"))
+        
+        print(Persistent.identity_id)
+        return;
         
         // TODO
         let mp4URL = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
@@ -460,7 +422,7 @@ class DebugViewController : UIViewController {
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
         
         if real_register_id != "" {
-            Util.setUserDefString("register_id", value: real_register_id)
+            Persistent.device_token = real_register_id
         }
         
         NetOp.registerUsername(signUpEditField.text) {
@@ -471,12 +433,12 @@ class DebugViewController : UIViewController {
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
                 
-                let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("iid")!
-                let tok: String = Util.getUserDefString("token")!
+                let uid: String = Persistent.user_id!
+                let iid: String = Persistent.identity_id!
+                let tok: String = Persistent.cognito_token!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
                     return nil
                 })
             }
@@ -489,7 +451,7 @@ class DebugViewController : UIViewController {
         if real_register_id == "" {
             real_register_id = Util.getRegisterID()
         }
-        Util.setUserDefString("register_id", value: Util.generateFakeDeviceID())
+        Persistent.device_token = Util.generateFakeDeviceID()
         
         NetOp.registerUsername(signUpEditField.text) {
             (code, emsg) -> Void in
@@ -499,12 +461,12 @@ class DebugViewController : UIViewController {
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
                 
-                let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("iid")!
-                let tok: String = Util.getUserDefString("token")!
+                let uid: String = Persistent.user_id!
+                let iid: String = Persistent.identity_id!
+                let tok: String = Persistent.cognito_token!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
                     return nil
                 })
             }
@@ -513,9 +475,8 @@ class DebugViewController : UIViewController {
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
     {
-        //NSUserDefaults.standardUserDefaults().setObject("us-east-1:5403c205-8a2b-474e-b1c7-1a94663d9115", forKey: "iid")
         
-        guard let iid = NSUserDefaults.standardUserDefaults().stringForKey("iid") else
+        guard let iid = Persistent.identity_id else
         {
             print("ERROR: iid not set in user defs")
             return
@@ -530,9 +491,9 @@ class DebugViewController : UIViewController {
                 print("NetOpCode: \(code)  " + (emsg ?? ""))
                 if code == NetOpResult.NETOP_SUCCESS {
                     self.loginEditField.text = self.signUpEditField.text
-                    let uid: String = Util.getUserDefString("user_id")!
-                    let iid: String = Util.getUserDefString("iid")!
-                    let tok: String = Util.getUserDefString("token")!
+                    let uid: String = Persistent.user_id!
+                    let iid: String = Persistent.identity_id!
+                    let tok: String = Persistent.cognito_token!
                     
                     AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
                         AWS2.storeTimeInLoginDataSet()
@@ -672,13 +633,22 @@ class DebugViewController : UIViewController {
     @IBAction func deleteUserDefsClicked(sender: AnyObject)
     {
         print("=== DELETE userdefs")
-        Util.removeAccountSpecificDataFromUserDefaults()
         Persistent.resetGocciToInitialState()
         
         signUpEditField.text = Util.randomUsername()
         loginEditField.text = ""
     }
     
+    
+    @IBAction func clearAllCookiesClikced(sender: AnyObject) {
+        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        if cookieStorage.cookies != nil {
+            for coo in cookieStorage.cookies! {
+                print("Deleting Cookie: \(coo)")
+                cookieStorage.deleteCookie(coo)
+            }
+        }
+    }
     
     
     @IBAction func gotoTimelinkeClicked(sender: AnyObject)

@@ -79,9 +79,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.barButton.badgeOriginY = 10;
     
     // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber ];
     self.navigationItem.rightBarButtonItem = self.barButton;
     
     
@@ -119,11 +117,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    // ナビゲーションバーに設定する
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", [[UIApplication sharedApplication] applicationIconBadgeNumber] ];
     self.navigationItem.rightBarButtonItem = self.barButton;
-    
 }
 
 
@@ -438,9 +434,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 -(void)barButtonItemPressed:(id)sender{
     
     self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
     
     NSLog(@"badge touched");
     if (!self.popover) {

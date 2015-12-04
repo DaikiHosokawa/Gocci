@@ -11,6 +11,9 @@
 #import "UIImageView+WebCache.h"
 #import "RestaurantTableViewController.h"
 #import "APIClient.h"
+#import "Swift.h"
+
+
 
 @interface CheerListViewController ()
 
@@ -102,7 +105,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
 {
     //test user
     //_postIDtext = @"3024";
-    [APIClient CheerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient CheerList: Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
                 
         LOG(@"resultComment=%@", result);
         
