@@ -158,10 +158,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
-    
-    NSLog(@"アクション");
-
-    
+        
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:rest_id forKey:@"RESTID"];
     [optionDic setObject:post_id forKey:@"POSTID"];

@@ -250,8 +250,6 @@
 
 
 
-
-
 -(void)closePopupView {
     self.popupView.hidden = YES;
 }
@@ -282,35 +280,6 @@
 - (IBAction)ReturnTutorial:(UIStoryboardSegue *)segue
 {
     NSLog(@"go back to tutorial");
-}
-
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    
-    
-    UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
-    requestAgain.tag=121;
-    
-    switch (status) {
-        case kCLAuthorizationStatusNotDetermined:
-            break;
-        case kCLAuthorizationStatusAuthorizedAlways:
-        case kCLAuthorizationStatusAuthorizedWhenInUse:
-#if TARGET_IPHONE_SIMULATOR
-            [locationManager startUpdatingLocation];
-            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-                self.registerButton.enabled = false;
-                self.username.enabled = false;
-                
-                [self registerUsername:self.username.text];
-            }
-#endif
-            break;
-        case kCLAuthorizationStatusDenied:
-        case kCLAuthorizationStatusRestricted:
-            [requestAgain show];
-            break;
-    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
