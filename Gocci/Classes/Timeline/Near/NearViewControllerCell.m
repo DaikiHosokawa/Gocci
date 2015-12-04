@@ -82,12 +82,6 @@
     
 }
 
-/**
- *  View にタップイベントを設定
- *
- *  @param selector タップイベント時に呼び出されるメソッド
- *  @param view     設定先の View
- */
 - (void)_assignTapAction:(SEL)selector view:(UIView *)view
 {
     for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {

@@ -61,8 +61,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewWillDisappear:(BOOL)animated{
     call = 0;
     category_flag = @"";
-    NSLog(@"called viewwill dissa");
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
@@ -78,9 +76,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
-    
-    //  refreshConfiguration.minimumForStart = @0;
-    //  refreshConfiguration.maximumForPull = @120;
     self.refreshControl = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
     self.refreshControl.delegate = self;
     [self.refreshControl attachToScrollView:self.collectionView];
@@ -108,7 +103,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              self.posts = tempPosts;
              
              if ([self.posts count] == 0) {
-                 // 画像表示例文
                  UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                  UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                  CGSize boundsSize = self.view.bounds.size;
@@ -117,7 +111,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }else{
                  [self.collectionView reloadData];
                  [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
-                 // 画面が隠れた際に再生中の動画を停止させる
                  [[MoviePlayerManager sharedManager] stopMovie];
              }
              
@@ -146,7 +139,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              self.posts = newArray;
              
              if ([self.posts count] == 0) {
-                 // 画像表示例文
                  UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                  UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                  CGSize boundsSize = self.view.bounds.size;
@@ -156,8 +148,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                  [self.collectionView reloadData];
                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                  call++;
-                 // 動画データを一度全て削除
-                 // 画面が隠れた際に再生中の動画を停止させる
                  [[MoviePlayerManager sharedManager] stopMovie];
                  
                  
@@ -220,12 +210,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     // iOS 8の時の処理
                                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
-                                     // addActionした順に左から右にボタンが配置されます
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         // API からデータを取得
                                          [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                              if (result) {
@@ -357,7 +344,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
-    return self.isLoading; // should return if data source model is reloading
+    return self.isLoading; 
     
 }
 

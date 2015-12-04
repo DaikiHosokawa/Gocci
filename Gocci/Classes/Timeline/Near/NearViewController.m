@@ -250,12 +250,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     // iOS 8の時の処理
                                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
-                                     // addActionした順に左から右にボタンが配置されます
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         // API からデータを取得
                                          [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                              if (result) {
@@ -320,7 +317,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [subview removeFromSuperview];
     }
     
-    // セルにデータを反映
     TimelinePost *post = self.posts[indexPath.row];
     [cell configureWithTimelinePost:post indexPath:indexPath.row];
     cell.delegate = self;
@@ -333,7 +329,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [self.refreshControl refreshScrollViewDidScroll:scrollView];
     
-    //一番下までスクロールしたかどうか
     if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height))
     {
         NSLog(@"Requesting API ? %@", [UIApplication         sharedApplication].networkActivityIndicatorVisible ? @"YES" : @"NO");
@@ -388,7 +383,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
-    return self.isLoading; // should return if data source model is reloading
+    return self.isLoading; 
     
 }
 

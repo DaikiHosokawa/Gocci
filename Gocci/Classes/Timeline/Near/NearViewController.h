@@ -24,7 +24,7 @@
 
 @interface NearViewController : UICollectionViewController <SortableTimeLineSubView>
 
-@property id supervc; //親
+@property id supervc; 
 @property(nonatomic,strong) id<NearViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) NSDictionary *receiveDic2;

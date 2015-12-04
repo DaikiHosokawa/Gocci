@@ -7,8 +7,9 @@
 //
 
 #import "RequestGPSViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface RequestGPSViewController ()
+@interface RequestGPSViewController ()<CLLocationManagerDelegate>
 
 @end
 
@@ -19,27 +20,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
     // Do any additional setup after loading the view.
 }
 
 
 - (IBAction)buttonAction:(id)sender
 {
-    NSLog(@"touch");
     
     switch ([CLLocationManager authorizationStatus]) {
             
         case kCLAuthorizationStatusNotDetermined:
-            [locationManager requestWhenInUseAuthorization];
+            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [locationManager requestWhenInUseAuthorization];
+            } else {
+                [locationManager startUpdatingLocation];
+            }
             break;
             
         case kCLAuthorizationStatusAuthorizedAlways:
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            [locationManager startUpdatingLocation];
-            
+            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [locationManager requestWhenInUseAuthorization];
+            } else {
+                [locationManager startUpdatingLocation];
+            }
             break;
             
-            //GPS request was denied
         case kCLAuthorizationStatusDenied:
         case kCLAuthorizationStatusRestricted:
             

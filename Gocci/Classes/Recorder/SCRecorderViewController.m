@@ -101,8 +101,6 @@ static SCRecordSession *staticRecordSession;
     self.focusView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
-    [self.focusView addSubview:self.retakeBtn];
-    [self.focusView addSubview:self.reverseBtn];
     
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -392,6 +390,18 @@ static SCRecordSession *staticRecordSession;
 
 - (IBAction)onReverse:(id)sender {
     [_recorder switchCaptureDevices];
+}
+
+- (IBAction)onDelete:(id)sender {
+    
+    [self DeleteDraft];
+    /*
+}else {
+        UIAlertView *checkDelete  =[[UIAlertView alloc] initWithTitle:@"終了してよろしいですか？" message:@"撮影中の動画が削除されてしまいます" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        checkDelete.tag=121;
+        [checkDelete show];
+    }
+     */
 }
 
 - (void) handleStopButtonTapped:(id)sender {

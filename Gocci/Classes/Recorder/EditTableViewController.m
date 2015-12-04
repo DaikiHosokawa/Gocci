@@ -14,6 +14,8 @@
 #import "requestGPSPopupViewController.h"
 
 @interface EditTableViewController ()<CLLocationManagerDelegate>
+{
+}
 
 @end
 
@@ -31,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
     
 }

@@ -54,7 +54,7 @@
 			CGFloat width_icon = width_record * 0.80; // 75;
 			CGFloat height_icon = width_icon;
 			UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_icon, height_icon)];
-			UIImage *image = [UIImage imageNamed:@"recordBtn"];
+			UIImage *image = [UIImage imageNamed:@"icon_record_cam"];
 			imageview.image = image;
 			imageview.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
 			[recordView addSubview:imageview];

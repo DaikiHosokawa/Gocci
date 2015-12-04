@@ -20,6 +20,7 @@
 #import "everyBaseNavigationController.h"
 #import "TableViewController.h"
 #import "MapViewController.h"
+#import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
 
