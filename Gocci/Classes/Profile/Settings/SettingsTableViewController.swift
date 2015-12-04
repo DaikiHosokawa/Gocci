@@ -30,8 +30,8 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "パスワードを設定する"
-                        $0.detailTextLabel?.text = Persistent.passwordWasSetByTheUser ? "" : "set an account password"
-                        $0.detailTextLabel?.textColor = Persistent.passwordWasSetByTheUser ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "" : "set an account password"
+                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
                         let popover = ConfirmationPopover(from: self, position: $0.frame, widthRatio:90, heightRatio:30)
@@ -43,7 +43,7 @@ class SettingsTableViewController: UITableViewController
             [
                 (
                     {
-                        let isCon = Persistent.userIsConnectedViaFacebook
+                        let isCon = Persistent.user_is_connected_via_facebook
                         $0.textLabel?.text = "Facebook"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
@@ -52,7 +52,7 @@ class SettingsTableViewController: UITableViewController
                 ),
                 (
                     {
-                        let isCon = Persistent.userIsConnectedViaTwitter
+                        let isCon = Persistent.user_is_connected_via_twitter
                         $0.textLabel?.text = "Twitter"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
@@ -108,12 +108,12 @@ class SettingsTableViewController: UITableViewController
     
     func handleTwitter(cell: UITableViewCell)
     {
-        if Persistent.userIsConnectedViaTwitter {
+        if Persistent.user_is_connected_via_twitter {
             let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
             popup.confirmationText = "Do you really want to disconnect your account from Twitter?"
             popup.onConfirm = {
                 // TODO disconnect call
-                Persistent.userIsConnectedViaTwitter = false
+                Persistent.user_is_connected_via_twitter = false
                 cell.detailTextLabel?.text = "not connected :("
                 cell.detailTextLabel?.textColor = UIColor.redColor()
             }
@@ -122,7 +122,7 @@ class SettingsTableViewController: UITableViewController
         }
         
         let onSuccess = {
-            Persistent.userIsConnectedViaTwitter = true
+            Persistent.user_is_connected_via_twitter = true
             cell.detailTextLabel?.text = "connected!"
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
@@ -147,12 +147,12 @@ class SettingsTableViewController: UITableViewController
     
     func handleFacebook(cell: UITableViewCell)
     {
-        if Persistent.userIsConnectedViaFacebook {
+        if Persistent.user_is_connected_via_facebook {
             let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
             popup.confirmationText = "Do you really want to disconnect your account from Facebook?"
             popup.onConfirm = {
                 // TODO disconnect call
-                Persistent.userIsConnectedViaFacebook = false
+                Persistent.user_is_connected_via_facebook = false
                 cell.detailTextLabel?.text = "not connected :("
                 cell.detailTextLabel?.textColor = UIColor.redColor()
             }
@@ -161,7 +161,7 @@ class SettingsTableViewController: UITableViewController
         }
         
         let onSuccess = {
-            Persistent.userIsConnectedViaFacebook = true
+            Persistent.user_is_connected_via_facebook = true
             cell.detailTextLabel?.text = "connected!"
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
@@ -294,7 +294,7 @@ class PasswordPopup: UIViewController, UITextFieldDelegate {
         else {
             APIClient.setPassword(textField.text) { (result, code, error) -> Void in
                 if code == 200 {
-                    Persistent.passwordWasSetByTheUser = true
+                    Persistent.password_was_set_by_the_user = true
                     textField.resignFirstResponder()
                     //self.popupController?.pushViewController(CompletePopup(), animated: true)
                 }

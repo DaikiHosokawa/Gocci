@@ -57,7 +57,6 @@ class TwitterAuthentication {
         
         let url = NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")!
         
-//        TwitterLowLevel.performGETRequest(url, parameters: [:],
         TwitterLowLevel.performGETRequest(url, parameters: ["skip_status": "true", "include_entities": "false"],
             onSuccess: { json in
                 print(json.rawString() ?? "häh")
@@ -117,7 +116,6 @@ class TwitterAuthentication {
             
             Persistent.twitter_key = key
             Persistent.twitter_secret = sec
-            Persistent.immediatelySaveToDisk()
             
             token = Token(key: key, secret: sec)
             
@@ -130,11 +128,3 @@ class TwitterAuthentication {
 
 
 
-
-//                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
-//                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
-//                let token = FHSTwitterEngine.sharedEngine().cognitoFormat()
-//                print("=== Twitter name:   \(username)")
-//                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-//                print("=== Twitter avatar: \(pic)")
-//                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")

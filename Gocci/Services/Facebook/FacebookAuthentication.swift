@@ -56,8 +56,6 @@ class FacebookAuthentication {
     }
     
     
-    // WARNING. Callback is only called when a connection to Facebook is possible or not token exists.
-    // That means in case of no internet or network errors, nothing happens.
     class func authenticadedAndReadyToUse(cb: Bool->()) {
         
         guard token != nil else {
@@ -103,51 +101,26 @@ class FacebookAuthentication {
 //    }
 //    
     
-    // Normal no  login (you can't publish with that)
-    class func loginWithFacebookIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) {
-        if FBSDKAccessToken.currentAccessToken() == nil {
+    class func authenticate(withPublishRights wpr: Bool, fromViewController: UIViewController, and: LoginResult->()) {
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+        
+        FBSDKLoginManager().logInWithReadPermissions(wpr ? ["publish_actions"] : nil, fromViewController: fromViewController) {
+            (result, error) -> Void in
             
-            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: fromViewController) {
-                (result, error) -> Void in
-                
-                if error != nil {
-                    and(LoginResult.FB_PROVIDER_FAIL)
-                }
-                else if result.isCancelled {
-                    and(LoginResult.FB_LOGIN_CANCELED)
-                }
-                else {
-                    and(LoginResult.FB_LOGIN_SUCCESS)
-                }
+            if error != nil {
+                and(LoginResult.FB_PROVIDER_FAIL)
             }
-        }
-        else {
-            and(LoginResult.FB_LOGIN_SUCCESS)
+            else if result.isCancelled {
+                and(LoginResult.FB_LOGIN_CANCELED)
+            }
+            else {
+                and(LoginResult.FB_LOGIN_SUCCESS)
+            }
         }
     }
     
-    // Login with publish permissions. needs facebook review
-    class func loginWithFacebookWithPublishRightsIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) {
-        
-        if FBSDKAccessToken.currentAccessToken() == nil || !FBSDKAccessToken.currentAccessToken().hasGranted("publish_actions") {
-            
-            FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: fromViewController) {
-                (result, error) -> Void in
-                
-                if error != nil {
-                    and(LoginResult.FB_PROVIDER_FAIL)
-                }
-                else if result.isCancelled {
-                    and(LoginResult.FB_LOGIN_CANCELED)
-                }
-                else {
-                    and(LoginResult.FB_LOGIN_SUCCESS)
-                }
-            }
-        }
-        else {
-            and(LoginResult.FB_LOGIN_SUCCESS)
-        }
-    }
+    class func loginWithFacebookIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) { fatalError()  }
+
+    class func loginWithFacebookWithPublishRightsIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) { fatalError()  }
 }
 

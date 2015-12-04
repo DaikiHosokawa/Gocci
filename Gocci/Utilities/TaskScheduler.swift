@@ -8,7 +8,7 @@
 
 import Foundation
 
-var TaskScheduler = SingletonTaskScheduler()
+let TaskScheduler = SingletonTaskScheduler()
 
 // Swift does not support reflection yet. So we either have to hack with NSClassFromString() which does
 // Sound a little it meh or we provide this automatic casting table...

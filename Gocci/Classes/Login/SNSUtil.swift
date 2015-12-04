@@ -68,9 +68,6 @@ class SNSUtilSingelton
                 print("=== Twitter avatar: \(picurl)")
                 print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
                 
-                NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
-                
-                
                 APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
                     token: FHSTwitterEngine.sharedEngine().cognitoFormat(),
                     profilePictureURL: picurl ?? "none",
@@ -126,7 +123,6 @@ class SNSUtilSingelton
                 print("=== FBID: \(fbid)")
                 
                 let picurl = "http://graph.facebook.com/\(fbid)/picture?width=640&height=640"
-                NSUserDefaults.standardUserDefaults().setValue(picurl, forKey: "avatarLink")
                 
                 APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING, token: token, profilePictureURL: picurl, handler:
                     {
@@ -164,9 +160,9 @@ class SNSUtilSingelton
                 if code == NetOpResult.NETOP_SUCCESS {
                     
                     // TODO dirty implementation. Fix this one day
-                    let uid: String = Util.getUserDefString("user_id")!
-                    let iid: String = Util.getUserDefString("iid")!
-                    let tok: String = Util.getUserDefString("token")!
+                    let uid: String = Persistent.user_id!
+                    let iid: String = Persistent.identity_id!
+                    let tok: String = Persistent.cognito_token!
                     
                     AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
                         andThen(LoginResult.SNS_LOGIN_SUCCESS)

@@ -119,6 +119,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)_reloadNotice:(NSArray *)result
 {
+    // User saw his new messages, remove icon badge
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    
     NSMutableArray *tempNotices = [NSMutableArray arrayWithCapacity:0];
     notice_category = [NSMutableArray arrayWithCapacity:0];
     post_id = [NSMutableArray arrayWithCapacity:0];

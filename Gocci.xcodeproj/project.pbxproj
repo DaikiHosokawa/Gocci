@@ -25,7 +25,6 @@
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		954A9B481C0C380C00D415A0 /* HeatMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954A9B471C0C380C00D415A0 /* HeatMapViewController.m */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
-		9550DA0D1BF83E4C00430942 /* GUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D91BF83E4B00430942 /* GUser.m */; };
 		9550DA0E1BF83E4C00430942 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DB1BF83E4B00430942 /* Notice.m */; };
 		9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DD1BF83E4B00430942 /* Restaurant.m */; };
 		9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DF1BF83E4B00430942 /* TimelinePost.m */; };
@@ -312,6 +311,8 @@
 		980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
 		980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
 		980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986B01BFF3FDA009BD0E3 /* Toast.swift */; };
+		981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */; };
+		981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */; };
 		981979AE1C0458B000EFFC8F /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AD1C0458B000EFFC8F /* OverlayWindow.swift */; };
 		981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */; };
 		981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */; };
@@ -399,8 +400,6 @@
 		954A9B471C0C380C00D415A0 /* HeatMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeatMapViewController.m; sourceTree = "<group>"; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		9550D7D71BF83E4B00430942 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
-		9550D7D81BF83E4B00430942 /* GUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUser.h; sourceTree = "<group>"; };
-		9550D7D91BF83E4B00430942 /* GUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUser.m; sourceTree = "<group>"; };
 		9550D7DA1BF83E4B00430942 /* Notice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notice.h; sourceTree = "<group>"; };
 		9550D7DB1BF83E4B00430942 /* Notice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notice.m; sourceTree = "<group>"; };
 		9550D7DC1BF83E4B00430942 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -858,11 +857,13 @@
 		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
 		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
 		9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReAuthFilterHack.swift; sourceTree = "<group>"; };
+		9805CA991C0EEA9300094858 /* ToDo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ToDo.md; sourceTree = "<group>"; };
 		9809869F1BFF0AD7009BD0E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utilities/Extensions.swift; sourceTree = "<group>"; };
 		980986A01BFF0AD7009BD0E3 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistent.swift; path = Utilities/Persistent.swift; sourceTree = "<group>"; };
 		980986A11BFF0AD7009BD0E3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Utilities/Util.swift; sourceTree = "<group>"; };
 		980986AF1BFF3FDA009BD0E3 /* Pop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pop.swift; path = Utilities/Pop.swift; sourceTree = "<group>"; };
 		980986B01BFF3FDA009BD0E3 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Utilities/Toast.swift; sourceTree = "<group>"; };
+		9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		981979AD1C0458B000EFFC8F /* OverlayWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayWindow.swift; path = Utilities/OverlayWindow.swift; sourceTree = "<group>"; };
 		981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskScheduler.swift; path = Utilities/TaskScheduler.swift; sourceTree = "<group>"; };
 		981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTaskScheduler.swift; sourceTree = "<group>"; };
@@ -1015,8 +1016,6 @@
 			children = (
 				9550D7D61BF83E4B00430942 /* EveryPost.h */,
 				9550D7D71BF83E4B00430942 /* EveryPost.m */,
-				9550D7D81BF83E4B00430942 /* GUser.h */,
-				9550D7D91BF83E4B00430942 /* GUser.m */,
 				9550D7DA1BF83E4B00430942 /* Notice.h */,
 				9550D7DB1BF83E4B00430942 /* Notice.m */,
 				9550D7DC1BF83E4B00430942 /* Restaurant.h */,
@@ -1578,8 +1577,8 @@
 				981A93511BFEF3CA007B3BF6 /* Network.swift */,
 				9550D9131BF83E4B00430942 /* ServiceUtil.swift */,
 				9550D90B1BF83E4B00430942 /* Amazon */,
-				9550D90D1BF83E4B00430942 /* Facebook */,
 				9550D9101BF83E4B00430942 /* Gocci */,
+				9550D90D1BF83E4B00430942 /* Facebook */,
 				9550D9141BF83E4B00430942 /* Twitter */,
 			);
 			path = Services;
@@ -1742,6 +1741,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9811245E1C0F02E20055F2A7 /* SwiftKeychainWrapper */,
 				95FD92901C0D48DA00D822E8 /* SGActionView */,
 				98B1FCEF1C06D5B9006CA013 /* Reachability */,
 				950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */,
@@ -2127,6 +2127,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		9811245E1C0F02E20055F2A7 /* SwiftKeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */,
+			);
+			path = SwiftKeychainWrapper;
+			sourceTree = "<group>";
+		};
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2162,6 +2170,7 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
+				9805CA991C0EEA9300094858 /* ToDo.md */,
 				987E51EB1BF9C32900339285 /* Debug */,
 				9550D7D31BF83E4B00430942 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
@@ -2422,6 +2431,7 @@
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
+				981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 			);
@@ -2506,6 +2516,7 @@
 				9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */,
 				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
+				981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */,
 				9550DA141BF83E4C00430942 /* MoviePlayerManager.m in Sources */,
 				9550DB1F1BF83E4C00430942 /* UIImageView+AFNetworking.m in Sources */,
 				9550DA151BF83E4C00430942 /* AppDelegate.m in Sources */,
@@ -2572,7 +2583,6 @@
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
 				950593871BFB19E600328449 /* main.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,
-				9550DA0D1BF83E4C00430942 /* GUser.m in Sources */,
 				9550DAF71BF83E4C00430942 /* MKAnnotationView+WebCache.m in Sources */,
 				9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */,
 				9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */,

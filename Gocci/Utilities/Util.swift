@@ -30,7 +30,10 @@ import UIKit
 
 
 
+
 @objc class Util : NSObject {
+    
+
     
     class func createTaskThatWillEvenRunIfTheAppIsPutInBackground(id: String, queue: dispatch_queue_t, task: ()->(), expirationHandler: ()->()) -> ()->() {
         
@@ -72,7 +75,7 @@ import UIKit
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
     class func dirtyBackEndSignUpWithUserDefData() -> AWSTask {
         return AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
-            AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+            AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
             return nil
         })
     }
@@ -86,18 +89,18 @@ import UIKit
     class func getUserDefString(key:String) -> String? {
         return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
     }
-    
-    class func setUserDefString(key:String, value:String) {
-        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-    
-    class func setUserDefStrings(pairs: [String: String]) {
-        for (k, v) in pairs {
-            NSUserDefaults.standardUserDefaults().setValue(v, forKey: k )
-        }
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
+//
+//    class func setUserDefString(key:String, value:String) {
+//        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
+//        NSUserDefaults.standardUserDefaults().synchronize()
+//    }
+//    
+//    class func setUserDefStrings(pairs: [String: String]) {
+//        for (k, v) in pairs {
+//            NSUserDefaults.standardUserDefaults().setValue(v, forKey: k )
+//        }
+//        NSUserDefaults.standardUserDefaults().synchronize()
+//    }
     
     class func thisKillsTheFacebook() {
         let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
@@ -117,16 +120,6 @@ import UIKit
         UIAlertView.init(title: title, message: msg, delegate: nil, cancelButtonTitle: buttonText).show()
     }
     
-    class func setBadgeNumber(numberOfNewMessages: Int)
-    {
-        // TODO I don"t see a reason this has to got to user defaults, however it is read in over 20 places from ud,
-        // so this will be fixed in the next version of gocci
-        NSUserDefaults.standardUserDefaults().setInteger(numberOfNewMessages, forKey: "numberOfNewMessages")
-        
-        if numberOfNewMessages > 0 {
-            UIApplication.sharedApplication().applicationIconBadgeNumber = numberOfNewMessages
-        }
-    }
     
     class func randomKanjiStringWithLength(len : Int) -> String {
         var res: [Character] = []
@@ -175,7 +168,7 @@ import UIKit
         
         //return generateFakeDeviceID()
         
-        let regid = NSUserDefaults.standardUserDefaults().stringForKey("register_id")
+        let regid = Persistent.device_token
         
         // Only Fake IDs in the simulator
         #if arch(i386) || arch(x86_64)
@@ -202,16 +195,6 @@ import UIKit
     class func documentsDirectory() -> String {
         let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         return f.first ?? "shouldNeverHappen"
-    }
-    
-    class func removeAccountSpecificDataFromUserDefaults()
-    {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("user_id")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("profile_img")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("iid")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("badge_num")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
     }
     
     class func getInchString() -> String
