@@ -17,4 +17,8 @@ import Foundation
 
     }
     
+    class func showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController vc: UIViewController, onSuccess: TwitterAuthentication.Token->()) {
+        TwitterAuthentication.showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController: vc, onSuccess: onSuccess)
+    }
+    
 }

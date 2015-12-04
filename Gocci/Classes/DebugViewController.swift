@@ -92,10 +92,10 @@ class DebugViewController : UIViewController {
 //                hideAgain()
 //            }
             TwitterAuthentication.authenticate(currentViewController: viewController,
-                onSuccess: { (token) -> () in
+                errorHandler: {
                     hideAgain()
                 },
-                onFailure: {
+                onSuccess: { (token) -> () in
                     hideAgain()
                 }
             )

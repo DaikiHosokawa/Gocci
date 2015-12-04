@@ -8,18 +8,6 @@
 
 import Foundation
 
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-//https://dev.twitter.com/rest/reference/get/account/verify_credentials
-
-
 class TwitterAuthentication {
     
     enum LoginResult {
@@ -69,57 +57,45 @@ class TwitterAuthentication {
         )
     }
     
+    class func showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController vc: UIViewController, onSuccess: Token->()) {
+        authenticadedAndReadyToUse { success in
+            if !success {
+                authenticate(currentViewController: vc, errorHandler: {}) { onSuccess($0) }
+            }
+        }
+    }
+    
     
     // class disconnectFromCognito
     
-//    func loginWithTwitter(currentViewController: UIViewController, andThen:(LoginResult)->Void)
-//    {
-//        let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler(
-//            {
-//                (success) -> Void in
-//                
-//                if !success {
-//                    andThen(LoginResult.SNS_PROVIDER_FAIL)
-//                    return
-//                }
-//                
-//                let username = FHSTwitterEngine.sharedEngine().authenticatedUsername
-//                let pic = FHSTwitterEngine.sharedEngine().getProfileImageURLStringForUsername(username, andSize: FHSTwitterEngineImageSizeOriginal)
-//                let token = FHSTwitterEngine.sharedEngine().cognitoFormat()
-//                print("=== Twitter name:   \(username)")
-//                print("=== Twitter auth:   \(FHSTwitterEngine.sharedEngine().authenticatedID)")
-//                print("=== Twitter avatar: \(pic)")
-//                print("=== Cognito format: \(FHSTwitterEngine.sharedEngine().cognitoFormat())")
-//                
-//                self.loginInWithProviderToken(TWITTER_PROVIDER_STRING, token: token, andThen: andThen)
-//                
-//        })
-//        
-//        currentViewController.presentViewController(vc, animated: true, completion: nil)
-//    }
+
     
-    class func authenticate(currentViewController cvc: UIViewController,
-        onSuccess: (token: Token)->(),
-        onFailure: ()->())
+    class func authenticate(currentViewController cvc: UIViewController, errorHandler: ()->(), onSuccess: Token->())
     {
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         
         let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler { success in
             
             guard success else {
-                onFailure()
+                errorHandler()
                 return
             }
             
             let key = FHSTwitterEngine.sharedEngine().getOAuthToken()
             let sec = FHSTwitterEngine.sharedEngine().getOAuthSecret()
             
-            Persistent.twitter_key = key
-            Persistent.twitter_secret = sec
-            
             token = Token(key: key, secret: sec)
             
-            onSuccess(token: token!)
+            authenticadedAndReadyToUse { success in
+                if success {
+                    Persistent.twitter_key = key
+                    Persistent.twitter_secret = sec
+                    onSuccess(token!)
+                }
+                else {
+                    errorHandler()
+                }
+            }
         }
         
         cvc.presentViewController(vc, animated: true, completion: nil)
