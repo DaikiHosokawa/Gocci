@@ -47,6 +47,14 @@
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
+#ifdef INDEVEL
+#define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp-test")
+#else
+#define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp")
+#endif
+
+
+
 //#ifdef INDEVEL
 //#define FACEBOOK_APP_ID (@"148392115499214")
 //#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")

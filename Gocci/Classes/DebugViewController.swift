@@ -50,7 +50,11 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        //TwitterAuthentication.showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController: self, onSuccess: {_ in print("worked")})
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+        
+        AWS2.uploadVideoToMovieBucket(videoURL, filename: "delete_me_two_sec__" + Util.randomAlphaNumericStringWithLength(10) + ".mp4")
+
+        
         return;
         
         // TODO
