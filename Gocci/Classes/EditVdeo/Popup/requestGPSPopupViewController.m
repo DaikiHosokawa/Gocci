@@ -10,6 +10,11 @@
 #import "STPopup.h"
 #import "SingleLineTextField.h"
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
+
+@interface requestGPSPopupViewController()<CLLocationManagerDelegate>
+
+@end
 
 @implementation requestGPSPopupViewController
 {
@@ -49,6 +54,9 @@
                action:@selector(hoge:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
+    
 }
 
 
@@ -56,13 +64,20 @@
     switch ([CLLocationManager authorizationStatus]) {
             
         case kCLAuthorizationStatusNotDetermined:
-            [locationManager requestWhenInUseAuthorization];
+            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [locationManager requestWhenInUseAuthorization];
+               } else {
+               [locationManager startUpdatingLocation];
+            }
             break;
             
         case kCLAuthorizationStatusAuthorizedAlways:
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            [locationManager startUpdatingLocation];
-            
+            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [locationManager requestWhenInUseAuthorization];
+            } else {
+                [locationManager startUpdatingLocation];
+            }
             break;
             
             //GPS request was denied

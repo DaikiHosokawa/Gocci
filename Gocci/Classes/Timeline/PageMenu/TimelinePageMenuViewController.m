@@ -21,18 +21,19 @@
 
 #import "requestGPSPopupViewController.h"
 
+#import "Swift.h"
+
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
-@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate>
+@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate,CAPSPageMenuDelegate>
 {
     NSString *_postID;
     NSString *_postUsername;
     NSString *_postRestname;
-    // ロケーションマネージャー
     CLLocationManager* locationManager;
 }
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
@@ -96,23 +97,42 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     [super viewDidLoad];
     
-    
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
-    // 画像を指定した生成例
-    UIBarButtonItem *heatmapBtn =
-    [[UIBarButtonItem alloc]
-     initWithImage:[UIImage imageNamed:@"ic_location_on_white.png"]  // 画像を指定
-     style:UIBarButtonItemStylePlain
-     target:self
-     action:@selector(goHeatmap)
-     ];
+    UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];  // ボタンにする画像を生成する
+    UIButton *btn = [[UIButton alloc]
+                      initWithFrame:CGRectMake(0, 0, 30, 30)];  // ボタンのサイズを指定する
+    [btn setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
+    UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:btn];
     
-    self.navigationItem.rightBarButtonItem = heatmapBtn;
+    
+    [btn addTarget:self
+            action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
+    
+    //右ナビゲーションアイテム(通知)の実装
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [customButton setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // BBBadgeBarButtonItemオブジェクトの作成
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    
+    self.barButton.badgeBGColor      = [UIColor whiteColor];
+    self.barButton.badgeTextColor    = color_custom;
+    self.barButton.badgeOriginX = 10;
+    self.barButton.badgeOriginY = 10;
+    
+    // バッジ内容の設定
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+
+
+    self.navigationItem.rightBarButtonItems =
+    [NSArray arrayWithObjects:button1, self.barButton, nil];
     
     RequestGPSViewController *vc0 = [[RequestGPSViewController alloc] init];
     vc0 = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
@@ -150,20 +170,15 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     CGRect rect_screen = [UIScreen mainScreen].bounds;
     
     
-    // launch CLLocationManager
     if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
         locationManager.delegate = self;
-        // 精度
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
         locationManager.distanceFilter = kCLDistanceFilterNone;
     }
     
     NSArray *controllerArray;
     
-    //GPS is ON
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[vc1,vc2, vc3];
         
     }
@@ -183,56 +198,50 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     }
     
     NSInteger count_item = 3;
-    CGFloat width_item = rect_screen.size.width / count_item; //幅
+    CGFloat width_item = rect_screen.size.width / count_item;
     NSDictionary *parameters = @{
-                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),	//選択マーク高さ default = 3.0
-                                 CAPSPageMenuOptionMenuItemSeparatorWidth : @(4.3),		//アイテム間隔 default = 0.5
-                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
-                                 CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
-                                 CAPSPageMenuOptionBottomMenuHairlineColor :  [UIColor blackColor],	//アンダーライン色
+                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),
+                                 CAPSPageMenuOptionMenuItemSeparatorWidth : @(4.3),
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],
+                                 CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],
+                                 CAPSPageMenuOptionBottomMenuHairlineColor :  [UIColor blackColor],
                                  CAPSPageMenuOptionSelectionIndicatorColor:
-                                     color_custom,		//選択マーク色
-                                 //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
-                                 CAPSPageMenuOptionMenuMargin : @(20.0),	// ???:default = 15.f
-                                 CAPSPageMenuOptionMenuHeight : @(40.0),	//メニュー高さ
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor :color_custom,	//選択時文字色
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor colorWithRed:40.0/255. green:40.0/255. blue:40.0/255. alpha:1.0],	//非選択文字色
-                                 CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
-                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(YES),	//角に丸みを付けるか？
-                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0],	//タイトルフォント
-                                 CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.1),	// ???:default = 0.2
-                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
-                                 //CAPSPageMenuOptionEnableHorizontalBounce : @(YES), // ???:default = YES
-                                 CAPSPageMenuOptionAddBottomMenuHairline : @(NO),	// ???:default = YES
-                                 //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth : @(NO),	// ???:default = NO
-                                 CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),	//アニメーション時間[ms] default = 500
-                                 //                               CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
-                                 //CAPSPageMenuOptionHideTopMenuBar : @(NO),//メニューを隠した状態にするか？
+                                     color_custom,
+                                 CAPSPageMenuOptionMenuMargin : @(20.0),
+                                 CAPSPageMenuOptionMenuHeight : @(40.0),
+                                    CAPSPageMenuOptionSelectedMenuItemLabelColor :color_custom,
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor colorWithRed:40.0/255. green:40.0/255. blue:40.0/255. alpha:1.0],
+                                 CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),
+                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(YES),
+                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0],                                 CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.1),
+                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),
+                                 CAPSPageMenuOptionAddBottomMenuHairline : @(NO),
+                                 CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),
                                  };
     
-    //PageMenu確保
-    // CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
     CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height);
+
     _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
                                                         frame:rect_pagemenu
                                                       options:parameters];
+     _pageMenu.delegate = self;
     
-    //サブビューとして追加
     [self.viewBasePageMenu addSubview:_pageMenu.view];
     
-    UIImage *img = [UIImage imageNamed:@"sort.png"];  // ボタンにする画像を生成する
-    UIButton *btn = [[UIButton alloc]
-                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];  // ボタンのサイズを指定する
-    [btn setBackgroundImage:img forState:UIControlStateNormal];
-    [btn addTarget:self
+    UIImage *image = [UIImage imageNamed:@"sort.png"];
+    UIButton *button = [[UIButton alloc]
+                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button addTarget:self
             action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    [self.view addSubview:button];
 }
 
 
 - (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {
     
     if ([controller conformsToProtocol:@protocol(SortableTimeLineSubView)]) {
+        
         self.currentVisibleSortableSubViewController = (UIViewController <SortableTimeLineSubView> *)controller;
         [[MoviePlayerManager sharedManager] stopMovie];
         [[MoviePlayerManager sharedManager] removeAllPlayers];
@@ -295,8 +304,8 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     else
         if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
         {
-            usersTableViewController_other  *user_otherVC = segue.destinationViewController;
-            user_otherVC.postUsername = _postUsername;
+            UserpageViewController  *userVC = segue.destinationViewController;
+            userVC.postUsername = _postUsername;
         }
         else
             if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
@@ -307,7 +316,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 }
 
 -(void)goHeatmap{
-    //GPS is ON
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
         [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
     }
@@ -326,5 +334,28 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     }
     
 }
+
+-(void)barButtonItemPressed:(id)sender{
+    
+    self.barButton.badgeValue = nil;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; 
+    [ud removeObjectForKey:@"numberOfNewMessages"];
+    
+    
+    if (!self.popover) {
+        NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
+        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+    }
+    
+    [self.popover presentPopoverFromRect:CGRectMake(
+                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
+                                  inView:self.barButton.customView
+                permittedArrowDirections:WYPopoverArrowDirectionUp
+                                animated:YES
+                                 options:WYPopoverAnimationOptionFadeWithScale];
+}
+
 
 @end

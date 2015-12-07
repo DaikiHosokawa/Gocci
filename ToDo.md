@@ -16,11 +16,53 @@ Needs Testing
 Daiki Hosokawa
 ==============
 
-- Add some tasks here...
+<Recorder>
 
--  
+-upload end-> timeline
 
--  
+-入力情報投稿後リセット
+
+-cancel->投稿cancel
+
+<Notification>
+
+-notification->commentのあとに戻れない
+
+-push message test
+
+-mypage/timelineにbadge numを添付
+
+<Action sheet>
+
+-Action sheet icon need
+
+<bottom bar>
+
+-bottom bar design
+
+-Analytics
+
+-Userpage(movie)
+
+-restaurantpage 再生問題
+
+<Other>
+
+-emptyview
+
+-ask Murata about API ver2
+
+-register id を使わない仕様
+
+-near timelineにdistanceを出す
+
+<Collaboration with wanke>
+
+-share(only twitter)->wanke’s advise need
+
+-permission Push notification
+
+
 
 
 Markus Wanke
