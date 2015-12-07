@@ -23,7 +23,7 @@
     if (self) {
         self.clipsToBounds = NO;
         
-        self.titleLabel.font = [UIFont systemFontOfSize:13];
+        self.titleLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:13];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self setTitle:title forState:UIControlStateNormal];
@@ -75,7 +75,7 @@
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        _titleLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:17];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = BaseMenuTextColor(self.style);
         [self addSubview:_titleLabel];

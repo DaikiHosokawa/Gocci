@@ -121,9 +121,9 @@
     {
         //UIColor *color_selected = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];
         
-        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f];
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f];
         //タブ選択時のフォントとカラー
-        UIColor *colorSelected = color_custom; //[UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+        UIColor *colorSelected = color_custom;
         NSDictionary *selectedAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorSelected};
         [[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
         //通常時のフォントとカラー
@@ -133,7 +133,6 @@
         
         //背景色
         [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
-       // [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
         [UITabBar appearance].translucent = NO;
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];

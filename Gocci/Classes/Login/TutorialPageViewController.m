@@ -25,8 +25,6 @@
 @interface TutorialPageViewController ()<CLLocationManagerDelegate,UIAlertViewDelegate>{
     //NSArray *pages;
     CGPoint originalCenter;
-    // ロケーションマネージャー
-    CLLocationManager* locationManager;
 }
 
 
@@ -104,17 +102,7 @@
     
     // safe center to return here after the keyboard has appeard
     self->originalCenter = self.view.center;
-    
-    // launch CLLocationManager
-    if(!locationManager){
-        locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
-        locationManager.delegate = self;
-        // 精度
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-    }
+   
     
 }
 
@@ -135,41 +123,17 @@
 
 
 - (void)registerUsernameClicked:(id)sender {
+  
     
-    
-    //GPS is ON
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
         if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
             self.registerButton.enabled = false;
             self.username.enabled = false;
             
             [self registerUsername:self.username.text];
         }
-      
-     //GPS is OFF
-    }
-    else {
-        switch ([CLLocationManager authorizationStatus]) {
-                
-            case kCLAuthorizationStatusNotDetermined:
-                [locationManager requestWhenInUseAuthorization];
-                break;
-                
-            case kCLAuthorizationStatusAuthorizedAlways:
-            case kCLAuthorizationStatusAuthorizedWhenInUse:
-                [locationManager startUpdatingLocation];
-                
-                break;
-                
-                //GPS request was denied
-            case kCLAuthorizationStatusDenied:
-            case kCLAuthorizationStatusRestricted:
-                NSLog(@"位置情報が許可されていません2");
-                UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
-                requestAgain.tag=121;
-                [requestAgain show];
-                break;
-        }
+        else {
+        UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+            [requestAgain show];
     }
 }
 
@@ -280,8 +244,6 @@
 
 
 
-
-
 -(void)closePopupView {
     self.popupView.hidden = YES;
 }
@@ -312,35 +274,6 @@
 - (IBAction)ReturnTutorial:(UIStoryboardSegue *)segue
 {
     NSLog(@"go back to tutorial");
-}
-
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    
-    
-    UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
-    requestAgain.tag=121;
-    
-    switch (status) {
-        case kCLAuthorizationStatusNotDetermined:
-            break;
-        case kCLAuthorizationStatusAuthorizedAlways:
-        case kCLAuthorizationStatusAuthorizedWhenInUse:
-#if TARGET_IPHONE_SIMULATOR
-            [locationManager startUpdatingLocation];
-            if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-                self.registerButton.enabled = false;
-                self.username.enabled = false;
-                
-                [self registerUsername:self.username.text];
-            }
-#endif
-            break;
-        case kCLAuthorizationStatusDenied:
-        case kCLAuthorizationStatusRestricted:
-            [requestAgain show];
-            break;
-    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

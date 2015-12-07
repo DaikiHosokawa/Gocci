@@ -60,6 +60,7 @@ static SCRecordSession *staticRecordSession;
 @property (weak, nonatomic) IBOutlet UIButton *retakeBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *reverseBtn;
+@property (weak, nonatomic) IBOutlet UIView *preview;
 
 @end
 
@@ -87,20 +88,19 @@ static SCRecordSession *staticRecordSession;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     _recorder = [SCRecorder recorder];
-    _recorder.captureSessionPreset = AVCaptureSessionPreset640x480;
+    _recorder.captureSessionPreset = [SCRecorderTools bestCaptureSessionPresetCompatibleWithAllDevices];
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
-    UIView *previewView = self.view;
+    _recorder.videoConfiguration.sizeAsSquare = YES;
+    UIView *previewView = self.preview;
     _recorder.previewView = previewView;
 
     self.focusView = [[SCRecorderToolsView alloc] initWithFrame:previewView.bounds];
     self.focusView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
-    [self.focusView addSubview:self.retakeBtn];
-    [self.focusView addSubview:self.reverseBtn];
     
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -390,6 +390,18 @@ static SCRecordSession *staticRecordSession;
 
 - (IBAction)onReverse:(id)sender {
     [_recorder switchCaptureDevices];
+}
+
+- (IBAction)onDelete:(id)sender {
+    
+    [self DeleteDraft];
+    /*
+}else {
+        UIAlertView *checkDelete  =[[UIAlertView alloc] initWithTitle:@"終了してよろしいですか？" message:@"撮影中の動画が削除されてしまいます" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        checkDelete.tag=121;
+        [checkDelete show];
+    }
+     */
 }
 
 - (void) handleStopButtonTapped:(id)sender {

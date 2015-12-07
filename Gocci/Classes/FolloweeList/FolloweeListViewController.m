@@ -10,7 +10,7 @@
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
-#import "usersTableViewController_other.h"
+#import "UserpageViewController.h"
 #import "APIClient.h"
 #import "Swift.h"
 
@@ -181,8 +181,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([segue.identifier isEqualToString:SEGUE_GO_PROFILE])
     {
         //ここでパラメータを渡す
-        usersTableViewController_other *users_otherVC = segue.destinationViewController;
-        users_otherVC.postUsername = _postUsername_with_profile;
+        UserpageViewController *userVC = segue.destinationViewController;
+        userVC.postUsername = _postUsername_with_profile;
     }
 }
 

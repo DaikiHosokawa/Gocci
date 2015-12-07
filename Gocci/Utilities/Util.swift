@@ -158,7 +158,7 @@ typealias Lol = Int
         #if arch(i386) || arch(x86_64)
             return regid ?? generateFakeDeviceID()
         #else
-            return regid ?? "CANT_DETERMINE_DEVICE_ID"
+            return regid ?? generateFakeDeviceID()
         #endif
     }
     
