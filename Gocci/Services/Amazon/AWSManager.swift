@@ -405,5 +405,34 @@ class AWSManager {
             return nil
         }
     }
+    
+    func uploadVideoToMovieBucket(vdeoFileURL: NSURL, filename: String) {
+        let tu = AWSS3TransferUtility.S3TransferUtilityForKey("gocci_up_north_east_1")!
+        
+        let uploadTask = tu.uploadFile(vdeoFileURL,
+            bucket: AWS_S3_VIDEO_UPLOAD_BUCKET,
+            key: filename,
+            contentType: "video/quicktime",
+            expression: nil,
+            completionHander: nil)
+            
+        uploadTask.continueWithBlock{ task in
+            if task.error != nil {
+                print("===============", task.error)
+            }
+            else if task.exception != nil {
+                print("===============", task.exception)
+            }
+            else {
+                print("=== upload success, result: ", task.result)
+                
+                let res: AWSS3TransferUtilityUploadTask = task.result
+                
+                res.
+            }
+            
+            return nil
+        }
+    }
 }
 

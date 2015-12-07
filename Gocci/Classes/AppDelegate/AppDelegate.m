@@ -54,6 +54,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+
+    NSArray * directoryContents =  [[NSFileManager defaultManager]
+                                    contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
+    
+    NSLog(@"Dict: %@", directoryContents);
+    
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
