@@ -75,9 +75,6 @@
     
     // load the view controllers in our pages array
     self.pages = [[NSMutableArray alloc] initWithObjects:page1, page2, page3, nil];
-#ifdef INDEVEL
-    // self.pages = [[NSMutableArray alloc] initWithObjects:page3, nil];
-#endif
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
@@ -158,10 +155,7 @@
 
 -(void)registerUsername:(NSString*)username {
     
-    NSLog(@"=== Trying to register with username: %@", username);
-    
     [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
-
     {
         if ( errorCode == NETOP_SUCCESS){
             [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];

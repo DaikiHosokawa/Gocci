@@ -19,6 +19,7 @@
 #import "BFPaperCheckbox.h"
 #import "FullScreenViewController.h"
 #import "UCZProgressView.h"
+#import "Swift.h"
 
 @interface EditVideoController ()<BFPaperCheckboxDelegate>{
     NSString * cheertag_update;
@@ -201,7 +202,7 @@
         NSString *rest_id = @"...";
         if ([appDelegate.indexTenmei length]>0) rest_id = appDelegate.indexTenmei;
         
-        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
         
         //TODO change post api client
         
@@ -221,7 +222,7 @@
                  
                  //S3 upload
                  //ファイル名+user_id形式
-                 NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"],[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"]];
+                 NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
                  
                  NSLog(@"movieFileForS3:%@",movieFileForS3);
                  
@@ -421,17 +422,22 @@
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([delegate.stringTenmei length]>0) {
         _restName.text = delegate.stringTenmei;
-    }else{
+    }
+    else{
         _restName.text = @"未入力";
     }
+    
     if ([delegate.stringCategory length]>0){
         _category.text =  delegate.stringCategory;
-    }else{
+    }
+    else{
         _category.text = @"未入力";
     }
+    
     if ([delegate.valueKakaku length]>0){
         _value.text = [delegate.valueKakaku stringByAppendingString:@"円"];
-    }else{
+    }
+    else{
         _value.text = @"未入力";
     }
     

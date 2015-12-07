@@ -30,8 +30,8 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "パスワードを設定する"
-                        $0.detailTextLabel?.text = Persistent.passwordWasSetByTheUser ? "" : "set an account password"
-                        $0.detailTextLabel?.textColor = Persistent.passwordWasSetByTheUser ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "" : "set an account password"
+                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.greenColor() : UIColor.redColor()
                     },
                     {
                         let popover = ConfirmationPopover(from: self, position: $0.frame, widthRatio:90, heightRatio:30)
@@ -43,7 +43,7 @@ class SettingsTableViewController: UITableViewController
             [
                 (
                     {
-                        let isCon = Persistent.userIsConnectedViaFacebook
+                        let isCon = Persistent.user_is_connected_via_facebook
                         $0.textLabel?.text = "Facebook"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
@@ -52,7 +52,7 @@ class SettingsTableViewController: UITableViewController
                 ),
                 (
                     {
-                        let isCon = Persistent.userIsConnectedViaTwitter
+                        let isCon = Persistent.user_is_connected_via_twitter
                         $0.textLabel?.text = "Twitter"
                         $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
                         $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
@@ -108,12 +108,12 @@ class SettingsTableViewController: UITableViewController
     
     func handleTwitter(cell: UITableViewCell)
     {
-        if Persistent.userIsConnectedViaTwitter {
+        if Persistent.user_is_connected_via_twitter {
             let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
             popup.confirmationText = "Do you really want to disconnect your account from Twitter?"
             popup.onConfirm = {
                 // TODO disconnect call
-                Persistent.userIsConnectedViaTwitter = false
+                Persistent.user_is_connected_via_twitter = false
                 cell.detailTextLabel?.text = "not connected :("
                 cell.detailTextLabel?.textColor = UIColor.redColor()
             }
@@ -122,24 +122,33 @@ class SettingsTableViewController: UITableViewController
         }
         
         let onSuccess = {
-            Persistent.userIsConnectedViaTwitter = true
+            Persistent.user_is_connected_via_twitter = true
             cell.detailTextLabel?.text = "connected!"
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
-        
-        SNSUtil.connectWithTwitter(currentViewController:self) { (result) -> Void in
-            switch result {
-            case .SNS_CONNECTION_SUCCESS:
-                onSuccess()
-                //Util.popup("Twitter連携が完了しました")
-            case .SNS_CONNECTION_UN_AUTH:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_CANCELED:
-                break
-            case .SNS_PROVIDER_FAIL:
+
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
                 Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    onSuccess()
+                }
+                else {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
             }
         }
     }
@@ -147,12 +156,12 @@ class SettingsTableViewController: UITableViewController
     
     func handleFacebook(cell: UITableViewCell)
     {
-        if Persistent.userIsConnectedViaFacebook {
+        if Persistent.user_is_connected_via_facebook {
             let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
             popup.confirmationText = "Do you really want to disconnect your account from Facebook?"
             popup.onConfirm = {
                 // TODO disconnect call
-                Persistent.userIsConnectedViaFacebook = false
+                Persistent.user_is_connected_via_facebook = false
                 cell.detailTextLabel?.text = "not connected :("
                 cell.detailTextLabel?.textColor = UIColor.redColor()
             }
@@ -161,24 +170,33 @@ class SettingsTableViewController: UITableViewController
         }
         
         let onSuccess = {
-            Persistent.userIsConnectedViaFacebook = true
+            Persistent.user_is_connected_via_facebook = true
             cell.detailTextLabel?.text = "connected!"
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
         
-        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
-            switch result {
-            case .SNS_CONNECTION_SUCCESS:
-                onSuccess()
-                //Util.popup("Facebook連携が完了しました")
-            case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_UN_AUTH:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_CANCELED:
-                break
-            case .SNS_PROVIDER_FAIL:
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
                 Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    onSuccess()
+                }
+                else {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
             }
         }
     }
@@ -294,7 +312,7 @@ class PasswordPopup: UIViewController, UITextFieldDelegate {
         else {
             APIClient.setPassword(textField.text) { (result, code, error) -> Void in
                 if code == 200 {
-                    Persistent.passwordWasSetByTheUser = true
+                    Persistent.password_was_set_by_the_user = true
                     textField.resignFirstResponder()
                     //self.popupController?.pushViewController(CompletePopup(), animated: true)
                 }

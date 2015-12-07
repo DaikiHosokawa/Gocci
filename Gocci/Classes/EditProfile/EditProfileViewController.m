@@ -17,6 +17,8 @@
 #import "STPopup.h"
 #import "CompletePopup.h"
 
+#import "Swift.h"
+
 @interface EditProfileViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate  >
 {
     
@@ -35,15 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"username:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]);
-    username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    username.text = Persistent.user_name;
     username.delegate = self;
     
-    NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]];
+    NSURL *url = [NSURL URLWithString:Persistent.user_profile_image_url];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [[UIImage alloc] initWithData:data];
     userpicture.image = image;
-    NSLog(@"picturein:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"avatarLink"]);
     userpicture.userInteractionEnabled = YES;
     userpicture.tag = 101;
     
@@ -118,7 +118,7 @@
         NSLog(@"変更候補:%@",username.text);
         [textField resignFirstResponder];
     }else{
-        username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+        username.text = Persistent.user_name;
         [textField resignFirstResponder];
     }
     
@@ -154,8 +154,8 @@
         NSString *nowString = [formatter stringFromDate:now];
         
         //ファイル名+user_id形式
-        NSString *imgFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"],nowString];
-        NSString *imgFileForS3 = [NSString stringWithFormat:@"%@_%@.png",[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"],nowString];
+        NSString *imgFileForAPI = [NSString stringWithFormat:@"%@_%@",Persistent.user_id, nowString];
+        NSString *imgFileForS3 = [NSString stringWithFormat:@"%@_%@.png", Persistent.user_id, nowString];
         
         [APIClient updateProfileBoth:username.text profile_img:imgFileForAPI handler:^(id result, NSUInteger code, NSError *error)
          {
@@ -169,12 +169,11 @@
              }
              
              //API success case
-             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
              NSString *response_user = [result objectForKey:@"username"];
              NSString *response_img = [result objectForKey:@"profile_img"];
              if(![response_user isEqualToString:@"変更に失敗しました"])
              {
-                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+                 Persistent.user_name = [result objectForKey:@"username"];
              }
              
              
@@ -194,7 +193,8 @@
                      
                      if (![response_img isEqualToString:@"変更に失敗しました"])
                      {
-                         [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
+                         Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+                         
                          [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
                          
                      }
@@ -238,20 +238,18 @@
                  return;
              }
              //API success case
-             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-             
              NSString *response_user = [result objectForKey:@"username"];
              NSString *response_img = [result objectForKey:@"profile_img"];
              
              if(![response_user isEqualToString:@"変更に失敗しました"])
              {
-                 [ud setValue:[result objectForKey:@"username"] forKey:@"username"];
+                 Persistent.user_name = [result objectForKey:@"username"];
                  [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
              }
              else if (![response_img isEqualToString:@"変更に失敗しました"])
              {
-                 [ud setValue:[result objectForKey:@"profile_img"] forKey:@"avatarLink"];
-                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
+                 Persistent.user_profile_image_url = [result objectForKey:@"profile_img"];
+                 [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
              }
          }];
         

@@ -204,6 +204,11 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
         
+        // TODO This is a hack so it does not crash. I have no idea what this code does so it should be fixed in a proper way
+        if (!nextViewController) {
+            return;
+        }
+        
         [self addChildViewController:nextViewController];
         nextViewController.view.frame = CGRectMake(changeView.bounds.origin.x, changeView.bounds.origin.y, changeView.bounds.size.width, changeView.bounds.size.height+9);
         [changeView addSubview:nextViewController.view];
@@ -219,10 +224,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 }
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];
     self.navigationItem.rightBarButtonItem = self.barButton;
     
 }
@@ -290,7 +293,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)_fetchProfile
 {
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
         
         if (code != 200 || error != nil) {
             return;

@@ -24,7 +24,6 @@
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
-		9550DA0D1BF83E4C00430942 /* GUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D91BF83E4B00430942 /* GUser.m */; };
 		9550DA0E1BF83E4C00430942 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DB1BF83E4B00430942 /* Notice.m */; };
 		9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DD1BF83E4B00430942 /* Restaurant.m */; };
 		9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DF1BF83E4B00430942 /* TimelinePost.m */; };
@@ -71,7 +70,6 @@
 		9550DA391BF83E4C00430942 /* LifelogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D83D1BF83E4B00430942 /* LifelogViewController.m */; };
 		9550DA3A1BF83E4C00430942 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */; };
 		9550DA3B1BF83E4C00430942 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */; };
-		9550DA3C1BF83E4C00430942 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8411BF83E4B00430942 /* SNSUtil.swift */; };
 		9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8421BF83E4B00430942 /* SplashViewController.swift */; };
 		9550DA3E1BF83E4C00430942 /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8441BF83E4B00430942 /* TutorialPageViewController.m */; };
 		9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8471BF83E4B00430942 /* CustomTableViewCell.m */; };
@@ -309,11 +307,15 @@
 		9801BF131C0BDB8D001F4D3C /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
 		9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		9801BF171C0C6EE3001F4D3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF161C0C6EE3001F4D3C /* Bridge.swift */; };
+		9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */; };
+		9805CA961C0E9B9900094858 /* ReAuthFilterHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */; };
 		980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809869F1BFF0AD7009BD0E3 /* Extensions.swift */; };
 		980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A01BFF0AD7009BD0E3 /* Persistent.swift */; };
 		980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986A11BFF0AD7009BD0E3 /* Util.swift */; };
 		980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986AF1BFF3FDA009BD0E3 /* Pop.swift */; };
 		980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980986B01BFF3FDA009BD0E3 /* Toast.swift */; };
+		981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */; };
+		981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */; };
 		981979AE1C0458B000EFFC8F /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AD1C0458B000EFFC8F /* OverlayWindow.swift */; };
 		981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */; };
 		981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */; };
@@ -399,8 +401,6 @@
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
 		9550D7D71BF83E4B00430942 /* EveryPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryPost.m; sourceTree = "<group>"; };
-		9550D7D81BF83E4B00430942 /* GUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUser.h; sourceTree = "<group>"; };
-		9550D7D91BF83E4B00430942 /* GUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUser.m; sourceTree = "<group>"; };
 		9550D7DA1BF83E4B00430942 /* Notice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notice.h; sourceTree = "<group>"; };
 		9550D7DB1BF83E4B00430942 /* Notice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notice.m; sourceTree = "<group>"; };
 		9550D7DC1BF83E4B00430942 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -484,7 +484,6 @@
 		9550D83D1BF83E4B00430942 /* LifelogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogViewController.m; sourceTree = "<group>"; };
 		9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReLoginViewController.swift; sourceTree = "<group>"; };
 		9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSConnectViewController.swift; sourceTree = "<group>"; };
-		9550D8411BF83E4B00430942 /* SNSUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSUtil.swift; sourceTree = "<group>"; };
 		9550D8421BF83E4B00430942 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9550D8431BF83E4B00430942 /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
 		9550D8441BF83E4B00430942 /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
@@ -867,11 +866,14 @@
 		9801BF121C0BDB8D001F4D3C /* TwitterTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTasks.swift; sourceTree = "<group>"; };
 		9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTasks.swift; sourceTree = "<group>"; };
 		9801BF161C0C6EE3001F4D3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Utilities/Bridge.swift; sourceTree = "<group>"; };
+		9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReAuthFilterHack.swift; sourceTree = "<group>"; };
+		9805CA991C0EEA9300094858 /* ToDo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ToDo.md; sourceTree = "<group>"; };
 		9809869F1BFF0AD7009BD0E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Utilities/Extensions.swift; sourceTree = "<group>"; };
 		980986A01BFF0AD7009BD0E3 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistent.swift; path = Utilities/Persistent.swift; sourceTree = "<group>"; };
 		980986A11BFF0AD7009BD0E3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Utilities/Util.swift; sourceTree = "<group>"; };
 		980986AF1BFF3FDA009BD0E3 /* Pop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pop.swift; path = Utilities/Pop.swift; sourceTree = "<group>"; };
 		980986B01BFF3FDA009BD0E3 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Utilities/Toast.swift; sourceTree = "<group>"; };
+		9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		981979AD1C0458B000EFFC8F /* OverlayWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayWindow.swift; path = Utilities/OverlayWindow.swift; sourceTree = "<group>"; };
 		981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskScheduler.swift; path = Utilities/TaskScheduler.swift; sourceTree = "<group>"; };
 		981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTaskScheduler.swift; sourceTree = "<group>"; };
@@ -1015,8 +1017,6 @@
 			children = (
 				9550D7D61BF83E4B00430942 /* EveryPost.h */,
 				9550D7D71BF83E4B00430942 /* EveryPost.m */,
-				9550D7D81BF83E4B00430942 /* GUser.h */,
-				9550D7D91BF83E4B00430942 /* GUser.m */,
 				9550D7DA1BF83E4B00430942 /* Notice.h */,
 				9550D7DB1BF83E4B00430942 /* Notice.m */,
 				9550D7DC1BF83E4B00430942 /* Restaurant.h */,
@@ -1032,6 +1032,7 @@
 			children = (
 				9550D7E31BF83E4B00430942 /* APIClient.h */,
 				9550D7E41BF83E4B00430942 /* APIClient.m */,
+				9805CA951C0E9B9900094858 /* ReAuthFilterHack.swift */,
 				9550D7E51BF83E4B00430942 /* APIClientLimits.h */,
 				9550D7E61BF83E4B00430942 /* LocationClient.h */,
 				9550D7E71BF83E4B00430942 /* LocationClient.m */,
@@ -1268,7 +1269,6 @@
 			children = (
 				9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */,
 				9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */,
-				9550D8411BF83E4B00430942 /* SNSUtil.swift */,
 				9550D8421BF83E4B00430942 /* SplashViewController.swift */,
 				9550D8431BF83E4B00430942 /* TutorialPageViewController.h */,
 				9550D8441BF83E4B00430942 /* TutorialPageViewController.m */,
@@ -1474,8 +1474,8 @@
 				981A93511BFEF3CA007B3BF6 /* Network.swift */,
 				9550D9131BF83E4B00430942 /* ServiceUtil.swift */,
 				9550D90B1BF83E4B00430942 /* Amazon */,
-				9550D90D1BF83E4B00430942 /* Facebook */,
 				9550D9101BF83E4B00430942 /* Gocci */,
+				9550D90D1BF83E4B00430942 /* Facebook */,
 				9550D9141BF83E4B00430942 /* Twitter */,
 			);
 			path = Services;
@@ -1638,6 +1638,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9811245E1C0F02E20055F2A7 /* SwiftKeychainWrapper */,
 				95FD92901C0D48DA00D822E8 /* SGActionView */,
 				98B1FCEF1C06D5B9006CA013 /* Reachability */,
 				950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */,
@@ -2156,6 +2157,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		9811245E1C0F02E20055F2A7 /* SwiftKeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9811245F1C0F02E20055F2A7 /* KeychainWrapper.swift */,
+			);
+			path = SwiftKeychainWrapper;
+			sourceTree = "<group>";
+		};
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2191,6 +2200,7 @@
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
+				9805CA991C0EEA9300094858 /* ToDo.md */,
 				987E51EB1BF9C32900339285 /* Debug */,
 				9550D7D31BF83E4B00430942 /* Gocci */,
 				FF54EFE119149A1800025DC8 /* Frameworks */,
@@ -2447,9 +2457,11 @@
 				9801BF0F1C080677001F4D3C /* Persistent.swift in Sources */,
 				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
 				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
+				9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
+				981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 			);
@@ -2482,6 +2494,7 @@
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
 				9550DAD51BF83E4C00430942 /* AFHTTPSessionManager.m in Sources */,
 				9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */,
+				9805CA961C0E9B9900094858 /* ReAuthFilterHack.swift in Sources */,
 				9550DA6C1BF83E4C00430942 /* SCFilter.m in Sources */,
 				9550DA6F1BF83E4C00430942 /* SCImageView.m in Sources */,
 				9550DB191BF83E4C00430942 /* UIColor+HexString.m in Sources */,
@@ -2532,6 +2545,7 @@
 				9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */,
 				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
+				981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */,
 				9550DA141BF83E4C00430942 /* MoviePlayerManager.m in Sources */,
 				9550DB1F1BF83E4C00430942 /* UIImageView+AFNetworking.m in Sources */,
 				9550DA151BF83E4C00430942 /* AppDelegate.m in Sources */,
@@ -2602,7 +2616,6 @@
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
 				950593871BFB19E600328449 /* main.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,
-				9550DA0D1BF83E4C00430942 /* GUser.m in Sources */,
 				9550DAF71BF83E4C00430942 /* MKAnnotationView+WebCache.m in Sources */,
 				9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */,
 				9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */,
@@ -2670,7 +2683,6 @@
 				9550DB181BF83E4C00430942 /* UCZProgressView.m in Sources */,
 				9550DAF11BF83E4C00430942 /* JTCircleView.m in Sources */,
 				9550DA8C1BF83E4C00430942 /* TimelineCell.m in Sources */,
-				9550DA3C1BF83E4C00430942 /* SNSUtil.swift in Sources */,
 				9550DAD91BF83E4C00430942 /* AFURLRequestSerialization.m in Sources */,
 				9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */,
 				98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */,

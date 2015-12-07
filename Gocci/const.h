@@ -15,10 +15,10 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-//define START_WITH_DEBUG_SCREEN
+#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
-// NSUserDefaults will be deleted everytime the app starts
+// Userdata will be deleted everytime the app starts
 //#define FRESH_START
 
 // #######################################################################################

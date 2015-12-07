@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "UserpageViewController.h"
 #import "APIClient.h"
+#import "Swift.h"
 
 @interface FollowListViewController ()
 
@@ -62,7 +63,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 -(void)perseJson
 {
-    [APIClient FollowList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient FollowList:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
      
         LOG(@"resultComment=%@", result);
         

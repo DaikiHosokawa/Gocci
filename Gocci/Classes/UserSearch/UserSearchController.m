@@ -8,6 +8,7 @@
 
 #import "UserSearchController.h"
 #import "UserSearchTableViewCell.h"
+#import "Swift.h"
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -127,7 +128,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     //search API
     /*
-    [APIClient User:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient User:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         if (code != 200 || error != nil) {

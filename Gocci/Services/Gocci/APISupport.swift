@@ -17,16 +17,12 @@ func actualCode() {
     
     let req = API3.auth.signup()
     
-    req.parameters.model = "iPhone9"
-    req.parameters.os = "iOS"
-    req.parameters.register_id = Util.generateFakeDeviceID()
     req.parameters.username = "Peter Schmidt"
-    req.parameters.ver = "6"
+
+    req.on_ERROR_USERNAME_ALREADY_REGISTERD { print( $0, ": ", $1) }
     
-    //req.on_ERROR_IDENTITY_ID_NOT_REGISTERD { print( $0, ": ", $1) }
-    
-    req.perform { (payload) -> () in
-        print(payload.username)
+    req.perform { payload in
+        print(payload.identity_id)
     }
     
     //
@@ -50,6 +46,7 @@ func actualCode() {
 
 class APISupport {
     
+    // TODO remove this, is now a string extension
     /// Simple String regex matching helper
     class func matches(s:String, re:String) -> Bool {
         let regex = try! NSRegularExpression(pattern: re, options: [])
