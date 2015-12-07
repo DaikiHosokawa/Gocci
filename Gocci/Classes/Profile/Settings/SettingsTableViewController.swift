@@ -126,20 +126,29 @@ class SettingsTableViewController: UITableViewController
             cell.detailTextLabel?.text = "connected!"
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
-        
-        SNSUtil.connectWithTwitter(currentViewController:self) { (result) -> Void in
-            switch result {
-            case .SNS_CONNECTION_SUCCESS:
-                onSuccess()
-                //Util.popup("Twitter連携が完了しました")
-            case .SNS_CONNECTION_UN_AUTH:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_CANCELED:
-                break
-            case .SNS_PROVIDER_FAIL:
+
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
                 Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    onSuccess()
+                }
+                else {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
             }
         }
     }
@@ -166,19 +175,28 @@ class SettingsTableViewController: UITableViewController
             cell.detailTextLabel?.textColor = UIColor.greenColor()
         }
         
-        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
-            switch result {
-            case .SNS_CONNECTION_SUCCESS:
-                onSuccess()
-                //Util.popup("Facebook連携が完了しました")
-            case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_UN_AUTH:
-                Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-            case .SNS_CONNECTION_CANCELED:
-                break
-            case .SNS_PROVIDER_FAIL:
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
                 Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    onSuccess()
+                }
+                else {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
             }
         }
     }

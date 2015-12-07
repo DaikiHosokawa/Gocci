@@ -64,41 +64,58 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
     }
 
     @IBAction func facebookLoginClicked(sender: AnyObject) {
-        SNSUtil.loginWithFacebook(currentViewController: self) { (result) -> Void in
-            print("Result: " + String(result))
-            switch result {
-                case .SNS_LOGIN_SUCCESS:
+        
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("再ログインに失敗しました。Facebookが現在使用できません。大変申し訳ありません。")
+                return
+            }
+            
+            AWS2.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token.cognitoFormat(),
+                onNotRegisterdSNS: {
+                    Util.popup("お使いのFacebookアカウントではまだGocciが登録されていません")
+                },
+                onNotRegisterdIID: {
+                    Util.popup("お使いのFacebookアカウントではまだGocciが登録されていません")
+                },
+                onUnknownError: {
+                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+                },
+                onSuccess: {
                     let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
                     self.presentViewController(tutorialViewController, animated: true, completion: nil)
-                case .SNS_LOGIN_UNKNOWN_FAILURE:
-                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_LOGIN_CANCELED:
-                    break
-                case .SNS_USER_NOT_REGISTERD:
-                    Util.popup("お使いのFacebookアカウントではまだGocciが登録されていません")
-                case .SNS_PROVIDER_FAIL:
-                    Util.popup("再ログインに失敗しました。Facebookが現在使用できません。大変申し訳ありません。")
-            }
+                }
+            )
         }
     }
     
     @IBAction func twitterLoginClicked(sender: AnyObject) {
-        SNSUtil.loginWithTwitter(self) { (result) -> Void in
-            print("Result: " + String(result))
-            switch result {
-                case .SNS_LOGIN_SUCCESS:
+        
+        
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("再ログインに失敗しました。Twitterが現在使用できません。大変申し訳ありません。")
+                return
+            }
+            
+            AWS2.loginInWithProviderToken(TWITTER_PROVIDER_STRING, token: token.cognitoFormat(),
+                onNotRegisterdSNS: {
+                    Util.popup("お使いのTwitterアカウントではまだGocciが登録されていません")
+                },
+                onNotRegisterdIID: {
+                    Util.popup("お使いのTwitterアカウントではまだGocciが登録されていません")
+                },
+                onUnknownError: {
+                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+                },
+                onSuccess: {
                     let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
                     self.presentViewController(tutorialViewController, animated: true, completion: nil)
-                case .SNS_LOGIN_UNKNOWN_FAILURE:
-                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_LOGIN_CANCELED:
-                    break
-                case .SNS_USER_NOT_REGISTERD:
-                    Util.popup("お使いのTwitterアカウントではまだGocciが登録されていません")
-                case .SNS_PROVIDER_FAIL:
-                    Util.popup("再ログインに失敗しました。Twitterが現在使用できません。大変申し訳ありません。")
-
-            }
+                }
+            )
         }
+        
     }
 }

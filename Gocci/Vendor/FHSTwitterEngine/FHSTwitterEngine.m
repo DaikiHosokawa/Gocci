@@ -2093,21 +2093,6 @@ id removeNull(id rootObject) {
     return nil;
 }
 
-- (NSString* )cognitoFormat {
-    if (!self.consumer) {
-        return nil;
-    }
-    
-    if (self.accessToken.key && self.accessToken.secret) {
-        if (self.accessToken.key.length > 0 && self.accessToken.secret.length > 0) {
-            return [NSString stringWithFormat:@"%@;%@",
-                    self.accessToken.key,
-                    self.accessToken.secret];
-        }
-    }
-    
-    return nil;
-}
 
 - (void)clearAccessToken {
     [self storeAccessToken:@""];

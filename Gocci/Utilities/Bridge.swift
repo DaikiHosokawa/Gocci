@@ -12,13 +12,15 @@ import Foundation
 @objc class Bridge: NSObject {
     
     class func scheduleTwitterVideoSharingTask(tweetMessage: String, mp4VideoFilePath: String) {
-        
         TwitterVideoSharingTask(tweetMessage: tweetMessage, mp4filename: mp4VideoFilePath).schedule()
-
     }
     
-    class func showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController vc: UIViewController, onSuccess: TwitterAuthentication.Token->()) {
-        TwitterAuthentication.showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController: vc, onSuccess: onSuccess)
+    class func authenticateWithTwitterIfNecessary (fromViewController vc: UIViewController, and: TwitterAuthentication.Token?->()) {
+        TwitterAuthentication.authenticate(currentViewController: vc, and: and)
+    }
+    
+    class func videoTweetMessageRemainingCharacters(tweet: String) -> Int {
+        return TwitterSharing.videoTweetMessageRemainingCharacters(tweet)
     }
     
 }

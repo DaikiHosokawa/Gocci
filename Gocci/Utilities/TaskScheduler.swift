@@ -45,15 +45,12 @@ class SingletonTaskScheduler {
     
     var slots = 1
     private let eventSemaphore = dispatch_semaphore_create(0)
-    //private static let semaphoreForGlobalThreadLimitation = dispatch_semaphore_create(1)
     var onceToken: dispatch_once_t = 0
     
     let schedulerQueue = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
     let subThreadQueue = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
-    //let schedulerQueue = dispatch_get_main_queue()
-    // let subThreadQueue = dispatch_get_main_queue()
     
-    var tasks: [PersistentBaseTask] = []  // TODO read all tasks from disk, sort and append
+    var tasks: [PersistentBaseTask] = []
     
     
     func sync(o: AnyObject, f: ()->() ) {

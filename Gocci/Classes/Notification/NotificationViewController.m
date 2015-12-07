@@ -104,7 +104,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [SVProgressHUD dismiss];
             return;
         }
-        if (!result || [result[@"code"] integerValue] != 200) {
+        if (!result) {
             NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
             [SVProgressHUD dismiss];
             return;
