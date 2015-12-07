@@ -27,7 +27,7 @@ class TwitterSharing {
     private var finalSuccedCallback: ((mediaID: String)->Void)? = nil
     
     // if return value is negative -> you cant tweet!
-    func videoTweetMessageRemainingCharacters(msg: String) -> Int {
+    class func videoTweetMessageRemainingCharacters(msg: String) -> Int {
         // every video tweets message text is reduced from 140 chars to 140 - " https://t.co/LY8mBtWEXe"  <- a string like this"
         
         let overhead = 25 // " https://t.co/AAABBBCCCDx".length == 25
@@ -37,7 +37,7 @@ class TwitterSharing {
     
     func tweetVideo(localVideoFileURL localVideoFileURL: NSURL, message: String) {
         
-        guard videoTweetMessageRemainingCharacters(message) >= 0 else {
+        guard TwitterSharing.videoTweetMessageRemainingCharacters(message) >= 0 else {
             self.onFailure?(error: .ERROR_TWEET_MESSAGE_OVER_140("Tweet is over 140 chars. Video tweets need an extra 25 chars :("))
             return
         }

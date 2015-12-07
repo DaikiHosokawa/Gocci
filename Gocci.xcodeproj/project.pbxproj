@@ -71,7 +71,6 @@
 		9550DA391BF83E4C00430942 /* LifelogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D83D1BF83E4B00430942 /* LifelogViewController.m */; };
 		9550DA3A1BF83E4C00430942 /* ReLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */; };
 		9550DA3B1BF83E4C00430942 /* SNSConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */; };
-		9550DA3C1BF83E4C00430942 /* SNSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8411BF83E4B00430942 /* SNSUtil.swift */; };
 		9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8421BF83E4B00430942 /* SplashViewController.swift */; };
 		9550DA3E1BF83E4C00430942 /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8441BF83E4B00430942 /* TutorialPageViewController.m */; };
 		9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8471BF83E4B00430942 /* CustomTableViewCell.m */; };
@@ -483,7 +482,6 @@
 		9550D83D1BF83E4B00430942 /* LifelogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifelogViewController.m; sourceTree = "<group>"; };
 		9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReLoginViewController.swift; sourceTree = "<group>"; };
 		9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSConnectViewController.swift; sourceTree = "<group>"; };
-		9550D8411BF83E4B00430942 /* SNSUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSUtil.swift; sourceTree = "<group>"; };
 		9550D8421BF83E4B00430942 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9550D8431BF83E4B00430942 /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
 		9550D8441BF83E4B00430942 /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
@@ -1268,7 +1266,6 @@
 			children = (
 				9550D83F1BF83E4B00430942 /* ReLoginViewController.swift */,
 				9550D8401BF83E4B00430942 /* SNSConnectViewController.swift */,
-				9550D8411BF83E4B00430942 /* SNSUtil.swift */,
 				9550D8421BF83E4B00430942 /* SplashViewController.swift */,
 				9550D8431BF83E4B00430942 /* TutorialPageViewController.h */,
 				9550D8441BF83E4B00430942 /* TutorialPageViewController.m */,
@@ -2648,7 +2645,6 @@
 				9550DB181BF83E4C00430942 /* UCZProgressView.m in Sources */,
 				9550DAF11BF83E4C00430942 /* JTCircleView.m in Sources */,
 				9550DA8C1BF83E4C00430942 /* TimelineCell.m in Sources */,
-				9550DA3C1BF83E4C00430942 /* SNSUtil.swift in Sources */,
 				9550DAD91BF83E4C00430942 /* AFURLRequestSerialization.m in Sources */,
 				9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */,
 				98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */,

@@ -10,6 +10,8 @@ import Foundation
 
 class TwitterAuthentication {
     
+    static var userJSON: JSON? = nil
+    
     enum LoginResult {
         case SNS_LOGIN_SUCCESS
         case SNS_LOGIN_UNKNOWN_FAILURE
@@ -24,22 +26,30 @@ class TwitterAuthentication {
         var gocci_key: String { return TWITTER_CONSUMER_KEY }
         var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
         
+        init?() {
+            if Persistent.twitter_key == nil || Persistent.twitter_secret == nil {
+                return nil
+            }
+            user_key = Persistent.twitter_key!
+            user_secret = Persistent.twitter_secret!
+        }
+        
         init(key: String, secret: String) {
             user_key = key
             user_secret = secret
         }
-    }
-    
-    static var token: TwitterAuthentication.Token? = {
-        let key = Persistent.twitter_key
-        let sec = Persistent.twitter_secret
         
-        if let key = key, sec = sec {
-            return Token(key: key, secret: sec)
+        func cognitoFormat() -> String {
+            return self.user_key + ";" + self.user_secret
         }
         
-        return nil
-    }()
+        func savePersistent() {
+            Persistent.twitter_key = user_key
+            Persistent.twitter_secret = user_secret
+        }
+    }
+    
+    static var token: TwitterAuthentication.Token? = Token()
     
     class func authenticadedAndReadyToUse(cb: Bool->()) {
         
@@ -47,37 +57,62 @@ class TwitterAuthentication {
         
         TwitterLowLevel.performGETRequest(url, parameters: ["skip_status": "true", "include_entities": "false"],
             onSuccess: { json in
-                print(json.rawString() ?? "häh")
+                //TwitterAuthentication.userJSON = json
                 cb(true)
             },
-            onFailure: {
-                print($0)
+            onFailure: { a in
+                print(a)
                 cb(false)
             }
         )
     }
     
-    class func showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController vc: UIViewController, onSuccess: Token->()) {
-        authenticadedAndReadyToUse { success in
-            if !success {
-                authenticate(currentViewController: vc, errorHandler: {}) { onSuccess($0) }
-            }
-        }
+
+    
+    class func getProfileImageURL() -> String? {
+        return userJSON?["profile_image_url"].string
     }
     
     
     // class disconnectFromCognito
     
 
+
     
-    class func authenticate(currentViewController cvc: UIViewController, errorHandler: ()->(), onSuccess: Token->())
+    class func authenticate(currentViewController cvc: UIViewController, and: Token?->())
     {
+        authenticadedAndReadyToUse { success in
+            
+            if success {
+                // already logged in and token is usable
+                and(token!)
+            }
+            else {
+                // needs login
+                pureLoginProcedure(cvc) { token in
+                    if token == nil {
+                        and(nil)
+                        return
+                    }
+                    
+                    // just in case
+                    authenticadedAndReadyToUse { success in
+                        and( success ? token! : nil )
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    private class func pureLoginProcedure(cvc: UIViewController, and: Token?->() ) {
+            
         FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
         
         let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler { success in
             
             guard success else {
-                errorHandler()
+                and(nil)
                 return
             }
             
@@ -85,20 +120,14 @@ class TwitterAuthentication {
             let sec = FHSTwitterEngine.sharedEngine().getOAuthSecret()
             
             token = Token(key: key, secret: sec)
-            
-            authenticadedAndReadyToUse { success in
-                if success {
-                    Persistent.twitter_key = key
-                    Persistent.twitter_secret = sec
-                    onSuccess(token!)
-                }
-                else {
-                    errorHandler()
-                }
-            }
+            token?.savePersistent()
+
+            and(token!)
         }
         
-        cvc.presentViewController(vc, animated: true, completion: nil)
+        Util.runOnMainThread{
+            cvc.presentViewController(vc, animated: true, completion: nil)
+        }
     }
 }
 

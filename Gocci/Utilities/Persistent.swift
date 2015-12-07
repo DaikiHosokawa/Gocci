@@ -31,6 +31,7 @@ import Foundation
         cache.twitter_key = stringForKey("twitter_key")
         cache.twitter_secret = stringForKey("twitter_secret")
         cache.facebook_token = stringForKey("facebook_token")
+        cache.facebook_id = stringForKey("facebook_id")
         
         cache.user_id = stringForKey("user_id")
         cache.user_name = stringForKey("user_name")
@@ -50,6 +51,7 @@ import Foundation
         var twitter_key: String?
         var twitter_secret: String?
         var facebook_token: String?
+        var facebook_id: String?
         
         var user_id: String?
         var user_name: String?
@@ -113,6 +115,11 @@ import Foundation
         set(v) { cache.facebook_token = v ; setString(v!, forKey: "facebook_token") }
     }
     
+    class var facebook_id: String? {
+        get { return cache.facebook_id }
+        set(v) { cache.facebook_id = v ; setString(v!, forKey: "facebook_id") }
+    }
+    
     class var user_id: String? {
         get { return cache.user_id }
         set(v) { cache.user_id = v ; setString(v!, forKey: "user_id") }
@@ -166,6 +173,7 @@ import Foundation
         KeychainWrapper.removeObjectForKey("twitter_key")
         KeychainWrapper.removeObjectForKey("twitter_secret")
         KeychainWrapper.removeObjectForKey("facebook_token")
+        KeychainWrapper.removeObjectForKey("facebook_id")
         
         KeychainWrapper.removeObjectForKey("user_id")
         KeychainWrapper.removeObjectForKey("user_name")

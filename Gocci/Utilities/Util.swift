@@ -1,33 +1,15 @@
-
 //
 //  Util.swift
 //  Gocci
 //
-//  Created by Ma Wa on 19.09.15.
+//  Created by Markus Wanke on 19.09.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
-
-
-
-
 import Foundation
 import UIKit
 
-//@objc class Error : NSObject, CustomStringConvertible, ErrorType {
-//    let type : String
-//    let code : Int?
-//
-//    let nserror: NSError?
-//
-//    init(
-//
-//
-//
-//    var description: String {
-//        return "ERROR: \( code == nil ? "" : "("+code+") ")\(msg)"
-//    }
-//}
 
+typealias Lol = Int
 
 
 
@@ -117,7 +99,9 @@ import UIKit
     
     class func popup(msg: String, title: String = "", buttonText: String = "OK")
     {
-        UIAlertView.init(title: title, message: msg, delegate: nil, cancelButtonTitle: buttonText).show()
+        runOnMainThread{
+            UIAlertView.init(title: title, message: msg, delegate: nil, cancelButtonTitle: buttonText).show()
+        }
     }
     
     
