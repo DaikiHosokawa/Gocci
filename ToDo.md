@@ -40,6 +40,12 @@ Daiki Hosokawa
 
 -bottom bar design
 
+-Analytics
+
+-Userpage(movie)
+
+-restaurantpage 再生問題
+
 <Other>
 
 -emptyview
@@ -56,19 +62,6 @@ Daiki Hosokawa
 
 -permission Push notification
 
--after first posting&setting page
-
--Heatmap
-
-–Test!Test!Test! Fix!Fix!
-
--Analytics
-
--Userpage(movie)
-
--restaurantpage 再生問題
-
--未選択でバグる
 
 
 
