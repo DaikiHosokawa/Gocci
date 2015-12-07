@@ -426,9 +426,9 @@ class AWSManager {
             else {
                 print("=== upload success, result: ", task.result)
                 
-                let res: AWSS3TransferUtilityUploadTask = task.result
+                let res: AWSS3TransferUtilityUploadTask = task.result as! AWSS3TransferUtilityUploadTask
                 
-                res.
+                //res.
             }
             
             return nil
