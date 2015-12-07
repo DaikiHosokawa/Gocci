@@ -70,6 +70,19 @@ class TestTaskScheduler: XCTestCase {
         }
     }
     
+    class CallbackCustonDummyPlugTask: CustonDummyPlugTask {
+        
+        var callback: (()->())? = nil
+        
+        override func run(finished: State -> ()) {
+            if stati.count == 1 {
+                print("calling callback before foshing task")
+                callback?()
+            }
+            super.run(finished)
+        }
+    }
+
     
     
     
@@ -231,6 +244,32 @@ class TestTaskScheduler: XCTestCase {
         Util.sleep(4)
         XCTAssert(TaskScheduler.tasks.isEmpty)
         
+    }
+    
+    func testATaskWhichStartsAnotherTask_ChainTasking() {
+        
+        let levels = 5
+        
+        let exs = (1...levels).map{ i in self.expectationWithDescription("ex\(i)") }
+            
+        
+        func f(i: Int) -> () -> () {
+            if i == 0 { return {} }
+            
+            return {
+                let d = CallbackCustonDummyPlugTask(msg: nil, sleep: 0.2, stati: [.DONE], exs[i-1])
+                //let d = CallbackCustonDummyPlugTask(msg: nil, sleep: 0.2, stati: [.FAILED_RECOVERABLE, .DONE], exs[i-1])
+                d.callback = f(i-1)
+                d.schedule()
+            }
+        }
+        
+        let dummy = CallbackCustonDummyPlugTask(msg: nil, sleep: 0.2, stati: [.DONE], expectationWithDescription("top"))
+        dummy.callback = f(levels)
+            
+        dummy.schedule()
+        
+        waitForExpectationsWithTimeout(4.0, handler: nil)
     }
 }
 

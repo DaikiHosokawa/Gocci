@@ -2,14 +2,12 @@
 //  FacebookAuthentication.swift
 //  Gocci
 //
-//  Created by Ma Wa on 30.10.15.
+//  Created by Markus Wanke on 30.10.15.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
 import Foundation
 
-
-// Code from SNSUtil.swift will come here
 
 
 
@@ -17,19 +15,34 @@ class FacebookAuthentication {
     
     struct Token {
         var user_token: String
+        var fbid: String
+        
         var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
         
-        init(token: String) {
+        init?() {
+            if Persistent.facebook_token == nil || Persistent.facebook_id == nil {
+                return nil
+            }
+            user_token = Persistent.facebook_token!
+            self.fbid = Persistent.facebook_id!
+        }
+        
+        init(token: String, fbid:String) {
             user_token = token
+            self.fbid = fbid
+        }
+        
+        func savePersistent() {
+            Persistent.facebook_token = user_token
+            Persistent.facebook_id = fbid
+        }
+        
+        func cognitoFormat() -> String {
+            return self.user_token
         }
     }
     
-    static var token: FacebookAuthentication.Token? = {
-        if let token = Persistent.facebook_token {
-            return Token(token: token)
-        }
-        return nil
-    }()
+    static var token: FacebookAuthentication.Token? = Token()
     
     
     enum LoginResult {
@@ -51,13 +64,9 @@ class FacebookAuthentication {
         FBSDKSettings.setLoggingBehavior(logopt)
     }
     
-    class func setTokenDirect(facebookTokenString fbt: String) {
-        token = Token(token: fbt)
-    }
+
     
     
-    // WARNING. Callback is only called when a connection to Facebook is possible or not token exists.
-    // That means in case of no internet or network errors, nothing happens.
     class func authenticadedAndReadyToUse(cb: Bool->()) {
         
         guard token != nil else {
@@ -81,7 +90,10 @@ class FacebookAuthentication {
         
     }
     
-    
+    class func getProfileImageURL() -> String? {
+        if token == nil { return nil }
+        return "http://graph.facebook.com/\(token!.fbid)/picture?width=640&height=640"
+    }
     
 //    private func upgradeBlock(res: FacebookAuthentication.LoginResult) {
 //        switch res {
@@ -103,51 +115,72 @@ class FacebookAuthentication {
 //    }
 //    
     
-    // Normal no  login (you can't publish with that)
-    class func loginWithFacebookIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) {
-        if FBSDKAccessToken.currentAccessToken() == nil {
+    
+    
+    
+    class func authenticate(currentViewController cvc: UIViewController, and: Token?->())
+    {
+        authenticadedAndReadyToUse { success in
             
-            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: fromViewController) {
-                (result, error) -> Void in
-                
-                if error != nil {
-                    and(LoginResult.FB_PROVIDER_FAIL)
-                }
-                else if result.isCancelled {
-                    and(LoginResult.FB_LOGIN_CANCELED)
-                }
-                else {
-                    and(LoginResult.FB_LOGIN_SUCCESS)
+            if success {
+                // already logged in and token is usable
+                and(token!)
+            }
+            else {
+                // needs login
+                pureLoginProcedure(withPublishRights: false, fromViewController: cvc) { token in
+                    if token == nil {
+                        and(nil)
+                        return
+                    }
+                    
+                    // just in case
+                    authenticadedAndReadyToUse { success in
+                        and( success ? token! : nil )
+                    }
                 }
             }
-        }
-        else {
-            and(LoginResult.FB_LOGIN_SUCCESS)
         }
     }
     
-    // Login with publish permissions. needs facebook review
-    class func loginWithFacebookWithPublishRightsIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) {
+    class func pureLoginProcedure(withPublishRights wpr: Bool, fromViewController: UIViewController, and: Token?->()) {
+        FBSDKSettings.setAppID(FACEBOOK_APP_ID)
         
-        if FBSDKAccessToken.currentAccessToken() == nil || !FBSDKAccessToken.currentAccessToken().hasGranted("publish_actions") {
+        FBSDKLoginManager().logInWithReadPermissions(wpr ? ["publish_actions"] : nil, fromViewController: fromViewController) {
+            (result, error) -> Void in
             
-            FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: fromViewController) {
-                (result, error) -> Void in
+            if error == nil && !result.isCancelled {
                 
-                if error != nil {
-                    and(LoginResult.FB_PROVIDER_FAIL)
-                }
-                else if result.isCancelled {
-                    and(LoginResult.FB_LOGIN_CANCELED)
-                }
-                else {
-                    and(LoginResult.FB_LOGIN_SUCCESS)
-                }
+                token = Token(token: FBSDKAccessToken.currentAccessToken().tokenString, fbid: FBSDKAccessToken.currentAccessToken().userID )
+                
+                token?.savePersistent()
+                    
+                and(token)
+            }
+            else {
+                and(nil)
             }
         }
-        else {
-            and(LoginResult.FB_LOGIN_SUCCESS)
-        }
     }
+    
+    class func loginWithFacebookIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) { fatalError()  }
+
+    class func loginWithFacebookWithPublishRightsIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) { fatalError()  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

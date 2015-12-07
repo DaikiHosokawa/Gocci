@@ -33,54 +33,25 @@ class DebugViewController : UIViewController {
         
         subLabel.text = "Greatest Work - Gocci v" + (Util.getGocciVersionString() ?? "?.?.?")
         
-        if let iid = Util.getUserDefString("iid") {
+        if let iid = Persistent.identity_id {
             loginEditField.text = iid
         }
-        signUpEditField.text = NSUserDefaults.standardUserDefaults().stringForKey("username") ?? Util.randomUsername()
         
-        
+        signUpEditField.text = Persistent.user_name ?? Util.randomUsername()
         usernameEditField.text = signUpEditField.text
         
-        
-
+//        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
     }
     
-    /*
-    NSLog(@"req: %@\n\n", request.allHTTPHeaderFields);
-    //    NSLog(@"body: %@", request.HTTPBody);
-    NSLog(@"body %@", [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding]);
-    
-    
 
-    
-    id parsed = removeNull([NSJSONSerialization JSONObjectWithData:(NSData *)retobj options:NSJSONReadingMutableContainers error:nil]);
-    
-    NSError *error = [self checkError:parsed];
-    
-    if (error) {
-    return error;
-    }
-    
-    return nil; // eventually return the parsed response
-    }
-    */
-    
 
     
 
-//    func tweet(mediaID: String) -> NSError? {
-//        let baseURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
-//        
-//        let params = [
-//            "media_ids": mediaID, //"601491637433475073"]
-//            "status": "kyoukoso :( " + Util.randomUsername()]
-//        
-//        return FHSTwitterEngine.sharedEngine().sendPOSTRequestForURL(baseURL, andParams: params)
-//    }
     
     @IBAction func explode(sender: AnyObject) {
         
-        
+        //TwitterAuthentication.showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController: self, onSuccess: {_ in print("worked")})
+        return;
         
         // TODO
         let mp4URL = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
@@ -119,10 +90,7 @@ class DebugViewController : UIViewController {
 //                hideAgain()
 //            }
             TwitterAuthentication.authenticate(currentViewController: viewController,
-                onSuccess: { (token) -> () in
-                    hideAgain()
-                },
-                onFailure: {
+                and: { (token) -> () in
                     hideAgain()
                 }
             )
@@ -159,20 +127,7 @@ class DebugViewController : UIViewController {
         //Pop.show("Dwdw", "Dwdw")
         return;
         
-        let valid_token = "CAAJkM7KbcYYBAK0nvxGmOGpckyJvJZCAhAMTGNk1tTVhq89wHKxKfTbTba6rVeZAEOGHwiw3ZB5MsLrIrZAvZAaDOap29ZBM4iUvgEAuWY81g4dSq7uMha0Qsb68GMGNhFn4DAoSB5c6r1QM8h7c1ktMrvsNbm6HPSnMTdPjd6KFCTZA2eXjxhVFkP7FcUOrUGewkwEeTQKAAZDZD"
-        
-        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
-        
-        let invalid_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZXXXXD3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
 
-        
-        FacebookAuthentication.setTokenDirect(facebookTokenString: invalid_token)
-        
-        FacebookAuthentication.authenticadedAndReadyToUse { (succ) -> () in
-            print(succ)
-        }
-        
-        return ;
         
         
 //        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
@@ -449,7 +404,7 @@ class DebugViewController : UIViewController {
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
         
         if real_register_id != "" {
-            Util.setUserDefString("register_id", value: real_register_id)
+            Persistent.device_token = real_register_id
         }
         
         NetOp.registerUsername(signUpEditField.text) {
@@ -460,12 +415,12 @@ class DebugViewController : UIViewController {
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
                 
-                let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("iid")!
-                let tok: String = Util.getUserDefString("token")!
+                let uid: String = Persistent.user_id!
+                let iid: String = Persistent.identity_id!
+                let tok: String = Persistent.cognito_token!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
                     return nil
                 })
             }
@@ -478,7 +433,7 @@ class DebugViewController : UIViewController {
         if real_register_id == "" {
             real_register_id = Util.getRegisterID()
         }
-        Util.setUserDefString("register_id", value: Util.generateFakeDeviceID())
+        Persistent.device_token = Util.generateFakeDeviceID()
         
         NetOp.registerUsername(signUpEditField.text) {
             (code, emsg) -> Void in
@@ -488,12 +443,12 @@ class DebugViewController : UIViewController {
             if code == NetOpResult.NETOP_SUCCESS {
                 self.loginEditField.text = self.signUpEditField.text
                 
-                let uid: String = Util.getUserDefString("user_id")!
-                let iid: String = Util.getUserDefString("iid")!
-                let tok: String = Util.getUserDefString("token")!
+                let uid: String = Persistent.user_id!
+                let iid: String = Persistent.identity_id!
+                let tok: String = Persistent.cognito_token!
                 
                 AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Util.getUserDefString("username") ?? "no username set")
+                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
                     return nil
                 })
             }
@@ -502,9 +457,8 @@ class DebugViewController : UIViewController {
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
     {
-        //NSUserDefaults.standardUserDefaults().setObject("us-east-1:5403c205-8a2b-474e-b1c7-1a94663d9115", forKey: "iid")
         
-        guard let iid = NSUserDefaults.standardUserDefaults().stringForKey("iid") else
+        guard let iid = Persistent.identity_id else
         {
             print("ERROR: iid not set in user defs")
             return
@@ -519,9 +473,9 @@ class DebugViewController : UIViewController {
                 print("NetOpCode: \(code)  " + (emsg ?? ""))
                 if code == NetOpResult.NETOP_SUCCESS {
                     self.loginEditField.text = self.signUpEditField.text
-                    let uid: String = Util.getUserDefString("user_id")!
-                    let iid: String = Util.getUserDefString("iid")!
-                    let tok: String = Util.getUserDefString("token")!
+                    let uid: String = Persistent.user_id!
+                    let iid: String = Persistent.identity_id!
+                    let tok: String = Persistent.cognito_token!
                     
                     AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
                         AWS2.storeTimeInLoginDataSet()
@@ -539,8 +493,29 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH TWITTER")
         
-        SNSUtil.connectWithTwitter(currentViewController: self) { (result) -> Void in
-            print("=== Result: \(result)")
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("twitter failed")
+                return
+            }
+            
+            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("server sice failure, internet failure")
+                }
+                else if result["code"] as! Int == 200 {
+                    print("=== connected with twitter")
+                }
+                else {
+                    Util.popup("something went wrong")
+                }
+            }
         }
     }
     
@@ -549,8 +524,27 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH TWITTER")
         
-        SNSUtil.loginWithTwitter(self) { (result) -> Void in
-            print("=== Result: \(result)")
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("再ログインに失敗しました。Twitterが現在使用できません。大変申し訳ありません。")
+                return
+            }
+            
+            AWS2.loginInWithProviderToken(TWITTER_PROVIDER_STRING, token: token.cognitoFormat(),
+                onNotRegisterdSNS: {
+                    Util.popup("お使いのTwitterアカウントではまだGocciが登録されていません")
+                },
+                onNotRegisterdIID: {
+                    Util.popup("お使いのTwitterアカウントではまだGocciが登録されていません")
+                },
+                onUnknownError: {
+                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+                },
+                onSuccess: {
+                    Util.popup("=== Twitter login Success !!")
+                }
+            )
         }
     }
     
@@ -559,8 +553,29 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP WITH FACEBOOK")
         
-        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
-            print("=== Result: \(result)")
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    print("=== connected with facebook")
+                }
+                else {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+            }
         }
     }
     
@@ -569,8 +584,27 @@ class DebugViewController : UIViewController {
     {
         print("=== LOGIN WITH FACEBOOK")
         
-        SNSUtil.loginWithFacebook(currentViewController: self) { (result) -> Void in
-            print("=== Result: \(result)")
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("再ログインに失敗しました。Facebookが現在使用できません。大変申し訳ありません。")
+                return
+            }
+            
+            AWS2.loginInWithProviderToken(FACEBOOK_PROVIDER_STRING, token: token.cognitoFormat(),
+                onNotRegisterdSNS: {
+                    Util.popup("お使いのFacebookアカウントではまだGocciが登録されていません")
+                },
+                onNotRegisterdIID: {
+                    Util.popup("お使いのFacebookアカウントではまだGocciが登録されていません")
+                },
+                onUnknownError: {
+                    Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+                },
+                onSuccess: {
+                    print("=== Facebook login successful")
+                }
+            )
         }
     }
     
@@ -661,13 +695,22 @@ class DebugViewController : UIViewController {
     @IBAction func deleteUserDefsClicked(sender: AnyObject)
     {
         print("=== DELETE userdefs")
-        Util.removeAccountSpecificDataFromUserDefaults()
         Persistent.resetGocciToInitialState()
         
         signUpEditField.text = Util.randomUsername()
         loginEditField.text = ""
     }
     
+    
+    @IBAction func clearAllCookiesClikced(sender: AnyObject) {
+        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        if cookieStorage.cookies != nil {
+            for coo in cookieStorage.cookies! {
+                print("Deleting Cookie: \(coo)")
+                cookieStorage.deleteCookie(coo)
+            }
+        }
+    }
     
     
     @IBAction func gotoTimelinkeClicked(sender: AnyObject)

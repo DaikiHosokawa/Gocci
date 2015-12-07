@@ -223,10 +223,6 @@ class AWSManager {
     init(poolID:String, cognitoRegion:AWSRegionType, S3Region:AWSRegionType) {
 
 //        AWSLogger.defaultLogger().logLevel = AWSLogLevel.Verbose
-//
-//        let uid: String = Util.getUserDefString("user_id")!
-//        let iid: String = Util.getUserDefString("iid")!
-//        let tok: String = Util.getUserDefString("token")!
         
         let ip = EnhancedGocciIdentityProvider(poolID: poolID, iid: nil, userID: nil, token: nil)
 
@@ -261,14 +257,7 @@ class AWSManager {
     }
     
     
-    class func getIIDforSNSLogin(provider:String, token:String) -> AWSTask{
-        
-        let ip = SNSIIDRetrieverIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID, iid: nil, logins: [provider:token])
-        
-        return ip.refresh().continueWithBlock({ (task) -> AnyObject! in
-            return AWSTask.init(result: ip.identityId == nil ? nil : ip.identityId)
-        })
-    }
+
     
 
     
@@ -282,16 +271,16 @@ class AWSManager {
     
     func connectWithBackend(iid:String, userID:String, token:String) -> AWSTask {
 
-        // TODO there is noverification that the backend login worked. The only sane check that I know of is upload somethin in a dataset, redownload it 
+        // TODO there is no verification that the backend login worked. The only sane check that I know of is upload somethin in a dataset, redownload it
         // and compare. There must be a better method, but AWS is a huge pile of shit and nowhere do they even consider that their server could be down.
         (credentialsProvider.identityProvider as! EnhancedGocciIdentityProvider).connectWithBackEnd(iid, userID: userID, token: token)
         return credentialsProvider.refresh()
     }
     
     func connectToBackEndWithUserDefData() -> AWSTask {
-        let uid: String = Util.getUserDefString("user_id")!
-        let iid: String = Util.getUserDefString("iid")!
-        let tok: String = Util.getUserDefString("token")!
+        let uid: String = Persistent.user_id!
+        let iid: String = Persistent.identity_id!
+        let tok: String = Persistent.cognito_token!
         
         return AWS2.connectWithBackend(iid, userID: uid, token: tok)
     }
@@ -307,9 +296,9 @@ class AWSManager {
     func storeSignUpDataInCognito(username:String) {
         let dataset = AWSCognito.defaultCognito().openOrCreateDataset("signup_data")
 
-        dataset.setString(Util.getUserDefString("user_id") ?? "user_id not set", forKey: "user_id")
-        dataset.setString(Util.getUserDefString("username") ?? "username not set", forKey: "username")
-        dataset.setString(Util.getRegisterID(), forKey: "register_id")
+        dataset.setString(Persistent.user_id ?? "user_id not set", forKey: "user_id")
+        dataset.setString(Persistent.user_name ?? "username not set", forKey: "username")
+        dataset.setString(Persistent.device_token ?? "no device_token", forKey: "device_token")
         dataset.setString(UIDevice.currentDevice().systemName, forKey: "system_name")
         dataset.setString(UIDevice.currentDevice().systemVersion, forKey: "system_version")
         dataset.setString(UIDevice.currentDevice().model, forKey: "model")
@@ -364,5 +353,57 @@ class AWSManager {
         return AWSS3TransferUtility.S3TransferUtilityForKey("gocci_up_north_east_1")!
     }
     
+    
+    
+    func getIIDforSNSLogin(provider:String, token:String) -> AWSTask{
+        
+        let ip = SNSIIDRetrieverIdentityProvider(region: AWSRegionType.USEast1, poolID: COGNITO_POOL_ID, iid: nil, logins: [provider:token])
+        
+        return ip.refresh().continueWithBlock({ (task) -> AnyObject! in
+            return AWSTask.init(result: ip.identityId == nil ? nil : ip.identityId)
+        })
+    }
+    
+    func loginInWithProviderToken(provider: String, token: String,
+        onNotRegisterdSNS: ()->(),
+        onNotRegisterdIID:()->(),
+        onUnknownError: ()->(),
+        onSuccess: ()->())
+    {
+        getIIDforSNSLogin(provider, token: token).continueWithBlock { task -> AnyObject! in
+            if task.result == nil {
+                //andThen(LoginResult.SNS_USER_NOT_REGISTERD)
+                onNotRegisterdSNS()
+                return nil
+            }
+            
+            NetOp.loginWithSNS(task.result as! String, andThen: { code, emsg in
+                
+                if code == NetOpResult.NETOP_SUCCESS {
+                    
+                    // TODO dirty implementation. Fix this one day
+                    let uid: String = Persistent.user_id!
+                    let iid: String = Persistent.identity_id!
+                    let tok: String = Persistent.cognito_token!
+                    
+                    self.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+                        Util.runInBackground { AWS2.storeSNSTokenInDataSet(provider, token: token) }
+                        onSuccess()
+                        return nil
+                    })
+                    
+                }
+                else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
+                    onNotRegisterdIID()
+                }
+                else {
+                    onUnknownError()
+                }
+                
+            })
+            
+            return nil
+        }
+    }
 }
 

@@ -135,29 +135,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-#pragma mark viewDidAppear
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
-       
-    }
-}
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate3"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate3"];
-    // 保存
-    [userDefaults synchronize];
-    // 初回起動
-    return YES;
-}
+
 
 
 #pragma mark viewWillDisappear

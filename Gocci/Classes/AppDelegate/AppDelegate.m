@@ -52,28 +52,20 @@
 }
 
 
-
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate"];
-    
-    // 保存
-    [userDefaults synchronize];
-    
-    // 初回起動
-    return YES;
-}
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // エラー追跡用の機能を追加する。
+    NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
+    // prebuffer persistent data
+    [Persistent setupAndCacheAllDataFromDisk];
+    
+    // Conversion from userdef stored identity_id to keychain stored identity_id
+    if ([Persistent identity_id] == nil && [Util getUserDefString:@"identity_id"] != nil) {
+        NSLog(@"conversation happend");
+        Persistent.identity_id = [Util getUserDefString:@"identity_id"];
+    }
+    
     // Handle bg task in the scheduler.
     [TaskSchedulerWrapper start];
     
@@ -83,11 +75,10 @@
     [self.window makeKeyAndVisible];
     
     
-    [FBSDKSettings setAppID:FACEBOOK_APP_ID];
     
     
 #ifdef FRESH_START
-    [Util removeAccountSpecificDataFromUserDefaults];
+    [Persistent resetGocciToInitialState];
 #endif
     
 #ifndef STRIPPED
@@ -144,15 +135,6 @@
     self.window.layer.masksToBounds = YES; // ビューをマスクで切り取る
     self.window.layer.cornerRadius = 4.0; // 角丸マスクを設定(数値は角丸の大きさ)
     
-
-#if !(TARGET_IPHONE_SIMULATOR)
-    //badge数を解放
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-#endif
-    
-    // エラー追跡用の機能を追加する。
-    NSSetUncaughtExceptionHandler(&exceptionHandler);
-    
     return YES;
 }
 
@@ -162,24 +144,9 @@ void exceptionHandler(NSException *exception) {
     NSLog(@"%@", exception.reason);
     NSLog(@"%@", exception.callStackSymbols);
     
-    // ログをUserDefaultsに保存しておく。
-    NSString *log = [NSString stringWithFormat:@"%@, %@, %@", exception.name, exception.reason, exception.callStackSymbols];
-    [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
+    // TODO send this data to a logging server
 }
 
-// UIColorから1x1のUIImageを作成
-- (UIImage *)imageWithColor:(UIColor *)color
-{
-    UIView *__view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1.0f, 1.0f)];
-    __view.backgroundColor = color;
-    UIGraphicsBeginImageContext(__view.frame.size);
-    CGContextRef __context = UIGraphicsGetCurrentContext();
-    [__view.layer renderInContext: __context];
-    UIImage *__image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return __image;
-}
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -187,12 +154,6 @@ void exceptionHandler(NSException *exception) {
     // Tell the scheduler to check for tasks. The app became active again,
     // so maybe this is a good time to upload heavy stuff again.
     [TaskSchedulerWrapper nudge];
-    
-#if !(TARGET_IPHONE_SIMULATOR)
-    //badge数を解放
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-#endif
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -225,32 +186,15 @@ void exceptionHandler(NSException *exception) {
     
    NSLog(@"deviceToken: %@", token);
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:token forKey:@"register_id"];
+    if (token != Persistent.device_token && Persistent.user_registerd_for_push_messages) {
+        // TODO call API3 register_device_token
+    }
+    
+    Persistent.device_token = token;
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"deviceToken error: %@", [error description]);
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
-    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    application.applicationIconBadgeNumber = numberOfNewMessages;
-    [ud synchronize];
-    
-    if (application.applicationState == UIApplicationStateInactive)
-    {
-        NSLog(@"receeive notice background");
-    }
-    else{
-        NSLog(@"receeive notice foreground");
-        [self showMessageWithRemoteNotification:userInfo];
-    }
-
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
@@ -258,7 +202,7 @@ void exceptionHandler(NSException *exception) {
     [application registerForRemoteNotifications];
 }
 
-//After iOS7 call this method
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     NSLog(@"userinfo:%@",userInfo);
@@ -272,14 +216,9 @@ void exceptionHandler(NSException *exception) {
     
         [self showMessageWithRemoteNotification:userInfo];
         // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
-        NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-        [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-        application.applicationIconBadgeNumber = numberOfNewMessages;
-        [ud synchronize];
+        
+        [UIApplication sharedApplication].applicationIconBadgeNumber += 1;
     }
-    
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
@@ -287,8 +226,6 @@ void exceptionHandler(NSException *exception) {
 
 
 - (void) showMessageWithRemoteNotification:(NSDictionary *)userInfo {
-    
-    // [TWMessageBarManager sharedInstance];
     
     NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     

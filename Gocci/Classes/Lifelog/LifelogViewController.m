@@ -61,8 +61,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     self.barButton.badgeOriginY = 10;
     
     // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[[UIApplication sharedApplication] applicationIconBadgeNumber]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
     
     
@@ -149,10 +148,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([self isFirstRun]) {
-        //Calling this methods builds the intro and adds it to the screen. See below.
-    
-    }
     
     NSLog(@"ここが重い");
     //::[self.calendar reloadData]; // Must be call in viewDidAppear
@@ -160,9 +155,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
 
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[[UIApplication sharedApplication] applicationIconBadgeNumber]];// ナビゲーションバーに設定する
     self.navigationItem.rightBarButtonItem = self.barButton;
     
 }
@@ -282,20 +275,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
                      }];
 }
 
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate10"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate10"];
-    // 保存
-    [userDefaults synchronize];
-    // 初回起動
-    return YES;
-}
 
 
 
@@ -369,8 +348,6 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     NSLog(@"badge touched");
     self.barButton.badgeValue = nil;
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
     
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];

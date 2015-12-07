@@ -90,10 +90,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(NSString *)category_id value_id:(NSString*)value_id
 {
-  
         
         [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
+             if (error) {
+                 NSLog(@"ERROR: Network communication: %@",error);
+                 return;
+             }
+             if (!result) {
+                 NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
+                 return;
+             }
+             
              NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
              
              for (NSDictionary *post in result) {

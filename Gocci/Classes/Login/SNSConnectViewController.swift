@@ -24,47 +24,67 @@ class SNSConnectViewController : UIViewController {
     
     
     @IBAction func facebookConnectClicked(sender: AnyObject) {
-        SNSUtil.connectWithFacebook(currentViewController: self) { (result) -> Void in
-            switch result {
-                case .SNS_CONNECTION_SUCCESS:
-                    Persistent.userIsConnectedViaFacebook = true
+    
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    Persistent.user_is_connected_via_facebook = true
                     Util.popup("Facebook連携が完了しました")
                     self.facebookConnectionSuccessful = true
                     self.facebookButton.enabled = false
                     self.transit()
-                case .SNS_CONNECTION_UNKNOWN_FAILURE:
+                }
+                else {
                     Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_CONNECTION_UN_AUTH:
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_CONNECTION_CANCELED:
-                    break
-                case .SNS_PROVIDER_FAIL:
-                    Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                }
             }
-            print("=== RESULT: \(String(result))")
         }
     }
-    
+
     @IBAction func twitterConnectClicked(sender: AnyObject) {
-        SNSUtil.connectWithTwitter(currentViewController: self) { (result) -> Void in
-            switch result {
-                case .SNS_CONNECTION_SUCCESS:
-                    Persistent.userIsConnectedViaTwitter = true
+        
+        TwitterAuthentication.authenticate(currentViewController: self) { token in
+            
+            guard let token = token else {
+                Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                return
+            }
+            
+            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
+                token: token.cognitoFormat(),
+                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
+            {
+                (result, code, error) -> Void in
+                
+                if error != nil || code != 200 {
+                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                }
+                else if result["code"] as! Int == 200 {
+                    Persistent.user_is_connected_via_twitter = true
                     Util.popup("Twitter連携が完了しました")
                     self.twitterConnectionSuccessful = true
                     self.twitterButton.enabled = false
-                    self.transit()
-                case .SNS_CONNECTION_UN_AUTH:
+                    self.transit()                }
+                else {
                     Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_CONNECTION_UNKNOWN_FAILURE:
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                case .SNS_CONNECTION_CANCELED:
-                    break
-                case .SNS_PROVIDER_FAIL:
-                    Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                }
             }
-            print("=== RESUTLT: \(result)")
         }
+        
     }
     
     func transit() {

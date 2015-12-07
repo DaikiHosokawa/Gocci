@@ -78,16 +78,17 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 
                 OverlayWindow.show { (viewController, hideAgain) -> () in
                     
-                    TwitterAuthentication.authenticate(currentViewController: viewController,
-                        onSuccess: { (token) -> () in
-                            Toast.成功("Twitter login successful.", "Will retry to post video on twitter")
-                            finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
-                        },
-                        onFailure: {
+                    TwitterAuthentication.authenticate(currentViewController: viewController) { token in
+                        
+                        if token == nil {
                             Toast.失敗("Twitter login failed.", "Video will not be posted on Twitter")
                             finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
                         }
-                    )
+                        else {
+                            Toast.成功("Twitter login successful.", "Will retry to post video on twitter")
+                            finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
+                        }
+                    }
                 }
             }
         }

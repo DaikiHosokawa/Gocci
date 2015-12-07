@@ -99,7 +99,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [SVProgressHUD show];
     __weak typeof(self)weakSelf = self;
     [APIClient Notice:^(id result, NSUInteger code, NSError *error) {
-        if (!result || error) {
+        if (error) {
+            NSLog(@"ERROR: Network communication: %@",error);
+            [SVProgressHUD dismiss];
+            return;
+        }
+        if (!result) {
+            NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
+            [SVProgressHUD dismiss];
             return;
         }
         
@@ -112,6 +119,10 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)_reloadNotice:(NSArray *)result
 {
+    // User saw his new messages, remove icon badge
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    
     NSMutableArray *tempNotices = [NSMutableArray arrayWithCapacity:0];
     notice_category = [NSMutableArray arrayWithCapacity:0];
     post_id = [NSMutableArray arrayWithCapacity:0];

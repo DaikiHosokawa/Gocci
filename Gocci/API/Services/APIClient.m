@@ -7,12 +7,14 @@
 #import "APIClient.h"
 #import "AFNetworking.h"
 
+#import "Swift.h"
+
 NSString * const APIClientResultCacheKeyDist = @"dist";
 
 @interface APIClient()
 
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic, strong) AFHTTPSessionManager *manager2;
+//@property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) ReAuthFilterHack *manager;
 @property (nonatomic, strong) NSCache *resultCache;
 
 @end
@@ -39,15 +41,17 @@ static APIClient *_sharedInstance = nil;
         return nil;
     }
     
-    
-    
     NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
-    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
-                                                              @"application/json",
-                                                              @"text/html",
-                                                              @"text/javascript",
-                                                              nil];
+    
+    
+    self.manager = [[ReAuthFilterHack alloc] initWithBaseURL:baseURL];
+
+//    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+//    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+//                                                              @"application/json",
+//                                                              @"text/html",
+//                                                              @"text/javascript",
+//                                                              nil];
     
     return self;
 }
@@ -328,38 +332,38 @@ static APIClient *_sharedInstance = nil;
 }
 
 
-+ (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
-{
-    NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
-                                                                 inDomain:NSUserDomainMask
-                                                        appropriateForURL:nil
-                                                                   create:NO
-                                                                    error:nil];
-    NSURL *saveURL = [directoryURL URLByAppendingPathComponent:[movieURL lastPathComponent]];
-    //LOG(@"savePath=%@, exist=%@", [saveURL absoluteString], @([[NSFileManager defaultManager] fileExistsAtPath:[saveURL absoluteString]]));
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[saveURL absoluteString]]) {
-        handler(saveURL, nil);
-        return;
-    }
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:movieURL]];
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        return saveURL;
-        
-    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        handler(filePath, error);
-        
-    }];
-    [manager setDownloadTaskDidWriteDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-        NSLog(@"totalBytesWritten:%d totalBytesExpectedToWrite:%d",(int)totalBytesWritten,(int)totalBytesExpectedToWrite );
-        float myFloat = (float)totalBytesWritten/(float)totalBytesExpectedToWrite;
-        NSLog(@"Progress:%.2f",myFloat);
-    }];
-    [downloadTask resume];
-}
+//+ (void)downloadMovieFile:(NSString *)movieURL completion:(void (^)(NSURL *fileURL, NSError *error))handler
+//{
+//    NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
+//                                                                 inDomain:NSUserDomainMask
+//                                                        appropriateForURL:nil
+//                                                                   create:NO
+//                                                                    error:nil];
+//    NSURL *saveURL = [directoryURL URLByAppendingPathComponent:[movieURL lastPathComponent]];
+//    //LOG(@"savePath=%@, exist=%@", [saveURL absoluteString], @([[NSFileManager defaultManager] fileExistsAtPath:[saveURL absoluteString]]));
+//    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:[saveURL absoluteString]]) {
+//        handler(saveURL, nil);
+//        return;
+//    }
+//    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:movieURL]];
+//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+//        return saveURL;
+//        
+//    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+//        handler(filePath, error);
+//        
+//    }];
+//    [manager setDownloadTaskDidWriteDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+//        NSLog(@"totalBytesWritten:%d totalBytesExpectedToWrite:%d",(int)totalBytesWritten,(int)totalBytesExpectedToWrite );
+//        float myFloat = (float)totalBytesWritten/(float)totalBytesExpectedToWrite;
+//        NSLog(@"Progress:%.2f",myFloat);
+//    }];
+//    [downloadTask resume];
+//}
 
 
 
