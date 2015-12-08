@@ -246,7 +246,7 @@
                              appDelegate.stringCategory = @"";
                              appDelegate.indexCategory = @"";
                              appDelegate.valueKakaku = @"";
-                             [self.value popToViewController: [self.navigationController.viewControllers objectAtIndex:0]];
+                             [self dismissViewControllerAnimated:YES completion:nil];
                          }
 
                      });
