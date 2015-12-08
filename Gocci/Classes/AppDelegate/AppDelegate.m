@@ -55,11 +55,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-
-    NSArray * directoryContents =  [[NSFileManager defaultManager]
-                                    contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
-    
-    NSLog(@"Dict: %@", directoryContents);
     
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
@@ -72,6 +67,9 @@
         NSLog(@"conversation happend");
         Persistent.identity_id = [Util getUserDefString:@"identity_id"];
     }
+    
+    // Start network monitoring for network state availibility
+    [Network startNetworkStatusMonitoring];
     
     // Handle bg task in the scheduler.
     [TaskSchedulerWrapper start];

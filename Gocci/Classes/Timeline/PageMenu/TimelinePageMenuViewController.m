@@ -127,12 +127,11 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     self.barButton.badgeOriginY = 10;
     
     // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    self.barButton.badgeValue =
+    [NSString stringWithFormat : @"%ld", [UIApplication sharedApplication].applicationIconBadgeNumber];// ナビゲーションバーに設定する
 
 
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:button1, self.barButton, nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:button1, self.barButton, nil];
     
     RequestGPSViewController *vc0 = [[RequestGPSViewController alloc] init];
     vc0 = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
@@ -338,9 +337,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 -(void)barButtonItemPressed:(id)sender{
     
     self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; 
-    [ud removeObjectForKey:@"numberOfNewMessages"];
     
     
     if (!self.popover) {
