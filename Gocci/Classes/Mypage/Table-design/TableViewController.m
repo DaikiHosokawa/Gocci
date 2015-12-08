@@ -123,9 +123,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Facebook", @"Twitter", @"店舗",                                           @"削除" ]
-                                 images:@[ [UIImage imageNamed:@"facebook"],
-                                           [UIImage imageNamed:@"twitter"],
+                             itemTitles:@[ @"Twitter", @"店舗",  @"削除" ]
+                                 images:@[ [UIImage imageNamed:@"twitter"],
                                            [UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"trash"]]
                          selectedHandle:^(NSInteger index){
@@ -134,19 +133,15 @@ static NSString * const reuseIdentifier = @"Cell";
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
                              
                              
-                             
                              if(index == 1){
-                                 NSLog(@"Facebook");
-                             }
-                             else if(index == 2){
                                  NSLog(@"Twitter");
                              }
-                             else if(index == 3){
+                             else if(index == 2){
                                  NSLog(@"Rest");
                                  [self.delegate table:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 4){
+                             else if(index == 3){
                                  NSLog(@"削除");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");

@@ -20,6 +20,7 @@
 #import "FullScreenViewController.h"
 #import "UCZProgressView.h"
 #import "Swift.h"
+#import "TimelinePageMenuViewController.h"
 
 @interface EditVideoController ()<BFPaperCheckboxDelegate>{
     NSString * cheertag_update;
@@ -165,7 +166,12 @@
     if (appDelegate.stringTenmei != nil &&[appDelegate.stringTenmei length]>0) {
         [self saveToCameraRoll];
     }else{
+        
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+#ifdef INDEVEL
+        appDelegate.stringTenmei = @"UNSPECIFIED";
+        [self saveToCameraRoll];
+#endif
     }
     
 }
@@ -246,7 +252,7 @@
                              appDelegate.stringCategory = @"";
                              appDelegate.indexCategory = @"";
                              appDelegate.valueKakaku = @"";
-                             [self dismissViewControllerAnimated:YES completion:nil];
+                             [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
                          }
 
                      });
@@ -400,6 +406,8 @@
             NSLog(@"Export was cancelled");
         } else if (error == nil) {
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            NSLog(@"CCCCCCCCCCCCCCCCCCCCCCCC:");
+            NSLog(exportSession.outputUrl.path);
             UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         } else {
             if (!exportSession.cancelled) {

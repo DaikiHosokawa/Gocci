@@ -160,7 +160,7 @@ import Foundation
     
     /// You can't continue the application flow after calling this method. You must start with the tutorial again
     /// because there will be no account data stored anymore
-    class func resetGocciToInitialState() {
+    class func resetPersistentDataToInitialState() {
         
         KeychainWrapper.removeObjectForKey("password_was_set_by_the_user")
         KeychainWrapper.removeObjectForKey("user_registerd_for_push_messages")
@@ -184,12 +184,6 @@ import Foundation
         // - scheduler task file
         // - avatar
         cache = InternalCache()
-    }
-    
-    class func resetGocciButKeepAccount() {
-        let iid = self.identity_id
-        resetGocciToInitialState()
-        self.identity_id = iid
     }
 }
 

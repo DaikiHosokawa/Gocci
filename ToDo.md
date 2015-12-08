@@ -18,23 +18,15 @@ Daiki Hosokawa
 
 <Recorder>
 
--upload end-> timeline
-
--入力情報投稿後リセット
-
 -cancel->投稿cancel
 
 <Notification>
 
 -notification->commentのあとに戻れない
 
--push message test
+-push message test 
 
 -mypage/timelineにbadge numを添付 ||testへ
-
-<Action sheet>
-
--Action sheet icon need
 
 <bottom bar>
 
@@ -48,19 +40,14 @@ Daiki Hosokawa
 
 <Other>
 
+-requestpopupのgpsの画像
+
 -emptyview
 
--ask Murata about API ver2
-
--register id を使わない仕様
-
--near timelineにdistanceを出す
 
 <Collaboration with wanke>
 
 -share(only twitter)->wanke’s advise need
-
--permission Push notification
 
 -http://test.api.gocci.me/v1/mobile/get/timeline->
  http://test.mobile.api.gocci.me/v1/mobile/get/timeline
@@ -68,8 +55,6 @@ Daiki Hosokawa
 -音声流す
 
 -NSUserDefault と　Keychain
-
--新着→現在地の順にタブ
 
 
 

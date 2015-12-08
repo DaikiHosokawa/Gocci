@@ -113,8 +113,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.barButton.badgeOriginY = 10;
     
     // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+   self.barButton.badgeValue =  [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];// ナビゲーションバーに設定
     
     [self.badgeButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -140,14 +139,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _CheerNum.userInteractionEnabled = YES;
     _CheerNum.tag = 102;
     
-    // launch CLLocationManager
     if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
         locationManager.delegate = self;
-        // 精度
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
         locationManager.distanceFilter = kCLDistanceFilterNone;
     }
     
@@ -227,7 +222,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
         
-        // TODO This is a hack so it does not crash. I have no idea what this code does so it should be fixed in a proper way
         if (!nextViewController) {
             return;
         }
@@ -258,6 +252,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)barButtonItemPressed:(id)sender{
     
+    self.barButton.badgeValue = nil;
     
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];

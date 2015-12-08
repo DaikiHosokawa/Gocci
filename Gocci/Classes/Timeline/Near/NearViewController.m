@@ -202,20 +202,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
-    
-    
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:rest_id forKey:@"RESTID"];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:user_id forKey:@"USERID"];
     
     
-    
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Facebook", @"Twitter", @"店舗", @"ユーザー",
-                                           @"違反報告" ]
-                                 images:@[ [UIImage imageNamed:@"facebook"],
-                                           [UIImage imageNamed:@"twitter"],
+                             itemTitles:@[@"Twitter", @"店舗", @"ユーザー",
+                                          @"違反報告" ]
+                                 images:@[ [UIImage imageNamed:@"twitter"],
                                            [UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"man"],
                                            [UIImage imageNamed:@"warning"]]
@@ -229,22 +225,19 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              
                              
                              if(index == 1){
-                                 NSLog(@"Facebook");
-                             }
-                             else if(index == 2){
                                  NSLog(@"Twitter");
                              }
-                             else if(index == 3){
+                             else if(index == 2){
                                  NSLog(@"Rest");
                                  [self.delegate near:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 4){
+                             else if(index == 3){
                                  NSLog(@"User");
                                  [self.delegate near:self username:u_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                              }
-                             else if(index == 5){
+                             else if(index == 4){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -285,7 +278,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              }
                          }];
     
-}
+
+    }
 
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);

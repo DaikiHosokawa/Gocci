@@ -47,7 +47,50 @@ extension NSURLRequest {
 //    }
 }
 
-class Network {
+@objc class Network: NSObject {
+    
+    static let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
+    
+    static var waiters: [State->()] = []
+    
+    class func notifyMyForNetworkStatusChanges(f: State->()) {
+        waiters.append(f)
+    }
+
+    enum State: Int {
+        case OFFLINE
+        case ONLINE_LAN
+        case ONLINE_WAN
+    }
+    
+    static var state: State = .OFFLINE
+    
+    class func startNetworkStatusMonitoring() {
+        internetReachability.startNotifier()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        let initialNote = NSNotification(name: kReachabilityChangedNotification, object: internetReachability)
+        reachabilityChanged(initialNote)
+    }
+    
+    class func reachabilityChanged(note: NSNotification) {
+        if let reachabilty = note.object as? Reachability {
+            let status = reachabilty.currentReachabilityStatus()
+            
+            print("reachabiity changed called: \(status)")
+            
+            switch status.rawValue {
+                case 0: state = .OFFLINE
+                case 1: state = .ONLINE_LAN
+                case 2: state = .ONLINE_WAN
+                default: break
+            }
+            
+            for waiter in waiters {
+                waiter(state)
+            }
+        }
+    }
     
     static let NETWORK_TIMEOUT = 20.0
     
