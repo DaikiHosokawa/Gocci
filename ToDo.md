@@ -62,6 +62,14 @@ Daiki Hosokawa
 
 -permission Push notification
 
+-http://test.api.gocci.me/v1/mobile/get/timeline->
+ http://test.mobile.api.gocci.me/v1/mobile/get/timeline
+
+-音声流す
+
+-NSUserDefault と　Keychain
+
+-新着→現在地の順にタブ
 
 
 
