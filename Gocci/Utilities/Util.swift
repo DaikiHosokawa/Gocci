@@ -17,6 +17,21 @@ typealias Lol = Int
     
 
     
+    class func errorIsNetworkConfigurationError(error: NSError) -> Bool {
+        switch error.code {
+            // Maybe this list is incomplete
+            case NSURLErrorNetworkConnectionLost: fallthrough
+            case NSURLErrorNotConnectedToInternet: fallthrough
+            case NSURLErrorCannotFindHost: fallthrough
+            case NSURLErrorCannotConnectToHost: fallthrough
+            case NSURLErrorDNSLookupFailed: fallthrough
+            case NSURLErrorTimedOut:
+                return true
+            default:
+                return false
+        }
+    }
+    
     class func createTaskThatWillEvenRunIfTheAppIsPutInBackground(id: String, queue: dispatch_queue_t, task: ()->(), expirationHandler: ()->()) -> ()->() {
         
         var bgTask = UIBackgroundTaskInvalid
@@ -209,7 +224,33 @@ typealias Lol = Int
         //return "\(version ?? "") build \(build ?? "")"
     }
     
+    class func wipeUserDataFromDevice(keepIdentityID: Bool) {
+        var iid: String? = nil
+        
+        if keepIdentityID && Persistent.identity_id != nil {
+            iid = Persistent.identity_id
+        }
+        
+        Persistent.resetPersistentDataToInitialState()
+        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
+    
+        if keepIdentityID && iid != nil {
+            Persistent.identity_id = iid
+        }
+    }
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

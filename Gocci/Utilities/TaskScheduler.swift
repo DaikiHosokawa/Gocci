@@ -38,12 +38,14 @@ class PersistentClassReflexion {
 
 class SingletonTaskScheduler {
     
-    let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
+    //let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
     let saveFileName = Util.documentsDirectory() + "/" + "unfinishedTasks.plist"
     
     var schedulerThread: NSThread? = nil
     
     var slots = 1
+    var slots_enabled = false
+    
     private let eventSemaphore = dispatch_semaphore_create(0)
     var onceToken: dispatch_once_t = 0
     
@@ -151,6 +153,7 @@ class SingletonTaskScheduler {
     func hardResetNeverUseThisOnlyForDebugging() {
         sync(tasks) {
             self.tasks = []
+            let _ = try? NSFileManager.defaultManager().removeItemAtPath(TaskScheduler.saveFileName)
         }
     }
     
@@ -167,15 +170,15 @@ class SingletonTaskScheduler {
         dispatch_semaphore_signal(eventSemaphore)
     }
     
-    @objc func reachabilityChanged(note: NSNotification) {
-        if let reachabilty = note.object as? Reachability {
-            let status = reachabilty.currentReachabilityStatus()
-            
-            if status.rawValue != 0 { // == NetworkStatus.ReachableViaWiFi || status == NetworkStatus.ReachableViaWWAN {
-                self.rescheduleNetworkTasks()
-            }
-        }
-    }
+//    @objc func reachabilityChanged(note: NSNotification) {
+//        if let reachabilty = note.object as? Reachability {
+//            let status = reachabilty.currentReachabilityStatus()
+//            
+//            if status.rawValue != 0 { // == NetworkStatus.ReachableViaWiFi || status == NetworkStatus.ReachableViaWWAN {
+//                self.rescheduleNetworkTasks()
+//            }
+//        }
+//    }
     
     func startScheduler() {
         
@@ -199,6 +202,8 @@ class SingletonTaskScheduler {
             
             return {
                 task.run { result in
+                    
+                    print("=== Task finished with result: \(result)")
                 
                     self.sync(task) {
                         task.state = result
@@ -242,8 +247,8 @@ class SingletonTaskScheduler {
                     continue
                 }
                 
-                // this is on the other hand not threadsafe
-                if self.slots <= 0 {
+                // this is on the other hand is not threadsafe. mainly used for debugging
+                if self.slots_enabled && self.slots <= 0 {
                     print("=== No free SLOTS... waiting...")
                     dispatch_semaphore_wait(self.eventSemaphore, DISPATCH_TIME_FOREVER)
                     continue
@@ -306,9 +311,15 @@ class SingletonTaskScheduler {
                 
                 self.schedulerThread = NSThread.currentThread()
                 
-                self.internetReachability.startNotifier()
+                Network.notifyMyForNetworkStatusChanges { state in
+                    if state != .OFFLINE {
+                        self.rescheduleNetworkTasks()
+                    }
+                }
                 
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+//                self.internetReachability.startNotifier()
+//                
+//                NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
                 
                 // scheduler GO!
                 schedulerLoop()
@@ -338,7 +349,7 @@ class PersistentBaseTask: CustomStringConvertible {
     var retrys = 5
     
     var timeCreation = Int(NSDate().timeIntervalSince1970)
-    var timeGiveUp = Int(NSDate().timeIntervalSince1970) + (60 * 60 * 24 * 3) // 3 days
+    var timeGiveUp = Int(NSDate().timeIntervalSince1970) + (60 * 60 * 24 * 7) // 7 days
     var timeNextTry = Int(NSDate().timeIntervalSince1970)
     
     

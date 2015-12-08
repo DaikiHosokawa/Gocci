@@ -118,7 +118,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
     // ナビゲーションバーに設定する
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", [[UIApplication sharedApplication] applicationIconBadgeNumber] ];
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[[UIApplication sharedApplication] applicationIconBadgeNumber] ];
     self.navigationItem.rightBarButtonItem = self.barButton;
 }
 

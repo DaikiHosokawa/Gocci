@@ -50,7 +50,11 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        //TwitterAuthentication.showTwitterLoginWebViewOnlyIfTheUserIsNotAuthenticated(fromViewController: self, onSuccess: {_ in print("worked")})
+        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+        let videoPATH = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+        
+        AWSS3VideoUploadTask(filePath: videoPATH, s3FileName: "delete_me_two_sec__per_task_upload.mp4").schedule()
+        
         return;
         
         // TODO
@@ -695,7 +699,7 @@ class DebugViewController : UIViewController {
     @IBAction func deleteUserDefsClicked(sender: AnyObject)
     {
         print("=== DELETE userdefs")
-        Persistent.resetGocciToInitialState()
+        Util.wipeUserDataFromDevice(false)
         
         signUpEditField.text = Util.randomUsername()
         loginEditField.text = ""

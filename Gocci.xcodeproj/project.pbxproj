@@ -341,6 +341,9 @@
 		981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934D1BFC840A007B3BF6 /* TestTwitter.swift */; };
 		981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */; };
 		981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
+		9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
+		9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
+		9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -884,6 +887,7 @@
 		981A934D1BFC840A007B3BF6 /* TestTwitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTwitter.swift; sourceTree = "<group>"; };
 		981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFacebook.swift; sourceTree = "<group>"; };
 		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -1485,6 +1489,7 @@
 			isa = PBXGroup;
 			children = (
 				9550D90C1BF83E4B00430942 /* AWSManager.swift */,
+				9862D6001C16A383006AE6D9 /* AWSTasks.swift */,
 			);
 			path = Amazon;
 			sourceTree = "<group>";
@@ -2440,6 +2445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */,
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
 				9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */,
 				9801BF111C080677001F4D3C /* TaskScheduler.swift in Sources */,
@@ -2451,6 +2457,7 @@
 				981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */,
 				9801BF0C1C080677001F4D3C /* Pop.swift in Sources */,
 				981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */,
+				9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				981A93431BFC51BF007B3BF6 /* API3.swift in Sources */,
 				981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */,
 				981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */,
@@ -2489,6 +2496,7 @@
 				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
 				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
+				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
