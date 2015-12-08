@@ -129,8 +129,14 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     // バッジ内容の設定
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-
-
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"Notification"
+                             object:nil];
+    
+    
     self.navigationItem.rightBarButtonItems =
     [NSArray arrayWithObjects:button1, self.barButton, nil];
     
@@ -236,6 +242,15 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
             action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
+
+
+- (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
+    
+    // ナビゲーションバーに設定する
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", [[UIApplication sharedApplication] applicationIconBadgeNumber] ];
+    self.navigationItem.rightBarButtonItem = self.barButton;
+}
+
 
 
 - (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {

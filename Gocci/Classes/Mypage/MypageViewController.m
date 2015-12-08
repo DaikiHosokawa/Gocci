@@ -23,6 +23,7 @@
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
+#import "BBBadgeBarButtonItem.h"
 
 @import QuartzCore;
 
@@ -58,6 +59,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @property (weak, nonatomic) IBOutlet UILabel *FolloweeNum;
 @property (weak, nonatomic) IBOutlet UILabel *CheerNum;
 @property (weak, nonatomic) IBOutlet UIButton *badgeButton;
+
 
 @end
 
@@ -100,12 +102,33 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [super viewDidLoad];
     
+    
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
+    
+    // BBBadgeBarButtonItemオブジェクトの作成
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:self.badgeButton];
+    self.barButton.badgeBGColor      = [UIColor whiteColor];
+    self.barButton.badgeTextColor    = color_custom;
+    self.barButton.badgeOriginX = 10;
+    self.barButton.badgeOriginY = 10;
+    
+    // バッジ内容の設定
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    
     [self.badgeButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
     self.navigationItem.backBarButtonItem = backButton;
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"Notification"
+                             object:nil];
     
     editButton.layer.cornerRadius = 10;
     editButton.clipsToBounds = YES;
@@ -229,6 +252,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     self.navigationItem.rightBarButtonItem = self.barButton;
     
 }
+
+
+
 
 -(void)barButtonItemPressed:(id)sender{
     

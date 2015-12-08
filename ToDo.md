@@ -30,7 +30,7 @@ Daiki Hosokawa
 
 -push message test
 
--mypage/timelineにbadge numを添付
+-mypage/timelineにbadge numを添付 ||testへ
 
 <Action sheet>
 

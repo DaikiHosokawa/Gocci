@@ -239,7 +239,14 @@
                         
                          if (self.progressView.progress >= 1) {
                              NSLog(@"完了");
-                             [self dismissViewControllerAnimated:YES completion:nil];
+                             //Initiarize
+                             appDelegate.stringTenmei = @"";
+                             appDelegate.indexTenmei = @"";
+                             appDelegate.valueHitokoto = @"";
+                             appDelegate.stringCategory = @"";
+                             appDelegate.indexCategory = @"";
+                             appDelegate.valueKakaku = @"";
+                             [self.value popToViewController: [self.navigationController.viewControllers objectAtIndex:0]];
                          }
 
                      });
@@ -277,14 +284,6 @@
                      return nil;
                  }];
                  
-                 
-                 //Initiarize
-                 appDelegate.stringTenmei = @"";
-                 appDelegate.indexTenmei = @"";
-                 appDelegate.valueHitokoto = @"";
-                 appDelegate.stringCategory = @"";
-                 appDelegate.indexCategory = @"";
-                 appDelegate.valueKakaku = @"";
                  
              }else{
                  self.progressView.progress = 1.0;
