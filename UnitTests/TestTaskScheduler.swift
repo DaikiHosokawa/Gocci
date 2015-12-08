@@ -15,6 +15,7 @@ class TestTaskScheduler: XCTestCase {
     override class func setUp() {
         // only starts the scheduler if it not already runnig
         TaskScheduler.startScheduler()
+        TaskScheduler.slots_enabled = true
         
         super.setUp()
     }

@@ -407,6 +407,19 @@ class AWSManager {
     }
     
     func uploadVideoToMovieBucket(vdeoFileURL: NSURL, filename: String) {
+        
+        
+        let completionHandler: (AWSS3TransferUtilityUploadTask!, NSError?) -> () = { task, error in
+            if error != nil {
+                print("=============== ERROR: FROM THE COMPLETION HANDLER! : \(error)")
+            }
+            else {
+                print("=============== SUCCESS, upload completet.")
+                Util.popup("Upload to S3 complete.")
+            }
+        }
+        
+        
         let tu = AWSS3TransferUtility.S3TransferUtilityForKey("gocci_up_north_east_1")!
         
         let uploadTask = tu.uploadFile(vdeoFileURL,
@@ -414,21 +427,17 @@ class AWSManager {
             key: filename,
             contentType: "video/quicktime",
             expression: nil,
-            completionHander: nil)
+            completionHander: completionHandler)
             
         uploadTask.continueWithBlock{ task in
             if task.error != nil {
-                print("===============", task.error)
+                print("=============== ERROR: ", task.error)
             }
             else if task.exception != nil {
-                print("===============", task.exception)
+                print("=============== ERROR: ", task.exception)
             }
             else {
-                print("=== upload success, result: ", task.result)
-                
-                let res: AWSS3TransferUtilityUploadTask = task.result as! AWSS3TransferUtilityUploadTask
-                
-                //res.
+                print("=============== MAYBE upload success. At least no error in the continue Task block")
             }
             
             return nil
