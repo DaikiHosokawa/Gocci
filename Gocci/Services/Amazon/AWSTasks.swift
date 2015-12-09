@@ -50,10 +50,10 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         NetOp.loginWithIID(iid) { code, msg in
             switch code {
                 case NetOpResult.NETOP_SUCCESS:
-                    AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
+                    AWS2.connectToBackEndWithUserDefData().continueWithBlock{ task -> AnyObject! in
                         and(.FAILED_RECOVERABLE)
                         return nil
-                    })
+                    }
                 case NetOpResult.NETOP_NETWORK_ERROR:
                     and(.FAILED_NETWORK)
                 case NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD:
@@ -77,9 +77,10 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         
         let localFileURL = NSURL.fileURLWithPath(filePath)
         
-        // TODO fileExistsCheck (auch im twitter & facebook uploader. if not exists -> FAILED_IRRECOVERABLE
-        
-        // TODO perform network check. If down        finished(.FAILED_NETWORK)
+        guard Util.fileExists(filePath) else {
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
         
         guard Network.state != .OFFLINE else {
             finished(.FAILED_NETWORK)

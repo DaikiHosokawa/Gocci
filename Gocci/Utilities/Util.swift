@@ -196,6 +196,10 @@ typealias Lol = Int
         return f.first ?? "shouldNeverHappen"
     }
     
+    class func fileExists(filePath: String) -> Bool {
+        return NSFileManager.defaultManager().fileExistsAtPath(filePath)
+    }
+    
     class func getInchString() -> String
     {
         let height: Int = Int(UIScreen.mainScreen().bounds.size.height)
