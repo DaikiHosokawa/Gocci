@@ -63,13 +63,14 @@ import Foundation
                             self.manager.GET(uri, parameters: parameters, success: success, failure: failure)
                         }
                         else if let _ = task.response as? NSHTTPURLResponse {
-//                            task.response.statusCode = 401
-                            
                             let uidict = [NSLocalizedDescriptionKey: "Authentitication on relogin failed. should never happen"]
                             failure(task: task, error: NSError(domain: "com.gocci.network", code: 401, userInfo: uidict))
                         }
                         // is it is not castable we stop here. because it would crash in APIClient after that
                     }
+                }
+                else {
+                    success(task: task, responseObject: responseObject)
                 }
             }
             else {

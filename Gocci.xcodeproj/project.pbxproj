@@ -344,6 +344,8 @@
 		9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
 		9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
 		9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
+		9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
+		9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -888,6 +890,7 @@
 		981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFacebook.swift; sourceTree = "<group>"; };
 		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
+		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -1509,6 +1512,7 @@
 			children = (
 				9550D9111BF83E4B00430942 /* API3.swift */,
 				9550D9121BF83E4B00430942 /* APISupport.swift */,
+				9862D6041C17BF45006AE6D9 /* APITasks.swift */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -2469,6 +2473,7 @@
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
 				981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */,
+				9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 			);
@@ -2652,6 +2657,7 @@
 				9550DB021BF83E4C00430942 /* UIImage+MultiFormat.m in Sources */,
 				95FD92EA1C0D79F200D822E8 /* CollectionViewController.m in Sources */,
 				9550DA991BF83E4C00430942 /* API3.swift in Sources */,
+				9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */,
 				9550DAF21BF83E4C00430942 /* RHAnimator.m in Sources */,
 				9550DB001BF83E4C00430942 /* UIButton+WebCache.m in Sources */,
 				9550DB0C1BF83E4C00430942 /* UIViewController+STPopup.m in Sources */,

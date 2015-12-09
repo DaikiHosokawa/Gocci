@@ -11,14 +11,23 @@ import Foundation
 let TaskScheduler = SingletonTaskScheduler()
 
 // Swift does not support reflection yet. So we either have to hack with NSClassFromString() which does
-// Sound a little it meh or we provide this automatic casting table...
+// Sound a little bit meh or we provide this automatic casting table...
 class PersistentClassReflexion {
     class func createPersistentTaskFromString(className: String, data: NSDictionary) -> PersistentBaseTask? {
         switch(className) {
             case "DummyPlugTask":
                 return DummyPlugTask(dict: data)
+            
             case "TwitterVideoSharingTask":
                 return TwitterVideoSharingTask(dict: data)
+            case "FacebookVideoSharingTask":
+                return FacebookVideoSharingTask(dict: data)
+            
+            case "GocciVideoSharingTask":
+                return GocciVideoSharingTask(dict: data)
+            case "AWSS3VideoUploadTask":
+                return AWSS3VideoUploadTask(dict: data)
+            
             default:
                 return nil
         }
@@ -227,7 +236,13 @@ class SingletonTaskScheduler {
                     self.sync(self.slots) {
                         self.slots++
                     }
-                    dispatch_semaphore_signal(self.eventSemaphore)
+                    
+                    if let legacyTask = task.legacy() {
+                        legacyTask.schedule()
+                    }
+                    else {
+                        dispatch_semaphore_signal(self.eventSemaphore)
+                    }
                 }
             }
         }
@@ -311,7 +326,7 @@ class SingletonTaskScheduler {
                 
                 self.schedulerThread = NSThread.currentThread()
                 
-                Network.notifyMyForNetworkStatusChanges { state in
+                Network.notifyMeForNetworkStatusChanges { state in
                     if state != .OFFLINE {
                         self.rescheduleNetworkTasks()
                     }
@@ -394,6 +409,11 @@ class PersistentBaseTask: CustomStringConvertible {
     func run(finished: State->()) {
         // override
         fatalError()
+    }
+    
+    // Will be called after a task successful finished with DONE state. used to easy start a continue task, making a task chain
+    func legacy() -> PersistentBaseTask? {
+        return nil
     }
     
     var description: String {
