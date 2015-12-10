@@ -15,15 +15,16 @@
 #import "RestPopupViewController.h"
 #import "ValuePopupViewController.h"
 #import "CategoryPopupViewController.h"
+#import "requestGPSPopupViewController.h"
 #import "LocationClient.h"
 #import "BFPaperCheckbox.h"
 #import "FullScreenViewController.h"
-#import "UCZProgressView.h"
 #import "Swift.h"
 #import "TimelinePageMenuViewController.h"
 
 @interface EditVideoController ()<BFPaperCheckboxDelegate>{
     NSString * cheertag_update;
+    CLLocationManager* locationManager;
 }
 
 @property (strong, nonatomic) SCAssetExportSession *exportSession;
@@ -38,7 +39,6 @@
 @property (weak,nonatomic)NSString *category_id;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *checkbox;
 @property (nonatomic, copy) NSArray *checkboxes;
-@property (weak, nonatomic) IBOutlet UCZProgressView *progressView;
 
 
 @end
@@ -123,14 +123,6 @@
     _textView.returnKeyType = UIReturnKeyDone;
     
     self.view.userInteractionEnabled = YES;
-    
-    self.progressView.hidden = YES;
-    //self.progressView.progress = 0.0;
-    self.progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-  self.progressView.showsText = YES;
-    self.progressView.tintColor = [UIColor blackColor];
-    self.progressView.usesVibrancyEffect = NO;
-    self.progressView.textColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -168,18 +160,18 @@
     }else{
         
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        /*
 #ifdef INDEVEL
         appDelegate.stringTenmei = @"UNSPECIFIED";
         [self saveToCameraRoll];
 #endif
+         */
     }
     
 }
 
 - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
     
-    self.progressView.hidden = NO;
-    self.progressView.progress = 0.0;
     
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
@@ -221,7 +213,7 @@
              
              if (error){
                  NSLog(@"post api失敗");
-                 self.progressView.progress = 1.0;
+
              }
              if ([result[@"code"] integerValue] == 200) {
                  //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
@@ -241,10 +233,7 @@
                  expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                         self.progressView.progress = (float)((double) totalBytesSent / totalBytesExpectedToSend);
-                        
-                         if (self.progressView.progress >= 1) {
-                             NSLog(@"完了");
+                          NSLog(@"完了");
                              //Initiarize
                              appDelegate.stringTenmei = @"";
                              appDelegate.indexTenmei = @"";
@@ -253,8 +242,6 @@
                              appDelegate.indexCategory = @"";
                              appDelegate.valueKakaku = @"";
                              [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-                         }
-
                      });
                  };
                  
@@ -273,12 +260,10 @@
                              completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
                      if (task.error) {
                          NSLog(@"Error: %@", task.error);
-                         self.progressView.progress = 1.0;
                          [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                      }
                      if (task.exception) {
                          NSLog(@"Exception: %@", task.exception);
-                         self.progressView.progress = 1.0;
                          [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                      }
                      if (task.result) {
@@ -292,7 +277,6 @@
                  
                  
              }else{
-                 self.progressView.progress = 1.0;
                  [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
              }
          }];
@@ -451,7 +435,25 @@
 }
 
 - (IBAction)restnameInsert:(id)sender {
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+         [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+    }
+    else {
+        switch ([CLLocationManager authorizationStatus]) {
+                
+            case kCLAuthorizationStatusNotDetermined:
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusRestricted:
+                NSLog(@"not permitted");
+                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
+        }
+    }
+
+
 }
 
 - (IBAction)valueInsert:(id)sender {

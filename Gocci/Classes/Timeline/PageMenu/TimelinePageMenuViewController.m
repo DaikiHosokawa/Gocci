@@ -29,7 +29,7 @@ static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
-@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate,CAPSPageMenuDelegate>
+@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate,CAPSPageMenuDelegate,CLLocationManagerDelegate>
 {
     NSString *_postID;
     NSString *_postUsername;
@@ -135,6 +135,13 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
                                name:@"Notification"
                              object:nil];
     
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+
     
     self.navigationItem.rightBarButtonItems =
     [NSArray arrayWithObjects:button1, self.barButton, nil];
