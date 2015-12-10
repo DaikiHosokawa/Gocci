@@ -111,7 +111,7 @@ static SCRecordSession *staticRecordSession;
 #if 1
     {
         {
-            CGRect rect_page = CGRectMake(0, 398, 320, 170);
+            CGRect rect_page = CGRectMake(0, 383, 320, 183);
             // 4inch
             CGRect rect = [UIScreen mainScreen].bounds;
             if (rect.size.height == 480) {

@@ -18,27 +18,25 @@ Daiki Hosokawa
 
 <Recorder>
 
--cancel->投稿cancel
+-post test
 
 <Notification>
 
--notification->commentのあとに戻れない
-
 -push message test 
-
--mypage/timelineにbadge numを添付 ||testへ
 
 <bottom bar>
 
 -bottom bar design
 
+<Other>
+
 -Analytics
+
+-sort button
 
 -Userpage(movie)
 
 -restaurantpage 再生問題
-
-<Other>
 
 -requestpopupのgpsの画像
 
@@ -52,7 +50,7 @@ Daiki Hosokawa
 -http://test.api.gocci.me/v1/mobile/get/timeline->
  http://test.mobile.api.gocci.me/v1/mobile/get/timeline
 
--音声流す
+-音声問題
 
 -NSUserDefault と　Keychain
 

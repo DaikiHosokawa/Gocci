@@ -14,6 +14,7 @@
 #import "SortableTimeLineSubViewProtocol.h"
 
 #import "MoviePlayerManager.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface TimelinePageMenuViewController : UIViewController<NearViewControllerDelegate,UIScrollViewDelegate,FollowViewControllerDelegate,RecoViewControllerDelegate>
