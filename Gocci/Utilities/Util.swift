@@ -177,6 +177,14 @@ typealias Lol = Int
         #endif
     }
     
+    class func timestamp() -> String {
+        
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss";
+        return formatter.stringFromDate(date)
+    }
+    
     class func runInBackground(block: ()->Void ) {
         let backgroundQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
         dispatch_async(backgroundQueue, block)

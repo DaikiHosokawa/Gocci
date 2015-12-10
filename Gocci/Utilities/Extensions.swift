@@ -33,6 +33,10 @@ extension String {
         return "\"" + self + "\""
     }
     
+    func asURL() -> NSURL {
+        return NSURL.fileURLWithPath(self)
+    }
+    
     func percentEncodingSane() -> String {
         let betterSafeThanSorry = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzyz"
         let secureSet = NSCharacterSet(charactersInString:betterSafeThanSorry)

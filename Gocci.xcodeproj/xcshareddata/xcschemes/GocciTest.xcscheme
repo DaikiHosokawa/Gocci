@@ -66,6 +66,9 @@
                   Identifier = "TestFacebook">
                </Test>
                <Test
+                  Identifier = "TestTaskScheduler">
+               </Test>
+               <Test
                   Identifier = "TestTwitter">
                </Test>
                <Test
