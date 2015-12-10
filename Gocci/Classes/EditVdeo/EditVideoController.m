@@ -175,131 +175,51 @@
     
 }
 
-- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+- (void)realUplaod {
     
-    self.progressView.hidden = NO;
-    self.progressView.progress = 0.0;
-    
+    // WHY?
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if (error == nil) {
+    
+    NSString *videoFile = [VideoPostPreparation saveVideoInDocumentsAndCleanUpVideoFragments: appDelegate.assetURL];
+    
+    
+    
+    NSString *valueKakaku = @"";
+    if ([appDelegate.valueKakaku length]>0)
+        valueKakaku = appDelegate.valueKakaku;
+    NSString *category = @"1";
+    if ([appDelegate.indexCategory length]>0)
+        category= appDelegate.indexCategory;
+    NSString *comment = @"none";
+    if ([appDelegate.valueHitokoto length]>0)
+        comment = appDelegate.valueHitokoto;
+    NSString *rest_id = @"";
+    if ([appDelegate.indexTenmei length]>0)
+        rest_id = appDelegate.indexTenmei;
         
-        NSLog(@"contextInfo:%@,videopath:%@",contextInfo,videoPath);
-        NSLog(@"execsubmit");
-        //Cheertag
-        NSString *cheertag = @"0";
-        if ([cheertag_update isEqualToString:@"1"]) cheertag = cheertag_update;
-        //Value
-        NSString *valueKakaku = @"";
-        if ([appDelegate.valueKakaku length]>0) valueKakaku = appDelegate.valueKakaku;
-        
-        //Category
-        NSString *category = @"1";
-        // NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-        if ([appDelegate.indexCategory length]>0) category= appDelegate.indexCategory;
-        //Comment
-        NSString *comment = @"none";
-        NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-        if ([appDelegate.valueHitokoto length]>0) comment = appDelegate.valueHitokoto;
-        //Restid
-        NSString *rest_id = @"...";
-        if ([appDelegate.indexTenmei length]>0) rest_id = appDelegate.indexTenmei;
-        
-        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
-        
-        //TODO change post api client
-        
-        [APIClient POST:movieFileForAPI rest_id:rest_id cheer_flag:cheertag value:valueKakaku
-            category_id:category tag_id:@"" memo:comment handler:^(id result, NSUInteger code, NSError *error)
-         
-         {
-             
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-             
-             if (error){
-                 NSLog(@"post api失敗");
-                 self.progressView.progress = 1.0;
-             }
-             if ([result[@"code"] integerValue] == 200) {
-                 //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
-                 
-                 //S3 upload
-                 //ファイル名+user_id形式
-                 NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
-                 
-                 NSLog(@"movieFileForS3:%@",movieFileForS3);
-                 
-                 AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 
-                 NSURL *fileURL = dele.assetURL;
-                 NSLog(@"assetURL:%@",dele.assetURL);
-                 
-                 AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
-                 expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                         self.progressView.progress = (float)((double) totalBytesSent / totalBytesExpectedToSend);
-                        
-                         if (self.progressView.progress >= 1) {
-                             NSLog(@"完了");
-                             [self dismissViewControllerAnimated:YES completion:nil];
-                         }
+    NSString *timestamp = [[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"];
+    
 
-                     });
-                 };
-                 
-                 AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         // Do something e.g. Alert a user for transfer completion.
-                         // On failed uploads, `error` contains the error object.
-                     });
-                 };
-                 AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"gocci_up_north_east_1"];
-                 [[transferUtility uploadFile:fileURL
-                                       bucket:@"gocci.movies.bucket.jp-test"
-                                          key:movieFileForS3
-                                  contentType:@"video/quicktime"
-                                   expression:expression
-                             completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
-                     if (task.error) {
-                         NSLog(@"Error: %@", task.error);
-                         self.progressView.progress = 1.0;
-                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                     }
-                     if (task.exception) {
-                         NSLog(@"Exception: %@", task.exception);
-                         self.progressView.progress = 1.0;
-                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                     }
-                     if (task.result) {
-                         AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-                         NSLog(@"success:%@",uploadTask);
-                                                  // Do something with uploadTask.
-                     }
-                     
-                     return nil;
-                 }];
-                 
-                 
-                 //Initiarize
-                 appDelegate.stringTenmei = @"";
-                 appDelegate.indexTenmei = @"";
-                 appDelegate.valueHitokoto = @"";
-                 appDelegate.stringCategory = @"";
-                 appDelegate.indexCategory = @"";
-                 appDelegate.valueKakaku = @"";
-                 
-             }else{
-                 self.progressView.progress = 1.0;
-                 [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-             }
-         }];
-        
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
+    [VideoPostPreparation initiateUploadTasks: timestamp
+                                 restaurantID: rest_id
+                                    cheerFlag: [cheertag_update isEqualToString:@"1"]
+                                       kakaku: valueKakaku
+                                   categoryID: category
+                                      comment: comment
+                                videoFilePath: videoFile];
+    
+    
+     //Initiarize
+     appDelegate.stringTenmei = @"";
+     appDelegate.indexTenmei = @"";
+     appDelegate.valueHitokoto = @"";
+     appDelegate.stringCategory = @"";
+     appDelegate.indexCategory = @"";
+     appDelegate.valueKakaku = @"";
+    
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -394,25 +314,18 @@
     dele.assetURL = exportSession.outputUrl;
    
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
-        //__strong typeof(self) strongSelf = wSelf;
-        
-        if (!exportSession.cancelled) {
-            //  NSLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
-        }
-   
         
         NSError *error = exportSession.error;
         if (exportSession.cancelled) {
             NSLog(@"Export was cancelled");
-        } else if (error == nil) {
+        }
+        else if (error == nil) {
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            NSLog(@"CCCCCCCCCCCCCCCCCCCCCCCC:");
-            NSLog(exportSession.outputUrl.path);
-            UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-        } else {
-            if (!exportSession.cancelled) {
-                [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-            }
+            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+
+            [self realUplaod];
+        } else if (!exportSession.cancelled) {
+            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
     

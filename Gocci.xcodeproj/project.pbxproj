@@ -350,6 +350,9 @@
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
 		987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F51BFB37AD00339285 /* thumbnail.jpg */; };
+		988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */; };
+		988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
+		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -896,6 +899,8 @@
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
 		987E51F41BFB37AD00339285 /* restaurantlatlon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = restaurantlatlon.json; path = Gocci/Debug/restaurantlatlon.json; sourceTree = "<group>"; };
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
+		988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testVideoUploadTaskChain.swift; sourceTree = "<group>"; };
+		988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostPreparation.swift; sourceTree = "<group>"; };
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
@@ -1163,6 +1168,7 @@
 				9550D8121BF83E4B00430942 /* FullScreenViewController.h */,
 				9550D8131BF83E4B00430942 /* FullScreenViewController.m */,
 				9550D8141BF83E4B00430942 /* Popup */,
+				988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */,
 			);
 			path = EditVdeo;
 			sourceTree = "<group>";
@@ -2177,6 +2183,7 @@
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */,
 				981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */,
 				981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */,
 				981A934D1BFC840A007B3BF6 /* TestTwitter.swift */,
@@ -2469,6 +2476,7 @@
 				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
 				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
 				9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */,
+				988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */,
@@ -2476,6 +2484,7 @@
 				9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
+				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2644,6 +2653,7 @@
 				9550DA671BF83E4C00430942 /* CIImageRendererUtils.m in Sources */,
 				9550DA241BF83E4C00430942 /* DebugViewController.swift in Sources */,
 				9550DA691BF83E4C00430942 /* SCAudioConfiguration.m in Sources */,
+				988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */,
 				9550DAFA1BF83E4C00430942 /* SDWebImageCompat.m in Sources */,
 				9550DA5A1BF83E4C00430942 /* SCScrollPageView.m in Sources */,
 				980986B11BFF3FDA009BD0E3 /* Pop.swift in Sources */,
