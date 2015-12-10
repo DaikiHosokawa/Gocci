@@ -43,7 +43,9 @@ class FacebookVideoSharingTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        // TODO
+        // TO BE DONE
+        fatalError()
+        
         let mp4URL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
         
         
