@@ -53,7 +53,7 @@ extension NSURLRequest {
     
     static var waiters: [State->()] = []
     
-    class func notifyMyForNetworkStatusChanges(f: State->()) {
+    class func notifyMeForNetworkStatusChanges(f: State->()) {
         waiters.append(f)
     }
 
