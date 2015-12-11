@@ -68,8 +68,17 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     
     if ([_receiveDic2 count] == 0) {
-        UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+        UIImage *img = [UIImage imageNamed:@"sad_post.png"];
         UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+        CGRect rect = [UIScreen mainScreen].bounds;
+        if (rect.size.height == 568) {
+            CGRect original = iv.frame;
+            CGRect new = CGRectMake(original.origin.x,
+                                    original.origin.y,
+                                    original.size.width/1.2,
+                                    original.size.height /1.2);
+            iv.frame = new;
+        }
         CGSize boundsSize = self.soda.size;
         iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
         [self.view addSubview:iv];

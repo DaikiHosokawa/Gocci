@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "sad_notice.png",
+      "filename" : "sad_post.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "sad_notice@2x.png",
+      "filename" : "sad_post@2x.png",
       "scale" : "2x"
     },
     {

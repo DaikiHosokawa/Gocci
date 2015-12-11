@@ -132,7 +132,7 @@
             [self registerUsername:self.username.text];
         }
         else {
-        UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+        UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"文字を入力してください" message:@"0文字以上20文字以下です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [requestAgain show];
     }
 }
