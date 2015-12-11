@@ -103,6 +103,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
+    /*
     UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];  
     UIButton *btn = [[UIButton alloc]
                       initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -112,7 +113,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     [btn addTarget:self
             action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
-    
+    */
     
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [customButton setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
@@ -143,8 +144,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     }
 
     
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:button1, self.barButton, nil];
+    self.navigationItem.rightBarButtonItem = self.barButton;
     
     UIImage *image = [UIImage imageNamed:@"sort.png"];
     UIButton *button = [[UIButton alloc]

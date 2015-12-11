@@ -52,7 +52,7 @@
         case kCLAuthorizationStatusRestricted:
             
             NSLog(@"位置情報が許可されていません2");
-            UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+            UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
             requestAgain.tag=121;
             [requestAgain show];
             
