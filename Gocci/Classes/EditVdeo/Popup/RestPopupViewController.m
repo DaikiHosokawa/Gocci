@@ -13,6 +13,7 @@
 #import "APIClient.h"
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
+#import "Swift.h"
 
 @interface RestPopupViewController ()<CLLocationManagerDelegate>
 {
@@ -92,9 +93,10 @@
         NSString *restname = restaurant[indexPath.row];
         NSString *restid = rest_id[indexPath.row];
         
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        delegate.stringTenmei = restname;
-        delegate.indexTenmei = restid;
+        VideoPostPreparation.postData.rest_name = restname;
+        VideoPostPreparation.postData.rest_id = restid;
+        VideoPostPreparation.postData.prepared_restaurant = true;
+        
         [self.popupController dismiss];
     }
     
@@ -121,9 +123,15 @@
     {
         [APIClient Near:coordinate.latitude longitude:coordinate.longitude handler:^(id result, NSUInteger code, NSError *error)
          {
+             if (error || ![result isKindOfClass:[NSArray class]]) {
+                 [SVProgressHUD dismiss];
+                 [self.popupController pushViewController:[RestAddPopupViewController new] animated:YES];
+                 return;
+             }
              
-             restaurant = [NSMutableArray arrayWithCapacity:0];
-             rest_id = [NSMutableArray arrayWithCapacity:0];
+             
+             restaurant = [NSMutableArray arrayWithCapacity:30];
+             rest_id = [NSMutableArray arrayWithCapacity:30];
              
              for (NSDictionary *dict in (NSArray *)result) {
                  NSDictionary *restnameGet = [dict objectForKey:@"restname"];

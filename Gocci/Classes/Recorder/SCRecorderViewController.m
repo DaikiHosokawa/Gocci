@@ -26,6 +26,7 @@
 #import <AWSS3/AWSS3.h>
 
 #import "STPopup.h"
+#import "const.h"
 
 
 #define kVideoPreset AVCaptureSessionPresetHigh
@@ -92,7 +93,11 @@ static SCRecordSession *staticRecordSession;
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
+#ifdef INDEVEL
+    _recorder.maxRecordDuration = CMTimeMake(800, 600);
+#else
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
+#endif
     _recorder.videoConfiguration.sizeAsSquare = YES;
     UIView *previewView = self.preview;
     _recorder.previewView = previewView;
@@ -101,12 +106,7 @@ static SCRecordSession *staticRecordSession;
     self.focusView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
-    
-    NSDate *now = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-    NSString *nowString = [formatter stringFromDate:now];
-    [[NSUserDefaults standardUserDefaults] setValue:nowString forKey:@"post_time"];
+
     
 #if 1
     {
@@ -301,7 +301,12 @@ static SCRecordSession *staticRecordSession;
     CMTime currentTime = kCMTimeZero;
     
     NSTimeInterval time_now = 0.0;
+#ifdef INDEVEL
+    NSTimeInterval time_max = 1.3;
+#else
     NSTimeInterval time_max = 7.0;
+#endif
+    
 #if (!TARGET_IPHONE_SIMULATOR)
     if (_recorder.session != nil) {
         currentTime = _recorder.session.duration;

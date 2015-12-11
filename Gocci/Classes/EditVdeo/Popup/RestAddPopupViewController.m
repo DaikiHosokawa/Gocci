@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "LocationClient.h"
+#import "Swift.h"
 
 @implementation RestAddPopupViewController
 {
@@ -96,27 +97,36 @@
         
         void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
         {
+            VideoPostPreparation.postData.rest_name = _textField.text;
+            VideoPostPreparation.postData.lat = coordinate.latitude;    //[NSString stringWithFormat:@"%@", @(coordinate.latitude)];
+            VideoPostPreparation.postData.lon = coordinate.longitude;   //[NSString stringWithFormat:@"%@", @(coordinate.longitude)];
+            VideoPostPreparation.postData.prepared_restaurant = false;
             
-            [APIClient restInsert:_textField.text latitude:coordinate.latitude longitude:coordinate.longitude  handler:^(id result, NSUInteger code, NSError *error)
-             {
-                 if ([result[@"code"] integerValue] == 200) {
-                     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-                     delegate.stringTenmei = _textField.text;
-                     delegate.indexTenmei = result[@"rest_id"];
-                     [_textField resignFirstResponder];
-                     [self.popupController dismiss];
-                 }else{
-                     [_textField resignFirstResponder];
-                     _label.text = @"通信環境の良い場所で再度お試しください";
-                     _label.textColor = [UIColor redColor];
-                 }
-             }];
+            [_textField resignFirstResponder];
+            [self.popupController dismiss];
+            
+//            [APIClient restInsert:_textField.text latitude:coordinate.latitude longitude:coordinate.longitude  handler:^(id result, NSUInteger code, NSError *error)
+//             {
+//                 if ([result[@"code"] integerValue] == 200) {
+//                     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//                     delegate.stringTenmei = _textField.text;
+//                     delegate.indexTenmei = result[@"rest_id"];
+//                     [_textField resignFirstResponder];
+//                     [self.popupController dismiss];
+//                 }else{
+//                     [_textField resignFirstResponder];
+//                     _label.text = @"通信環境の良い場所で再度お試しください";
+//                     _label.textColor = [UIColor redColor];
+//                 }
+//             }];
         };
         
         [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
          {
              
              if (error) {
+                 // TODO show user popup: "You need either internet or GPS for adding a retaurant"
+                 NSLog(@"ERROR: %@", error);
                  return;
              }
              fetchAPI(location.coordinate);
