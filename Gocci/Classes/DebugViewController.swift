@@ -50,6 +50,46 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        
+        
+        VideoPostPreparation.resetPostData()
+        VideoPostPreparation.postData.rest_id = "1"
+        VideoPostPreparation.postData.category_id = "1"
+        VideoPostPreparation.postData.category_string = "1"
+        VideoPostPreparation.postData.value = "1"
+        
+        VideoPostPreparation.postData.memo = Util.randomKanjiStringWithLength(20)
+        VideoPostPreparation.postData.cheer_flag = true
+        
+        VideoPostPreparation.postData.prepared_restaurant = false
+        VideoPostPreparation.postData.rest_name = Util.randomKanjiStringWithLength(20)
+        VideoPostPreparation.postData.lat = 138.000000
+        VideoPostPreparation.postData.lon = 35.000000
+        
+        let videoURLn = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+
+        VideoPostPreparation.initiateUploadTaskChain(videoURLn)
+        
+        return;
+        
+        
+        
+        
+        
+        Util.runInBackground {
+            
+            let pop = UIAlertController.makeOverlayPopup("aaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbb")
+            
+            pop.addButton("Banane", style: UIAlertActionStyle.Default) { print("Banane clicked") }
+            pop.addButton("Apfel", style: UIAlertActionStyle.Cancel) { print("Apfel clicked") }
+            pop.addButton("Kirsche", style: UIAlertActionStyle.Destructive) { print("Kirsche clicked") }
+            
+            pop.overlay()
+        
+        }
+        return;
+        
+        
         let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
         let videoPATH = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
         
@@ -335,7 +375,7 @@ class DebugViewController : UIViewController {
     
     @IBAction func a(sender: AnyObject) {
         
-        TaskScheduler.nudge()
+        TaskScheduler.loadTasksFromDisk()
         
 //        FacebookAuthentication.enableFullDebugOutput()
 //        

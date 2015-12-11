@@ -60,6 +60,16 @@ typealias Lol = Int
         return Int(NSDate().timeIntervalSince1970)
     }
     
+    class func timestampUTC() -> String {
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US")
+        formatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        formatter.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss";
+        return formatter.stringFromDate(date)
+    }
+    
     
     // THIS is a ugly hack until the tutorial page view controller is rewritten in swift
     class func dirtyBackEndLoginWithUserDefData() -> AWSTask {
@@ -176,6 +186,8 @@ typealias Lol = Int
             return regid ?? generateFakeDeviceID()
         #endif
     }
+    
+
     
     class func runInBackground(block: ()->Void ) {
         let backgroundQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)

@@ -8,7 +8,7 @@
 
 #import "CategoryPopupViewController.h"
 #import "STPopup.h"
-#import "AppDelegate.h"
+#import "Swift.h"
 
 @interface CategoryPopupViewController ()
 
@@ -82,38 +82,29 @@
 //1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-
     if (indexPath.row == 0) {
-       delegate.stringCategory = @"和食";
-       delegate.indexCategory = @"2";
-        [self.popupController dismiss];
+       VideoPostPreparation.postData.category_string = @"和食";
+       VideoPostPreparation.postData.category_id = @"2";
     }else if(indexPath.row == 1) {
-        delegate.stringCategory = @"洋食";
-        delegate.indexCategory = @"3";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"洋食";
+        VideoPostPreparation.postData.category_id = @"3";
     }else if(indexPath.row == 2) {
-        delegate.stringCategory = @"中華";
-        delegate.indexCategory = @"4";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"中華";
+        VideoPostPreparation.postData.category_id = @"4";
     }else if(indexPath.row == 3) {
-        delegate.stringCategory = @"カレー";
-        delegate.indexCategory = @"5";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"カレー";
+        VideoPostPreparation.postData.category_id = @"5";
     }else if(indexPath.row == 4) {
-        delegate.stringCategory = @"ラーメン";
-        delegate.indexCategory = @"6";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"ラーメン";
+        VideoPostPreparation.postData.category_id = @"6";
     }else if(indexPath.row == 5){
-        delegate.stringCategory = @"カフェ";
-        delegate.indexCategory = @"8";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"カフェ";
+        VideoPostPreparation.postData.category_id = @"8";
     }else if(indexPath.row == 6){
-        delegate.stringCategory = @"居酒屋";
-        delegate.indexCategory = @"9";
-        [self.popupController dismiss];
+        VideoPostPreparation.postData.category_string = @"居酒屋";
+        VideoPostPreparation.postData.category_id = @"9";
     }
-    
+    [self.popupController dismiss];
 }
 /*
 #pragma mark - Navigation

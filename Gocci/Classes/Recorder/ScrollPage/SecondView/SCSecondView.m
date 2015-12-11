@@ -229,7 +229,6 @@ static NSString *stringKakaku = nil;
 	}
 	else {
 		
-		AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
 		switch (actionSheet.tag) {
 			case 1:
@@ -239,21 +238,21 @@ static NSString *stringKakaku = nil;
 		//		delegate.indexCategory = (int)buttonIndex;
                 
                 if ([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"和風"]) {
-                    delegate.stringCategory = @"2";
+                    VideoPostPreparation.postData.category_id = @"2";
                 } else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"洋風"])  {
-                    delegate.stringCategory = @"3";
+                    VideoPostPreparation.postData.category_id = @"3";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"中華"]) {
-                    delegate.stringCategory = @"4";
+                    VideoPostPreparation.postData.category_id = @"4";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カレー"]) {
-                    delegate.stringCategory = @"5";
+                    VideoPostPreparation.postData.category_id = @"5";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"ラーメン"]) {
-                    delegate.stringCategory = @"6";
+                    VideoPostPreparation.postData.category_id = @"6";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カフェ"]) {
-                    delegate.stringCategory = @"8";
+                    VideoPostPreparation.postData.category_id = @"8";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"居酒屋"]) {
-                    delegate.stringCategory = @"9";
+                    VideoPostPreparation.postData.category_id = @"9";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"その他"]) {
-                    delegate.stringCategory = @"10";
+                    VideoPostPreparation.postData.category_id = @"10";
                 }
                 
 //				switch (buttonIndex) {

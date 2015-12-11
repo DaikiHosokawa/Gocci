@@ -27,6 +27,8 @@ class PersistentClassReflexion {
                 return GocciVideoSharingTask(dict: data)
             case "AWSS3VideoUploadTask":
                 return AWSS3VideoUploadTask(dict: data)
+            case "GocciAddRestaurantTask":
+                return GocciAddRestaurantTask(dict: data)
             
             default:
                 return nil
@@ -94,7 +96,10 @@ class SingletonTaskScheduler {
             sync(tasks) {
                 self.tasks = tmp
             }
-            return
+            
+            if !self.tasks.isEmpty {
+                dispatch_semaphore_signal(self.eventSemaphore)
+            }
         }
     }
     
@@ -212,11 +217,20 @@ class SingletonTaskScheduler {
             return {
                 task.run { result in
                     
-                    print("=== Task finished with result: \(result)")
-                
                     self.sync(task) {
                         task.state = result
                     }
+                    
+                    
+                    if task.state == .DONE {
+                        Lo.green("=== Task finished with result: \(result)")
+                    }
+                    else {
+                        Lo.red("=== Task finished with result: \(result)")
+                    }
+                    
+                    
+
                     
                     switch(task.state) {
                     case .FAILED_IRRECOVERABLE:  // nothing we can do here anymore
@@ -237,8 +251,13 @@ class SingletonTaskScheduler {
                         self.slots++
                     }
                     
-                    if let legacyTask = task.legacy() {
-                        legacyTask.schedule()
+                    if task.state == .DONE {
+                        if let legacyTask = task.legacy() {
+                            legacyTask.schedule()
+                        }
+                        else {
+                            dispatch_semaphore_signal(self.eventSemaphore)
+                        }
                     }
                     else {
                         dispatch_semaphore_signal(self.eventSemaphore)
@@ -313,7 +332,7 @@ class SingletonTaskScheduler {
             return
         }
         
-        self.loadTasksFromDisk()
+        //self.loadTasksFromDisk()
         
         
         // we only want one scheduler active. This thread should never disappear. We hope for the best. If it disappears ever
@@ -369,7 +388,7 @@ class PersistentBaseTask: CustomStringConvertible {
     
     
     init(identifier: String) {
-        self.identifier = identifier + "-" + "RANDOMSTRING"
+        self.identifier = identifier
     }
     
     func schedule() {

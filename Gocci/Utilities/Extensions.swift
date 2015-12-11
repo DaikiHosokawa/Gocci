@@ -33,6 +33,10 @@ extension String {
         return "\"" + self + "\""
     }
     
+    func asURL() -> NSURL {
+        return NSURL.fileURLWithPath(self)
+    }
+    
     func percentEncodingSane() -> String {
         let betterSafeThanSorry = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzyz"
         let secureSet = NSCharacterSet(charactersInString:betterSafeThanSorry)
@@ -114,3 +118,41 @@ extension CGSize {
         return CGSize(width: self.width + CGFloat(widthDiff), height: self.height + CGFloat(heightDiff))
     }
 }
+
+
+extension UIAlertController {
+    
+    @nonobjc static var window: UIWindow? = nil // UIWindow(frame: UIScreen.mainScreen().bounds)
+    
+    override public func viewDidDisappear(animated: Bool) {
+        
+        UIAlertController.window?.hidden = true
+        UIAlertController.window = nil
+        
+        super.viewDidDisappear(animated)
+    }
+    
+    class func makeOverlayPopup(title: String, _ msg: String, _ style: UIAlertControllerStyle = .Alert) -> UIAlertController {
+        return UIAlertController(title: title, message: msg, preferredStyle: style)
+    }
+    
+    func overlay() {
+        Util.runOnMainThread{
+            UIAlertController.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            UIAlertController.window?.rootViewController = UIViewController()
+            UIAlertController.window?.windowLevel = UIWindowLevelAlert + 1
+            UIAlertController.window?.makeKeyAndVisible()
+            UIAlertController.window?.rootViewController!.presentViewController(self, animated: true) { () -> Void in }
+        }
+    }
+    
+    func addButton(text: String, style: UIAlertActionStyle, action: ()->()) {
+        self.addAction(UIAlertAction(title: text, style: style) { _ in action() } )
+    }
+    
+}
+
+
+
+
+

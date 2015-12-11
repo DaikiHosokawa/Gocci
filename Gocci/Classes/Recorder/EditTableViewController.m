@@ -10,8 +10,10 @@
 #import "STPopup.h"
 #import "ValuePopupViewController.h"
 #import "RestPopupViewController.h"
+#import "RestAddPopupViewController.h"
 #import "CategoryPopupViewController.h"
 #import "requestGPSPopupViewController.h"
+#import "Swift.h"
 
 @interface EditTableViewController ()<CLLocationManagerDelegate>
 {
@@ -66,31 +68,24 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 0){
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-            RestPopupViewController* rvc = [RestPopupViewController new];
-            [self.popupController pushViewController:rvc animated:YES];
+        
+        if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways)
+        {
+            [self.popupController pushViewController:[requestGPSPopupViewController new] animated:YES];
+        }
+        else if ([Network offline]) {
+            [self.popupController pushViewController:[RestAddPopupViewController new] animated:YES];
         }
         else {
-            switch ([CLLocationManager authorizationStatus]) {
-                    
-                case kCLAuthorizationStatusNotDetermined:
-                case kCLAuthorizationStatusAuthorizedAlways:
-                case kCLAuthorizationStatusAuthorizedWhenInUse:
-                case kCLAuthorizationStatusDenied:
-                case kCLAuthorizationStatusRestricted:
-                    NSLog(@"not permitted");
-                   requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
-                    [self.popupController pushViewController:rvc animated:YES];
-                    
-            }
+            [self.popupController pushViewController:[RestPopupViewController new] animated:YES];
         }
 
-    }else if(indexPath.row == 1){
-        CategoryPopupViewController* cvc = [CategoryPopupViewController new];
-        [self.popupController pushViewController:cvc animated:YES];
-    }else if(indexPath.row == 2){
-        ValuePopupViewController* vvc = [ValuePopupViewController new];
-        [self.popupController pushViewController:vvc animated:YES];
+    }
+    else if(indexPath.row == 1){
+        [self.popupController pushViewController:[CategoryPopupViewController new] animated:YES];
+    }
+    else if(indexPath.row == 2){
+        [self.popupController pushViewController:[ValuePopupViewController new] animated:YES];
     }
 }
 

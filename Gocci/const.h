@@ -15,7 +15,7 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
 // Userdata will be deleted everytime the app starts
