@@ -161,8 +161,7 @@
 
 - (IBAction)shareButton:(id)sender {
     
-    if ((VideoPostPreparation.postData.prepared_restaurant == false && [VideoPostPreparation.postData.rest_id isEqual:@""])
-    ||  (VideoPostPreparation.postData.prepared_restaurant == true && [VideoPostPreparation.postData.rest_name isEqual:@""]))
+    if (![VideoPostPreparation isReadyToSend])
     {
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;

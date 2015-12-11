@@ -25,7 +25,7 @@ import Foundation
         var memo: String = ""
         var cheer_flag: Bool = false  
         
-        var prepared_restaurant: Bool = true
+        var prepared_restaurant: Bool = true { didSet { Lo.purple("Wird das hier gesetzt??? \(prepared_restaurant)") } }
         var rest_name: String = "" { didSet { notifyNewRestName?(rest_name) } }
         var lat: Double = 0.0
         var lon: Double = 0.0
@@ -43,19 +43,22 @@ import Foundation
         postData = PostData()
     }
     
+    class func isReadyToSend() -> Bool {
+        return (postData.prepared_restaurant && postData.rest_name != "") || (!postData.prepared_restaurant && postData.rest_id != "")
+    }
+    
     
     
     class func initiateUploadTaskChain(videoFileInTMPFolder: NSURL) {
         
         let timestamp = Util.timestampUTC()
         
-        let videoFilePath = saveVideoInDocumentsAndCleanUpVideoFragments(videoFileInTMPFolder, timestamp: timestamp)
+        let relativeVideoFilePath = saveVideoInDocumentsAndCleanUpVideoFragments(videoFileInTMPFolder, timestamp: timestamp)
         
         
         print("========================================================")
         print("STARTING THE VIDEO UPLAOD TASK CHAIN")
         print("TYPE: " + (postData.prepared_restaurant ? "With new Retaurant" : "With retaurant from GPS list" ))
-        print("========================================================")
         print("========================================================")
         
         if postData.prepared_restaurant {
@@ -69,7 +72,7 @@ import Foundation
                 kakaku: postData.value,
                 categoryID: postData.category_id,
                 comment: postData.memo,
-                videoFilePath: videoFilePath).schedule()
+                videoFilePath: relativeVideoFilePath).schedule()
         }
         else {
             GocciVideoSharingTask(
@@ -80,71 +83,40 @@ import Foundation
                 kakaku: postData.value,
                 categoryID: postData.category_id,
                 comment: postData.memo,
-                videoFilePath: videoFilePath).schedule()
+                videoFilePath: relativeVideoFilePath).schedule()
         }
-        
-        
         
         resetPostData()
     }
     
     
-    
-
-    
-//    class func initiateUploadTasks(timestamp: String, restaurantID: String, cheerFlag: Bool, categoryID: String, comment: String, videoFilePath: String)
-//    {
-//        GocciVideoSharingTask(timestamp: timestamp,
-//            userID: Persistent.user_id!,
-//            restaurantID: restaurantID,
-//            cheerFlag: cheerFlag,
-//            kakaku: postData.value,
-//            categoryID: categoryID,
-//            comment: comment,
-//            videoFilePath: videoFilePath).schedule()
-//        
-//        resetPostData()
-//    }
-    
-    
     class func saveVideoInDocumentsAndCleanUpVideoFragments(newVideoFile: NSURL, timestamp: String) -> String {
         
-        var path = Util.documentsDirectory() + "/user_posted_videos"
         let fm = NSFileManager.defaultManager()
         
-        if !fm.fileExistsAtPath(path) {
-            try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        var relative = "/user_posted_videos"
+        let docs = Util.documentsDirectory()
+        
+        if !fm.fileExistsAtPath(docs + relative) {
+            try! fm.createDirectoryAtPath(docs + relative, withIntermediateDirectories: true, attributes: nil)
         }
         
-        // TODO very ugly, fix this soon
-        path += "/" + timestamp + "_" + Persistent.user_id! + ".mp4"
+        relative += "/" + timestamp + ".mp4"
         
-        try! fm.moveItemAtURL(newVideoFile, toURL: path.asURL())
+        try! fm.moveItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
         
-        let tmpFiles = try? NSFileManager.defaultManager().subpathsOfDirectoryAtPath(NSTemporaryDirectory())
+        let tmpFiles = try? fm.subpathsOfDirectoryAtPath(NSTemporaryDirectory())
         
         for tmpFile in tmpFiles ?? [] {
             if tmpFile.hasSuffix(".mov") {
-                print("Deleting tmp file: \(tmpFile)")
+                let _ = try? fm.removeItemAtPath(tmpFile)
             }
         }
         
-        return path
+        return relative
     }
     
     
-//    class func restaurantPopup(vc: UIViewController) {
-//        if Network.state == .OFFLINE {
-//            
-//        }
-//        else {
-//            
-//            
-//            [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
-//            
-//        }
-//        
-//    }
 }
 
 
