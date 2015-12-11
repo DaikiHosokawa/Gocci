@@ -33,10 +33,7 @@ class SettingsTableViewController: UITableViewController
                         $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "" : "set an account password"
                         $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.greenColor() : UIColor.redColor()
                     },
-                    {
-                        let popover = ConfirmationPopover(from: self, position: $0.frame, widthRatio:90, heightRatio:30)
-                        popover.pop()
-                    }
+                    handlePassword
                 ),
             ],
             // ソーシャルネットワーク =========================================================
@@ -104,6 +101,80 @@ class SettingsTableViewController: UITableViewController
             ],
         ]
 
+    }
+    
+    func handlePassword(cell: UITableViewCell)
+    {
+        let alertController = UIAlertController(
+            title: "Password setting",
+            message: "Please enter your new password",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        alertController.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Please enter your password..."
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "And once more for confirmation..."
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { action in
+            let pw1 = alertController.textFields?[0].text ?? ""
+            let pw2 = alertController.textFields?[1].text ?? ""
+            
+            if pw1 == "" {
+                self.simplePopup("Password setting", "Password 1 was empty", "OK")
+            }
+            else if pw2 == "" {
+                self.simplePopup("Password setting", "Password 2 was empty", "OK")
+            }
+            else if pw1 != pw2 {
+                self.simplePopup("Password setting", "Your passwords did not match", "OK")
+            }
+            else {
+                let succ = {
+                    Util.runOnMainThread {
+                        cell.detailTextLabel?.text = "Password was set!"
+                        cell.detailTextLabel?.textColor = UIColor.greenColor()
+                        Persistent.password_was_set_by_the_user = true
+                        
+                        self.simplePopup("Password setting", "Password was set successful :)", "OK")
+                    }
+                }
+                let damn = {
+                    Util.runOnMainThread {
+                        self.simplePopup("Password setting", "Password setting failed :(", "OK")
+                    }
+                }
+                
+                APIClient.setPassword(pw1) { (result, code, error) -> Void in
+                    
+                    if error != nil {
+                        damn()
+                        return
+                    }
+                    
+                    if code >= 200 && code < 300 {
+                        if let result = result as? [String: AnyObject] {
+                            if let rescode = result["code"] as? Int {
+                                if rescode == 200 {
+                                    succ()
+                                    return
+                                }
+                            }
+                        }
+                    }
+                    
+                    damn()
+                }
+            }
+            
+            })
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func handleTwitter(cell: UITableViewCell)
@@ -264,64 +335,6 @@ class SettingsTableViewController: UITableViewController
 //    }
 //    
 //}
-
-class PasswordPopup: UIViewController, UITextFieldDelegate {
-    
-    let label = UILabel()
-    let textField = UITextField()
-    let separatorView = UIView()
-    
-    var onUserInputComplete: ()->() = {}
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.contentSizeInPopup = CGSizeMake(300, 100)
-        self.landscapeContentSizeInPopup = CGSizeMake(300, 200)
-        
-        //label.numberOfLines = 0;
-        label.text = "パスワードを設定します";
-        label.textColor = UIColor(white: 0.2, alpha: 1)
-        label.textAlignment = NSTextAlignment.Center;
-        self.view.addSubview(label)
-        
-        separatorView.backgroundColor = UIColor.grayColor()
-        self.view.addSubview(separatorView)
-        
-        textField.delegate = self;
-        textField.placeholder = "ここに入力";
-        //textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
-        //textField.leftViewMode = UITextFieldViewModeAlways;
-        self.view.addSubview(textField)
-    }
-    
-    override func viewDidLayoutSubviews()
-    {   // TODO ugly
-        super.viewDidLayoutSubviews()
-        textField.frame = CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)
-        separatorView.frame = CGRectMake(0, self.textField.frame.origin.y - 0.5, self.view.frame.size.width, 0.5)
-        label.frame = CGRectMake(20, 10, self.view.frame.size.width - 40, self.view.frame.size.height - 20 - textField.frame.size.height)
-    }
-
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField.text?.length < 6 {
-            label.text = "6文字以上入力してください"
-            label.textColor = UIColor.redColor()
-        }
-        else {
-            APIClient.setPassword(textField.text) { (result, code, error) -> Void in
-                if code == 200 {
-                    Persistent.password_was_set_by_the_user = true
-                    textField.resignFirstResponder()
-                    //self.popupController?.pushViewController(CompletePopup(), animated: true)
-                }
-            }
-        }
-
-        return false
-    }
-}
 
 
 

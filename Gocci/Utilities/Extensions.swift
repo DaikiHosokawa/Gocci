@@ -94,6 +94,13 @@ extension NSUserDefaults {
 }
 
 extension UIViewController {
+    
+    func simplePopup(title: String, _ msg: String, _ button: String, and: (()->())? = nil) {
+        let p = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        p.addAction(UIAlertAction(title: button, style: UIAlertActionStyle.Default, handler: { _ in and?() } ))
+        self.presentViewController(p, animated: true, completion: nil)
+    }
+    
     func ignoreCommonSenseAndGoToViewControllerWithName(tvcn: String) {
         let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
         let vc = stobo.instantiateViewControllerWithIdentifier(tvcn)
