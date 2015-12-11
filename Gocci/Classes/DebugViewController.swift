@@ -53,15 +53,15 @@ class DebugViewController : UIViewController {
         
         
         VideoPostPreparation.resetPostData()
-        VideoPostPreparation.postData.rest_id = "1"
-        VideoPostPreparation.postData.category_id = "1"
-        VideoPostPreparation.postData.category_string = "1"
-        VideoPostPreparation.postData.value = "1"
+//        VideoPostPreparation.postData.rest_id = "1"
+//        VideoPostPreparation.postData.category_id = "1"
+//        VideoPostPreparation.postData.category_string = "1"
+//        VideoPostPreparation.postData.value = "1"
+//        
+//        VideoPostPreparation.postData.memo = Util.randomKanjiStringWithLength(20)
+//        VideoPostPreparation.postData.cheer_flag = true
         
-        VideoPostPreparation.postData.memo = Util.randomKanjiStringWithLength(20)
-        VideoPostPreparation.postData.cheer_flag = true
-        
-        VideoPostPreparation.postData.prepared_restaurant = false
+        VideoPostPreparation.postData.prepared_restaurant = true
         VideoPostPreparation.postData.rest_name = Util.randomKanjiStringWithLength(20)
         VideoPostPreparation.postData.lat = 138.000000
         VideoPostPreparation.postData.lon = 35.000000
