@@ -91,6 +91,7 @@ class SplashViewController : UIViewController {
             switch code {
             case NetOpResult.NETOP_SUCCESS:
                 AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
+                    TaskScheduler.loadTasksFromDisk()
                     self.conclusion = ContinueConclusion.GO_TO_TIMELINE
                     return nil
                 })
@@ -150,16 +151,25 @@ class SplashViewController : UIViewController {
             
             case .NO_INTERNET:
                 // TODO TRANSLATION
-                Util.popup("You need internet for Gocci :(")
+                let pop = UIAlertController.makeOverlayPopup("Login failed :(", "You need internet for Gocci")
+                pop.addButton("Retry", style: UIAlertActionStyle.Default) { self.login() }
+                pop.overlay()
             
             case .BACKEND_CONNECTION_FAILED:
                 // TODO TRANSLATION
-                Util.popup("Gocci server are currently under maintance :(")
+                let pop = UIAlertController.makeOverlayPopup("Login failed :(", "Gocci server are currently under maintance")
+                pop.addButton("Retry", style: UIAlertActionStyle.Default) { self.login() }
+                pop.overlay()
 
             case .USER_DATA_MALFORMED:
                 // TODO TRANSLATION
-                Util.popup("Your userdate is malformed, this should never happen. Please login with username and password, or use an SNS service.")
-                self.performSegueWithIdentifier("goRelogin", sender: self)
+                let pop = UIAlertController.makeOverlayPopup("Login failed :(", "Your userdata is malformed, this should never happen. Please login with username and password, or use an SNS service.")
+                pop.addButton("Retry", style: UIAlertActionStyle.Default) { self.login() }
+                pop.addButton("Relogin", style: UIAlertActionStyle.Default) {
+                    self.performSegueWithIdentifier("goRelogin", sender: self)
+                }
+                pop.overlay()
+                
                 return false
                 
             case .NOT_SURE_YET:

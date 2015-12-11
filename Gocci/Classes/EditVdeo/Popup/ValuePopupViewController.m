@@ -10,6 +10,7 @@
 #import "STPopup.h"
 #import "SingleLineTextField.h"
 #import "AppDelegate.h"
+#import "Swift.h"
 
 @implementation ValuePopupViewController
 {
@@ -90,10 +91,8 @@
     NSString *numberFromTheKeyboard = _textField.text;
     
     if([numberFromTheKeyboard length] > 0 ){
+        VideoPostPreparation.postData.value = numberFromTheKeyboard;
         [_textField resignFirstResponder];
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        delegate.valueKakaku = numberFromTheKeyboard;
-         [_textField resignFirstResponder];
         [self.popupController dismiss];
        
     }else{

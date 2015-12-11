@@ -13,6 +13,7 @@
 #import <AWSS3/AWSS3.h>
 #import "STPopup.h"
 #import "RestPopupViewController.h"
+#import "RestAddPopupViewController.h"
 #import "ValuePopupViewController.h"
 #import "CategoryPopupViewController.h"
 #import "LocationClient.h"
@@ -20,9 +21,9 @@
 #import "FullScreenViewController.h"
 #import "UCZProgressView.h"
 #import "Swift.h"
+#import "requestGPSPopupViewController.h"
 
-@interface EditVideoController ()<BFPaperCheckboxDelegate>{
-    NSString * cheertag_update;
+@interface EditVideoController (){
 }
 
 @property (strong, nonatomic) SCAssetExportSession *exportSession;
@@ -77,7 +78,7 @@
     
     _player = [SCPlayer player];
     
-    self.checkbox.delegate = self;
+    //self.checkbox.delegate = self;
     self.checkbox.rippleFromTapLocation = NO;
     self.checkbox.tapCirclePositiveColor = [UIColor yellowColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     self.checkbox.tapCircleNegativeColor = [UIColor redColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
@@ -95,27 +96,34 @@
     
     [playerView addGestureRecognizer:tapGesture];
     
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (delegate.stringTenmei) {
-        NSString *restname_str = @"店名：";
-        _restName.text = [restname_str stringByAppendingString:delegate.stringTenmei];
-    }else{
-        _restName.text = @"店名：";
-    }
-    if (delegate.stringCategory){
-        NSString *category_str = @"カテゴリー：";
-        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
-    }else{
-        _category.text = @"カテゴリー：";
-    }
-    if (delegate.valueKakaku){
-        NSString *value_str = @"価格：";
-        NSString *valueStr = [delegate.valueKakaku stringByAppendingString:@"円"];
-        _value.text = [value_str stringByAppendingString:valueStr];
-    }else{
-        _value.text = @"価格：";
-    }
+    
+    _restName.text = ([VideoPostPreparation.postData.rest_name isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.rest_name;
+    VideoPostPreparation.postData.notifyNewRestName = ^(NSString * newRestName) {
+        _restName.text = newRestName;
+    };
+    
+    _value.text = ([VideoPostPreparation.postData.value isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.value;
+    VideoPostPreparation.postData.notifyNewPrice = ^(NSString * newPrice) {
+        _value.text = newPrice;
+    };
+    
+    _category.text = ([VideoPostPreparation.postData.category_string isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.category_string;
+    VideoPostPreparation.postData.notifyNewCategory = ^(NSString * newCat) {
+        _category.text = newCat;
+    };
+    
+    
+//    if (delegate.stringCategory){
+//        NSString *category_str = @"カテゴリー：";
+//        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
+//    }else{
+//        _category.text = @"カテゴリー：";
+//    }
+    
+
     _player.loopEnabled = YES;
+    _player.muted = YES;
+    
     // [デリゲートの設定]
     _textView.delegate = self;
     // [「改行（Return）」キーの設定]
@@ -137,11 +145,10 @@
     
     [_player setItemByAsset:_recordSession.assetRepresentingSegments];
     NSLog(@"player:%@",_recordSession);
-    [self infoUpdate];
+    //[self infoUpdate];
     [_player play];
 }
 
-//[self saveToCameraRoll];
 
 - (void)viewWillDisappear:(BOOL)animated {
     if (![self.navigationController.viewControllers containsObject:self]) {
@@ -161,64 +168,54 @@
 }
 
 - (IBAction)shareButton:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.stringTenmei != nil &&[appDelegate.stringTenmei length]>0) {
-        [self saveToCameraRoll];
-    }else{
-        
-        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-#ifdef INDEVEL
-        appDelegate.stringTenmei = @"UNSPECIFIED";
-        [self saveToCameraRoll];
-#endif
-    }
     
+    // TODO test if
+    // [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
+    
+    [_player pause];
+    
+    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
+    exportSession.videoConfiguration.filter = currentFilter;
+    exportSession.videoConfiguration.preset = SCPresetHighestQuality;
+    exportSession.audioConfiguration.preset = SCPresetHighestQuality;
+    exportSession.videoConfiguration.maxFrameRate = 35;
+    exportSession.outputUrl = self.recordSession.outputUrl;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.delegate = self;
+    self.exportSession = exportSession;
+    
+    
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        
+        NSError *error = exportSession.error;
+        if (exportSession.cancelled) {
+            NSLog(@"Export was cancelled");
+        }
+        else if (error == nil) {
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            
+            [self realUplaod: exportSession.outputUrl];
+        } else if (!exportSession.cancelled) {
+            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+    }];
 }
 
-- (void)realUplaod {
+- (void)realUplaod:(NSURL*) videoFileInTMP {
+    
+    VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
+    VideoPostPreparation.postData.memo = self.textView.text;
     
     // WHY?
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    
-    NSString *videoFile = [VideoPostPreparation saveVideoInDocumentsAndCleanUpVideoFragments: appDelegate.assetURL];
-    
-    
-    
-    NSString *valueKakaku = @"";
-    if ([appDelegate.valueKakaku length]>0)
-        valueKakaku = appDelegate.valueKakaku;
-    NSString *category = @"1";
-    if ([appDelegate.indexCategory length]>0)
-        category= appDelegate.indexCategory;
-    NSString *comment = @"none";
-    if ([appDelegate.valueHitokoto length]>0)
-        comment = appDelegate.valueHitokoto;
-    NSString *rest_id = @"";
-    if ([appDelegate.indexTenmei length]>0)
-        rest_id = appDelegate.indexTenmei;
-        
-    NSString *timestamp = [[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"];
-    
-
-    [VideoPostPreparation initiateUploadTasks: timestamp
-                                 restaurantID: rest_id
-                                    cheerFlag: [cheertag_update isEqualToString:@"1"]
-                                       kakaku: valueKakaku
-                                   categoryID: category
-                                      comment: comment
-                                videoFilePath: videoFile];
-    
-    
-     //Initiarize
-     appDelegate.stringTenmei = @"";
-     appDelegate.indexTenmei = @"";
-     appDelegate.valueHitokoto = @"";
-     appDelegate.stringCategory = @"";
-     appDelegate.indexCategory = @"";
-     appDelegate.valueKakaku = @"";
+    [VideoPostPreparation initiateUploadTaskChain:videoFileInTMP];
     
 }
 
@@ -227,8 +224,9 @@
     
     if ([text isEqualToString:@"\n"]) {
         // ここにtextのデータ(記録)処理など
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        delegate.valueHitokoto = textView.text;
+        //AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        //delegate.valueHitokoto = textView.text;
+        VideoPostPreparation.postData.memo = textView.text;
         [textView resignFirstResponder];
         return NO;
     }
@@ -262,16 +260,6 @@
     }
 }
 
-- (void)paperCheckboxChangedState:(BFPaperCheckbox *)changedCheckbox
-{
-    if (changedCheckbox.isChecked) {
-        NSLog(@"選択");
-        cheertag_update = @"1";
-    }else{
-        NSLog(@"解除");
-        cheertag_update = @"0";
-    }
-}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // ここにtextデータの処理
@@ -291,45 +279,7 @@
     [self cancelSaveToCameraRoll];
 }
 
-- (void)saveToCameraRoll {
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
-    
-    [_player pause];
-    
-    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
-    exportSession.videoConfiguration.filter = currentFilter;
-    exportSession.videoConfiguration.preset = SCPresetHighestQuality;
-    exportSession.audioConfiguration.preset = SCPresetHighestQuality;
-    exportSession.videoConfiguration.maxFrameRate = 35;
-    exportSession.outputUrl = self.recordSession.outputUrl;
-    exportSession.outputFileType = AVFileTypeMPEG4;
-    exportSession.delegate = self;
-    self.exportSession = exportSession;
-    
-    NSLog(@"urlは%@",exportSession.outputUrl);
-    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    dele.assetURL = exportSession.outputUrl;
-   
-    [exportSession exportAsynchronouslyWithCompletionHandler:^{
-        
-        NSError *error = exportSession.error;
-        if (exportSession.cancelled) {
-            NSLog(@"Export was cancelled");
-        }
-        else if (error == nil) {
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
 
-            [self realUplaod];
-        } else if (!exportSession.cancelled) {
-            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        }
-    }];
-    
-}
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
     
@@ -337,34 +287,49 @@
     
 }
 
--(void)infoUpdate{
-    
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([delegate.stringTenmei length]>0) {
-        _restName.text = delegate.stringTenmei;
-    }
-    else{
-        _restName.text = @"未入力";
-    }
-    
-    if ([delegate.stringCategory length]>0){
-        _category.text =  delegate.stringCategory;
-    }
-    else{
-        _category.text = @"未入力";
-    }
-    
-    if ([delegate.valueKakaku length]>0){
-        _value.text = [delegate.valueKakaku stringByAppendingString:@"円"];
-    }
-    else{
-        _value.text = @"未入力";
-    }
-    
-}
+//-(void)infoUpdate{
+//    
+//    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//    if ([delegate.stringTenmei length]>0) {
+//        _restName.text = delegate.stringTenmei;
+//    }
+//    else{
+//        _restName.text = @"未入力";
+//    }
+//    
+//    if ([delegate.stringCategory length]>0){
+//        _category.text =  delegate.stringCategory;
+//    }
+//    else{
+//        _category.text = @"未入力";
+//    }
+//    
+//    if ([delegate.valueKakaku length]>0){
+//        _value.text = [delegate.valueKakaku stringByAppendingString:@"円"];
+//    }
+//    else{
+//        _value.text = @"未入力";
+//    }
+//    
+//}
 
 - (IBAction)restnameInsert:(id)sender {
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+    
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways)
+    {
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[requestGPSPopupViewController new]];
+    }
+    else if ([Network offline]) {
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestAddPopupViewController new]];
+    }
+    else {
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+    }
+    
+    if ([Network offline]) {
+    }
+    else {
+    }
 }
 
 - (IBAction)valueInsert:(id)sender {
