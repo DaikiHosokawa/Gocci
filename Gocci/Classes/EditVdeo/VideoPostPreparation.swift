@@ -19,10 +19,9 @@ import Foundation
         
         var rest_id: String = ""            // NEEDED
         
-        var category_id: String = ""
+        var category_id: String = "1"
         var category_string: String = "" { didSet { notifyNewCategory?(category_string) } }
         var value: String = ""           { didSet { notifyNewPrice?(value) } }
-        var tag_id: String = ""
         var memo: String = ""
         var cheer_flag: Bool = false  
         

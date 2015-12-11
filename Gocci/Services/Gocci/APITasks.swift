@@ -107,6 +107,8 @@ class GocciAddRestaurantTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
+
+        
         guard Util.fileExists(videoFilePath) else {
             finished(.FAILED_IRRECOVERABLE)
             return
@@ -120,6 +122,7 @@ class GocciAddRestaurantTask: PersistentBaseTask {
         APIClient .restInsert(restName, latitude: lat, longitude: lon) {
             
             (result, code, error) -> Void in
+
             
             if let error = error {
                 if Util.errorIsNetworkConfigurationError(error) {
@@ -142,6 +145,7 @@ class GocciAddRestaurantTask: PersistentBaseTask {
                     }
                 }
             }
+            
             
             finished(.FAILED_RECOVERABLE)
         }
@@ -242,10 +246,10 @@ class GocciVideoSharingTask: PersistentBaseTask {
             return
         }
         
-        APIClient.POST(timestamp + "_" + userID, rest_id: restaurantID, cheer_flag: cheerFlag ? "1" : "0", value: kakaku, category_id: categoryID, tag_id: "", memo: comment)
+        APIClient.POST(timestamp + "_" + userID, rest_id: restaurantID, cheer_flag: cheerFlag ? "1" : "0", value: kakaku, category_id: categoryID, tag_id: "1", memo: comment)
             {
                 (result, code, error) -> Void in
-                
+
                 if let error = error {
                     if Util.errorIsNetworkConfigurationError(error) {
                         finished(.FAILED_NETWORK)
@@ -254,6 +258,13 @@ class GocciVideoSharingTask: PersistentBaseTask {
                         finished(.FAILED_RECOVERABLE)
                     }
                 }
+                
+                
+                Lo.blue("== APICl ==================================================")
+                print(result!)
+                Lo.blue("===========================================================")
+                
+                
                 
                 if code >= 200 && code < 300 {
                     if let result = result as? [String: AnyObject] {
