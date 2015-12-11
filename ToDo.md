@@ -12,47 +12,33 @@ Needs Testing
 
 - Icon badge was complety rewritten. Does this still work?
 
+- live branch conversion error
+
 
 Daiki Hosokawa
 ==============
 
 <Recorder>
 
--post test
+-test
 
 <Notification>
 
--push message test 
+-test
 
 <bottom bar>
 
--bottom bar design
 
 <Other>
-
+-5_5inch design layout
+-bottom bar design
 -Analytics
-
 -sort button
-
 -Userpage(movie)
-
 -restaurantpage 再生問題
-
--requestpopupのgpsの画像
-
 -emptyview
-
-
-<Collaboration with wanke>
-
 -share(only twitter)->wanke’s advise need
-
--http://test.api.gocci.me/v1/mobile/get/timeline->
- http://test.mobile.api.gocci.me/v1/mobile/get/timeline
-
 -音声問題
-
--NSUserDefault と　Keychain
 
 
 

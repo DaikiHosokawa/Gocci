@@ -31,8 +31,8 @@
 {
     if (self = [super init]) {
         self.title = @"現在地の許可";
-        self.contentSizeInPopup = CGSizeMake(300, 100);
-        self.landscapeContentSizeInPopup = CGSizeMake(300, 200);
+        self.contentSizeInPopup = CGSizeMake(300, 280);
+        self.landscapeContentSizeInPopup = CGSizeMake(300, 380);
     }
     return self;
 }
@@ -42,57 +42,74 @@
 {
     [super viewDidLoad];
     
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(0, 0, 150.0f, 50.0f);
-    [button setTitle:@"GPSを許可する" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor redColor]];
-    // ボタンが押された時にhogeメソッドを呼び出す
-    button.center = self.view.center;
-    [button addTarget:self
-               action:@selector(hoge:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    
+    // 背景画像の設置
+    UIImageView *backImage = [[UIImageView alloc] init];
+    backImage.frame = CGRectMake(50, 20, 200, 200);
+    backImage.image = [UIImage imageNamed:@"requestGPS.png"];
+    [self.view addSubview:backImage];
+    backImage.userInteractionEnabled = YES;
+    backImage.tag = 1;
+    
+    UILabel *requestLabel = [[UILabel alloc] init];
+    requestLabel.text = @"画像をタップしてください";
+    requestLabel.frame = CGRectMake(50, 240, 200, 20);
+    [self.view addSubview:requestLabel];
     
     locationManager = [[CLLocationManager alloc]init];
     locationManager.delegate = self;
     
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    UITouch *touch = [touches anyObject];
+    switch (touch.view.tag) {
+        case 1:
+            switch ([CLLocationManager authorizationStatus]) {
+                    
+                case kCLAuthorizationStatusNotDetermined:
+                    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                        [locationManager requestWhenInUseAuthorization];
+                    } else {
+                        [locationManager startUpdatingLocation];
+                    }
+                    break;
+                    
+                case kCLAuthorizationStatusAuthorizedAlways:
+                case kCLAuthorizationStatusAuthorizedWhenInUse:
+                    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                        [locationManager requestWhenInUseAuthorization];
+                    } else {
+                        [locationManager startUpdatingLocation];
+                    }
+                    break;
+                    
+                    //GPS request was denied
+                case kCLAuthorizationStatusDenied:
+                case kCLAuthorizationStatusRestricted:
+                    
+                    NSLog(@"位置情報が許可されていません2");
+                    UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
+                    requestAgain.tag=121;
+                    [requestAgain show];
+                    
+                    
+                    break;
+            }
 
--(void)hoge:(UIButton*)button{
-    switch ([CLLocationManager authorizationStatus]) {
-            
-        case kCLAuthorizationStatusNotDetermined:
-            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-                [locationManager requestWhenInUseAuthorization];
-               } else {
-               [locationManager startUpdatingLocation];
-            }
-            break;
-            
-        case kCLAuthorizationStatusAuthorizedAlways:
-        case kCLAuthorizationStatusAuthorizedWhenInUse:
-            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-                [locationManager requestWhenInUseAuthorization];
-            } else {
-                [locationManager startUpdatingLocation];
-            }
-            break;
-            
-            //GPS request was denied
-        case kCLAuthorizationStatusDenied:
-        case kCLAuthorizationStatusRestricted:
-            
-            NSLog(@"位置情報が許可されていません2");
-            UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"設定画面より位置情報をONにしてください" message:@"Gocci登録には位置情報が必要です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"設定する", nil];
-            requestAgain.tag=121;
-            [requestAgain show];
-            
-            
+        ;
+        default:
             break;
     }
     
+}
+
+
+
+-(void)hoge:(UIButton*)button{
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
