@@ -95,7 +95,7 @@
         
         VideoPostPreparation.postData.rest_name = restname;
         VideoPostPreparation.postData.rest_id = restid;
-        VideoPostPreparation.postData.prepared_restaurant = true;
+        VideoPostPreparation.postData.prepared_restaurant = NO;
         
         [self.popupController dismiss];
     }

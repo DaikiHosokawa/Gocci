@@ -44,6 +44,9 @@ class GocciAddRestaurantTask: PersistentBaseTask {
     
     override init?(dict: NSDictionary) {
         
+        // TODO make this not ugly
+        let ph = "__PLACE_HOLDER__738457395398539875398__"
+        
         self.restName = dict["restName"] as? String ?? ""
         self.lat = dict["lat"] as? Double ?? 0.0    // TODO change this to sane defaults
         self.lon = dict["lon"] as? Double ?? 0.0
@@ -52,14 +55,14 @@ class GocciAddRestaurantTask: PersistentBaseTask {
         self.timestamp = dict["timestamp"] as? String ?? ""
         self.userID = dict["userID"] as? String ?? ""
         self.cheerFlag = dict["cheerFlag"] as? Bool ?? false
-        self.kakaku = dict["kakaku"] as? String ?? ""
+        self.kakaku = dict["kakaku"] as? String ?? ph
         self.categoryID = dict["categoryID"] as? String ?? ""
         //self.tagID = dict["tagID"] as? String ?? ""
-        self.comment = dict["comment"] as? String ?? ""
+        self.comment = dict["comment"] as? String ?? ph
         self.videoFilePath = dict["videoFilePath"] as? String ?? ""
         
         super.init(dict: dict)
-        if restName == "" || timestamp == "" || userID == "" || kakaku == "" || categoryID == "" || comment == "" || videoFilePath == "" {
+        if restName == "" || timestamp == "" || userID == "" || kakaku == ph || categoryID == "" || comment == ph || videoFilePath == "" {
             return nil
         }
     }
@@ -107,7 +110,9 @@ class GocciAddRestaurantTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        guard Util.fileExists(videoFilePath) else {
+
+        
+        guard Util.fileExists(Util.documentsDirectory() + videoFilePath) else {
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -117,9 +122,10 @@ class GocciAddRestaurantTask: PersistentBaseTask {
             return
         }
         
-        APIClient .restInsert(restName, latitude: lat, longitude: lon) {
+        APIClient.restInsert(restName, latitude: lat, longitude: lon) {
             
             (result, code, error) -> Void in
+
             
             if let error = error {
                 if Util.errorIsNetworkConfigurationError(error) {
@@ -142,6 +148,7 @@ class GocciAddRestaurantTask: PersistentBaseTask {
                     }
                 }
             }
+            
             
             finished(.FAILED_RECOVERABLE)
         }
@@ -232,7 +239,7 @@ class GocciVideoSharingTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        guard Util.fileExists(videoFilePath) else {
+        guard Util.fileExists(Util.documentsDirectory() + videoFilePath) else {
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -242,10 +249,10 @@ class GocciVideoSharingTask: PersistentBaseTask {
             return
         }
         
-        APIClient.POST(timestamp + "_" + userID, rest_id: restaurantID, cheer_flag: cheerFlag ? "1" : "0", value: kakaku, category_id: categoryID, tag_id: "", memo: comment)
+        APIClient.POST(timestamp + "_" + userID, rest_id: restaurantID, cheer_flag: cheerFlag ? "1" : "0", value: kakaku, category_id: categoryID, tag_id: "1", memo: comment)
             {
                 (result, code, error) -> Void in
-                
+
                 if let error = error {
                     if Util.errorIsNetworkConfigurationError(error) {
                         finished(.FAILED_NETWORK)
@@ -254,6 +261,7 @@ class GocciVideoSharingTask: PersistentBaseTask {
                         finished(.FAILED_RECOVERABLE)
                     }
                 }
+                
                 
                 if code >= 200 && code < 300 {
                     if let result = result as? [String: AnyObject] {

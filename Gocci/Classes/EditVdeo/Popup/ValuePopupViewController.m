@@ -93,6 +93,7 @@
     if([numberFromTheKeyboard length] > 0 ){
         VideoPostPreparation.postData.value = numberFromTheKeyboard;
         [_textField resignFirstResponder];
+        [self.view endEditing:YES];
         [self.popupController dismiss];
        
     }else{

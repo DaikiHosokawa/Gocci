@@ -116,14 +116,6 @@
     };
     
     
-//    if (delegate.stringCategory){
-//        NSString *category_str = @"カテゴリー：";
-//        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
-//    }else{
-//        _category.text = @"カテゴリー：";
-//    }
-    
-
     _player.loopEnabled = YES;
     _player.muted = YES;
     
@@ -164,8 +156,11 @@
 
 - (IBAction)shareButton:(id)sender {
     
-    // TODO test if
-    // [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    if (![VideoPostPreparation isReadyToSend])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -186,32 +181,24 @@
     
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
         
-        NSError *error = exportSession.error;
         if (exportSession.cancelled) {
             NSLog(@"Export was cancelled");
+            return;
         }
-        else if (error == nil) {
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-            
-            [self realUplaod: exportSession.outputUrl];
-        } else if (!exportSession.cancelled) {
-            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        else if (exportSession.error) {
+            [[[UIAlertView alloc] initWithTitle:@"保存に失敗しました" message:exportSession.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            return;
         }
+        
+        //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        
+        VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
+        VideoPostPreparation.postData.memo = self.textView.text;
+        
+        [VideoPostPreparation initiateUploadTaskChain:exportSession.outputUrl];
+        
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
     }];
-}
-
-- (void)realUplaod:(NSURL*) videoFileInTMP {
-    
-    VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
-    VideoPostPreparation.postData.memo = self.textView.text;
-    
-    // WHY?
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    
-
-    [VideoPostPreparation initiateUploadTaskChain:videoFileInTMP];
-    
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -283,26 +270,20 @@
 }
 
 
+
 - (IBAction)restnameInsert:(id)sender {
     
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-         [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways)
+    {
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[requestGPSPopupViewController new]];
+    }
+    else if ([Network offline]) {
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestAddPopupViewController new]];
     }
     else {
-        switch ([CLLocationManager authorizationStatus]) {
-                
-            case kCLAuthorizationStatusNotDetermined:
-            case kCLAuthorizationStatusAuthorizedAlways:
-            case kCLAuthorizationStatusAuthorizedWhenInUse:
-            case kCLAuthorizationStatusDenied:
-            case kCLAuthorizationStatusRestricted:
-                NSLog(@"not permitted");
-                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
-                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
-        }
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
     }
-
-
+    
 }
 
 - (IBAction)valueInsert:(id)sender {
