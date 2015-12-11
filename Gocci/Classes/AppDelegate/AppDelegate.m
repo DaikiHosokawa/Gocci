@@ -41,6 +41,8 @@
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
     
+    //[Debug afterAppLaunch];
+    
     // prebuffer persistent data
     [Persistent setupAndCacheAllDataFromDisk];
     

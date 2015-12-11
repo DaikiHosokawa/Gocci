@@ -344,6 +344,9 @@
 		9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
 		9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
+		986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */ = {isa = PBXBuildFile; fileRef = 986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */; };
+		986A13321C1AD8CE0083A434 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986A13311C1AD8CE0083A434 /* Debug.swift */; };
+		986A13331C1AD8CE0083A434 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986A13311C1AD8CE0083A434 /* Debug.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -893,6 +896,8 @@
 		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
+		986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = unfinished_upload_task.plist; path = Gocci/Debug/unfinished_upload_task.plist; sourceTree = "<group>"; };
+		986A13311C1AD8CE0083A434 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = Gocci/Debug/Debug.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -2196,10 +2201,12 @@
 		987E51EB1BF9C32900339285 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */,
 				987E51F41BFB37AD00339285 /* restaurantlatlon.json */,
 				987E51F51BFB37AD00339285 /* thumbnail.jpg */,
 				987E51F11BFB04C200339285 /* twosec.mp4 */,
 				987E51EC1BF9C33A00339285 /* testvid.mp4 */,
+				986A13311C1AD8CE0083A434 /* Debug.swift */,
 			);
 			name = Debug;
 			sourceTree = "<group>";
@@ -2372,6 +2379,7 @@
 				9550DB141BF83E4C00430942 /* icon-info@2x.png in Resources */,
 				9550DB131BF83E4C00430942 /* icon-info.png in Resources */,
 				9550DAC01BF83E4C00430942 /* tabbaritem_timeline_sel.png in Resources */,
+				986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */,
 				987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */,
 				9550DA5E1BF83E4C00430942 /* SCSecondView_5_5_inch.xib in Resources */,
 				9550DB0E1BF83E4C00430942 /* SVProgressHUD.bundle in Resources */,
@@ -2457,6 +2465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */,
+				986A13331C1AD8CE0083A434 /* Debug.swift in Sources */,
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
 				9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */,
 				9801BF111C080677001F4D3C /* TaskScheduler.swift in Sources */,
@@ -2577,6 +2586,7 @@
 				9550DA401BF83E4C00430942 /* NotificationViewController.m in Sources */,
 				9550DA2B1BF83E4C00430942 /* FolloweeListCell.m in Sources */,
 				9550DA171BF83E4C00430942 /* UIImage+BlurEffect.m in Sources */,
+				986A13321C1AD8CE0083A434 /* Debug.swift in Sources */,
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
 				9550DAEE1BF83E4C00430942 /* JTCalendarMonthView.m in Sources */,
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,

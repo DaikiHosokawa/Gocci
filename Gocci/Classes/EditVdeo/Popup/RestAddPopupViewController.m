@@ -100,7 +100,7 @@
             VideoPostPreparation.postData.rest_name = _textField.text;
             VideoPostPreparation.postData.lat = coordinate.latitude;    //[NSString stringWithFormat:@"%@", @(coordinate.latitude)];
             VideoPostPreparation.postData.lon = coordinate.longitude;   //[NSString stringWithFormat:@"%@", @(coordinate.longitude)];
-            VideoPostPreparation.postData.prepared_restaurant = false;
+            VideoPostPreparation.postData.prepared_restaurant = YES;
             
             [_textField resignFirstResponder];
             [self.popupController dismiss];
