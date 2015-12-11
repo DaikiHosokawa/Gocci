@@ -13,6 +13,7 @@
 #import <AWSS3/AWSS3.h>
 #import "STPopup.h"
 #import "RestPopupViewController.h"
+#import "RestAddPopupViewController.h"
 #import "ValuePopupViewController.h"
 #import "CategoryPopupViewController.h"
 #import "requestGPSPopupViewController.h"
@@ -20,12 +21,14 @@
 #import "BFPaperCheckbox.h"
 #import "FullScreenViewController.h"
 #import "Swift.h"
+#import "requestGPSPopupViewController.h"
 #import "TimelinePageMenuViewController.h"
 
 @interface EditVideoController ()<BFPaperCheckboxDelegate>{
     NSString * cheertag_update;
     CLLocationManager* locationManager;
 }
+
 
 @property (strong, nonatomic) SCAssetExportSession *exportSession;
 @property (strong, nonatomic) SCPlayer *player;
@@ -78,11 +81,11 @@
     
     _player = [SCPlayer player];
     
-    self.checkbox.delegate = self;
+    //self.checkbox.delegate = self;
     self.checkbox.rippleFromTapLocation = NO;
-    self.checkbox.tapCirclePositiveColor = [UIColor yellowColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    self.checkbox.tapCircleNegativeColor = [UIColor redColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    self.checkbox.checkmarkColor = [UIColor blueColor];
+    self.checkbox.tapCirclePositiveColor = [UIColor blackColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
+    self.checkbox.tapCircleNegativeColor = [UIColor blackColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
+    self.checkbox.checkmarkColor = [UIColor blackColor];
        SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     playerView.frame = self.filterSwitcherView.frame;
@@ -96,27 +99,34 @@
     
     [playerView addGestureRecognizer:tapGesture];
     
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (delegate.stringTenmei) {
-        NSString *restname_str = @"店名：";
-        _restName.text = [restname_str stringByAppendingString:delegate.stringTenmei];
-    }else{
-        _restName.text = @"店名：";
-    }
-    if (delegate.stringCategory){
-        NSString *category_str = @"カテゴリー：";
-        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
-    }else{
-        _category.text = @"カテゴリー：";
-    }
-    if (delegate.valueKakaku){
-        NSString *value_str = @"価格：";
-        NSString *valueStr = [delegate.valueKakaku stringByAppendingString:@"円"];
-        _value.text = [value_str stringByAppendingString:valueStr];
-    }else{
-        _value.text = @"価格：";
-    }
+    
+    _restName.text = ([VideoPostPreparation.postData.rest_name isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.rest_name;
+    VideoPostPreparation.postData.notifyNewRestName = ^(NSString * newRestName) {
+        _restName.text = newRestName;
+    };
+    
+    _value.text = ([VideoPostPreparation.postData.value isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.value;
+    VideoPostPreparation.postData.notifyNewPrice = ^(NSString * newPrice) {
+        _value.text = newPrice;
+    };
+    
+    _category.text = ([VideoPostPreparation.postData.category_string isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.category_string;
+    VideoPostPreparation.postData.notifyNewCategory = ^(NSString * newCat) {
+        _category.text = newCat;
+    };
+    
+    
+//    if (delegate.stringCategory){
+//        NSString *category_str = @"カテゴリー：";
+//        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
+//    }else{
+//        _category.text = @"カテゴリー：";
+//    }
+    
+
     _player.loopEnabled = YES;
+    _player.muted = YES;
+    
     // [デリゲートの設定]
     _textView.delegate = self;
     // [「改行（Return）」キーの設定]
@@ -130,11 +140,10 @@
     
     [_player setItemByAsset:_recordSession.assetRepresentingSegments];
     NSLog(@"player:%@",_recordSession);
-    [self infoUpdate];
+    //[self infoUpdate];
     [_player play];
 }
 
-//[self saveToCameraRoll];
 
 - (void)viewWillDisappear:(BOOL)animated {
     if (![self.navigationController.viewControllers containsObject:self]) {
@@ -154,136 +163,55 @@
 }
 
 - (IBAction)shareButton:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.stringTenmei != nil &&[appDelegate.stringTenmei length]>0) {
-        [self saveToCameraRoll];
-    }else{
-        
-        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        /*
-#ifdef INDEVEL
-        appDelegate.stringTenmei = @"UNSPECIFIED";
-        [self saveToCameraRoll];
-#endif
-         */
-    }
     
+    // TODO test if
+    // [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
+    
+    [_player pause];
+    
+    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
+    exportSession.videoConfiguration.filter = currentFilter;
+    exportSession.videoConfiguration.preset = SCPresetHighestQuality;
+    exportSession.audioConfiguration.preset = SCPresetHighestQuality;
+    exportSession.videoConfiguration.maxFrameRate = 35;
+    exportSession.outputUrl = self.recordSession.outputUrl;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.delegate = self;
+    self.exportSession = exportSession;
+    
+    
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        
+        NSError *error = exportSession.error;
+        if (exportSession.cancelled) {
+            NSLog(@"Export was cancelled");
+        }
+        else if (error == nil) {
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            
+            [self realUplaod: exportSession.outputUrl];
+        } else if (!exportSession.cancelled) {
+            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+    }];
 }
 
-- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+- (void)realUplaod:(NSURL*) videoFileInTMP {
     
+    VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
+    VideoPostPreparation.postData.memo = self.textView.text;
     
+    // WHY?
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    if (error == nil) {
-        
-        NSLog(@"contextInfo:%@,videopath:%@",contextInfo,videoPath);
-        NSLog(@"execsubmit");
-        //Cheertag
-        NSString *cheertag = @"0";
-        if ([cheertag_update isEqualToString:@"1"]) cheertag = cheertag_update;
-        //Value
-        NSString *valueKakaku = @"";
-        if ([appDelegate.valueKakaku length]>0) valueKakaku = appDelegate.valueKakaku;
-        
-        //Category
-        NSString *category = @"1";
-        // NSLog(@"雰囲気は:%@",appDelegate.stringFuniki);
-        if ([appDelegate.indexCategory length]>0) category= appDelegate.indexCategory;
-        //Comment
-        NSString *comment = @"none";
-        NSLog(@"カテゴリーは:%@",appDelegate.stringCategory);
-        if ([appDelegate.valueHitokoto length]>0) comment = appDelegate.valueHitokoto;
-        //Restid
-        NSString *rest_id = @"...";
-        if ([appDelegate.indexTenmei length]>0) rest_id = appDelegate.indexTenmei;
-        
-        NSString *movieFileForAPI = [NSString stringWithFormat:@"%@_%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
-        
-        //TODO change post api client
-        
-        [APIClient POST:movieFileForAPI rest_id:rest_id cheer_flag:cheertag value:valueKakaku
-            category_id:category tag_id:@"" memo:comment handler:^(id result, NSUInteger code, NSError *error)
-         
-         {
-             
-             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-             
-             if (error){
-                 NSLog(@"post api失敗");
 
-             }
-             if ([result[@"code"] integerValue] == 200) {
-                 //[[self viewControllerSCPosting] afterRecording:[self viewControllerSCPosting]];
-                 
-                 //S3 upload
-                 //ファイル名+user_id形式
-                 NSString *movieFileForS3 = [NSString stringWithFormat:@"%@_%@.mp4",[[NSUserDefaults standardUserDefaults] valueForKey:@"post_time"], Persistent.user_id];
-                 
-                 NSLog(@"movieFileForS3:%@",movieFileForS3);
-                 
-                 AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 
-                 NSURL *fileURL = dele.assetURL;
-                 NSLog(@"assetURL:%@",dele.assetURL);
-                 
-                 AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
-                 expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         NSLog(@"progress:%f",(float)((double) totalBytesSent / totalBytesExpectedToSend));
-                          NSLog(@"完了");
-                             //Initiarize
-                             appDelegate.stringTenmei = @"";
-                             appDelegate.indexTenmei = @"";
-                             appDelegate.valueHitokoto = @"";
-                             appDelegate.stringCategory = @"";
-                             appDelegate.indexCategory = @"";
-                             appDelegate.valueKakaku = @"";
-                             [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-                     });
-                 };
-                 
-                 AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         // Do something e.g. Alert a user for transfer completion.
-                         // On failed uploads, `error` contains the error object.
-                     });
-                 };
-                 AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"gocci_up_north_east_1"];
-                 [[transferUtility uploadFile:fileURL
-                                       bucket:@"gocci.movies.bucket.jp-test"
-                                          key:movieFileForS3
-                                  contentType:@"video/quicktime"
-                                   expression:expression
-                             completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
-                     if (task.error) {
-                         NSLog(@"Error: %@", task.error);
-                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                     }
-                     if (task.exception) {
-                         NSLog(@"Exception: %@", task.exception);
-                         [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                     }
-                     if (task.result) {
-                         AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-                         NSLog(@"success:%@",uploadTask);
-                                                  // Do something with uploadTask.
-                     }
-                     
-                     return nil;
-                 }];
-                 
-                 
-             }else{
-                 [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-             }
-         }];
-        
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"通信に失敗しました" message:@"電波状況の良い場所で再度シェアを押してください" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
+    [VideoPostPreparation initiateUploadTaskChain:videoFileInTMP];
+    
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -291,8 +219,9 @@
     
     if ([text isEqualToString:@"\n"]) {
         // ここにtextのデータ(記録)処理など
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        delegate.valueHitokoto = textView.text;
+        //AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        //delegate.valueHitokoto = textView.text;
+        VideoPostPreparation.postData.memo = textView.text;
         [textView resignFirstResponder];
         return NO;
     }
@@ -326,16 +255,6 @@
     }
 }
 
-- (void)paperCheckboxChangedState:(BFPaperCheckbox *)changedCheckbox
-{
-    if (changedCheckbox.isChecked) {
-        NSLog(@"選択");
-        cheertag_update = @"1";
-    }else{
-        NSLog(@"解除");
-        cheertag_update = @"0";
-    }
-}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // ここにtextデータの処理
@@ -355,52 +274,7 @@
     [self cancelSaveToCameraRoll];
 }
 
-- (void)saveToCameraRoll {
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
-    
-    [_player pause];
-    
-    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
-    exportSession.videoConfiguration.filter = currentFilter;
-    exportSession.videoConfiguration.preset = SCPresetHighestQuality;
-    exportSession.audioConfiguration.preset = SCPresetHighestQuality;
-    exportSession.videoConfiguration.maxFrameRate = 35;
-    exportSession.outputUrl = self.recordSession.outputUrl;
-    exportSession.outputFileType = AVFileTypeMPEG4;
-    exportSession.delegate = self;
-    self.exportSession = exportSession;
-    
-    NSLog(@"urlは%@",exportSession.outputUrl);
-    AppDelegate *dele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    dele.assetURL = exportSession.outputUrl;
-   
-    [exportSession exportAsynchronouslyWithCompletionHandler:^{
-        //__strong typeof(self) strongSelf = wSelf;
-        
-        if (!exportSession.cancelled) {
-            //  NSLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
-        }
-   
-        
-        NSError *error = exportSession.error;
-        if (exportSession.cancelled) {
-            NSLog(@"Export was cancelled");
-        } else if (error == nil) {
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            NSLog(@"CCCCCCCCCCCCCCCCCCCCCCCC:");
-            NSLog(exportSession.outputUrl.path);
-            UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-        } else {
-            if (!exportSession.cancelled) {
-                [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-            }
-        }
-    }];
-    
-}
+
 #pragma mark - 戻る
 - (IBAction)popViewController1:(UIStoryboardSegue *)segue {
     
@@ -408,31 +282,6 @@
     
 }
 
--(void)infoUpdate{
-    
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([delegate.stringTenmei length]>0) {
-        _restName.text = delegate.stringTenmei;
-    }
-    else{
-        _restName.text = @"未入力";
-    }
-    
-    if ([delegate.stringCategory length]>0){
-        _category.text =  delegate.stringCategory;
-    }
-    else{
-        _category.text = @"未入力";
-    }
-    
-    if ([delegate.valueKakaku length]>0){
-        _value.text = [delegate.valueKakaku stringByAppendingString:@"円"];
-    }
-    else{
-        _value.text = @"未入力";
-    }
-    
-}
 
 - (IBAction)restnameInsert:(id)sender {
     

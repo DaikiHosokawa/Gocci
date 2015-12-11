@@ -65,6 +65,9 @@ extension NSURLRequest {
     
     static var state: State = .OFFLINE
     
+    static var offline: Bool { get { return state == .OFFLINE } }
+    static var online: Bool { get { return state != .OFFLINE } }
+    
     class func startNetworkStatusMonitoring() {
         internetReachability.startNotifier()
         

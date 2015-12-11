@@ -47,6 +47,9 @@
         Persistent.identity_id = [result objectForKey:@"identity_id"];
         Persistent.cognito_token = [result objectForKey:@"token"];
         
+        NSString *uid = Persistent.user_id;
+        NSLog(uid);
+        
         //save badge num
         [UIApplication sharedApplication].applicationIconBadgeNumber = [[result objectForKey:@"badge_num"] intValue];
         
