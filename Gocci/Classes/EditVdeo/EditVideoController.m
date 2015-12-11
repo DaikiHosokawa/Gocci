@@ -113,14 +113,6 @@
     };
     
     
-//    if (delegate.stringCategory){
-//        NSString *category_str = @"カテゴリー：";
-//        _category.text =  [category_str stringByAppendingString:delegate.stringCategory];
-//    }else{
-//        _category.text = @"カテゴリー：";
-//    }
-    
-
     _player.loopEnabled = YES;
     _player.muted = YES;
     
@@ -134,7 +126,7 @@
     self.progressView.hidden = YES;
     //self.progressView.progress = 0.0;
     self.progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-  self.progressView.showsText = YES;
+    self.progressView.showsText = YES;
     self.progressView.tintColor = [UIColor blackColor];
     self.progressView.usesVibrancyEffect = NO;
     self.progressView.textColor = [UIColor blackColor];
@@ -169,8 +161,12 @@
 
 - (IBAction)shareButton:(id)sender {
     
-    // TODO test if
-    // [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    if ((VideoPostPreparation.postData.prepared_restaurant == false && [VideoPostPreparation.postData.rest_id isEqual:@""])
+    ||  (VideoPostPreparation.postData.prepared_restaurant == true && [VideoPostPreparation.postData.rest_name isEqual:@""]))
+    {
+        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -191,33 +187,27 @@
     
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
         
-        NSError *error = exportSession.error;
         if (exportSession.cancelled) {
             NSLog(@"Export was cancelled");
+            return;
         }
-        else if (error == nil) {
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-            
-            [self realUplaod: exportSession.outputUrl];
-        } else if (!exportSession.cancelled) {
-            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        else if (exportSession.error) {
+            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:exportSession.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            return;
         }
+        
+        //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        
+        VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
+        VideoPostPreparation.postData.memo = self.textView.text;
+        
+        [VideoPostPreparation initiateUploadTaskChain:exportSession.outputUrl];
+        
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
-- (void)realUplaod:(NSURL*) videoFileInTMP {
-    
-    VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
-    VideoPostPreparation.postData.memo = self.textView.text;
-    
-    // WHY?
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    
-    
-    [VideoPostPreparation initiateUploadTaskChain:videoFileInTMP];
-    
-}
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
@@ -287,31 +277,7 @@
     
 }
 
-//-(void)infoUpdate{
-//    
-//    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//    if ([delegate.stringTenmei length]>0) {
-//        _restName.text = delegate.stringTenmei;
-//    }
-//    else{
-//        _restName.text = @"未入力";
-//    }
-//    
-//    if ([delegate.stringCategory length]>0){
-//        _category.text =  delegate.stringCategory;
-//    }
-//    else{
-//        _category.text = @"未入力";
-//    }
-//    
-//    if ([delegate.valueKakaku length]>0){
-//        _value.text = [delegate.valueKakaku stringByAppendingString:@"円"];
-//    }
-//    else{
-//        _value.text = @"未入力";
-//    }
-//    
-//}
+
 
 - (IBAction)restnameInsert:(id)sender {
     
@@ -326,10 +292,6 @@
         [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
     }
     
-    if ([Network offline]) {
-    }
-    else {
-    }
 }
 
 - (IBAction)valueInsert:(id)sender {
