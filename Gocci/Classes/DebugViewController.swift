@@ -50,6 +50,68 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        // TODO need translation
+        
+        
+        let alertController = UIAlertController(
+            title: "Password setting",
+            message: "Please enter your new password",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        alertController.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Please enter your password..."
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "And once more for confirmation..."
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { action in
+            let pw1 = alertController.textFields?[0].text ?? ""
+            let pw2 = alertController.textFields?[1].text ?? ""
+            
+            if pw1 == "" {
+                self.simplePopup("Password setting", "Password 1 was empty", "OK")
+            }
+            else if pw2 == "" {
+                self.simplePopup("Password setting", "Password 2 was empty", "OK")
+            }
+            else if pw1 != pw2 {
+                self.simplePopup("Password setting", "Your passwords did not match", "OK")
+            }
+            else {
+                Util.runOnMainThread {
+                    self.simplePopup("Password setting", "Password was set successful :)", "OK")
+                }
+                Util.runOnMainThread {
+                    self.simplePopup("Password setting", "Password setting failed :(", "OK")
+                }
+            }
+            
+        })
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+        return;
+        
+        
+        
+        Util.runInBackground {
+            
+            let pop = UIAlertController.makeOverlayPopup("aaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbb")
+            
+            pop.addButton("Banane", style: UIAlertActionStyle.Default) { print("Banane clicked") }
+            pop.addButton("Apfel", style: UIAlertActionStyle.Cancel) { print("Apfel clicked") }
+            pop.addButton("Kirsche", style: UIAlertActionStyle.Destructive) { print("Kirsche clicked") }
+            
+            pop.overlay()
+            
+        }
+        return;
+        
         
         
         VideoPostPreparation.resetPostData()
@@ -76,18 +138,7 @@ class DebugViewController : UIViewController {
         
         
         
-        Util.runInBackground {
-            
-            let pop = UIAlertController.makeOverlayPopup("aaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbb")
-            
-            pop.addButton("Banane", style: UIAlertActionStyle.Default) { print("Banane clicked") }
-            pop.addButton("Apfel", style: UIAlertActionStyle.Cancel) { print("Apfel clicked") }
-            pop.addButton("Kirsche", style: UIAlertActionStyle.Destructive) { print("Kirsche clicked") }
-            
-            pop.overlay()
-        
-        }
-        return;
+
         
         
         let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
