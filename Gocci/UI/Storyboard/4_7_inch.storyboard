@@ -372,19 +372,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="postingBack" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-BQ-8LL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="barTintColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVU-lq-Nde">
-                                <rect key="frame" x="20" y="11" width="18" height="22"/>
-                                <state key="normal" image="backButton-2">
+                                <rect key="frame" x="7" y="5" width="37" height="39"/>
+                                <state key="normal" image="ic_chevron_left_white_48pt">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="50e-Rm-avE" kind="unwind" unwindAction="ReturnTutorial:" id="XlM-ul-n7l"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="postingBack" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-BQ-8LL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="barTintColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -399,7 +399,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ntq-iF-3C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="50e-Rm-avE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-8164.6875" y="-2340.3169014084506"/>
+            <point key="canvasLocation" x="-8165.5" y="-2340.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vvP-DX-igN">
@@ -1094,23 +1094,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bX-6o-gDK">
-                                        <rect key="frame" x="330" y="27" width="30" height="30"/>
+                                        <rect key="frame" x="339" y="29" width="28" height="28"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" image="ic_loop_white">
+                                        <state key="normal" image="ic_refresh_white_48pt">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="onRetake:" destination="QUa-W4-V2E" eventType="touchUpInside" id="eSH-8h-lFb"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bc-93-woS">
-                                        <rect key="frame" x="14" y="31" width="14" height="22"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" image="backButton-2">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onDelete:" destination="QUa-W4-V2E" eventType="touchUpInside" id="nX7-P7-qd6"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="動画" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7X-ce-njv">
@@ -1119,6 +1109,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bc-93-woS">
+                                        <rect key="frame" x="0.0" y="24" width="41" height="41"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" image="ic_chevron_left_white_48pt">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onDelete:" destination="QUa-W4-V2E" eventType="touchUpInside" id="nX7-P7-qd6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98462634048257369" green="0.38525610310047081" blue="0.2120053839009039" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1137,7 +1137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5U-0S-S6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6329.5" y="-887.5"/>
+            <point key="canvasLocation" x="-6331.5" y="-863.5"/>
         </scene>
         <!--beforeRecorder-->
         <scene sceneID="jkR-q2-unl">
@@ -1996,7 +1996,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-Bt-hBS">
                                         <rect key="frame" x="17" y="26" width="33" height="33"/>
-                                        <state key="normal" image="Backbutton"/>
+                                        <state key="normal" image="ic_chevron_left_white_48pt"/>
                                         <connections>
                                             <action selector="back:" destination="IgD-Ad-4hs" eventType="touchUpInside" id="s0o-aE-YjF"/>
                                         </connections>
@@ -2342,11 +2342,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Backbutton" width="60" height="60"/>
         <image name="Backbutton_map" width="60" height="60"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
-        <image name="backButton-2" width="30" height="50"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="character" width="1024" height="1024"/>
         <image name="character_2" width="512" height="512"/>
@@ -2356,18 +2354,19 @@
         <image name="facebook_share" width="100" height="100"/>
         <image name="gradation" width="640" height="225"/>
         <image name="ic_apps_white" width="24" height="24"/>
+        <image name="ic_chevron_left_white_48pt" width="48" height="48"/>
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ic_list_white" width="24" height="24"/>
         <image name="ic_location_on_white" width="24" height="24"/>
-        <image name="ic_loop_white" width="24" height="24"/>
         <image name="ic_more_vert_white" width="24" height="24"/>
         <image name="ic_notifications_active_white" width="24" height="24"/>
+        <image name="ic_refresh_white_48pt" width="48" height="48"/>
         <image name="ic_settings_white" width="24" height="24"/>
         <image name="infoView" width="231" height="69"/>
         <image name="postingBack" width="20" height="20"/>
         <image name="requestGPS" width="80" height="80"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
-        <image name="tabbaritem_profile.png" width="30" height="30"/>
+        <image name="tabbaritem_profile.png" width="27" height="27"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="tag-C" width="128" height="28"/>
         <image name="twitter_share" width="100" height="100"/>
@@ -2379,10 +2378,10 @@
         <segue reference="jr3-37-9ka"/>
         <segue reference="RUh-hP-jrK"/>
         <segue reference="L0G-no-fLl"/>
-        <segue reference="had-LT-zY9"/>
-        <segue reference="Ofb-Gs-yfz"/>
         <segue reference="ren-zg-h6h"/>
         <segue reference="hGv-8z-0ZJ"/>
+        <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="had-LT-zY9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

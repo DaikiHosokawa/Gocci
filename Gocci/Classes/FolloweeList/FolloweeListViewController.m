@@ -132,7 +132,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
                 UIImage *img = [UIImage imageNamed:@"sad_follower.png"];
                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                 CGSize boundsSize = self.view.bounds.size;
-                iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+                iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2-50 );
                 [self.view addSubview:iv];
                 self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
             }
