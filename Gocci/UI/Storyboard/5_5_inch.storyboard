@@ -300,16 +300,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" red="0.97254901959999995" green="0.33333333329999998" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3LZ-Lb-GAM">
-                                <rect key="frame" x="20" y="11" width="18" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="backButton-2">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="T0g-ys-hme" kind="unwind" unwindAction="ReturnTutorial:" id="VcO-wg-Hoq"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="Zn5-QC-Khz">
                                 <rect key="frame" x="0.0" y="372" width="410" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -374,6 +364,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3LZ-Lb-GAM">
+                                <rect key="frame" x="0.0" y="6" width="40" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ic_chevron_left_white_48pt">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="T0g-ys-hme" kind="unwind" unwindAction="ReturnTutorial:" id="VcO-wg-Hoq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1116,22 +1116,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OLo-48-gd3">
-                                        <rect key="frame" x="376" y="27" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" image="ic_loop_white">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onRetake:" destination="GwD-hk-noQ" eventType="touchUpInside" id="bsN-NZ-4Hh"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uyj-b4-mCz">
-                                        <rect key="frame" x="14" y="31" width="14" height="22"/>
+                                        <rect key="frame" x="0.0" y="20" width="43" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" image="backButton-2">
+                                        <state key="normal" image="ic_chevron_left_white_48pt">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1145,6 +1134,17 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OLo-48-gd3">
+                                        <rect key="frame" x="373" y="26" width="33" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" image="ic_refresh_white_48pt">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onRetake:" destination="GwD-hk-noQ" eventType="touchUpInside" id="bsN-NZ-4Hh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98462634049999997" green="0.38525610310000002" blue="0.21200538390000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -2419,7 +2419,6 @@
         <image name="Backbutton_map" width="60" height="60"/>
         <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
-        <image name="backButton-2" width="30" height="50"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="character" width="1024" height="1024"/>
         <image name="character_2" width="512" height="512"/>
@@ -2429,12 +2428,13 @@
         <image name="facebook_share" width="100" height="100"/>
         <image name="gradation" width="640" height="225"/>
         <image name="ic_apps_white" width="24" height="24"/>
+        <image name="ic_chevron_left_white_48pt" width="48" height="48"/>
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ic_list_white" width="24" height="24"/>
         <image name="ic_location_on_white" width="24" height="24"/>
-        <image name="ic_loop_white" width="24" height="24"/>
         <image name="ic_more_vert_white" width="24" height="24"/>
         <image name="ic_notifications_active_white" width="24" height="24"/>
+        <image name="ic_refresh_white_48pt" width="48" height="48"/>
         <image name="ic_settings_white" width="24" height="24"/>
         <image name="infoView" width="231" height="69"/>
         <image name="postingBack" width="20" height="20"/>

@@ -27,6 +27,7 @@ Daiki Hosokawa
 
 <Recorder>
 
+-preview view
 -test
 
 <Notification>
@@ -35,17 +36,28 @@ Daiki Hosokawa
 
 <bottom bar>
 
+-design
 
-<Other>
--5_5inch design layout
--bottom bar design
+<Storyboard>
+
+-5_5inch design
+
+<Sort>
+sort button
+
+<tool>
+
 -Analytics
--sort button
--Userpage(movie)
--restaurantpage 再生問題
--emptyview
+
+<movie check>
+
+-Userpage
+-restaurantpage
+-mutef
+
+<popup>
+
 -share(only twitter)->wanke’s advise need
--音声問題
 
 
 
