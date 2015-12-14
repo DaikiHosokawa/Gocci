@@ -43,22 +43,38 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        NetOp.loginWithUsername(un, password: passwordEditField.text) { (result, emsg) -> Void in
+
+        let req = API3.auth.password()
+        
+        req.parameters.username = un
+        req.parameters.password = pw
+        
+        // TODO better text
+        req.on_ERROR_PASSWORD_NOT_REGISTERD { _, _ in
+            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+        }
+        
+        // TODO better text
+        req.on_ERROR_PASSWORD_WRONG { _, _ in
+            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+        }
+        
+        // TODO better text
+        req.on_ERROR_USERNAME_NOT_REGISTERD { _, _ in
+            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+        }
+        
+        req.perform { (payload) -> () in
+            Persistent.identity_id = payload.identity_id
             
-            switch result {
-                case .NETOP_SUCCESS:
-
-                    AWS2.connectToBackEndWithUserDefData().continueWithBlock({ (task) -> AnyObject! in
-                        let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
-                        self.presentViewController(tutorialViewController, animated: true, completion: nil)
-                        return nil
-                    })
-
-                case .NETOP_USERNAME_PASSWORD_WRONG:
+            APIHighLevel.simpleLogin {
+                if $0 {
+                    let tutorialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("timeLineEntry")
+                    self.presentViewController(tutorialViewController, animated: true, completion: nil)
+                }
+                else {
                     Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
-                default:
-                    // TRANSLATE
-                    Util.popup("Unknown Error")
+                }
             }
         }
     }

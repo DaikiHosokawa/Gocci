@@ -15,16 +15,16 @@ func actualCode() {
     
     
     
-    let req = API3.auth.signup()
-    
-    req.parameters.username = "Peter Schmidt"
-
-    req.on_ERROR_USERNAME_ALREADY_REGISTERD { print( $0, ": ", $1) }
-    
-    req.perform { payload in
-        print(payload.identity_id)
-    }
-    
+//    let req = API3.auth.signup()
+//    
+//    req.parameters.username = "Peter Schmidt"
+//
+//    req.on_ERROR_USERNAME_ALREADY_REGISTERD { print( $0, ": ", $1) }
+//    
+//    req.perform { payload in
+//        print(payload.identity_id)
+//    }
+//    
     //
     //    API2.on(API2.GlobalCode.ERROR_NO_INTERNET_CONNECTION){
     //        print("ERROR: \($0): \($1)")
@@ -46,48 +46,89 @@ func actualCode() {
 
 class APISupport {
     
-    // TODO remove this, is now a string extension
-    /// Simple String regex matching helper
-    class func matches(s:String, re:String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: re, options: [])
-        return regex.firstMatchInString(s, options:[], range: NSMakeRange(0, s.characters.count)) != nil
+    static var verbose: Bool = true
+    
+    
+    static var fuelmid_session_cookie: String! = nil
+
+#if TEST_BUILD
+    static var baseurl = API3.testurl
+    static let USER_AGENT: String =
+    "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
+#endif
+#if LIVE_BUILD
+    static var baseurl = API3.liveurl
+    static let USER_AGENT: String =
+    "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
+#endif
+    
+    enum NetworkError {
+        case ERROR_UNKNOWN_ERROR_CODE
+        case ERROR_NO_INTERNET_CONNECTION
+        case ERROR_CONNECTION_FAILED
+        case ERROR_CONNECTION_TIMEOUT
+        case ERROR_SERVER_SIDE_FAILURE
+        case ERROR_NO_DATA_RECIEVED
+        case ERROR_BASEFRAME_JSON_MALFORMED
+        case ERROR_RE_AUTH_FAILED
     }
     
+    static let networkErrorMessageTable: [NetworkError: String] = [
+        .ERROR_UNKNOWN_ERROR_CODE:
+        "Unknown error code recieved",
+        .ERROR_CONNECTION_FAILED:
+        "Server connection failed",
+        .ERROR_NO_INTERNET_CONNECTION:
+        "The device appreas to be not connected to the internet",
+        .ERROR_BASEFRAME_JSON_MALFORMED:
+        "JSON response baseframe not parsable",
+        .ERROR_SERVER_SIDE_FAILURE:
+        "HTTP status differed from 200, indicationg failure on the server side",
+        .ERROR_NO_DATA_RECIEVED:
+        "Connection successful but no data recieved",
+        .ERROR_CONNECTION_TIMEOUT:
+        "Timeout reached before request finished",
+        .ERROR_RE_AUTH_FAILED:
+        "Reauthentication attempt failed",
+    ]
+    
+    
+    
+    
+    class func lo(msg: String) {
+        if verbose {
+            Lo.printInColor(0xFF, 0x99, 0x33, msg)
+        }
+    }
+    
+    class func sep(head: String) {
+        if verbose {
+            Lo.printInColor(0xFF, 0x99, 0x33, "=== API3: \(head) ============================================================================")
+        }
+    }
     
     /// Check the data and try to turn this into JSON
-    class func preParseJSONResponse(data: NSData) -> (frame:[String:String], payload:[String:AnyObject])? {
+    class func preParseJSONResponse(data: NSData) -> (code: String, msg: String, payload:[String: JSON])? {
         
-        // Valif JSON over test
-        guard let jsonraw = try? NSJSONSerialization.JSONObjectWithData(data, options:.MutableContainers) else {
-            return nil
-        }
+        let json = JSON(data: data)
         
-        // toplevel keys are strings test
-        guard var jsondict = jsonraw as? [String:AnyObject] else {
-            return nil
-        }
+        sep("RESPONSE")
+        lo(json.rawString() ?? "Unparsable JSON")
         
-        // there is a key named payload, if yes we remove it
-        guard let payload = jsondict.removeValueForKey("api_payload") as? [String:AnyObject] else {
-            return nil
-        }
+        //guard let version = json["version"].int else { return nil }
+        guard let code = json["code"].string else { return nil }
+        guard let message = json["message"].string else { return nil }
+        //guard version == 3 else { return nil }
+        guard code != "" else { return nil }
         
-        // Now we convert [String:AnyObject] to [String:String] for the frame to reduce castings
-        guard let frame = jsondict as? [String:String] else {
-            return nil
-        }
+        let payload = json["payload"].dictionary
         
-        guard validateJSONResponseFrame(frame) else {
-            return nil
-        }
+        if code == "SUCCESS" && payload == nil { return nil }
         
-        return (frame: frame, payload: payload)
+        
+        return (code: code, msg: message, payload: payload ?? [:])
     }
     
-    /// Check the baseframe for the main components
-    class func validateJSONResponseFrame(frame: [String: String]) -> Bool {
-        return frame["api_version"] != nil && frame["api_code"] != nil && frame["api_uri"] != nil && frame["api_message"] != nil
-    }
     
     class func detectAndHandleGlobalErrors(code: String) -> API3.GlobalCode? {
         if code == "SUCCESS" {
@@ -97,23 +138,9 @@ class APISupport {
         return API3.globalErrorReverseLookupTable[code]
     }
     
-    class func handleCommunicationFailure(communicationErrorCode: API3.GlobalCode, emsg: String? = nil) {
-        
-        let demsg = API3.globalErrorMessageTable[communicationErrorCode] ?? "No error message defined for this error"
-        
-        if let handler = API3.globalErrorMapping[communicationErrorCode] {
-            dispatch_async(dispatch_get_main_queue()) {
-                handler(communicationErrorCode, emsg ?? demsg)
-            }
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue()) {
-                API3.onUnhandledError(communicationErrorCode, emsg ?? demsg)
-            }
-        }
-    }
+
     
-    class func NSURLErrorConversion(error: NSError) -> API3.GlobalCode {
+    class func NSURLErrorConversion(error: NSError) -> NetworkError {
         
         if error.domain == NSURLErrorDomain {
             
@@ -123,64 +150,110 @@ class APISupport {
             if error.code == NSURLErrorTimedOut {
                 return .ERROR_CONNECTION_TIMEOUT
             }
-            
-            return .ERROR_CONNECTION_FAILED
         }
         
-        return .ERROR_UNKNOWN_ERROR
+        return .ERROR_CONNECTION_FAILED
     }
     
-    class func performNetworkRequest(request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: AnyObject])->()) {
+    // WARNING! ephemeral means nothing to disk. also NO COOKIES!! validate php feul session
+    static let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
+    //static let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    
+    
+    class func extractFuelmidCookie(resp: NSHTTPURLResponse) {
+        
+        guard let headers = resp.allHeaderFields as? [String: String] else {
+            return
+        }
+        
+        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(headers, forURL: NSURL(string: baseurl)!)
+        
+        for coo in cookies {
+            //NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(coo)
+            if coo.name == "fuelmid" {
+                lo("Session Cookie: fuelmid=\(coo.value)")
+                fuelmid_session_cookie = coo.value
+            }
+        }
+    }
+    
+    class func performRelogin(request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
+        
+        sep("REAUTHENTICATION NEEDED")
+        
+        APIHighLevel.simpleLogin {
+            if $0 {
+                performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
+            }
+            else {
+                request.defaultOnNetworkFailure(request, .ERROR_RE_AUTH_FAILED, networkErrorMessageTable[.ERROR_RE_AUTH_FAILED] ?? "No msg")
+            }
+        }
+    
+    }
+    
+    class func performNetworkRequest(request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
         
         guard let saneParameterPairs = request.validateParameterPairs() else {
             return
         }
         
-        
         // if API.cacheable(apipath) && cached(apipath) && API.cacheTimeOut(apipath) > now - lastTimeCached(apipath)
         //      return getCacheEntry(apipath)
         
         
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.allowsCellularAccess = true
-        // WARNING! ephemeral means nothing to disk. also NO COOKIES!! validate php feul session
-        let session = NSURLSession(configuration: config)
+        let url = request.compose(saneParameterPairs)
         
+        sep("REQUEST")
+        lo(url.absoluteString)
         
-        let req = NSURLRequest(URL: request.compose(saneParameterPairs))
+        let req = NSMutableURLRequest(URL: url)
+        
+        req.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
+        req.setValue("fuelmid=\(fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
+        
         
         let urlsessiontask = session.dataTaskWithRequest(req) { (data, response, error) -> Void in
             
-            if NSThread.currentThread().isMainThread {
-                NSLog("Warning! You are downloading on the main thread, blocking UI stuff etc...")
-            }
-            
             guard error == nil else {
-                handleCommunicationFailure(NSURLErrorConversion(error!), emsg: error!.localizedDescription)
+                request.defaultOnNetworkFailure(request, NSURLErrorConversion(error!), error!.localizedDescription)
                 return
             }
             
             guard let resp = response as? NSHTTPURLResponse where resp.statusCode == 200 else {
-                handleCommunicationFailure(.ERROR_SERVER_SIDE_FAILURE)
+                request.defaultOnNetworkFailure(request, .ERROR_SERVER_SIDE_FAILURE, networkErrorMessageTable[.ERROR_SERVER_SIDE_FAILURE] ?? "No msg")
                 return
             }
+            
+            APISupport.extractFuelmidCookie(resp)
             
             guard let data = data where data.length > 0 else {
-                handleCommunicationFailure(.ERROR_NO_DATA_RECIEVED)
+                request.defaultOnNetworkFailure(request, .ERROR_NO_DATA_RECIEVED, networkErrorMessageTable[.ERROR_NO_DATA_RECIEVED] ?? "No msg")
                 return
             }
             
-            guard let (frame, payload) = preParseJSONResponse(data) else { // TODO CRC32 check in header field would be cool
-                handleCommunicationFailure(.ERROR_BASEFRAME_JSON_MALFORMED)
+            guard let (code, msg, payload) = preParseJSONResponse(data) else { // TODO CRC32 check in header field would be cool
+                request.defaultOnNetworkFailure(request, .ERROR_BASEFRAME_JSON_MALFORMED, networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No msg")
                 return
             }
             
-            if let globalError = detectAndHandleGlobalErrors(frame["api_code"]!) {
-                handleCommunicationFailure(globalError, emsg: frame["api_message"])
+            guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_SESSION_EXPIRED else {
+                performRelogin(request, handleSaneJSONResponse: handleSaneJSONResponse)
                 return
             }
             
-            handleSaneJSONResponse(code: frame["api_code"]!, message: frame["api_message"]!, payload: payload)
+            guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_CLIENT_OUTDATED else {
+                let pop = Util.overlayPopup("Yout Gocci version is outdated", "Please visit the AppStore and update Gocci")
+                pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
+                pop.addButton("Open App Store", style: UIAlertActionStyle.Default) {
+                    Util.openGocciInTheAppStore()
+                }
+                pop.overlay()
+                return
+            }
+            
+            
+            handleSaneJSONResponse(code: code, message: msg, payload: payload)
         }
         
         urlsessiontask.resume()
@@ -193,19 +266,59 @@ protocol APIRequestProtocol {
     
     var apipath: String { get }
     
+    var defaultOnNetworkFailure: (APIRequestProtocol, APISupport.NetworkError, String)->() { get set }
+    
     func validateParameterPairs() -> [String: String]?
+    
+    func retry()
     
 }
 
 
+class APIRequest {
+    
+    
+    func validateParameterPairs() -> [String: String]? { return nil }
+    
+    
+    var defaultOnNetworkFailure: (APIRequestProtocol, APISupport.NetworkError, String)->() = { request, error, message in
+        
+        let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error)")
+        pop.addButton("Give up", style: UIAlertActionStyle.Cancel) {  }
+        pop.addButton("Retry", style: UIAlertActionStyle.Default) {
+            request.retry()
+        }
+        
+        pop.overlay()
+        
+    }
+    
+    func onNetworkTrouble(handler: (APIRequestProtocol, APISupport.NetworkError, String)->()) {
+        defaultOnNetworkFailure = handler
+    }
+
+}
+
 extension APIRequestProtocol {
     
     func compose(saneParameterPairs: [String: String]) -> NSURL {
-        let res = NSURLComponents(string: API3.baseurl + apipath)!
-        // 素敵なコード書きましょう〜
+        let res = NSURLComponents(string: APISupport.baseurl + apipath)!
         res.queryItems = saneParameterPairs.map{ (k,v) in NSURLQueryItem(name: k, value: v) }
         return res.URL!
     }
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

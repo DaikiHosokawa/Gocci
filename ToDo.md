@@ -80,19 +80,14 @@ Markus Wanke
 
  -  Call the new register_device_token URI when the device token changes
 
- -  You removed setting the FB_CONSUMER_KEY from AppDelegate. that means get rid of SNSUtil now
-
  -  That the image is downloaded everytime is retarded. No saved url
 
- -  
+ -  Relogin view controller no password edit fiel set to stars input
+
+ -  Show busy indicator on password relogin, sns relogin, username signup
 
  -  
 
- -  
-
-
-Resolved
-========
 
 
 
