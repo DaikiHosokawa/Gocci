@@ -17,7 +17,9 @@ Needs Testing
     - Do they produce an icon badge?
     - Does it work if Gocci is in Background AND if Gocci is not running at all?
 
+- Login
 
+- Upload
 
 - live branch conversion error
 
@@ -25,33 +27,16 @@ Needs Testing
 Daiki Hosokawa
 ==============
 
-<Recorder>
-
--preview view
--test
-
-<Storyboard>
-
--5_5inch design
-
 <Sort>
 sort button
 
-<tool>
-
--Analytics
-
 <movie check>
-
 -Userpage
 -restaurantpage
 -mute
 
-<popup>
-
--share(only twitter)->wanke’s advise need
-
-
+<action sheet>
+twitter消す
 
 Markus Wanke
 ============
