@@ -861,12 +861,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="wF0-ME-cmk" customClass="SCSwipeableFilterView">
-                                <rect key="frame" x="0.0" y="46" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="169" width="414" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93926985589812328" green="0.93926985589812328" blue="0.93926985589812328" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -960,13 +960,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wVd-ca-oIE">
-                                        <rect key="frame" x="14" y="9" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="facebook_share"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fD2-Og-eWP">
-                                        <rect key="frame" x="95" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="13" y="11" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="test2" image="twitter_share"/>
                                     </button>
@@ -2425,7 +2420,6 @@
         <image name="character_3" width="512" height="512"/>
         <image name="character_7" width="512" height="512"/>
         <image name="exeBar" width="640" height="256"/>
-        <image name="facebook_share" width="100" height="100"/>
         <image name="gradation" width="640" height="225"/>
         <image name="ic_apps_white" width="24" height="24"/>
         <image name="ic_chevron_left_white_48pt" width="48" height="48"/>
@@ -2440,7 +2434,7 @@
         <image name="postingBack" width="20" height="20"/>
         <image name="requestGPS" width="80" height="80"/>
         <image name="tabbaritem_posting.png" width="30" height="30"/>
-        <image name="tabbaritem_profile.png" width="30" height="30"/>
+        <image name="tabbaritem_profile.png" width="27" height="27"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="tag-C" width="128" height="28"/>
         <image name="twitter_share" width="100" height="100"/>
