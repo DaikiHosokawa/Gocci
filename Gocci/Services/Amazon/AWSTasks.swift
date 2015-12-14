@@ -42,28 +42,16 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     
     func performAWSReLogin(and: State->()) {
         
-        guard let iid = Persistent.identity_id else {
-            and(.FAILED_IRRECOVERABLE)
-            return
-        }
-            
-        NetOp.loginWithIID(iid) { code, msg in
-            switch code {
-                case NetOpResult.NETOP_SUCCESS:
-                    AWS2.connectToBackEndWithUserDefData().continueWithBlock{ task -> AnyObject! in
-                        and(.FAILED_RECOVERABLE)
-                        return nil
-                    }
-                case NetOpResult.NETOP_NETWORK_ERROR:
-                    and(.FAILED_NETWORK)
-                case NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD:
-                    and(.FAILED_IRRECOVERABLE)
-                default:
-                    and(.FAILED_RECOVERABLE)
-            }
-        }
+        APIHighLevel.nonInteractiveLogin(
+            onIIDNotAvailible:  { and(.FAILED_IRRECOVERABLE) },
+            onNetworkFailure:   { and(.FAILED_NETWORK)       },
+            onAPIFailure:       { and(.FAILED_IRRECOVERABLE) },
+            onAWSFailure:       { and(.FAILED_RECOVERABLE)   },
+            onSuccess:          { and(.FAILED_RECOVERABLE)   }) // <- YES that is corrent. In the next task iteration the task gets a new chance
+        
     }
     
+        
     func handleError(error: NSError, and: State->()){
         if Util.errorIsNetworkConfigurationError(error) {
             and(.FAILED_NETWORK)

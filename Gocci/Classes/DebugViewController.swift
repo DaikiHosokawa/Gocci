@@ -50,6 +50,72 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        
+        
+        APIHighLevel.simpleLogin {
+            if $0 {
+                
+                APISupport.fuelmid_session_cookie = "hfeufhsefuhsefishefiushfishfsuehfsihefsifhsi"
+                let pwreq = API3.set.password()
+                
+                pwreq.parameters.password = "lollol"
+                
+                pwreq.perform {
+                    print("looks good to me :)")
+                }
+            }
+        }
+        
+        
+        return;
+        
+        
+        
+        let req = API3.auth.login()
+        
+        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
+        
+        req.perform { (payload) -> () in
+            print("Username:    \(payload.username)")
+            print("User id:     \(payload.user_id)")
+            print("Badge_num:   \(payload.badge_num)")
+            print("Profile img: \(payload.profile_img)")
+            
+
+            
+//            APIClient.setPassword("lollol", handler: { response, code, error in
+//                print(response, code)
+//                
+//                print("=== AFTERFAFTERAFTERAFTER =====================================================")
+//                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
+//                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
+//                        print("\(coo)")
+//                    }
+//                }
+//            })
+        }
+        
+        
+//            if code == NetOpResult.NETOP_SUCCESS {
+//                self.loginEditField.text = self.signUpEditField.text
+//                
+//                let uid: String = Persistent.user_id!
+//                let iid: String = Persistent.identity_id!
+//                let tok: String = Persistent.cognito_token!
+//                
+//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
+//                    return nil
+//                })
+//            }
+//        }
+        
+        
+        
+        
+        
+        return;
+        
         // TODO need translation
         
         
@@ -502,24 +568,24 @@ class DebugViewController : UIViewController {
             Persistent.device_token = real_register_id
         }
         
-        NetOp.registerUsername(signUpEditField.text) {
-            (code, emsg) -> Void in
-            
-            print("NetOpCode: \(code)  " + (emsg ?? ""))
-            
-            if code == NetOpResult.NETOP_SUCCESS {
-                self.loginEditField.text = self.signUpEditField.text
-                
-                let uid: String = Persistent.user_id!
-                let iid: String = Persistent.identity_id!
-                let tok: String = Persistent.cognito_token!
-                
-                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
-                    return nil
-                })
-            }
-        }
+//        NetOp.registerUsername(signUpEditField.text) {
+//            (code, emsg) -> Void in
+//            
+//            print("NetOpCode: \(code)  " + (emsg ?? ""))
+//            
+//            if code == NetOpResult.NETOP_SUCCESS {
+//                self.loginEditField.text = self.signUpEditField.text
+//                
+//                let uid: String = Persistent.user_id!
+//                let iid: String = Persistent.identity_id!
+//                let tok: String = Persistent.cognito_token!
+//                
+//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
+//                    return nil
+//                })
+//            }
+//        }
         
     }
     @IBAction func signUpAsUserFakeClicked(sender: AnyObject) {
@@ -530,24 +596,24 @@ class DebugViewController : UIViewController {
         }
         Persistent.device_token = Util.generateFakeDeviceID()
         
-        NetOp.registerUsername(signUpEditField.text) {
-            (code, emsg) -> Void in
-            
-            print("NetOpCode: \(code)  " + (emsg ?? ""))
-            
-            if code == NetOpResult.NETOP_SUCCESS {
-                self.loginEditField.text = self.signUpEditField.text
-                
-                let uid: String = Persistent.user_id!
-                let iid: String = Persistent.identity_id!
-                let tok: String = Persistent.cognito_token!
-                
-                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
-                    return nil
-                })
-            }
-        }
+//        NetOp.registerUsername(signUpEditField.text) {
+//            (code, emsg) -> Void in
+//            
+//            print("NetOpCode: \(code)  " + (emsg ?? ""))
+//            
+//            if code == NetOpResult.NETOP_SUCCESS {
+//                self.loginEditField.text = self.signUpEditField.text
+//                
+//                let uid: String = Persistent.user_id!
+//                let iid: String = Persistent.identity_id!
+//                let tok: String = Persistent.cognito_token!
+//                
+//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
+//                    return nil
+//                })
+//            }
+//        }
     }
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
@@ -559,28 +625,28 @@ class DebugViewController : UIViewController {
             return
         }
         
-        print("=== LOGIN AS: " + iid)
-        
-        NetOp.loginWithIID(iid)
-            {
-                (code, emsg) -> Void in
-                
-                print("NetOpCode: \(code)  " + (emsg ?? ""))
-                if code == NetOpResult.NETOP_SUCCESS {
-                    self.loginEditField.text = self.signUpEditField.text
-                    let uid: String = Persistent.user_id!
-                    let iid: String = Persistent.identity_id!
-                    let tok: String = Persistent.cognito_token!
-                    
-                    AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                        AWS2.storeTimeInLoginDataSet()
-                        return nil
-                    })
-                    
-                    
-                    //AWS2.connectWithBackend(iid, userID: uid, token: tok)
-                }
-        }
+//        print("=== LOGIN AS: " + iid)
+//        
+//        NetOp.loginWithIID(iid)
+//            {
+//                (code, emsg) -> Void in
+//                
+//                print("NetOpCode: \(code)  " + (emsg ?? ""))
+//                if code == NetOpResult.NETOP_SUCCESS {
+//                    self.loginEditField.text = self.signUpEditField.text
+//                    let uid: String = Persistent.user_id!
+//                    let iid: String = Persistent.identity_id!
+//                    let tok: String = Persistent.cognito_token!
+//                    
+//                    AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
+//                        AWS2.storeTimeInLoginDataSet()
+//                        return nil
+//                    })
+//                    
+//                    
+//                    //AWS2.connectWithBackend(iid, userID: uid, token: tok)
+//                }
+//        }
     }
     
     
@@ -772,10 +838,10 @@ class DebugViewController : UIViewController {
     
     
     @IBAction func loginWithPasswordClicked(sender: AnyObject) {
-        NetOp.loginWithUsername(usernameEditField.text, password: passwordEditField.text) { (res, msg) -> Void in
-            print(res)
-            //print(msg)
-        }
+//        NetOp.loginWithUsername(usernameEditField.text, password: passwordEditField.text) { (res, msg) -> Void in
+//            print(res)
+//            //print(msg)
+//        }
     }
     
     
@@ -798,13 +864,7 @@ class DebugViewController : UIViewController {
     
     
     @IBAction func clearAllCookiesClikced(sender: AnyObject) {
-        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        if cookieStorage.cookies != nil {
-            for coo in cookieStorage.cookies! {
-                print("Deleting Cookie: \(coo)")
-                cookieStorage.deleteCookie(coo)
-            }
-        }
+        Util.deleteAllCookies()
     }
     
     
