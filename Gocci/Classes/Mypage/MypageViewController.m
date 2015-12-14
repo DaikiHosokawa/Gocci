@@ -23,6 +23,7 @@
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
+#import "BBBadgeBarButtonItem.h"
 
 @import QuartzCore;
 
@@ -58,6 +59,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 @property (weak, nonatomic) IBOutlet UILabel *FolloweeNum;
 @property (weak, nonatomic) IBOutlet UILabel *CheerNum;
 @property (weak, nonatomic) IBOutlet UIButton *badgeButton;
+
 
 @end
 
@@ -100,12 +102,32 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     [super viewDidLoad];
     
+    
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
+    
+    // BBBadgeBarButtonItemオブジェクトの作成
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:self.badgeButton];
+    self.barButton.badgeBGColor      = [UIColor whiteColor];
+    self.barButton.badgeTextColor    = color_custom;
+    self.barButton.badgeOriginX = 10;
+    self.barButton.badgeOriginY = 10;
+    
+    // バッジ内容の設定
+   self.barButton.badgeValue =  [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];// ナビゲーションバーに設定
+    
     [self.badgeButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     
     self.navigationItem.backBarButtonItem = backButton;
+    
+    //set notificationCenter
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handleRemotePushToUpdateBell:)
+                               name:@"Notification"
+                             object:nil];
     
     editButton.layer.cornerRadius = 10;
     editButton.clipsToBounds = YES;
@@ -117,14 +139,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _CheerNum.userInteractionEnabled = YES;
     _CheerNum.tag = 102;
     
-    // launch CLLocationManager
     if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
-        // デリゲート設定
         locationManager.delegate = self;
-        // 精度
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // 更新頻度
         locationManager.distanceFilter = kCLDistanceFilterNone;
     }
     
@@ -204,7 +222,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         
         UIViewController *nextViewController = viewControllers_[segmentControll.selectedSegmentIndex];
         
-        // TODO This is a hack so it does not crash. I have no idea what this code does so it should be fixed in a proper way
         if (!nextViewController) {
             return;
         }
@@ -230,8 +247,12 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
 }
 
+
+
+
 -(void)barButtonItemPressed:(id)sender{
     
+    self.barButton.badgeValue = nil;
     
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];

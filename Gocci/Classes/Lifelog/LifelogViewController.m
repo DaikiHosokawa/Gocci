@@ -130,7 +130,7 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(handleRemotePushToUpdateBell:)
-                               name:@"HogeNotification"
+                               name:@"Notification"
                              object:nil];
     
     

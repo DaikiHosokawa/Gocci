@@ -160,7 +160,7 @@
 
 - (void)layoutContentScrollView
 {
-    UIEdgeInsets margin = UIEdgeInsetsMake(0, 10, 15, 10);
+    UIEdgeInsets margin = UIEdgeInsetsMake(5, 15, 20, 15);
     CGSize itemSize = CGSizeMake((self.bounds.size.width - margin.left - margin.right) / 4, 85);
     
     NSInteger itemCount = self.items.count;

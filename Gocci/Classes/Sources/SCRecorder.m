@@ -450,13 +450,11 @@ static char* SCRecorderPhotoOptionsContext = "PhotoOptionsContext";
 - (void)record {
     void (^block)() = ^{
         _isRecording = YES;
-         NSLog(@"ピストン食らった1");
         if (_movieOutput != nil && _session != nil) {
             _movieOutput.maxRecordedDuration = self.maxRecordDuration;
             [self beginRecordSegmentIfNeeded:_session];
             if (_movieOutputProgressTimer == nil) {
                 _movieOutputProgressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0 target:self selector:@selector(_progressTimerFired:) userInfo:nil repeats:YES];
-                NSLog(@"ピストン食らった3");
             }
         }
     };

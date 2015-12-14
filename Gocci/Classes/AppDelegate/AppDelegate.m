@@ -209,7 +209,7 @@ void exceptionHandler(NSException *exception) {
     NSLog(@"userinfo:%@",userInfo);
     
     if ( userInfo ) {
-        NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
+        NSNotification *notification = [NSNotification notificationWithName:@"Notification"
                                                                      object:self
                                                                    userInfo:userInfo];
         NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
