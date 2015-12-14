@@ -30,14 +30,6 @@ Daiki Hosokawa
 -preview view
 -test
 
-<Notification>
-
--test
-
-<bottom bar>
-
--design
-
 <Storyboard>
 
 -5_5inch design
@@ -53,7 +45,7 @@ sort button
 
 -Userpage
 -restaurantpage
--mutef
+-mute
 
 <popup>
 

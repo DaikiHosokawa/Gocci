@@ -124,7 +124,7 @@ static SCRecordSession *staticRecordSession;
             }
             else if (rect.size.height == 736) {
                 //5.5inch
-                rect_page = CGRectMake(0, 516, 414, 220);
+                rect_page = CGRectMake(0, 478, 414, 260);
             }
             scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
             {
