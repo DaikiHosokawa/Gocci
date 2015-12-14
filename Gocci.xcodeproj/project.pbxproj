@@ -35,7 +35,6 @@
 		9550DA0E1BF83E4C00430942 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DB1BF83E4B00430942 /* Notice.m */; };
 		9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DD1BF83E4B00430942 /* Restaurant.m */; };
 		9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7DF1BF83E4B00430942 /* TimelinePost.m */; };
-		9550DA111BF83E4C00430942 /* NetOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7E11BF83E4B00430942 /* NetOp.m */; };
 		9550DA121BF83E4C00430942 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7E41BF83E4B00430942 /* APIClient.m */; };
 		9550DA131BF83E4C00430942 /* LocationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7E71BF83E4B00430942 /* LocationClient.m */; };
 		9550DA141BF83E4C00430942 /* MoviePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7E91BF83E4B00430942 /* MoviePlayerManager.m */; };
@@ -356,6 +355,8 @@
 		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
+		98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
+		98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -426,8 +427,6 @@
 		9550D7DD1BF83E4B00430942 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		9550D7DE1BF83E4B00430942 /* TimelinePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePost.h; sourceTree = "<group>"; };
 		9550D7DF1BF83E4B00430942 /* TimelinePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePost.m; sourceTree = "<group>"; };
-		9550D7E01BF83E4B00430942 /* NetOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetOp.h; sourceTree = "<group>"; };
-		9550D7E11BF83E4B00430942 /* NetOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetOp.m; sourceTree = "<group>"; };
 		9550D7E31BF83E4B00430942 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		9550D7E41BF83E4B00430942 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		9550D7E51BF83E4B00430942 /* APIClientLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientLimits.h; sourceTree = "<group>"; };
@@ -908,6 +907,7 @@
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
+		98C453991C1E67B70010846B /* APIHighLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHighLevel.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -1021,8 +1021,6 @@
 		9550D7D41BF83E4B00430942 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				9550D7E01BF83E4B00430942 /* NetOp.h */,
-				9550D7E11BF83E4B00430942 /* NetOp.m */,
 				9550D7D51BF83E4B00430942 /* Model */,
 				9550D7E21BF83E4B00430942 /* Services */,
 			);
@@ -1524,6 +1522,7 @@
 				9550D9111BF83E4B00430942 /* API3.swift */,
 				9550D9121BF83E4B00430942 /* APISupport.swift */,
 				9862D6041C17BF45006AE6D9 /* APITasks.swift */,
+				98C453991C1E67B70010846B /* APIHighLevel.swift */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -2492,6 +2491,7 @@
 				981124611C0FE0C20055F2A7 /* KeychainWrapper.swift in Sources */,
 				9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
+				98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
 			);
@@ -2535,7 +2535,6 @@
 				9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */,
 				9550DAC51BF83E4C00430942 /* AbstractPopover.swift in Sources */,
 				9550DA711BF83E4C00430942 /* SCMediaTypeConfiguration.m in Sources */,
-				9550DA111BF83E4C00430942 /* NetOp.m in Sources */,
 				9550DA6A1BF83E4C00430942 /* SCAudioTools.m in Sources */,
 				9550DA3A1BF83E4C00430942 /* ReLoginViewController.swift in Sources */,
 				9550DA731BF83E4C00430942 /* SCPlayer.m in Sources */,
@@ -2588,6 +2587,7 @@
 				9550DA171BF83E4C00430942 /* UIImage+BlurEffect.m in Sources */,
 				986A13321C1AD8CE0083A434 /* Debug.swift in Sources */,
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
+				98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */,
 				9550DAEE1BF83E4C00430942 /* JTCalendarMonthView.m in Sources */,
 				9550DADA1BF83E4C00430942 /* AFURLResponseSerialization.m in Sources */,
 				95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */,
@@ -2837,6 +2837,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DTEST_BUILD";
 				PROVISIONING_PROFILE = "387e7f9e-871d-4b00-917e-4dbf3d4369be";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";
@@ -2879,6 +2880,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_SWIFT_FLAGS = "-DLIVE_BUILD";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";

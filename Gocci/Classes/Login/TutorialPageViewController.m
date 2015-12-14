@@ -9,8 +9,6 @@
 #import "const.h"
 #import "util.h"
 
-#import "NetOp.h"
-
 #import "TutorialPageViewController.h"
 #import "APIClient.h"
 #import "AppDelegate.h"
@@ -124,7 +122,6 @@
 
 - (void)registerUsernameClicked:(id)sender {
   
-    
         if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
             self.registerButton.enabled = false;
             self.username.enabled = false;
@@ -134,57 +131,48 @@
         else {
         UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"文字を入力してください" message:@"0文字以上20文字以下です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [requestAgain show];
-    }
+        }
 }
 
 
--(void)loginAndTransit {
-    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
-        // transition to SNS page
+//-(void)loginAndTransit {
+//    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
+//        // transition to SNS page
+//        [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
+//        [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
+//                                      direction:UIPageViewControllerNavigationDirectionForward
+//                                       animated:YES
+//                                     completion:nil];
+//        [self.pageControl setCurrentPage:3];
+//        return nil;
+//    }];
+//}
+
+
+
+-(void)registerUsername:(NSString*)username {
+    
+    [APIHighLevelOBJC signupAndLogin:username onUsernameAlreadyTaken:^{
+        NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
+        self.registerButton.enabled = true;
+        self.username.enabled = true;
+        
+        [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    } and:^(BOOL succ) {
+        if (!succ) {
+            NSLog(@"=== Register failed");
+            self.registerButton.enabled = true;
+            self.username.enabled = true;
+            return;
+        }
+        
         [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
         [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:YES
                                      completion:nil];
         [self.pageControl setCurrentPage:3];
-        return nil;
-    }];
-}
-
-
-
--(void)registerUsername:(NSString*)username {
-    
-    [NetOp registerUsername:username andThen:^(NetOpResult errorCode, NSString *errorMsg)
-    {
-        if ( errorCode == NETOP_SUCCESS){
-            [self.pages addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"page4"]];
-            [self.pageController setViewControllers:[NSArray arrayWithObject:[self.pages lastObject]]
-                                          direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:YES
-                                         completion:nil];
-            [self.pageControl setCurrentPage:3];
-            [Util dirtyBackEndSignUpWithUserDefData];
-            return;
-        }
         
-        switch (errorCode) {
-                
-            case NETOP_USERNAME_ALREADY_IN_USE:
-                NSLog(@"=== Username '%@'already registerd by somebody else :(", username);
-                self.registerButton.enabled = true;
-                self.username.enabled = true;
-                
-                [[[UIAlertView alloc] initWithTitle:@"" message:@"このユーザー名はすでに使われております" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-                break;
-                
-            default:
-                // TODO no internet?? msg to the user
-                NSLog(@"=== Register failed: %@", errorMsg);
-                self.registerButton.enabled = true;
-                self.username.enabled = true;
-                break;
-        }
     }];
     
 }

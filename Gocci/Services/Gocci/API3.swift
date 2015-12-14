@@ -1,7 +1,7 @@
 //
 //   API3.swift 
 //   created by Markus Wanke 
-//   created on 2015-12-02 18:58:05.687411
+//   created on 2015-12-14 13:21:18.918448
 //
 //   WARNING======================================WARNING
 //   WARNING                                      WARNING
@@ -18,2681 +18,36 @@ import Foundation
 
 
 class API3 {
-    static let baseurl = "https://api.mobile.gocci.me/v3/"
-    static let testurl = "http://test.mobile.api.gocci.me/v3/"
+    static let version = "3.7"
+    static let liveurl = "https://mobile.api.gocci.me/v3"
+    static let testurl = "http://test.mobile.api.gocci.me/v3"
     
     
     enum GlobalCode {
         case SUCCESS
-        case ERROR_UNKNOWN_ERROR
-        case ERROR_PARAMETER_INVALID
         case ERROR_SESSION_EXPIRED
         case ERROR_CLIENT_OUTDATED
-        case ERROR_NO_INTERNET_CONNECTION
-        case ERROR_CONNECTION_FAILED
-        case ERROR_CONNECTION_TIMEOUT
-        case ERROR_SERVER_SIDE_FAILURE
-        case ERROR_NO_DATA_RECIEVED
-        case ERROR_BASEFRAME_JSON_MALFORMED
     }
     
     static let globalErrorReverseLookupTable: [String: GlobalCode] = [
-        "ERROR_UNKNOWN_ERROR": .ERROR_UNKNOWN_ERROR,
-        "ERROR_NO_DATA_RECIEVED": .ERROR_NO_DATA_RECIEVED,
-        "ERROR_PARAMETER_INVALID": .ERROR_PARAMETER_INVALID,
-        "ERROR_CONNECTION_FAILED": .ERROR_CONNECTION_FAILED,
-        "ERROR_NO_INTERNET_CONNECTION": .ERROR_NO_INTERNET_CONNECTION,
-        "ERROR_SERVER_SIDE_FAILURE": .ERROR_SERVER_SIDE_FAILURE,
-        "ERROR_CONNECTION_TIMEOUT": .ERROR_CONNECTION_TIMEOUT,
-        "SUCCESS": .SUCCESS,
-        "ERROR_BASEFRAME_JSON_MALFORMED": .ERROR_BASEFRAME_JSON_MALFORMED,
-        "ERROR_SESSION_EXPIRED": .ERROR_SESSION_EXPIRED,
         "ERROR_CLIENT_OUTDATED": .ERROR_CLIENT_OUTDATED,
+        "ERROR_SESSION_EXPIRED": .ERROR_SESSION_EXPIRED,
+        "SUCCESS": .SUCCESS,
     ]
     
     static let globalErrorMessageTable: [GlobalCode: String] = [
-        .ERROR_UNKNOWN_ERROR: 
-    		"Unknown global error",
-        .ERROR_NO_DATA_RECIEVED: 
-    		"Connection successful but no data recieved",
-        .ERROR_PARAMETER_INVALID: 
-    		"Request parameter verification failed",
-        .ERROR_CONNECTION_FAILED: 
-    		"Server connection failed",
-        .ERROR_NO_INTERNET_CONNECTION: 
-    		"The device appreas to be not connected to the internet",
-        .ERROR_SERVER_SIDE_FAILURE: 
-    		"HTTP status differed from 200, indicationg failure on the server side",
-        .ERROR_CONNECTION_TIMEOUT: 
-    		"Timeout reached before request finished",
-        .SUCCESS: 
-    		"Successful API request",
-        .ERROR_BASEFRAME_JSON_MALFORMED: 
-    		"JSON response baseframe not parsable",
-        .ERROR_SESSION_EXPIRED: 
-    		"Session cookie is not valid anymore",
         .ERROR_CLIENT_OUTDATED: 
     		"The client version is too old for this API. Client update necessary",
+        .ERROR_SESSION_EXPIRED: 
+    		"Session cookie is not valid anymore",
+        .SUCCESS: 
+    		"Successful API request",
     ]
-    
-    
-    class func on_SUCCESS(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.SUCCESS] = perform
-    }
-    class func on_ERROR_UNKNOWN_ERROR(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_UNKNOWN_ERROR] = perform
-    }
-    class func on_ERROR_PARAMETER_INVALID(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_PARAMETER_INVALID] = perform
-    }
-    class func on_ERROR_SESSION_EXPIRED(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_SESSION_EXPIRED] = perform
-    }
-    class func on_ERROR_CLIENT_OUTDATED(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_CLIENT_OUTDATED] = perform
-    }
-    class func on_ERROR_NO_INTERNET_CONNECTION(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_NO_INTERNET_CONNECTION] = perform
-    }
-    class func on_ERROR_CONNECTION_FAILED(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_CONNECTION_FAILED] = perform
-    }
-    class func on_ERROR_CONNECTION_TIMEOUT(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_CONNECTION_TIMEOUT] = perform
-    }
-    class func on_ERROR_SERVER_SIDE_FAILURE(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_SERVER_SIDE_FAILURE] = perform
-    }
-    class func on_ERROR_NO_DATA_RECIEVED(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_NO_DATA_RECIEVED] = perform
-    }
-    class func on_ERROR_BASEFRAME_JSON_MALFORMED(perform:(GlobalCode, String)->()) {
-        globalErrorMapping[.ERROR_BASEFRAME_JSON_MALFORMED] = perform
-    }
-    
-    
-    static var globalErrorMapping: [GlobalCode: (GlobalCode, String)->()] = [:]
-    static var onUnhandledError: (GlobalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-    
-    class func on(gcode: GlobalCode, perform:(GlobalCode, String)->()) {
-        globalErrorMapping[gcode] = perform
-    }
-    
-    class post {
-    
-        class unregister_device_token: APIRequestProtocol {
-            let apipath = "/post/unregister_device_token"
-            
-            class InternalParameterClass {
-                var device_token: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_DEVICE_TOKEN_MISSING
-                case ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_DEVICE_TOKEN_MISSING] = 
-                    "Parameter 'device_token' does not exist."
-                res[.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED] = 
-                    "Parameter 'device_token' is malformed. Should correspond to '^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_DEVICE_TOKEN_MISSING"] = .ERROR_PARAMETER_DEVICE_TOKEN_MISSING
-                res["ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED"] = .ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = unregister_device_token.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? unregister_device_token.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let device_token = parameters.device_token {
-                    if device_token.matches("^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$") {
-                        res["device_token"] = device_token
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class register_device_token: APIRequestProtocol {
-            let apipath = "/post/register_device_token"
-            
-            class InternalParameterClass {
-                var device_token: String?
-                var os: String?
-                var ver: String?
-                var model: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_DEVICE_TOKEN_MISSING
-                case ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
-                case ERROR_PARAMETER_OS_MISSING
-                case ERROR_PARAMETER_OS_MALFORMED
-                case ERROR_PARAMETER_VER_MISSING
-                case ERROR_PARAMETER_VER_MALFORMED
-                case ERROR_PARAMETER_MODEL_MISSING
-                case ERROR_PARAMETER_MODEL_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_OS_MISSING] = 
-                    "Parameter 'os' does not exist."
-                res[.ERROR_PARAMETER_VER_MISSING] = 
-                    "Parameter 'ver' does not exist."
-                res[.ERROR_PARAMETER_MODEL_MISSING] = 
-                    "Parameter 'model' does not exist."
-                res[.ERROR_PARAMETER_VER_MALFORMED] = 
-                    "Parameter 'ver' is malformed. Should correspond to '^[0-9.]{0,6}$'"
-                res[.ERROR_PARAMETER_DEVICE_TOKEN_MISSING] = 
-                    "Parameter 'device_token' does not exist."
-                res[.ERROR_PARAMETER_OS_MALFORMED] = 
-                    "Parameter 'os' is malformed. Should correspond to '^android$|^iOS$'"
-                res[.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED] = 
-                    "Parameter 'device_token' is malformed. Should correspond to '^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$'"
-                res[.ERROR_PARAMETER_MODEL_MALFORMED] = 
-                    "Parameter 'model' is malformed. Should correspond to '^[\\S\\s]{0,50}$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_DEVICE_TOKEN_MISSING"] = .ERROR_PARAMETER_DEVICE_TOKEN_MISSING
-                res["ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED"] = .ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
-                res["ERROR_PARAMETER_OS_MISSING"] = .ERROR_PARAMETER_OS_MISSING
-                res["ERROR_PARAMETER_OS_MALFORMED"] = .ERROR_PARAMETER_OS_MALFORMED
-                res["ERROR_PARAMETER_VER_MISSING"] = .ERROR_PARAMETER_VER_MISSING
-                res["ERROR_PARAMETER_VER_MALFORMED"] = .ERROR_PARAMETER_VER_MALFORMED
-                res["ERROR_PARAMETER_MODEL_MISSING"] = .ERROR_PARAMETER_MODEL_MISSING
-                res["ERROR_PARAMETER_MODEL_MALFORMED"] = .ERROR_PARAMETER_MODEL_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = register_device_token.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? register_device_token.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let device_token = parameters.device_token {
-                    if device_token.matches("^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$") {
-                        res["device_token"] = device_token
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MISSING)
-                    return nil
-                }
-                
-                if let os = parameters.os {
-                    if os.matches("^android$|^iOS$") {
-                        res["os"] = os
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_OS_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_OS_MISSING)
-                    return nil
-                }
-                
-                if let ver = parameters.ver {
-                    if ver.matches("^[0-9.]{0,6}$") {
-                        res["ver"] = ver
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_VER_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_VER_MISSING)
-                    return nil
-                }
-                
-                if let model = parameters.model {
-                    if model.matches("^[\\S\\s]{0,50}$") {
-                        res["model"] = model
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_MODEL_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_MODEL_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-     }
     
     class set {
     
-        class rest: APIRequestProtocol {
-            let apipath = "/set/rest"
-            
-            class InternalParameterClass {
-                var restname: String?
-                var lon: String?
-                var lat: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_RESTNAME_MISSING
-                case ERROR_PARAMETER_RESTNAME_MALFORMED
-                case ERROR_PARAMETER_LON_MISSING
-                case ERROR_PARAMETER_LON_MALFORMED
-                case ERROR_PARAMETER_LAT_MISSING
-                case ERROR_PARAMETER_LAT_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_RESTNAME_MALFORMED] = 
-                    "Parameter 'restname' is malformed. Should correspond to '^[\\S\\s]{2,30}$'"
-                res[.ERROR_PARAMETER_LON_MISSING] = 
-                    "Parameter 'lon' does not exist."
-                res[.ERROR_PARAMETER_RESTNAME_MISSING] = 
-                    "Parameter 'restname' does not exist."
-                res[.ERROR_PARAMETER_LAT_MALFORMED] = 
-                    "Parameter 'lat' is malformed. Should correspond to '^\\d+.\\d+$'"
-                res[.ERROR_PARAMETER_LAT_MISSING] = 
-                    "Parameter 'lat' does not exist."
-                res[.ERROR_PARAMETER_LON_MALFORMED] = 
-                    "Parameter 'lon' is malformed. Should correspond to '^\\d+.\\d+$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_RESTNAME_MISSING"] = .ERROR_PARAMETER_RESTNAME_MISSING
-                res["ERROR_PARAMETER_RESTNAME_MALFORMED"] = .ERROR_PARAMETER_RESTNAME_MALFORMED
-                res["ERROR_PARAMETER_LON_MISSING"] = .ERROR_PARAMETER_LON_MISSING
-                res["ERROR_PARAMETER_LON_MALFORMED"] = .ERROR_PARAMETER_LON_MALFORMED
-                res["ERROR_PARAMETER_LAT_MISSING"] = .ERROR_PARAMETER_LAT_MISSING
-                res["ERROR_PARAMETER_LAT_MALFORMED"] = .ERROR_PARAMETER_LAT_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = rest.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? rest.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let restname = parameters.restname {
-                    if restname.matches("^[\\S\\s]{2,30}$") {
-                        res["restname"] = restname
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_RESTNAME_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_RESTNAME_MISSING)
-                    return nil
-                }
-                
-                if let lon = parameters.lon {
-                    if lon.matches("^\\d+.\\d+$") {
-                        res["lon"] = lon
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_LON_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_LON_MISSING)
-                    return nil
-                }
-                
-                if let lat = parameters.lat {
-                    if lat.matches("^\\d+.\\d+$") {
-                        res["lat"] = lat
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_LAT_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_LAT_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class password: APIRequestProtocol {
-            let apipath = "/set/password"
-            
-            class InternalParameterClass {
-                var password: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_PASSWORD_MISSING
-                case ERROR_PARAMETER_PASSWORD_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_PASSWORD_MALFORMED] = 
-                    "Parameter 'password' is malformed. Should correspond to '^\\w{6,25}$'"
-                res[.ERROR_PARAMETER_PASSWORD_MISSING] = 
-                    "Parameter 'password' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_PASSWORD_MISSING"] = .ERROR_PARAMETER_PASSWORD_MISSING
-                res["ERROR_PARAMETER_PASSWORD_MALFORMED"] = .ERROR_PARAMETER_PASSWORD_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = password.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? password.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let password = parameters.password {
-                    if password.matches("^\\w{6,25}$") {
-                        res["password"] = password
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_PASSWORD_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_PASSWORD_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class block: APIRequestProtocol {
-            let apipath = "/set/block"
-            
-            class InternalParameterClass {
-                var post_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_POST_ID_MISSING
-                case ERROR_PARAMETER_POST_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
-                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
-                    "Parameter 'post_id' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
-                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = block.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? block.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let post_id = parameters.post_id {
-                    if post_id.matches("^\\d+$") {
-                        res["post_id"] = post_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class gochi: APIRequestProtocol {
-            let apipath = "/set/gochi"
-            
-            class InternalParameterClass {
-                var post_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_POST_ID_MISSING
-                case ERROR_PARAMETER_POST_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
-                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
-                    "Parameter 'post_id' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
-                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = gochi.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? gochi.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let post_id = parameters.post_id {
-                    if post_id.matches("^\\d+$") {
-                        res["post_id"] = post_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class want: APIRequestProtocol {
-            let apipath = "/set/want"
-            
-            class InternalParameterClass {
-                var rest_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_REST_ID_MISSING
-                case ERROR_PARAMETER_REST_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
-                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
-                    "Parameter 'rest_id' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
-                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = want.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? want.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let rest_id = parameters.rest_id {
-                    if rest_id.matches("^\\d+$") {
-                        res["rest_id"] = rest_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class comment: APIRequestProtocol {
-            let apipath = "/set/comment"
-            
-            class InternalParameterClass {
-                var post_id: String?
-                var comment: String?
-                var re_user_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_POST_ID_MISSING
-                case ERROR_PARAMETER_POST_ID_MALFORMED
-                case ERROR_PARAMETER_COMMENT_MISSING
-                case ERROR_PARAMETER_COMMENT_MALFORMED
-                case ERROR_PARAMETER_RE_USER_ID_MISSING
-                case ERROR_PARAMETER_RE_USER_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_RE_USER_ID_MALFORMED] = 
-                    "Parameter 're_user_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_COMMENT_MISSING] = 
-                    "Parameter 'comment' does not exist."
-                res[.ERROR_PARAMETER_COMMENT_MALFORMED] = 
-                    "Parameter 'comment' is malformed. Should correspond to '^.{1,140}$'"
-                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
-                    "Parameter 'post_id' does not exist."
-                res[.ERROR_PARAMETER_RE_USER_ID_MISSING] = 
-                    "Parameter 're_user_id' does not exist."
-                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
-                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
-                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
-                res["ERROR_PARAMETER_COMMENT_MISSING"] = .ERROR_PARAMETER_COMMENT_MISSING
-                res["ERROR_PARAMETER_COMMENT_MALFORMED"] = .ERROR_PARAMETER_COMMENT_MALFORMED
-                res["ERROR_PARAMETER_RE_USER_ID_MISSING"] = .ERROR_PARAMETER_RE_USER_ID_MISSING
-                res["ERROR_PARAMETER_RE_USER_ID_MALFORMED"] = .ERROR_PARAMETER_RE_USER_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = comment.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? comment.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let post_id = parameters.post_id {
-                    if post_id.matches("^\\d+$") {
-                        res["post_id"] = post_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
-                    return nil
-                }
-                
-                if let comment = parameters.comment {
-                    if comment.matches("^.{1,140}$") {
-                        res["comment"] = comment
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_COMMENT_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_COMMENT_MISSING)
-                    return nil
-                }
-                
-                if let re_user_id = parameters.re_user_id {
-                    if re_user_id.matches("^\\d+$") {
-                        res["re_user_id"] = re_user_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_RE_USER_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_RE_USER_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class profile_img: APIRequestProtocol {
-            let apipath = "/set/profile_img"
-            
-            class InternalParameterClass {
-                var profile_img: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_PROFILE_IMG_MISSING
-                case ERROR_PARAMETER_PROFILE_IMG_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_PROFILE_IMG_MALFORMED] = 
-                    "Parameter 'profile_img' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_PROFILE_IMG_MISSING] = 
-                    "Parameter 'profile_img' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_PROFILE_IMG_MISSING"] = .ERROR_PARAMETER_PROFILE_IMG_MISSING
-                res["ERROR_PARAMETER_PROFILE_IMG_MALFORMED"] = .ERROR_PARAMETER_PROFILE_IMG_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = profile_img.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? profile_img.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let profile_img = parameters.profile_img {
-                    if profile_img.matches("^\\d+$") {
-                        res["profile_img"] = profile_img
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class postdel: APIRequestProtocol {
-            let apipath = "/set/postdel"
-            
-            class InternalParameterClass {
-                var post_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_POST_ID_MISSING
-                case ERROR_PARAMETER_POST_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
-                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
-                    "Parameter 'post_id' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
-                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = postdel.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? postdel.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let post_id = parameters.post_id {
-                    if post_id.matches("^\\d+$") {
-                        res["post_id"] = post_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class feedback: APIRequestProtocol {
-            let apipath = "/set/feedback"
-            
-            class InternalParameterClass {
-                var feedback: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_FEEDBACK_MISSING
-                case ERROR_PARAMETER_FEEDBACK_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_FEEDBACK_MISSING] = 
-                    "Parameter 'feedback' does not exist."
-                res[.ERROR_PARAMETER_FEEDBACK_MALFORMED] = 
-                    "Parameter 'feedback' is malformed. Should correspond to '^[\\S\\s]{2,300}$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_FEEDBACK_MISSING"] = .ERROR_PARAMETER_FEEDBACK_MISSING
-                res["ERROR_PARAMETER_FEEDBACK_MALFORMED"] = .ERROR_PARAMETER_FEEDBACK_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = feedback.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? feedback.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let feedback = parameters.feedback {
-                    if feedback.matches("^[\\S\\s]{2,300}$") {
-                        res["feedback"] = feedback
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_FEEDBACK_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_FEEDBACK_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class unwant: APIRequestProtocol {
-            let apipath = "/set/unwant"
-            
-            class InternalParameterClass {
-                var rest_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_REST_ID_MISSING
-                case ERROR_PARAMETER_REST_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
-                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
-                    "Parameter 'rest_id' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
-                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = unwant.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? unwant.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let rest_id = parameters.rest_id {
-                    if rest_id.matches("^\\d+$") {
-                        res["rest_id"] = rest_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class username: APIRequestProtocol {
-            let apipath = "/set/username"
-            
-            class InternalParameterClass {
-                var username: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_USERNAME_MISSING
-                case ERROR_PARAMETER_USERNAME_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_USERNAME_MALFORMED] = 
-                    "Parameter 'username' is malformed. Should correspond to '^[\\S\\s]{2,20}$'"
-                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
-                    "Parameter 'username' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_USERNAME_MISSING"] = .ERROR_PARAMETER_USERNAME_MISSING
-                res["ERROR_PARAMETER_USERNAME_MALFORMED"] = .ERROR_PARAMETER_USERNAME_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = username.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? username.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let username = parameters.username {
-                    if username.matches("^[\\S\\s]{2,20}$") {
-                        res["username"] = username
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_USERNAME_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_USERNAME_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class post: APIRequestProtocol {
-            let apipath = "/set/post"
-            
-            class InternalParameterClass {
-                var rest_id: String?
-                var category_id: String?
-                var movie: String?
-                var value: String?
-                var memo: String?
-                var cheer_flag: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_REST_ID_MISSING
-                case ERROR_PARAMETER_REST_ID_MALFORMED
-                case ERROR_PARAMETER_CATEGORY_ID_MISSING
-                case ERROR_PARAMETER_CATEGORY_ID_MALFORMED
-                case ERROR_PARAMETER_MOVIE_MISSING
-                case ERROR_PARAMETER_MOVIE_MALFORMED
-                case ERROR_PARAMETER_VALUE_MISSING
-                case ERROR_PARAMETER_VALUE_MALFORMED
-                case ERROR_PARAMETER_MEMO_MISSING
-                case ERROR_PARAMETER_MEMO_MALFORMED
-                case ERROR_PARAMETER_CHEER_FLAG_MISSING
-                case ERROR_PARAMETER_CHEER_FLAG_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_CHEER_FLAG_MALFORMED] = 
-                    "Parameter 'cheer_flag' is malformed. Should correspond to '^0$|^1$'"
-                res[.ERROR_PARAMETER_MOVIE_MALFORMED] = 
-                    "Parameter 'movie' is malformed. Should correspond to 'aaaaaaaaaaa'"
-                res[.ERROR_PARAMETER_MOVIE_MISSING] = 
-                    "Parameter 'movie' does not exist."
-                res[.ERROR_PARAMETER_VALUE_MALFORMED] = 
-                    "Parameter 'value' is malformed. Should correspond to '^\\d{0,8}$'"
-                res[.ERROR_PARAMETER_VALUE_MISSING] = 
-                    "Parameter 'value' does not exist."
-                res[.ERROR_PARAMETER_MEMO_MALFORMED] = 
-                    "Parameter 'memo' is malformed. Should correspond to '^[\\S\\s]{0,140}$'"
-                res[.ERROR_PARAMETER_CATEGORY_ID_MISSING] = 
-                    "Parameter 'category_id' does not exist."
-                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
-                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
-                res[.ERROR_PARAMETER_CATEGORY_ID_MALFORMED] = 
-                    "Parameter 'category_id' is malformed. Should correspond to '^\\d{1}$'"
-                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
-                    "Parameter 'rest_id' does not exist."
-                res[.ERROR_PARAMETER_MEMO_MISSING] = 
-                    "Parameter 'memo' does not exist."
-                res[.ERROR_PARAMETER_CHEER_FLAG_MISSING] = 
-                    "Parameter 'cheer_flag' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
-                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
-                res["ERROR_PARAMETER_CATEGORY_ID_MISSING"] = .ERROR_PARAMETER_CATEGORY_ID_MISSING
-                res["ERROR_PARAMETER_CATEGORY_ID_MALFORMED"] = .ERROR_PARAMETER_CATEGORY_ID_MALFORMED
-                res["ERROR_PARAMETER_MOVIE_MISSING"] = .ERROR_PARAMETER_MOVIE_MISSING
-                res["ERROR_PARAMETER_MOVIE_MALFORMED"] = .ERROR_PARAMETER_MOVIE_MALFORMED
-                res["ERROR_PARAMETER_VALUE_MISSING"] = .ERROR_PARAMETER_VALUE_MISSING
-                res["ERROR_PARAMETER_VALUE_MALFORMED"] = .ERROR_PARAMETER_VALUE_MALFORMED
-                res["ERROR_PARAMETER_MEMO_MISSING"] = .ERROR_PARAMETER_MEMO_MISSING
-                res["ERROR_PARAMETER_MEMO_MALFORMED"] = .ERROR_PARAMETER_MEMO_MALFORMED
-                res["ERROR_PARAMETER_CHEER_FLAG_MISSING"] = .ERROR_PARAMETER_CHEER_FLAG_MISSING
-                res["ERROR_PARAMETER_CHEER_FLAG_MALFORMED"] = .ERROR_PARAMETER_CHEER_FLAG_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = post.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? post.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let rest_id = parameters.rest_id {
-                    if rest_id.matches("^\\d+$") {
-                        res["rest_id"] = rest_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
-                    return nil
-                }
-                
-                if let category_id = parameters.category_id {
-                    if category_id.matches("^\\d{1}$") {
-                        res["category_id"] = category_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_CATEGORY_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_CATEGORY_ID_MISSING)
-                    return nil
-                }
-                
-                if let movie = parameters.movie {
-                    if movie.matches("aaaaaaaaaaa") {
-                        res["movie"] = movie
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_MOVIE_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_MOVIE_MISSING)
-                    return nil
-                }
-                
-                if let value = parameters.value {
-                    if value.matches("^\\d{0,8}$") {
-                        res["value"] = value
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_VALUE_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_VALUE_MISSING)
-                    return nil
-                }
-                
-                if let memo = parameters.memo {
-                    if memo.matches("^[\\S\\s]{0,140}$") {
-                        res["memo"] = memo
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_MEMO_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_MEMO_MISSING)
-                    return nil
-                }
-                
-                if let cheer_flag = parameters.cheer_flag {
-                    if cheer_flag.matches("^0$|^1$") {
-                        res["cheer_flag"] = cheer_flag
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_CHEER_FLAG_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_CHEER_FLAG_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class sns_lonk: APIRequestProtocol {
-            let apipath = "/set/sns_lonk"
-            
-            class InternalParameterClass {
-                var provider: String?
-                var token: String?
-                var profile_img: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
-                case ERROR_PROFILE_IMAGE_DOES_NOT_EXIST
-                case ERROR_PROVIDER_UNREACHABLE
-                case ERROR_PARAMETER_PROVIDER_MISSING
-                case ERROR_PARAMETER_PROVIDER_MALFORMED
-                case ERROR_PARAMETER_TOKEN_MISSING
-                case ERROR_PARAMETER_TOKEN_MALFORMED
-                case ERROR_PARAMETER_PROFILE_IMG_MISSING
-                case ERROR_PARAMETER_PROFILE_IMG_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = 
-                    "The provided sns token is invalid or has expired"
-                res[.ERROR_PARAMETER_PROFILE_IMG_MALFORMED] = 
-                    "Parameter 'profile_img' is malformed. Should correspond to '^http\\S+$'"
-                res[.ERROR_PROVIDER_UNREACHABLE] = 
-                    "The providers server infrastructure appears to be down"
-                res[.ERROR_PARAMETER_PROVIDER_MALFORMED] = 
-                    "Parameter 'provider' is malformed. Should correspond to '^(api.twitter.com)|(graph.facebook.com)$'"
-                res[.ERROR_PARAMETER_TOKEN_MISSING] = 
-                    "Parameter 'token' does not exist."
-                res[.ERROR_PARAMETER_TOKEN_MALFORMED] = 
-                    "Parameter 'token' is malformed. Should correspond to '^[\\S\\s]{20,4000}$'"
-                res[.ERROR_PARAMETER_PROFILE_IMG_MISSING] = 
-                    "Parameter 'profile_img' does not exist."
-                res[.ERROR_PROFILE_IMAGE_DOES_NOT_EXIST] = 
-                    "The provided link to the profile image cound not be downloaded"
-                res[.ERROR_PARAMETER_PROVIDER_MISSING] = 
-                    "Parameter 'provider' does not exist."
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_SNS_PROVIDER_TOKEN_NOT_VALID"] = .ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
-                res["ERROR_PROFILE_IMAGE_DOES_NOT_EXIST"] = .ERROR_PROFILE_IMAGE_DOES_NOT_EXIST
-                res["ERROR_PROVIDER_UNREACHABLE"] = .ERROR_PROVIDER_UNREACHABLE
-                res["ERROR_PARAMETER_PROVIDER_MISSING"] = .ERROR_PARAMETER_PROVIDER_MISSING
-                res["ERROR_PARAMETER_PROVIDER_MALFORMED"] = .ERROR_PARAMETER_PROVIDER_MALFORMED
-                res["ERROR_PARAMETER_TOKEN_MISSING"] = .ERROR_PARAMETER_TOKEN_MISSING
-                res["ERROR_PARAMETER_TOKEN_MALFORMED"] = .ERROR_PARAMETER_TOKEN_MALFORMED
-                res["ERROR_PARAMETER_PROFILE_IMG_MISSING"] = .ERROR_PARAMETER_PROFILE_IMG_MISSING
-                res["ERROR_PARAMETER_PROFILE_IMG_MALFORMED"] = .ERROR_PARAMETER_PROFILE_IMG_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = sns_lonk.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? sns_lonk.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            func on_ERROR_SNS_PROVIDER_TOKEN_NOT_VALID(perform:(LocalCode, String)->()) {
-                localErrorMapping[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = perform
-            }
-            func on_ERROR_PROFILE_IMAGE_DOES_NOT_EXIST(perform:(LocalCode, String)->()) {
-                localErrorMapping[.ERROR_PROFILE_IMAGE_DOES_NOT_EXIST] = perform
-            }
-            func on_ERROR_PROVIDER_UNREACHABLE(perform:(LocalCode, String)->()) {
-                localErrorMapping[.ERROR_PROVIDER_UNREACHABLE] = perform
-            }
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let provider = parameters.provider {
-                    if provider.matches("^(api.twitter.com)|(graph.facebook.com)$") {
-                        res["provider"] = provider
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_PROVIDER_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_PROVIDER_MISSING)
-                    return nil
-                }
-                
-                if let token = parameters.token {
-                    if token.matches("^[\\S\\s]{20,4000}$") {
-                        res["token"] = token
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_TOKEN_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_TOKEN_MISSING)
-                    return nil
-                }
-                
-                if let profile_img = parameters.profile_img {
-                    if profile_img.matches("^http\\S+$") {
-                        res["profile_img"] = profile_img
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class unfollow: APIRequestProtocol {
-            let apipath = "/set/unfollow"
-            
-            class InternalParameterClass {
-                var user_id: String?
-                
-            }
-            
-            let parameters = InternalParameterClass()
-            
-            
-            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
-            
-            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
-            
-            enum LocalCode {
-                case ERROR_PARAMETER_USER_ID_MISSING
-                case ERROR_PARAMETER_USER_ID_MALFORMED
-            }
-            
-            
-            static let localErrorMessageTable: [LocalCode: String] = {
-                var res: [LocalCode: String] = [:]
-                res[.ERROR_PARAMETER_USER_ID_MISSING] = 
-                    "Parameter 'user_id' does not exist."
-                res[.ERROR_PARAMETER_USER_ID_MALFORMED] = 
-                    "Parameter 'user_id' is malformed. Should correspond to '^\\d+$'"
-                return res
-            }()
-            
-            
-            static let localErrorReverseLookupTable: [String: LocalCode] = {
-                var res: [String: LocalCode] = [:]
-                res["ERROR_PARAMETER_USER_ID_MISSING"] = .ERROR_PARAMETER_USER_ID_MISSING
-                res["ERROR_PARAMETER_USER_ID_MALFORMED"] = .ERROR_PARAMETER_USER_ID_MALFORMED
-                return res
-            }()
-            
-            
-            
-            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
-                guard code == "SUCCESS" else {
-                    guard let rcode = unfollow.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
-                        return false
-                    }
-                    handleLocalError(rcode, mmsg)
-                    return false
-                }
-                return true
-            }
-            
-            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? unfollow.localErrorMessageTable[code] ?? "No error message defined"
-                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
-                dispatch_async(dispatch_get_main_queue()) {
-                    handler(code, msg)
-                }
-            }
-            
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: ()->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, _) in
-                    if self.preHandleLocalError(code, msg) {
-                        and()
-                    }
-                }
-            }
-            func on(code: LocalCode, perform: (LocalCode, String)->()){
-                self.localErrorMapping[code] = perform
-            }
-            
-            
-            
-            
-            func validateParameterPairs() -> [String: String]? {
-            
-                var res: [String: String] = [:]
-            
-                
-                if let user_id = parameters.user_id {
-                    if user_id.matches("^\\d+$") {
-                        res["user_id"] = user_id
-                    }
-                    else {
-                        handleLocalError(.ERROR_PARAMETER_USER_ID_MALFORMED)
-                        return nil
-                    }
-                }
-                else {
-                    handleLocalError(.ERROR_PARAMETER_USER_ID_MISSING)
-                    return nil
-                }
-            
-                return res
-            }
-            
-            
-            
-            
-        }
-        
-        class follow: APIRequestProtocol {
-            let apipath = "/set/follow"
+        class follow: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/follow" } }
             
             class InternalParameterClass {
                 var user_id: String?
@@ -2734,7 +89,7 @@ class API3 {
             func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
                 guard code == "SUCCESS" else {
                     guard let rcode = follow.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
                         return false
                     }
                     handleLocalError(rcode, mmsg)
@@ -2751,45 +106,18 @@ class API3 {
                 }
             }
             
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
                 }
             }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
             
             func perform(and: ()->()) {
+                callBackLink = and
                 APISupport.performNetworkRequest(self) { (code, msg, _) in
                     if self.preHandleLocalError(code, msg) {
                         and()
@@ -2803,7 +131,7 @@ class API3 {
             
             
             
-            func validateParameterPairs() -> [String: String]? {
+            override func validateParameterPairs() -> [String: String]? {
             
                 var res: [String: String] = [:]
             
@@ -2830,12 +158,1669 @@ class API3 {
             
         }
         
+        class profile_img: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/profile_img" } }
+            
+            class InternalParameterClass {
+                var profile_img: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_PROFILE_IMG_MISSING
+                case ERROR_PARAMETER_PROFILE_IMG_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_PROFILE_IMG_MISSING] = 
+                    "Parameter 'profile_img' does not exist."
+                res[.ERROR_PARAMETER_PROFILE_IMG_MALFORMED] = 
+                    "Parameter 'profile_img' is malformed. Should correspond to '^[0-9_-]+$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_PROFILE_IMG_MISSING"] = .ERROR_PARAMETER_PROFILE_IMG_MISSING
+                res["ERROR_PARAMETER_PROFILE_IMG_MALFORMED"] = .ERROR_PARAMETER_PROFILE_IMG_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = profile_img.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? profile_img.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let profile_img = parameters.profile_img {
+                    if profile_img.matches("^[0-9_-]+$") {
+                        res["profile_img"] = profile_img
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_PROFILE_IMG_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class block: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/block" } }
+            
+            class InternalParameterClass {
+                var post_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_POST_ID_MISSING
+                case ERROR_PARAMETER_POST_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
+                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
+                    "Parameter 'post_id' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
+                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = block.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? block.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let post_id = parameters.post_id {
+                    if post_id.matches("^\\d+$") {
+                        res["post_id"] = post_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class rest: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/rest" } }
+            
+            class InternalParameterClass {
+                var restname: String?
+                var lat: String?
+                var lon: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_RESTNAME_MISSING
+                case ERROR_PARAMETER_RESTNAME_MALFORMED
+                case ERROR_PARAMETER_LAT_MISSING
+                case ERROR_PARAMETER_LAT_MALFORMED
+                case ERROR_PARAMETER_LON_MISSING
+                case ERROR_PARAMETER_LON_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_LAT_MISSING] = 
+                    "Parameter 'lat' does not exist."
+                res[.ERROR_PARAMETER_RESTNAME_MISSING] = 
+                    "Parameter 'restname' does not exist."
+                res[.ERROR_PARAMETER_LAT_MALFORMED] = 
+                    "Parameter 'lat' is malformed. Should correspond to '^\\d+.\\d+$'"
+                res[.ERROR_PARAMETER_RESTNAME_MALFORMED] = 
+                    "Parameter 'restname' is malformed. Should correspond to '^\\S{2,30}$'"
+                res[.ERROR_PARAMETER_LON_MALFORMED] = 
+                    "Parameter 'lon' is malformed. Should correspond to '^\\d+.\\d+$'"
+                res[.ERROR_PARAMETER_LON_MISSING] = 
+                    "Parameter 'lon' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_RESTNAME_MISSING"] = .ERROR_PARAMETER_RESTNAME_MISSING
+                res["ERROR_PARAMETER_RESTNAME_MALFORMED"] = .ERROR_PARAMETER_RESTNAME_MALFORMED
+                res["ERROR_PARAMETER_LAT_MISSING"] = .ERROR_PARAMETER_LAT_MISSING
+                res["ERROR_PARAMETER_LAT_MALFORMED"] = .ERROR_PARAMETER_LAT_MALFORMED
+                res["ERROR_PARAMETER_LON_MISSING"] = .ERROR_PARAMETER_LON_MISSING
+                res["ERROR_PARAMETER_LON_MALFORMED"] = .ERROR_PARAMETER_LON_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = rest.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? rest.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let restname = parameters.restname {
+                    if restname.matches("^\\S{2,30}$") {
+                        res["restname"] = restname
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_RESTNAME_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_RESTNAME_MISSING)
+                    return nil
+                }
+                
+                if let lat = parameters.lat {
+                    if lat.matches("^\\d+.\\d+$") {
+                        res["lat"] = lat
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_LAT_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_LAT_MISSING)
+                    return nil
+                }
+                
+                if let lon = parameters.lon {
+                    if lon.matches("^\\d+.\\d+$") {
+                        res["lon"] = lon
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_LON_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_LON_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class comment: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/comment" } }
+            
+            class InternalParameterClass {
+                var post_id: String?
+                var comment: String?
+                var re_user_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_POST_ID_MISSING
+                case ERROR_PARAMETER_POST_ID_MALFORMED
+                case ERROR_PARAMETER_COMMENT_MISSING
+                case ERROR_PARAMETER_COMMENT_MALFORMED
+                case ERROR_PARAMETER_RE_USER_ID_MISSING
+                case ERROR_PARAMETER_RE_USER_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_COMMENT_MISSING] = 
+                    "Parameter 'comment' does not exist."
+                res[.ERROR_PARAMETER_COMMENT_MALFORMED] = 
+                    "Parameter 'comment' is malformed. Should correspond to '^\\S{1,140}$'"
+                res[.ERROR_PARAMETER_RE_USER_ID_MISSING] = 
+                    "Parameter 're_user_id' does not exist."
+                res[.ERROR_PARAMETER_RE_USER_ID_MALFORMED] = 
+                    "Parameter 're_user_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
+                    "Parameter 'post_id' does not exist."
+                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
+                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
+                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
+                res["ERROR_PARAMETER_COMMENT_MISSING"] = .ERROR_PARAMETER_COMMENT_MISSING
+                res["ERROR_PARAMETER_COMMENT_MALFORMED"] = .ERROR_PARAMETER_COMMENT_MALFORMED
+                res["ERROR_PARAMETER_RE_USER_ID_MISSING"] = .ERROR_PARAMETER_RE_USER_ID_MISSING
+                res["ERROR_PARAMETER_RE_USER_ID_MALFORMED"] = .ERROR_PARAMETER_RE_USER_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = comment.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? comment.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let post_id = parameters.post_id {
+                    if post_id.matches("^\\d+$") {
+                        res["post_id"] = post_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
+                    return nil
+                }
+                
+                if let comment = parameters.comment {
+                    if comment.matches("^\\S{1,140}$") {
+                        res["comment"] = comment
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_COMMENT_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_COMMENT_MISSING)
+                    return nil
+                }
+                
+                if let re_user_id = parameters.re_user_id {
+                    if re_user_id.matches("^\\d+$") {
+                        res["re_user_id"] = re_user_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_RE_USER_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_RE_USER_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class device: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/device" } }
+            
+            class InternalParameterClass {
+                var device_token: String?
+                var os: String?
+                var ver: String?
+                var model: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_DEVICE_TOKEN_MISSING
+                case ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
+                case ERROR_PARAMETER_OS_MISSING
+                case ERROR_PARAMETER_OS_MALFORMED
+                case ERROR_PARAMETER_VER_MISSING
+                case ERROR_PARAMETER_VER_MALFORMED
+                case ERROR_PARAMETER_MODEL_MISSING
+                case ERROR_PARAMETER_MODEL_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED] = 
+                    "Parameter 'device_token' is malformed. Should correspond to '^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$'"
+                res[.ERROR_PARAMETER_VER_MALFORMED] = 
+                    "Parameter 'ver' is malformed. Should correspond to '^[0-9.]{1,6}$'"
+                res[.ERROR_PARAMETER_DEVICE_TOKEN_MISSING] = 
+                    "Parameter 'device_token' does not exist."
+                res[.ERROR_PARAMETER_MODEL_MALFORMED] = 
+                    "Parameter 'model' is malformed. Should correspond to '^\\S{1,50}$'"
+                res[.ERROR_PARAMETER_MODEL_MISSING] = 
+                    "Parameter 'model' does not exist."
+                res[.ERROR_PARAMETER_VER_MISSING] = 
+                    "Parameter 'ver' does not exist."
+                res[.ERROR_PARAMETER_OS_MISSING] = 
+                    "Parameter 'os' does not exist."
+                res[.ERROR_PARAMETER_OS_MALFORMED] = 
+                    "Parameter 'os' is malformed. Should correspond to '^android$|^iOS$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_DEVICE_TOKEN_MISSING"] = .ERROR_PARAMETER_DEVICE_TOKEN_MISSING
+                res["ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED"] = .ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
+                res["ERROR_PARAMETER_OS_MISSING"] = .ERROR_PARAMETER_OS_MISSING
+                res["ERROR_PARAMETER_OS_MALFORMED"] = .ERROR_PARAMETER_OS_MALFORMED
+                res["ERROR_PARAMETER_VER_MISSING"] = .ERROR_PARAMETER_VER_MISSING
+                res["ERROR_PARAMETER_VER_MALFORMED"] = .ERROR_PARAMETER_VER_MALFORMED
+                res["ERROR_PARAMETER_MODEL_MISSING"] = .ERROR_PARAMETER_MODEL_MISSING
+                res["ERROR_PARAMETER_MODEL_MALFORMED"] = .ERROR_PARAMETER_MODEL_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = device.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? device.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let device_token = parameters.device_token {
+                    if device_token.matches("^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$") {
+                        res["device_token"] = device_token
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MISSING)
+                    return nil
+                }
+                
+                if let os = parameters.os {
+                    if os.matches("^android$|^iOS$") {
+                        res["os"] = os
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_OS_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_OS_MISSING)
+                    return nil
+                }
+                
+                if let ver = parameters.ver {
+                    if ver.matches("^[0-9.]{1,6}$") {
+                        res["ver"] = ver
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_VER_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_VER_MISSING)
+                    return nil
+                }
+                
+                if let model = parameters.model {
+                    if model.matches("^\\S{1,50}$") {
+                        res["model"] = model
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_MODEL_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_MODEL_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class want: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/want" } }
+            
+            class InternalParameterClass {
+                var rest_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_REST_ID_MISSING
+                case ERROR_PARAMETER_REST_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
+                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
+                    "Parameter 'rest_id' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
+                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = want.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? want.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let rest_id = parameters.rest_id {
+                    if rest_id.matches("^\\d+$") {
+                        res["rest_id"] = rest_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class username: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/username" } }
+            
+            class InternalParameterClass {
+                var username: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_USERNAME_MISSING
+                case ERROR_PARAMETER_USERNAME_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
+                    "Parameter 'username' does not exist."
+                res[.ERROR_PARAMETER_USERNAME_MALFORMED] = 
+                    "Parameter 'username' is malformed. Should correspond to '^[\\S]{2,20}$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_USERNAME_MISSING"] = .ERROR_PARAMETER_USERNAME_MISSING
+                res["ERROR_PARAMETER_USERNAME_MALFORMED"] = .ERROR_PARAMETER_USERNAME_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = username.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? username.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let username = parameters.username {
+                    if username.matches("^[\\S]{2,20}$") {
+                        res["username"] = username
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_USERNAME_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_USERNAME_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class gochi: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/gochi" } }
+            
+            class InternalParameterClass {
+                var post_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_POST_ID_MISSING
+                case ERROR_PARAMETER_POST_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
+                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
+                    "Parameter 'post_id' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
+                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = gochi.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? gochi.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let post_id = parameters.post_id {
+                    if post_id.matches("^\\d+$") {
+                        res["post_id"] = post_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class post: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/post" } }
+            
+            class InternalParameterClass {
+                var rest_id: String?
+                var movie_name: String?
+                var category_id: String?
+                var value: String?
+                var memo: String?
+                var cheer_flag: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_REST_ID_MISSING
+                case ERROR_PARAMETER_REST_ID_MALFORMED
+                case ERROR_PARAMETER_MOVIE_NAME_MISSING
+                case ERROR_PARAMETER_MOVIE_NAME_MALFORMED
+                case ERROR_PARAMETER_CATEGORY_ID_MISSING
+                case ERROR_PARAMETER_CATEGORY_ID_MALFORMED
+                case ERROR_PARAMETER_VALUE_MISSING
+                case ERROR_PARAMETER_VALUE_MALFORMED
+                case ERROR_PARAMETER_MEMO_MISSING
+                case ERROR_PARAMETER_MEMO_MALFORMED
+                case ERROR_PARAMETER_CHEER_FLAG_MISSING
+                case ERROR_PARAMETER_CHEER_FLAG_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_CATEGORY_ID_MALFORMED] = 
+                    "Parameter 'category_id' is malformed. Should correspond to '^\\d{1}$'"
+                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
+                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_VALUE_MALFORMED] = 
+                    "Parameter 'value' is malformed. Should correspond to '^\\d{0,8}$'"
+                res[.ERROR_PARAMETER_MEMO_MALFORMED] = 
+                    "Parameter 'memo' is malformed. Should correspond to '^\\S{1,140}$'"
+                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
+                    "Parameter 'rest_id' does not exist."
+                res[.ERROR_PARAMETER_CHEER_FLAG_MISSING] = 
+                    "Parameter 'cheer_flag' does not exist."
+                res[.ERROR_PARAMETER_MOVIE_NAME_MISSING] = 
+                    "Parameter 'movie_name' does not exist."
+                res[.ERROR_PARAMETER_VALUE_MISSING] = 
+                    "Parameter 'value' does not exist."
+                res[.ERROR_PARAMETER_MEMO_MISSING] = 
+                    "Parameter 'memo' does not exist."
+                res[.ERROR_PARAMETER_CATEGORY_ID_MISSING] = 
+                    "Parameter 'category_id' does not exist."
+                res[.ERROR_PARAMETER_MOVIE_NAME_MALFORMED] = 
+                    "Parameter 'movie_name' is malformed. Should correspond to '^[0-9_-]+$'"
+                res[.ERROR_PARAMETER_CHEER_FLAG_MALFORMED] = 
+                    "Parameter 'cheer_flag' is malformed. Should correspond to '^0$|^1$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
+                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
+                res["ERROR_PARAMETER_MOVIE_NAME_MISSING"] = .ERROR_PARAMETER_MOVIE_NAME_MISSING
+                res["ERROR_PARAMETER_MOVIE_NAME_MALFORMED"] = .ERROR_PARAMETER_MOVIE_NAME_MALFORMED
+                res["ERROR_PARAMETER_CATEGORY_ID_MISSING"] = .ERROR_PARAMETER_CATEGORY_ID_MISSING
+                res["ERROR_PARAMETER_CATEGORY_ID_MALFORMED"] = .ERROR_PARAMETER_CATEGORY_ID_MALFORMED
+                res["ERROR_PARAMETER_VALUE_MISSING"] = .ERROR_PARAMETER_VALUE_MISSING
+                res["ERROR_PARAMETER_VALUE_MALFORMED"] = .ERROR_PARAMETER_VALUE_MALFORMED
+                res["ERROR_PARAMETER_MEMO_MISSING"] = .ERROR_PARAMETER_MEMO_MISSING
+                res["ERROR_PARAMETER_MEMO_MALFORMED"] = .ERROR_PARAMETER_MEMO_MALFORMED
+                res["ERROR_PARAMETER_CHEER_FLAG_MISSING"] = .ERROR_PARAMETER_CHEER_FLAG_MISSING
+                res["ERROR_PARAMETER_CHEER_FLAG_MALFORMED"] = .ERROR_PARAMETER_CHEER_FLAG_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = post.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? post.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let rest_id = parameters.rest_id {
+                    if rest_id.matches("^\\d+$") {
+                        res["rest_id"] = rest_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
+                    return nil
+                }
+                
+                if let movie_name = parameters.movie_name {
+                    if movie_name.matches("^[0-9_-]+$") {
+                        res["movie_name"] = movie_name
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_MOVIE_NAME_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_MOVIE_NAME_MISSING)
+                    return nil
+                }
+                
+                if let category_id = parameters.category_id {
+                    if category_id.matches("^\\d{1}$") {
+                        res["category_id"] = category_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_CATEGORY_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_CATEGORY_ID_MISSING)
+                    return nil
+                }
+                
+                if let value = parameters.value {
+                    if value.matches("^\\d{0,8}$") {
+                        res["value"] = value
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_VALUE_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_VALUE_MISSING)
+                    return nil
+                }
+                
+                if let memo = parameters.memo {
+                    if memo.matches("^\\S{1,140}$") {
+                        res["memo"] = memo
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_MEMO_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_MEMO_MISSING)
+                    return nil
+                }
+                
+                if let cheer_flag = parameters.cheer_flag {
+                    if cheer_flag.matches("^0$|^1$") {
+                        res["cheer_flag"] = cheer_flag
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_CHEER_FLAG_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_CHEER_FLAG_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class sns_link: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/sns_link" } }
+            
+            class InternalParameterClass {
+                var provider: String?
+                var sns_token: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                case ERROR_PROVIDER_UNREACHABLE
+                case ERROR_PARAMETER_PROVIDER_MISSING
+                case ERROR_PARAMETER_PROVIDER_MALFORMED
+                case ERROR_PARAMETER_SNS_TOKEN_MISSING
+                case ERROR_PARAMETER_SNS_TOKEN_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = 
+                    "The provided sns token is invalid or has expired"
+                res[.ERROR_PARAMETER_SNS_TOKEN_MALFORMED] = 
+                    "Parameter 'sns_token' is malformed. Should correspond to '^\\S{20,4000}$'"
+                res[.ERROR_PARAMETER_SNS_TOKEN_MISSING] = 
+                    "Parameter 'sns_token' does not exist."
+                res[.ERROR_PROVIDER_UNREACHABLE] = 
+                    "The providers server infrastructure appears to be down"
+                res[.ERROR_PARAMETER_PROVIDER_MISSING] = 
+                    "Parameter 'provider' does not exist."
+                res[.ERROR_PARAMETER_PROVIDER_MALFORMED] = 
+                    "Parameter 'provider' is malformed. Should correspond to '^(api.twitter.com)|(graph.facebook.com)$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_SNS_PROVIDER_TOKEN_NOT_VALID"] = .ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                res["ERROR_PROVIDER_UNREACHABLE"] = .ERROR_PROVIDER_UNREACHABLE
+                res["ERROR_PARAMETER_PROVIDER_MISSING"] = .ERROR_PARAMETER_PROVIDER_MISSING
+                res["ERROR_PARAMETER_PROVIDER_MALFORMED"] = .ERROR_PARAMETER_PROVIDER_MALFORMED
+                res["ERROR_PARAMETER_SNS_TOKEN_MISSING"] = .ERROR_PARAMETER_SNS_TOKEN_MISSING
+                res["ERROR_PARAMETER_SNS_TOKEN_MALFORMED"] = .ERROR_PARAMETER_SNS_TOKEN_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = sns_link.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? sns_link.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            func on_ERROR_SNS_PROVIDER_TOKEN_NOT_VALID(perform:(LocalCode, String)->()) {
+                localErrorMapping[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = perform
+            }
+            func on_ERROR_PROVIDER_UNREACHABLE(perform:(LocalCode, String)->()) {
+                localErrorMapping[.ERROR_PROVIDER_UNREACHABLE] = perform
+            }
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let provider = parameters.provider {
+                    if provider.matches("^(api.twitter.com)|(graph.facebook.com)$") {
+                        res["provider"] = provider
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_PROVIDER_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_PROVIDER_MISSING)
+                    return nil
+                }
+                
+                if let sns_token = parameters.sns_token {
+                    if sns_token.matches("^\\S{20,4000}$") {
+                        res["sns_token"] = sns_token
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_SNS_TOKEN_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_SNS_TOKEN_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class feedback: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/feedback" } }
+            
+            class InternalParameterClass {
+                var feedback: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_FEEDBACK_MISSING
+                case ERROR_PARAMETER_FEEDBACK_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_FEEDBACK_MALFORMED] = 
+                    "Parameter 'feedback' is malformed. Should correspond to '^[\\S\\s]{2,300}$'"
+                res[.ERROR_PARAMETER_FEEDBACK_MISSING] = 
+                    "Parameter 'feedback' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_FEEDBACK_MISSING"] = .ERROR_PARAMETER_FEEDBACK_MISSING
+                res["ERROR_PARAMETER_FEEDBACK_MALFORMED"] = .ERROR_PARAMETER_FEEDBACK_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = feedback.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? feedback.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let feedback = parameters.feedback {
+                    if feedback.matches("^[\\S\\s]{2,300}$") {
+                        res["feedback"] = feedback
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_FEEDBACK_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_FEEDBACK_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class password: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/set/password" } }
+            
+            class InternalParameterClass {
+                var password: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_PASSWORD_MISSING
+                case ERROR_PARAMETER_PASSWORD_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_PASSWORD_MISSING] = 
+                    "Parameter 'password' does not exist."
+                res[.ERROR_PARAMETER_PASSWORD_MALFORMED] = 
+                    "Parameter 'password' is malformed. Should correspond to '^\\w{6,25}$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_PASSWORD_MISSING"] = .ERROR_PARAMETER_PASSWORD_MISSING
+                res["ERROR_PARAMETER_PASSWORD_MALFORMED"] = .ERROR_PARAMETER_PASSWORD_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = password.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? password.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let password = parameters.password {
+                    if password.matches("^\\w{6,25}$") {
+                        res["password"] = password
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_PASSWORD_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_PASSWORD_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
      }
     
     class auth {
     
-        class login: APIRequestProtocol {
-            let apipath = "/auth/login"
+        class login: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/auth/login" } }
             
             class InternalParameterClass {
                 var identity_id: String?
@@ -2861,6 +1846,8 @@ class API3 {
                 case ERROR_RESPONSE_PROFILE_IMG_MALFORMED
                 case ERROR_RESPONSE_BADGE_NUM_MISSING
                 case ERROR_RESPONSE_BADGE_NUM_MALFORMED
+                case ERROR_RESPONSE_IDENTITY_ID_MISSING
+                case ERROR_RESPONSE_IDENTITY_ID_MALFORMED
                 case ERROR_RESPONSE_COGNITO_TOKEN_MISSING
                 case ERROR_RESPONSE_COGNITO_TOKEN_MALFORMED
             }
@@ -2870,37 +1857,42 @@ class API3 {
                 var username: String!
                 var profile_img: String!
                 var badge_num: String!
+                var identity_id: String!
                 var cognito_token: String!
             }
             
             static let localErrorMessageTable: [LocalCode: String] = {
                 var res: [LocalCode: String] = [:]
-                res[.ERROR_RESPONSE_BADGE_NUM_MALFORMED] = 
-                    "Response 'badge_num' is malformed. Should correspond to '^[0-9]+$'"
-                res[.ERROR_PARAMETER_IDENTITY_ID_MISSING] = 
-                    "Parameter 'identity_id' does not exist."
                 res[.ERROR_RESPONSE_BADGE_NUM_MISSING] = 
                     "Response 'badge_num' was not received"
-                res[.ERROR_RESPONSE_PROFILE_IMG_MALFORMED] = 
-                    "Response 'profile_img' is malformed. Should correspond to '^http\\S+$'"
-                res[.ERROR_RESPONSE_USER_ID_MALFORMED] = 
-                    "Response 'user_id' is malformed. Should correspond to '^[0-9]+$'"
-                res[.ERROR_RESPONSE_USERNAME_MALFORMED] = 
-                    "Response 'username' is malformed. Should correspond to '^[\\S\\s]{2,20}$'"
+                res[.ERROR_RESPONSE_IDENTITY_ID_MALFORMED] = 
+                    "Response 'identity_id' is malformed. Should correspond to '^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$'"
+                res[.ERROR_RESPONSE_BADGE_NUM_MALFORMED] = 
+                    "Response 'badge_num' is malformed. Should correspond to '^[0-9]+$'"
                 res[.ERROR_RESPONSE_COGNITO_TOKEN_MALFORMED] = 
                     "Response 'cognito_token' is malformed. Should correspond to '^[a-zA-Z0-9_.-]{400,2200}$'"
-                res[.ERROR_RESPONSE_PROFILE_IMG_MISSING] = 
-                    "Response 'profile_img' was not received"
-                res[.ERROR_IDENTITY_ID_NOT_REGISTERD] = 
-                    "The provided identity_id is not bound to any account"
-                res[.ERROR_PARAMETER_IDENTITY_ID_MALFORMED] = 
-                    "Parameter 'identity_id' is malformed. Should correspond to '^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$'"
-                res[.ERROR_RESPONSE_COGNITO_TOKEN_MISSING] = 
-                    "Response 'cognito_token' was not received"
-                res[.ERROR_RESPONSE_USERNAME_MISSING] = 
-                    "Response 'username' was not received"
                 res[.ERROR_RESPONSE_USER_ID_MISSING] = 
                     "Response 'user_id' was not received"
+                res[.ERROR_PARAMETER_IDENTITY_ID_MALFORMED] = 
+                    "Parameter 'identity_id' is malformed. Should correspond to '^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$'"
+                res[.ERROR_RESPONSE_USERNAME_MALFORMED] = 
+                    "Response 'username' is malformed. Should correspond to '^\\S{2,20}$'"
+                res[.ERROR_RESPONSE_USERNAME_MISSING] = 
+                    "Response 'username' was not received"
+                res[.ERROR_RESPONSE_PROFILE_IMG_MISSING] = 
+                    "Response 'profile_img' was not received"
+                res[.ERROR_RESPONSE_USER_ID_MALFORMED] = 
+                    "Response 'user_id' is malformed. Should correspond to '^[0-9]+$'"
+                res[.ERROR_RESPONSE_IDENTITY_ID_MISSING] = 
+                    "Response 'identity_id' was not received"
+                res[.ERROR_RESPONSE_PROFILE_IMG_MALFORMED] = 
+                    "Response 'profile_img' is malformed. Should correspond to '^http\\S+$'"
+                res[.ERROR_RESPONSE_COGNITO_TOKEN_MISSING] = 
+                    "Response 'cognito_token' was not received"
+                res[.ERROR_PARAMETER_IDENTITY_ID_MISSING] = 
+                    "Parameter 'identity_id' does not exist."
+                res[.ERROR_IDENTITY_ID_NOT_REGISTERD] = 
+                    "The provided identity_id is not bound to any account"
                 return res
             }()
             
@@ -2918,6 +1910,8 @@ class API3 {
                 res["ERROR_RESPONSE_PROFILE_IMG_MALFORMED"] = .ERROR_RESPONSE_PROFILE_IMG_MALFORMED
                 res["ERROR_RESPONSE_BADGE_NUM_MISSING"] = .ERROR_RESPONSE_BADGE_NUM_MISSING
                 res["ERROR_RESPONSE_BADGE_NUM_MALFORMED"] = .ERROR_RESPONSE_BADGE_NUM_MALFORMED
+                res["ERROR_RESPONSE_IDENTITY_ID_MISSING"] = .ERROR_RESPONSE_IDENTITY_ID_MISSING
+                res["ERROR_RESPONSE_IDENTITY_ID_MALFORMED"] = .ERROR_RESPONSE_IDENTITY_ID_MALFORMED
                 res["ERROR_RESPONSE_COGNITO_TOKEN_MISSING"] = .ERROR_RESPONSE_COGNITO_TOKEN_MISSING
                 res["ERROR_RESPONSE_COGNITO_TOKEN_MALFORMED"] = .ERROR_RESPONSE_COGNITO_TOKEN_MALFORMED
                 return res
@@ -2928,7 +1922,7 @@ class API3 {
             func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
                 guard code == "SUCCESS" else {
                     guard let rcode = login.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
                         return false
                     }
                     handleLocalError(rcode, mmsg)
@@ -2945,45 +1939,18 @@ class API3 {
                 }
             }
             
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
+            
+            
+            private var callBackLink: ((payload: Payload)->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
                 }
             }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
             
             func perform(and: (payload: Payload)->()) {
+                callBackLink = and
                 APISupport.performNetworkRequest(self) { (code, msg, rawJSON) in
                     if self.preHandleLocalError(code, msg) {
                         if let payload = self.validateResponse(rawJSON) {
@@ -3004,7 +1971,7 @@ class API3 {
             }
             
             
-            func validateParameterPairs() -> [String: String]? {
+            override func validateParameterPairs() -> [String: String]? {
             
                 var res: [String: String] = [:]
             
@@ -3027,29 +1994,57 @@ class API3 {
             }
             
             
-            func validateResponse(json: [String: AnyObject]) -> Payload? {
+            func validateResponse(json: [String: JSON]) -> Payload? {
                 let payload = Payload()
             
-                payload.user_id = validateSimpleResponse(json, "user_id", "^[0-9]+$",
-                     .ERROR_RESPONSE_USER_ID_MISSING, .ERROR_RESPONSE_USER_ID_MALFORMED)
-                if payload.user_id == nil { return nil }
                 
-                payload.username = validateSimpleResponse(json, "username", "^[\\S\\s]{2,20}$",
-                     .ERROR_RESPONSE_USERNAME_MISSING, .ERROR_RESPONSE_USERNAME_MALFORMED)
-                if payload.username == nil { return nil }
+                if let user_id = json["user_id"]?.string {
+                    payload.user_id = user_id
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_USER_ID_MISSING)
+                    return nil
+                }
                 
-                payload.profile_img = validateSimpleResponse(json, "profile_img", "^http\\S+$",
-                     .ERROR_RESPONSE_PROFILE_IMG_MISSING, .ERROR_RESPONSE_PROFILE_IMG_MALFORMED)
-                if payload.profile_img == nil { return nil }
+                if let username = json["username"]?.string {
+                    payload.username = username
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_USERNAME_MISSING)
+                    return nil
+                }
                 
-                payload.badge_num = validateSimpleResponse(json, "badge_num", "^[0-9]+$",
-                     .ERROR_RESPONSE_BADGE_NUM_MISSING, .ERROR_RESPONSE_BADGE_NUM_MALFORMED)
-                if payload.badge_num == nil { return nil }
+                if let profile_img = json["profile_img"]?.string {
+                    payload.profile_img = profile_img
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_PROFILE_IMG_MISSING)
+                    return nil
+                }
                 
-                payload.cognito_token = validateSimpleResponse(json, "cognito_token", "^[a-zA-Z0-9_.-]{400,2200}$",
-                     .ERROR_RESPONSE_COGNITO_TOKEN_MISSING, .ERROR_RESPONSE_COGNITO_TOKEN_MALFORMED)
-                if payload.cognito_token == nil { return nil }
+                if let badge_num = json["badge_num"]?.string {
+                    payload.badge_num = badge_num
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_BADGE_NUM_MISSING)
+                    return nil
+                }
                 
+                if let identity_id = json["identity_id"]?.string {
+                    payload.identity_id = identity_id
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_IDENTITY_ID_MISSING)
+                    return nil
+                }
+                
+                if let cognito_token = json["cognito_token"]?.string {
+                    payload.cognito_token = cognito_token
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_COGNITO_TOKEN_MISSING)
+                    return nil
+                }
             
                 return payload
             }
@@ -3057,8 +2052,8 @@ class API3 {
             
         }
         
-        class password: APIRequestProtocol {
-            let apipath = "/auth/password"
+        class password: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/auth/password" } }
             
             class InternalParameterClass {
                 var username: String?
@@ -3095,20 +2090,20 @@ class API3 {
                     "Response 'identity_id' is malformed. Should correspond to '^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$'"
                 res[.ERROR_PARAMETER_PASSWORD_MALFORMED] = 
                     "Parameter 'password' is malformed. Should correspond to '^\\w{6,25}$'"
-                res[.ERROR_PARAMETER_PASSWORD_MISSING] = 
-                    "Parameter 'password' does not exist."
-                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
-                    "Parameter 'username' does not exist."
+                res[.ERROR_PARAMETER_USERNAME_MALFORMED] = 
+                    "Parameter 'username' is malformed. Should correspond to '^\\S{2,20}$'"
                 res[.ERROR_RESPONSE_IDENTITY_ID_MISSING] = 
                     "Response 'identity_id' was not received"
-                res[.ERROR_PASSWORD_NOT_REGISTERD] = 
-                    "The entered password does not exist"
-                res[.ERROR_PARAMETER_USERNAME_MALFORMED] = 
-                    "Parameter 'username' is malformed. Should correspond to '^[\\S\\s]{2,20}$'"
                 res[.ERROR_PASSWORD_WRONG] = 
                     "Password wrong"
+                res[.ERROR_PARAMETER_PASSWORD_MISSING] = 
+                    "Parameter 'password' does not exist."
+                res[.ERROR_PASSWORD_NOT_REGISTERD] = 
+                    "The entered password does not exist"
                 res[.ERROR_USERNAME_NOT_REGISTERD] = 
                     "The entered username does not exist"
+                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
+                    "Parameter 'username' does not exist."
                 return res
             }()
             
@@ -3132,7 +2127,7 @@ class API3 {
             func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
                 guard code == "SUCCESS" else {
                     guard let rcode = password.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
                         return false
                     }
                     handleLocalError(rcode, mmsg)
@@ -3149,45 +2144,18 @@ class API3 {
                 }
             }
             
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
+            
+            
+            private var callBackLink: ((payload: Payload)->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
                 }
             }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
             
             func perform(and: (payload: Payload)->()) {
+                callBackLink = and
                 APISupport.performNetworkRequest(self) { (code, msg, rawJSON) in
                     if self.preHandleLocalError(code, msg) {
                         if let payload = self.validateResponse(rawJSON) {
@@ -3214,13 +2182,13 @@ class API3 {
             }
             
             
-            func validateParameterPairs() -> [String: String]? {
+            override func validateParameterPairs() -> [String: String]? {
             
                 var res: [String: String] = [:]
             
                 
                 if let username = parameters.username {
-                    if username.matches("^[\\S\\s]{2,20}$") {
+                    if username.matches("^\\S{2,20}$") {
                         res["username"] = username
                     }
                     else {
@@ -3251,13 +2219,17 @@ class API3 {
             }
             
             
-            func validateResponse(json: [String: AnyObject]) -> Payload? {
+            func validateResponse(json: [String: JSON]) -> Payload? {
                 let payload = Payload()
             
-                payload.identity_id = validateSimpleResponse(json, "identity_id", "^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$",
-                     .ERROR_RESPONSE_IDENTITY_ID_MISSING, .ERROR_RESPONSE_IDENTITY_ID_MALFORMED)
-                if payload.identity_id == nil { return nil }
                 
+                if let identity_id = json["identity_id"]?.string {
+                    payload.identity_id = identity_id
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_IDENTITY_ID_MISSING)
+                    return nil
+                }
             
                 return payload
             }
@@ -3265,8 +2237,8 @@ class API3 {
             
         }
         
-        class signup: APIRequestProtocol {
-            let apipath = "/auth/signup"
+        class signup: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/auth/signup" } }
             
             class InternalParameterClass {
                 var username: String?
@@ -3281,7 +2253,6 @@ class API3 {
             var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
             
             enum LocalCode {
-                case ERROR_REGISTER_ID_ALREADY_REGISTERD
                 case ERROR_USERNAME_ALREADY_REGISTERD
                 case ERROR_PARAMETER_USERNAME_MISSING
                 case ERROR_PARAMETER_USERNAME_MALFORMED
@@ -3295,25 +2266,22 @@ class API3 {
             
             static let localErrorMessageTable: [LocalCode: String] = {
                 var res: [LocalCode: String] = [:]
-                res[.ERROR_REGISTER_ID_ALREADY_REGISTERD] = 
-                    "This deviced already has an registerd other account"
-                res[.ERROR_USERNAME_ALREADY_REGISTERD] = 
-                    "The provided username was already registerd by another user"
-                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
-                    "Parameter 'username' does not exist."
                 res[.ERROR_RESPONSE_IDENTITY_ID_MISSING] = 
                     "Response 'identity_id' was not received"
                 res[.ERROR_RESPONSE_IDENTITY_ID_MALFORMED] = 
                     "Response 'identity_id' is malformed. Should correspond to '^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$'"
                 res[.ERROR_PARAMETER_USERNAME_MALFORMED] = 
-                    "Parameter 'username' is malformed. Should correspond to '^[\\S\\s]{2,20}$'"
+                    "Parameter 'username' is malformed. Should correspond to '^\\S{2,20}$'"
+                res[.ERROR_PARAMETER_USERNAME_MISSING] = 
+                    "Parameter 'username' does not exist."
+                res[.ERROR_USERNAME_ALREADY_REGISTERD] = 
+                    "The provided username was already registerd by another user"
                 return res
             }()
             
             
             static let localErrorReverseLookupTable: [String: LocalCode] = {
                 var res: [String: LocalCode] = [:]
-                res["ERROR_REGISTER_ID_ALREADY_REGISTERD"] = .ERROR_REGISTER_ID_ALREADY_REGISTERD
                 res["ERROR_USERNAME_ALREADY_REGISTERD"] = .ERROR_USERNAME_ALREADY_REGISTERD
                 res["ERROR_PARAMETER_USERNAME_MISSING"] = .ERROR_PARAMETER_USERNAME_MISSING
                 res["ERROR_PARAMETER_USERNAME_MALFORMED"] = .ERROR_PARAMETER_USERNAME_MALFORMED
@@ -3327,7 +2295,7 @@ class API3 {
             func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
                 guard code == "SUCCESS" else {
                     guard let rcode = signup.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
                         return false
                     }
                     handleLocalError(rcode, mmsg)
@@ -3344,45 +2312,18 @@ class API3 {
                 }
             }
             
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
+            
+            
+            private var callBackLink: ((payload: Payload)->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
                 }
             }
-            
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
             
             func perform(and: (payload: Payload)->()) {
+                callBackLink = and
                 APISupport.performNetworkRequest(self) { (code, msg, rawJSON) in
                     if self.preHandleLocalError(code, msg) {
                         if let payload = self.validateResponse(rawJSON) {
@@ -3398,21 +2339,18 @@ class API3 {
             }
             
             
-            func on_ERROR_REGISTER_ID_ALREADY_REGISTERD(perform:(LocalCode, String)->()) {
-                localErrorMapping[.ERROR_REGISTER_ID_ALREADY_REGISTERD] = perform
-            }
             func on_ERROR_USERNAME_ALREADY_REGISTERD(perform:(LocalCode, String)->()) {
                 localErrorMapping[.ERROR_USERNAME_ALREADY_REGISTERD] = perform
             }
             
             
-            func validateParameterPairs() -> [String: String]? {
+            override func validateParameterPairs() -> [String: String]? {
             
                 var res: [String: String] = [:]
             
                 
                 if let username = parameters.username {
-                    if username.matches("^[\\S\\s]{2,20}$") {
+                    if username.matches("^\\S{2,20}$") {
                         res["username"] = username
                     }
                     else {
@@ -3429,13 +2367,17 @@ class API3 {
             }
             
             
-            func validateResponse(json: [String: AnyObject]) -> Payload? {
+            func validateResponse(json: [String: JSON]) -> Payload? {
                 let payload = Payload()
             
-                payload.identity_id = validateSimpleResponse(json, "identity_id", "^us-east-1:[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$",
-                     .ERROR_RESPONSE_IDENTITY_ID_MISSING, .ERROR_RESPONSE_IDENTITY_ID_MALFORMED)
-                if payload.identity_id == nil { return nil }
                 
+                if let identity_id = json["identity_id"]?.string {
+                    payload.identity_id = identity_id
+                }
+                else {
+                    handleLocalError(.ERROR_RESPONSE_IDENTITY_ID_MISSING)
+                    return nil
+                }
             
                 return payload
             }
@@ -3445,10 +2387,10 @@ class API3 {
         
      }
     
-    class get {
+    class unset {
     
-        class heatmapdata: APIRequestProtocol {
-            let apipath = "/get/heatmapdata"
+        class follow: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/unset/follow" } }
             
             class InternalParameterClass {
                 var user_id: String?
@@ -3463,67 +2405,25 @@ class API3 {
             var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
             
             enum LocalCode {
+                case ERROR_PARAMETER_USER_ID_MISSING
                 case ERROR_PARAMETER_USER_ID_MALFORMED
-                case ERROR_RESPONSE_HEATMAPDATA_MISSING
-                case ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MISSING
-                case ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MALFORMED
-                case ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MISSING
-                case ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MALFORMED
-                case ERROR_RESPONSE_HEATMAPDATA_LAT_MISSING
-                case ERROR_RESPONSE_HEATMAPDATA_LAT_MALFORMED
-                case ERROR_RESPONSE_HEATMAPDATA_LON_MISSING
-                case ERROR_RESPONSE_HEATMAPDATA_LON_MALFORMED
             }
             
-            class Payload {
-                
-                var heatmapdata: [Heatmapdata] = []
-                class Heatmapdata {
-                    var post_rest_id: String!
-                    var restaurant_name: String!
-                    var lat: String!
-                    var lon: String!
-                }
-            }
             
             static let localErrorMessageTable: [LocalCode: String] = {
                 var res: [LocalCode: String] = [:]
-                res[.ERROR_RESPONSE_HEATMAPDATA_LAT_MISSING] = 
-                    "Response 'lat' was not received"
-                res[.ERROR_RESPONSE_HEATMAPDATA_LON_MALFORMED] = 
-                    "Response 'lon' is malformed. It is no a valid 'FLOAT'"
-                res[.ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MISSING] = 
-                    "Response 'restaurant_name' was not received"
-                res[.ERROR_RESPONSE_HEATMAPDATA_LAT_MALFORMED] = 
-                    "Response 'lat' is malformed. It is no a valid 'FLOAT'"
+                res[.ERROR_PARAMETER_USER_ID_MISSING] = 
+                    "Parameter 'user_id' does not exist."
                 res[.ERROR_PARAMETER_USER_ID_MALFORMED] = 
-                    "Parameter 'user_id' is malformed. Should correspond to '^[0-9]+$'"
-                res[.ERROR_RESPONSE_HEATMAPDATA_MISSING] = 
-                    "Response 'heatmapdata' was not received"
-                res[.ERROR_RESPONSE_HEATMAPDATA_LON_MISSING] = 
-                    "Response 'lon' was not received"
-                res[.ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MALFORMED] = 
-                    "Response 'restaurant_name' is malformed. Should correspond to '.{0,100}'"
-                res[.ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MALFORMED] = 
-                    "Response 'post_rest_id' is malformed. It is no a valid 'INTEGER'"
-                res[.ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MISSING] = 
-                    "Response 'post_rest_id' was not received"
+                    "Parameter 'user_id' is malformed. Should correspond to '^\\d+$'"
                 return res
             }()
             
             
             static let localErrorReverseLookupTable: [String: LocalCode] = {
                 var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_USER_ID_MISSING"] = .ERROR_PARAMETER_USER_ID_MISSING
                 res["ERROR_PARAMETER_USER_ID_MALFORMED"] = .ERROR_PARAMETER_USER_ID_MALFORMED
-                res["ERROR_RESPONSE_HEATMAPDATA_MISSING"] = .ERROR_RESPONSE_HEATMAPDATA_MISSING
-                res["ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MISSING"] = .ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MISSING
-                res["ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MALFORMED"] = .ERROR_RESPONSE_HEATMAPDATA_POST_REST_ID_MALFORMED
-                res["ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MISSING"] = .ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MISSING
-                res["ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MALFORMED"] = .ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MALFORMED
-                res["ERROR_RESPONSE_HEATMAPDATA_LAT_MISSING"] = .ERROR_RESPONSE_HEATMAPDATA_LAT_MISSING
-                res["ERROR_RESPONSE_HEATMAPDATA_LAT_MALFORMED"] = .ERROR_RESPONSE_HEATMAPDATA_LAT_MALFORMED
-                res["ERROR_RESPONSE_HEATMAPDATA_LON_MISSING"] = .ERROR_RESPONSE_HEATMAPDATA_LON_MISSING
-                res["ERROR_RESPONSE_HEATMAPDATA_LON_MALFORMED"] = .ERROR_RESPONSE_HEATMAPDATA_LON_MALFORMED
                 return res
             }()
             
@@ -3531,8 +2431,8 @@ class API3 {
             
             func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
                 guard code == "SUCCESS" else {
-                    guard let rcode = heatmapdata.localErrorReverseLookupTable[code] else {
-                        APISupport.handleCommunicationFailure(.ERROR_UNKNOWN_ERROR, emsg: mmsg)
+                    guard let rcode = follow.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
                         return false
                     }
                     handleLocalError(rcode, mmsg)
@@ -3542,59 +2442,28 @@ class API3 {
             }
             
             func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
-                let msg = mmsg ?? heatmapdata.localErrorMessageTable[code] ?? "No error message defined"
+                let msg = mmsg ?? follow.localErrorMessageTable[code] ?? "No error message defined"
                 let handler = self.localErrorMapping[code] ?? self.onUnhandledError
                 dispatch_async(dispatch_get_main_queue()) {
                     handler(code, msg)
                 }
             }
             
-            func validateSimpleResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> String? {
-                if let value = (json as? [String: String])?[value] {
-                    if !value.matches(regex) {
-                        handleLocalError(malErr)
-                        return nil
-                    }
-                    else {
-                        return value
-                    }
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
                 }
             }
             
-            func validateSimpleArrayResponse(json: [String: AnyObject], _ value: String, _ regex: String, _ misErr: LocalCode, _ malErr: LocalCode ) -> [String]? {
-                if let values = (json as? [String: [String!]])?[value] {
-                    var res: [String] = []
-                    for value in values {
-                        if !value.matches(regex) {
-                            handleLocalError(malErr)
-                            return nil
-                        }
-                        else {
-                            res.append(value)
-                        }
-                    }
-                    return res
-                }
-                else {
-                    handleLocalError(misErr)
-                    return nil
-                }
-            }
-            
-            
-            
-            func perform(and: (payload: Payload)->()) {
-                APISupport.performNetworkRequest(self) { (code, msg, rawJSON) in
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
                     if self.preHandleLocalError(code, msg) {
-                        if let payload = self.validateResponse(rawJSON) {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                and(payload: payload)
-                            }
-                        }
+                        and()
                     }
                 }
             }
@@ -3605,13 +2474,13 @@ class API3 {
             
             
             
-            func validateParameterPairs() -> [String: String]? {
+            override func validateParameterPairs() -> [String: String]? {
             
                 var res: [String: String] = [:]
             
                 
                 if let user_id = parameters.user_id {
-                    if user_id.matches("^[0-9]+$") {
+                    if user_id.matches("^\\d+$") {
                         res["user_id"] = user_id
                     }
                     else {
@@ -3619,35 +2488,507 @@ class API3 {
                         return nil
                     }
                 }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_USER_ID_MISSING)
+                    return nil
+                }
             
                 return res
             }
             
             
-            func validateResponse(json: [String: AnyObject]) -> Payload? {
-                let payload = Payload()
             
-                if let arraydict = (json as? [String: [[String: Payload.Heatmapdata!]]])?["heatmapdata"] {
-                    for json in arraydict {
-                        let tmp = Payload.Heatmapdata()
-                    
-                        // TODO WARNING 'post_rest_id' non string type response validation not implemented jet. Wait for rewrite
-                        tmp.restaurant_name = validateSimpleResponse(json, "restaurant_name", ".{0,100}",
-                             .ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MISSING, .ERROR_RESPONSE_HEATMAPDATA_RESTAURANT_NAME_MALFORMED)
-                        if tmp.restaurant_name == nil { return nil }
-                        
-                        // TODO WARNING 'lat' non string type response validation not implemented jet. Wait for rewrite
-                        // TODO WARNING 'lon' non string type response validation not implemented jet. Wait for rewrite
-                        payload.heatmapdata.append(tmp)
+            
+        }
+        
+        class sns_link: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/unset/sns_link" } }
+            
+            class InternalParameterClass {
+                var provider: String?
+                var sns_token: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                case ERROR_PROVIDER_UNREACHABLE
+                case ERROR_PARAMETER_PROVIDER_MISSING
+                case ERROR_PARAMETER_PROVIDER_MALFORMED
+                case ERROR_PARAMETER_SNS_TOKEN_MISSING
+                case ERROR_PARAMETER_SNS_TOKEN_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = 
+                    "The provided sns token is invalid or has expired"
+                res[.ERROR_PARAMETER_SNS_TOKEN_MALFORMED] = 
+                    "Parameter 'sns_token' is malformed. Should correspond to '^[\\S]{20,4000}$'"
+                res[.ERROR_PARAMETER_SNS_TOKEN_MISSING] = 
+                    "Parameter 'sns_token' does not exist."
+                res[.ERROR_PROVIDER_UNREACHABLE] = 
+                    "The providers server infrastructure appears to be down"
+                res[.ERROR_PARAMETER_PROVIDER_MISSING] = 
+                    "Parameter 'provider' does not exist."
+                res[.ERROR_PARAMETER_PROVIDER_MALFORMED] = 
+                    "Parameter 'provider' is malformed. Should correspond to '^(api.twitter.com)|(graph.facebook.com)$'"
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_SNS_PROVIDER_TOKEN_NOT_VALID"] = .ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                res["ERROR_PROVIDER_UNREACHABLE"] = .ERROR_PROVIDER_UNREACHABLE
+                res["ERROR_PARAMETER_PROVIDER_MISSING"] = .ERROR_PARAMETER_PROVIDER_MISSING
+                res["ERROR_PARAMETER_PROVIDER_MALFORMED"] = .ERROR_PARAMETER_PROVIDER_MALFORMED
+                res["ERROR_PARAMETER_SNS_TOKEN_MISSING"] = .ERROR_PARAMETER_SNS_TOKEN_MISSING
+                res["ERROR_PARAMETER_SNS_TOKEN_MALFORMED"] = .ERROR_PARAMETER_SNS_TOKEN_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = sns_link.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? sns_link.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            func on_ERROR_SNS_PROVIDER_TOKEN_NOT_VALID(perform:(LocalCode, String)->()) {
+                localErrorMapping[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = perform
+            }
+            func on_ERROR_PROVIDER_UNREACHABLE(perform:(LocalCode, String)->()) {
+                localErrorMapping[.ERROR_PROVIDER_UNREACHABLE] = perform
+            }
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let provider = parameters.provider {
+                    if provider.matches("^(api.twitter.com)|(graph.facebook.com)$") {
+                        res["provider"] = provider
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_PROVIDER_MALFORMED)
+                        return nil
                     }
                 }
                 else {
-                    handleLocalError(.ERROR_RESPONSE_HEATMAPDATA_MISSING)
+                    handleLocalError(.ERROR_PARAMETER_PROVIDER_MISSING)
+                    return nil
                 }
                 
+                if let sns_token = parameters.sns_token {
+                    if sns_token.matches("^[\\S]{20,4000}$") {
+                        res["sns_token"] = sns_token
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_SNS_TOKEN_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_SNS_TOKEN_MISSING)
+                    return nil
+                }
             
-                return payload
+                return res
             }
+            
+            
+            
+            
+        }
+        
+        class device: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/unset/device" } }
+            
+            class InternalParameterClass {
+                var device_token: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_DEVICE_TOKEN_MISSING
+                case ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED] = 
+                    "Parameter 'device_token' is malformed. Should correspond to '^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$'"
+                res[.ERROR_PARAMETER_DEVICE_TOKEN_MISSING] = 
+                    "Parameter 'device_token' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_DEVICE_TOKEN_MISSING"] = .ERROR_PARAMETER_DEVICE_TOKEN_MISSING
+                res["ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED"] = .ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = device.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? device.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let device_token = parameters.device_token {
+                    if device_token.matches("^([a-f0-9]{64})|([a-zA-Z0-9:_-]{140,250})$") {
+                        res["device_token"] = device_token
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_DEVICE_TOKEN_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class want: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/unset/want" } }
+            
+            class InternalParameterClass {
+                var rest_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_PARAMETER_REST_ID_MISSING
+                case ERROR_PARAMETER_REST_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_PARAMETER_REST_ID_MALFORMED] = 
+                    "Parameter 'rest_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_REST_ID_MISSING] = 
+                    "Parameter 'rest_id' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_PARAMETER_REST_ID_MISSING"] = .ERROR_PARAMETER_REST_ID_MISSING
+                res["ERROR_PARAMETER_REST_ID_MALFORMED"] = .ERROR_PARAMETER_REST_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = want.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? want.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let rest_id = parameters.rest_id {
+                    if rest_id.matches("^\\d+$") {
+                        res["rest_id"] = rest_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_REST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_REST_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
+            
+            
+        }
+        
+        class post: APIRequest, APIRequestProtocol {
+            var apipath: String { get { return "/unset/post" } }
+            
+            class InternalParameterClass {
+                var post_id: String?
+                
+            }
+            
+            let parameters = InternalParameterClass()
+            
+            
+            var localErrorMapping: [LocalCode: (LocalCode, String)->()] = [:]
+            
+            var onUnhandledError: (LocalCode, String)->() = { print("FATAL: UNHANDLED API ERROR: \($0): \($1)") }
+            
+            enum LocalCode {
+                case ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                case ERROR_PARAMETER_POST_ID_MISSING
+                case ERROR_PARAMETER_POST_ID_MALFORMED
+            }
+            
+            
+            static let localErrorMessageTable: [LocalCode: String] = {
+                var res: [LocalCode: String] = [:]
+                res[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = 
+                    "?"
+                res[.ERROR_PARAMETER_POST_ID_MALFORMED] = 
+                    "Parameter 'post_id' is malformed. Should correspond to '^\\d+$'"
+                res[.ERROR_PARAMETER_POST_ID_MISSING] = 
+                    "Parameter 'post_id' does not exist."
+                return res
+            }()
+            
+            
+            static let localErrorReverseLookupTable: [String: LocalCode] = {
+                var res: [String: LocalCode] = [:]
+                res["ERROR_SNS_PROVIDER_TOKEN_NOT_VALID"] = .ERROR_SNS_PROVIDER_TOKEN_NOT_VALID
+                res["ERROR_PARAMETER_POST_ID_MISSING"] = .ERROR_PARAMETER_POST_ID_MISSING
+                res["ERROR_PARAMETER_POST_ID_MALFORMED"] = .ERROR_PARAMETER_POST_ID_MALFORMED
+                return res
+            }()
+            
+            
+            
+            func preHandleLocalError(code: String, _ mmsg: String? = nil) -> Bool {
+                guard code == "SUCCESS" else {
+                    guard let rcode = post.localErrorReverseLookupTable[code] else {
+                        defaultOnNetworkFailure(self, APISupport.NetworkError.ERROR_UNKNOWN_ERROR_CODE, "Unknown error code recieved")
+                        return false
+                    }
+                    handleLocalError(rcode, mmsg)
+                    return false
+                }
+                return true
+            }
+            
+            func handleLocalError(code: LocalCode, _ mmsg: String? = nil) {
+                let msg = mmsg ?? post.localErrorMessageTable[code] ?? "No error message defined"
+                let handler = self.localErrorMapping[code] ?? self.onUnhandledError
+                dispatch_async(dispatch_get_main_queue()) {
+                    handler(code, msg)
+                }
+            }
+            
+            
+            
+            private var callBackLink: (()->())? = nil
+                                    
+            func retry() {
+                if let cb = callBackLink {
+                    perform(cb)
+                }
+            }
+            
+            func perform(and: ()->()) {
+                callBackLink = and
+                APISupport.performNetworkRequest(self) { (code, msg, _) in
+                    if self.preHandleLocalError(code, msg) {
+                        and()
+                    }
+                }
+            }
+            func on(code: LocalCode, perform: (LocalCode, String)->()){
+                self.localErrorMapping[code] = perform
+            }
+            
+            
+            func on_ERROR_SNS_PROVIDER_TOKEN_NOT_VALID(perform:(LocalCode, String)->()) {
+                localErrorMapping[.ERROR_SNS_PROVIDER_TOKEN_NOT_VALID] = perform
+            }
+            
+            
+            override func validateParameterPairs() -> [String: String]? {
+            
+                var res: [String: String] = [:]
+            
+                
+                if let post_id = parameters.post_id {
+                    if post_id.matches("^\\d+$") {
+                        res["post_id"] = post_id
+                    }
+                    else {
+                        handleLocalError(.ERROR_PARAMETER_POST_ID_MALFORMED)
+                        return nil
+                    }
+                }
+                else {
+                    handleLocalError(.ERROR_PARAMETER_POST_ID_MISSING)
+                    return nil
+                }
+            
+                return res
+            }
+            
+            
             
             
         }

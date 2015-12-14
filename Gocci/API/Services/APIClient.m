@@ -34,6 +34,10 @@ static APIClient *_sharedInstance = nil;
     return _sharedInstance;
 }
 
++ (id)getManager {
+    return [APIClient sharedClient].manager;
+}
+
 - (id)init
 {
     self = [super init];
