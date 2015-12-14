@@ -17,7 +17,6 @@
 	CGFloat percentPieChart;
 	
 	__weak IBOutlet UIView *recordView;
-    __weak IBOutlet UIView *reverseCamera;
 }
 
 @end

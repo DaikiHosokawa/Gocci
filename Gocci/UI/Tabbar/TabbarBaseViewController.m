@@ -33,7 +33,7 @@
 - (void)createRaisedCenterButton {
     
     UIImage *buttonImage = [UIImage imageNamed:@"rec_1"];
-    UIImage *highlightImage = [UIImage imageNamed:@"rec_1_sel"];
+    UIImage *highlightImage = [UIImage imageNamed:@"rec_1"];
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);

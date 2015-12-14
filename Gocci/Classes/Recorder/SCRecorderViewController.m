@@ -111,7 +111,7 @@ static SCRecordSession *staticRecordSession;
 #if 1
     {
         {
-            CGRect rect_page = CGRectMake(0, 398, 320, 170);
+            CGRect rect_page = CGRectMake(0, 383, 320, 183);
             // 4inch
             CGRect rect = [UIScreen mainScreen].bounds;
             if (rect.size.height == 480) {
@@ -124,7 +124,7 @@ static SCRecordSession *staticRecordSession;
             }
             else if (rect.size.height == 736) {
                 //5.5inch
-                rect_page = CGRectMake(0, 516, 414, 220);
+                rect_page = CGRectMake(0, 478, 414, 260);
             }
             scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
             {

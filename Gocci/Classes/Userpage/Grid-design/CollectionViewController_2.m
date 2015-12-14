@@ -67,11 +67,21 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 {
     
     if ([_receiveDic2 count] == 0) {
-        UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+        UIImage *img = [UIImage imageNamed:@"sad_post.png"];
         UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+        CGRect rect = [UIScreen mainScreen].bounds;
+        if (rect.size.height == 568) {
+            CGRect original = iv.frame;
+            CGRect new = CGRectMake(original.origin.x,
+                                    original.origin.y,
+                                    original.size.width/1.2,
+                                    original.size.height /1.2);
+            iv.frame = new;
+        }
         CGSize boundsSize = self.soda.size;
         iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
         [self.view addSubview:iv];
+
     }else{
         [self.collectionView reloadData];
     }
@@ -95,9 +105,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Facebook", @"Twitter", @"店舗",                                           @"違反報告" ]
-                                 images:@[ [UIImage imageNamed:@"facebook"],
-                                           [UIImage imageNamed:@"twitter"],
+                             itemTitles:@[@"Twitter", @"店舗",  @"違反報告" ]
+                                 images:@[[UIImage imageNamed:@"twitter"],
                                            [UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"warning"]]
                          selectedHandle:^(NSInteger index){
@@ -105,20 +114,15 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
                              
-                             
-                             
                              if(index == 1){
-                                 NSLog(@"Facebook");
-                             }
-                             else if(index == 2){
                                  NSLog(@"Twitter");
                              }
-                             else if(index == 3){
+                             else if(index == 2){
                                  NSLog(@"Rest");
                                  [self.delegate collection_2:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 4){
+                             else if(index == 3){
                                  NSLog(@"違反報告");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");

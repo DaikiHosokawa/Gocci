@@ -16,15 +16,19 @@
 #import "RestAddPopupViewController.h"
 #import "ValuePopupViewController.h"
 #import "CategoryPopupViewController.h"
+#import "requestGPSPopupViewController.h"
 #import "LocationClient.h"
 #import "BFPaperCheckbox.h"
 #import "FullScreenViewController.h"
-#import "UCZProgressView.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
+#import "TimelinePageMenuViewController.h"
 
-@interface EditVideoController (){
+@interface EditVideoController ()<BFPaperCheckboxDelegate>{
+    NSString * cheertag_update;
+    CLLocationManager* locationManager;
 }
+
 
 @property (strong, nonatomic) SCAssetExportSession *exportSession;
 @property (strong, nonatomic) SCPlayer *player;
@@ -38,7 +42,6 @@
 @property (weak,nonatomic)NSString *category_id;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *checkbox;
 @property (nonatomic, copy) NSArray *checkboxes;
-@property (weak, nonatomic) IBOutlet UCZProgressView *progressView;
 
 
 @end
@@ -80,9 +83,9 @@
     
     //self.checkbox.delegate = self;
     self.checkbox.rippleFromTapLocation = NO;
-    self.checkbox.tapCirclePositiveColor = [UIColor yellowColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    self.checkbox.tapCircleNegativeColor = [UIColor redColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    self.checkbox.checkmarkColor = [UIColor blueColor];
+    self.checkbox.tapCirclePositiveColor = [UIColor blackColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
+    self.checkbox.tapCircleNegativeColor = [UIColor blackColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
+    self.checkbox.checkmarkColor = [UIColor blackColor];
        SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     playerView.frame = self.filterSwitcherView.frame;
@@ -122,14 +125,6 @@
     _textView.returnKeyType = UIReturnKeyDone;
     
     self.view.userInteractionEnabled = YES;
-    
-    self.progressView.hidden = YES;
-    //self.progressView.progress = 0.0;
-    self.progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-    self.progressView.showsText = YES;
-    self.progressView.tintColor = [UIColor blackColor];
-    self.progressView.usesVibrancyEffect = NO;
-    self.progressView.textColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -191,7 +186,7 @@
             return;
         }
         else if (exportSession.error) {
-            [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:exportSession.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"保存に失敗しました" message:exportSession.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             return;
         }
         
@@ -202,11 +197,9 @@
         
         [VideoPostPreparation initiateUploadTaskChain:exportSession.outputUrl];
         
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
     }];
 }
-
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
