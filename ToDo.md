@@ -27,16 +27,11 @@ Needs Testing
 Daiki Hosokawa
 ==============
 
-<Sort>
-sort button
-
-<movie check>
--Userpage
--restaurantpage
--mute
-
-<action sheet>
-twitter消す
+- sort button
+- Userpage
+- restaurantpage
+- mute
+- twitter消す
 
 Markus Wanke
 ============
