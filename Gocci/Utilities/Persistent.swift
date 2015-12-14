@@ -85,52 +85,52 @@ import Foundation
         set(v) { cache.user_is_connected_via_twitter = v ; setBool(v, forKey: "user_is_connected_via_twitter") }
     }
     
-    class var identity_id: String? {
+    class var identity_id: String! {
         get { return cache.identity_id }
         set(v) { cache.identity_id = v ; setString(v!, forKey: "identity_id") }
     }
     
-    class var cognito_token: String? {
+    class var cognito_token: String! {
         get { return cache.cognito_token }
         set(v) { cache.cognito_token = v ; setString(v!, forKey: "cognito_token") }
     }
     
-    class var device_token: String? {
+    class var device_token: String! {
         get { return cache.device_token }
         set(v) { cache.device_token = v ; setString(v!, forKey: "device_token") }
     }
     
-    class var twitter_key: String? {
+    class var twitter_key: String! {
         get { return cache.twitter_key }
         set(v) { cache.twitter_key = v ; setString(v!, forKey: "twitter_key") }
     }
     
-    class var twitter_secret: String? {
+    class var twitter_secret: String! {
         get { return cache.twitter_secret }
         set(v) { cache.twitter_secret = v ; setString(v!, forKey: "twitter_secret") }
     }
     
-    class var facebook_token: String? {
+    class var facebook_token: String! {
         get { return cache.facebook_token }
         set(v) { cache.facebook_token = v ; setString(v!, forKey: "facebook_token") }
     }
     
-    class var facebook_id: String? {
+    class var facebook_id: String! {
         get { return cache.facebook_id }
         set(v) { cache.facebook_id = v ; setString(v!, forKey: "facebook_id") }
     }
     
-    class var user_id: String? {
+    class var user_id: String! {
         get { return cache.user_id }
         set(v) { cache.user_id = v ; setString(v!, forKey: "user_id") }
     }
     
-    class var user_name: String? {
+    class var user_name: String! {
         get { return cache.user_name }
         set(v) { cache.user_name = v ; setString(v!, forKey: "user_name") }
     }
  
-    class var user_profile_image_url: String? {
+    class var user_profile_image_url: String! {
         get { return cache.user_profile_image_url }
         set(v) { cache.user_profile_image_url = v ; setString(v!, forKey: "user_profile_image_url") }
     }

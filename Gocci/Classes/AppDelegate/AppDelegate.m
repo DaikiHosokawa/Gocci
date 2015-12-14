@@ -66,7 +66,7 @@
     
     
 #ifdef FRESH_START
-    [Persistent resetGocciToInitialState];
+    [Persistent resetPersistentDataToInitialState];
 #endif
     
 #ifndef STRIPPED

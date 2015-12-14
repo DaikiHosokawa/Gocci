@@ -4,7 +4,6 @@
 
 #import "const.h"
 
-#import "NetOp.h"
 #import "FHSTwitterEngine.h"
 #import "APIClient.h"
 

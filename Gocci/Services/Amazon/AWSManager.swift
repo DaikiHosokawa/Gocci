@@ -269,21 +269,31 @@ class AWSManager {
         return credentialsProvider.refresh()
     }
     
-    func connectWithBackend(iid:String, userID:String, token:String) -> AWSTask {
+    func connectWithBackend(iid:String, userID:String, token:String, and: Bool->()) {
 
         // TODO there is no verification that the backend login worked. The only sane check that I know of is upload somethin in a dataset, redownload it
         // and compare. There must be a better method, but AWS is a huge pile of shit and nowhere do they even consider that their server could be down.
         (credentialsProvider.identityProvider as! EnhancedGocciIdentityProvider).connectWithBackEnd(iid, userID: userID, token: token)
-        return credentialsProvider.refresh()
+        credentialsProvider.refresh().continueWithBlock { (task) -> AnyObject! in
+            
+            // TODO make a proper login success check if you know how...
+            if let e = task.error {
+                Lo.error("AWS2: \(e)")
+                and(false)
+            }
+            else if let e = task.exception {
+                Lo.error("AWS2: \(e)")
+                and(false)
+            }
+            else {
+                and(true)
+            }
+            
+            return nil
+        }
     }
     
-    func connectToBackEndWithUserDefData() -> AWSTask {
-        let uid: String = Persistent.user_id!
-        let iid: String = Persistent.identity_id!
-        let tok: String = Persistent.cognito_token!
-        
-        return AWS2.connectWithBackend(iid, userID: uid, token: tok)
-    }
+
     
 //    func connectWithSNSProvider(provider: String, token: String) -> AWSTask {
 //
@@ -371,43 +381,26 @@ class AWSManager {
         onSuccess: ()->())
     {
         getIIDforSNSLogin(provider, token: token).continueWithBlock { task -> AnyObject! in
+            
             if task.result == nil {
-                //andThen(LoginResult.SNS_USER_NOT_REGISTERD)
                 onNotRegisterdSNS()
                 return nil
             }
             
-            NetOp.loginWithSNS(task.result as! String, andThen: { code, emsg in
-                
-                if code == NetOpResult.NETOP_SUCCESS {
-                    
-                    // TODO dirty implementation. Fix this one day
-                    let uid: String = Persistent.user_id!
-                    let iid: String = Persistent.identity_id!
-                    let tok: String = Persistent.cognito_token!
-                    
-                    self.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-                        Util.runInBackground { AWS2.storeSNSTokenInDataSet(provider, token: token) }
-                        onSuccess()
-                        return nil
-                    })
-                    
-                }
-                else if code == NetOpResult.NETOP_IDENTIFY_ID_NOT_REGISTERD {
-                    onNotRegisterdIID()
-                }
-                else {
-                    onUnknownError()
-                }
-                
-            })
+            Persistent.identity_id = task.result as! String
+            
+            APIHighLevel.nonInteractiveLogin(
+                onIIDNotAvailible:  onNotRegisterdIID,
+                onNetworkFailure:   nil, // will show popup default
+                onAPIFailure:       onUnknownError,
+                onAWSFailure:       nil, // not needed until video upload, where an auto retry happens
+                onSuccess:          onSuccess)
             
             return nil
         }
     }
     
     func uploadVideoToMovieBucket(vdeoFileURL: NSURL, filename: String) {
-        
         
         let completionHandler: (AWSS3TransferUtilityUploadTask!, NSError?) -> () = { task, error in
             if error != nil {

@@ -15,7 +15,7 @@
 
 // #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 // #######################################################################################
 // Userdata will be deleted everytime the app starts
@@ -34,11 +34,19 @@
 #define INASE_PRIVACY_URL (@"http://inase-inc.jp/rules/privacy/")
 #define INASE_RULES_URL (@"http://inase-inc.jp/rules/")
 
+#define GOCCI_APP_STORE_URL (@"itms://itunes.apple.com/jp/app/id968630887")
+
 
 #ifdef INDEVEL
 #define API_BASE_URL (@"http://test.api.gocci.me/v1/mobile/")
 #else
 #define API_BASE_URL (@"https://api.gocci.me/v1/mobile/")
+#endif
+
+#ifdef INDEVEL
+#define API_BASE_DOMAIN (@"test.api.gocci.me")
+#else
+#define API_BASE_DOMAIN (@"api.gocci.me")
 #endif
 
 #ifdef INDEVEL

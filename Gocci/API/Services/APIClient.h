@@ -11,7 +11,7 @@
  */
 @interface APIClient : NSObject
 
-
++ (id)getManager ;
 
 /**
  *  timeline
