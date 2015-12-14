@@ -31,7 +31,8 @@ Daiki Hosokawa
 - Userpage
 - restaurantpage
 - mute
-- twitter消す
+- twitter upload
+-
 
 Markus Wanke
 ============

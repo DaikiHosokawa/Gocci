@@ -243,9 +243,9 @@ class APISupport {
             }
             
             guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_CLIENT_OUTDATED else {
-                let pop = Util.overlayPopup("Yout Gocci version is outdated", "Please visit the AppStore and update Gocci")
+                let pop = Util.overlayPopup("あなたのGocciは古いバージョンです", "AppStoreでアップデートしてください")
                 pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
-                pop.addButton("Open App Store", style: UIAlertActionStyle.Default) {
+                pop.addButton("AppStoreへ", style: UIAlertActionStyle.Default) {
                     Util.openGocciInTheAppStore()
                 }
                 pop.overlay()
@@ -283,9 +283,9 @@ class APIRequest {
     
     var defaultOnNetworkFailure: (APIRequestProtocol, APISupport.NetworkError, String)->() = { request, error, message in
         
-        let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error)")
-        pop.addButton("Give up", style: UIAlertActionStyle.Cancel) {  }
-        pop.addButton("Retry", style: UIAlertActionStyle.Default) {
+        let pop = Util.overlayPopup("ネットワークがありません", "通信環境に問題があるようです\n\(error)")
+        pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
+        pop.addButton("リトライ", style: UIAlertActionStyle.Default) {
             request.retry()
         }
         
