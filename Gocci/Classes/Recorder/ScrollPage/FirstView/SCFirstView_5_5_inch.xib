@@ -8,20 +8,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SCFirstView">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-DC-UKR">
-                    <rect key="frame" x="147" y="40" width="120" height="120"/>
+                    <rect key="frame" x="147" y="42" width="120" height="120"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SB-Fe-tm0">
-                    <rect key="frame" x="337" y="88" width="52" height="44"/>
-                    <state key="normal" image="capture_flip">
+                    <rect key="frame" x="181" y="199" width="52" height="44"/>
+                    <state key="normal" image="ic_mode_edit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="reverseCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="jBo-OX-quV"/>
+                        <action selector="openEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="mMN-vk-CHf"/>
                     </connections>
                 </button>
             </subviews>
@@ -32,11 +32,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="recordView" destination="GJS-DC-UKR" id="52K-j7-2NF"/>
-                <outlet property="reverseCamera" destination="4SB-Fe-tm0" id="DIh-5z-1JP"/>
             </connections>
+            <point key="canvasLocation" x="393" y="399"/>
         </view>
     </objects>
     <resources>
-        <image name="capture_flip" width="50" height="41"/>
+        <image name="ic_mode_edit" width="24" height="24"/>
     </resources>
 </document>
