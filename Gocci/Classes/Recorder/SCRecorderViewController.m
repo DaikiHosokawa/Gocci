@@ -94,7 +94,7 @@ static SCRecordSession *staticRecordSession;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
 #ifdef INDEVEL
-    _recorder.maxRecordDuration = CMTimeMake(800, 600);
+    _recorder.maxRecordDuration = CMTimeMake(4200, 600);
 #else
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
 #endif

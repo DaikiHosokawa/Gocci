@@ -57,7 +57,7 @@ class APISupport {
     "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
 #endif
 #if LIVE_BUILD
-    static var verbose: Bool = false
+    static var verbose: Bool = true
     static var baseurl = API3.liveurl
     static let USER_AGENT: String =
     "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
