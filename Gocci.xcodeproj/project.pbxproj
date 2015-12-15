@@ -268,6 +268,7 @@
 		9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA061BF83E4C00430942 /* UIWebView+AFNetworking.m */; };
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
+		958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */; };
 		95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92921C0D48DA00D822E8 /* SGActionView.m */; };
 		95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */; };
 		95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */; };
@@ -827,6 +828,8 @@
 		9550DA091BF83E4C00430942 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		9550DA0A1BF83E4C00430942 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestPushPopupViewController.h; sourceTree = "<group>"; };
+		958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestPushPopupViewController.m; sourceTree = "<group>"; };
 		95FD92911C0D48DA00D822E8 /* SGActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionView.h; sourceTree = "<group>"; };
 		95FD92921C0D48DA00D822E8 /* SGActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionView.m; sourceTree = "<group>"; };
 		95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertMenu.h; sourceTree = "<group>"; };
@@ -1188,6 +1191,8 @@
 		9550D8141BF83E4B00430942 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */,
+				958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */,
 				9550D8151BF83E4B00430942 /* CategoryPopupViewController.h */,
 				9550D8161BF83E4B00430942 /* CategoryPopupViewController.m */,
 				9550D8171BF83E4B00430942 /* RestPopupViewController.h */,
@@ -2637,6 +2642,7 @@
 				9550DA781BF83E4C00430942 /* SCRecorderToolsView.m in Sources */,
 				9550DAD41BF83E4C00430942 /* AFHTTPRequestOperationManager.m in Sources */,
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
+				958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
