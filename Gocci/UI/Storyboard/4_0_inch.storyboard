@@ -1188,7 +1188,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="agF-Nl-m63">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agF-Nl-m63" id="dDe-Wj-q8P">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2455,11 +2455,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upe-j2-7LO"/>
-        <segue reference="TRb-wK-Rdp"/>
+        <segue reference="UjS-k3-cIb"/>
+        <segue reference="nCy-MK-7X8"/>
+        <segue reference="QRa-dv-Pod"/>
+        <segue reference="UsF-fz-dpG"/>
+        <segue reference="zNa-cd-7M5"/>
         <segue reference="6pK-Ls-lJu"/>
-        <segue reference="cAJ-bL-F0X"/>
-        <segue reference="XEw-Zi-bfV"/>
-        <segue reference="t6E-Xj-Ity"/>
-        <segue reference="pjl-L3-6fH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -121,17 +121,18 @@
 
 
 - (void)registerUsernameClicked:(id)sender {
-  
     
-        if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
-            self.registerButton.enabled = false;
-            self.username.enabled = false;
-            
-            [self registerUsername:self.username.text];
-        }
-        else {
+    
+    if (self.username.text.length > 0 && self.username.text.length <= MAX_USERNAME_LENGTH) {
+        self.registerButton.enabled = false;
+        self.username.enabled = false;
+        
+        [self registerUsername:self.username.text];
+    }
+    else {
         UIAlertView *requestAgain  =[[UIAlertView alloc] initWithTitle:@"文字を入力してください" message:@"0文字以上20文字以下です" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [requestAgain show];
+        [requestAgain show];
+        
     }
 }
 

@@ -248,9 +248,9 @@ class APISupport {
             }
             
             guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_CLIENT_OUTDATED else {
-                let pop = Util.overlayPopup("Yout Gocci version is outdated", "Please visit the AppStore and update Gocci")
+                let pop = Util.overlayPopup("あなたのGocciは古いバージョンです", "AppStoreでアップデートしてください")
                 pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
-                pop.addButton("Open App Store", style: UIAlertActionStyle.Default) {
+                pop.addButton("AppStoreへ", style: UIAlertActionStyle.Default) {
                     Util.openGocciInTheAppStore()
                 }
                 pop.overlay()
@@ -269,12 +269,6 @@ class APISupport {
         urlsessiontask.resume()
     }
 }
-
-
-
-
-
-
 
 
 

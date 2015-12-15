@@ -114,7 +114,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ieN-Un-ecI">
-                                        <rect key="frame" x="147" y="26" width="80" height="74"/>
+                                        <rect key="frame" x="147" y="26" width="80" height="80"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="38"/>
@@ -1232,7 +1232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pJh-hx-rc3">
-                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="112" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" id="MGJ-05-MYY">
@@ -1253,7 +1253,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="m96-gN-BSX" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45.5"/>
@@ -1982,7 +1982,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qS2-vf-cmy">
-                                        <rect key="frame" x="147" y="26" width="80" height="74"/>
+                                        <rect key="frame" x="147" y="26" width="80" height="80"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="38"/>
@@ -2370,13 +2370,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr3-37-9ka"/>
         <segue reference="RUh-hP-jrK"/>
-        <segue reference="L0G-no-fLl"/>
-        <segue reference="ren-zg-h6h"/>
-        <segue reference="hGv-8z-0ZJ"/>
-        <segue reference="Ofb-Gs-yfz"/>
-        <segue reference="had-LT-zY9"/>
+        <segue reference="MKp-Ou-neg"/>
+        <segue reference="30a-Oz-nKe"/>
+        <segue reference="4ab-y8-Qck"/>
+        <segue reference="Jx8-B4-NT3"/>
+        <segue reference="g3n-kx-BDj"/>
+        <segue reference="jr3-37-9ka"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

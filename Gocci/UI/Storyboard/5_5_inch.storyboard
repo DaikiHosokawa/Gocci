@@ -57,7 +57,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qHU-UF-Jjk">
-                                        <rect key="frame" x="169" y="33" width="80" height="74"/>
+                                        <rect key="frame" x="169" y="33" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1750,7 +1750,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iul-nu-rY0">
-                                        <rect key="frame" x="167" y="27" width="80" height="74"/>
+                                        <rect key="frame" x="167" y="27" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2444,11 +2444,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fvs-4k-dBf"/>
-        <segue reference="LdH-9F-OGI"/>
-        <segue reference="pXi-gB-BGB"/>
         <segue reference="KPO-WA-zUK"/>
+        <segue reference="pXi-gB-BGB"/>
+        <segue reference="JBx-nY-feb"/>
         <segue reference="ZNT-8G-Vh8"/>
         <segue reference="TeR-by-P1o"/>
-        <segue reference="JBx-nY-feb"/>
+        <segue reference="LdH-9F-OGI"/>
     </inferredMetricsTieBreakers>
 </document>
