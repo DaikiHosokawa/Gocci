@@ -29,7 +29,7 @@ class AbstractPopup: UIViewController
         
         self.title = title;
     }
-    
+
     
     func pop() {
         

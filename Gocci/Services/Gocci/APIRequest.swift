@@ -14,9 +14,9 @@ protocol APIRequestProtocol {
     
     var apipath: String { get }
     
-    var firstRetry: Bool { get set }
+    var privateFirstRetry: Bool { get set }
     
-    var networkTroublePreFilter: ((APISupport.NetworkError, String)->())? { get }
+    var privateNetworkTroublePreFilter: ((APISupport.NetworkError, String)->())? { get }
     
     
     func canHandleErrorCode(code: String) -> Bool
@@ -29,30 +29,41 @@ protocol APIRequestProtocol {
 
 class APIRequest {
     
-    var firstRetry: Bool = true
+    var privateFirstRetry: Bool = true
     
-    var networkTroublePreFilter: ((APISupport.NetworkError, String)->())? = nil
+    var privateNetworkTroublePreFilter: ((APISupport.NetworkError, String)->())? = nil
     
     func onNetworkTrouble(handler: (APISupport.NetworkError, String)->()) {
-        networkTroublePreFilter = handler
+        privateNetworkTroublePreFilter = handler
+    }
+    
+    var privateOnAllErrorsCallback: (()->())? = nil
+    
+    func onAnyAPIError(handler: ()->()) {
+        privateOnAllErrorsCallback = handler
     }
 }
 
 extension APIRequestProtocol {
     
-    mutating func handleNetworkError(code: APISupport.NetworkError, _ msg: String) {
+    mutating func handleNetworkError(code: APISupport.NetworkError, _ mmsg: String? = nil) {
         
-        if firstRetry && Network.online {
+        let msg = mmsg ?? APISupport.networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No error message defined"
+        
+        APISupport.sep("NETWORK ERROR OCCURED")
+        APISupport.lo("\(code): \(msg)")
+        
+        if privateFirstRetry && Network.online {
             APISupport.sep("RETRY HELP")
             APISupport.lo("Request failed on network error: \(code). We perform one RETRY")
-            firstRetry = false
+            privateFirstRetry = false
             self.retry()
             return
         }
         
         Util.runOnMainThread{
-            if self.networkTroublePreFilter != nil {
-                self.networkTroublePreFilter?(code, msg)
+            if let ownNetworkTroubleHandler = self.privateNetworkTroublePreFilter {
+                ownNetworkTroubleHandler(code, msg)
             }
             else {
                 self.defaultOnNetworkFailure(code, msg)

@@ -76,9 +76,13 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "アドバイスを送る"
-                        $0.detailTextLabel?.text = "TODO"
+                        $0.detailTextLabel?.text = "DONE"
                     },
-                    nil
+                    { _ in
+                        let popup = FeedbackPopup(from: self, title: "通知を設定する", widthRatio: 92, heightRatio: 50)
+   
+                        popup.pop()
+                    }
                 ),
                 (
                     { $0.textLabel?.text = "利用規約" },
@@ -307,36 +311,6 @@ class SettingsTableViewController: UITableViewController
 }
 
 
-//class PopupReadyWebView: UIViewController, UIWebViewDelegate {
-//    
-//    var web: UIWebView!
-//    var url: String?
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        self.title = "利用規約"
-//        self.contentSizeInPopup = self.view.frame.size.makeScale(widthDiff: -40, heightDiff: -140)
-//        
-//        web = UIWebView()
-//        web.delegate = self
-//        web.frame = self.view.frame.makeScale(widthDiff: -40, heightDiff: 0)
-//        web.scalesPageToFit = true
-//        self.view.addSubview(web)
-//        if url != nil {
-//            web.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
-//        }
-//    }
-//    
-//    func webViewDidStartLoad(webView: UIWebView) {
-//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//    }
-//    
-//    func webViewDidFinishLoad(webView: UIWebView) {
-//        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//    }
-//    
-//}
 
 
 

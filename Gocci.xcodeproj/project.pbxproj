@@ -244,9 +244,6 @@
 		9550DB0A1BF83E4C00430942 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9D31BF83E4B00430942 /* STPopupNavigationBar.m */; };
 		9550DB0B1BF83E4C00430942 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9D51BF83E4B00430942 /* UIResponder+STPopup.m */; };
 		9550DB0C1BF83E4C00430942 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9D71BF83E4B00430942 /* UIViewController+STPopup.m */; };
-		9550DB0D1BF83E4C00430942 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9DA1BF83E4B00430942 /* SVIndefiniteAnimatedView.m */; };
-		9550DB0E1BF83E4C00430942 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9DC1BF83E4B00430942 /* SVProgressHUD.bundle */; };
-		9550DB0F1BF83E4C00430942 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9DE1BF83E4B00430942 /* SVProgressHUD.m */; };
 		9550DB101BF83E4C00430942 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9E11BF83E4B00430942 /* SwiftyJSON.swift */; };
 		9550DB111BF83E4C00430942 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9E41BF83E4B00430942 /* icon-error.png */; };
 		9550DB121BF83E4C00430942 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9550D9E51BF83E4B00430942 /* icon-error@2x.png */; };
@@ -344,8 +341,6 @@
 		9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */ = {isa = PBXBuildFile; fileRef = 986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */; };
-		986A13321C1AD8CE0083A434 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986A13311C1AD8CE0083A434 /* Debug.swift */; };
-		986A13331C1AD8CE0083A434 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986A13311C1AD8CE0083A434 /* Debug.swift */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
@@ -353,6 +348,10 @@
 		988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */; };
 		988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
+		9890CBF51C1FF37600C34156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBEE1C1FF37600C34156 /* SVIndefiniteAnimatedView.m */; };
+		9890CBF61C1FF37600C34156 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9890CBF01C1FF37600C34156 /* SVProgressHUD.bundle */; };
+		9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBF21C1FF37600C34156 /* SVProgressHUD.m */; };
+		9890CBF81C1FF37600C34156 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBF41C1FF37600C34156 /* SVRadialGradientLayer.m */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
@@ -785,12 +784,6 @@
 		9550D9D51BF83E4B00430942 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+STPopup.m"; sourceTree = "<group>"; };
 		9550D9D61BF83E4B00430942 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STPopup.h"; sourceTree = "<group>"; };
 		9550D9D71BF83E4B00430942 /* UIViewController+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STPopup.m"; sourceTree = "<group>"; };
-		9550D9D91BF83E4B00430942 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		9550D9DA1BF83E4B00430942 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		9550D9DB1BF83E4B00430942 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		9550D9DC1BF83E4B00430942 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		9550D9DD1BF83E4B00430942 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		9550D9DE1BF83E4B00430942 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9550D9E11BF83E4B00430942 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		9550D9E41BF83E4B00430942 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
 		9550D9E51BF83E4B00430942 /* icon-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error@2x.png"; sourceTree = "<group>"; };
@@ -902,7 +895,6 @@
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
 		986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = unfinished_upload_task.plist; path = Gocci/Debug/unfinished_upload_task.plist; sourceTree = "<group>"; };
-		986A13311C1AD8CE0083A434 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = Gocci/Debug/Debug.swift; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
@@ -910,6 +902,14 @@
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
 		988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testVideoUploadTaskChain.swift; sourceTree = "<group>"; };
 		988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostPreparation.swift; sourceTree = "<group>"; };
+		9890CBED1C1FF37600C34156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		9890CBEE1C1FF37600C34156 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		9890CBEF1C1FF37600C34156 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		9890CBF01C1FF37600C34156 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		9890CBF11C1FF37600C34156 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		9890CBF21C1FF37600C34156 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		9890CBF31C1FF37600C34156 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		9890CBF41C1FF37600C34156 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
@@ -1669,6 +1669,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9890CBEC1C1FF37600C34156 /* SVProgressHUD */,
 				9811245E1C0F02E20055F2A7 /* SwiftKeychainWrapper */,
 				95FD92901C0D48DA00D822E8 /* SGActionView */,
 				98B1FCEF1C06D5B9006CA013 /* Reachability */,
@@ -1690,7 +1691,6 @@
 				9550D9A71BF83E4B00430942 /* SDWebImage */,
 				9550D9C91BF83E4B00430942 /* SingleLineTextField */,
 				9550D9CC1BF83E4B00430942 /* STPopup */,
-				9550D9D81BF83E4B00430942 /* SVProgressHUD */,
 				9550D9E01BF83E4B00430942 /* SwiftyJSON */,
 				9550D9E21BF83E4B00430942 /* TWMessageBarManager */,
 				9550D9EC1BF83E4B00430942 /* UCZProgressView */,
@@ -1900,19 +1900,6 @@
 				9550D9D71BF83E4B00430942 /* UIViewController+STPopup.m */,
 			);
 			path = STPopup;
-			sourceTree = "<group>";
-		};
-		9550D9D81BF83E4B00430942 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				9550D9D91BF83E4B00430942 /* SVIndefiniteAnimatedView.h */,
-				9550D9DA1BF83E4B00430942 /* SVIndefiniteAnimatedView.m */,
-				9550D9DB1BF83E4B00430942 /* SVProgressHUD-Prefix.pch */,
-				9550D9DC1BF83E4B00430942 /* SVProgressHUD.bundle */,
-				9550D9DD1BF83E4B00430942 /* SVProgressHUD.h */,
-				9550D9DE1BF83E4B00430942 /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		9550D9E01BF83E4B00430942 /* SwiftyJSON */ = {
@@ -2217,9 +2204,23 @@
 				987E51F51BFB37AD00339285 /* thumbnail.jpg */,
 				987E51F11BFB04C200339285 /* twosec.mp4 */,
 				987E51EC1BF9C33A00339285 /* testvid.mp4 */,
-				986A13311C1AD8CE0083A434 /* Debug.swift */,
 			);
 			name = Debug;
+			sourceTree = "<group>";
+		};
+		9890CBEC1C1FF37600C34156 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9890CBED1C1FF37600C34156 /* SVIndefiniteAnimatedView.h */,
+				9890CBEE1C1FF37600C34156 /* SVIndefiniteAnimatedView.m */,
+				9890CBEF1C1FF37600C34156 /* SVProgressHUD-Prefix.pch */,
+				9890CBF01C1FF37600C34156 /* SVProgressHUD.bundle */,
+				9890CBF11C1FF37600C34156 /* SVProgressHUD.h */,
+				9890CBF21C1FF37600C34156 /* SVProgressHUD.m */,
+				9890CBF31C1FF37600C34156 /* SVRadialGradientLayer.h */,
+				9890CBF41C1FF37600C34156 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		98B1FCEF1C06D5B9006CA013 /* Reachability */ = {
@@ -2395,7 +2396,6 @@
 				987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */,
 				952258341C1D8DEE00B0C944 /* tabbaritem_profile.png in Resources */,
 				9550DA5E1BF83E4C00430942 /* SCSecondView_5_5_inch.xib in Resources */,
-				9550DB0E1BF83E4C00430942 /* SVProgressHUD.bundle in Resources */,
 				9550DAD11BF83E4C00430942 /* splash_tmp_sample.mp4 in Resources */,
 				9550DAA31BF83E4C00430942 /* btn_toukou.png in Resources */,
 				9550DAB01BF83E4C00430942 /* tabbaritem_lifelog_sel.png in Resources */,
@@ -2463,6 +2463,7 @@
 				9550DAB21BF83E4C00430942 /* tabbaritem_posting.png in Resources */,
 				9550DAB31BF83E4C00430942 /* tabbaritem_posting@2x.png in Resources */,
 				9550DA571BF83E4C00430942 /* SCFirstView_4_7_inch.xib in Resources */,
+				9890CBF61C1FF37600C34156 /* SVProgressHUD.bundle in Resources */,
 				9550DAAE1BF83E4C00430942 /* tabbaritem_lifelog.png in Resources */,
 				952258371C1D8DEE00B0C944 /* tabbaritem_timeline_sel@2x.png in Resources */,
 				9550DABC1BF83E4C00430942 /* tabbaritem_search_sel.png in Resources */,
@@ -2478,7 +2479,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */,
-				986A13331C1AD8CE0083A434 /* Debug.swift in Sources */,
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
 				9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */,
 				9801BF111C080677001F4D3C /* TaskScheduler.swift in Sources */,
@@ -2528,7 +2528,6 @@
 				9550DAFD1BF83E4C00430942 /* SDWebImageDownloaderOperation.m in Sources */,
 				981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */,
 				98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */,
-				9550DB0D1BF83E4C00430942 /* SVIndefiniteAnimatedView.m in Sources */,
 				9550DAF81BF83E4C00430942 /* NSData+ImageContentType.m in Sources */,
 				9550DA6E1BF83E4C00430942 /* SCFilterSelectorView.m in Sources */,
 				9550DAD01BF83E4C00430942 /* TabbarBaseViewController.m in Sources */,
@@ -2540,6 +2539,7 @@
 				98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
+				9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
 				9550DAD51BF83E4C00430942 /* AFHTTPSessionManager.m in Sources */,
 				9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */,
@@ -2556,7 +2556,6 @@
 				9550DA3A1BF83E4C00430942 /* ReLoginViewController.swift in Sources */,
 				9550DA731BF83E4C00430942 /* SCPlayer.m in Sources */,
 				9550DA601BF83E4C00430942 /* SCTouchDetector.m in Sources */,
-				9550DB0F1BF83E4C00430942 /* SVProgressHUD.m in Sources */,
 				9550DB051BF83E4C00430942 /* UIImageView+WebCache.m in Sources */,
 				9550DAF51BF83E4C00430942 /* RHRefreshControlViewPinterest.m in Sources */,
 				9550DAE91BF83E4C00430942 /* JTCalendarAppearance.m in Sources */,
@@ -2594,6 +2593,7 @@
 				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
 				981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */,
+				9890CBF51C1FF37600C34156 /* SVIndefiniteAnimatedView.m in Sources */,
 				9550DA141BF83E4C00430942 /* MoviePlayerManager.m in Sources */,
 				9550DB1F1BF83E4C00430942 /* UIImageView+AFNetworking.m in Sources */,
 				9550DA151BF83E4C00430942 /* AppDelegate.m in Sources */,
@@ -2602,7 +2602,7 @@
 				9550DA401BF83E4C00430942 /* NotificationViewController.m in Sources */,
 				9550DA2B1BF83E4C00430942 /* FolloweeListCell.m in Sources */,
 				9550DA171BF83E4C00430942 /* UIImage+BlurEffect.m in Sources */,
-				986A13321C1AD8CE0083A434 /* Debug.swift in Sources */,
+				9890CBF81C1FF37600C34156 /* SVRadialGradientLayer.m in Sources */,
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
 				98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */,
 				9550DAEE1BF83E4C00430942 /* JTCalendarMonthView.m in Sources */,
