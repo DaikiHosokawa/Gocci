@@ -106,6 +106,13 @@ extension UIViewController {
         self.presentViewController(p, animated: true, completion: nil)
     }
     
+    func simpleConfirmationPopup(title: String, _ msg: String, _ cancel_button: String, _ ok_button: String, _ and: (()->())? = nil) {
+        let p = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        p.addAction(UIAlertAction(title: cancel_button, style: UIAlertActionStyle.Default, handler: nil ))
+        p.addAction(UIAlertAction(title: ok_button, style: UIAlertActionStyle.Default, handler: { _ in and?() } ))
+        self.presentViewController(p, animated: true, completion: nil)
+    }
+    
     func ignoreCommonSenseAndGoToViewControllerWithName(tvcn: String) {
         let stobo = UIStoryboard(name: Util.getInchString(), bundle: nil)
         let vc = stobo.instantiateViewControllerWithIdentifier(tvcn)

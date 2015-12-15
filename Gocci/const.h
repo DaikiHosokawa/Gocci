@@ -19,7 +19,7 @@
 //#define FRESH_START
 
 /// #######################################################################################
-#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
+//#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
 //#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
 
 /// #######################################################################################

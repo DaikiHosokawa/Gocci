@@ -145,145 +145,152 @@ class SettingsTableViewController: UITableViewController
                 self.simplePopup("Password setting", "Your passwords did not match", "OK")
             }
             else {
-                let succ = {
-                    Util.runOnMainThread {
-                        cell.detailTextLabel?.text = "Password was set!"
-                        cell.detailTextLabel?.textColor = UIColor.greenColor()
-                        Persistent.password_was_set_by_the_user = true
-                        
-                        self.simplePopup("Password setting", "Password was set successful :)", "OK")
-                    }
-                }
-                let damn = {
-                    Util.runOnMainThread {
-                        self.simplePopup("Password setting", "Password setting failed :(", "OK")
-                    }
+                let req = API3.set.password()
+                
+                req.parameters.password = pw1
+                
+                req.onAnyAPIError {
+                    self.simplePopup("Password setting", "Password setting failed :( The password must have at least 6 and not more than 25 characters", "OK")
                 }
                 
-                APIClient.setPassword(pw1) { (result, code, error) -> Void in
+                req.perform {
+                    cell.detailTextLabel?.text = "Password was set!"
+                    cell.detailTextLabel?.textColor = UIColor.greenColor()
+                    Persistent.password_was_set_by_the_user = true
                     
-                    if error != nil {
-                        damn()
-                        return
-                    }
-                    
-                    if code >= 200 && code < 300 {
-                        if let result = result as? [String: AnyObject] {
-                            if let rescode = result["code"] as? Int {
-                                if rescode == 200 {
-                                    succ()
-                                    return
-                                }
-                            }
-                        }
-                    }
-                    
-                    damn()
+                    self.simplePopup("Password setting", "Password was set successful :)", "OK")
                 }
+                
             }
-            
-            })
-        
+        })
+    
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    
+    
     func handleTwitter(cell: UITableViewCell)
     {
-        if Persistent.user_is_connected_via_twitter {
-            let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
-            popup.confirmationText = "Do you really want to disconnect your account from Twitter?"
-            popup.onConfirm = {
-                // TODO disconnect call
-                Persistent.user_is_connected_via_twitter = false
-                cell.detailTextLabel?.text = "not connected :("
-                cell.detailTextLabel?.textColor = UIColor.redColor()
+        
+        let connect = {
+            TwitterAuthentication.authenticate(currentViewController: self) { token in
+                
+                guard let token = token else {
+                    Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                    return
+                }
+                
+                let req = API3.set.sns_link()
+                
+                req.parameters.provider = TWITTER_PROVIDER_STRING
+                req.parameters.sns_token = token.cognitoFormat()
+                
+                req.onAnyAPIError {
+                    self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
+                }
+                
+                req.perform {
+                    Persistent.user_is_connected_via_twitter = true
+                    cell.detailTextLabel?.text = "connected!"
+                    cell.detailTextLabel?.textColor = UIColor.greenColor()
+                }
             }
-            popup.pop()
-            return
         }
         
-        let onSuccess = {
-            Persistent.user_is_connected_via_twitter = true
-            cell.detailTextLabel?.text = "connected!"
-            cell.detailTextLabel?.textColor = UIColor.greenColor()
-        }
-
-        TwitterAuthentication.authenticate(currentViewController: self) { token in
-            
-            guard let token = token else {
-                Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
-                return
-            }
-            
-            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
-                token: token.cognitoFormat(),
-                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
-            {
-                (result, code, error) -> Void in
+        let disconnect = {
+            TwitterAuthentication.authenticate(currentViewController: self) { token in
                 
-                if error != nil || code != 200 {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                guard let token = token else {
+                    Util.popup("Twitter連携が現在実施できません。大変申し訳ありません。")
+                    return
                 }
-                else if result["code"] as! Int == 200 {
-                    onSuccess()
+                
+                let req = API3.unset.sns_link()
+                
+                req.parameters.provider = TWITTER_PROVIDER_STRING
+                req.parameters.sns_token = token.cognitoFormat()
+                
+                req.onAnyAPIError {
+                    self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
                 }
-                else {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                
+                req.perform {
+                    Persistent.user_is_connected_via_twitter = false
+                    cell.detailTextLabel?.text = "not connected :("
+                    cell.detailTextLabel?.textColor = UIColor.redColor()
                 }
             }
+        }
+        
+        if !Persistent.user_is_connected_via_twitter {
+            connect()
+        }
+        else {
+            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Twitter?", "cancel", "disconnect", disconnect)
         }
     }
-    
     
     func handleFacebook(cell: UITableViewCell)
     {
-        if Persistent.user_is_connected_via_facebook {
-            let popup = ConfirmationPopover(from: self, position: cell.frame, widthRatio: 75, heightRatio: 30)
-            popup.confirmationText = "Do you really want to disconnect your account from Facebook?"
-            popup.onConfirm = {
-                // TODO disconnect call
-                Persistent.user_is_connected_via_facebook = false
-                cell.detailTextLabel?.text = "not connected :("
-                cell.detailTextLabel?.textColor = UIColor.redColor()
-            }
-            popup.pop()
-            return
-        }
         
-        let onSuccess = {
-            Persistent.user_is_connected_via_facebook = true
-            cell.detailTextLabel?.text = "connected!"
-            cell.detailTextLabel?.textColor = UIColor.greenColor()
-        }
-        
-        FacebookAuthentication.authenticate(currentViewController: self) { token in
-            
-            guard let token = token else {
-                Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
-                return
-            }
-            
-            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
-                token: token.cognitoFormat(),
-                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
-            {
-                (result, code, error) -> Void in
+        let connect = {
+            FacebookAuthentication.authenticate(currentViewController: self) { token in
                 
-                if error != nil || code != 200 {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                guard let token = token else {
+                    Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                    return
                 }
-                else if result["code"] as! Int == 200 {
-                    onSuccess()
+                
+                let req = API3.set.sns_link()
+                
+                req.parameters.provider = FACEBOOK_PROVIDER_STRING
+                req.parameters.sns_token = token.cognitoFormat()
+                
+                req.onAnyAPIError {
+                    self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
                 }
-                else {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
+                
+                req.perform {
+                    Persistent.user_is_connected_via_facebook = true
+                    cell.detailTextLabel?.text = "connected!"
+                    cell.detailTextLabel?.textColor = UIColor.greenColor()
                 }
             }
         }
+        
+        let disconnect = {
+            FacebookAuthentication.authenticate(currentViewController: self) { token in
+                
+                guard let token = token else {
+                    Util.popup("Facebook連携が現在実施できません。大変申し訳ありません。")
+                    return
+                }
+                
+                let req = API3.unset.sns_link()
+                
+                req.parameters.provider = FACEBOOK_PROVIDER_STRING
+                req.parameters.sns_token = token.cognitoFormat()
+                
+                req.onAnyAPIError {
+                    self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
+                }
+                
+                req.perform {
+                    Persistent.user_is_connected_via_facebook = false
+                    cell.detailTextLabel?.text = "not connected :("
+                    cell.detailTextLabel?.textColor = UIColor.redColor()
+                }
+            }
+        }
+        
+        if !Persistent.user_is_connected_via_twitter {
+            connect()
+        }
+        else {
+            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Facebook?", "cancel", "disconnect", disconnect)
+        }
+    
     }
-    
-
-    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
