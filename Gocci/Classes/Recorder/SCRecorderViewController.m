@@ -93,7 +93,7 @@ static SCRecordSession *staticRecordSession;
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
-#ifdef INDEVEL
+#if TEST_BUILD
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
 #else
     _recorder.maxRecordDuration = CMTimeMake(4200, 600);
@@ -301,7 +301,7 @@ static SCRecordSession *staticRecordSession;
     CMTime currentTime = kCMTimeZero;
     
     NSTimeInterval time_now = 0.0;
-#ifdef INDEVEL
+#if TEST_BUILD
     NSTimeInterval time_max = 1.3;
 #else
     NSTimeInterval time_max = 7.0;
