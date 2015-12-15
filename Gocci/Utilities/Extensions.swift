@@ -17,6 +17,11 @@ extension String {
         return regex.firstMatchInString(self, options:[], range: NSMakeRange(0, self.characters.count)) != nil
     }
     
+    func replace(target: String, withString: String) -> String
+    {
+        return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    
     var length : Int {
         return self.characters.count
     }

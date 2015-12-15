@@ -17,7 +17,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-#import "FHSTwitterEngine.h"
+#import "SVProgressHUD.h"
 
 #import "Swift.h"
 
@@ -64,6 +64,7 @@
     [self.window makeKeyAndVisible];
     
     
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     
 #ifdef FRESH_START
     [Persistent resetPersistentDataToInitialState];
