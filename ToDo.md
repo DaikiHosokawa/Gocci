@@ -24,6 +24,11 @@ Needs Testing
 - live branch conversion error
 
 
+Would be cool
+=============
+
+- Let the users set their profile image from twitter or facebook login. half of the code already exists
+
 Daiki Hosokawa
 ==============
 
@@ -37,25 +42,17 @@ Daiki Hosokawa
 Markus Wanke
 ============
 
+- Mute function
 
- -  Remove the Facebook Sharekit when we get [publish_permission]
+- Remove the Facebook Sharekit when we get [publish_permission]
 
- -  Call the new register_device_token URI when the device token changes
+- Call the new register_device_token URI when the device token changes
 
- -  That the image is downloaded everytime is retarded. No saved url
+- That the image is downloaded everytime is retarded. No saved url
 
- -  Relogin view controller no password edit fiel set to stars input
+- Relogin view controller no password edit fiel set to stars input
 
- -  Show busy indicator on password relogin, sns relogin, username signup
-
- -  
-
-
-
-
-
-
-
+- Show busy indicator on password relogin, sns relogin, username signup
 
 
 

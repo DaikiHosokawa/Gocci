@@ -17,6 +17,11 @@ extension String {
         return regex.firstMatchInString(self, options:[], range: NSMakeRange(0, self.characters.count)) != nil
     }
     
+    func replace(target: String, withString: String) -> String
+    {
+        return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    
     var length : Int {
         return self.characters.count
     }
@@ -98,6 +103,13 @@ extension UIViewController {
     func simplePopup(title: String, _ msg: String, _ button: String, and: (()->())? = nil) {
         let p = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
         p.addAction(UIAlertAction(title: button, style: UIAlertActionStyle.Default, handler: { _ in and?() } ))
+        self.presentViewController(p, animated: true, completion: nil)
+    }
+    
+    func simpleConfirmationPopup(title: String, _ msg: String, _ cancel_button: String, _ ok_button: String, _ and: (()->())? = nil) {
+        let p = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        p.addAction(UIAlertAction(title: cancel_button, style: UIAlertActionStyle.Default, handler: nil ))
+        p.addAction(UIAlertAction(title: ok_button, style: UIAlertActionStyle.Default, handler: { _ in and?() } ))
         self.presentViewController(p, animated: true, completion: nil)
     }
     

@@ -45,7 +45,31 @@ class DebugViewController : UIViewController {
     
 
 
-    
+    class func afterAppLaunch() {
+        
+        let fm = NSFileManager.defaultManager()
+        
+        let task = NSBundle.mainBundle().pathForResource("unfinished_upload_task", ofType: "plist")!
+        
+        let dest = Util.documentsDirectory() + "/unfinishedTasks.plist"
+        
+        let _ = try? fm.removeItemAtPath(dest)
+        
+        try! fm.copyItemAtPath(task, toPath: dest)
+        
+        
+        let path = Util.documentsDirectory() + "/user_posted_videos"
+        
+        if !fm.fileExistsAtPath(path) {
+            try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        let videoFile = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+        
+        let _ = try? fm.copyItemAtPath(videoFile, toPath: path + "/2015-12-11-10-04-26_949.mp4")
+        
+        
+    }
 
     
     @IBAction func explode(sender: AnyObject) {

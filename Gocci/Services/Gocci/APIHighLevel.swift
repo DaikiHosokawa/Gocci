@@ -52,10 +52,7 @@ class APIHighLevel {
         req.parameters.identity_id = iid
         
         if onAPIFailure != nil {
-            req.onUnhandledError = { c, m in
-                Lo.error("API Login: \(c): \(m)")
-                onAPIFailure?()
-            }
+            req.onAnyAPIError { onAPIFailure?() }
         }
         
         if onNetworkFailure != nil {
@@ -91,10 +88,7 @@ class APIHighLevel {
         
         req.parameters.identity_id = iid
         
-        req.onUnhandledError = {
-            Lo.error("FATAL: UNHANDLED API ERROR: \($0): \($1)")
-            and(false)
-        }
+        req.onAnyAPIError { and(false) }
         
         req.perform { (payload) -> () in
             stepTwo(payload) { awsLoginSuccess in
