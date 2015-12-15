@@ -359,6 +359,10 @@
 		98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
 		98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4539C1C1EFF4A0010846B /* APIRequest.swift */; };
 		98C4539E1C1EFF4A0010846B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4539C1C1EFF4A0010846B /* APIRequest.swift */; };
+		98C453A01C1FAF900010846B /* FeedbackPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C4539F1C1FAF900010846B /* FeedbackPopup.xib */; };
+		98C453A11C1FAF900010846B /* FeedbackPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C4539F1C1FAF900010846B /* FeedbackPopup.xib */; };
+		98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
+		98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -911,6 +915,8 @@
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
 		98C453991C1E67B70010846B /* APIHighLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHighLevel.swift; sourceTree = "<group>"; };
 		98C4539C1C1EFF4A0010846B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		98C4539F1C1FAF900010846B /* FeedbackPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackPopup.xib; sourceTree = "<group>"; };
+		98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackPopup.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -1625,6 +1631,8 @@
 				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
 				9550D9481BF83E4B00430942 /* WebViewPopup.swift */,
 				9550D9491BF83E4B00430942 /* WebViewPopup.xib */,
+				98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */,
+				98C4539F1C1FAF900010846B /* FeedbackPopup.xib */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -2371,6 +2379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C453A11C1FAF900010846B /* FeedbackPopup.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2437,6 +2446,7 @@
 				9550DABD1BF83E4C00430942 /* tabbaritem_search_sel@2x.png in Resources */,
 				9550DAAB1BF83E4C00430942 /* image_sample00.jpg in Resources */,
 				9550DB111BF83E4C00430942 /* icon-error.png in Resources */,
+				98C453A01C1FAF900010846B /* FeedbackPopup.xib in Resources */,
 				987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */,
 				9550DABA1BF83E4C00430942 /* tabbaritem_search.png in Resources */,
 				9550DA8D1BF83E4C00430942 /* TimelineCell.xib in Resources */,
@@ -2499,6 +2509,7 @@
 				98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
+				98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2704,6 +2715,7 @@
 				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
 				9550DADF1BF83E4C00430942 /* BBBadgeBarButtonItem.m in Sources */,
+				98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
 				9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */,
 				95FD92E91C0D79F200D822E8 /* CollectionViewCell.m in Sources */,
 				9550DAD31BF83E4C00430942 /* AFHTTPRequestOperation.m in Sources */,
