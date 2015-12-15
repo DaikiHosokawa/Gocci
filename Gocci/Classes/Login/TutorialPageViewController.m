@@ -54,7 +54,7 @@
     self.username = (UITextField *)[page3.view viewWithTag:3];
     
     
-#ifdef INDEVEL
+#if TEST_BUILD
     self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
 #endif
     
