@@ -16,16 +16,14 @@ import Foundation
         let req = API3.auth.signup()
         req.parameters.username = username
         
-        req.on_ERROR_USERNAME_ALREADY_REGISTERD( { _, _ in Util.runOnMainThread { onUsernameAlreadyTaken() } } )
+        req.on_ERROR_USERNAME_ALREADY_REGISTERD( { _, _ in onUsernameAlreadyTaken() } )
         
         req.perform { payload in
             Persistent.identity_id = payload.identity_id
             Util.sleep(0.3) // nen no tame ni
             
             APIHighLevel.simpleLogin { res in
-                Util.runOnMainThread {
-                    and(res)
-                }
+                and(res)
             }
         }
     }
@@ -61,7 +59,7 @@ class APIHighLevel {
         }
         
         if onNetworkFailure != nil {
-            req.onNetworkTrouble { _, c, m -> () in
+            req.onNetworkTrouble { c, m -> () in
                 Lo.error("API Login: \(c): \(m)")
                 onNetworkFailure?()
             }
@@ -81,9 +79,7 @@ class APIHighLevel {
     }
     
     
-    class func simpleLogin(andThen: Bool->()) {
-        
-        let and: Bool->() = { res in Util.runOnMainThread { andThen(res) } }
+    class func simpleLogin(and: Bool->()) {
         
         guard let iid = Persistent.identity_id ?? Util.getUserDefString("identity_id") else {
             Lo.error("APIHighLevel: No identity_id set. Login impossible")

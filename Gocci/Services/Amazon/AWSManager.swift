@@ -276,17 +276,19 @@ class AWSManager {
         (credentialsProvider.identityProvider as! EnhancedGocciIdentityProvider).connectWithBackEnd(iid, userID: userID, token: token)
         credentialsProvider.refresh().continueWithBlock { (task) -> AnyObject! in
             
+            Util.runOnMainThread {
             // TODO make a proper login success check if you know how...
-            if let e = task.error {
-                Lo.error("AWS2: \(e)")
-                and(false)
-            }
-            else if let e = task.exception {
-                Lo.error("AWS2: \(e)")
-                and(false)
-            }
-            else {
-                and(true)
+                if let e = task.error {
+                    Lo.error("AWS2: \(e)")
+                    and(false)
+                }
+                else if let e = task.exception {
+                    Lo.error("AWS2: \(e)")
+                    and(false)
+                }
+                else {
+                    and(true)
+                }
             }
             
             return nil
