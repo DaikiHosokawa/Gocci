@@ -46,17 +46,18 @@ func actualCode() {
 
 class APISupport {
     
-    static var verbose: Bool = true
     
     
     static var fuelmid_session_cookie: String! = nil
 
 #if TEST_BUILD
+    static var verbose: Bool = true
     static var baseurl = API3.testurl
     static let USER_AGENT: String =
     "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
 #endif
 #if LIVE_BUILD
+    static var verbose: Bool = false
     static var baseurl = API3.liveurl
     static let USER_AGENT: String =
     "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
@@ -121,12 +122,13 @@ class APISupport {
         //guard version == 3 else { return nil }
         guard code != "" else { return nil }
         
-        let payload = json["payload"].dictionary
+        // TODO check for empty dict again when murata-san has fixed this bug
+        let payload = json["payload"].dictionary ?? [:]
         
-        if code == "SUCCESS" && payload == nil { return nil }
+        //if code == "SUCCESS" && payload == nil { return nil }
         
         
-        return (code: code, msg: message, payload: payload ?? [:])
+        return (code: code, msg: message, payload: payload)
     }
     
     
@@ -177,7 +179,7 @@ class APISupport {
         }
     }
     
-    class func performRelogin(request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
+    class func performRelogin(var request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
         
         sep("REAUTHENTICATION NEEDED")
         
@@ -186,13 +188,13 @@ class APISupport {
                 performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
             }
             else {
-                request.defaultOnNetworkFailure(request, .ERROR_RE_AUTH_FAILED, networkErrorMessageTable[.ERROR_RE_AUTH_FAILED] ?? "No msg")
+                request.handleNetworkError(.ERROR_RE_AUTH_FAILED, networkErrorMessageTable[.ERROR_RE_AUTH_FAILED] ?? "No msg")
             }
         }
     
     }
     
-    class func performNetworkRequest(request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
+    class func performNetworkRequest(var request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
         
         guard let saneParameterPairs = request.validateParameterPairs() else {
             return
@@ -205,6 +207,9 @@ class APISupport {
         let url = request.compose(saneParameterPairs)
         
         sep("REQUEST")
+        for (k, v) in saneParameterPairs {
+            lo("    \(k): \t\(v)")
+        }
         lo(url.absoluteString)
         
         let req = NSMutableURLRequest(URL: url)
@@ -216,24 +221,24 @@ class APISupport {
         let urlsessiontask = session.dataTaskWithRequest(req) { (data, response, error) -> Void in
             
             guard error == nil else {
-                request.defaultOnNetworkFailure(request, NSURLErrorConversion(error!), error!.localizedDescription)
+                request.handleNetworkError(NSURLErrorConversion(error!), error!.localizedDescription)
                 return
             }
             
             guard let resp = response as? NSHTTPURLResponse where resp.statusCode == 200 else {
-                request.defaultOnNetworkFailure(request, .ERROR_SERVER_SIDE_FAILURE, networkErrorMessageTable[.ERROR_SERVER_SIDE_FAILURE] ?? "No msg")
+                request.handleNetworkError(.ERROR_SERVER_SIDE_FAILURE, networkErrorMessageTable[.ERROR_SERVER_SIDE_FAILURE] ?? "No msg")
                 return
             }
             
             APISupport.extractFuelmidCookie(resp)
             
             guard let data = data where data.length > 0 else {
-                request.defaultOnNetworkFailure(request, .ERROR_NO_DATA_RECIEVED, networkErrorMessageTable[.ERROR_NO_DATA_RECIEVED] ?? "No msg")
+                request.handleNetworkError(.ERROR_NO_DATA_RECIEVED, networkErrorMessageTable[.ERROR_NO_DATA_RECIEVED] ?? "No msg")
                 return
             }
             
             guard let (code, msg, payload) = preParseJSONResponse(data) else { // TODO CRC32 check in header field would be cool
-                request.defaultOnNetworkFailure(request, .ERROR_BASEFRAME_JSON_MALFORMED, networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No msg")
+                request.handleNetworkError(.ERROR_BASEFRAME_JSON_MALFORMED, networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No msg")
                 return
             }
             
@@ -252,6 +257,11 @@ class APISupport {
                 return
             }
             
+            guard code == "SUCCESS" || request.canHandleErrorCode(code) else {
+                request.handleNetworkError(.ERROR_UNKNOWN_ERROR_CODE, networkErrorMessageTable[.ERROR_UNKNOWN_ERROR_CODE] ?? "No msg")
+                return
+            }
+            
             
             handleSaneJSONResponse(code: code, message: msg, payload: payload)
         }
@@ -259,61 +269,6 @@ class APISupport {
         urlsessiontask.resume()
     }
 }
-
-
-
-protocol APIRequestProtocol {
-    
-    var apipath: String { get }
-    
-    var defaultOnNetworkFailure: (APIRequestProtocol, APISupport.NetworkError, String)->() { get set }
-    
-    func validateParameterPairs() -> [String: String]?
-    
-    func retry()
-    
-}
-
-
-class APIRequest {
-    
-    
-    func validateParameterPairs() -> [String: String]? { return nil }
-    
-    
-    var defaultOnNetworkFailure: (APIRequestProtocol, APISupport.NetworkError, String)->() = { request, error, message in
-        
-        let pop = Util.overlayPopup("ネットワークがありません", "通信環境に問題があるようです\n\(error)")
-        pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
-        pop.addButton("リトライ", style: UIAlertActionStyle.Default) {
-            request.retry()
-        }
-        
-        pop.overlay()
-        
-    }
-    
-    func onNetworkTrouble(handler: (APIRequestProtocol, APISupport.NetworkError, String)->()) {
-        defaultOnNetworkFailure = handler
-    }
-
-}
-
-extension APIRequestProtocol {
-    
-    func compose(saneParameterPairs: [String: String]) -> NSURL {
-        let res = NSURLComponents(string: APISupport.baseurl + apipath)!
-        res.queryItems = saneParameterPairs.map{ (k,v) in NSURLQueryItem(name: k, value: v) }
-        return res.URL!
-    }
-    
-    
-}
-
-
-
-
-
 
 
 

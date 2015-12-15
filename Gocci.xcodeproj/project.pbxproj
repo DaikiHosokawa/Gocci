@@ -357,6 +357,8 @@
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
 		98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
+		98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4539C1C1EFF4A0010846B /* APIRequest.swift */; };
+		98C4539E1C1EFF4A0010846B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4539C1C1EFF4A0010846B /* APIRequest.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
@@ -908,6 +910,7 @@
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
 		98C453991C1E67B70010846B /* APIHighLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHighLevel.swift; sourceTree = "<group>"; };
+		98C4539C1C1EFF4A0010846B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -1523,6 +1526,7 @@
 				9550D9121BF83E4B00430942 /* APISupport.swift */,
 				9862D6041C17BF45006AE6D9 /* APITasks.swift */,
 				98C453991C1E67B70010846B /* APIHighLevel.swift */,
+				98C4539C1C1EFF4A0010846B /* APIRequest.swift */,
 			);
 			path = Gocci;
 			sourceTree = "<group>";
@@ -2477,6 +2481,7 @@
 				981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */,
 				9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */,
+				98C4539E1C1EFF4A0010846B /* APIRequest.swift in Sources */,
 				981A93431BFC51BF007B3BF6 /* API3.swift in Sources */,
 				981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */,
 				981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */,
@@ -2519,6 +2524,7 @@
 				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
 				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
+				98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */,
 				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
