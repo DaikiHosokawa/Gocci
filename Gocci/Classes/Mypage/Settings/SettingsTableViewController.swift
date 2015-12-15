@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO TRANSLATION
+
 
 class SettingsTableViewController: UITableViewController
 {
@@ -56,8 +58,8 @@ class SettingsTableViewController: UITableViewController
                     },
                     handleTwitter
                 ),
-                ( { $0.textLabel?.text = "Google+"; return }, nil),
-                ( { $0.textLabel?.text = "Line"; return }, nil),
+                //( { $0.textLabel?.text = "Google+"; return }, nil),
+                //( { $0.textLabel?.text = "Line"; return }, nil),
             ],
             // お知らせ =====================================================================
             [
