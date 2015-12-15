@@ -188,7 +188,7 @@ class APISupport {
                 performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
             }
             else {
-                request.handleNetworkError(.ERROR_RE_AUTH_FAILED, networkErrorMessageTable[.ERROR_RE_AUTH_FAILED] ?? "No msg")
+                request.handleNetworkError(.ERROR_RE_AUTH_FAILED)
             }
         }
     
@@ -226,19 +226,19 @@ class APISupport {
             }
             
             guard let resp = response as? NSHTTPURLResponse where resp.statusCode == 200 else {
-                request.handleNetworkError(.ERROR_SERVER_SIDE_FAILURE, networkErrorMessageTable[.ERROR_SERVER_SIDE_FAILURE] ?? "No msg")
+                request.handleNetworkError(.ERROR_SERVER_SIDE_FAILURE)
                 return
             }
             
             APISupport.extractFuelmidCookie(resp)
             
             guard let data = data where data.length > 0 else {
-                request.handleNetworkError(.ERROR_NO_DATA_RECIEVED, networkErrorMessageTable[.ERROR_NO_DATA_RECIEVED] ?? "No msg")
+                request.handleNetworkError(.ERROR_NO_DATA_RECIEVED)
                 return
             }
             
             guard let (code, msg, payload) = preParseJSONResponse(data) else { // TODO CRC32 check in header field would be cool
-                request.handleNetworkError(.ERROR_BASEFRAME_JSON_MALFORMED, networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No msg")
+                request.handleNetworkError(.ERROR_BASEFRAME_JSON_MALFORMED)
                 return
             }
             
@@ -258,7 +258,7 @@ class APISupport {
             }
             
             guard code == "SUCCESS" || request.canHandleErrorCode(code) else {
-                request.handleNetworkError(.ERROR_UNKNOWN_ERROR_CODE, networkErrorMessageTable[.ERROR_UNKNOWN_ERROR_CODE] ?? "No msg")
+                request.handleNetworkError(.ERROR_UNKNOWN_ERROR_CODE)
                 return
             }
             

@@ -21,6 +21,8 @@
 
 #import "Reachability.h"
 
+#import "SVProgressHUD.h"
+
 #import "AFNetworking.h" // remove this when API3 is complete
 
 // for twitter HMAC OAuth
