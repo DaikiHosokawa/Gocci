@@ -17,6 +17,10 @@ class SettingsTableViewController: UITableViewController
     let sectionList = ["アカウント", "ソーシャルネットワーク", "お知らせ", "サポート"]
     
     var sectionMapping: [[(setCell:(UITableViewCell->())?, action:(UITableViewCell->())? )]] = []
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
     override func viewDidLoad()
     {

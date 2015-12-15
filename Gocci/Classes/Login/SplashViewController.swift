@@ -118,7 +118,7 @@ class SplashViewController : UIViewController {
 
                 }
                 else {
-                    let pop = Util.overlayPopup("Login failed :(", "Your userdata is malformed, this should never happen. Please login with username and password, or use an SNS service.")
+                    let pop = Util.overlayPopup("ログインに失敗しました", "ユーザーネームとパスワードまたはSNSアカウントでログインしてください.")
                     pop.addButton("Retry", style: UIAlertActionStyle.Default) { self.login() }
                     pop.addButton("Relogin", style: UIAlertActionStyle.Default) {
                         self.performSegueWithIdentifier("goRelogin", sender: self)

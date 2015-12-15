@@ -73,7 +73,7 @@ extension APIRequestProtocol {
     
     mutating func defaultOnNetworkFailure(error: APISupport.NetworkError, _ message: String) {
         
-        let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error)")
+        let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error) : \(message)")
         pop.addButton("Give up", style: UIAlertActionStyle.Cancel) {  }
         pop.addButton("Retry", style: UIAlertActionStyle.Default) {
             self.retry()

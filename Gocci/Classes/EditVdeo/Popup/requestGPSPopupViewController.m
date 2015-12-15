@@ -31,8 +31,8 @@
 {
     if (self = [super init]) {
         self.title = @"現在地の許可";
-        self.contentSizeInPopup = CGSizeMake(300, 280);
-        self.landscapeContentSizeInPopup = CGSizeMake(300, 380);
+        self.contentSizeInPopup = CGSizeMake(250, 180);
+        self.landscapeContentSizeInPopup = CGSizeMake(250, 280);
     }
     return self;
 }
@@ -45,7 +45,7 @@
     
     // 背景画像の設置
     UIImageView *backImage = [[UIImageView alloc] init];
-    backImage.frame = CGRectMake(50, 20, 200, 200);
+    backImage.frame = CGRectMake(75, 20, 100, 100);
     backImage.image = [UIImage imageNamed:@"requestGPS.png"];
     [self.view addSubview:backImage];
     backImage.userInteractionEnabled = YES;
@@ -53,7 +53,7 @@
     
     UILabel *requestLabel = [[UILabel alloc] init];
     requestLabel.text = @"画像をタップしてください";
-    requestLabel.frame = CGRectMake(50, 240, 200, 20);
+    requestLabel.frame = CGRectMake(35, 140, 200, 20);
     [self.view addSubview:requestLabel];
     
     locationManager = [[CLLocationManager alloc]init];
@@ -86,7 +86,6 @@
                     }
                     break;
                     
-                    //GPS request was denied
                 case kCLAuthorizationStatusDenied:
                 case kCLAuthorizationStatusRestricted:
                     
