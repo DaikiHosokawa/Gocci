@@ -111,7 +111,7 @@ class APIHighLevel {
         Persistent.identity_id = payload.identity_id
         
         
-        // UIApplication.sharedApplication().applicationIconBadgeNumber = payload.badge_num
+        UIApplication.sharedApplication().applicationIconBadgeNumber = payload.badge_num
         
         if APISupport.verbose {
             Lo.green("======================================================================")
