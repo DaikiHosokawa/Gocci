@@ -18,6 +18,8 @@
 		9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
+		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
+		951776721C2105EB008E9F39 /* TwitterPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951776701C2105EB008E9F39 /* TwitterPopup.xib */; };
 		952258311C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952258291C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png */; };
 		952258321C1D8DEE00B0C944 /* tabbaritem_profile_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9522582A1C1D8DEE00B0C944 /* tabbaritem_profile_sel.png */; };
 		952258331C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9522582B1C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png */; };
@@ -409,6 +411,8 @@
 		9505939E1BFC2B7100328449 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
+		951776701C2105EB008E9F39 /* TwitterPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterPopup.xib; sourceTree = "<group>"; };
 		952258291C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbaritem_timeline@2x.png"; sourceTree = "<group>"; };
 		9522582A1C1D8DEE00B0C944 /* tabbaritem_profile_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbaritem_profile_sel.png; sourceTree = "<group>"; };
 		9522582B1C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbaritem_profile_sel@2x.png"; sourceTree = "<group>"; };
@@ -1633,6 +1637,8 @@
 		9550D9461BF83E4B00430942 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				9517766F1C2105EB008E9F39 /* TwitterPopup.swift */,
+				951776701C2105EB008E9F39 /* TwitterPopup.xib */,
 				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
 				9550D9481BF83E4B00430942 /* WebViewPopup.swift */,
 				9550D9491BF83E4B00430942 /* WebViewPopup.xib */,
@@ -2461,6 +2467,7 @@
 				9550DAB41BF83E4C00430942 /* tabbaritem_posting_sel.png in Resources */,
 				9550DB151BF83E4C00430942 /* icon-success.png in Resources */,
 				9550DA5C1BF83E4C00430942 /* SCSecondView_3_5_inch.xib in Resources */,
+				951776721C2105EB008E9F39 /* TwitterPopup.xib in Resources */,
 				9550DAAD1BF83E4C00430942 /* naviIcon@2x.png in Resources */,
 				9550DAA11BF83E4C00430942 /* btn_delete_black.png in Resources */,
 				9550DAA91BF83E4C00430942 /* icon_record_cam.png in Resources */,
@@ -2543,6 +2550,7 @@
 				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
+				951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
