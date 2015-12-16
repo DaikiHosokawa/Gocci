@@ -83,13 +83,14 @@
         
         UIUserNotificationSettings *currentSettings = [[UIApplication
                                                         sharedApplication] currentUserNotificationSettings];
+       
         if (currentSettings.types == UIUserNotificationTypeNone) {
+            
             UIUserNotificationType types = UIUserNotificationTypeBadge |
             UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
             UIUserNotificationSettings *mySettings =
             [UIUserNotificationSettings settingsForTypes:types categories:nil];
             [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-            
             
             UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@"通知設定がオフになっています" message:@"呼び出しを有効にするには設定画面より通知を許可して下さい。"
