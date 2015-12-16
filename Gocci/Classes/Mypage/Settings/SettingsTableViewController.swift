@@ -70,9 +70,17 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "通知を設定する"
-                        $0.detailTextLabel?.text = "TODO"
+//                        guard let wants =  Persistent.user_wants_push_notifications else {
+//                            $0.detailTextLabel?.text = "UNSET"
+//                            $0.detailTextLabel?.textColor = UIColor.blueColor()
+//                            return
+//                        }
+                        let wants = Permission.userHasAlreadyRegisterdForNotifications()
+                        $0.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                        $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                        
                     },
-                    nil
+                    handlePushNotification
                 )
             ],
             // サポート =====================================================================             
@@ -108,9 +116,24 @@ class SettingsTableViewController: UITableViewController
                     { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
                     nil
                 ),
+                (
+                    { $0.textLabel?.text = "Reset Gocci to initial state" ; $0.textLabel?.textColor = UIColor.redColor() },
+                    handleAccountReset
+                ),
             ],
         ]
 
+    }
+    
+    
+    
+    func handlePushNotification(cell: UITableViewCell)
+    {
+        // don't think there is something better we can do here
+        cell.detailTextLabel?.text = ""
+        
+        
+        Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
     }
     
     func handlePassword(cell: UITableViewCell)
@@ -292,6 +315,40 @@ class SettingsTableViewController: UITableViewController
     
     }
     
+    func handleAccountReset(cell: UITableViewCell)
+    {
+        var iid: String?
+        
+        let reset = {
+            Persistent.resetPersistentDataToInitialState()
+            if let iid = iid {
+                Persistent.identity_id = iid
+            }
+            self.ignoreCommonSenseAndGoToInitialController()
+        }
+        
+        
+        let alertController = UIAlertController(
+            title: "Resign from Gocci",
+            message: "You can reset Gocci complete or keep your account and reset everything else",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+
+        alertController.addAction(UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) { action in
+            self.simpleConfirmationPopup("last chance", "all you data will be deleted", "cancel", "do it", reset)
+        })
+            
+        alertController.addAction(UIAlertAction(title: "Reset but keep account", style: UIAlertActionStyle.Destructive) { action in
+            iid = Persistent.identity_id
+            self.simpleConfirmationPopup("last chance", "all your data will be deleted, but you can login again", "cancel", "do it", reset)
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { _ in
+        })
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return self.sectionMapping.count
@@ -318,6 +375,8 @@ class SettingsTableViewController: UITableViewController
         sectionMapping[indexPath.section][indexPath.row].setCell?(cell)
         return cell
     }
+    
+
 
 }
 

@@ -179,6 +179,9 @@
     self.exportSession = exportSession;
     
     
+    [Permission showThePopupForPushNoticationsOnce:nil];
+    
+    
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
         
         if (exportSession.cancelled) {
