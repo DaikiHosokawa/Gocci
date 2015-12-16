@@ -1251,7 +1251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pJh-hx-rc3">
-                            <rect key="frame" x="0.0" y="112" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem style="plain" id="MGJ-05-MYY">
@@ -1272,7 +1272,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="m96-gN-BSX" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m96-gN-BSX" id="iZn-UT-I7I">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
