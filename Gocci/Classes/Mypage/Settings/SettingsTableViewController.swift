@@ -36,8 +36,8 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "パスワードを設定する"
-                        $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "" : "set an account password"
-                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "設定済み" : "設定する"
+                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.blackColor() : UIColor.blackColor()
                     },
                     handlePassword
                 ),
@@ -48,8 +48,8 @@ class SettingsTableViewController: UITableViewController
                     {
                         let isCon = Persistent.user_is_connected_via_facebook
                         $0.textLabel?.text = "Facebook"
-                        $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = isCon ? "接続済み" : "未接続"
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.blackColor() : UIColor.blackColor()
                     },
                     handleFacebook
                 ),
@@ -57,8 +57,8 @@ class SettingsTableViewController: UITableViewController
                     {
                         let isCon = Persistent.user_is_connected_via_twitter
                         $0.textLabel?.text = "Twitter"
-                        $0.detailTextLabel?.text = isCon ? "connected!" : "not connected :("
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = isCon ? "接続済み" : "未接続"
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.blackColor() : UIColor.blackColor()
                     },
                     handleTwitter
                 ),
@@ -76,8 +76,8 @@ class SettingsTableViewController: UITableViewController
 //                            return
 //                        }
                         let wants = Permission.userHasAlreadyRegisterdForNotifications()
-                        $0.detailTextLabel?.text = wants ? "recieving" : "blocked"
-                        $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.text = wants ? "許可済み" : "未許可"
+                        $0.detailTextLabel?.textColor = wants ? UIColor.blackColor() : UIColor.blackColor()
                         
                     },
                     handlePushNotification
@@ -88,7 +88,7 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "アドバイスを送る"
-                        $0.detailTextLabel?.text = "DONE"
+                        //$0.detailTextLabel?.text = "送る"
                     },
                     { _ in
                         let popup = FeedbackPopup(from: self, title: "通知を設定する", widthRatio: 92, heightRatio: 50)
@@ -113,11 +113,11 @@ class SettingsTableViewController: UITableViewController
                     }
                 ),
                 (
-                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = "iOS Gocci v" + (Util.getGocciVersionString() ?? "?.?") },
+                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = (Util.getGocciVersionString() ?? "?.?") },
                     nil
                 ),
                 (
-                    { $0.textLabel?.text = "Reset Gocci to initial state" ; $0.textLabel?.textColor = UIColor.redColor() },
+                    { $0.textLabel?.text = "Gocciを初期状態にリセットする" ; $0.textLabel?.textColor = UIColor.blackColor() },
                     handleAccountReset
                 ),
             ],
@@ -139,18 +139,18 @@ class SettingsTableViewController: UITableViewController
     func handlePassword(cell: UITableViewCell)
     {
         let alertController = UIAlertController(
-            title: "Password setting",
-            message: "Please enter your new password",
+            title: "パスワード設定",
+            message: "新しいパスワードを入力してください",
             preferredStyle: UIAlertControllerStyle.Alert)
         
         
         alertController.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "Please enter your password..."
+            textField.placeholder = "あなたのパスワード"
             textField.secureTextEntry = true
         }
         
         alertController.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "And once more for confirmation..."
+            textField.placeholder = "もう一度..."
             textField.secureTextEntry = true
         }
         
@@ -159,13 +159,13 @@ class SettingsTableViewController: UITableViewController
             let pw2 = alertController.textFields?[1].text ?? ""
             
             if pw1 == "" {
-                self.simplePopup("Password setting", "Password 1 was empty", "OK")
+                self.simplePopup("パスワード設定", "1つめが空です", "OK")
             }
             else if pw2 == "" {
-                self.simplePopup("Password setting", "Password 2 was empty", "OK")
+                self.simplePopup("パスワード設定", "2つめが空です", "OK")
             }
             else if pw1 != pw2 {
-                self.simplePopup("Password setting", "Your passwords did not match", "OK")
+                self.simplePopup("パスワード設定", "1つめと2つめが違います", "OK")
             }
             else {
                 let req = API3.set.password()
@@ -173,15 +173,15 @@ class SettingsTableViewController: UITableViewController
                 req.parameters.password = pw1
                 
                 req.onAnyAPIError {
-                    self.simplePopup("Password setting", "Password setting failed :( The password must have at least 6 and not more than 25 characters", "OK")
+                    self.simplePopup("パスワード設定", "失敗しました。パスワードは6文字以上、25文字以下必要です。", "OK")
                 }
                 
                 req.perform {
-                    cell.detailTextLabel?.text = "Password was set!"
-                    cell.detailTextLabel?.textColor = UIColor.greenColor()
+                    cell.detailTextLabel?.text = "設定する"
+                    cell.detailTextLabel?.textColor = UIColor.blackColor()
                     Persistent.password_was_set_by_the_user = true
                     
-                    self.simplePopup("Password setting", "Password was set successful :)", "OK")
+                    self.simplePopup("パスワード設定", "成功しました", "OK")
                 }
                 
             }
@@ -214,8 +214,8 @@ class SettingsTableViewController: UITableViewController
                 
                 req.perform {
                     Persistent.user_is_connected_via_twitter = true
-                    cell.detailTextLabel?.text = "connected!"
-                    cell.detailTextLabel?.textColor = UIColor.greenColor()
+                    cell.detailTextLabel?.text = "接続済み"
+                    cell.detailTextLabel?.textColor = UIColor.blackColor()
                 }
             }
         }
@@ -239,8 +239,8 @@ class SettingsTableViewController: UITableViewController
                 
                 req.perform {
                     Persistent.user_is_connected_via_twitter = false
-                    cell.detailTextLabel?.text = "not connected :("
-                    cell.detailTextLabel?.textColor = UIColor.redColor()
+                    cell.detailTextLabel?.text = "未接続"
+                    cell.detailTextLabel?.textColor = UIColor.blackColor()
                 }
             }
         }
@@ -249,7 +249,7 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Twitter?", "cancel", "disconnect", disconnect)
+            self.simpleConfirmationPopup("確認", "Twitter連携を解除してもよろしいですか？", "キャンセル", "解除", disconnect)
         }
     }
     
@@ -275,8 +275,8 @@ class SettingsTableViewController: UITableViewController
                 
                 req.perform {
                     Persistent.user_is_connected_via_facebook = true
-                    cell.detailTextLabel?.text = "connected!"
-                    cell.detailTextLabel?.textColor = UIColor.greenColor()
+                    cell.detailTextLabel?.text = "接続済み"
+                    cell.detailTextLabel?.textColor = UIColor.blackColor()
                 }
             }
         }
@@ -300,8 +300,8 @@ class SettingsTableViewController: UITableViewController
                 
                 req.perform {
                     Persistent.user_is_connected_via_facebook = false
-                    cell.detailTextLabel?.text = "not connected :("
-                    cell.detailTextLabel?.textColor = UIColor.redColor()
+                    cell.detailTextLabel?.text = "未接続"
+                    cell.detailTextLabel?.textColor = UIColor.blackColor()
                 }
             }
         }
@@ -310,7 +310,7 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Facebook?", "cancel", "disconnect", disconnect)
+            self.simpleConfirmationPopup("確認", "Facebook連携を解除してもよろしいですか？", "キャンセル", "解除", disconnect)
         }
     
     }
@@ -335,15 +335,15 @@ class SettingsTableViewController: UITableViewController
         
 
         alertController.addAction(UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) { action in
-            self.simpleConfirmationPopup("last chance", "all you data will be deleted", "cancel", "do it", reset)
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます", "キャンセル", "OK", reset)
         })
             
         alertController.addAction(UIAlertAction(title: "Reset but keep account", style: UIAlertActionStyle.Destructive) { action in
             iid = Persistent.identity_id
-            self.simpleConfirmationPopup("last chance", "all your data will be deleted, but you can login again", "cancel", "do it", reset)
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます", "キャンセル", "OK", reset)
         })
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { _ in
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel) { _ in
         })
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -368,7 +368,7 @@ class SettingsTableViewController: UITableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
-        cell.detailTextLabel?.textColor = UIColor.blueColor()
+        cell.detailTextLabel?.textColor = UIColor.blackColor()
         cell.detailTextLabel?.font = cell.detailTextLabel?.font.fontWithSize(14)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
