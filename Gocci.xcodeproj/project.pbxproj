@@ -357,6 +357,12 @@
 		9890CBF81C1FF37600C34156 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBF41C1FF37600C34156 /* SVRadialGradientLayer.m */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
+		98B99E871C21173000B1D9CE /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E861C21173000B1D9CE /* Permission.swift */; };
+		98B99E881C21173000B1D9CE /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E861C21173000B1D9CE /* Permission.swift */; };
+		98B99E8A1C21560900B1D9CE /* RequestPushMessagesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B99E891C21560900B1D9CE /* RequestPushMessagesPopup.xib */; };
+		98B99E8B1C21560900B1D9CE /* RequestPushMessagesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B99E891C21560900B1D9CE /* RequestPushMessagesPopup.xib */; };
+		98B99E8D1C21562300B1D9CE /* RequestPushMessagesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E8C1C21562300B1D9CE /* RequestPushMessagesPopup.swift */; };
+		98B99E8E1C21562300B1D9CE /* RequestPushMessagesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E8C1C21562300B1D9CE /* RequestPushMessagesPopup.swift */; };
 		98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
 		98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453991C1E67B70010846B /* APIHighLevel.swift */; };
 		98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4539C1C1EFF4A0010846B /* APIRequest.swift */; };
@@ -920,6 +926,9 @@
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
+		98B99E861C21173000B1D9CE /* Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		98B99E891C21560900B1D9CE /* RequestPushMessagesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestPushMessagesPopup.xib; sourceTree = "<group>"; };
+		98B99E8C1C21562300B1D9CE /* RequestPushMessagesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPushMessagesPopup.swift; sourceTree = "<group>"; };
 		98C453991C1E67B70010846B /* APIHighLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHighLevel.swift; sourceTree = "<group>"; };
 		98C4539C1C1EFF4A0010846B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		98C4539F1C1FAF900010846B /* FeedbackPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackPopup.xib; sourceTree = "<group>"; };
@@ -1644,6 +1653,8 @@
 				9550D9491BF83E4B00430942 /* WebViewPopup.xib */,
 				98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */,
 				98C4539F1C1FAF900010846B /* FeedbackPopup.xib */,
+				98B99E891C21560900B1D9CE /* RequestPushMessagesPopup.xib */,
+				98B99E8C1C21562300B1D9CE /* RequestPushMessagesPopup.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -2182,6 +2193,7 @@
 				981979AF1C05B45A00EFFC8F /* TaskScheduler.swift */,
 				9801BF161C0C6EE3001F4D3C /* Bridge.swift */,
 				98DCDE2A1C1A8AE900D900C6 /* Logging.swift */,
+				98B99E861C21173000B1D9CE /* Permission.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2391,6 +2403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B99E8B1C21560900B1D9CE /* RequestPushMessagesPopup.xib in Resources */,
 				98C453A11C1FAF900010846B /* FeedbackPopup.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2472,6 +2485,7 @@
 				9550DAA11BF83E4C00430942 /* btn_delete_black.png in Resources */,
 				9550DAA91BF83E4C00430942 /* icon_record_cam.png in Resources */,
 				9550DACD1BF83E4C00430942 /* 4_7_inch.storyboard in Resources */,
+				98B99E8A1C21560900B1D9CE /* RequestPushMessagesPopup.xib in Resources */,
 				9550DAB21BF83E4C00430942 /* tabbaritem_posting.png in Resources */,
 				9550DAB31BF83E4C00430942 /* tabbaritem_posting@2x.png in Resources */,
 				9550DA571BF83E4C00430942 /* SCFirstView_4_7_inch.xib in Resources */,
@@ -2490,6 +2504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B99E8E1C21562300B1D9CE /* RequestPushMessagesPopup.swift in Sources */,
 				9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */,
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
 				9801BF101C080677001F4D3C /* OverlayWindow.swift in Sources */,
@@ -2522,6 +2537,7 @@
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
 				98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
+				98B99E881C21173000B1D9CE /* Permission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2614,6 +2630,7 @@
 				9550DAF01BF83E4C00430942 /* JTCalendarWeekView.m in Sources */,
 				9550DA401BF83E4C00430942 /* NotificationViewController.m in Sources */,
 				9550DA2B1BF83E4C00430942 /* FolloweeListCell.m in Sources */,
+				98B99E871C21173000B1D9CE /* Permission.swift in Sources */,
 				9550DA171BF83E4C00430942 /* UIImage+BlurEffect.m in Sources */,
 				9890CBF81C1FF37600C34156 /* SVRadialGradientLayer.m in Sources */,
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
@@ -2735,6 +2752,7 @@
 				9550DAD31BF83E4C00430942 /* AFHTTPRequestOperation.m in Sources */,
 				980986A31BFF0AD7009BD0E3 /* Persistent.swift in Sources */,
 				9550DA161BF83E4C00430942 /* UIColor+App.m in Sources */,
+				98B99E8D1C21562300B1D9CE /* RequestPushMessagesPopup.swift in Sources */,
 				95FD92F01C0D79F200D822E8 /* SettingsTableViewController.swift in Sources */,
 				980986A41BFF0AD7009BD0E3 /* Util.swift in Sources */,
 				9550DB071BF83E4C00430942 /* SingleLineTextField.m in Sources */,

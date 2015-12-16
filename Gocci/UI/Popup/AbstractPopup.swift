@@ -30,6 +30,9 @@ class AbstractPopup: UIViewController
         self.title = title;
     }
 
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func pop() {
         

@@ -40,14 +40,14 @@ class FeedbackPopup: AbstractPopup {
         
         // SHOULD NEVER HAPPEN
         req.onAnyAPIError {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss()
         }
         
         req.parameters.feedback = textView.text.replace("\n", withString: " ")
         
         req.perform {
             // TODO thank you popup msg
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss()
         }
     }
     

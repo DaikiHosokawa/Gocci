@@ -8,7 +8,33 @@
 
 import Foundation
 
+protocol Logable {
+    static func log(msg: String)
+    
+    static func sep(head: String)
+    
+    static var verbose: Bool { get }
+    
+    static var logColor: (r: UInt8, g: UInt8, b: UInt8) { get }
+}
 
+extension Logable {
+    
+    
+    static func log(msg: String) {
+        if verbose {
+            Lo.printInColor(logColor.r, logColor.g, logColor.b, msg)
+        }
+    }
+    
+    static func sep(head: String) {
+        if verbose {
+            let msg = "=== \(self.dynamicType): \(head)"
+            let balken = String(count: 120 - msg.length, repeatedValue: Character("="))
+            Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
+        }
+    }
+}
 
 struct Lo {
     static let ESCAPE = "\u{001b}["
@@ -41,7 +67,7 @@ struct Lo {
         print("\(ESCAPE)fg0,255,255;\(object)   \(RESET)")
     }
     
-    static func printInColor<T>(r: Int, _ g: Int, _ b: Int, _ object: T) {
+    static func printInColor<T>(r: UInt8, _ g: UInt8, _ b: UInt8, _ object: T) {
         print("\(ESCAPE)fg\(r),\(g),\(b);\(object)   \(RESET)")
     }
     

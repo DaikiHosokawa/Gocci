@@ -7,6 +7,74 @@
 //
 
 import Foundation
+import UIKit
+
+
+
+
+
+
+
+
+class RegisterForPushMessagesTask: PersistentBaseTask {
+    
+    let deviceToken: String
+    
+    init(deviceToken: String) {
+        self.deviceToken = deviceToken
+        super.init(identifier: String(self.dynamicType) + " " + deviceToken)
+    }
+    
+    override init?(dict: NSDictionary) {
+        self.deviceToken = dict["deviceToken"] as? String ?? ""
+        super.init(dict: dict)
+        if deviceToken == "" { return nil }
+    }
+    
+    override func dictonaryRepresentation() -> NSMutableDictionary {
+        let dict = super.dictonaryRepresentation()
+        dict["deviceToken"] = deviceToken
+        return dict
+    }
+    
+    override func equals(task: PersistentBaseTask) -> Bool {
+        // there should never be two tasks, so this one will be replaced at any cost
+        return task is RegisterForPushMessagesTask
+    }
+    
+    override func run(finished: State->()) {
+        
+        let req = API3.set.device()
+        
+        req.parameters.device_token = deviceToken
+        req.parameters.model = UIDevice.currentDevice().model
+        req.parameters.os = "iOS"
+        req.parameters.ver = Util.operationSystemVersion()
+        
+        req.onNetworkTrouble { _, _ in
+            finished(.FAILED_NETWORK)
+        }
+        
+        req.onAnyAPIError {
+            finished(.FAILED_IRRECOVERABLE)
+        }
+        
+        req.perform {
+            finished(.DONE)
+        }
+        
+    }
+    
+    override var description: String {
+        return "Register device token task with: \(deviceToken)"
+    }
+    
+}
+
+
+
+
+
 
 class GocciAddRestaurantTask: PersistentBaseTask {
     

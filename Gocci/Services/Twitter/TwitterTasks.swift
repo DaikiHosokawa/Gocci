@@ -49,7 +49,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
         // TODO TRANSLATION
         let sharer = TwitterSharing()
         sharer.onSuccess = {
-            Toast.成功("Video sharing", "Video waas successfully posted on twitter.")
+            //Toast.成功("Video sharing", "Video was successfully posted on twitter.")
             print("Twitter posting sucessful: Post ID: " + $0)
             finished(.DONE)
         }
@@ -81,11 +81,9 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                     TwitterAuthentication.authenticate(currentViewController: viewController) { token in
                         
                         if token == nil {
-                            Toast.失敗("Twitter login failed.", "Video will not be posted on Twitter")
                             finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
                         }
                         else {
-                            Toast.成功("Twitter login successful.", "Will retry to post video on twitter")
                             finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
                         }
                     }

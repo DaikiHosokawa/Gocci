@@ -9,7 +9,6 @@
 #import "const.h"
 #import "util.h"
 #import "AppDelegate.h"
-#import <AVFoundation/AVFoundation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import  "TWMessageBarManager.h"
 #import <AWSS3/AWSS3.h>
@@ -64,8 +63,6 @@
     [self.window makeKeyAndVisible];
     
     
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    
 #ifdef FRESH_START
     [Persistent resetPersistentDataToInitialState];
 #endif
@@ -90,6 +87,9 @@
 #endif
     
     // !!!:dezamisystem
+    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    
     
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
    
@@ -156,6 +156,9 @@ void exceptionHandler(NSException *exception) {
     // Tell the scheduler to check for tasks. The app became active again,
     // so maybe this is a good time to upload heavy stuff again.
     [TaskSchedulerWrapper nudge];
+    
+    // when the user comes back from the settings screen TODO UNTESTED
+    [Permission requestPushNotificationPermissionOnlyIfTheUserWantsThem];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -180,19 +183,7 @@ void exceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    NSString *token = deviceToken.description;
-    
-    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-   NSLog(@"deviceToken: %@", token);
-    
-    if (token != Persistent.device_token && Persistent.user_registerd_for_push_messages) {
-        // TODO call API3 register_device_token
-    }
-    
-    Persistent.device_token = token;
+    [Permission deviceTokenRecived:deviceToken.description];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -201,7 +192,7 @@ void exceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
-    [application registerForRemoteNotifications];
+    [Permission didRegisterUserNotificationSettings:notificationSettings];
 }
 
 

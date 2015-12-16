@@ -30,6 +30,9 @@ class PersistentClassReflexion {
             case "GocciAddRestaurantTask":
                 return GocciAddRestaurantTask(dict: data)
             
+            case "RegisterForPushMessagesTask":
+                return RegisterForPushMessagesTask(dict: data)
+            
             default:
                 return nil
         }

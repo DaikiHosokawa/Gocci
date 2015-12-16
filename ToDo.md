@@ -42,6 +42,10 @@ Daiki Hosokawa
 Markus Wanke
 ============
 
+- If the user declines camera and/or mic permission, the user will never be able to take a video
+
+- put all the showPopupWithTransitionStyle code douplicates in an extension
+
 - Mute function
 
 - Remove the Facebook Sharekit when we get [publish_permission]

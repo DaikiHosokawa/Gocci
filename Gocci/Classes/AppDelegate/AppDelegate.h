@@ -25,9 +25,6 @@
     NSString *lifelogDate;
     
     
-    //EditZone
-    NSMutableArray *selectionArray;
-    
     BBBadgeBarButtonItem *barButton;
     
 }
@@ -38,11 +35,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
-@property(nonatomic,retain) NSMutableArray *selectionArray;
-
 @property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
 
-
--(void)checkGPS;
 
 @end
