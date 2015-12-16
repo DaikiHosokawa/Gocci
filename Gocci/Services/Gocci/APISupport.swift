@@ -9,55 +9,20 @@
 import Foundation
 
 
-
-func actualCode() {
+class APISupport: Logable {
     
-    
-    
-    
-//    let req = API3.auth.signup()
-//    
-//    req.parameters.username = "Peter Schmidt"
-//
-//    req.on_ERROR_USERNAME_ALREADY_REGISTERD { print( $0, ": ", $1) }
-//    
-//    req.perform { payload in
-//        print(payload.identity_id)
-//    }
-//    
-    //
-    //    API2.on(API2.GlobalCode.ERROR_NO_INTERNET_CONNECTION){
-    //        print("ERROR: \($0): \($1)")
-    //    }
-    //
-    //    let req = API2.auth.login()
-    //    req.identity_id = "us-east-1:a42b874a-8791-4fba-b5a0-f00b8c0162aa"
-    //
-    //    req.on(API2.auth.login.LocalCode.ERROR_RESPONSE_IDENTITY_ID_MALFORMED){
-    //        print("ERROR: \($0): \($1)")
-    //    }
-    //
-    //    req.perform(){ (payload) in
-    //        print(payload.username)
-    //    }
-}
-
-
-
-class APISupport {
-    
+    static var verbose: Bool = true
+    static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0xFF, 0x99, 0x33)
     
     
     static var fuelmid_session_cookie: String! = nil
 
 #if TEST_BUILD
-    static var verbose: Bool = true
     static var baseurl = API3.testurl
     static let USER_AGENT: String =
     "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
 #endif
 #if LIVE_BUILD
-    static var verbose: Bool = true
     static var baseurl = API3.liveurl
     static let USER_AGENT: String =
     "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
@@ -93,20 +58,7 @@ class APISupport {
         "Reauthentication attempt failed",
     ]
     
-    
-    
-    
-    class func lo(msg: String) {
-        if verbose {
-            Lo.printInColor(0xFF, 0x99, 0x33, msg)
-        }
-    }
-    
-    class func sep(head: String) {
-        if verbose {
-            Lo.printInColor(0xFF, 0x99, 0x33, "=== API3: \(head) ============================================================================")
-        }
-    }
+
     
     /// Check the data and try to turn this into JSON
     class func preParseJSONResponse(data: NSData) -> (code: String, msg: String, payload:[String: JSON])? {
@@ -114,7 +66,7 @@ class APISupport {
         let json = JSON(data: data)
         
         sep("RESPONSE")
-        lo(json.rawString() ?? "Unparsable JSON")
+        log(json.rawString() ?? "Unparsable JSON")
         
         //guard let version = json["version"].int else { return nil }
         guard let code = json["code"].string else { return nil }
@@ -173,7 +125,7 @@ class APISupport {
         for coo in cookies {
             //NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(coo)
             if coo.name == "fuelmid" {
-                lo("Session Cookie: fuelmid=\(coo.value)")
+                log("Session Cookie: fuelmid=\(coo.value)")
                 fuelmid_session_cookie = coo.value
             }
         }
@@ -183,15 +135,37 @@ class APISupport {
         
         sep("REAUTHENTICATION NEEDED")
         
-        APIHighLevel.simpleLogin {
-            if $0 {
-                performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
-            }
-            else {
-                request.handleNetworkError(.ERROR_RE_AUTH_FAILED)
+        guard let iid = Persistent.identity_id ?? Util.getUserDefString("identity_id") else {
+            request.handleNetworkError(.ERROR_RE_AUTH_FAILED, "No IID! Make an account first!")
+            return
+        }
+        
+        let req = API3.auth.login()
+        
+        req.parameters.identity_id = iid
+        
+        req.onAnyAPIError {
+            request.handleNetworkError(.ERROR_RE_AUTH_FAILED, "Local error occured. IID wrong format or not registerd?")
+        }
+        
+        req.onNetworkTrouble { c, m -> () in
+            Lo.error("API Login: \(c): \(m)")
+            // we push this to the original network error handler.
+            // this is needed so that bg tasks don't activate popups
+            request.handleNetworkError(c, m)
+        }
+        
+        req.perform { (payload) -> () in
+            APIHighLevel.stepTwo(payload) { awsLoginSuccess in
+                if awsLoginSuccess {
+                    performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
+                }
+                else {
+                    Lo.error("API Login: AWS Login Failed. ignored... ")
+                    performNetworkRequest(request, handleSaneJSONResponse: handleSaneJSONResponse)
+                }
             }
         }
-    
     }
     
     class func performNetworkRequest(var request: APIRequestProtocol, handleSaneJSONResponse:(code: String, message: String, payload: [String: JSON])->()) {
@@ -208,9 +182,9 @@ class APISupport {
         
         sep("REQUEST")
         for (k, v) in saneParameterPairs {
-            lo("    \(k): \t\(v)")
+            log("    \(k): \t\(v)")
         }
-        lo(url.absoluteString)
+        log(url.absoluteString)
         
         let req = NSMutableURLRequest(URL: url)
         

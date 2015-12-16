@@ -23,6 +23,8 @@ import Foundation
             Util.sleep(0.3) // nen no tame ni
             
             APIHighLevel.simpleLogin { res in
+                
+                Util.runInBackground { AWS2.storeSignUpDataInCognito() }
                 and(res)
             }
         }

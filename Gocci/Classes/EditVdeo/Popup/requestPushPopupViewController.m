@@ -77,30 +77,24 @@
 
 
 - (void)checkPermissionOfNotification {
-    NSInteger _iOsVersionMajor  = [[[[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue];
     
-    if (_iOsVersionMajor >= 8) {
+    UIUserNotificationSettings *currentSettings = [[UIApplication
+                                                    sharedApplication] currentUserNotificationSettings];
+   
+    if (currentSettings.types == UIUserNotificationTypeNone) {
         
-        UIUserNotificationSettings *currentSettings = [[UIApplication
-                                                        sharedApplication] currentUserNotificationSettings];
-       
-        if (currentSettings.types == UIUserNotificationTypeNone) {
-            
-            UIUserNotificationType types = UIUserNotificationTypeBadge |
-            UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-            UIUserNotificationSettings *mySettings =
-            [UIUserNotificationSettings settingsForTypes:types categories:nil];
-            [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-            
-            UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@"通知設定がオフになっています" message:@"呼び出しを有効にするには設定画面より通知を許可して下さい。"
-                                      delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-            alert.tag = 121;
-            [alert show];
+        UIUserNotificationType types = UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *mySettings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
         
-             }
-    }else {
-        
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"通知設定がオフになっています" message:@"呼び出しを有効にするには設定画面より通知を許可して下さい。"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        alert.tag = 121;
+        [alert show];
+    
     }
 }
 @end

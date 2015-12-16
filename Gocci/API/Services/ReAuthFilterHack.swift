@@ -43,6 +43,9 @@ import Foundation
                     
                     APIHighLevel.simpleLogin { succ in
                         if succ {
+                            self.manager.requestSerializer.setValue(APISupport.USER_AGENT, forHTTPHeaderField: "User-Agent")
+                            self.manager.requestSerializer.setValue("fuelmid=\(APISupport.fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
+                            
                             self.manager.GET(uri, parameters: parameters, success: success, failure: failure)
                         }
                         else if let _ = task.response as? NSHTTPURLResponse {
