@@ -135,7 +135,6 @@ class GocciDevAuthIdentityProvider : AWSAbstractCognitoIdentityProvider
     func connectWithBackEnd(iid:String!, userID:String!, token:String!) {
 
         addLogin(GOCCI_DEV_AUTH_PROVIDER_STRING, token: userID) // yes this is correct. userID has to be the token
-        //addLogin("cognito-identity.amazonaws.com", token: token)
         backEndToken = token
         identityId = iid
         
@@ -248,10 +247,8 @@ class AWSManager {
             let new = ud[AWSCognitoNotificationNewId] ?? "Notification Fail"
             
             print("===================================================================================================")
-            print("===================================================================================================")
             print("=== IDENTITY ID CHANGED FROM: \(old)")
-            print("                          TO: \(new)")
-            print("===================================================================================================")
+            print("===                       TO: \(new)")
             print("===================================================================================================")
         }
     }
@@ -305,12 +302,12 @@ class AWSManager {
 //        return refresh()
 //    }
     
-    func storeSignUpDataInCognito(username:String) {
+    func storeSignUpDataInCognito() {
         let dataset = AWSCognito.defaultCognito().openOrCreateDataset("signup_data")
 
         dataset.setString(Persistent.user_id ?? "user_id not set", forKey: "user_id")
         dataset.setString(Persistent.user_name ?? "username not set", forKey: "username")
-        dataset.setString(Persistent.device_token ?? "no device_token", forKey: "device_token")
+//        dataset.setString(Persistent.device_token ?? "no device_token", forKey: "device_token")
         dataset.setString(UIDevice.currentDevice().systemName, forKey: "system_name")
         dataset.setString(UIDevice.currentDevice().systemVersion, forKey: "system_version")
         dataset.setString(UIDevice.currentDevice().model, forKey: "model")

@@ -51,11 +51,11 @@ extension APIRequestProtocol {
         let msg = mmsg ?? APISupport.networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No error message defined"
         
         APISupport.sep("NETWORK ERROR OCCURED")
-        APISupport.lo("\(code): \(msg)")
+        APISupport.log("\(code): \(msg)")
         
         if privateFirstRetry && Network.online {
             APISupport.sep("RETRY HELP")
-            APISupport.lo("Request failed on network error: \(code). We perform one RETRY")
+            APISupport.log("Request failed on network error: \(code). We perform one RETRY")
             privateFirstRetry = false
             self.retry()
             return

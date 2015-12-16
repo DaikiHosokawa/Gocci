@@ -21,7 +21,8 @@ import Foundation
         KeychainWrapper.serviceName = "com.inase.gocci"
         
         cache.password_was_set_by_the_user = boolForKey("password_was_set_by_the_user")
-        cache.user_registerd_for_push_messages = boolForKey("user_registerd_for_push_messages")
+        cache.push_notifications_popup_has_been_shown = boolForKey("push_notifications_popup_has_been_shown")
+        cache.ask_user_again_for_push_messages = boolForKey("ask_user_again_for_push_messages")
         cache.user_is_connected_via_facebook = boolForKey("user_is_connected_via_facebook")
         cache.user_is_connected_via_twitter = boolForKey("user_is_connected_via_twitter")
         
@@ -41,9 +42,10 @@ import Foundation
     
     struct InternalCache {
         var password_was_set_by_the_user: Bool?
-        var user_registerd_for_push_messages: Bool?
+        var push_notifications_popup_has_been_shown: Bool?
         var user_is_connected_via_facebook: Bool?
         var user_is_connected_via_twitter: Bool?
+        var ask_user_again_for_push_messages: Bool?
         
         var identity_id: String?
         var cognito_token: String?
@@ -60,9 +62,16 @@ import Foundation
     
     struct InternalDefaults {
         let password_was_set_by_the_user: Bool = false
-        let user_registerd_for_push_messages: Bool = false
+        let push_notifications_popup_has_been_shown: Bool = false
         let user_is_connected_via_facebook: Bool = false
         let user_is_connected_via_twitter: Bool = false
+        let ask_user_again_for_push_messages: Bool = true
+        
+    }
+    
+    class var ask_user_again_for_push_messages: Bool {
+        get { return cache.ask_user_again_for_push_messages ?? defaults.ask_user_again_for_push_messages }
+        set(v) { cache.ask_user_again_for_push_messages = v ; setBool(v, forKey: "ask_user_again_for_push_messages") }
     }
     
     class var password_was_set_by_the_user: Bool {
@@ -70,9 +79,9 @@ import Foundation
         set(v) { cache.password_was_set_by_the_user = v ; setBool(v, forKey: "password_was_set_by_the_user") }
     }
     
-    class var user_registerd_for_push_messages: Bool {
-        get { return cache.user_registerd_for_push_messages ?? defaults.user_registerd_for_push_messages }
-        set(v) { cache.user_registerd_for_push_messages = v ; setBool(v, forKey: "user_registerd_for_push_messages") }
+    class var push_notifications_popup_has_been_shown: Bool {
+        get { return cache.push_notifications_popup_has_been_shown ?? defaults.push_notifications_popup_has_been_shown }
+        set(v) { cache.push_notifications_popup_has_been_shown = v ; setBool(v, forKey: "push_notifications_popup_has_been_shown") }
     }
     
     class var user_is_connected_via_facebook: Bool {
@@ -163,9 +172,10 @@ import Foundation
     class func resetPersistentDataToInitialState() {
         
         KeychainWrapper.removeObjectForKey("password_was_set_by_the_user")
-        KeychainWrapper.removeObjectForKey("user_registerd_for_push_messages")
+        KeychainWrapper.removeObjectForKey("push_notifications_popup_has_been_shown")
         KeychainWrapper.removeObjectForKey("user_is_connected_via_facebook")
         KeychainWrapper.removeObjectForKey("user_is_connected_via_twitter")
+        KeychainWrapper.removeObjectForKey("ask_user_again_for_push_messages")
         
         KeychainWrapper.removeObjectForKey("identity_id")
         KeychainWrapper.removeObjectForKey("cognito_token")
@@ -179,6 +189,11 @@ import Foundation
         KeychainWrapper.removeObjectForKey("user_name")
         KeychainWrapper.removeObjectForKey("user_profile_image_url")
         
+        Util.deleteAllCookies()
+
+        APISupport.fuelmid_session_cookie = ""
+        
+        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
         
         // TODO delete other stuff as well
         // - scheduler task file

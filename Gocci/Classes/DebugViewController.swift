@@ -43,37 +43,55 @@ class DebugViewController : UIViewController {
 //        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
     }
     
+//    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
+//}
+//}];
+//
+//}
+//}
+//
 
+    func pop(vc: UIViewController) {
 
-    class func afterAppLaunch() {
-        
-        let fm = NSFileManager.defaultManager()
-        
-        let task = NSBundle.mainBundle().pathForResource("unfinished_upload_task", ofType: "plist")!
-        
-        let dest = Util.documentsDirectory() + "/unfinishedTasks.plist"
-        
-        let _ = try? fm.removeItemAtPath(dest)
-        
-        try! fm.copyItemAtPath(task, toPath: dest)
+        let popup = STPopupController(rootViewController: vc)
+        popup.cornerRadius = 4
+        popup.transitionStyle = STPopupTransitionStyle.Fade
+        STPopupNavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 85.0/255.0, blue: 51.0/255.0, alpha: 1.0)
+        STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
+        STPopupNavigationBar.appearance().barStyle = UIBarStyle.Default
+        //        STPopupNavigationBar.appearance().titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
         
         
-        let path = Util.documentsDirectory() + "/user_posted_videos"
-        
-        if !fm.fileExistsAtPath(path) {
-            try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
-        }
-        
-        let videoFile = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
-        
-        let _ = try? fm.copyItemAtPath(videoFile, toPath: path + "/2015-12-11-10-04-26_949.mp4")
+        //
+        //            [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil, nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
         
         
+        popup.presentInViewController(self)
     }
+
+
 
     
     @IBAction func explode(sender: AnyObject) {
         
+        Permission.showThePopupForPushNoticationsOnce(self)
+        return;
+        
+        let popup = RequestPushMessagesPopup(from: self, title: "通知の許可", widthRatio: 80, heightRatio: 30)
+        popup.pop()
+        
+        return;
+        //let dt = "0000000077777777777777777777777777777777777777777777777700000000"
+        
+        //RegisterForPushMessagesTask(deviceToken: dt).schedule()
+        
+
+        let p = requestPushPopupViewController()
+        
+        self.pop(p)
+        
+        
+        return;
         
         
         APIHighLevel.simpleLogin {
@@ -512,7 +530,31 @@ class DebugViewController : UIViewController {
 //        )
     
         
-
+    class func afterAppLaunch() {
+        
+        let fm = NSFileManager.defaultManager()
+        
+        let task = NSBundle.mainBundle().pathForResource("unfinished_upload_task", ofType: "plist")!
+        
+        let dest = Util.documentsDirectory() + "/unfinishedTasks.plist"
+        
+        let _ = try? fm.removeItemAtPath(dest)
+        
+        try! fm.copyItemAtPath(task, toPath: dest)
+        
+        
+        let path = Util.documentsDirectory() + "/user_posted_videos"
+        
+        if !fm.fileExistsAtPath(path) {
+            try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        let videoFile = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+        
+        let _ = try? fm.copyItemAtPath(videoFile, toPath: path + "/2015-12-11-10-04-26_949.mp4")
+        
+        
+    }
     
     @IBAction func a(sender: AnyObject) {
         
@@ -588,56 +630,24 @@ class DebugViewController : UIViewController {
     {
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
         
-        if real_register_id != "" {
-            Persistent.device_token = real_register_id
-        }
         
-//        NetOp.registerUsername(signUpEditField.text) {
-//            (code, emsg) -> Void in
-//            
-//            print("NetOpCode: \(code)  " + (emsg ?? ""))
-//            
-//            if code == NetOpResult.NETOP_SUCCESS {
-//                self.loginEditField.text = self.signUpEditField.text
-//                
-//                let uid: String = Persistent.user_id!
-//                let iid: String = Persistent.identity_id!
-//                let tok: String = Persistent.cognito_token!
-//                
-//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
-//                    return nil
-//                })
-//            }
-//        }
+        APIHighLevelOBJC.signupAndLogin(signUpEditField.text!, onUsernameAlreadyTaken: {
+            print("username already taken :(")
+        },
+            and:  {             print( $0 ? "Worked :)" : "Login failed :(" )
+        })
+    
         
     }
     @IBAction func signUpAsUserFakeClicked(sender: AnyObject) {
         print("=== SIGNUP AS: " + (signUpEditField.text ?? "empty string^^"))
         
-        if real_register_id == "" {
-            real_register_id = Util.getRegisterID()
-        }
-        Persistent.device_token = Util.generateFakeDeviceID()
+        APIHighLevelOBJC.signupAndLogin(signUpEditField.text!, onUsernameAlreadyTaken: {
+            print("username already taken :(")
+            },
+            and:  {             print( $0 ? "Worked :)" : "Login failed :(" )
+        })
         
-//        NetOp.registerUsername(signUpEditField.text) {
-//            (code, emsg) -> Void in
-//            
-//            print("NetOpCode: \(code)  " + (emsg ?? ""))
-//            
-//            if code == NetOpResult.NETOP_SUCCESS {
-//                self.loginEditField.text = self.signUpEditField.text
-//                
-//                let uid: String = Persistent.user_id!
-//                let iid: String = Persistent.identity_id!
-//                let tok: String = Persistent.cognito_token!
-//                
-//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
-//                    return nil
-//                })
-//            }
-//        }
     }
     
     @IBAction func loginAsUserClicked(sender: AnyObject)
@@ -649,28 +659,10 @@ class DebugViewController : UIViewController {
             return
         }
         
-//        print("=== LOGIN AS: " + iid)
-//        
-//        NetOp.loginWithIID(iid)
-//            {
-//                (code, emsg) -> Void in
-//                
-//                print("NetOpCode: \(code)  " + (emsg ?? ""))
-//                if code == NetOpResult.NETOP_SUCCESS {
-//                    self.loginEditField.text = self.signUpEditField.text
-//                    let uid: String = Persistent.user_id!
-//                    let iid: String = Persistent.identity_id!
-//                    let tok: String = Persistent.cognito_token!
-//                    
-//                    AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-//                        AWS2.storeTimeInLoginDataSet()
-//                        return nil
-//                    })
-//                    
-//                    
-//                    //AWS2.connectWithBackend(iid, userID: uid, token: tok)
-//                }
-//        }
+        APIHighLevel.simpleLogin{
+            print( $0 ? "Worked :)" : "Login failed :(" )
+        }
+        
     }
     
     

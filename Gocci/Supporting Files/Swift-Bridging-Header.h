@@ -25,6 +25,9 @@
 
 #import "AFNetworking.h" // remove this when API3 is complete
 
+#import "requestPushPopupViewController.h"
+
+
 // for twitter HMAC OAuth
 #import <CommonCrypto/CommonCrypto.h>
 
