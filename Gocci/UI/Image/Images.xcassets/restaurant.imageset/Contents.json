@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "restaurant.png",
+      "filename" : "silverware-variant.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restaurant@2x.png",
       "scale" : "2x"
     },
     {

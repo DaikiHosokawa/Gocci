@@ -947,7 +947,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="gQu-AK-ivf">
-                                <rect key="frame" x="2" y="515" width="410" height="80"/>
+                                <rect key="frame" x="2" y="515" width="410" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Wzs-8D-bib">
@@ -956,15 +956,35 @@
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="NDP-IC-Up7">
-                                        <rect key="frame" x="0.0" y="79" width="410" height="1"/>
+                                        <rect key="frame" x="0.0" y="50" width="410" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fD2-Og-eWP">
-                                        <rect key="frame" x="13" y="11" width="60" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a9N-tN-JRW" customClass="BFPaperCheckbox">
+                                        <rect key="frame" x="324" y="8" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="test2" image="twitter_share"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ISY-BU-mPe">
+                                        <rect key="frame" x="294" y="14" width="22" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_mode_edit"/>
+                                        <connections>
+                                            <action selector="TwitterCommentEdit:" destination="jOn-yq-mwT" eventType="touchUpInside" id="wfr-MZ-4vd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rL8-kH-SMr">
+                                        <rect key="frame" x="17" y="17" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="test2" image="twitter_icon"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tFB-qH-Gh2">
+                                        <rect key="frame" x="60" y="19" width="53" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1080,6 +1100,8 @@
                     <navigationItem key="navigationItem" id="9Ce-kD-cY2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="TwitterCheckbox" destination="a9N-tN-JRW" id="Yk1-cU-JsO"/>
+                        <outlet property="TwitterComment" destination="ISY-BU-mPe" id="BTC-pw-vZL"/>
                         <outlet property="category" destination="BCB-V5-CDi" id="Mpn-6Y-hIF"/>
                         <outlet property="checkbox" destination="alQ-q0-veK" id="DNf-rU-F6g"/>
                         <outlet property="filterSwitcherView" destination="Xfb-aa-DVN" id="8nS-hG-HQc"/>
@@ -1169,7 +1191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="eJ7-tS-BBD">
-                            <rect key="frame" x="0.0" y="130" width="375" height="10"/>
+                            <rect key="frame" x="0.0" y="66" width="375" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" id="IlX-Fi-KoB">
@@ -1261,7 +1283,7 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="EveryTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sample4TableViewCell" id="o2M-K5-jcQ" customClass="Sample4TableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="66" width="414" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o2M-K5-jcQ" id="som-yB-mxw">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="45"/>
@@ -2426,6 +2448,7 @@
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ic_list_white" width="24" height="24"/>
         <image name="ic_location_on_white" width="24" height="24"/>
+        <image name="ic_mode_edit" width="24" height="24"/>
         <image name="ic_more_vert_white" width="24" height="24"/>
         <image name="ic_notifications_active_white" width="24" height="24"/>
         <image name="ic_refresh_white_48pt" width="48" height="48"/>
@@ -2437,7 +2460,7 @@
         <image name="tabbaritem_profile.png" width="27" height="27"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="tag-C" width="128" height="28"/>
-        <image name="twitter_share" width="100" height="100"/>
+        <image name="twitter_icon" width="50" height="50"/>
         <image name="その他" width="151" height="101"/>
         <image name="予約をする" width="151" height="101"/>
         <image name="地図で見る" width="151" height="101"/>
