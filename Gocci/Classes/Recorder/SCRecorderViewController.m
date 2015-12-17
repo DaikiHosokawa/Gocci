@@ -302,7 +302,7 @@ static SCRecordSession *staticRecordSession;
     
     NSTimeInterval time_now = 0.0;
 #if TEST_BUILD
-    NSTimeInterval time_max = 1.3;
+    NSTimeInterval time_max = 7.0;
 #else
     NSTimeInterval time_max = 7.0;
 #endif

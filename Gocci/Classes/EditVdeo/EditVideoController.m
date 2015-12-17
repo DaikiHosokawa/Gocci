@@ -38,9 +38,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *value;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *placeholder;
-//posting
+
 @property (weak,nonatomic)NSString *category_id;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *checkbox;
+@property (weak, nonatomic) IBOutlet BFPaperCheckbox *TwitterCheckbox;
+@property (weak, nonatomic) IBOutlet UIButton *TwitterComment;
 @property (nonatomic, copy) NSArray *checkboxes;
 
 
@@ -81,12 +83,18 @@
     
     _player = [SCPlayer player];
     
-    //self.checkbox.delegate = self;
     self.checkbox.rippleFromTapLocation = NO;
-    self.checkbox.tapCirclePositiveColor = [UIColor blackColor]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    self.checkbox.tapCircleNegativeColor = [UIColor blackColor];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
+    self.checkbox.tapCirclePositiveColor = [UIColor blackColor];
+    self.checkbox.tapCircleNegativeColor = [UIColor blackColor];
     self.checkbox.checkmarkColor = [UIColor blackColor];
-       SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
+    
+    self.TwitterCheckbox.rippleFromTapLocation = NO;
+    self.TwitterCheckbox.tapCirclePositiveColor = [UIColor blackColor];
+    self.TwitterCheckbox.tapCircleNegativeColor = [UIColor blackColor];
+    self.TwitterCheckbox.checkmarkColor = [UIColor blackColor];
+    self.TwitterCheckbox.tag = 1001;
+    self.TwitterCheckbox.delegate = self;
+    SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     playerView.frame = self.filterSwitcherView.frame;
     // playerView.autoresizingMask = self.filterSwitcherView.autoresizingMask;
@@ -118,10 +126,7 @@
     
     _player.loopEnabled = YES;
     _player.muted = YES;
-    
-    // [デリゲートの設定]
     _textView.delegate = self;
-    // [「改行（Return）」キーの設定]
     _textView.returnKeyType = UIReturnKeyDone;
     
     self.view.userInteractionEnabled = YES;
@@ -132,10 +137,19 @@
     
     [_player setItemByAsset:_recordSession.assetRepresentingSegments];
     NSLog(@"player:%@",_recordSession);
-    //[self infoUpdate];
     [_player play];
 }
 
+-(void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox{
+    if (checkbox.isChecked) {
+        self.TwitterComment.hidden = NO;
+    }else{
+        self.TwitterComment.hidden = YES;
+    }
+}
+- (IBAction)TwitterCommentEdit:(id)sender {
+    
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     if (![self.navigationController.viewControllers containsObject:self]) {
@@ -194,8 +208,6 @@
             return;
         }
         
-        //UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-        
         VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
         VideoPostPreparation.postData.memo = self.textView.text;
         
@@ -211,19 +223,14 @@
     
     
     if ([text isEqualToString:@"\n"]) {
-        // ここにtextのデータ(記録)処理など
-        //AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        //delegate.valueHitokoto = textView.text;
         VideoPostPreparation.postData.memo = textView.text;
         [textView resignFirstResponder];
         return NO;
     }
     return YES;
-    // YES if the old text should be replaced by the new text;
-    // NO if the replacement operation should be aborted. (Apple's Reference より)
 }
 
-// 編集開始
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     NSLog(@"編集開始");
@@ -236,7 +243,6 @@
 
 - (void)setCursorToBeginning:(UITextView *)textView
 {
-    //you can change first parameter in NSMakeRange to wherever you want the cursor to move
     textView.selectedRange = NSMakeRange(3, 0);
 }
 
@@ -250,8 +256,6 @@
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    // ここにtextデータの処理
-    // キーボードを閉じる
     [self.textView resignFirstResponder];
 }
 

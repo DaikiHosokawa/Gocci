@@ -18,6 +18,8 @@
 		9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
+		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
+		951776721C2105EB008E9F39 /* TwitterPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951776701C2105EB008E9F39 /* TwitterPopup.xib */; };
 		952258311C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952258291C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png */; };
 		952258321C1D8DEE00B0C944 /* tabbaritem_profile_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9522582A1C1D8DEE00B0C944 /* tabbaritem_profile_sel.png */; };
 		952258331C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9522582B1C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png */; };
@@ -45,14 +47,10 @@
 		9550DA191BF83E4C00430942 /* CheerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7F71BF83E4B00430942 /* CheerListCell.m */; };
 		9550DA1A1BF83E4C00430942 /* CheerListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D7F81BF83E4B00430942 /* CheerListCell.xib */; };
 		9550DA1B1BF83E4C00430942 /* CheerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7FA1BF83E4B00430942 /* CheerListViewController.m */; };
-		9550DA1C1BF83E4C00430942 /* commentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7FE1BF83E4B00430942 /* commentTableViewCell.m */; };
-		9550DA1D1BF83E4C00430942 /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D7FF1BF83E4B00430942 /* commentTableViewCell.xib */; };
 		9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8011BF83E4B00430942 /* Sample4TableViewCell.m */; };
 		9550DA1F1BF83E4C00430942 /* Sample4TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D8021BF83E4B00430942 /* Sample4TableViewCell.xib */; };
 		9550DA201BF83E4C00430942 /* everyBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8041BF83E4B00430942 /* everyBaseNavigationController.m */; };
 		9550DA211BF83E4C00430942 /* everyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8061BF83E4B00430942 /* everyTableViewController.m */; };
-		9550DA221BF83E4C00430942 /* everyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8091BF83E4B00430942 /* everyTableViewCell.m */; };
-		9550DA231BF83E4C00430942 /* everyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D80A1BF83E4B00430942 /* everyTableViewCell.xib */; };
 		9550DA241BF83E4C00430942 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D80B1BF83E4B00430942 /* DebugViewController.swift */; };
 		9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D80E1BF83E4B00430942 /* EditProfileViewController.m */; };
 		9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8111BF83E4B00430942 /* EditVideoController.m */; };
@@ -415,6 +413,8 @@
 		9505939E1BFC2B7100328449 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
+		951776701C2105EB008E9F39 /* TwitterPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterPopup.xib; sourceTree = "<group>"; };
 		952258291C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbaritem_timeline@2x.png"; sourceTree = "<group>"; };
 		9522582A1C1D8DEE00B0C944 /* tabbaritem_profile_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbaritem_profile_sel.png; sourceTree = "<group>"; };
 		9522582B1C1D8DEE00B0C944 /* tabbaritem_profile_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbaritem_profile_sel@2x.png"; sourceTree = "<group>"; };
@@ -459,9 +459,6 @@
 		9550D7F81BF83E4B00430942 /* CheerListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheerListCell.xib; sourceTree = "<group>"; };
 		9550D7F91BF83E4B00430942 /* CheerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheerListViewController.h; sourceTree = "<group>"; };
 		9550D7FA1BF83E4B00430942 /* CheerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheerListViewController.m; sourceTree = "<group>"; };
-		9550D7FD1BF83E4B00430942 /* commentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentTableViewCell.h; sourceTree = "<group>"; };
-		9550D7FE1BF83E4B00430942 /* commentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentTableViewCell.m; sourceTree = "<group>"; };
-		9550D7FF1BF83E4B00430942 /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		9550D8001BF83E4B00430942 /* Sample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4TableViewCell.h; sourceTree = "<group>"; };
 		9550D8011BF83E4B00430942 /* Sample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4TableViewCell.m; sourceTree = "<group>"; };
 		9550D8021BF83E4B00430942 /* Sample4TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Sample4TableViewCell.xib; sourceTree = "<group>"; };
@@ -469,9 +466,6 @@
 		9550D8041BF83E4B00430942 /* everyBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyBaseNavigationController.m; sourceTree = "<group>"; };
 		9550D8051BF83E4B00430942 /* everyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewController.h; sourceTree = "<group>"; };
 		9550D8061BF83E4B00430942 /* everyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewController.m; sourceTree = "<group>"; };
-		9550D8081BF83E4B00430942 /* everyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = everyTableViewCell.h; sourceTree = "<group>"; };
-		9550D8091BF83E4B00430942 /* everyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = everyTableViewCell.m; sourceTree = "<group>"; };
-		9550D80A1BF83E4B00430942 /* everyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = everyTableViewCell.xib; sourceTree = "<group>"; };
 		9550D80B1BF83E4B00430942 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		9550D80D1BF83E4B00430942 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		9550D80E1BF83E4B00430942 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
@@ -1147,7 +1141,6 @@
 				9550D8041BF83E4B00430942 /* everyBaseNavigationController.m */,
 				9550D8051BF83E4B00430942 /* everyTableViewController.h */,
 				9550D8061BF83E4B00430942 /* everyTableViewController.m */,
-				9550D8071BF83E4B00430942 /* post */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1155,24 +1148,11 @@
 		9550D7FC1BF83E4B00430942 /* comment */ = {
 			isa = PBXGroup;
 			children = (
-				9550D7FD1BF83E4B00430942 /* commentTableViewCell.h */,
-				9550D7FE1BF83E4B00430942 /* commentTableViewCell.m */,
-				9550D7FF1BF83E4B00430942 /* commentTableViewCell.xib */,
 				9550D8001BF83E4B00430942 /* Sample4TableViewCell.h */,
 				9550D8011BF83E4B00430942 /* Sample4TableViewCell.m */,
 				9550D8021BF83E4B00430942 /* Sample4TableViewCell.xib */,
 			);
 			path = comment;
-			sourceTree = "<group>";
-		};
-		9550D8071BF83E4B00430942 /* post */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8081BF83E4B00430942 /* everyTableViewCell.h */,
-				9550D8091BF83E4B00430942 /* everyTableViewCell.m */,
-				9550D80A1BF83E4B00430942 /* everyTableViewCell.xib */,
-			);
-			path = post;
 			sourceTree = "<group>";
 		};
 		9550D80C1BF83E4B00430942 /* EditProfile */ = {
@@ -1642,6 +1622,8 @@
 		9550D9461BF83E4B00430942 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				9517766F1C2105EB008E9F39 /* TwitterPopup.swift */,
+				951776701C2105EB008E9F39 /* TwitterPopup.xib */,
 				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
 				9550D9481BF83E4B00430942 /* WebViewPopup.swift */,
 				9550D9491BF83E4B00430942 /* WebViewPopup.xib */,
@@ -2448,7 +2430,6 @@
 				9550DAAF1BF83E4C00430942 /* tabbaritem_lifelog@2x.png in Resources */,
 				9550DAA01BF83E4C00430942 /* btn_capture_flip@2x.png in Resources */,
 				9550DA5F1BF83E4C00430942 /* SCSecondViewMain.xib in Resources */,
-				9550DA231BF83E4C00430942 /* everyTableViewCell.xib in Resources */,
 				9550DACF1BF83E4C00430942 /* Debug.storyboard in Resources */,
 				952258311C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png in Resources */,
 				950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */,
@@ -2470,10 +2451,10 @@
 				9550DA8D1BF83E4C00430942 /* TimelineCell.xib in Resources */,
 				9550DAB51BF83E4C00430942 /* tabbaritem_posting_sel@2x.png in Resources */,
 				9550DAA61BF83E4C00430942 /* Cancel@2x.png in Resources */,
-				9550DA1D1BF83E4C00430942 /* commentTableViewCell.xib in Resources */,
 				9550DAB41BF83E4C00430942 /* tabbaritem_posting_sel.png in Resources */,
 				9550DB151BF83E4C00430942 /* icon-success.png in Resources */,
 				9550DA5C1BF83E4C00430942 /* SCSecondView_3_5_inch.xib in Resources */,
+				951776721C2105EB008E9F39 /* TwitterPopup.xib in Resources */,
 				9550DAAD1BF83E4C00430942 /* naviIcon@2x.png in Resources */,
 				9550DAA11BF83E4C00430942 /* btn_delete_black.png in Resources */,
 				9550DAA91BF83E4C00430942 /* icon_record_cam.png in Resources */,
@@ -2559,6 +2540,7 @@
 				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */,
 				9550DA7E1BF83E4C00430942 /* SCVideoPlayerView.m in Sources */,
+				951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
@@ -2602,7 +2584,6 @@
 				9550DA121BF83E4C00430942 /* APIClient.m in Sources */,
 				9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */,
 				9550DADB1BF83E4C00430942 /* AFURLSessionManager.m in Sources */,
-				9550DA221BF83E4C00430942 /* everyTableViewCell.m in Sources */,
 				9550DB011BF83E4C00430942 /* UIImage+GIF.m in Sources */,
 				9550DB201BF83E4C00430942 /* UIProgressView+AFNetworking.m in Sources */,
 				9550DA3E1BF83E4C00430942 /* TutorialPageViewController.m in Sources */,
@@ -2664,7 +2645,6 @@
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
 				9550DAC61BF83E4C00430942 /* ConfirmationPopover.swift in Sources */,
-				9550DA1C1BF83E4C00430942 /* commentTableViewCell.m in Sources */,
 				95FD92ED1C0D79F200D822E8 /* MapViewController.m in Sources */,
 				9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */,
 				9550DA361BF83E4C00430942 /* LifelogCell.m in Sources */,

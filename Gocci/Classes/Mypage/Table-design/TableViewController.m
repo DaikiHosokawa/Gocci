@@ -123,7 +123,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)table:(CollectionViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
-    
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:rest_id forKey:@"RESTID"];
@@ -132,14 +131,17 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Twitter", @"店舗",  @"削除" ]
-                                 images:@[ [UIImage imageNamed:@"twitter"],
-                                           [UIImage imageNamed:@"restaurant"],
-                                           [UIImage imageNamed:@"trash"]]
+                             itemTitles:@[ @"Twitter", @"店舗", @"削除",@"保存" ]
+                                 images:@[[UIImage imageNamed:@"twitter"],
+                                          [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"trash"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
+                             
                              
                              
                              if(index == 1){
@@ -183,8 +185,13 @@ static NSString * const reuseIdentifier = @"Cell";
                                      }
                                       ];
                                  }
+                                 
+                             }
+                             else if(index == 4){
+                                 NSLog(@"save");
                              }
                          }];
+    
     
     
 }

@@ -989,42 +989,63 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wBo-fv-obV">
-                                <rect key="frame" x="5" y="337" width="65" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                                <state key="normal" title="※応援とは？">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <view contentMode="scaleToFill" id="EnC-nb-zVG">
-                                <rect key="frame" x="0.0" y="365" width="320" height="61"/>
+                            <view contentMode="scaleToFill" id="b3v-sL-V2e">
+                                <rect key="frame" x="0.0" y="383" width="321" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="tS9-YF-SBV">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    <view contentMode="scaleToFill" id="VDw-fK-dGa">
+                                        <rect key="frame" x="-17" y="1" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="AjK-nX-0PU">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="1"/>
+                                    <view contentMode="scaleToFill" id="4ZP-Z9-44h">
+                                        <rect key="frame" x="-17" y="48" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.78820375340000004" green="0.78820375340000004" blue="0.78820375340000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yql-2Z-KLc">
-                                        <rect key="frame" x="16" y="9" width="43" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="73q-M6-iCU" customClass="BFPaperCheckbox">
+                                        <rect key="frame" x="279" y="5" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="test2" image="twitter_share"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7B7-Yv-2Tc">
+                                        <rect key="frame" x="249" y="11" width="22" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_mode_edit"/>
+                                        <connections>
+                                            <action selector="TwitterCommentEdit:" destination="Eic-0q-g0a" eventType="touchUpInside" id="jZr-Oh-J9g"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="08I-Tv-ENd">
+                                        <rect key="frame" x="58" y="16" width="53" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xlh-aY-clF">
+                                        <rect key="frame" x="17" y="12" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="test2" image="twitter_icon"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画をシェア" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fVC-Lr-mYv">
+                                <rect key="frame" x="10" y="365" width="168" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96626801269999996" green="0.96626801269999996" blue="0.96626801269999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="5B6-W9-as0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="TwitterCheckbox" destination="73q-M6-iCU" id="W2X-K7-hFu"/>
+                        <outlet property="TwitterComment" destination="7B7-Yv-2Tc" id="NVU-Gc-Hdi"/>
                         <outlet property="category" destination="8Yx-i7-eBb" id="Exc-QT-yt0"/>
                         <outlet property="checkbox" destination="UB0-ak-OFo" id="7eh-UI-L5T"/>
                         <outlet property="filterSwitcherView" destination="UgZ-nh-AhL" id="kwa-8a-NB2"/>
@@ -2391,6 +2412,7 @@
         <image name="ic_empty" width="1000" height="1000"/>
         <image name="ic_list_white" width="24" height="24"/>
         <image name="ic_location_on_white" width="24" height="24"/>
+        <image name="ic_mode_edit" width="24" height="24"/>
         <image name="ic_more_vert_white" width="24" height="24"/>
         <image name="ic_notifications_active_white" width="24" height="24"/>
         <image name="ic_refresh_white_48pt" width="48" height="48"/>
@@ -2402,7 +2424,7 @@
         <image name="tabbaritem_profile.png" width="27" height="27"/>
         <image name="tabbaritem_timeline.png" width="30" height="30"/>
         <image name="tag-C" width="128" height="28"/>
-        <image name="twitter_share" width="100" height="100"/>
+        <image name="twitter_icon" width="50" height="50"/>
         <image name="その他" width="151" height="101"/>
         <image name="予約をする" width="151" height="101"/>
         <image name="地図で見る" width="151" height="101"/>

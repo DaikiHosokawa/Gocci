@@ -32,12 +32,7 @@ Would be cool
 Daiki Hosokawa
 ==============
 
-- sort button
-- Userpage
-- restaurantpage
-- mute
-- twitter upload
--
+
 
 Markus Wanke
 ============
