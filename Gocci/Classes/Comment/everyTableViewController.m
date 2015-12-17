@@ -24,6 +24,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     NSArray *list_comments;
     EveryPost *myPost;
     NSMutableArray *postCommentname;
+    CGFloat currentKeyboardHeight;
 }
 
 @property (nonatomic, retain) NSMutableArray *picture_;
@@ -94,6 +95,16 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _textField.placeholder = @"ここにコメントを入力してください。";
     _textField.delegate = self;
     
+    currentKeyboardHeight = 0.0f;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
 #if 0
     // タブの中身（UIViewController）をインスタンス化
     UIViewController *item01 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
@@ -135,6 +146,38 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 }
 
 
+- (void)keyboardWillShow:(NSNotification*)notification {
+    
+    const float movementDuration = 0.3f;
+    
+    NSDictionary *info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat deltaHeight = kbSize.height - currentKeyboardHeight;
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, deltaHeight);
+    [UIView commitAnimations];
+    // Write code to adjust views accordingly using deltaHeight
+    currentKeyboardHeight = kbSize.height;
+}
+
+- (void)keyboardWillHide:(NSNotification*)notification {
+    
+    const float movementDuration = 0.3f;
+    
+    NSDictionary *info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    // Write code to adjust views accordingly using kbSize.height
+    CGFloat deltaHeight = kbSize.height - currentKeyboardHeight;
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, deltaHeight);
+    [UIView commitAnimations];
+    // Write code to adjust views accordingly using deltaHeight
+    currentKeyboardHeight = 0.0f;
+}
 
 
 #pragma mark viewWillDisappear
@@ -143,37 +186,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
   [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: YES];
-    NSLog(@"Editing");
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: NO];
-    NSLog(@"End Editing");
-}
-
-
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 230; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
 
 #pragma mark - Json
 -(void)perseJson
@@ -281,26 +297,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         //キーボードを隠す
         [_textField resignFirstResponder];
     }
-    
 }
-
-
-
-
-//[textField resignFirstResponder];
-
-#pragma mark - UIScrollDelegate
-
-
-
-
-#pragma mark - UITableViewDelegate&DataSource
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//	// Return the number of sections.
-//	return 1;
-//}
 
 #pragma mark 高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

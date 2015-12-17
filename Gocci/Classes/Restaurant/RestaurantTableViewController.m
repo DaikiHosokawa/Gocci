@@ -18,6 +18,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
 #import "NotificationViewController.h"
+#import "RHRefreshControl.h"
 
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -29,7 +30,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()
-<TimelineCellDelegate,MKMapViewDelegate>
+<TimelineCellDelegate,MKMapViewDelegate,RHRefreshControlDelegate>
 {
     __weak IBOutlet MKMapView *map_;
     NSDictionary *header;
@@ -37,7 +38,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, strong) UIRefreshControl *refresh;
+@property (nonatomic, strong) RHRefreshControl *refresh;
+@property (nonatomic, assign, getter = isLoading) BOOL loading;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 /** タイムラインのデータ */
@@ -64,9 +66,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         navigationTitle.image = image;
         self.navigationItem.titleView =navigationTitle;
-        
-        
-        
+  
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -78,10 +78,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
+   
     
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
+    RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
+    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
+    self.refresh = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
+    self.refresh.delegate = self;
+    [self.refresh attachToScrollView:self.tableView];
+    
+    [self _fetchRestaurant];
     
 }
 
@@ -99,11 +104,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self _fetchRestaurant];
     
 }
 
-
+#pragma mark - RHRefreshControl Delegate
+- (void)refreshDidTriggerRefresh:(RHRefreshControl *)refreshControl {
+    
+    self.loading = YES;
+     [self _fetchRestaurant];
+    
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -123,11 +133,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 #pragma mark - Action
 
-
-- (void)refresh:(UIRefreshControl *)sender
-{
-    [self _fetchRestaurant];
-}
 
 
 
@@ -169,7 +174,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
-    
     return cell;
 }
 
@@ -309,15 +313,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 UIImage *img = [UIImage imageNamed:@"notOen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 0;
-               
             }
-            
         }];
     }
 }
 
 - (IBAction)tapTEL {
-    
     if ([[header objectForKey:@"tell"] isEqualToString:@"非公開"] || [[header objectForKey:@"tell"] isEqualToString:@"準備中"]|| [[header objectForKey:@"tell"] isEqualToString:@"予約不可"]|| [[header objectForKey:@"tell"] isEqualToString:@"非設置"]|| [[header objectForKey:@"tell"] isEqualToString:@"none"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
@@ -354,7 +355,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (IBAction)tapHomepatge {
-    
     NSString *urlString = [header objectForKey:@"homepage"];
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
@@ -454,8 +454,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [SVProgressHUD show];
     
-    [self.refresh beginRefreshing];
-    
     __weak typeof(self)weakSelf = self;
     [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         
@@ -479,11 +477,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         if ([self.posts count]== 0) {
             [SVProgressHUD dismiss];
         }
-        
-        if ([weakSelf.refresh isRefreshing]) {
-            [weakSelf.refresh endRefreshing];
-        }
-        
+        [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
         [self byoga];
     }];
 }
@@ -557,6 +551,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
     self.tabBarController.selectedIndex = 2;
     
+}
+
+- (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
+    return self.isLoading;
+    
+}
+
+- (void) _fakeLoadComplete {
+    self.loading = NO;
+    [self.refresh refreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 
