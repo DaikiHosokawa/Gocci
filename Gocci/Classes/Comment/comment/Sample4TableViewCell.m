@@ -30,8 +30,6 @@
     // Configure the view for the selected state
 }
 
-
-
 #pragma mark - Value
 +(CGFloat)heightCell
 {

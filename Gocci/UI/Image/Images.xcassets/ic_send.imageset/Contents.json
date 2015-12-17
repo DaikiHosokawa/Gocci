@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "restaurant.png",
+      "filename" : "ic_send.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restaurant@2x.png",
+      "filename" : "ic_send_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restaurant@3x.png",
+      "filename" : "ic_send_3x.png",
       "scale" : "3x"
     }
   ],

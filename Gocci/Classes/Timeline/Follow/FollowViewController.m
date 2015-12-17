@@ -181,11 +181,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     [SGActionView showGridMenuWithTitle:@"アクション"
                              itemTitles:@[@"Twitter", @"店舗", @"ユーザー",
-                                           @"違反報告" ]
+                                           @"違反報告",@"保存" ]
                                  images:@[ [UIImage imageNamed:@"twitter"],
                                            [UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"man"],
-                                           [UIImage imageNamed:@"warning"]]
+                                           [UIImage imageNamed:@"warning"],
+                                           [UIImage imageNamed:@"save"]
+                                           ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *u_id = [optionDic objectForKey:@"USERID"];
@@ -246,6 +248,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                      }
                                       ];
                                  }
+                             }
+                             else if(index == 5){
+                                 NSLog(@"save");
                              }
                }];
 

@@ -24,6 +24,7 @@
 #import "Swift.h"
 
 
+
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -115,18 +116,17 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
             action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
     */
     
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *notificationBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [notificationBtn setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
+    [notificationBtn addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:notificationBtn];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
     self.barButton.badgeTextColor    = color_custom;
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
-    
     
     self.barButton.badgeValue =  [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];
     
@@ -136,7 +136,14 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
                                name:@"Notification"
                              object:nil];
     
-    if(!locationManager){
+    
+    UIButton *sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [sortBtn setImage:[UIImage imageNamed:@"ic_sort_white"] forState:UIControlStateNormal];
+    [sortBtn addTarget:self action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
+   
+    UIBarButtonItem *sortBtnNavi = [[UIBarButtonItem alloc] initWithCustomView:sortBtn];
+    
+                                    if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -145,14 +152,12 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
     
     self.navigationItem.rightBarButtonItem = self.barButton;
-    
-    UIImage *image = [UIImage imageNamed:@"sort.png"];
-    UIButton *button = [[UIButton alloc]
-                     initWithFrame:CGRectMake(self.view.frame.size.width - 72, self.view.frame.size.height - 110, 45,45)];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    [button addTarget:self
-            action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    self.navigationItem.leftBarButtonItem = sortBtnNavi;
+
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scrolling");
 }
 
 

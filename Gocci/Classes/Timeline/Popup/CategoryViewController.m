@@ -50,7 +50,7 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Identifier"];
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"未選択";
+        cell.textLabel.text = @"選択なし";
     }else if (indexPath.row == 1) {
         cell.textLabel.text = @"和食";
     }else if(indexPath.row == 2) {
