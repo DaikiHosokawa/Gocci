@@ -17,6 +17,7 @@ class RequestPushMessagesPopup: AbstractPopup {
     
     var onDecline: (()->())? = nil
     var onAllow: (()->())? = nil
+    var inAnyCase: (()->())? = nil
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch: UITouch? = touches.first
@@ -34,6 +35,11 @@ class RequestPushMessagesPopup: AbstractPopup {
     @IBAction func onNotShowAgain(sender: AnyObject) {
         dismiss()
         onDecline?()
+    }
+    
+    override func viewDidDisappear(a: Bool) {
+        super.viewDidDisappear(a)
+        inAnyCase?()
     }
 
 //    override func viewWillAppear(animated: Bool) {

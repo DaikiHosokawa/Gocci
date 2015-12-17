@@ -9,45 +9,12 @@
 import Foundation
 
 
-extension NSURLRequest {
-//    func perform(onlyOnSUccess: ((statusCode: Int, data: NSData)->())?) {
-//        
-//        let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("UNNEEDED")
-//        let session = NSURLSession(configuration: config)
-//        
-//        let urlsessiontask = session.dataTaskWithRequest(self) { (data, response, error) -> Void in
-//            
-//            
-//            
-//            guard error == nil else {
-//                
-//                // TODO NIHONGO
-//                if error.code == NSURLErrorNotConnectedToInternet {
-//                    Toast.失敗("You are not connected to the internet...", "GOCCI won't be much fun if you are offline :(")
-//                }
-//                
-//                onFailure?(errorMessage: error?.localizedDescription ?? "No error message")
-//                return
-//            }
-//            
-//            guard let resp = response as? NSHTTPURLResponse else {
-//                onFailure?(errorMessage: "Response is not an HTTP Response")
-//                return
-//            }
-//            
-//            guard let data = data else {
-//                onFailure?(errorMessage: "No json data recieved")
-//                return
-//            }
-//            
-//            onSuccess?(statusCode: resp.statusCode, data: data)
-//        }
-//        
-//        urlsessiontask.resume()
-//    }
-}
-
-@objc class Network: NSObject {
+@objc class Network: NSObject, Logable {
+    
+    
+    static var verbose = true
+    
+    static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0x99, 0x33, 0xCC)
     
     static let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
     
@@ -80,14 +47,15 @@ extension NSURLRequest {
         if let reachabilty = note.object as? Reachability {
             let status = reachabilty.currentReachabilityStatus()
             
-            print("reachabiity changed called: \(status)")
-            
             switch status.rawValue {
                 case 0: state = .OFFLINE
                 case 1: state = .ONLINE_LAN
                 case 2: state = .ONLINE_WAN
                 default: break
             }
+            
+            sep("NETWORK")
+            log("Network state changed to:\t\(state)")
             
             for waiter in waiters {
                 waiter(state)

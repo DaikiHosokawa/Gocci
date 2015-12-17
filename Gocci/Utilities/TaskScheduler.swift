@@ -368,8 +368,12 @@ class SingletonTaskScheduler {
 }
 
 
-class PersistentBaseTask: CustomStringConvertible {
+class PersistentBaseTask: CustomStringConvertible, Logable {
     
+    
+    static var verbose = true
+    
+    static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0xFF, 0xFF, 0x00)
     
     enum State: String {
         case SUSPENDED

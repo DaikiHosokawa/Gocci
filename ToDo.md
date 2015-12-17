@@ -42,6 +42,8 @@ Daiki Hosokawa
 Markus Wanke
 ============
 
+- Let the user dice what messages he wants. Gettings 100 likes is not fun maybe, but he probably wants to see the messages
+
 - If the user declines camera and/or mic permission, the user will never be able to take a video
 
 - put all the showPopupWithTransitionStyle code douplicates in an extension
