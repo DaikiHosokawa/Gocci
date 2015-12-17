@@ -98,6 +98,13 @@ extension NSUserDefaults {
     }
 }
 
+extension UIColor {
+    
+    static var good: UIColor { return UIColor(red: 0, green: 0.7, blue: 0, alpha: 1) }
+    static var bad:  UIColor { return UIColor.redColor() }
+    static var neutral:  UIColor { return UIColor.blueColor() }
+}
+
 extension UIViewController {
     
     func simplePopup(title: String, _ msg: String, _ button: String, and: (()->())? = nil) {

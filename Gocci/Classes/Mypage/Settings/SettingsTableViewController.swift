@@ -21,6 +21,8 @@ class SettingsTableViewController: UITableViewController
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+
 
     override func viewDidLoad()
     {
@@ -37,7 +39,7 @@ class SettingsTableViewController: UITableViewController
                     {
                         $0.textLabel?.text = "パスワードを設定する"
                         $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "設定済み" : "設定する"
-                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.blackColor() : UIColor.blackColor()
+                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.good : UIColor.bad
                     },
                     handlePassword
                 ),
@@ -71,9 +73,8 @@ class SettingsTableViewController: UITableViewController
                     {
                         $0.textLabel?.text = "通知を設定する"
                         let wants = Permission.userHasGrantedPushNotificationPermission() && Persistent.registerd_device_token != nil
-                        $0.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                        $0.detailTextLabel?.text = wants ? "受信" : "未許可"
                         $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
-                        
                     },
                     handlePushNotification
                 )
@@ -108,7 +109,15 @@ class SettingsTableViewController: UITableViewController
                     }
                 ),
                 (
-                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = (Util.getGocciVersionString() ?? "?.?") },
+                    {
+                    #if TEST_BUILD
+                        let versionStr = "TEST BUILD" + Util.getGocciVersionString() ?? "?.?"
+                    #else
+                        let versionStr = Util.getGocciVersionString() ?? "?.?"
+                    #endif
+                        $0.textLabel?.text = "バージョン"
+                        $0.detailTextLabel?.text = versionStr
+                        $0.detailTextLabel?.textColor = UIColor.neutral },
                     nil
                 ),
                 (
@@ -138,7 +147,7 @@ class SettingsTableViewController: UITableViewController
                 // Show the holy popup
                 Permission.theHolyPopup { wants in
                     // We pretend the task has succeeded for now...
-                    cell.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                    cell.detailTextLabel?.text = wants ? "受信" : "未許可"
                     cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
                 }
                 return
@@ -154,7 +163,7 @@ class SettingsTableViewController: UITableViewController
                 Persistent.registerd_device_token = ""
             }
             
-            cell.detailTextLabel?.text = "blocked"
+            cell.detailTextLabel?.text = "未許可"
             cell.detailTextLabel?.textColor = UIColor.redColor()
         }
         
@@ -166,7 +175,7 @@ class SettingsTableViewController: UITableViewController
             // this will reschedule an permission check. The popup will never be shown here
             Permission.theHolyPopup { wants in
                 // We pretend the task has succeeded for now...
-                cell.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                cell.detailTextLabel?.text = wants ? "受信" : "未許可"
                 cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
             }
         }
@@ -290,9 +299,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Twitter?",
-                confirmButton: (text: "Disconnect", cb: disconnect),
-                cancelButton:  (text: "Cancel", cb: nil))
+            self.simpleConfirmationPopup("確認", "Twitter連携を解除してもよろしいですか？",
+                confirmButton: (text: "解除", cb: disconnect),
+                cancelButton:  (text: "キャンセル", cb: nil))
         }
     }
     
@@ -353,9 +362,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Facebook?",
-                confirmButton: (text: "Disconnect", cb: disconnect),
-                cancelButton:  (text: "Cancel", cb: nil))
+            self.simpleConfirmationPopup("確認", "Facebook連携を解除してもよろしいですか？",
+                confirmButton: (text: "解除", cb: disconnect),
+                cancelButton:  (text: "キャンセル", cb: nil))
         }
     
     }
@@ -379,19 +388,19 @@ class SettingsTableViewController: UITableViewController
             preferredStyle: UIAlertControllerStyle.ActionSheet)
 
 
-        alertController.addAction(UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) { action in
-            self.simpleConfirmationPopup("Last Chance", "All your data will be deleted",
-                confirmButton: (text: "Do it", cb: reset),
-                cancelButton:  (text: "Cancel", cb: nil))
+        alertController.addAction(UIAlertAction(title: "完全にリセット", style: UIAlertActionStyle.Destructive) { action in
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます",
+                confirmButton: (text: "削除", cb: reset), // TODO MARK AS DELETE BUTTON, not DEFAULT style
+                cancelButton:  (text: "キャンセル", cb: nil))
         })
 
 
-        alertController.addAction(UIAlertAction(title: "Reset but keep account", style: UIAlertActionStyle.Destructive) { action in
+        alertController.addAction(UIAlertAction(title: "アカウントは保持", style: UIAlertActionStyle.Destructive) { action in
             iid = Persistent.identity_id
         
-            self.simpleConfirmationPopup("Last Chance", "All your data will be deleted, but you can login again",
-                confirmButton: (text: "Do it", cb: reset),
-                cancelButton:  (text: "Cancel", cb: nil))
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます",
+                confirmButton: (text: "削除", cb: reset),
+                cancelButton:  (text: "キャンセル", cb: nil))
         })
         
         alertController.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel) { _ in
