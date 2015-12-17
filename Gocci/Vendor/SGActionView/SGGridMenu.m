@@ -40,7 +40,7 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     
-    CGRect imageRect = CGRectMake(width * 0.2, width * 0.2, width * 0.6, width * 0.6);
+    CGRect imageRect = CGRectMake(width * 0.3, width * 0.3, width * 0.4, width * 0.4);
     self.imageView.frame = imageRect;
     
     float labelHeight = height - (imageRect.origin.y + imageRect.size.height);

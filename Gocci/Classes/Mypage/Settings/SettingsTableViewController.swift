@@ -329,16 +329,16 @@ class SettingsTableViewController: UITableViewController
         
         
         let alertController = UIAlertController(
-            title: "Resign from Gocci",
-            message: "You can reset Gocci complete or keep your account and reset everything else",
+            title: "Gocciをやめる",
+            message: "完全にGocciをリセットするか、アカウントは保存しておく方法があります",
             preferredStyle: UIAlertControllerStyle.ActionSheet)
         
 
-        alertController.addAction(UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) { action in
+        alertController.addAction(UIAlertAction(title: "完全にリセット", style: UIAlertActionStyle.Destructive) { action in
             self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます", "キャンセル", "OK", reset)
         })
             
-        alertController.addAction(UIAlertAction(title: "Reset but keep account", style: UIAlertActionStyle.Destructive) { action in
+        alertController.addAction(UIAlertAction(title: "アカウントは保持", style: UIAlertActionStyle.Destructive) { action in
             iid = Persistent.identity_id
             self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます", "キャンセル", "OK", reset)
         })

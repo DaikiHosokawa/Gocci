@@ -25,7 +25,6 @@
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
-#import "requestPushPopupViewController.h"
 
 // !!!:dezamisystem
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
@@ -97,9 +96,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    requestPushPopupViewController* rvc = [requestPushPopupViewController new];
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
