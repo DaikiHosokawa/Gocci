@@ -13,6 +13,9 @@
 @end
 
 @interface Sample4TableViewCell : UITableViewCell
+{
+    BOOL isCommentTableViewCellAll;
+}
 @property (nonatomic, weak) id<Sample4TableViewCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *UsersPicture;
 @property (weak, nonatomic) IBOutlet UILabel *UsersName;
@@ -24,6 +27,9 @@
 
 #pragma mark - Initialize
 + (instancetype)cell;
+
+#pragma mark - 反映
+-(void)configureWithArray:(NSArray*)commentlist;
 
 
 

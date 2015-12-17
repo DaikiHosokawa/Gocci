@@ -96,7 +96,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 -(void)collection:(CollectionViewCell_2 *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
-    
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:rest_id forKey:@"RESTID"];
@@ -105,33 +104,37 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[@"Twitter", @"店舗",  @"違反報告" ]
+                             itemTitles:@[ @"Twitter", @"店舗", @"削除",@"保存" ]
                                  images:@[[UIImage imageNamed:@"twitter"],
-                                           [UIImage imageNamed:@"restaurant"],
-                                           [UIImage imageNamed:@"warning"]]
+                                          [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"trash"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
+                             
+                             
                              
                              if(index == 1){
                                  NSLog(@"Twitter");
                              }
                              else if(index == 2){
                                  NSLog(@"Rest");
-                                 [self.delegate collection_2:self rest_id:r_id];
+                                 [self.delegate collection_2:self rest_id:rest_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
                              else if(index == 3){
-                                 NSLog(@"違反報告");
+                                 NSLog(@"削除");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                              if (result) {
                                                  NSLog(@"result:%@",result);
                                              }
@@ -148,17 +151,19 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                  }
                                  else
                                  {
-                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                     [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                          if (result) {
                                              NSLog(@"result:%@",result);
                                          }
                                      }
                                       ];
                                  }
+                                 
+                             }
+                             else if(index == 4){
+                                 NSLog(@"save");
                              }
                          }];
-    
-    
 }
 
 -(void)collection:(CollectionViewCell_2 *)cell didTapThumb:(NSString *)rest_id{

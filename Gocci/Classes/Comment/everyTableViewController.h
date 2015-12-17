@@ -14,7 +14,7 @@
 #import "CollectionViewController.h"
 
 
-@interface everyTableViewController : UITableViewController<UITextViewDelegate, UITabBarControllerDelegate>
+@interface everyTableViewController : UIViewController<UITextViewDelegate, UITabBarControllerDelegate,UITextFieldDelegate,UITableViewDelegate>
 {
     NSString *_postID;
     //profile_otherへの引き継ぎ
@@ -27,6 +27,11 @@
 
 -(id)initWithText:(NSString *)text hashTag:(NSString *)hashTag;
 @property (nonatomic) NSString *postID;
+
+@property(nonatomic,retain) NSMutableArray *listUsername;
+@property(nonatomic,retain) NSMutableArray *listProfileImg;
+@property(nonatomic,retain) NSMutableArray *listComment;
+@property(nonatomic,retain) NSMutableArray *listDate;
 
 // !!!:dezamisystem
 - (IBAction)onReturn:(id)sender;
