@@ -105,10 +105,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Twitter", @"店舗", @"削除" ]
+                             itemTitles:@[ @"Twitter", @"店舗", @"削除",@"保存" ]
                                  images:@[[UIImage imageNamed:@"twitter"],
                                            [UIImage imageNamed:@"restaurant"],
-                                           [UIImage imageNamed:@"trash"]]
+                                           [UIImage imageNamed:@"trash"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
@@ -157,6 +159,10 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                      }
                                       ];
                                  }
+                                 
+                             }
+                             else if(index == 4){
+                                 NSLog(@"save");
                              }
                          }];
     

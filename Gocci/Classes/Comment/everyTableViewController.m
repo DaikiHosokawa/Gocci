@@ -10,10 +10,7 @@
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
-#import "everyTableViewCell.h"
 #import "EveryPost.h"
-#import "MoviePlayerManager.h"
-#import "commentTableViewCell.h"
 #import "UserpageViewController.h"
 #import "RestaurantTableViewController.h"
 #import "APIClient.h"
@@ -22,7 +19,7 @@
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
-@interface everyTableViewController ()<EveryCellDelegate>
+@interface everyTableViewController ()
 {
     NSArray *list_comments;
     EveryPost *myPost;
@@ -36,6 +33,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, retain) NSString *dottext;
 @property (nonatomic, retain) NSString *postIDtext;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 
@@ -78,7 +76,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     UINib *nib = [UINib nibWithNibName:@"Sample4TableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"EveryTableViewCell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"Sample4TableViewCell"];
     
     //背景にイメージを追加したい
     // UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
@@ -88,10 +86,13 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
-    self.tableView.bounces = NO;
+    self.tableView.delegate = self;
+    self.tableView.bounces = YES;
     self.tableView.allowsSelection = NO;
-    //	self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     _textField.placeholder = @"ここにコメントを入力してください。";
+    _textField.delegate = self;
     
 #if 0
     // タブの中身（UIViewController）をインスタンス化
@@ -125,14 +126,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
     
     // キーボードの表示・非表示がNotificationCenterから通知される
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 
@@ -141,29 +140,39 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark viewWillDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
-    // キーボードの表示・非表示はNotificationCenterから通知されますよっと
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    // 通知の受け取りを解除する
-    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter removeObserver:self
-                             name:UIKeyboardWillShowNotification
-                           object:nil];
-    [defaultCenter removeObserver:self
-                             name:UIKeyboardWillHideNotification
-                           object:nil];
-    
-    [super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: YES];
+    NSLog(@"Editing");
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: NO];
+    NSLog(@"End Editing");
+}
+
+
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 230; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
     
-    // 画面が隠れた際に再生中の動画を停止させる
-    [[MoviePlayerManager sharedManager] stopMovie];
+    int movement = (up ? -movementDistance : movementDistance);
     
-    //動画データを一度全て削除
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
-    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 #pragma mark - Json
@@ -172,7 +181,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [SVProgressHUD show];
     [APIClient commentJSON:_postID handler:^(id result, NSUInteger code, NSError *error) {
         
-       
+        
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
@@ -187,61 +196,37 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
             NSArray* d_comments = (NSArray*)[result valueForKey:@"comments"];
             NSLog(@"d_comments:%@",d_comments);
             list_comments = [[NSArray alloc] initWithArray:d_comments];
-            
-            NSArray *user_name = [d_comments valueForKey:@"username"];
-            postCommentname = [user_name mutableCopy];
-            
-            NSDictionary *d_post = [result objectForKey:@"post"];
-            NSLog(@"d_post:%@",d_post);
-            myPost = [EveryPost everyPostWithJsonDictionary:d_post];
-            
-            [self.tableView reloadData];
             [SVProgressHUD dismiss];
             
-            [[MoviePlayerManager sharedManager] removeAllPlayers];
+            if ([list_comments count]>0) {
+                
+                self.listUsername = [[NSMutableArray alloc] init];
+                self.listProfileImg = [[NSMutableArray alloc] init];
+                self.listComment = [[NSMutableArray alloc] init];
+                self.listDate = [[NSMutableArray alloc] init];
+                
+                
+                for (NSDictionary *dict in list_comments) {
+                    NSLog(@"list_comments:%@",list_comments);
+                    
+                    NSString *username = [dict objectForKey:@"username"];
+                    [self.listUsername addObject:username];
+                    
+                    NSString *picture = [dict objectForKey:@"profile_img"];
+                    [self.listProfileImg addObject:picture];
+                    
+                    NSString *comment = [dict objectForKey:@"comment"];
+                    [self.listComment addObject:comment];
+                    
+                    NSString *date_str = [dict objectForKey:@"comment_date"];
+                    [self.listDate addObject:date_str];
+                }
+                [self.tableView reloadData];
+                [SVProgressHUD dismiss];
+            }
             
         }
     }];
-    
-}
-
-/**
- *  現在表示中のセルの動画を再生する
- */
-- (void)_playMovieAtCurrentCell
-{
-    /*
-     if ( [self.posts count] == 0){
-     return;
-     }
-     */
-    
-    if (self.tabBarController.selectedIndex != 0) {
-        // 画面がフォアグラウンドのときのみ再生
-        return;
-    }
-    
-    NSInteger currentIndexRow = 0;
-    CGFloat currentHeight = 0.0;
-    //	for (NSUInteger i=0; i < [self _currentIndexPath].row; i++) {
-    //		if ([self.posts count] <= i) continue;
-    //
-    //		currentHeight += [TimelineCell cellHeightWithTimelinePost:self.posts[i]];
-    //	}
-    
-    currentHeight += [everyTableViewCell cellHeightWithTimelinePost:myPost];
-    
-    everyTableViewCell *currentCell = [everyTableViewCell cell];
-    [currentCell configureWithTimelinePost:myPost];
-    CGRect movieRect = CGRectMake((self.tableView.frame.size.width - currentCell.thumbnailView.frame.size.width) / 2,
-                                  currentCell.thumbnailView.frame.origin.y,
-                                  currentCell.thumbnailView.frame.size.width,
-                                  currentCell.thumbnailView.frame.size.height);
-    
-    [[MoviePlayerManager sharedManager] scrolling:NO];
-    [[MoviePlayerManager sharedManager] playMovieAtIndex:[self _currentIndexPath].row
-                                                  inView:self.tableView
-                                                   frame:movieRect];
     
 }
 
@@ -249,6 +234,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 - (IBAction)pushSendBtn:(id)sender
 {
     _dottext = _textField.text;
+    NSLog(@"入力:%@",_textField.text);
     
     if (_textField.text.length == 0) {
         //アラート出す
@@ -257,7 +243,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"コメントを入力してください"
                                   delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
-        
     }
     else {
         NSLog(@"コメント内容:%@",_dottext);
@@ -299,67 +284,15 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
 }
 
-// キーボードが表示される時に呼び出される
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    // キーボードのサイズ
-    CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    // キーボード表示アニメーションのduration
-    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    // viewのアニメーション
-    [UIView animateWithDuration:duration animations:^{
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height+10);
-        self.view.transform = transform;
-    } completion:NULL];
-}
 
-// キーボードが非表示になる時に呼び出される
-- (void)keyboardWillHide:(NSNotification *)notification {
-    // キーボード表示アニメーションのduration
-    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    __weak typeof(self) _self = self;
-    [UIView animateWithDuration:duration animations:^{
-        _self.view.transform = CGAffineTransformIdentity;
-    } completion:NULL];
-}
+
 
 //[textField resignFirstResponder];
 
 #pragma mark - UIScrollDelegate
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if(!decelerate) {
-        LOG(@"scroll is stoped");
-        [self _playMovieAtCurrentCell];
-    }
-}
 
 
-#pragma mark - UIActivityItemSource
-//Twitterのアクティビティ動作
--(id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
-{
-    // Twitterの時だけハッシュタグをつける
-    if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
-        return [NSString stringWithFormat:@"%@ #%@", _text, _hashTag];
-    }
-    return _text;
-}
--(id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
-{
-    return _text;
-}
-
-//アクションボタンを押した時の動作
-- (IBAction)share:(id)sender
-{
-    everyTableViewController *text = [[everyTableViewController alloc] initWithText:@"本文はこちらです。" hashTag:@"Gocci"];
-    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[text] applicationActivities:nil];
-    [self presentViewController:avc animated:YES completion:nil];
-}
 
 #pragma mark - UITableViewDelegate&DataSource
 
@@ -372,76 +305,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark 高さ
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSInteger row_index = indexPath.row;
-    
-    CGFloat height = 100.f;
-    if (row_index % 2) {
-        //Comment
-        height = [commentTableViewCell heightCell];
-    }
-    else {
-        //POST
-        height = [everyTableViewCell cellHeightWithTimelinePost:myPost];
-    }
-    
-    return height;
-}
-
-- (void)everyCell:(everyTableViewCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{
-    // API からデータを取得
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-    }
-     ];
+    return 75;
     
 }
 
-#pragma mark user_nameタップの時の処理
-- (void)everyCell:(everyTableViewCell *)cell didTapNameWithUserName:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag
-{
-    //user nameタップの時の処理
-    LOG(@"username=%@", userName);
-    _postUsername = userName;
-    _postPicture = usersPicture;
-    _postFlag = flag;
-    
-    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-}
 
-- (void)everyCell:(everyTableViewCell*)cell didTapNameWithUserPicture:(NSString *)userPicture name:(NSString *)userName flag:(NSInteger)flag
-{
-    _postPicture = userPicture;
-    _postUsername = userName;
-    _postFlag = flag;
-    
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    // !!!:dezamisystem
-    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-    
-}
-
-- (void)everyCell:(everyTableViewCell *)cell didTapRestaurant:(NSString *)rest_id
-{
-    NSLog(@"restname is touched");
-    //rest nameタップの時の処理
-    _postRestname = rest_id;
-    [self performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:self];
-}
-
-/**
- *  現在表示中の indexPath を取得
- *
- *  @return
- */
-- (NSIndexPath *)_currentIndexPath
-{
-    CGPoint point = CGPointMake(self.tableView.contentOffset.x,
-                                self.tableView.contentOffset.y + self.tableView.frame.size.height/2);
-    NSIndexPath *currentIndexPath = [self.tableView indexPathForRowAtPoint:point];
-    
-    return currentIndexPath;
-}
 
 #pragma mark セルの透過処理
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -452,54 +320,33 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 #pragma mark セル数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = 1 + 1; // POST用セル + コメント用セル
-    
-    return count;
+    NSLog(@"count:%lu",(unsigned long)[list_comments count]);
+    return [list_comments count];
 }
 
 #pragma mark セル作成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row_index = indexPath.row;
+    // NSInteger row_index = indexPath.row;
     
-    if (row_index % 2) {
-        //コメントセル
-        commentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CommentCellIdentifier];
-        // cell.supervc = self;
-        if (!cell) {
-            cell = [commentTableViewCell cell];
-        }
-        
-        NSLog(@"list_comments:%@",list_comments);
-        //セルにデータ反映
-        [cell configureWithArray:list_comments];
-        
-        //終了
-        return cell;
+    Sample4TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Sample4TableViewCell"];
+    if (!cell) {
+        cell = [Sample4TableViewCell cell];
     }
     
-    //ポストセル
-    NSString *cellIdentifier = EveryCellIdentifier;
-    everyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.UsersName.text =  [self.listUsername objectAtIndex:indexPath.row];
+    NSLog(@"username:%@", [self.listUsername objectAtIndex:indexPath.row]);
+    [cell.UsersPicture sd_setImageWithURL:[NSURL URLWithString: [self.listProfileImg objectAtIndex:indexPath.row]]
+                             placeholderImage:[UIImage imageNamed:@"default.png"]
+                                      options:0
+                                     progress:nil
+                                    completed:nil
+         ];
     
-    if (!cell){
-        cell = [everyTableViewCell cell];
-    }
-    NSLog(@"mypost:%@",myPost);
+   cell.Comment.text = [self.listComment objectAtIndex:indexPath.row];
+
+    cell.DateOfComment.text = [self.listDate objectAtIndex:indexPath.row];
     
-    // セルにデータを反映
-    [cell configureWithTimelinePost:myPost];
-    cell.delegate = self;
-    
-    
-    if (myPost != NULL|| myPost != nil){
-        //動画の読み込み
-        __weak typeof(self)weakSelf = self;
-        [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:myPost.movie
-                                                             size:cell.thumbnailView.bounds.size
-                                                          atIndex:indexPath.row
-                                                       completion:^(BOOL f){}];
-    }
     return cell;
 }
 
@@ -537,74 +384,6 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         restVC.postRestName = _postRestname;
     }
     
-}
-
-- (void)everyCell:(everyTableViewCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
-{
-    //違反報告ボタンの時の処理
-    LOG(@"postid=%@", postID);
-    
-    Class class = NSClassFromString(@"UIAlertController");
-    if(class)
-    {
-        // iOS 8の時の処理
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        // addActionした順に左から右にボタンが配置されます
-        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-                LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-                if (result) {
-                    NSString *alertMessage = @"違反報告をしました";
-                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [alrt show];
-                }
-            }
-             ];
-            
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else
-    {
-        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-            }
-        }
-         ];
-    }
-    
-}
-
-#pragma mark user_nameタップの時の処理
-- (void)everyCell:(everyTableViewCell *)cell didTapUserName:(NSString *)user_id
-{
-    _postUsername = user_id;
-    
-    NSLog(@"userID is %@",user_id);
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    // !!!:dezamisystem
-    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-    
-}
-
-#pragma mark user_nameタップの時の処理 2
-- (void)everyCell:(everyTableViewCell *)cell didTapPicture:(NSString *)user_id{
-    _postUsername = user_id;
-    //[self performSegueWithIdentifier:@"goOthersTimeline" sender:self];
-    // !!!:dezamisystem
-    [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-    
-    NSLog(@"userID is %@",user_id);
 }
 
 @end
