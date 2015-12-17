@@ -32,28 +32,37 @@ import UIKit
         }
     }
 
-    class func showThePopupForPushNoticationsOnce(from: UIViewController? = nil) {
+    class func showThePopupForPushNoticationsOnce(from: UIViewController, after: OVF) {
         
-        if Persistent.ask_user_again_for_push_messages {
-            OverlayWindow.show{ vc, hideAgain in
-                
-                let pop = RequestPushMessagesPopup(from: vc, title: "通知の許可", widthRatio: 80, heightRatio: 30)
-                pop.onDecline = { Persistent.ask_user_again_for_push_messages = false }
-                pop.onAllow =   { Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen() }
-                pop.pop()
+        if !Persistent.do_not_ask_again_for_push_messages {
+            
+            let pop = RequestPushMessagesPopup(from: from, title: "通知の許可", widthRatio: 80, heightRatio: 30)
+            pop.onDecline = { Persistent.do_not_ask_again_for_push_messages = true }
+            pop.onAllow =   {
+                Persistent.do_not_ask_again_for_push_messages = true
+                Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
             }
+            pop.inAnyCase = after
+            pop.pop()
+        }
+        else {
+            after?()
         }
     }
     
-    class func showTheHolyPopupForPushNotificationsOrTheSettingsScreen(cb: (Bool->())? = nil) {
+    class func theHolyPopup(cb: (Bool->())? = nil) {
+        // will show the popup only once!!
+        Persistent.push_notifications_popup_has_been_shown = true
+        userChoiceCallBack = cb
+        let app = UIApplication.sharedApplication()
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        app.registerUserNotificationSettings(settings)
+    }
+    
+    class func showTheHolyPopupForPushNotificationsOrTheSettingsScreen() {
         
         if !Persistent.push_notifications_popup_has_been_shown {
-        // will show the popup only once!!
-            Persistent.push_notifications_popup_has_been_shown = true
-            userChoiceCallBack = cb
-            let app = UIApplication.sharedApplication()
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-            app.registerUserNotificationSettings(settings)
+            theHolyPopup()
         }
         else {
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
@@ -73,7 +82,7 @@ import UIKit
 //    }
 //    
     
-    class func userHasAlreadyRegisterdForNotifications() -> Bool {
+    class func userHasGrantedPushNotificationPermission() -> Bool {
         guard let currentSettings = UIApplication.sharedApplication().currentUserNotificationSettings() else {
             return false
         }
@@ -83,7 +92,7 @@ import UIKit
     
     class func requestPushNotificationPermissionOnlyIfTheUserWantsThem() {
         
-        if userHasAlreadyRegisterdForNotifications() { // && Persistent.user_wants_push_notifications {
+        if userHasGrantedPushNotificationPermission() { // && Persistent.user_wants_push_notifications {
             let app = UIApplication.sharedApplication()
             let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
             app.registerUserNotificationSettings(settings)
@@ -92,23 +101,27 @@ import UIKit
     
     class func deviceTokenRecived(deviceToken: String?) {
         
-        guard let deviceToken = deviceToken else {
+        guard var deviceToken = deviceToken else {
             Lo.error("device token was nil")
             return
         }
         
+        deviceToken = deviceToken.replace("<", withString: "")
+        deviceToken = deviceToken.replace(">", withString: "")
+        deviceToken = deviceToken.replace(" ", withString: "")
+        
+        sep("PERMISSION")
         log("Device Token Recived: \(deviceToken)")
         
-        deviceToken.replace("<", withString: "")
-        deviceToken.replace(">", withString: "")
-        deviceToken.replace("=", withString: "")
         
-        
-        if (deviceToken != Persistent.device_token) { // && Persistent.user_registerd_for_push_messages) {
-            //
+        if Persistent.registerd_device_token == nil || deviceToken != Persistent.registerd_device_token! {
+            log("THIS TOKEN IS NEW!!! Will register for push msgs with a bg task right away!!")
+            RegisterForPushMessagesTask(deviceToken: deviceToken).schedule()
+        }
+        else {
+            log("This token is already registed with the server")
         }
         
-        Persistent.device_token = deviceToken;
     }
 }
 

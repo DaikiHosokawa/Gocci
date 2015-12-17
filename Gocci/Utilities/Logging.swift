@@ -13,6 +13,10 @@ protocol Logable {
     
     static func sep(head: String)
     
+    func log(msg: String)
+    
+    func sep(head: String)
+    
     static var verbose: Bool { get }
     
     static var logColor: (r: UInt8, g: UInt8, b: UInt8) { get }
@@ -30,9 +34,18 @@ extension Logable {
     static func sep(head: String) {
         if verbose {
             let msg = "=== \(self.dynamicType): \(head)"
-            let balken = String(count: 120 - msg.length, repeatedValue: Character("="))
+            let balken = String(count: 118 - msg.length, repeatedValue: Character("="))
+            Lo.printInColor(logColor.r, logColor.g, logColor.b, String(count: 120, repeatedValue: Character("=")))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
         }
+    }
+    
+    func log(msg: String) {
+        self.dynamicType.log(msg)
+    }
+    
+    func sep(head: String) {
+        self.dynamicType.sep(head)
     }
 }
 

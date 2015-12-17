@@ -106,10 +106,15 @@ extension UIViewController {
         self.presentViewController(p, animated: true, completion: nil)
     }
     
-    func simpleConfirmationPopup(title: String, _ msg: String, _ cancel_button: String, _ ok_button: String, _ and: (()->())? = nil) {
+    func simpleConfirmationPopup(title: String, _ msg: String,
+        confirmButton: (text: String, cb:OVF),
+        cancelButton: (text: String, cb:OVF))
+    {
         let p = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-        p.addAction(UIAlertAction(title: cancel_button, style: UIAlertActionStyle.Default, handler: nil ))
-        p.addAction(UIAlertAction(title: ok_button, style: UIAlertActionStyle.Default, handler: { _ in and?() } ))
+        p.addAction(UIAlertAction(title: cancelButton.text, style: UIAlertActionStyle.Cancel,
+            handler: { _ in cancelButton.cb?() } ))
+        p.addAction(UIAlertAction(title: confirmButton.text, style: UIAlertActionStyle.Default,
+            handler: { _ in confirmButton.cb?() } ))
         self.presentViewController(p, animated: true, completion: nil)
     }
     

@@ -30,9 +30,12 @@ class OverlayWindow {
             window!.makeKeyAndVisible()
         
             fromOverlay(viewController: window!.rootViewController!) {
+                Lo.purple("Hiding the windows. who called that???")
                 window!.hidden = true
                 window = nil
             }
+            
+            Util.sleep(10)
         }
         
     }

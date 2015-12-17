@@ -79,7 +79,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 OverlayWindow.show { (viewController, hideAgain) -> () in
                     
                     TwitterAuthentication.authenticate(currentViewController: viewController) { token in
-                        
+                        hideAgain() // TODO TEST THIS
                         if token == nil {
                             finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
                         }

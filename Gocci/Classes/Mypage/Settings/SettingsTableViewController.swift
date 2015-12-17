@@ -70,12 +70,7 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "通知を設定する"
-//                        guard let wants =  Persistent.user_wants_push_notifications else {
-//                            $0.detailTextLabel?.text = "UNSET"
-//                            $0.detailTextLabel?.textColor = UIColor.blueColor()
-//                            return
-//                        }
-                        let wants = Permission.userHasAlreadyRegisterdForNotifications()
+                        let wants = Permission.userHasGrantedPushNotificationPermission() && Persistent.registerd_device_token != nil
                         $0.detailTextLabel?.text = wants ? "recieving" : "blocked"
                         $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
                         
@@ -132,8 +127,54 @@ class SettingsTableViewController: UITableViewController
         // don't think there is something better we can do here
         cell.detailTextLabel?.text = ""
         
+        if !Permission.userHasGrantedPushNotificationPermission() {
+            if Persistent.push_notifications_popup_has_been_shown {
+                Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
+                
+                // User should see the popup when he returnn, not while the settings screen opens
+                Util.sleep(1)
+            }
+            else {
+                // Show the holy popup
+                Permission.theHolyPopup { wants in
+                    // We pretend the task has succeeded for now...
+                    cell.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                    cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                }
+                return
+            }
+        }
         
-        Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
+        // at this point it is not clear if the user
+        
+        let disconnect = {
+            
+            // we don't really care if this worked or not
+            API3.unset.device().perform {
+                Persistent.registerd_device_token = ""
+            }
+            
+            cell.detailTextLabel?.text = "blocked"
+            cell.detailTextLabel?.textColor = UIColor.redColor()
+        }
+        
+        let connect = {
+            if !Permission.userHasGrantedPushNotificationPermission() {
+                self.simplePopup("Permission not granted", "Please click again to visit the settings to grant the push messages permission", "OK")
+            }
+            
+            // this will reschedule an permission check. The popup will never be shown here
+            Permission.theHolyPopup { wants in
+                // We pretend the task has succeeded for now...
+                cell.detailTextLabel?.text = wants ? "recieving" : "blocked"
+                cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+            }
+        }
+        
+        self.simpleConfirmationPopup("Confirmation", "Do you want to recieve push notifications about Likes and Messages to your videos?",
+            confirmButton: (text: "Yes, send me push messages", cb: connect),
+            cancelButton:  (text: "No, thank you", cb: disconnect))
+        
     }
     
     func handlePassword(cell: UITableViewCell)
@@ -249,7 +290,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Twitter?", "cancel", "disconnect", disconnect)
+            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Twitter?",
+                confirmButton: (text: "Disconnect", cb: disconnect),
+                cancelButton:  (text: "Cancel", cb: nil))
         }
     }
     
@@ -310,7 +353,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Facebook?", "cancel", "disconnect", disconnect)
+            self.simpleConfirmationPopup("Confirmation", "Do you really want to disconnect your account from Facebook?",
+                confirmButton: (text: "Disconnect", cb: disconnect),
+                cancelButton:  (text: "Cancel", cb: nil))
         }
     
     }
@@ -332,15 +377,21 @@ class SettingsTableViewController: UITableViewController
             title: "Resign from Gocci",
             message: "You can reset Gocci complete or keep your account and reset everything else",
             preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
+
 
         alertController.addAction(UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) { action in
-            self.simpleConfirmationPopup("last chance", "all you data will be deleted", "cancel", "do it", reset)
+            self.simpleConfirmationPopup("Last Chance", "All your data will be deleted",
+                confirmButton: (text: "Do it", cb: reset),
+                cancelButton:  (text: "Cancel", cb: nil))
         })
-            
+
+
         alertController.addAction(UIAlertAction(title: "Reset but keep account", style: UIAlertActionStyle.Destructive) { action in
             iid = Persistent.identity_id
-            self.simpleConfirmationPopup("last chance", "all your data will be deleted, but you can login again", "cancel", "do it", reset)
+        
+            self.simpleConfirmationPopup("Last Chance", "All your data will be deleted, but you can login again",
+                confirmButton: (text: "Do it", cb: reset),
+                cancelButton:  (text: "Cancel", cb: nil))
         })
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { _ in
