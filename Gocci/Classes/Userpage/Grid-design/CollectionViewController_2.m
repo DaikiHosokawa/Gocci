@@ -104,8 +104,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Twitter", @"店舗", @"削除",@"保存" ]
-                                 images:@[[UIImage imageNamed:@"twitter"],
+                             itemTitles:@[ @"店舗", @"削除",@"保存" ]
+                                 images:@[
                                           [UIImage imageNamed:@"restaurant"],
                                           [UIImage imageNamed:@"trash"],
                                           [UIImage imageNamed:@"save"]
@@ -115,17 +115,12 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
                              
-                             
-                             
                              if(index == 1){
-                                 NSLog(@"Twitter");
-                             }
-                             else if(index == 2){
                                  NSLog(@"Rest");
                                  [self.delegate collection_2:self rest_id:rest_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 3){
+                             else if(index == 2){
                                  NSLog(@"削除");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -160,7 +155,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                  }
                                  
                              }
-                             else if(index == 4){
+                             else if(index == 3){
                                  NSLog(@"save");
                              }
                          }];

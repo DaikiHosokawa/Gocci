@@ -35,6 +35,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edG-z8-pmg">
+                                <rect key="frame" x="0.0" y="258" width="375" height="345"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gig-ZO-U03">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                                 <subviews>
@@ -134,11 +138,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91030746698379517" green="0.47067314386367798" blue="0.34517484903335571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edG-z8-pmg">
-                                <rect key="frame" x="0.0" y="258" width="375" height="345"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.91030746699999998" green="0.47067314389999998" blue="0.34517484900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -328,7 +329,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCo-e4-mwn">
                                 <rect key="frame" x="29" y="251" width="316" height="42"/>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="ログイン"/>
                                 <connections>
                                     <action selector="loginClicked:" destination="cYs-UW-Ra8" eventType="touchUpInside" id="Wwd-Sf-ObR"/>
@@ -383,7 +384,7 @@
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="postingBack" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-BQ-8LL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="barTintColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -888,7 +889,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z72-Vm-gEs">
                                 <rect key="frame" x="0.0" y="613" width="375" height="54"/>
-                                <color key="backgroundColor" red="0.92941176470588238" green="0.28627450980392155" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="シェア→"/>
                                 <connections>
@@ -1130,7 +1131,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98462634048257369" green="0.38525610310047081" blue="0.2120053839009039" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1254,7 +1255,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="MH3-93-WEo" customClass="Sample4TableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MH3-93-WEo" id="3zA-Fr-wXa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -2012,7 +2013,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91030746698379517" green="0.47067314386367798" blue="0.34517484903335571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.91030746699999998" green="0.47067314389999998" blue="0.34517484900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2386,13 +2387,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr3-37-9ka"/>
-        <segue reference="m10-Cb-1kc"/>
-        <segue reference="wZe-RH-qBh"/>
+        <segue reference="g3n-kx-BDj"/>
         <segue reference="RUh-hP-jrK"/>
-        <segue reference="L0G-no-fLl"/>
-        <segue reference="Ofb-Gs-yfz"/>
-        <segue reference="hGv-8z-0ZJ"/>
+        <segue reference="jr3-37-9ka"/>
+        <segue reference="Jx8-B4-NT3"/>
+        <segue reference="MKp-Ou-neg"/>
+        <segue reference="30a-Oz-nKe"/>
+        <segue reference="4ab-y8-Qck"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
