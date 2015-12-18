@@ -87,7 +87,7 @@ class SettingsTableViewController: UITableViewController
                         //$0.detailTextLabel?.text = "送る"
                     },
                     { _ in
-                        let popup = FeedbackPopup(from: self, title: "通知を設定する", widthRatio: 92, heightRatio: 50)
+                        let popup = FeedbackPopup(from: self, title: "アドバイスを送る", widthRatio: 92, heightRatio: 50)
    
                         popup.pop()
                     }
