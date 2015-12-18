@@ -43,7 +43,12 @@ class TwitterVideoSharingTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        let url = NSURL.fileURLWithPath(mp4filename)
+        guard Util.fileExists(Util.documentsDirectory() + mp4filename) else {
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
+        
+        let url = NSURL.fileURLWithPath(Util.documentsDirectory() + mp4filename)
         
         
         // TODO TRANSLATION

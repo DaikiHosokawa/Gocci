@@ -144,14 +144,42 @@
 }
 
 -(void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox{
-    if (checkbox.isChecked) {
-        self.TwitterComment.hidden = NO;
-    }else{
-        self.TwitterComment.hidden = YES;
+    if (checkbox == self.TwitterCheckbox) {
+        self.TwitterComment.hidden = !checkbox.isChecked;
+        
+        if (checkbox.isChecked) {
+            [Bridge authenticateWithTwitterIfNecessary:self];
+        }
+        
+        
+        NSString *possibleTweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
+        
+        // tweet below 120 char limit
+        if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:possibleTweet] >= 0) {
+            VideoPostPreparation.postData.postOnTwitter = YES;
+        }
+        // maybe without the gocci hashtag
+        else if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:self.textView.text] >= 0) {
+            VideoPostPreparation.postData.postOnTwitter = YES;
+        }
+        // Tweet too long
+        else if (checkbox.isChecked){
+            [TwitterPopupBridge pop:self initialTweet:possibleTweet];
+        }
+        else {
+            VideoPostPreparation.postData.postOnTwitter = NO;
+        }
     }
 }
 - (IBAction)TwitterCommentEdit:(id)sender {
     
+    if (![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+        [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
+    }
+    else {
+        NSString *possibleTweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
+        [TwitterPopupBridge pop:self initialTweet:possibleTweet];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -173,6 +201,28 @@
 
 - (IBAction)shareButton:(id)sender {
     
+    if (VideoPostPreparation.postData.postOnTwitter && ![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+        NSString *tweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
+
+        
+
+        if ([Bridge videoTweetMessageRemainingCharacters:tweet] >= 0) {
+            VideoPostPreparation.postData.twitterTweetMsg = tweet;
+        }
+        else if ([Bridge videoTweetMessageRemainingCharacters:self.textView.text] >= 0) {
+            VideoPostPreparation.postData.twitterTweetMsg = self.textView.text;
+        }
+        else {
+            // this only happen if the user edit the main text, after clicking the twitter share button
+            // to prevent he posts the wrong msg on twitter
+            
+            [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
+            return; // TODO <- the user has to click again on share, not good
+        }
+    }
+    
+    
+    VideoPostPreparation.postData.twitterTweetMsg = self.textView.text;
     
     
     if (![VideoPostPreparation isReadyToSend])
