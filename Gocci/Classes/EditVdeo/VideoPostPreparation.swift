@@ -35,6 +35,9 @@ import Foundation
         var notifyNewCategory: (String->())? = nil
         var notifyNewRestName: (String->())? = nil
         
+        var postOnTwitter: Bool = false
+        var twitterTweetMsg: String = ""
+        
     }
     
     @objc static var postData = PostData()
@@ -84,6 +87,10 @@ import Foundation
                 categoryID: postData.category_id,
                 comment: postData.memo,
                 videoFilePath: relativeVideoFilePath).schedule()
+        }
+        
+        if postData.postOnTwitter {
+            TwitterVideoSharingTask(tweetMessage: postData.twitterTweetMsg, mp4filename: relativeVideoFilePath).schedule()
         }
         
         resetPostData()
