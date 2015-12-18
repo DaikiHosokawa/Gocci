@@ -42,7 +42,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @property (nonatomic, assign, getter = isLoading) BOOL loading;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
-/** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
 
 @end
@@ -62,11 +61,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [super viewDidLoad];
     
     {
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView =navigationTitle;
-  
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -78,21 +72,18 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
-   
-    
+
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
     self.refresh = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
     self.refresh.delegate = self;
     [self.refresh attachToScrollView:self.tableView];
-    
     [self _fetchRestaurant];
     
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
- 
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
     MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
     [map_ setRegion:region animated:NO];
@@ -121,6 +112,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
    
     
 }
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.refresh refreshScrollViewDidScroll:self.tableView];
+}
+
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -205,6 +203,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.refresh refreshScrollViewDidEndDragging:self.tableView];
+    
     if(!decelerate) {
         [self _playMovieAtCurrentCell];
     }

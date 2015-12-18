@@ -141,42 +141,29 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     _postIDtext = _postID;
     NSLog(@"postIDtext:%@",_postIDtext);
     
-    // キーボードの表示・非表示がNotificationCenterから通知される
-    
 }
 
 
 - (void)keyboardWillShow:(NSNotification*)notification {
     
-    const float movementDuration = 0.3f;
+    CGRect keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    NSDictionary *info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    CGFloat deltaHeight = kbSize.height - currentKeyboardHeight;
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, deltaHeight);
-    [UIView commitAnimations];
-    // Write code to adjust views accordingly using deltaHeight
-    currentKeyboardHeight = kbSize.height;
+    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height);
+        self.view.transform = transform;
+    } completion:NULL];
+    
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification {
+    NSTimeInterval duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
-    const float movementDuration = 0.3f;
-    
-    NSDictionary *info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    // Write code to adjust views accordingly using kbSize.height
-    CGFloat deltaHeight = kbSize.height - currentKeyboardHeight;
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, deltaHeight);
-    [UIView commitAnimations];
-    // Write code to adjust views accordingly using deltaHeight
-    currentKeyboardHeight = 0.0f;
+    __weak typeof(self) _self = self;
+    [UIView animateWithDuration:duration animations:^{
+        _self.view.transform = CGAffineTransformIdentity;
+    } completion:NULL];
 }
 
 

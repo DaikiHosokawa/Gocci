@@ -22,22 +22,26 @@
                         <constraint firstAttribute="width" secondItem="Y04-5N-liw" secondAttribute="height" multiplier="1:1" id="yh9-nW-waW"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画への反応が通知で届きます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLA-yU-awN">
-                    <rect key="frame" x="181" y="116" width="238" height="20"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画への反応が通知で届きます" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLA-yU-awN">
+                    <rect key="frame" x="209" y="116" width="182" height="16"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOU-WJ-w3z">
                     <rect key="frame" x="304" y="562" width="288" height="30"/>
-                    <state key="normal" title="Allow"/>
+                    <state key="normal" title="許可">
+                        <color key="titleColor" red="0.020641337131367288" green="0.020641337131367288" blue="0.020641337131367288" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onAllow:" destination="-1" eventType="touchUpInside" id="Ov8-0q-Hcs"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDc-1h-uUT">
                     <rect key="frame" x="8" y="562" width="288" height="30"/>
-                    <state key="normal" title="Dont ask me again"/>
+                    <state key="normal" title="今後表示しない">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onNotShowAgain:" destination="-1" eventType="touchUpInside" id="Ptf-0Y-5bY"/>
                     </connections>
@@ -49,6 +53,7 @@
                 <constraint firstItem="dLA-yU-awN" firstAttribute="top" secondItem="Y04-5N-liw" secondAttribute="bottom" constant="16" id="542-rX-64U"/>
                 <constraint firstAttribute="bottom" secondItem="mOU-WJ-w3z" secondAttribute="bottom" constant="8" id="7O8-hB-PIz"/>
                 <constraint firstAttribute="bottom" secondItem="KDc-1h-uUT" secondAttribute="bottom" constant="8" id="AR3-5D-jOW"/>
+                <constraint firstItem="dLA-yU-awN" firstAttribute="top" secondItem="Y04-5N-liw" secondAttribute="bottom" constant="16" id="HSk-qb-QBa"/>
                 <constraint firstItem="Y04-5N-liw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kc3-E8-lWz"/>
                 <constraint firstItem="KDc-1h-uUT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="TaR-Od-LgB"/>
                 <constraint firstItem="mOU-WJ-w3z" firstAttribute="leading" secondItem="KDc-1h-uUT" secondAttribute="trailing" constant="8" id="biU-gC-gzz"/>
@@ -56,6 +61,11 @@
                 <constraint firstItem="Y04-5N-liw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="oFf-aR-Xml"/>
                 <constraint firstItem="KDc-1h-uUT" firstAttribute="width" secondItem="mOU-WJ-w3z" secondAttribute="width" id="rP2-Qx-nh0"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="542-rX-64U"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

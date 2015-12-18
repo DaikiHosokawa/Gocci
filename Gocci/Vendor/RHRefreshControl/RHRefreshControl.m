@@ -39,6 +39,10 @@
   [scrollView insertSubview:self.refreshView atIndex:0];
 }
 
+- (void)attachToScrollView2:(UITableView *)tableView {
+    [tableView addSubview:self.refreshView];
+}
+
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView {
   [self updateRefreshViewWithScrollView:scrollView];
   if (self.state == RHRefreshStateLoading) {

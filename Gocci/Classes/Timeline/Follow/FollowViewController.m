@@ -55,6 +55,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)viewWillAppear:(BOOL)animated{
     call = 1;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
     
 }
 

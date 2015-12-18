@@ -127,8 +127,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)addBottom:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
     
-    [self refreshFeed];
-    
         NSString *str = [NSString stringWithFormat:@"%d",call];
         [APIClient Reco:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
          {
@@ -371,10 +369,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self setupData:@"" value_id:value];
 }
 
-- (void)refreshFeed {
-    
-    
-}
 
 
 #pragma mark - UICollectionViewDelegate
