@@ -15,8 +15,9 @@ import Foundation
         TwitterVideoSharingTask(tweetMessage: tweetMessage, mp4filename: mp4VideoFilePath).schedule()
     }
     
-    class func authenticateWithTwitterIfNecessary (fromViewController vc: UIViewController, and: TwitterAuthentication.Token?->()) {
-        TwitterAuthentication.authenticate(currentViewController: vc, and: and)
+    //class func authenticateWithTwitterIfNecessary (fromViewController vc: UIViewController, and: TwitterAuthentication.Token?->()) {
+    class func authenticateWithTwitterIfNecessary(vc: UIViewController) {
+        TwitterAuthentication.authenticate(currentViewController: vc, and: { _ in } )
     }
     
     class func videoTweetMessageRemainingCharacters(tweet: String) -> Int {

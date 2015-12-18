@@ -74,11 +74,20 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-//        OverlayWindow.show { (viewController, hideAgain) -> () in
-//            Permission.showThePopupForPushNoticationsOnce(viewController)
-//            hideAgain()
-//            
-//        }
+        
+        
+        
+        let user_enterd_text = "#Gocci " + Util.randomKanjiStringWithLength(105)
+        
+        let tp = TwitterPopup(from: self, title: "meh", widthRatio: 80, heightRatio: 35)
+        tp.entryText = user_enterd_text
+        
+        
+        let charsLeft = TwitterSharing.videoTweetMessageRemainingCharacters(user_enterd_text)
+
+        print("charsLeft: \(charsLeft)")
+        
+        tp.pop()
         
         return;
         

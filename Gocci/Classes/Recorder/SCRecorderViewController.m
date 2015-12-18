@@ -93,11 +93,7 @@ static SCRecordSession *staticRecordSession;
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = YES;
     _recorder.initializeSessionLazily = NO;
-#if TEST_BUILD
-    _recorder.maxRecordDuration = CMTimeMake(700, 600);
-#else
-    _recorder.maxRecordDuration = CMTimeMake(4200, 600);
-#endif
+    _recorder.maxRecordDuration = CMTimeMake(RECORD_SECONDS * 600, 600);
     _recorder.videoConfiguration.sizeAsSquare = YES;
     UIView *previewView = self.preview;
     _recorder.previewView = previewView;
@@ -301,11 +297,7 @@ static SCRecordSession *staticRecordSession;
     CMTime currentTime = kCMTimeZero;
     
     NSTimeInterval time_now = 0.0;
-#if TEST_BUILD
-    NSTimeInterval time_max = 7.0;
-#else
-    NSTimeInterval time_max = 7.0;
-#endif
+    NSTimeInterval time_max = RECORD_SECONDS;
     
 #if (!TARGET_IPHONE_SIMULATOR)
     if (_recorder.session != nil) {
