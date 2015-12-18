@@ -209,10 +209,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[@"Twitter", @"店舗", @"ユーザー",
+                             itemTitles:@[ @"店舗", @"ユーザー",
                                           @"違反報告",@"保存" ]
-                                 images:@[ [UIImage imageNamed:@"twitter"],
-                                           [UIImage imageNamed:@"restaurant"],
+                                 images:@[[UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"man"],
                                            [UIImage imageNamed:@"warning"],
                                            [UIImage imageNamed:@"save"]
@@ -225,21 +224,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              
                              TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
                              
-                             
-                             if(index == 1){
-                                 NSLog(@"Twitter");
-                             }
-                             else if(index == 2){
+                              if(index == 1){
                                  NSLog(@"Rest");
                                  [self.delegate near:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 3){
+                             else if(index == 2){
                                  NSLog(@"User");
                                  [self.delegate near:self username:u_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                              }
-                             else if(index == 4){
+                             else if(index == 3){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -278,7 +273,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                       ];
                                  }
                              }
-                             else if(index == 5){
+                             else if(index == 4){
                                  NSLog(@"save");
                              }
                          }];

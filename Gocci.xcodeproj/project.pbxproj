@@ -2941,7 +2941,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.goccitest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)Test";
 				PROVISIONING_PROFILE = "";
@@ -2980,7 +2980,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inase.gocci;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
