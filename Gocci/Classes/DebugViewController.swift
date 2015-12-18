@@ -74,7 +74,12 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        Permission.showThePopupForPushNoticationsOnce(self)
+//        OverlayWindow.show { (viewController, hideAgain) -> () in
+//            Permission.showThePopupForPushNoticationsOnce(viewController)
+//            hideAgain()
+//            
+//        }
+        
         return;
         
         let popup = RequestPushMessagesPopup(from: self, title: "通知の許可", widthRatio: 80, heightRatio: 30)

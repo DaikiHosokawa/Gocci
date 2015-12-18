@@ -633,7 +633,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="xgp-Xf-FDX">
-                                <rect key="frame" x="0.0" y="65" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.99107654820000002" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -643,6 +643,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="tabbaritem_timeline.png" id="ZUd-bA-ddJ"/>
                     <navigationItem key="navigationItem" id="qPK-b3-66n"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -2371,7 +2372,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="ozQ-DM-XY1" customClass="Sample4TableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ozQ-DM-XY1" id="wOL-wC-Uf1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -2463,11 +2464,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fvs-4k-dBf"/>
-        <segue reference="knF-4T-ZwF"/>
-        <segue reference="qh1-2C-pXX"/>
-        <segue reference="YMD-DR-Sl9"/>
+        <segue reference="dJ0-hj-1e2"/>
+        <segue reference="ZQQ-Zq-hBy"/>
+        <segue reference="Eh2-sb-qj4"/>
         <segue reference="Foo-dB-2J8"/>
-        <segue reference="aMt-WG-BmS"/>
-        <segue reference="pXi-gB-BGB"/>
+        <segue reference="YMD-DR-Sl9"/>
+        <segue reference="knF-4T-ZwF"/>
     </inferredMetricsTieBreakers>
 </document>

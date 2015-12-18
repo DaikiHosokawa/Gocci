@@ -208,7 +208,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+   [self.navigationController setNavigationBarHidden:NO animated:NO];
 
     NSLog(@"animated");
     RecoViewController *vc1 = [[RecoViewController alloc] init];

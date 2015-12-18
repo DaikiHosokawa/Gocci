@@ -170,6 +170,8 @@
 
 - (IBAction)shareButton:(id)sender {
     
+    
+    
     if (![VideoPostPreparation isReadyToSend])
     {
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -193,7 +195,6 @@
     self.exportSession = exportSession;
     
     
-    [Permission showThePopupForPushNoticationsOnce:nil];
     
     
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
@@ -212,7 +213,9 @@
         
         [VideoPostPreparation initiateUploadTaskChain:exportSession.outputUrl];
         
-        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+        [Permission showThePopupForPushNoticationsOnce:self after:^{
+            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+        }];
     }];
 }
 

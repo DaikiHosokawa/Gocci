@@ -25,7 +25,7 @@ import Foundation
         var memo: String = ""
         var cheer_flag: Bool = false  
         
-        var prepared_restaurant: Bool = true { didSet { Lo.purple("Wird das hier gesetzt??? \(prepared_restaurant)") } }
+        var prepared_restaurant: Bool = true 
         var rest_name: String = "" { didSet { notifyNewRestName?(rest_name) } }
         var lat: Double = 0.0
         var lon: Double = 0.0

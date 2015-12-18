@@ -633,7 +633,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="6Z2-gM-g8b">
-                                <rect key="frame" x="0.0" y="65" width="320" height="457"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.99107654820000002" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -643,6 +643,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="tabbaritem_timeline.png" id="7L4-Kt-vHF"/>
                     <navigationItem key="navigationItem" id="e8m-ZK-Qx0"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -1202,7 +1203,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="agF-Nl-m63">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agF-Nl-m63" id="dDe-Wj-q8P">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2467,11 +2468,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upe-j2-7LO"/>
-        <segue reference="6pK-Ls-lJu"/>
-        <segue reference="cAJ-bL-F0X"/>
-        <segue reference="XEw-Zi-bfV"/>
-        <segue reference="TRb-wK-Rdp"/>
+        <segue reference="3hC-c7-Otz"/>
+        <segue reference="R4c-MQ-ZOO"/>
+        <segue reference="tqw-Xw-XIw"/>
         <segue reference="pjl-L3-6fH"/>
+        <segue reference="XEw-Zi-bfV"/>
         <segue reference="t6E-Xj-Ity"/>
     </inferredMetricsTieBreakers>
 </document>

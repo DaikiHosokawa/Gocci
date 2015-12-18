@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 
-typealias Lol = Int
+
+
+typealias OVF = (()->())?
 
 
 
@@ -173,19 +175,19 @@ typealias Lol = Int
         return "00000000" + String(s[0..<48]) + "00000000"
     }
     
-    class func getRegisterID() -> String {
-        
-        //return generateFakeDeviceID()
-        
-        let regid = Persistent.device_token
-        
-        // Only Fake IDs in the simulator
-        #if arch(i386) || arch(x86_64)
-            return regid ?? generateFakeDeviceID()
-        #else
-            return regid ?? generateFakeDeviceID()
-        #endif
-    }
+//    class func getRegisterID() -> String {
+//        
+//        //return generateFakeDeviceID()
+//        
+//        let regid = Persistent.device_token
+//        
+//        // Only Fake IDs in the simulator
+//        #if arch(i386) || arch(x86_64)
+//            return regid ?? generateFakeDeviceID()
+//        #else
+//            return regid ?? generateFakeDeviceID()
+//        #endif
+//    }
     
 
     

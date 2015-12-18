@@ -21,6 +21,8 @@ class SettingsTableViewController: UITableViewController
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+
 
     override func viewDidLoad()
     {
@@ -37,7 +39,7 @@ class SettingsTableViewController: UITableViewController
                     {
                         $0.textLabel?.text = "パスワードを設定する"
                         $0.detailTextLabel?.text = Persistent.password_was_set_by_the_user ? "設定済み" : "設定する"
-                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.blackColor() : UIColor.blackColor()
+                        $0.detailTextLabel?.textColor = Persistent.password_was_set_by_the_user ? UIColor.good : UIColor.bad
                     },
                     handlePassword
                 ),
@@ -70,15 +72,9 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                         $0.textLabel?.text = "通知を設定する"
-//                        guard let wants =  Persistent.user_wants_push_notifications else {
-//                            $0.detailTextLabel?.text = "UNSET"
-//                            $0.detailTextLabel?.textColor = UIColor.blueColor()
-//                            return
-//                        }
-                        let wants = Permission.userHasAlreadyRegisterdForNotifications()
-                        $0.detailTextLabel?.text = wants ? "許可済み" : "未許可"
-                        $0.detailTextLabel?.textColor = wants ? UIColor.blackColor() : UIColor.blackColor()
-                        
+                        let wants = Permission.userHasGrantedPushNotificationPermission() && Persistent.registerd_device_token != nil
+                        $0.detailTextLabel?.text = wants ? "受信" : "未許可"
+                        $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
                     },
                     handlePushNotification
                 )
@@ -113,7 +109,15 @@ class SettingsTableViewController: UITableViewController
                     }
                 ),
                 (
-                    { $0.textLabel?.text = "バージョン" ; $0.detailTextLabel?.text = (Util.getGocciVersionString() ?? "?.?") },
+                    {
+                    #if TEST_BUILD
+                        let versionStr = "TEST BUILD" + Util.getGocciVersionString() ?? "?.?"
+                    #else
+                        let versionStr = Util.getGocciVersionString() ?? "?.?"
+                    #endif
+                        $0.textLabel?.text = "バージョン"
+                        $0.detailTextLabel?.text = versionStr
+                        $0.detailTextLabel?.textColor = UIColor.neutral },
                     nil
                 ),
                 (
@@ -132,8 +136,54 @@ class SettingsTableViewController: UITableViewController
         // don't think there is something better we can do here
         cell.detailTextLabel?.text = ""
         
+        if !Permission.userHasGrantedPushNotificationPermission() {
+            if Persistent.push_notifications_popup_has_been_shown {
+                Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
+                
+                // User should see the popup when he returnn, not while the settings screen opens
+                Util.sleep(1)
+            }
+            else {
+                // Show the holy popup
+                Permission.theHolyPopup { wants in
+                    // We pretend the task has succeeded for now...
+                    cell.detailTextLabel?.text = wants ? "受信" : "未許可"
+                    cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                }
+                return
+            }
+        }
         
-        Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
+        // at this point it is not clear if the user
+        
+        let disconnect = {
+            
+            // we don't really care if this worked or not
+            API3.unset.device().perform {
+                Persistent.registerd_device_token = ""
+            }
+            
+            cell.detailTextLabel?.text = "未許可"
+            cell.detailTextLabel?.textColor = UIColor.redColor()
+        }
+        
+        let connect = {
+            if !Permission.userHasGrantedPushNotificationPermission() {
+                self.simplePopup("Permission not granted", "Please click again to visit the settings to grant the push messages permission", "OK")
+            }
+            
+            // this will reschedule an permission check. The popup will never be shown here
+            Permission.theHolyPopup { wants in
+                // We pretend the task has succeeded for now...
+                cell.detailTextLabel?.text = wants ? "受信" : "未許可"
+                cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+            }
+        }
+        
+        self.simpleConfirmationPopup("Confirmation", "Do you want to recieve push notifications about Likes and Messages to your videos?",
+            confirmButton: (text: "Yes, send me push messages", cb: connect),
+            cancelButton:  (text: "No, thank you", cb: disconnect))
+        
     }
     
     func handlePassword(cell: UITableViewCell)
@@ -249,7 +299,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("確認", "Twitter連携を解除してもよろしいですか？", "キャンセル", "解除", disconnect)
+            self.simpleConfirmationPopup("確認", "Twitter連携を解除してもよろしいですか？",
+                confirmButton: (text: "解除", cb: disconnect),
+                cancelButton:  (text: "キャンセル", cb: nil))
         }
     }
     
@@ -310,7 +362,9 @@ class SettingsTableViewController: UITableViewController
             connect()
         }
         else {
-            self.simpleConfirmationPopup("確認", "Facebook連携を解除してもよろしいですか？", "キャンセル", "解除", disconnect)
+            self.simpleConfirmationPopup("確認", "Facebook連携を解除してもよろしいですか？",
+                confirmButton: (text: "解除", cb: disconnect),
+                cancelButton:  (text: "キャンセル", cb: nil))
         }
     
     }
@@ -332,15 +386,21 @@ class SettingsTableViewController: UITableViewController
             title: "Gocciをやめる",
             message: "完全にGocciをリセットするか、アカウントは保存しておく方法があります",
             preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
+
 
         alertController.addAction(UIAlertAction(title: "完全にリセット", style: UIAlertActionStyle.Destructive) { action in
-            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます", "キャンセル", "OK", reset)
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます",
+                confirmButton: (text: "削除", cb: reset), // TODO MARK AS DELETE BUTTON, not DEFAULT style
+                cancelButton:  (text: "キャンセル", cb: nil))
         })
-            
+
+
         alertController.addAction(UIAlertAction(title: "アカウントは保持", style: UIAlertActionStyle.Destructive) { action in
             iid = Persistent.identity_id
-            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます", "キャンセル", "OK", reset)
+        
+            self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます",
+                confirmButton: (text: "削除", cb: reset),
+                cancelButton:  (text: "キャンセル", cb: nil))
         })
         
         alertController.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel) { _ in

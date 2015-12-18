@@ -44,6 +44,12 @@ class RegisterForPushMessagesTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
+        guard Persistent.identity_id != nil else {
+            super.log("TASK ERROR: can't register an devie token without an account (identify_id)")
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
+        
         let req = API3.set.device()
         
         req.parameters.device_token = deviceToken
@@ -51,7 +57,10 @@ class RegisterForPushMessagesTask: PersistentBaseTask {
         req.parameters.os = "iOS"
         req.parameters.ver = Util.operationSystemVersion()
         
-        req.onNetworkTrouble { _, _ in
+        req.onNetworkTrouble { err, _ in
+            if err == .ERROR_RE_AUTH_FAILED {
+                finished(.FAILED_IRRECOVERABLE)
+            }
             finished(.FAILED_NETWORK)
         }
         
@@ -60,6 +69,7 @@ class RegisterForPushMessagesTask: PersistentBaseTask {
         }
         
         req.perform {
+            Persistent.registerd_device_token = self.deviceToken;
             finished(.DONE)
         }
         
