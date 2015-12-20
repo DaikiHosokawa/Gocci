@@ -17,7 +17,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku6-Gd-ldd">
                     <rect key="frame" x="1" y="42" width="60" height="60"/>
-                    <state key="normal" image="Backbutton"/>
+                    <state key="normal" image="ic_chevron_left_white_48pt"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,6 +32,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Backbutton" width="60" height="60"/>
+        <image name="ic_chevron_left_white_48pt" width="48" height="48"/>
     </resources>
 </document>
