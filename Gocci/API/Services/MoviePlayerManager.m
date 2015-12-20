@@ -78,7 +78,6 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)removeAllPlayers
 {
-    NSLog(@"呼ばれているか");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }

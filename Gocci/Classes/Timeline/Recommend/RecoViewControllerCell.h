@@ -20,6 +20,7 @@
 
 - (void)recoViewCell:(RecoViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
 - (void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString*)postID;
+- (void)recoViewCell:(RecoViewControllerCell *)cell didTapImg:(NSString*)user_id;
 
 
 @end
@@ -31,6 +32,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImg;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UIImageView *option;

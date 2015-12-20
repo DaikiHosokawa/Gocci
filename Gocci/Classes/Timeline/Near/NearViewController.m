@@ -140,7 +140,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)addBottom:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
     
-    [self refreshFeed];
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
         NSString *str = [NSString stringWithFormat:@"%d",call];
@@ -285,6 +284,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"restid:%@",rest_id);
 }
 
+-(void)nearViewCell:(NearViewControllerCell *)cell didTapImg:(NSString *)user_id{
+    NSLog(@"userid:%@",user_id);
+    [self.delegate near:self username:user_id];
+    TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+    [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+}
+
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
         if (result) {
@@ -404,10 +410,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self setupData:@"" value_id:value];
 }
 
-- (void)refreshFeed {
-    
-    
-}
 
 
 
