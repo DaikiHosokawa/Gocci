@@ -35,6 +35,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edG-z8-pmg">
+                                <rect key="frame" x="0.0" y="258" width="375" height="345"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gig-ZO-U03">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                                 <subviews>
@@ -134,11 +138,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91030746698379517" green="0.47067314386367798" blue="0.34517484903335571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edG-z8-pmg">
-                                <rect key="frame" x="0.0" y="258" width="375" height="345"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.33333333329999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -328,7 +329,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCo-e4-mwn">
                                 <rect key="frame" x="29" y="251" width="316" height="42"/>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="ログイン"/>
                                 <connections>
                                     <action selector="loginClicked:" destination="cYs-UW-Ra8" eventType="touchUpInside" id="Wwd-Sf-ObR"/>
@@ -383,7 +384,7 @@
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="postingBack" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-BQ-8LL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="barTintColor" red="0.97254901960784312" green="0.33333333333333331" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -639,7 +640,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfz-Ik-oJf">
-                                <rect key="frame" x="0.0" y="65" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
                                 <color key="backgroundColor" white="0.99107654816513757" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -648,6 +649,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="tabbaritem_timeline.png" id="TZ8-7b-ZEC"/>
                     <navigationItem key="navigationItem" id="bgm-Ui-pXS"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -828,6 +830,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xMf-ns-bYZ"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="categoryLabel" destination="SXQ-Cy-r6l" id="7HV-op-Mwz"/>
@@ -886,7 +889,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z72-Vm-gEs">
                                 <rect key="frame" x="0.0" y="613" width="375" height="54"/>
-                                <color key="backgroundColor" red="0.92941176470588238" green="0.28627450980392155" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="シェア→"/>
                                 <connections>
@@ -1128,7 +1131,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98462634048257369" green="0.38525610310047081" blue="0.2120053839009039" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1248,7 +1251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-nv-KqP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="MH3-93-WEo" customClass="Sample4TableViewCell">
@@ -1265,8 +1268,8 @@
                                     <outlet property="delegate" destination="uV4-uW-mW7" id="1wS-nw-kMX"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BqU-1K-Ol7">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kXP-Gt-yfj">
+                                <rect key="frame" x="0.0" y="556" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" id="MGJ-05-MYY">
                                         <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="IHK-zv-2cx">
@@ -1287,6 +1290,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="PWi-eh-qjS">
                         <barButtonItem key="leftBarButtonItem" image="postingBack" id="8Al-wF-hyP">
                             <connections>
@@ -1691,10 +1695,10 @@
             </objects>
             <point key="canvasLocation" x="-3108.5" y="-1618.5"/>
         </scene>
-        <!--Image Collection Push-->
+        <!--Follow-->
         <scene sceneID="T0R-be-Hoc">
             <objects>
-                <collectionViewController storyboardIdentifier="FollowViewController" title="Image Collection Push" id="LCu-0U-Fdq" customClass="FollowViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FollowViewController" title="Follow" id="LCu-0U-Fdq" customClass="FollowViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="dbv-BP-3ds">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2010,7 +2014,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91030746698379517" green="0.47067314386367798" blue="0.34517484903335571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.33333333329999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2220,10 +2224,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="infoView" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-2m-8Fw">
-                                            <rect key="frame" x="-6" y="-4" width="373" height="128"/>
+                                            <rect key="frame" x="-2" y="-4" width="373" height="128"/>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-EH-iaa">
-                                            <rect key="frame" x="8" y="5" width="353" height="107"/>
+                                            <rect key="frame" x="12" y="5" width="353" height="107"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGl-I9-L6N">
                                             <rect key="frame" x="323" y="47" width="24" height="24"/>
@@ -2384,13 +2388,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RUh-hP-jrK"/>
         <segue reference="jr3-37-9ka"/>
-        <segue reference="L0G-no-fLl"/>
+        <segue reference="RUh-hP-jrK"/>
         <segue reference="ren-zg-h6h"/>
-        <segue reference="had-LT-zY9"/>
         <segue reference="hGv-8z-0ZJ"/>
         <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="L0G-no-fLl"/>
+        <segue reference="had-LT-zY9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

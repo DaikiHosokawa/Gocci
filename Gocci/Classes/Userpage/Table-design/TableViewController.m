@@ -132,8 +132,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"Twitter", @"店舗", @"削除",@"保存" ]
-                                 images:@[[UIImage imageNamed:@"twitter"],
+                             itemTitles:@[ @"店舗", @"削除",@"保存" ]
+                                 images:@[
                                           [UIImage imageNamed:@"restaurant"],
                                           [UIImage imageNamed:@"trash"],
                                           [UIImage imageNamed:@"save"]
@@ -144,31 +144,29 @@ static NSString * const reuseIdentifier = @"Cell";
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
                              
                              
-                             
                              if(index == 1){
-                                 NSLog(@"Twitter");
-                             }
-                             else if(index == 2){
                                  NSLog(@"Rest");
                                  [self.delegate table:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
-                             else if(index == 3){
-                                 NSLog(@"削除");
+                             else if(index == 2){
+                                 NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                              if (result) {
-                                                 NSLog(@"result:%@",result);
+                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alrt show];
                                              }
                                          }
                                           ];
-                                         
                                          
                                      }]];
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -179,17 +177,19 @@ static NSString * const reuseIdentifier = @"Cell";
                                  }
                                  else
                                  {
-                                     [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                          if (result) {
-                                             NSLog(@"result:%@",result);
+                                             NSString *alertMessage = @"違反報告をしました";
+                                             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                             [alrt show];
                                          }
                                      }
                                       ];
-                                 }
-                                 
-                             }
-                             else if(index == 4){
+                                 }                             }
+                             else if(index == 3){
                                  NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
                              }
                          }];
 

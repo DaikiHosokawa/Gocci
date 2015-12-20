@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, RHRefreshState) {
 
 - (id)initWithConfiguration:(RHRefreshControlConfiguration *)configuration;
 - (void)attachToScrollView:(UIScrollView *)scrollView;
+- (void)attachToScrollView2:(UITableView *)tableView;
 
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView;

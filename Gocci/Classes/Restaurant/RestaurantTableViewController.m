@@ -18,6 +18,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
 #import "NotificationViewController.h"
+#import "SGActionView.h"
+#import "RHRefreshControl.h"
 
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -29,18 +31,19 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 @protocol MovieViewDelegate;
 
 @interface RestaurantTableViewController ()
-<TimelineCellDelegate,MKMapViewDelegate>
+<TimelineCellDelegate,MKMapViewDelegate,RHRefreshControlDelegate>
 {
     __weak IBOutlet MKMapView *map_;
     NSDictionary *header;
+    NSDictionary * optionDic;
 }
 
 
 @property (nonatomic, copy) NSMutableArray *postid_;
-@property (nonatomic, strong) UIRefreshControl *refresh;
+@property (nonatomic, strong) RHRefreshControl *refresh;
+@property (nonatomic, assign, getter = isLoading) BOOL loading;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
-/** タイムラインのデータ */
 @property (nonatomic,strong) NSArray *posts;
 
 @end
@@ -59,19 +62,11 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewDidLoad];
     
-    {
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView =navigationTitle;
-        
-        
-        
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-        
-    }
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationItem.backBarButtonItem = barButton;
+    
+    
     
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -79,15 +74,18 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
     
-    self.refresh = [UIRefreshControl new];
-    [self.refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refresh];
+    RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
+    refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
+    self.refresh = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
+    self.refresh.delegate = self;
+    [self.refresh attachToScrollView:self.tableView];
+    [self _fetchRestaurant];
     
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
- 
+    
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
     MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
     [map_ setRegion:region animated:NO];
@@ -99,35 +97,42 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+}
+
+#pragma mark - RHRefreshControl Delegate
+- (void)refreshDidTriggerRefresh:(RHRefreshControl *)refreshControl {
+    
+    self.loading = YES;
     [self _fetchRestaurant];
     
 }
 
 
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-   
+    
     
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.refresh refreshScrollViewDidScroll:self.tableView];
+}
+
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[MoviePlayerManager sharedManager] stopMovie];
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
- //   [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //   [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
 #pragma mark - Action
 
-
-- (void)refresh:(UIRefreshControl *)sender
-{
-    [self _fetchRestaurant];
-}
 
 
 
@@ -201,6 +206,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.refresh refreshScrollViewDidEndDragging:self.tableView];
+    
     if(!decelerate) {
         [self _playMovieAtCurrentCell];
     }
@@ -231,12 +238,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         UserpageViewController *userVC = segue.destinationViewController;
-         userVC.postUsername = _postUsername;
+        userVC.postUsername = _postUsername;
     }
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{   
+{
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
     }
      ];
@@ -246,41 +253,67 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
+    optionDic = [NSMutableDictionary dictionary];
     
-    Class class = NSClassFromString(@"UIAlertController");
-    if(class)
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-                if (result) {
-                    NSString *alertMessage = @"違反報告をしました";
-                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [alrt show];
-                }
-            }
-             ];
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else
-    {
-        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-            }
-        }
-         ];
-    }
+    [SGActionView showGridMenuWithTitle:@"アクション"
+                             itemTitles:@[
+                                          @"違反報告",
+                                          @"保存" ]
+                                 images:@[
+                                          [UIImage imageNamed:@"warning"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
+                         selectedHandle:^(NSInteger index){
+                             
+                             NSString *p_id = [optionDic objectForKey:@"POSTID"];
+                             
+                             if(index == 1){
+                                 NSLog(@"Problem");
+                                 
+                                 Class class = NSClassFromString(@"UIAlertController");
+                                 if(class)
+                                 {
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                             if (result) {
+                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alrt show];
+                                             }
+                                         }
+                                          ];
+                                         
+                                     }]];
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         
+                                     }]];
+                                     
+                                     [self presentViewController:alertController animated:YES completion:nil];
+                                 }
+                                 else
+                                 {
+                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                         if (result) {
+                                             NSString *alertMessage = @"違反報告をしました";
+                                             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                             [alrt show];
+                                         }
+                                     }
+                                      ];
+                                 }
+                             }
+                             else if(index == 2){
+                                 NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
+                             }
+                         }];
 }
+
+
 
 -(IBAction)light:(id)sender {
     
@@ -296,8 +329,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 flash_on = 1;
                 
             }
-    
-            }];
+            
+        }];
         
     }else if (flash_on == 1){
         [APIClient postUnWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
@@ -309,7 +342,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 UIImage *img = [UIImage imageNamed:@"notOen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 0;
-               
+                
             }
             
         }];
@@ -365,6 +398,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     _postID = postID;
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+    
 }
 
 
@@ -454,8 +488,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [SVProgressHUD show];
     
-    [self.refresh beginRefreshing];
-    
     __weak typeof(self)weakSelf = self;
     [APIClient Restaurant:_postRestName handler:^(id result, NSUInteger code, NSError *error) {
         
@@ -473,17 +505,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         header = restaurants;
         self.posts = [NSArray arrayWithArray:tempPosts];
-        [[MoviePlayerManager sharedManager] removeAllPlayers];
         [weakSelf.tableView reloadData];
         
         if ([self.posts count]== 0) {
             [SVProgressHUD dismiss];
         }
-        
-        if ([weakSelf.refresh isRefreshing]) {
-            [weakSelf.refresh endRefreshing];
-        }
-        
+        [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
         [self byoga];
     }];
 }
@@ -491,8 +518,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)_playMovieAtCurrentCell
 {
+    NSLog(@"_playMovieAtCurrentCell");
     
     if ( [self.posts count] == 0){
+        NSLog(@"post 0");
         return;
     }
     CGFloat currentHeight = 0.0;
@@ -559,7 +588,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
+- (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
+    return self.isLoading;
+    
+}
 
+- (void) _fakeLoadComplete {
+    self.loading = NO;
+    [self.refresh refreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
 
 
 @end

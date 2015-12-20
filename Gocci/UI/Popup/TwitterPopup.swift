@@ -11,7 +11,7 @@ import Foundation
 
 @objc class TwitterPopupBridge: NSObject {
     class func pop(from: UIViewController, initialTweet: String) {
-        let tp = TwitterPopup(from: from, title: "Share Video on Twitter", widthRatio: 80, heightRatio: 35)
+        let tp = TwitterPopup(from: from, title: "Twitter", widthRatio: 80, heightRatio: 35)
         tp.entryText = initialTweet
         tp.pop()
     }
@@ -34,14 +34,14 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
         if left >= 0 {
             
             sendButton.enabled = true
-            sendButton.setTitle("Tweet this. Chars left: \(left)", forState: UIControlState.Normal)
-            sendButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            sendButton.setTitle("投稿 (残り\(left)文字可能)", forState: UIControlState.Normal)
+            sendButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             
         }
         else {
             sendButton.enabled = false
-            sendButton.setTitle("Tweet \(-left) chars too long :(", forState: UIControlState.Disabled)
-            sendButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Disabled)
+            sendButton.setTitle("不可\(-left)文字多いです", forState: UIControlState.Disabled)
+            sendButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         }
     }
     

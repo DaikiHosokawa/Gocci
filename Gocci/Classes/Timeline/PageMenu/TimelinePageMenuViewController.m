@@ -105,16 +105,21 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     self.navigationItem.backBarButtonItem = backButton;
     
     /*
-    UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];  
-    UIButton *btn = [[UIButton alloc]
-                      initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn setBackgroundImage:img forState:UIControlStateNormal];
-    UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:btn];
+     UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];
+     UIButton *btn = [[UIButton alloc]
+     initWithFrame:CGRectMake(0, 0, 30, 30)];
+     [btn setBackgroundImage:img forState:UIControlStateNormal];
+     UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:btn];
+     
+     
+     [btn addTarget:self
+     action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
+     */
+    UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+    UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    navigationTitle.image = image;
     
-    
-    [btn addTarget:self
-            action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
-    */
+    self.navigationItem.titleView =navigationTitle;
     
     UIButton *notificationBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [notificationBtn setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
@@ -140,20 +145,20 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     UIButton *sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [sortBtn setImage:[UIImage imageNamed:@"ic_sort_white"] forState:UIControlStateNormal];
     [sortBtn addTarget:self action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
-   
+    
     UIBarButtonItem *sortBtnNavi = [[UIBarButtonItem alloc] initWithCustomView:sortBtn];
     
-                                    if(!locationManager){
+    if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.distanceFilter = kCLDistanceFilterNone;
     }
-
+    
     
     self.navigationItem.rightBarButtonItem = self.barButton;
     self.navigationItem.leftBarButtonItem = sortBtnNavi;
-
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -209,7 +214,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-
+    
     NSLog(@"animated");
     RecoViewController *vc1 = [[RecoViewController alloc] init];
     vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
@@ -235,13 +240,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     vc3.delegate = self;
     self.followViewController = vc3;
     
-    {
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        
-        self.navigationItem.titleView =navigationTitle;
-    }
     
     
     CGRect rect_screen = [UIScreen mainScreen].bounds;
@@ -367,7 +365,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 -(void)barButtonItemPressed:(id)sender{
     
     self.barButton.badgeValue = nil;
-
+    
     if (!self.popover) {
         NotificationViewController *vc = [[NotificationViewController alloc] init];
         vc.supervc = self;
