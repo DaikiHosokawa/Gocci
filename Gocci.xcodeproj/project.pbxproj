@@ -137,7 +137,6 @@
 		9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
 		9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90F1BF83E4B00430942 /* FacebookSharing.swift */; };
 		9550DA991BF83E4C00430942 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9111BF83E4B00430942 /* API3.swift */; };
-		9550DA9A1BF83E4C00430942 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9121BF83E4B00430942 /* APISupport.swift */; };
 		9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9131BF83E4B00430942 /* ServiceUtil.swift */; };
 		9550DA9C1BF83E4C00430942 /* TwitterAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */; };
 		9550DA9D1BF83E4C00430942 /* TwitterSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9161BF83E4B00430942 /* TwitterSharing.swift */; };
@@ -324,7 +323,6 @@
 		981A93411BFC51BF007B3BF6 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */; };
 		981A93421BFC51BF007B3BF6 /* FacebookSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D90F1BF83E4B00430942 /* FacebookSharing.swift */; };
 		981A93431BFC51BF007B3BF6 /* API3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9111BF83E4B00430942 /* API3.swift */; };
-		981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9121BF83E4B00430942 /* APISupport.swift */; };
 		981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */; };
 		981A93461BFC51BF007B3BF6 /* TwitterSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9161BF83E4B00430942 /* TwitterSharing.swift */; };
 		981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9E11BF83E4B00430942 /* SwiftyJSON.swift */; };
@@ -367,8 +365,12 @@
 		98C453A11C1FAF900010846B /* FeedbackPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C4539F1C1FAF900010846B /* FeedbackPopup.xib */; };
 		98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
 		98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
+		98D3FFEB1C26C63500751CAF /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
+		98FED72E1C26C6E7008C8927 /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
+		98FED7301C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
+		98FED7311C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
 		BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -623,7 +625,6 @@
 		9550D90E1BF83E4B00430942 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		9550D90F1BF83E4B00430942 /* FacebookSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSharing.swift; sourceTree = "<group>"; };
 		9550D9111BF83E4B00430942 /* API3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API3.swift; sourceTree = "<group>"; };
-		9550D9121BF83E4B00430942 /* APISupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISupport.swift; sourceTree = "<group>"; };
 		9550D9131BF83E4B00430942 /* ServiceUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceUtil.swift; sourceTree = "<group>"; };
 		9550D9151BF83E4B00430942 /* TwitterAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuthentication.swift; sourceTree = "<group>"; };
 		9550D9161BF83E4B00430942 /* TwitterSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSharing.swift; sourceTree = "<group>"; };
@@ -923,7 +924,9 @@
 		98C4539C1C1EFF4A0010846B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		98C4539F1C1FAF900010846B /* FeedbackPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackPopup.xib; sourceTree = "<group>"; };
 		98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackPopup.swift; sourceTree = "<group>"; };
+		98D3FFEA1C26C63500751CAF /* APILowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILowLevel.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
+		98FED72F1C26E471008C8927 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Export.swift; path = Utilities/Export.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FF0BE423193CAB31001A0053 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1522,8 +1525,8 @@
 		9550D9101BF83E4B00430942 /* Gocci */ = {
 			isa = PBXGroup;
 			children = (
+				98D3FFEA1C26C63500751CAF /* APILowLevel.swift */,
 				9550D9111BF83E4B00430942 /* API3.swift */,
-				9550D9121BF83E4B00430942 /* APISupport.swift */,
 				9862D6041C17BF45006AE6D9 /* APITasks.swift */,
 				98C453991C1E67B70010846B /* APIHighLevel.swift */,
 				98C4539C1C1EFF4A0010846B /* APIRequest.swift */,
@@ -2171,6 +2174,7 @@
 				9801BF161C0C6EE3001F4D3C /* Bridge.swift */,
 				98DCDE2A1C1A8AE900D900C6 /* Logging.swift */,
 				98B99E861C21173000B1D9CE /* Permission.swift */,
+				98FED72F1C26E471008C8927 /* Export.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2499,7 +2503,7 @@
 				981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */,
 				9801BF0F1C080677001F4D3C /* Persistent.swift in Sources */,
 				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
-				981A93441BFC51BF007B3BF6 /* APISupport.swift in Sources */,
+				98FED72E1C26C6E7008C8927 /* APILowLevel.swift in Sources */,
 				9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */,
 				988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
@@ -2509,6 +2513,7 @@
 				9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */,
 				981979B21C05B80900EFFC8F /* TestTaskScheduler.swift in Sources */,
 				98C4539B1C1E67B70010846B /* APIHighLevel.swift in Sources */,
+				98FED7311C26E471008C8927 /* Export.swift in Sources */,
 				981A93491BFC5239007B3BF6 /* TestUtil.swift in Sources */,
 				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
 				98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
@@ -2529,6 +2534,7 @@
 				9550DB1B1BF83E4C00430942 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */,
 				9550DAFD1BF83E4C00430942 /* SDWebImageDownloaderOperation.m in Sources */,
+				98FED7301C26E471008C8927 /* Export.swift in Sources */,
 				981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */,
 				98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */,
 				9550DAF81BF83E4C00430942 /* NSData+ImageContentType.m in Sources */,
@@ -2626,7 +2632,6 @@
 				9550DA981BF83E4C00430942 /* FacebookSharing.swift in Sources */,
 				95FD92CB1C0D783100D822E8 /* FollowViewControllerCell.m in Sources */,
 				9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */,
-				9550DA9A1BF83E4C00430942 /* APISupport.swift in Sources */,
 				95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */,
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
 				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
@@ -2683,6 +2688,7 @@
 				9550DB1E1BF83E4C00430942 /* UIButton+AFNetworking.m in Sources */,
 				9550DA3B1BF83E4C00430942 /* SNSConnectViewController.swift in Sources */,
 				9550DA761BF83E4C00430942 /* SCRecorderFocusTargetView.m in Sources */,
+				98D3FFEB1C26C63500751CAF /* APILowLevel.swift in Sources */,
 				9550DA671BF83E4C00430942 /* CIImageRendererUtils.m in Sources */,
 				9550DA241BF83E4C00430942 /* DebugViewController.swift in Sources */,
 				9550DA691BF83E4C00430942 /* SCAudioConfiguration.m in Sources */,

@@ -18,6 +18,8 @@
 #import "TableViewCell_2.h"
 #import "TimelinePost.h"
 #import "SGActionView.h"
+#import "Swift.h"
+
 
 @interface TableViewController_2 ()<TableViewCell_2Delegate,UIActionSheetDelegate>
 
@@ -189,7 +191,7 @@ static NSString * const reuseIdentifier = @"Cell";
                                  }                             }
                              else if(index == 3){
                                  NSLog(@"save");
-                                 //SAVE TO CAMERAROLL
+                                 [Export exportVideoToCameraRollForPostID:p_id];
                              }
                          }];
 

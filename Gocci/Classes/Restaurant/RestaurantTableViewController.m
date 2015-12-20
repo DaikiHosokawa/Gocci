@@ -20,6 +20,8 @@
 #import "NotificationViewController.h"
 #import "SGActionView.h"
 #import "RHRefreshControl.h"
+#import "Swift.h"
+
 
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
@@ -308,7 +310,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                              }
                              else if(index == 2){
                                  NSLog(@"save");
-                                 //SAVE TO CAMERAROLL
+                                 [Export exportVideoToCameraRollForPostID:p_id];
                              }
                          }];
 }

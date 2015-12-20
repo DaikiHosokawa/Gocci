@@ -75,10 +75,27 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        Export.exportVideoToCameraRollForPostID("798")
+        Export.exportVideoToCameraRollForPostID("798")
+        
+        
+        return;
+        
+        
+        let url = NSURL(string: "http://test.mp4-movies.gocci.me/2015/12/2015-12-20-16-18-13_1026_movie.mp4")!
+        
+        
+        APILowLevel.cacheFile(url, filename: "55555.mp4") { path in
+            print(path)
+        }
+        
+        return;
+        
+        
+        
         
         let ppp = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
 
-        Util.saveMovieAtPathToCameraRoll(ppp)
         
 
         
@@ -121,7 +138,7 @@ class DebugViewController : UIViewController {
         APIHighLevel.simpleLogin {
             if $0 {
                 
-                APISupport.fuelmid_session_cookie = "hfeufhsefuhsefishefiushfishfsuehfsihefsifhsi"
+                APILowLevel.fuelmid_session_cookie = "hfeufhsefuhsefishefiushfishfsuehfsihefsifhsi"
                 let pwreq = API3.set.password()
                 
                 pwreq.parameters.password = "lollol"

@@ -212,7 +212,7 @@ import Foundation
         
         Util.deleteAllCookies()
 
-        APISupport.fuelmid_session_cookie = ""
+        APILowLevel.fuelmid_session_cookie = ""
         
         TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
         
