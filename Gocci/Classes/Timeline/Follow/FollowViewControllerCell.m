@@ -50,7 +50,7 @@
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
-                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#2F3437"]];
     self.imageView.layer.cornerRadius = 2;
     self.imageView.clipsToBounds = true;
     [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
