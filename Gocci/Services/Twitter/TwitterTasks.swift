@@ -12,54 +12,74 @@ import Foundation
 
 class TwitterVideoSharingTask: PersistentBaseTask {
     let tweetMessage: String
-    let mp4filename: String
+    let relativeFilePath: String // relative to Library path
     
-    init(tweetMessage: String, mp4filename: String) {
+    init(tweetMessage: String, relativeFilePath: String) {
         self.tweetMessage = tweetMessage
-        self.mp4filename = mp4filename
+        self.relativeFilePath = relativeFilePath
         super.init(identifier: String(self.dynamicType))
     }
     
     override init?(dict: NSDictionary) {
         self.tweetMessage = dict["tweetMessage"] as? String ?? ""
-        self.mp4filename = dict["mp4filename"] as? String ?? ""
+        self.relativeFilePath = dict["relativeFilePath"] as? String ?? ""
         super.init(dict: dict)
-        if tweetMessage == "" || mp4filename == "" { return nil }
+        if tweetMessage == "" || relativeFilePath == "" { return nil }
     }
     
     override func dictonaryRepresentation() -> NSMutableDictionary {
         let dict = super.dictonaryRepresentation()
         dict["tweetMessage"] = tweetMessage
-        dict["mp4filename"] = mp4filename
+        dict["relativeFilePath"] = relativeFilePath
         return dict
     }
     
     override func equals(task: PersistentBaseTask) -> Bool {
         if let task = task as? TwitterVideoSharingTask {
-            return task.tweetMessage == tweetMessage && task.mp4filename == mp4filename
+            return task.tweetMessage == tweetMessage && task.relativeFilePath == relativeFilePath
         }
         return false
     }
     
+    override func teardown() {
+        // hard link not needed anymore
+        let fm = NSFileManager.defaultManager()
+        do {
+            try fm.removeItemAtPath(NSFileManager.libraryDirectory() + "/" + relativeFilePath)
+        }
+        catch {
+            sep("ERROR: TwitterVideoSharingTask")
+            log("File \(NSFileManager.libraryDirectory() + "/" + relativeFilePath) hardlink could not be deleted. This should never happen. Investigate...")
+        }
+    }
+    
     override func run(finished: State->()) {
         
-        guard Util.fileExists(Util.documentsDirectory() + mp4filename) else {
+        sep("PERFORM: TwitterVideoSharingTask")
+        log("tweetMessage = \(tweetMessage)")
+        log("relativeFilePath = \(relativeFilePath)")
+        
+        let fullFilePath = NSFileManager.libraryDirectory() + "/" + relativeFilePath
+        
+        guard Util.fileExists(fullFilePath) else {
+            sep("ERROR: TwitterVideoSharingTask")
+            log("File \(fullFilePath) does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
-        
-        let url = NSURL.fileURLWithPath(Util.documentsDirectory() + mp4filename)
         
         
         // TODO TRANSLATION
         let sharer = TwitterSharing()
         sharer.onSuccess = {
             //Toast.成功("Video sharing", "Video was successfully posted on twitter.")
-            print("Twitter posting sucessful: Post ID: " + $0)
+            self.sep("SUCCESS: TwitterVideoSharingTask")
+            self.log("Twitter posting sucessful: Post ID: \($0)")
             finished(.DONE)
         }
         sharer.onFailure = {
-            print("Twitter posting shippai: \($0)")
+            self.sep("FAILURE: TwitterVideoSharingTask")
+            self.log("Twitter posting failed because of \($0)")
             
             switch($0) {
             case .ERROR_VIDEO_FILE_IO:
@@ -95,11 +115,11 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 }
             }
         }
-        sharer.tweetVideo(localVideoFileURL: url, message: tweetMessage)
+        sharer.tweetVideo(localVideoFileURL: NSURL.fileURLWithPath(fullFilePath), message: tweetMessage)
     }
     
     override var description: String {
-        return super.description + " TweetMessage: \(tweetMessage), MP4File: \(mp4filename)"
+        return super.description + " TweetMessage: \(tweetMessage), MP4File: \(relativeFilePath)"
     }
     
 }

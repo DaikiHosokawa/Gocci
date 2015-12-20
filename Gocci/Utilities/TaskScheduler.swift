@@ -53,7 +53,7 @@ class PersistentClassReflexion {
 class SingletonTaskScheduler {
     
     //let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
-    let saveFileName = Util.documentsDirectory() + "/" + "unfinishedTasks.plist"
+    let saveFileName = NSFileManager.libraryDirectory() + "/" + "unfinishedTasks.plist"
     
     var schedulerThread: NSThread? = nil
     
@@ -124,17 +124,21 @@ class SingletonTaskScheduler {
     }
     
     func schedule(task: PersistentBaseTask) {
+        
+        if task.setup() {
 
-        sync(tasks) {
-            self.tasks = self.tasks.filter{ !task.equals($0) }
-            self.tasks.append(task) // last position has the highest priority. new task are be default expected to have the highest priority
-            self.tasks = self.tasks.sort{ $0.timeNextTry > $1.timeNextTry } // well we sort it anyway for debuggin purposes
-            self.safeTasksToDisk()
+            sync(tasks) {
+                self.tasks = self.tasks.filter{ !task.equals($0) }
+                self.tasks.append(task) // last position has the highest priority. new task are be default expected to have the highest priority
+                self.tasks = self.tasks.sort{ $0.timeNextTry > $1.timeNextTry } // well we sort it anyway for debuggin purposes
+                self.safeTasksToDisk()
+            }
+            dispatch_semaphore_signal(eventSemaphore)
         }
-        dispatch_semaphore_signal(eventSemaphore)
     }
     
     private func dequeueTask(task: PersistentBaseTask) {
+        task.teardown()
         sync(tasks) {
             self.tasks = self.tasks.filter{ !task.equals($0) }
             self.safeTasksToDisk()
@@ -440,6 +444,17 @@ class PersistentBaseTask: CustomStringConvertible, Logable {
     // Will be called after a task successful finished with DONE state. used to easy start a continue task, making a task chain
     func legacy() -> PersistentBaseTask? {
         return nil
+    }
+    
+    // Gets called once before the Task is enqueud. Use this to setup tmp files etc. The task will not get
+    // scheduled if it return false here
+    func setup() -> Bool {
+        return true
+    }
+    
+    // Gets called once before the Task is dequed. Use this to delete tmp files etc.
+    func teardown() {
+        
     }
     
     var description: String {

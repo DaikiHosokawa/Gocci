@@ -87,8 +87,11 @@
 
 
 
-
-
+#if TEST_BUILD
+#define GOCCI_TWITTER_TAG (@"#Gokky")
+#elif LIVE_BUILD
+#define GOCCI_TWITTER_TAG (@"#Gocci")
+#endif
 
 
 
