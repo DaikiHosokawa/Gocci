@@ -115,7 +115,7 @@ class APIHighLevel {
         
         UIApplication.sharedApplication().applicationIconBadgeNumber = payload.badge_num
         
-        if APISupport.verbose {
+        if APILowLevel.verbose {
             Lo.green("======================================================================")
             Lo.green("====================== USER LOGIN SUCCESSFUL =========================")
             Lo.green("======================================================================")

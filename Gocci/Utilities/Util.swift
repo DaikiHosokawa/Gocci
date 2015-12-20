@@ -18,6 +18,42 @@ typealias OVF = (()->())?
 
 @objc class Util : NSObject {
     
+    
+
+    
+    class func saveMovieAtPathToCameraRoll(localFile: NSURL, and: Bool->()) {
+        
+        ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(localFile) { url, error in
+            
+            print("Export to Camera Roll Complete" + ((error == nil) ? "" : "But \(error)"))
+            and(error == nil)
+        }
+    }
+    
+    
+    class func mp4ForPostIDisAvailible(postID: String) -> NSURL? {
+        var res: NSURL? = nil
+        
+        NSFileManager.postedVideosDirectory().treatAsDirectoryPathAndIterate { url in
+            if url.absoluteString.hasSuffix("/" + postID + ".mp4") {
+                res = url
+            }
+        }
+        
+        if res != nil {
+            return res
+        }
+        
+        NSFileManager.cachesDirectory().treatAsDirectoryPathAndIterate { url in
+            if url.absoluteString.hasSuffix("/" + postID + ".mp4") {
+                res = url
+            }
+        }
+        
+        return res
+    }
+    
+
 
     
     class func errorIsNetworkConfigurationError(error: NSError) -> Bool {
@@ -160,6 +196,7 @@ typealias OVF = (()->())?
     }
     
     
+    
     class func randomUsername() -> String
     {
         let s1 = NSProcessInfo.processInfo().globallyUniqueString.characters.filter(){$0 != "-"}
@@ -180,21 +217,7 @@ typealias OVF = (()->())?
         return "00000000" + String(s[0..<48]) + "00000000"
     }
     
-    class func saveMovieAtPathToCameraRoll(path: String) {
-        
-        let u = NSURL.fileURLWithPath(path)
-        ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(u) { (url, error) -> Void in
-            print("url: \(url)")
-            print("error: \(error)")
-            
-            if error == nil {
-                Toast.情報("Success", "Saved to your camera roll")
-            }
-            else {
-                Toast.失敗("Failure", "Failed to save the video to your camera roll")
-            }
-        }
-    }
+
     
 //    class func getRegisterID() -> String {
 //        
