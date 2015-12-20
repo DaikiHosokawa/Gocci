@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import AssetsLibrary
 
 
 
@@ -166,6 +167,10 @@ typealias OVF = (()->())?
         return String(s1[0..<5])
     }
     
+    class func uniqueString() -> String {
+        return NSProcessInfo.processInfo().globallyUniqueString
+    }
+    
     
     class func generateFakeDeviceID() -> String
     {
@@ -173,6 +178,22 @@ typealias OVF = (()->())?
         let s = NSProcessInfo.processInfo().globallyUniqueString.characters.filter(){$0 != "-"}
         
         return "00000000" + String(s[0..<48]) + "00000000"
+    }
+    
+    class func saveMovieAtPathToCameraRoll(path: String) {
+        
+        let u = NSURL.fileURLWithPath(path)
+        ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(u) { (url, error) -> Void in
+            print("url: \(url)")
+            print("error: \(error)")
+            
+            if error == nil {
+                Toast.情報("Success", "Saved to your camera roll")
+            }
+            else {
+                Toast.失敗("Failure", "Failed to save the video to your camera roll")
+            }
+        }
     }
     
 //    class func getRegisterID() -> String {
@@ -205,10 +226,6 @@ typealias OVF = (()->())?
         }
     }
     
-    class func documentsDirectory() -> String {
-        let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        return f.first ?? "shouldNeverHappen"
-    }
     
     class func fileExists(filePath: String) -> Bool {
         return NSFileManager.defaultManager().fileExistsAtPath(filePath)

@@ -65,6 +65,9 @@
 }
 
 
+//             UISaveVideoAtPathToSavedPhotosAlbum(exportSession.outputUrl.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+// - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {%
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -148,8 +151,7 @@
             [Bridge authenticateWithTwitterIfNecessary:self];
         }
         
-        
-        NSString *possibleTweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
+        NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
         
         // tweet below 120 char limit
         if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:possibleTweet] >= 0) {
@@ -174,7 +176,7 @@
         [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
     }
     else {
-        NSString *possibleTweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
+        NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
         [TwitterPopupBridge pop:self initialTweet:possibleTweet];
     }
 }
@@ -198,10 +200,10 @@
 
 - (IBAction)shareButton:(id)sender {
     
-    if (VideoPostPreparation.postData.postOnTwitter && ![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
-        NSString *tweet = [NSString stringWithFormat:@"#Gocci %@", self.textView.text];
 
-        
+    
+    if (VideoPostPreparation.postData.postOnTwitter && [VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+        NSString *tweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
 
         if ([Bridge videoTweetMessageRemainingCharacters:tweet] >= 0) {
             VideoPostPreparation.postData.twitterTweetMsg = tweet;
@@ -218,8 +220,11 @@
         }
     }
     
+//    // that is kinda ugly. make this better one day
+//    if ([self.textView.text isEqual:@""] && [VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+//        VideoPostPreparation.postData.twitterTweetMsg = GOCCI_TWITTER_TAG;
+//    }
     
-    VideoPostPreparation.postData.twitterTweetMsg = self.textView.text;
     
     
     if (![VideoPostPreparation isReadyToSend])

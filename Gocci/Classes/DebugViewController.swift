@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AssetsLibrary
 
 
 class DebugViewController : UIViewController {
@@ -75,7 +76,16 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        let ppp = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
+
+        Util.saveMovieAtPathToCameraRoll(ppp)
         
+
+        
+        
+        
+        
+        return;
         
         let user_enterd_text = "#Gocci " + Util.randomKanjiStringWithLength(105)
         
@@ -550,14 +560,14 @@ class DebugViewController : UIViewController {
         
         let task = NSBundle.mainBundle().pathForResource("unfinished_upload_task", ofType: "plist")!
         
-        let dest = Util.documentsDirectory() + "/unfinishedTasks.plist"
+        let dest = NSFileManager.documentsDirectory() + "/unfinishedTasks.plist"
         
         let _ = try? fm.removeItemAtPath(dest)
         
         try! fm.copyItemAtPath(task, toPath: dest)
         
         
-        let path = Util.documentsDirectory() + "/user_posted_videos"
+        let path = NSFileManager.documentsDirectory() + "/user_posted_videos"
         
         if !fm.fileExistsAtPath(path) {
             try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)

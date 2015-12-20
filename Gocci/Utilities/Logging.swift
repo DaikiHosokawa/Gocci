@@ -34,7 +34,7 @@ extension Logable {
     static func sep(head: String) {
         if verbose {
             let msg = "=== \(self.dynamicType): \(head)"
-            let balken = String(count: 118 - msg.length, repeatedValue: Character("="))
+            let balken = String(count: max(118 - msg.length, 0), repeatedValue: Character("="))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, String(count: 120, repeatedValue: Character("=")))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
         }
