@@ -56,7 +56,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewWillDisappear:(BOOL)animated{
     call = 0;
     category_flag = @"";
-    [[MoviePlayerManager sharedManager] removeAllPlayers];
+    //[[MoviePlayerManager sharedManager] removeAllPlayers];
     
 }
 
@@ -274,6 +274,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              }
                              else if(index == 4){
                                  NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
                              }
                          }];
 }

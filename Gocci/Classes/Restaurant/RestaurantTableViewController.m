@@ -18,6 +18,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "everyBaseNavigationController.h"
 #import "NotificationViewController.h"
+#import "SGActionView.h"
 #import "RHRefreshControl.h"
 
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
@@ -34,6 +35,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     __weak IBOutlet MKMapView *map_;
     NSDictionary *header;
+    NSDictionary * optionDic;
 }
 
 
@@ -65,9 +67,9 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.navigationItem.backBarButtonItem = barButton;
     
     
+    
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
@@ -83,6 +85,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
     MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
     [map_ setRegion:region animated:NO];
@@ -105,13 +108,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
     
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -124,6 +127,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] stopMovie];
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
+    //   [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -170,6 +174,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
                                                    completion:^(BOOL f){}];
+    
     return cell;
 }
 
@@ -248,41 +253,67 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)timelineCell:(TimelineCell *)cell didTapViolateButtonWithPostID:(NSString *)postID
 {
+    optionDic = [NSMutableDictionary dictionary];
     
-    Class class = NSClassFromString(@"UIAlertController");
-    if(class)
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-                if (result) {
-                    NSString *alertMessage = @"違反報告をしました";
-                    UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [alrt show];
-                }
-            }
-             ];
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else
-    {
-        [APIClient postBlock:postID handler:^(id result, NSUInteger code, NSError *error) {
-            if (result) {
-                NSString *alertMessage = @"違反報告をしました";
-                UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alrt show];
-            }
-        }
-         ];
-    }
+    [SGActionView showGridMenuWithTitle:@"アクション"
+                             itemTitles:@[
+                                          @"違反報告",
+                                          @"保存" ]
+                                 images:@[
+                                          [UIImage imageNamed:@"warning"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
+                         selectedHandle:^(NSInteger index){
+                             
+                             NSString *p_id = [optionDic objectForKey:@"POSTID"];
+                             
+                             if(index == 1){
+                                 NSLog(@"Problem");
+                                 
+                                 Class class = NSClassFromString(@"UIAlertController");
+                                 if(class)
+                                 {
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                             if (result) {
+                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alrt show];
+                                             }
+                                         }
+                                          ];
+                                         
+                                     }]];
+                                     [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                         
+                                     }]];
+                                     
+                                     [self presentViewController:alertController animated:YES completion:nil];
+                                 }
+                                 else
+                                 {
+                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+                                         if (result) {
+                                             NSString *alertMessage = @"違反報告をしました";
+                                             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                             [alrt show];
+                                         }
+                                     }
+                                      ];
+                                 }
+                             }
+                             else if(index == 2){
+                                 NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
+                             }
+                         }];
 }
+
+
 
 -(IBAction)light:(id)sender {
     
@@ -311,12 +342,15 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 UIImage *img = [UIImage imageNamed:@"notOen.png"];
                 [_flashBtn setBackgroundImage:img forState:UIControlStateNormal];
                 flash_on = 0;
+                
             }
+            
         }];
     }
 }
 
 - (IBAction)tapTEL {
+    
     if ([[header objectForKey:@"tell"] isEqualToString:@"非公開"] || [[header objectForKey:@"tell"] isEqualToString:@"準備中"]|| [[header objectForKey:@"tell"] isEqualToString:@"予約不可"]|| [[header objectForKey:@"tell"] isEqualToString:@"非設置"]|| [[header objectForKey:@"tell"] isEqualToString:@"none"]) {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"申し訳ありません。電話番号が登録されておりません"
@@ -353,6 +387,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 }
 
 - (IBAction)tapHomepatge {
+    
     NSString *urlString = [header objectForKey:@"homepage"];
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
@@ -363,6 +398,7 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     _postID = postID;
     [self performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:postID];
+    
 }
 
 
@@ -371,6 +407,24 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     _postUsername = user_id;
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
+}
+
+-(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
+{
+    NSString *mapText = Locality;
+    mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText];
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:directions]];
+    } else {
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
+                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+        
+    }
 }
 
 
@@ -451,7 +505,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
         
         header = restaurants;
         self.posts = [NSArray arrayWithArray:tempPosts];
-        [[MoviePlayerManager sharedManager] removeAllPlayers];
         [weakSelf.tableView reloadData];
         
         if ([self.posts count]== 0) {
@@ -465,8 +518,10 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 
 - (void)_playMovieAtCurrentCell
 {
+    NSLog(@"_playMovieAtCurrentCell");
     
     if ( [self.posts count] == 0){
+        NSLog(@"post 0");
         return;
     }
     CGFloat currentHeight = 0.0;
@@ -542,8 +597,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     self.loading = NO;
     [self.refresh refreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
-
-
 
 
 @end

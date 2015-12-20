@@ -46,6 +46,7 @@ static MoviePlayerManager *_sharedInstance = nil;
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
     
      if (self.players[key]) {
+         NSLog(@"self.players[key]");
      return;
      }
     
@@ -63,20 +64,21 @@ static MoviePlayerManager *_sharedInstance = nil;
     moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
     moviePlayer.view.userInteractionEnabled = NO;
     moviePlayer.backgroundView.opaque = NO;
-    //movieplayerのbackgroundViewの透明化
     moviePlayer.backgroundView.backgroundColor = [UIColor clearColor];
     for(UIView *aSubView in moviePlayer.view.subviews) {
         aSubView.backgroundColor = [UIColor clearColor];
     }
-    
     moviePlayer.view.backgroundColor = [UIColor clearColor];
     self.players[key] = moviePlayer;
+    NSLog(@"self.players[key]:%@",self.players[key]);
+    NSLog(@"self.players[key]2:%@",self.players[@"0"]);
 
 }
 
 
 - (void)removeAllPlayers
 {
+    NSLog(@"呼ばれているか");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }
@@ -106,17 +108,19 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
+    NSLog(@"playMovieAtIndex index:%lu",(unsigned long)index);
     
     if (self.globalPlayer) {
-        
+        NSLog(@"self.globalPlayer");
         [self.globalPlayer.view removeFromSuperview];
-        // [self.globalPlayer pause];
         self.globalPlayer = nil;
     }
     
     MPMoviePlayerController *player = [self _playerAtIndex:index];
-    
+    NSLog(@"player:%@",player);
+
     if (player && player != self.globalPlayer) {
+         NSLog(@"not self.globalPlayer");
         self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
@@ -148,8 +152,12 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
 
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
- 
+    
+    NSLog(@"key:%@",[NSString stringWithFormat:@"%@", @(index)]);
+    NSLog(@"self.players:%@",self.players[key]);
+    
     if (!self.players[key]) {
+         NSLog(@"playerにkeyがない");
         return nil;
     }
     

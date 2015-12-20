@@ -158,6 +158,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                              }
                              else if(index == 3){
                                  NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
                              }
                          }];
     

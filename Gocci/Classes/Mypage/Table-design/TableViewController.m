@@ -184,6 +184,7 @@ static NSString * const reuseIdentifier = @"Cell";
                              }
                              else if(index == 3){
                                  NSLog(@"save");
+                                 //SAVE TO CAMERAROLL
                              }
                          }];
     
