@@ -56,8 +56,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)viewWillDisappear:(BOOL)animated{
     call = 0;
     category_flag = @"";
-    NSLog(@"called viewwill dissa");
-    // 画面が隠れた際に再生中の動画を停止させる
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     
 }
@@ -99,19 +97,24 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
              self.posts = tempPosts;
+             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+             CGSize boundsSize = self.view.bounds.size;
+             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+             iv.tag  = 999;
              
              if ([self.posts count] == 0) {
-                 // 画像表示例文
-                 UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-                 CGSize boundsSize = self.view.bounds.size;
-                 iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
                  [self.view addSubview:iv];
-             }else{
                  [self.collectionView reloadData];
+             }else{
+                 while((iv = [self.view viewWithTag:999]) != nil) {
+                     [iv removeFromSuperview];
+                 }
+                 [self.collectionView reloadData];
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                  [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
-                 // 画面が隠れた際に再生中の動画を停止させる
                  [[MoviePlayerManager sharedManager] stopMovie];
+                 
                  
              }
              
@@ -154,11 +157,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              self.posts = newArray;
              
              if ([self.posts count] == 0) {
-                 UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-                 CGSize boundsSize = self.view.bounds.size;
-                 iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
-                 [self.view addSubview:iv];
+                 
              }else{
                  [self.collectionView reloadData];
                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

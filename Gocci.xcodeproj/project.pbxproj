@@ -197,7 +197,6 @@
 		9550DADC1BF83E4C00430942 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96B1BF83E4B00430942 /* AWSCognito.framework */; };
 		9550DADD1BF83E4C00430942 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96C1BF83E4B00430942 /* AWSCore.framework */; };
 		9550DADE1BF83E4C00430942 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D96D1BF83E4B00430942 /* AWSS3.framework */; };
-		9550DADF1BF83E4C00430942 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9701BF83E4B00430942 /* BBBadgeBarButtonItem.m */; };
 		9550DAE01BF83E4C00430942 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9741BF83E4B00430942 /* BFPaperCheckbox.m */; };
 		9550DAE11BF83E4C00430942 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9781BF83E4B00430942 /* UIColor+BFPaperColors.m */; };
 		9550DAE21BF83E4C00430942 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9550D97A1BF83E4B00430942 /* FBSDKCoreKit.framework */; };
@@ -264,6 +263,7 @@
 		9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA091BF83E4C00430942 /* WYPopoverController.m */; };
 		9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */; };
 		958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */; };
+		95EEF1961C23ED78009DA989 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */; };
 		95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92921C0D48DA00D822E8 /* SGActionView.m */; };
 		95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */; };
 		95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */; };
@@ -694,8 +694,6 @@
 		9550D96B1BF83E4B00430942 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		9550D96C1BF83E4B00430942 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		9550D96D1BF83E4B00430942 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
-		9550D96F1BF83E4B00430942 /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
-		9550D9701BF83E4B00430942 /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		9550D9731BF83E4B00430942 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		9550D9741BF83E4B00430942 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		9550D9771BF83E4B00430942 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -823,6 +821,8 @@
 		9550DA0B1BF83E4C00430942 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestPushPopupViewController.h; sourceTree = "<group>"; };
 		958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestPushPopupViewController.m; sourceTree = "<group>"; };
+		95EEF1941C23ED78009DA989 /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
+		95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		95FD92911C0D48DA00D822E8 /* SGActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionView.h; sourceTree = "<group>"; };
 		95FD92921C0D48DA00D822E8 /* SGActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionView.m; sourceTree = "<group>"; };
 		95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertMenu.h; sourceTree = "<group>"; };
@@ -1677,7 +1677,6 @@
 				9550D96B1BF83E4B00430942 /* AWSCognito.framework */,
 				9550D96C1BF83E4B00430942 /* AWSCore.framework */,
 				9550D96D1BF83E4B00430942 /* AWSS3.framework */,
-				9550D96E1BF83E4B00430942 /* BBBadgeBarButtonItem */,
 				9550D9711BF83E4B00430942 /* BFPaperCheckbox */,
 				9550D9751BF83E4B00430942 /* BFPaperColors */,
 				9550D97A1BF83E4B00430942 /* FBSDKCoreKit.framework */,
@@ -1685,6 +1684,7 @@
 				9550D97C1BF83E4B00430942 /* FBSDKShareKit.framework */,
 				9550D97D1BF83E4B00430942 /* FHSTwitterEngine */,
 				9550D9841BF83E4B00430942 /* JTCalendar */,
+				95EEF1931C23ED78009DA989 /* BBBadgeBarButtonItem */,
 				9550D99A1BF83E4B00430942 /* RHRefreshControl */,
 				9550D9A71BF83E4B00430942 /* SDWebImage */,
 				9550D9C91BF83E4B00430942 /* SingleLineTextField */,
@@ -1723,15 +1723,6 @@
 				9550D96A1BF83E4B00430942 /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		9550D96E1BF83E4B00430942 /* BBBadgeBarButtonItem */ = {
-			isa = PBXGroup;
-			children = (
-				9550D96F1BF83E4B00430942 /* BBBadgeBarButtonItem.h */,
-				9550D9701BF83E4B00430942 /* BBBadgeBarButtonItem.m */,
-			);
-			path = BBBadgeBarButtonItem;
 			sourceTree = "<group>";
 		};
 		9550D9711BF83E4B00430942 /* BFPaperCheckbox */ = {
@@ -2005,6 +1996,16 @@
 				9550D9021BF83E4B00430942 /* InfoPlist.strings */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95EEF1931C23ED78009DA989 /* BBBadgeBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				95EEF1941C23ED78009DA989 /* BBBadgeBarButtonItem.h */,
+				95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */,
+			);
+			name = BBBadgeBarButtonItem;
+			path = RHRefreshControl/BBBadgeBarButtonItem;
 			sourceTree = "<group>";
 		};
 		95FD92901C0D48DA00D822E8 /* SGActionView */ = {
@@ -2591,6 +2592,7 @@
 				9550DA7F1BF83E4C00430942 /* SCWeakSelectorTarget.m in Sources */,
 				9550DAE61BF83E4C00430942 /* FHSTwitterEngine.m in Sources */,
 				9550DAFE1BF83E4C00430942 /* SDWebImageManager.m in Sources */,
+				95EEF1961C23ED78009DA989 /* BBBadgeBarButtonItem.m in Sources */,
 				9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */,
 				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
@@ -2717,7 +2719,6 @@
 				9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */,
 				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				9550DA7D1BF83E4C00430942 /* SCVideoConfiguration.m in Sources */,
-				9550DADF1BF83E4C00430942 /* BBBadgeBarButtonItem.m in Sources */,
 				98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
 				9550DB241BF83E4C00430942 /* WYStoryboardPopoverSegue.m in Sources */,
 				95FD92E91C0D79F200D822E8 /* CollectionViewCell.m in Sources */,

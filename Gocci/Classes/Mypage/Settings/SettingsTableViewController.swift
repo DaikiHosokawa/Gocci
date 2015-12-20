@@ -200,7 +200,7 @@ class SettingsTableViewController: UITableViewController
         }
         
         alertController.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "もう一度..."
+            textField.placeholder = "確認のため、もう一度入力してください"
             textField.secureTextEntry = true
         }
         

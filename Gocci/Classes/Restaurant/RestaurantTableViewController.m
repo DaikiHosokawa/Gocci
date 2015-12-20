@@ -60,19 +60,18 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     [super viewDidLoad];
     
-    {
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-        
-    }
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationItem.backBarButtonItem = barButton;
+    
     
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineCell" bundle:nil]
          forCellReuseIdentifier:TimelineCellIdentifier];
-
+    
     RHRefreshControlConfiguration *refreshConfiguration = [[RHRefreshControlConfiguration alloc] init];
     refreshConfiguration.refreshView = RHRefreshViewStylePinterest;
     self.refresh = [[RHRefreshControl alloc] initWithConfiguration:refreshConfiguration];
@@ -102,14 +101,14 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (void)refreshDidTriggerRefresh:(RHRefreshControl *)refreshControl {
     
     self.loading = YES;
-     [self _fetchRestaurant];
+    [self _fetchRestaurant];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-   
+    
     
 }
 
@@ -125,7 +124,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     [[MoviePlayerManager sharedManager] stopMovie];
     [[MoviePlayerManager sharedManager] removeAllPlayers];
     [super viewWillDisappear:animated];
- //   [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -235,12 +233,12 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
     {
         UserpageViewController *userVC = segue.destinationViewController;
-         userVC.postUsername = _postUsername;
+        userVC.postUsername = _postUsername;
     }
 }
 
 - (void)timelineCell:(TimelineCell *)cell didTapLikeButtonWithPostID:(NSString *)postID
-{   
+{
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
     }
      ];
@@ -300,8 +298,8 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
                 flash_on = 1;
                 
             }
-    
-            }];
+            
+        }];
         
     }else if (flash_on == 1){
         [APIClient postUnWant:[header objectForKey:@"restname"] handler:^(id result, NSUInteger code, NSError *error) {
@@ -373,24 +371,6 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 {
     _postUsername = user_id;
     [self performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:self];
-}
-
--(void)timelineCell:(TimelineCell *)cell didTapNaviWithLocality:(NSString *)Locality
-{
-    NSString *mapText = Locality;
-    mapText  = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText];
-    if ([[UIApplication sharedApplication] canOpenURL:
-         [NSURL URLWithString:@"comgooglemaps://"]]) {
-        [[UIApplication sharedApplication] openURL:
-         [NSURL URLWithString:directions]];
-    } else {
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ナビゲーション使用にはGoogleMapのアプリが必要です"
-                                  delegate:self cancelButtonTitle:@"確認" otherButtonTitles:nil];
-        [alert show];
-        
-    }
 }
 
 
