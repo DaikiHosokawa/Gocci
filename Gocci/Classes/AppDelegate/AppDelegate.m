@@ -98,7 +98,7 @@
     [UINavigationBar appearance].titleTextAttributes
     = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
    
-   
+    [UINavigationBar appearance].translucent = NO;
     // !!!:dezamisystem・タブバー設定
     {
         //UIColor *color_selected = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];

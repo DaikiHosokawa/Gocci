@@ -86,15 +86,18 @@
     
     _player = [SCPlayer player];
     
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
     self.checkbox.rippleFromTapLocation = NO;
     self.checkbox.tapCirclePositiveColor = [UIColor blackColor];
     self.checkbox.tapCircleNegativeColor = [UIColor blackColor];
-    self.checkbox.checkmarkColor = [UIColor blackColor];
+    self.checkbox.checkmarkColor = color_custom;
     
+    
+    UIColor *color_twitter = [UIColor colorWithRed:85./255. green:172./255. blue:238./255. alpha:1.];
     self.TwitterCheckbox.rippleFromTapLocation = NO;
     self.TwitterCheckbox.tapCirclePositiveColor = [UIColor blackColor];
     self.TwitterCheckbox.tapCircleNegativeColor = [UIColor blackColor];
-    self.TwitterCheckbox.checkmarkColor = [UIColor blackColor];
+    self.TwitterCheckbox.checkmarkColor = color_twitter;
     self.TwitterCheckbox.tag = 1001;
     self.TwitterCheckbox.delegate = self;
     SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
@@ -269,7 +272,7 @@
         [VideoPostPreparation initiateUploadTaskChain:exportSession.outputUrl];
         
         [Permission showThePopupForPushNoticationsOnce:self after:^{
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
         }];
     }];
 }
