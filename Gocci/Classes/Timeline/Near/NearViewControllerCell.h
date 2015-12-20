@@ -19,7 +19,7 @@
 
 - (void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
 - (void)nearViewCell:(NearViewControllerCell *)cell didTapLikeButton:(NSString*)postID;
-
+- (void)nearViewCell:(NearViewControllerCell *)cell didTapImg:(NSString*)user_id;
 
 @end
 
@@ -27,7 +27,7 @@
 {
     int flash_on;
 }
-
+@property (weak, nonatomic) IBOutlet UIImageView *profileImg;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *distance;
