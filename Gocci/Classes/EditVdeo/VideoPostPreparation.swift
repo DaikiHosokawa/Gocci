@@ -37,6 +37,7 @@ import Foundation
         
         var postOnTwitter: Bool = false
         var twitterTweetMsg: String = ""
+        var twitterRelativeVideoFilename = ""
         
     }
     
@@ -90,7 +91,7 @@ import Foundation
         }
         
         if postData.postOnTwitter {
-            TwitterVideoSharingTask(tweetMessage: postData.twitterTweetMsg, mp4filename: relativeVideoFilePath).schedule()
+            TwitterVideoSharingTask(tweetMessage: postData.twitterTweetMsg, relativeFilePath: postData.twitterRelativeVideoFilename).schedule()
         }
         
         resetPostData()
@@ -101,8 +102,8 @@ import Foundation
         
         let fm = NSFileManager.defaultManager()
         
-        var relative = "/user_posted_videos"
-        let docs = Util.documentsDirectory()
+        var relative = "/PostedVideos"
+        let docs = NSFileManager.documentsDirectory()
         
         if !fm.fileExistsAtPath(docs + relative) {
             try! fm.createDirectoryAtPath(docs + relative, withIntermediateDirectories: true, attributes: nil)
@@ -110,7 +111,16 @@ import Foundation
         
         relative += "/" + timestamp + ".mp4"
         
-        try! fm.moveItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
+        //try! fm.moveItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
+        try! fm.linkItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
+        
+        if postData.postOnTwitter {
+            let lib = NSFileManager.libraryDirectory()
+            let relative = Util.uniqueString() + ".mp4"
+            postData.twitterRelativeVideoFilename = relative
+            try! fm.linkItemAtURL(newVideoFile, toURL: (lib  + "/" + relative).asURL())
+            
+        }
         
         let tmpFiles = try? fm.subpathsOfDirectoryAtPath(NSTemporaryDirectory())
         

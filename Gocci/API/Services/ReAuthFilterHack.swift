@@ -34,7 +34,7 @@ import Foundation
         
         
         let onSucc: (task: NSURLSessionDataTask!, responseObject: AnyObject?)->() = { task, responseObject in
-            Lo.yellow(responseObject)
+            //Lo.yellow(responseObject)
             
             
             if let json = responseObject as? [String: String] {
@@ -93,7 +93,7 @@ import Foundation
   
         
         let onSucc: (task: NSURLSessionDataTask!, responseObject: AnyObject?)->() = { task, responseObject in
-            Lo.yellow(responseObject)
+            //Lo.yellow(responseObject)
             
             
             if let json = responseObject as? [String: String] {
