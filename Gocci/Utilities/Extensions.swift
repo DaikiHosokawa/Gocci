@@ -38,7 +38,7 @@ extension String {
         return "\"" + self + "\""
     }
     
-    func asURL() -> NSURL {
+    func asLocalFileURL() -> NSURL {
         return NSURL.fileURLWithPath(self)
     }
     
@@ -62,6 +62,40 @@ extension String {
     }
 }
 
+extension NSURL {
+    
+    func treatAsDirectoryPathAndIterate(forEach: NSURL->()) {
+        let fm = NSFileManager.defaultManager()
+        
+        let op = NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants
+        
+        let enumerator = fm.enumeratorAtURL(self, includingPropertiesForKeys: nil, options: op, errorHandler: nil)
+        
+        if let files =  enumerator?.allObjects {
+            for entry in files {
+                if let url = entry as? NSURL {
+                    forEach(url)
+                }
+            }
+        }
+    }
+    
+    func treatAsDirectoryPathAndIterateRecursive(forEach: NSURL->()) {
+        let fm = NSFileManager.defaultManager()
+        
+        let op = NSDirectoryEnumerationOptions.SkipsHiddenFiles
+        
+        let enumerator = fm.enumeratorAtURL(self, includingPropertiesForKeys: nil, options: op, errorHandler: nil)
+        
+        if let files =  enumerator?.allObjects {
+            for entry in files {
+                if let url = entry as? NSURL {
+                    forEach(url)
+                }
+            }
+        }
+    }
+}
 
 extension NSData {
     func asUTF8String() -> String {
@@ -108,6 +142,17 @@ extension NSFileManager {
         let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         return f.first!
     }
+    
+    class func cachesDirectory() -> NSURL {
+        let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        return f.first!.asLocalFileURL()
+    }
+    
+    class func postedVideosDirectory() -> NSURL {
+        return NSURL.fileURLWithPath(documentsDirectory()).URLByAppendingPathComponent("PostedVideos", isDirectory: true)
+    }
+    
+    
 }
 
 

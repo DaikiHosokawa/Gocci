@@ -34,7 +34,7 @@ import Foundation
         
         
         let onSucc: (task: NSURLSessionDataTask!, responseObject: AnyObject?)->() = { task, responseObject in
-            //Lo.yellow(responseObject)
+            Lo.yellow(responseObject)
             
             
             if let json = responseObject as? [String: String] {
@@ -57,11 +57,11 @@ import Foundation
         APIHighLevel.simpleLogin { succ in
             if succ {
                 Lo.yellow("GET called for: \(uri) AFTER re AUTH!! ")
-                Lo.yellow("Using session ID: \(APISupport.fuelmid_session_cookie)")
-                self.manager.requestSerializer.setValue(APISupport.USER_AGENT, forHTTPHeaderField: "User-Agent")
-                self.manager.requestSerializer.setValue("fuelmid=\(APISupport.fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
+                Lo.yellow("Using session ID: \(APILowLevel.fuelmid_session_cookie)")
+                self.manager.requestSerializer.setValue(APILowLevel.USER_AGENT, forHTTPHeaderField: "User-Agent")
+                self.manager.requestSerializer.setValue("fuelmid=\(APILowLevel.fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
                 
-                guard APISupport.fuelmid_session_cookie != nil && APISupport.fuelmid_session_cookie != "" else {
+                guard APILowLevel.fuelmid_session_cookie != nil && APILowLevel.fuelmid_session_cookie != "" else {
                     Lo.error("=======================================================================")
                     Lo.error("No session cookie after relogin giving up")
                     return
@@ -86,14 +86,14 @@ import Foundation
         failure: (task: NSURLSessionDataTask!, error: NSError?)->())
     {
         Lo.yellow("GET called for: \(uri)")
-        Lo.yellow("Using session ID: \(APISupport.fuelmid_session_cookie)")
+        Lo.yellow("Using session ID: \(APILowLevel.fuelmid_session_cookie)")
         
-        manager.requestSerializer.setValue(APISupport.USER_AGENT, forHTTPHeaderField: "User-Agent")
-        manager.requestSerializer.setValue("fuelmid=\(APISupport.fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
+        manager.requestSerializer.setValue(APILowLevel.USER_AGENT, forHTTPHeaderField: "User-Agent")
+        manager.requestSerializer.setValue("fuelmid=\(APILowLevel.fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
   
         
         let onSucc: (task: NSURLSessionDataTask!, responseObject: AnyObject?)->() = { task, responseObject in
-            //Lo.yellow(responseObject)
+            Lo.yellow(responseObject)
             
             
             if let json = responseObject as? [String: String] {

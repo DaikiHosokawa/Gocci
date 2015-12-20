@@ -20,6 +20,8 @@
 #import "TimelinePageMenuViewController.h"
 #import "RHRefreshControl.h"
 #import "SGActionView.h"
+#import "Swift.h"
+
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -251,7 +253,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                  }
                              }
                              else if(index == 4){
-                                 //SAVE TO CAMERAROLL
+                                 [Export exportVideoToCameraRollForPostID:p_id];
                              }
                }];
 

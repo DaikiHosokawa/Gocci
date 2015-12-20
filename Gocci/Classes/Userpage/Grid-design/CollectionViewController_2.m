@@ -15,6 +15,8 @@
 #import "AFNetworking.h"
 #import "everyTableViewController.h"
 #import "SGActionView.h"
+#import "Swift.h"
+
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -161,7 +163,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                              }
                              else if(index == 3){
                                  NSLog(@"save");
-                                 //SAVE TO CAMERAROLL
+                                 [Export exportVideoToCameraRollForPostID:p_id];
                              }
                          }];
 }

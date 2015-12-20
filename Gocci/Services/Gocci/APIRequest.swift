@@ -16,7 +16,7 @@ protocol APIRequestProtocol {
     
     var privateFirstRetry: Bool { get set }
     
-    var privateNetworkTroublePreFilter: ((APISupport.NetworkError, String)->())? { get }
+    var privateNetworkTroublePreFilter: ((APILowLevel.NetworkError, String)->())? { get }
     
     
     func canHandleErrorCode(code: String) -> Bool
@@ -31,9 +31,9 @@ class APIRequest {
     
     var privateFirstRetry: Bool = true
     
-    var privateNetworkTroublePreFilter: ((APISupport.NetworkError, String)->())? = nil
+    var privateNetworkTroublePreFilter: ((APILowLevel.NetworkError, String)->())? = nil
     
-    func onNetworkTrouble(handler: (APISupport.NetworkError, String)->()) {
+    func onNetworkTrouble(handler: (APILowLevel.NetworkError, String)->()) {
         privateNetworkTroublePreFilter = handler
     }
     
@@ -46,16 +46,16 @@ class APIRequest {
 
 extension APIRequestProtocol {
     
-    mutating func handleNetworkError(code: APISupport.NetworkError, _ mmsg: String? = nil) {
+    mutating func handleNetworkError(code: APILowLevel.NetworkError, _ mmsg: String? = nil) {
         
-        let msg = mmsg ?? APISupport.networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No error message defined"
+        let msg = mmsg ?? APILowLevel.networkErrorMessageTable[.ERROR_BASEFRAME_JSON_MALFORMED] ?? "No error message defined"
         
-        APISupport.sep("NETWORK ERROR OCCURED")
-        APISupport.log("\(code): \(msg)")
+        APILowLevel.sep("NETWORK ERROR OCCURED")
+        APILowLevel.log("\(code): \(msg)")
         
         if privateFirstRetry && Network.online {
-            APISupport.sep("RETRY HELP")
-            APISupport.log("Request failed on network error: \(code). We perform one RETRY")
+            APILowLevel.sep("RETRY HELP")
+            APILowLevel.log("Request failed on network error: \(code). We perform one RETRY")
             privateFirstRetry = false
             self.retry()
             return
@@ -71,7 +71,7 @@ extension APIRequestProtocol {
         }
     }
     
-    mutating func defaultOnNetworkFailure(error: APISupport.NetworkError, _ message: String) {
+    mutating func defaultOnNetworkFailure(error: APILowLevel.NetworkError, _ message: String) {
         
         let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error) : \(message)")
         pop.addButton("Give up", style: UIAlertActionStyle.Cancel) {  }
@@ -83,7 +83,7 @@ extension APIRequestProtocol {
     }
     
     func compose(saneParameterPairs: [String: String]) -> NSURL {
-        let res = NSURLComponents(string: APISupport.baseurl + apipath)!
+        let res = NSURLComponents(string: APILowLevel.baseurl + apipath)!
         res.queryItems = saneParameterPairs.map{ (k,v) in NSURLQueryItem(name: k, value: v) }
         return res.URL!
     }

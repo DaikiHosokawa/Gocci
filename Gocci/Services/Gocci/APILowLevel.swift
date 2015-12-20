@@ -1,5 +1,5 @@
 //
-//  APISupport.swift
+//  APILowLevel.swift
 //  Gocci
 //
 //  Created by Markus Wanke on 22.10.15.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-class APISupport: Logable {
+class APILowLevel: Logable {
     
     static var verbose: Bool = true
     static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0xFF, 0x99, 0x33)
@@ -204,7 +204,7 @@ class APISupport: Logable {
                 return
             }
             
-            APISupport.extractFuelmidCookie(resp)
+            APILowLevel.extractFuelmidCookie(resp)
             
             guard let data = data where data.length > 0 else {
                 request.handleNetworkError(.ERROR_NO_DATA_RECIEVED)
@@ -241,6 +241,56 @@ class APISupport: Logable {
         }
         
         urlsessiontask.resume()
+    }
+    
+    
+    
+    
+    class func cacheFile(url: NSURL, filename:String, and: NSURL?->()) {
+        
+        log("Simple File Download: " + url.absoluteString)
+        
+        let req = NSMutableURLRequest(URL: url)
+        
+        req.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
+        req.setValue("fuelmid=\(fuelmid_session_cookie)", forHTTPHeaderField: "Cookie")
+        
+        let task = session.downloadTaskWithRequest(req) { location, response, error in
+            
+            guard error == nil else {
+                and(nil)
+                return
+            }
+            
+            guard let resp = response as? NSHTTPURLResponse where resp.statusCode == 200 else {
+                and(nil)
+                return
+            }
+            
+            guard let location = location else {
+                and(nil)
+                return
+            }
+            
+            let fm = NSFileManager.defaultManager()
+            let target = NSFileManager.cachesDirectory().URLByAppendingPathComponent(filename)
+            
+            let _ = try? fm.removeItemAtURL(target)
+            
+            do {
+                try fm.moveItemAtURL(location, toURL: target)
+            }
+            catch {
+                and(nil)
+                return
+            }
+
+            log("download complete: \(target)")
+            
+            and(target)
+        }
+        
+        task.resume()
     }
 }
 
