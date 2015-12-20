@@ -112,13 +112,13 @@ import Foundation
         relative += "/" + timestamp + ".mp4"
         
         //try! fm.moveItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
-        try! fm.linkItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
+        try! fm.linkItemAtURL(newVideoFile, toURL: (docs + relative).asLocalFileURL())
         
         if postData.postOnTwitter {
             let lib = NSFileManager.libraryDirectory()
             let relative = Util.uniqueString() + ".mp4"
             postData.twitterRelativeVideoFilename = relative
-            try! fm.linkItemAtURL(newVideoFile, toURL: (lib  + "/" + relative).asURL())
+            try! fm.linkItemAtURL(newVideoFile, toURL: (lib  + "/" + relative).asLocalFileURL())
             
         }
         

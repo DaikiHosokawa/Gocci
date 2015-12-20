@@ -97,6 +97,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     [super viewDidLoad];
     
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
