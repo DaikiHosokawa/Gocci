@@ -261,6 +261,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"restid:%@",rest_id);
 }
 
+-(void)recoViewCell:(RecoViewControllerCell *)cell didTapImg:(NSString *)user_id{
+    NSLog(@"userid:%@",user_id);
+    [self.delegate reco:self username:user_id];
+    TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+    [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+}
+
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
     [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
         if (result) {

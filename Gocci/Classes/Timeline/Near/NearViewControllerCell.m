@@ -54,6 +54,10 @@
                       placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     self.imageView.layer.cornerRadius = 2;
     self.imageView.clipsToBounds = true;
+    [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
+                       placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+    self.profileImg.layer.cornerRadius = 15;
+    self.profileImg.clipsToBounds = true;
     self.title.text = timelinePost.restname;
     double lat= [timelinePost.distance doubleValue];
     NSString *str1 = [self stringWithDistance:lat];
@@ -66,6 +70,7 @@
     [self _assignTapAction:@selector(tapOption:) view:self.option];
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
     [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
+     [self _assignTapAction:@selector(tapImg:) view:self.profileImg];
     
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
@@ -115,6 +120,13 @@
                                                        completion:^(BOOL f){
                                                        }];
         [[MoviePlayerManager sharedManager] playMovieAtIndex:self.index inView:self.imageView  frame:self.imageView.frame];
+    }
+}
+
+- (void)tapImg:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(nearViewCell:didTapImg:)]) {
+        [self.delegate nearViewCell:self didTapImg:self.user_id];
     }
 }
 
