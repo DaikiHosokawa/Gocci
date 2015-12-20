@@ -63,9 +63,9 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        let localFileURL = NSURL.fileURLWithPath(Util.documentsDirectory() + filePath)
+        let localFileURL = NSURL.fileURLWithPath(NSFileManager.documentsDirectory() + filePath)
         
-        guard Util.fileExists(Util.documentsDirectory() + filePath) else {
+        guard Util.fileExists(NSFileManager.documentsDirectory() + filePath) else {
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -113,7 +113,7 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     }
     
     override var description: String {
-        return super.description + " FilePath: \(Util.documentsDirectory() + filePath), S3-FileName: \(s3FileName)"
+        return super.description + " FilePath: \(NSFileManager.documentsDirectory() + filePath), S3-FileName: \(s3FileName)"
     }
     
 }

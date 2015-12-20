@@ -190,7 +190,7 @@ class GocciAddRestaurantTask: PersistentBaseTask {
         
 
         
-        guard Util.fileExists(Util.documentsDirectory() + videoFilePath) else {
+        guard Util.fileExists(NSFileManager.documentsDirectory() + videoFilePath) else {
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -200,36 +200,33 @@ class GocciAddRestaurantTask: PersistentBaseTask {
             return
         }
         
-        APIClient.restInsert(restName, latitude: lat, longitude: lon) {
-            
-            (result, code, error) -> Void in
-
-            
-            if let error = error {
-                if Util.errorIsNetworkConfigurationError(error) {
-                    finished(.FAILED_NETWORK)
-                }
-                else {
-                    finished(.FAILED_RECOVERABLE)
-                }
-            }
-            
-            if code >= 200 && code < 300 {
-                if let result = result as? [String: AnyObject] {
-                    if let rescode = result["code"] as? Int {
-                        if rescode == 200 {
-                            
-                            self.resultRetaurantID = result["rest_id"] as? String
-                            finished(.DONE)
-                            return
-                        }
-                    }
-                }
-            }
-            
-            
-            finished(.FAILED_RECOVERABLE)
+        let req = API3.set.rest()
+        
+        req.parameters.restname = restName
+        req.parameters.lat = "\(lat)"
+        req.parameters.lon = "\(lon)"
+        
+        
+        req.onNetworkTrouble {
+            self.sep("WARN: GocciAddRestaurantTask")
+            self.log("NetworkTrouble: \($0): \($1)")
+            finished(.FAILED_NETWORK)
         }
+        
+        req.onAnyAPIError {
+            self.sep("ERROR: GocciAddRestaurantTask")
+            self.log("API error. Giving up :(")
+            finished(.FAILED_IRRECOVERABLE)
+        }
+        
+        req.perform { payload in
+            self.sep("SUCCESS: GocciAddRestaurantTask")
+            self.log("New Rest ID: \(payload.rest_id)")
+            
+            self.resultRetaurantID = payload.rest_id
+            finished(.DONE)
+        }
+
     }
     
     override var description: String {
@@ -251,6 +248,8 @@ class GocciVideoSharingTask: PersistentBaseTask {
     let comment: String
     let videoFilePath: String // For next chain task
     
+    var finalFileNamePath: String? = nil
+    
     init(timestamp: String, userID: String, restaurantID: String, cheerFlag: Bool, kakaku: String, categoryID: String, comment: String, videoFilePath: String)
     {
         self.timestamp = timestamp
@@ -259,7 +258,6 @@ class GocciVideoSharingTask: PersistentBaseTask {
         self.cheerFlag = cheerFlag
         self.kakaku = kakaku
         self.categoryID = categoryID
-        //self.tagID = tagID
         self.comment = comment
         self.videoFilePath = videoFilePath // For next chain task
         super.init(identifier: String(self.dynamicType))
@@ -272,7 +270,6 @@ class GocciVideoSharingTask: PersistentBaseTask {
         self.cheerFlag = dict["cheerFlag"] as? Bool ?? false
         self.kakaku = dict["kakaku"] as? String ?? ""
         self.categoryID = dict["categoryID"] as? String ?? ""
-        //self.tagID = dict["tagID"] as? String ?? ""
         self.comment = dict["comment"] as? String ?? ""
         self.videoFilePath = dict["videoFilePath"] as? String ?? ""
         
@@ -290,7 +287,6 @@ class GocciVideoSharingTask: PersistentBaseTask {
         dict["cheerFlag"] = cheerFlag
         dict["kakaku"] = kakaku
         dict["categoryID"] = categoryID
-        //dict["tagID"] = tagID
         dict["comment"] = comment
         dict["videoFilePath"] = videoFilePath
         return dict
@@ -304,7 +300,6 @@ class GocciVideoSharingTask: PersistentBaseTask {
                 task.cheerFlag == cheerFlag &&
                 task.kakaku == kakaku &&
                 task.categoryID == categoryID &&
-                //task.tagID == tagID &&
                 task.comment == comment &&
                 task.videoFilePath == videoFilePath
         }
@@ -312,48 +307,109 @@ class GocciVideoSharingTask: PersistentBaseTask {
     }
     
     override func legacy() -> PersistentBaseTask? {
-        return AWSS3VideoUploadTask(filePath: videoFilePath, s3FileName: timestamp + "_" + userID + ".mp4")
+        if let ffn = finalFileNamePath {
+            return AWSS3VideoUploadTask(filePath: ffn, s3FileName: timestamp + "_" + userID + ".mp4")
+        }
+        sep("ERROR: GocciVideoSharingTask")
+        log("Lagacy is NIL even though the task ended in .DONE status. WTF?")
+        return nil
     }
     
     override func run(finished: State->()) {
         
-        guard Util.fileExists(Util.documentsDirectory() + videoFilePath) else {
+        guard Util.fileExists(NSFileManager.documentsDirectory() + videoFilePath) else {
+            sep("ERROR: GocciVideoSharingTask")
+            log("Video file does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
         
         guard Network.state != .OFFLINE else {
+            sep("WARN: GocciVideoSharingTask")
+            log("Can't upload video, no network availible")
             finished(.FAILED_NETWORK)
             return
         }
         
-        APIClient.POST(timestamp + "_" + userID, rest_id: restaurantID, cheer_flag: cheerFlag ? "1" : "0", value: kakaku, category_id: categoryID, tag_id: "1", memo: comment)
-            {
-                (result, code, error) -> Void in
-
-                if let error = error {
-                    if Util.errorIsNetworkConfigurationError(error) {
-                        finished(.FAILED_NETWORK)
-                    }
-                    else {
-                        finished(.FAILED_RECOVERABLE)
-                    }
-                }
-                
-                
-                if code >= 200 && code < 300 {
-                    if let result = result as? [String: AnyObject] {
-                        if let rescode = result["code"] as? Int {
-                            if rescode == 200 {
-                                finished(.DONE)
-                                return
-                            }
-                        }
-                    }
-                }
-                
-                finished(.FAILED_RECOVERABLE)
+        let req = API3.set.post()
+        
+        req.parameters.rest_id = restaurantID
+        req.parameters.movie_name = timestamp + "_" + userID
+        req.parameters.cheer_flag = cheerFlag ? "1" : "0"
+        
+        if categoryID != "" && categoryID != "0" && categoryID != "1" {
+            req.parameters.category_id = categoryID
         }
+        
+        if kakaku != "" && kakaku != "0" {
+            req.parameters.value = kakaku
+        }
+        
+        if comment != "" {
+            req.parameters.memo = comment
+        }
+        
+        req.onNetworkTrouble {
+            self.sep("WARN: GocciVideoSharingTask")
+            self.log("NetworkTrouble: \($0): \($1)")
+            finished(.FAILED_NETWORK)
+        }
+        
+        req.onAnyAPIError {
+            self.sep("ERROR: GocciVideoSharingTask")
+            self.log("API error. Giving up :(")
+            finished(.FAILED_IRRECOVERABLE)
+        }
+        
+        sep("PERFORM: GocciVideoSharingTask")
+        log("timestamp = \(timestamp)")
+        log("userID = \(userID)")
+        log("restaurantID = \(restaurantID)")
+        log("cheerFlag = \(cheerFlag)")
+        log("value = \(kakaku)")
+        log("categoryID = \(categoryID)")
+        log("comment = \(comment)")
+        log("videoFilePath = \(videoFilePath)")
+        
+        req.perform { payload in
+            // rename the file to post id
+            
+            let fm = NSFileManager.defaultManager()
+            
+            let source = NSFileManager.documentsDirectory() + self.videoFilePath
+            let target = NSFileManager.documentsDirectory() + "/user_posted_videos/\(payload.post_id).mp4"
+            
+            if fm.fileExistsAtPath(target) {
+                self.sep("STRANGE: GocciVideoSharingTask")
+                self.log("File with post_id \(payload.post_id).mp4 already exists. That should never happen. We override...")
+                
+                do {
+                    try fm.removeItemAtPath(target)
+                } catch {
+                    self.sep("VERY STRANGE: GocciVideoSharingTask")
+                    self.log("File with post_id \(payload.post_id).mp4 already exists. And can't be deleted. Giving up")
+                    finished(.FAILED_IRRECOVERABLE)
+                    return
+                }
+            }
+            
+            do {
+                try fm.moveItemAtPath(source, toPath: target)
+            } catch {
+                self.sep("VERY STRANGE: GocciVideoSharingTask")
+                self.log("File \(source) could not be renamed to \(target). Giving up")
+                finished(.FAILED_IRRECOVERABLE)
+                return
+            }
+            
+            self.sep("PERFORM: GocciVideoSharingTask")
+            self.log("Finished Succesfully. Post ID: \(payload.post_id)")
+            self.log("Video file saved at \(target)")
+            self.finalFileNamePath = "/user_posted_videos/\(payload.post_id).mp4"
+            finished(.DONE)
+        }
+        
+
         
     }
     

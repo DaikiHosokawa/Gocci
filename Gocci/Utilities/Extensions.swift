@@ -98,6 +98,20 @@ extension NSUserDefaults {
     }
 }
 
+extension NSFileManager {
+    class func documentsDirectory() -> String {
+        let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        return f.first!
+    }
+    
+    class func libraryDirectory() -> String {
+        let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        return f.first!
+    }
+}
+
+
+
 extension UIColor {
     
     static var good: UIColor { return UIColor(red: 0, green: 0.7, blue: 0, alpha: 1) }

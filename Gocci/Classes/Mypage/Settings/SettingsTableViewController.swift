@@ -111,7 +111,7 @@ class SettingsTableViewController: UITableViewController
                 (
                     {
                     #if TEST_BUILD
-                        let versionStr = "TEST BUILD" + Util.getGocciVersionString() ?? "?.?"
+                        let versionStr = "TEST BUILD  " + Util.getGocciVersionString() ?? "?.?"
                     #else
                         let versionStr = Util.getGocciVersionString() ?? "?.?"
                     #endif
