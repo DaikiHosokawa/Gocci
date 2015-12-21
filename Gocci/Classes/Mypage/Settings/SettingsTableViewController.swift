@@ -136,6 +136,8 @@ class SettingsTableViewController: UITableViewController
         // don't think there is something better we can do here
         cell.detailTextLabel?.text = ""
         
+        Persistent.do_not_ask_again_for_push_messages = true
+        
         if !Permission.userHasGrantedPushNotificationPermission() {
             if Persistent.push_notifications_popup_has_been_shown {
                 Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
