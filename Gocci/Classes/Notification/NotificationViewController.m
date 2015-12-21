@@ -18,10 +18,12 @@
 
 
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 
 @interface NotificationViewController ()<CustomTableViewCellDelegate>{
     NSMutableArray *notice_category;
     NSMutableArray *post_id;
+    NSMutableArray *user_id;
 }
 
 @property (nonatomic, retain) NSMutableArray *picture_;
@@ -78,6 +80,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     else if([notice_category[indexPath.row] isEqualToString:@"announce"]){
     }
     else if([notice_category[indexPath.row] isEqualToString:@"follow"]){
+        [self.supervc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id[indexPath.row]];
     }
 }
 
@@ -126,6 +129,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSMutableArray *tempNotices = [NSMutableArray arrayWithCapacity:0];
     notice_category = [NSMutableArray arrayWithCapacity:0];
     post_id = [NSMutableArray arrayWithCapacity:0];
+    user_id = [NSMutableArray arrayWithCapacity:0];
     
     NSLog(@"resultatnotice:%@",result);
     
@@ -134,6 +138,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [notice_category addObject:categoryGet];
         NSDictionary *post_idGet = [dict objectForKey:@"notice_post_id"];
         [post_id addObject:post_idGet];
+        NSDictionary *user_idGet = [dict objectForKey:@"notice_a_user_id"];
+        [user_id addObject:user_idGet];
         [tempNotices addObject:[Notice noticeWithDictionary:dict]];
     }
     
@@ -153,6 +159,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [self.tableView reloadData];
     NSLog(@"noticeCategory:%@",notice_category);
     NSLog(@"postid:%@",post_id);
+     NSLog(@"postid:%@",user_id);
 }
 
 #pragma mark - UITableViewDelegate methods

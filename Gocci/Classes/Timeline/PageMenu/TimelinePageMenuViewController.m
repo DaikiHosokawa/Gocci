@@ -332,7 +332,8 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
         if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
         {
             UserpageViewController  *userVC = segue.destinationViewController;
-            userVC.postUsername = _postUsername;
+            userVC.postUsername = (NSString *)sender;
+            [self.popover dismissPopoverAnimated:YES];
         }
         else
             if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])

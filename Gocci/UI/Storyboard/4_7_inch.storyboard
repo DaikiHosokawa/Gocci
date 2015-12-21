@@ -165,6 +165,7 @@
                         <segue destination="bni-34-er3" kind="show" identifier="goFollowee" id="L0G-no-fLl"/>
                         <segue destination="Pil-yP-ffM" kind="show" identifier="goCheer" id="Ofb-Gs-yfz"/>
                         <segue destination="rCy-xb-CpD" kind="show" identifier="goMap" id="COL-zP-4tE"/>
+                        <segue destination="IgD-Ad-4hs" kind="show" identifier="goUsersOthers" id="RmI-DY-kRf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I2-L6-eeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1024,7 +1025,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="動画をシェアする" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-aP-d5e">
                                 <rect key="frame" x="20" y="466" width="104" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Und-6B-Rjw">
@@ -1056,7 +1057,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPU-g8-tSU">
                                         <rect key="frame" x="68" y="16" width="53" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1185,7 +1186,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="MH3-93-WEo" customClass="Sample4TableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MH3-93-WEo" id="3zA-Fr-wXa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -2329,13 +2330,13 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g3n-kx-BDj"/>
-        <segue reference="RUh-hP-jrK"/>
         <segue reference="jr3-37-9ka"/>
-        <segue reference="MKp-Ou-neg"/>
-        <segue reference="30a-Oz-nKe"/>
-        <segue reference="Jx8-B4-NT3"/>
-        <segue reference="4ab-y8-Qck"/>
+        <segue reference="had-LT-zY9"/>
+        <segue reference="hGv-8z-0ZJ"/>
+        <segue reference="RmI-DY-kRf"/>
+        <segue reference="L0G-no-fLl"/>
+        <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="ren-zg-h6h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

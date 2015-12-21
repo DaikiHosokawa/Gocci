@@ -188,6 +188,7 @@
                             <nil key="action"/>
                         </segue>
                         <segue destination="EBL-U9-xrm" kind="push" identifier="goMap" id="JPF-GG-2Lt"/>
+                        <segue destination="9NX-TU-r7E" kind="push" identifier="goUsersOthers" id="tjp-JB-9RB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGg-wC-S6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -983,7 +984,7 @@
                                         <rect key="frame" x="60" y="15" width="53" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1091,7 +1092,7 @@
                                 <rect key="frame" x="10" y="486" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1733,6 +1734,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="Rlp-mO-YOv"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -2425,11 +2427,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fvs-4k-dBf"/>
-        <segue reference="dJ0-hj-1e2"/>
-        <segue reference="JBx-nY-feb"/>
-        <segue reference="TeR-by-P1o"/>
-        <segue reference="KPO-WA-zUK"/>
-        <segue reference="LdH-9F-OGI"/>
-        <segue reference="ZNT-8G-Vh8"/>
+        <segue reference="knF-4T-ZwF"/>
+        <segue reference="qh1-2C-pXX"/>
+        <segue reference="aMt-WG-BmS"/>
+        <segue reference="YMD-DR-Sl9"/>
+        <segue reference="tjp-JB-9RB"/>
+        <segue reference="Foo-dB-2J8"/>
     </inferredMetricsTieBreakers>
 </document>
