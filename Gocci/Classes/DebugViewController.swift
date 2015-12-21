@@ -75,6 +75,13 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        
+        
+        let wtf = Persistent.push_notifications_popup_has_been_shown
+        print(wtf)
+        
+        return;
+        
         Export.exportVideoToCameraRollForPostID("798")
         Export.exportVideoToCameraRollForPostID("798")
         

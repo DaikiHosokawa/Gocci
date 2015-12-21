@@ -130,43 +130,22 @@ class SettingsTableViewController: UITableViewController
     }
     
     
-    
+    // TODO TARANSLATION
     func handlePushNotification(cell: UITableViewCell)
     {
         // don't think there is something better we can do here
         cell.detailTextLabel?.text = ""
         
-        Persistent.do_not_ask_again_for_push_messages = true
-        
-        if !Permission.userHasGrantedPushNotificationPermission() {
-            if Persistent.push_notifications_popup_has_been_shown {
-                Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
-                
-                // User should see the popup when he returnn, not while the settings screen opens
-                Util.sleep(1)
-            }
-            else {
-                // Show the holy popup
-                Permission.theHolyPopup { wants in
-                    // We pretend the task has succeeded for now...
-                    cell.detailTextLabel?.text = wants ? "受信" : "未許可"
-                    cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
-                }
-                return
-            }
-        }
-        
-        // at this point it is not clear if the user
         
         let disconnect = {
             
             // we don't really care if this worked or not
             API3.unset.device().perform {
-                Persistent.registerd_device_token = ""
+                Persistent.registerd_device_token = nil
+                cell.detailTextLabel?.text = "未許可"
+                cell.detailTextLabel?.textColor = UIColor.bad
             }
-            
-            cell.detailTextLabel?.text = "未許可"
-            cell.detailTextLabel?.textColor = UIColor.redColor()
+
         }
         
         let connect = {
@@ -178,13 +157,52 @@ class SettingsTableViewController: UITableViewController
             Permission.theHolyPopup { wants in
                 // We pretend the task has succeeded for now...
                 cell.detailTextLabel?.text = wants ? "受信" : "未許可"
-                cell.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                cell.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
             }
         }
         
-        self.simpleConfirmationPopup("Confirmation", "Do you want to recieve push notifications about Likes and Messages to your videos?",
-            confirmButton: (text: "Yes, send me push messages", cb: connect),
-            cancelButton:  (text: "No, thank you", cb: disconnect))
+        
+        if !Permission.userHasGrantedPushNotificationPermission() {
+
+            
+            Persistent.do_not_ask_again_for_push_messages = true
+            
+            if Persistent.push_notifications_popup_has_been_shown {
+                // Show settings page
+                Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
+                
+                // We have no idea what the permission status here is. Checking it here makes no sense
+                // since the user will take some time set the settings and there is no return event.
+                // because of that a neutral popup is needed. Asking is he wants or not.
+                
+                // User should see the popup when he returnn, not while the settings screen opens
+                Util.sleep(1)
+                
+                self.simpleConfirmationPopup("確認", "Do you want to recieve push notifications about Likes and Messages to your videos?",
+                    confirmButton: (text: "Yes, send me push messages", cb: connect),
+                    cancelButton:  (text: "No, thank you", cb: disconnect))
+            }
+            else {
+                // Show the holy popup
+                Permission.theHolyPopup { wants in
+                    // We pretend the task has succeeded for now...
+                    cell.detailTextLabel?.text = wants ? "受信" : "未許可"
+                    cell.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
+                }
+            }
+        }
+        else if Persistent.registerd_device_token == nil {
+            // The server dows not send push messages to this device
+            self.simpleConfirmationPopup("確認", "Currently you are not recieving Likes and Messages notifications",
+                confirmButton: (text: "Yes, please send me notifications again", cb: connect),
+                cancelButton:  (text: "キャンセル", cb: nil))
+        }
+        else if Persistent.registerd_device_token != nil {
+            // The server does send push messages to this device
+            self.simpleConfirmationPopup("確認", "You will recieve no further Likes and Messages notifications.",
+                confirmButton: (text: "Yes, stop sending me messages", cb: disconnect),
+                cancelButton:  (text: "キャンセル", cb: nil))
+        }
         
     }
     
