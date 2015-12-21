@@ -2182,13 +2182,18 @@ id removeNull(id rootObject) {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pasteboardChanged:) name:UIPasteboardChangedNotification object:nil];
     
     self.view = [[UIView alloc]initWithFrame:UIScreen.mainScreen.bounds];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, (UIDevice.currentDevice.systemVersion.floatValue >= 7.0f)?64:44)];
     _navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    UINavigationItem *navItem = [[UINavigationItem alloc]initWithTitle:@"Twitter Login"];
-	navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close)];
+    UINavigationItem *navItem = [[UINavigationItem alloc]initWithTitle:@"Twitterログイン"];
+    UIBarButtonItem *back =[[UIBarButtonItem alloc]initWithTitle:@"戻る"
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(close)
+                           ];
+    navItem.leftBarButtonItem = back;
 	[_navBar pushNavigationItem:navItem animated:NO];
     
     self.theWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, _navBar.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height-_navBar.bounds.size.height)];
@@ -2201,8 +2206,8 @@ id removeNull(id rootObject) {
     [self.view addSubview:_theWebView];
     [self.view addSubview:_navBar];
     
-    self.loadingText = [[UILabel alloc]initWithFrame:CGRectMake((self.view.bounds.size.width/2)-40, (self.view.bounds.size.height/2)-10-7.5, 100, 15)];
-	_loadingText.text = @"Please Wait...";
+    self.loadingText = [[UILabel alloc]initWithFrame:CGRectMake((self.view.bounds.size.width/2)-40, (self.view.bounds.size.height/2)-10-7.5, 120, 15)];
+	_loadingText.text = @"お待ちください...";
 	_loadingText.backgroundColor = [UIColor clearColor];
 	_loadingText.textColor = [UIColor blackColor];
 	_loadingText.textAlignment = NSTextAlignmentLeft;
