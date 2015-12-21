@@ -51,7 +51,7 @@ class SettingsTableViewController: UITableViewController
                         let isCon = Persistent.user_is_connected_via_facebook
                         $0.textLabel?.text = "Facebook"
                         $0.detailTextLabel?.text = isCon ? "接続済み" : "未接続"
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.blackColor() : UIColor.blackColor()
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.good : UIColor.bad
                     },
                     handleFacebook
                 ),
@@ -60,7 +60,7 @@ class SettingsTableViewController: UITableViewController
                         let isCon = Persistent.user_is_connected_via_twitter
                         $0.textLabel?.text = "Twitter"
                         $0.detailTextLabel?.text = isCon ? "接続済み" : "未接続"
-                        $0.detailTextLabel?.textColor = isCon ? UIColor.blackColor() : UIColor.blackColor()
+                        $0.detailTextLabel?.textColor = isCon ? UIColor.good : UIColor.bad
                     },
                     handleTwitter
                 ),
@@ -74,7 +74,7 @@ class SettingsTableViewController: UITableViewController
                         $0.textLabel?.text = "通知を設定する"
                         let wants = Permission.userHasGrantedPushNotificationPermission() && Persistent.registerd_device_token != nil
                         $0.detailTextLabel?.text = wants ? "受信" : "未許可"
-                        $0.detailTextLabel?.textColor = wants ? UIColor.greenColor() : UIColor.redColor()
+                        $0.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
                     },
                     handlePushNotification
                 )
@@ -136,6 +136,8 @@ class SettingsTableViewController: UITableViewController
         // don't think there is something better we can do here
         cell.detailTextLabel?.text = ""
         
+        Persistent.do_not_ask_again_for_push_messages = true
+        
         if !Permission.userHasGrantedPushNotificationPermission() {
             if Persistent.push_notifications_popup_has_been_shown {
                 Permission.showTheHolyPopupForPushNotificationsOrTheSettingsScreen()
@@ -180,9 +182,9 @@ class SettingsTableViewController: UITableViewController
             }
         }
         
-        self.simpleConfirmationPopup("Confirmation", "Do you want to recieve push notifications about Likes and Messages to your videos?",
-            confirmButton: (text: "Yes, send me push messages", cb: connect),
-            cancelButton:  (text: "No, thank you", cb: disconnect))
+        self.simpleConfirmationPopup("確認", "動画に対するいいね/コメントなどの通知を受けますか？",
+            confirmButton: (text: "はい", cb: connect),
+            cancelButton:  (text: "いいえ", cb: disconnect))
         
     }
     
@@ -227,8 +229,8 @@ class SettingsTableViewController: UITableViewController
                 }
                 
                 req.perform {
-                    cell.detailTextLabel?.text = "設定する"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.text = "設定済み"
+                    cell.detailTextLabel?.textColor = UIColor.good
                     Persistent.password_was_set_by_the_user = true
                     
                     self.simplePopup("パスワード設定", "成功しました", "OK")
@@ -265,7 +267,7 @@ class SettingsTableViewController: UITableViewController
                 req.perform {
                     Persistent.user_is_connected_via_twitter = true
                     cell.detailTextLabel?.text = "接続済み"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.textColor = UIColor.good
                 }
             }
         }
@@ -290,7 +292,7 @@ class SettingsTableViewController: UITableViewController
                 req.perform {
                     Persistent.user_is_connected_via_twitter = false
                     cell.detailTextLabel?.text = "未接続"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.textColor = UIColor.bad
                 }
             }
         }
@@ -328,7 +330,7 @@ class SettingsTableViewController: UITableViewController
                 req.perform {
                     Persistent.user_is_connected_via_facebook = true
                     cell.detailTextLabel?.text = "接続済み"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.textColor = UIColor.good
                 }
             }
         }
@@ -353,7 +355,7 @@ class SettingsTableViewController: UITableViewController
                 req.perform {
                     Persistent.user_is_connected_via_facebook = false
                     cell.detailTextLabel?.text = "未接続"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.textColor = UIColor.bad
                 }
             }
         }

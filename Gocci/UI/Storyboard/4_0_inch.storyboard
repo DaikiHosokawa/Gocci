@@ -232,10 +232,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y73-Ij-EJT">
                                 <rect key="frame" x="0.0" y="518" width="321" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <state key="normal" title="すでにアカウントをお持ちの方はこちらから">
-                                    <color key="titleColor" white="0.080263283640000002" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.9941144436997319" green="0.9941144436997319" blue="0.9941144436997319" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="7CV-c7-UFP" kind="presentation" id="Kth-Ev-KZE"/>
@@ -372,7 +372,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mAN-hi-wle" kind="unwind" unwindAction="ReturnTutorial:" id="mjv-3w-H2o"/>
+                                    <action selector="close:" destination="7CV-c7-UFP" eventType="touchUpInside" id="TxJ-Xg-rWY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -387,7 +387,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJe-wb-O68" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="mAN-hi-wle" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-8165" y="-2341"/>
         </scene>
@@ -2411,7 +2410,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UsF-fz-dpG"/>
-        <segue reference="upe-j2-7LO"/>
+        <segue reference="Kth-Ev-KZE"/>
         <segue reference="QRa-dv-Pod"/>
         <segue reference="f7M-Pp-lgJ"/>
         <segue reference="UjS-k3-cIb"/>

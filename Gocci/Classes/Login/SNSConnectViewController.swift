@@ -24,7 +24,7 @@ class SNSConnectViewController : UIViewController {
     
     
     @IBAction func facebookConnectClicked(sender: AnyObject) {
-    
+        
         FacebookAuthentication.authenticate(currentViewController: self) { token in
             
             guard let token = token else {
@@ -32,25 +32,21 @@ class SNSConnectViewController : UIViewController {
                 return
             }
             
-            APIClient.connectWithSNS(FACEBOOK_PROVIDER_STRING,
-                token: token.cognitoFormat(),
-                profilePictureURL: FacebookAuthentication.getProfileImageURL() ?? "none")
-            {
-                (result, code, error) -> Void in
-                
-                if error != nil || code != 200 {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                }
-                else if result["code"] as! Int == 200 {
-                    Persistent.user_is_connected_via_facebook = true
-                    Util.popup("Facebook連携が完了しました")
-                    self.facebookConnectionSuccessful = true
-                    self.facebookButton.enabled = false
-                    self.transit()
-                }
-                else {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                }
+            let req = API3.set.sns_link()
+            
+            req.parameters.provider = FACEBOOK_PROVIDER_STRING
+            req.parameters.sns_token = token.cognitoFormat()
+            
+            req.onAnyAPIError {
+                self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
+            }
+            
+            req.perform {
+                Persistent.user_is_connected_via_facebook = true
+                self.simplePopup("成功", "Facebook連携が完了しました", "OK")
+                self.facebookConnectionSuccessful = true
+                self.facebookButton.enabled = false
+                self.transit()
             }
         }
     }
@@ -64,27 +60,23 @@ class SNSConnectViewController : UIViewController {
                 return
             }
             
-            APIClient.connectWithSNS(TWITTER_PROVIDER_STRING,
-                token: token.cognitoFormat(),
-                profilePictureURL: TwitterAuthentication.getProfileImageURL() ?? "none")
-            {
-                (result, code, error) -> Void in
-                
-                if error != nil || code != 200 {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                }
-                else if result["code"] as! Int == 200 {
-                    Persistent.user_is_connected_via_twitter = true
-                    Util.popup("Twitter連携が完了しました")
-                    self.twitterConnectionSuccessful = true
-                    self.twitterButton.enabled = false
-                    self.transit()                }
-                else {
-                    Util.popup("連携に失敗しました。アカウント情報を再度お確かめください。")
-                }
+            let req = API3.set.sns_link()
+            
+            req.parameters.provider = TWITTER_PROVIDER_STRING
+            req.parameters.sns_token = token.cognitoFormat()
+            
+            req.onAnyAPIError {
+                self.simplePopup("ERROR", "連携に失敗しました。アカウント情報を再度お確かめください。", "OK")
+            }
+            
+            req.perform {
+                Persistent.user_is_connected_via_twitter = true
+                self.simplePopup("成功", "Twitter連携が完了しました", "OK")
+                self.twitterConnectionSuccessful = true
+                self.twitterButton.enabled = false
+                self.transit()
             }
         }
-        
     }
     
     func transit() {
