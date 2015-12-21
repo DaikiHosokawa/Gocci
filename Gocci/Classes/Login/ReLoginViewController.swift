@@ -29,6 +29,10 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         passwordEditField.resignFirstResponder()
     }
 
+    @IBAction func close(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func loginClicked(sender: AnyObject) {
 
         guard let un = usernameEditFiled.text where !un.isEmpty else {
@@ -51,7 +55,7 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         
         // TODO better text
         req.on_ERROR_PASSWORD_NOT_REGISTERD { _, _ in
-            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+            Util.popup("パスワードが。アカウント情報を再度お確かめください。")
         }
         
         // TODO better text

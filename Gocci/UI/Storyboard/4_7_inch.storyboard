@@ -255,10 +255,10 @@
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D63-Te-fRc">
                                 <rect key="frame" x="27" y="625" width="321" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <state key="normal" title="すでにアカウントをお持ちの方はこちらから">
-                                    <color key="titleColor" white="0.080263283640000002" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.99526642091152817" green="0.99526642091152817" blue="0.99526642091152817" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="cYs-UW-Ra8" kind="presentation" id="jr3-37-9ka"/>
@@ -379,14 +379,18 @@
                                 <state key="normal" image="ic_chevron_left_white_48pt">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="50e-Rm-avE" kind="unwind" unwindAction="ReturnTutorial:" id="XlM-ul-n7l"/>
-                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="postingBack" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-BQ-8LL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <color key="barTintColor" red="0.96862745098039216" green="0.33333333333333331" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgY-um-A3d">
+                                <rect key="frame" x="7" y="6" width="37" height="37"/>
+                                <state key="normal" image="ic_chevron_left_white_48pt"/>
+                                <connections>
+                                    <action selector="close:" destination="cYs-UW-Ra8" eventType="touchUpInside" id="7xn-Y5-yLE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -399,7 +403,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ntq-iF-3C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="50e-Rm-avE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-8165.5" y="-2340.5"/>
         </scene>
