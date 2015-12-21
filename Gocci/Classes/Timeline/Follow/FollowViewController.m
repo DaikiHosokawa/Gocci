@@ -211,7 +211,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              else if(index == 2){
                                  NSLog(@"User");
                                  
-                                 if (Persistent.user_id == user_id){
+                                 if ([Persistent.user_id isEqualToString:user_id]){
                                      
                                      [vc.tabBarController setSelectedIndex:1];
                                  }else{
@@ -272,7 +272,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSLog(@"userid:%@",user_id);
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     
-    if (Persistent.user_id == user_id){
+    if ([Persistent.user_id isEqualToString:user_id]){
         [vc.tabBarController setSelectedIndex:1];
     }else{
         [self.delegate follow:self username:user_id];
