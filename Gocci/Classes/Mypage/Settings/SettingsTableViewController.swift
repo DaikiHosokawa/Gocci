@@ -229,8 +229,8 @@ class SettingsTableViewController: UITableViewController
                 }
                 
                 req.perform {
-                    cell.detailTextLabel?.text = "設定する"
-                    cell.detailTextLabel?.textColor = UIColor.blackColor()
+                    cell.detailTextLabel?.text = "設定済み"
+                    cell.detailTextLabel?.textColor = UIColor.good
                     Persistent.password_was_set_by_the_user = true
                     
                     self.simplePopup("パスワード設定", "成功しました", "OK")
