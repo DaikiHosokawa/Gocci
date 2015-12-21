@@ -91,49 +91,49 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)setupData:(NSString *)category_id value_id:(NSString*)value_id
 {
-
-        [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
-         {
-             if (error) {
-                 NSLog(@"ERROR: Network communication: %@",error);
-                 return;
+    
+    [APIClient Follow:@"" category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
+     {
+         if (error) {
+             NSLog(@"ERROR: Network communication: %@",error);
+             return;
+         }
+         if (!result) {
+             NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
+             return;
+         }
+         
+         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+         
+         for (NSDictionary *post in result) {
+             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+         }
+         
+         self.posts = tempPosts;
+         
+         UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+         UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+         CGSize boundsSize = self.view.bounds.size;
+         iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
+         iv.tag  = 999;
+         
+         if ([self.posts count] == 0) {
+             [self.view addSubview:iv];
+             [self.collectionView reloadData];
+         }else{
+             while((iv = [self.view viewWithTag:999]) != nil) {
+                 [iv removeFromSuperview];
              }
-             if (!result) {
-                 NSLog(@"ERROR: Network communication: server side failed for unnknown reasons");
-                 return;
-             }
+             [self.collectionView reloadData];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
+             [[MoviePlayerManager sharedManager] stopMovie];
              
-             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
              
-             for (NSDictionary *post in result) {
-                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-             }
-             
-             self.posts = tempPosts;
-             
-             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
-             UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-             CGSize boundsSize = self.view.bounds.size;
-             iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
-             iv.tag  = 999;
-             
-             if ([self.posts count] == 0) {
-                 [self.view addSubview:iv];
-                 [self.collectionView reloadData];
-             }else{
-                  while((iv = [self.view viewWithTag:999]) != nil) {
-                     [iv removeFromSuperview];
-                 }
-                 [self.collectionView reloadData];
-                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                 [self performSelector:@selector(_fakeLoadComplete) withObject:nil];
-                 [[MoviePlayerManager sharedManager] stopMovie];
-                 
-                 
-             }
-
-             
-         }];
+         }
+         
+         
+     }];
 }
 
 
@@ -141,35 +141,35 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 {
     
     
-        NSString *str = [NSString stringWithFormat:@"%d",call];
-        [APIClient Follow:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
-         {
-             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+    NSString *str = [NSString stringWithFormat:@"%d",call];
+    [APIClient Follow:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
+     {
+         NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+         
+         NSLog(@"add Login:%@",result);
+         
+         for (NSDictionary *post in result) {
+             [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+         }
+         NSMutableArray *newArray = [self.posts mutableCopy];
+         [newArray addObjectsFromArray:tempPosts];
+         
+         self.posts = newArray;
+         
+         
+         
+         if ([self.posts count] == 0) {
              
-             NSLog(@"add Login:%@",result);
+         }else{
+             [self.collectionView reloadData];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             call++;
+             [[MoviePlayerManager sharedManager] stopMovie];
              
-             for (NSDictionary *post in result) {
-                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
-             }
-             NSMutableArray *newArray = [self.posts mutableCopy];
-             [newArray addObjectsFromArray:tempPosts];
              
-             self.posts = newArray;
-             
-            
-             
-             if ([self.posts count] == 0) {
-                 
-             }else{
-                 [self.collectionView reloadData];
-                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                 call++;
-                 [[MoviePlayerManager sharedManager] stopMovie];
-                 
-                 
-             }
-             
-         }];
+         }
+         
+     }];
 }
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
@@ -185,16 +185,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [optionDic setObject:rest_id forKey:@"RESTID"];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:user_id forKey:@"USERID"];
-
+    
     
     [SGActionView showGridMenuWithTitle:@"アクション"
                              itemTitles:@[@"店舗", @"ユーザー",
-                                           @"違反報告",@"保存" ]
+                                          @"違反報告",@"保存" ]
                                  images:@[[UIImage imageNamed:@"restaurant"],
-                                           [UIImage imageNamed:@"man"],
-                                           [UIImage imageNamed:@"warning"],
-                                           [UIImage imageNamed:@"save"]
-                                           ]
+                                          [UIImage imageNamed:@"man"],
+                                          [UIImage imageNamed:@"warning"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *u_id = [optionDic objectForKey:@"USERID"];
@@ -210,8 +210,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              }
                              else if(index == 2){
                                  NSLog(@"User");
-                                 [self.delegate follow:self username:u_id];
-                                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
+                                 
+                                 if (Persistent.user_id == user_id){
+                                     
+                                     [vc.tabBarController setSelectedIndex:1];
+                                 }else{
+                                     [self.delegate follow:self username:u_id];
+                                     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];}
                              }
                              else if(index == 3){
                                  NSLog(@"Problem");
@@ -255,8 +260,8 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              else if(index == 4){
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
-               }];
-
+                         }];
+    
 }
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
@@ -265,9 +270,14 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)followViewCell:(FollowViewControllerCell *)cell didTapImg:(NSString *)user_id{
     NSLog(@"userid:%@",user_id);
-    [self.delegate follow:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
-    [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+    
+    if (Persistent.user_id == user_id){
+        [vc.tabBarController setSelectedIndex:1];
+    }else{
+        [self.delegate follow:self username:user_id];
+        [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+    }
 }
 
 
@@ -364,7 +374,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 - (BOOL)refreshDataSourceIsLoading:(RHRefreshControl *)refreshControl {
-    return self.isLoading; 
+    return self.isLoading;
     
 }
 
