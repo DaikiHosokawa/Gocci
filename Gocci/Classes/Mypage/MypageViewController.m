@@ -30,6 +30,7 @@
 //define Segue name
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_FOLLOW = @"goFollow";
 static NSString * const SEGUE_GO_FOLLOWEE = @"goFollowee";
 static NSString * const SEGUE_GO_CHEER = @"goCheer";
@@ -301,6 +302,13 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     {
         RestaurantTableViewController  *restVC = segue.destinationViewController;
         restVC.postRestName = _postRestname;
+    }
+    
+    if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+    {
+        UserpageViewController  *userVC = segue.destinationViewController;
+        userVC.postUsername = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
     
     if ([segue.identifier isEqualToString:@"goMap"])
