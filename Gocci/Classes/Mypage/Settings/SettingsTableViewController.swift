@@ -438,8 +438,6 @@ class SettingsTableViewController: UITableViewController
         return cell
     }
     
-
-
 }
 
 

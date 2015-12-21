@@ -31,6 +31,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 @implementation FollowListViewController
 
+@synthesize userID = _userID;
 @synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
@@ -63,7 +64,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 -(void)perseJson
 {
-    [APIClient FollowList:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient FollowList:_userID handler:^(id result, NSUInteger code, NSError *error) {
      
         LOG(@"resultComment=%@", result);
         

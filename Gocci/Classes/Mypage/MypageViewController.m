@@ -317,6 +317,24 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         mapVC.receiveDic3 = post;
     }
     
+    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])
+    {
+        FollowListViewController  *followVC = segue.destinationViewController;
+        followVC.userID = Persistent.user_id;
+    }
+    
+    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOWEE])
+    {
+        FolloweeListViewController  *followeeVC = segue.destinationViewController;
+        followeeVC.userID = Persistent.user_id;
+    }
+    
+    if ([segue.identifier isEqualToString:SEGUE_GO_CHEER])
+    {
+        CheerListViewController  *cheerVC = segue.destinationViewController;
+        cheerVC.userID = Persistent.user_id;
+    }
+    
 }
 
 
