@@ -16,8 +16,8 @@ import Foundation
     }
     
     //class func authenticateWithTwitterIfNecessary (fromViewController vc: UIViewController, and: TwitterAuthentication.Token?->()) {
-    class func authenticateWithTwitterIfNecessary(vc: UIViewController) {
-        TwitterAuthentication.authenticate(currentViewController: vc, and: { _ in } )
+    class func authenticateWithTwitterIfNecessary(vc: UIViewController, and: Bool->()) {
+        TwitterAuthentication.authenticate(currentViewController: vc, and: { and( $0 != nil ) } )
     }
     
     class func videoTweetMessageRemainingCharacters(tweet: String) -> Int {
