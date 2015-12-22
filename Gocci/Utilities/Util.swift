@@ -151,16 +151,15 @@ typealias OVF = (()->())?
 //    }
     
     class func thisKillsTheFacebook() {
-        let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
-        deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in
-            print("the delete permission is \(result)")
-            
-        })
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-        FBSDKProfile.setCurrentProfile(nil)
+//        let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
+//        deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in
+//            print("the delete permission is \(result)")
+//            
+//        })
         
         FBSDKLoginManager().logOut()
-        
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        FBSDKProfile.setCurrentProfile(nil)
     }
     
     class func popup(msg: String, title: String = "", buttonText: String = "OK")
@@ -287,8 +286,7 @@ typealias OVF = (()->())?
         }
         
         Persistent.resetPersistentDataToInitialState()
-        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
-    
+        
         if keepIdentityID && iid != nil {
             Persistent.identity_id = iid
         }

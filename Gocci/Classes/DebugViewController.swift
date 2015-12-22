@@ -77,6 +77,17 @@ class DebugViewController : UIViewController {
         
         
         
+        NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterateRecursive { filePath in
+            if let fileName = filePath.lastPathComponent {
+                if fileName.hasSuffix(".mov") {
+                    print("ONLY MOV file.lastPathComponent: \(filePath.lastPathComponent!)")
+                }
+            }
+        }
+        
+        return;
+        
+        
         print(NSHomeDirectory())
         print(NSFileManager.libraryDirectory())
         return;
