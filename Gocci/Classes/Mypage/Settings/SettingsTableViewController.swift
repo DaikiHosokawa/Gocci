@@ -310,7 +310,7 @@ class SettingsTableViewController: UITableViewController
                 req.perform {
                     Persistent.user_is_connected_via_twitter = false
                     cell.detailTextLabel?.text = "未接続"
-                    cell.detailTextLabel?.textColor = UIColor.good
+                    cell.detailTextLabel?.textColor = UIColor.bad
                 }
             }
         }
@@ -449,8 +449,6 @@ class SettingsTableViewController: UITableViewController
         return cell
     }
     
-
-
 }
 
 

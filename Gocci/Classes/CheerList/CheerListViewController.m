@@ -30,6 +30,8 @@
 
 @implementation CheerListViewController
 
+@synthesize userID = _userID;
+
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
 
 - (void)viewDidLoad {
@@ -103,9 +105,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
 #pragma mark - Json
 -(void)perseJson
 {
-    //test user
-    //_postIDtext = @"3024";
-    [APIClient CheerList: Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient CheerList:_userID handler:^(id result, NSUInteger code, NSError *error) {
                 
         LOG(@"resultComment=%@", result);
         

@@ -31,6 +31,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 @implementation FolloweeListViewController
 
+@synthesize userID = _userID;
 @synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
@@ -96,7 +97,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 {
     //test user
     //_postIDtext = @"3024";
-    [APIClient FollowerList:Persistent.user_id handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient FollowerList:_userID handler:^(id result, NSUInteger code, NSError *error) {
         
        // [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         

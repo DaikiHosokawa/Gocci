@@ -313,6 +313,24 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         mapVC.receiveDic3 = post;
     }
     
+    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOW])
+    {
+        FollowListViewController  *followVC = segue.destinationViewController;
+        followVC.userID = _postUsername;
+    }
+    
+    if ([segue.identifier isEqualToString:SEGUE_GO_FOLLOWEE])
+    {
+        FolloweeListViewController  *followeeVC = segue.destinationViewController;
+        followeeVC.userID = _postUsername;
+    }
+    
+    if ([segue.identifier isEqualToString:SEGUE_GO_CHEER])
+    {
+        CheerListViewController  *cheerVC = segue.destinationViewController;
+        cheerVC.userID = _postUsername;
+    }
+    
 }
 
 #pragma mark - TimelineCellDelegate
@@ -351,7 +369,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 {
     [APIClient User:_postUsername handler:^(id result, NSUInteger code, NSError *error) {
         
-        NSLog(@"叩かれてるよ");
+
         
         if (code != 200 || error != nil) {
             return;
@@ -368,6 +386,8 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
         NSDictionary* postDic = (NSDictionary*)[result valueForKey:@"posts"];
         header = headerDic;
         post = postDic;
+        
+        NSLog(@"headerDic:%@",headerDic);
         
         [self byoga];
         [self setupViewControllers];
