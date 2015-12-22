@@ -34,7 +34,6 @@
 @property (nonatomic,copy) NSString *lon;
 @property (nonatomic) NSString *tagA;
 @property (nonatomic) NSString *tagB;
-@property (nonatomic) NSString *tagC;
 @property (nonatomic) NSInteger cheernum;
 @property (nonatomic) NSString* totalCheer;
 @property (nonatomic) NSString *want_flag;

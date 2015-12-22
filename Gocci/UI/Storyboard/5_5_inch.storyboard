@@ -159,10 +159,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="マイページ" image="tabbaritem_profile.png" id="Rcp-Pd-6kP"/>
                     <navigationItem key="navigationItem" title="ユーザー" id="zRg-Dt-uYO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="CheerNum" destination="hhd-5D-WoH" id="bwQ-7c-lk8"/>
@@ -2425,12 +2426,12 @@
         <image name="地図で見る" width="151" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tjp-JB-9RB"/>
         <segue reference="SI4-OW-qMQ"/>
-        <segue reference="TeR-by-P1o"/>
-        <segue reference="JBx-nY-feb"/>
-        <segue reference="LdH-9F-OGI"/>
-        <segue reference="KPO-WA-zUK"/>
-        <segue reference="ZNT-8G-Vh8"/>
+        <segue reference="aMt-WG-BmS"/>
+        <segue reference="Foo-dB-2J8"/>
+        <segue reference="knF-4T-ZwF"/>
+        <segue reference="tjp-JB-9RB"/>
+        <segue reference="YMD-DR-Sl9"/>
+        <segue reference="qh1-2C-pXX"/>
     </inferredMetricsTieBreakers>
 </document>

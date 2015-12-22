@@ -160,7 +160,6 @@ class SettingsTableViewController: UITableViewController
                 cell.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
             }
         }
-        
         if !Permission.userHasGrantedPushNotificationPermission() {
 
             

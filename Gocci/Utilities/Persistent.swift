@@ -222,7 +222,6 @@ import Foundation
         TaskScheduler.hardReset()
         
         // TODO delete other stuff as well
-        // - scheduler task file
         // - avatar
         cache = InternalCache()
     }

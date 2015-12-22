@@ -76,6 +76,13 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        Util.runInBackground {
+            Toast.情報("VVVVVVVVVVV", "ffffffffffffffffffff")
+        }
+
+        return;
+        
+        
         
         NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterateRecursive { filePath in
             if let fileName = filePath.lastPathComponent {
