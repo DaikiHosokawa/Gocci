@@ -54,6 +54,8 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         
     func handleError(error: NSError, and: State->()){
         if Util.errorIsNetworkConfigurationError(error) {
+            sep("ERROR: AWSS3VideoUploadTask")
+            log("Network offline, trying later")
             and(.FAILED_NETWORK)
         }
         else {

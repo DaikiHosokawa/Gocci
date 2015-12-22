@@ -120,11 +120,12 @@ import Foundation
             try! fm.linkItemAtURL(newVideoFile, toURL: twit_absolut)
         }
         
-        let tmpFiles = try? fm.subpathsOfDirectoryAtPath(NSTemporaryDirectory())
-        
-        for tmpFile in tmpFiles ?? [] {
-            if tmpFile.hasSuffix(".mov") {
-                let _ = try? fm.removeItemAtPath(tmpFile)
+        NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterate { filePath in
+            if let fileName = filePath.lastPathComponent {
+                if fileName.hasSuffix(".mov") {
+                    print("Deleting: ~/tmp/\(filePath.lastPathComponent!)")
+                    let _ = try? fm.removeItemAtURL(filePath)
+                }
             }
         }
         
