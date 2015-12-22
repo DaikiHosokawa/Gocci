@@ -149,7 +149,7 @@ extension NSFileManager {
         return NSURL.fileURLWithPath(NSHomeDirectory())
     }
     
-    class func appTMPDirectory() -> NSURL {
+    class func tmpDirectory() -> NSURL {
         return NSURL.fileURLWithPath(NSTemporaryDirectory())
     }
     
