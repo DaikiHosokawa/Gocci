@@ -133,6 +133,26 @@ extension NSUserDefaults {
 }
 
 extension NSFileManager {
+    
+    class func fileExistsAtPath(filePath: String) -> Bool {
+        return NSFileManager.defaultManager().fileExistsAtPath(filePath)
+    }
+    
+    class func fileExistsAtURL(filePathURL: NSURL) -> Bool {
+        if let path = filePathURL.path {
+            return NSFileManager.defaultManager().fileExistsAtPath(path)
+        }
+        return false
+    }
+    
+    class func appRootDirectory() -> NSURL {
+        return NSURL.fileURLWithPath(NSHomeDirectory())
+    }
+    
+    class func appTMPDirectory() -> NSURL {
+        return NSURL.fileURLWithPath(NSTemporaryDirectory())
+    }
+    
     class func documentsDirectory() -> String {
         let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         return f.first!
@@ -149,9 +169,8 @@ extension NSFileManager {
     }
     
     class func postedVideosDirectory() -> NSURL {
-        return NSURL.fileURLWithPath(documentsDirectory()).URLByAppendingPathComponent("PostedVideos", isDirectory: true)
+        return appRootDirectory().URLByAppendingPathComponent(POSTED_VIDEOS_DIRECTORY)
     }
-    
     
 }
 

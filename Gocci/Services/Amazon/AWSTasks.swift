@@ -63,14 +63,18 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        let localFileURL = NSURL.fileURLWithPath(NSFileManager.documentsDirectory() + filePath)
+        let localFileURL = Util.absolutify(filePath)
         
-        guard Util.fileExists(NSFileManager.documentsDirectory() + filePath) else {
+        guard NSFileManager.fileExistsAtURL(localFileURL) else {
+            sep("ERROR: AWSS3VideoUploadTask")
+            log("Video file does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
         
         guard Network.state != .OFFLINE else {
+            sep("ERROR: AWSS3VideoUploadTask")
+            log("Network offline, trying later")
             finished(.FAILED_NETWORK)
             return
         }
@@ -78,11 +82,14 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         
         let completionHandler: (AWSS3TransferUtilityUploadTask!, NSError?) -> () = { task, error in
             if let error = error {
-                print("=============== ERROR: FROM THE COMPLETION HANDLER! : \(error)")
+                self.sep("ERROR: AWSS3VideoUploadTask")
+                self.log("ERROR: FROM THE COMPLETION HANDLER! : \(error)")
+                self.log("Performing AWS Relogin...")
                 self.performAWSReLogin(finished)
             }
             else {
-                print("=============== SUCCESS, upload completed.")
+                self.sep("SUCCESS: AWSS3VideoUploadTask")
+                self.log("Upload completed!")
                 finished(.DONE)
             }
         }
