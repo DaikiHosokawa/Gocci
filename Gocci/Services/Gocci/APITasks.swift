@@ -188,13 +188,6 @@ class GocciAddRestaurantTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-
-        
-        guard Util.fileExists(NSFileManager.documentsDirectory() + videoFilePath) else {
-            finished(.FAILED_IRRECOVERABLE)
-            return
-        }
-        
         guard Network.state != .OFFLINE else {
             finished(.FAILED_NETWORK)
             return
@@ -317,7 +310,9 @@ class GocciVideoSharingTask: PersistentBaseTask {
     
     override func run(finished: State->()) {
         
-        guard Util.fileExists(NSFileManager.documentsDirectory() + videoFilePath) else {
+        
+        
+        guard NSFileManager.fileExistsAtURL(Util.absolutify(videoFilePath)) else {
             sep("ERROR: GocciVideoSharingTask")
             log("Video file does not exist")
             finished(.FAILED_IRRECOVERABLE)
@@ -376,28 +371,28 @@ class GocciVideoSharingTask: PersistentBaseTask {
             
             let fm = NSFileManager.defaultManager()
             
-            let source = NSFileManager.documentsDirectory() + self.videoFilePath
-            let target = NSFileManager.documentsDirectory() + "/user_posted_videos/\(payload.post_id).mp4"
+            let source = Util.absolutify(self.videoFilePath)
+            let target = NSFileManager.postedVideosDirectory().URLByAppendingPathComponent("\(payload.post_id).mp4")
             
-            if fm.fileExistsAtPath(target) {
+            if NSFileManager.fileExistsAtURL(target) {
                 self.sep("STRANGE: GocciVideoSharingTask")
                 self.log("File with post_id \(payload.post_id).mp4 already exists. That should never happen. We override...")
                 
                 do {
-                    try fm.removeItemAtPath(target)
-                } catch {
+                    try fm.removeItemAtURL(target)
+                } catch let error as NSError {
                     self.sep("VERY STRANGE: GocciVideoSharingTask")
-                    self.log("File with post_id \(payload.post_id).mp4 already exists. And can't be deleted. Giving up")
+                    self.log("File with post_id \(payload.post_id).mp4 already exists. And can't be deleted. Giving up. ERROR: \(error)")
                     finished(.FAILED_IRRECOVERABLE)
                     return
                 }
             }
             
             do {
-                try fm.moveItemAtPath(source, toPath: target)
-            } catch {
+                try fm.moveItemAtURL(source, toURL: target)
+            } catch let error as NSError {
                 self.sep("VERY STRANGE: GocciVideoSharingTask")
-                self.log("File \(source) could not be renamed to \(target). Giving up")
+                self.log("File \(source) could not be renamed to \(target). Giving up. ERROR: \(error)")
                 finished(.FAILED_IRRECOVERABLE)
                 return
             }
@@ -405,7 +400,7 @@ class GocciVideoSharingTask: PersistentBaseTask {
             self.sep("PERFORM: GocciVideoSharingTask")
             self.log("Finished Succesfully. Post ID: \(payload.post_id)")
             self.log("Video file saved at \(target)")
-            self.finalFileNamePath = "/user_posted_videos/\(payload.post_id).mp4"
+            self.finalFileNamePath = POSTED_VIDEOS_DIRECTORY + "/\(payload.post_id).mp4"
             finished(.DONE)
         }
         

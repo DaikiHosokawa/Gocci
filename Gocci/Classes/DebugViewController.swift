@@ -77,6 +77,10 @@ class DebugViewController : UIViewController {
         
         
         
+        print(NSHomeDirectory())
+        print(NSFileManager.libraryDirectory())
+        return;
+        
         let wtf = Persistent.push_notifications_popup_has_been_shown
         print(wtf)
         

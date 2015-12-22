@@ -35,6 +35,9 @@
 // #######################################################################################
 
 
+// All file & directory paths relative to root
+#define POSTED_VIDEOS_DIRECTORY (@"Documents/PostedVideos")
+
 #define INASE_PRIVACY_URL (@"http://inase-inc.jp/rules/privacy/")
 #define INASE_RULES_URL (@"http://inase-inc.jp/rules/")
 #define GOCCI_APP_STORE_URL (@"itms://itunes.apple.com/jp/app/id968630887")
