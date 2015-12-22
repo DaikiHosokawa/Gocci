@@ -16,13 +16,13 @@ class Toast {
         case 情報っぽい
     }
     
-    class func 失敗(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 4.0) {
+    class func 失敗(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 3.0) {
         本番(タイトル: タイトル, メッセージ: メッセージ, 持続期: 持続期, 形: 形.失敗っぽい)
     }
-    class func 成功(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 4.0) {
+    class func 成功(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 3.0) {
         本番(タイトル: タイトル, メッセージ: メッセージ, 持続期: 持続期, 形: 形.成功っぽい)
     }
-    class func 情報(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 4.0) {
+    class func 情報(タイトル: String, _ メッセージ: String, _ 持続期: CGFloat = 3.0) {
         本番(タイトル: タイトル, メッセージ: メッセージ, 持続期: 持続期, 形: 形.情報っぽい)
     }
     
@@ -37,6 +37,8 @@ class Toast {
                 何の = TWMessageBarMessageType.Info
         }
         
-        TWMessageBarManager.sharedInstance().showMessageWithTitle(タイトル, description: メッセージ, type: 何の, duration: 持続期)
+        Util.runOnMainThread {
+            TWMessageBarManager.sharedInstance().showMessageWithTitle(タイトル, description: メッセージ, type: 何の, duration: 持続期)
+        }
     }
 }

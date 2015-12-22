@@ -87,7 +87,6 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 
             case .ERROR_NETWORK:
                 //Toast.情報("Twitter video sharing", "Network appears to be unstable. Will retry later")
-                
                 finished(PersistentBaseTask.State.FAILED_NETWORK)
                 
             case .ERROR_TWITTER_API:
@@ -104,7 +103,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 OverlayWindow.show { (viewController, hideAgain) -> () in
                     
                     TwitterAuthentication.authenticate(currentViewController: viewController) { token in
-                        hideAgain() // TODO TEST THIS
+                        hideAgain() // TODO TEST THIS, however this is a very rare case...
                         if token == nil {
                             finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
                         }

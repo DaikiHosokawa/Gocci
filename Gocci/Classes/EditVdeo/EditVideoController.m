@@ -149,28 +149,39 @@
 -(void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox{
     if (checkbox == self.TwitterCheckbox) {
         self.TwitterComment.hidden = !checkbox.isChecked;
+        VideoPostPreparation.postData.postOnTwitter = checkbox.isChecked;
         
-        if (checkbox.isChecked) {
-            [Bridge authenticateWithTwitterIfNecessary:self];
-        }
+        if (!checkbox.isChecked)
+            return;
+
         
-        NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
+        [Bridge authenticateWithTwitterIfNecessary:self and:^(BOOL success) {
+            if (!success) {
+                self.TwitterComment.hidden = true;
+                [self.checkbox uncheckAnimated:YES];
+                return;
+            }
+            
+            NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
+            
+            // tweet below 120 char limit
+            if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:possibleTweet] >= 0) {
+                VideoPostPreparation.postData.postOnTwitter = YES;
+            }
+            // maybe without the gocci hashtag
+            else if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:self.textView.text] >= 0) {
+                VideoPostPreparation.postData.postOnTwitter = YES;
+            }
+            // Tweet too long
+            else if (checkbox.isChecked){
+                [TwitterPopupBridge pop:self initialTweet:possibleTweet];
+            }
+            else {
+                VideoPostPreparation.postData.postOnTwitter = NO;
+            }
+        }];
         
-        // tweet below 120 char limit
-        if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:possibleTweet] >= 0) {
-            VideoPostPreparation.postData.postOnTwitter = YES;
-        }
-        // maybe without the gocci hashtag
-        else if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:self.textView.text] >= 0) {
-            VideoPostPreparation.postData.postOnTwitter = YES;
-        }
-        // Tweet too long
-        else if (checkbox.isChecked){
-            [TwitterPopupBridge pop:self initialTweet:possibleTweet];
-        }
-        else {
-            VideoPostPreparation.postData.postOnTwitter = NO;
-        }
+
     }
 }
 - (IBAction)TwitterCommentEdit:(id)sender {
