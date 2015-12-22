@@ -10,22 +10,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-//#import <AWSCore/AWSCore.h>
-//#import <AWSCognito/AWSCognito.h>
 #import "BBBadgeBarButtonItem.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>{
-    //NSString *restname;
-    //NSString *rest_id;
-    //NSString *username;
-    //NSString *userpicture;
-    //初期起動にて緯度経度取得用
     CLLocationManager *locationManager;
     NSString *lifelogDate;
     
     
-    BBBadgeBarButtonItem *barButton;
+//    BBBadgeBarButtonItem *barButton;
     
 }
 
@@ -35,7 +28,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
-@property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
+//@property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
 
 
 @end

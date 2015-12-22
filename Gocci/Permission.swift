@@ -18,15 +18,57 @@ import UIKit
     static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0x99, 0x66, 0xFF)
 
     static var userChoiceCallBack: (Bool->())? = nil
+    
+    class func didFailToRegisterForRemoteNotificationsWithError(error: NSError?) {
+        guard let error = error else {
+            err("didFailToRegisterForRemoteNotificationsWithError: ERROR is NIL... wtf")
+            return
+        }
+        
+        if error.code == 3010 {
+            log("WARN Simulator does not support push notifications.")
+        }
+        else {
+            err("\(error)")
+        }
+    }
+    
+    class func recievedRemoteNotification(userData: [NSObject: AnyObject]?) {
+        sep("RECIEVED REMOTE NOTIFICATION")
+        log("\(userData)")
+        
+        if let data = userData as? [String: AnyObject] {
+            
+            let noti = NSNotification(name: "Notification", object: nil, userInfo: userData)
+            
+            NSNotificationQueue.defaultQueue().enqueueNotification(noti, postingStyle: NSPostingStyle.PostWhenIdle) // TODO why?? that for time lines right? why on idle?
+            
+            // NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+            // TODO UNTESTED
+            if let step = data["aps"] as? [String: AnyObject] {
+                if let msg = step["alert"] as? String {
+                    Toast.情報("お知らせ", msg, 4.0)
+                }
+            }
+            
+            UIApplication.sharedApplication().applicationIconBadgeNumber += 1;
+        }
+        else {
+            err("UserData could not be converted to '[String: AnyObject]'. NIL?")
+        }
+        
+    }
 
     class func didRegisterUserNotificationSettings(notificationSettings: UIUserNotificationSettings) {
         
         if notificationSettings.types == UIUserNotificationType.None {
-            log("we did not get push message permission from the user")
+            sep("PUSH MESSAGES")
+            log("We did not get push message permission from the user. This is normal on the first start. Should change after posting the first video.")
             Util.runOnMainThread { userChoiceCallBack?(false) }
         }
         else {
-            log("the user allowed these notifications: \(notificationSettings.types)")
+            sep("PUSH MESSAGES")
+            log("We are now listening for push notifications....")
             UIApplication.sharedApplication().registerForRemoteNotifications()
             Util.runOnMainThread { userChoiceCallBack?(true) }
         }

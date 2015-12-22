@@ -185,7 +185,7 @@ void exceptionHandler(NSException *exception) {
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"deviceToken error: %@", [error description]);
+    [Permission didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
@@ -196,35 +196,15 @@ void exceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    NSLog(@"userinfo:%@",userInfo);
     
-    if ( userInfo ) {
-        NSNotification *notification = [NSNotification notificationWithName:@"Notification"
-                                                                     object:self
-                                                                   userInfo:userInfo];
-        NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
-        [queue enqueueNotification:notification postingStyle:NSPostWhenIdle];
-    
-        [self showMessageWithRemoteNotification:userInfo];
-        // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-        
-        [UIApplication sharedApplication].applicationIconBadgeNumber += 1;
-    }
+    [Permission recievedRemoteNotification:userInfo];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
 }
 
 
-- (void) showMessageWithRemoteNotification:(NSDictionary *)userInfo {
-    
-    NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    
-    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"お知らせ"
-                                                   description:message
-                                                          type:TWMessageBarMessageTypeSuccess
-                                                      duration:4.0];
-}
+
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
   completionHandler:(void (^)())completionHandler {
