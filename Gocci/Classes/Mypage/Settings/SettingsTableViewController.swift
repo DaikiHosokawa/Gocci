@@ -88,7 +88,6 @@ class SettingsTableViewController: UITableViewController
                     },
                     { _ in
                         let popup = FeedbackPopup(from: self, title: "アドバイスを送る", widthRatio: 92, heightRatio: 50)
-   
                         popup.pop()
                     }
                 ),

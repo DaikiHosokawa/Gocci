@@ -17,7 +17,7 @@ typealias OVF = (()->())?
 
 
 @objc class Util : NSObject {
-    
+
     
     class func absolutify(relativePath: String) -> NSURL {
         return NSFileManager.appRootDirectory().URLByAppendingPathComponent(relativePath)

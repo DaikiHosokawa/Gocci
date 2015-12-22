@@ -80,7 +80,7 @@ class FacebookAuthentication {
         request.HTTPShouldHandleCookies = false
         
         ServiceUtil.performRequest(request,
-            onSuccess: { (statusCode, data) -> () in
+            onSuccess: { statusCode, _ in
                 cb(statusCode == 200)
             },
             onFailure: { errorMessage in
