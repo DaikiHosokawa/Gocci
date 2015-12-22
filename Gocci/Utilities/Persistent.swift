@@ -45,9 +45,7 @@ import Foundation
         
         // DO NOT put these in the key chain. when the user deletes the app, permission (push, gps) are resettet. the key chain is not
         
-        cache.push_notifications_popup_has_been_shown = ud.boolForKey("push_notifications_popup_has_been_shown")
-        cache.do_not_ask_again_for_push_messages = ud.boolForKey("do_not_ask_again_for_push_messages")
-        
+
         
         sep("CONFIGURATION (KEY CHAIN)")
         log("  identity_id: \t\(self.identity_id ?? "!nil!")")
@@ -78,9 +76,6 @@ import Foundation
         var user_name: String?
         var user_profile_image_url: String?
         
-        // UDEFS
-        var do_not_ask_again_for_push_messages: Bool!
-        var push_notifications_popup_has_been_shown: Bool!
     }
     
     struct InternalDefaults {
@@ -116,7 +111,7 @@ import Foundation
     }
     class var registerd_device_token: String? {
         get { return cache.registerd_device_token }
-        set(v) { cache.registerd_device_token = v ; setString(v!, forKey: "registerd_device_token") }
+        set(v) { cache.registerd_device_token = v ; setString(v, forKey: "registerd_device_token") } // ALLOWED to be set to NIL again to delete
     }
     class var twitter_key: String! {
         get { return cache.twitter_key }
@@ -150,15 +145,13 @@ import Foundation
 
     /// FOR USER DEFAULTS ///////////////////////////////////////////////////////////////////////
     
-    class var push_notifications_popup_has_been_shown: Bool {
-        get { return cache.push_notifications_popup_has_been_shown }
-        set(v) { cache.push_notifications_popup_has_been_shown = v ;  ud.setBool(v, forKey: "push_notifications_popup_has_been_shown") }
-    }
-    class var do_not_ask_again_for_push_messages: Bool {
-        get { return cache.do_not_ask_again_for_push_messages }
-        set(v) { cache.do_not_ask_again_for_push_messages = v ; ud.setBool(v, forKey: "do_not_ask_again_for_push_messages") }
+    static var push_notifications_popup_has_been_shown: Bool = ud.boolForKey("push_notifications_popup_has_been_shown") {
+        didSet { ud.setBool(push_notifications_popup_has_been_shown, forKey: "push_notifications_popup_has_been_shown"); ud.synchronize() }
     }
     
+    static var do_not_ask_again_for_push_messages: Bool = ud.boolForKey("do_not_ask_again_for_push_messages") {
+        didSet { ud.setBool(do_not_ask_again_for_push_messages, forKey: "do_not_ask_again_for_push_messages"); ud.synchronize() }
+    }
     
     
     
@@ -166,8 +159,13 @@ import Foundation
         KeychainWrapper.setObject(value, forKey: key)
     }
     
-    private class func setString(value: String, forKey key: String) {
-        KeychainWrapper.setString(value, forKey: key)
+    private class func setString(value: String?, forKey key: String) {
+        if let value = value {
+            KeychainWrapper.setString(value, forKey: key)
+        }
+        else {
+            KeychainWrapper.removeObjectForKey(key)
+        }
     }
     
     private class func boolForKey(key: String) -> Bool? {
@@ -207,6 +205,8 @@ import Foundation
         KeychainWrapper.removeObjectForKey("push_notifications_popup_has_been_shown")
         KeychainWrapper.removeObjectForKey("do_not_ask_again_for_push_messages")
         
+        push_notifications_popup_has_been_shown = false
+        do_not_ask_again_for_push_messages = false
         ud.removeObjectForKey("push_notifications_popup_has_been_shown")
         ud.removeObjectForKey("do_not_ask_again_for_push_messages")
         
