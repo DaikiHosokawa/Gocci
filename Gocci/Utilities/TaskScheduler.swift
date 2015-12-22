@@ -171,7 +171,9 @@ class SingletonTaskScheduler {
         }
     }
     
-    func hardResetNeverUseThisOnlyForDebugging() {
+    
+    // Do not use this on a regualr basis. Only in extrem cases
+    func hardReset() {
         sync(tasks) {
             self.tasks = []
             let _ = try? NSFileManager.defaultManager().removeItemAtPath(TaskScheduler.saveFileName)
