@@ -391,13 +391,8 @@ class SettingsTableViewController: UITableViewController
     
     func handleAccountReset(cell: UITableViewCell)
     {
-        var iid: String?
-        
-        let reset = {
-            Persistent.resetPersistentDataToInitialState()
-            if let iid = iid {
-                Persistent.identity_id = iid
-            }
+        let reset: Bool->() = { keepIID in
+            Util.wipeUserDataFromDevice(keepIID)
             self.ignoreCommonSenseAndGoToInitialController()
         }
         
@@ -410,16 +405,14 @@ class SettingsTableViewController: UITableViewController
 
         alertController.addAction(UIAlertAction(title: "完全にリセット", style: UIAlertActionStyle.Destructive) { action in
             self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されます",
-                confirmButton: (text: "削除", cb: reset), // TODO MARK AS DELETE BUTTON, not DEFAULT style
+                confirmButton: (text: "削除", cb: { reset(false) }), // TODO MARK AS DELETE BUTTON, not DEFAULT style
                 cancelButton:  (text: "キャンセル", cb: nil))
         })
 
 
         alertController.addAction(UIAlertAction(title: "アカウントは保持", style: UIAlertActionStyle.Destructive) { action in
-            iid = Persistent.identity_id
-        
             self.simpleConfirmationPopup("最終確認", "すべてのデータが削除されますが、またログインすることができます",
-                confirmButton: (text: "削除", cb: reset),
+                confirmButton: (text: "削除", cb: { reset(true) }),
                 cancelButton:  (text: "キャンセル", cb: nil))
         })
         
