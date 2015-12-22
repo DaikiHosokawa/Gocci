@@ -150,7 +150,7 @@ class SettingsTableViewController: UITableViewController
         
         let connect = {
             if !Permission.userHasGrantedPushNotificationPermission() {
-                self.simplePopup("Permission not granted", "Please click again to visit the settings to grant the push messages permission", "OK")
+                self.simplePopup("お知らせ", "設定画面より通知をONにしてください", "OK")
             }
             
             // this will reschedule an permission check. The popup will never be shown here
@@ -227,7 +227,7 @@ class SettingsTableViewController: UITableViewController
             let pw2 = alertController.textFields?[1].text ?? ""
             
             if pw1 == "" {
-                self.simplePopup("パスワード設定", "1つめが空です", "OK")
+                self.simplePopup("パスワード設定", "1つ目が空です", "OK")
             }
             else if pw2 == "" {
                 self.simplePopup("パスワード設定", "2つめが空です", "OK")
