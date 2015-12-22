@@ -16,6 +16,6 @@
 }
 
 @property (nonatomic) NSString *postRestID;
-
+@property (nonatomic) NSString *userID;
 
 @end

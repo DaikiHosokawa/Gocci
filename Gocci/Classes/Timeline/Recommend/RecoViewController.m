@@ -209,8 +209,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              }
                              else if(index == 2){
                                  NSLog(@"User");
-                                 [self.delegate reco:self username:u_id];
-                                 [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
+                                 if ([Persistent.user_id isEqualToString:user_id]){
+                                     
+                                     [vc.tabBarController setSelectedIndex:1];
+                                 }else{
+                                     [self.delegate reco:self username:u_id];
+                                     [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
+                                 }
                              }
                              else if(index == 3){
                                  NSLog(@"Problem");
@@ -264,10 +269,17 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 }
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapImg:(NSString *)user_id{
-    NSLog(@"userid:%@",user_id);
-    [self.delegate reco:self username:user_id];
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
-    [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+    
+    if ([Persistent.user_id isEqualToString:user_id]){
+        NSLog(@"mypage");
+        [vc.tabBarController setSelectedIndex:1];
+    }else{
+        NSLog(@"not mypage");
+        [self.delegate reco:self username:user_id];
+        [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:user_id];
+    }
+    
 }
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID{

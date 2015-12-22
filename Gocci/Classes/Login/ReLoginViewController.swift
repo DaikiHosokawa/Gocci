@@ -29,17 +29,21 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         passwordEditField.resignFirstResponder()
     }
 
+    @IBAction func close(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func loginClicked(sender: AnyObject) {
 
         guard let un = usernameEditFiled.text where !un.isEmpty else {
             // TRANSLATE
-            Util.popup("Please enter a valid username")
+            Util.popup("ユーザー名を入力してください")
             return
         }
         
         guard let pw = passwordEditField.text where !pw.isEmpty else {
             // TRANSLATE
-            Util.popup("Please enter a password")
+            Util.popup("パスワードを入力してください")
             return
         }
         
@@ -51,17 +55,17 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         
         // TODO better text
         req.on_ERROR_PASSWORD_NOT_REGISTERD { _, _ in
-            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+            Util.popup("入力されたアカウントではまだパスワード設定をしておりません")
         }
         
         // TODO better text
         req.on_ERROR_PASSWORD_WRONG { _, _ in
-            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+            Util.popup("入力されたパスワードが間違っております")
         }
         
         // TODO better text
         req.on_ERROR_USERNAME_NOT_REGISTERD { _, _ in
-            Util.popup("再ログインに失敗しました。アカウント情報を再度お確かめください。")
+            Util.popup("入力されたユーザー名は登録されておりません")
         }
         
         req.perform { (payload) -> () in
