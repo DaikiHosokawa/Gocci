@@ -134,6 +134,10 @@ extension NSUserDefaults {
 
 extension NSFileManager {
     
+    class func rm(fileToDelete: NSURL) {
+        let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileToDelete)
+    }
+    
     class func fileExistsAtPath(filePath: String) -> Bool {
         return NSFileManager.defaultManager().fileExistsAtPath(filePath)
     }
@@ -149,7 +153,7 @@ extension NSFileManager {
         return NSURL.fileURLWithPath(NSHomeDirectory())
     }
     
-    class func appTMPDirectory() -> NSURL {
+    class func tmpDirectory() -> NSURL {
         return NSURL.fileURLWithPath(NSTemporaryDirectory())
     }
     

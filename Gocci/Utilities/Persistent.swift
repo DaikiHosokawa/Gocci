@@ -214,7 +214,12 @@ import Foundation
 
         APILowLevel.fuelmid_session_cookie = ""
         
-        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
+        Util.thisKillsTheFacebook()
+        
+        FacebookAuthentication.token = nil
+        TwitterAuthentication.token = nil
+        
+        TaskScheduler.hardReset()
         
         // TODO delete other stuff as well
         // - scheduler task file
