@@ -19,7 +19,9 @@ typealias OVF = (()->())?
 @objc class Util : NSObject {
     
     
-
+    class func absolutify(relativePath: String) -> NSURL {
+        return NSFileManager.appRootDirectory().URLByAppendingPathComponent(relativePath)
+    }
     
     class func saveMovieAtPathToCameraRoll(localFile: NSURL, and: Bool->()) {
         
@@ -247,11 +249,6 @@ typealias OVF = (()->())?
         else {
             dispatch_async(dispatch_get_main_queue(), block)
         }
-    }
-    
-    
-    class func fileExists(filePath: String) -> Bool {
-        return NSFileManager.defaultManager().fileExistsAtPath(filePath)
     }
     
     class func getInchString() -> String

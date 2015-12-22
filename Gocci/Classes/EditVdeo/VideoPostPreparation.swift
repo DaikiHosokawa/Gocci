@@ -102,24 +102,22 @@ import Foundation
         
         let fm = NSFileManager.defaultManager()
         
-        var relative = "/PostedVideos"
-        let docs = NSFileManager.documentsDirectory()
+        try! fm.createDirectoryAtURL(NSFileManager.postedVideosDirectory(), withIntermediateDirectories: true, attributes: nil)
         
-        if !fm.fileExistsAtPath(docs + relative) {
-            try! fm.createDirectoryAtPath(docs + relative, withIntermediateDirectories: true, attributes: nil)
-        }
+        let relative = POSTED_VIDEOS_DIRECTORY + "/" + timestamp + ".mp4"
+        let absolut  = NSFileManager.appRootDirectory().URLByAppendingPathComponent(relative)
         
-        relative += "/" + timestamp + ".mp4"
+        print("relative \(relative)")
+        print("absolut \(absolut)")
         
-        //try! fm.moveItemAtURL(newVideoFile, toURL: (docs + relative).asURL())
-        try! fm.linkItemAtURL(newVideoFile, toURL: (docs + relative).asLocalFileURL())
+        try! fm.linkItemAtURL(newVideoFile, toURL: absolut)
         
         if postData.postOnTwitter {
-            let lib = NSFileManager.libraryDirectory()
-            let relative = Util.uniqueString() + ".mp4"
-            postData.twitterRelativeVideoFilename = relative
-            try! fm.linkItemAtURL(newVideoFile, toURL: (lib  + "/" + relative).asLocalFileURL())
-            
+            let twit_relative = "Library" + "/" + timestamp + "_for_twitter.mp4"
+            let twit_absolut  = NSFileManager.appRootDirectory().URLByAppendingPathComponent(twit_relative)
+
+            postData.twitterRelativeVideoFilename = twit_relative
+            try! fm.linkItemAtURL(newVideoFile, toURL: twit_absolut)
         }
         
         let tmpFiles = try? fm.subpathsOfDirectoryAtPath(NSTemporaryDirectory())

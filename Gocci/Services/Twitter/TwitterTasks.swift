@@ -45,11 +45,11 @@ class TwitterVideoSharingTask: PersistentBaseTask {
         // hard link not needed anymore
         let fm = NSFileManager.defaultManager()
         do {
-            try fm.removeItemAtPath(NSFileManager.libraryDirectory() + "/" + relativeFilePath)
+            try fm.removeItemAtURL(Util.absolutify(relativeFilePath))
         }
         catch {
             sep("ERROR: TwitterVideoSharingTask")
-            log("File \(NSFileManager.libraryDirectory() + "/" + relativeFilePath) hardlink could not be deleted. This should never happen. Investigate...")
+            log("File \(Util.absolutify(relativeFilePath)) hardlink could not be deleted. This should never happen. Investigate...")
         }
     }
     
@@ -59,11 +59,11 @@ class TwitterVideoSharingTask: PersistentBaseTask {
         log("tweetMessage = \(tweetMessage)")
         log("relativeFilePath = \(relativeFilePath)")
         
-        let fullFilePath = NSFileManager.libraryDirectory() + "/" + relativeFilePath
+        let fullFilePathURL = Util.absolutify(relativeFilePath)
         
-        guard Util.fileExists(fullFilePath) else {
+        guard NSFileManager.fileExistsAtURL(fullFilePathURL) else {
             sep("ERROR: TwitterVideoSharingTask")
-            log("File \(fullFilePath) does not exist")
+            log("File \(fullFilePathURL) does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -115,7 +115,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 }
             }
         }
-        sharer.tweetVideo(localVideoFileURL: NSURL.fileURLWithPath(fullFilePath), message: tweetMessage)
+        sharer.tweetVideo(localVideoFileURL: fullFilePathURL, message: tweetMessage)
     }
     
     override var description: String {

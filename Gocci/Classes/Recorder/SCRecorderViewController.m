@@ -205,6 +205,7 @@ static SCRecordSession *staticRecordSession;
         
         _recorder.session = session;
     }
+
     
     [self updateTimeRecordedLabel];
 }
@@ -260,13 +261,15 @@ static SCRecordSession *staticRecordSession;
 {
     [firstView expand];
     [_recorder record];
-    NSLog(@"おささる");
+    NSLog(@"Began record");
 }
+
+
 -(void)recordEnded
 {
      [firstView shrink];
     [_recorder pause];
-    NSLog(@"お刺さらない");
+    NSLog(@"Stop record");
 }
 
 
@@ -409,7 +412,6 @@ static SCRecordSession *staticRecordSession;
 
 - (void)saveAndShowSession:(SCRecordSession *)recordSession {
     [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
-    
     _recordSession = recordSession;
     [self showVideo];
 }
@@ -441,6 +443,9 @@ static SCRecordSession *staticRecordSession;
 
 - (void)recorder:(SCRecorder *)recorder didBeginSegmentInSession:(SCRecordSession *)recordSession error:(NSError *)error {
     NSLog(@"Began record segment: %@", error);
+    if(error){
+        
+    }
 }
 
 - (void)recorder:(SCRecorder *)recorder didCompleteSegment:(SCRecordSessionSegment *)segment inSession:(SCRecordSession *)recordSession error:(NSError *)error {
