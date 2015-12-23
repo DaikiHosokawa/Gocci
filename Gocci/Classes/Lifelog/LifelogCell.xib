@@ -52,20 +52,6 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
-                        <rect key="frame" x="292" y="24" width="17" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="Uz4-eX-nAr"/>
-                            <constraint firstAttribute="width" constant="17" id="g0L-Dt-n92"/>
-                        </constraints>
-                        <state key="normal" image="butn-dele-gray">
-                            <color key="titleColor" red="0.0" green="0.0021956962970000001" blue="0.0046400207179999996" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="onDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sb3-kg-Foy"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7時間前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7J-7N-gdB">
                         <rect key="frame" x="72" y="45" width="156" height="21"/>
                         <constraints>
@@ -277,10 +263,8 @@
                     <constraint firstItem="XCG-79-oul" firstAttribute="leading" secondItem="tv0-nB-x5O" secondAttribute="trailing" constant="12" id="Nhc-aO-o7Y"/>
                     <constraint firstItem="reR-SP-qcM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Pea-XT-fig"/>
                     <constraint firstAttribute="trailing" secondItem="XCG-79-oul" secondAttribute="trailing" constant="90" id="Q3E-q8-RcL"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="xjB-00-Bte" secondAttribute="trailing" constant="1" id="QH9-2a-oAW"/>
                     <constraint firstItem="pJp-Tg-6h0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="W11-XA-rhy"/>
                     <constraint firstAttribute="centerX" secondItem="hND-ON-WcS" secondAttribute="centerX" id="X4G-PT-9Y5"/>
-                    <constraint firstItem="xjB-00-Bte" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="YHd-wr-ugS"/>
                     <constraint firstItem="F7J-7N-gdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="Zc5-xh-Eil"/>
                     <constraint firstAttribute="trailing" secondItem="YSl-cf-iOp" secondAttribute="trailing" constant="16" id="b6o-OW-2IA"/>
                     <constraint firstItem="tv0-nB-x5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="cfl-94-Sfa"/>
@@ -306,7 +290,6 @@
                 <outlet property="cheerView" destination="wbK-PY-ESh" id="LWi-SI-wkl"/>
                 <outlet property="commentCountLabel" destination="oQN-HV-iQl" id="gMF-em-tq1"/>
                 <outlet property="commentView" destination="ohQ-nj-eFT" id="7xO-8Q-wTR"/>
-                <outlet property="deleteBtn" destination="xjB-00-Bte" id="VWn-QN-Tr6"/>
                 <outlet property="likeCountLabel" destination="fKp-CK-jj1" id="gsf-0C-POm"/>
                 <outlet property="likeView" destination="zpK-2i-P20" id="e2I-jU-EhO"/>
                 <outlet property="restaurantNameLabel" destination="QPi-nC-yon" id="PtI-5Q-gbK"/>
@@ -324,7 +307,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_new" width="37" height="35"/>
         <image name="etc" width="41" height="12"/>
         <image name="gocci_new" width="34" height="31"/>

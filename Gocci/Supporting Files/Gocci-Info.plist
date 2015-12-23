@@ -31,14 +31,12 @@
 			<array>
 				<string>gocci</string>
 				<string>fb673123156062598</string>
-				<string>fb148392115499214</string>
+				<string>fb977612005613710</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2.0.0</string>
-	<key>FacebookAppID</key>
-	<string>673123156062598</string>
 	<key>FacebookDisplayName</key>
 	<string>Gocci</string>
 	<key>LSApplicationCategoryType</key>
