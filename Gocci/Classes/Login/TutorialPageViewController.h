@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "FHSTwitterEngine.h"
+#import "JJMaterialTextfield.h"
 
 @interface TutorialPageViewController : UIViewController <UIPageViewControllerDataSource,UIWebViewDelegate,UIPageViewControllerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 //page3
-@property(weak,nonatomic) UITextField *username;
+@property(weak,nonatomic) JJMaterialTextfield *username;
 @property(weak,nonatomic) UIView *popupView;
 @property(weak,nonatomic) UIWebView *popupWebView;
 @property(weak,nonatomic) UIButton *popupCancel;
