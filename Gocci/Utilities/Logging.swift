@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 protocol Logable {
     static func log(msg: String)
     static func sep(head: String)

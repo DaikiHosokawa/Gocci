@@ -42,6 +42,8 @@
 #define INASE_RULES_URL (@"http://inase-inc.jp/rules/")
 #define GOCCI_APP_STORE_URL (@"itms://itunes.apple.com/jp/app/id968630887")
 
+
+
 #if TEST_BUILD
     #define RECORD_SECONDS 1
 #elif LIVE_BUILD
@@ -78,10 +80,11 @@
 //#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
 //#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
 
-//LIVE
-#define FACEBOOK_APP_ID (@"673123156062598")
-//TEST
-//#define FACEBOOK_APP_ID (@"148392115499214")
+#if TEST_BUILD
+    #define FACEBOOK_APP_ID (@"977612005613710")
+#elif LIVE_BUILD
+    #define FACEBOOK_APP_ID (@"673123156062598")
+#endif
 
 #define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
 #define FACEBOOK_STORY_ACTION_ID (@"gocci:record")
