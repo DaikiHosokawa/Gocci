@@ -178,6 +178,7 @@ void exceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
+    NSLog(@"userinfo:%@",userInfo);
     
     [Permission recievedRemoteNotification:userInfo];
     
