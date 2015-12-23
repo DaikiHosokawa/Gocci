@@ -10,6 +10,7 @@
 #import "SCRecorder.h"
 
 #import "SCTouchDetector.h"
+#import "Swift.h"
 
 @interface SCFirstView()
 {
@@ -17,6 +18,7 @@
 	CGFloat percentPieChart;
 	
 	__weak IBOutlet UIView *recordView;
+    
 }
 
 @end
@@ -33,8 +35,9 @@
 		CGFloat height_record = width_record;
 		//CGFloat x_record = self.frame.size.width /2 - width_record /2;
 		//CGFloat y_record = self.frame.origin.y;
-		[recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
-         
+        
+        [recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
+        
 		{
 			//円グラフゲージ
 			CGRect rect_pie = CGRectMake(0, 0, width_record, height_record);
@@ -61,6 +64,8 @@
 		}
        
 	}
+    
+    
 	
 	[view addSubview:self];
 }

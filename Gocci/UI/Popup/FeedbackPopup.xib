@@ -2,12 +2,17 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedbackPopup" customModule="Gocci" customModuleProvider="target">
             <connections>
+                <outlet property="cBut" destination="mW2-Us-Har" id="wLt-3F-D65"/>
+                <outlet property="sBut" destination="FTn-XU-l1h" id="Wxy-dm-cKg"/>
                 <outlet property="sendButton" destination="FTn-XU-l1h" id="3JE-ps-Mq6"/>
                 <outlet property="textView" destination="dBK-xd-W3U" id="Myh-rF-278"/>
+                <outlet property="thankYouImage" destination="soq-Qv-68M" id="fiq-Jp-djc"/>
+                <outlet property="thankYouLabel" destination="9wR-F1-myp" id="5uQ-FH-ySU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="PvO-Ea-IJf"/>
             </connections>
         </placeholder>
@@ -54,20 +59,43 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_7" translatesAutoresizingMaskIntoConstraints="NO" id="soq-Qv-68M">
+                    <rect key="frame" x="100" y="48" width="400" height="400"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="soq-Qv-68M" secondAttribute="height" multiplier="1:1" id="uLE-4H-0u7"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="フィードバックありがとうございました！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wR-F1-myp">
+                    <rect key="frame" x="105" y="416" width="390.5" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="FTn-XU-l1h" secondAttribute="bottom" constant="8" id="3pR-x8-yMA"/>
+                <constraint firstItem="9wR-F1-myp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3xS-xx-1qJ"/>
                 <constraint firstItem="FTn-XU-l1h" firstAttribute="leading" secondItem="mW2-Us-Har" secondAttribute="trailing" constant="8" id="Grh-OZ-Rsa"/>
                 <constraint firstAttribute="trailing" secondItem="FTn-XU-l1h" secondAttribute="trailing" constant="8" id="I7N-gY-YPs"/>
+                <constraint firstItem="9wR-F1-myp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Ka8-YI-TiN"/>
                 <constraint firstItem="mW2-Us-Har" firstAttribute="top" secondItem="dBK-xd-W3U" secondAttribute="bottom" constant="8" id="MCt-yp-USo"/>
                 <constraint firstAttribute="trailing" secondItem="dBK-xd-W3U" secondAttribute="trailing" constant="8" id="OzT-Gf-MVG"/>
                 <constraint firstItem="dBK-xd-W3U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Rqf-Vn-hVa"/>
+                <constraint firstAttribute="trailing" secondItem="soq-Qv-68M" secondAttribute="trailing" constant="100" id="S9G-jU-pMO"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9wR-F1-myp" secondAttribute="trailing" constant="10" id="XoT-5w-smQ"/>
+                <constraint firstItem="soq-Qv-68M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="Yii-Nv-ocY"/>
                 <constraint firstAttribute="bottom" secondItem="mW2-Us-Har" secondAttribute="bottom" constant="8" id="ZKb-Pu-ped"/>
                 <constraint firstItem="mW2-Us-Har" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="gMM-nO-KPv"/>
+                <constraint firstItem="9wR-F1-myp" firstAttribute="top" secondItem="soq-Qv-68M" secondAttribute="bottom" constant="8" id="iZN-II-lDO"/>
+                <constraint firstItem="soq-Qv-68M" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="pq7-f2-mSK"/>
                 <constraint firstItem="mW2-Us-Har" firstAttribute="width" secondItem="FTn-XU-l1h" secondAttribute="width" id="q1A-wc-3OF"/>
                 <constraint firstItem="dBK-xd-W3U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="qle-Y2-UcT"/>
             </constraints>
+            <point key="canvasLocation" x="473" y="394"/>
         </view>
     </objects>
+    <resources>
+        <image name="character_7" width="512" height="512"/>
+    </resources>
 </document>
