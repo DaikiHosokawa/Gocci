@@ -76,6 +76,11 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        //let str = "abc\n\tdef"
+        
+        //let res = str.characters
+        
+        
         Persistent.err("SHit it the fanf")
         
         

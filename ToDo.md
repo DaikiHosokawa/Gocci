@@ -5,7 +5,7 @@
 Very Important
 ==============
 
-- After the next merge (wanke <-> hosokawa) search once again for NSUserDefaults and make sure there is no new reference to user_id or so
+-
 
 Needs Testing
 =============
@@ -37,7 +37,6 @@ Daiki Hosokawa
 Markus Wanke
 ============
 
-- Something is wrong with these toasts. They are waaaay too late and don't dissapper....
 
 - Let the user dice what messages he wants. Gettings 100 likes is not fun maybe, but he probably wants to see the messages
 
@@ -49,11 +48,7 @@ Markus Wanke
 
 - Remove the Facebook Sharekit when we get [publish_permission]
 
-- Call the new register_device_token URI when the device token changes
-
 - That the image is downloaded everytime is retarded. No saved url
-
-- Relogin view controller no password edit fiel set to stars input
 
 - Show busy indicator on password relogin, sns relogin, username signup
 

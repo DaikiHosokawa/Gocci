@@ -165,16 +165,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc_new" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-YP-y3A">
                                 <rect key="frame" x="2" y="0.0" width="30" height="20"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-00-Bte">
-                                <rect key="frame" x="9" y="4" width="14" height="14"/>
-                                <state key="normal" image="butn-dele-gray">
-                                    <color key="titleColor" red="0.0" green="0.0021956962970000001" blue="0.0046400207179999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sb3-kg-Foy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -319,7 +309,6 @@
                 <outlet property="commentCountLabel" destination="oQN-HV-iQl" id="gMF-em-tq1"/>
                 <outlet property="commentLabel" destination="F7J-7N-gdB" id="xjX-b7-Pwp"/>
                 <outlet property="commentView" destination="ohQ-nj-eFT" id="7xO-8Q-wTR"/>
-                <outlet property="deleteBtn" destination="xjB-00-Bte" id="VWn-QN-Tr6"/>
                 <outlet property="likeBtn" destination="SOv-EM-lr7" id="dZh-9n-w9R"/>
                 <outlet property="likeCountLabel" destination="fKp-CK-jj1" id="gsf-0C-POm"/>
                 <outlet property="likeView" destination="zpK-2i-P20" id="e2I-jU-EhO"/>
@@ -343,7 +332,6 @@
     <resources>
         <image name="Likes_off" width="40" height="31"/>
         <image name="Likes_onn" width="40" height="31"/>
-        <image name="butn-dele-gray" width="30" height="30"/>
         <image name="comment_new" width="37" height="35"/>
         <image name="etc_new" width="30" height="20"/>
         <image name="tag-A" width="128" height="28"/>

@@ -18,6 +18,7 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordEditField.secureTextEntry = true
         let tapGesture = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard:"))
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
@@ -66,6 +67,10 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         // TODO better text
         req.on_ERROR_USERNAME_NOT_REGISTERD { _, _ in
             Util.popup("入力されたユーザー名は登録されておりません")
+        }
+        
+        req.on(.ERROR_PARAMETER_PASSWORD_MALFORMED) { code, msg in
+            self.simplePopup("失敗しました。", "パスワードは6文字以上、25文字以下必要です。", "OK")
         }
         
         req.perform { (payload) -> () in

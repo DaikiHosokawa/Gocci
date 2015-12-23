@@ -47,7 +47,8 @@ class FeedbackPopup: AbstractPopup {
             return
         }
         
-        SVProgressHUD.show()
+        SVProgressHUD.showWithStatus("送信…")
+        
         
         sendButton.enabled = false
         
@@ -55,6 +56,7 @@ class FeedbackPopup: AbstractPopup {
         
         // SHOULD NEVER HAPPEN (well it does happen if the message is over 10000 chars....
         req.onAnyAPIError {
+            SVProgressHUD.showErrorWithStatus("失敗!")
             self.dismiss()
         }
         
@@ -72,17 +74,16 @@ class FeedbackPopup: AbstractPopup {
         textView.hidden = true
         cBut.enabled = false
         sBut.enabled = false
-        
-        SVProgressHUD.dismiss()
         view.endEditing(true)
         
+        SVProgressHUD.showSuccessWithStatus("成功!")
         Util.runInBackground {
             Util.sleep(1.0)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss()
         }
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss()
     }
 }

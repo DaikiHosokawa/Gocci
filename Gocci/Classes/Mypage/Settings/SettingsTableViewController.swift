@@ -373,7 +373,7 @@ class SettingsTableViewController: UITableViewController
             }
         }
         
-        if !Persistent.user_is_connected_via_twitter {
+        if !Persistent.user_is_connected_via_facebook {
             connect()
         }
         else {
