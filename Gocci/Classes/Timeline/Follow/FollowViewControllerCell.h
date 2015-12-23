@@ -42,6 +42,5 @@
 
 + (instancetype)cell;
 
-+ (CGRect)cellHeightWithTimelinePost:(TimelinePost *)post;
 
 @end

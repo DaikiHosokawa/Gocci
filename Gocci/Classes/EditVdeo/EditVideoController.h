@@ -13,7 +13,7 @@
 -(void)retake;
 @end
 
-@interface EditVideoController : UIViewController<SCPlayerDelegate, SCAssetExportSessionDelegate, UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface EditVideoController : UIViewController<SCPlayerDelegate, SCAssetExportSessionDelegate, UITextViewDelegate>
 
 @property(nonatomic,strong) id<EditVideoDelegate> delegate;
 @property (strong, nonatomic) SCRecordSession *recordSession;

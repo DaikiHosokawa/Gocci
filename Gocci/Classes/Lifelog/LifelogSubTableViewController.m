@@ -82,22 +82,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber ];
     self.navigationItem.rightBarButtonItem = self.barButton;
     
-    
-    //ナビゲーションバーに画像
-    {
-        //タイトル画像設定
-        CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        CGFloat width_image = height_image;
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView =navigationTitle;
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-        
-    }
-    
+ 
     // Table View の設定
     self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
     self.tableView.bounces = YES;
@@ -187,7 +172,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
     // 動画の読み込み
     LOG(@"読み込み完了");
-    __weak typeof(self)weakSelf = self;
     [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:post.movie
                                                          size:cell.thumbnailView.bounds.size
                                                       atIndex:indexPath.row
@@ -296,10 +280,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 - (void)_fetchLifelog
 {
     [SVProgressHUD show];
-    
-    __weak typeof(self)weakSelf = self;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];
     /*
     [APIClient LifelogWithDate:lifelogdelegate.lifelogDate handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

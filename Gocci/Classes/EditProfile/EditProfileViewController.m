@@ -216,7 +216,6 @@
                      NSLog(@"Exception: %@", task.exception);
                  }
                  if (task.result) {
-                     AWSS3TransferUtilityUploadTask *uploadTask = task.result;
                      NSLog(@"success:%@",task.result);
                      // Do something with uploadTask.
                  }
