@@ -71,15 +71,29 @@ extension APIRequestProtocol {
         }
     }
     
+    // TODO TRANSLATION
     mutating func defaultOnNetworkFailure(error: APILowLevel.NetworkError, _ message: String) {
         
-        let pop = Util.overlayPopup("Network request failed", "Maybe there is something wrong with your internet connection\n\(error) : \(message)")
-        pop.addButton("Give up", style: UIAlertActionStyle.Cancel) {  }
-        pop.addButton("Retry", style: UIAlertActionStyle.Default) {
-            self.retry()
+        // the user is not in WLAN or WWAN
+        if error == .ERROR_NO_INTERNET_CONNECTION {
+            let pop = Util.overlayPopup("通信が失敗しました", "ネットワークがありません")
+            pop.addButton("諦める", style: UIAlertActionStyle.Cancel) {  }
+            pop.addButton("もう一度", style: UIAlertActionStyle.Default) { self.retry() }
+            pop.overlay()
+        }
+        // all the other error that can happen in the internet. Time out, packet loss, our server crashed, no DNS server, gocci server down, JSON is malfored...
+        else {
+#if TEST_BUILD
+            let pop = Util.overlayPopup("通信が失敗しました", "\(error)\n\(message)")
+#else
+            let pop = Util.overlayPopup("通信が失敗しました", "ネットワークに問題があります")
+#endif
+            pop.addButton("諦める", style: UIAlertActionStyle.Cancel) {  }
+            pop.addButton("もう一度", style: UIAlertActionStyle.Default) { self.retry() }
+            pop.overlay()
         }
         
-        pop.overlay()
+        
     }
     
     func compose(saneParameterPairs: [String: String]) -> NSURL {
