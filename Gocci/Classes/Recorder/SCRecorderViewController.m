@@ -103,6 +103,25 @@ static SCRecordSession *staticRecordSession;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
 
+}
+
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    
+#if (!TARGET_IPHONE_SIMULATOR)
+    [_recorder previewViewFrameChanged];
+#endif
+}
+
+#pragma mark 描画開始前
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self prepareSession];
     
 #if 1
     {
@@ -137,25 +156,6 @@ static SCRecordSession *staticRecordSession;
 #if (!TARGET_IPHONE_SIMULATOR)
     
 #endif
-}
-
-
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder previewViewFrameChanged];
-#endif
-}
-
-#pragma mark 描画開始前
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self prepareSession];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -443,9 +443,7 @@ static SCRecordSession *staticRecordSession;
 
 - (void)recorder:(SCRecorder *)recorder didBeginSegmentInSession:(SCRecordSession *)recordSession error:(NSError *)error {
     NSLog(@"Began record segment: %@", error);
-    if(error){
-        
-    }
+    
 }
 
 - (void)recorder:(SCRecorder *)recorder didCompleteSegment:(SCRecordSessionSegment *)segment inSession:(SCRecordSession *)recordSession error:(NSError *)error {
