@@ -300,6 +300,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     __weak typeof(self)weakSelf = self;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];
+    /*
     [APIClient LifelogWithDate:lifelogdelegate.lifelogDate handler:^(id result, NSUInteger code, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
@@ -331,6 +332,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
         
     }];
+     */
 }
 
 /*

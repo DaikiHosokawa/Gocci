@@ -10,9 +10,6 @@
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
-#import "UIImageView+WebCache.h"
-#import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
@@ -23,7 +20,6 @@
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
-#import "BBBadgeBarButtonItem.h"
 
 @import QuartzCore;
 

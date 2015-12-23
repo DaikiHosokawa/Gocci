@@ -41,20 +41,19 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     
     
     func performAWSReLogin(and: State->()) {
-        
+        self.log("Performing AWS Relogin...")
         APIHighLevel.nonInteractiveLogin(
             onIIDNotAvailible:  { and(.FAILED_IRRECOVERABLE) },
             onNetworkFailure:   { and(.FAILED_NETWORK)       },
             onAPIFailure:       { and(.FAILED_IRRECOVERABLE) },
             onAWSFailure:       { and(.FAILED_RECOVERABLE)   },
             onSuccess:          { and(.FAILED_RECOVERABLE)   }) // <- YES that is corrent. In the next task iteration the task gets a new chance
-        
     }
     
         
     func handleError(error: NSError, and: State->()){
         if Util.errorIsNetworkConfigurationError(error) {
-            sep("ERROR: AWSS3VideoUploadTask")
+            sep("WARN: AWSS3VideoUploadTask")
             log("Network offline, trying later")
             and(.FAILED_NETWORK)
         }
@@ -68,14 +67,13 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         let localFileURL = Util.absolutify(filePath)
         
         guard NSFileManager.fileExistsAtURL(localFileURL) else {
-            sep("ERROR: AWSS3VideoUploadTask")
-            log("Video file does not exist")
+            err("Video file does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
         
         guard Network.state != .OFFLINE else {
-            sep("ERROR: AWSS3VideoUploadTask")
+            sep("WARN: AWSS3VideoUploadTask")
             log("Network offline, trying later")
             finished(.FAILED_NETWORK)
             return
@@ -84,9 +82,7 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         
         let completionHandler: (AWSS3TransferUtilityUploadTask!, NSError?) -> () = { task, error in
             if let error = error {
-                self.sep("ERROR: AWSS3VideoUploadTask")
-                self.log("ERROR: FROM THE COMPLETION HANDLER! : \(error)")
-                self.log("Performing AWS Relogin...")
+                self.err("FROM THE AWS COMPLETION HANDLER! : \(error)")
                 self.performAWSReLogin(finished)
             }
             else {
@@ -109,11 +105,9 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
         
         uploadTask.continueWithBlock{ task in
             if let error = task.error {
-                print("=============== ERROR: ", error)
                 self.handleError(error, and: finished)
             }
             else if let exception = task.exception {
-                print("=============== ERROR: ", exception)
                 self.performAWSReLogin(finished)
             }
             

@@ -12,12 +12,10 @@
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "everyBaseNavigationController.h"
-#import "SVProgressHUD.h"
 #import "everyTableViewController.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
-#import "CollectionViewCell_2.h"
 #import "everyBaseNavigationController.h"
 #import "CollectionViewController_2.h"
 #import "TableViewController_2.h"
@@ -26,7 +24,7 @@
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
 
-// !!!:dezamisystem
+
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 static NSString * const SEGUE_GO_FOLLOW = @"goFollow";
@@ -49,7 +47,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     __weak IBOutlet UIView *changeView;
     UIViewController *currentViewController_;
     NSArray *viewControllers_;
-    // ロケーションマネージャー
     CLLocationManager* locationManager;
 }
 
@@ -66,7 +63,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 @implementation UserpageViewController
 
-@synthesize postUsername= _postUsername;
 
 -(void)collection_2:(CollectionViewController *)vc postid:(NSString *)postid
 {
@@ -92,6 +88,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postID = postid;
 }
 
+-(void)map:(MapViewController *)vc restid:(NSString *)restid{
+    _postRestname = restid;
+}
 
 - (void)viewDidLoad
 {
@@ -145,7 +144,6 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     UIViewController *thirdViewController;
     MapViewController *vc3 = [[MapViewController alloc] init];
     vc3.receiveDic3 = post;
-    NSLog(@"ここでは:%@",post);
     vc3.supervc = self;
     vc3.soda = changeView.frame;
     

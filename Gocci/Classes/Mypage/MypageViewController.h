@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "CollectionViewController.h"
 #import "MapViewController.h"
+#import "BBBadgeBarButtonItem.h"
 
 
 @interface MypageViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
