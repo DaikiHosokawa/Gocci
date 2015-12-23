@@ -317,6 +317,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[MoviePlayerManager sharedManager] stopMovie];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

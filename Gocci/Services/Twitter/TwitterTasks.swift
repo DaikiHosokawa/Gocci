@@ -69,7 +69,6 @@ class TwitterVideoSharingTask: PersistentBaseTask {
         }
         
         
-        // TODO TRANSLATION
         let sharer = TwitterSharing()
         sharer.onSuccess = {
             //Toast.成功("Video sharing", "Video was successfully posted on twitter.")
@@ -104,12 +103,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                     
                     TwitterAuthentication.authenticate(currentViewController: viewController) { token in
                         hideAgain() // TODO TEST THIS, however this is a very rare case...
-                        if token == nil {
-                            finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
-                        }
-                        else {
-                            finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
-                        }
+                        finished( token == nil ? .FAILED_IRRECOVERABLE : .FAILED_RECOVERABLE)
                     }
                 }
             }

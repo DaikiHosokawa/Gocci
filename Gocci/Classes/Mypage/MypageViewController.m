@@ -194,6 +194,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)changeSegmentedControlValue
 {
+    
+    [[MoviePlayerManager sharedManager] stopMovie];
+    
     if(segmentControll.selectedSegmentIndex == 2){
         //GPS is ON
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {

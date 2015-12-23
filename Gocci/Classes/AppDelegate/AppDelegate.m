@@ -114,6 +114,13 @@ void exceptionHandler(NSException *exception) {
     NSLog(@"%@", exception.callStackSymbols);
     
     // TODO send this data to a logging server
+    
+    /* swift version
+     NSSetUncaughtExceptionHandler { exception in
+     print(exception)
+     print(exception.callStackSymbols)
+     }
+     */
 }
 
 

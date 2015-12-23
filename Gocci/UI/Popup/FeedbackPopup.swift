@@ -17,7 +17,17 @@ class FeedbackPopup: AbstractPopup {
     
     @IBOutlet weak var sendButton: UIButton!
     
-    //var sendButtonCallback: (()->())? = nil
+    @IBOutlet weak var thankYouLabel: UILabel!
+    @IBOutlet weak var thankYouImage: UIImageView!
+    @IBOutlet weak var cBut: UIButton!
+    @IBOutlet weak var sBut: UIButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        thankYouImage.hidden = true
+        thankYouLabel.hidden = true
+        thankYouLabel.adjustsFontSizeToFitWidth = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +42,18 @@ class FeedbackPopup: AbstractPopup {
     }
     
     @IBAction func sendClicked(sender: AnyObject) {
+        
+        if textView.text == "" {
+            return
+        }
+        
         SVProgressHUD.show()
         
         sendButton.enabled = false
         
         let req = API3.set.feedback()
         
-        // SHOULD NEVER HAPPEN
+        // SHOULD NEVER HAPPEN (well it does happen if the message is over 10000 chars....
         req.onAnyAPIError {
             self.dismiss()
         }
@@ -46,13 +61,28 @@ class FeedbackPopup: AbstractPopup {
         req.parameters.feedback = textView.text.replace("\n", withString: " ")
         
         req.perform {
-            // TODO thank you popup msg
-            self.dismiss()
+            self.showThankYouWaitAndDismiss()
+        }
+    }
+    
+    func showThankYouWaitAndDismiss() {
+        
+        thankYouImage.hidden = false;
+        thankYouLabel.hidden = false;
+        textView.hidden = true
+        cBut.enabled = false
+        sBut.enabled = false
+        
+        SVProgressHUD.dismiss()
+        view.endEditing(true)
+        
+        Util.runInBackground {
+            Util.sleep(1.0)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
-        SVProgressHUD.dismiss()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
