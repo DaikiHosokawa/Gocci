@@ -231,8 +231,6 @@ class DebugViewController : UIViewController {
         
         return;
         
-        // TODO need translation
-        
         
         let alertController = UIAlertController(
             title: "Password setting",
