@@ -45,19 +45,137 @@ import UIKit
             
             // NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
             // TODO UNTESTED
-            if let step = data["aps"] as? [String: AnyObject] {
-                if let msg = step["alert"] as? String {
-                    Toast.情報("お知らせ", msg, 4.0)
+            if let frame = data["foreground"] as? [String: AnyObject] {
+            
+                if let badge = frame["badge"] as? Int {
+                    UIApplication.sharedApplication().applicationIconBadgeNumber = badge
+                }
+                
+                if let type = frame["type"] as? String {
+                    //Toast.情報("お知らせ", msg, 4.0)
+                    
+                    switch type {
+                        case "comment":
+                            handlePushNotificationComment(frame["payload"] as? [String: String] ?? [:])
+                            return
+                        case "follow":
+                            handlePushNotificationFollow(frame["payload"] as? [String: String] ?? [:])
+                            return
+                        case "like":
+                            handlePushNotificationLike(frame["payload"] as? [String: String] ?? [:])
+                            return
+                        case "announcement":
+                            handlePushNotificationAnnouncement(frame["payload"] as? [String: String] ?? [:])
+                            return
+                        case "post_complete":
+                            handlePushNotificationPostComplete(frame["payload"] as? [String: String] ?? [:])
+                            return
+                        default:
+                            break // NO RETURN HERE !!!!  NO CODE AFTER THIS LINE !!! Should fall in that error statment down there
+                    }
                 }
             }
-            
-            UIApplication.sharedApplication().applicationIconBadgeNumber += 1;
-        }
-        else {
-            err("UserData could not be converted to '[String: AnyObject]'. NIL?")
         }
         
+        err("Push Notification has a wrong baseframe. Not parsable.")
     }
+    
+    
+    
+    class func handlePushNotificationComment(payload: [String: String]) {
+        guard let comment = payload["comment"] else {
+            err("handlePushNotificationComment: No comment") ; return
+        }
+        guard let username = payload["username"] else {
+            err("handlePushNotificationComment: No username") ; return
+        }
+        guard let user_id = payload["user_id"] else {
+            err("handlePushNotificationComment: No user_id") ; return
+        }
+        guard let post_id = payload["post_id"] else {
+            err("handlePushNotificationComment: No post_id") ; return
+        }
+        
+        sep("handlePushNotificationComment")
+        log("comment: \(comment)")
+        log("username: \(username)")
+        log("user_id: \(user_id)")
+        log("post_id: \(post_id)")
+        
+        // TODO add action that by click on popup opens the video
+        Toast.情報("\(username)さんからコメントされました！", comment, 6.0)
+    }
+    
+    class func handlePushNotificationFollow(payload: [String: String]) {
+        guard let username = payload["username"] else {
+            err("handlePushNotificationComment: No username") ; return
+        }
+        guard let user_id = payload["user_id"] else {
+            err("handlePushNotificationComment: No user_id") ; return
+        }
+        
+        sep("handlePushNotificationComment")
+        log("username: \(username)")
+        log("user_id: \(user_id)")
+        
+        // TODO add action that by click on popup opens the user page
+        Toast.情報("お知らせ", "\(username)さんからフォローされました！", 6.0)
+    }
+    
+    class func handlePushNotificationLike(payload: [String: String]) {
+        guard let username = payload["username"] else {
+            err("handlePushNotificationComment: No username") ; return
+        }
+        guard let user_id = payload["user_id"] else {
+            err("handlePushNotificationComment: No user_id") ; return
+        }
+        
+        sep("handlePushNotificationGocciLike")
+        log("username: \(username)")
+        log("user_id: \(user_id)")
+        
+        // TODO add action that by click on popup opens the user page
+        Toast.情報("お知らせ", "\(username)さんにゴッチされました！", 6.0)
+    }
+    
+    class func handlePushNotificationAnnouncement(payload: [String: String]) {
+        guard let headline = payload["headline"] else {
+            err("handlePushNotificationComment: No headline") ; return
+        }
+        guard let body = payload["body"] else {
+            err("handlePushNotificationComment: No body") ; return
+        }
+        
+        sep("handlePushNotificationAnnouncement")
+        log("headline: \(headline)")
+        log("body: \(body)")
+        
+        let pop = Util.overlayPopup(headline, body)
+        pop.addButton("OK", style: UIAlertActionStyle.Cancel) {  }
+        pop.overlay()
+    }
+    
+    class func handlePushNotificationPostComplete(payload: [String: String]) {
+        guard let post_id = payload["post_id"] else {
+            err("handlePushNotificationComment: No post_id") ; return
+        }
+        guard let rest_id = payload["rest_id"] else {
+            err("handlePushNotificationComment: No rest_id") ; return
+        }
+        guard let restname = payload["restname"] else {
+            err("handlePushNotificationComment: No restname") ; return
+        }
+        
+        sep("handlePushNotificationComment")
+        log("post_id: \(post_id)")
+        log("rest_id: \(rest_id)")
+        log("restname: \(restname)")
+        
+        // TODO add action that by click on popup opens the video
+        Toast.情報("お知らせ", "投稿が完了しました！（\(restname)）", 6.0)
+    }
+    
+    
 
     class func didRegisterUserNotificationSettings(notificationSettings: UIUserNotificationSettings) {
         
