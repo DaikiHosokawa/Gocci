@@ -373,15 +373,16 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
 - (IBAction)tapNavi:(id)sender {
     NSString *mapText = [header objectForKey:@"restname"];
     NSString *mapText2 = [header objectForKey:@"locality"];
+    NSString *notfound = @"不明";
     mapText = [mapText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    mapText2  = [mapText2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+   mapText2  = [mapText2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    notfound  = [notfound stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *directions = [NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%@&zoom=18&directionsmode=walking",mapText2];
-    
     
     if ([[UIApplication sharedApplication] canOpenURL:
     [NSURL URLWithString:@"comgooglemaps://"]]) {
       
-        if(![mapText2 isEqualToString:@"不明"]){
+        if(![mapText2 isEqualToString:notfound]){
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:directions]];
         }else{
