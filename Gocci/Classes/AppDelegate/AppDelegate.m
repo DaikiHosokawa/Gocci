@@ -204,6 +204,15 @@ void exceptionHandler(NSException *exception) {
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
+    
     [Permission recievedRemoteNotification:userInfo];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
