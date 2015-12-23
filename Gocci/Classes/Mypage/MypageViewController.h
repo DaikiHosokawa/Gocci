@@ -18,7 +18,7 @@
 #import "BBBadgeBarButtonItem.h"
 
 
-@interface MypageViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MypageViewController : UIViewController
 {
     NSString *_postID;
     NSString *_postRestname;

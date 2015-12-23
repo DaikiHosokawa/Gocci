@@ -86,6 +86,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     _postID = postid;
 }
 
+-(void)map:(MapViewController *)vc restid:(NSString *)restid{
+    _postRestname = restid;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
