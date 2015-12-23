@@ -240,11 +240,13 @@ static NSString * const SEGUE_GO_LIFELOG_SUB = @"goLifelogSub";
     NSString *str3 = [NSString stringWithFormat:@"%02d", daySelected];
     NSString *str = [NSString stringWithFormat:@"%@-%@-%@",str1,str2,str3];
     AppDelegate* lifelogdelegate = [[UIApplication sharedApplication] delegate];
+   /*
     lifelogdelegate.lifelogDate = str;
     NSLog(@"%s %04d-%02d-%02d",__func__, yearSelected,monthSelected,daySelected);
     if ([self checkExistDataWithYear:yearSelected Month:monthSelected Day:daySelected]) {
         [self performSegueWithIdentifier:SEGUE_GO_LIFELOG_SUB sender:self];
     }
+    */
 }
 
 #pragma mark - Transition examples

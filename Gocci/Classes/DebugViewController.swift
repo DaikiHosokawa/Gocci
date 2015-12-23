@@ -76,6 +76,9 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        Persistent.err("SHit it the fanf")
+        
+        
         Util.runInBackground {
             Toast.情報("VVVVVVVVVVV", "ffffffffffffffffffff")
         }
