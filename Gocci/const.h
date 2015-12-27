@@ -45,7 +45,7 @@
 
 
 #if TEST_BUILD
-    #define RECORD_SECONDS 1
+    #define RECORD_SECONDS 7
 #elif LIVE_BUILD
     #define RECORD_SECONDS 7
 #endif
