@@ -240,12 +240,8 @@
     NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/privacy/"];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [self.popupWebView loadRequest:req];
-    
-    // 画像を指定したボタン例文
-    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];  // ボタンにする画像を生成する
-    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
-    // ボタンが押された時にhogeメソッドを呼び出す
-    [self.popupCancel addTarget:self
+    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];
+    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];     [self.popupCancel addTarget:self
                          action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
 

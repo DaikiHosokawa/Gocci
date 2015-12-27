@@ -2,7 +2,7 @@
 //  EditProfileViewController.m
 //  Gocci
 //
-//  Created by Castela on 2015/10/06.
+//  INASE by Castela on 2015/10/06.
 //  Copyright © 2015年 Massara. All rights reserved.
 //
 
@@ -11,12 +11,9 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
 #import "APIClient.h"
-
 #import "STPopup.h"
 #import "CompletePopup.h"
-
 #import "Swift.h"
 
 @interface EditProfileViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate  >
@@ -53,14 +50,11 @@
     background.layer.borderColor = [UIColor grayColor].CGColor;
     
     background.layer.borderWidth = 1;
-    // Do any additional setup after loading the view.
-    
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //tap picture
@@ -72,7 +66,7 @@
 }
 
 
-//tap picture method
+
 -(IBAction)clickLogo:(id)sender
 {
     NSLog(@"in clickLogo");
@@ -87,24 +81,23 @@
 }
 
 
-//select image from camera-roll
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    //obtaining saving path
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:@"latest_photo.png"];
     
-    //extracting image from the picker and saving it
+    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     if ([mediaType isEqualToString:@"public.image"]){
         UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
         NSData *ImgData = UIImagePNGRepresentation(editedImage);
         [ImgData writeToFile:imagePath atomically:YES];
-        //image set
         userpicture.image = editedImage;
     }
-    //url set
+    
     NSString *head = @"file://";
     NSString *entire = [head stringByAppendingString:imagePath];
     assetsUrl = entire;
@@ -126,14 +119,12 @@
 }
 
 
-//select canceled
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    //cancelのとき。なにもしないで閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//tap 「保存」ボタン
+
 - (IBAction)save:(id)sender {
     
     
@@ -141,19 +132,14 @@
     NSURL *fileURL =  [NSURL URLWithString:assetsUrl];;
     NSLog(@"fileULR:%@",fileURL);
     
-    //check Image is chenged
-    
     if(fileURL){
         
-        //Image is chenged
         
-        // 現在時間を取得する
         NSDate *now = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
         NSString *nowString = [formatter stringFromDate:now];
         
-        //ファイル名+user_id形式
         NSString *imgFileForAPI = [NSString stringWithFormat:@"%@_%@",Persistent.user_id, nowString];
         NSString *imgFileForS3 = [NSString stringWithFormat:@"%@_%@.png", Persistent.user_id, nowString];
         
@@ -163,8 +149,6 @@
              NSLog(@"result:%@",result);
              
              if (code != 200 || error != nil) {
-                 // API からのデータの取得に失敗
-                 // TODO: アラート等を掲出
                  return;
              }
              
@@ -204,7 +188,7 @@
              AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"gocci_up_north_east_1"];
              
              [[transferUtility uploadFile:fileURL
-                                   bucket:@"gocci.imgs.provider.jp-test"
+                                   bucket:@"gocci.imgs.provider.jp"
                                       key:imgFileForS3
                               contentType:@"image/png"
                                expression:expression
@@ -217,7 +201,6 @@
                  }
                  if (task.result) {
                      NSLog(@"success:%@",task.result);
-                     // Do something with uploadTask.
                  }
                  return nil;
              }];
@@ -225,18 +208,13 @@
          }];
     }else{
         
-        //image is not chenged
-        
         [APIClient updateProfileOnlyUsername:username.text handler:^(id result, NSUInteger code, NSError *error)
          {
              NSLog(@"result:%@",result);
              
              if (code != 200 || error != nil) {
-                 // API からのデータの取得に失敗
-                 // TODO: アラート等を掲出
                  return;
              }
-             //API success case
              NSString *response_user = [result objectForKey:@"username"];
              NSString *response_img = [result objectForKey:@"profile_img"];
              
@@ -270,7 +248,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    // !!!:dezamisystem
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
     
