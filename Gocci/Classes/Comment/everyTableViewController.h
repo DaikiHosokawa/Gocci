@@ -35,7 +35,6 @@
 
 // !!!:dezamisystem
 - (IBAction)onReturn:(id)sender;
-- (void)goUsersDelegate:(NSString *)userName picture:(NSString *)usersPicture flag:(NSInteger)flag;
 
 
 @end

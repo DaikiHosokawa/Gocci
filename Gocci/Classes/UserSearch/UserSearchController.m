@@ -53,8 +53,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     _searchBar.text = nil;
     
-    __weak typeof(self)weakSelf = self;
-   
+    
     //API
     /*
    [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error) {
@@ -122,8 +121,6 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    __weak typeof(self)weakSelf = self;
     
     
     //search API

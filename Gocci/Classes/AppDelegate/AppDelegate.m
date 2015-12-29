@@ -29,8 +29,6 @@
 
 @implementation AppDelegate
 
-@synthesize lifelogDate;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

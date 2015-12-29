@@ -74,12 +74,11 @@ class FeedbackPopup: AbstractPopup {
         textView.hidden = true
         cBut.enabled = false
         sBut.enabled = false
+        view.endEditing(true)
         
         SVProgressHUD.showSuccessWithStatus("成功!")
-        
-        
         Util.runInBackground {
-            Util.sleep(3.0)
+            Util.sleep(1.0)
             self.dismiss()
         }
     }

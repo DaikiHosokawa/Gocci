@@ -10,9 +10,6 @@
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
-#import "UIImageView+WebCache.h"
-#import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
@@ -23,7 +20,6 @@
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
-#import "BBBadgeBarButtonItem.h"
 
 @import QuartzCore;
 
@@ -88,6 +84,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 -(void)map:(MapViewController *)vc postid:(NSString *)postid{
     _postID = postid;
+}
+
+-(void)map:(MapViewController *)vc restid:(NSString *)restid{
+    _postRestname = restid;
 }
 
 
@@ -194,6 +194,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 - (void)changeSegmentedControlValue
 {
+    
+    [[MoviePlayerManager sharedManager] stopMovie];
+    
     if(segmentControll.selectedSegmentIndex == 2){
         //GPS is ON
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {

@@ -232,6 +232,7 @@
 		955E73A71C27F06D00B9449B /* SCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 955E73881C27F06D00B9449B /* SCVideoPlayerView.m */; };
 		955E73A81C27F06D00B9449B /* SCWeakSelectorTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 955E738A1C27F06D00B9449B /* SCWeakSelectorTarget.m */; };
 		955E73A91C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 955E738C1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m */; };
+		9578D68C1C2AD0A30048D184 /* JJMaterialTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 9578D68B1C2AD0A30048D184 /* JJMaterialTextfield.m */; };
 		958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */; };
 		95EEF1961C23ED78009DA989 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */; };
 		95EEF1B91C269483009DA989 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF1991C269483009DA989 /* MKAnnotationView+WebCache.m */; };
@@ -768,6 +769,8 @@
 		955E738A1C27F06D00B9449B /* SCWeakSelectorTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWeakSelectorTarget.m; sourceTree = "<group>"; };
 		955E738B1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SCSaveToCameraRoll.h"; sourceTree = "<group>"; };
 		955E738C1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCSaveToCameraRoll.m"; sourceTree = "<group>"; };
+		9578D68A1C2AD0A30048D184 /* JJMaterialTextfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMaterialTextfield.h; sourceTree = "<group>"; };
+		9578D68B1C2AD0A30048D184 /* JJMaterialTextfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMaterialTextfield.m; sourceTree = "<group>"; };
 		958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestPushPopupViewController.h; sourceTree = "<group>"; };
 		958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestPushPopupViewController.m; sourceTree = "<group>"; };
 		95EEF1941C23ED78009DA989 /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
@@ -1611,6 +1614,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9578D6891C2AD0A30048D184 /* JJMaterialTextfield */,
 				955E734E1C27F06D00B9449B /* SCRecorder */,
 				95EEF1FC1C269880009DA989 /* TWMessageBarManager */,
 				95EEF1DF1C26976A009DA989 /* AFNetworking */,
@@ -1898,6 +1902,15 @@
 				955E738C1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m */,
 			);
 			path = SCRecorder;
+			sourceTree = "<group>";
+		};
+		9578D6891C2AD0A30048D184 /* JJMaterialTextfield */ = {
+			isa = PBXGroup;
+			children = (
+				9578D68A1C2AD0A30048D184 /* JJMaterialTextfield.h */,
+				9578D68B1C2AD0A30048D184 /* JJMaterialTextfield.m */,
+			);
+			path = JJMaterialTextfield;
 			sourceTree = "<group>";
 		};
 		959560101BF842B6002E245C /* Supporting Files */ = {
@@ -2705,6 +2718,7 @@
 				955E739F1C27F06D00B9449B /* SCRecorderTools.m in Sources */,
 				9550DAF41BF83E4C00430942 /* RHRefreshControlConfiguration.m in Sources */,
 				950593871BFB19E600328449 /* main.m in Sources */,
+				9578D68C1C2AD0A30048D184 /* JJMaterialTextfield.m in Sources */,
 				9550DA0E1BF83E4C00430942 /* Notice.m in Sources */,
 				9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */,
 				9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */,
@@ -2868,7 +2882,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ma Wa (R28YG2RKQU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
@@ -2919,7 +2933,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ma Wa (R28YG2RKQU)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2957,8 +2971,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Gocci/Vendor";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -2979,7 +2993,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)Test";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "dde409ef-a203-4c0f-b8c6-17e6057394f2";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
