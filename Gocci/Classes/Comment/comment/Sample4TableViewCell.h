@@ -28,9 +28,6 @@
 #pragma mark - Initialize
 + (instancetype)cell;
 
-#pragma mark - 反映
--(void)configureWithArray:(NSArray*)commentlist;
-
 
 
 @end

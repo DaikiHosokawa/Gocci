@@ -147,7 +147,7 @@ class SettingsTableViewController: UITableViewController
         
         let connect = {
             if !Permission.userHasGrantedPushNotificationPermission() {
-                self.simplePopup("Permission not granted", "Please click again to visit the settings to grant the push messages permission", "OK")
+                self.simplePopup("お知らせ", "設定画面より通知をONにしてください", "OK")
             }
             
             // this will reschedule an permission check. The popup will never be shown here
@@ -157,8 +157,6 @@ class SettingsTableViewController: UITableViewController
                 cell.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
             }
         }
-        
-        
         if !Permission.userHasGrantedPushNotificationPermission() {
 
             
@@ -175,9 +173,9 @@ class SettingsTableViewController: UITableViewController
                 // User should see the popup when he returnn, not while the settings screen opens
                 Util.sleep(1)
                 
-                self.simpleConfirmationPopup("確認", "Do you want to recieve push notifications about Likes and Messages to your videos?",
-                    confirmButton: (text: "Yes, send me push messages", cb: connect),
-                    cancelButton:  (text: "No, thank you", cb: disconnect))
+                self.simpleConfirmationPopup("確認", "動画に対するいいね/コメントなどの通知を受けますか？",
+                    confirmButton: (text: "はい", cb: connect),
+                    cancelButton:  (text: "いいえ", cb: disconnect))
             }
             else {
                 // Show the holy popup
@@ -190,14 +188,14 @@ class SettingsTableViewController: UITableViewController
         }
         else if Persistent.registerd_device_token == nil {
             // The server dows not send push messages to this device
-            self.simpleConfirmationPopup("確認", "Currently you are not recieving Likes and Messages notifications",
-                confirmButton: (text: "Yes, please send me notifications again", cb: connect),
+            self.simpleConfirmationPopup("確認", "動画へのいいね/コメントの通知が届きます",
+                confirmButton: (text: "はい、受信します", cb: connect),
                 cancelButton:  (text: "キャンセル", cb: nil))
         }
         else if Persistent.registerd_device_token != nil {
             // The server does send push messages to this device
-            self.simpleConfirmationPopup("確認", "You will recieve no further Likes and Messages notifications.",
-                confirmButton: (text: "Yes, stop sending me messages", cb: disconnect),
+            self.simpleConfirmationPopup("確認", "通知の受信を止めますか",
+                confirmButton: (text: "はい、受信しません", cb: disconnect),
                 cancelButton:  (text: "キャンセル", cb: nil))
         }
         
@@ -226,7 +224,7 @@ class SettingsTableViewController: UITableViewController
             let pw2 = alertController.textFields?[1].text ?? ""
             
             if pw1 == "" {
-                self.simplePopup("パスワード設定", "1つめが空です", "OK")
+                self.simplePopup("パスワード設定", "1つ目が空です", "OK")
             }
             else if pw2 == "" {
                 self.simplePopup("パスワード設定", "2つめが空です", "OK")

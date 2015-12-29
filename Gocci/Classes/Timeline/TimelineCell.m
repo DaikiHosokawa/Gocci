@@ -59,11 +59,8 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
 
 @property (weak, nonatomic) IBOutlet UIImageView *tagA;
 @property (weak, nonatomic) IBOutlet UIImageView *tagB;
-@property (weak, nonatomic) IBOutlet UIImageView *tagC;
-@property (weak, nonatomic) IBOutlet UIImageView *medal;
 @property (weak, nonatomic) IBOutlet UILabel *tagBLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagALabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagCLabel;
 
 @end
 
@@ -113,7 +110,7 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     if ([self.delegate respondsToSelector:@selector(timelineCell:didTapLikeButtonWithPostID:)]) {
         
         if(flash_on == 0 ){
-            UIImage *img = [UIImage imageNamed:@"gocci_new_selected.png"];
+            UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
             [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
             flash_on = 1;
             int plus1 = self.likeCountLabel.text.floatValue+1;
@@ -220,16 +217,6 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
     
     self.flag = timelinePost.flag;
     
-    if ([timelinePost.tagB isEqualToString:@"にぎやか"]) {
-        self.tagBLabel.text = timelinePost.tagB;
-    } else if ([timelinePost.tagB isEqualToString:@"ゆったり"]) {
-        self.tagBLabel.text = timelinePost.tagB;
-    } else if([timelinePost.tagB isEqualToString:@"none"]) {
-        self.tagBLabel.text = @"タグなし";
-    }else{
-        self.tagBLabel.text = @"タグなし";
-    }
-    
     //tagA
     if ([timelinePost.tagA isEqualToString:@"和風"]) {
         self.tagALabel.text = timelinePost.tagA;
@@ -254,25 +241,25 @@ NSString * const TimelineCellIdentifier = @"TimelineCell";
         self.tagALabel.text = @"タグなし";
     }
     
-    if([timelinePost.tagC isEqualToString:@"0"]){
-        self.tagCLabel.text = @"タグなし";
+    if([timelinePost.tagB isEqualToString:@"0"]){
+        self.tagBLabel.text = @"タグなし";
     }
-    else if ([timelinePost.tagC isEqualToString:@"none"]){
-        self.tagCLabel.text = @"タグなし";
+    else if ([timelinePost.tagB isEqualToString:@"none"]){
+        self.tagBLabel.text = @"タグなし";
     }else {
-        NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagC];
-        self.tagCLabel.text = str3;
+        NSString *str3 = [NSString stringWithFormat: @"%@円",timelinePost.tagB];
+        self.tagBLabel.text = str3;
     }
     
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
     {
-        UIImage *img = [UIImage imageNamed:@"gocci_new.png"];
+        UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
         [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 0;
         
     }else{
-        UIImage *img = [UIImage imageNamed:@"gocci_new_selected.png"];
+        UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
         [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 1;
     }

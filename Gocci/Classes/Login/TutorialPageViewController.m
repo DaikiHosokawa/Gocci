@@ -51,8 +51,16 @@
         [ruleButton addTarget:self action:@selector(ruleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    self.username = (UITextField *)[page3.view viewWithTag:3];
-    
+    self.username = (JJMaterialTextfield *)[page3.view viewWithTag:3];
+    self.username.returnKeyType = UIReturnKeyDone;
+    self.username.delegate = self;
+    self.username.textColor=[UIColor whiteColor];
+    [self.username enableMaterialPlaceHolder:YES];
+    self.username.errorColor=[UIColor colorWithRed:0.910 green:0.329 blue:0.271 alpha:1.000]; // FLAT RED COLOR
+    self.username.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+    self.username.lineColor=[UIColor colorWithRed:0.482 green:0.800 blue:1.000 alpha:1.000];
+    self.username.tintColor= [UIColor whiteColor];
+    self.username.placeholder=@"ユーザー名";
     
 #if TEST_BUILD
     self.username.text = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:8];
@@ -101,7 +109,15 @@
     // safe center to return here after the keyboard has appeard
     self->originalCenter = self.view.center;
    
+    // 背景をキリックしたら、キーボードを隠す
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSoftKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.username resignFirstResponder];
+    return YES;
 }
 
 -(void)onKeyboardHide:(NSNotification *)notification
@@ -114,6 +130,9 @@
     self.view.center = CGPointMake(self->originalCenter.x, self->originalCenter.y - 200);
 }
 
+- (void)closeSoftKeyboard {
+    [self.view endEditing: YES];
+}
 
 
 
@@ -135,8 +154,6 @@
         
     }
 }
-
-
 //-(void)loginAndTransit {
 //    [[Util dirtyBackEndLoginWithUserDefData] continueWithBlock:^id(AWSTask *task) {
 //        // transition to SNS page
@@ -223,12 +240,8 @@
     NSURL *url = [NSURL URLWithString:@"http://inase-inc.jp/rules/privacy/"];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [self.popupWebView loadRequest:req];
-    
-    // 画像を指定したボタン例文
-    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];  // ボタンにする画像を生成する
-    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];  // 画像をセットする
-    // ボタンが押された時にhogeメソッドを呼び出す
-    [self.popupCancel addTarget:self
+    UIImage *img = [UIImage imageNamed:@"btn_delete_white.png"];
+    [self.popupCancel setBackgroundImage:img forState:UIControlStateNormal];     [self.popupCancel addTarget:self
                          action:@selector(closePopupView) forControlEvents:UIControlEventTouchUpInside];
 }
 

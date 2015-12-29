@@ -39,7 +39,6 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
     [super viewDidLoad];
     
     
-    //ナビゲーションバーに画像
     {
         self.title = @"フォロワー";
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
@@ -47,15 +46,9 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
         self.navigationItem.backBarButtonItem = barButton;
     }
     
-    // !!!:dezamisystem
-    //	self.navigationItem.title = @"コメント画面";
-    
     UINib *nib = [UINib nibWithNibName:@"FolloweeListCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"FolloweeListCell"];
     
-    //背景にイメージを追加したい
-    // UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    // self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
@@ -95,42 +88,28 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 -(void)perseJson
 {
-    //test user
-    //_postIDtext = @"3024";
     [APIClient FollowerList:_userID handler:^(id result, NSUInteger code, NSError *error) {
         
-       // [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        LOG(@"resultComment=%@", result);
-        
-        if (code != 200 || error != nil) {
-            // API からのデータの取得に失敗
-            
-            // TODO: アラート等を掲出
+      if (code != 200 || error != nil) {
             return;
         }
         
         if(result){
             
-            // ユーザー名
-            NSArray *user_name = [result valueForKey:@"username"];
+           NSArray *user_name = [result valueForKey:@"username"];
             _user_name_ = [user_name mutableCopy];
             NSLog(@"user_name:%@",_user_name_);
-            // プロフ画像
-            NSArray *picture = [result valueForKey:@"profile_img"];
+           NSArray *picture = [result valueForKey:@"profile_img"];
             _picture_ = [picture mutableCopy];
-            // フォローしてるか
-            NSArray *follow_flag = [result valueForKey:@"follow_flag"];
+           NSArray *follow_flag = [result valueForKey:@"follow_flag"];
             _follow_flag_ = [follow_flag mutableCopy];
-            // User_id
             NSArray *user_id = [result valueForKey:@"user_id"];
             _user_id_ = [user_id mutableCopy];
             
             
             
             if([_user_name_ count] ==0){
-                // 画像表示例文
-                UIImage *img = [UIImage imageNamed:@"sad_follower.png"];
+               UIImage *img = [UIImage imageNamed:@"sad_follower.png"];
                 UIImageView *iv = [[UIImageView alloc] initWithImage:img];
                 CGSize boundsSize = self.view.bounds.size;
                 iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2-50 );

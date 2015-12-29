@@ -9,26 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import "BBBadgeBarButtonItem.h"
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>{
-    CLLocationManager *locationManager;
-    NSString *lifelogDate;
-    
-    
-//    BBBadgeBarButtonItem *barButton;
-    
-}
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-//@property (nonatomic, retain) NSString *restname;
-@property(nonatomic) NSString *lifelogDate;
 @property (nonatomic, assign) NSInteger screenType;
 @property (strong, nonatomic) UIWindow *window;
-
-
-//@property(nonatomic, strong) BBBadgeBarButtonItem *barButton;
-
 
 @end
