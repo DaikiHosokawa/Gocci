@@ -28,12 +28,15 @@ extension Logable {
     
     
     static func log(msg: String) {
+#if TEST_BUILD
         if verbose {
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg)
         }
+#endif
     }
     
     static func sep(head: String) {
+#if TEST_BUILD
         if verbose {
             let ich = String(self.dynamicType).replace(".type", withString: "")
             let msg = "=== \(head)  (send by '\(ich)') "
@@ -41,18 +44,20 @@ extension Logable {
             Lo.printInColor(logColor.r, logColor.g, logColor.b, String(count: 120, repeatedValue: Character("=")))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
         }
+#endif
     }
     
     static func err(msg: String) {
-        
+#if TEST_BUILD
         let ich = String(self.dynamicType).replace(".type", withString: "")
         let head = "=== ERROR in '\(ich)'"
         let balken = String(count: max(104 - msg.length, 0), repeatedValue: Character("="))
         Lo.error(String(count: 120, repeatedValue: Character("=")))
         Lo.error(head + "  " + balken)
         Lo.error(msg)
+#endif
     }
-    
+
     func log(msg: String) {
         self.dynamicType.log(msg)
     }
