@@ -121,7 +121,6 @@ static SCRecordSession *staticRecordSession;
     
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self prepareSession];
     
 #if 1
     {

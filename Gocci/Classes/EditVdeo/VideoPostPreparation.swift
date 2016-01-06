@@ -23,9 +23,9 @@ import Foundation
         var category_string: String = "" { didSet { notifyNewCategory?(category_string) } }
         var value: String = ""           { didSet { notifyNewPrice?(value) } }
         var memo: String = ""
-        var cheer_flag: Bool = false  
+        var cheer_flag: Bool = false
         
-        var prepared_restaurant: Bool = true 
+        var prepared_restaurant: Bool = true
         var rest_name: String = "" { didSet { notifyNewRestName?(rest_name) } }
         var lat: Double = 0.0
         var lon: Double = 0.0
@@ -115,16 +115,18 @@ import Foundation
         if postData.postOnTwitter {
             let twit_relative = "Library" + "/" + timestamp + "_for_twitter.mp4"
             let twit_absolut  = NSFileManager.appRootDirectory().URLByAppendingPathComponent(twit_relative)
-
+            
             postData.twitterRelativeVideoFilename = twit_relative
             try! fm.linkItemAtURL(newVideoFile, toURL: twit_absolut)
         }
         
-        NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterate { filePath in
-            if let fileName = filePath.lastPathComponent {
-                if fileName.hasSuffix(".mov") {
-                    print("Deleting: ~/tmp/\(filePath.lastPathComponent!)")
-                    let _ = try? fm.removeItemAtURL(filePath)
+        Util.runInBackground {
+            NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterate { filePath in
+                if let fileName = filePath.lastPathComponent {
+                    if fileName.hasSuffix(".mov") {
+                        print("Deleting: ~/tmp/\(filePath.lastPathComponent!)")
+                        let _ = try? fm.removeItemAtURL(filePath)
+                    }
                 }
             }
         }

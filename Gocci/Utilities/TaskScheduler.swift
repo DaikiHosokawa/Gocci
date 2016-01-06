@@ -50,7 +50,10 @@ class PersistentClassReflexion {
     }
 }
 
-class SingletonTaskScheduler {
+class SingletonTaskScheduler: Logable {
+    
+    static var verbose = true
+    static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0xFF, 0xCC, 0x99)
     
     //let internetReachability: Reachability = Reachability.reachabilityForInternetConnection()
     let saveFileName = NSFileManager.libraryDirectory() + "/" + "unfinishedTasks.plist"
@@ -77,7 +80,7 @@ class SingletonTaskScheduler {
     
     func loadTasksFromDisk() {
         if !tasks.isEmpty {
-            print("=== WARNING: you are overwriting tasks... ")
+            print("=== WARNING: you are overwriting tasks... very bad... ")
         }
         
         var tmp: [PersistentBaseTask] = []
@@ -257,7 +260,7 @@ class SingletonTaskScheduler {
                     }
                     
                     self.sync(self.slots) {
-                        self.slots++
+                        self.slots += 1
                     }
                     
                     if task.state == .DONE {
