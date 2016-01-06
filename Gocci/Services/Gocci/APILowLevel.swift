@@ -184,7 +184,7 @@ class APILowLevel: Logable {
         for (k, v) in saneParameterPairs {
             log("    \(k): \t\(v)")
         }
-        log(url.absoluteString)
+        log("URL:  " + url.absoluteString)
         
         let req = NSMutableURLRequest(URL: url)
         

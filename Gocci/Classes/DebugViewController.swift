@@ -76,6 +76,16 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
+        
+        let reqq = API3.get.timeline()
+        
+        reqq.perform { payload in
+            print(payload)
+        }
+        
+        return;
+        
+        
         //let str = "abc\n\tdef"
         
         //let res = str.characters

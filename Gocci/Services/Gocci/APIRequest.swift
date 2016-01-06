@@ -71,7 +71,6 @@ extension APIRequestProtocol {
         }
     }
     
-    // TODO TRANSLATION
     mutating func defaultOnNetworkFailure(error: APILowLevel.NetworkError, _ message: String) {
         
         // the user is not in WLAN or WWAN
@@ -104,3 +103,21 @@ extension APIRequestProtocol {
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
