@@ -247,6 +247,9 @@
         return;
     }
     
+    UIButton* sbut = (UIButton *)sender;
+    sbut.enabled = false;
+    
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
