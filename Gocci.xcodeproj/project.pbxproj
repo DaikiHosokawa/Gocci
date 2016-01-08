@@ -16,6 +16,8 @@
 		950593871BFB19E600328449 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593831BFB19E600328449 /* main.m */; };
 		950593881BFB19E600328449 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 950593841BFB19E600328449 /* NullSafe.m */; };
 		9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9505939E1BFC2B7100328449 /* GoogleMaps.framework */; };
+		950B78D41C3F48F60007CA8C /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950B78D31C3F48F60007CA8C /* iPad.storyboard */; };
+		950B78D61C3F5DB50007CA8C /* SCFirstView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950B78D51C3F5DB50007CA8C /* SCFirstView_iPad.xib */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
@@ -417,6 +419,8 @@
 		950593841BFB19E600328449 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		950593851BFB19E600328449 /* Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9505939E1BFC2B7100328449 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		950B78D31C3F48F60007CA8C /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		950B78D51C3F5DB50007CA8C /* SCFirstView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCFirstView_iPad.xib; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
@@ -1350,6 +1354,7 @@
 		9550D87F1BF83E4B00430942 /* FirstView */ = {
 			isa = PBXGroup;
 			children = (
+				950B78D51C3F5DB50007CA8C /* SCFirstView_iPad.xib */,
 				9550D8801BF83E4B00430942 /* SCFirstView.h */,
 				9550D8811BF83E4B00430942 /* SCFirstView.m */,
 				9550D8821BF83E4B00430942 /* SCFirstView_3_5_inch.xib */,
@@ -1585,6 +1590,7 @@
 		9550D94A1BF83E4B00430942 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				950B78D31C3F48F60007CA8C /* iPad.storyboard */,
 				9550D94B1BF83E4B00430942 /* 3_5_inch.storyboard */,
 				9550D94C1BF83E4B00430942 /* 4_0_inch.storyboard */,
 				9550D94D1BF83E4B00430942 /* 4_7_inch.storyboard */,
@@ -2476,6 +2482,7 @@
 				9550DACF1BF83E4C00430942 /* Debug.storyboard in Resources */,
 				952258311C1D8DEE00B0C944 /* tabbaritem_timeline@2x.png in Resources */,
 				950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */,
+				950B78D41C3F48F60007CA8C /* iPad.storyboard in Resources */,
 				9550DACB1BF83E4C00430942 /* 3_5_inch.storyboard in Resources */,
 				9550DA1F1BF83E4C00430942 /* Sample4TableViewCell.xib in Resources */,
 				9550DAC31BF83E4C00430942 /* ui_black.png in Resources */,
@@ -2492,6 +2499,7 @@
 				987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */,
 				9550DABA1BF83E4C00430942 /* tabbaritem_search.png in Resources */,
 				9550DA8D1BF83E4C00430942 /* TimelineCell.xib in Resources */,
+				950B78D61C3F5DB50007CA8C /* SCFirstView_iPad.xib in Resources */,
 				9550DAB51BF83E4C00430942 /* tabbaritem_posting_sel@2x.png in Resources */,
 				9550DAA61BF83E4C00430942 /* Cancel@2x.png in Resources */,
 				9550DAB41BF83E4C00430942 /* tabbaritem_posting_sel.png in Resources */,
@@ -2882,7 +2890,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
@@ -2933,7 +2941,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daiki Hosokawa (TEZ7H7N6H4)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2996,7 +3004,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3031,7 +3039,7 @@
 				PRODUCT_NAME = "$(TARGETNAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
