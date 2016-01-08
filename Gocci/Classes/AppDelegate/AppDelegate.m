@@ -71,31 +71,12 @@
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
     self.window.rootViewController = [storyboard instantiateInitialViewController];
 #else
-    UIStoryboard* storyboard;
-    // 機種の取得
-    NSString *modelname = [[UIDevice currentDevice] model];
-    if ( ![modelname hasPrefix:@"iPad"] ) {
-       storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
-    }
-    else
-    {
-        NSLog(@"iPad");
-        storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
-    }
+     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
     self.window.rootViewController = [storyboard instantiateInitialViewController];
 #endif
     
 #if defined(START_WITH_DEBUG_SCREEN) && defined(ENTRY_POINT_JUMP)
-    UIStoryboard* storyboard;
-    NSString *modelname = [[UIDevice currentDevice] model];
-    if ( ![modelname hasPrefix:@"iPad"] ) {
-        NSLog(@"iPad");
-        storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
-    }
-    else
-    {
-        storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
-    }
+    storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
 #elif defined(ENTRY_POINT_JUMP)
     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
