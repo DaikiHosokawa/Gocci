@@ -12,7 +12,7 @@
 
 /// #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 /// #######################################################################################
 // Userdata will be deleted everytime the app starts
@@ -99,9 +99,9 @@
 
 
 #if TEST_BUILD
-#define GOCCI_TWITTER_TAG (@"#Gokky")
+    #define GOCCI_TWITTER_TAG (@"#Gokky")
 #elif LIVE_BUILD
-#define GOCCI_TWITTER_TAG (@"#Gocci")
+    #define GOCCI_TWITTER_TAG (@"#Gocci")
 #endif
 
 
