@@ -157,8 +157,9 @@ class SettingsTableViewController: UITableViewController
                 cell.detailTextLabel?.textColor = wants ? UIColor.good : UIColor.bad
             }
         }
+        
+        
         if !Permission.userHasGrantedPushNotificationPermission() {
-
             
             Persistent.do_not_ask_again_for_push_messages = true
             
@@ -170,7 +171,7 @@ class SettingsTableViewController: UITableViewController
                 // since the user will take some time set the settings and there is no return event.
                 // because of that a neutral popup is needed. Asking is he wants or not.
                 
-                // User should see the popup when he returnn, not while the settings screen opens
+                // User should see the popup when he returns, not while the settings screen opens
                 Util.sleep(1)
                 
                 self.simpleConfirmationPopup("確認", "動画に対するいいね/コメントなどの通知を受けますか？",

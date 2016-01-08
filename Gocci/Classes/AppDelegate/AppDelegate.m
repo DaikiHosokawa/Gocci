@@ -43,8 +43,10 @@
     
     // Conversion from userdef stored identity_id to keychain stored identity_id
     if ([Persistent identity_id] == nil && [Util getUserDefString:@"identity_id"] != nil) {
-        NSLog(@"conversation happend");
+        NSLog(@"conversation from version 1.2.7? to 2.0.0 happend");
         Persistent.identity_id = [Util getUserDefString:@"identity_id"];
+        
+        [Permission conversationFromPrevieousVersion];
     }
     
     // Start network monitoring for network state availibility

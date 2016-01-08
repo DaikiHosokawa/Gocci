@@ -47,11 +47,17 @@ import Foundation
         if let reachabilty = note.object as? Reachability {
             let status = reachabilty.currentReachabilityStatus()
             
+            let previous = state
+            
             switch status.rawValue {
                 case 0: state = .OFFLINE
                 case 1: state = .ONLINE_LAN
                 case 2: state = .ONLINE_WAN
                 default: break
+            }
+            
+            if previous == state {
+                return
             }
             
             sep("NETWORK")

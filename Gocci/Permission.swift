@@ -226,7 +226,6 @@ import UIKit
         }
         else {
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            // lets hope registerUserNotificationSettings is called per appdid become active
         }
     }
     
@@ -248,6 +247,13 @@ import UIKit
         }
         
         return currentSettings.types != UIUserNotificationType.None
+    }
+    
+    class func conversationFromPrevieousVersion() {
+        if userHasGrantedPushNotificationPermission() {
+            Persistent.push_notifications_popup_has_been_shown = true
+            Persistent.do_not_ask_again_for_push_messages = true
+        }
     }
     
     class func requestPushNotificationPermissionOnlyIfTheUserWantsThem() {
