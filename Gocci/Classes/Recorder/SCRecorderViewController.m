@@ -103,6 +103,50 @@ static SCRecordSession *staticRecordSession;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
 
+#if 1
+    {
+        {
+            CGRect rect_page = CGRectMake(0, 383, 320, 183);
+         
+            // 機種の取得
+            NSString *modelname = [[UIDevice currentDevice] model];
+            if ( ![modelname hasPrefix:@"iPad"] ) {
+                // 4inch
+                CGRect rect = [UIScreen mainScreen].bounds;
+                if (rect.size.height == 480) {
+                    //3.5inch
+                    rect_page = CGRectMake(0, 336, 320, 144);
+                }
+                else if (rect.size.height == 667) {
+                    //4.7inch
+                    rect_page = CGRectMake(0, 437, 375, 230);
+                }
+                else if (rect.size.height == 736) {
+                    //5.5inch
+                    rect_page = CGRectMake(0, 478, 414, 260);
+                }
+            }
+            else
+            {
+                NSLog(@"iPad");
+               rect_page = CGRectMake(0, 810, 770, 230);
+            }
+           
+            scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
+            {
+                firstView = [SCFirstView create];
+                firstView.delegate = self;
+                secondView = [SCSecondView create];
+            }
+            [scrollpageview showInView:self.view first:firstView second:secondView];
+        }
+    }
+    
+#endif
+    
+#if (!TARGET_IPHONE_SIMULATOR)
+    
+#endif
 }
 
 
@@ -121,40 +165,8 @@ static SCRecordSession *staticRecordSession;
     
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self prepareSession];
     
-#if 1
-    {
-        {
-            CGRect rect_page = CGRectMake(0, 383, 320, 183);
-            // 4inch
-            CGRect rect = [UIScreen mainScreen].bounds;
-            if (rect.size.height == 480) {
-                //3.5inch
-                rect_page = CGRectMake(0, 336, 320, 144);
-            }
-            else if (rect.size.height == 667) {
-                //4.7inch
-                rect_page = CGRectMake(0, 437, 375, 230);
-            }
-            else if (rect.size.height == 736) {
-                //5.5inch
-                rect_page = CGRectMake(0, 478, 414, 260);
-            }
-            scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
-            {
-                firstView = [SCFirstView create];
-                firstView.delegate = self;
-                secondView = [SCSecondView create];
-            }
-            [scrollpageview showInView:self.view first:firstView second:secondView];
-        }
-    }
-    
-#endif
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    
-#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -294,6 +306,8 @@ static SCRecordSession *staticRecordSession;
 
 - (void)updateTimeRecordedLabel {
     
+    NSLog(@"updateTimeRecordedLabel called");
+    
     //self.tapView.hidden = NO;
     
     CMTime currentTime = kCMTimeZero;
@@ -303,6 +317,7 @@ static SCRecordSession *staticRecordSession;
     
 #if (!TARGET_IPHONE_SIMULATOR)
     if (_recorder.session != nil) {
+        NSLog(@"duration設定");
         currentTime = _recorder.session.duration;
         time_now = CMTimeGetSeconds(currentTime);
     }
@@ -317,7 +332,7 @@ static SCRecordSession *staticRecordSession;
     time_now = test_timeGauge;
 #endif
     
-    NSLog(@"now:%f,max:%f",time_now,time_max);
+    NSLog(@"SCRecorderView now:%f,max:%f",time_now,time_max);
     [firstView updatePieChartWith:time_now MAX:time_max];
     
 }

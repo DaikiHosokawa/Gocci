@@ -28,6 +28,7 @@
 #pragma mark - addsubview
 - (void)showInView:(UIView *)view
 {
+    NSLog(@"called showinview");
 	//撮影ボタン
 	{
         
@@ -117,6 +118,7 @@
 -(void)updatePieChartWith:(double)now MAX:(double)max
 {
 	percentPieChart = now / max;
+    NSLog(@"First View now:%f,max:%f",now,max);
 	if (percentPieChart > 1.0) percentPieChart = 1.0;
 	[pieChartTimer reloadData];
 }
@@ -198,19 +200,30 @@
 {
 	NSString *nibName = @"SCFirstViewMain";
 	//画面サイズから使用xibを場合分け
-	CGRect rect = [UIScreen mainScreen].bounds;
-	if (rect.size.height == 480) {
-		//3.5inch
-		nibName = @"SCFirstView_3_5_inch";
-	}
-	else if (rect.size.height == 667) {
-		//4.7inch
-		nibName = @"SCFirstView_4_7_inch";
-	}
-	else if (rect.size.height == 736) {
-		//5.5inch
-		nibName = @"SCFirstView_5_5_inch";
-	}
+    
+    // 機種の取得
+    NSString *modelname = [[UIDevice currentDevice] model];
+    if ( ![modelname hasPrefix:@"iPad"] ) {
+        CGRect rect = [UIScreen mainScreen].bounds;
+        if (rect.size.height == 480) {
+            //3.5inch
+            nibName = @"SCFirstView_3_5_inch";
+        }
+        else if (rect.size.height == 667) {
+            //4.7inch
+            nibName = @"SCFirstView_4_7_inch";
+        }
+        else if (rect.size.height == 736) {
+            //5.5inch
+            nibName = @"SCFirstView_5_5_inch";
+        }
+    }
+    else
+    {
+        NSLog(@"iPad");
+        nibName = @"SCFirstView_iPad";
+    }
+	
 
 	SCFirstView *view = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil][0];
  
