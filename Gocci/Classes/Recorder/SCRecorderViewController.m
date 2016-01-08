@@ -103,25 +103,6 @@ static SCRecordSession *staticRecordSession;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
 
-}
-
-
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    
-#if (!TARGET_IPHONE_SIMULATOR)
-    [_recorder previewViewFrameChanged];
-#endif
-}
-
-#pragma mark 描画開始前
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self prepareSession];
     
 #if 1
     {
@@ -150,12 +131,31 @@ static SCRecordSession *staticRecordSession;
             [scrollpageview showInView:self.view first:firstView second:secondView];
         }
     }
-    
 #endif
     
 #if (!TARGET_IPHONE_SIMULATOR)
     
 #endif
+}
+
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    
+#if (!TARGET_IPHONE_SIMULATOR)
+    [_recorder previewViewFrameChanged];
+#endif
+}
+
+#pragma mark 描画開始前
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self prepareSession];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -295,6 +295,8 @@ static SCRecordSession *staticRecordSession;
 
 - (void)updateTimeRecordedLabel {
     
+    NSLog(@"updateTimeRecordedLabel called");
+    
     //self.tapView.hidden = NO;
     
     CMTime currentTime = kCMTimeZero;
@@ -304,6 +306,7 @@ static SCRecordSession *staticRecordSession;
     
 #if (!TARGET_IPHONE_SIMULATOR)
     if (_recorder.session != nil) {
+        NSLog(@"duration設定");
         currentTime = _recorder.session.duration;
         time_now = CMTimeGetSeconds(currentTime);
     }
@@ -318,7 +321,7 @@ static SCRecordSession *staticRecordSession;
     time_now = test_timeGauge;
 #endif
     
-    NSLog(@"now:%f,max:%f",time_now,time_max);
+    NSLog(@"SCRecorderView now:%f,max:%f",time_now,time_max);
     [firstView updatePieChartWith:time_now MAX:time_max];
     
 }

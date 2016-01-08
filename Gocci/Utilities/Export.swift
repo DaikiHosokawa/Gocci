@@ -20,8 +20,8 @@ import Foundation
     class func exportVideoToCameraRollForPostID(postID: String) {
         
         if inAction {
-            let pop = UIAlertController.makeOverlayPopup("Warning", "Already exporting a video. Only one at a time")
-            pop.addButton("Ok", style: UIAlertActionStyle.Cancel) { }
+            let pop = UIAlertController.makeOverlayPopup("お知らせ", "一度に一個しかダウンロードできません")
+            pop.addButton("OK", style: UIAlertActionStyle.Cancel) { }
             pop.overlay()
             return
         }
@@ -35,10 +35,10 @@ import Foundation
         if let localURL = Util.mp4ForPostIDisAvailible(postID) {
             Util.saveMovieAtPathToCameraRoll(localURL) { succ in
                 if succ {
-                    Toast.情報("Success", "Saved to your camera roll")
+                    Toast.情報("成功", "カメラロールに保存しました")
                 }
                 else {
-                    Toast.失敗("Failure", "Failed to save the video to your camera roll")
+                    Toast.失敗("失敗", "保存に失敗しました")
                 }
                 inAction = false
             }
@@ -51,13 +51,13 @@ import Foundation
         req.parameters.post_id = postID
         
         req.onAnyAPIError {
-            Toast.失敗("Failure", "Failed to save the video to your camera roll")
+            Toast.失敗("失敗", "保存に失敗しました")
         }
         
         req.perform { payload in
             
             guard let url = NSURL(string: payload.mp4_movie) else {
-                Toast.失敗("Failure", "Failed to save the video to your camera roll")
+                Toast.失敗("失敗", "保存に失敗しました")
                 inAction = false
                 return
             }
@@ -65,17 +65,17 @@ import Foundation
             APILowLevel.cacheFile(url, filename: postID + ".mp4") { fileURL in
                 
                 guard let fileURL = fileURL else {
-                    Toast.失敗("Failure", "Failed to save the video to your camera roll")
+                    Toast.失敗("失敗", "保存に失敗しました")
                     inAction = false
                     return
                 }
                 
                 Util.saveMovieAtPathToCameraRoll(fileURL) { succ in
                     if succ {
-                        Toast.情報("Success", "Saved to your camera roll")
+                        Toast.情報("成功", "カメラロールに保存しました")
                     }
                     else {
-                        Toast.失敗("Failure", "Failed to save the video to your camera roll")
+                        Toast.失敗("失敗", "保存に失敗しました")
                     }
                     inAction = false
                 }
