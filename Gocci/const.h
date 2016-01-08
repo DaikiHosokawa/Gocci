@@ -97,7 +97,6 @@
 #define GOOGLE_MAP_SERVICE_API_KEY (@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko")
 
 
-
 #if TEST_BUILD
     #define GOCCI_TWITTER_TAG (@"#Gokky")
 #elif LIVE_BUILD

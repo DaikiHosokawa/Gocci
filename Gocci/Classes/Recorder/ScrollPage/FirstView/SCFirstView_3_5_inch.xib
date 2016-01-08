@@ -11,14 +11,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku6-Gd-ldd">
+                    <rect key="frame" x="266" y="48" width="36" height="36"/>
+                    <state key="normal" image="ic_mode_edit"/>
+                    <connections>
+                        <action selector="openEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="fNF-5h-SLE"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYA-Nh-mpK">
-                    <rect key="frame" x="110" y="16" width="100" height="100"/>
+                    <rect key="frame" x="128" y="39" width="65" height="65"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku6-Gd-ldd">
-                    <rect key="frame" x="1" y="42" width="60" height="60"/>
-                    <state key="normal" image="ic_chevron_left_white_48pt"/>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -32,6 +35,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_chevron_left_white_48pt" width="48" height="48"/>
+        <image name="ic_mode_edit" width="24" height="24"/>
     </resources>
 </document>

@@ -442,6 +442,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_7" id="oiU-B0-bAk">
+                                <rect key="frame" x="73" y="48" width="286" height="283"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="py2-ZI-Hhs">
                                 <rect key="frame" x="186" y="581" width="123" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -490,10 +494,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character_7" id="oiU-B0-bAk">
-                                <rect key="frame" x="73" y="48" width="286" height="283"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686270000003" green="0.87843137250000003" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -2429,11 +2429,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SI4-OW-qMQ"/>
-        <segue reference="aMt-WG-BmS"/>
-        <segue reference="Foo-dB-2J8"/>
-        <segue reference="knF-4T-ZwF"/>
-        <segue reference="tjp-JB-9RB"/>
         <segue reference="YMD-DR-Sl9"/>
         <segue reference="qh1-2C-pXX"/>
+        <segue reference="Foo-dB-2J8"/>
+        <segue reference="knF-4T-ZwF"/>
+        <segue reference="zpe-5c-LEZ"/>
+        <segue reference="pXi-gB-BGB"/>
     </inferredMetricsTieBreakers>
 </document>

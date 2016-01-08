@@ -73,7 +73,7 @@
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
     self.window.rootViewController = [storyboard instantiateInitialViewController];
 #else
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
     self.window.rootViewController = [storyboard instantiateInitialViewController];
 #endif
     
