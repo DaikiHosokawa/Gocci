@@ -10,6 +10,20 @@ import Foundation
 import UIKit
 import AssetsLibrary
 
+import Realm
+import RealmSwift
+
+// Define your models like regular Swift classes
+class Dog: Object {
+    dynamic var name = ""
+    dynamic var age = 0
+}
+class Person: Object {
+    dynamic var name = ""
+    dynamic var picture: NSData? = nil // optionals supported
+    let dogs = List<Dog>()
+}
+
 
 class DebugViewController : UIViewController {
     
@@ -74,6 +88,29 @@ class DebugViewController : UIViewController {
 
     
     @IBAction func explode(sender: AnyObject) {
+        
+        
+
+        
+        // Use them like regular Swift objects
+        let mydog = Dog()
+        mydog.name = "Rex"
+        print("name of dog: \(mydog.name)")
+        
+        // Persist your data easily
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(mydog)
+        }
+        
+        // Query it from any thread
+        dispatch_async(dispatch_queue_create("background", nil)) {
+            let realm2 = try! Realm()
+            realm2.objects(Dog).filter("age > 8") // => Results<Dog>
+        }
+        
+
+        return;
         
         
         
