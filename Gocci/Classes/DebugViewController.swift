@@ -25,21 +25,32 @@ class Person: Object {
 }
 
 
+class HeatMapRestaurant: Object {
+    dynamic var id = "none"
+    dynamic var name = "none"
+    dynamic var lat: Double = 0.0
+    dynamic var lon: Double = 0.0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    class func create(fromPayload pl: API3.get.heatmap.Payload.Rests) -> HeatMapRestaurant {
+        let res = self.init()
+        res.id = pl.post_rest_id
+        res.name = pl.restname
+        res.lat = pl.lat
+        res.lon = pl.lon
+        return res
+    }
+}
+
 class DebugViewController : UIViewController {
-    
-    var cnt: Int = 0
-    
-    var real_register_id: String = ""
-    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
-
-    
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
-    
     @IBOutlet weak var tokenEditField: UITextField!
-    
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
     
@@ -55,59 +66,71 @@ class DebugViewController : UIViewController {
         signUpEditField.text = Persistent.user_name ?? Util.randomUsername()
         usernameEditField.text = signUpEditField.text
         
-//        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
+        print("Realm: open " + Realm.Configuration.defaultConfiguration.path!)
     }
     
-//    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
-//}
-//}];
-//
-//}
-//}
-//
 
-    func pop(vc: UIViewController) {
-
-        let popup = STPopupController(rootViewController: vc)
-        popup.cornerRadius = 4
-        popup.transitionStyle = STPopupTransitionStyle.Fade
-        STPopupNavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 85.0/255.0, blue: 51.0/255.0, alpha: 1.0)
-        STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
-        STPopupNavigationBar.appearance().barStyle = UIBarStyle.Default
-        //        STPopupNavigationBar.appearance().titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
-        
-        
-        //
-        //            [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil, nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
-        
-        
-        popup.presentInViewController(self)
-    }
-
-
-
+    /// LIVE SERVER MY IID: us-east-1:38c3e159-09fa-44d7-929f-22d2a6c0a004
     
     @IBAction func explode(sender: AnyObject) {
         
         
-
+        self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
+        return;
         
-        // Use them like regular Swift objects
-        let mydog = Dog()
-        mydog.name = "Rex"
-        print("name of dog: \(mydog.name)")
+        // LIVE SERVER MY IID !!!!!!!!!!!!!!!!!!!!!!!!
+        Persistent.identity_id = "us-east-1:38c3e159-09fa-44d7-929f-22d2a6c0a004"
         
-        // Persist your data easily
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(mydog)
+        let req = API3.get.heatmap()
+        
+        req.perform { payload in
+            var restObjects: [HeatMapRestaurant] = []
+            
+            for rest in payload.rests {
+                let tmp = HeatMapRestaurant.create(fromPayload: rest)
+                restObjects.append(tmp)
+            }
+            
+            let realm = try! Realm()
+            try! realm.write {
+                for rest in restObjects {
+                    realm.add(rest)
+                }
+            }
+            
+            Util.runOnMainThread {
+                self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
+            }
         }
         
-        // Query it from any thread
-        dispatch_async(dispatch_queue_create("background", nil)) {
-            let realm2 = try! Realm()
-            realm2.objects(Dog).filter("age > 8") // => Results<Dog>
-        }
+        
+        
+        
+        
+//        let bestRest = HeatMapRestaurant()
+//        bestRest.id = "delme"
+//        bestRest.name = "Super gutes resttaurant"
+//        bestRest.lat = 30.0
+//        bestRest.lon = 30.0
+//        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(bestRest)
+//        }
+//        
+//        let kp = realm.objects(HeatMapRestaurant).filter("lat > 25.0") // => Results<Dog>
+//        
+//        print(kp)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 
         return;
@@ -213,7 +236,7 @@ class DebugViewController : UIViewController {
 
         let p = requestPushPopupViewController()
         
-        self.pop(p)
+        //self.pop(p)
         
         
         return;
@@ -237,30 +260,30 @@ class DebugViewController : UIViewController {
         return;
         
         
-        
-        let req = API3.auth.login()
-        
-        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
-        
-        req.perform { (payload) -> () in
-            print("Username:    \(payload.username)")
-            print("User id:     \(payload.user_id)")
-            print("Badge_num:   \(payload.badge_num)")
-            print("Profile img: \(payload.profile_img)")
-            
-
-            
-//            APIClient.setPassword("lollol", handler: { response, code, error in
-//                print(response, code)
-//                
-//                print("=== AFTERFAFTERAFTERAFTER =====================================================")
-//                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
-//                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
-//                        print("\(coo)")
-//                    }
-//                }
-//            })
-        }
+//        
+//        let req = API3.auth.login()
+//        
+//        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
+//        
+//        req.perform { (payload) -> () in
+//            print("Username:    \(payload.username)")
+//            print("User id:     \(payload.user_id)")
+//            print("Badge_num:   \(payload.badge_num)")
+//            print("Profile img: \(payload.profile_img)")
+//            
+//
+//            
+////            APIClient.setPassword("lollol", handler: { response, code, error in
+////                print(response, code)
+////                
+////                print("=== AFTERFAFTERAFTERAFTER =====================================================")
+////                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
+////                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
+////                        print("\(coo)")
+////                    }
+////                }
+////            })
+//        }
         
         
 //            if code == NetOpResult.NETOP_SUCCESS {
