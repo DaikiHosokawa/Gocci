@@ -341,6 +341,7 @@
 		9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
 		9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
+		9864FAA41C45FEEB00B962EF /* rest.realm in Resources */ = {isa = PBXBuildFile; fileRef = 9864FAA31C45FEEB00B962EF /* rest.realm */; };
 		986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */ = {isa = PBXBuildFile; fileRef = 986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
@@ -377,6 +378,7 @@
 		98AB5DBD1C44EDF50023C0DE /* RLMArray+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DAD1C44EDF50023C0DE /* RLMArray+Utilities.m */; };
 		98AB5DBE1C44EDF50023C0DE /* RLMObject+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DAF1C44EDF50023C0DE /* RLMObject+Utilities.m */; };
 		98AB5DBF1C44EDF50023C0DE /* RLMObjectBase+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DB11C44EDF50023C0DE /* RLMObjectBase+Utilities.m */; };
+		98AB5DC11C45EE790023C0DE /* HeatMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		98B99E871C21173000B1D9CE /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E861C21173000B1D9CE /* Permission.swift */; };
@@ -948,6 +950,7 @@
 		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
+		9864FAA31C45FEEB00B962EF /* rest.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = rest.realm; path = Gocci/Debug/rest.realm; sourceTree = "<group>"; };
 		986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = unfinished_upload_task.plist; path = Gocci/Debug/unfinished_upload_task.plist; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
@@ -1002,6 +1005,7 @@
 		98AB5DAF1C44EDF50023C0DE /* RLMObject+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObject+Utilities.m"; sourceTree = "<group>"; };
 		98AB5DB01C44EDF50023C0DE /* RLMObjectBase+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RLMObjectBase+Utilities.h"; sourceTree = "<group>"; };
 		98AB5DB11C44EDF50023C0DE /* RLMObjectBase+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObjectBase+Utilities.m"; sourceTree = "<group>"; };
+		98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapViewController.swift; sourceTree = "<group>"; };
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
@@ -2225,6 +2229,7 @@
 				95FD92DB1C0D79F200D822E8 /* InfoView.xib */,
 				95FD92DC1C0D79F200D822E8 /* MapViewController.h */,
 				95FD92DD1C0D79F200D822E8 /* MapViewController.m */,
+				98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */,
 			);
 			path = "Map-design";
 			sourceTree = "<group>";
@@ -2325,6 +2330,7 @@
 		987E51EB1BF9C32900339285 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				9864FAA31C45FEEB00B962EF /* rest.realm */,
 				986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */,
 				987E51F41BFB37AD00339285 /* restaurantlatlon.json */,
 				987E51F51BFB37AD00339285 /* thumbnail.jpg */,
@@ -2638,6 +2644,7 @@
 				95EEF2091C269880009DA989 /* icon-info@2x.png in Resources */,
 				9550DA581BF83E4C00430942 /* SCFirstView_5_5_inch.xib in Resources */,
 				95FD92EC1C0D79F200D822E8 /* InfoView.xib in Resources */,
+				9864FAA41C45FEEB00B962EF /* rest.realm in Resources */,
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
@@ -2885,6 +2892,7 @@
 				95EEF1F81C26976A009DA989 /* AFURLConnectionOperation.m in Sources */,
 				9550DAC91BF83E4C00430942 /* WebViewPopup.swift in Sources */,
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
+				98AB5DC11C45EE790023C0DE /* HeatMapViewController.swift in Sources */,
 				958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
