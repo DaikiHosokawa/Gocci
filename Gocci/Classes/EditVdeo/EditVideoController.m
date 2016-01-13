@@ -41,8 +41,12 @@
 
 @property (weak,nonatomic)NSString *category_id;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *checkbox;
+@property (weak, nonatomic) IBOutlet BFPaperCheckbox *FacebookCheckbox;
 @property (weak, nonatomic) IBOutlet BFPaperCheckbox *TwitterCheckbox;
+@property (weak, nonatomic) IBOutlet BFPaperCheckbox *InstagramCheckbox;
+@property (weak, nonatomic) IBOutlet UIButton *FacebookComment;
 @property (weak, nonatomic) IBOutlet UIButton *TwitterComment;
+@property (weak, nonatomic) IBOutlet UIButton *InstagramComment;
 @property (nonatomic, copy) NSArray *checkboxes;
 
 
@@ -92,14 +96,36 @@
     self.checkbox.tapCircleNegativeColor = [UIColor blackColor];
     self.checkbox.checkmarkColor = color_custom;
     
+    UIColor *color_facebook = [UIColor colorWithRed:59./255. green:89./255. blue:152./255. alpha:1.];
     
     UIColor *color_twitter = [UIColor colorWithRed:85./255. green:172./255. blue:238./255. alpha:1.];
+    
+    UIColor *color_instagram = [UIColor colorWithRed:18./255. green:86./255. blue:136./255. alpha:1.];
+    
+    //Twitter
     self.TwitterCheckbox.rippleFromTapLocation = NO;
     self.TwitterCheckbox.tapCirclePositiveColor = [UIColor blackColor];
     self.TwitterCheckbox.tapCircleNegativeColor = [UIColor blackColor];
     self.TwitterCheckbox.checkmarkColor = color_twitter;
     self.TwitterCheckbox.tag = 1001;
     self.TwitterCheckbox.delegate = self;
+   
+    //Facebook
+    self.FacebookCheckbox.delegate = self;
+    self.FacebookCheckbox.rippleFromTapLocation = NO;
+    self.FacebookCheckbox.tapCirclePositiveColor = [UIColor blackColor];
+    self.FacebookCheckbox.tapCircleNegativeColor = [UIColor blackColor];
+    self.FacebookCheckbox.checkmarkColor = color_facebook;
+    self.FacebookCheckbox.tag = 1002;
+   
+    //Instagram
+    self.InstagramCheckbox.delegate = self;
+    self.InstagramCheckbox.rippleFromTapLocation = NO;
+    self.InstagramCheckbox.tapCirclePositiveColor = [UIColor blackColor];
+    self.InstagramCheckbox.tapCircleNegativeColor = [UIColor blackColor];
+    self.InstagramCheckbox.checkmarkColor = color_instagram;
+    self.InstagramCheckbox.tag = 1003;
+   
     SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     playerView.frame = self.filterSwitcherView.frame;
@@ -147,6 +173,7 @@
 }
 
 -(void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox{
+    
     if (checkbox == self.TwitterCheckbox) {
         self.TwitterComment.hidden = !checkbox.isChecked;
         VideoPostPreparation.postData.postOnTwitter = checkbox.isChecked;
@@ -180,8 +207,10 @@
                 VideoPostPreparation.postData.postOnTwitter = NO;
             }
         }];
+    }else if(checkbox == self.FacebookCheckbox){
         
-
+    }else if(checkbox == self.InstagramCheckbox){
+        
     }
 }
 - (IBAction)TwitterCommentEdit:(id)sender {
