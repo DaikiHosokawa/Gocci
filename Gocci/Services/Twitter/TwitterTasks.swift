@@ -12,7 +12,7 @@ import Foundation
 
 class TwitterVideoSharingTask: PersistentBaseTask {
     let tweetMessage: String
-    let relativeFilePath: String // relative to Library path
+    let relativeFilePath: String
     
     init(tweetMessage: String, relativeFilePath: String) {
         self.tweetMessage = tweetMessage
@@ -21,10 +21,10 @@ class TwitterVideoSharingTask: PersistentBaseTask {
     }
     
     override init?(dict: NSDictionary) {
-        self.tweetMessage = dict["tweetMessage"] as? String ?? ""
+        self.tweetMessage = dict["tweetMessage"] as? String ?? "__PLACEHOLDER_4283492084092__"
         self.relativeFilePath = dict["relativeFilePath"] as? String ?? ""
         super.init(dict: dict)
-        if tweetMessage == "" || relativeFilePath == "" { return nil }
+        if tweetMessage == "__PLACEHOLDER_4283492084092__" || relativeFilePath == "" { return nil }
     }
     
     override func dictonaryRepresentation() -> NSMutableDictionary {
@@ -48,8 +48,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
             try fm.removeItemAtURL(Util.absolutify(relativeFilePath))
         }
         catch {
-            sep("ERROR: TwitterVideoSharingTask")
-            log("File \(Util.absolutify(relativeFilePath)) hardlink could not be deleted. This should never happen. Investigate...")
+            err("File \(Util.absolutify(relativeFilePath)) hardlink could not be deleted. This should never happen. Investigate...")
         }
     }
     
@@ -62,8 +61,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
         let fullFilePathURL = Util.absolutify(relativeFilePath)
         
         guard NSFileManager.fileExistsAtURL(fullFilePathURL) else {
-            sep("ERROR: TwitterVideoSharingTask")
-            log("File \(fullFilePathURL) does not exist")
+            err("File \(fullFilePathURL) does not exist")
             finished(.FAILED_IRRECOVERABLE)
             return
         }
@@ -77,8 +75,7 @@ class TwitterVideoSharingTask: PersistentBaseTask {
             finished(.DONE)
         }
         sharer.onFailure = {
-            self.sep("FAILURE: TwitterVideoSharingTask")
-            self.log("Twitter posting failed because of \($0)")
+            self.err("Twitter posting failed because of \($0)")
             
             switch($0) {
             case .ERROR_VIDEO_FILE_IO:
@@ -98,11 +95,8 @@ class TwitterVideoSharingTask: PersistentBaseTask {
                 finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
                 
             case .ERROR_AUTHENTICATION:
-                
-                OverlayWindow.show { (viewController, hideAgain) -> () in
-                    
+                OverlayWindow.oneTimeViewController { viewController in
                     TwitterAuthentication.authenticate(currentViewController: viewController) { token in
-                        hideAgain() // TODO TEST THIS, however this is a very rare case...
                         finished( token == nil ? .FAILED_IRRECOVERABLE : .FAILED_RECOVERABLE)
                     }
                 }

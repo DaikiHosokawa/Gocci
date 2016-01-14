@@ -17,19 +17,23 @@ class FacebookAuthentication {
         var user_token: String
         var fbid: String
         
+        var hasPublishRights: Bool
+        
         var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
         
         init?() {
-            if Persistent.facebook_token == nil || Persistent.facebook_id == nil {
+            if Persistent.facebook_token == nil || Persistent.facebook_id == nil || Persistent.facebook_has_publish_rights == nil {
                 return nil
             }
             user_token = Persistent.facebook_token!
             self.fbid = Persistent.facebook_id!
+            hasPublishRights = Persistent.facebook_has_publish_rights!
         }
         
-        init(token: String, fbid:String) {
+        init(token: String, fbid:String, hasPublishRights: Bool) {
             user_token = token
             self.fbid = fbid
+            self.hasPublishRights = hasPublishRights
         }
         
         func savePersistent() {
@@ -40,6 +44,7 @@ class FacebookAuthentication {
         func cognitoFormat() -> String {
             return self.user_token
         }
+        
     }
     
     static var token: FacebookAuthentication.Token? = Token()
@@ -116,6 +121,30 @@ class FacebookAuthentication {
 //    
     
     
+    class func authenticateWithPublishRights(currentViewController cvc: UIViewController, and: Token?->())
+    {
+        authenticadedAndReadyToUse { success in
+            
+            if success && token!.hasPublishRights { // TODO look for other methods tovalidate if the token has the right. Check on the server side
+                // already logged in and token is usable
+                and(token!)
+            }
+            else {
+                // needs login
+                pureLoginProcedure(withPublishRights: true, fromViewController: cvc) { token in
+                    if token == nil {
+                        and(nil)
+                        return
+                    }
+                    
+                    // just in case
+                    authenticadedAndReadyToUse { success in
+                        and( success ? token! : nil )
+                    }
+                }
+            }
+        }
+    }
     
     
     class func authenticate(currentViewController cvc: UIViewController, and: Token?->())
@@ -143,24 +172,34 @@ class FacebookAuthentication {
         }
     }
     
-    class func pureLoginProcedure(withPublishRights wpr: Bool, fromViewController: UIViewController, and: Token?->()) {
+    class func pureLoginProcedure(withPublishRights wpr: Bool, fromViewController vc: UIViewController, and: Token?->()) {
         FBSDKSettings.setAppID(FACEBOOK_APP_ID)
         
-        FBSDKLoginManager().logInWithReadPermissions(wpr ? ["publish_actions"] : nil, fromViewController: fromViewController) {
-            (result, error) -> Void in
-            
+        let lambda: FBSDKLoginManagerRequestTokenHandler = { result, error in
+        
             if error == nil && !result.isCancelled {
-                
-                token = Token(token: FBSDKAccessToken.currentAccessToken().tokenString, fbid: FBSDKAccessToken.currentAccessToken().userID )
+            
+                token = Token(
+                    token: FBSDKAccessToken.currentAccessToken().tokenString,
+                    fbid: FBSDKAccessToken.currentAccessToken().userID,
+                    hasPublishRights: wpr )
                 
                 token?.savePersistent()
-                    
+                
                 and(token)
             }
             else {
                 and(nil)
             }
         }
+        
+        if wpr {
+            FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: vc, handler: lambda)
+        }
+        else {
+            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: vc, handler: lambda)
+        }
+    
     }
     
     class func loginWithFacebookIfNeeded(fromViewController:UIViewController, and:(LoginResult)->Void) { fatalError()  }
