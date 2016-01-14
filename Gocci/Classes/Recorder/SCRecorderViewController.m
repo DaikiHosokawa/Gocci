@@ -27,15 +27,11 @@
 
 #import "STPopup.h"
 #import "const.h"
+#import "Swift.h"
 
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
-// define Segue name
-static NSString * const SEGUE_GO_KAKAKUTEXT = @"goKakaku";
-static NSString * const SEGUE_GO_BEFORE_RECORDER = @"goBeforeRecorder";
-static NSString * const SEGUE_GO_POSTING = @"goPosting";
-static NSString * const SEGUE_GO_HITOKOTO = @"goHitokoto";
 
 static SCRecordSession *staticRecordSession;
 
@@ -85,6 +81,7 @@ static SCRecordSession *staticRecordSession;
     
     [super viewDidLoad];
     
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -103,39 +100,32 @@ static SCRecordSession *staticRecordSession;
     self.focusView.recorder = _recorder;
     [previewView addSubview:self.focusView];
 
-    
-#if 1
-    {
-        {
-            CGRect rect_page = CGRectMake(0, 383, 320, 183);
-            // 4inch
-            CGRect rect = [UIScreen mainScreen].bounds;
-            if (rect.size.height == 480) {
-                //3.5inch
-                rect_page = CGRectMake(0, 336, 320, 144);
-            }
-            else if (rect.size.height == 667) {
-                //4.7inch
-                rect_page = CGRectMake(0, 437, 375, 230);
-            }
-            else if (rect.size.height == 736) {
-                //5.5inch
-                rect_page = CGRectMake(0, 478, 414, 260);
-            }
-            scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
-            {
-                firstView = [SCFirstView create];
-                firstView.delegate = self;
-                secondView = [SCSecondView create];
-            }
-            [scrollpageview showInView:self.view first:firstView second:secondView];
-        }
+
+    CGRect rect_page = CGRectMake(0, 383, 320, 183);
+    // 4inch
+    CGRect rect = [UIScreen mainScreen].bounds;
+    if (rect.size.height == 480) {
+        //3.5inch
+        rect_page = CGRectMake(0, 336, 320, 144);
     }
+    else if (rect.size.height == 667) {
+        //4.7inch
+        rect_page = CGRectMake(0, 437, 375, 230);
+    }
+    else if (rect.size.height == 736) {
+        //5.5inch
+        rect_page = CGRectMake(0, 478, 414, 260);
+    }
+    
+    scrollpageview = [[SCScrollPageView alloc] initWithFrame:rect_page];
+    {
+        firstView = [SCFirstView create];
+        firstView.delegate = self;
+        secondView = [SCSecondView create];
+    }
+    [scrollpageview showInView:self.view first:firstView second:secondView];
 #endif
     
-#if (!TARGET_IPHONE_SIMULATOR)
-    
-#endif
 }
 
 
@@ -143,8 +133,7 @@ static SCRecordSession *staticRecordSession;
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    
-#if (!TARGET_IPHONE_SIMULATOR)
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [_recorder previewViewFrameChanged];
 #endif
 }
@@ -176,11 +165,24 @@ static SCRecordSession *staticRecordSession;
 {
     [super viewDidAppear:animated];
     
-#if (!TARGET_IPHONE_SIMULATOR)
-    
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [_recorder startRunning];
-
 #else
+    
+    // yes this is very ugly :) (well its not in live code, only debugging, and will be rewritten some day)
+    static bool hack = true;
+    
+    if (hack) {
+        [self showVideo];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    // oh sweet jesus...
+    hack = !hack;
+    
+
 #endif
 }
 
@@ -219,7 +221,7 @@ static SCRecordSession *staticRecordSession;
 // Focus
 - (void)recorderDidStartFocus:(SCRecorder *)recorder {
     
-#if (!TARGET_IPHONE_SIMULATOR)
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [self.focusView showFocusAnimation];
 #endif
 }
@@ -227,14 +229,14 @@ static SCRecordSession *staticRecordSession;
 
 - (void)recorderDidEndFocus:(SCRecorder *)recorder {
     
-#if (!TARGET_IPHONE_SIMULATOR)
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [self.focusView hideFocusAnimation];
 #endif
 }
 
 - (void)recorderWillStartFocus:(SCRecorder *)recorder {
     
-#if (!TARGET_IPHONE_SIMULATOR)
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [self.focusView showFocusAnimation];
 #endif
 }
@@ -304,7 +306,7 @@ static SCRecordSession *staticRecordSession;
     NSTimeInterval time_now = 0.0;
     NSTimeInterval time_max = RECORD_SECONDS;
     
-#if (!TARGET_IPHONE_SIMULATOR)
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     if (_recorder.session != nil) {
         NSLog(@"duration設定");
         currentTime = _recorder.session.duration;
