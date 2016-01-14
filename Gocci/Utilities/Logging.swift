@@ -67,7 +67,7 @@ extension Logable {
     }
     
     func err(head: String) {
-        self.dynamicType.sep(head)
+        self.dynamicType.err(head)
     }
 
 }
