@@ -167,8 +167,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [_player setItemByAsset:_recordSession.assetRepresentingSegments];
     NSLog(@"player:%@",_recordSession);
+#else
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"meat" ofType:@"mp4"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    
+    [_player setItemByUrl:url];
+
+#endif
+    
+
     [_player play];
 }
 
@@ -268,22 +278,27 @@
 //        VideoPostPreparation.postData.twitterTweetMsg = GOCCI_TWITTER_TAG;
 //    }
     
-    
-    
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     if (![VideoPostPreparation isReadyToSend])
     {
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
+#else
+    VideoPostPreparation.postData.prepared_restaurant = YES;
+    VideoPostPreparation.postData.rest_name = @"Non existing restaurant";
+#endif
     
     UIButton* sbut = (UIButton *)sender;
     sbut.enabled = false;
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
+    //SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
     
     [_player pause];
+    
+#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
     exportSession.videoConfiguration.filter = currentFilter;
@@ -318,6 +333,22 @@
             [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
         }];
     }];
+    
+#else
+    VideoPostPreparation.postData.cheer_flag = self.checkbox.isChecked;
+    VideoPostPreparation.postData.memo = self.textView.text;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"meat" ofType:@"mp4"];
+    NSURL* target = [[NSFileManager tmpDirectory] URLByAppendingPathComponent:@"meat.mp4"];
+    
+    [NSFileManager cp:[NSURL fileURLWithPath:path] target:target];
+    
+    [VideoPostPreparation initiateUploadTaskChain:target];
+    
+    [Permission showThePopupForPushNoticationsOnce:self after:^{
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+    }];
+#endif
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {

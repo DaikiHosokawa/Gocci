@@ -336,6 +336,7 @@
 		981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934D1BFC840A007B3BF6 /* TestTwitter.swift */; };
 		981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */; };
 		981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
+		985C27701C4798AA00DC58E2 /* meat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 985C276F1C4798AA00DC58E2 /* meat.mp4 */; };
 		9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
 		9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
 		9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
@@ -907,6 +908,7 @@
 		981A934D1BFC840A007B3BF6 /* TestTwitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTwitter.swift; sourceTree = "<group>"; };
 		981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFacebook.swift; sourceTree = "<group>"; };
 		981A93511BFEF3CA007B3BF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		985C276F1C4798AA00DC58E2 /* meat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = meat.mp4; path = Gocci/Debug/meat.mp4; sourceTree = "<group>"; };
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
 		986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = unfinished_upload_task.plist; path = Gocci/Debug/unfinished_upload_task.plist; sourceTree = "<group>"; };
@@ -2237,6 +2239,7 @@
 		987E51EB1BF9C32900339285 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				985C276F1C4798AA00DC58E2 /* meat.mp4 */,
 				986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */,
 				987E51F41BFB37AD00339285 /* restaurantlatlon.json */,
 				987E51F51BFB37AD00339285 /* thumbnail.jpg */,
@@ -2464,6 +2467,7 @@
 				9550DAA81BF83E4C00430942 /* ic_userpicture.png in Resources */,
 				9550DAB11BF83E4C00430942 /* tabbaritem_lifelog_sel@2x.png in Resources */,
 				9550DA591BF83E4C00430942 /* SCFirstViewMain.xib in Resources */,
+				985C27701C4798AA00DC58E2 /* meat.mp4 in Resources */,
 				9550DAA51BF83E4C00430942 /* Cancel.png in Resources */,
 				9550DA2C1BF83E4C00430942 /* FolloweeListCell.xib in Resources */,
 				9550DA901BF83E4C00430942 /* InfoPlist.strings in Resources */,
