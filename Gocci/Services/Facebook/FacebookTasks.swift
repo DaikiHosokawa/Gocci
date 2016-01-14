@@ -1,107 +1,130 @@
 //
-//  TwitterTasks.swift
+//  FacebookTasks.swift
 //  Gocci
 //
-//  Created by Markus Wanke on 30.11.15.
+//  Created by Markus Wanke on 13.01.16.
 //  Copyright © 2015 Massara. All rights reserved.
 //
 
 import Foundation
 
 
-
 class FacebookVideoSharingTask: PersistentBaseTask {
     let timelineMessage: String
-    let mp4filename: String
+    let relativeFilePath: String
     
-    init(timelineMessage: String, mp4filename: String) {
+    init(timelineMessage: String, relativeFilePath: String) {
         self.timelineMessage = timelineMessage
-        self.mp4filename = mp4filename
+        self.relativeFilePath = relativeFilePath
         super.init(identifier: String(self.dynamicType))
     }
     
     override init?(dict: NSDictionary) {
-        self.timelineMessage = dict["timelineMessage"] as? String ?? ""
-        self.mp4filename = dict["mp4filename"] as? String ?? ""
+        
+        self.timelineMessage = dict["timelineMessage"] as? String ?? "__PLACEHOLDER_4283492084092__"
+        self.relativeFilePath = dict["relativeFilePath"] as? String ?? ""
         super.init(dict: dict)
-        if timelineMessage == "" || mp4filename == "" { return nil }
+        if timelineMessage == "__PLACEHOLDER_4283492084092__" || relativeFilePath == "" { return nil }
     }
     
     override func dictonaryRepresentation() -> NSMutableDictionary {
         let dict = super.dictonaryRepresentation()
         dict["timelineMessage"] = timelineMessage
-        dict["mp4filename"] = mp4filename
+        dict["relativeFilePath"] = relativeFilePath
         return dict
     }
     
     override func equals(task: PersistentBaseTask) -> Bool {
         if let task = task as? FacebookVideoSharingTask {
-            return task.timelineMessage == timelineMessage && task.mp4filename == mp4filename
+            return task.timelineMessage == timelineMessage && task.relativeFilePath == relativeFilePath
         }
         return false
     }
     
+    override func teardown() {
+        // hard link not needed anymore
+        let fm = NSFileManager.defaultManager()
+        do {
+            try fm.removeItemAtURL(Util.absolutify(relativeFilePath))
+        }
+        catch {
+            sep("ERROR: FacebookVideoSharingTask")
+            log("File \(Util.absolutify(relativeFilePath)) hardlink could not be deleted. This should never happen. Investigate...")
+        }
+    }
+    
     override func run(finished: State->()) {
         
-        // TO BE DONE
-        fatalError()
+        sep("PERFORM: FacebookVideoSharingTask")
+        log("timelineMessage = \(timelineMessage)")
+        log("relativeFilePath = \(relativeFilePath)")
         
-        let mp4URL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+        let fullFilePathURL = Util.absolutify(relativeFilePath)
+        
+        guard NSFileManager.fileExistsAtURL(fullFilePathURL) else {
+            err("File \(fullFilePathURL) does not exist")
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
         
         
-//        // TODO TRANSLATION
-//        let sharer = FacebookSharing(WORK IN PR
-//        sharer.onSuccess = {
-//            Toast.成功("Video sharing", "Video waas successfully posted on twitter.")
-//            print("Twitter posting sucessful: Post ID: " + $0)
-//            finished(.DONE)
-//        }
-//        sharer.onFailure = {
-//            print("Twitter posting shippai: \($0)")
-//            
-//            switch($0) {
-//            case .ERROR_VIDEO_FILE_IO:
-//                finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
-//                
-//            case .ERROR_NETWORK:
-//                //Toast.情報("Twitter video sharing", "Network appears to be unstable. Will retry later")
-//                
-//                finished(PersistentBaseTask.State.FAILED_NETWORK)
-//                
-//            case .ERROR_TWITTER_API:
-//                // TODO more punishmend. set retry count or extend waiting time
-//                finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
-//                
-//            case .ERROR_TWEET_MESSAGE_OVER_140:
-//                // TODO show the user a screen where he can rewrite the message.
-//                // Use the OverlayWindow class for that because you do not have any view Controllers here
-//                finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
-//                
-//            case .ERROR_AUTHENTICATION:
-//                
-//                OverlayWindow.show { (viewController, hideAgain) -> () in
-//                    
-//                    TwitterAuthentication.authenticate(currentViewController: viewController,
-//                        onSuccess: { (token) -> () in
-//                            Toast.成功("Twitter login successful.", "Will retry to post video on twitter")
-//                            finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
-//                        },
-//                        onFailure: {
-//                            Toast.失敗("Twitter login failed.", "Video will not be posted on Twitter")
-//                            finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
-//                        }
-//                    )
-//                }
-//            }
-//        }
-//        sharer.tweetVideo(localVideoFileURL: mp4URL, message: timelineMessage)
+        let sharer = FacebookSharing()
+        sharer.onSuccess = {
+            //Toast.成功("Video sharing", "Video was successfully posted on Facebook.")
+            self.sep("SUCCESS: FacebookVideoSharingTask")
+            self.log("Facebook posting sucessful: Post ID: \($0)")
+            finished(.DONE)
+        }
+        sharer.onFailure = {
+            self.err("Facebook posting failed because of \($0)")
+            
+            switch($0) {
+            case .ERROR_VIDEO_FILE_IO:
+                finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
+                
+            case .ERROR_NETWORK:
+                //Toast.情報("Facebook video sharing", "Network appears to be unstable. Will retry later")
+                finished(PersistentBaseTask.State.FAILED_NETWORK)
+                
+            case .ERROR_FACEBOOK_API:
+                // TODO more punishmend. set retry count or extend waiting time
+                finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
+                
+            case .ERROR_AUTHENTICATION:
+                
+                OverlayWindow.oneTimeViewController { viewController in
+                    
+                    FacebookAuthentication.authenticateWithPublishRights(currentViewController: viewController) { token in
+                        finished( token == nil ? .FAILED_IRRECOVERABLE : .FAILED_RECOVERABLE)
+                    }
+                }
+            }
+        }
+        sharer.shareVideoOnFacebook(fullFilePathURL, description: timelineMessage, thumbnail: nil)
     }
     
     override var description: String {
-        return super.description + " timelineMessage: \(timelineMessage), MP4File: \(mp4filename)"
+        return super.description + " timelineMessage: \(timelineMessage), MP4File: \(relativeFilePath)"
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
