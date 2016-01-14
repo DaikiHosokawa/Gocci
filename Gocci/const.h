@@ -12,17 +12,22 @@
 
 /// #######################################################################################
 // The app will start with a debug screen to test logins etc.
-#define START_WITH_DEBUG_SCREEN
+//#define START_WITH_DEBUG_SCREEN
 
 /// #######################################################################################
 // Userdata will be deleted everytime the app starts
 //#define FRESH_START
 
 /// #######################################################################################
+// Video recording is skipped and a default video is choosen to safe time and use the simulator
+#define SKIP_VIDEO_RECORDING
+
+/// #######################################################################################
 //#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
 //#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
 
 /// #######################################################################################
+
 
 // INDEVEL is gone now, please use:
 //#if TEST_BUILD
@@ -75,11 +80,6 @@
     #define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp")
 #endif
 
-
-// Test Facebook I dont really want to use this anymore
-//#define FACEBOOK_APP_ID (@"148392115499214")
-//#define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
-//#define FACEBOOK_STORY_ACTION_ID (@"gocci_test:record")
 
 #if TEST_BUILD
     #define FACEBOOK_APP_ID (@"977612005613710")

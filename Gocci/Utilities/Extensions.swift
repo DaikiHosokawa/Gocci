@@ -134,8 +134,34 @@ extension NSUserDefaults {
 
 extension NSFileManager {
     
-    class func rm(fileToDelete: NSURL) {
-        let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileToDelete)
+    class func rm(fileToDelete: NSURL) -> Bool {
+        if let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileToDelete) { return true }
+        return false
+    }
+    
+    class func cp(fileToCopy: NSURL, target: NSURL) {
+        var realTarget = target
+        var isDir : ObjCBool = false
+        
+        guard fileExistsAtURL(fileToCopy) else {
+            Lo.error("fileToCopy: \(fileToCopy) does not exist.")
+            fatalError()
+        }
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(target.path!, isDirectory:&isDir) {
+            if isDir {
+                // target exists and is a directory
+                realTarget = realTarget.URLByAppendingPathComponent(fileToCopy.lastPathComponent!)
+            } else {
+                // target exists and is not a directory
+                if !rm(target) {
+                    Lo.error("fileToCopy: can't delete blocking file: \(target)")
+                        fatalError()
+                }
+            }
+        }
+        
+        try! NSFileManager.defaultManager().copyItemAtURL(fileToCopy, toURL: realTarget)
     }
     
     class func fileExistsAtPath(filePath: String) -> Bool {
