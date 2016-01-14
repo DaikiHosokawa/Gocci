@@ -10,9 +10,107 @@ import Foundation
 import FBSDKShareKit
 
 
+class FacebookSharing {
+    
+    enum FacebookSharingError: ErrorType {
+        case ERROR_VIDEO_FILE_IO(String)
+        case ERROR_FACEBOOK_API(String)
+        case ERROR_NETWORK(String)
+        case ERROR_AUTHENTICATION(String)
+    }
+    
+    var onSuccess: ((facebookPostID: String)->Void)? = nil
+    var onFailure: ((error: FacebookSharingError)->Void)? = nil
+    
+    // TODO title
+    // the thumbnail does not work, not my fault, facebooks fault. They don't support their own API...
+    func shareVideoOnFacebook(localVideoFileURL: NSURL, description: String, thumbnail: NSURL?) {
+        
+        // copies the behaviour of:
+        // curl -F "access_token=$TOKEN" -F 'source=@videofile.mp4' -F "description=" 'https://graph-video.facebook.com/me/videos'
+        
+        let url = NSURL(string: "https://graph-video.facebook.com/me/videos")!
+        
+        guard let rawVideoData = NSData(contentsOfURL: localVideoFileURL) else {
+            onFailure?(error: .ERROR_VIDEO_FILE_IO("Could not open video file and turn it into NSData"))
+            return
+        }
+        
+        var rawThumbData: NSData? = nil
+        if thumbnail != nil {
+            rawThumbData = NSData(contentsOfURL: thumbnail!)
+        }
+        
+        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 30.0)
+        request.HTTPMethod = "POST"
+        request.HTTPShouldHandleCookies = false
+        
+        
+        /* HAS TO LOOK LIKE THIS:
+        
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="access_token"
+        
+        CAAJkM7KbcYYBA......
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="source"; filename="twosec.mp4"
+        Content-Type: application/octet-stream
+        
+        VIDEO_DATA
+        --------------------------a2ecb5ac777fef89
+        Content-Disposition: form-data; name="description"
+        
+        Test 13918
+        --------------------------a2ecb5ac777fef89--
+        */
+        let formdata = ServiceUtil.FormData()
+        request.setValue("multipart/form-data; boundary=" + formdata.boundary, forHTTPHeaderField: "Content-Type")
+        
+        guard let token = FacebookAuthentication.token else {
+            self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token does not exist"))
+            return
+        }
+        
+        guard token.hasPublishRights else {
+            self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token exists but has no publish rights"))
+            return
+        }
+        
+        formdata.appendDisposition(name: "access_token", value: token.user_token)
+        formdata.appendFileDisposition(name: "source", filename: "gocci.mp4", data: rawVideoData)
+        if rawThumbData != nil {
+            formdata.appendFileDisposition(name: "thumb", filename: "thumb.jpg", data: rawThumbData!)
+        }
+        
+        formdata.appendDisposition(name: "description", value: description)
+        
+        request.HTTPBody = formdata.generateRequestBody()
+        request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
+        
+        ServiceUtil.performRequest(request,
+            onSuccess: { statusCode, data in
+                if statusCode == 200 {
+                    self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
+                }
+                else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
+                    self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token existed but was not valid anymore or has wrong rights maybe"))
+                }
+                else {
+                    //   print(JSON(data: data).rawString() ?? "json unparseable")
+                    let fberr = JSON(data: data)["error"]["message"].string ?? "no error message"
+                    self.onFailure?(error: .ERROR_FACEBOOK_API("HTTP Code: \(statusCode). FACEBOOK ERROR: \(fberr)"))
+                }
+            },
+            onFailure: { errorMessage in
+                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
+            }
+        )
+        
+    }
+}
 
 
-@objc class FacebookSharing: NSObject {
+@objc class FacebookStorySharing: NSObject {
     
     let fromViewController: UIViewController
     let dummyDelegate = FaceBookShareDelegateDummyWrapper()
@@ -25,7 +123,7 @@ import FBSDKShareKit
     enum FacebookSharingError: ErrorType {
         case ERROR_FACEBOOK_API(String)
         case ERROR_NETWORK(String)
-        case ERROR_AUTHENTICATION
+        case ERROR_AUTHENTICATION(String)
     }
     
 
@@ -37,7 +135,7 @@ import FBSDKShareKit
     
     class FaceBookShareDelegateDummyWrapper: NSObject, FBSDKSharingDelegate {
         
-        var master: FacebookSharing? // we use a automatic referene counting hack here. do not turn this into 'weak' or 'unowned'!
+        var master: FacebookStorySharing? // we use a automatic referene counting hack here. do not turn this into 'weak' or 'unowned'!
 
         func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
             let postid = (results as? [String:String])?["postId"]
@@ -116,7 +214,7 @@ import FBSDKShareKit
                     self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
                 }
                 else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
-                    self.onFailure?(error: .ERROR_AUTHENTICATION)
+                    self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token existed but was not valid anymore or has wrong rights maybe"))
                 }
                 else {
                  //   print(JSON(data: data).rawString() ?? "json unparseable")

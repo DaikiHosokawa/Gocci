@@ -29,6 +29,27 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
     
+    
+//    override func viewWillAppear(animated: Bool) {
+//        Lo.error("OverlayViewController: viewDidLoad")
+//        super.viewWillAppear(animated)
+//    }
+//    
+//    override func viewDidAppear(animated: Bool) {
+//        Lo.error("OverlayViewController: viewDidAppear")
+//        super.viewDidAppear(animated)
+//    }
+//    
+//    override func viewWillDisappear(animated: Bool) {
+//        Lo.error("OverlayViewController: viewWillDisappear")
+//        super.viewWillDisappear(animated)
+//    }
+//    
+//    override func viewDidDisappear(animated: Bool) {
+//        Lo.error("OverlayViewController: viewDidDisappear")
+//        super.viewDidDisappear(animated)
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,36 +65,53 @@ class DebugViewController : UIViewController {
 //        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
     }
     
-//    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CompletePopup new]];
-//}
-//}];
-//
-//}
-//}
-//
-
-    func pop(vc: UIViewController) {
-
-        let popup = STPopupController(rootViewController: vc)
-        popup.cornerRadius = 4
-        popup.transitionStyle = STPopupTransitionStyle.Fade
-        STPopupNavigationBar.appearance().barTintColor = UIColor(red: 247.0/255.0, green: 85.0/255.0, blue: 51.0/255.0, alpha: 1.0)
-        STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
-        STPopupNavigationBar.appearance().barStyle = UIBarStyle.Default
-        //        STPopupNavigationBar.appearance().titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
-        
-        
-        //
-        //            [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil, nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
-        
-        
-        popup.presentInViewController(self)
-    }
-
 
 
     
     @IBAction func explode(sender: AnyObject) {
+        
+        
+        //OverlayWindow.oneTimeViewController { viewController in
+            
+            //viewController.simplePopup("Bla", "Blabla", "ROFL", and: hideAgain)
+            
+            
+//            let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler { success in
+//                print(success)
+//            }
+//            
+//            Util.runOnMainThread{
+//                self.presentViewController(vc, animated: true, completion: nil)
+//            }
+        
+            
+            
+//            FBSDKSettings.setAppID(FACEBOOK_APP_ID)
+//            
+//            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: viewController) {
+//                (result, error) -> Void in
+//            }
+       // }
+        
+        //return;
+        
+        
+        
+        let vidURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
+        
+        print(vidURL)
+        
+        let target = NSFileManager.documentsDirectory() + "/twosec.mp4"
+        if !NSFileManager.fileExistsAtPath(target) {
+            try! NSFileManager.defaultManager().copyItemAtURL(vidURL, toURL: NSURL.fileURLWithPath(target))
+        }
+
+        FacebookVideoSharingTask(timelineMessage: Util.randomKanjiStringWithLength(30), relativeFilePath: "/Documents/twosec.mp4").schedule()
+
+        
+        
+        
+        return;
         
         
         
@@ -172,15 +210,6 @@ class DebugViewController : UIViewController {
         //let dt = "0000000077777777777777777777777777777777777777777777777700000000"
         
         //RegisterForPushMessagesTask(deviceToken: dt).schedule()
-        
-
-        let p = requestPushPopupViewController()
-        
-        self.pop(p)
-        
-        
-        return;
-        
         
         APIHighLevel.simpleLogin {
             if $0 {
@@ -372,28 +401,6 @@ class DebugViewController : UIViewController {
         
         
         
-        OverlayWindow.show { (viewController, hideAgain) -> () in
-            
-//            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: viewController) {
-//                (result, error) -> Void in
-//                hideAgain()
-//            }
-            TwitterAuthentication.authenticate(currentViewController: viewController,
-                and: { (token) -> () in
-                    hideAgain()
-                }
-            )
-//
-//            let alert = UIAlertController(title: "Hello!", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
-//            
-//            alert.addAction(UIAlertAction(title: "OK!", style: UIAlertActionStyle.Destructive) { _ in
-//                hideAgain()
-//                })
-//            
-//            viewController.presentViewController(alert, animated: true) { () -> Void in }
-        }
-        
-        return;
         
         
 //        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
@@ -666,7 +673,7 @@ class DebugViewController : UIViewController {
         let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
         let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
         
-        let sharer = FacebookSharing(fromViewController: self)
+        let sharer = FacebookStorySharing(fromViewController: self)
         sharer.onSuccess = { print($0) }
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
@@ -685,7 +692,7 @@ class DebugViewController : UIViewController {
         let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
         let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
         
-        let sharer = FacebookSharing(fromViewController: self)
+        let sharer = FacebookStorySharing(fromViewController: self)
         sharer.onSuccess = { print($0) }
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
@@ -698,7 +705,7 @@ class DebugViewController : UIViewController {
     
     @IBAction func d(sender: AnyObject) {
 
-        let sharer = FacebookSharing(fromViewController: self)
+        let sharer = FacebookStorySharing(fromViewController: self)
         sharer.onSuccess = { print($0) }
         sharer.onFailure = { print($0) }
         sharer.onCancel = { print("canceld :(") }
