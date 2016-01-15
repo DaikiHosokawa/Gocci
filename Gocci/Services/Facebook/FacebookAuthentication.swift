@@ -19,8 +19,6 @@ class FacebookAuthentication {
         
         var hasPublishRights: Bool
         
-        var gocci_secret: String { return TWITTER_CONSUMER_SECRET }
-        
         init?() {
             if Persistent.facebook_token == nil || Persistent.facebook_id == nil || Persistent.facebook_has_publish_rights == nil {
                 return nil
@@ -39,6 +37,7 @@ class FacebookAuthentication {
         func savePersistent() {
             Persistent.facebook_token = user_token
             Persistent.facebook_id = fbid
+            Persistent.facebook_has_publish_rights = hasPublishRights
         }
         
         func cognitoFormat() -> String {

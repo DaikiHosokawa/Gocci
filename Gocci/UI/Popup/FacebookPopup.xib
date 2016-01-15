@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacebookPopup" customModule="Gocci" customModuleProvider="target">
@@ -58,16 +57,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="89T-Xp-EO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="19T-iF-Wg7"/>
-                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="1EH-Fn-b9Z"/>
-                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" id="Bcw-Zs-VFF"/>
-                <constraint firstItem="i9k-i3-Z7G" firstAttribute="leading" secondItem="89T-Xp-EO9" secondAttribute="leading" id="ENN-ZG-Z4p"/>
-                <constraint firstItem="i9k-i3-Z7G" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="RvM-Mm-lsd"/>
-                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="top" secondItem="i9k-i3-Z7G" secondAttribute="bottom" constant="8" id="UoJ-4A-n34"/>
-                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="i9k-i3-Z7G" secondAttribute="leading" id="VPj-GY-qL8"/>
-                <constraint firstItem="89T-Xp-EO9" firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" id="ghV-2L-pdT"/>
-                <constraint firstItem="i9k-i3-Z7G" firstAttribute="top" secondItem="89T-Xp-EO9" secondAttribute="bottom" constant="8" id="nuf-hs-5MA"/>
-                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="xMP-n2-Gnw"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="top" secondItem="i9k-i3-Z7G" secondAttribute="bottom" constant="8" id="E5U-vU-gn9"/>
+                <constraint firstAttribute="trailing" secondItem="89T-Xp-EO9" secondAttribute="trailing" constant="8" id="Eh7-Sd-1Dm"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="top" secondItem="89T-Xp-EO9" secondAttribute="bottom" constant="8" id="GGJ-fB-OSO"/>
+                <constraint firstAttribute="trailing" secondItem="Ms2-FZ-RKC" secondAttribute="trailing" constant="8" id="MUT-ub-0ok"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="NHI-gK-Frn"/>
+                <constraint firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" constant="8" id="RmX-wG-tC3"/>
+                <constraint firstAttribute="bottom" secondItem="Ms2-FZ-RKC" secondAttribute="bottom" constant="8" id="d5W-QL-ra3"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lQF-bT-YOg"/>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="pEv-9Y-FYF"/>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="xKd-yb-Z6M"/>
             </constraints>
         </view>
     </objects>
