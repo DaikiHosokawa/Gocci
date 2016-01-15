@@ -218,8 +218,12 @@
             }
         }];
     }else if(checkbox == self.FacebookCheckbox){
+        self.FacebookComment.hidden = !checkbox.isChecked;
+
         
     }else if(checkbox == self.InstagramCheckbox){
+        self.InstagramComment.hidden = !checkbox.isChecked;
+
         
     }
 }
