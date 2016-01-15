@@ -22,10 +22,18 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var insertRestNameButton: UIButton!
     
     var entryText: String!
     
     
+    
+    @IBAction func insertRestNameClicked(sender: AnyObject) {
+        
+        textView.text = textView.text + " #" + VideoPostPreparation.postData.rest_name + " "
+        textViewDidChange(textView)
+    }
+
     
     
     func textViewDidChange(textView: UITextView) {
