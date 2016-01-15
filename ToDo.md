@@ -1,6 +1,9 @@
 
 
+Bugs
+====
 
+- Take video, enter rest data, return without posting, take video again, old data remains
 
 Very Important
 ==============
@@ -10,18 +13,13 @@ Very Important
 Needs Testing
 =============
 
-- Icon badge was complety rewritten. Does this still work?
-    - Confirmed that it works. Push Messages was not testet though
+
 
 - Push Messages:
     - Do they produce an icon badge?
     - Does it work if Gocci is in Background AND if Gocci is not running at all?
 
-- Login
 
-- Upload
-
-- live branch conversion error
 
 
 Would be cool
@@ -38,7 +36,7 @@ Markus Wanke
 ============
 
 
-- Let the user dice what messages he wants. Gettings 100 likes is not fun maybe, but he probably wants to see the messages
+- Let the user decide what messages he wants. Gettings 100 likes is not fun maybe, but he probably wants to see the messages
 
 - If the user declines camera and/or mic permission, the user will never be able to take a video
 

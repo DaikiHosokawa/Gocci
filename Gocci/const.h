@@ -20,7 +20,7 @@
 
 /// #######################################################################################
 // Video recording is skipped and a default video is choosen to safe time and use the simulator
-#define SKIP_VIDEO_RECORDING
+//#define SKIP_VIDEO_RECORDING
 
 /// #######################################################################################
 //#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")

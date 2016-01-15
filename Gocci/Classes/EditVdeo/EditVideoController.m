@@ -294,7 +294,7 @@
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    //SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
+    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
     
     [_player pause];
     
