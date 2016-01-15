@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacebookPopup" customModule="Gocci" customModuleProvider="target">
+            <connections>
+                <outlet property="textView" destination="89T-Xp-EO9" id="jlk-6Q-Wfo"/>
+                <outlet property="view" destination="iN0-l3-epB" id="YOT-OG-5t8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89T-Xp-EO9">
+                    <rect key="frame" x="8" y="8" width="584" height="506"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9k-i3-Z7G">
+                    <rect key="frame" x="8" y="522" width="584" height="31"/>
+                    <color key="backgroundColor" red="0.91764705879999997" green="0.23529411759999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="店名を入力する">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="insertRestNameClicked:" destination="-1" eventType="touchUpInside" id="4Lp-R7-vF3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ms2-FZ-RKC">
+                    <rect key="frame" x="8" y="561" width="584" height="31"/>
+                    <color key="backgroundColor" red="0.91764705879999997" green="0.23529411759999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="Facebookに投稿">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="sendClicked:" destination="-1" eventType="touchUpInside" id="DBO-FK-N4P"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="19T-iF-Wg7"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="1EH-Fn-b9Z"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" id="Bcw-Zs-VFF"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="leading" secondItem="89T-Xp-EO9" secondAttribute="leading" id="ENN-ZG-Z4p"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="RvM-Mm-lsd"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="top" secondItem="i9k-i3-Z7G" secondAttribute="bottom" constant="8" id="UoJ-4A-n34"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="i9k-i3-Z7G" secondAttribute="leading" id="VPj-GY-qL8"/>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" id="ghV-2L-pdT"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="top" secondItem="89T-Xp-EO9" secondAttribute="bottom" constant="8" id="nuf-hs-5MA"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="xMP-n2-Gnw"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

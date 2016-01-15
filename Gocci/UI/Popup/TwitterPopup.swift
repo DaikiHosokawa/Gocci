@@ -1,5 +1,5 @@
 //
-//  FeedbackPopup.swift
+//  TwitterPopup.swift
 //  Gocci
 //
 //  Created by Ma Wa on 15.12.15.
@@ -11,7 +11,7 @@ import Foundation
 
 @objc class TwitterPopupBridge: NSObject {
     class func pop(from: UIViewController, initialTweet: String) {
-        let tp = TwitterPopup(from: from, title: "Twitter", widthRatio: 80, heightRatio: 35)
+        let tp = TwitterPopup(from: from, title: "Twitter", widthRatio: 80, heightRatio: 40)
         tp.entryText = initialTweet
         tp.pop()
     }
@@ -29,8 +29,9 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
     
     
     @IBAction func insertRestNameClicked(sender: AnyObject) {
-        
-        textView.text = textView.text + " #" + VideoPostPreparation.postData.rest_name + " "
+        if VideoPostPreparation.postData.rest_name != "" {
+            textView.text = textView.text + "#" + VideoPostPreparation.postData.rest_name
+        }
         textViewDidChange(textView)
     }
 
