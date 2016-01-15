@@ -1571,9 +1571,9 @@
 		9550D9461BF83E4B00430942 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
 				9517766F1C2105EB008E9F39 /* TwitterPopup.swift */,
 				951776701C2105EB008E9F39 /* TwitterPopup.xib */,
-				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
 				9550D9481BF83E4B00430942 /* WebViewPopup.swift */,
 				9550D9491BF83E4B00430942 /* WebViewPopup.xib */,
 				98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */,
