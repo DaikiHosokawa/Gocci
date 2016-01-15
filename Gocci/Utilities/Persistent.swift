@@ -133,7 +133,7 @@ import Foundation
     }
     class var facebook_has_publish_rights: Bool! {
         get { return cache.facebook_has_publish_rights }
-        set(v) { cache.facebook_has_publish_rights = v ; setBool(v!, forKey: "facebook_id") }
+        set(v) { cache.facebook_has_publish_rights = v ; setBool(v!, forKey: "facebook_has_publish_rights") }
     }
     class var user_id: String! {
         get { return cache.user_id }
