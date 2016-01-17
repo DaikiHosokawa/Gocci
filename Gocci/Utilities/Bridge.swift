@@ -20,6 +20,10 @@ import Foundation
         TwitterAuthentication.authenticate(currentViewController: vc, and: { and( $0 != nil ) } )
     }
     
+    class func authenticateWithFacebookWithPublishRIghtsIfNecessary(vc: UIViewController, and: Bool->()) {
+        FacebookAuthentication.authenticateWithPublishRights(currentViewController: vc, and: { and( $0 != nil ) } )
+    }
+    
     class func videoTweetMessageRemainingCharacters(tweet: String) -> Int {
         return TwitterSharing.videoTweetMessageRemainingCharacters(tweet)
     }

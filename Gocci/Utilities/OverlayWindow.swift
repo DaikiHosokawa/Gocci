@@ -33,7 +33,7 @@ class OverlayWindow {
             }
             
             ovc.whenReady = userSpaceFunction
-                
+            
             window.rootViewController = ovc
             
             window.makeKeyAndVisible()
@@ -49,7 +49,7 @@ class OverlayWindow {
         var cleanUp: ()->() = {}
         
         override func viewWillAppear(animated: Bool) {
-//            Lo.error("BEFORE OverlayViewController: viewDidLoad")
+            //            Lo.error("BEFORE OverlayViewController: viewDidLoad")
             super.viewWillAppear(animated)
             
             if whenReady == nil {
@@ -59,7 +59,7 @@ class OverlayWindow {
         }
         
         override func viewDidAppear(animated: Bool) {
-//            Lo.error("BEFORE OverlayViewController: viewDidAppear")
+            //            Lo.error("BEFORE OverlayViewController: viewDidAppear")
             super.viewDidAppear(animated)
             
             if let showOverLayUserStuff = whenReady {
@@ -70,17 +70,17 @@ class OverlayWindow {
             //Lo.error("AFTER  OverlayViewController: viewDidAppear")
         }
         
-//        override func viewWillDisappear(animated: Bool) {
-//            Lo.error("BEFORE OverlayViewController: viewWillDisappear")
-//            super.viewWillDisappear(animated)
-//            //Lo.error("AFTER  OverlayViewController: viewWillDisappear")
-//        }
-//        
-//        override func viewDidDisappear(animated: Bool) {
-//            Lo.error("BEFORE OverlayViewController: viewDidDisappear")
-//            super.viewDidDisappear(animated)
-//            //Lo.error("AFTER  OverlayViewController: viewDidDisappear")
-//        }
+        //        override func viewWillDisappear(animated: Bool) {
+        //            Lo.error("BEFORE OverlayViewController: viewWillDisappear")
+        //            super.viewWillDisappear(animated)
+        //            //Lo.error("AFTER  OverlayViewController: viewWillDisappear")
+        //        }
+        //
+        //        override func viewDidDisappear(animated: Bool) {
+        //            Lo.error("BEFORE OverlayViewController: viewDidDisappear")
+        //            super.viewDidDisappear(animated)
+        //            //Lo.error("AFTER  OverlayViewController: viewDidDisappear")
+        //        }
         
     }
 }

@@ -376,6 +376,8 @@
 		98FED72E1C26C6E7008C8927 /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
 		98FED7301C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
 		98FED7311C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
+		98FFDE681C48FC8E002B6400 /* FacebookPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98FFDE671C48FC8E002B6400 /* FacebookPopup.xib */; };
+		98FFDE6A1C48FCA5002B6400 /* FacebookPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FFDE691C48FCA5002B6400 /* FacebookPopup.swift */; };
 		BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA691AB29C9000B4F63A /* Twitter.framework */; };
 		BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */; };
 		FF0BE44E193ED5A7001A0053 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0BE44D193ED5A7001A0053 /* CoreData.framework */; };
@@ -940,6 +942,8 @@
 		98D3FFEA1C26C63500751CAF /* APILowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILowLevel.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
 		98FED72F1C26E471008C8927 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Export.swift; path = Utilities/Export.swift; sourceTree = "<group>"; };
+		98FFDE671C48FC8E002B6400 /* FacebookPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookPopup.xib; sourceTree = "<group>"; };
+		98FFDE691C48FCA5002B6400 /* FacebookPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookPopup.swift; sourceTree = "<group>"; };
 		BFA1DA691AB29C9000B4F63A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BFA1DA6B1AB29C9500B4F63A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FF0BE423193CAB31001A0053 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1572,6 +1576,8 @@
 			isa = PBXGroup;
 			children = (
 				9550D9471BF83E4B00430942 /* AbstractPopup.swift */,
+				98FFDE691C48FCA5002B6400 /* FacebookPopup.swift */,
+				98FFDE671C48FC8E002B6400 /* FacebookPopup.xib */,
 				9517766F1C2105EB008E9F39 /* TwitterPopup.swift */,
 				951776701C2105EB008E9F39 /* TwitterPopup.xib */,
 				9550D9481BF83E4B00430942 /* WebViewPopup.swift */,
@@ -2483,6 +2489,7 @@
 				9550DACB1BF83E4C00430942 /* 3_5_inch.storyboard in Resources */,
 				9550DA1F1BF83E4C00430942 /* Sample4TableViewCell.xib in Resources */,
 				9550DAC31BF83E4C00430942 /* ui_black.png in Resources */,
+				98FFDE681C48FC8E002B6400 /* FacebookPopup.xib in Resources */,
 				9550DAAA1BF83E4C00430942 /* icon_record_cam@2x.png in Resources */,
 				9550DA9E1BF83E4C00430942 /* Images.xcassets in Resources */,
 				9550DAA41BF83E4C00430942 /* btn_toukou@2x.png in Resources */,
@@ -2687,6 +2694,7 @@
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
 				958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
+				98FFDE6A1C48FCA5002B6400 /* FacebookPopup.swift in Sources */,
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
 				9550DAC61BF83E4C00430942 /* ConfirmationPopover.swift in Sources */,

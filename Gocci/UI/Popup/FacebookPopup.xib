@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacebookPopup" customModule="Gocci" customModuleProvider="target">
+            <connections>
+                <outlet property="textView" destination="89T-Xp-EO9" id="jlk-6Q-Wfo"/>
+                <outlet property="view" destination="iN0-l3-epB" id="YOT-OG-5t8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89T-Xp-EO9">
+                    <rect key="frame" x="8" y="8" width="584" height="506"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9k-i3-Z7G">
+                    <rect key="frame" x="8" y="522" width="584" height="31"/>
+                    <color key="backgroundColor" red="0.91764705879999997" green="0.23529411759999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="店名を入力する">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="insertRestNameClicked:" destination="-1" eventType="touchUpInside" id="4Lp-R7-vF3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ms2-FZ-RKC">
+                    <rect key="frame" x="8" y="561" width="584" height="31"/>
+                    <color key="backgroundColor" red="0.91764705879999997" green="0.23529411759999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="Facebookに投稿">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="sendClicked:" destination="-1" eventType="touchUpInside" id="DBO-FK-N4P"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="top" secondItem="i9k-i3-Z7G" secondAttribute="bottom" constant="8" id="E5U-vU-gn9"/>
+                <constraint firstAttribute="trailing" secondItem="89T-Xp-EO9" secondAttribute="trailing" constant="8" id="Eh7-Sd-1Dm"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="top" secondItem="89T-Xp-EO9" secondAttribute="bottom" constant="8" id="GGJ-fB-OSO"/>
+                <constraint firstAttribute="trailing" secondItem="Ms2-FZ-RKC" secondAttribute="trailing" constant="8" id="MUT-ub-0ok"/>
+                <constraint firstItem="i9k-i3-Z7G" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="NHI-gK-Frn"/>
+                <constraint firstAttribute="trailing" secondItem="i9k-i3-Z7G" secondAttribute="trailing" constant="8" id="RmX-wG-tC3"/>
+                <constraint firstAttribute="bottom" secondItem="Ms2-FZ-RKC" secondAttribute="bottom" constant="8" id="d5W-QL-ra3"/>
+                <constraint firstItem="Ms2-FZ-RKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lQF-bT-YOg"/>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="pEv-9Y-FYF"/>
+                <constraint firstItem="89T-Xp-EO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="xKd-yb-Z6M"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

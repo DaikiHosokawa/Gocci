@@ -39,6 +39,9 @@ import Foundation
         var twitterTweetMsg: String = ""
         var twitterRelativeVideoFilename = ""
         
+        var postOnFacebook: Bool = false
+        var facebookTimelineMessage: String = ""
+        var facebookRelativeVideoFilename = ""
     }
     
     @objc static var postData = PostData()
@@ -94,6 +97,10 @@ import Foundation
             TwitterVideoSharingTask(tweetMessage: postData.twitterTweetMsg, relativeFilePath: postData.twitterRelativeVideoFilename).schedule()
         }
         
+        if postData.postOnFacebook {
+            FacebookVideoSharingTask(timelineMessage: postData.facebookTimelineMessage, relativeFilePath: postData.facebookRelativeVideoFilename).schedule()
+        }
+        
         resetPostData()
     }
     
@@ -118,6 +125,14 @@ import Foundation
             
             postData.twitterRelativeVideoFilename = twit_relative
             try! fm.linkItemAtURL(newVideoFile, toURL: twit_absolut)
+        }
+        
+        if postData.postOnFacebook {
+            let face_relative = "Library" + "/" + timestamp + "_for_facebook.mp4"
+            let face_absolut  = NSFileManager.appRootDirectory().URLByAppendingPathComponent(face_relative)
+            
+            postData.facebookRelativeVideoFilename = face_relative
+            try! fm.linkItemAtURL(newVideoFile, toURL: face_absolut)
         }
         
         Util.runInBackground {
