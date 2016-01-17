@@ -50,41 +50,41 @@
 
 
 #if TEST_BUILD
-    #define RECORD_SECONDS 1
+#define RECORD_SECONDS 1
 #elif LIVE_BUILD
-    #define RECORD_SECONDS 7
+#define RECORD_SECONDS 7
 #endif
 
 
 /// Gocci API 2
 #if TEST_BUILD
-    #define API_BASE_URL (@"http://test.mobile.api.gocci.me/v1/mobile/")
-    #define API_BASE_DOMAIN (@"test.mobile.api.gocci.me")
-    #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
+#define API_BASE_URL (@"http://test.mobile.api.gocci.me/v1/mobile/")
+#define API_BASE_DOMAIN (@"test.mobile.api.gocci.me")
+#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
 #elif LIVE_BUILD
-    #define API_BASE_URL (@"https://mobile.api.gocci.me/v1/mobile/")
-    #define API_BASE_DOMAIN (@"mobile.api.gocci.me")
-    #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
+#define API_BASE_URL (@"https://mobile.api.gocci.me/v1/mobile/")
+#define API_BASE_DOMAIN (@"mobile.api.gocci.me")
+#define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif
 
 /// AWS and Cognito
 #if TEST_BUILD
-    #define COGNITO_POOL_ID (@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35")
-    #define COGNITO_POOL_REGION (AWSRegionUSEast1)
-    #define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
-    #define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp-test")
+#define COGNITO_POOL_ID (@"us-east-1:b563cebf-1de2-4931-9f08-da7b4725ae35")
+#define COGNITO_POOL_REGION (AWSRegionUSEast1)
+#define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
+#define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp-test")
 #elif LIVE_BUILD
-    #define COGNITO_POOL_ID (@"us-east-1:b0252276-27e1-4069-be84-3383d4b3f897")
-    #define COGNITO_POOL_REGION (AWSRegionUSEast1)
-    #define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
-    #define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp")
+#define COGNITO_POOL_ID (@"us-east-1:b0252276-27e1-4069-be84-3383d4b3f897")
+#define COGNITO_POOL_REGION (AWSRegionUSEast1)
+#define COGNITO_POOL_REGION_SWIFT AWSRegionType.USEast1
+#define AWS_S3_VIDEO_UPLOAD_BUCKET (@"gocci.movies.bucket.jp")
 #endif
 
 
 #if TEST_BUILD
-    #define FACEBOOK_APP_ID (@"977612005613710")
+#define FACEBOOK_APP_ID (@"977612005613710")
 #elif LIVE_BUILD
-    #define FACEBOOK_APP_ID (@"673123156062598")
+#define FACEBOOK_APP_ID (@"673123156062598")
 #endif
 
 #define FACEBOOK_PROVIDER_STRING (@"graph.facebook.com")
@@ -98,9 +98,9 @@
 
 
 #if TEST_BUILD
-    #define GOCCI_TWITTER_TAG (@"#Gokky")
+#define GOCCI_TWITTER_TAG (@"#Gokky")
 #elif LIVE_BUILD
-    #define GOCCI_TWITTER_TAG (@"#Gocci")
+#define GOCCI_TWITTER_TAG (@"#Gocci")
 #endif
 
 

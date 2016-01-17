@@ -139,6 +139,10 @@
     
     [playerView addGestureRecognizer:tapGesture];
     
+#if TARGET_IPHONE_SIMULATOR || defined SKIP_VIDEO_RECORDING
+    VideoPostPreparation.postData.prepared_restaurant = YES;
+    VideoPostPreparation.postData.rest_name = @"SimulatorTestRestaurant";
+#endif
     
     _restName.text = ([VideoPostPreparation.postData.rest_name isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.rest_name;
     VideoPostPreparation.postData.notifyNewRestName = ^(NSString * newRestName) {
@@ -196,6 +200,7 @@
             if (!success) {
                 self.TwitterComment.hidden = true;
                 [self.checkbox uncheckAnimated:YES];
+                VideoPostPreparation.postData.postOnTwitter = NO;
                 return;
             }
             
@@ -219,6 +224,30 @@
         }];
     }else if(checkbox == self.FacebookCheckbox){
         self.FacebookComment.hidden = !checkbox.isChecked;
+        VideoPostPreparation.postData.postOnFacebook = checkbox.isChecked;
+        
+        if (!checkbox.isChecked)
+            return;
+        
+        
+        
+        [Bridge authenticateWithFacebookWithPublishRIghtsIfNecessary:self and:^(BOOL success) {
+            
+            if (!success) {
+                self.FacebookComment.hidden = true;
+                [checkbox uncheckAnimated:YES];
+                VideoPostPreparation.postData.postOnFacebook = NO;
+                return;
+            }
+            
+            [FacebookPopupBridge pop:self initialText:VideoPostPreparation.postData.facebookTimelineMessage cancelFunc:^() {
+                self.FacebookComment.hidden = true;
+                [checkbox uncheckAnimated:YES];
+                VideoPostPreparation.postData.postOnFacebook = NO;
+            }];
+            
+        }];
+
 
         
     }else if(checkbox == self.InstagramCheckbox){
@@ -229,13 +258,20 @@
 }
 - (IBAction)TwitterCommentEdit:(id)sender {
     
-    if (![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
-        [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
+    if (sender == _FacebookComment) {
+        [FacebookPopupBridge pop:self initialText:VideoPostPreparation.postData.facebookTimelineMessage cancelFunc:nil];
     }
-    else {
-        NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
-        [TwitterPopupBridge pop:self initialTweet:possibleTweet];
+    else if (sender == _TwitterComment) {
+        if (![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+            [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
+        }
+        else {
+            NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
+            [TwitterPopupBridge pop:self initialTweet:possibleTweet];
+        }
     }
+    
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -282,16 +318,11 @@
 //        VideoPostPreparation.postData.twitterTweetMsg = GOCCI_TWITTER_TAG;
 //    }
     
-#if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     if (![VideoPostPreparation isReadyToSend])
     {
         [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
-#else
-    VideoPostPreparation.postData.prepared_restaurant = YES;
-    VideoPostPreparation.postData.rest_name = @"Non existing restaurant";
-#endif
     
     UIButton* sbut = (UIButton *)sender;
     sbut.enabled = false;

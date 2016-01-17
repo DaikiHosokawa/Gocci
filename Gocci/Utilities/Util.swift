@@ -17,7 +17,7 @@ typealias OVF = (()->())?
 
 
 @objc class Util : NSObject {
-
+    
     
     class func absolutify(relativePath: String) -> NSURL {
         return NSFileManager.appRootDirectory().URLByAppendingPathComponent(relativePath)
@@ -55,21 +55,21 @@ typealias OVF = (()->())?
         return res
     }
     
-
-
+    
+    
     
     class func errorIsNetworkConfigurationError(error: NSError) -> Bool {
         switch error.code {
             // Maybe this list is incomplete
-            case NSURLErrorNetworkConnectionLost: fallthrough
-            case NSURLErrorNotConnectedToInternet: fallthrough
-            case NSURLErrorCannotFindHost: fallthrough
-            case NSURLErrorCannotConnectToHost: fallthrough
-            case NSURLErrorDNSLookupFailed: fallthrough
-            case NSURLErrorTimedOut:
-                return true
-            default:
-                return false
+        case NSURLErrorNetworkConnectionLost: fallthrough
+        case NSURLErrorNotConnectedToInternet: fallthrough
+        case NSURLErrorCannotFindHost: fallthrough
+        case NSURLErrorCannotConnectToHost: fallthrough
+        case NSURLErrorDNSLookupFailed: fallthrough
+        case NSURLErrorTimedOut:
+            return true
+        default:
+            return false
         }
     }
     
@@ -131,31 +131,31 @@ typealias OVF = (()->())?
     
     class func overlayPopup(head: String, _ msg: String) -> UIAlertController {
         return UIAlertController.makeOverlayPopup(head, msg)
-
+        
     }
     
     class func getUserDefString(key:String) -> String? {
         return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
     }
-//
-//    class func setUserDefString(key:String, value:String) {
-//        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
-//        NSUserDefaults.standardUserDefaults().synchronize()
-//    }
-//    
-//    class func setUserDefStrings(pairs: [String: String]) {
-//        for (k, v) in pairs {
-//            NSUserDefaults.standardUserDefaults().setValue(v, forKey: k )
-//        }
-//        NSUserDefaults.standardUserDefaults().synchronize()
-//    }
+    //
+    //    class func setUserDefString(key:String, value:String) {
+    //        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
+    //        NSUserDefaults.standardUserDefaults().synchronize()
+    //    }
+    //
+    //    class func setUserDefStrings(pairs: [String: String]) {
+    //        for (k, v) in pairs {
+    //            NSUserDefaults.standardUserDefaults().setValue(v, forKey: k )
+    //        }
+    //        NSUserDefaults.standardUserDefaults().synchronize()
+    //    }
     
     class func thisKillsTheFacebook() {
-//        let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
-//        deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in
-//            print("the delete permission is \(result)")
-//            
-//        })
+        //        let deletepermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
+        //        deletepermission.startWithCompletionHandler({(connection,result,error)-> Void in
+        //            print("the delete permission is \(result)")
+        //
+        //        })
         
         FBSDKLoginManager().logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
@@ -173,7 +173,7 @@ typealias OVF = (()->())?
     class func randomKanjiStringWithLength(len : Int) -> String {
         var res: [Character] = []
         res.reserveCapacity(len)
-
+        
         for (var i = 0; i < len; i++){
             let rand = UInt16(0x4e00 + arc4random_uniform(UInt32(0x9faf - 0x4e00)))
             res.append(Character(UnicodeScalar(rand)))
@@ -218,23 +218,23 @@ typealias OVF = (()->())?
         return "00000000" + String(s[0..<48]) + "00000000"
     }
     
-
     
-//    class func getRegisterID() -> String {
-//        
-//        //return generateFakeDeviceID()
-//        
-//        let regid = Persistent.device_token
-//        
-//        // Only Fake IDs in the simulator
-//        #if arch(i386) || arch(x86_64)
-//            return regid ?? generateFakeDeviceID()
-//        #else
-//            return regid ?? generateFakeDeviceID()
-//        #endif
-//    }
     
-
+    //    class func getRegisterID() -> String {
+    //
+    //        //return generateFakeDeviceID()
+    //
+    //        let regid = Persistent.device_token
+    //
+    //        // Only Fake IDs in the simulator
+    //        #if arch(i386) || arch(x86_64)
+    //            return regid ?? generateFakeDeviceID()
+    //        #else
+    //            return regid ?? generateFakeDeviceID()
+    //        #endif
+    //    }
+    
+    
     
     class func runInBackground(block: ()->Void ) {
         let backgroundQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
@@ -255,10 +255,10 @@ typealias OVF = (()->())?
         let height: Int = Int(UIScreen.mainScreen().bounds.size.height)
         
         let mappings = [
-             480:  "3_5_inch",
-             568:  "4_0_inch",
-             667:  "4_7_inch",
-             736:  "5_5_inch",
+            480:  "3_5_inch",
+            568:  "4_0_inch",
+            667:  "4_7_inch",
+            736:  "5_5_inch",
         ]
         
         if let correctFitting = mappings[height] {
@@ -308,30 +308,30 @@ typealias OVF = (()->())?
         }
         
         switch identifier {
-            case "iPod5,1":                                 return "iPod Touch 5"
-            case "iPod7,1":                                 return "iPod Touch 6"
-            case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
-            case "iPhone4,1":                               return "iPhone 4s"
-            case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
-            case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
-            case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
-            case "iPhone7,2":                               return "iPhone 6"
-            case "iPhone7,1":                               return "iPhone 6 Plus"
-            case "iPhone8,1":                               return "iPhone 6s"
-            case "iPhone8,2":                               return "iPhone 6s Plus"
-            case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
-            case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
-            case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
-            case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
-            case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
-            case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
-            case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
-            case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
-            case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
-            case "iPad6,7", "iPad6,8":                      return "iPad Pro"
-            case "AppleTV5,3":                              return "Apple TV"
-            case "i386", "x86_64":                          return "Simulator"
-            default:                                        return identifier
+        case "iPod5,1":                                 return "iPod Touch 5"
+        case "iPod7,1":                                 return "iPod Touch 6"
+        case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
+        case "iPhone4,1":                               return "iPhone 4s"
+        case "iPhone5,1", "iPhone5,2":                  return "iPhone 5"
+        case "iPhone5,3", "iPhone5,4":                  return "iPhone 5c"
+        case "iPhone6,1", "iPhone6,2":                  return "iPhone 5s"
+        case "iPhone7,2":                               return "iPhone 6"
+        case "iPhone7,1":                               return "iPhone 6 Plus"
+        case "iPhone8,1":                               return "iPhone 6s"
+        case "iPhone8,2":                               return "iPhone 6s Plus"
+        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
+        case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
+        case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
+        case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
+        case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
+        case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
+        case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
+        case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
+        case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
+        case "iPad6,7", "iPad6,8":                      return "iPad Pro"
+        case "AppleTV5,3":                              return "Apple TV"
+        case "i386", "x86_64":                          return "Simulator"
+        default:                                        return identifier
         }
     }
     
