@@ -62,8 +62,15 @@ class SettingsTableViewController: UITableViewController
                     },
                     handleTwitter
                 ),
-                //( { $0.textLabel?.text = "Google+"; return }, nil),
+                ( { $0.textLabel?.text = "XXXXX Facebookの友達に紹介"; return }, handleFriendInvite),
                 //( { $0.textLabel?.text = "Line"; return }, nil),
+//                (
+//                    {
+//                        $0.textLabel?.text = "XXXXX Facebookの友達に紹介"
+//                    },
+//                    handleFriendInvite
+//                ),
+                
             ],
             // お知らせ =====================================================================
             [
@@ -127,7 +134,24 @@ class SettingsTableViewController: UITableViewController
     }
     
     
-    // TODO TARANSLATION
+    
+    func handleFriendInvite(cell: UITableViewCell)
+    {
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            if token != nil {
+                Util.runOnMainThread {
+                    let inviter = FBSDKAppInviteContent()
+                    
+                    inviter.appLinkURL = NSURL(string: "http://gocci.me")
+                    inviter.appInvitePreviewImageURL = NSURL(string: "https://techcrunchjp.files.wordpress.com/2015/08/gocci.png?w=1024")
+                    FBSDKAppInviteDialog.showFromViewController(self, withContent: inviter, delegate: nil)
+                }
+            }
+        }
+    }
+    
+    
+    
     func handlePushNotification(cell: UITableViewCell)
     {
         // don't think there is something better we can do here
