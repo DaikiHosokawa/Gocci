@@ -63,13 +63,6 @@ class SettingsTableViewController: UITableViewController
                     handleTwitter
                 ),
                 ( { $0.textLabel?.text = "XXXXX Facebookの友達に紹介"; return }, handleFriendInvite),
-                //( { $0.textLabel?.text = "Line"; return }, nil),
-//                (
-//                    {
-//                        $0.textLabel?.text = "XXXXX Facebookの友達に紹介"
-//                    },
-//                    handleFriendInvite
-//                ),
                 
             ],
             // お知らせ =====================================================================
