@@ -11,7 +11,7 @@ import UIKit
 import AssetsLibrary
 
 
-class DebugViewController : UIViewController {
+class DebugViewController : UIViewController , FBSDKAppInviteDialogDelegate {
     
     var cnt: Int = 0
     
@@ -66,9 +66,20 @@ class DebugViewController : UIViewController {
     }
     
 
-
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: NSError!) {
+        print(error)
+    }
+    
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        print(results ?? "nil")
+    }
     
     @IBAction func explode(sender: AnyObject) {
+        
+        
+
+        
+        return;
         
         
         //OverlayWindow.oneTimeViewController { viewController in

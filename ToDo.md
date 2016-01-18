@@ -44,8 +44,6 @@ Markus Wanke
 
 - Mute function
 
-- Remove the Facebook Sharekit when we get [publish_permission]
-
 - That the image is downloaded everytime is retarded. No saved url
 
 - Show busy indicator on password relogin, sns relogin, username signup
