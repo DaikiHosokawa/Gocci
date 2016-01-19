@@ -8,7 +8,7 @@ Bugs
 Very Important
 ==============
 
--
+- There is a 140 character limit for the posting message. We do not check this at all at the moment... 
 
 Needs Testing
 =============

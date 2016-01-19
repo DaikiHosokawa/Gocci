@@ -74,6 +74,9 @@
                <Test
                   Identifier = "TestUtil">
                </Test>
+               <Test
+                  Identifier = "testVideoUploadTaskChain">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

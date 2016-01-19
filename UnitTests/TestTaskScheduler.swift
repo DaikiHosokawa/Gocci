@@ -22,7 +22,7 @@ class TestTaskScheduler: XCTestCase {
     
     // after every test
     override func tearDown() {
-        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
+        TaskScheduler.hardReset()
         TaskScheduler.slots = 1
         super.tearDown()
     }
@@ -220,7 +220,8 @@ class TestTaskScheduler: XCTestCase {
         let t = DummyPlugTask(msg: "simple", sleepSec: 0.5, finalState: .DONE)
         t.timeNextTry = t.timeNextTry + 2
         t.schedule()
-        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
+        TaskScheduler.tasks = []
+        XCTAssert(NSFileManager.fileExistsAtPath(TaskScheduler.saveFileName))
         XCTAssert(TaskScheduler.tasks.isEmpty)
         TaskScheduler.loadTasksFromDisk()
         XCTAssert(TaskScheduler.tasks.count == 1)
@@ -237,8 +238,9 @@ class TestTaskScheduler: XCTestCase {
             t.schedule()
         }
         XCTAssert(TaskScheduler.tasks.count == 3)
-        TaskScheduler.hardResetNeverUseThisOnlyForDebugging()
+        TaskScheduler.tasks = []
         XCTAssert(TaskScheduler.tasks.isEmpty)
+        XCTAssert(NSFileManager.fileExistsAtPath(TaskScheduler.saveFileName))
         TaskScheduler.loadTasksFromDisk()
         XCTAssert(TaskScheduler.tasks.count == 3)
         TaskScheduler.nudge()
