@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import AssetsLibrary
 
+import Realm
+import RealmSwift
 
 class DebugViewController : UIViewController , FBSDKAppInviteDialogDelegate {
     
@@ -17,15 +19,22 @@ class DebugViewController : UIViewController , FBSDKAppInviteDialogDelegate {
     
     var real_register_id: String = ""
     
+    class func create(fromPayload pl: API3.get.heatmap.Payload.Rests) -> HeatMapRestaurant {
+        let res = self.init()
+        res.id = pl.rest_id
+        res.name = pl.restname
+        res.lat = pl.lat
+        res.lon = pl.lon
+        return res
+    }
+}
+
+class DebugViewController : UIViewController {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
-
-    
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
-    
     @IBOutlet weak var tokenEditField: UITextField!
-    
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
     
@@ -62,7 +71,7 @@ class DebugViewController : UIViewController , FBSDKAppInviteDialogDelegate {
         signUpEditField.text = Persistent.user_name ?? Util.randomUsername()
         usernameEditField.text = signUpEditField.text
         
-//        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
+        print("Realm: open " + Realm.Configuration.defaultConfiguration.path!)
     }
     
 
@@ -240,30 +249,30 @@ class DebugViewController : UIViewController , FBSDKAppInviteDialogDelegate {
         return;
         
         
-        
-        let req = API3.auth.login()
-        
-        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
-        
-        req.perform { (payload) -> () in
-            print("Username:    \(payload.username)")
-            print("User id:     \(payload.user_id)")
-            print("Badge_num:   \(payload.badge_num)")
-            print("Profile img: \(payload.profile_img)")
-            
-
-            
-//            APIClient.setPassword("lollol", handler: { response, code, error in
-//                print(response, code)
-//                
-//                print("=== AFTERFAFTERAFTERAFTER =====================================================")
-//                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
-//                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
-//                        print("\(coo)")
-//                    }
-//                }
-//            })
-        }
+//        
+//        let req = API3.auth.login()
+//        
+//        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
+//        
+//        req.perform { (payload) -> () in
+//            print("Username:    \(payload.username)")
+//            print("User id:     \(payload.user_id)")
+//            print("Badge_num:   \(payload.badge_num)")
+//            print("Profile img: \(payload.profile_img)")
+//            
+//
+//            
+////            APIClient.setPassword("lollol", handler: { response, code, error in
+////                print(response, code)
+////                
+////                print("=== AFTERFAFTERAFTERAFTER =====================================================")
+////                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
+////                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
+////                        print("\(coo)")
+////                    }
+////                }
+////            })
+//        }
         
         
 //            if code == NetOpResult.NETOP_SUCCESS {
