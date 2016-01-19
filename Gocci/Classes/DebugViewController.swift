@@ -37,7 +37,7 @@ class HeatMapRestaurant: Object {
     
     class func create(fromPayload pl: API3.get.heatmap.Payload.Rests) -> HeatMapRestaurant {
         let res = self.init()
-        res.id = pl.post_rest_id
+        res.id = pl.rest_id
         res.name = pl.restname
         res.lat = pl.lat
         res.lon = pl.lon
@@ -75,8 +75,8 @@ class DebugViewController : UIViewController {
     @IBAction func explode(sender: AnyObject) {
         
         
-        self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
-        return;
+//        self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
+//        return;
         
         // LIVE SERVER MY IID !!!!!!!!!!!!!!!!!!!!!!!!
         Persistent.identity_id = "us-east-1:38c3e159-09fa-44d7-929f-22d2a6c0a004"
@@ -94,7 +94,7 @@ class DebugViewController : UIViewController {
             let realm = try! Realm()
             try! realm.write {
                 for rest in restObjects {
-                    realm.add(rest)
+                    realm.add(rest, update: true)
                 }
             }
             

@@ -26,22 +26,22 @@ class HeatMapViewController: UIViewController {
          *   Set the Realm path to be the Restaurant Realm path
          */
         
-        //config.path = ABFRestaurantScoresPath()
-         let docpath = NSFileManager.documentsDirectory() + "/rest2.realm"
-        
-//        self.mapView.realmConfiguration = Realm.Configuration.defaultConfiguration
-        let rests = NSBundle.mainBundle().pathForResource("rest", ofType: "realm")!
-        
-        if !NSFileManager.fileExistsAtPath(rests) {
-            fatalError()
-        }
-        
-        let _ = try? NSFileManager.rm(NSURL.fileURLWithPath(docpath))
-        try! NSFileManager.defaultManager().copyItemAtPath(rests, toPath: docpath)
+////        config.path = ABFRestaurantScoresPath()
+//         let docpath = NSFileManager.documentsDirectory() + "/rest2.realm"
+//        
+////        self.mapView.realmConfiguration = Realm.Configuration.defaultConfiguration
+//        let rests = NSBundle.mainBundle().pathForResource("rest", ofType: "realm")!
+//        
+//        if !NSFileManager.fileExistsAtPath(rests) {
+//            fatalError()
+//        }
+//        
+//        let _ = try? NSFileManager.rm(NSURL.fileURLWithPath(docpath))
+//        try! NSFileManager.defaultManager().copyItemAtPath(rests, toPath: docpath)
         
 
         mapView.realmConfiguration = RLMRealmConfiguration.defaultConfiguration()//Realm.Configuration.defaultConfiguration
-        mapView.realmConfiguration?.path =  docpath
+//        mapView.realmConfiguration?.path =  docpath
         self.mapView.delegate = self
         
         mapView.entityName = "HeatMapRestaurant"
