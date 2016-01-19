@@ -330,6 +330,7 @@
 		981A934E1BFC840A007B3BF6 /* TestTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934D1BFC840A007B3BF6 /* TestTwitter.swift */; };
 		981A93501BFEAE03007B3BF6 /* TestFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */; };
 		981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A93511BFEF3CA007B3BF6 /* Network.swift */; };
+		982DB1271C4E285600F30A31 /* AbstractPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550D9471BF83E4B00430942 /* AbstractPopup.swift */; };
 		985C27701C4798AA00DC58E2 /* meat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 985C276F1C4798AA00DC58E2 /* meat.mp4 */; };
 		9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
 		9862D6021C16A383006AE6D9 /* AWSTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6001C16A383006AE6D9 /* AWSTasks.swift */; };
@@ -344,6 +345,7 @@
 		988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */; };
 		988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
+		988F883C1C4E30C4009A8F1B /* TestAPI4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988F883B1C4E30C4009A8F1B /* TestAPI4.swift */; };
 		9890CBF51C1FF37600C34156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBEE1C1FF37600C34156 /* SVIndefiniteAnimatedView.m */; };
 		9890CBF61C1FF37600C34156 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9890CBF01C1FF37600C34156 /* SVProgressHUD.bundle */; };
 		9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9890CBF21C1FF37600C34156 /* SVProgressHUD.m */; };
@@ -915,6 +917,7 @@
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
 		988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testVideoUploadTaskChain.swift; sourceTree = "<group>"; };
 		988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostPreparation.swift; sourceTree = "<group>"; };
+		988F883B1C4E30C4009A8F1B /* TestAPI4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAPI4.swift; sourceTree = "<group>"; };
 		9890CBED1C1FF37600C34156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		9890CBEE1C1FF37600C34156 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		9890CBEF1C1FF37600C34156 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -2226,6 +2229,7 @@
 		981A932C1BFC5063007B3BF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				988F883B1C4E30C4009A8F1B /* TestAPI4.swift */,
 				988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */,
 				981979B11C05B80900EFFC8F /* TestTaskScheduler.swift */,
 				981A934F1BFEAE03007B3BF6 /* TestFacebook.swift */,
@@ -2525,6 +2529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982DB1271C4E285600F30A31 /* AbstractPopup.swift in Sources */,
 				98B99E8E1C21562300B1D9CE /* RequestPushMessagesPopup.swift in Sources */,
 				9862D6031C16BBFE006AE6D9 /* Network.swift in Sources */,
 				981A93471BFC51F3007B3BF6 /* SwiftyJSON.swift in Sources */,
@@ -2547,6 +2552,7 @@
 				9801BF0A1C080677001F4D3C /* Algorithms.swift in Sources */,
 				98FED72E1C26C6E7008C8927 /* APILowLevel.swift in Sources */,
 				9805CA941C0D811600094858 /* TwitterTasks.swift in Sources */,
+				988F883C1C4E30C4009A8F1B /* TestAPI4.swift in Sources */,
 				988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */,
 				981A93451BFC51BF007B3BF6 /* TwitterAuthentication.swift in Sources */,
 				981A934C1BFC5F21007B3BF6 /* TwitterLowLevel.swift in Sources */,
