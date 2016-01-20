@@ -154,7 +154,7 @@ class SettingsTableViewController: UITableViewController
         let disconnect = {
             
             // we don't really care if this worked or not
-            API3.unset.device().perform {
+            API4.unset.device().perform {
                 Persistent.registerd_device_token = nil
                 cell.detailTextLabel?.text = "未許可"
                 cell.detailTextLabel?.textColor = UIColor.bad
@@ -251,7 +251,7 @@ class SettingsTableViewController: UITableViewController
                 self.simplePopup("パスワード設定", "1つめと2つめが違います", "OK")
             }
             else {
-                let req = API3.set.password()
+                let req = API4.set.password()
                 
                 req.parameters.password = pw1
                 
@@ -286,7 +286,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.set.sns_link()
+                let req = API4.set.sns_link()
                 
                 req.parameters.provider = TWITTER_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -311,7 +311,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.unset.sns_link()
+                let req = API4.unset.sns_link()
                 
                 req.parameters.provider = TWITTER_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -349,7 +349,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.set.sns_link()
+                let req = API4.set.sns_link()
                 
                 req.parameters.provider = FACEBOOK_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -374,7 +374,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.unset.sns_link()
+                let req = API4.unset.sns_link()
                 
                 req.parameters.provider = FACEBOOK_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()

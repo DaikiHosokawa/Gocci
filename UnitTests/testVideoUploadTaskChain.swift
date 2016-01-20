@@ -22,7 +22,7 @@ class testVideoUploadTaskChain: XCTestCase {
         
         TaskScheduler.startScheduler()
         
-        let req = API3.auth.login()
+        let req = API4.auth.login()
         
         req.parameters.identity_id = "us-east-1:6f396fe0-9b3f-4d80-af41-fa1a22763b2b"
         

@@ -32,7 +32,7 @@ class SNSConnectViewController : UIViewController {
                 return
             }
             
-            let req = API3.set.sns_link()
+            let req = API4.set.sns_link()
             
             req.parameters.provider = FACEBOOK_PROVIDER_STRING
             req.parameters.sns_token = token.cognitoFormat()
@@ -60,7 +60,7 @@ class SNSConnectViewController : UIViewController {
                 return
             }
             
-            let req = API3.set.sns_link()
+            let req = API4.set.sns_link()
             
             req.parameters.provider = TWITTER_PROVIDER_STRING
             req.parameters.sns_token = token.cognitoFormat()
