@@ -50,7 +50,7 @@ class RegisterForPushMessagesTask: PersistentBaseTask {
             return
         }
         
-        let req = API3.set.device()
+        let req = API4.set.device()
         
         req.parameters.device_token = deviceToken
         req.parameters.model = UIDevice.currentDevice().model
@@ -193,7 +193,7 @@ class GocciAddRestaurantTask: PersistentBaseTask {
             return
         }
         
-        let req = API3.set.rest()
+        let req = API4.set.rest()
         
         req.parameters.restname = restName
         req.parameters.lat = "\(lat)"
@@ -323,7 +323,7 @@ class GocciVideoSharingTask: PersistentBaseTask {
             return
         }
         
-        let req = API3.set.post()
+        let req = API4.set.post()
         
         req.parameters.rest_id = restaurantID
         req.parameters.movie_name = timestamp + "_" + userID

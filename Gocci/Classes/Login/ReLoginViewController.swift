@@ -49,7 +49,7 @@ class ReLoginViewController : UIViewController, UIGestureRecognizerDelegate {
         }
         
 
-        let req = API3.auth.password()
+        let req = API4.auth.password()
         
         req.parameters.username = un
         req.parameters.password = pw

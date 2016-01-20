@@ -46,7 +46,7 @@ import Foundation
         }
         
         
-        let req = API3.get.post()
+        let req = API4.get.post()
         
         req.parameters.post_id = postID
         
