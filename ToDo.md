@@ -8,7 +8,7 @@ Bugs
 Very Important
 ==============
 
--
+- There is a 140 character limit for the posting message. We do not check this at all at the moment... 
 
 Needs Testing
 =============
@@ -43,8 +43,6 @@ Markus Wanke
 - put all the showPopupWithTransitionStyle code douplicates in an extension
 
 - Mute function
-
-- Remove the Facebook Sharekit when we get [publish_permission]
 
 - That the image is downloaded everytime is retarded. No saved url
 

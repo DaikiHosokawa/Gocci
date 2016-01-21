@@ -18,14 +18,14 @@ class APILowLevel: Logable {
     static var fuelmid_session_cookie: String! = nil
 
 #if TEST_BUILD
-    static var baseurl = API3.testurl
+    static var baseurl = API4.testurl
     static let USER_AGENT: String =
-    "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
+    "GocciTest/iOS/\(Util.getGocciVersionString()) API/\(API4.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
 #endif
 #if LIVE_BUILD
-    static var baseurl = API3.liveurl
+    static var baseurl = API4.liveurl
     static let USER_AGENT: String =
-    "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API3.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
+    "Gocci/iOS/\(Util.getGocciVersionString()) API/\(API4.version) (\(Util.deviceModelName())/\(Util.operationSystemVersion()))"
 #endif
     
     enum NetworkError {
@@ -84,12 +84,12 @@ class APILowLevel: Logable {
     }
     
     
-    class func detectAndHandleGlobalErrors(code: String) -> API3.GlobalCode? {
+    class func detectAndHandleGlobalErrors(code: String) -> API4.GlobalCode? {
         if code == "SUCCESS" {
             return nil // speedup
         }
         
-        return API3.globalErrorReverseLookupTable[code]
+        return API4.globalErrorReverseLookupTable[code]
     }
     
 
@@ -140,7 +140,7 @@ class APILowLevel: Logable {
             return
         }
         
-        let req = API3.auth.login()
+        let req = API4.auth.login()
         
         req.parameters.identity_id = iid
         
@@ -216,12 +216,12 @@ class APILowLevel: Logable {
                 return
             }
             
-            guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_SESSION_EXPIRED else {
+            guard API4.globalErrorReverseLookupTable[code] != API4.GlobalCode.ERROR_SESSION_EXPIRED else {
                 performRelogin(request, handleSaneJSONResponse: handleSaneJSONResponse)
                 return
             }
             
-            guard API3.globalErrorReverseLookupTable[code] != API3.GlobalCode.ERROR_CLIENT_OUTDATED else {
+            guard API4.globalErrorReverseLookupTable[code] != API4.GlobalCode.ERROR_CLIENT_OUTDATED else {
                 let pop = Util.overlayPopup("あなたのGocciは古いバージョンです", "AppStoreでアップデートしてください")
                 pop.addButton("Cancel", style: UIAlertActionStyle.Cancel) {  }
                 pop.addButton("AppStoreへ", style: UIAlertActionStyle.Default) {

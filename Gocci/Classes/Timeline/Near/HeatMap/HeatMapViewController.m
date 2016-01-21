@@ -8,11 +8,11 @@
 
 #import "HeatMapViewController.h"
 
-@interface HeatMapViewController ()
+@interface HeatMapViewController000 ()
 
 @end
 
-@implementation HeatMapViewController
+@implementation HeatMapViewController000
 
 - (void)viewWillAppear:(BOOL)animated{
      [self.navigationController setNavigationBarHidden:YES animated:NO];

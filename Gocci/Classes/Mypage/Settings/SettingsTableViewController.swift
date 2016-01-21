@@ -62,8 +62,8 @@ class SettingsTableViewController: UITableViewController
                     },
                     handleTwitter
                 ),
-                //( { $0.textLabel?.text = "Google+"; return }, nil),
-                //( { $0.textLabel?.text = "Line"; return }, nil),
+                ( { $0.textLabel?.text = "XXXXX Facebookの友達に紹介"; return }, handleFriendInvite),
+                
             ],
             // お知らせ =====================================================================
             [
@@ -127,7 +127,24 @@ class SettingsTableViewController: UITableViewController
     }
     
     
-    // TODO TARANSLATION
+    
+    func handleFriendInvite(cell: UITableViewCell)
+    {
+        FacebookAuthentication.authenticate(currentViewController: self) { token in
+            if token != nil {
+                Util.runOnMainThread {
+                    let inviter = FBSDKAppInviteContent()
+                    
+                    inviter.appLinkURL = NSURL(string: "http://gocci.me")
+                    inviter.appInvitePreviewImageURL = NSURL(string: "https://techcrunchjp.files.wordpress.com/2015/08/gocci.png?w=1024")
+                    FBSDKAppInviteDialog.showFromViewController(self, withContent: inviter, delegate: nil)
+                }
+            }
+        }
+    }
+    
+    
+    
     func handlePushNotification(cell: UITableViewCell)
     {
         // don't think there is something better we can do here
@@ -137,7 +154,7 @@ class SettingsTableViewController: UITableViewController
         let disconnect = {
             
             // we don't really care if this worked or not
-            API3.unset.device().perform {
+            API4.unset.device().perform {
                 Persistent.registerd_device_token = nil
                 cell.detailTextLabel?.text = "未許可"
                 cell.detailTextLabel?.textColor = UIColor.bad
@@ -234,7 +251,7 @@ class SettingsTableViewController: UITableViewController
                 self.simplePopup("パスワード設定", "1つめと2つめが違います", "OK")
             }
             else {
-                let req = API3.set.password()
+                let req = API4.set.password()
                 
                 req.parameters.password = pw1
                 
@@ -269,7 +286,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.set.sns_link()
+                let req = API4.set.sns_link()
                 
                 req.parameters.provider = TWITTER_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -294,7 +311,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.unset.sns_link()
+                let req = API4.unset.sns_link()
                 
                 req.parameters.provider = TWITTER_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -332,7 +349,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.set.sns_link()
+                let req = API4.set.sns_link()
                 
                 req.parameters.provider = FACEBOOK_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()
@@ -357,7 +374,7 @@ class SettingsTableViewController: UITableViewController
                     return
                 }
                 
-                let req = API3.unset.sns_link()
+                let req = API4.unset.sns_link()
                 
                 req.parameters.provider = FACEBOOK_PROVIDER_STRING
                 req.parameters.sns_token = token.cognitoFormat()

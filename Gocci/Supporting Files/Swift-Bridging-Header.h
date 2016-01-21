@@ -9,6 +9,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 #import <AWSCore/AWSCore.h>
@@ -26,6 +27,10 @@
 #import "AFNetworking.h" // remove this when API3 is complete
 
 #import "requestPushPopupViewController.h"
+
+
+
+#import "ABFRealmMapView.h"
 
 
 // for twitter HMAC OAuth

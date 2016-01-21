@@ -13,7 +13,7 @@ import Foundation
     
     class func signupAndLogin(username: String, onUsernameAlreadyTaken:()->(), and:Bool->()) {
         
-        let req = API3.auth.signup()
+        let req = API4.auth.signup()
         req.parameters.username = username
         
         req.on_ERROR_USERNAME_ALREADY_REGISTERD( { _, _ in onUsernameAlreadyTaken() } )
@@ -49,7 +49,7 @@ class APIHighLevel {
             return
         }
         
-        let req = API3.auth.login()
+        let req = API4.auth.login()
         
         req.parameters.identity_id = iid
         
@@ -86,7 +86,7 @@ class APIHighLevel {
             return
         }
         
-        let req = API3.auth.login()
+        let req = API4.auth.login()
         
         req.parameters.identity_id = iid
         
@@ -103,7 +103,7 @@ class APIHighLevel {
         }
     }
     
-    class func stepTwo(payload: API3.auth.login.Payload, awsLogin:Bool->()) {
+    class func stepTwo(payload: API4.auth.login.Payload, awsLogin:Bool->()) {
         
         //save user data
         Persistent.user_id = payload.user_id

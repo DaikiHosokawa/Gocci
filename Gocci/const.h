@@ -12,7 +12,7 @@
 
 /// #######################################################################################
 // The app will start with a debug screen to test logins etc.
-//#define START_WITH_DEBUG_SCREEN
+#define START_WITH_DEBUG_SCREEN
 
 /// #######################################################################################
 // Userdata will be deleted everytime the app starts
@@ -25,6 +25,7 @@
 /// #######################################################################################
 //#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
 //#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
+//#define ENTRY_POINT_JUMP (@"jumpHeatMapViewController")
 
 /// #######################################################################################
 
