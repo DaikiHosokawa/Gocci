@@ -103,9 +103,13 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
-        let url = NSURL(string: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
-
+        self.ignoreCommonSenseAndGoToViewControllerWithName("jumpHeatMapViewController")
         
+        
+        return;
+        
+        
+        let url = NSURL(string: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
 
         Export.saveMovieAtPathToCameraRoll(url!) { assetURL in
             print("RESULT: ")
