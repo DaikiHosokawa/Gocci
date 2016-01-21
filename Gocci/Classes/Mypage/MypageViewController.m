@@ -16,7 +16,7 @@
 #import "NotificationViewController.h"
 #import "everyBaseNavigationController.h"
 #import "TableViewController.h"
-#import "MapViewController.h"
+//#import "MapViewController.h"
 #import "STPopup.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
@@ -200,7 +200,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     if(segmentControll.selectedSegmentIndex == 2){
         //GPS is ON
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-            [self performSegueWithIdentifier:@"goMap" sender:self];
+            [self performSegueWithIdentifier:@"goHeatMap" sender:self];
         }
         else {
             switch ([CLLocationManager authorizationStatus]) {

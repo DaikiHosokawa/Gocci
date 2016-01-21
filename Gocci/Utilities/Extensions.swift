@@ -135,7 +135,9 @@ extension NSUserDefaults {
 extension NSFileManager {
     
     class func rm(fileToDelete: NSURL) -> Bool {
-        if let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileToDelete) { return true }
+        if let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileToDelete) {
+            return true
+        }
         return false
     }
     

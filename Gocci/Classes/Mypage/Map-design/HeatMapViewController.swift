@@ -22,24 +22,13 @@ class HeatMapViewController: UIViewController {
         Lo.error("#############################")
         super.viewDidLoad()
         
-        /**
-         *   Set the Realm path to be the Restaurant Realm path
-         */
+        // copy fake data
+        let rests = NSBundle.mainBundle().pathForResource("rest", ofType: "realm")!
+        let target = NSFileManager.documentsDirectory() + "/default.realm"
+        NSFileManager.cp(rests.asLocalFileURL(), target: target.asLocalFileURL())
         
-////        config.path = ABFRestaurantScoresPath()
-//         let docpath = NSFileManager.documentsDirectory() + "/rest2.realm"
-//        
-////        self.mapView.realmConfiguration = Realm.Configuration.defaultConfiguration
-//        let rests = NSBundle.mainBundle().pathForResource("rest", ofType: "realm")!
-//        
-//        if !NSFileManager.fileExistsAtPath(rests) {
-//            fatalError()
-//        }
-//        
-//        let _ = try? NSFileManager.rm(NSURL.fileURLWithPath(docpath))
-//        try! NSFileManager.defaultManager().copyItemAtPath(rests, toPath: docpath)
         
-
+        
         mapView.realmConfiguration = RLMRealmConfiguration.defaultConfiguration()//Realm.Configuration.defaultConfiguration
 //        mapView.realmConfiguration?.path =  docpath
         self.mapView.delegate = self
@@ -59,16 +48,16 @@ class HeatMapViewController: UIViewController {
         self.mapView.refreshMapView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 extension HeatMapViewController: MKMapViewDelegate {
+    
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         
-        print("clicked")
+        if let view = view as? ABFClusterAnnotationView {
+            print("cluster with \(view.count) rests clicked")
+        }
+        
 //        if let safeObjects = ABFClusterAnnotationView.safeObjectsForClusterAnnotationView(view) {
 //            
 //            if let firstObject = safeObjects.first?.toObject(ABFRestaurantObject) {

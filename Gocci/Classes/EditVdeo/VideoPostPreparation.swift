@@ -42,6 +42,8 @@ import Foundation
         var postOnFacebook: Bool = false
         var facebookTimelineMessage: String = ""
         var facebookRelativeVideoFilename = ""
+        
+        var postOnInstagram: Bool = false
     }
     
     @objc static var postData = PostData()
@@ -101,6 +103,31 @@ import Foundation
             FacebookVideoSharingTask(timelineMessage: postData.facebookTimelineMessage, relativeFilePath: postData.facebookRelativeVideoFilename).schedule()
         }
         
+        if postData.postOnInstagram {
+            
+            let absolut = Util.absolutify(relativeVideoFilePath)
+            
+            Export.saveMovieAtPathToCameraRoll(absolut) { assetURL in
+                
+                if let assetURL = assetURL {
+                    
+                    let encodedURL = assetURL.absoluteString.percentEncodingSane()
+                    
+                    var instaURLraw = "instagram://library?AssetPath=\(encodedURL)"
+                    
+                    if postData.memo != "" {
+                        let encodedMemo = postData.memo.percentEncodingSane()
+                        instaURLraw += "&InstagramCaption=\(encodedMemo)"
+                    }
+                    
+                    Util.runInBackground {
+                        Util.sleep(2)
+                        UIApplication.sharedApplication().openURL(NSURL(string: instaURLraw)!)
+                    }
+                }
+            }
+        }
+        
         resetPostData()
     }
     
@@ -112,7 +139,7 @@ import Foundation
         try! fm.createDirectoryAtURL(NSFileManager.postedVideosDirectory(), withIntermediateDirectories: true, attributes: nil)
         
         let relative = POSTED_VIDEOS_DIRECTORY + "/" + timestamp + ".mp4"
-        let absolut  = NSFileManager.appRootDirectory().URLByAppendingPathComponent(relative)
+        let absolut  = Util.absolutify(relative)
         
         print("relative \(relative)")
         print("absolut \(absolut)")

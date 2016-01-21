@@ -251,8 +251,19 @@
 
         
     }else if(checkbox == self.InstagramCheckbox){
-        self.InstagramComment.hidden = !checkbox.isChecked;
-
+        
+        bool instaInstalled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]];
+        
+        if (checkbox.isChecked && !instaInstalled) {
+            // popup
+            [self simplePopup:@"注意" :@"シェアにはInstagramアプリのインストールが必要です。" :@"OK" and:nil];
+            NSLog(@"instagramm not installed");
+            
+            [checkbox uncheckAnimated:YES];
+            return;
+        }
+        
+        VideoPostPreparation.postData.postOnInstagram = checkbox.isChecked;
         
     }
 }

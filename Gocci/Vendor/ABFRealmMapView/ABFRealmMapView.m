@@ -8,7 +8,8 @@
 #import "ABFRealmMapView.h"
 
 #import "ABFLocationFetchRequest.h"
-#import "ABFClusterAnnotationView.h"
+#import "Swift.h"
+
 
 #pragma mark - Constants
 
@@ -563,8 +564,8 @@ static NSString * const ABFAnnotationViewReuseId = @"ABFAnnotationViewReuseId";
     
     region = [self regionThatFits:region];
     
-    region.span.latitudeDelta *= 1.3;
-    region.span.longitudeDelta *= 1.3;
+    region.span.latitudeDelta *= 1.26;
+    region.span.longitudeDelta *= 1.26;
     
     return region;
 }
