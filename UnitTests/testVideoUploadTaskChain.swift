@@ -22,18 +22,16 @@ class testVideoUploadTaskChain: XCTestCase {
         
         TaskScheduler.startScheduler()
         
-        let iid = "us-east-1:6f396fe0-9b3f-4d80-af41-fa1a22763b2b"
+        let req = API4.auth.login()
         
-        NetOp.loginWithIID(iid) { code, msg in
-            switch code {
-            case NetOpResult.NETOP_SUCCESS:
-                AWS2.connectToBackEndWithUserDefData().continueWithBlock{ task -> AnyObject! in
-                    print("Login at gocci server as: ", Persistent.user_name!)
-                    return nil
-                }
-            default:
-                fatalError()
-            }
+        req.parameters.identity_id = "us-east-1:6f396fe0-9b3f-4d80-af41-fa1a22763b2b"
+        
+        req.onAnyAPIError {
+            print("damn")
+        }
+        
+        req.perform { payload in
+            print("Login at gocci server as: ", payload.username)
         }
         
         super.setUp()
@@ -62,7 +60,7 @@ class testVideoUploadTaskChain: XCTestCase {
     
     func testUploadOfChainTasksBlackVideo() {
         
-        let timestamp = Util.timestamp()
+        let timestamp = Util.timestampUTC()
         let userID = "921"
         let restaurantID = "1"
         let categoryID = "2"

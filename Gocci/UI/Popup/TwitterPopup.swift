@@ -30,7 +30,9 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
     
     @IBAction func insertRestNameClicked(sender: AnyObject) {
         if VideoPostPreparation.postData.rest_name != "" {
-            textView.text = textView.text + "#" + VideoPostPreparation.postData.rest_name
+            
+            let restname = VideoPostPreparation.postData.rest_name.stringByReplacingOccurrencesOfString(" ", withString: "")
+            textView.text = textView.text + " #" + restname + " "
         }
         textViewDidChange(textView)
     }
@@ -41,11 +43,9 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
         let left = TwitterSharing.videoTweetMessageRemainingCharacters(textView.text)
         
         if left >= 0 {
-            
             sendButton.enabled = true
             sendButton.setTitle("投稿 (残り\(left)文字可能)", forState: UIControlState.Normal)
             sendButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            
         }
         else {
             sendButton.enabled = false

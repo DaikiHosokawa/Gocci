@@ -10,22 +10,47 @@ import Foundation
 import UIKit
 import AssetsLibrary
 
+import Realm
+import RealmSwift
+
+// Define your models like regular Swift classes
+class Dog: Object {
+    dynamic var name = ""
+    dynamic var age = 0
+}
+class Person: Object {
+    dynamic var name = ""
+    dynamic var picture: NSData? = nil // optionals supported
+    let dogs = List<Dog>()
+}
+
+
+class HeatMapRestaurant: Object {
+    dynamic var id = "none"
+    dynamic var name = "none"
+    dynamic var lat: Double = 0.0
+    dynamic var lon: Double = 0.0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    class func create(fromPayload pl: API4.get.heatmap.Payload.Rests) -> HeatMapRestaurant {
+        let res = self.init()
+        res.id = pl.rest_id
+        res.name = pl.restname
+        res.lat = pl.lat
+        res.lon = pl.lon
+        return res
+    }
+}
 
 class DebugViewController : UIViewController {
-    
-    var cnt: Int = 0
-    
-    var real_register_id: String = ""
-    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
-
-    
     @IBOutlet weak var signUpEditField: UITextField!
     @IBOutlet weak var loginEditField: UITextField!
-    
     @IBOutlet weak var tokenEditField: UITextField!
-    
     @IBOutlet weak var usernameEditField: UITextField!
     @IBOutlet weak var passwordEditField: UITextField!
     
@@ -62,567 +87,71 @@ class DebugViewController : UIViewController {
         signUpEditField.text = Persistent.user_name ?? Util.randomUsername()
         usernameEditField.text = signUpEditField.text
         
-//        UIApplication.sharedApplication().applicationIconBadgeNumber = 7
+        print("Realm: open " + Realm.Configuration.defaultConfiguration.path!)
+        
     }
     
 
-
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: NSError!) {
+        print(error)
+    }
+    /// LIVE SERVER MY IID: us-east-1:38c3e159-09fa-44d7-929f-22d2a6c0a004
+    
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        print(results ?? "nil")
+    }
     
     @IBAction func explode(sender: AnyObject) {
         
+        self.ignoreCommonSenseAndGoToViewControllerWithName("jumpHeatMapViewController")
         
-        //OverlayWindow.oneTimeViewController { viewController in
+        
+        return;
+        
+        
+        let url = NSURL(string: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
+
+        Export.saveMovieAtPathToCameraRoll(url!) { assetURL in
+            print("RESULT: ")
+            print(assetURL ?? "nil")
             
-            //viewController.simplePopup("Bla", "Blabla", "ROFL", and: hideAgain)
-            
-            
-//            let vc = FHSTwitterEngine.sharedEngine().loginControllerWithCompletionHandler { success in
-//                print(success)
-//            }
-//            
-//            Util.runOnMainThread{
-//                self.presentViewController(vc, animated: true, completion: nil)
-//            }
-        
-            
-            
-//            FBSDKSettings.setAppID(FACEBOOK_APP_ID)
-//            
-//            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: viewController) {
-//                (result, error) -> Void in
-//            }
-       // }
-        
-        //return;
-        
-        
-        
-        let vidURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-        
-        print(vidURL)
-        
-        let target = NSFileManager.documentsDirectory() + "/twosec.mp4"
-        if !NSFileManager.fileExistsAtPath(target) {
-            try! NSFileManager.defaultManager().copyItemAtURL(vidURL, toURL: NSURL.fileURLWithPath(target))
-        }
-
-        FacebookVideoSharingTask(timelineMessage: Util.randomKanjiStringWithLength(30), relativeFilePath: "/Documents/twosec.mp4").schedule()
-
-        
-        
-        
-        return;
-        
-        
-        
-        let reqq = API3.get.timeline()
-        
-        reqq.perform { payload in
-            print(payload)
-        }
-        
-        return;
-        
-        
-        //let str = "abc\n\tdef"
-        
-        //let res = str.characters
-        
-        
-        Persistent.err("SHit it the fanf")
-        
-        
-        Util.runInBackground {
-            Toast.情報("VVVVVVVVVVV", "ffffffffffffffffffff")
-        }
-
-        return;
-        
-        
-        
-        NSFileManager.tmpDirectory().treatAsDirectoryPathAndIterateRecursive { filePath in
-            if let fileName = filePath.lastPathComponent {
-                if fileName.hasSuffix(".mov") {
-                    print("ONLY MOV file.lastPathComponent: \(filePath.lastPathComponent!)")
-                }
-            }
-        }
-        
-        return;
-        
-        
-        print(NSHomeDirectory())
-        print(NSFileManager.libraryDirectory())
-        return;
-        
-        let wtf = Persistent.push_notifications_popup_has_been_shown
-        print(wtf)
-        
-        return;
-        
-        Export.exportVideoToCameraRollForPostID("798")
-        Export.exportVideoToCameraRollForPostID("798")
-        
-        
-        return;
-        
-        
-        let url = NSURL(string: "http://test.mp4-movies.gocci.me/2015/12/2015-12-20-16-18-13_1026_movie.mp4")!
-        
-        
-        APILowLevel.cacheFile(url, filename: "55555.mp4") { path in
-            print(path)
-        }
-        
-        return;
-        
-        
-        
-        
-        let ppp = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
-
-        
-
-        
-        
-        
-        
-        return;
-        
-        let user_enterd_text = "#Gocci " + Util.randomKanjiStringWithLength(105)
-        
-        let tp = TwitterPopup(from: self, title: "meh", widthRatio: 80, heightRatio: 35)
-        tp.entryText = user_enterd_text
-        
-        
-        let charsLeft = TwitterSharing.videoTweetMessageRemainingCharacters(user_enterd_text)
-
-        print("charsLeft: \(charsLeft)")
-        
-        tp.pop()
-        
-        return;
-        
-        let popup = RequestPushMessagesPopup(from: self, title: "通知の許可", widthRatio: 80, heightRatio: 30)
-        popup.pop()
-        
-        return;
-        //let dt = "0000000077777777777777777777777777777777777777777777777700000000"
-        
-        //RegisterForPushMessagesTask(deviceToken: dt).schedule()
-        
-        APIHighLevel.simpleLogin {
-            if $0 {
+            if let assetURL = assetURL {
                 
-                APILowLevel.fuelmid_session_cookie = "hfeufhsefuhsefishefiushfishfsuehfsihefsifhsi"
-                let pwreq = API3.set.password()
+                let encodedURL = assetURL.absoluteString.percentEncodingSane()
                 
-                pwreq.parameters.password = "lollol"
+                let instaURLraw = "instagram://library?AssetPath=\(encodedURL)&InstagramCaption=JESUS"
                 
-                pwreq.perform {
-                    print("looks good to me :)")
-                }
+                
+                UIApplication.sharedApplication().openURL(NSURL(string: instaURLraw)!)
             }
         }
-        
-        
-        return;
-        
-        
-        
-        let req = API3.auth.login()
-        
-        req.parameters.identity_id = "us-east-1:53100da8-8b84-4f15-9bf8-7d6f1bc98f30"
-        
-        req.perform { (payload) -> () in
-            print("Username:    \(payload.username)")
-            print("User id:     \(payload.user_id)")
-            print("Badge_num:   \(payload.badge_num)")
-            print("Profile img: \(payload.profile_img)")
-            
-
-            
-//            APIClient.setPassword("lollol", handler: { response, code, error in
-//                print(response, code)
-//                
-//                print("=== AFTERFAFTERAFTERAFTER =====================================================")
-//                if NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies != nil {
-//                    for coo in NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies! {
-//                        print("\(coo)")
-//                    }
-//                }
-//            })
-        }
-        
-        
-//            if code == NetOpResult.NETOP_SUCCESS {
-//                self.loginEditField.text = self.signUpEditField.text
-//                
-//                let uid: String = Persistent.user_id!
-//                let iid: String = Persistent.identity_id!
-//                let tok: String = Persistent.cognito_token!
-//                
-//                AWS2.connectWithBackend(iid, userID: uid, token: tok).continueWithBlock({ (task) -> AnyObject! in
-//                    AWS2.storeSignUpDataInCognito(Persistent.user_name ?? "no username set")
-//                    return nil
-//                })
-//            }
-//        }
-        
-        
         
         
         
         return;
         
         
-        let alertController = UIAlertController(
-            title: "Password setting",
-            message: "Please enter your new password",
-            preferredStyle: UIAlertControllerStyle.Alert)
+        let req = API4.get.heatmap()
         
-        
-        alertController.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "Please enter your password..."
-            textField.secureTextEntry = true
-        }
-        
-        alertController.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "And once more for confirmation..."
-            textField.secureTextEntry = true
-        }
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { action in
-            let pw1 = alertController.textFields?[0].text ?? ""
-            let pw2 = alertController.textFields?[1].text ?? ""
+        req.perform { payload in
             
-            if pw1 == "" {
-                self.simplePopup("Password setting", "Password 1 was empty", "OK")
-            }
-            else if pw2 == "" {
-                self.simplePopup("Password setting", "Password 2 was empty", "OK")
-            }
-            else if pw1 != pw2 {
-                self.simplePopup("Password setting", "Your passwords did not match", "OK")
-            }
-            else {
-                Util.runOnMainThread {
-                    self.simplePopup("Password setting", "Password was set successful :)", "OK")
-                }
-                Util.runOnMainThread {
-                    self.simplePopup("Password setting", "Password setting failed :(", "OK")
+            let realm = try! Realm()
+            
+            try! realm.write {
+                
+                for rest in payload.rests {
+                    let tmp = HeatMapRestaurant.create(fromPayload: rest)
+                    realm.add(tmp, update: true)
                 }
             }
             
-        })
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-
-        return;
-        
-        
-        
-        Util.runInBackground {
-            
-            let pop = UIAlertController.makeOverlayPopup("aaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbb")
-            
-            pop.addButton("Banane", style: UIAlertActionStyle.Default) { print("Banane clicked") }
-            pop.addButton("Apfel", style: UIAlertActionStyle.Cancel) { print("Apfel clicked") }
-            pop.addButton("Kirsche", style: UIAlertActionStyle.Destructive) { print("Kirsche clicked") }
-            
-            pop.overlay()
-            
+            self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
         }
-        return;
         
         
         
-        VideoPostPreparation.resetPostData()
-//        VideoPostPreparation.postData.rest_id = "1"
-//        VideoPostPreparation.postData.category_id = "1"
-//        VideoPostPreparation.postData.category_string = "1"
-//        VideoPostPreparation.postData.value = "1"
-//        
-//        VideoPostPreparation.postData.memo = Util.randomKanjiStringWithLength(20)
-//        VideoPostPreparation.postData.cheer_flag = true
-        
-        VideoPostPreparation.postData.prepared_restaurant = true
-        VideoPostPreparation.postData.rest_name = Util.randomKanjiStringWithLength(20)
-        VideoPostPreparation.postData.lat = 138.000000
-        VideoPostPreparation.postData.lon = 35.000000
-        
-        let videoURLn = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-
-        VideoPostPreparation.initiateUploadTaskChain(videoURLn)
-        
-        return;
-        
-        
-        
-        
-        
-
-        
-        
-        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-        let videoPATH = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
-        
-        AWSS3VideoUploadTask(filePath: videoPATH, s3FileName: "delete_me_two_sec__per_task_upload.mp4").schedule()
-        
-        return;
-        
-        // TODO
-        let mp4URL = NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!
-
-        Bridge.scheduleTwitterVideoSharingTask(Util.randomKanjiStringWithLength(10), mp4VideoFilePath: mp4URL)
-        
-        
-        return;
-        
-        
-        
-        
-        
-        //NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "kNetworkReachabilityChangedNotification", object: nil))
-        
-//        for i in 10...13 {
-        let i = 88
-            let dummy = DummyPlugTask(msg: "t\(i)", sleepSec: 1, finalState: .DONE)
-            dummy.timeNextTry = dummy.timeNextTry + 10000
-            dummy.schedule()
-//        }
-        
-
-        
-        return ;
-        
-        
-        
-        
-        
-        
-        
-        
-//        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-//        
-//        let sharer = TwitterSharing()
-//                        sharer.onSuccess = { print("Post ID: " + $0) }
-//                        sharer.onFailure = { print("FUCK: \($0)") }
-//        let msg = Util.randomKanjiStringWithLength(100)
-//        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
-//        
-//        return;
-        
-//        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"お知らせ"
-//        description:message
-//        type:TWMessageBarMessageTypeSuccess
-//        duration:4.0];
-        
-        TWMessageBarManager.sharedInstance().showMessageWithTitle("TTTTTTTT", description: "DDDDDDDDDDDD", type: TWMessageBarMessageType.Success, duration: 5.0)
-        
-        //Pop.show("Dwdw", "Dwdw")
-        return;
-        
-
-        
-        
-//        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-//        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
-//        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
-//        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
-//        
-//        let x = FHSTwitterEngine.sharedEngine().verifyCredentials()
-//        
-//        print(x)
-//        return;
-        
-//        TwitterAuthentication.authenticadedAndReadyToUse { ok in
-//            print("res: \(ok)")
-//        }
-//        
-//        return;
-        
-        //let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-//        let thumbURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("thumbnail", ofType: "jpg")!)
-//        
-////        let expired_token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
-//        let token = "CAAJkM7KbcYYBAAnTZBzCuP1LIdxMdkqgZCkdbNwqZCY8zDOBZAMEJBDUmyYFkWq9IpZBD4iuLagNrEgZC1jIZCiWjAkGjPcBRXKW8QZBL30WiPP2ACeVJg8IdbzoATMZCfjyoerOJXk6wgfQGjgAJrf5LswGXE8pVMcLVeQJUGpDm9kqj4Wxk4DyFzNiGT0zQPBNN8PwWShaO8QZDZD"
-////
-////
-////
-//        let sharer = FacebookSharing(fromViewController: self)
-//        sharer.onSuccess = { print("Post ID: " + $0) }
-//        sharer.onFailure = { print("FUCK: \($0)") }
-//        sharer.shareVideoOnFacebook(token, localVideoFileURL: videoURL, description: Util.randomKanjiStringWithLength(100), thumbnail: thumbURL)
-//        return;
-        
-//        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-//        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
-//        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
-//        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
-//        
-        
-
-//        TwitterAuthentication.authenticate(currentViewController: self,
-//            onSuccess: { (token) -> () in
-//                let sharer = TwitterSharing()
-//                sharer.onSuccess = { print("Post ID: " + $0) }
-//                sharer.onFailure = { print("FUCK: \($0)") }
-//                
-//                let msg = Util.randomKanjiStringWithLength(115)
-//                sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
-//            },
-//            onFailure: {
-//                print("twitter login failed")
-//            }
-//        )
-    
-
-    
-//        let sharer = TwitterSharing(fromViewController: self)
-//        sharer.onSuccess = { print("Post ID: " + $0) }
-//        sharer.onFailure = { print("FUCK: \($0)") }
-//        
-//        let msg = Util.randomKanjiStringWithLength(115)
-//        sharer.tweetVideo(localVideoFileURL: videoURL, message: msg)
     }
-        /*
     
-        FacebookAuthentication.enableFullDebugOutput()
-
-        let token = "CAAJkM7KbcYYBAInz97XHPf166pPnpRcZBkK5D3YsAkxFHQeg5iWSWxa26306ghtMEAtK0VeiZABDBn5dZBNpAjN8S7Ydud53u9Cb6UY9ZCZBFUYXqrvOq1SgTJNFFF6ArNVrZBPwOP5ZAE1q7BgBLv9uCygmpFbFr1NAHVHYwO1XXGnBwHLWDWg8C4jPZAtfJ6GJ0EeiUqcLaAZDZD"
-        
-        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-        let rawData = NSData(contentsOfURL: videoURL)!
-        print("video length: " + String(rawData.length))
-        
-//        NSMutableString* resultAsHexBytes = [NSMutableString string];
-        
-//        [data enumerateByteRangesUsingBlock:^(const void *bytes,
-//            NSRange byteRange,
-//            BOOL *stop) {
-//            
-//            //To print raw byte values as hex
-//            for (NSUInteger i = 0; i < byteRange.length; ++i) {
-//            [resultAsHexBytes appendFormat:@"%02x", ((uint8_t*)bytes)[i]];
-//            }
-//            
-//            }];
-        
-
-        var encoded: String = ""
-        
-        rawData.enumerateByteRangesUsingBlock { (buffer, range, stop) -> Void in
-
-            let bytes = UnsafePointer<UInt8>(buffer)
-            
-            var i: Int
-            for i = range.location; i < range.length; ++i {
-                encoded += String(format:"%%%02X", bytes[i])
-            }
-        }
-        
-     //   print(encoded)
-        
-        let params = [
-//            "title": Util.randomAlphaNumericStringWithLength(30),
-//            "description": Util.randomAlphaNumericStringWithLength(50),
-//            "source": encoded.asUTF8Data()
-//            "source": ("%7B" + encoded + "%7D")
-//            "source": encoded.asUTF8Data()
-//            "file_url": "http://btest.api.gocci.me/movie/twosec.mp4"
-            "source": "Dwd"
-        ]
-        
-        let params2: NSDictionary = [ "source": encoded]
-//        params.setValue(rawData, forKey: "source")[NSObject : AnyObject]
-        
-        // API reference: https://developers.facebook.com/docs/graph-api/video-uploads
-        //            let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params, HTTPMethod: "POST")
-        let rq = FBSDKGraphRequest(graphPath: "me/videos", parameters: params as [NSObject : AnyObject], tokenString: token, version: "v2.5", HTTPMethod: "POST")
-        
-        rq.startWithCompletionHandler { (conn, result, error) -> Void in
-            if error != nil {
-                print(error.localizedDescription)
-            }
-            else {
-                let postid = (result as? [String:String])?["id"]
-                print(postid ?? "Posting successful, but no postid")
-            }
-        }
-        
-    } 
-    
-    */
-    
-     /*
-        FHSTwitterEngine.sharedEngine().permanentlySetConsumerKey(TWITTER_CONSUMER_KEY, andSecret:TWITTER_CONSUMER_SECRET)
-        let static_key = "4053862111-dU3JpaBk2Gv0b7k9BjAHK2Wcmtk8Twte6A9pZFc"
-        let static_sec = "NfGYuvQrpCJCC0d8JzLmsyWQNtyUkhAJs8vaGsZb9woyq"
-        FHSTwitterEngine.sharedEngine().rawLoginWithToken(static_key, secret: static_sec, userID: "4053862111", username: "XxxxxCarl")
-        let videoURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("splash_tmp_sample", ofType: "mp4")!)
-
-        
-        
-      //          let twit = STTwitterAPI.init(OAuthConsumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_CONSUMER_SECRET, oauthToken: static_key, oauthTokenSecret: static_sec)
-       // twit.postMediaUploadINITWithVideoURL(videoURL, successBlock: {print($0, "  ", $1)}, errorBlock: {print($0)})
-        
-//        twit.postMediaUploadAPPENDWithVideoURL(videoURL, mediaID: "72398472942", uploadProgressBlock: nil, successBlock: nil, errorBlock: nil)
-        
-       // let ddd = FHSTwitterEngine.sharedEngine().getDetailsForTweet("664377329167151104")
-        
-        //NSLog("%@", ddd as! NSDictionary)
-        let sharer = TwitterSharing(fromViewController: self)
-        sharer.onSuccess = { print("Post ID: " + $0) }
-        sharer.onFailure = { print("FUCK: \($0)") }
-        
-//        let msg = "1234567890" + Util.randomKanjiStringWithLength(130)
-        let msg = Util.randomKanjiStringWithLength(115)
-//        let msg = "あああ日本語ひらがなカタカナ~!@#$%^&()_+-="
-        
-        print(msg)
-        print("Is this over 140? : " + String(msg.length) + "   Pecentage encode: \(msg.percentEncodingSane().length)")
-       // sharer.tweetMessage(msg)
-//        sharer.videoUploadINIT(videoURL)
-        sharer.tweetVideo(mp4URL: videoURL, message: msg)
-
-    }*/
-    /*
-        //tweet_video("LOL 日本語ひらがなカタカナ~!@#$%^&*()_+-=\"`[]{};':\",./<>?\\| LOLv", video_media_id: "553656900508606464")
-  
-    https://api.twitter.com/1.1/statuses/show.json?id=664377329167151104
-
-    
-        
-        let onLogin: STTwitterAPI->() = { engine in
-            
-            engine.postMediaUploadThreeStepsWithVideoURL(videoURL, uploadProgressBlock:{print($0, $1, $2)}, successBlock:
-                { (mediaID, size, expiresAfter, videoType) -> Void in
-               
-                    print("mediaID: \(mediaID), size: \(size), expiresAfter: \(expiresAfter), videoType: \(videoType)")
-                
-                    let sharer = TwitterSharing(fromViewController: self)
-                    sharer.onSuccess = { print("Post ID: " + $0) }
-                    sharer.onFailure = { print("FUCK: \($0)") }
-                    sharer.tweetVideo("http://gocci.me = \(mediaID)", videoMediaID: mediaID)
-                },
-                errorBlock: {print("ERROR: \($0)")}
-            )
-        }
-        
-        onLogin(twit)
-        */
-        
-        
-//        twit.verifyCredentialsWithUserSuccessBlock(//nil, errorBlock: nil)
-//            { (username, userID) -> Void in
-//                print("Succ: \(username)    ID: \(userID)")
-//                onLogin(twit)
-//            },
-//            errorBlock: { print("Twitter fail: \($0)") }
-//        )
-    
-        
     class func afterAppLaunch() {
         
         let fm = NSFileManager.defaultManager()

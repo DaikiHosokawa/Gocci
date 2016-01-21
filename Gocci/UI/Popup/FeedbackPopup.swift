@@ -52,7 +52,7 @@ class FeedbackPopup: AbstractPopup {
         
         sendButton.enabled = false
         
-        let req = API3.set.feedback()
+        let req = API4.set.feedback()
         
         // SHOULD NEVER HAPPEN (well it does happen if the message is over 10000 chars....
         req.onAnyAPIError {

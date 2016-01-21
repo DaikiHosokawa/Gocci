@@ -10,7 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface HeatMapViewController : UIViewController<GMSMapViewDelegate,CLLocationManagerDelegate>
+@interface HeatMapViewController000 : UIViewController<GMSMapViewDelegate,CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
 }
