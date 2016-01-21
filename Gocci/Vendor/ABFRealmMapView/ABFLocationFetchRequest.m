@@ -7,6 +7,8 @@
 //
 
 #import "ABFLocationFetchRequest.h"
+#import "Swift.h"
+
 
 #pragma mark - Public Functions
 

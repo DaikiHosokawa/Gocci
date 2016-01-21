@@ -7,6 +7,7 @@
 //
 
 #import "ABFLocationFetchedResultsController.h"
+#import "Swift.h"
 
 #pragma mark - Constants
 

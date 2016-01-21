@@ -7,14 +7,12 @@
 //
 import Foundation
 import UIKit
-import AssetsLibrary
+
 
 
 
 
 typealias OVF = (()->())?
-
-
 
 @objc class Util : NSObject {
 
@@ -23,14 +21,6 @@ typealias OVF = (()->())?
         return NSFileManager.appRootDirectory().URLByAppendingPathComponent(relativePath)
     }
     
-    class func saveMovieAtPathToCameraRoll(localFile: NSURL, and: Bool->()) {
-        
-        ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(localFile) { url, error in
-            
-            print("Export to Camera Roll Complete" + ((error == nil) ? "" : "But \(error)"))
-            and(error == nil)
-        }
-    }
     
     
     class func mp4ForPostIDisAvailible(postID: String) -> NSURL? {

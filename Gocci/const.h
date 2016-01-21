@@ -25,6 +25,7 @@
 /// #######################################################################################
 //#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
 //#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
+//#define ENTRY_POINT_JUMP (@"jumpHeatMapViewController")
 
 /// #######################################################################################
 

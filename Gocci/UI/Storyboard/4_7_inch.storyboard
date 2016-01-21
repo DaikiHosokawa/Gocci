@@ -167,6 +167,7 @@
                         <segue destination="Pil-yP-ffM" kind="show" identifier="goCheer" id="Ofb-Gs-yfz"/>
                         <segue destination="rCy-xb-CpD" kind="show" identifier="goMap" id="COL-zP-4tE"/>
                         <segue destination="IgD-Ad-4hs" kind="show" identifier="goUsersOthers" id="RmI-DY-kRf"/>
+                        <segue destination="J8v-Ws-g8G" kind="show" identifier="goHeatMap" id="Ltl-g7-40k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6I2-L6-eeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv0-UY-4YB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2786.5" y="-3003.5"/>
+            <point key="canvasLocation" x="-3618.5" y="-2279.5"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="cXe-zQ-XuJ">
@@ -1244,7 +1245,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="MH3-93-WEo" customClass="Sample4TableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MH3-93-WEo" id="3zA-Fr-wXa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1519,7 +1520,7 @@
         <!--Heat Map View Controller-->
         <scene sceneID="Hbu-ub-JNz">
             <objects>
-                <viewController storyboardIdentifier="HeatMapViewController" id="J8v-Ws-g8G" customClass="HeatMapViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="jumpHeatMapViewController" id="J8v-Ws-g8G" customClass="HeatMapViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kxz-8b-bF8"/>
                         <viewControllerLayoutGuide type="bottom" id="Zz7-Ll-CUk"/>
@@ -1528,7 +1529,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-Cb-zj1" customClass="ABFRealmMapView">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-Cb-zj1" customClass="ABFRealmMapView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                         </subviews>
@@ -1547,7 +1548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7v-rW-PRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3119.0625" y="-32.218309859154928"/>
+            <point key="canvasLocation" x="-3759.5" y="-4304.5"/>
         </scene>
         <!--Near-->
         <scene sceneID="3dZ-WE-DLl">
@@ -2405,12 +2406,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BQI-vf-HeQ"/>
-        <segue reference="30a-Oz-nKe"/>
-        <segue reference="meX-Bj-p6Y"/>
-        <segue reference="4ab-y8-Qck"/>
-        <segue reference="g3n-kx-BDj"/>
-        <segue reference="Jx8-B4-NT3"/>
-        <segue reference="90t-D4-viw"/>
+        <segue reference="ren-zg-h6h"/>
+        <segue reference="L0G-no-fLl"/>
+        <segue reference="RmI-DY-kRf"/>
+        <segue reference="hGv-8z-0ZJ"/>
+        <segue reference="had-LT-zY9"/>
+        <segue reference="Ofb-Gs-yfz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

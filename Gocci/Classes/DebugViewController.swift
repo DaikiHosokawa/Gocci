@@ -88,6 +88,7 @@ class DebugViewController : UIViewController {
         usernameEditField.text = signUpEditField.text
         
         print("Realm: open " + Realm.Configuration.defaultConfiguration.path!)
+        
     }
     
 
@@ -102,8 +103,28 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        let url = NSURL(string: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
+
+        
+
+        Export.saveMovieAtPathToCameraRoll(url!) { assetURL in
+            print("RESULT: ")
+            print(assetURL ?? "nil")
+            
+            if let assetURL = assetURL {
+                
+                let encodedURL = assetURL.absoluteString.percentEncodingSane()
+                
+                let instaURLraw = "instagram://library?AssetPath=\(encodedURL)&InstagramCaption=JESUS"
+                
+                
+                UIApplication.sharedApplication().openURL(NSURL(string: instaURLraw)!)
+            }
+        }
         
         
+        
+        return;
         
         
         let req = API4.get.heatmap()
@@ -123,21 +144,7 @@ class DebugViewController : UIViewController {
             self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
         }
         
-        return;
         
-        
-        
-        let vidURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("twosec", ofType: "mp4")!)
-        
-        print(vidURL)
-        
-        let target = NSFileManager.documentsDirectory() + "/twosec.mp4"
-        if !NSFileManager.fileExistsAtPath(target) {
-            try! NSFileManager.defaultManager().copyItemAtURL(vidURL, toURL: NSURL.fileURLWithPath(target))
-        }
-
-        FacebookVideoSharingTask(timelineMessage: Util.randomKanjiStringWithLength(30), relativeFilePath: "/Documents/twosec.mp4").schedule()
-
         
     }
     
