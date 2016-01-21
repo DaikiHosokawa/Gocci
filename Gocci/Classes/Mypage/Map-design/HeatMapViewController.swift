@@ -39,7 +39,7 @@ class HeatMapViewController: UIViewController {
         mapView.titleKeyPath = "name"
         mapView.subtitleKeyPath = "name"
         
-        mapView.fetchResultsController.clusterTitleFormatString = "$OBJECTSCOUNT restaurants in this area"
+        mapView.fetchResultsController.clusterTitleFormatString = "$OBJECTSCOUNT 件の飲食店があります"
     }
     
     override func viewDidAppear(animated: Bool) {
