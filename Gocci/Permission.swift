@@ -286,6 +286,9 @@ import UIKit
         }
         else {
             log("This token is already registed with the server")
+//            log("we post it anyway aain to the server")
+//            RegisterForPushMessagesTask(deviceToken: deviceToken).schedule()
+            
         }
         
     }
