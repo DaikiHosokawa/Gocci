@@ -19,8 +19,8 @@ import Foundation
 
 class API4 {
     static let version = "4.0"
-    static let liveurl = "https://mobile.api.gocci.me/v4"
-    static let testurl = "http://test.mobile.api.gocci.me/v4"
+    static let liveurl = "https://mobile.api.gocci.me/v3"
+    static let testurl = "http://test.mobile.api.gocci.me/v3"
     
     
     enum GlobalCode {
