@@ -26,13 +26,29 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
     
     var entryText: String!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        textView.delegate = self
+        textView.text = entryText
+        textViewDidChange(textView)
+        
+        if VideoPostPreparation.postData.rest_name != "" {
+            insertRestNameButton.hidden = true
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textView.becomeFirstResponder()
+    }
+    
     
     
     @IBAction func insertRestNameClicked(sender: AnyObject) {
         if VideoPostPreparation.postData.rest_name != "" {
             
             let restname = VideoPostPreparation.postData.rest_name.stringByReplacingOccurrencesOfString(" ", withString: "")
-            textView.text = textView.text + " #" + restname + " "
+            textView.text = textView.text + "#" + restname
         }
         textViewDidChange(textView)
     }
@@ -54,18 +70,7 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        textView.becomeFirstResponder()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        textView.delegate = self
-        textView.text = entryText
-        textViewDidChange(textView)
-    }
+
     
     override func viewWillDisappear(animated: Bool) {
         VideoPostPreparation.postData.twitterTweetMsg = textView.text
@@ -75,8 +80,6 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
     @IBAction func sendClicked(sender: AnyObject) {
 
         VideoPostPreparation.postData.twitterTweetMsg = textView.text
-        VideoPostPreparation.postData.postOnTwitter = true
-        
         self.dismiss()
     }
     

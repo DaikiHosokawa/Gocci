@@ -192,11 +192,13 @@ class FacebookAuthentication {
             }
         }
         
-        if wpr {
-            FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: vc, handler: lambda)
-        }
-        else {
-            FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: vc, handler: lambda)
+        Util.runOnMainThread {
+            if wpr {
+                FBSDKLoginManager().logInWithPublishPermissions(["publish_actions"], fromViewController: vc, handler: lambda)
+            }
+            else {
+                FBSDKLoginManager().logInWithReadPermissions(nil, fromViewController: vc, handler: lambda)
+            }
         }
     
     }
