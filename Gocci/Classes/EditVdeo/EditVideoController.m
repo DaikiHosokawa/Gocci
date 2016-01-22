@@ -186,71 +186,49 @@
     [_player play];
 }
 
+
+
+
+
 -(void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox{
     
     if (checkbox == self.TwitterCheckbox) {
         self.TwitterComment.hidden = !checkbox.isChecked;
-        VideoPostPreparation.postData.postOnTwitter = checkbox.isChecked;
         
         if (!checkbox.isChecked)
             return;
-
         
         [Bridge authenticateWithTwitterIfNecessary:self and:^(BOOL success) {
             if (!success) {
                 self.TwitterComment.hidden = true;
                 [self.checkbox uncheckAnimated:YES];
-                VideoPostPreparation.postData.postOnTwitter = NO;
                 return;
             }
             
             NSString *possibleTweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
             
-            // tweet below 120 char limit
-            if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:possibleTweet] >= 0) {
-                VideoPostPreparation.postData.postOnTwitter = YES;
-            }
-            // maybe without the gocci hashtag
-            else if (checkbox.isChecked && [Bridge videoTweetMessageRemainingCharacters:self.textView.text] >= 0) {
-                VideoPostPreparation.postData.postOnTwitter = YES;
-            }
-            // Tweet too long
-            else if (checkbox.isChecked){
+            if ([Bridge videoTweetMessageRemainingCharacters:possibleTweet] < 0) {
                 [TwitterPopupBridge pop:self initialTweet:possibleTweet];
             }
-            else {
-                VideoPostPreparation.postData.postOnTwitter = NO;
-            }
         }];
-    }else if(checkbox == self.FacebookCheckbox){
+    }
+    else if(checkbox == self.FacebookCheckbox){
         self.FacebookComment.hidden = !checkbox.isChecked;
-        VideoPostPreparation.postData.postOnFacebook = checkbox.isChecked;
         
         if (!checkbox.isChecked)
             return;
-        
-        
         
         [Bridge authenticateWithFacebookWithPublishRIghtsIfNecessary:self and:^(BOOL success) {
             
             if (!success) {
                 self.FacebookComment.hidden = true;
                 [checkbox uncheckAnimated:YES];
-                VideoPostPreparation.postData.postOnFacebook = NO;
-                return;
             }
-            
-            [FacebookPopupBridge pop:self initialText:VideoPostPreparation.postData.facebookTimelineMessage cancelFunc:^() {
-                self.FacebookComment.hidden = true;
-                [checkbox uncheckAnimated:YES];
-                VideoPostPreparation.postData.postOnFacebook = NO;
-            }];
-            
         }];
 
-
         
-    }else if(checkbox == self.InstagramCheckbox){
+    }
+    else if(checkbox == self.InstagramCheckbox){
         
         bool instaInstalled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]];
         
@@ -270,10 +248,16 @@
 - (IBAction)TwitterCommentEdit:(id)sender {
     
     if (sender == _FacebookComment) {
-        [FacebookPopupBridge pop:self initialText:VideoPostPreparation.postData.facebookTimelineMessage cancelFunc:nil];
+        if (VideoPostPreparation.postData.facebookTimelineMessage != nil) {
+            [FacebookPopupBridge pop:self initialText:VideoPostPreparation.postData.facebookTimelineMessage];
+        }
+        else {
+            [FacebookPopupBridge pop:self initialText:self.textView.text];
+        }
+        
     }
     else if (sender == _TwitterComment) {
-        if (![VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
+        if (VideoPostPreparation.postData.twitterTweetMsg != nil) {
             [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
         }
         else {
@@ -281,8 +265,6 @@
             [TwitterPopupBridge pop:self initialTweet:possibleTweet];
         }
     }
-    
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -304,11 +286,22 @@
 
 - (IBAction)shareButton:(id)sender {
     
-
+    if (![VideoPostPreparation isReadyToSend])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
     
-    if (VideoPostPreparation.postData.postOnTwitter && [VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
-        NSString *tweet = [NSString stringWithFormat:@"%@ %@", GOCCI_TWITTER_TAG, self.textView.text];
 
+    VideoPostPreparation.postData.postOnTwitter = self.TwitterCheckbox.isChecked;
+    VideoPostPreparation.postData.postOnInstagram = self.InstagramCheckbox.isChecked;
+    VideoPostPreparation.postData.postOnFacebook = self.FacebookCheckbox.isChecked;
+    
+    // this is to add the gocci hash tag only if the tweet is has space left
+    if (VideoPostPreparation.postData.postOnTwitter && VideoPostPreparation.postData.twitterTweetMsg == nil) {
+        
+        NSString *tweet = [NSString stringWithFormat:@"%@ %@", self.textView.text, GOCCI_TWITTER_TAG];
+        
         if ([Bridge videoTweetMessageRemainingCharacters:tweet] >= 0) {
             VideoPostPreparation.postData.twitterTweetMsg = tweet;
         }
@@ -316,24 +309,14 @@
             VideoPostPreparation.postData.twitterTweetMsg = self.textView.text;
         }
         else {
-            // this only happen if the user edit the main text, after clicking the twitter share button
-            // to prevent he posts the wrong msg on twitter
+            // this only happens if the user edit the main text, after clicking the twitter share button
+            // and the message is too long for twitter
             
             [TwitterPopupBridge pop:self initialTweet:VideoPostPreparation.postData.twitterTweetMsg];
-            return; // TODO <- the user has to click again on share, not good
+            return; // TODO <- the user has to click again on share, not so good
         }
     }
     
-//    // that is kinda ugly. make this better one day
-//    if ([self.textView.text isEqual:@""] && [VideoPostPreparation.postData.twitterTweetMsg isEqual:@""]) {
-//        VideoPostPreparation.postData.twitterTweetMsg = GOCCI_TWITTER_TAG;
-//    }
-    
-    if (![VideoPostPreparation isReadyToSend])
-    {
-        [[[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"店名が未入力です" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        return;
-    }
     
     UIButton* sbut = (UIButton *)sender;
     sbut.enabled = false;
@@ -365,7 +348,8 @@
             NSLog(@"Export was cancelled");
             return;
         }
-        else if (exportSession.error) {
+        
+        if (exportSession.error) {
             [[[UIAlertView alloc] initWithTitle:@"保存に失敗しました" message:exportSession.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             return;
         }

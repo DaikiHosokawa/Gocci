@@ -11,10 +11,9 @@ import Foundation
 
 
 @objc class FacebookPopupBridge: NSObject {
-    class func pop(from: UIViewController, initialText: String, cancelFunc: OVF = nil) {
+    class func pop(from: UIViewController, initialText: String) {
         let tp = FacebookPopup(from: from, title: "Facebook", widthRatio: 80, heightRatio: 40)
         tp.entryText = initialText
-        tp.onCancel = cancelFunc
         tp.pop()
     }
     
@@ -24,21 +23,11 @@ class FacebookPopup: AbstractPopup {
     
     @IBOutlet weak var textView: UITextView!
     
-    var onCancel: OVF = nil
-    
     var entryText: String!
-    var postClicked: Bool = false
-    
-    override func viewDidDisappear(a: Bool) {
-        super.viewDidDisappear(a)
-        if !postClicked {
-            onCancel?()
-        }
-    }
     
     @IBAction func insertRestNameClicked(sender: AnyObject) {
         if VideoPostPreparation.postData.rest_name != "" {
-            textView.text = textView.text + "#" + VideoPostPreparation.postData.rest_name
+            textView.text = textView.text + VideoPostPreparation.postData.rest_name
         }
     }
     
@@ -49,7 +38,6 @@ class FacebookPopup: AbstractPopup {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         textView.text = entryText
     }
     
@@ -59,11 +47,6 @@ class FacebookPopup: AbstractPopup {
     }
     
     @IBAction func sendClicked(sender: AnyObject) {
-        
-        VideoPostPreparation.postData.facebookTimelineMessage = textView.text
-        VideoPostPreparation.postData.postOnFacebook = true
-        postClicked = true
-        
         self.dismiss()
     }
     

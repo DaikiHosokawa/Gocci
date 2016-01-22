@@ -36,11 +36,11 @@ import Foundation
         var notifyNewRestName: (String->())? = nil
         
         var postOnTwitter: Bool = false
-        var twitterTweetMsg: String = ""
+        var twitterTweetMsg: String? = nil
         var twitterRelativeVideoFilename = ""
         
         var postOnFacebook: Bool = false
-        var facebookTimelineMessage: String = ""
+        var facebookTimelineMessage: String? = nil
         var facebookRelativeVideoFilename = ""
         
         var postOnInstagram: Bool = false
@@ -96,11 +96,13 @@ import Foundation
         }
         
         if postData.postOnTwitter {
-            TwitterVideoSharingTask(tweetMessage: postData.twitterTweetMsg, relativeFilePath: postData.twitterRelativeVideoFilename).schedule()
+            let msg = postData.twitterTweetMsg ?? postData.memo
+            TwitterVideoSharingTask(tweetMessage: msg, relativeFilePath: postData.twitterRelativeVideoFilename).schedule()
         }
         
         if postData.postOnFacebook {
-            FacebookVideoSharingTask(timelineMessage: postData.facebookTimelineMessage, relativeFilePath: postData.facebookRelativeVideoFilename).schedule()
+            let msg = postData.facebookTimelineMessage ?? postData.memo
+            FacebookVideoSharingTask(timelineMessage: msg, relativeFilePath: postData.facebookRelativeVideoFilename).schedule()
         }
         
         if postData.postOnInstagram {
