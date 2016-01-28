@@ -658,6 +658,7 @@
                         <segue destination="9NX-TU-r7E" kind="show" identifier="goUsersOthers" id="dJ0-hj-1e2">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="epx-0e-1cw" kind="push" identifier="goHeatmap" id="5k0-e0-IhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tym-i2-BPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -823,7 +824,7 @@
                                 <rect key="frame" x="0.0" y="452" width="414" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7U8-m7-6y4" id="eHx-o2-gOS">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1281,7 +1282,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fvA-Si-xAF" id="ZQY-Ts-3iL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1317,7 +1318,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edn-r1-OOX" id="h66-A6-K7M">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1373,7 +1374,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IB3-sU-N9V" id="ZbE-2t-at9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1409,7 +1410,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecY-xR-Dkp" id="x5a-ou-czC">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1615,7 +1616,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHb-zE-uGy" id="4S7-yp-hPm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoView" id="QyM-E5-rCh">
@@ -2182,7 +2183,7 @@
         <!--RequestGPS View Controller-->
         <scene sceneID="920-5s-ZCQ">
             <objects>
-                <viewController storyboardIdentifier="RequestGPSViewController" id="aRE-ZE-3t2" customClass="RequestGPSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestGPSViewController" id="aRE-ZE-3t2" customClass="RequestGPSViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Jt-Fp-Crj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2204,7 +2205,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonAction:" destination="aRE-ZE-3t2" eventType="touchUpInside" id="VEs-Ul-shD"/>
+                                    <action selector="btnForGPSRequestClicked:" destination="aRE-ZE-3t2" eventType="touchUpInside" id="OVp-xG-nTM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近くのグルメ動画を取得しよう！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nJh-fM-ubg">
@@ -2245,7 +2246,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TXl-cb-qVL" id="Mmc-z3-pcI">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="127.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoView" id="ZSM-yA-e8C">
@@ -2406,7 +2407,7 @@
                                         <rect key="frame" x="0.0" y="92" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ozQ-DM-XY1" id="wOL-wC-Uf1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2457,6 +2458,43 @@
             </objects>
             <point key="canvasLocation" x="1499" y="-5868"/>
         </scene>
+        <!--Cluster Map View Controller-->
+        <scene sceneID="4vW-B1-f7v">
+            <objects>
+                <viewController id="epx-0e-1cw" customClass="ClusterMapViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e8t-2x-lfa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Meq-0Z-tOI" customClass="ABFRealmMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wvx-Ca-6a2">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="epx-0e-1cw" eventType="touchUpInside" id="1aB-MO-wvK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vVW-hF-vjO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="mapView" destination="Meq-0Z-tOI" id="KqV-7f-lw1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYT-JZ-NBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3451" y="-5711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton_map" width="60" height="60"/>
@@ -2496,10 +2534,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="SI4-OW-qMQ"/>
         <segue reference="YMD-DR-Sl9"/>
-        <segue reference="qh1-2C-pXX"/>
-        <segue reference="Foo-dB-2J8"/>
         <segue reference="knF-4T-ZwF"/>
-        <segue reference="zpe-5c-LEZ"/>
-        <segue reference="pXi-gB-BGB"/>
+        <segue reference="Foo-dB-2J8"/>
+        <segue reference="ZQQ-Zq-hBy"/>
+        <segue reference="dJ0-hj-1e2"/>
+        <segue reference="Eh2-sb-qj4"/>
     </inferredMetricsTieBreakers>
 </document>

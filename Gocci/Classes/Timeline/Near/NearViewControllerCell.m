@@ -143,6 +143,9 @@
             distance = distance / 1000;
         }
     }
+    else {
+        return @""; // simulator bug
+    }
     
     return [NSString stringWithFormat:format, [self stringWithDouble:distance]];
 }

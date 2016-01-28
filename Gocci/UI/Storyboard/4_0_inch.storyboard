@@ -660,6 +660,7 @@
                         <segue destination="qW0-L8-oPW" kind="show" identifier="goUsersOthers" id="tqw-Xw-XIw">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="u9n-fP-Elh" kind="push" identifier="goHeatmap" id="bFu-8b-jTB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3d-kf-CJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -825,7 +826,7 @@
                                 <rect key="frame" x="0.0" y="411" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="alx-6N-9xO" id="sVl-X3-c7q">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1279,7 +1280,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nas-gg-Qw2" id="cPf-YI-itb">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1315,7 +1316,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nft-cg-AND" id="i9J-oj-5hz">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1371,7 +1372,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zPS-SS-hJq" id="c1k-4v-ohX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1407,7 +1408,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A1I-kD-D0n" id="WkU-ma-s5z">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1598,7 +1599,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q4u-mp-DAZ" id="Pij-mf-Rdx">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="96.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoView" id="nQw-WK-w90">
@@ -2165,7 +2166,7 @@
         <!--RequestGPS View Controller-->
         <scene sceneID="w1d-yD-rnM">
             <objects>
-                <viewController storyboardIdentifier="RequestGPSViewController" id="aO0-dR-ibv" customClass="RequestGPSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestGPSViewController" id="aO0-dR-ibv" customClass="RequestGPSViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w46-m1-ohE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2194,7 +2195,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonAction:" destination="aO0-dR-ibv" eventType="touchUpInside" id="zOa-WH-ocM"/>
+                                    <action selector="btnForGPSRequestClicked:" destination="aO0-dR-ibv" eventType="touchUpInside" id="o8n-O2-UaR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2228,7 +2229,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="041-5R-6EE" id="Oi2-Sd-pCx">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="96.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoView" id="87i-s5-sIA">
@@ -2389,7 +2390,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7is-Zt-E0M" id="wJL-33-NFf">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2440,6 +2441,43 @@
             </objects>
             <point key="canvasLocation" x="1499" y="-5868"/>
         </scene>
+        <!--Cluster Map View Controller-->
+        <scene sceneID="DY5-zr-hDW">
+            <objects>
+                <viewController id="u9n-fP-Elh" customClass="ClusterMapViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Jp-vJ-B9f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="nhp-fX-2Zd" customClass="ABFRealmMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hrk-bi-Qya">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="u9n-fP-Elh" eventType="touchUpInside" id="XnL-Jj-rn7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NcX-Vn-0S0"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mapView" destination="nhp-fX-2Zd" id="wrP-ov-9Uf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gsl-QI-1nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3451" y="-5711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton_map" width="60" height="60"/>
@@ -2478,11 +2516,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kth-Ev-KZE"/>
-        <segue reference="nCy-MK-7X8"/>
-        <segue reference="QRa-dv-Pod"/>
-        <segue reference="UsF-fz-dpG"/>
-        <segue reference="f7M-Pp-lgJ"/>
-        <segue reference="UjS-k3-cIb"/>
         <segue reference="zNa-cd-7M5"/>
+        <segue reference="UsF-fz-dpG"/>
+        <segue reference="UjS-k3-cIb"/>
+        <segue reference="R4c-MQ-ZOO"/>
+        <segue reference="3hC-c7-Otz"/>
+        <segue reference="tqw-Xw-XIw"/>
     </inferredMetricsTieBreakers>
 </document>

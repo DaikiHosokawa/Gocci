@@ -69,16 +69,16 @@ import Foundation
         }
     }
     
-    static let NETWORK_TIMEOUT = 20.0
+//    static let NETWORK_TIMEOUT = 20.0
     
-    class func makeRequest(url: NSURL) -> NSMutableURLRequest {
-        
-        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: NETWORK_TIMEOUT)
-        request.HTTPShouldHandleCookies = false
-        
-        return request
-        
-    }
+//    class func makeRequest(url: NSURL) -> NSMutableURLRequest {
+//        
+//        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: NETWORK_TIMEOUT)
+//        request.HTTPShouldHandleCookies = false
+//        
+//        return request
+//        
+//    }
     
     
     

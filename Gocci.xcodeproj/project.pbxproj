@@ -29,7 +29,6 @@
 		952258371C1D8DEE00B0C944 /* tabbaritem_timeline_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9522582F1C1D8DEE00B0C944 /* tabbaritem_timeline_sel@2x.png */; };
 		952258381C1D8DEE00B0C944 /* tabbaritem_timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = 952258301C1D8DEE00B0C944 /* tabbaritem_timeline.png */; };
 		954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */; };
-		954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883E81C0C026100BB533D /* RequestGPSViewController.m */; };
 		954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
@@ -345,11 +344,10 @@
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
 		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
 		987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F51BFB37AD00339285 /* thumbnail.jpg */; };
+		988270521C59F6BB00EA9F57 /* RequestGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988270511C59F6BB00EA9F57 /* RequestGPSViewController.swift */; };
 		988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */; };
 		988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
-		988E81C81C44A20A006207CD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988E81C61C44A20A006207CD /* Realm.framework */; };
-		988E81C91C44A20A006207CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988E81C71C44A20A006207CD /* RealmSwift.framework */; };
 		988E81CB1C44AB00006207CD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988E81C61C44A20A006207CD /* Realm.framework */; };
 		988E81CC1C44AB00006207CD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 988E81C61C44A20A006207CD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		988E81CE1C44AB06006207CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988E81C71C44A20A006207CD /* RealmSwift.framework */; };
@@ -376,7 +374,6 @@
 		98AB5DBD1C44EDF50023C0DE /* RLMArray+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DAD1C44EDF50023C0DE /* RLMArray+Utilities.m */; };
 		98AB5DBE1C44EDF50023C0DE /* RLMObject+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DAF1C44EDF50023C0DE /* RLMObject+Utilities.m */; };
 		98AB5DBF1C44EDF50023C0DE /* RLMObjectBase+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DB11C44EDF50023C0DE /* RLMObjectBase+Utilities.m */; };
-		98AB5DC11C45EE790023C0DE /* HeatMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */; };
 		98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF11C06D5B9006CA013 /* Reachability.m */; };
 		98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1FCF71C0804B4006CA013 /* Algorithms.swift */; };
 		98B99E871C21173000B1D9CE /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B99E861C21173000B1D9CE /* Permission.swift */; };
@@ -393,6 +390,7 @@
 		98C453A11C1FAF900010846B /* FeedbackPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C4539F1C1FAF900010846B /* FeedbackPopup.xib */; };
 		98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
 		98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */; };
+		98CEEF9B1C59ACFE00B04047 /* ClusterMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEEF9A1C59ACFE00B04047 /* ClusterMapViewController.swift */; };
 		98D3FFEB1C26C63500751CAF /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
@@ -475,8 +473,6 @@
 		952258301C1D8DEE00B0C944 /* tabbaritem_timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbaritem_timeline.png; sourceTree = "<group>"; };
 		954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAddPopupViewController.m; sourceTree = "<group>"; };
 		954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAddPopupViewController.h; sourceTree = "<group>"; };
-		954883E71C0C026100BB533D /* RequestGPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGPSViewController.h; sourceTree = "<group>"; };
-		954883E81C0C026100BB533D /* RequestGPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGPSViewController.m; sourceTree = "<group>"; };
 		954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestGPSPopupViewController.m; sourceTree = "<group>"; };
 		954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestGPSPopupViewController.h; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
@@ -960,6 +956,7 @@
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
 		987E51F41BFB37AD00339285 /* restaurantlatlon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = restaurantlatlon.json; path = Gocci/Debug/restaurantlatlon.json; sourceTree = "<group>"; };
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
+		988270511C59F6BB00EA9F57 /* RequestGPSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGPSViewController.swift; sourceTree = "<group>"; };
 		988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testVideoUploadTaskChain.swift; sourceTree = "<group>"; };
 		988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostPreparation.swift; sourceTree = "<group>"; };
 		988E81C61C44A20A006207CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -1007,7 +1004,6 @@
 		98AB5DAF1C44EDF50023C0DE /* RLMObject+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObject+Utilities.m"; sourceTree = "<group>"; };
 		98AB5DB01C44EDF50023C0DE /* RLMObjectBase+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RLMObjectBase+Utilities.h"; sourceTree = "<group>"; };
 		98AB5DB11C44EDF50023C0DE /* RLMObjectBase+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObjectBase+Utilities.m"; sourceTree = "<group>"; };
-		98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapViewController.swift; sourceTree = "<group>"; };
 		98B1FCF01C06D5B9006CA013 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		98B1FCF11C06D5B9006CA013 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		98B1FCF71C0804B4006CA013 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithms.swift; path = Utilities/Algorithms.swift; sourceTree = "<group>"; };
@@ -1018,6 +1014,7 @@
 		98C4539C1C1EFF4A0010846B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		98C4539F1C1FAF900010846B /* FeedbackPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackPopup.xib; sourceTree = "<group>"; };
 		98C453A21C1FAFBD0010846B /* FeedbackPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackPopup.swift; sourceTree = "<group>"; };
+		98CEEF9A1C59ACFE00B04047 /* ClusterMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterMapViewController.swift; sourceTree = "<group>"; };
 		98D3FFEA1C26C63500751CAF /* APILowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILowLevel.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
 		98FED72F1C26E471008C8927 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Export.swift; path = Utilities/Export.swift; sourceTree = "<group>"; };
@@ -1085,7 +1082,6 @@
 				988E81CE1C44AB06006207CD /* RealmSwift.framework in Frameworks */,
 				BFA1DA6C1AB29C9500B4F63A /* Accounts.framework in Frameworks */,
 				53A267C41AB3CF4A00CD759A /* Social.framework in Frameworks */,
-				988E81C91C44A20A006207CD /* RealmSwift.framework in Frameworks */,
 				BFA1DA6A1AB29C9100B4F63A /* Twitter.framework in Frameworks */,
 				FF0BE454193ED5D9001A0053 /* ImageIO.framework in Frameworks */,
 				9505939F1BFC2B7100328449 /* GoogleMaps.framework in Frameworks */,
@@ -1104,7 +1100,6 @@
 				9550DADC1BF83E4C00430942 /* AWSCognito.framework in Frameworks */,
 				FF54EFE319149A1800025DC8 /* Foundation.framework in Frameworks */,
 				98FFDE6F1C4C8EFE002B6400 /* FBSDKLoginKit.framework in Frameworks */,
-				988E81C81C44A20A006207CD /* Realm.framework in Frameworks */,
 				9550DADD1BF83E4C00430942 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1115,8 +1110,7 @@
 		954883E61C0C022600BB533D /* RequestGPS */ = {
 			isa = PBXGroup;
 			children = (
-				954883E71C0C026100BB533D /* RequestGPSViewController.h */,
-				954883E81C0C026100BB533D /* RequestGPSViewController.m */,
+				988270511C59F6BB00EA9F57 /* RequestGPSViewController.swift */,
 			);
 			path = RequestGPS;
 			sourceTree = "<group>";
@@ -2174,6 +2168,7 @@
 		95FD92BD1C0D783100D822E8 /* Near */ = {
 			isa = PBXGroup;
 			children = (
+				98CEEF9A1C59ACFE00B04047 /* ClusterMapViewController.swift */,
 				95FD92BE1C0D783100D822E8 /* HeatMap */,
 				95FD92C11C0D783100D822E8 /* NearViewController.h */,
 				95FD92C21C0D783100D822E8 /* NearViewController.m */,
@@ -2235,7 +2230,6 @@
 				95FD92DB1C0D79F200D822E8 /* InfoView.xib */,
 				95FD92DC1C0D79F200D822E8 /* MapViewController.h */,
 				95FD92DD1C0D79F200D822E8 /* MapViewController.m */,
-				98AB5DC01C45EE790023C0DE /* HeatMapViewController.swift */,
 			);
 			path = "Map-design";
 			sourceTree = "<group>";
@@ -2568,7 +2562,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Massara;
 				TargetAttributes = {
 					981A932A1BFC5063007B3BF6 = {
@@ -2794,7 +2788,6 @@
 				9550DAD01BF83E4C00430942 /* TabbarBaseViewController.m in Sources */,
 				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
-				954883E91C0C026100BB533D /* RequestGPSViewController.m in Sources */,
 				98AB5DBA1C44EDF50023C0DE /* RBQRealmNotificationManager.m in Sources */,
 				98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */,
 				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
@@ -2899,13 +2892,13 @@
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
 				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
 				95FD92EB1C0D79F200D822E8 /* InfoView.m in Sources */,
+				988270521C59F6BB00EA9F57 /* RequestGPSViewController.swift in Sources */,
 				955E73A21C27F06D00B9449B /* SCRecordSessionSegment.m in Sources */,
 				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				95EEF1F81C26976A009DA989 /* AFURLConnectionOperation.m in Sources */,
 				9550DAC91BF83E4C00430942 /* WebViewPopup.swift in Sources */,
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
-				98AB5DC11C45EE790023C0DE /* HeatMapViewController.swift in Sources */,
 				98379E0B1C4E352C00025F46 /* APIAutoGenerated.swift in Sources */,
 				958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
@@ -2913,6 +2906,7 @@
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
 				9550DA961BF83E4C00430942 /* AWSManager.swift in Sources */,
 				9550DAC61BF83E4C00430942 /* ConfirmationPopover.swift in Sources */,
+				98CEEF9B1C59ACFE00B04047 /* ClusterMapViewController.swift in Sources */,
 				95FD92ED1C0D79F200D822E8 /* MapViewController.m in Sources */,
 				9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */,
 				9550DA361BF83E4C00430942 /* LifelogCell.m in Sources */,
@@ -3055,7 +3049,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3080,7 +3073,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3142,7 +3134,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DTEST_BUILD";
-				PROVISIONING_PROFILE = "39130586-8bae-451f-bfca-6e6c793903c4";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
@@ -3189,7 +3180,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DLIVE_BUILD";
-				PROVISIONING_PROFILE = "39130586-8bae-451f-bfca-6e6c793903c4";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gocci/Supporting FIles/Swift-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = Swift.h;
@@ -3204,8 +3194,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Gocci/Vendor";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -3226,7 +3214,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.inase.GocciTest;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)Test";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3241,8 +3228,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Gocci/Vendor";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -3262,7 +3247,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.inase.Gocci;
 				PRODUCT_MODULE_NAME = Gocci;
 				PRODUCT_NAME = "$(TARGETNAME)";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7s arm64 armv6 armv7";

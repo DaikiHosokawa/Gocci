@@ -31,6 +31,8 @@ extension Logable {
 //#if TEST_BUILD
         if verbose {
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg)
+            
+            appendToFile("LOG: " + msg)
         }
 //#endif
     }
@@ -43,6 +45,8 @@ extension Logable {
             let balken = String(count: max(118 - msg.length, 0), repeatedValue: Character("="))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, String(count: 120, repeatedValue: Character("=")))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
+            
+            appendToFile("HEAD: " + head)
         }
 //#endif
     }
@@ -55,6 +59,8 @@ extension Logable {
         Lo.error(String(count: 120, repeatedValue: Character("=")))
         Lo.error(head + "  " + balken)
         Lo.error(msg)
+        
+        appendToFile("ERROR: " + msg)
 //#endif
     }
 
@@ -68,6 +74,37 @@ extension Logable {
     
     func err(head: String) {
         self.dynamicType.err(head)
+    }
+    
+    
+    static func appendToFile(msg: String) {
+        
+        let logDir = NSURL.fileURLWithPath(NSFileManager.documentsDirectory())
+        let logFile = logDir.URLByAppendingPathComponent("log.txt")
+        
+        
+        let data = (msg+"\n").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        
+        if NSFileManager.fileExistsAtURL(logFile) {
+            
+            if let fileHandle =  try? NSFileHandle(forWritingToURL: logFile) {
+                
+                fileHandle.seekToEndOfFile()
+                fileHandle.writeData(data)
+                fileHandle.closeFile()
+            }
+            else {
+                print("Can't open fileHandle \(err)")
+            }
+        }
+        else {
+            do {
+                try data.writeToURL(logFile, options: NSDataWritingOptions.AtomicWrite)
+            }
+            catch {
+                print("Can't write to logfile")
+            }
+        }
     }
 
 }
