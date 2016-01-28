@@ -11,7 +11,14 @@ import Foundation
 
 class APILowLevel: Logable {
     
+#if TEST_BUILD
     static var verbose: Bool = true
+#endif
+#if LIVE_BUILD
+    static var verbose: Bool = false
+#endif
+    
+    
     static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0xFF, 0x99, 0x33)
     
     
