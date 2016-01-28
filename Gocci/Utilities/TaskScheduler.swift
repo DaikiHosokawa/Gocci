@@ -80,7 +80,7 @@ class SingletonTaskScheduler: Logable {
     
     func loadTasksFromDisk() {
         if !tasks.isEmpty {
-            print("=== WARNING: you are overwriting tasks... very bad... ")
+            err("=== WARNING: you are overwriting tasks... very bad... ")
         }
         
         var tmp: [PersistentBaseTask] = []
@@ -90,6 +90,8 @@ class SingletonTaskScheduler: Logable {
                 if let dict = dict as? NSDictionary {
                     if let cn = dict["classname"] as? String {
                         if let t = PersistentClassReflexion.createPersistentTaskFromString(cn, data: dict) {
+                            
+                            log("Task from Disk loaded. (state: \(t.state)):  \(t)")
                             if t.state == .RUNNING {
                                 t.state = .SUSPENDED
                             }
@@ -115,18 +117,22 @@ class SingletonTaskScheduler: Logable {
         }
         
         let out = NSMutableArray()
+        let names = "\(tasks)"
         for task in tasks {
             out.addObject(task.dictonaryRepresentation())
         }
         if !out.writeToFile(saveFileName, atomically: true) {
-            print("=== ERROR cant write file to disk")
+            err("Cant write tasks to file on disk")
         }
         else {
-            print("=== Saved: \(saveFileName)")
+            sep("Scheduler")
+            log("Saved tasks to disk: \(saveFileName): \(names)")
         }
     }
     
     func schedule(task: PersistentBaseTask) {
+        sep("Scheduler")
+        log("Will schedule task: \(tasks)")
         
         if task.setup() {
 
@@ -141,6 +147,8 @@ class SingletonTaskScheduler: Logable {
     }
     
     private func dequeueTask(task: PersistentBaseTask) {
+        sep("Scheduler")
+        log("Removed task: \(tasks)")
         task.teardown()
         sync(tasks) {
             self.tasks = self.tasks.filter{ !task.equals($0) }
@@ -149,6 +157,9 @@ class SingletonTaskScheduler: Logable {
     }
     
     private func punishTask(task: PersistentBaseTask) {
+        sep("Scheduler")
+        log("Punish task: \(tasks)")
+        
         sync(tasks) {
             self.tasks = self.tasks.filter{ !task.equals($0) }
             // punishment time
@@ -177,6 +188,7 @@ class SingletonTaskScheduler: Logable {
     
     // Do not use this on a regualr basis. Only in extrem cases
     func hardReset() {
+        err("Who calles a hard reset on the scheduler?? crazy?")
         sync(tasks) {
             self.tasks = []
             let _ = try? NSFileManager.defaultManager().removeItemAtPath(TaskScheduler.saveFileName)
@@ -184,6 +196,10 @@ class SingletonTaskScheduler: Logable {
     }
     
     func rescheduleNetworkTasks() {
+        if tasks.count > 0 {
+            log("RescheduleNetworkTasks")
+        }
+        
         sync(tasks) {
             for task in self.tasks {
                 if task.state == PersistentBaseTask.State.FAILED_NETWORK {
@@ -208,6 +224,8 @@ class SingletonTaskScheduler: Logable {
     
     func startScheduler() {
         
+        sep("Scheduler was started!!")
+        log("Tasks: \(tasks)")
 
         let getACopyOfTheThreadWithTheHigestDueThatIsNotRunning: ()->PersistentBaseTask? = {
             
@@ -221,6 +239,7 @@ class SingletonTaskScheduler: Logable {
                     }
                 }
             }
+            self.log("highest due task: \(task)")
             return task
         }
         
@@ -233,14 +252,15 @@ class SingletonTaskScheduler: Logable {
                         task.state = result
                     }
                     
+                    self.sep("Scheduler")
+                    self.log("Task finished in state: \(task.state):   \(task)")
                     
                     if task.state == .DONE {
-                        Lo.green("=== Task finished with result: \(result)")
+                        Lo.green("=== Task finished with result: \(result):   \(task)")
                     }
                     else {
-                        Lo.red("=== Task finished with result: \(result)")
+                        Lo.red("=== Task finished with result: \(result):   \(task)")
                     }
-                    
                     
 
                     
@@ -282,27 +302,27 @@ class SingletonTaskScheduler: Logable {
             
             while (true) {
                 
-                print("===============================================================================")
-                print("\(self.tasks)")
+                self.sep("SchedLoop")
+                self.log("Tasks: \(self.tasks)")
                 
                 // actually this is threadsafe becasue removing tasks can only this task itself. so there is no
                 // way that this jumps from true to false.
                 if self.tasks.isEmpty {
-                    print("=== No tasks... waiting...")
+                    self.log("No tasks... waiting...")
                     dispatch_semaphore_wait(self.eventSemaphore, DISPATCH_TIME_FOREVER)
                     continue
                 }
                 
                 // this is on the other hand is not threadsafe. mainly used for debugging
                 if self.slots_enabled && self.slots <= 0 {
-                    print("=== No free SLOTS... waiting...")
+                    self.log("No free SLOTS... waiting...")
                     dispatch_semaphore_wait(self.eventSemaphore, DISPATCH_TIME_FOREVER)
                     continue
                 }
                 
                 // don't run running tasks again
                 guard let task = getACopyOfTheThreadWithTheHigestDueThatIsNotRunning() else {
-                    print("=== All tasks are running. Nothing to do. Waiting...")
+                    self.log("All tasks are running. Nothing to do. Waiting...")
                     dispatch_semaphore_wait(self.eventSemaphore, DISPATCH_TIME_FOREVER)
                     continue
                 }
@@ -310,13 +330,13 @@ class SingletonTaskScheduler: Logable {
                 // test if the task is on due
                 if task.timeNextTry > Int(NSDate().timeIntervalSince1970) {
                     let diff = task.timeNextTry - Int(NSDate().timeIntervalSince1970)
-                    print("=== Too early for '\(task)'. waiting \(diff) seconds. waiting...")
+                    self.log("=== Too early for '\(task)'. waiting \(diff) seconds. waiting...")
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(diff) * Int64(NSEC_PER_SEC))
                     dispatch_semaphore_wait(self.eventSemaphore, dispatchTime)
                     continue
                 }
                 
-                print("=== TASK GETTO!!! (tasks not empty, I have free slots, there is a not running task)")
+                self.log("=== TASK GETTO!!! (tasks not empty, I have free slots, there is a not running task)")
                 
                 self.sync(self.slots) {
                     self.slots--
@@ -341,6 +361,7 @@ class SingletonTaskScheduler: Logable {
         
         // only one scheduler thread double protection.
         if self.schedulerThread != nil && self.schedulerThread!.executing {
+            err("you wanted to start a second scheduler")
             return
         }
         

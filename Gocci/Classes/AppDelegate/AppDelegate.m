@@ -245,9 +245,18 @@ void exceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
   completionHandler:(void (^)())completionHandler {
+    
+    NSLog(@" ZZZ from Background: handleEventsForBackgroundURLSession: %@", identifier);
+    
+    if([identifier hasPrefix:@"SNS"]) {
+        completionHandler();
+        return;
+    }
+    
     /* Store the completion handler.*/
     [AWSS3TransferUtility interceptApplication:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
+
 
 
 @end

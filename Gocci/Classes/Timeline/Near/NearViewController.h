@@ -6,6 +6,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SortableTimeLineSubViewProtocol.h"
+#import "LocationClient.h"
+
 
 @class NearViewController;
 
@@ -31,6 +33,8 @@
 
 - (void)sortFunc:(NSString *)category;
 - (void)sortValue:(NSString *)value;
+
+- (void)updateForPosition:(CLLocationCoordinate2D)position;
 
 @end
 

@@ -187,10 +187,10 @@ static NSString * const ABFAnnotationViewReuseId = @"ABFAnnotationViewReuseId";
         
         ABFAnnotation *fetchedAnnotation = (ABFAnnotation *)annotation;
         
-        ABFClusterAnnotationView *annotationView = (ABFClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ABFAnnotationViewReuseId];
+        ClusterAnnotationView *annotationView = (ClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ABFAnnotationViewReuseId];
         
         if (!annotationView) {
-            annotationView = [[ABFClusterAnnotationView alloc] initWithAnnotation:fetchedAnnotation
+            annotationView = [[ClusterAnnotationView alloc] initWithAnnotation:fetchedAnnotation
                                                                   reuseIdentifier:ABFAnnotationViewReuseId];
             annotationView.canShowCallout = YES;
         }

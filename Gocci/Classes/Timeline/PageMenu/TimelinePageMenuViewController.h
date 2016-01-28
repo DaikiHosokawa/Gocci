@@ -9,7 +9,6 @@
 #import "NearViewController.h"
 #import "FollowViewController.h"
 #import "RecoViewController.h"
-#import "RequestGPSViewController.h"
 
 #import "SortableTimeLineSubViewProtocol.h"
 
@@ -24,11 +23,15 @@
 @property (strong, nonatomic) NearViewController *nearViewController;
 @property (strong, nonatomic) FollowViewController *followViewController;
 @property (strong, nonatomic) RecoViewController *recoViewController;
-@property (strong, nonatomic) RequestGPSViewController *requestGPSViewController;
+//@property (strong, nonatomic) RequestGPSViewController *requestGPSViewController;
 
 @property (strong, nonatomic) UIViewController *activeSubViewController;
 
 @property (weak, nonatomic) id<SortableTimeLineSubView> currentVisibleSortableSubViewController;
 
+
+-(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position;
+
+-(void)setupPageMenu:(int)page;
 
 @end

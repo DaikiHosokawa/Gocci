@@ -10,7 +10,10 @@ import Foundation
 import FBSDKShareKit
 
 
-class FacebookSharing {
+
+
+
+class FacebookSharing: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate {
     
     enum FacebookSharingError: ErrorType {
         case ERROR_VIDEO_FILE_IO(String)
@@ -87,26 +90,80 @@ class FacebookSharing {
         request.HTTPBody = formdata.generateRequestBody()
         request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
         
-        ServiceUtil.performRequest(request,
-            onSuccess: { statusCode, data in
-                if statusCode == 200 {
-                    self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
-                }
-                else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
-                    self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token existed but was not valid anymore or has wrong rights maybe"))
-                }
-                else {
-                    //   print(JSON(data: data).rawString() ?? "json unparseable")
-                    let fberr = JSON(data: data)["error"]["message"].string ?? "no error message"
-                    self.onFailure?(error: .ERROR_FACEBOOK_API("HTTP Code: \(statusCode). FACEBOOK ERROR: \(fberr)"))
-                }
-            },
-            onFailure: { errorMessage in
-                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
-            }
-        )
+        performBackgroundUploadRequest(request)
         
     }
+    
+    
+    func handleResponse(statusCode statusCode: Int, data: NSData) {
+        
+        if statusCode == 200 {
+            self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
+        }
+        else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
+            self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token existed but was not valid anymore or has wrong rights maybe"))
+        }
+        else {
+            //   print(JSON(data: data).rawString() ?? "json unparseable")
+            let fberr = JSON(data: data)["error"]["message"].string ?? "no error message"
+            self.onFailure?(error: .ERROR_FACEBOOK_API("HTTP Code: \(statusCode). FACEBOOK ERROR: \(fberr)"))
+        }
+    }
+    
+    
+    func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
+        print("woot")
+    }
+    
+    var data: NSMutableData = NSMutableData()
+    
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        self.data.appendData(data)
+    }
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        
+        let _ = try? NSFileManager().removeItemAtURL(tmpurl)
+        
+        guard error == nil else {
+            self.onFailure?(error: .ERROR_NETWORK(error?.localizedDescription ?? "No error message"))
+            return
+        }
+        
+        guard let resp = task.response as? NSHTTPURLResponse else {
+            self.onFailure?(error: .ERROR_NETWORK("Response is not an HTTP Response"))
+            return
+        }
+        
+        guard self.data.length > 0 else {
+            self.onFailure?(error: .ERROR_NETWORK("No json data recieved"))
+            return
+        }
+        
+        handleResponse(statusCode: resp.statusCode, data: data)
+    }
+    
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        print("\(identifier): Completition: \(totalBytesSent) / \(totalBytesExpectedToSend)")
+    }
+    
+    let tmpurl = NSFileManager.tmpDirectory().URLByAppendingPathComponent(Util.randomAlphaNumericStringWithLength(10) + ".mp4")
+    
+    let identifier = "SNS_BG_UploadThread_" + Util.randomAlphaNumericStringWithLength(12)
+    
+    func performBackgroundUploadRequest(request: NSURLRequest) {
+        
+        let config  = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier)
+        config.sessionSendsLaunchEvents = true
+        let session = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
+        
+        let data = request.HTTPBody!
+        data.writeToURL(tmpurl, atomically: true)
+        
+        session.uploadTaskWithRequest(request, fromFile: tmpurl).resume()
+    }
+    
 }
 
 

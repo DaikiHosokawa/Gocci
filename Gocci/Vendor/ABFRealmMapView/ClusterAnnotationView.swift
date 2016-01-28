@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ABFClusterAnnotationView : MKAnnotationView {
+class ClusterAnnotationView : MKAnnotationView {
     
     
     var count: Int = 0 {
@@ -23,15 +23,17 @@ class ABFClusterAnnotationView : MKAnnotationView {
     
     // helper
     
-    static let ABFScaleFactorAlpha = 0.3
-    static let ABFScaleFactorBeta = 0.4
+    static let ScaleFactorAlpha = 0.3
+    static let ScaleFactorBeta = 0.4
     
-    static func ABFRectCenter(rect: CGRect) -> CGPoint {
+    var restIDs: [String] = []
+    
+    static func RectCenter(rect: CGRect) -> CGPoint {
         return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect))
         
     }
     
-    static func ABFCenterRect(rect: CGRect, center: CGPoint) -> CGRect {
+    static func CenterRect(rect: CGRect, center: CGPoint) -> CGRect {
         return CGRectMake(
             center.x - CGRectGetWidth(rect)/2.0,
             center.y - CGRectGetHeight(rect)/2.0,
@@ -40,9 +42,9 @@ class ABFClusterAnnotationView : MKAnnotationView {
     }
     
     
-    static func ABFScaledValueForValue(value: Double) -> CGFloat
+    static func ScaledValueForValue(value: Double) -> CGFloat
     {
-        return CGFloat(1.0 / (1.0 + exp(-1 * ABFScaleFactorAlpha * pow(Double(value), ABFScaleFactorBeta))))
+        return CGFloat(1.0 / (1.0 + exp(-1 * ScaleFactorAlpha * pow(Double(value), ScaleFactorBeta))))
     }
     
     
@@ -62,7 +64,6 @@ class ABFClusterAnnotationView : MKAnnotationView {
         return nil;
     }
 */
-    
     
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
@@ -98,16 +99,16 @@ class ABFClusterAnnotationView : MKAnnotationView {
     func countDidSet(count: Int) {
     
         let newBounds = CGRectMake(0,0,
-            round(44.0 * ABFClusterAnnotationView.ABFScaledValueForValue(Double(count))),
-            round(44.0 * ABFClusterAnnotationView.ABFScaledValueForValue(Double(count))))
+            round(44.0 * ClusterAnnotationView.ScaledValueForValue(Double(count))),
+            round(44.0 * ClusterAnnotationView.ScaledValueForValue(Double(count))))
     
-        self.frame = ABFClusterAnnotationView.ABFCenterRect(newBounds, center: self.center);
+        self.frame = ClusterAnnotationView.CenterRect(newBounds, center: self.center);
     
         let newLabelBounds = CGRectMake(0, 0,
             newBounds.size.width / 1.3,
             newBounds.size.height / 1.3);
         
-        countLabel.frame = ABFClusterAnnotationView.ABFCenterRect(newLabelBounds, center: ABFClusterAnnotationView.ABFRectCenter(newBounds));
+        countLabel.frame = ClusterAnnotationView.CenterRect(newLabelBounds, center: ClusterAnnotationView.RectCenter(newBounds));
         
         countLabel.text = "\(count)"
         
@@ -140,10 +141,6 @@ class ABFClusterAnnotationView : MKAnnotationView {
         innerCircleFillColor.setFill()
         CGContextFillEllipseInRect(context, circleFrame)
     }
-    
-    
-    
-    
     
     
     

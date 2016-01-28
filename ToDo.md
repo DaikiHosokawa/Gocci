@@ -1,5 +1,20 @@
 
 
+Before upload to the App Store
+==============================
+
+- disable logging in logging.swift
+
+- disable other strange stuff in const.h
+
+- check your provisining profiles again
+
+- increase the version!
+
+- complete clean of all builds. build from scratch
+
+
+
 Bugs
 ====
 
@@ -35,6 +50,7 @@ Daiki Hosokawa
 Markus Wanke
 ============
 
+- restart the scheduler thread everytime the app enters foreground
 
 - Let the user decide what messages he wants. Gettings 100 likes is not fun maybe, but he probably wants to see the messages
 
