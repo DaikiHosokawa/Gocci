@@ -16,7 +16,13 @@ import Foundation
 @objc class Persistent: NSObject, Logable {
     
     
-    static var verbose = true
+    #if TEST_BUILD
+    static var verbose: Bool = true
+    #endif
+    #if LIVE_BUILD
+    static var verbose: Bool = false
+    #endif
+    
     
     static let logColor: (r: UInt8, g: UInt8, b: UInt8) = (0x99, 0x99, 0xFF)
     
