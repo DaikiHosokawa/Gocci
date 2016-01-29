@@ -32,9 +32,9 @@ class TwitterPopup: AbstractPopup, UITextViewDelegate {
         textView.text = entryText
         textViewDidChange(textView)
         
-        if VideoPostPreparation.postData.rest_name != "" {
-            insertRestNameButton.hidden = true
-        }
+//        if VideoPostPreparation.postData.rest_name != "" {
+//            insertRestNameButton.hidden = true
+//        }
     }
     
     override func viewDidLoad() {

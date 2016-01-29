@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 
 extension String {
@@ -292,6 +293,60 @@ extension UIAlertController {
     }
     
 }
+
+extension MKMapView {
+    func centerMapViewingRegionAccordingTo(coordinates: [CLLocationCoordinate2D]) {
+        let region = MKMapView.regionFromLatLonCoordinateSet(coordinates)
+        self.setRegion(region, animated: true)
+    }
+    
+    class func regionFromLatLonCoordinateSet(coordinates: [CLLocationCoordinate2D]) -> MKCoordinateRegion {
+        
+        var latDeltaMin = 1000.0
+        var longDeltaMin = 1000.0
+        var latDeltaMax = -1000.0
+        var longDeltaMax = -1000.0
+        
+        var latCenter = 0.0
+        var longCenter = 0.0
+        
+        for coord in coordinates {
+            if coord.latitude < latDeltaMin {
+                latDeltaMin = coord.latitude
+            }
+            else if coord.latitude > latDeltaMax {
+                latDeltaMax = coord.latitude
+            }
+            
+            if coord.longitude < longDeltaMin {
+                longDeltaMin = coord.longitude
+            }
+            else if coord.longitude > longDeltaMax {
+                longDeltaMax = coord.longitude
+            }
+            
+            latCenter += coord.latitude
+            longCenter += coord.longitude
+        }
+        
+        latCenter /= Double(coordinates.count)
+        longCenter /= Double(coordinates.count)
+        
+        let latDelta = latDeltaMax - latDeltaMin
+        let longDelta = longDeltaMax - longDeltaMin
+        
+        let center = CLLocationCoordinate2DMake(latCenter, longCenter)
+        let span = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        return MKCoordinateRegionMake(center, span)
+    }
+}
+
+
+
+
+
+
 
 
 

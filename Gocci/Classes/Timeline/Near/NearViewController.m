@@ -11,7 +11,6 @@
 #import "everyTableViewController.h"
 #import "MypageViewController.h"
 #import "NearViewControllerCell.h"
-#import "LocationClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "APIClient.h"
@@ -47,6 +46,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     NSString *category_flag;
     NSString *value_flag;
     int call;
+    
+    CLLocationCoordinate2D mapPosition;
+    bool useMapPosition;
 }
 
 
@@ -82,6 +84,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 
@@ -123,6 +126,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          }];
         
     };
+    
+    if (useMapPosition) {
+        fetchAPI(mapPosition);
+        return;
+    }
     
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
@@ -171,12 +179,18 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     };
     
+    if (useMapPosition) {
+        fetchAPI(mapPosition);
+        return;
+    }
+    
     CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
     if (usingLocationCache && cachedLocation != nil) {
         fetchAPI(cachedLocation.coordinate);
         NSLog(@"ここ通ったよ2");
         return;
     }
+
     
     [[LocationClient sharedClient] requestLocationWithCompletion:^(CLLocation *location, NSError *error)
      {
@@ -419,6 +433,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         [self setupData:category_flag value_id:value];
     }
     [self setupData:@"" value_id:value];
+}
+
+- (void)updateForPosition:(CLLocationCoordinate2D)position {
+    useMapPosition = true;
+    mapPosition = position;
+    [self setupData:@"" value_id:@""];
 }
 
 
