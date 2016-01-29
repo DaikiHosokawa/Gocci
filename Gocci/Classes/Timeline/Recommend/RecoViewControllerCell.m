@@ -49,24 +49,47 @@
     self.postID = timelinePost.postID;
     self.rest_id = timelinePost.rest_id;
     self.user_id = timelinePost.userID;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
-                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
-    self.imageView.layer.cornerRadius = 2;
-    self.imageView.clipsToBounds = true;
-    [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
-                      placeholderImage:[UIImage imageNamed:@"dummy.1x1.#2F3437"]];
-    self.profileImg.layer.cornerRadius = 15;
-    self.profileImg.clipsToBounds = true;
-    self.title.text = timelinePost.restname;
-    self.date.text = timelinePost.timelabel;
-    self.movieURL = timelinePost.movie;
+    
     self.index = indexPath;
-    self.pushed_at = timelinePost.pushed_at;
+    
+    if(self.index / 1 == 0){
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
+                          placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+        self.imageView.layer.cornerRadius = 2;
+        self.imageView.layer.borderWidth = 4.f;
+        self.watch.hidden = NO;
+        UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
+        self.imageView.layer.borderColor = color_custom.CGColor;
+        self.imageView.clipsToBounds = true;
+        [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
+                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#2F3437"]];
+        self.profileImg.layer.cornerRadius = 15;
+        self.profileImg.clipsToBounds = true;
+        self.title.text = timelinePost.restname;
+        self.date.text = timelinePost.timelabel;
+        self.movieURL = timelinePost.movie;
+        self.pushed_at = timelinePost.pushed_at;
+    }else{
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
+                          placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
+        self.imageView.layer.cornerRadius = 2;
+        self.imageView.clipsToBounds = true;
+        [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
+                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#2F3437"]];
+        self.profileImg.layer.cornerRadius = 15;
+        self.profileImg.clipsToBounds = true;
+        self.title.text = timelinePost.restname;
+        self.date.text = timelinePost.timelabel;
+        self.movieURL = timelinePost.movie;
+        self.pushed_at = timelinePost.pushed_at;
+    }
+    
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
     [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
     [self _assignTapAction:@selector(tapImg:) view:self.profileImg];
+    [self _assignTapAction:@selector(tapWatch) view:self.watch];
     
     NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
     if ([string isEqualToString:@"0"])
@@ -94,6 +117,14 @@
     view.userInteractionEnabled = YES;
     [view addGestureRecognizer:tap];
 }
+
+- (void)tapWatch:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapWatch:)]) {
+        [self.delegate recoViewCell:self didTapRestname:self.rest_id];
+    }
+}
+
 - (void)tapRestname:(UITapGestureRecognizer *)recognizer
 {
     if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapRestname:)]) {

@@ -13,6 +13,7 @@
 #import "CAPSPageMenu.h"
 #import "everyBaseNavigationController.h"
 #import "everyTableViewController.h"
+#import "MessageViewController.h"
 
 #import "STPopup.h"
 #import "SortViewController.h"
@@ -325,9 +326,14 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 {
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
+        /*
         everyBaseNavigationController *eveNC = segue.destinationViewController;
         everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
         eveVC.postID = (NSString *)sender;
+         */
+        everyBaseNavigationController *meNC = segue.destinationViewController;
+        MessageViewController *meVC = (MessageViewController*)[meNC rootViewController];
+        meVC.postID = (NSString *)sender;
         [self.popover dismissPopoverAnimated:YES];
     }
     else
