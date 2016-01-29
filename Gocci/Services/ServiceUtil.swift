@@ -56,17 +56,15 @@ class ServiceUtil {
     }
     
     
+    
+    static let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
+    
     class func performRequest(
         request: NSURLRequest,
         onSuccess: ((statusCode: Int, data: NSData)->())?,
         onFailure: ((errorMessage: String)->())? )
     {
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.allowsCellularAccess = true
-        // WARNING! ephemeral means nothing to disk. also NO COOKIES!!
-        let session = NSURLSession(configuration: config)
-        
-        let urlsessiontask = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+        let urlsessiontask = session.dataTaskWithRequest(request) { data, response, error in
             
             guard error == nil else {
                 onFailure?(errorMessage: error?.localizedDescription ?? "No error message")
@@ -88,6 +86,8 @@ class ServiceUtil {
         
         urlsessiontask.resume()
     }
+
+
 
     
     private class func generateOAuthNonce() -> String

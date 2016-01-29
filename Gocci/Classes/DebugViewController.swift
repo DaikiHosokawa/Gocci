@@ -25,25 +25,179 @@ class Person: Object {
 }
 
 
-class HeatMapRestaurant: Object {
-    dynamic var id = "none"
-    dynamic var name = "none"
-    dynamic var lat: Double = 0.0
-    dynamic var lon: Double = 0.0
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    class func create(fromPayload pl: API4.get.heatmap.Payload.Rests) -> HeatMapRestaurant {
-        let res = self.init()
-        res.id = pl.rest_id
-        res.name = pl.restname
-        res.lat = pl.lat
-        res.lon = pl.lon
-        return res
+
+
+class BGTesterThread: DummyPlugTask {
+    override func run(finished: State -> ()) {
+        
+            print("sleeping...")
+            Util.sleep(3)
+            print("WOKE...")
+            
+            let req = API4.get.follow()
+            
+            req.parameters.user_id = Persistent.user_id
+            
+            
+            
+            
+            req.onAnyAPIError {
+                print("BGTesterThread: ERROR")
+                self.run(finished)
+            }
+            
+            req.perform { payload in
+                print("BGTesterThread: SUCCESS network connection. \(payload)")
+                self.run(finished)
+            }
     }
 }
+
+
+
+//
+//  FacebookTasks.swift
+//  Gocci
+//
+//  Created by Markus Wanke on 13.01.16.
+//  Copyright © 2015 Massara. All rights reserved.
+//
+
+import Foundation
+
+
+class FacebookVideoSharingTaskXXX: PersistentBaseTask {
+    let timelineMessage: String
+    let relativeFilePath: String
+    
+    init(timelineMessage: String, relativeFilePath: String) {
+        self.timelineMessage = timelineMessage
+        self.relativeFilePath = relativeFilePath
+        super.init(identifier: String(self.dynamicType))
+    }
+    
+    override init?(dict: NSDictionary) {
+        
+        self.timelineMessage = dict["timelineMessage"] as? String ?? "__PLACEHOLDER_4283492084092__"
+        self.relativeFilePath = dict["relativeFilePath"] as? String ?? ""
+        super.init(dict: dict)
+        if timelineMessage == "__PLACEHOLDER_4283492084092__" || relativeFilePath == "" { return nil }
+    }
+    
+    override func dictonaryRepresentation() -> NSMutableDictionary {
+        let dict = super.dictonaryRepresentation()
+        dict["timelineMessage"] = timelineMessage
+        dict["relativeFilePath"] = relativeFilePath
+        return dict
+    }
+    
+    override func equals(task: PersistentBaseTask) -> Bool {
+        if let task = task as? FacebookVideoSharingTaskXXX {
+            return task.timelineMessage == timelineMessage && task.relativeFilePath == relativeFilePath
+        }
+        return false
+    }
+    
+    override func run(finished: State->()) {
+        
+        sep("PERFORM: FacebookVideoSharingTask")
+        log("timelineMessage = \(timelineMessage)")
+        log("relativeFilePath = \(relativeFilePath)")
+        
+        let fullFilePathURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
+        
+        while true {
+        
+        print("sleeping...")
+        Util.sleep(3)
+        run(finished)
+        }
+        
+        guard NSFileManager.fileExistsAtURL(fullFilePathURL) else {
+            err("File \(fullFilePathURL) does not exist")
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
+        
+        
+        let sharer = FacebookSharing()
+        sharer.onSuccess = {
+            //Toast.成功("Video sharing", "Video was successfully posted on Facebook.")
+            self.sep("SUCCESS: FacebookVideoSharingTask")
+            self.log("Facebook posting sucessful: Post ID: \($0)")
+
+            print("ONCE AGAIN ^^")
+            self.run(finished)
+        }
+        sharer.onFailure = {
+            self.err("Facebook posting failed because of \($0)")
+            
+            switch($0) {
+            case .ERROR_VIDEO_FILE_IO:
+                finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
+                
+            case .ERROR_NETWORK:
+                //Toast.情報("Facebook video sharing", "Network appears to be unstable. Will retry later")
+                finished(PersistentBaseTask.State.FAILED_NETWORK)
+                
+            case .ERROR_FACEBOOK_API:
+                // TODO more punishmend. set retry count or extend waiting time
+                finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
+                
+            case .ERROR_AUTHENTICATION:
+                
+                OverlayWindow.oneTimeViewController { viewController in
+                    
+                    FacebookAuthentication.authenticateWithPublishRights(currentViewController: viewController) { token in
+                        finished( token == nil ? .FAILED_IRRECOVERABLE : .FAILED_RECOVERABLE)
+                    }
+                }
+            }
+        }
+        sharer.shareVideoOnFacebook(fullFilePathURL, description: timelineMessage, thumbnail: nil)
+            
+    }
+    
+    override var description: String {
+        return super.description + " timelineMessage: \(timelineMessage), MP4File: \(relativeFilePath)"
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class DebugViewController : UIViewController {
     @IBOutlet weak var topLabel: UILabel!
@@ -103,7 +257,82 @@ class DebugViewController : UIViewController {
     
     @IBAction func explode(sender: AnyObject) {
         
+        
+        let fullFilePathURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
+        
+        let sharer = FacebookSharing()
+        sharer.onSuccess = { postid in
+            print("UPLOAD SUCCESS, POST ID: \(postid)")
+        }
+        sharer.onFailure = {
+            print("Facebook posting failed because of \($0)")
+            
+        }
+        sharer.shareVideoOnFacebook(fullFilePathURL, description: Util.randomAlphaNumericStringWithLength(22), thumbnail: nil)
+
+        return;
+        
+        
+        
+        let f: ()->() = {
+            var i: Int = 0
+            while true {
+                print("I: \(++i)")
+                Util.sleep(1)
+            }
+        }
+        
+        let que = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
+        
+        let task = Util.createTaskThatWillEvenRunIfTheAppIsPutInBackground("bla", queue: que, task: f, expirationHandler: {
+            print(" !!!!!!!!!!!!   BG TASK WAS KILLED BY THE OS!!")
+        })
+        
+        task()
+        
+        print("gone)")
+        return;
+        
+        
+        
+        
+        
+        BGTesterThread(msg: "wdw", sleepSec: 1, finalState: .DONE).schedule()
+        
+//        FacebookVideoSharingTaskXXX(timelineMessage: Util.randomAlphaNumericStringWithLength(20), relativeFilePath: "egal").schedule()
+        
+        return;
+        
+        
+        Persistent.identity_id = "us-east-1:4ce38d92-677d-4e30-807a-f9a6465e47c9"
+        
+        
         self.ignoreCommonSenseAndGoToViewControllerWithName("jumpHeatMapViewController")
+        return;
+//        
+//        
+//        
+//        
+//        let realm = try! Realm()
+//        
+//        
+//        let req = API4.get.user()
+//        req.parameters.user_id = Persistent.user_id
+//        
+//        req.perform { payload in
+//            
+//            try! realm.write {
+//                for post in payload.posts {
+//                    let tmp = UserPost(usersPostPayload: post)
+//                    realm.add(tmp, update: true)
+//                }
+//            }
+//            
+//            self.ignoreCommonSenseAndGoToViewControllerWithName("jumpHeatMapViewController")
+//        }
+//        
+
+        
         
         
         return;
@@ -131,24 +360,24 @@ class DebugViewController : UIViewController {
         return;
         
         
-        let req = API4.get.heatmap()
-        
-        req.perform { payload in
-            
-            let realm = try! Realm()
-            
-            try! realm.write {
-                
-                for rest in payload.rests {
-                    let tmp = HeatMapRestaurant.create(fromPayload: rest)
-                    realm.add(tmp, update: true)
-                }
-            }
-            
-            self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
-        }
-        
-        
+//        let req = API4.get.heatmap()
+//        
+//        req.perform { payload in
+//            
+//            let realm = try! Realm()
+//            
+//            try! realm.write {
+//                
+//                for rest in payload.rests {
+//                    let tmp = HeatMapRestaurant.create(fromPayload: rest)
+//                    realm.add(tmp, update: true)
+//                }
+//            }
+//            
+//            self.ignoreCommonSenseAndGoToViewControllerWithName("HeatMapViewController")
+//        }
+//        
+//        
         
     }
     

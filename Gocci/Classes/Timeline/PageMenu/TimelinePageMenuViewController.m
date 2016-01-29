@@ -42,6 +42,9 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
+@property (strong, nonatomic) RequestGPSViewController *requestGPSViewController;
+
+
 
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
@@ -105,17 +108,19 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     backButton.title = @"";
     self.navigationItem.backBarButtonItem = backButton;
     
-    /*
-     UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];
-     UIButton *btn = [[UIButton alloc]
-     initWithFrame:CGRectMake(0, 0, 30, 30)];
-     [btn setBackgroundImage:img forState:UIControlStateNormal];
-     UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:btn];
-     
-     
-     [btn addTarget:self
-     action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
-     */
+    
+         UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];
+         UIButton *heatMapBtn = [[UIButton alloc]
+         initWithFrame:CGRectMake(0, 0, 30, 30)];
+         [heatMapBtn setBackgroundImage:img forState:UIControlStateNormal];
+         UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:heatMapBtn];
+         
+         
+         [heatMapBtn addTarget:self
+         action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
+         
+    
+    
     UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
     UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     navigationTitle.image = image;
@@ -157,9 +162,16 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     }
     
     
-    self.navigationItem.rightBarButtonItem = self.barButton;
+    //self.navigationItem.rightBarButtonItem = self.barButton;
     self.navigationItem.leftBarButtonItem = sortBtnNavi;
     
+    BBBadgeBarButtonItem *heatMapBtnBBB = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:heatMapBtn];
+    
+    NSArray *right = [NSArray arrayWithObjects: self.barButton, heatMapBtnBBB, nil];
+    
+    self.navigationItem.rightBarButtonItems = right;
+    
+    [self setupPageMenu:0];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -211,39 +223,29 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     [super didReceiveMemoryWarning];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    NSLog(@"animated");
-    RecoViewController *vc1 = [[RecoViewController alloc] init];
-    vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
-    vc1.title = @"新着";
-    vc1.delegate = self;
-    self.recoViewController = vc1;
+}
+
+-(void)setupPageMenu:(int)page
+{
+    self.recoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
+    self.recoViewController.title = @"新着";
+    self.recoViewController.delegate = self;
     
-    NearViewController *vc2 = [[NearViewController alloc] init];
-    vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
-    vc2.title = @"現在地周辺";
-    vc2.delegate = self;
-    self.nearViewController = vc2;
+    self.nearViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
+    self.nearViewController.title = @"現在地周辺";
+    self.nearViewController.delegate = self;
     
-    RequestGPSViewController *vc2_2 = [[RequestGPSViewController alloc] init];
-    vc2_2 = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
-    vc2_2.title = @"現在地周辺";
-    //vc0.delegate = self;
-    self.requestGPSViewController = vc2_2;
+    self.requestGPSViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
+    self.requestGPSViewController.title = @"現在地周辺";
+    self.requestGPSViewController.delegate = self;
     
-    FollowViewController *vc3 = [[FollowViewController alloc] init];
-    vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowViewController"];
-    vc3.title = @"フォロー";
-    vc3.delegate = self;
-    self.followViewController = vc3;
-    
-    
-    
-    CGRect rect_screen = [UIScreen mainScreen].bounds;
+    self.followViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowViewController"];
+    self.followViewController.title = @"フォロー";
+    self.followViewController.delegate = self;
     
     
     if(!locationManager){
@@ -255,7 +257,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     NSArray *controllerArray;
     
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[vc1,vc2, vc3];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[self.recoViewController, self.nearViewController, self.followViewController];
         
     }
     else {
@@ -267,7 +269,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
             case kCLAuthorizationStatusDenied:
             case kCLAuthorizationStatusRestricted:
                 NSLog(@"not permitted");
-                controllerArray = @[vc1,vc2_2, vc3];
+                controllerArray = @[self.recoViewController, self.requestGPSViewController, self.followViewController];
                 
                 
         }
@@ -276,7 +278,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
     
     NSInteger count_item = 3;
-    CGFloat width_item = rect_screen.size.width / count_item;
+    CGFloat width_item = [UIScreen mainScreen].bounds.size.width / count_item;
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),
                                  CAPSPageMenuOptionMenuItemSeparatorWidth : @(4.3),
@@ -305,6 +307,10 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     _pageMenu.delegate = self;
     
     [self.viewBasePageMenu addSubview:_pageMenu.view];
+    
+    if (page != 0) {
+        [_pageMenu moveToPage:page];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -336,19 +342,23 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
         meVC.postID = (NSString *)sender;
         [self.popover dismissPopoverAnimated:YES];
     }
-    else
-        if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
-        {
-            UserpageViewController  *userVC = segue.destinationViewController;
-            userVC.postUsername = (NSString *)sender;
-            [self.popover dismissPopoverAnimated:YES];
-        }
-        else
-            if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-            {
-                RestaurantTableViewController  *restVC = segue.destinationViewController;
-                restVC.postRestName = _postRestname;
-            }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+    {
+        UserpageViewController  *userVC = segue.destinationViewController;
+        userVC.postUsername = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
+    }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
+    }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_HEATMAP])
+    {
+        ClusterMapViewController *clusterMapVC = segue.destinationViewController;
+        clusterMapVC.delegate = self;
+    }
+    
 }
 
 -(void)goHeatmap{
@@ -356,17 +366,21 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
         [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
     }
     else {
-        switch ([CLLocationManager authorizationStatus]) {
-                
-            case kCLAuthorizationStatusNotDetermined:
-            case kCLAuthorizationStatusAuthorizedAlways:
-            case kCLAuthorizationStatusAuthorizedWhenInUse:
-            case kCLAuthorizationStatusDenied:
-            case kCLAuthorizationStatusRestricted:
-                NSLog(@"not permitted");
-                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
-                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
-        }
+        
+        [_pageMenu moveToPage:1];
+        
+        
+//        switch ([CLLocationManager authorizationStatus]) {
+//                
+//            case kCLAuthorizationStatusNotDetermined:
+//            case kCLAuthorizationStatusAuthorizedAlways:
+//            case kCLAuthorizationStatusAuthorizedWhenInUse:
+//            case kCLAuthorizationStatusDenied:
+//            case kCLAuthorizationStatusRestricted:
+//                NSLog(@"not permitted");
+//                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+//                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
+//        }
     }
     
 }
@@ -389,5 +403,22 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
                                  options:WYPopoverAnimationOptionFadeWithScale];
 }
 
+-(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position {
+
+    [_pageMenu moveToPage:1];
+    
+    [self.nearViewController updateForPosition:position];
+    //[self.nearViewController setTitle:@"NOW FROM MAP"];
+}
+
+
 
 @end
+
+
+
+
+
+
+
+

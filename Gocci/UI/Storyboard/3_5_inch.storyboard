@@ -654,6 +654,7 @@
                         <segue destination="13E-uH-XTD" kind="show" identifier="goUsersOthers" id="kh3-dj-w53">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="MKK-cQ-UwL" kind="push" identifier="goHeatmap" id="aeU-qh-4ov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHJ-ZT-6OM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,6 +1133,9 @@
                                         <rect key="frame" x="249" y="81" width="22" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="ic_mode_edit"/>
+                                        <connections>
+                                            <action selector="TwitterCommentEdit:" destination="Eic-0q-g0a" eventType="touchUpInside" id="JIv-WT-IWe"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vE3-bu-HxB">
                                         <rect key="frame" x="58" y="84" width="59" height="21"/>
@@ -1144,6 +1148,9 @@
                                         <rect key="frame" x="249" y="9" width="22" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="ic_mode_edit"/>
+                                        <connections>
+                                            <action selector="TwitterCommentEdit:" destination="Eic-0q-g0a" eventType="touchUpInside" id="nQp-ZA-vU3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1252,7 +1259,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="tgF-m7-Dpf" kind="relationship" relationship="rootViewController" id="4h8-nD-jzw"/>
+                        <segue destination="SPX-fE-5nk" kind="relationship" relationship="rootViewController" id="gsS-Oc-tNT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHc-hG-EKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2244,7 +2251,7 @@
         <!--RequestGPS View Controller-->
         <scene sceneID="1Ok-5k-Gbi">
             <objects>
-                <viewController storyboardIdentifier="RequestGPSViewController" id="GFO-WB-cxs" customClass="RequestGPSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestGPSViewController" id="GFO-WB-cxs" customClass="RequestGPSViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IB0-kS-fvZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2262,7 +2269,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonAction:" destination="GFO-WB-cxs" eventType="touchUpInside" id="hyk-rP-GXP"/>
+                                    <action selector="btnForGPSRequestClicked:" destination="GFO-WB-cxs" eventType="touchUpInside" id="ub5-ZS-hnv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近くのグルメ動画を取得しよう！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KhE-B3-Tin">
@@ -2451,6 +2458,67 @@
             </objects>
             <point key="canvasLocation" x="2178" y="-2830"/>
         </scene>
+        <!--Cluster Map View Controller-->
+        <scene sceneID="Qei-fI-4HL">
+            <objects>
+                <viewController id="MKK-cQ-UwL" customClass="ClusterMapViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mYQ-C8-y9g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="ehI-zT-qqb" customClass="ABFRealmMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="09q-el-boI">
+                                <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Backbutton_map">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="MKK-cQ-UwL" eventType="touchUpInside" id="JMi-09-0sx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MpI-ar-e5Y"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="ehI-zT-qqb" id="8CY-w7-ec1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dg8-xr-M86" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3451" y="-5711"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="Kgd-R5-QjG">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="SPX-fE-5nk" customClass="MessageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Y9-6Y-RZu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GRw-5U-CyL">
+                        <barButtonItem key="leftBarButtonItem" image="postingBack" id="ZVs-Fa-RRy">
+                            <connections>
+                                <action selector="onReturn:" destination="SPX-fE-5nk" id="SX9-51-OdN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNZ-li-VKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106.5" y="-6449.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton_map" width="60" height="60"/>
@@ -2489,10 +2557,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="D7i-Jg-IEC"/>
         <segue reference="kh3-dj-w53"/>
-        <segue reference="XlR-eb-tum"/>
+        <segue reference="sYa-oS-Nqi"/>
         <segue reference="rUH-6e-3YE"/>
-        <segue reference="CyQ-bD-Iym"/>
         <segue reference="fnp-gF-feY"/>
-        <segue reference="rNq-Mh-OBs"/>
+        <segue reference="XlR-eb-tum"/>
+        <segue reference="4xt-qz-Uik"/>
     </inferredMetricsTieBreakers>
 </document>

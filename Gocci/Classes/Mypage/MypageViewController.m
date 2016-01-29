@@ -200,7 +200,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     if(segmentControll.selectedSegmentIndex == 2){
         //GPS is ON
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
-            [self performSegueWithIdentifier:@"goHeatMap" sender:self];
+            [self performSegueWithIdentifier:@"goMap" sender:self];
         }
         else {
             switch ([CLLocationManager authorizationStatus]) {
