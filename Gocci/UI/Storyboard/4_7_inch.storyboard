@@ -1222,12 +1222,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="uV4-uW-mW7" kind="relationship" relationship="rootViewController" id="SvV-XU-Q86"/>
+                        <segue destination="RfS-MZ-t2C" kind="relationship" relationship="rootViewController" id="697-RL-KxO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUM-Wo-wdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-537.1875" y="-5919.1901408450703"/>
+            <point key="canvasLocation" x="40.5" y="-6005.5"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="Ppq-jK-ZKu">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="RfS-MZ-t2C" customClass="MessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="52y-4k-4Wc"/>
+                        <viewControllerLayoutGuide type="bottom" id="cks-jD-iq7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N53-hu-zdU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="D66-se-8F0">
+                        <barButtonItem key="leftBarButtonItem" image="postingBack" id="TQt-W3-tpz">
+                            <connections>
+                                <action selector="onReturn:" destination="RfS-MZ-t2C" id="Yl1-sl-WJI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VB-QT-A6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="715" y="-6409"/>
         </scene>
         <!--Every Table View Controller-->
         <scene sceneID="YDH-G6-Ga2">
@@ -1246,7 +1274,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Sample4TableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Sample4TableViewCell" id="MH3-93-WEo" customClass="Sample4TableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MH3-93-WEo" id="3zA-Fr-wXa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1832,6 +1860,13 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more_vert_white" translatesAutoresizingMaskIntoConstraints="NO" id="e36-Lw-NEQ">
                                             <rect key="frame" x="150" y="140" width="23" height="23"/>
                                         </imageView>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89y-xU-0uZ">
+                                            <rect key="frame" x="135" y="140" width="35" height="26"/>
+                                            <color key="backgroundColor" red="0.9808739195478724" green="0.9808739195478724" blue="0.9808739195478724" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="見る">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzG-Jf-aov">
                                             <rect key="frame" x="38" y="151" width="68" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
@@ -1855,6 +1890,7 @@
                                     <outlet property="option" destination="e36-Lw-NEQ" id="ivB-hZ-vvh"/>
                                     <outlet property="profileImg" destination="LBr-62-TrZ" id="eG2-7F-aUh"/>
                                     <outlet property="title" destination="Hox-Pj-WuE" id="UAv-Vp-jmJ"/>
+                                    <outlet property="watch" destination="89y-xU-0uZ" id="GD7-hX-UUx"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

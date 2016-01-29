@@ -172,6 +172,11 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 -(void)recoViewCell:(RecoViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
+   
+}
+
+-(void)recoViewCell:(RecoViewControllerCell *)cell didTapWatch:(NSString *)rest_id{
+    NSLog(@"restid:%@",rest_id);
     TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
     [self.delegate reco:self rest_id:rest_id];
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];

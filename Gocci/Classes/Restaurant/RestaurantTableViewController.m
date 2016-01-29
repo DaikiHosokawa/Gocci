@@ -8,6 +8,7 @@
 
 #import "RestaurantTableViewController.h"
 #import "everyTableViewController.h"
+#import "MessageViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "TimelineCell.h"
@@ -227,13 +228,13 @@ static NSString * const SEGUE_GO_SC_RECORDER = @"goSCRecorder";
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
 #if 0
-        everyTableViewController *eveVC = segue.destinationViewController;
+        MessageViewController *meVC = segue.destinationViewController;
 #else
         everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
+        MessageViewController *meVC = (MessageViewController*)[eveNC rootViewController];
         [self.popover dismissPopoverAnimated:YES];
 #endif
-        eveVC.postID = (NSString *)sender;
+        meVC.postID = (NSString *)sender;
         [self.popover dismissPopoverAnimated:YES];
     }
     

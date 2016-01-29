@@ -263,6 +263,20 @@
 		95EEF20A1C269880009DA989 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 95EEF2021C269880009DA989 /* icon-success.png */; };
 		95EEF20B1C269880009DA989 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95EEF2031C269880009DA989 /* icon-success@2x.png */; };
 		95EEF20C1C269880009DA989 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF2051C269880009DA989 /* TWMessageBarManager.m */; };
+		95F803AB1C529DC300CFFF44 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803A21C529DC300CFFF44 /* Message.m */; };
+		95F803AC1C529DC300CFFF44 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803A41C529DC300CFFF44 /* MessageTableViewCell.m */; };
+		95F803AD1C529DC300CFFF44 /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803A61C529DC300CFFF44 /* MessageTextView.m */; };
+		95F803AE1C529DC300CFFF44 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803A81C529DC300CFFF44 /* MessageViewController.m */; };
+		95F803AF1C529DC300CFFF44 /* TypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803AA1C529DC300CFFF44 /* TypingIndicatorView.m */; };
+		95F803C51C529E6200CFFF44 /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803B21C529E6200CFFF44 /* SLKInputAccessoryView.m */; };
+		95F803C61C529E6200CFFF44 /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803B41C529E6200CFFF44 /* SLKTextInputbar.m */; };
+		95F803C71C529E6200CFFF44 /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803B61C529E6200CFFF44 /* SLKTextView+SLKAdditions.m */; };
+		95F803C81C529E6200CFFF44 /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803B81C529E6200CFFF44 /* SLKTextView.m */; };
+		95F803C91C529E6200CFFF44 /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803BA1C529E6200CFFF44 /* SLKTextViewController.m */; };
+		95F803CA1C529E6200CFFF44 /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803BD1C529E6200CFFF44 /* SLKTypingIndicatorView.m */; };
+		95F803CB1C529E6200CFFF44 /* UIResponder+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803C01C529E6200CFFF44 /* UIResponder+SLKAdditions.m */; };
+		95F803CC1C529E6200CFFF44 /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803C21C529E6200CFFF44 /* UIScrollView+SLKAdditions.m */; };
+		95F803CD1C529E6200CFFF44 /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F803C41C529E6200CFFF44 /* UIView+SLKAdditions.m */; };
 		95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92921C0D48DA00D822E8 /* SGActionView.m */; };
 		95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92941C0D48DA00D822E8 /* SGAlertMenu.m */; };
 		95FD929D1C0D48DA00D822E8 /* SGBaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92961C0D48DA00D822E8 /* SGBaseMenu.m */; };
@@ -875,6 +889,36 @@
 		95EEF2031C269880009DA989 /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		95EEF2041C269880009DA989 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		95EEF2051C269880009DA989 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		95F803A11C529DC300CFFF44 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		95F803A21C529DC300CFFF44 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		95F803A31C529DC300CFFF44 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		95F803A41C529DC300CFFF44 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		95F803A51C529DC300CFFF44 /* MessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTextView.h; sourceTree = "<group>"; };
+		95F803A61C529DC300CFFF44 /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTextView.m; sourceTree = "<group>"; };
+		95F803A71C529DC300CFFF44 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		95F803A81C529DC300CFFF44 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		95F803A91C529DC300CFFF44 /* TypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypingIndicatorView.h; sourceTree = "<group>"; };
+		95F803AA1C529DC300CFFF44 /* TypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypingIndicatorView.m; sourceTree = "<group>"; };
+		95F803B11C529E6200CFFF44 /* SLKInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKInputAccessoryView.h; sourceTree = "<group>"; };
+		95F803B21C529E6200CFFF44 /* SLKInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKInputAccessoryView.m; sourceTree = "<group>"; };
+		95F803B31C529E6200CFFF44 /* SLKTextInputbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextInputbar.h; sourceTree = "<group>"; };
+		95F803B41C529E6200CFFF44 /* SLKTextInputbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextInputbar.m; sourceTree = "<group>"; };
+		95F803B51C529E6200CFFF44 /* SLKTextView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLKTextView+SLKAdditions.h"; sourceTree = "<group>"; };
+		95F803B61C529E6200CFFF44 /* SLKTextView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SLKTextView+SLKAdditions.m"; sourceTree = "<group>"; };
+		95F803B71C529E6200CFFF44 /* SLKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextView.h; sourceTree = "<group>"; };
+		95F803B81C529E6200CFFF44 /* SLKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextView.m; sourceTree = "<group>"; };
+		95F803B91C529E6200CFFF44 /* SLKTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextViewController.h; sourceTree = "<group>"; };
+		95F803BA1C529E6200CFFF44 /* SLKTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextViewController.m; sourceTree = "<group>"; };
+		95F803BB1C529E6200CFFF44 /* SLKTypingIndicatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTypingIndicatorProtocol.h; sourceTree = "<group>"; };
+		95F803BC1C529E6200CFFF44 /* SLKTypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTypingIndicatorView.h; sourceTree = "<group>"; };
+		95F803BD1C529E6200CFFF44 /* SLKTypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTypingIndicatorView.m; sourceTree = "<group>"; };
+		95F803BE1C529E6200CFFF44 /* SLKUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKUIConstants.h; sourceTree = "<group>"; };
+		95F803BF1C529E6200CFFF44 /* UIResponder+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+SLKAdditions.h"; sourceTree = "<group>"; };
+		95F803C01C529E6200CFFF44 /* UIResponder+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+SLKAdditions.m"; sourceTree = "<group>"; };
+		95F803C11C529E6200CFFF44 /* UIScrollView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SLKAdditions.h"; sourceTree = "<group>"; };
+		95F803C21C529E6200CFFF44 /* UIScrollView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SLKAdditions.m"; sourceTree = "<group>"; };
+		95F803C31C529E6200CFFF44 /* UIView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SLKAdditions.h"; sourceTree = "<group>"; };
+		95F803C41C529E6200CFFF44 /* UIView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SLKAdditions.m"; sourceTree = "<group>"; };
 		95FD92911C0D48DA00D822E8 /* SGActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionView.h; sourceTree = "<group>"; };
 		95FD92921C0D48DA00D822E8 /* SGActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionView.m; sourceTree = "<group>"; };
 		95FD92931C0D48DA00D822E8 /* SGAlertMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertMenu.h; sourceTree = "<group>"; };
@@ -1238,6 +1282,7 @@
 		9550D7FB1BF83E4B00430942 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				95F803A01C529DC300CFFF44 /* comment-new */,
 				9550D7FC1BF83E4B00430942 /* comment */,
 				9550D8031BF83E4B00430942 /* everyBaseNavigationController.h */,
 				9550D8041BF83E4B00430942 /* everyBaseNavigationController.m */,
@@ -1705,6 +1750,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				95F803B01C529E6200CFFF44 /* SLKInput */,
 				98FFDE6B1C4C8EFE002B6400 /* FBSDKCoreKit.framework */,
 				98FFDE6C1C4C8EFE002B6400 /* FBSDKLoginKit.framework */,
 				98FFDE6D1C4C8EFE002B6400 /* FBSDKShareKit.framework */,
@@ -2141,6 +2187,50 @@
 				9550D8751BF83E4B00430942 /* GaugeView.m */,
 			);
 			path = Gauge;
+			sourceTree = "<group>";
+		};
+		95F803A01C529DC300CFFF44 /* comment-new */ = {
+			isa = PBXGroup;
+			children = (
+				95F803A11C529DC300CFFF44 /* Message.h */,
+				95F803A21C529DC300CFFF44 /* Message.m */,
+				95F803A31C529DC300CFFF44 /* MessageTableViewCell.h */,
+				95F803A41C529DC300CFFF44 /* MessageTableViewCell.m */,
+				95F803A51C529DC300CFFF44 /* MessageTextView.h */,
+				95F803A61C529DC300CFFF44 /* MessageTextView.m */,
+				95F803A71C529DC300CFFF44 /* MessageViewController.h */,
+				95F803A81C529DC300CFFF44 /* MessageViewController.m */,
+				95F803A91C529DC300CFFF44 /* TypingIndicatorView.h */,
+				95F803AA1C529DC300CFFF44 /* TypingIndicatorView.m */,
+			);
+			path = "comment-new";
+			sourceTree = "<group>";
+		};
+		95F803B01C529E6200CFFF44 /* SLKInput */ = {
+			isa = PBXGroup;
+			children = (
+				95F803B11C529E6200CFFF44 /* SLKInputAccessoryView.h */,
+				95F803B21C529E6200CFFF44 /* SLKInputAccessoryView.m */,
+				95F803B31C529E6200CFFF44 /* SLKTextInputbar.h */,
+				95F803B41C529E6200CFFF44 /* SLKTextInputbar.m */,
+				95F803B51C529E6200CFFF44 /* SLKTextView+SLKAdditions.h */,
+				95F803B61C529E6200CFFF44 /* SLKTextView+SLKAdditions.m */,
+				95F803B71C529E6200CFFF44 /* SLKTextView.h */,
+				95F803B81C529E6200CFFF44 /* SLKTextView.m */,
+				95F803B91C529E6200CFFF44 /* SLKTextViewController.h */,
+				95F803BA1C529E6200CFFF44 /* SLKTextViewController.m */,
+				95F803BB1C529E6200CFFF44 /* SLKTypingIndicatorProtocol.h */,
+				95F803BC1C529E6200CFFF44 /* SLKTypingIndicatorView.h */,
+				95F803BD1C529E6200CFFF44 /* SLKTypingIndicatorView.m */,
+				95F803BE1C529E6200CFFF44 /* SLKUIConstants.h */,
+				95F803BF1C529E6200CFFF44 /* UIResponder+SLKAdditions.h */,
+				95F803C01C529E6200CFFF44 /* UIResponder+SLKAdditions.m */,
+				95F803C11C529E6200CFFF44 /* UIScrollView+SLKAdditions.h */,
+				95F803C21C529E6200CFFF44 /* UIScrollView+SLKAdditions.m */,
+				95F803C31C529E6200CFFF44 /* UIView+SLKAdditions.h */,
+				95F803C41C529E6200CFFF44 /* UIView+SLKAdditions.m */,
+			);
+			path = SLKInput;
 			sourceTree = "<group>";
 		};
 		95FD92901C0D48DA00D822E8 /* SGActionView */ = {
@@ -2804,9 +2894,11 @@
 				951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */,
 				9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */,
 				9890CBF71C1FF37600C34156 /* SVProgressHUD.m in Sources */,
+				95F803C91C529E6200CFFF44 /* SLKTextViewController.m in Sources */,
 				98AB5DBE1C44EDF50023C0DE /* RLMObject+Utilities.m in Sources */,
 				9550DAED1BF83E4C00430942 /* JTCalendarMenuView.m in Sources */,
 				9550DA1E1BF83E4C00430942 /* Sample4TableViewCell.m in Sources */,
+				95F803CB1C529E6200CFFF44 /* UIResponder+SLKAdditions.m in Sources */,
 				9805CA961C0E9B9900094858 /* ReAuthFilterHack.swift in Sources */,
 				955E73951C27F06D00B9449B /* SCFilterAnimation.m in Sources */,
 				9550DB191BF83E4C00430942 /* UIColor+HexString.m in Sources */,
@@ -2814,6 +2906,7 @@
 				9550DA341BF83E4C00430942 /* FriendAddViewController.m in Sources */,
 				9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */,
 				95EEF1C81C269483009DA989 /* UIView+WebCacheOperation.m in Sources */,
+				95F803CC1C529E6200CFFF44 /* UIScrollView+SLKAdditions.m in Sources */,
 				9550DAC51BF83E4C00430942 /* AbstractPopover.swift in Sources */,
 				98AB5DB21C44EDF50023C0DE /* RBQControllerCacheObject.m in Sources */,
 				95EEF1BE1C269483009DA989 /* SDWebImageDownloader.m in Sources */,
@@ -2826,6 +2919,7 @@
 				95EEF1FB1C26976A009DA989 /* AFURLSessionManager.m in Sources */,
 				95EEF1BA1C269483009DA989 /* NSData+ImageContentType.m in Sources */,
 				95FD92CD1C0D783100D822E8 /* NearViewController.m in Sources */,
+				95F803C71C529E6200CFFF44 /* SLKTextView+SLKAdditions.m in Sources */,
 				95EEF1C01C269483009DA989 /* SDWebImageManager.m in Sources */,
 				9550DA621BF83E4C00430942 /* RestaurantTableViewController.m in Sources */,
 				9550DAE51BF83E4C00430942 /* FHSStream.m in Sources */,
@@ -2833,6 +2927,7 @@
 				95FD92CA1C0D783100D822E8 /* FollowViewController.m in Sources */,
 				9550DA5B1BF83E4C00430942 /* SCSecondView.m in Sources */,
 				9550DB211BF83E4C00430942 /* UIRefreshControl+AFNetworking.m in Sources */,
+				95F803CD1C529E6200CFFF44 /* UIView+SLKAdditions.m in Sources */,
 				9550DA351BF83E4C00430942 /* TwitterController.m in Sources */,
 				955E739B1C27F06D00B9449B /* SCPlayer.m in Sources */,
 				9550DB221BF83E4C00430942 /* UIWebView+AFNetworking.m in Sources */,
@@ -2861,7 +2956,9 @@
 				981124601C0F02E20055F2A7 /* KeychainWrapper.swift in Sources */,
 				955E73931C27F06D00B9449B /* SCFilter+VideoComposition.m in Sources */,
 				9890CBF51C1FF37600C34156 /* SVIndefiniteAnimatedView.m in Sources */,
+				95F803AB1C529DC300CFFF44 /* Message.m in Sources */,
 				9550DA141BF83E4C00430942 /* MoviePlayerManager.m in Sources */,
+				95F803AD1C529DC300CFFF44 /* MessageTextView.m in Sources */,
 				9550DB1F1BF83E4C00430942 /* UIImageView+AFNetworking.m in Sources */,
 				98AB5DB91C44EDF50023C0DE /* RLMResults+Notifications.m in Sources */,
 				955E739D1C27F06D00B9449B /* SCRecorder.m in Sources */,
@@ -2900,6 +2997,7 @@
 				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
 				95FD92EB1C0D79F200D822E8 /* InfoView.m in Sources */,
 				955E73A21C27F06D00B9449B /* SCRecordSessionSegment.m in Sources */,
+				95F803C61C529E6200CFFF44 /* SLKTextInputbar.m in Sources */,
 				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				95EEF1F81C26976A009DA989 /* AFURLConnectionOperation.m in Sources */,
@@ -2933,11 +3031,14 @@
 				955E73A71C27F06D00B9449B /* SCVideoPlayerView.m in Sources */,
 				95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
+				95F803CA1C529E6200CFFF44 /* SLKTypingIndicatorView.m in Sources */,
+				95F803C51C529E6200CFFF44 /* SLKInputAccessoryView.m in Sources */,
 				95FD92D01C0D783100D822E8 /* RecoViewControllerCell.m in Sources */,
 				98AB5DB71C44EDF50023C0DE /* RLMObject+Notifications.m in Sources */,
 				9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */,
 				9801BF151C0C6D2F001F4D3C /* FacebookTasks.swift in Sources */,
 				955E73941C27F06D00B9449B /* SCFilter.m in Sources */,
+				95F803AE1C529DC300CFFF44 /* MessageViewController.m in Sources */,
 				955E73A01C27F06D00B9449B /* SCRecorderToolsView.m in Sources */,
 				955E739E1C27F06D00B9449B /* SCRecorderFocusTargetView.m in Sources */,
 				9550DA211BF83E4C00430942 /* everyTableViewController.m in Sources */,
@@ -2973,6 +3074,7 @@
 				9550DAE01BF83E4C00430942 /* BFPaperCheckbox.m in Sources */,
 				9550DAE11BF83E4C00430942 /* UIColor+BFPaperColors.m in Sources */,
 				955E73971C27F06D00B9449B /* SCImageView.m in Sources */,
+				95F803AC1C529DC300CFFF44 /* MessageTableViewCell.m in Sources */,
 				9550DA381BF83E4C00430942 /* LifelogSubTableViewController.m in Sources */,
 				9550DA1B1BF83E4C00430942 /* CheerListViewController.m in Sources */,
 				95FD93041C0D7AB600D822E8 /* TableViewController.m in Sources */,
@@ -3009,6 +3111,8 @@
 				9550DB071BF83E4C00430942 /* SingleLineTextField.m in Sources */,
 				9550DA2E1BF83E4C00430942 /* FollowListCell.m in Sources */,
 				9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */,
+				95F803C81C529E6200CFFF44 /* SLKTextView.m in Sources */,
+				95F803AF1C529DC300CFFF44 /* TypingIndicatorView.m in Sources */,
 				9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */,
 				9550DA181BF83E4C00430942 /* UIView+DropShadow.m in Sources */,
 				955E73A81C27F06D00B9449B /* SCWeakSelectorTarget.m in Sources */,
