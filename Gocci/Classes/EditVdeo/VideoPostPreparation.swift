@@ -60,9 +60,12 @@ import Foundation
     
     class func initiateUploadTaskChain(videoFileInTMPFolder: NSURL) {
         
+        let postData = VideoPostPreparation.postData
+        resetPostData()
+        
         let timestamp = Util.timestampUTC()
         
-        let relativeVideoFilePath = saveVideoInDocumentsAndCleanUpVideoFragments(videoFileInTMPFolder, timestamp: timestamp)
+        let relativeVideoFilePath = saveVideoInDocumentsAndCleanUpVideoFragments(postData, newVideoFile: videoFileInTMPFolder, timestamp: timestamp)
         
         
         print("========================================================")
@@ -129,12 +132,10 @@ import Foundation
                 }
             }
         }
-        
-        resetPostData()
     }
     
     
-    class func saveVideoInDocumentsAndCleanUpVideoFragments(newVideoFile: NSURL, timestamp: String) -> String {
+    class func saveVideoInDocumentsAndCleanUpVideoFragments(postData: PostData, newVideoFile: NSURL, timestamp: String) -> String {
         
         let fm = NSFileManager.defaultManager()
         

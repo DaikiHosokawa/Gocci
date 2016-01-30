@@ -12,7 +12,30 @@ import UIKit
 
 
 
+
+
 typealias OVF = (()->())?
+
+protocol Immortal: class {
+    var immortelSelf: Immortal? { get set }
+    
+    func becomeImmortal()
+    func suicide()
+}
+
+extension Immortal {
+    
+    func becomeImmortal() {
+        immortelSelf = self // prevents deallocation by the reference counting system
+    }
+    
+    func suicide() {
+        Util.runInBackground {
+            self.immortelSelf = nil // frees itself
+        }
+    }
+}
+
 
 @objc class Util : NSObject {
     

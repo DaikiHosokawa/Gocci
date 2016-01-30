@@ -73,6 +73,9 @@ class TwitterSharing {
     }
 
     private func tweetWithMediaIDs(message: String, mediaMediaIDs: [String]) {
+        Lo.red("TWEET")
+        
+        
         // https://dev.twitter.com/rest/reference/post/statuses/update
         let url = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")!
         //let url = NSURL(string: "http://localhost:8080/1.1/statuses/update.json")!
@@ -97,6 +100,8 @@ class TwitterSharing {
     }
     
     private func videoUploadINIT(localVideoFileURL: NSURL, onSucc: String->()) {
+        
+        Lo.red("INIT")
         
         finalSuccedCallback = onSucc
         
@@ -133,6 +138,9 @@ class TwitterSharing {
     
     
     private func videoUploadFINALIZE(mediaID: String) {
+        
+        Lo.red("FINALIZE")
+        
         
         let url = NSURL(string: "https://upload.twitter.com/1.1/media/upload.json")!
         
@@ -174,6 +182,9 @@ class TwitterSharing {
 
     
     private func videoUploadAPPENDVideoDataChunk(mediaID: String, segmentIndex: Int, var chunks: [NSData]) {
+        
+        Lo.red("APPEND")
+        
         
         let url = NSURL(string: "https://upload.twitter.com/1.1/media/upload.json")!
 //        let url = NSURL(string: "http://localhost:8080/1.1/statuses/update.json")!
@@ -246,7 +257,7 @@ class TwitterSharing {
         //print("Authorization: " + auth)
         request.setValue(auth, forHTTPHeaderField: "Authorization")
         
-        ServiceUtil.performRequest(request,
+        BackgroundServiceUtil.performBackgroundUploadRequest(request,
             onSuccess: { (statusCode, data) -> () in
                 let handler = (statusCode >= 200 && statusCode < 300) ? onSucc : onFail
                 handler(jsonResponse: JSON(data: data))

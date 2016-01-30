@@ -85,7 +85,17 @@ class SingletonTaskScheduler: Logable {
         objc_sync_exit(o)
     }
     
+    func debugPrintTaskFile() {
+        let fileContent = try? NSString(contentsOfFile: saveFileName, encoding: NSUTF8StringEncoding)
+        print(fileContent ?? "No file or could not read it")
+    }
+    
     func loadTasksFromDisk() {
+        
+        if SingletonTaskScheduler.verbose {
+            debugPrintTaskFile()
+        }
+        
         if !tasks.isEmpty {
             err("=== WARNING: you are overwriting tasks... very bad... ")
         }
