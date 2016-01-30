@@ -55,137 +55,6 @@ class BGTesterThread: DummyPlugTask {
 
 
 
-//
-//  FacebookTasks.swift
-//  Gocci
-//
-//  Created by Markus Wanke on 13.01.16.
-//  Copyright © 2015 Massara. All rights reserved.
-//
-
-import Foundation
-
-
-class FacebookVideoSharingTaskXXX: PersistentBaseTask {
-    let timelineMessage: String
-    let relativeFilePath: String
-    
-    init(timelineMessage: String, relativeFilePath: String) {
-        self.timelineMessage = timelineMessage
-        self.relativeFilePath = relativeFilePath
-        super.init(identifier: String(self.dynamicType))
-    }
-    
-    override init?(dict: NSDictionary) {
-        
-        self.timelineMessage = dict["timelineMessage"] as? String ?? "__PLACEHOLDER_4283492084092__"
-        self.relativeFilePath = dict["relativeFilePath"] as? String ?? ""
-        super.init(dict: dict)
-        if timelineMessage == "__PLACEHOLDER_4283492084092__" || relativeFilePath == "" { return nil }
-    }
-    
-    override func dictonaryRepresentation() -> NSMutableDictionary {
-        let dict = super.dictonaryRepresentation()
-        dict["timelineMessage"] = timelineMessage
-        dict["relativeFilePath"] = relativeFilePath
-        return dict
-    }
-    
-    override func equals(task: PersistentBaseTask) -> Bool {
-        if let task = task as? FacebookVideoSharingTaskXXX {
-            return task.timelineMessage == timelineMessage && task.relativeFilePath == relativeFilePath
-        }
-        return false
-    }
-    
-    override func run(finished: State->()) {
-        
-        sep("PERFORM: FacebookVideoSharingTask")
-        log("timelineMessage = \(timelineMessage)")
-        log("relativeFilePath = \(relativeFilePath)")
-        
-        let fullFilePathURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
-        
-        while true {
-        
-        print("sleeping...")
-        Util.sleep(3)
-        run(finished)
-        }
-        
-        guard NSFileManager.fileExistsAtURL(fullFilePathURL) else {
-            err("File \(fullFilePathURL) does not exist")
-            finished(.FAILED_IRRECOVERABLE)
-            return
-        }
-        
-        
-        let sharer = FacebookSharing()
-        sharer.onSuccess = {
-            //Toast.成功("Video sharing", "Video was successfully posted on Facebook.")
-            self.sep("SUCCESS: FacebookVideoSharingTask")
-            self.log("Facebook posting sucessful: Post ID: \($0)")
-
-            print("ONCE AGAIN ^^")
-            self.run(finished)
-        }
-        sharer.onFailure = {
-            self.err("Facebook posting failed because of \($0)")
-            
-            switch($0) {
-            case .ERROR_VIDEO_FILE_IO:
-                finished(PersistentBaseTask.State.FAILED_IRRECOVERABLE)
-                
-            case .ERROR_NETWORK:
-                //Toast.情報("Facebook video sharing", "Network appears to be unstable. Will retry later")
-                finished(PersistentBaseTask.State.FAILED_NETWORK)
-                
-            case .ERROR_FACEBOOK_API:
-                // TODO more punishmend. set retry count or extend waiting time
-                finished(PersistentBaseTask.State.FAILED_RECOVERABLE)
-                
-            case .ERROR_AUTHENTICATION:
-                
-                OverlayWindow.oneTimeViewController { viewController in
-                    
-                    FacebookAuthentication.authenticateWithPublishRights(currentViewController: viewController) { token in
-                        finished( token == nil ? .FAILED_IRRECOVERABLE : .FAILED_RECOVERABLE)
-                    }
-                }
-            }
-        }
-        sharer.shareVideoOnFacebook(fullFilePathURL, description: timelineMessage, thumbnail: nil)
-            
-    }
-    
-    override var description: String {
-        return super.description + " timelineMessage: \(timelineMessage), MP4File: \(relativeFilePath)"
-    }
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -209,25 +78,7 @@ class DebugViewController : UIViewController {
     @IBOutlet weak var passwordEditField: UITextField!
     
     
-//    override func viewWillAppear(animated: Bool) {
-//        Lo.error("OverlayViewController: viewDidLoad")
-//        super.viewWillAppear(animated)
-//    }
-//    
-//    override func viewDidAppear(animated: Bool) {
-//        Lo.error("OverlayViewController: viewDidAppear")
-//        super.viewDidAppear(animated)
-//    }
-//    
-//    override func viewWillDisappear(animated: Bool) {
-//        Lo.error("OverlayViewController: viewWillDisappear")
-//        super.viewWillDisappear(animated)
-//    }
-//    
-//    override func viewDidDisappear(animated: Bool) {
-//        Lo.error("OverlayViewController: viewDidDisappear")
-//        super.viewDidDisappear(animated)
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,6 +110,21 @@ class DebugViewController : UIViewController {
         
         
         let fullFilePathURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)
+        
+        
+        let rests = NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!
+        let target = NSFileManager.documentsDirectory() + "/testvid.mp4"
+        NSFileManager.cp(rests.asLocalFileURL(), target: target.asLocalFileURL())
+        
+        let rela = "Documents/testvid.mp4"
+        
+        FacebookVideoSharingTask(timelineMessage: Util.randomAlphaNumericStringWithLength(22), relativeFilePath: rela).schedule()
+//        TwitterVideoSharingTask(tweetMessage: Util.randomAlphaNumericStringWithLength(22), relativeFilePath: rela).schedule()
+        
+        return;
+        
+        
+        
         
         let sharer = FacebookSharing()
         sharer.onSuccess = { postid in
@@ -409,7 +275,8 @@ class DebugViewController : UIViewController {
     
     @IBAction func a(sender: AnyObject) {
         
-        TaskScheduler.loadTasksFromDisk()
+        TaskScheduler.debugPrintTaskFile()
+//        TaskScheduler.loadTasksFromDisk()
         
 //        FacebookAuthentication.enableFullDebugOutput()
 //        
@@ -427,20 +294,23 @@ class DebugViewController : UIViewController {
     }
     
     @IBAction func b(sender: AnyObject) {
-        let gurl = "http://inase-inc.jp/gocci/" + "id832948/"
-        let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
-        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
         
-        let sharer = FacebookStorySharing(fromViewController: self)
-        sharer.onSuccess = { print($0) }
-        sharer.onFailure = { print($0) }
-        sharer.onCancel = { print("canceld :(") }
+        TaskScheduler.loadTasksFromDisk()
         
-        FacebookAuthentication.enableFullDebugOutput()
-        
-        sharer.shareGocchiVideoStoryOnFacebookDirect(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Direct", description: "kkkkk")
-
-        print("Programmflow continues...")
+//        let gurl = "http://inase-inc.jp/gocci/" + "id832948/"
+//        let imgurl = "http://www.hycclub.org/Resources/Pictures/Events/pancakes_t479.jpg"
+//        let mp4url = "http://test.mp4-movies.gocci.me/2015/10/2015-10-06-14-05-25_515_movie.mp4"
+//        
+//        let sharer = FacebookStorySharing(fromViewController: self)
+//        sharer.onSuccess = { print($0) }
+//        sharer.onFailure = { print($0) }
+//        sharer.onCancel = { print("canceld :(") }
+//        
+//        FacebookAuthentication.enableFullDebugOutput()
+//        
+//        sharer.shareGocchiVideoStoryOnFacebookDirect(clickURL: gurl, thumbURL: imgurl, mp4URL: mp4url, title: "Direct", description: "kkkkk")
+//
+//        print("Programmflow continues...")
 
     }
     
@@ -754,6 +624,26 @@ class DebugViewController : UIViewController {
         self.ignoreCommonSenseAndGoToViewControllerWithName("jumpSettingsTableViewController")
     }
     
+    
+    //    override func viewWillAppear(animated: Bool) {
+    //        Lo.error("OverlayViewController: viewDidLoad")
+    //        super.viewWillAppear(animated)
+    //    }
+    //
+    //    override func viewDidAppear(animated: Bool) {
+    //        Lo.error("OverlayViewController: viewDidAppear")
+    //        super.viewDidAppear(animated)
+    //    }
+    //
+    //    override func viewWillDisappear(animated: Bool) {
+    //        Lo.error("OverlayViewController: viewWillDisappear")
+    //        super.viewWillDisappear(animated)
+    //    }
+    //
+    //    override func viewDidDisappear(animated: Bool) {
+    //        Lo.error("OverlayViewController: viewDidDisappear")
+    //        super.viewDidDisappear(animated)
+    //    }
 
 }
 

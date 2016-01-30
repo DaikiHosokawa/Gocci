@@ -101,20 +101,38 @@ class TwitterLowLevel {
             
             request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
             request.HTTPBody = data
+            
+            BackgroundServiceUtil.performBackgroundUploadRequest(request,
+                onSuccess: { statusCode, data in
+                    if statusCode >= 200 && statusCode < 300 {
+                        onSuccess(jsonResponse: JSON(data: data))
+                    }
+                    else {
+                        onFailure(error: .ERROR_TWITTER_API(twitterErrorJSONtoString(JSON(data: data))))
+                    }
+                },
+                onFailure: { errorMessage in
+                    onFailure(error: .ERROR_NETWORK(errorMessage))
+                }
+            )
+        }               // TODO FIX THIS
+        else {
+            ServiceUtil.performRequest(request,
+                onSuccess: { statusCode, data in
+                    if statusCode >= 200 && statusCode < 300 {
+                        onSuccess(jsonResponse: JSON(data: data))
+                    }
+                    else {
+                        onFailure(error: .ERROR_TWITTER_API(twitterErrorJSONtoString(JSON(data: data))))
+                    }
+                },
+                onFailure: { errorMessage in
+                    onFailure(error: .ERROR_NETWORK(errorMessage))
+                }
+            )
+            
         }
         
-        ServiceUtil.performRequest(request,
-            onSuccess: { (statusCode, data) -> () in
-                if statusCode >= 200 && statusCode < 300 {
-                    onSuccess(jsonResponse: JSON(data: data))
-                }
-                else {
-                    onFailure(error: .ERROR_TWITTER_API(twitterErrorJSONtoString(JSON(data: data))))
-                }
-            },
-            onFailure: { errorMessage in
-                onFailure(error: .ERROR_NETWORK(errorMessage))
-            }
-        )
+
     }
 }

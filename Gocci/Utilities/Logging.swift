@@ -28,17 +28,17 @@ extension Logable {
     
     
     static func log(msg: String) {
-//#if TEST_BUILD
+#if TEST_BUILD
         if verbose {
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg)
             
-            appendToFile("LOG: " + msg)
+//            appendToFile("LOG: " + msg)
         }
-//#endif
+#endif
     }
     
     static func sep(head: String) {
-//#if TEST_BUILD
+#if TEST_BUILD
         if verbose {
             let ich = String(self.dynamicType).replace(".type", withString: "")
             let msg = "=== \(head)  (send by '\(ich)') "
@@ -46,13 +46,13 @@ extension Logable {
             Lo.printInColor(logColor.r, logColor.g, logColor.b, String(count: 120, repeatedValue: Character("=")))
             Lo.printInColor(logColor.r, logColor.g, logColor.b, msg + "  " + balken)
             
-            appendToFile("HEAD: " + head)
+//            appendToFile("HEAD: " + head)
         }
-//#endif
+#endif
     }
     
     static func err(msg: String) {
-//#if TEST_BUILD
+#if TEST_BUILD
         let ich = String(self.dynamicType).replace(".type", withString: "")
         let head = "=== ERROR in '\(ich)'"
         let balken = String(count: max(104 - msg.length, 0), repeatedValue: Character("="))
@@ -60,8 +60,8 @@ extension Logable {
         Lo.error(head + "  " + balken)
         Lo.error(msg)
         
-        appendToFile("ERROR: " + msg)
-//#endif
+//        appendToFile("ERROR: " + msg)
+#endif
     }
 
     func log(msg: String) {

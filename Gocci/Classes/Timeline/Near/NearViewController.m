@@ -381,6 +381,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
+    useMapPosition = false;
     [self.refreshControl refreshScrollViewDidEndDragging:scrollView];
     
 }
