@@ -3,13 +3,13 @@
 Before upload to the App Store
 ==============================
 
-- disable logging in logging.swift
+- increase the version! (DONE)
 
-- disable other strange stuff in const.h
+- disable logging in logging.swift  (DONE)
+
+- disable other strange stuff in const.h (DONE)
 
 - check your provisining profiles again
-
-- increase the version!
 
 - complete clean of all builds. build from scratch
 

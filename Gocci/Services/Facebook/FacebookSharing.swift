@@ -90,10 +90,30 @@ class FacebookSharing: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate,
         request.HTTPBody = formdata.generateRequestBody()
         request.setValue(String(request.HTTPBody!.length), forHTTPHeaderField: "Content-Length")
         
-        performBackgroundUploadRequest(request)
+        //performBackgroundUploadRequest(request)
         
+        BackgroundServiceUtil.performBackgroundUploadRequest(request,
+            onSuccess: { statusCode, data in
+                if statusCode == 200 {
+                    self.onSuccess?(facebookPostID: JSON(data:data)["id"].string ?? "json response did not contain a fb post id")
+                }
+                else if statusCode == 400 && JSON(data: data)["error"]["code"].intValue == 190 {
+                    self.onFailure?(error: .ERROR_AUTHENTICATION("Login Token existed but was not valid anymore or has wrong rights maybe"))
+                }
+                else {
+                    //   print(JSON(data: data).rawString() ?? "json unparseable")
+                    let fberr = JSON(data: data)["error"]["message"].string ?? "no error message"
+                    self.onFailure?(error: .ERROR_FACEBOOK_API("HTTP Code: \(statusCode). FACEBOOK ERROR: \(fberr)"))
+                }
+            },
+            onFailure: { errorMessage in
+                self.onFailure?(error: .ERROR_NETWORK(errorMessage))
+            }
+        )
     }
     
+    
+    /*
     
     func handleResponse(statusCode statusCode: Int, data: NSData) {
         
@@ -163,6 +183,8 @@ class FacebookSharing: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate,
         
         session.uploadTaskWithRequest(request, fromFile: tmpurl).resume()
     }
+    
+    */
     
 }
 

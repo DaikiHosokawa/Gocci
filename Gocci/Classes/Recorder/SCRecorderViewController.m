@@ -45,6 +45,8 @@ static SCRecordSession *staticRecordSession;
     NSTimeInterval test_timeGauge;
     
     SCScrollPageView *scrollpageview;
+    
+    bool deleteUserInsertedData;
 
 }
 
@@ -58,6 +60,8 @@ static SCRecordSession *staticRecordSession;
 
 @property (weak, nonatomic) IBOutlet UIButton *reverseBtn;
 @property (weak, nonatomic) IBOutlet UIView *preview;
+
+
 
 @end
 
@@ -141,6 +145,8 @@ static SCRecordSession *staticRecordSession;
 #pragma mark 描画開始前
 - (void)viewWillAppear:(BOOL)animated {
     
+    deleteUserInsertedData = true;
+    
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self prepareSession];
@@ -215,6 +221,11 @@ static SCRecordSession *staticRecordSession;
 #pragma mark 退避完了後
 - (void)viewDidDisappear:(BOOL)animated
 {
+    if (deleteUserInsertedData) {
+        [VideoPostPreparation resetPostData];
+    }
+    deleteUserInsertedData = true;
+    
     [super viewDidDisappear:animated];
 }
 
@@ -422,6 +433,7 @@ static SCRecordSession *staticRecordSession;
 }
 
 - (void)showVideo {
+    deleteUserInsertedData = false;
     [self performSegueWithIdentifier:@"Video" sender:self];
 }
 

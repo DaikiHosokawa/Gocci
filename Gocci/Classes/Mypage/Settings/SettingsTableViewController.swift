@@ -62,7 +62,7 @@ class SettingsTableViewController: UITableViewController
                     },
                     handleTwitter
                 ),
-                ( { $0.textLabel?.text = "XXXXX Facebookの友達に紹介"; return }, handleFriendInvite),
+                ( { $0.textLabel?.text = "Facebookの友達に紹介"; return }, handleFriendInvite),
                 
             ],
             // お知らせ =====================================================================
@@ -120,6 +120,11 @@ class SettingsTableViewController: UITableViewController
                 (
                     { $0.textLabel?.text = "Gocciを初期状態にリセットする" ; $0.textLabel?.textColor = UIColor.blackColor() },
                     handleAccountReset
+                ),
+                
+                (
+                    { $0.textLabel?.text = "" ; $0.textLabel?.textColor = UIColor.blackColor() },
+                    nil
                 ),
             ],
         ]
