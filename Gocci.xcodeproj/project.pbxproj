@@ -353,12 +353,12 @@
 		9862D6051C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		9862D6061C17BF45006AE6D9 /* APITasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9862D6041C17BF45006AE6D9 /* APITasks.swift */; };
 		9864FAA41C45FEEB00B962EF /* rest.realm in Resources */ = {isa = PBXBuildFile; fileRef = 9864FAA31C45FEEB00B962EF /* rest.realm */; };
-		986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */ = {isa = PBXBuildFile; fileRef = 986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */; };
 		987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51EC1BF9C33A00339285 /* testvid.mp4 */; };
 		987E51F21BFB04C200339285 /* twosec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F11BFB04C200339285 /* twosec.mp4 */; };
-		987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F41BFB37AD00339285 /* restaurantlatlon.json */; };
 		987E51F71BFB37AD00339285 /* thumbnail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 987E51F51BFB37AD00339285 /* thumbnail.jpg */; };
 		988270521C59F6BB00EA9F57 /* RequestGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988270511C59F6BB00EA9F57 /* RequestGPSViewController.swift */; };
+		988270541C5B53E800EA9F57 /* BackgroundServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988270531C5B53E800EA9F57 /* BackgroundServiceUtil.swift */; };
+		988270551C5B601000EA9F57 /* BackgroundServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988270531C5B53E800EA9F57 /* BackgroundServiceUtil.swift */; };
 		988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */; };
 		988971BF1C17F75E00FF7B43 /* FacebookTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9801BF141C0C6D2F001F4D3C /* FacebookTasks.swift */; };
 		988971C11C1809F100FF7B43 /* VideoPostPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */; };
@@ -994,13 +994,12 @@
 		9862D6001C16A383006AE6D9 /* AWSTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSTasks.swift; sourceTree = "<group>"; };
 		9862D6041C17BF45006AE6D9 /* APITasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITasks.swift; sourceTree = "<group>"; };
 		9864FAA31C45FEEB00B962EF /* rest.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = rest.realm; path = Gocci/Debug/rest.realm; sourceTree = "<group>"; };
-		986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = unfinished_upload_task.plist; path = Gocci/Debug/unfinished_upload_task.plist; sourceTree = "<group>"; };
 		9874BF3B1BCE22FD00B1651E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		987E51EC1BF9C33A00339285 /* testvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testvid.mp4; path = Gocci/Debug/testvid.mp4; sourceTree = "<group>"; };
 		987E51F11BFB04C200339285 /* twosec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = twosec.mp4; path = Gocci/Debug/twosec.mp4; sourceTree = "<group>"; };
-		987E51F41BFB37AD00339285 /* restaurantlatlon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = restaurantlatlon.json; path = Gocci/Debug/restaurantlatlon.json; sourceTree = "<group>"; };
 		987E51F51BFB37AD00339285 /* thumbnail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = thumbnail.jpg; path = Gocci/Debug/thumbnail.jpg; sourceTree = "<group>"; };
 		988270511C59F6BB00EA9F57 /* RequestGPSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGPSViewController.swift; sourceTree = "<group>"; };
+		988270531C5B53E800EA9F57 /* BackgroundServiceUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundServiceUtil.swift; sourceTree = "<group>"; };
 		988971BD1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testVideoUploadTaskChain.swift; sourceTree = "<group>"; };
 		988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostPreparation.swift; sourceTree = "<group>"; };
 		988E81C61C44A20A006207CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -1566,6 +1565,7 @@
 			isa = PBXGroup;
 			children = (
 				981A93511BFEF3CA007B3BF6 /* Network.swift */,
+				988270531C5B53E800EA9F57 /* BackgroundServiceUtil.swift */,
 				9550D9131BF83E4B00430942 /* ServiceUtil.swift */,
 				9550D90B1BF83E4B00430942 /* Amazon */,
 				9550D9101BF83E4B00430942 /* Gocci */,
@@ -2423,8 +2423,6 @@
 			children = (
 				985C276F1C4798AA00DC58E2 /* meat.mp4 */,
 				9864FAA31C45FEEB00B962EF /* rest.realm */,
-				986A132F1C1AD8990083A434 /* unfinished_upload_task.plist */,
-				987E51F41BFB37AD00339285 /* restaurantlatlon.json */,
 				987E51F51BFB37AD00339285 /* thumbnail.jpg */,
 				987E51F11BFB04C200339285 /* twosec.mp4 */,
 				987E51EC1BF9C33A00339285 /* testvid.mp4 */,
@@ -2707,7 +2705,6 @@
 			files = (
 				9550DAA21BF83E4C00430942 /* btn_delete_black@2x.png in Resources */,
 				952258361C1D8DEE00B0C944 /* tabbaritem_timeline_sel.png in Resources */,
-				986A13301C1AD8990083A434 /* unfinished_upload_task.plist in Resources */,
 				987E51ED1BF9C33A00339285 /* testvid.mp4 in Resources */,
 				952258341C1D8DEE00B0C944 /* tabbaritem_profile.png in Resources */,
 				9550DA5E1BF83E4C00430942 /* SCSecondView_5_5_inch.xib in Resources */,
@@ -2723,7 +2720,6 @@
 				95EEF20B1C269880009DA989 /* icon-success@2x.png in Resources */,
 				9550DA9F1BF83E4C00430942 /* btn_capture_flip.png in Resources */,
 				9550DA1A1BF83E4C00430942 /* CheerListCell.xib in Resources */,
-				987E51F61BFB37AD00339285 /* restaurantlatlon.json in Resources */,
 				9550DA5D1BF83E4C00430942 /* SCSecondView_4_7_inch.xib in Resources */,
 				9550DACC1BF83E4C00430942 /* 4_0_inch.storyboard in Resources */,
 				987E51F21BFB04C200339285 /* twosec.mp4 in Resources */,
@@ -2851,6 +2847,7 @@
 				988971BE1C17E4E300FF7B43 /* testVideoUploadTaskChain.swift in Sources */,
 				98C453A41C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
 				98B99E881C21173000B1D9CE /* Permission.swift in Sources */,
+				988270551C5B601000EA9F57 /* BackgroundServiceUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2859,6 +2856,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95EEF20C1C269880009DA989 /* TWMessageBarManager.m in Sources */,
+				988270541C5B53E800EA9F57 /* BackgroundServiceUtil.swift in Sources */,
 				955E73921C27F06D00B9449B /* SCFilter+UIImage.m in Sources */,
 				9550DB1D1BF83E4C00430942 /* UIAlertView+AFNetworking.m in Sources */,
 				95FD92CF1C0D783100D822E8 /* RecoViewController.m in Sources */,

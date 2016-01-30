@@ -56,6 +56,14 @@ class ServiceUtil {
     }
     
     
+     
+    
+    
+    
+    
+    
+    
+    
     
     static let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     
