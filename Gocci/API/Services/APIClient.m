@@ -15,6 +15,8 @@ NSString * const APIClientResultCacheKeyDist = @"dist";
 
 //@property (nonatomic, strong) AFHTTPSessionManager *manager;
 @property (nonatomic, strong) ReAuthFilterHack *manager;
+@property (nonatomic, strong) ReAuthFilterHack *manager_v4;
+
 @property (nonatomic, strong) NSCache *resultCache;
 
 @end
@@ -44,12 +46,11 @@ static APIClient *_sharedInstance = nil;
     if (!self) {
         return nil;
     }
-    
     NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
-    
-    
     self.manager = [[ReAuthFilterHack alloc] initWithBaseURL:baseURL];
 
+    NSURL *baseURL_v4 = [NSURL URLWithString:API_BASE_URL_V4];
+    self.manager_v4 = [[ReAuthFilterHack alloc] initWithBaseURL:baseURL_v4];
 //    self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
 //    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
 //                                                              @"application/json",
@@ -398,6 +399,57 @@ static APIClient *_sharedInstance = nil;
                                       handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
                                   }];
     
+}
+
++ (void)set_gochi:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"post_id" :post_id,
+                             };
+    
+    NSLog(@"paramsgoodinsert:%@",params);
+    [[APIClient sharedClient].manager_v4 GET:@"set/gochi/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
+}
+
++ (void)unset_gochi:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"post_id" :post_id,
+                             };
+    
+    NSLog(@"paramsgoodinsert:%@",params);
+    [[APIClient sharedClient].manager_v4 GET:@"unset/gochi/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
+    
+}
+
++ (void)Gochi:(NSString *)page category_id:(NSString *)category_id value_id:(NSString *)value_id  handler:(void (^)(id, NSUInteger, NSError *))handler
+{
+    NSDictionary *params = @{
+                             @"page" : page,
+                             @"category_id" : category_id,
+                             @"value_id" : value_id
+                             };
+    NSLog(@"Gochi:%@",params);
+    [[APIClient sharedClient].manager_v4 GET:@"get/gochiline/"
+                               parameters:params
+                                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
+                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
+                                  }];
 }
 
 + (void)postDelete:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler

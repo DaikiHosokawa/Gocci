@@ -171,6 +171,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.textView.text = VideoPostPreparation.postData.memo;
+    
 #if !TARGET_IPHONE_SIMULATOR && !defined SKIP_VIDEO_RECORDING
     [_player setItemByAsset:_recordSession.assetRepresentingSegments];
     NSLog(@"player:%@",_recordSession);

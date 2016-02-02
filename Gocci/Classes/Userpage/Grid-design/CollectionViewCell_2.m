@@ -143,7 +143,7 @@
 
 - (void)tapLike:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(collection:didTapLikeButton:)]) {
+    if ([self.delegate respondsToSelector:@selector(collection:didTapLikeButton:tapped:)]) {
         
         if(flash_on == 0 ){
             UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
@@ -151,10 +151,16 @@
             flash_on = 1;
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
-                [self.delegate collection:self didTapLikeButton:self.postID];
+                [self.delegate collection:self didTapLikeButton:self.postID tapped:YES];
             });
         }else{
-            
+            UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
+            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+            flash_on = 0;
+            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+            dispatch_sync(globalQueue, ^{
+                [self.delegate collection:self didTapLikeButton:self.postID tapped:NO];
+            });
         }
         
     }

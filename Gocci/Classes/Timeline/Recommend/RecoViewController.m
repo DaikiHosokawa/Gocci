@@ -189,13 +189,13 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:user_id forKey:@"USERID"];
     
-    
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"店舗", @"ユーザー",
+                             itemTitles:@[ @"店舗", @"ユーザー",@"コメント",
                                           @"違反報告",@"保存" ]
                                  images:@[
                                            [UIImage imageNamed:@"restaurant"],
                                            [UIImage imageNamed:@"man"],
+                                           [UIImage imageNamed:@"comment"],
                                            [UIImage imageNamed:@"warning"],
                                            [UIImage imageNamed:@"save"]
                                            ]
@@ -221,8 +221,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                      [self.delegate reco:self username:u_id];
                                      [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
                                  }
+                             }else if(index == 3){
+                                 NSLog(@"Comment");
+                                     [self.delegate reco:self postid:p_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
                              }
-                             else if(index == 3){
+                             else if(index == 4){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -261,7 +265,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                       ];
                                  }
                              }
-                             else if(index == 4){
+                             else if(index == 5){
                                  NSLog(@"save");
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
@@ -287,13 +291,22 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
--(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
+-(void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString *)postID tapped:(BOOL)tapped{
+    if (tapped) {
+        [APIClient set_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
         }
+         ];
+    }else {
+        [APIClient unset_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
     }
-     ];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

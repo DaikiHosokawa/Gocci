@@ -22,7 +22,7 @@
 - (void)collection:(CollectionViewCell_2 *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
 
 - (void)collection:(CollectionViewCell_2 *)cell didTapThumb:(NSString*)rest_id;
-- (void)collection:(CollectionViewCell_2 *)cell didTapLikeButton:(NSString*)postID;
+- (void)collection:(CollectionViewCell_2 *)cell didTapLikeButton:(NSString*)postID tapped:(BOOL)tapped;
 
 @end
 

@@ -61,8 +61,8 @@ class SettingsTableViewController: UITableViewController
                         $0.detailTextLabel?.textColor = isCon ? UIColor.good : UIColor.bad
                     },
                     handleTwitter
-                ),
-                ( { $0.textLabel?.text = "Facebookの友達に紹介"; return }, handleFriendInvite),
+                )
+               // ( { $0.textLabel?.text = "Facebookの友達に紹介"; return }, handleFriendInvite),
                 
             ],
             // お知らせ =====================================================================

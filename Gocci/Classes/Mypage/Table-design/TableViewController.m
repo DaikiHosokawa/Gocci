@@ -9,7 +9,6 @@
 #import "TableViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
-#import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
@@ -116,14 +115,14 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
--(void)table:(CollectionViewCell *)cell didTapRestname:(NSString *)rest_id{
+-(void)table:(TableViewCell *)cell didTapRestname:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
     MypageViewController *vc = (MypageViewController*)self.delegate;
     [self.delegate table:self rest_id:rest_id];
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
 }
 
--(void)table:(CollectionViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
+-(void)table:(TableViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:post_id forKey:@"POSTID"];
@@ -133,9 +132,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"店舗", @"削除",@"保存" ]
+                             itemTitles:@[ @"店舗",@"コメント",@"削除",@"保存" ]
                                  images:@[
                                           [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"comment"],
                                           [UIImage imageNamed:@"trash"],
                                           [UIImage imageNamed:@"save"]
                                           ]
@@ -146,25 +146,32 @@ static NSString * const reuseIdentifier = @"Cell";
                              
                              if(index == 1){
                                  NSLog(@"Rest");
-                                 [self.delegate table:self rest_id:r_id];
+                                 [self.delegate table:self rest_id:rest_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
                              else if(index == 2){
-                                 NSLog(@"削除");
+                                 NSLog(@"comment");
+                                 [self.delegate table:self postid:p_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
+                             }
+                             else if(index == 3){
+                                 NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                             LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                              if (result) {
-                                                 NSLog(@"result:%@",result);
+                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alrt show];
                                              }
                                          }
                                           ];
-                                         
                                          
                                      }]];
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"いいえ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -175,38 +182,47 @@ static NSString * const reuseIdentifier = @"Cell";
                                  }
                                  else
                                  {
-                                     [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                          if (result) {
-                                             NSLog(@"result:%@",result);
+                                             NSString *alertMessage = @"違反報告をしました";
+                                             UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                             [alrt show];
                                          }
                                      }
                                       ];
                                  }
-                                 
                              }
-                             else if(index == 3){
+                             else if(index == 4){
                                  NSLog(@"save");
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
                          }];
     
-    
-    
 }
 
 
--(void)table:(CollectionViewCell *)cell didTapThumb:(NSString *)rest_id{
+-(void)table:(TableViewCell *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
 }
 
 
--(void)table:(TableViewCell *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
+-(void)table:(TableViewCell *)cell didTapLikeButton:(NSString *)postID tapped:(BOOL)tapped{
+    if (tapped) {
+        [APIClient set_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
         }
+         ];
+    }else {
+        [APIClient unset_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
     }
-     ];
 }
 
 

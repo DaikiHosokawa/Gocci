@@ -18,7 +18,7 @@
 - (void)followViewCell:(FollowViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
 
 - (void)followViewCell:(FollowViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
-- (void)followViewCell:(FollowViewControllerCell *)cell didTapLikeButton:(NSString*)postID;
+- (void)followViewCell:(FollowViewControllerCell *)cell didTapLikeButton:(NSString*)postID tapped:(BOOL)tapped;
 - (void)followViewCell:(FollowViewControllerCell *)cell didTapImg:(NSString*)user_id;
 
 
