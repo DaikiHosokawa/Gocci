@@ -4,12 +4,12 @@
 //
 
 
-#import "RecoViewControllerCell.h"
+#import "GochiViewControllerCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "MoviePlayerManager.h"
 
-@interface RecoViewControllerCell()
+@interface GochiViewControllerCell()
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *rest_id;
@@ -24,7 +24,7 @@
 #define METERS_CUTOFF   1000
 
 
-@implementation RecoViewControllerCell
+@implementation GochiViewControllerCell
 
 + (instancetype)cell
 {
@@ -44,41 +44,38 @@
     return self;
 }
 
--(void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath {
+-(void)configureWithTimelinePost:(TimelinePost_v4 *)timelinePost indexPath:(NSUInteger)indexPath {
     
-    self.postID = timelinePost.postID;
+    self.postID = timelinePost.post_id;
     self.rest_id = timelinePost.rest_id;
-    self.user_id = timelinePost.userID;
+    self.user_id = timelinePost.user_id;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:timelinePost.thumbnail]
                       placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
     self.imageView.layer.cornerRadius = 2;
     self.imageView.clipsToBounds = true;
-    [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.picture]
+    [self.profileImg sd_setImageWithURL:[NSURL URLWithString:timelinePost.profile_img]
                        placeholderImage:[UIImage imageNamed:@"dummy.1x1.#2F3437"]];
     self.profileImg.layer.cornerRadius = 15;
     self.profileImg.clipsToBounds = true;
     self.title.text = timelinePost.restname;
-    self.date.text = timelinePost.timelabel;
-    self.movieURL = timelinePost.movie;
+    self.date.text = timelinePost.post_date;
+    self.movieURL = timelinePost.hls_movie;
     self.index = indexPath;
-    self.pushed_at = timelinePost.pushed_at;
     [self _assignTapAction:@selector(tapRestname:) view:self.title];
     [self _assignTapAction:@selector(tapOption:) view:self.option];
     [self _assignTapAction:@selector(tapThumb:) view:self.imageView];
     [self _assignTapAction:@selector(tapLike:) view:self.likeBtn];
     [self _assignTapAction:@selector(tapImg:) view:self.profileImg];
     
-    NSString *string = [NSString stringWithFormat:@"%@", self.pushed_at];
-    if ([string isEqualToString:@"0"])
+    if (timelinePost.gochi_flag)
     {
-        UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
-        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
-        flash_on = 0;
-        
-    }else{
         UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
         [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
         flash_on = 1;
+    }else{
+        UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
+        [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+        flash_on = 0;
     }
     
 }
@@ -96,22 +93,22 @@
 }
 - (void)tapRestname:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapRestname:)]) {
-        [self.delegate recoViewCell:self didTapRestname:self.rest_id];
+    if ([self.delegate respondsToSelector:@selector(gochiViewCell:didTapRestname:)]) {
+        [self.delegate gochiViewCell:self didTapRestname:self.rest_id];
     }
 }
 
 - (void)tapOption:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapOptions:post_id:user_id:)]) {
-        [self.delegate recoViewCell:self didTapOptions:self.rest_id post_id:self.postID user_id:self.user_id];
+    if ([self.delegate respondsToSelector:@selector(gochiViewCell:didTapOptions:post_id:user_id:)]) {
+        [self.delegate gochiViewCell:self didTapOptions:self.rest_id post_id:self.postID user_id:self.user_id];
     }
 }
 
 - (void)tapThumb:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapThumb:)]) {
-        [self.delegate recoViewCell:self didTapThumb:self.rest_id];
+    if ([self.delegate respondsToSelector:@selector(gochiViewCell:didTapThumb:)]) {
+        [self.delegate gochiViewCell:self didTapThumb:self.rest_id];
         [[MoviePlayerManager sharedManager] addPlayerWithMovieURL:self.movieURL
                                                              size:self.imageView.bounds.size
                                                           atIndex:self.index
@@ -123,8 +120,8 @@
 
 - (void)tapImg:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapImg:)]) {
-        [self.delegate recoViewCell:self didTapImg:self.user_id];
+    if ([self.delegate respondsToSelector:@selector(gochiViewCell:didTapImg:)]) {
+        [self.delegate gochiViewCell:self didTapImg:self.user_id];
     }
 }
 
@@ -155,7 +152,7 @@
 
 - (void)tapLike:(UITapGestureRecognizer *)recognizer
 {
-    if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapLikeButton:tapped:)]) {
+    if ([self.delegate respondsToSelector:@selector(gochiViewCell:didTapLikeButton:tapped:)]) {
         
         if(flash_on == 0 ){
             UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
@@ -163,7 +160,7 @@
             flash_on = 1;
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
-                [self.delegate recoViewCell:self didTapLikeButton:self.postID tapped:YES];
+                [self.delegate gochiViewCell:self didTapLikeButton:self.postID tapped:YES];
             });
         }else{
             UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
@@ -171,7 +168,7 @@
             flash_on = 0;
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
-                [self.delegate recoViewCell:self didTapLikeButton:self.postID tapped:NO];
+                [self.delegate gochiViewCell:self didTapLikeButton:self.postID tapped:NO];
             });
         }
         

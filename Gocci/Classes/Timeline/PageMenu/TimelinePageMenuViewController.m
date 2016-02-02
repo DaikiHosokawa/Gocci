@@ -68,7 +68,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     _postRestname = rest_id;
 }
 
-#pragma mark - FollowTableViewController
+#pragma mark - FollowViewController
 -(void)follow:(FollowViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
@@ -82,7 +82,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     _postRestname = rest_id;
 }
 
-#pragma mark - ALlTimelneTableViewControllerDelegate
+#pragma mark - NearViewController
 -(void)near:(NearViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
@@ -92,6 +92,20 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     _postUsername = user_id;
 }
 -(void)near:(NearViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
+#pragma mark - GochiViewController
+-(void)gochi:(GochiViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+-(void)gochi:(GochiViewController *)vc username:(NSString *)user_id
+{
+    _postUsername = user_id;
+}
+-(void)gochi:(GochiViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
@@ -113,7 +127,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
          UIButton *heatMapBtn = [[UIButton alloc]
          initWithFrame:CGRectMake(0, 0, 30, 30)];
          [heatMapBtn setBackgroundImage:img forState:UIControlStateNormal];
-         UIBarButtonItem *button1 = [[UIBarButtonItem alloc]initWithCustomView:heatMapBtn];
          
          
          [heatMapBtn addTarget:self
@@ -232,21 +245,24 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 -(void)setupPageMenu:(int)page
 {
     self.recoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
-    self.recoViewController.title = @"新着";
+    self.recoViewController.title = @"最新";
     self.recoViewController.delegate = self;
     
     self.nearViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
-    self.nearViewController.title = @"現在地周辺";
+    self.nearViewController.title = @"近く";
     self.nearViewController.delegate = self;
     
     self.requestGPSViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
-    self.requestGPSViewController.title = @"現在地周辺";
+    self.requestGPSViewController.title = @"近く";
     self.requestGPSViewController.delegate = self;
     
     self.followViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowViewController"];
     self.followViewController.title = @"フォロー";
     self.followViewController.delegate = self;
     
+    self.gochiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GochiViewController"];
+    self.gochiViewController.title = @"お気に入り";
+    self.gochiViewController.delegate = self;
     
     if(!locationManager){
         locationManager = [[CLLocationManager alloc] init];
@@ -257,7 +273,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     NSArray *controllerArray;
     
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[self.recoViewController, self.nearViewController, self.followViewController];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[self.recoViewController, self.nearViewController, self.followViewController,self.gochiViewController];
         
     }
     else {
@@ -269,7 +285,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
             case kCLAuthorizationStatusDenied:
             case kCLAuthorizationStatusRestricted:
                 NSLog(@"not permitted");
-                controllerArray = @[self.recoViewController, self.requestGPSViewController, self.followViewController];
+                controllerArray = @[self.recoViewController, self.requestGPSViewController, self.followViewController,self.gochiViewController];
                 
                 
         }
@@ -332,11 +348,6 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 {
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        /*
-        everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-        eveVC.postID = (NSString *)sender;
-         */
         everyBaseNavigationController *meNC = segue.destinationViewController;
         MessageViewController *meVC = (MessageViewController*)[meNC rootViewController];
         meVC.postID = (NSString *)sender;

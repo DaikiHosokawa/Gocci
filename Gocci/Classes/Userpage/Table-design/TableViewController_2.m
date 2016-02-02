@@ -9,12 +9,10 @@
 #import "TableViewController_2.h"
 #import "AppDelegate.h"
 #import "APIClient.h"
-#import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "everyTableViewController.h"
-#import "MypageViewController.h"
 #import "TableViewCell_2.h"
 #import "TimelinePost.h"
 #import "SGActionView.h"
@@ -117,26 +115,27 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
--(void)table:(CollectionViewCell *)cell didTapRestname:(NSString *)rest_id{
+-(void)table:(TableViewCell_2 *)cell didTapRestname:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
-    MypageViewController *vc = (MypageViewController*)self.delegate;
+    UserpageViewController *vc = (UserpageViewController*)self.delegate;
     [self.delegate table:self rest_id:rest_id];
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
 }
 
--(void)table:(CollectionViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
+-(void)table:(TableViewCell_2 *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id{
     
     optionDic = [NSMutableDictionary dictionary];
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:rest_id forKey:@"RESTID"];
     
-    MypageViewController *vc = ( MypageViewController*)self.delegate;
+    UserpageViewController *vc = ( UserpageViewController*)self.delegate;
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"店舗", @"削除",@"保存" ]
+                             itemTitles:@[ @"店舗",@"コメント",@"削除",@"保存" ]
                                  images:@[
                                           [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"comment"],
                                           [UIImage imageNamed:@"trash"],
                                           [UIImage imageNamed:@"save"]
                                           ]
@@ -145,13 +144,17 @@ static NSString * const reuseIdentifier = @"Cell";
                              NSString *r_id = [optionDic objectForKey:@"RESTID"];
                              NSString *p_id = [optionDic objectForKey:@"POSTID"];
                              
-                             
                              if(index == 1){
                                  NSLog(@"Rest");
-                                 [self.delegate table:self rest_id:r_id];
+                                 [self.delegate table:self rest_id:rest_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
                              else if(index == 2){
+                                 NSLog(@"comment");
+                                 [self.delegate table:self postid:p_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
+                             }
+                             else if(index == 3){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -188,8 +191,9 @@ static NSString * const reuseIdentifier = @"Cell";
                                          }
                                      }
                                       ];
-                                 }                             }
-                             else if(index == 3){
+                                 }
+                             }
+                             else if(index == 4){
                                  NSLog(@"save");
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
@@ -198,18 +202,27 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
--(void)table:(CollectionViewCell *)cell didTapThumb:(NSString *)rest_id{
+-(void)table:(TableViewCell_2 *)cell didTapThumb:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
 }
 
 
--(void)table:(TableViewCell_2 *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
+-(void)table:(TableViewCell_2 *)cell didTapLikeButton:(NSString *)postID tapped:(BOOL)tapped{
+    if (tapped) {
+        [APIClient set_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
         }
+         ];
+    }else {
+        [APIClient unset_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
     }
-     ];
 }
 
 

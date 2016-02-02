@@ -287,7 +287,7 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
+
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
 #if 0

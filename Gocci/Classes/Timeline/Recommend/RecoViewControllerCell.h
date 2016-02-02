@@ -19,7 +19,7 @@
 - (void)recoViewCell:(RecoViewControllerCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
 
 - (void)recoViewCell:(RecoViewControllerCell *)cell didTapThumb:(NSString*)rest_id;
-- (void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString*)postID;
+- (void)recoViewCell:(RecoViewControllerCell *)cell didTapLikeButton:(NSString*)postID tapped:(BOOL)tapped;
 - (void)recoViewCell:(RecoViewControllerCell *)cell didTapImg:(NSString*)user_id;
 
 

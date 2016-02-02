@@ -60,10 +60,12 @@
 /// Gocci API 2
 #if TEST_BUILD
 #define API_BASE_URL (@"http://test.mobile.api.gocci.me/v1/mobile/")
+#define API_BASE_URL_V4 (@"http://test.mobile.api.gocci.me/v4/")
 #define API_BASE_DOMAIN (@"test.mobile.api.gocci.me")
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"test.login.gocci")
 #elif LIVE_BUILD
 #define API_BASE_URL (@"https://mobile.api.gocci.me/v1/mobile/")
+#define API_BASE_URL_V4 (@"https://mobile.api.gocci.me/v4")
 #define API_BASE_DOMAIN (@"mobile.api.gocci.me")
 #define GOCCI_DEV_AUTH_PROVIDER_STRING (@"login.gocci")
 #endif

@@ -663,6 +663,7 @@
                         <segue destination="7Ul-L7-bNU" kind="show" identifier="goRestaurant" id="m10-Cb-1kc"/>
                         <segue destination="IgD-Ad-4hs" kind="show" identifier="goUsersOthers" id="RUh-hP-jrK"/>
                         <segue destination="MBR-yw-NGU" kind="show" identifier="goHeatmap" id="7nN-PJ-emo"/>
+                        <segue destination="J9W-eO-UF1" kind="presentation" identifier="goEveryComment" id="t6C-pc-kqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udM-sK-yVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -731,7 +732,7 @@
                                     <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paI-Wr-qFc">
-                                    <rect key="frame" x="194" y="150" width="85" height="67"/>
+                                    <rect key="frame" x="145" y="149" width="85" height="67"/>
                                     <state key="normal" image="地図で見る">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -741,28 +742,8 @@
                                         <action selector="tapNavi:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="RIX-wx-xnz"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcd-ST-nov">
-                                    <rect key="frame" x="287" y="150" width="80" height="67"/>
-                                    <state key="normal" image="その他">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="onOther:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="Fmt-RS-f6p"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-I5-WcS">
-                                    <rect key="frame" x="10" y="152" width="85" height="63"/>
-                                    <state key="normal">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="selected" image="Oen"/>
-                                    <connections>
-                                        <action selector="light:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="yhV-7j-y5S"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lka-ZM-Wge">
-                                    <rect key="frame" x="101" y="150" width="88" height="67"/>
+                                    <rect key="frame" x="32" y="149" width="88" height="67"/>
                                     <state key="normal" image="予約をする">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -814,6 +795,16 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcd-ST-nov">
+                                    <rect key="frame" x="258" y="149" width="80" height="67"/>
+                                    <state key="normal" image="その他">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onOther:" destination="7Ul-L7-bNU" eventType="touchUpInside" id="Fmt-RS-f6p"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -839,7 +830,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="categoryLabel" destination="SXQ-Cy-r6l" id="7HV-op-Mwz"/>
-                        <outlet property="flashBtn" destination="J8a-I5-WcS" id="yKp-TK-4Gq"/>
                         <outlet property="headerView" destination="JTR-Lc-xze" id="zE4-NF-3Eq"/>
                         <outlet property="map" destination="lBn-qq-tre" id="P6L-Ne-lyl"/>
                         <outlet property="restname" destination="5SO-Dv-yVu" id="QlI-ba-cRM"/>
@@ -1627,7 +1617,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aQ-sE-myX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7229.5" y="-5408.5"/>
+            <point key="canvasLocation" x="-6894.5" y="-5442.5"/>
         </scene>
         <!--Image Table Push-->
         <scene sceneID="QJ0-bT-Lh3">
@@ -1782,10 +1772,10 @@
             </objects>
             <point key="canvasLocation" x="-6483.5" y="-6162.5"/>
         </scene>
-        <!--Reco-->
+        <!--Gochi-->
         <scene sceneID="Zi7-DW-b7R">
             <objects>
-                <collectionViewController storyboardIdentifier="RecoViewController" title="Reco" id="8UO-qP-ri9" customClass="RecoViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="GochiViewController" title="Gochi" id="8UO-qP-ri9" customClass="GochiViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="Cai-62-J51">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1797,7 +1787,7 @@
                             <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xsM-0Y-F2P" customClass="RecoViewControllerCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xsM-0Y-F2P" customClass="GochiViewControllerCell">
                                 <rect key="frame" x="5" y="5" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1871,7 +1861,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4N7-Yq-xVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6704.5" y="-5363.5"/>
+            <point key="canvasLocation" x="-6885.5" y="-6155.5"/>
         </scene>
         <!--RequestGPS View Controller-->
         <scene sceneID="4vh-u2-E4v">
@@ -2369,10 +2359,100 @@
             </objects>
             <point key="canvasLocation" x="2083.5" y="-2390.5"/>
         </scene>
+        <!--Reco-->
+        <scene sceneID="MnZ-pS-Ph5">
+            <objects>
+                <collectionViewController storyboardIdentifier="RecoViewController" title="Reco" id="Xce-bq-ES5" customClass="RecoViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="yk2-yk-BF7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="crx-jP-1XG">
+                            <size key="itemSize" width="180" height="180"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="KV2-yx-OMI" customClass="RecoViewControllerCell">
+                                <rect key="frame" x="5" y="5" width="180" height="180"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-7q-KVi">
+                                            <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJn-z7-yoO">
+                                            <rect key="frame" x="10" y="10" width="29" height="26"/>
+                                        </button>
+                                        <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-L3-RaB">
+                                            <rect key="frame" x="0.0" y="128" width="179" height="51"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jrp-Cw-q2H">
+                                            <rect key="frame" x="5" y="140" width="30" height="30"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more_vert_white" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-34-mC1">
+                                            <rect key="frame" x="150" y="140" width="23" height="23"/>
+                                        </imageView>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in2-q6-RoL">
+                                            <rect key="frame" x="135" y="140" width="35" height="26"/>
+                                            <color key="backgroundColor" red="0.98087391950000002" green="0.98087391950000002" blue="0.98087391950000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="見る">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmC-2A-B5V">
+                                            <rect key="frame" x="38" y="151" width="68" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4Y-gc-IzB">
+                                            <rect key="frame" x="38" y="132" width="110" height="23"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="date" destination="SmC-2A-B5V" id="BRX-7U-F7p"/>
+                                    <outlet property="imageView" destination="Jnl-7q-KVi" id="dB2-BF-Uj0"/>
+                                    <outlet property="likeBtn" destination="DJn-z7-yoO" id="uDT-W8-Zt8"/>
+                                    <outlet property="option" destination="rIw-34-mC1" id="mBa-ll-7wE"/>
+                                    <outlet property="profileImg" destination="jrp-Cw-q2H" id="tOK-tM-udJ"/>
+                                    <outlet property="title" destination="m4Y-gc-IzB" id="fNY-Eg-DhC"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Xce-bq-ES5" id="q6C-FL-s37"/>
+                            <outlet property="delegate" destination="Xce-bq-ES5" id="TRV-Tk-W9s"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Collection" prompt="Navigation Push Transition" id="NxM-DP-bRT"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYG-bg-ccF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6463.5" y="-5420.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backbutton_map" width="60" height="60"/>
-        <image name="Oen" width="151" height="101"/>
         <image name="Oen_Flag" width="93" height="134"/>
         <image name="btn_delete_white" width="30" height="30"/>
         <image name="character" width="1024" height="1024"/>
@@ -2407,12 +2487,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BQI-vf-HeQ"/>
-        <segue reference="hGv-8z-0ZJ"/>
         <segue reference="Ofb-Gs-yfz"/>
+        <segue reference="hGv-8z-0ZJ"/>
         <segue reference="L0G-no-fLl"/>
-        <segue reference="IJa-Ht-LFl"/>
-        <segue reference="wZe-RH-qBh"/>
+        <segue reference="m10-Cb-1kc"/>
         <segue reference="RUh-hP-jrK"/>
+        <segue reference="wZe-RH-qBh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -83,7 +83,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
         CGSize boundsSize = self.soda.size;
         iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
         [self.view addSubview:iv];
-
+        
     }else{
         [self.collectionView reloadData];
     }
@@ -91,7 +91,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 
 -(void)collection:(CollectionViewCell_2 *)cell didTapRestname:(NSString *)rest_id{
     NSLog(@"restid:%@",rest_id);
-    MypageViewController *vc = (MypageViewController*)self.delegate;
+    UserpageViewController *vc = (UserpageViewController*)self.delegate;
     [self.delegate collection_2:self rest_id:rest_id];
     [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:rest_id];
 }
@@ -102,13 +102,14 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:rest_id forKey:@"RESTID"];
     
-    MypageViewController *vc = ( MypageViewController*)self.delegate;
+    UserpageViewController *vc = ( UserpageViewController*)self.delegate;
     
     
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"店舗", @"削除",@"保存" ]
+                             itemTitles:@[ @"店舗",@"コメント",@"削除",@"保存" ]
                                  images:@[
                                           [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"comment"],
                                           [UIImage imageNamed:@"trash"],
                                           [UIImage imageNamed:@"save"]
                                           ]
@@ -123,6 +124,11 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
                              else if(index == 2){
+                                 NSLog(@"comment");
+                                 [self.delegate collection_2:self postid:p_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
+                             }
+                             else if(index == 3){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -161,7 +167,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
                                       ];
                                  }
                              }
-                             else if(index == 3){
+                             else if(index == 4){
                                  NSLog(@"save");
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
@@ -172,13 +178,22 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
     NSLog(@"restid:%@",rest_id);
 }
 
--(void)collection:(CollectionViewCell_2 *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
+-(void)collection:(CollectionViewCell_2 *)cell didTapLikeButton:(NSString *)postID tapped:(BOOL)tapped{
+    if (tapped) {
+        [APIClient set_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
         }
+         ];
+    }else {
+        [APIClient unset_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
     }
-     ];
 }
 
 

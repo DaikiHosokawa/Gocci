@@ -21,7 +21,7 @@
 - (void)table:(TableViewCell *)cell didTapOptions:(NSString *)rest_id post_id:(NSString *)post_id user_id:(NSString *)user_id;
 
 - (void)table:(TableViewCell *)cell didTapThumb:(NSString*)rest_id;
-- (void)table:(TableViewCell *)cell didTapLikeButton:(NSString*)postID;
+- (void)table:(TableViewCell *)cell didTapLikeButton:(NSString*)postID tapped:(BOOL)tapped;
 
 @end
 

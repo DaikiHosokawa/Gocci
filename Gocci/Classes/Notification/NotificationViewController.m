@@ -45,13 +45,12 @@ static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
     UINib *nib = [UINib nibWithNibName:@"TableViewCustomCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     [self.searchDisplayController.searchResultsTableView registerNib:nib forCellReuseIdentifier:@"Cell"];
-    
-    [self _fetchNotice];
+
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [self _fetchNotice];
 }
 
 - (void)didReceiveMemoryWarning {

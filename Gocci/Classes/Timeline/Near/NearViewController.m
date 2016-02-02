@@ -147,6 +147,37 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)addBottom:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
+    if ((useMapPosition = true)) {
+        NSLog(@"oYES");
+        NSString *str = [NSString stringWithFormat:@"%d",call];
+        [APIClient Distance:mapPosition.latitude longitude:mapPosition.longitude call:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
+         {
+             NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+             
+             NSLog(@"add Login:%@",result);
+             
+             for (NSDictionary *post in result) {
+                 [tempPosts addObject:[TimelinePost timelinePostWithDictionary:post]];
+             }
+             NSMutableArray *newArray = [self.posts mutableCopy];
+             [newArray addObjectsFromArray:tempPosts];
+             
+             self.posts = newArray;
+             
+             if ([self.posts count] == 0) {
+                 
+             }else{
+                 [self.collectionView reloadData];
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                 call++;
+                 [[MoviePlayerManager sharedManager] stopMovie];
+                 
+             }
+             
+         }];
+        
+    }else{
+    
     
     void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
     {
@@ -179,10 +210,6 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
         
     };
     
-    if (useMapPosition) {
-        fetchAPI(mapPosition);
-        return;
-    }
     
     CLLocation *cachedLocation = [LocationClient sharedClient].cachedLocation;
     if (usingLocationCache && cachedLocation != nil) {
@@ -205,7 +232,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
          fetchAPI(location.coordinate);
          
      }];
-    
+    }
 }
 
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapRestname:(NSString *)rest_id{
@@ -221,15 +248,16 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     [optionDic setObject:post_id forKey:@"POSTID"];
     [optionDic setObject:user_id forKey:@"USERID"];
     
-    
     [SGActionView showGridMenuWithTitle:@"アクション"
-                             itemTitles:@[ @"店舗", @"ユーザー",
-                                          @"違反報告",@"保存" ]
-                                 images:@[[UIImage imageNamed:@"restaurant"],
-                                           [UIImage imageNamed:@"man"],
-                                           [UIImage imageNamed:@"warning"],
-                                           [UIImage imageNamed:@"save"]
-                                           ]
+                             itemTitles:@[ @"店舗", @"ユーザー",@"コメント",
+                                           @"違反報告",@"保存" ]
+                                 images:@[
+                                          [UIImage imageNamed:@"restaurant"],
+                                          [UIImage imageNamed:@"man"],
+                                          [UIImage imageNamed:@"comment"],
+                                          [UIImage imageNamed:@"warning"],
+                                          [UIImage imageNamed:@"save"]
+                                          ]
                          selectedHandle:^(NSInteger index){
                              
                              NSString *u_id = [optionDic objectForKey:@"USERID"];
@@ -238,23 +266,26 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                              
                              TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
                              
-                              if(index == 1){
+                             if(index == 1){
                                  NSLog(@"Rest");
                                  [self.delegate near:self rest_id:r_id];
                                  [vc performSegueWithIdentifier:SEGUE_GO_RESTAURANT sender:r_id];
                              }
                              else if(index == 2){
                                  NSLog(@"User");
-                                
                                  if ([Persistent.user_id isEqualToString:user_id]){
                                      
                                      [vc.tabBarController setSelectedIndex:1];
                                  }else{
                                      [self.delegate near:self username:u_id];
                                      [vc performSegueWithIdentifier:SEGUE_GO_USERS_OTHERS sender:u_id];
-                    }
+                                 }
+                             }else if(index == 3){
+                                 NSLog(@"Comment");
+                                 [self.delegate near:self postid:p_id];
+                                 [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
                              }
-                             else if(index == 3){
+                             else if(index == 4){
                                  NSLog(@"Problem");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
@@ -293,11 +324,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
                                       ];
                                  }
                              }
-                             else if(index == 4){
+                             else if(index == 5){
                                  NSLog(@"save");
                                  [Export exportVideoToCameraRollForPostID:p_id];
                              }
                          }];
+
 }
 
 -(void)nearViewCell:(NearViewControllerCell *)cell didTapThumb:(NSString *)rest_id{
@@ -316,15 +348,24 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 }
 
--(void)nearViewCell:(NearViewControllerCell *)cell didTapLikeButton:(NSString *)postID{
-    [APIClient postGood:postID handler:^(id result, NSUInteger code, NSError *error) {
-        if (result) {
-            NSLog(@"result:%@",result);
-        }
-    }
-     ];
-}
 
+-(void)nearViewCell:(NearViewControllerCell *)cell didTapLikeButton:(NSString *)postID tapped:(BOOL)tapped{
+    if (tapped) {
+        [APIClient set_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
+    }else {
+        [APIClient unset_gochi:postID handler:^(id result, NSUInteger code, NSError *error) {
+            if (result) {
+                NSLog(@"result:%@",result);
+            }
+        }
+         ];
+    }
+}
 
 
 

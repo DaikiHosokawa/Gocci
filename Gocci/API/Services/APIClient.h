@@ -138,6 +138,31 @@
 + (void)postGood:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
+ *  set/gochi
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)set_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  set/gochi
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)unset_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  /get/gochiline
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)Gochi:(NSString *)page category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+
+/**
  *  delete
  *
  *  @param post_id

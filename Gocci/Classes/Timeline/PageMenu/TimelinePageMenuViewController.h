@@ -9,6 +9,7 @@
 #import "NearViewController.h"
 #import "FollowViewController.h"
 #import "RecoViewController.h"
+#import "GochiViewController.h"
 
 #import "SortableTimeLineSubViewProtocol.h"
 
@@ -16,13 +17,14 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface TimelinePageMenuViewController : UIViewController<NearViewControllerDelegate,UIScrollViewDelegate,FollowViewControllerDelegate,RecoViewControllerDelegate>
+@interface TimelinePageMenuViewController : UIViewController<NearViewControllerDelegate,UIScrollViewDelegate,FollowViewControllerDelegate,RecoViewControllerDelegate,GochiViewControllerDelegate>
 
 @property id supervc;
 
 @property (strong, nonatomic) NearViewController *nearViewController;
 @property (strong, nonatomic) FollowViewController *followViewController;
 @property (strong, nonatomic) RecoViewController *recoViewController;
+@property (strong, nonatomic) GochiViewController *gochiViewController;
 //@property (strong, nonatomic) RequestGPSViewController *requestGPSViewController;
 
 @property (strong, nonatomic) UIViewController *activeSubViewController;
