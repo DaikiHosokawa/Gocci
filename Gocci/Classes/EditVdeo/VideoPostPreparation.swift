@@ -132,6 +132,17 @@ import Foundation
                 }
             }
         }
+        
+        
+        // this part will export the video to the camera roll
+        if !postData.postOnInstagram {
+            
+            let absolut = Util.absolutify(relativeVideoFilePath)
+            
+            Export.saveMovieAtPathToCameraRoll(absolut) { assetURL in
+                Lo.blue("Video exported to camera roll. Asset URL \(assetURL)")
+            }
+        }
     }
     
     
