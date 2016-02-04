@@ -612,7 +612,12 @@
     Message *message = self.messages[indexPath.row];
     
     cell.titleLabel.text = message.username;
-    cell.bodyLabel.text = message.text;
+    if([message.text compare:@"none"] == NSOrderedSame)
+    {
+        cell.bodyLabel.text = @"....";
+    }else{
+        cell.bodyLabel.text = message.text;
+    }
     [cell.thumbnailView sd_setImageWithURL:[NSURL URLWithString:message.picture]
                          placeholderImage:[UIImage imageNamed:@"default.png"]
                                   options:0

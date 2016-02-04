@@ -8,7 +8,6 @@
 
 #import "SortViewController.h"
 #import "STPopup.h"
-#import "CategoryViewController.h"
 #import "ValueViewController.h"
 
 @interface SortViewController ()
@@ -16,6 +15,8 @@
 @end
 
 @implementation SortViewController
+@synthesize category = _category;
+@synthesize value = _value;
 
 - (instancetype)init
 {
@@ -30,10 +31,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(OKBtnDidTap)];
+    
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
-    
-    
-    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(recvData:)
+                                                 name:@"CategoryVCPopped"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(recvData2:)
+                                                 name:@"ValueVCPopped"
+                                               object:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -59,8 +69,14 @@
     
     if (indexPath.row == 0) {
         cell.textLabel.text = @"カテゴリー";
+        if (self.category) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"カテゴリー：",self.category];;
+        }
     }else{
          cell.textLabel.text = @"価格";
+        if (self.value) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"価格：",self.value];;
+        }
     }
     
     return cell;
@@ -77,6 +93,43 @@
         vvc.timelinePageMenuViewController = self.timelinePageMenuViewController;
         [self.popupController pushViewController:vvc animated:YES];
     }
+}
+
+//[self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"4"];
+
+- (void) recvData:(NSNotification *) notification
+{
+    NSDictionary* userInfo = notification.userInfo;
+    NSString * data = [userInfo objectForKey:@"category"];
+    NSString * data2 = [userInfo objectForKey:@"category_flag"];
+    NSLog (@"カテゴリー:%@,%@", data,data2);
+    self.category = data;
+    self.category_flag = data2;
+    [self.tableView reloadData];
+}
+
+- (void) recvData2:(NSNotification *) notification
+{
+    NSDictionary* userInfo = notification.userInfo;
+    NSString * data = [userInfo objectForKey:@"value"];
+    NSString * data2 = [userInfo objectForKey:@"value_flag"];
+    NSLog (@"価格:%@,%@", data,data2);
+    self.value = data;
+    self.value_flag = data2;
+    [self.tableView reloadData];
+}
+
+- (void)OKBtnDidTap
+{
+    if([self.value_flag compare:@""] == NSOrderedSame){
+        self.value_flag = @"";
+    }
+    if([self.category_flag compare:@""] == NSOrderedSame){
+        self.category_flag = @"";
+    }
+    [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sort:self.value_flag category:self.category_flag];
+   // [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortValue:@"4"];
+    [self.popupController dismiss];
 }
 
 /*

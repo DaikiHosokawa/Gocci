@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KPm-xE-1aO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KPm-xE-1aO">
     <dependencies>
         <deployment version="2048" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--BeforeUsers-->
@@ -2384,8 +2384,8 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-7q-KVi">
                                             <rect key="frame" x="0.0" y="0.0" width="179" height="179"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJn-z7-yoO">
-                                            <rect key="frame" x="10" y="10" width="29" height="26"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJn-z7-yoO" customClass="SpringButton" customModule="Gocci" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="8" width="29" height="28"/>
                                         </button>
                                         <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-L3-RaB">
                                             <rect key="frame" x="0.0" y="128" width="179" height="51"/>
@@ -2429,7 +2429,7 @@
                                 <connections>
                                     <outlet property="date" destination="SmC-2A-B5V" id="BRX-7U-F7p"/>
                                     <outlet property="imageView" destination="Jnl-7q-KVi" id="dB2-BF-Uj0"/>
-                                    <outlet property="likeBtn" destination="DJn-z7-yoO" id="uDT-W8-Zt8"/>
+                                    <outlet property="likeBtn" destination="DJn-z7-yoO" id="2Fb-es-ei9"/>
                                     <outlet property="option" destination="rIw-34-mC1" id="mBa-ll-7wE"/>
                                     <outlet property="profileImg" destination="jrp-Cw-q2H" id="tOK-tM-udJ"/>
                                     <outlet property="title" destination="m4Y-gc-IzB" id="fNY-Eg-DhC"/>

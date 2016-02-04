@@ -413,14 +413,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     }
 }
 
-- (void)sortValue:(NSString *)value {
+- (void)sort:(NSString *)value category:(NSString *)category{
+    NSLog(@"flag:%@,%@",value,category);
+    category_flag = category;
     value_flag = value;
-    if ([category_flag length]>0) {
-        [self setupData:category_flag value_id:value];
-    }
-    [self setupData:@"" value_id:value];
+    [self setupData:category value_id:value];
 }
-
 
 
 #pragma mark - UICollectionViewDelegate

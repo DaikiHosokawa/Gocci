@@ -8,6 +8,7 @@
 
 #import "CategoryViewController.h"
 #import "STPopup.h"
+#import "SortViewController.h"
 
 @interface CategoryViewController ()
 
@@ -47,7 +48,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Identifier"];
     if (indexPath.row == 0) {
         cell.textLabel.text = @"選択なし";
@@ -74,43 +75,39 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
     if (indexPath.row == 0) {
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@""];
-        [self.popupController dismiss];
+        [userInfo setObject:@"未選択" forKey:@"category"];
+        [userInfo setObject:@"" forKey:@"category_flag"];
     }
     else if (indexPath.row == 1) {
-        //和食
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"2"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"和風" forKey:@"category"];
+        [userInfo setObject:@"2" forKey:@"category_flag"];
     }else if(indexPath.row == 2) {
-        //洋食
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"3"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"洋風" forKey:@"category"];
+        [userInfo setObject:@"3" forKey:@"category_flag"];
     }else if(indexPath.row == 3) {
-        //中華
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"4"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"中華" forKey:@"category"];
+        [userInfo setObject:@"4" forKey:@"category_flag"];
     }else if(indexPath.row == 4) {
-        // カレー
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"5"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"カレー" forKey:@"category"];
+        [userInfo setObject:@"5" forKey:@"category_flag"];
     }else if(indexPath.row == 5) {
-        //ラーメン
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"6"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"ラーメン" forKey:@"category"];
+        [userInfo setObject:@"6" forKey:@"category_flag"];
     }else if(indexPath.row == 6) {
-        //多国籍
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"7"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"中華" forKey:@"category"];
+        [userInfo setObject:@"7" forKey:@"category_flag"];
     }else if(indexPath.row == 7) {
-        //カフェ
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"8"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"カフェ" forKey:@"category"];
+        [userInfo setObject:@"8" forKey:@"category_flag"];
     }else if(indexPath.row == 8) {
-        //居酒屋
-        [self.timelinePageMenuViewController.currentVisibleSortableSubViewController sortFunc:@"9"];
-        [self.popupController dismiss];
+        [userInfo setObject:@"居酒屋" forKey:@"category"];
+        [userInfo setObject:@"9" forKey:@"category_flag"];
     }
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"CategoryVCPopped" object:self userInfo:userInfo];
+    [self.popupController popViewControllerAnimated:YES];
 }
 
 

@@ -163,20 +163,3 @@ class ServiceUtil {
         return "OAuth " + ", ".join(oAuthPairStrings)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

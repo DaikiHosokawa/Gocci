@@ -16,6 +16,8 @@
 - (void)sortFunc:(NSString *)category;
 - (void)sortValue:(NSString *)value;
 
+- (void)sort:(NSString *)value category:(NSString *)category;
+
 @end
 
 
