@@ -7,7 +7,6 @@
 //
 
 #import "RestaurantTableViewController.h"
-#import "everyTableViewController.h"
 #import "MessageViewController.h"
 #import "AppDelegate.h"
 #import "APIClient.h"

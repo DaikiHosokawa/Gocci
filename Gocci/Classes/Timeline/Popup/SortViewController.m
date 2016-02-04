@@ -17,6 +17,8 @@
 @implementation SortViewController
 @synthesize category = _category;
 @synthesize value = _value;
+@synthesize category_flag = _category_flag;
+@synthesize value_flag = _value_flag;
 
 - (instancetype)init
 {
@@ -44,6 +46,7 @@
                                              selector:@selector(recvData2:)
                                                  name:@"ValueVCPopped"
                                                object:nil];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -79,32 +79,37 @@
 //1: I want to call method in AllTimelineTableViewController's method from this
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+    
     if (indexPath.row == 0) {
-       VideoPostPreparation.postData.category_string = @"和風";
-       VideoPostPreparation.postData.category_id = @"2";
+        [userInfo setObject:@"和風" forKey:@"category"];
+        [userInfo setObject:@"2" forKey:@"category_flag"];
     }else if(indexPath.row == 1) {
-        VideoPostPreparation.postData.category_string = @"洋風";
-        VideoPostPreparation.postData.category_id = @"3";
+        [userInfo setObject:@"洋風" forKey:@"category"];
+        [userInfo setObject:@"3" forKey:@"category_flag"];
     }else if(indexPath.row == 2) {
-        VideoPostPreparation.postData.category_string = @"中華";
-        VideoPostPreparation.postData.category_id = @"4";
+        [userInfo setObject:@"中華" forKey:@"category"];
+        [userInfo setObject:@"4" forKey:@"category_flag"];
     }else if(indexPath.row == 3) {
-        VideoPostPreparation.postData.category_string = @"カレー";
-        VideoPostPreparation.postData.category_id = @"5";
+        [userInfo setObject:@"カレー" forKey:@"category"];
+        [userInfo setObject:@"5" forKey:@"category_flag"];
     }else if(indexPath.row == 4) {
-        VideoPostPreparation.postData.category_string = @"ラーメン";
-        VideoPostPreparation.postData.category_id = @"6";
+        [userInfo setObject:@"ラーメン" forKey:@"category"];
+        [userInfo setObject:@"6" forKey:@"category_flag"];
     }else if(indexPath.row == 5){
-        VideoPostPreparation.postData.category_string = @"多国籍";
-        VideoPostPreparation.postData.category_id = @"7";
+        [userInfo setObject:@"多国籍" forKey:@"category"];
+        [userInfo setObject:@"7" forKey:@"category_flag"];
     }else if(indexPath.row == 6){
-        VideoPostPreparation.postData.category_string = @"カフェ";
-        VideoPostPreparation.postData.category_id = @"8";
+        [userInfo setObject:@"カフェ" forKey:@"category"];
+        [userInfo setObject:@"8" forKey:@"category_flag"];
     }else if(indexPath.row == 7){
-        VideoPostPreparation.postData.category_string = @"居酒屋";
-        VideoPostPreparation.postData.category_id = @"9";
+        [userInfo setObject:@"居酒屋" forKey:@"category"];
+        [userInfo setObject:@"9" forKey:@"category_flag"];
     }
-    [self.popupController dismiss];
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"CategoryVCPopped" object:self userInfo:userInfo];
+    
+    [self.popupController popViewControllerAnimated:YES];
 }
 
 @end

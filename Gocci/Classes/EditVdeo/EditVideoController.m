@@ -8,7 +8,6 @@
 
 #import "EditVideoController.h"
 #import "AppDelegate.h"
-#import "APIClient.h"
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 #import "STPopup.h"
@@ -143,7 +142,7 @@
     VideoPostPreparation.postData.prepared_restaurant = YES;
     VideoPostPreparation.postData.rest_name = @"SimulatorTestRestaurant";
 #endif
-    
+    NSLog(@"restnameど%@",VideoPostPreparation.postData.rest_name );
     _restName.text = ([VideoPostPreparation.postData.rest_name isEqual:@""]) ? @"未入力" : VideoPostPreparation.postData.rest_name;
     VideoPostPreparation.postData.notifyNewRestName = ^(NSString * newRestName) {
         _restName.text = newRestName;

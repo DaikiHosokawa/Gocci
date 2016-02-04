@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 INASE,inc. All rights reserved.
 
 #import "MypageViewController.h"
-#import "everyTableViewController.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
@@ -16,6 +15,7 @@
 #import "NotificationViewController.h"
 #import "everyBaseNavigationController.h"
 #import "TableViewController.h"
+#import "MessageViewController.h"
 //#import "MapViewController.h"
 #import "STPopup.h"
 #import "Swift.h"
@@ -290,15 +290,10 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
 
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-#if 0
-        everyTableViewController *eveVC = segue.destinationViewController;
-#else
-        everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-        [self.popover dismissPopoverAnimated:YES];
-#endif
-        eveVC.postID = (NSString *)sender;
-        [self.popover dismissPopoverAnimated:YES];
+        everyBaseNavigationController *meNC = segue.destinationViewController;
+        MessageViewController *meVC = (MessageViewController*)[meNC rootViewController];
+        meVC.postID = (NSString *)sender;
+         [self.popover dismissPopoverAnimated:YES];
     }
     
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
