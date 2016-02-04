@@ -12,11 +12,13 @@
 
 #import "CAPSPageMenu.h"
 #import "everyBaseNavigationController.h"
-#import "everyTableViewController.h"
 #import "MessageViewController.h"
+
 
 #import "STPopup.h"
 #import "SortViewController.h"
+
+#import "UserpageViewController.h"
 
 #import "TabbarBaseViewController.h"
 

@@ -13,7 +13,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
-#import "everyTableViewController.h"
 #import "SGActionView.h"
 #import "Swift.h"
 

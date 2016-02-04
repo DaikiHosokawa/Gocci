@@ -11,7 +11,6 @@
 #import "InfoView.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Dummy.h"
-#import "everyTableViewController.h"
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 

@@ -12,7 +12,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
-#import "everyTableViewController.h"
 #import "TableViewCell_2.h"
 #import "TimelinePost.h"
 #import "SGActionView.h"

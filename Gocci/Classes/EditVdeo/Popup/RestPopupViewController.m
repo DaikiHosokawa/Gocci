@@ -54,13 +54,7 @@
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Identifier"];
     [self _getRestaurant:YES];
         
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -93,11 +87,15 @@
         NSString *restname = restaurant[indexPath.row];
         NSString *restid = rest_id[indexPath.row];
         
-        VideoPostPreparation.postData.rest_name = restname;
-        VideoPostPreparation.postData.rest_id = restid;
-        VideoPostPreparation.postData.prepared_restaurant = NO;
+        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
         
-        [self.popupController dismiss];
+        [userInfo setObject:restname forKey:@"restname"];
+        [userInfo setObject:restid forKey:@"restid"];
+        
+        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"RestnameVCPopped" object:self userInfo:userInfo];
+        
+        [self.popupController popViewControllerAnimated:YES];
     }
     
     else{

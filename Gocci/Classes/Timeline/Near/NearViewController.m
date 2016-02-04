@@ -8,7 +8,6 @@
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "AFNetworking.h"
-#import "everyTableViewController.h"
 #import "MypageViewController.h"
 #import "NearViewControllerCell.h"
 #import "TimelinePost.h"

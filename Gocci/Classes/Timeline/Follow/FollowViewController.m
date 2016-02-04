@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "APIClient.h"
 #import "AFNetworking.h"
-#import "everyTableViewController.h"
 #import "MypageViewController.h"
 #import "FollowViewControllerCell.h"
 #import "LocationClient.h"

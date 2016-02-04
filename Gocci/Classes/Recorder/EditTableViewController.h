@@ -10,6 +10,25 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface EditTableViewController : UITableViewController
+@interface EditTableViewController : UITableViewController{
+    NSString *restname;
+    NSString *restid;
+    NSString *category;
+    NSString *value;
+    NSString *category_flag;
+    NSString *lat;
+    NSString *lon;
+}
+
+
+@property (nonatomic) NSString *restname;
+@property (nonatomic) NSString *restid;
+@property (nonatomic) NSString *category;
+@property (nonatomic) NSString *value;
+@property (nonatomic) NSString *category_flag;
+@property (nonatomic) NSString *lat;
+@property (nonatomic) NSString *lon;
+
+
 
 @end

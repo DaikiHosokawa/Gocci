@@ -12,7 +12,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
-#import "everyTableViewController.h"
 #import "MypageViewController.h"
 #import "TableViewCell.h"
 #import "TimelinePost.h"
@@ -155,18 +154,18 @@ static NSString * const reuseIdentifier = @"Cell";
                                  [vc performSegueWithIdentifier:SEGUE_GO_EVERY_COMMENT sender:p_id];
                              }
                              else if(index == 3){
-                                 NSLog(@"Problem");
+                                 NSLog(@"Delete");
                                  
                                  Class class = NSClassFromString(@"UIAlertController");
                                  if(class)
                                  {
-                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を違反報告しますか？" preferredStyle:UIAlertControllerStyleAlert];
+                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"投稿を削除しますか？" preferredStyle:UIAlertControllerStyleAlert];
                                      
                                      [alertController addAction:[UIAlertAction actionWithTitle:@"はい" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                         [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                         [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                              LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                              if (result) {
-                                                 NSString *alertMessage = @"違反報告をしました";
+                                                 NSString *alertMessage = @"削除しました";
                                                  UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                                                  [alrt show];
                                              }
@@ -182,10 +181,10 @@ static NSString * const reuseIdentifier = @"Cell";
                                  }
                                  else
                                  {
-                                     [APIClient postBlock:p_id handler:^(id result, NSUInteger code, NSError *error) {
+                                     [APIClient postDelete:p_id handler:^(id result, NSUInteger code, NSError *error) {
                                          LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
                                          if (result) {
-                                             NSString *alertMessage = @"違反報告をしました";
+                                             NSString *alertMessage = @"削除しました";
                                              UIAlertView *alrt = [[UIAlertView alloc] initWithTitle:@"" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                                              [alrt show];
                                          }

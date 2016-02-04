@@ -13,7 +13,6 @@
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "Notice.h"
-#import "everyTableViewController.h"
 #import "UserpageViewController.h"
 
 

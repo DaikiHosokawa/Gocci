@@ -284,6 +284,23 @@ static NSMutableSet *_retainedPopupControllers;
     }
 }
 
+- (void)popViewControllerAnimatedtoTop:(BOOL)animated
+{
+    if (_viewControllers.count <= 1) {
+        [self dismiss];
+        return;
+    }
+    
+    UIViewController *topViewController = [self topViewController];
+    [topViewController setValue:nil forKey:@"popupController"];
+    [self destroyObserversOfViewController:topViewController];
+    [_viewControllers removeObject:topViewController];
+    
+    if (self.presented) {
+        [self transitFromViewController:topViewController toViewController:[self topViewController] animated:animated];
+    }
+}
+
 - (void)transitFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController animated:(BOOL)animated
 {
     [fromViewController beginAppearanceTransition:NO animated:animated];

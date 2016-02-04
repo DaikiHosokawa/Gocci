@@ -7,12 +7,10 @@
 //
 
 #import "UserpageViewController.h"
-#import "everyTableViewController.h"
 #import "APIClient.h"
 #import "TimelinePost.h"
 #import "MoviePlayerManager.h"
 #import "everyBaseNavigationController.h"
-#import "everyTableViewController.h"
 #import "FollowListViewController.h"
 #import "FolloweeListViewController.h"
 #import "CheerListViewController.h"
@@ -21,6 +19,7 @@
 #import "TableViewController_2.h"
 #import "MapViewController.h"
 #import "STPopup.h"
+#import "MessageViewController.h"
 #import "Swift.h"
 #import "requestGPSPopupViewController.h"
 
@@ -299,13 +298,9 @@ static NSString * const SEGUE_GO_CHEER = @"goCheer";
     
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-#if 0
-        everyTableViewController *eveVC = segue.destinationViewController;
-#else
-        everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-#endif
-        eveVC.postID = (NSString *)sender;
+        everyBaseNavigationController *meNC = segue.destinationViewController;
+        MessageViewController *meVC = (MessageViewController*)[meNC rootViewController];
+        meVC.postID = (NSString *)sender;
     }
     if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
     {

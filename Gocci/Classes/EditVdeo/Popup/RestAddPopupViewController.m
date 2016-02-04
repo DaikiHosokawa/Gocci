@@ -97,13 +97,20 @@
         
         void(^fetchAPI)(CLLocationCoordinate2D coordinate) = ^(CLLocationCoordinate2D coordinate)
         {
-            VideoPostPreparation.postData.rest_name = _textField.text;
-            VideoPostPreparation.postData.lat = coordinate.latitude;    //[NSString stringWithFormat:@"%@", @(coordinate.latitude)];
-            VideoPostPreparation.postData.lon = coordinate.longitude;   //[NSString stringWithFormat:@"%@", @(coordinate.longitude)];
-            VideoPostPreparation.postData.prepared_restaurant = YES;
+            NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+            
+            NSNumber *latitude = [NSNumber numberWithDouble:coordinate.latitude];
+            NSNumber *longitude = [NSNumber numberWithDouble:coordinate.longitude];
+            
+            [userInfo setObject:_textField.text forKey:@"restname"];
+            [userInfo setObject:[latitude stringValue] forKey:@"lat"];
+            [userInfo setObject:[longitude stringValue] forKey:@"lon"];
+            
+            NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+            [nc postNotificationName:@"RestAddVCPopped" object:self userInfo:userInfo];
             
             [_textField resignFirstResponder];
-            [self.popupController dismiss];
+            [self.popupController popViewControllerAnimated:YES];
             
 //            [APIClient restInsert:_textField.text latitude:coordinate.latitude longitude:coordinate.longitude  handler:^(id result, NSUInteger code, NSError *error)
 //             {
