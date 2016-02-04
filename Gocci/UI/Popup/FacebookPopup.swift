@@ -27,7 +27,8 @@ class FacebookPopup: AbstractPopup {
     
     @IBAction func insertRestNameClicked(sender: AnyObject) {
         if VideoPostPreparation.postData.rest_name != "" {
-            textView.text = textView.text + VideoPostPreparation.postData.rest_name
+            let restname = VideoPostPreparation.postData.rest_name.stringByReplacingOccurrencesOfString(" ", withString: "")
+            textView.text = textView.text + "#" + restname
         }
     }
     

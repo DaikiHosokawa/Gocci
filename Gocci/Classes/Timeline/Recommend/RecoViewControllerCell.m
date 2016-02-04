@@ -158,19 +158,30 @@
     if ([self.delegate respondsToSelector:@selector(recoViewCell:didTapLikeButton:tapped:)]) {
         
         if(flash_on == 0 ){
-            UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
-            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
             flash_on = 1;
+            _likeBtn.animation = @"pop";
+            _likeBtn.curve = @"easeOutCirc";
+            _likeBtn.duration = 0.5;
+            _likeBtn.force = 1.5;
+            [_likeBtn animate];
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
+                UIImage *img = [UIImage imageNamed:@"Likes_onn.png"];
+                [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
                 [self.delegate recoViewCell:self didTapLikeButton:self.postID tapped:YES];
             });
         }else{
-            UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
-            [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
             flash_on = 0;
+            _likeBtn.animation = @"pop";
+            _likeBtn.curve = @"easeOutCirc";
+            _likeBtn.duration = 0.5;
+             _likeBtn.force = 1.5;
+            [_likeBtn animate];
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
+                UIImage *img = [UIImage imageNamed:@"Likes_off.png"];
+                [_likeBtn setBackgroundImage:img forState:UIControlStateNormal];
+                
                 [self.delegate recoViewCell:self didTapLikeButton:self.postID tapped:NO];
             });
         }

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelinePost.h"
+#import "Swift.h"
 
 @class RecoViewController;
 @class RecoViewControllerCell;
@@ -36,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UIImageView *option;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet SpringButton *likeBtn;
 
 @property (nonatomic,weak) id<RecoViewCellDelegate> delegate;
 

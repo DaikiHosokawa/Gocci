@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelinePageMenuViewController.h"
+#import "CategoryViewController.h"
 
-@interface SortViewController : UITableViewController
+@interface SortViewController : UITableViewController{
+    NSString *category;
+    NSString *value;
+    NSString *category_flag;
+    NSString *value_flag;
+}
 
 @property (weak, nonatomic) TimelinePageMenuViewController *timelinePageMenuViewController;
+@property (nonatomic) NSString *category;
+@property (nonatomic) NSString *value;
+@property (nonatomic) NSString *category_flag;
+@property (nonatomic) NSString *value_flag;
 
 
 @end
