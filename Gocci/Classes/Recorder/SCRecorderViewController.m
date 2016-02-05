@@ -20,7 +20,7 @@
 #import "SVProgressHUD.h"
 #import "SCScrollPageView.h"
 
-#import "EditTableViewController.h"
+#import "informationController.h"
 
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
@@ -370,7 +370,7 @@ static SCRecordSession *staticRecordSession;
 
 -(void)openEdit
 {
-    EditTableViewController* evc = [EditTableViewController new];
+    informationController* evc = [informationController new];
     [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:evc];
     
 }

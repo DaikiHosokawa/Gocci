@@ -11,10 +11,10 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 #import "STPopup.h"
-#import "RestPopupViewController.h"
+#import "RestnameInEditVideo.h"
 #import "RestAddPopupViewController.h"
-#import "ValuePopupViewController.h"
-#import "CategoryPopupViewController.h"
+#import "ValueInEditVideo.h"
+#import "CategoryInEditVideo.h"
 #import "requestGPSPopupViewController.h"
 #import "LocationClient.h"
 #import "BFPaperCheckbox.h"
@@ -454,18 +454,18 @@
         [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestAddPopupViewController new]];
     }
     else {
-        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestPopupViewController new]];
+        [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[RestnameInEditVideo new]];
     }
     
 }
 
 - (IBAction)valueInsert:(id)sender {
     
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[ValuePopupViewController new]];
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[ValueInEditVideo new]];
 }
 
 - (IBAction)categoryInsert:(id)sender {
-    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CategoryPopupViewController new]];
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:[CategoryInEditVideo new]];
 }
 
 

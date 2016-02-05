@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 - (void)popViewControllerAnimated:(BOOL)animated;
-
+- (void)popViewControllerAnimatedtoTop:(BOOL)animated;
 - (void)setNavigationBarHidden:(BOOL)navigationBarHidden animated:(BOOL)animated;
 
 @end

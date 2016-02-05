@@ -6,7 +6,7 @@
 //  Copyright © 2015年 INASE,inc. All rights reserved.
 //
 
-#import "EditTableViewController.h"
+#import "informationController.h"
 #import "STPopup.h"
 #import "ValuePopupViewController.h"
 #import "RestPopupViewController.h"
@@ -15,13 +15,13 @@
 #import "requestGPSPopupViewController.h"
 #import "Swift.h"
 
-@interface EditTableViewController ()<CLLocationManagerDelegate>
+@interface informationController ()<CLLocationManagerDelegate>
 {
 }
 
 @end
 
-@implementation EditTableViewController
+@implementation informationController
 @synthesize restname = _restname;
 @synthesize restid = _restid;
 @synthesize category = _category;
@@ -59,14 +59,17 @@
                                              selector:@selector(recvData3:)
                                                  name:@"RestnameVCPopped"
                                                object:nil];
+    /*
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(recvData4:)
                                                  name:@"RestAddVCPopped"
                                                object:nil];
+     */
     
      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(OKBtnDidTap)];
 
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"閉じる" style:UIBarButtonItemStylePlain target:self action:@selector(DismissDidTap)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,6 +165,7 @@
     [self.tableView reloadData];
 }
 
+/*
 - (void) recvData4:(NSNotification *) notification
 {
     NSDictionary* userInfo = notification.userInfo;
@@ -179,6 +183,7 @@
     VideoPostPreparation.postData.lon = data4.doubleValue;
     [self.tableView reloadData];
 }
+ */
 
 - (void)OKBtnDidTap
 {
@@ -195,6 +200,28 @@
     
     if (self.value  != nil && self.value > 0) {
         VideoPostPreparation.postData.value = self.value;
+    }
+    
+    NSLog(@"restnameは2:%@",VideoPostPreparation.postData.rest_name);
+    
+    [self.popupController dismiss];
+}
+
+- (void)DismissDidTap
+{
+    if (VideoPostPreparation.postData.rest_name && VideoPostPreparation.postData.rest_id  != nil && VideoPostPreparation.postData.rest_name && VideoPostPreparation.postData.rest_id > 0) {
+        NSLog(@"self.restname%@,self.restid:%@",self.restname,self.restid);
+       VideoPostPreparation.postData.rest_name = self.restname;
+       VideoPostPreparation.postData.rest_id = self.restid;
+    }
+    
+    if (self.category && self.category_flag  != nil && self.category && self.category_flag > 0) {
+       // VideoPostPreparation.postData.category_string = self.category;
+       // VideoPostPreparation.postData.category_id = self.category_flag;
+    }
+    
+    if (self.value  != nil && self.value > 0) {
+       // VideoPostPreparation.postData.value = self.value;
     }
     
     NSLog(@"restnameは2:%@",VideoPostPreparation.postData.rest_name);

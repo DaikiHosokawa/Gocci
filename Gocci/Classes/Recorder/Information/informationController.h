@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface EditTableViewController : UITableViewController{
+@interface informationController : UITableViewController{
     NSString *restname;
     NSString *restid;
     NSString *category;

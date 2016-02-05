@@ -159,10 +159,10 @@
         
         if(flash_on == 0 ){
             flash_on = 1;
-            _likeBtn.animation = @"pop";
-            _likeBtn.curve = @"easeOutCirc";
-            _likeBtn.duration = 0.5;
-            _likeBtn.force = 1.5;
+            _likeBtn.animation = @"swing";
+            _likeBtn.curve = @"easeOut";
+            _likeBtn.duration = 1.0;
+            _likeBtn.force = 2.0;
             [_likeBtn animate];
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
@@ -172,10 +172,10 @@
             });
         }else{
             flash_on = 0;
-            _likeBtn.animation = @"pop";
-            _likeBtn.curve = @"easeOutCirc";
-            _likeBtn.duration = 0.5;
-             _likeBtn.force = 1.5;
+            _likeBtn.animation = @"swing";
+            _likeBtn.curve = @"easeOut";
+            _likeBtn.duration = 1.0;
+             _likeBtn.force = 2.0;
             [_likeBtn animate];
             dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
             dispatch_sync(globalQueue, ^{
