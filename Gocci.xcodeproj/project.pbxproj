@@ -45,6 +45,19 @@
 		950DC4381C61FC5500E22BB7 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC41B1C61FC5500E22BB7 /* TransitionManager.swift */; };
 		950DC4391C61FC5500E22BB7 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC41C1C61FC5500E22BB7 /* TransitionZoom.swift */; };
 		950DC43A1C61FC5500E22BB7 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC41D1C61FC5500E22BB7 /* UnwindSegue.swift */; };
+		950DC4701C64506300E22BB7 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC46B1C64506300E22BB7 /* CategoryViewController.m */; };
+		950DC4711C64506300E22BB7 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC46D1C64506300E22BB7 /* SortViewController.m */; };
+		950DC4721C64506300E22BB7 /* ValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC46F1C64506300E22BB7 /* ValueViewController.m */; };
+		950DC4871C64513500E22BB7 /* CategoryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4761C64513500E22BB7 /* CategoryPopupViewController.m */; };
+		950DC4881C64513500E22BB7 /* requestGPSPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4791C64513500E22BB7 /* requestGPSPopupViewController.m */; };
+		950DC4891C64513500E22BB7 /* requestPushPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC47B1C64513500E22BB7 /* requestPushPopupViewController.m */; };
+		950DC48A1C64513500E22BB7 /* informationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC47D1C64513500E22BB7 /* informationController.m */; };
+		950DC48B1C64513500E22BB7 /* RestAddPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4801C64513500E22BB7 /* RestAddPopupViewController.m */; };
+		950DC48C1C64513500E22BB7 /* RestPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4831C64513500E22BB7 /* RestPopupViewController.m */; };
+		950DC48D1C64513500E22BB7 /* ValuePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4861C64513500E22BB7 /* ValuePopupViewController.m */; };
+		950DC4AB1C6456C300E22BB7 /* CategoryInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4A41C6456C300E22BB7 /* CategoryInEditVideo.m */; };
+		950DC4AC1C6456C300E22BB7 /* RestnameInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */; };
+		950DC4AD1C6456C300E22BB7 /* ValueInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
@@ -60,8 +73,6 @@
 		952280601C60797B00D6D815 /* GochiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9522805D1C60797B00D6D815 /* GochiViewController.m */; };
 		952280611C60797B00D6D815 /* GochiViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9522805F1C60797B00D6D815 /* GochiViewControllerCell.m */; };
 		952280641C607F5100D6D815 /* TimelinePost_v4.m in Sources */ = {isa = PBXBuildFile; fileRef = 952280631C607F5100D6D815 /* TimelinePost_v4.m */; };
-		954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */; };
-		954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */; };
 		954A746A1BC65D8600BD5573 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74681BC65D8600BD5573 /* Contacts.framework */; };
 		954A746B1BC65D8600BD5573 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954A74691BC65D8600BD5573 /* ContactsUI.framework */; };
 		9550DA0C1BF83E4C00430942 /* EveryPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D7D71BF83E4B00430942 /* EveryPost.m */; };
@@ -83,9 +94,6 @@
 		9550DA251BF83E4C00430942 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D80E1BF83E4B00430942 /* EditProfileViewController.m */; };
 		9550DA261BF83E4C00430942 /* EditVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8111BF83E4B00430942 /* EditVideoController.m */; };
 		9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8131BF83E4B00430942 /* FullScreenViewController.m */; };
-		9550DA281BF83E4C00430942 /* CategoryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8161BF83E4B00430942 /* CategoryPopupViewController.m */; };
-		9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8181BF83E4B00430942 /* RestPopupViewController.m */; };
-		9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D81A1BF83E4B00430942 /* ValuePopupViewController.m */; };
 		9550DA2B1BF83E4C00430942 /* FolloweeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D81D1BF83E4B00430942 /* FolloweeListCell.m */; };
 		9550DA2C1BF83E4C00430942 /* FolloweeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D81E1BF83E4B00430942 /* FolloweeListCell.xib */; };
 		9550DA2D1BF83E4C00430942 /* FolloweeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8201BF83E4B00430942 /* FolloweeListViewController.m */; };
@@ -104,7 +112,6 @@
 		9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8471BF83E4B00430942 /* CustomTableViewCell.m */; };
 		9550DA401BF83E4C00430942 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8491BF83E4B00430942 /* NotificationViewController.m */; };
 		9550DA411BF83E4C00430942 /* TableViewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D84A1BF83E4B00430942 /* TableViewCustomCell.xib */; };
-		9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D86C1BF83E4B00430942 /* EditTableViewController.m */; };
 		9550DA501BF83E4C00430942 /* GaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8751BF83E4B00430942 /* GaugeView.m */; };
 		9550DA521BF83E4C00430942 /* SCRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */; };
 		9550DA541BF83E4C00430942 /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */; };
@@ -124,9 +131,6 @@
 		9550DA621BF83E4C00430942 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8951BF83E4B00430942 /* RestaurantTableViewController.m */; };
 		9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8EE1BF83E4B00430942 /* CAPSPageMenu.m */; };
 		9550DA881BF83E4C00430942 /* TimelinePageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F11BF83E4B00430942 /* TimelinePageMenuViewController.m */; };
-		9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F41BF83E4B00430942 /* CategoryViewController.m */; };
-		9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F61BF83E4B00430942 /* SortViewController.m */; };
-		9550DA8B1BF83E4C00430942 /* ValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8F81BF83E4B00430942 /* ValueViewController.m */; };
 		9550DA8C1BF83E4C00430942 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8FA1BF83E4B00430942 /* TimelineCell.m */; };
 		9550DA8D1BF83E4C00430942 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550D8FB1BF83E4B00430942 /* TimelineCell.xib */; };
 		9550DA8E1BF83E4C00430942 /* UserSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550D8FE1BF83E4B00430942 /* UserSearchController.m */; };
@@ -253,7 +257,6 @@
 		955E73A81C27F06D00B9449B /* SCWeakSelectorTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 955E738A1C27F06D00B9449B /* SCWeakSelectorTarget.m */; };
 		955E73A91C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 955E738C1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m */; };
 		9578D68C1C2AD0A30048D184 /* JJMaterialTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 9578D68B1C2AD0A30048D184 /* JJMaterialTextfield.m */; };
-		958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */; };
 		95EEF1961C23ED78009DA989 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */; };
 		95EEF1B91C269483009DA989 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF1991C269483009DA989 /* MKAnnotationView+WebCache.m */; };
 		95EEF1BA1C269483009DA989 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EEF19B1C269483009DA989 /* NSData+ImageContentType.m */; };
@@ -527,6 +530,32 @@
 		950DC41B1C61FC5500E22BB7 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		950DC41C1C61FC5500E22BB7 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		950DC41D1C61FC5500E22BB7 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		950DC46A1C64506300E22BB7 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
+		950DC46B1C64506300E22BB7 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
+		950DC46C1C64506300E22BB7 /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		950DC46D1C64506300E22BB7 /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
+		950DC46E1C64506300E22BB7 /* ValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueViewController.h; sourceTree = "<group>"; };
+		950DC46F1C64506300E22BB7 /* ValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueViewController.m; sourceTree = "<group>"; };
+		950DC4751C64513500E22BB7 /* CategoryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPopupViewController.h; sourceTree = "<group>"; };
+		950DC4761C64513500E22BB7 /* CategoryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPopupViewController.m; sourceTree = "<group>"; };
+		950DC4781C64513500E22BB7 /* requestGPSPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestGPSPopupViewController.h; sourceTree = "<group>"; };
+		950DC4791C64513500E22BB7 /* requestGPSPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestGPSPopupViewController.m; sourceTree = "<group>"; };
+		950DC47A1C64513500E22BB7 /* requestPushPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestPushPopupViewController.h; sourceTree = "<group>"; };
+		950DC47B1C64513500E22BB7 /* requestPushPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestPushPopupViewController.m; sourceTree = "<group>"; };
+		950DC47C1C64513500E22BB7 /* informationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = informationController.h; sourceTree = "<group>"; };
+		950DC47D1C64513500E22BB7 /* informationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationController.m; sourceTree = "<group>"; };
+		950DC47F1C64513500E22BB7 /* RestAddPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAddPopupViewController.h; sourceTree = "<group>"; };
+		950DC4801C64513500E22BB7 /* RestAddPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAddPopupViewController.m; sourceTree = "<group>"; };
+		950DC4821C64513500E22BB7 /* RestPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestPopupViewController.h; sourceTree = "<group>"; };
+		950DC4831C64513500E22BB7 /* RestPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestPopupViewController.m; sourceTree = "<group>"; };
+		950DC4851C64513500E22BB7 /* ValuePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopupViewController.h; sourceTree = "<group>"; };
+		950DC4861C64513500E22BB7 /* ValuePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopupViewController.m; sourceTree = "<group>"; };
+		950DC4A31C6456C300E22BB7 /* CategoryInEditVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryInEditVideo.h; sourceTree = "<group>"; };
+		950DC4A41C6456C300E22BB7 /* CategoryInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryInEditVideo.m; sourceTree = "<group>"; };
+		950DC4A61C6456C300E22BB7 /* RestnameInEditVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestnameInEditVideo.h; sourceTree = "<group>"; };
+		950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestnameInEditVideo.m; sourceTree = "<group>"; };
+		950DC4A91C6456C300E22BB7 /* ValueInEditVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueInEditVideo.h; sourceTree = "<group>"; };
+		950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueInEditVideo.m; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
@@ -545,10 +574,6 @@
 		9522805F1C60797B00D6D815 /* GochiViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GochiViewControllerCell.m; sourceTree = "<group>"; };
 		952280621C607F5100D6D815 /* TimelinePost_v4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePost_v4.h; sourceTree = "<group>"; };
 		952280631C607F5100D6D815 /* TimelinePost_v4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePost_v4.m; sourceTree = "<group>"; };
-		954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestAddPopupViewController.m; sourceTree = "<group>"; };
-		954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestAddPopupViewController.h; sourceTree = "<group>"; };
-		954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestGPSPopupViewController.m; sourceTree = "<group>"; };
-		954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestGPSPopupViewController.h; sourceTree = "<group>"; };
 		954A74681BC65D8600BD5573 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		954A74691BC65D8600BD5573 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		9550D7D61BF83E4B00430942 /* EveryPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryPost.h; sourceTree = "<group>"; };
@@ -588,12 +613,6 @@
 		9550D8111BF83E4B00430942 /* EditVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditVideoController.m; sourceTree = "<group>"; };
 		9550D8121BF83E4B00430942 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
 		9550D8131BF83E4B00430942 /* FullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenViewController.m; sourceTree = "<group>"; };
-		9550D8151BF83E4B00430942 /* CategoryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPopupViewController.h; sourceTree = "<group>"; };
-		9550D8161BF83E4B00430942 /* CategoryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPopupViewController.m; sourceTree = "<group>"; };
-		9550D8171BF83E4B00430942 /* RestPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestPopupViewController.h; sourceTree = "<group>"; };
-		9550D8181BF83E4B00430942 /* RestPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestPopupViewController.m; sourceTree = "<group>"; };
-		9550D8191BF83E4B00430942 /* ValuePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePopupViewController.h; sourceTree = "<group>"; };
-		9550D81A1BF83E4B00430942 /* ValuePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePopupViewController.m; sourceTree = "<group>"; };
 		9550D81C1BF83E4B00430942 /* FolloweeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolloweeListCell.h; sourceTree = "<group>"; };
 		9550D81D1BF83E4B00430942 /* FolloweeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolloweeListCell.m; sourceTree = "<group>"; };
 		9550D81E1BF83E4B00430942 /* FolloweeListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolloweeListCell.xib; sourceTree = "<group>"; };
@@ -624,8 +643,6 @@
 		9550D8481BF83E4B00430942 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		9550D8491BF83E4B00430942 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		9550D84A1BF83E4B00430942 /* TableViewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCustomCell.xib; sourceTree = "<group>"; };
-		9550D86B1BF83E4B00430942 /* EditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditTableViewController.h; path = Gocci/Classes/Recorder/EditTableViewController.h; sourceTree = SOURCE_ROOT; };
-		9550D86C1BF83E4B00430942 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditTableViewController.m; path = Gocci/Classes/Recorder/EditTableViewController.m; sourceTree = SOURCE_ROOT; };
 		9550D8741BF83E4B00430942 /* GaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GaugeView.h; path = Gocci/Classes/Recorder/GaugeView.h; sourceTree = SOURCE_ROOT; };
 		9550D8751BF83E4B00430942 /* GaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GaugeView.m; path = Gocci/Classes/Recorder/GaugeView.m; sourceTree = SOURCE_ROOT; };
 		9550D8791BF83E4B00430942 /* SCRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecorderViewController.h; sourceTree = "<group>"; };
@@ -657,12 +674,6 @@
 		9550D8EF1BF83E4B00430942 /* SortableTimeLineSubViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortableTimeLineSubViewProtocol.h; sourceTree = "<group>"; };
 		9550D8F01BF83E4B00430942 /* TimelinePageMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePageMenuViewController.h; sourceTree = "<group>"; };
 		9550D8F11BF83E4B00430942 /* TimelinePageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePageMenuViewController.m; sourceTree = "<group>"; };
-		9550D8F31BF83E4B00430942 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
-		9550D8F41BF83E4B00430942 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
-		9550D8F51BF83E4B00430942 /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
-		9550D8F61BF83E4B00430942 /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
-		9550D8F71BF83E4B00430942 /* ValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueViewController.h; sourceTree = "<group>"; };
-		9550D8F81BF83E4B00430942 /* ValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueViewController.m; sourceTree = "<group>"; };
 		9550D8F91BF83E4B00430942 /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
 		9550D8FA1BF83E4B00430942 /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		9550D8FB1BF83E4B00430942 /* TimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
@@ -869,8 +880,6 @@
 		955E738C1C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCSaveToCameraRoll.m"; sourceTree = "<group>"; };
 		9578D68A1C2AD0A30048D184 /* JJMaterialTextfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMaterialTextfield.h; sourceTree = "<group>"; };
 		9578D68B1C2AD0A30048D184 /* JJMaterialTextfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMaterialTextfield.m; sourceTree = "<group>"; };
-		958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = requestPushPopupViewController.h; sourceTree = "<group>"; };
-		958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = requestPushPopupViewController.m; sourceTree = "<group>"; };
 		95EEF1941C23ED78009DA989 /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		95EEF1951C23ED78009DA989 /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		95EEF1981C269483009DA989 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -1234,6 +1243,117 @@
 			path = Spring;
 			sourceTree = "<group>";
 		};
+		950DC4691C64506300E22BB7 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				950DC46A1C64506300E22BB7 /* CategoryViewController.h */,
+				950DC46B1C64506300E22BB7 /* CategoryViewController.m */,
+				950DC46C1C64506300E22BB7 /* SortViewController.h */,
+				950DC46D1C64506300E22BB7 /* SortViewController.m */,
+				950DC46E1C64506300E22BB7 /* ValueViewController.h */,
+				950DC46F1C64506300E22BB7 /* ValueViewController.m */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		950DC4731C64513500E22BB7 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				950DC47C1C64513500E22BB7 /* informationController.h */,
+				950DC47D1C64513500E22BB7 /* informationController.m */,
+				950DC4741C64513500E22BB7 /* Category */,
+				950DC4771C64513500E22BB7 /* GPS:Push */,
+				950DC47E1C64513500E22BB7 /* RestAdd */,
+				950DC4811C64513500E22BB7 /* Restrant */,
+				950DC4841C64513500E22BB7 /* Value */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		950DC4741C64513500E22BB7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4751C64513500E22BB7 /* CategoryPopupViewController.h */,
+				950DC4761C64513500E22BB7 /* CategoryPopupViewController.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		950DC4771C64513500E22BB7 /* GPS:Push */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4781C64513500E22BB7 /* requestGPSPopupViewController.h */,
+				950DC4791C64513500E22BB7 /* requestGPSPopupViewController.m */,
+				950DC47A1C64513500E22BB7 /* requestPushPopupViewController.h */,
+				950DC47B1C64513500E22BB7 /* requestPushPopupViewController.m */,
+			);
+			path = "GPS:Push";
+			sourceTree = "<group>";
+		};
+		950DC47E1C64513500E22BB7 /* RestAdd */ = {
+			isa = PBXGroup;
+			children = (
+				950DC47F1C64513500E22BB7 /* RestAddPopupViewController.h */,
+				950DC4801C64513500E22BB7 /* RestAddPopupViewController.m */,
+			);
+			path = RestAdd;
+			sourceTree = "<group>";
+		};
+		950DC4811C64513500E22BB7 /* Restrant */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4821C64513500E22BB7 /* RestPopupViewController.h */,
+				950DC4831C64513500E22BB7 /* RestPopupViewController.m */,
+			);
+			path = Restrant;
+			sourceTree = "<group>";
+		};
+		950DC4841C64513500E22BB7 /* Value */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4851C64513500E22BB7 /* ValuePopupViewController.h */,
+				950DC4861C64513500E22BB7 /* ValuePopupViewController.m */,
+			);
+			path = Value;
+			sourceTree = "<group>";
+		};
+		950DC4A11C6456C300E22BB7 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4A21C6456C300E22BB7 /* Category */,
+				950DC4A51C6456C300E22BB7 /* Restname */,
+				950DC4A81C6456C300E22BB7 /* Value */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		950DC4A21C6456C300E22BB7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4A31C6456C300E22BB7 /* CategoryInEditVideo.h */,
+				950DC4A41C6456C300E22BB7 /* CategoryInEditVideo.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		950DC4A51C6456C300E22BB7 /* Restname */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4A61C6456C300E22BB7 /* RestnameInEditVideo.h */,
+				950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */,
+			);
+			path = Restname;
+			sourceTree = "<group>";
+		};
+		950DC4A81C6456C300E22BB7 /* Value */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4A91C6456C300E22BB7 /* ValueInEditVideo.h */,
+				950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */,
+			);
+			path = Value;
+			sourceTree = "<group>";
+		};
 		9522805B1C60797B00D6D815 /* Gochi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1390,33 +1510,14 @@
 		9550D80F1BF83E4B00430942 /* EditVdeo */ = {
 			isa = PBXGroup;
 			children = (
+				950DC4A11C6456C300E22BB7 /* Popup */,
 				988971C01C1809F100FF7B43 /* VideoPostPreparation.swift */,
 				9550D8101BF83E4B00430942 /* EditVideoController.h */,
 				9550D8111BF83E4B00430942 /* EditVideoController.m */,
 				9550D8121BF83E4B00430942 /* FullScreenViewController.h */,
 				9550D8131BF83E4B00430942 /* FullScreenViewController.m */,
-				9550D8141BF83E4B00430942 /* Popup */,
 			);
 			path = EditVdeo;
-			sourceTree = "<group>";
-		};
-		9550D8141BF83E4B00430942 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				958CD5BF1C2046BC00D1129B /* requestPushPopupViewController.h */,
-				958CD5C01C2046BC00D1129B /* requestPushPopupViewController.m */,
-				9550D8151BF83E4B00430942 /* CategoryPopupViewController.h */,
-				9550D8161BF83E4B00430942 /* CategoryPopupViewController.m */,
-				9550D8171BF83E4B00430942 /* RestPopupViewController.h */,
-				9550D8181BF83E4B00430942 /* RestPopupViewController.m */,
-				9550D8191BF83E4B00430942 /* ValuePopupViewController.h */,
-				9550D81A1BF83E4B00430942 /* ValuePopupViewController.m */,
-				954883DF1C0832DF00BB533D /* RestAddPopupViewController.h */,
-				954883DE1C0832DF00BB533D /* RestAddPopupViewController.m */,
-				954883EC1C0C134200BB533D /* requestGPSPopupViewController.h */,
-				954883EB1C0C134200BB533D /* requestGPSPopupViewController.m */,
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		9550D81B1BF83E4B00430942 /* FolloweeList */ = {
@@ -1519,15 +1620,15 @@
 		9550D8681BF83E4B00430942 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				95EEF26A1C269B1B009DA989 /* Gauge */,
-				95EEF2691C269AFB009DA989 /* Edit */,
-				9550D87E1BF83E4B00430942 /* ScrollPage */,
 				9550D8791BF83E4B00430942 /* SCRecorderViewController.h */,
 				9550D87A1BF83E4B00430942 /* SCRecorderViewController.m */,
 				9550D87C1BF83E4B00430942 /* SCRecordSessionManager.h */,
 				9550D87D1BF83E4B00430942 /* SCRecordSessionManager.m */,
 				9550D88F1BF83E4B00430942 /* SCTouchDetector.h */,
 				9550D8901BF83E4B00430942 /* SCTouchDetector.m */,
+				950DC4731C64513500E22BB7 /* Information */,
+				95EEF26A1C269B1B009DA989 /* Gauge */,
+				9550D87E1BF83E4B00430942 /* ScrollPage */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -1581,13 +1682,13 @@
 		9550D8DC1BF83E4B00430942 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				950DC4691C64506300E22BB7 /* Sort */,
 				9522805B1C60797B00D6D815 /* Gochi */,
 				95FD92B81C0D783100D822E8 /* Follow */,
 				95FD92BD1C0D783100D822E8 /* Near */,
 				95FD92C51C0D783100D822E8 /* Recommend */,
 				954883E61C0C022600BB533D /* RequestGPS */,
 				9550D8EC1BF83E4B00430942 /* PageMenu */,
-				9550D8F21BF83E4B00430942 /* Popup */,
 				9550D8F91BF83E4B00430942 /* TimelineCell.h */,
 				9550D8FA1BF83E4B00430942 /* TimelineCell.m */,
 				9550D8FB1BF83E4B00430942 /* TimelineCell.xib */,
@@ -1605,19 +1706,6 @@
 				9550D8F11BF83E4B00430942 /* TimelinePageMenuViewController.m */,
 			);
 			path = PageMenu;
-			sourceTree = "<group>";
-		};
-		9550D8F21BF83E4B00430942 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				9550D8F51BF83E4B00430942 /* SortViewController.h */,
-				9550D8F61BF83E4B00430942 /* SortViewController.m */,
-				9550D8F31BF83E4B00430942 /* CategoryViewController.h */,
-				9550D8F41BF83E4B00430942 /* CategoryViewController.m */,
-				9550D8F71BF83E4B00430942 /* ValueViewController.h */,
-				9550D8F81BF83E4B00430942 /* ValueViewController.m */,
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		9550D8FC1BF83E4B00430942 /* UserSearch */ = {
@@ -2234,15 +2322,6 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		95EEF2691C269AFB009DA989 /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				9550D86B1BF83E4B00430942 /* EditTableViewController.h */,
-				9550D86C1BF83E4B00430942 /* EditTableViewController.m */,
-			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
 		95EEF26A1C269B1B009DA989 /* Gauge */ = {
 			isa = PBXGroup;
 			children = (
@@ -2364,9 +2443,9 @@
 			children = (
 				95FD92DE1C0D79F200D822E8 /* MypageViewController.h */,
 				95FD92DF1C0D79F200D822E8 /* MypageViewController.m */,
+				95FD92E01C0D79F200D822E8 /* Settings */,
 				95FD92D21C0D79F200D822E8 /* Grid-design */,
 				95FD92D81C0D79F200D822E8 /* Map-design */,
-				95FD92E01C0D79F200D822E8 /* Settings */,
 				95FD92E41C0D79F200D822E8 /* Table-design */,
 			);
 			path = Mypage;
@@ -2939,8 +3018,8 @@
 				98AB5DB41C44EDF50023C0DE /* RBQSectionCacheObject.m in Sources */,
 				95EEF1F91C26976A009DA989 /* AFURLRequestSerialization.m in Sources */,
 				950DC43A1C61FC5500E22BB7 /* UnwindSegue.swift in Sources */,
-				9550DA4C1BF83E4C00430942 /* EditTableViewController.m in Sources */,
 				950DC4231C61FC5500E22BB7 /* DesignableImageView.swift in Sources */,
+				950DC4AC1C6456C300E22BB7 /* RestnameInEditVideo.m in Sources */,
 				98FED7301C26E471008C8927 /* Export.swift in Sources */,
 				981979B01C05B45A00EFFC8F /* TaskScheduler.swift in Sources */,
 				98AB5DB51C44EDF50023C0DE /* RBQFetchedResultsController.m in Sources */,
@@ -2948,9 +3027,9 @@
 				98B1FCF81C0804B4006CA013 /* Algorithms.swift in Sources */,
 				9550DAD01BF83E4C00430942 /* TabbarBaseViewController.m in Sources */,
 				950DC4381C61FC5500E22BB7 /* TransitionManager.swift in Sources */,
-				9550DA891BF83E4C00430942 /* CategoryViewController.m in Sources */,
 				9550DA9B1BF83E4C00430942 /* ServiceUtil.swift in Sources */,
 				98AB5DBA1C44EDF50023C0DE /* RBQRealmNotificationManager.m in Sources */,
+				950DC48C1C64513500E22BB7 /* RestPopupViewController.m in Sources */,
 				98C4539D1C1EFF4A0010846B /* APIRequest.swift in Sources */,
 				9862D6011C16A383006AE6D9 /* AWSTasks.swift in Sources */,
 				9839E4101C4F773A00AE46A5 /* ClusterMapView.swift in Sources */,
@@ -2982,6 +3061,7 @@
 				9550DA9D1BF83E4C00430942 /* TwitterSharing.swift in Sources */,
 				950DC42B1C61FC5500E22BB7 /* KeyboardLayoutConstraint.swift in Sources */,
 				955E73A91C27F06D00B9449B /* UIImage+SCSaveToCameraRoll.m in Sources */,
+				950DC4701C64506300E22BB7 /* CategoryViewController.m in Sources */,
 				95EEF1FB1C26976A009DA989 /* AFURLSessionManager.m in Sources */,
 				95EEF1BA1C269483009DA989 /* NSData+ImageContentType.m in Sources */,
 				95FD92CD1C0D783100D822E8 /* NearViewController.m in Sources */,
@@ -3002,13 +3082,14 @@
 				9550DB0A1BF83E4C00430942 /* STPopupNavigationBar.m in Sources */,
 				9550DA881BF83E4C00430942 /* TimelinePageMenuViewController.m in Sources */,
 				9550DA501BF83E4C00430942 /* GaugeView.m in Sources */,
-				9550DA8B1BF83E4C00430942 /* ValueViewController.m in Sources */,
+				950DC48D1C64513500E22BB7 /* ValuePopupViewController.m in Sources */,
 				9550DAEA1BF83E4C00430942 /* JTCalendarContentView.m in Sources */,
 				9550DA121BF83E4C00430942 /* APIClient.m in Sources */,
 				98AB5D8E1C44E8560023C0DE /* ABFLocationFetchRequest.m in Sources */,
 				9550DA0F1BF83E4C00430942 /* Restaurant.m in Sources */,
 				950DC4351C61FC5500E22BB7 /* SpringTextField.swift in Sources */,
 				9550DB201BF83E4C00430942 /* UIProgressView+AFNetworking.m in Sources */,
+				950DC4711C64506300E22BB7 /* SortViewController.m in Sources */,
 				950DC4361C61FC5500E22BB7 /* SpringTextView.swift in Sources */,
 				9550DA3E1BF83E4C00430942 /* TutorialPageViewController.m in Sources */,
 				955E738E1C27F06D00B9449B /* SCAssetExportSession.m in Sources */,
@@ -3016,10 +3097,8 @@
 				95EEF1BF1C269483009DA989 /* SDWebImageDownloaderOperation.m in Sources */,
 				9550DAE61BF83E4C00430942 /* FHSTwitterEngine.m in Sources */,
 				95EEF1961C23ED78009DA989 /* BBBadgeBarButtonItem.m in Sources */,
-				9550DA8A1BF83E4C00430942 /* SortViewController.m in Sources */,
 				95EEF1C31C269483009DA989 /* UIImage+GIF.m in Sources */,
 				95EEF1C41C269483009DA989 /* UIImage+MultiFormat.m in Sources */,
-				9550DA291BF83E4C00430942 /* RestPopupViewController.m in Sources */,
 				95EEF1C11C269483009DA989 /* SDWebImagePrefetcher.m in Sources */,
 				9550DAEF1BF83E4C00430942 /* JTCalendarMonthWeekDaysView.m in Sources */,
 				950DC4331C61FC5500E22BB7 /* SpringImageView.swift in Sources */,
@@ -3047,6 +3126,7 @@
 				9550DAC81BF83E4C00430942 /* AbstractPopup.swift in Sources */,
 				955E738F1C27F06D00B9449B /* SCAudioConfiguration.m in Sources */,
 				98C4539A1C1E67B70010846B /* APIHighLevel.swift in Sources */,
+				950DC4881C64513500E22BB7 /* requestGPSPopupViewController.m in Sources */,
 				9550DAEE1BF83E4C00430942 /* JTCalendarMonthView.m in Sources */,
 				98AB5DBF1C44EDF50023C0DE /* RLMObjectBase+Utilities.m in Sources */,
 				95EEF1F61C26976A009DA989 /* AFNetworkReachabilityManager.m in Sources */,
@@ -3067,9 +3147,12 @@
 				95FD92CB1C0D783100D822E8 /* FollowViewControllerCell.m in Sources */,
 				98AB5DBD1C44EDF50023C0DE /* RLMArray+Utilities.m in Sources */,
 				950DC42F1C61FC5500E22BB7 /* SoundPlayer.swift in Sources */,
+				950DC4721C64506300E22BB7 /* ValueViewController.m in Sources */,
 				9550DA3D1BF83E4C00430942 /* SplashViewController.swift in Sources */,
 				95FD929C1C0D48DA00D822E8 /* SGAlertMenu.m in Sources */,
 				9550DAF31BF83E4C00430942 /* RHRefreshControl.m in Sources */,
+				950DC4891C64513500E22BB7 /* requestPushPopupViewController.m in Sources */,
+				950DC4871C64513500E22BB7 /* CategoryPopupViewController.m in Sources */,
 				950DC4241C61FC5500E22BB7 /* DesignableLabel.swift in Sources */,
 				950DC4391C61FC5500E22BB7 /* TransitionZoom.swift in Sources */,
 				95FD929E1C0D48DA00D822E8 /* SGGridMenu.m in Sources */,
@@ -3077,13 +3160,12 @@
 				988270521C59F6BB00EA9F57 /* RequestGPSViewController.swift in Sources */,
 				955E73A21C27F06D00B9449B /* SCRecordSessionSegment.m in Sources */,
 				95F803C61C529E6200CFFF44 /* SLKTextInputbar.m in Sources */,
-				954883E01C0832DF00BB533D /* RestAddPopupViewController.m in Sources */,
 				950593881BFB19E600328449 /* NullSafe.m in Sources */,
 				95EEF1F81C26976A009DA989 /* AFURLConnectionOperation.m in Sources */,
 				9550DAC91BF83E4C00430942 /* WebViewPopup.swift in Sources */,
+				950DC4AD1C6456C300E22BB7 /* ValueInEditVideo.m in Sources */,
 				981A93521BFEF3CA007B3BF6 /* Network.swift in Sources */,
 				98379E0B1C4E352C00025F46 /* APIAutoGenerated.swift in Sources */,
-				958CD5C11C2046BC00D1129B /* requestPushPopupViewController.m in Sources */,
 				9550DA971BF83E4C00430942 /* FacebookAuthentication.swift in Sources */,
 				98FFDE6A1C48FCA5002B6400 /* FacebookPopup.swift in Sources */,
 				9550DB091BF83E4C00430942 /* STPopupLeftBarItem.m in Sources */,
@@ -3106,7 +3188,6 @@
 				9550DAF61BF83E4C00430942 /* RHRefreshControlViewSequenceImages.m in Sources */,
 				95EEF1C61C269483009DA989 /* UIImageView+HighlightedWebCache.m in Sources */,
 				95FD92EE1C0D79F200D822E8 /* MypageViewController.m in Sources */,
-				954883ED1C0C134200BB533D /* requestGPSPopupViewController.m in Sources */,
 				955E73A71C27F06D00B9449B /* SCVideoPlayerView.m in Sources */,
 				95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
@@ -3172,15 +3253,14 @@
 				9550DA101BF83E4C00430942 /* TimelinePost.m in Sources */,
 				95FD92CE1C0D783100D822E8 /* NearViewControllerCell.m in Sources */,
 				955E739A1C27F06D00B9449B /* SCPhotoConfiguration.m in Sources */,
+				950DC48B1C64513500E22BB7 /* RestAddPopupViewController.m in Sources */,
 				9550DA311BF83E4C00430942 /* AddressController.m in Sources */,
 				95EEF1F51C26976A009DA989 /* AFHTTPSessionManager.m in Sources */,
 				9550DA331BF83E4C00430942 /* FacebookController.m in Sources */,
 				9550DB231BF83E4C00430942 /* WYPopoverController.m in Sources */,
-				9550DA281BF83E4C00430942 /* CategoryPopupViewController.m in Sources */,
 				9550DA321BF83E4C00430942 /* DetailController.m in Sources */,
 				980986A21BFF0AD7009BD0E3 /* Extensions.swift in Sources */,
 				95FD929B1C0D48DA00D822E8 /* SGActionView.m in Sources */,
-				9550DA2A1BF83E4C00430942 /* ValuePopupViewController.m in Sources */,
 				981A934B1BFC5588007B3BF6 /* TwitterLowLevel.swift in Sources */,
 				98C453A31C1FAFBD0010846B /* FeedbackPopup.swift in Sources */,
 				95EEF1BC1C269483009DA989 /* SDWebImageCompat.m in Sources */,
@@ -3209,10 +3289,12 @@
 				9550DA611BF83E4C00430942 /* XYPieChart.m in Sources */,
 				9550DAF11BF83E4C00430942 /* JTCircleView.m in Sources */,
 				950DC4201C61FC5500E22BB7 /* AutoTextView.swift in Sources */,
+				950DC4AB1C6456C300E22BB7 /* CategoryInEditVideo.m in Sources */,
 				9550DA8C1BF83E4C00430942 /* TimelineCell.m in Sources */,
 				9550DA271BF83E4C00430942 /* FullScreenViewController.m in Sources */,
 				950DC4291C61FC5500E22BB7 /* ImageLoader.swift in Sources */,
 				98B1FCF21C06D5B9006CA013 /* Reachability.m in Sources */,
+				950DC48A1C64513500E22BB7 /* informationController.m in Sources */,
 				98AB5DB31C44EDF50023C0DE /* RBQObjectCacheObject.m in Sources */,
 				955E73A41C27F06D00B9449B /* SCSaveToCameraRollOperation.m in Sources */,
 			);

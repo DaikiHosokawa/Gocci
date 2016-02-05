@@ -22,9 +22,7 @@
     obj.user_id = dictionary[@"user_id"];
     obj.username = dictionary[@"username"];
     obj.value = dictionary[@"value"];
-    obj.value = dictionary[@"profile_img"];
-    obj.value = dictionary[@"value"];
-    
+    obj.profile_img = dictionary[@"profile_img"];    
     return obj;
 }
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Sth4Me. All rights reserved.
 //
 
+#import "Swift.h"
 #import "STPopupController.h"
 #import "STPopupLeftBarItem.h"
 #import "STPopupNavigationBar.h"
@@ -233,7 +234,9 @@ static NSMutableSet *_retainedPopupControllers;
 - (void)dismiss
 {
     [self dismissWithCompletion:nil];
+    
 }
+
 
 - (void)dismissWithCompletion:(void (^)(void))completion
 {
@@ -284,22 +287,7 @@ static NSMutableSet *_retainedPopupControllers;
     }
 }
 
-- (void)popViewControllerAnimatedtoTop:(BOOL)animated
-{
-    if (_viewControllers.count <= 1) {
-        [self dismiss];
-        return;
-    }
-    
-    UIViewController *topViewController = [self topViewController];
-    [topViewController setValue:nil forKey:@"popupController"];
-    [self destroyObserversOfViewController:topViewController];
-    [_viewControllers removeObject:topViewController];
-    
-    if (self.presented) {
-        [self transitFromViewController:topViewController toViewController:[self topViewController] animated:animated];
-    }
-}
+
 
 - (void)transitFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController animated:(BOOL)animated
 {
