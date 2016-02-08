@@ -58,6 +58,7 @@
 		950DC4AB1C6456C300E22BB7 /* CategoryInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4A41C6456C300E22BB7 /* CategoryInEditVideo.m */; };
 		950DC4AC1C6456C300E22BB7 /* RestnameInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */; };
 		950DC4AD1C6456C300E22BB7 /* ValueInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */; };
+		950DC4B11C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4B01C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
@@ -556,6 +557,8 @@
 		950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestnameInEditVideo.m; sourceTree = "<group>"; };
 		950DC4A91C6456C300E22BB7 /* ValueInEditVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueInEditVideo.h; sourceTree = "<group>"; };
 		950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueInEditVideo.m; sourceTree = "<group>"; };
+		950DC4AF1C686E2300E22BB7 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		950DC4B01C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
@@ -1354,6 +1357,15 @@
 			path = Value;
 			sourceTree = "<group>";
 		};
+		950DC4AE1C686E2200E22BB7 /* DZNEmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				950DC4AF1C686E2300E22BB7 /* UIScrollView+EmptyDataSet.h */,
+				950DC4B01C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m */,
+			);
+			path = DZNEmptyDataSet;
+			sourceTree = "<group>";
+		};
 		9522805B1C60797B00D6D815 /* Gochi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,6 +1914,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				950DC4AE1C686E2200E22BB7 /* DZNEmptyDataSet */,
 				950DC3FF1C61FC5500E22BB7 /* Spring */,
 				95F803B01C529E6200CFFF44 /* SLKInput */,
 				98FFDE6B1C4C8EFE002B6400 /* FBSDKCoreKit.framework */,
@@ -3281,6 +3294,7 @@
 				95F803AF1C529DC300CFFF44 /* TypingIndicatorView.m in Sources */,
 				9550DAE81BF83E4C00430942 /* JTCalendar.m in Sources */,
 				9550DA181BF83E4C00430942 /* UIView+DropShadow.m in Sources */,
+				950DC4B11C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m in Sources */,
 				955E73A81C27F06D00B9449B /* SCWeakSelectorTarget.m in Sources */,
 				980986B21BFF3FDA009BD0E3 /* Toast.swift in Sources */,
 				95EEF1F71C26976A009DA989 /* AFSecurityPolicy.m in Sources */,

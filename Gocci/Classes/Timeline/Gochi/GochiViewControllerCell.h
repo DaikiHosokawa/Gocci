@@ -6,6 +6,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelinePost_v4.h"
+#import "Swift.h"
 
 @class GochiViewController;
 @class GochiViewControllerCell;
@@ -36,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UIImageView *option;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet SpringButton *likeBtn;
 
 @property (nonatomic,weak) id<GochiViewCellDelegate> delegate;
 
