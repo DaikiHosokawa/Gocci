@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewController_2.h"
 #import "TimelinePost.h"
+#import "Swift.h"
 
 @class CollectionViewController_2;
 @class CollectionViewCell_2;
@@ -40,7 +41,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UIImageView *option;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet SpringButton *likeBtn;
 
 
 - (void)configureWithTimelinePost:(TimelinePost *)timelinePost indexPath:(NSUInteger)indexPath;

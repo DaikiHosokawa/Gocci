@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelinePost.h"
+#import "Swift.h"
 
 @class TableViewController_2;
 @class TableViewCell_2;
@@ -34,7 +35,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *option;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet SpringButton *likeBtn;
 
 @property(nonatomic,strong) id<TableViewCell_2Delegate> delegate;
 

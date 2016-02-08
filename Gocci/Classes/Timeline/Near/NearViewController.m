@@ -101,7 +101,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
              }
              
              self.posts = tempPosts;
-             UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
+             UIImage *img = [UIImage imageNamed:@"sad_post_line.png"];
              UIImageView *iv = [[UIImageView alloc] initWithImage:img];
              CGSize boundsSize = self.view.bounds.size;
              iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 );
