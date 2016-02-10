@@ -14,14 +14,11 @@
 #import "APIClient.h"
 #import "Swift.h"
 
-@interface FollowListViewController ()
+@interface FollowListViewController ()<FollowListCellDelegate>
 
 
-@property (nonatomic, retain) NSMutableArray *picture_;
-@property (nonatomic, retain) NSMutableArray *user_name_;
-@property (nonatomic, retain) NSMutableArray *follow_flag_;
-@property (nonatomic, retain) NSMutableArray *user_id_;
-@property (nonatomic, retain) FollowListCell *cell;
+@property (nonatomic, retain) NSMutableArray *post;
+@property (nonatomic, retain) NSMutableArray *userid;
 
 
 @end
@@ -32,7 +29,6 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 @implementation FollowListViewController
 
 @synthesize userID = _userID;
-@synthesize postUsername = _postUsername;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,7 +60,7 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
 
 -(void)perseJson
 {
-    [APIClient FollowList:_userID handler:^(id result, NSUInteger code, NSError *error) {
+    [APIClient Follow:_userID handler:^(id result, NSUInteger code, NSError *error) {
      
         LOG(@"resultComment=%@", result);
         
@@ -75,19 +71,18 @@ static NSString * const SEGUE_GO_PROFILE = @"goProfile";
         
         if(result){
             
-            NSArray *user_name = [result valueForKey:@"username"];
-            _user_name_ = [user_name mutableCopy];
-           
-            NSArray *picture = [result valueForKey:@"profile_img"];
-            _picture_ = [picture mutableCopy];
+            NSMutableArray *tempPosts = [NSMutableArray arrayWithCapacity:0];
+            NSArray* items = (NSArray*)[result valueForKeyPath:@"payload.users"];
             
-            NSArray *follow_flag = [result valueForKey:@"follow_flag"];
-            _follow_flag_ = [follow_flag mutableCopy];
-           
-            NSArray *user_id = [result valueForKey:@"user_id"];
-            _user_id_ = [user_id mutableCopy];
+            for (NSDictionary *post in items) {
+                [tempPosts addObject:[Follow timelinePostWithDictionary:post]];
+            }
             
-            if([_user_name_ count] ==0){
+            NSLog(@"items2:%@",tempPosts);
+            
+            self.post = tempPosts;
+            
+            if([self.post count] ==0){
                     // 画像表示例文
                     UIImage *img = [UIImage imageNamed:@"sad_follow.png"];
                     UIImageView *iv = [[UIImageView alloc] initWithImage:img];
@@ -123,11 +118,38 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 75.0;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    _postUsername_with_profile =  [_user_id_ objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:self];
 
+
+-(void)follow:(FollowListCell *)cell didTapUsername:(NSString *)user_id{
+    [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:user_id];
+}
+
+-(void)follow:(FollowListCell *)cell didTapProfile_img:(NSString *)user_id{
+    [self performSegueWithIdentifier:SEGUE_GO_PROFILE sender:user_id];
+}
+
+-(void)follow:(FollowListCell *)cell didTapLikeButton:(NSString *)userID tapped:(BOOL)tapped{
+    
+    if (tapped) {
+        NSLog(@"フォロー");
+        [APIClient postFollow:userID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if ([result[@"code"] integerValue] == 200) {
+                
+            }
+        }
+         ];
+        
+    }else {
+        NSLog(@"解除");
+        [APIClient postUnFollow:userID handler:^(id result, NSUInteger code, NSError *error) {
+            LOG(@"result=%@, code=%@, error=%@", result, @(code), error);
+            if ((code=200)) {
+                
+            }
+        }
+         ];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,11 +170,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         //ここでパラメータを渡す
         UserpageViewController *userVC = segue.destinationViewController;
-        userVC.postUsername = _postUsername_with_profile;
+        userVC.postUsername = sender;
     }
 }
-
-
 
 #pragma mark - Table view data source
 
@@ -166,26 +186,27 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [_user_name_ count];;
+    return [self.post count];;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *cellIdentifier = @"FollowListCell";
+    FollowListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    _cell = (FollowListCell*)[tableView dequeueReusableCellWithIdentifier:@"FollowListCell"];
-    
-    
-    _cell.UsersName.text = [_user_name_ objectAtIndex:indexPath.row];
-    
-    if([_picture_ objectAtIndex:indexPath.row] != nil){
-        NSString *dottext = [_picture_ objectAtIndex:indexPath.row];
-        [_cell.UsersPicture setImageWithURL:[NSURL URLWithString:dottext]
-                           placeholderImage:[UIImage imageNamed:@"default.png"]];
+    if (!cell) {
+        cell = [[FollowListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    [SVProgressHUD dismiss];
-    return _cell;
+    Follow *post = self.post[indexPath.row];
+    NSLog(@"count:%@",post);
+    [cell configureWithFollow:post indexPath:indexPath.row];
+    cell.delegate = self;
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
 
 @end

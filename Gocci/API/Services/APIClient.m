@@ -489,10 +489,10 @@ static APIClient *_sharedInstance = nil;
 + (void)postFollow:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"target_user_id" :target_user_id,
+                             @"user_id" :target_user_id,
                              };
     NSLog(@"follow param:%@",params);
-    [[APIClient sharedClient].manager GET:@"post/follow/"
+    [[APIClient sharedClient].manager_v4 GET:@"set/follow/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -505,10 +505,10 @@ static APIClient *_sharedInstance = nil;
 + (void)postUnFollow:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"target_user_id" :target_user_id,
+                             @"user_id" :target_user_id,
                              };
     NSLog(@"unfollow param:%@",params);
-    [[APIClient sharedClient].manager GET:@"post/unfollow/"
+    [[APIClient sharedClient].manager_v4 GET:@"unset/follow/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -518,22 +518,6 @@ static APIClient *_sharedInstance = nil;
     
 }
 
-+ (void)restInsert:(NSString *)restName latitude:(double)latitude longitude:(double)longitude handler:(void (^)(id, NSUInteger, NSError *))handler
-{
-    NSDictionary *params = @{
-                             @"rest_name": restName,
-                             @"lat": [NSString stringWithFormat:@"%@", @(latitude)],
-                             @"lon": [NSString stringWithFormat:@"%@", @(longitude)],
-                             };
-    NSLog(@"restinsertparam:%@",params);
-    [[APIClient sharedClient].manager GET:@"post/restadd/"
-                               parameters:params
-                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                      handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
-                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      handler(nil, [(NSHTTPURLResponse *)task.response statusCode], error);
-                                  }];
-}
 
 + (void)postComment:(NSString *)text post_id:(NSString *)post_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
@@ -654,15 +638,15 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)FollowList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Follow:(NSString *)user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     
     NSDictionary *params = @{
-                             @"target_user_id" : target_user_id,
+                             @"user_id" : user_id,
                              };
     
     NSLog(@"FollowList pram:%@",params);
-    [[APIClient sharedClient].manager GET:@"get/follow/"
+    [[APIClient sharedClient].manager_v4 GET:@"get/follow/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
@@ -671,14 +655,14 @@ static APIClient *_sharedInstance = nil;
                                   }];
 }
 
-+ (void)FollowerList:(NSString *)target_user_id handler:(void (^)(id, NSUInteger, NSError *))handler
++ (void)Follower:(NSString *)user_id handler:(void (^)(id, NSUInteger, NSError *))handler
 {
     NSDictionary *params = @{
-                             @"target_user_id" : target_user_id,
+                             @"user_id" : user_id,
                              };
     
     NSLog(@"FollowerList pram:%@",params);
-    [[APIClient sharedClient].manager GET:@"get/follower/"
+    [[APIClient sharedClient].manager_v4 GET:@"get/follower/"
                                parameters:params
                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                       handler(responseObject, [(NSHTTPURLResponse *)task.response statusCode], nil);
