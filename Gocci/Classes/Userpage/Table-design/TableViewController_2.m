@@ -31,6 +31,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     NSMutableArray *postid_;
     NSMutableDictionary *optionDic;
+     NSMutableArray *post1;
 }
 
 

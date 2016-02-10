@@ -137,30 +137,6 @@
  */
 + (void)postGood:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  set/gochi
- *
- *  @param post_id
- *  @param handler
- */
-+ (void)set_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  set/gochi
- *
- *  @param post_id
- *  @param handler
- */
-+ (void)unset_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  /get/gochiline
- *
- *  @param post_id
- *  @param handler
- */
-+ (void)Gochi:(NSString *)page category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
 
 /**
  *  delete
@@ -178,35 +154,6 @@
  */
 + (void)postBlock:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  favorites
- *
- *  @param target_user_id
- *  @param handler
- */
-+ (void)postFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  unfavorites
- *
- *  @param target_user_id
- *  @param handler
- */
-+ (void)postUnFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-
-/**
- *  gochi_rank/
- *
- *  @param latitude
- *  @param longitude
- *  @param restname
- *  @param handler
- */
-+ (void)restInsert:(NSString *)restName
-          latitude:(double)latitude
-         longitude:(double)longitude
-           handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  comment
@@ -236,19 +183,6 @@
  */
 + (void)commentJSON:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
-/**
- *  profile
- *
- *  @param handler 完了イベントハンドラ
- */
-+ (void)FollowList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
-
-/**
- *  profile
- *
- *  @param handler 完了イベントハンドラ
- */
-+ (void)FollowerList:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
 
 /**
  *  profile
@@ -339,5 +273,64 @@
 + (void)loginWithUsername:(NSString *)username password:(NSString*)pass os:(NSString *)os model:(NSString *)model register_id:(NSString *)register_id handler:(void (^)(id, NSUInteger, NSError *))handler;
 
 + (void)setPassword:(NSString *)pass handler:(void (^)(id, NSUInteger, NSError *))handler;
+
+
+
+/////////////////////////////////V4/////////////////////////////////////////
+
+/**
+ *  set/follow
+ *
+ *  @param target_user_id
+ *  @param handler
+ */
++ (void)postFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  unset/follow
+ *
+ *  @param target_user_id
+ *  @param handler
+ */
++ (void)postUnFollow:(NSString *)target_user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  set/gochi
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)set_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  unset/gochi
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)unset_gochi:(NSString *)post_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  get/gochiline
+ *
+ *  @param post_id
+ *  @param handler
+ */
++ (void)Gochi:(NSString *)page category_id:(NSString *)category_id value_id:(NSString *)value_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  get/follow
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)Follow:(NSString *)user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
+/**
+ *  get/follower
+ *
+ *  @param handler 完了イベントハンドラ
+ */
++ (void)Follower:(NSString *)user_id handler:(void (^)(id result, NSUInteger code, NSError *error))handler;
+
 
 @end

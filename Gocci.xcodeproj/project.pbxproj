@@ -59,6 +59,7 @@
 		950DC4AC1C6456C300E22BB7 /* RestnameInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4A71C6456C300E22BB7 /* RestnameInEditVideo.m */; };
 		950DC4AD1C6456C300E22BB7 /* ValueInEditVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */; };
 		950DC4B11C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4B01C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m */; };
+		950DC4B81C69C86700E22BB7 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 950DC4B71C69C86700E22BB7 /* Follow.m */; };
 		950F47B91BFC2CEA0088CA10 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */; };
 		951347671BF9A77C00EC14DB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951347661BF9A77C00EC14DB /* CoreBluetooth.framework */; };
 		951776711C2105EB008E9F39 /* TwitterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517766F1C2105EB008E9F39 /* TwitterPopup.swift */; };
@@ -559,6 +560,8 @@
 		950DC4AA1C6456C300E22BB7 /* ValueInEditVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueInEditVideo.m; sourceTree = "<group>"; };
 		950DC4AF1C686E2300E22BB7 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		950DC4B01C686E2300E22BB7 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		950DC4B61C69C86700E22BB7 /* Follow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follow.h; sourceTree = "<group>"; };
+		950DC4B71C69C86700E22BB7 /* Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follow.m; sourceTree = "<group>"; };
 		950F47B81BFC2CEA0088CA10 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		951347661BF9A77C00EC14DB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		9517766F1C2105EB008E9F39 /* TwitterPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPopup.swift; sourceTree = "<group>"; };
@@ -1412,6 +1415,8 @@
 		9550D7D51BF83E4B00430942 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				950DC4B61C69C86700E22BB7 /* Follow.h */,
+				950DC4B71C69C86700E22BB7 /* Follow.m */,
 				952280621C607F5100D6D815 /* TimelinePost_v4.h */,
 				952280631C607F5100D6D815 /* TimelinePost_v4.m */,
 				9550D7D61BF83E4B00430942 /* EveryPost.h */,
@@ -3252,6 +3257,7 @@
 				9550DAE11BF83E4C00430942 /* UIColor+BFPaperColors.m in Sources */,
 				955E73971C27F06D00B9449B /* SCImageView.m in Sources */,
 				95F803AC1C529DC300CFFF44 /* MessageTableViewCell.m in Sources */,
+				950DC4B81C69C86700E22BB7 /* Follow.m in Sources */,
 				950DC4301C61FC5500E22BB7 /* Spring.swift in Sources */,
 				9550DA1B1BF83E4C00430942 /* CheerListViewController.m in Sources */,
 				95FD93041C0D7AB600D822E8 /* TableViewController_2.m in Sources */,
