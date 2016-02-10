@@ -7,12 +7,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "restaurant@2x.png",
+      "filename" : "restaurant_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restaurant@3x.png",
+      "filename" : "restaurant_3x.png",
       "scale" : "3x"
     }
   ],
