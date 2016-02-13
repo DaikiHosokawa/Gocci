@@ -32,8 +32,8 @@
 @property (weak, nonatomic) id<SortableTimeLineSubView> currentVisibleSortableSubViewController;
 
 
--(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position;
+-(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position label:(NSString*)label;
 
--(void)setupPageMenu:(int)page;
+-(void)setupPageMenu:(int)page positionLabel:(NSString*)chikaijyunLabelString;
 
 @end

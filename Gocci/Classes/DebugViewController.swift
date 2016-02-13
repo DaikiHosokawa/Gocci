@@ -106,7 +106,23 @@ class DebugViewController : UIViewController {
         print(results ?? "nil")
     }
     
+    
+
+    
     @IBAction func explode(sender: AnyObject) {
+        
+        let req = API4.get.heatmap()
+        
+        req.perform { (payload) -> () in
+            
+            for rest in payload.rests {
+                //self.bla(rest.lat, rest.lon)
+                print("\n\n+++++++++++++++++++++++\n\n")
+            }
+        }
+        
+        return;
+        
         
         
         let fullFilePathURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meat", ofType: "mp4")!)

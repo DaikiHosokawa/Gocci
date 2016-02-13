@@ -424,6 +424,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     useMapPosition = false;
     [self.refreshControl refreshScrollViewDidEndDragging:scrollView];
     
+    TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+    
+    [vc setupPageMenu:1 positionLabel:nil];
 }
 
 #pragma mark - RHRefreshControl Delegate

@@ -438,6 +438,7 @@
 		98D3FFEB1C26C63500751CAF /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
 		98DCDE2B1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
 		98DCDE2C1C1A8AE900D900C6 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCDE2A1C1A8AE900D900C6 /* Logging.swift */; };
+		98F206AC1C6EA859008EE336 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F206AB1C6EA859008EE336 /* LocationManager.swift */; };
 		98FED72E1C26C6E7008C8927 /* APILowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FFEA1C26C63500751CAF /* APILowLevel.swift */; };
 		98FED7301C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
 		98FED7311C26E471008C8927 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FED72F1C26E471008C8927 /* Export.swift */; };
@@ -1123,6 +1124,7 @@
 		98CEEF9A1C59ACFE00B04047 /* ClusterMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterMapViewController.swift; sourceTree = "<group>"; };
 		98D3FFEA1C26C63500751CAF /* APILowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILowLevel.swift; sourceTree = "<group>"; };
 		98DCDE2A1C1A8AE900D900C6 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Utilities/Logging.swift; sourceTree = "<group>"; };
+		98F206AB1C6EA859008EE336 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		98FED72F1C26E471008C8927 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Export.swift; path = Utilities/Export.swift; sourceTree = "<group>"; };
 		98FFDE671C48FC8E002B6400 /* FacebookPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookPopup.xib; sourceTree = "<group>"; };
 		98FFDE691C48FCA5002B6400 /* FacebookPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookPopup.swift; sourceTree = "<group>"; };
@@ -1919,6 +1921,7 @@
 		9550D9561BF83E4B00430942 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				98F206AA1C6EA859008EE336 /* LocationManager */,
 				950DC4AE1C686E2200E22BB7 /* DZNEmptyDataSet */,
 				950DC3FF1C61FC5500E22BB7 /* Spring */,
 				95F803B01C529E6200CFFF44 /* SLKInput */,
@@ -2709,6 +2712,14 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		98F206AA1C6EA859008EE336 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				98F206AB1C6EA859008EE336 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 		FF54EFD619149A1800025DC8 = {
 			isa = PBXGroup;
 			children = (
@@ -3195,6 +3206,7 @@
 				9550DA871BF83E4C00430942 /* CAPSPageMenu.m in Sources */,
 				9550DB1C1BF83E4C00430942 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				955E73A11C27F06D00B9449B /* SCRecordSession.m in Sources */,
+				98F206AC1C6EA859008EE336 /* LocationManager.swift in Sources */,
 				95FD93021C0D7AB600D822E8 /* CollectionViewController_2.m in Sources */,
 				9550DA191BF83E4C00430942 /* CheerListCell.m in Sources */,
 				95EEF1C21C269483009DA989 /* UIButton+WebCache.m in Sources */,
