@@ -153,7 +153,9 @@ class ClusterMapViewController: UIViewController {
     
 
     func goBackToTimeLineAndFocusOnPosition(position: CLLocationCoordinate2D) {
-        delegate.handleUserChosenGPSPosition(position)
+        Util.reverseLookUuPlaceNameFor(location: position) { (placeName) -> () in
+            self.delegate.handleUserChosenGPSPosition(position, label: placeName ?? nil)
+        }
     }
     
 }

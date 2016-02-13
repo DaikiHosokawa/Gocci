@@ -186,7 +186,7 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
     self.navigationItem.rightBarButtonItems = right;
     
-    [self setupPageMenu:0];
+    [self setupPageMenu:0 positionLabel:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -244,14 +244,18 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
     
 }
 
--(void)setupPageMenu:(int)page
+-(void)setupPageMenu:(int)page positionLabel:(NSString*)chikaijyunLabelString
 {
+    if (chikaijyunLabelString == nil) {
+        chikaijyunLabelString = @"近く";
+    }
+    
     self.recoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
     self.recoViewController.title = @"最新";
     self.recoViewController.delegate = self;
     
     self.nearViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
-    self.nearViewController.title = @"近く";
+    self.nearViewController.title = chikaijyunLabelString;
     self.nearViewController.delegate = self;
     
     self.requestGPSViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
@@ -416,9 +420,10 @@ static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
                                  options:WYPopoverAnimationOptionFadeWithScale];
 }
 
--(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position {
+-(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position label:(NSString*)label {
 
-    [_pageMenu moveToPage:1];
+    //[_pageMenu moveToPage:1];
+    [self setupPageMenu:1 positionLabel:label];
     
     [self.nearViewController updateForPosition:position];
     //[self.nearViewController setTitle:@"NOW FROM MAP"];
