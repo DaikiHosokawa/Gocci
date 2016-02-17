@@ -5,6 +5,7 @@
 //  Created by Castela on 2015/10/12.
 //  Copyright © 2015年 Massara. All rights reserved.
 //
+#import "const.h"
 
 #import "EditVideoController.h"
 #import "AppDelegate.h"

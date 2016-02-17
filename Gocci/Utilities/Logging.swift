@@ -79,7 +79,7 @@ extension Logable {
     
     static func appendToFile(msg: String) {
         
-        let logDir = NSURL.fileURLWithPath(NSFileManager.documentsDirectory())
+        let logDir = NSFileManager.documentsDirectory()
         let logFile = logDir.URLByAppendingPathComponent("log.txt")
         
         

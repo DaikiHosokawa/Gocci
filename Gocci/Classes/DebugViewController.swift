@@ -129,7 +129,7 @@ class DebugViewController : UIViewController {
         
         
         let rests = NSBundle.mainBundle().pathForResource("testvid", ofType: "mp4")!
-        let target = NSFileManager.documentsDirectory() + "/testvid.mp4"
+        let target = NSFileManager.documentsDirectory().path! + "/testvid.mp4"
         NSFileManager.cp(rests.asLocalFileURL(), target: target.asLocalFileURL())
         
         let rela = "Documents/testvid.mp4"
@@ -269,14 +269,14 @@ class DebugViewController : UIViewController {
         
         let task = NSBundle.mainBundle().pathForResource("unfinished_upload_task", ofType: "plist")!
         
-        let dest = NSFileManager.documentsDirectory() + "/unfinishedTasks.plist"
+        let dest = NSFileManager.documentsDirectory().path! + "/unfinishedTasks.plist"
         
         let _ = try? fm.removeItemAtPath(dest)
         
         try! fm.copyItemAtPath(task, toPath: dest)
         
         
-        let path = NSFileManager.documentsDirectory() + "/user_posted_videos"
+        let path = NSFileManager.documentsDirectory().path! + "/user_posted_videos"
         
         if !fm.fileExistsAtPath(path) {
             try! fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
