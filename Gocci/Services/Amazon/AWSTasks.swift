@@ -116,12 +116,93 @@ class AWSS3VideoUploadTask: PersistentBaseTask {
     }
     
     override var description: String {
-        return super.description + " FilePath: \(NSFileManager.documentsDirectory() + filePath), S3-FileName: \(s3FileName)"
+        return super.description + " FilePath: \(NSFileManager.documentsDirectory().path ?? "" + filePath), S3-FileName: \(s3FileName)"
     }
     
 }
 
 
+
+
+
+
+
+
+class AWSS3ProfileImageUploadTask: AWSS3VideoUploadTask {
+    
+    // unique task. new one kills older ones
+    override func equals(task: PersistentBaseTask) -> Bool {
+        return task is AWSS3ProfileImageUploadTask
+    }
+    
+    override func handleError(error: NSError, and: State->()){
+        if Util.errorIsNetworkConfigurationError(error) {
+            sep("WARN: AWSS3ProfileImageUploadTask")
+            log("Network offline, trying later")
+            and(.FAILED_NETWORK)
+        }
+        else {
+            performAWSReLogin(and)
+        }
+    }
+    
+    override func run(finished: State->()) {
+        
+        let localFileURL = Util.absolutify(filePath)
+        
+        guard NSFileManager.fileExistsAtURL(localFileURL) else {
+            err("Video file does not exist")
+            finished(.FAILED_IRRECOVERABLE)
+            return
+        }
+        
+        guard Network.state != .OFFLINE else {
+            sep("WARN: AWSS3ProfileImageUploadTask")
+            log("Network offline, trying later")
+            finished(.FAILED_NETWORK)
+            return
+        }
+        
+        
+        let completionHandler: (AWSS3TransferUtilityUploadTask!, NSError?) -> () = { task, error in
+            if let error = error {
+                self.err("FROM THE AWS COMPLETION HANDLER! : \(error)")
+                self.performAWSReLogin(finished)
+            }
+            else {
+                self.sep("SUCCESS: AWSS3ProfileImageUploadTask")
+                self.log("Upload completed!")
+                
+                Toast.情報("SUCCESS", "New profile image upload complete") // TODO TRANSLATION
+                finished(.DONE)
+            }
+        }
+        
+        
+        
+        let tu = AWS2.getS3uploader()
+        
+        let uploadTask = tu.uploadFile(localFileURL,
+            bucket: AWS_S3_PROFILE_IMAGE_UPLOAD_BUCKET,
+            key: s3FileName,
+            contentType: "image/png",
+            expression: nil,
+            completionHander: completionHandler)
+        
+        uploadTask.continueWithBlock{ task in
+            if let error = task.error {
+                self.handleError(error, and: finished)
+            }
+            else if let exception = task.exception {
+                self.performAWSReLogin(finished)
+            }
+            
+            return nil
+        }
+    }
+    
+    
+}
 
 
 

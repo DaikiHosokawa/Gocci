@@ -186,9 +186,9 @@ extension NSFileManager {
         return NSURL.fileURLWithPath(NSTemporaryDirectory())
     }
     
-    class func documentsDirectory() -> String {
+    class func documentsDirectory() -> NSURL {
         let f = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        return f.first!
+        return NSURL.fileURLWithPath(f.first!)
     }
     
     class func libraryDirectory() -> String {
@@ -207,7 +207,15 @@ extension NSFileManager {
     
 }
 
-
+extension UIImage {
+    func scaleToNewImage(bounds: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(bounds);
+        self.drawInRect(CGRectMake(0, 0, bounds.width, bounds.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
 
 extension UIColor {
     

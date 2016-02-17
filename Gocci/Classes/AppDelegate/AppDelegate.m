@@ -6,6 +6,27 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
+
+/// #######################################################################################
+// The app will start with a debug screen to test logins etc.
+//#define START_WITH_DEBUG_SCREEN
+
+/// #######################################################################################
+// Userdata will be deleted everytime the app starts
+//#define FRESH_START
+
+/// #######################################################################################
+// Video recording is skipped and a default video is choosen to safe time and use the simulator
+//#define SKIP_VIDEO_RECORDING
+
+/// #######################################################################################
+//#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
+//#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
+//#define ENTRY_POINT_JUMP (@"jumpHeatMapViewController")
+
+/// #######################################################################################
+
+
 #import "const.h"
 #import "util.h"
 #import "AppDelegate.h"
@@ -113,7 +134,11 @@
     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
 #endif
     
+//    storyboard = [UIStoryboard storyboardWithName:@"Universal" bundle:nil];
+//    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"EditProfileViewController"];
+    
     // !!!:dezamisystem
+
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     

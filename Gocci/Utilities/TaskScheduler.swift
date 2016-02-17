@@ -33,6 +33,9 @@ class PersistentClassReflexion {
             case "RegisterForPushMessagesTask":
                 return RegisterForPushMessagesTask(dict: data)
             
+            case "AWSS3ProfileImageUploadTask":
+                return AWSS3ProfileImageUploadTask(dict: data)
+            
             default:
                 return nil
         }
