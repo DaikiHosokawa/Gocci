@@ -146,7 +146,7 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)addBottom:(BOOL)usingLocationCache category_id:(NSString *)category_id value_id:(NSString*)value_id
 {
-    if ((useMapPosition = true)) {
+    if (useMapPosition == true) {
         NSLog(@"oYES");
         NSString *str = [NSString stringWithFormat:@"%d",call];
         [APIClient Distance:mapPosition.latitude longitude:mapPosition.longitude call:str category_id:category_id value_id:value_id  handler:^(id result, NSUInteger code, NSError *error)
@@ -421,12 +421,9 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
-    useMapPosition = false;
     [self.refreshControl refreshScrollViewDidEndDragging:scrollView];
     
-    TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
-    
-    [vc setupPageMenu:1 positionLabel:nil];
+
 }
 
 #pragma mark - RHRefreshControl Delegate
@@ -448,6 +445,12 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
             [self setupData:@"" value_id:@""];
         }
     }
+    
+    useMapPosition = false;
+    
+    TimelinePageMenuViewController *vc = (TimelinePageMenuViewController*)self.delegate;
+    
+    [vc setChikaiJunLabelToText:@"近く"];
     
 }
 

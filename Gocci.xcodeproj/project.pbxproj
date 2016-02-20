@@ -312,7 +312,6 @@
 		95FD929F1C0D48DA00D822E8 /* SGSheetMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD929A1C0D48DA00D822E8 /* SGSheetMenu.m */; };
 		95FD92CA1C0D783100D822E8 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92BA1C0D783100D822E8 /* FollowViewController.m */; };
 		95FD92CB1C0D783100D822E8 /* FollowViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92BC1C0D783100D822E8 /* FollowViewControllerCell.m */; };
-		95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C01C0D783100D822E8 /* HeatMapViewController.m */; };
 		95FD92CD1C0D783100D822E8 /* NearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C21C0D783100D822E8 /* NearViewController.m */; };
 		95FD92CE1C0D783100D822E8 /* NearViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C41C0D783100D822E8 /* NearViewControllerCell.m */; };
 		95FD92CF1C0D783100D822E8 /* RecoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FD92C71C0D783100D822E8 /* RecoViewController.m */; };
@@ -993,8 +992,6 @@
 		95FD92BA1C0D783100D822E8 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
 		95FD92BB1C0D783100D822E8 /* FollowViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewControllerCell.h; sourceTree = "<group>"; };
 		95FD92BC1C0D783100D822E8 /* FollowViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewControllerCell.m; sourceTree = "<group>"; };
-		95FD92BF1C0D783100D822E8 /* HeatMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeatMapViewController.h; sourceTree = "<group>"; };
-		95FD92C01C0D783100D822E8 /* HeatMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeatMapViewController.m; sourceTree = "<group>"; };
 		95FD92C11C0D783100D822E8 /* NearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewController.h; sourceTree = "<group>"; };
 		95FD92C21C0D783100D822E8 /* NearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearViewController.m; sourceTree = "<group>"; };
 		95FD92C31C0D783100D822E8 /* NearViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearViewControllerCell.h; sourceTree = "<group>"; };
@@ -2434,22 +2431,12 @@
 			isa = PBXGroup;
 			children = (
 				98CEEF9A1C59ACFE00B04047 /* ClusterMapViewController.swift */,
-				95FD92BE1C0D783100D822E8 /* HeatMap */,
 				95FD92C11C0D783100D822E8 /* NearViewController.h */,
 				95FD92C21C0D783100D822E8 /* NearViewController.m */,
 				95FD92C31C0D783100D822E8 /* NearViewControllerCell.h */,
 				95FD92C41C0D783100D822E8 /* NearViewControllerCell.m */,
 			);
 			path = Near;
-			sourceTree = "<group>";
-		};
-		95FD92BE1C0D783100D822E8 /* HeatMap */ = {
-			isa = PBXGroup;
-			children = (
-				95FD92BF1C0D783100D822E8 /* HeatMapViewController.h */,
-				95FD92C01C0D783100D822E8 /* HeatMapViewController.m */,
-			);
-			path = HeatMap;
 			sourceTree = "<group>";
 		};
 		95FD92C51C0D783100D822E8 /* Recommend */ = {
@@ -3225,7 +3212,6 @@
 				95EEF1C61C269483009DA989 /* UIImageView+HighlightedWebCache.m in Sources */,
 				95FD92EE1C0D79F200D822E8 /* MypageViewController.m in Sources */,
 				955E73A71C27F06D00B9449B /* SCVideoPlayerView.m in Sources */,
-				95FD92CC1C0D783100D822E8 /* HeatMapViewController.m in Sources */,
 				9550DA3F1BF83E4C00430942 /* CustomTableViewCell.m in Sources */,
 				950DC4211C61FC5500E22BB7 /* BlurView.swift in Sources */,
 				95F803CA1C529E6200CFFF44 /* SLKTypingIndicatorView.m in Sources */,
