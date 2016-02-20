@@ -231,7 +231,7 @@ extension Immortal {
         return "00000000" + String(s[0..<48]) + "00000000"
     }
     
-    class func reverseLookUuPlaceNameFor(location location:CLLocationCoordinate2D, and: (String?) ->()) {
+    class func reverseLookUpPlaceNameFor(location location:CLLocationCoordinate2D, and: (String?) ->()) {
         let locationManager = LocationManager.sharedInstance
         locationManager.reverseGeocodeLocationWithLatLon(latitude: location.latitude, longitude: location.longitude) { (reverseGecodeInfo,placemark,error) -> Void in
             
@@ -242,8 +242,8 @@ extension Immortal {
             }
             
             if let data = reverseGecodeInfo as? [String: String] {
-                let placeName = data["locality"] ?? data["formattedAddress"] ?? "???"
-                and(placeName)
+                let placeName = data["locality"] ?? data["formattedAddress"]
+                and(placeName == "" ? nil : placeName)
             }
             else {
                 and(nil)

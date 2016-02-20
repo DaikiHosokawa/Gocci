@@ -42,7 +42,7 @@ class RequestGPSViewController: UIViewController, CLLocationManagerDelegate {
         
         if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse {
             Util.runOnMainThread() {
-                self.delegate.setupPageMenu(1, positionLabel: nil)
+                self.delegate.setupPageMenu(1)
             }
         }
     }
@@ -59,7 +59,7 @@ class RequestGPSViewController: UIViewController, CLLocationManagerDelegate {
             
         case CLAuthorizationStatus.AuthorizedAlways: fallthrough
         case CLAuthorizationStatus.AuthorizedWhenInUse:
-            self.delegate.setupPageMenu(1, positionLabel: nil)
+            self.delegate.setupPageMenu(1)
             
             
         case CLAuthorizationStatus.Denied: fallthrough
@@ -87,7 +87,7 @@ class RequestGPSViewController: UIViewController, CLLocationManagerDelegate {
                 
                 if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse {
                     Util.runOnMainThread() {
-                        self.delegate.setupPageMenu(1, positionLabel: nil)
+                        self.delegate.setupPageMenu(1)
                     }
                 }
 

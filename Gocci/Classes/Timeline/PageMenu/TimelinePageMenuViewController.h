@@ -34,6 +34,8 @@
 
 -(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position label:(NSString*)label;
 
--(void)setupPageMenu:(int)page positionLabel:(NSString*)chikaijyunLabelString;
+-(void)setupPageMenu:(int)page;
+-(void)setChikaiJunLabelToText:(NSString*)labelText;
+
 
 @end
