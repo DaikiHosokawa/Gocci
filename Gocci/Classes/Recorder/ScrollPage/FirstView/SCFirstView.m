@@ -7,8 +7,10 @@
 //
 
 #import "SCFirstView.h"
+#import "SCRecorder.h"
 
 #import "SCTouchDetector.h"
+#import "Swift.h"
 
 @interface SCFirstView()
 {
@@ -16,7 +18,7 @@
 	CGFloat percentPieChart;
 	
 	__weak IBOutlet UIView *recordView;
-    __weak IBOutlet UIView *reverseCamera;
+    
 }
 
 @end
@@ -26,15 +28,17 @@
 #pragma mark - addsubview
 - (void)showInView:(UIView *)view
 {
+    NSLog(@"called showinview");
 	//撮影ボタン
 	{
         
-		CGFloat width_record = recordView.frame.size.width * 0.95; // 90;
+		CGFloat width_record = recordView.frame.size.width * 1; // 90;
 		CGFloat height_record = width_record;
 		//CGFloat x_record = self.frame.size.width /2 - width_record /2;
 		//CGFloat y_record = self.frame.origin.y;
-		[recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
-         
+        
+        [recordView addGestureRecognizer:[[SCTouchDetector alloc] initWithTarget:self action:@selector(handleTouchDetected:)]];
+        
 		{
 			//円グラフゲージ
 			CGRect rect_pie = CGRectMake(0, 0, width_record, height_record);
@@ -50,10 +54,10 @@
             [pieChartTimer reloadData];
             
 			//アイコン
-			CGFloat width_icon = width_record * 0.65; // 75;
+			CGFloat width_icon = width_record * 0.80; // 75;
 			CGFloat height_icon = width_icon;
 			UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width_icon, height_icon)];
-			UIImage *image = [UIImage imageNamed:@"icon_record_cam.png"];
+			UIImage *image = [UIImage imageNamed:@"icon_record_cam"];
 			imageview.image = image;
 			imageview.center = CGPointMake(recordView.frame.size.width/2, recordView.frame.size.height/2);
 			[recordView addSubview:imageview];
@@ -61,6 +65,8 @@
 		}
        
 	}
+    
+    
 	
 	[view addSubview:self];
 }
@@ -84,14 +90,71 @@
 }
 
 
+- (IBAction)DeleteDraft:(id)sender {
+    if (percentPieChart == 0.0){
+        [self.delegate DeleteDraft];
+    }else {
+        UIAlertView *checkDelete  =[[UIAlertView alloc] initWithTitle:@"終了してよろしいですか？" message:@"撮影中の動画が削除されてしまいます" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        checkDelete.tag=121;
+        [checkDelete show];
+    }
+}
+
+- (IBAction)openEdit:(id)sender {
+     [self.delegate openEdit];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 121 && buttonIndex == 0)
+    {
+        //code for opening settings app in iOS 8
+        [self.delegate DeleteDraft];
+    }
+}
 
 
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max
 {
 	percentPieChart = now / max;
+    NSLog(@"First View now:%f,max:%f",now,max);
 	if (percentPieChart > 1.0) percentPieChart = 1.0;
 	[pieChartTimer reloadData];
+}
+
+-(void)expand{
+
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         pieChartTimer.transform = CGAffineTransformMakeScale(1.5, 1.5);
+                     }
+     ];
+    
+}
+
+-(void)shrink{
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         pieChartTimer.transform = CGAffineTransformIdentity;
+                         
+                     }];
+}
+
+-(void)complete{
+    /*
+    [UIView animateWithDuration:0.1f
+                     animations:^{
+                         recordView.transform = CGAffineTransformMakeScale(0, 0);
+                     } completion:^(BOOL finished) {
+                         // 画像を表示する
+                         UIImage *image = [UIImage imageNamed:@"test1.png"];
+                         UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+                         imageView.center = recordView.center;
+                         [recordView addSubview:imageView];
+                         // アニメーションが終わった後実行する処理
+                     }];
+     */
 }
 
 #pragma mark - XYPieChart
@@ -131,41 +194,32 @@
 	return [UIColor lightGrayColor];
 }
 
-//#pragma mark - カメラ反転
-//- (IBAction)onCameraFlip:(id)sender {
-//	
-//	[self.delegate flipCamera];
-//}
-//
-//- (IBAction)onRetake:(id)sender {
-//	
-//	[self.delegate retake];
-//}
 
 #pragma mark 生成
 + (instancetype)create
 {
-	NSString *nibName = @"SCFirstViewMain";
-	//画面サイズから使用xibを場合分け
-	CGRect rect = [UIScreen mainScreen].bounds;
-	if (rect.size.height == 480) {
-		//3.5inch
-		nibName = @"SCFirstView_3_5_inch";
-	}
-	else if (rect.size.height == 667) {
-		//4.7inch
-		nibName = @"SCFirstView_4_7_inch";
-	}
-	else if (rect.size.height == 736) {
-		//5.5inch
-		nibName = @"SCFirstView_5_5_inch";
-	}
-
-	SCFirstView *view = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil][0];
- 
+    NSString *nibName = @"SCFirstViewMain";
+    //画面サイズから使用xibを場合分け
+    CGRect rect = [UIScreen mainScreen].bounds;
+    if (rect.size.height == 480) {
+        //3.5inch
+        nibName = @"SCFirstView_3_5_inch";
+    }
+    else if (rect.size.height == 667) {
+        //4.7inch
+        nibName = @"SCFirstView_4_7_inch";
+    }
+    else if (rect.size.height == 736) {
+        //5.5inch
+        nibName = @"SCFirstView_5_5_inch";
+    }
     
-	return view;
+    SCFirstView *view = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil][0];
+    
+    
+    return view;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

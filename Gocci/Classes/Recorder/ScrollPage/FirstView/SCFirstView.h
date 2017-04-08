@@ -16,9 +16,12 @@
 -(void)flipCamera;
 -(void)handleReverseCameraTapped;
 -(void)retake;
+-(void)DeleteDraft;
+-(void)openEdit;
 @end
 
 @interface SCFirstView : UIView<XYPieChartDelegate,XYPieChartDataSource>
+
 @property(nonatomic,strong) id<SCFirstViewDelegate> delegate;
 
 #pragma mark - addsubview
@@ -26,6 +29,13 @@
 
 #pragma mark - 円グラフ
 -(void)updatePieChartWith:(double)now MAX:(double)max;
+
+-(void)expand;
+
+-(void)shrink;
+
+-(void)complete;
+
 
 #pragma mark
 + (instancetype)create;

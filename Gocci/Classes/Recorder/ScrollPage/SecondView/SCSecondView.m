@@ -7,9 +7,9 @@
 //
 
 #import "SCSecondView.h"
-#import "SCPostingViewController.h"
 #import "SCRecorderViewController.h"
 #import "AppDelegate.h"
+#import "Swift.h"
 
 
 static NSString * const CellIdentifier = @"SCSecondCell";
@@ -38,7 +38,6 @@ static NSString *stringKakaku = nil;
 	
 	NSInteger indexBackColor;
     
-    SCPostingViewController *postingView;
 }
 //@property(nonatomic,strong) NSString *stringTenmei;
 
@@ -147,9 +146,9 @@ static NSString *stringKakaku = nil;
 {
 	switch (indexBackColor) {
 		case 0:
-			cell.backgroundColor = [UIColor blackColor];
-			cell.textLabel.textColor = [UIColor whiteColor];
-			cell.detailTextLabel.textColor = [UIColor whiteColor];
+			cell.backgroundColor = [UIColor whiteColor];
+			cell.textLabel.textColor = [UIColor blackColor];
+			cell.detailTextLabel.textColor = [UIColor blackColor];
 			break;
 			
 		default:
@@ -169,41 +168,11 @@ static NSString *stringKakaku = nil;
 {
 	//NSLog(@"%s Row=%ld",__func__,(long)indexPath.row);
 	
-	//static NSString * const namebundle = @"";
-	//
-	
-	UIViewController* rootViewController = nil;
-	{
-		CGRect rect = [UIScreen mainScreen].bounds;
-		if (rect.size.height == 480) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 667) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else if (rect.size.height == 736) {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-		else {
-			// ストーリーボードを取得
-			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-			//ビューコントローラ取得
-			//viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
-			rootViewController = [storyboard instantiateInitialViewController];
-		}
-	}
+    // ストーリーボードを取得
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    //ビューコントローラ取得
+    //viewController = [storyboard instantiateViewControllerWithIdentifier:namebundle];
+    UIViewController* rootViewController = [storyboard instantiateInitialViewController];
 
 	//__weak typeof(self)weakSelf = self;
 	UIActionSheet *actionsheet = nil;
@@ -260,31 +229,30 @@ static NSString *stringKakaku = nil;
 	}
 	else {
 		
-		AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
 		switch (actionSheet.tag) {
 			case 1:
 				//カテゴリー
 				NSLog(@"%@",[arrayCategory objectAtIndex:buttonIndex]);
 				selectedCategory = buttonIndex;
-				delegate.indexCategory = (int)buttonIndex;
+		//		delegate.indexCategory = (int)buttonIndex;
                 
                 if ([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"和風"]) {
-                    delegate.stringCategory = @"2";
+                    VideoPostPreparation.postData.category_id = @"2";
                 } else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"洋風"])  {
-                    delegate.stringCategory = @"3";
+                    VideoPostPreparation.postData.category_id = @"3";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"中華"]) {
-                    delegate.stringCategory = @"4";
+                    VideoPostPreparation.postData.category_id = @"4";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カレー"]) {
-                    delegate.stringCategory = @"5";
+                    VideoPostPreparation.postData.category_id = @"5";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"ラーメン"]) {
-                    delegate.stringCategory = @"6";
+                    VideoPostPreparation.postData.category_id = @"6";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"カフェ"]) {
-                    delegate.stringCategory = @"8";
+                    VideoPostPreparation.postData.category_id = @"8";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"居酒屋"]) {
-                    delegate.stringCategory = @"9";
+                    VideoPostPreparation.postData.category_id = @"9";
                 }else if([ [arrayCategory objectAtIndex:buttonIndex] isEqualToString:@"その他"]) {
-                    delegate.stringCategory = @"10";
+                    VideoPostPreparation.postData.category_id = @"10";
                 }
                 
 //				switch (buttonIndex) {
@@ -302,25 +270,14 @@ static NSString *stringKakaku = nil;
 				//雰囲気
 				NSLog(@"%@",[arrayFuniki objectAtIndex:buttonIndex]);
 				selectedFuniki = buttonIndex;
-				delegate.indexFuniki = (int)buttonIndex;
+			//	delegate.indexFuniki = (int)buttonIndex;
 				
                 if ([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"にぎやか"]) {
-                   delegate.stringFuniki = @"2";
+             //      delegate.stringFuniki = @"2";
                 } else if([ [arrayFuniki objectAtIndex:buttonIndex] isEqualToString:@"ゆったり"])  {
-                    delegate.stringFuniki = @"3";
+               //     delegate.stringFuniki = @"3";
                 }
                 
-//				switch (buttonIndex) {
-//					case 0:
-//						//NSLog(@"にぎやか");
-//						break;
-//					case 1:
-//						//NSLog(@"しずか");
-//						break;
-//					case 2:
-//						//NSLog(@"おしゃれ");
-//						break;
-//				}
 				break;
 		}
 		[tableviewList reloadData];

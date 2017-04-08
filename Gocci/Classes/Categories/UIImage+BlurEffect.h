@@ -14,6 +14,7 @@
 
 - (UIImage *)applyLightEffect;
 - (UIImage *)applyExtraLightEffect;
+- (UIImage *)applyUltraLightEffect;
 - (UIImage *)applyDarkEffect;
 - (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor;
 

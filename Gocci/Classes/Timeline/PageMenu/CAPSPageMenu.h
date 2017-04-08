@@ -16,6 +16,7 @@
 @optional
 - (void)willMoveToPage:(UIViewController *)controller index:(NSInteger)index;
 - (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index;
+
 @end
 
 @interface MenuItemView : UIView
@@ -68,6 +69,7 @@
 @property (nonatomic) BOOL hideTopMenuBar;
 
 @property (nonatomic, weak) id <CAPSPageMenuDelegate> delegate;
+@property(nonatomic, weak) id<UIScrollViewDelegate> scroll_delegate;
 
 - (void)addPageAtIndex:(NSInteger)index;
 - (void)moveToPage:(NSInteger)index;

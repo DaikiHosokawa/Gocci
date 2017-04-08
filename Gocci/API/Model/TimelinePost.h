@@ -18,6 +18,7 @@
 @property (nonatomic,copy) NSString *postID;
 @property (nonatomic,copy) NSString *rest_id;
 @property (nonatomic,copy) NSString *restname;
+@property (nonatomic,copy) NSString *distance;
 @property (nonatomic) NSUInteger starEvaluation;
 @property (nonatomic,copy) NSString *thumbnail;
 @property (nonatomic,copy) NSString *userID;
@@ -33,10 +34,10 @@
 @property (nonatomic,copy) NSString *lon;
 @property (nonatomic) NSString *tagA;
 @property (nonatomic) NSString *tagB;
-@property (nonatomic) NSString *tagC;
 @property (nonatomic) NSInteger cheernum;
 @property (nonatomic) NSString* totalCheer;
 @property (nonatomic) NSString *want_flag;
+@property (nonatomic) NSUInteger index;
 
 + (instancetype)timelinePostWithDictionary:(NSDictionary *)dictionary;
 

@@ -1,10 +1,8 @@
 //
-//  TimelinePageMenuViewController.m
-//  Gocci
+//  Created by Daiki Hosokawa on 2013/06/20.
+//  Copyright (c) 2013 INASE,inc. All rights reserved.
 //
-//  Created by INASE on 2015/06/18.
-//  Copyright (c) 2015年 Massara. All rights reserved.
-//
+
 
 #import "TimelinePageMenuViewController.h"
 
@@ -14,226 +12,323 @@
 
 #import "CAPSPageMenu.h"
 #import "everyBaseNavigationController.h"
-#import "everyTableViewController.h"
+#import "MessageViewController.h"
+
+
+#import "STPopup.h"
+#import "SortViewController.h"
+
+#import "UserpageViewController.h"
+
+#import "TabbarBaseViewController.h"
+
+#import "requestGPSPopupViewController.h"
+
+#import "Swift.h"
 
 
 
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestaurant";
 static NSString * const SEGUE_GO_USERS_OTHERS = @"goUsersOthers";
 static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
+static NSString * const SEGUE_GO_HEATMAP = @"goHeatmap";
 
-
-@interface TimelinePageMenuViewController ()
+@interface TimelinePageMenuViewController ()<CLLocationManagerDelegate,CAPSPageMenuDelegate,CLLocationManagerDelegate>
 {
-    //commentへの引き継ぎ
     NSString *_postID;
-    
-    //profile_otherへの引き継ぎ
     NSString *_postUsername;
-    
-    //restnameへの引き継ぎ
     NSString *_postRestname;
-    
+    CLLocationManager* locationManager;
 }
 @property (strong, nonatomic) BBBadgeBarButtonItem *barButton;
 @property (strong, nonatomic) WYPopoverController *popover;
 @property (nonatomic) CAPSPageMenu *pageMenu;
 
-//ページメニューを載せるビュー
+@property (strong, nonatomic) RequestGPSViewController *requestGPSViewController;
+
+
+
 @property (weak, nonatomic) IBOutlet UIView *viewBasePageMenu;
 
 @end
 
 @implementation TimelinePageMenuViewController
 
+
+
 #pragma mark - ALlTimelneTableViewControllerDelegate
--(void)allTimeline:(AllTimelineTableViewController *)vc postid:(NSString *)postid
+-(void)reco:(RecoViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc username:(NSString *)user_id
+-(void)reco:(RecoViewController *)vc username:(NSString *)user_id
 {
     _postUsername = user_id;
 }
--(void)allTimeline:(AllTimelineTableViewController *)vc rest_id:(NSString *)rest_id
+-(void)reco:(RecoViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
 
-#pragma mark - FollowTableViewController
--(void)follow:(FollowTableViewController *)vc postid:(NSString *)postid
+#pragma mark - FollowViewController
+-(void)follow:(FollowViewController *)vc postid:(NSString *)postid
 {
     _postID = postid;
 }
--(void)follow:(FollowTableViewController *)vc username:(NSString *)user_id
+-(void)follow:(FollowViewController *)vc username:(NSString *)user_id
 {
     _postUsername = user_id;
 }
--(void)follow:(FollowTableViewController *)vc rest_id:(NSString *)rest_id
+-(void)follow:(FollowViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
+#pragma mark - NearViewController
+-(void)near:(NearViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+-(void)near:(NearViewController *)vc username:(NSString *)user_id
+{
+    _postUsername = user_id;
+}
+-(void)near:(NearViewController *)vc rest_id:(NSString *)rest_id
+{
+    _postRestname = rest_id;
+}
+
+#pragma mark - GochiViewController
+-(void)gochi:(GochiViewController *)vc postid:(NSString *)postid
+{
+    _postID = postid;
+}
+-(void)gochi:(GochiViewController *)vc username:(NSString *)user_id
+{
+    _postUsername = user_id;
+}
+-(void)gochi:(GochiViewController *)vc rest_id:(NSString *)rest_id
 {
     _postRestname = rest_id;
 }
 
 #pragma mark - ViewLoad
 - (void)viewDidLoad {
+    
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"";
+    self.navigationItem.backBarButtonItem = backButton;
     
     
-    //右ナビゲーションアイテム(通知)の実装
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [customButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+         UIImage *img = [UIImage imageNamed:@"ic_location_on_white.png"];
+         UIButton *heatMapBtn = [[UIButton alloc]
+         initWithFrame:CGRectMake(0, 0, 30, 30)];
+         [heatMapBtn setBackgroundImage:img forState:UIControlStateNormal];
+         
+         
+         [heatMapBtn addTarget:self
+         action:@selector(goHeatmap) forControlEvents:UIControlEventTouchUpInside];
+         
     
     
-    // BBBadgeBarButtonItemオブジェクトの作成
-    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
+    UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    navigationTitle.image = image;
+    
+    self.navigationItem.titleView =navigationTitle;
+    
+    UIButton *notificationBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [notificationBtn setImage:[UIImage imageNamed:@"ic_notifications_active_white"] forState:UIControlStateNormal];
+    [notificationBtn addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:notificationBtn];
     
     self.barButton.badgeBGColor      = [UIColor whiteColor];
-    UIColor *color_custom = [UIColor colorWithRed:236./255. green:55./255. blue:54./255. alpha:1.];
     self.barButton.badgeTextColor    = color_custom;
     self.barButton.badgeOriginX = 10;
     self.barButton.badgeOriginY = 10;
     
-    // バッジ内容の設定
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
+    self.barButton.badgeValue =  [NSString stringWithFormat : @"%ld", (long)[UIApplication sharedApplication].applicationIconBadgeNumber];
     
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
-    self.navigationItem.rightBarButtonItem = self.barButton;
-    
-    CGRect frame = CGRectMake(0, 0, 500, 44);
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = @"Gocci";
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    backButton.title = @"";
-    
-    //ナビゲーションバーに画像
-    {
-        //タイトル画像設定
-        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        //CGFloat width_image = height_image;
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView = navigationTitle;
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-        barButton.title = @"";
-        self.navigationItem.backBarButtonItem = barButton;
-    }
-    
-    //set notificationCenter
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(handleRemotePushToUpdateBell:)
-                               name:@"HogeNotification"
+                               name:@"Notification"
                              object:nil];
     
-    //PageMenu登録
-    AllTimelineTableViewController *controller1 = [[AllTimelineTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller1.title = @"全体";
-    controller1.delegate = self;
     
-    FollowTableViewController *controller2 = [[FollowTableViewController alloc] initWithNibName:nil bundle:nil];
-    controller2.title = @"人気";
-    controller2.delegate = self;
+    UIButton *sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [sortBtn setImage:[UIImage imageNamed:@"ic_sort_white"] forState:UIControlStateNormal];
+    [sortBtn addTarget:self action:@selector(SortLaunch) forControlEvents:UIControlEventTouchUpInside];
     
-    //PageMenuアイテム
-    CGRect rect_screen = [UIScreen mainScreen].bounds;
-    NSArray *controllerArray = @[controller1, controller2, /*controller3, controller4*/];
-    NSInteger count_item = 2;	//画面数
-    // !!!:高さは画面高さの10%
-    CGFloat height_item = rect_screen.size.height * 0.08; //40.f;	//高さ
-    CGFloat width_item = self.view.frame.size.width / count_item; //幅
-    NSDictionary *parameters = @{
-                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(3.0),	//選択マーク高さ default = 3.0
-                                 //CAPSPageMenuOptionMenuItemSeparatorWidth : @(0.5),		//アイテム間隔 default = 0.5
-                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],	//メニュー背景色
-                                 CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],	//サブビュー色
-                                 CAPSPageMenuOptionBottomMenuHairlineColor : [UIColor lightGrayColor],	//アンダーライン色
-                                 CAPSPageMenuOptionSelectionIndicatorColor: color_custom,	//選択マーク色
-                                 //CAPSPageMenuOptionMenuItemSeparatorColor : [UIColor redColor],	// !!!:未使用
-                                 //CAPSPageMenuOptionMenuMargin : @(15.f),	// ???:default = 15.f
-                                 CAPSPageMenuOptionMenuHeight : @(height_item),	//メニュー高さ
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor : color_custom,	//選択時文字色
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : color_custom,	//非選択文字色
-                                 CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),	//YES=スクロールしないメニュー
-                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(NO),	//角に丸みを付けるか？
-                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],	//タイトルフォント
-                                 //CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.2),	// ???:default = 0.2
-                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),	//アイテム幅
-                                 //CAPSPageMenuOptionEnableHorizontalBounce : @(YES), // ???:default = YES
-                                 //CAPSPageMenuOptionAddBottomMenuHairline : @(YES),	// ???:default = YES
-                                 //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth : @(NO),	// ???:default = NO
-                                 CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),	//アニメーション時間[ms] default = 500
-                                 CAPSPageMenuOptionCenterMenuItems : @(YES),	//選択マークを中央に
-                                 //CAPSPageMenuOptionHideTopMenuBar : @(NO),//メニューを隠した状態にするか？
-                                 };
+    UIBarButtonItem *sortBtnNavi = [[UIBarButtonItem alloc] initWithCustomView:sortBtn];
     
-    //PageMenu確保
-    // CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
-    CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height);
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
-                                                        frame:rect_pagemenu
-                                                      options:parameters];
-    
-    //サブビューとして追加
-    [self.viewBasePageMenu addSubview:_pageMenu.view];
-    
-}
-
-#pragma mark - NavigationBarItemAction
--(void)barButtonItemPressed:(id)sender
-{
-    NSLog(@"badge touched");
-    
-    self.barButton.badgeValue = nil;
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    [ud removeObjectForKey:@"numberOfNewMessages"];
-    
-    if (!self.popover) {
-        NotificationViewController *vc = [[NotificationViewController alloc] init];
-        vc.supervc = self;
-        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
     }
-    NSLog(@"%f",self.barButton.accessibilityFrame.size.width);
-    [self.popover presentPopoverFromRect:CGRectMake(
-                                                    self.barButton.accessibilityFrame.origin.x + 15,
-                                                    self.barButton.accessibilityFrame.origin.y + 30,
-                                                    self.barButton.accessibilityFrame.size.width,
-                                                    self.barButton.accessibilityFrame.size.height)
-                                  inView:self.barButton.customView
-                permittedArrowDirections:WYPopoverArrowDirectionUp
-                                animated:YES
-                                 options:WYPopoverAnimationOptionFadeWithScale];
+    
+    
+    //self.navigationItem.rightBarButtonItem = self.barButton;
+    self.navigationItem.leftBarButtonItem = sortBtnNavi;
+    
+    BBBadgeBarButtonItem *heatMapBtnBBB = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:heatMapBtn];
+    
+    NSArray *right = [NSArray arrayWithObjects: self.barButton, heatMapBtnBBB, nil];
+    
+    self.navigationItem.rightBarButtonItems = right;
+    
+    [self setupPageMenu:0];
 }
 
-#pragma mark - Notification
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scrolling");
+}
+
+
 - (void) handleRemotePushToUpdateBell:(NSNotification *)notification {
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];  // 取得
-    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[ud integerForKey:@"numberOfNewMessages"]];// ナビゲーションバーに設定する
-    NSLog(@"badgeValue:%ld",(long)[ud integerForKey:@"numberOfNewMessages"]);
+    // ナビゲーションバーに設定する
+    self.barButton.badgeValue = [NSString stringWithFormat : @"%ld", (long)[[UIApplication sharedApplication] applicationIconBadgeNumber] ];
     self.navigationItem.rightBarButtonItem = self.barButton;
+}
+
+
+
+- (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {
+    
+    if ([controller conformsToProtocol:@protocol(SortableTimeLineSubView)]) {
+        
+        self.currentVisibleSortableSubViewController = (UIViewController <SortableTimeLineSubView> *)controller;
+        [[MoviePlayerManager sharedManager] stopMovie];
+        [[MoviePlayerManager sharedManager] removeAllPlayers];
+    }
+}
+
+-(void)SortLaunch{
+    SortViewController* svc = [SortViewController new];
+    svc.timelinePageMenuViewController = self;
+    [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:svc];
+    
+}
+
+- (void)showPopupWithTransitionStyle:(STPopupTransitionStyle)transitionStyle rootViewController:(UIViewController *)rootViewController
+{
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:rootViewController];
+    popupController.cornerRadius = 4;
+    popupController.transitionStyle = transitionStyle;
+    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[STPopupNavigationBar class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17] } forState:UIControlStateNormal];
+    [popupController presentInViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark viewAppear
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO]; // ナビゲーションバー表示
+}
+
+-(void)setupPageMenu:(int)page
+{
+    self.recoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoViewController"];
+    self.recoViewController.title = @"最新";
+    self.recoViewController.delegate = self;
+    
+    self.nearViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NearViewController"];
+    self.nearViewController.title = @"近く";
+    self.nearViewController.delegate = self;
+    
+    self.requestGPSViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestGPSViewController"];
+    self.requestGPSViewController.title = @"近く";
+    self.requestGPSViewController.delegate = self;
+    
+    self.followViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowViewController"];
+    self.followViewController.title = @"フォロー";
+    self.followViewController.delegate = self;
+    
+    self.gochiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GochiViewController"];
+    self.gochiViewController.title = @"お気に入り";
+    self.gochiViewController.delegate = self;
+    
+    if(!locationManager){
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    
+    NSArray *controllerArray;
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {controllerArray = @[self.recoViewController, self.nearViewController, self.followViewController,self.gochiViewController];
+        
+    }
+    else {
+        switch ([CLLocationManager authorizationStatus]) {
+                
+            case kCLAuthorizationStatusNotDetermined:
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusRestricted:
+                NSLog(@"not permitted");
+                controllerArray = @[self.recoViewController, self.requestGPSViewController, self.followViewController,self.gochiViewController];
+                
+                
+        }
+    }
+    
+    UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:0.9];
+    
+    NSInteger count_item = 3;
+    CGFloat width_item = [UIScreen mainScreen].bounds.size.width / count_item;
+    NSDictionary *parameters = @{
+                                 CAPSPageMenuOptionSelectionIndicatorHeight :@(2.0),
+                                 CAPSPageMenuOptionMenuItemSeparatorWidth : @(4.3),
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],
+                                 CAPSPageMenuOptionViewBackgroundColor : [UIColor whiteColor],
+                                 CAPSPageMenuOptionBottomMenuHairlineColor :  [UIColor blackColor],
+                                 CAPSPageMenuOptionSelectionIndicatorColor:
+                                     color_custom,
+                                 CAPSPageMenuOptionMenuMargin : @(20.0),
+                                 CAPSPageMenuOptionMenuHeight : @(40.0),
+                                 CAPSPageMenuOptionSelectedMenuItemLabelColor :color_custom,
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor : [UIColor colorWithRed:40.0/255. green:40.0/255. blue:40.0/255. alpha:1.0],
+                                 CAPSPageMenuOptionUseMenuLikeSegmentedControl : @(YES),
+                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges : @(YES),
+                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0],                                 CAPSPageMenuOptionMenuItemSeparatorPercentageHeight : @(0.1),
+                                 CAPSPageMenuOptionMenuItemWidth : @(width_item),
+                                 CAPSPageMenuOptionAddBottomMenuHairline : @(NO),
+                                 CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap : @(250),
+                                 };
+    
+    CGRect rect_pagemenu = CGRectMake(0, 0, self.viewBasePageMenu.frame.size.width, self.viewBasePageMenu.frame.size.height);
+    
+    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray
+                                                        frame:rect_pagemenu
+                                                      options:parameters];
+    _pageMenu.delegate = self;
+    
+    [self.viewBasePageMenu addSubview:_pageMenu.view];
+    
+    if (page != 0) {
+        [_pageMenu moveToPage:page];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -242,39 +337,110 @@ static NSString * const SEGUE_GO_EVERY_COMMENT = @"goEveryComment";
     
 }
 
-#pragma mark viewDisappear
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[MoviePlayerManager sharedManager] stopMovie];
+     [[MoviePlayerManager sharedManager] removeAllPlayers];
 }
 
-#pragma mark - 遷移前準備
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:SEGUE_GO_EVERY_COMMENT])
     {
-        //ここでパラメータを渡す
-        everyBaseNavigationController *eveNC = segue.destinationViewController;
-        everyTableViewController *eveVC = (everyTableViewController*)[eveNC rootViewController];
-        eveVC.postID = (NSString *)sender;
+        everyBaseNavigationController *meNC = segue.destinationViewController;
+        MessageViewController *meVC = (MessageViewController*)[meNC rootViewController];
+        meVC.postID = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
     }
-    else
-        if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
-        {
-            //ここでパラメータを渡す
-            usersTableViewController_other  *user_otherVC = segue.destinationViewController;
-            user_otherVC.postUsername = _postUsername;
-        }
-        else
-            //店舗画面にパラメータを渡して遷移する
-            if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
-            {
-                //ここでパラメータを渡す
-                RestaurantTableViewController  *restVC = segue.destinationViewController;
-                restVC.postRestName = _postRestname;
-            }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_USERS_OTHERS])
+    {
+        UserpageViewController  *userVC = segue.destinationViewController;
+        userVC.postUsername = (NSString *)sender;
+        [self.popover dismissPopoverAnimated:YES];
+    }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_RESTAURANT])
+    {
+        RestaurantTableViewController  *restVC = segue.destinationViewController;
+        restVC.postRestName = _postRestname;
+    }
+    else if ([segue.identifier isEqualToString:SEGUE_GO_HEATMAP])
+    {
+        ClusterMapViewController *clusterMapVC = segue.destinationViewController;
+        clusterMapVC.delegate = self;
+    }
+    
+}
+
+-(void)goHeatmap{
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+        [self performSegueWithIdentifier:SEGUE_GO_HEATMAP sender:nil];
+    }
+    else {
+        
+        [_pageMenu moveToPage:1];
+        
+        
+//        switch ([CLLocationManager authorizationStatus]) {
+//                
+//            case kCLAuthorizationStatusNotDetermined:
+//            case kCLAuthorizationStatusAuthorizedAlways:
+//            case kCLAuthorizationStatusAuthorizedWhenInUse:
+//            case kCLAuthorizationStatusDenied:
+//            case kCLAuthorizationStatusRestricted:
+//                NSLog(@"not permitted");
+//                requestGPSPopupViewController* rvc = [requestGPSPopupViewController new];
+//                [self showPopupWithTransitionStyle:STPopupTransitionStyleSlideVertical rootViewController:rvc];
+//        }
+    }
+    
+}
+
+-(void)barButtonItemPressed:(id)sender{
+    
+    self.barButton.badgeValue = nil;
+    
+    if (!self.popover) {
+        NotificationViewController *vc = [[NotificationViewController alloc] init];
+        vc.supervc = self;
+        self.popover = [[WYPopoverController alloc] initWithContentViewController:vc];
+    }
+    
+    [self.popover presentPopoverFromRect:CGRectMake(
+                                                    self.barButton.accessibilityFrame.origin.x + 15, self.barButton.accessibilityFrame.origin.y + 30, self.barButton.accessibilityFrame.size.width, self.barButton.accessibilityFrame.size.height)
+                                  inView:self.barButton.customView
+                permittedArrowDirections:WYPopoverArrowDirectionUp
+                                animated:YES
+                                 options:WYPopoverAnimationOptionFadeWithScale];
+}
+
+-(void)handleUserChosenGPSPosition:(CLLocationCoordinate2D)position label:(NSString*)label {
+
+
+    //[self setupPageMenu:1 positionLabel:label];
+    
+    [self setChikaiJunLabelToText:label];
+    
+    
+    [self.nearViewController updateForPosition:position];
+    
+    if (self.pageMenu.currentPageIndex != 1)
+        [_pageMenu moveToPage:1];
+}
+
+-(void)setChikaiJunLabelToText:(NSString*)labelText {
+    MenuItemView *nearButton = [_pageMenu.menuItems objectAtIndex:1];
+    [nearButton setTitleText:labelText];
 }
 
 @end
+
+
+
+
+
+
+
+

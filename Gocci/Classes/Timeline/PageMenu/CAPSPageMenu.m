@@ -233,6 +233,7 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     _controllerScrollView.bounces                = _enableHorizontalBounce;
     
     _controllerScrollView.frame = CGRectMake(0.0, _menuHeight, self.view.frame.size.width, self.view.frame.size.height - _menuHeight);
+    _controllerScrollView.delegate = self;
     
     [self.view addSubview:_controllerScrollView];
     
@@ -243,7 +244,7 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     [self.view addConstraints:controllerScrollView_constraint_H];
     [self.view addConstraints:controllerScrollView_constraint_V];
     
-    // Set up menu scroll view
+    
     _menuScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     _menuScrollView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, _menuHeight);
     [self.view addSubview:_menuScrollView];
@@ -291,17 +292,9 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     menuItemTapGestureRecognizer.delegate                = self;
     [_menuScrollView addGestureRecognizer:menuItemTapGestureRecognizer];
     
-    // Set delegate for controller scroll view
-    _controllerScrollView.delegate = self;
-    
-    // When the user taps the status bar, the scroll view beneath the touch which is closest to the status bar will be scrolled to top,
-    // but only if its `scrollsToTop` property is YES, its delegate does not return NO from `shouldScrollViewScrollToTop`, and it is not already at the top.
-    // If more than one scroll view is found, none will be scrolled.
-    // Disable scrollsToTop for menu and controller scroll views so that iOS finds scroll views within our pages on status bar tap gesture.
     _menuScrollView.scrollsToTop       = NO;;
     _controllerScrollView.scrollsToTop = NO;;
     
-    // Configure menu scroll view
     if (_useMenuLikeSegmentedControl) {
         _menuScrollView.scrollEnabled = NO;;
         _menuScrollView.contentSize = CGSizeMake(self.view.frame.size.width, _menuHeight);
@@ -309,7 +302,6 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     } else {
         _menuScrollView.contentSize = CGSizeMake((_menuItemWidth + _menuMargin) * (CGFloat)_controllerArray.count + _menuMargin, _menuHeight);
     }
-    // Configure controller scroll view content size
     _controllerScrollView.contentSize = CGSizeMake(self.view.frame.size.width * (CGFloat)_controllerArray.count, 0.0);
     
     CGFloat index = 0.0;
@@ -322,7 +314,6 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
             [controller viewDidAppear:YES];
         }
         
-        // Set up menu item for menu scroll view
         CGRect menuItemFrame;
         
         if (_useMenuLikeSegmentedControl) {
@@ -795,6 +786,12 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     // Configure controller scroll view content size
     _controllerScrollView.contentSize = CGSizeMake(self.view.frame.size.width * (CGFloat)_controllerArray.count, self.view.frame.size.height - _menuHeight);
     
+    UIViewController *currentController = _controllerArray[_currentPageIndex];
+    if ([_delegate respondsToSelector:@selector(didMoveToPage:index:)]) {
+        [_delegate didMoveToPage:currentController index:_currentPageIndex];
+    }
+
+    
     BOOL oldCurrentOrientationIsPortrait = _currentOrientationIsPortrait;
     
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
@@ -945,5 +942,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 {
     return _mutableMenuItemWidths;
 }
+
+
+
 
 @end

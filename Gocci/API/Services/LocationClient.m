@@ -60,9 +60,7 @@ static LocationClient *_sharedInstance = nil;
         completion(nil, error);
         //progress dismiss
         [SVProgressHUD dismiss];
-        //checkGPS
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [appDelegate checkGPS];
+    
         return;
     }
     
@@ -78,9 +76,6 @@ static LocationClient *_sharedInstance = nil;
         completion(nil, error);
         //progress dismiss
         [SVProgressHUD dismiss];
-        //checkGPS
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [appDelegate checkGPS];
         return;
     }
     

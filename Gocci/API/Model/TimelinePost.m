@@ -31,14 +31,15 @@
     obj.pushed_at = dictionary[@"gochi_flag"];
     obj.flag  = [dictionary[@"follow_flag"] integerValue];
     obj.tagA = dictionary[@"category"];
-    obj.tagB = dictionary[@"tag"];
-    obj.tagC = dictionary[@"value"];
+    obj.tagB = dictionary[@"value"];
     obj.cheernum  = [dictionary[@"cheer_num"] integerValue];
     obj.lat = dictionary[@"lat"];
     obj.lon = dictionary[@"lon"];
     obj.comment = dictionary[@"memo"];
     obj.totalCheer = dictionary[@"total_cheer_num"];
     obj.want_flag = dictionary[@"want_flag"];
+    obj.distance = dictionary[@"distance"];
+    obj.index = 1;
     return obj;
 }
 

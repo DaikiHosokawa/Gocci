@@ -11,6 +11,9 @@
 #import "UIImageView+WebCache.h"
 #import "RestaurantTableViewController.h"
 #import "APIClient.h"
+#import "Swift.h"
+
+
 
 @interface CheerListViewController ()
 
@@ -27,6 +30,8 @@
 
 @implementation CheerListViewController
 
+@synthesize userID = _userID;
+
 static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
 
 - (void)viewDidLoad {
@@ -35,11 +40,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     
     //ナビゲーションバーに画像
     {
-        //CGFloat height_image = self.navigationController.navigationBar.frame.size.height;
-        UIImage *image = [UIImage imageNamed:@"naviIcon.png"];
-        UIImageView *navigationTitle = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        navigationTitle.image = image;
-        self.navigationItem.titleView =navigationTitle;
+        self.title = @"応援";
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
         barButton.title = @"";
         self.navigationItem.backBarButtonItem = barButton;
@@ -58,8 +59,7 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = @"";
-    // !!!:dezamisystem
-    //	self.navigationItem.backBarButtonItem = backButton;
+    self.navigationItem.backBarButtonItem = backButton;
     
     self.tableView.bounces = NO;
     self.tableView.allowsSelection = NO;
@@ -105,12 +105,8 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
 #pragma mark - Json
 -(void)perseJson
 {
-    //test user
-    //_postIDtext = @"3024";
-    [APIClient CheerList:[[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"] handler:^(id result, NSUInteger code, NSError *error) {
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
+    [APIClient CheerList:_userID handler:^(id result, NSUInteger code, NSError *error) {
+                
         LOG(@"resultComment=%@", result);
         
         if (code != 200 || error != nil) {
@@ -132,9 +128,20 @@ static NSString * const SEGUE_GO_RESTAURANT = @"goRestpage";
             NSArray *rest_id = [result valueForKey:@"rest_id"];
             _rest_id_ = [rest_id mutableCopy];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
+            if([_locality_ count] ==0){
+                // 画像表示例文
+                UIImage *img = [UIImage imageNamed:@"sad_cheer.png"];
+                UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+                CGSize boundsSize = self.view.bounds.size;
+                iv.center = CGPointMake( boundsSize.width / 2, boundsSize.height / 2 -50);
+                [self.view addSubview:iv];
+                self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+            }
+            else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }
         }
     }];
     
