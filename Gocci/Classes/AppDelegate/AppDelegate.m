@@ -6,16 +6,48 @@
 //  Copyright (c) 2014年 Massara. All rights reserved.
 //
 
+
+/// #######################################################################################
+// The app will start with a debug screen to test logins etc.
+//#define START_WITH_DEBUG_SCREEN
+
+/// #######################################################################################
+// Userdata will be deleted everytime the app starts
+//#define FRESH_START
+
+/// #######################################################################################
+// Video recording is skipped and a default video is choosen to safe time and use the simulator
+//#define SKIP_VIDEO_RECORDING
+
+/// #######################################################################################
+//#define ENTRY_POINT_JUMP (@"jumpSettingsTableViewController")
+//#define ENTRY_POINT_JUMP (@"jumpUsersViewController")
+//#define ENTRY_POINT_JUMP (@"jumpHeatMapViewController")
+
+/// #######################################################################################
+
+
+#import "const.h"
+#import "util.h"
 #import "AppDelegate.h"
-#import <AVFoundation/AVFoundation.h>
-#import "SCFilterGroup.h"
-#import "SCVideoPlayerView.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import  "TWMessageBarManager.h"
+<<<<<<< HEAD
 #import <AWSCore/AWSCore.h>
 #import <AWSCognito/AWSCognito.h>
 #import <AWSS3/AWSS3.h>
 
+=======
+#import <AWSS3/AWSS3.h>
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+
+#import "SVProgressHUD.h"
+
+#import "Swift.h"
+>>>>>>> beeff99c4a93b72c48a61e3a73d3e8947d1ea3c4
 
 @interface AppDelegate() {
     UITabBarController *tabBarController;
@@ -25,108 +57,114 @@
 
 
 @implementation AppDelegate
-// !!!:dezamisystem
-@synthesize restname;
-@synthesize lifelogDate;
-@synthesize cheertag;
-
-@synthesize valueKakaku;
-@synthesize stringTenmei;
-@synthesize indexCategory;
-@synthesize indexFuniki;
-
-//@synthesize window = _window;
-
-
-//facebook認証のcallbackメソッド
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    // attempt to extract a token from the url
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication
-                        withSession:self.session];
-}
-
-
-- (BOOL)isFirstRun
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"firstRunDate"]) {
-        // 日時が設定済みなら初回起動でない
-        return NO;
-    }
-    
-    // 初回起動日時を設定
-    [userDefaults setObject:[NSDate date] forKey:@"firstRunDate"];
-    
-    // 保存
-    [userDefaults synchronize];
-    
-    // 初回起動
-    return YES;
-}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
     
-    [Crittercism enableWithAppID: @"540ab4d40729df53fc000003"];
+// this code dumps all key chain key. but not really good
+//    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                  (__bridge id)kCFBooleanTrue, (__bridge id)kSecReturnAttributes,
+//                                  (__bridge id)kSecMatchLimitAll, (__bridge id)kSecMatchLimit,
+//                                  nil];
+//    
+//    
+//    NSArray *secItemClasses = [NSArray arrayWithObjects:
+//                               (__bridge id)kSecClassGenericPassword,
+//                               (__bridge id)kSecClassInternetPassword,
+//                               (__bridge id)kSecClassCertificate,
+//                               (__bridge id)kSecClassKey,
+//                               (__bridge id)kSecClassIdentity,
+//                               nil];
+//    
+//        
+//        for (id secItemClass in secItemClasses) {
+//            [query setObject:secItemClass forKey:(__bridge id)kSecClass];
+//            
+//            CFTypeRef result = NULL;
+//            SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
+//            
+//            NSLog(@"%@", (__bridge id)result);
+//            if (result != NULL) CFRelease(result);
+//        }
     
-    [GMSServices provideAPIKey:@"AIzaSyDfZOlLwFm0Wv13lNgJF9nsfXlAmUTzHko"];
-    //3.5inchと4inchを読み分けする
-    CGRect rect = [UIScreen mainScreen].bounds;
-    if (rect.size.height == 480) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"3_5_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"3.5inch");
-        _screenType = 2;
-        self.window.rootViewController = rootViewController;
+    
+    // エラー追跡用の機能を追加する。
+    NSSetUncaughtExceptionHandler(&exceptionHandler);
+    
+    //[Debug afterAppLaunch];
+    
+    // prebuffer persistent data
+    [Persistent setupAndCacheAllDataFromDisk];
+    
+    // Conversion from userdef stored identity_id to keychain stored identity_id
+    if ([Persistent identity_id] == nil && [Util getUserDefString:@"identity_id"] != nil) {
+        NSLog(@"conversation from version 1.2.7? to 2.0.0 happend");
+        Persistent.identity_id = [Util getUserDefString:@"identity_id"];
+        
+        [Permission conversationFromPrevieousVersion];
     }
     
-    //4.7inch対応
-    CGRect rect2 = [UIScreen mainScreen].bounds;
-    if (rect2.size.height == 667) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"4_7_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"4.7inch");
-        _screenType = 3;
-        self.window.rootViewController = rootViewController;
-    }
+    // Start network monitoring for network state availibility
+    [Network startNetworkStatusMonitoring];
     
-    //5.5inch対応
-    CGRect rect3 = [UIScreen mainScreen].bounds;
-    if (rect3.size.height == 736) {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"5_5_inch" bundle:nil];
-        UIViewController* rootViewController = [storyboard instantiateInitialViewController];
-        NSLog(@"5.5inch");
-        _screenType = 4;
-        self.window.rootViewController = rootViewController;
-    }
+    // Handle bg task in the scheduler.
+    [TaskSchedulerWrapper start];
+    
+    // No default storyboard anymore = we need to setup the window
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    
+#ifdef FRESH_START
+    [Persistent resetPersistentDataToInitialState];
+#endif
+    
+#ifndef STRIPPED
+    [GMSServices provideAPIKey: GOOGLE_MAP_SERVICE_API_KEY];
+#endif
+    
+#if defined(START_WITH_DEBUG_SCREEN) || defined(STRIPPED)
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Debug" bundle:nil];
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+#else
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+#endif
+    
+#if defined(START_WITH_DEBUG_SCREEN) && defined(ENTRY_POINT_JUMP)
+    storyboard = [UIStoryboard storyboardWithName:Util.getInchString bundle:nil];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
+#elif defined(ENTRY_POINT_JUMP)
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:ENTRY_POINT_JUMP];
+#endif
+    
+//    storyboard = [UIStoryboard storyboardWithName:@"Universal" bundle:nil];
+//    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"EditProfileViewController"];
     
     // !!!:dezamisystem
+
+    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    
+    
     UIColor *color_custom = [UIColor colorWithRed:247./255. green:85./255. blue:51./255. alpha:1.];
-    
-    //ナビゲーションバーのアイテムの色を変更
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    //ナビゲーションバーの色を変更
+   
     [UINavigationBar appearance].barTintColor = color_custom;
-    
-    //ナビゲーションバーのタイトルの色を変更
-    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    
-    
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].titleTextAttributes
+    = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+   
+    [UINavigationBar appearance].translucent = NO;
     // !!!:dezamisystem・タブバー設定
     {
         //UIColor *color_selected = [UIColor colorWithRed:245./255. green:43./255. blue:0. alpha:1.];
         
-        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f];
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f];
         //タブ選択時のフォントとカラー
-        UIColor *colorSelected = color_custom; //[UIColor colorWithRed:0.9607843137254902 green:0.16862745098039217 blue:0.00 alpha:1.0];
+        UIColor *colorSelected = color_custom;
         NSDictionary *selectedAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : colorSelected};
         [[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
         //通常時のフォントとカラー
@@ -135,21 +173,14 @@
         [[UITabBarItem appearance] setTitleTextAttributes:attributesNormal forState:UIControlStateNormal];
         
         //背景色
-        [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"barTint"];
+        [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
         [UITabBar appearance].translucent = NO;
         // 選択時
         [[UITabBar appearance] setTintColor:color_custom];
     }
     
-    // !!!:dezamisystem・初期化
-    {
-        indexCategory = -1;
-        indexFuniki = -1;
-    }
     
-    //badge数を解放
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    
+<<<<<<< HEAD
     
     // エラー追跡用の機能を追加する。
     NSSetUncaughtExceptionHandler(&exceptionHandler);
@@ -191,61 +222,12 @@
         NSLog(@"accesskey:%@,secretkey:%@,sessionkey:%@",dele.accesskey,dele.secretkey,dele.sessionkey);
         return nil;
     }];
+=======
+    self.window.layer.masksToBounds = YES; // ビューをマスクで切り取る
+    self.window.layer.cornerRadius = 4.0; // 角丸マスクを設定(数値は角丸の大きさ)
+>>>>>>> beeff99c4a93b72c48a61e3a73d3e8947d1ea3c4
     
     return YES;
-    
-    
-}
-
-/*
- - (AWSTask *)refresh
- {
- // get Open ID connect Token by the API request to authentication server
- NSURL *url = [NSURL URLWithString:@"YOUR_SERVER_API_URL"];
- NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
- AWSTaskCompletionSource *source = [AWSTaskCompletionSource taskCompletionSource];
- [NSURLConnection sendAsynchronousRequest:request
- queue:[NSOperationQueue mainQueue]
- completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
- {
- if (data) {
- // retrieve identity ID and Open ID connect Token from the response.
- NSError *jsonError = nil;
- NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
- options:NSJSONReadingMutableLeaves
- error:&jsonError];
- NSLog(@"result: %@", result);
- self.identityId = result[@"identityId"];
- self.token = result[@"token"];
- } else {
- NSLog(@"error: %@", error);
- }
- }];
- }
- 
- 
- */
-
--(void)checkGPS{
-    
-    NSLog(@"open checkGPS");
-    // CLLocationManagerのインスタンスを作成
-    locationManager = [[CLLocationManager alloc] init];
-    // デリゲートを設定
-    locationManager.delegate = self;
-    // 更新頻度(メートル)
-    locationManager.distanceFilter = 100;
-    // 取得精度
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    // iOS8の対応
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) { // iOS8以降
-        // 位置情報測位の許可を求めるメッセージを表示する
-        [locationManager requestWhenInUseAuthorization]; // 使用中だけ
-        
-    } else { // iOS7以前
-        // 測位開始
-        [locationManager startUpdatingLocation];
-    }
 }
 
 // 異常終了を検知した場合に呼び出されるメソッド
@@ -254,155 +236,101 @@ void exceptionHandler(NSException *exception) {
     NSLog(@"%@", exception.reason);
     NSLog(@"%@", exception.callStackSymbols);
     
-    // ログをUserDefaultsに保存しておく。
-    NSString *log = [NSString stringWithFormat:@"%@, %@, %@", exception.name, exception.reason, exception.callStackSymbols];
-    [[NSUserDefaults standardUserDefaults] setValue:log forKey:@"failLog"];
+    // TODO send this data to a logging server
+    
+    /* swift version
+     NSSetUncaughtExceptionHandler { exception in
+     print(exception)
+     print(exception.callStackSymbols)
+     }
+     */
 }
 
 
 
-
-- (void)locationManager:(CLLocationManager *)manager
-didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{//iOS8対応
-    if (status == kCLAuthorizationStatusAuthorizedAlways ||
-        status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        
-        // 位置測位スタート
-        [locationManager startUpdatingLocation];
-        
-        if (status == kCLAuthorizationStatusNotDetermined) {
-            // ユーザが位置情報の使用を許可していない
-            [locationManager requestWhenInUseAuthorization]; // 常に許可
-            
-        }
-    }
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"applicationWillResignActive");
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager stopUpdatingLocation]; //測位停止
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Tell the scheduler to check for tasks. The app became active again,
+    // so maybe this is a good time to upload heavy stuff again.
+    [TaskSchedulerWrapper nudge];
+    
+    // when the user comes back from the settings screen TODO UNTESTED
+    [Permission requestPushNotificationPermissionOnlyIfTheUserWantsThem];
 }
 
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    
-    //badge数を解放
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    
-    NSLog(@"applicationDidBecomeActive");
-    if (nil == locationManager && [CLLocationManager locationServicesEnabled])
-        [locationManager startUpdatingLocation]; //測位再開
-    
-    // Facebook
-    [FBAppEvents activateApp];
-    [FBAppCall handleDidBecomeActiveWithSession:self.session];
-    
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    // Tell the scheduler to check for tasks. The app will enter bg
+    // so maybe this is a good time to upload heavy stuff that failed erlier.
+    [TaskSchedulerWrapper nudge];
 }
-
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [self.session close];
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-//APNsサーバーよりデバイストークン受信成功したときに呼ばれるメソッド
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    NSString *token = deviceToken.description;
-    
-    //deveceTokenから"<"と">"を消す
-    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    //このトークンをサーバ側で管理する。取り合えず、ログで出す
-    NSLog(@"deviceToken: %@", token);
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:token forKey:@"STRING"];
+    [Permission deviceTokenRecived:deviceToken.description];
 }
 
-// デバイストークン受信失敗時に呼ばれるメソッド
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //エラー内容をlogに
-    NSLog(@"deviceToken error: %@", [error description]);
+    [Permission didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-// PUSH通知の受信時に呼ばれるデリゲートメソッド
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    NSLog(@"通知受信:%@",userInfo);
-    //APNsPHPからuserInfo(message,badge数等)を受け取る
-    //log
-    NSLog(@"pushInfo: %@", [userInfo description]);
-    
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    int numberOfNewMessages = [[[userInfo objectForKey:@"apns"] objectForKey:@"badge"] intValue];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    [ud synchronize];
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [Permission didRegisterUserNotificationSettings:notificationSettings];
 }
 
-// BackgroundFetchによってバックグラウンドでPUSH通知を受けたとき呼ばれるデリゲートメソッド
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    //APNsPHPからuserInfo(message,badge数等)を受け取る
-    NSLog(@"pushInfo in Background: %@", userInfo);
+//    NSLog(@"######   didReceiveRemoteNotification.  %@",  userInfo);
     
-    if ( userInfo ) {
-        NSNotification *notification = [NSNotification notificationWithName:@"HogeNotification"
-                                                                     object:self
-                                                                   userInfo:userInfo];
-        NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
-        [queue enqueueNotification:notification postingStyle:NSPostWhenIdle];
-    }
-    
-    [self showMessageWithRemoteNotification:userInfo];
+    [Permission recievedRemoteNotification:userInfo];
     
     //Background Modeをonにすれば定期的に通知内容を取りに行く
     completionHandler(UIBackgroundFetchResultNoData);
 }
 
 
-- (void) showMessageWithRemoteNotification:(NSDictionary *)userInfo {
+
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
+  completionHandler:(void (^)())completionHandler {
     
-    // [TWMessageBarManager sharedInstance];
+    NSLog(@" ZZZ from Background: handleEventsForBackgroundURLSession: %@", identifier);
     
-    NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    if([identifier hasPrefix:@"SNS"]) {
+        completionHandler();
+        return;
+    }
     
-    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"お知らせ"
-                                                   description:message
-                                                          type:TWMessageBarMessageTypeSuccess
-                                                      duration:4.0];
-    //ここをログインのところに追加
-    // 新着メッセージ数をuserdefaultに格納(アプリを落としても格納されつづける)
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    int numberOfNewMessages = (int)[ud integerForKey:@"numberOfNewMessages"]+1;
-    NSLog(@"numberOfNewMessages:%d",numberOfNewMessages);
-    [ud setInteger:numberOfNewMessages forKey:@"numberOfNewMessages"];
-    UIApplication *application = [UIApplication sharedApplication];
-    application.applicationIconBadgeNumber = numberOfNewMessages;
-    [ud synchronize];
-    
+    /* Store the completion handler.*/
+    [AWSS3TransferUtility interceptApplication:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
@@ -410,6 +338,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     /* Store the completion handler.*/
     [AWSS3TransferUtility interceptApplication:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
+
 
 
 

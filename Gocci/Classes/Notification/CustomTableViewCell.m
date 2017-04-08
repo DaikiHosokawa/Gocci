@@ -2,8 +2,8 @@
 //  CustomTableViewCell.m
 //  Gocci
 //
-//  Created by kim on 2015/05/16.
-//  Copyright (c) 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa on 2015/05/16.
+//  Copyright (c) 2015年 INASE,inc. All rights reserved.
 //
 
 #import "CustomTableViewCell.h"
@@ -13,13 +13,10 @@
 @implementation CustomTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 + (instancetype)cell
@@ -29,7 +26,7 @@
 
 + (CGFloat)rowHeight
 {
-    return 60.0f;
+    return 78.0f;
 }
 
 - (void)configureWithNotice:(Notice *)Notice
@@ -47,9 +44,7 @@
         self.notificationMessage.text = [NSString stringWithFormat:@"%@ %@",Notice.username,@"さんが投稿にコメントをつけました。"];
     }
     
-    //self.notificationMessage.text = Notice.noticeMessage;
     self.noticedAt.text = Notice.notice_date;
-    // サムネイル画像
     [self.userIcon sd_setImageWithURL:[NSURL URLWithString:Notice.picture]
                           placeholderImage:[UIImage imageNamed:@"dummy.1x1.#EEEEEE"]];
 }

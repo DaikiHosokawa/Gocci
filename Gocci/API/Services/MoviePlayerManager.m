@@ -6,7 +6,7 @@
 /** MPMoviePlayerController を格納 */
 @property (nonatomic,strong) NSMutableDictionary *players;
 
-/** 再生用の MPMoviePlayerController */
+/* 再生用の MPMoviePlayerController */
 @property (nonatomic,strong) MPMoviePlayerController *globalPlayer;
 
 
@@ -44,23 +44,18 @@ static MoviePlayerManager *_sharedInstance = nil;
 - (void)addPlayerWithMovieURL:(NSString *)urlString size:(CGSize)size atIndex:(NSUInteger)index completion:(void (^)(BOOL))completion
 {
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
-    LOG(@"players[%@]=%@", key, self.players[key]);
-    /*
+    
      if (self.players[key]) {
+         NSLog(@"self.players[key]");
      return;
      }
-     */
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    //__weak typeof(self)weakSelf = self;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSURL *url = [NSURL URLWithString:urlString];
-    
     NSLog(@"fileURL:%@",url);
     
-    
     MPMoviePlayerController *moviePlayer =  [[MPMoviePlayerController alloc] init];
+    moviePlayer.view.layer.cornerRadius = 2;
+    moviePlayer.view.clipsToBounds = true;
     moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
     [moviePlayer setContentURL:url];
     moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -69,27 +64,24 @@ static MoviePlayerManager *_sharedInstance = nil;
     moviePlayer.view.frame = CGRectMake(0, 0, size.width, size.height);
     moviePlayer.view.userInteractionEnabled = NO;
     moviePlayer.backgroundView.opaque = NO;
-    //movieplayerのbackgroundViewの透明化
     moviePlayer.backgroundView.backgroundColor = [UIColor clearColor];
     for(UIView *aSubView in moviePlayer.view.subviews) {
         aSubView.backgroundColor = [UIColor clearColor];
     }
-    
     moviePlayer.view.backgroundColor = [UIColor clearColor];
-        self.players[key] = moviePlayer;
-    NSLog(@"addmovie段階では:%@",self.players);
-    
-    
+    self.players[key] = moviePlayer;
+    NSLog(@"self.players[key]:%@",self.players[key]);
+    NSLog(@"self.players[key]2:%@",self.players[@"0"]);
+
 }
 
 
 - (void)removeAllPlayers
 {
-    NSLog(@"全プレイヤーの削除");
     for (MPMoviePlayerController *p in [self.players allValues]) {
         [p stop];
     }
-    
+    [self.globalPlayer stop];
     [self.players removeAllObjects];
     self.globalPlayer = nil;
 }
@@ -115,30 +107,36 @@ static MoviePlayerManager *_sharedInstance = nil;
 
 - (void)playMovieAtIndex:(NSUInteger)index inView:(UIView *)view frame:(CGRect)frame
 {
+    NSLog(@"playMovieAtIndex index:%lu",(unsigned long)index);
     
     if (self.globalPlayer) {
-        
+        NSLog(@"self.globalPlayer");
         [self.globalPlayer.view removeFromSuperview];
-        // [self.globalPlayer pause];
         self.globalPlayer = nil;
     }
     
     MPMoviePlayerController *player = [self _playerAtIndex:index];
-    NSLog(@"playerは%@",player);
-    
+    NSLog(@"player:%@",player);
+
     if (player && player != self.globalPlayer) {
+         NSLog(@"not self.globalPlayer");
         self.globalPlayer = player;
         self.globalPlayer.view.frame = frame;
         [view addSubview:self.globalPlayer.view];
-        NSLog(@"playerは独自");
+        
         //再生中でない時
         if ([self.globalPlayer playbackState] != MPMoviePlaybackStatePlaying) {
-            NSLog(@"再生中でないので再生");
+            NSLog(@"再生");
             [self.globalPlayer play];
+            
+        }else{
+            NSLog(@"停止");
+            [self.globalPlayer pause];
         }
         
     }
 }
+
 
 - (void)stopMovie
 {
@@ -153,11 +151,12 @@ static MoviePlayerManager *_sharedInstance = nil;
 {
 
     NSString *key = [NSString stringWithFormat:@"%@", @(index)];
-    NSLog(@"再生するkey:%@",key);
-    NSLog(@"player群は%@",self.players);
-    NSLog(@"playerは%@",self.players[key]);
+    
+    NSLog(@"key:%@",[NSString stringWithFormat:@"%@", @(index)]);
+    NSLog(@"self.players:%@",self.players[key]);
+    
     if (!self.players[key]) {
-         NSLog(@"keyがない");
+         NSLog(@"playerにkeyがない");
         return nil;
     }
     
@@ -168,7 +167,6 @@ static MoviePlayerManager *_sharedInstance = nil;
         return nil;
     }
     
-    // 指定されたもの以外の再生を停止状態にする
     for (MPMoviePlayerController *p in [self.players allValues]) {
         if (p == player) {
             continue;

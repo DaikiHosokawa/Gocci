@@ -31,7 +31,7 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Icon-40.png",
+      "filename" : "icon-small-40@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -138,11 +138,14 @@
       "idiom" : "ipad",
       "size" : "83.5x83.5",
       "scale" : "2x"
+<<<<<<< HEAD
     },
     {
       "idiom" : "car",
       "size" : "120x120",
       "scale" : "1x"
+=======
+>>>>>>> beeff99c4a93b72c48a61e3a73d3e8947d1ea3c4
     }
   ],
   "info" : {

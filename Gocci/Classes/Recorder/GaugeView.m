@@ -2,8 +2,8 @@
 //  GaugeView.m
 //  Gocci
 //
-//  Created by INASE on 2015/02/08.
-//  Copyright (c) 2015年 Massara. All rights reserved.
+//  Created by Daiki Hosokawa
+//  Copyright (c) 2015年 INASE,inc. All rights reserved.
 //
 
 #import "GaugeView.h"

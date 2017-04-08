@@ -39,12 +39,5 @@
  */
 - (void)configureWithNotice:(Notice *)Notice;
 
-/**
- *  データを反映した場合のセルの高さを計算
- *
- *  @param post
- *
- *  @return
- */
-+ (CGFloat)cellHeightWithNotice:(Notice *)Notice;
+
 @end

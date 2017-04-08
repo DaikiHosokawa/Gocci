@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="dxt-ve-VZs">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewController" id="12g-x3-Mhm" customClass="EditProfileViewController" customModule="Gocci" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sEZ-AY-ZkU"/>
+                        <viewControllerLayoutGuide type="bottom" id="CV0-7D-h6p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vnO-wN-OeH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyH-nm-8Ku">
+                                <rect key="frame" x="0.0" y="120" width="600" height="190"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c9t-rW-w77">
+                                        <rect key="frame" x="152" y="59" width="416" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="変更したい方をタップしてください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yd4-lq-QSK">
+                                        <rect key="frame" x="31" y="25" width="272" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="GMU-2y-Vtj">
+                                        <rect key="frame" x="32" y="62" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="ec4-bd-UGc"/>
+                                            <constraint firstAttribute="width" constant="100" id="gPE-em-K8D"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ver-j0-WrO">
+                                        <rect key="frame" x="152" y="113" width="416" height="35"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.68627450980000004" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="保存">
+                                            <color key="titleColor" red="0.33058910864390806" green="0.21599165361531605" blue="0.90212673611111116" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadDataClicked:" destination="12g-x3-Mhm" eventType="touchUpInside" id="Pof-wp-S9q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="GMU-2y-Vtj" secondAttribute="bottom" constant="40" id="4jY-3x-1zb"/>
+                                    <constraint firstItem="Yd4-lq-QSK" firstAttribute="top" secondItem="cyH-nm-8Ku" secondAttribute="top" constant="30" id="BCd-0l-jbA"/>
+                                    <constraint firstAttribute="trailing" secondItem="c9t-rW-w77" secondAttribute="trailing" constant="32" id="CPd-XP-tfO"/>
+                                    <constraint firstItem="Ver-j0-WrO" firstAttribute="top" secondItem="c9t-rW-w77" secondAttribute="bottom" constant="32" id="NJM-F9-hv7"/>
+                                    <constraint firstItem="GMU-2y-Vtj" firstAttribute="top" secondItem="cyH-nm-8Ku" secondAttribute="top" constant="62" id="WTl-BU-Gv5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ver-j0-WrO" secondAttribute="bottom" constant="40" id="XVu-Gl-j4n"/>
+                                    <constraint firstItem="c9t-rW-w77" firstAttribute="leading" secondItem="GMU-2y-Vtj" secondAttribute="trailing" constant="20" id="eHR-NE-z2m"/>
+                                    <constraint firstItem="GMU-2y-Vtj" firstAttribute="leading" secondItem="cyH-nm-8Ku" secondAttribute="leading" constant="32" id="j4d-Zl-tHc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ver-j0-WrO" secondAttribute="trailing" constant="32" id="uEw-vn-K6p"/>
+                                    <constraint firstItem="Ver-j0-WrO" firstAttribute="leading" secondItem="GMU-2y-Vtj" secondAttribute="trailing" constant="20" id="xzg-iE-V0M"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90212673611111116" green="0.90212673611111116" blue="0.90212673611111116" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cyH-nm-8Ku" firstAttribute="leading" secondItem="vnO-wN-OeH" secondAttribute="leading" id="2Z6-Hm-s97"/>
+                            <constraint firstItem="cyH-nm-8Ku" firstAttribute="top" secondItem="sEZ-AY-ZkU" secondAttribute="bottom" constant="100" id="bk8-KI-3Rl"/>
+                            <constraint firstAttribute="trailing" secondItem="cyH-nm-8Ku" secondAttribute="trailing" id="v8f-6n-REt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgView" destination="cyH-nm-8Ku" id="HMK-tt-oGf"/>
+                        <outlet property="sendButton" destination="Ver-j0-WrO" id="gsT-Y3-gPu"/>
+                        <outlet property="userNameEditFiled" destination="c9t-rW-w77" id="Syp-Fa-nIx"/>
+                        <outlet property="userProfileImageView" destination="GMU-2y-Vtj" id="bNd-H9-YxI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0M-Mr-fCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1070" y="-4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="warning" width="24" height="24"/>
+    </resources>
+</document>

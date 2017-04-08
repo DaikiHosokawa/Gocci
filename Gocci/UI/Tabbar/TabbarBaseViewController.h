@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TabbarBaseViewController : UITabBarController
+{
+    float tabBarheight;
+}
 
 @end
